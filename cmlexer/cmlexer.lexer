@@ -1,0 +1,209 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+token BOOL;
+token TRUE;
+token FALSE;
+token SBYTE;
+token BYTE;
+token SHORT;
+token USHORT;
+token INT;
+token UINT;
+token LONG;
+token ULONG;
+token FLOAT;
+token DOUBLE;
+token CHAR;
+token WCHAR;
+token UCHAR;
+token VOID;
+token ENUM;
+token CAST;
+token INTERFACE;
+token NAMESPACE;
+token USING;
+token STATIC;
+token EXTERN;
+token AS;
+token IS;
+token EXPLICIT;
+token DELEGATE;
+token INLINE;
+token CDECL;
+token NOTHROW;
+token PUBLIC;
+token PROTECTED;
+token PRIVATE;
+token INTERNAL;
+token VIRTUAL;
+token ABSTRACT;
+token OVERRIDE;
+token SUPPRESS;
+token OPERATOR;
+token CLASS;
+token RETURN;
+token IF;
+token ELSE;
+token SWITCH;
+token CASE;
+token DEFAULT;
+token WHILE;
+token DO;
+token FOR;
+token BREAK;
+token CONTINUE;
+token GOTO;
+token TYPEDEF;
+token TYPENAME;
+token TYPEID;
+token CONST;
+token CONSTEXPR;
+token NULL;
+token THIS;
+token BASE;
+token CONSTRUCT;
+token DESTROY;
+token NEW;
+token DELETE;
+token SIZEOF;
+token TRY;
+token CATCH;
+token THROW;
+token CONCEPT;
+token WHERE;
+token AXIOM;
+token AND;
+token OR;
+token NOT;
+token UNIT_TEST;
+token ID;
+token FLOATINGLIT;
+token INTLIT;
+token CHARLIT;
+token STRINGLIT;
+token EQUIVALENCE;
+token IMPLICATION;
+token DISJUNCTION;
+token CONJUNCTION;
+token BITOR;
+token BITXOR;
+token AMP;
+token EQ;
+token NEQ;
+token LEQ;
+token GEQ;
+token LESS;
+token GREATER;
+token SHIFTLEFT;
+token SHIFTRIGHT;
+token PLUS;
+token MINUS;
+token STAR;
+token DIV;
+token REM;
+token PLUSPLUS;
+token MINUSMINUS;
+token NOT;
+token CPL;
+token DOT;
+token ARROW;
+token LBRACKET;
+token RBRACKET;
+token LPAREN;
+token RPAREN;
+token LANGLE;
+token RANGLE;
+token LBRACE;
+token RBRACE;
+token COMMA;
+token ASSIGN;
+token COLON;
+token SEMICOLON;
+token HASH;
+
+keywords 
+{ 
+    ("bool", BOOL), ("true", TRUE), ("false", FALSE), ("sbyte", SBYTE), ("byte", BYTE), ("short", SHORT), ("ushort", USHORT), ("int", INT), ("uint", UINT), ("long", LONG), ("ulong", ULONG),
+    ("float", FLOAT), ("double", DOUBLE), ("char", CHAR), ("wchar", WCHAR), ("uchar", UCHAR), ("void", VOID), ("enum", ENUM), ("cast", CAST), ("interface", INTERFACE),
+    ("namespace", NAMESPACE), ("using", USING), ("static", STATIC), ("extern", EXTERN), ("as", AS), ("is", IS), ("explicit", EXPLICIT), ("delegate", DELEGATE), ("inline", INLINE), ("cdecl", CDECL), ("nothrow", NOTHROW),
+    ("public", PUBLIC), ("protected", PROTECTED), ("private", PRIVATE), ("internal", INTERNAL), ("virtual", VIRTUAL), ("abstract", ABSTRACT), ("override", OVERRIDE), ("suppress", SUPPRESS),
+    ("operator", OPERATOR), ("class", CLASS), ("return", RETURN), ("if", IF), ("else", ELSE), 
+    ("switch", SWITCH), ("case", CASE), ("default", DEFAULT), ("while", WHILE), ("do", DO), ("for", FOR), 
+    ("break", BREAK), ("continue", CONTINUE), ("goto", GOTO), ("typedef", TYPEDEF), ("typename", TYPENAME), ("typeid", TYPEID), ("const", CONST), ("constexpr", CONSTEXPR), ("null", NULL), ("this", THIS), ("base", BASE),
+    ("construct", CONSTRUCT), ("destroy", DESTROY), ("new", NEW), ("delete", DELETE), ("sizeof", SIZEOF), ("try", TRY), ("catch", CATCH), ("throw", THROW), 
+    ("concept", CONCEPT), ("where", WHERE), ("axiom", AXIOM), ("and", AND), ("or", OR), ("not", NOT), ("unit_test", UNIT_TEST)
+}
+
+expressions
+{
+    ws="[\n\r\t ]";
+    newline="\n|\r|\r\n";
+    blockComment="/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/";
+    lineComment="//[^\r\n]*{newline}";
+    separators="({ws}|{blockComment}|{lineComment})+";
+    id="{idstart}{idcont}*";
+    decdigits="[0-9]+";
+    hexdigit=[0-9a-fA-F];
+    hexdigits="{hexdigit}+";
+    hex4="{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    hex8="{hex4}{hex4}";
+    octaldigits="[0-7]+";
+    fraction="{decdigits}?\.{decdigits}|{decdigits}\.";
+    sign="[+-]";
+    exponent="[eE]{sign}?{decdigits}";
+    floating="{fraction}{exponent}?|{decdigits}{exponent}[fF]?";
+    integer="(0{octaldigits}?|[1-9]{decdigits}?|0[xX]{hexdigits})[uU]?";
+    escape="\\([xX]{hexdigits}|[dD]{decdigits}|{octaldigits}|u{hex4}|U{hex8}|[abfnrtv]|.)";
+    char="[wu]?'([^\\\r\n]+|{escape})'";
+    string=([wu]?@\"[^"]*\")|[wu]?\"([^\\\r\n]|{escape})*\";
+}
+
+lexer
+{
+    {separators}:{};
+    {id}:{ int kw = GetKeywordToken(lexeme); if (kw == INVALID_TOKEN) return ID; else return kw; }
+    {floating}:{ return FLOATINGLIT; }
+    {integer}:{ return INTLIT; }
+    {char}:{ return CHARLIT; }
+    {string}:{ return STRINGLIT; }
+    "<=>":{ return EQUIVALENCE; }
+    "=>":{ return IMPLICATION; }
+    "||":{ return DISJUNCTION; }
+    "&&":{ return CONJUNCTION; }
+    "|":{ return BITOR; }
+    "^":{ return BITXOR; }
+    "&":{ return AMP; }
+    "==":{ return EQ; }
+    "!=":{ return NEQ; }
+    "<=":{ return LEQ; }
+    ">=":{ return GEQ; }
+    "<":{ return LANGLE; }
+    ">":{ return RANGLE; }
+    "<<":{ return SHIFTLEFT; }
+    ">>":{ return SHIFTRIGHT; }
+    "+":{ return PLUS; }
+    "-":{ return MINUS; }
+    "*":{ return STAR; }
+    "/":{ return DIV; }
+    "%":{ return REM; }
+    "++":{ return PLUSPLUS; }
+    "--":{ return MINUSMINUS; }
+    "!":{ return NOT; }
+    "~":{ return CPL; }
+    "\.":{ return DOT; }
+    "->":{ return ARROW; }
+    "[":{ return LBRACKET; }
+    "]":{ return RBRACKET; }
+    "(":{ return LPAREN; }
+    ")":{ return RPAREN; }
+    "{":{ return LBRACE; }
+    "}":{ return RBRACE; }
+    ",":{ return COMMA; }
+    "=":{ return ASSIGN; }
+    ":":{ return COLON; }
+    ";":{ return SEMICOLON; }
+    "#":{ return HASH; }
+}
