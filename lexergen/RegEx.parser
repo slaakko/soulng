@@ -1,0 +1,55 @@
+[hpp]#include <soulng/lexergen/Model.hpp>
+[hpp]#include <soulng/lexergen/LexerContext.hpp>
+
+namespace soulng.lexergen
+{
+    grammar RegExGrammar
+    {
+        using stdlib.escape;
+        using stdlib.identifier;
+        using stdlib.int;
+
+        RegEx(LexerContext* lexerContext) : Nfa
+            ::= Alternative(lexerContext){ value = Alternative; }
+            ;
+
+        Alternative(LexerContext* lexerContext) : Nfa
+            ::= Catenation(lexerContext):left{ value = left; } ('|' Catenation(lexerContext):right!{ value = Alt(*lexerContext, value, right); })*
+            ;
+
+        Catenation(LexerContext* lexerContext) : Nfa
+            ::= Repetition(lexerContext):left{ value = left; } (Repetition(lexerContext):right{ value = Cat(value, right); })*
+            ;
+
+        Repetition(LexerContext* lexerContext) : Nfa
+            ::= Primary(lexerContext):left{ value = left; } ('*'{ value = Kleene(*lexerContext, value); } | '+'{ value = Pos(*lexerContext, value); } | '?'{ value = Opt(*lexerContext, value); })?
+            ;
+
+        Primary(LexerContext* lexerContext) : Nfa
+            ::= '(' Alternative(lexerContext):alt!{ value = alt; } ')'!
+            |   '{' identifier:id!{ value = lexerContext->MakeExpr(id); } '}'!
+            |   Class(lexerContext){ value = MakeNfa(*lexerContext, Class); }
+            |   Escape:esc{ value = MakeNfa(*lexerContext, lexerContext->MakeChar(esc)); }
+            |   '.'{ value = MakeNfa(*lexerContext, lexerContext->MakeAny()); }
+            |   (anychar - [*+?|)}]){ value = MakeNfa(*lexerContext, lexerContext->MakeChar(*matchBegin)); }
+            ;
+
+        Class(LexerContext* lexerContext) : Class*
+            ::= '['{ value = lexerContext->MakeClass(); } (('^'{ value->SetInverse(); })? (Range(lexerContext):r{ value->AddSymbol(r); })*) ']'!
+            ;
+
+        Range(LexerContext* lexerContext) : Symbol*
+            ::= Char:s ('-' Char:e{ value = lexerContext->MakeRange(s, e); } | empty{ value = lexerContext->MakeChar(s); })
+            ;
+
+        Char : char32_t
+            ::= Escape:esc{ value = esc; }
+            |   (anychar - ']'){ value = *matchBegin; }
+            ;
+
+        Escape : char32_t
+            ::= escape{ value = escape; }
+            ;
+    }
+
+} // namespace soulng::lexergen

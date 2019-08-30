@@ -4,3 +4,7 @@
 // =================================
 
 #include <soulng/lexer/Token.hpp>
+
+namespace soulng { namespace lexer {
+
+} } // namespace soulng::lexer

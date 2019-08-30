@@ -1423,6 +1423,6 @@ inline const std::vector<Alias>& Aliases(char32_t c)
 UTIL_API void UnicodeInit();
 UTIL_API void UnicodeDone();
 
-} } // namespace cmajor::unicode
+} } // namespace soulng::unicode
 
 #endif // SOULNG_UNICODE_UNICODE_INCLUDED

@@ -2041,14 +2041,14 @@ const uint8_t headerMagic[8] =
 std::string CmajorRoot()
 {
     std::string cmajorRoot;
-    const char* cmajorRootEnv = getenv("SOULNG_ROOT");
+    const char* cmajorRootEnv = getenv("CMAJOR_ROOT");
     if (cmajorRootEnv)
     {
         cmajorRoot = cmajorRootEnv;
     }
     if (cmajorRoot.empty())
     {
-        throw UnicodeException("please set 'SOULNG_ROOT' environment variable to contain /path/to/cmajor directory.");
+        throw UnicodeException("please set 'CMAJOR_ROOT' environment variable to contain /path/to/cmajor directory.");
     }
     return cmajorRoot;
 }

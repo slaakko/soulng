@@ -1,0 +1,69 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cmajorast/Interface.hpp>
+[hpp]#include <cmajorparser/ParsingContext.hpp>
+[cpp]#include <cmajorparser/Attribute.hpp>
+[cpp]#include <cmajorparser/Specifier.hpp>
+[cpp]#include <cmajorparser/Identifier.hpp>
+[cpp]#include <cmajorparser/TypeExpr.hpp>
+[cpp]#include <cmajorparser/Parameter.hpp>
+[hpp]#include <soulng/cmajorast/Class.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorLexer.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorTokens.hpp>
+
+using namespace cmajor::ast;
+using namespace CmajorTokens;
+
+parser InterfaceParser
+{
+    lexer CmajorLexer;
+
+    using AttributeParser.Attributes;
+    using SpecifierParser.Specifiers;
+    using IdentifierParser.Identifier;
+    using TypeExprParser.TypeExpr;
+    using ParameterParser.ParameterList;
+
+    Interface(ParsingContext* ctx, var std::unique_ptr<InterfaceNode> intf, var Span s, var Span specifierSpan, var Span beginBraceSpan, var Span endBraceSpan) : InterfaceNode*
+        ::=
+        (   empty{ s = span; } Attributes:attrs? Specifiers:specifiers{ specifierSpan = span; } INTERFACE Identifier:id!
+            {
+                s.end = span.end;
+                intf.reset(new InterfaceNode(s, specifiers, id, attrs));
+                intf->SetSpecifierSpan(specifierSpan);
+            }
+            LBRACE!{ beginBraceSpan = span; } InterfaceContent(ctx, intf.get()):content RBRACE!{ endBraceSpan = span; intf->SetBeginBraceSpan(beginBraceSpan); intf->SetEndBraceSpan(endBraceSpan); }
+        )
+        {
+            return intf.release();
+        }
+        ;
+
+    InterfaceContent(ParsingContext* ctx, cmajor::ast::InterfaceNode* intf)
+        ::= (InterfaceMemFun(ctx):intfMemFun{ intf->AddMember(intfMemFun); })*
+        ;
+
+    InterfaceMemFun(ParsingContext* ctx, var std::unique_ptr<MemberFunctionNode> memFun, var Span s) : Node*
+        ::= empty{ s = span; } Attributes:attrs? TypeExpr(ctx):returnType InterfaceFunctionGroupId:groupId!
+        {
+            s.end = span.end;
+            memFun.reset(new MemberFunctionNode(s, Specifiers(), returnType, groupId, attrs));
+        }
+        ParameterList(ctx, memFun.get()):paramList! SEMICOLON!
+        {
+            return memFun.release();
+        }
+        ;
+
+    InterfaceFunctionGroupId : std::u32string
+        ::= ID{ return lexer.GetMatch(span); }
+        ;
+
+    ruleinfo
+    {
+        (Interface, "interface"), (InterfaceContent, "interface content"), (InterfaceMemFun, "interface member function"), (InterfaceFunctionGroupId, "interface function group identifier")
+    }
+}

@@ -10,7 +10,7 @@
 
 namespace soulng { namespace lexer {
 
-struct Keyword
+struct LEXER_API Keyword
 {
     Keyword() : str(nullptr), tokenID(INVALID_TOKEN) {}
     Keyword(const char32_t* str_, int tokenID_) : str(str_), tokenID(tokenID_) { }
@@ -18,7 +18,7 @@ struct Keyword
     int tokenID;
 };
 
-class KeywordMap
+class LEXER_API KeywordMap
 {
 public:
     KeywordMap(const Keyword* keywords_);
@@ -31,4 +31,3 @@ private:
 } } // namespace soulng::lexer
 
 #endif // SOULNG_LEXER_KEYWORD_INCLUDED
-

@@ -1,0 +1,84 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/parsing/Scope.hpp>
+[hpp]#include <soulng/parsing/Grammar.hpp>
+[cpp]#include <soulng/parsing/Rule.hpp>
+[cpp]#include <soulng/codedom/Type.hpp>
+[cpp]#include <soulng/code/Declarator.hpp>
+
+namespace soulng.syntax
+{
+    grammar Element
+    {
+        using stdlib.qualified_id;
+        using stdlib.identifier;
+        using stdlib.string;
+        using soulng.code.Declarator.TypeId;
+        using soulng.code.Declarator.Declarator;
+
+        RuleLink(soulng::parsing::Grammar* grammar)
+                            ::= (keyword("using") identifier:aliasName '=' qualified_id:ruleName ';')
+                                { 
+                                    RuleLink* link(new RuleLink(aliasName, grammar, ruleName)); 
+                                    link->SetSpan(span); 
+                                    grammar->AddRuleLink(link); 
+                                }
+                            |   (keyword("using") qualified_id ';')
+                                { 
+                                    RuleLink* link(new RuleLink(grammar, qualified_id)); 
+                                    link->SetSpan(span);
+                                    grammar->AddRuleLink(link);  
+                                }
+                            ;
+
+        Signature(soulng::parsing::Rule* rule)
+                            ::= ParameterList(rule)? ReturnType(rule)?
+                            ;
+
+        ParameterList(soulng::parsing::Rule* rule)
+                            ::= '(' ((Variable(rule) | Parameter(rule)) % ',') ')'!
+                            ;
+
+        Variable(soulng::parsing::Rule* rule)
+                            ::= keyword("var") TypeId Declarator{ rule->AddLocalVariable(AttrOrVariable(TypeId->ToString(), Declarator)); delete TypeId; }
+                            ;
+
+        Parameter(soulng::parsing::Rule* rule)
+                            ::= TypeId Declarator{ rule->AddInheritedAttribute(AttrOrVariable(TypeId->ToString(), Declarator)); delete TypeId; }
+                            ;
+
+        ReturnType(soulng::parsing::Rule* rule)
+                            ::= (':' - "::") TypeId{ rule->SetValueTypeName(TypeId->ToString()); delete TypeId; }
+                            ;
+
+        Keyword             ::= keyword_list(identifier, 
+                                [   "using", "grammar", "start", "end", "skip", "token", "keyword", "keyword_list", 
+                                    "empty", "space", "anychar", "letter", "digit", "hexdigit", "var", "range",
+                                    "upper_letter", "lower_letter", "title_letter", "modifier_letter", "other_letter",
+                                    "cased_letter", "mark", "nonspacing_mark", "spacing_mark", "enclosing_mark", 
+                                    "number", "decimal_number", "letter_number", "other_number", "punctuation", 
+                                    "connector_punctuation", "dash_punctuation", "open_punctuation", "close_punctuation",
+                                    "initial_punctuation", "final_punctuation", "other_punctuation", 
+                                    "symbol", "math_symbol", "currency_symbol", "modifier_symbol", "other_symbol",
+                                    "separator", "space_separator", "line_separator", "paragraph_separator", 
+                                    "other", "control", "format", "surrogate", "private_use", "unassigned",
+                                    "graphic", "basechar", "alphabetic", "idstart", "idcont", "value"
+                                ])
+                            ;
+
+        Identifier: std::u32string
+                            ::= (identifier - Keyword){ value = std::u32string(matchBegin, matchEnd); }
+                            ;
+
+        QualifiedId: std::u32string
+                            ::= token(Identifier:first('.' Identifier:rest)*){ value = std::u32string(matchBegin, matchEnd); }
+                            ;
+
+        StringArray(std::vector<std::u32string>* array)
+                            ::= '[' (string:str{ array->push_back(str); } % ',') ']'!
+                            ;
+    }
+}

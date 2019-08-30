@@ -1,0 +1,61 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cmajorast/Identifier.hpp>
+[hpp]#include <soulng/cmajorast/Expression.hpp>
+[hpp]#include <soulng/cmajorast/TypeExpr.hpp>
+[hpp]#include <soulng/cmajorparser/ParsingContext.hpp>
+[cpp]#include <soulng/cmajorparser/BasicType.hpp>
+[cpp]#include <soulng/cmajorparser/Expression.hpp>
+[cpp]#include <soulng/cmajorparser/Template.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorLexer.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorTokens.hpp>
+
+using namespace cmajor::ast;
+using namespace CmajorTokens;
+
+parser TypeExprParser
+{
+    lexer CmajorLexer;
+    
+    using BasicTypeParser.BasicType;
+    using ExpressionParser.Expression;
+    using TemplateParser.TemplateId;
+
+    TypeExpr(ParsingContext* ctx) : Node*
+        ::= PrefixTypeExpr(ctx):prefixTypeExpr{ return prefixTypeExpr; }
+        ;
+
+    PrefixTypeExpr(ParsingContext* ctx, var Span s) : Node*
+        ::= CONST{ s = span; } PostfixTypeExpr(ctx):constTypeExpr{ s.end = span.end; return new ConstNode(s, constTypeExpr); }
+        |   PostfixTypeExpr(ctx):postfixTypeExpr{ return postfixTypeExpr; }
+        ;
+
+    PostfixTypeExpr(ParsingContext* ctx, var std::unique_ptr<Node> typeExpr, var Span s) : Node*
+        ::=
+        (   PrimaryTypeExpr(ctx):primaryTypeExpr{ s = span; typeExpr.reset(primaryTypeExpr); }
+            (   DOT ID!{ s.end = span.end; typeExpr.reset(new DotNode(s, typeExpr.release(), new IdentifierNode(span, lexer.GetToken(pos)))); }
+            |   STAR{ s.end = span.end; typeExpr.reset(new PointerNode(s, typeExpr.release())); }
+            |   AMPAMP{ s.end = span.end; typeExpr.reset(new RValueRefNode(s, typeExpr.release())); }
+            |   AMP{ s.end = span.end; typeExpr.reset(new LValueRefNode(s, typeExpr.release())); }
+            |   LBRACKET Expression(ctx):size? RBRACKET!{ s.end = span.end; typeExpr.reset(new ArrayNode(s, typeExpr.release(), size)); }
+            )*
+        )
+        {
+            return typeExpr.release();
+        }
+        ;
+
+    PrimaryTypeExpr(ParsingContext* ctx) : Node*
+        ::= BasicType:basicType{ return basicType; }
+        |   TemplateId(ctx):templateId{ return templateId; }
+        |   ID{ return new IdentifierNode(span, lexer.GetToken(pos)); }
+        ;
+
+    ruleinfo
+    {
+        (TypeExpr, "type expression"), (PrefixTypeExpr, "prefix type expression"), (PostfixTypeExpr, "postfix type expression"), (PrimaryTypeExpr, "primary type expression")
+    }
+}
