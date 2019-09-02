@@ -1,3 +1,4 @@
+#include <soulng/cmajorast/InitDone.hpp>
 #include <soulng/cmajorlexer/CmajorLexer.hpp>
 #include <soulng/cmajorlexer/ContainerFileLexer.hpp>
 #include <soulng/cmajorparser/CompileUnit.hpp>
@@ -7,12 +8,28 @@
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <soulng/util/TextUtils.hpp>
+#include <soulng/util/InitDone.hpp>
 #include <stdexcept>
 #include <iostream>
 #include <string>
 
+struct InitDone
+{
+    InitDone()
+    {
+        soulng::util::Init();
+        cmajor::ast::Init();
+    }
+    ~InitDone()
+    {
+        cmajor::ast::Done();
+        soulng::util::Done();
+    }
+};
+
 int main(int argc, const char** argv)
 {
+    InitDone initDone;
     try
     {
         for (int i = 1; i < argc; ++i)

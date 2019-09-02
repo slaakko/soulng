@@ -1,5 +1,5 @@
-#ifndef Lexer_hpp_5039
-#define Lexer_hpp_5039
+#ifndef Lexer_hpp_24725
+#define Lexer_hpp_24725
 
 #include <soulng/parsing/Grammar.hpp>
 #include <soulng/parsing/Keyword.hpp>
@@ -42,4 +42,4 @@ private:
 
 } } // namespace soulng.lexergen
 
-#endif // Lexer_hpp_5039
+#endif // Lexer_hpp_24725

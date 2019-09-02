@@ -8,6 +8,7 @@
 #include <soulng/parsergen/Domain.hpp>
 #include <soulng/parsergen/CodeGeneratorVisitor.hpp>
 #include <soulng/parsergen/LinkerVisitor.hpp>
+#include <soulng/cppcode/InitDone.hpp>
 #include <soulng/codedom/InitDone.hpp>
 #include <soulng/parsing/InitDone.hpp>
 #include <soulng/util/InitDone.hpp>
@@ -26,6 +27,7 @@ struct InitDone
     InitDone()
     {
         soulng::util::Init();
+        soulng::cppcode::Init();
         soulng::codedom::Init();
         soulng::parsing::Init();
     }
@@ -33,6 +35,7 @@ struct InitDone
     {
         soulng::parsing::Done();
         soulng::codedom::Done();
+        soulng::cppcode::Done();
         soulng::util::Done();
     }
 };
@@ -47,8 +50,8 @@ int main(int argc, const char** argv)
     InitDone initDone;
     try
     {
-        soulng::parsergen::ParserFileGrammar* parserFileGrammar = soulng::parsergen::ParserFileGrammar::Create();
         soulng::parsergen::ProjectFileGrammar* projectFileGrammar = soulng::parsergen::ProjectFileGrammar::Create();
+        soulng::parsergen::ParserFileGrammar* parserFileGrammar = soulng::parsergen::ParserFileGrammar::Create();
         bool verbose = false;
         std::string fileName;
         for (int i = 1; i < argc; ++i)

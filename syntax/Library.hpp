@@ -7,8 +7,8 @@
 
  ========================================================================*/
 
-#ifndef SOULNG_SYNTAX_LIBRARY_INCLUDED
-#define SOULNG_SYNTAX_LIBRARY_INCLUDED
+#ifndef CMAJOR_SYNTAX_LIBRARY_INCLUDED
+#define CMAJOR_SYNTAX_LIBRARY_INCLUDED
 
 #include <soulng/syntax/Project.hpp>
 #include <soulng/parsing/ParsingDomain.hpp>
@@ -19,4 +19,4 @@ void GenerateLibraryFile(Project* project, soulng::parsing::ParsingDomain* parsi
 
 } } // namespace cpg::syntax
 
-#endif // SOULNG_SYNTAX_LIBRARY_INCLUDED
+#endif // CMAJOR_SYNTAX_LIBRARY_INCLUDED

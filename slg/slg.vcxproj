@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>slgd</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -81,6 +82,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>slg</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -96,7 +98,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(OutDir);C:\Program Files\boost\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sngutild.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sngparserd.lib;sngcppcoded.lib;snglexerd.lib;sngutild.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -143,12 +145,77 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>sngutil.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sngcppcode.lib;snglexer.lib;sngparser.lib;sngutil.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir);C:\Program Files\boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="CppDeclaration.cpp" />
+    <ClCompile Include="CppDeclarator.cpp" />
+    <ClCompile Include="CppExpression.cpp" />
+    <ClCompile Include="CppIdentifier.cpp" />
+    <ClCompile Include="CppLiteral.cpp" />
+    <ClCompile Include="CppStatement.cpp" />
+    <ClCompile Include="Dfa.cpp" />
+    <ClCompile Include="Identifier.cpp" />
+    <ClCompile Include="LexerContext.cpp" />
+    <ClCompile Include="LexerFile.cpp" />
+    <ClCompile Include="LexerFileClassMap.cpp" />
+    <ClCompile Include="LexerFileKeywords.cpp" />
+    <ClCompile Include="LexerFileLexer.cpp" />
+    <ClCompile Include="LexerFileTokens.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Nfa.cpp" />
+    <ClCompile Include="RegEx.cpp" />
+    <ClCompile Include="RegExClassMap.cpp" />
+    <ClCompile Include="RegExLexer.cpp" />
+    <ClCompile Include="RegularExpressionParser.cpp" />
+    <ClCompile Include="RegExTokens.cpp" />
+    <ClCompile Include="Symbol.cpp" />
+    <ClCompile Include="TokenValueParsers.cpp" />
+    <ClCompile Include="Visitor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CppDeclaration.parser" />
+    <None Include="CppDeclarator.parser" />
+    <None Include="CppExpression.parser" />
+    <None Include="CppIdentifier.parser" />
+    <None Include="CppLiteral.parser" />
+    <None Include="CppStatement.parser" />
+    <None Include="LexerFile.parser" />
+    <None Include="LexerFileLexer.lexer" />
+    <None Include="Parsers.spg" />
+    <None Include="RegEx.parser" />
+    <None Include="RegExLexer.lexer" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Algorithm.hpp" />
+    <ClInclude Include="CppDeclaration.hpp" />
+    <ClInclude Include="CppDeclarator.hpp" />
+    <ClInclude Include="CppExpression.hpp" />
+    <ClInclude Include="CppIdentifier.hpp" />
+    <ClInclude Include="CppLiteral.hpp" />
+    <ClInclude Include="CppStatement.hpp" />
+    <ClInclude Include="Dfa.hpp" />
+    <ClInclude Include="Identifier.hpp" />
+    <ClInclude Include="LexerContext.hpp" />
+    <ClInclude Include="LexerFile.hpp" />
+    <ClInclude Include="LexerFileClassMap.hpp" />
+    <ClInclude Include="LexerFileKeywords.hpp" />
+    <ClInclude Include="LexerFileLexer.hpp" />
+    <ClInclude Include="LexerFileTokens.hpp" />
+    <ClInclude Include="Model.hpp" />
+    <ClInclude Include="Nfa.hpp" />
+    <ClInclude Include="RegEx.hpp" />
+    <ClInclude Include="RegExClassMap.hpp" />
+    <ClInclude Include="RegExLexer.hpp" />
+    <ClInclude Include="RegularExpressionParser.hpp" />
+    <ClInclude Include="RegExTokens.hpp" />
+    <ClInclude Include="Symbol.hpp" />
+    <ClInclude Include="TokenValueParsers.hpp" />
+    <ClInclude Include="Visitor.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

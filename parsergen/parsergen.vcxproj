@@ -97,7 +97,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>lexerd.lib;parserd.lib;sngutild.lib;sngcodedomd.lib;sngparsingd.lib;code.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sngcppcoded.lib;snglexerd.lib;sngparserd.lib;sngutild.lib;codedomd.lib;parsingd.lib;code.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir);C:\Program Files\boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -145,41 +145,53 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>lexer.lib;parser.lib;code.lib;syntax.lib;sngutil.lib;sngcodedom.lib;sngparsing.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>codedom.lib;snglexer.lib;sngparser.lib;code.lib;syntax.lib;sngutil.lib;sngcppcode.lib;parsing.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir);C:\Program Files\boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CodeGeneratorVisitor.cpp" />
+    <ClCompile Include="Composite.cpp" />
     <ClCompile Include="Domain.cpp" />
     <ClCompile Include="CodeEvaluationVisitor.cpp" />
+    <ClCompile Include="Element.cpp" />
+    <ClCompile Include="Grammar.cpp" />
     <ClCompile Include="LinkerVisitor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NonterminalInfo.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="ParserFile.cpp" />
     <ClCompile Include="ParserFileGrammar.cpp" />
+    <ClCompile Include="Primary.cpp" />
+    <ClCompile Include="Primitive.cpp" />
+    <ClCompile Include="CodeModifyVisitor.cpp" />
     <ClCompile Include="ProjectFile.cpp" />
     <ClCompile Include="ProjectFileGrammar.cpp" />
-    <ClCompile Include="CodeModifyVisitor.cpp" />
+    <ClCompile Include="Rule.cpp" />
     <ClCompile Include="Visitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CodeGeneratorVisitor.hpp" />
+    <ClInclude Include="Composite.hpp" />
     <ClInclude Include="Domain.hpp" />
     <ClInclude Include="CodeEvaluationVisitor.hpp" />
+    <ClInclude Include="Element.hpp" />
+    <ClInclude Include="Grammar.hpp" />
     <ClInclude Include="LinkerVisitor.hpp" />
     <ClInclude Include="NonterminalInfo.hpp" />
     <ClInclude Include="Parser.hpp" />
     <ClInclude Include="ParserFile.hpp" />
     <ClInclude Include="ParserFileGrammar.hpp" />
+    <ClInclude Include="Primary.hpp" />
+    <ClInclude Include="Primitive.hpp" />
+    <ClInclude Include="CodeModifyVisitor.hpp" />
     <ClInclude Include="ProjectFile.hpp" />
     <ClInclude Include="ProjectFileGrammar.hpp" />
-    <ClInclude Include="CodeModifyVisitor.hpp" />
+    <ClInclude Include="Rule.hpp" />
     <ClInclude Include="Visitor.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Parser.spg" />
+    <None Include="Parser.pp" />
     <None Include="ParserFileGrammar.parser" />
     <None Include="ProjectFileGrammar.parser" />
   </ItemGroup>

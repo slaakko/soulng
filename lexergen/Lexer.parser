@@ -95,7 +95,7 @@ namespace soulng.lexergen
             ;
 
         LexerKeyword
-            ::= keyword_list(identifier, ["tokens", "keywords", "expressions", "lexer", "actions", "api"])
+            ::= keyword_list(identifier, ["classmap", "prefix", "tokens", "keywords", "expressions", "lexer", "variables", "actions", "api"])
             ;
 
         Actions(Lexer* lexer)

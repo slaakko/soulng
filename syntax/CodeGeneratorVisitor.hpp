@@ -3,8 +3,8 @@
 // Distributed under the MIT license
 // =================================
 
-#ifndef SOULNG_SYNTAX_CODEGENERATOR_VISITOR_INCLUDED
-#define SOULNG_SYNTAX_CODEGENERATOR_VISITOR_INCLUDED
+#ifndef CMAJOR_SYNTAX_CODEGENERATOR_VISITOR_INCLUDED
+#define CMAJOR_SYNTAX_CODEGENERATOR_VISITOR_INCLUDED
 
 #include <soulng/parsing/Primitive.hpp>
 #include <soulng/parsing/Composite.hpp>
@@ -121,4 +121,4 @@ private:
 
 } } // namespace soulng::syntax
 
-#endif // SOULNG_SYNTAX_CODEGENERATOR_VISITOR_INCLUDED
+#endif // CMAJOR_SYNTAX_CODEGENERATOR_VISITOR_INCLUDED

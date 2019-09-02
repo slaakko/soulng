@@ -3,8 +3,8 @@
 // Distributed under the MIT license
 // =================================
 
-#ifndef SOULNG_SYNTAX_PROJECT_INCLUDED
-#define SOULNG_SYNTAX_PROJECT_INCLUDED
+#ifndef CMAJOR_SYNTAX_PROJECT_INCLUDED
+#define CMAJOR_SYNTAX_PROJECT_INCLUDED
 #include <boost/filesystem.hpp>
 #include <string>
 #include <vector>
@@ -33,4 +33,4 @@ private:
 
 } } // namespace soulng::syntax
 
-#endif // SOULNG_SYNTAX_PROJECT_INCLUDED
+#endif // CMAJOR_SYNTAX_PROJECT_INCLUDED

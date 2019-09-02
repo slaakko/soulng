@@ -163,27 +163,15 @@ void TypeId::Print(CodeFormatter& formatter)
     }
 }
 
-void TypeId::PrintNonPtrType(CodeFormatter& formatter)
+bool TypeId::IsPtrType() const
 {
-    if (IsPtrType())
+    if (!declarator.empty())
     {
-        int n = int(typeSpecifiers.size());
-        for (int i = 0; i < n; ++i)
-        {
-            if (i > 0)
-            {
-                formatter.Write(" ");
-            }
-            typeSpecifiers[i]->Print(formatter);
-        }
-        if (!declarator.empty())
-        {
-            formatter.Write(ToUtf8(declarator.substr(0, declarator.size() - 1)));
-        }
+        return declarator.back() == '*';
     }
     else
     {
-        Print(formatter);
+        return false;
     }
 }
 
@@ -211,15 +199,27 @@ void TypeId::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-bool TypeId::IsPtrType() const
+void TypeId::PrintNonPtrType(CodeFormatter& formatter)
 {
-    if (!declarator.empty())
+    if (IsPtrType())
     {
-        return declarator.back() == '*';
+        int n = int(typeSpecifiers.size());
+        for (int i = 0; i < n; ++i)
+        {
+            if (i > 0)
+            {
+                formatter.Write(" ");
+            }
+            typeSpecifiers[i]->Print(formatter);
+        }
+        if (!declarator.empty())
+        {
+            formatter.Write(ToUtf8(declarator.substr(0, declarator.size() - 1)));
+        }
     }
     else
     {
-        return false;
+        Print(formatter);
     }
 }
 

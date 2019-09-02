@@ -3,8 +3,8 @@
 // Distributed under the MIT license
 // =================================
 
-#ifndef SOULNG_SYNTAX_CODEGENERATOR_INCLUDED
-#define SOULNG_SYNTAX_CODEGENERATOR_INCLUDED
+#ifndef CMAJOR_SYNTAX_CODEGENERATOR_INCLUDED
+#define CMAJOR_SYNTAX_CODEGENERATOR_INCLUDED
 
 #include <soulng/syntax/ParserFileContent.hpp>
 
@@ -15,4 +15,4 @@ void GenerateCode(const std::vector<std::unique_ptr<ParserFileContent>>& parserF
 
 } } // namespace soulng::syntax
 
-#endif // SOULNG_SYNTAX_CODEGENERATOR_INCLUDED
+#endif // CMAJOR_SYNTAX_CODEGENERATOR_INCLUDED

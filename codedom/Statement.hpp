@@ -70,12 +70,12 @@ class CODEDOM_API CompoundStatement : public Statement
 {
 public:
     CompoundStatement();
-    void InsertFront(Statement* statement, bool own);
     void Add(Statement* statement);
     bool IsCompoundStatement() const override { return true; }
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
-    const std::vector<Statement*> Statements() const { return statements; }
+    void InsertFront(Statement* statement, bool own);
+    std::vector<Statement*>& Statements() { return statements; }
 private:
     std::vector<Statement*> statements;
 };
@@ -190,8 +190,8 @@ public:
     ReturnStatement(CppObject* expression_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
-    void SetExpression(CppObject* expression_);
     CppObject* GetExpression() const { return expression; }
+    void SetExpression(CppObject* expression_);
 private:
     CppObject* expression;
 };

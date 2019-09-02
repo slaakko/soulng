@@ -38,10 +38,13 @@ LexerGrammar::LexerGrammar(soulng::parsing::ParsingDomain* parsingDomain_): soul
     SetOwner(0);
     keywords0.push_back(ToUtf32("actions"));
     keywords0.push_back(ToUtf32("api"));
+    keywords0.push_back(ToUtf32("classmap"));
     keywords0.push_back(ToUtf32("expressions"));
     keywords0.push_back(ToUtf32("keywords"));
     keywords0.push_back(ToUtf32("lexer"));
+    keywords0.push_back(ToUtf32("prefix"));
     keywords0.push_back(ToUtf32("tokens"));
+    keywords0.push_back(ToUtf32("variables"));
 }
 
 LexerFile* LexerGrammar::Parse(const char32_t* start, const char32_t* end, int fileIndex, const std::string& fileName)
@@ -1453,11 +1456,11 @@ void LexerGrammar::GetReferencedGrammars()
 
 void LexerGrammar::CreateRules()
 {
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("string"), this, ToUtf32("soulng.parsing.stdlib.string")));
     AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("identifier"), this, ToUtf32("soulng.parsing.stdlib.identifier")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("string"), this, ToUtf32("soulng.parsing.stdlib.string")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("spaces_and_comments"), this, ToUtf32("soulng.parsing.stdlib.spaces_and_comments")));
     AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("int"), this, ToUtf32("soulng.parsing.stdlib.int")));
     AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("TypeId"), this, ToUtf32("soulng.code.Declarator.TypeId")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("spaces_and_comments"), this, ToUtf32("soulng.parsing.stdlib.spaces_and_comments")));
     AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("CompoundStatement"), this, ToUtf32("soulng.code.Statement.CompoundStatement")));
     AddRule(new LexerFileRule(ToUtf32("LexerFile"), GetScope(), GetParsingDomain()->GetNextRuleId(),
         new soulng::parsing::SequenceParser(

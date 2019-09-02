@@ -7,6 +7,6 @@ source <Grammar.parser>;
 source <LibraryFile.parser>;
 source <Primary.parser>;
 source <Primitive.parser>;
-source <ProjectFile.parser>;
 source <Rule.parser>;
+source <ProjectFile.parser>;
 source <ParserFile.parser>;

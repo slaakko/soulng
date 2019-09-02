@@ -2123,22 +2123,22 @@ private:
 void ParserFileGrammar::GetReferencedGrammars()
 {
     soulng::parsing::ParsingDomain* pd = GetParsingDomain();
-    soulng::parsing::Grammar* grammar0 = pd->GetGrammar(ToUtf32("soulng.parsing.stdlib"));
+    soulng::parsing::Grammar* grammar0 = pd->GetGrammar(ToUtf32("soulng.code.Expression"));
     if (!grammar0)
     {
-        grammar0 = soulng::parsing::stdlib::Create(pd);
+        grammar0 = soulng::code::Expression::Create(pd);
     }
     AddGrammarReference(grammar0);
-    soulng::parsing::Grammar* grammar1 = pd->GetGrammar(ToUtf32("soulng.code.Expression"));
+    soulng::parsing::Grammar* grammar1 = pd->GetGrammar(ToUtf32("soulng.parsing.stdlib"));
     if (!grammar1)
     {
-        grammar1 = soulng::code::Expression::Create(pd);
+        grammar1 = soulng::parsing::stdlib::Create(pd);
     }
     AddGrammarReference(grammar1);
-    soulng::parsing::Grammar* grammar2 = pd->GetGrammar(ToUtf32("soulng.code.Declarator"));
+    soulng::parsing::Grammar* grammar2 = pd->GetGrammar(ToUtf32("soulng.code.Statement"));
     if (!grammar2)
     {
-        grammar2 = soulng::code::Declarator::Create(pd);
+        grammar2 = soulng::code::Statement::Create(pd);
     }
     AddGrammarReference(grammar2);
     soulng::parsing::Grammar* grammar3 = pd->GetGrammar(ToUtf32("soulng.code.Identifier"));
@@ -2147,10 +2147,10 @@ void ParserFileGrammar::GetReferencedGrammars()
         grammar3 = soulng::code::Identifier::Create(pd);
     }
     AddGrammarReference(grammar3);
-    soulng::parsing::Grammar* grammar4 = pd->GetGrammar(ToUtf32("soulng.code.Statement"));
+    soulng::parsing::Grammar* grammar4 = pd->GetGrammar(ToUtf32("soulng.code.Declarator"));
     if (!grammar4)
     {
-        grammar4 = soulng::code::Statement::Create(pd);
+        grammar4 = soulng::code::Declarator::Create(pd);
     }
     AddGrammarReference(grammar4);
 }
@@ -2158,13 +2158,13 @@ void ParserFileGrammar::GetReferencedGrammars()
 void ParserFileGrammar::CreateRules()
 {
     AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("identifier"), this, ToUtf32("soulng.parsing.stdlib.identifier")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("string"), this, ToUtf32("soulng.parsing.stdlib.string")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("Declarator"), this, ToUtf32("soulng.code.Declarator.Declarator")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("spaces_and_comments"), this, ToUtf32("soulng.parsing.stdlib.spaces_and_comments")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("TypeId"), this, ToUtf32("soulng.code.Declarator.TypeId")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("ExpressionList"), this, ToUtf32("soulng.code.Expression.ExpressionList")));
-    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("QualifiedId"), this, ToUtf32("soulng.code.Identifier.QualifiedId")));
     AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("CompoundStatement"), this, ToUtf32("soulng.code.Statement.CompoundStatement")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("ExpressionList"), this, ToUtf32("soulng.code.Expression.ExpressionList")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("string"), this, ToUtf32("soulng.parsing.stdlib.string")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("QualifiedId"), this, ToUtf32("soulng.code.Identifier.QualifiedId")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("spaces_and_comments"), this, ToUtf32("soulng.parsing.stdlib.spaces_and_comments")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("Declarator"), this, ToUtf32("soulng.code.Declarator.Declarator")));
+    AddRuleLink(new soulng::parsing::RuleLink(ToUtf32("TypeId"), this, ToUtf32("soulng.code.Declarator.TypeId")));
     AddRule(new ParserFileRule(ToUtf32("ParserFile"), GetScope(), GetParsingDomain()->GetNextRuleId(),
         new soulng::parsing::SequenceParser(
             new soulng::parsing::ActionParser(ToUtf32("A0"),

@@ -1,5 +1,0 @@
-project Parser;
-reference <stdlib.pl>;
-reference <../code/code.pl>;
-source <ParserFileGrammar.parser>;
-source <ProjectFileGrammar.parser>;

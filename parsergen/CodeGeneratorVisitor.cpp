@@ -550,8 +550,15 @@ void CodeGeneratorVisitor::Visit(RuleParser& parser)
             formatter->Write(" ");
             formatter->Write(ToUtf8(variable->name));
             formatter->Write(" = ");
-            variable->type->Print(*formatter);
-            formatter->WriteLine("();");
+            if (variable->type->IsPtrType())
+            {
+                formatter->WriteLine("nullptr;");
+            }
+            else
+            {
+                variable->type->Print(*formatter);
+                formatter->WriteLine("();");
+            }
         }
         nonterminalInfos.clear();
         for (const auto& nonterminal : parser.Nonterminals())
@@ -756,7 +763,14 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("if (*lexer == soulng::lexer::END)");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                formatter->WriteLine("return value;");
+                if (startRule->ReturnType()->IsPtrType())
+                {
+                    formatter->WriteLine("return value;");
+                }
+                else
+                {
+                    formatter->WriteLine("return value->value;");
+                }
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->WriteLine("else");
@@ -778,7 +792,14 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("lexer.ThrowExpectationFailure(pos, U\"" + ToUtf8(ruleInfo) + "\");");
                 formatter->DecIndent();
                 formatter->WriteLine("}");
-                formatter->WriteLine("return value;");
+                if (startRule->ReturnType()->IsPtrType())
+                {
+                    formatter->WriteLine("return value;");
+                }
+                else
+                {
+                    formatter->WriteLine("return value->value;");
+                }
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->WriteLine();

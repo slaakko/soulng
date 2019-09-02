@@ -1,68 +1,130 @@
-#include <iostream>
+#include <soulng/slg/LexerFile.hpp>
+#include <soulng/slg/LexerContext.hpp>
+#include <soulng/slg/LexerFileLexer.hpp>
+#include <soulng/slg/LexerFileTokens.hpp>
+#include <soulng/slg/RegularExpressionParser.hpp>
+#include <soulng/cppcode/InitDone.hpp>
+#include <soulng/util/Path.hpp>
+#include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <soulng/util/InitDone.hpp>
-#include <stdio.h>
-#include <fstream>
+#include <stdexcept>
+#include <iostream>
 
 struct InitDone
 {
     InitDone()
     {
         soulng::util::Init();
+        soulng::cppcode::Init();
     }
     ~InitDone()
     {
+        soulng::cppcode::Done();
         soulng::util::Done();
     }
 };
 
-void Emit(std::ostream& s, int start, int end)
+const char* version = "1.0.0";
+
+void PrintUsage()
 {
-    s << "idCont->AddSymbol(context.MakeRange(static_cast<char32_t>(" + std::to_string(start) + "), static_cast<char32_t>(" + std::to_string(end) + ")));" << std::endl;
+    std::cout << "Soul NG Lexer Generator version " << version << std::endl;
+    std::cout << "Usage: slg [options] <file.lexer>" << std::endl;
+    std::cout << "Options:" << std::endl;
+    std::cout << "--help | -h" << std::endl;
+    std::cout << "  Print help and exit." << std::endl;
+    std::cout << "--verbose | -v" << std::endl;
+    std::cout << "  Be verbose." << std::endl;
+    std::cout << "--use-ascii-identifier-classes | -a" << std::endl;
+    std::cout << "  Use ASCII identifier classes." << std::endl;
+    std::cout << "  By default uses Unicode identifier classes." << std::endl;
 }
 
-int main()
+int main(int argc, const char** argv)
 {
     InitDone initDone;
-    int n = 0x0010FFFF;
-    std::ofstream testhpp("test.hpp");
-    //testhpp << "extern int charMap[];" << std::endl;
-    //std::ofstream testcpp("test.cpp");
-    //testcpp << "int charMap[] = {";
-    int state = 0;
-    int start = 0;
-    int end = 0;
-    for (int i = 0; i < n; ++i)
+    try
     {
-        char32_t c = static_cast<char32_t>(i);
-        switch (state)
+        bool verbose = false;
+        soulng::slg::IdentifierClassKind identifierClassKind = soulng::slg::IdentifierClassKind::unicode;
+        std::string fileName;
+        for (int i = 1; i < argc; ++i)
         {
-            case 0:
+            std::string arg = argv[i];
+            if (soulng::util::StartsWith(arg, "--"))
             {
-                if (soulng::unicode::IsIdCont(c) || soulng::unicode::IsAsciiDigit(c) || c == '_')
+                if (arg == "--help")
                 {
-                    state = 1;
-                    start = i;
+                    PrintUsage();
+                    return 1;
                 }
-                break;
+                else if (arg == "--verbose")
+                {
+                    verbose = true;
+                }
+                else if (arg == "--use-ascii-identifier-classes")
+                {
+                    identifierClassKind = soulng::slg::IdentifierClassKind::ascii;
+                }
+                else
+                {
+                    throw std::runtime_error("unknown option '" + arg + "'");
+                }
             }
-            case 1:
+            else if (soulng::util::StartsWith(arg, "-"))
             {
-                if (!(soulng::unicode::IsIdCont(c) || soulng::unicode::IsAsciiDigit(c) || c == '_'))
+                std::string options = arg.substr(1);
+                if (options.empty())
                 {
-                    end = i - 1;
-                    Emit(testhpp, start, end);
-                    state = 0;
+                    throw std::runtime_error("unknown option '-" + arg + "'");
                 }
-                break;
+                for (char o : options)
+                {
+                    if (o == 'h')
+                    {
+                        PrintUsage();
+                        return 1;
+                    }
+                    else if (o == 'v')
+                    {
+                        verbose = true;
+                    }
+                    else if (o == 'a')
+                    {
+                        identifierClassKind = soulng::slg::IdentifierClassKind::ascii;
+                    }
+                    else
+                    {
+                        throw std::runtime_error("unknown option '-" + std::string(1, o) + "'");
+                    }
+                }
+            }
+            else
+            {
+                fileName = soulng::util::GetFullPath(arg);
             }
         }
+        if (fileName.empty())
+        {
+            PrintUsage();
+            return 1;
+        }
+        std::string s = soulng::util::ReadFile(fileName);
+        std::u32string content = soulng::unicode::ToUtf32(s);
+        LexerFileLexer lexer(content, fileName, 0);
+        std::unique_ptr<soulng::slg::LexerFile> lexerFile = LexerFileParser::Parse(lexer);
+        soulng::slg::LexerContext lexerContext(identifierClassKind);
+        lexerContext.SetFileName(fileName);
+        soulng::slg::RegularExpressionParser regularExpressionParser;
+        lexerContext.SetParser(&regularExpressionParser);
+        std::string root = soulng::util::Path::GetDirectoryName(fileName);
+        lexerFile->Process(root, verbose, lexerContext);
     }
-    if (state = 1)
+    catch (const std::exception& ex)
     {
-        end = n - 1;
-        Emit(testhpp, start, end);
+        std::cerr << ex.what() << std::endl;
+        return 1;
     }
-
-    //testcpp << "};" << std::endl;
+    return 0;
 }

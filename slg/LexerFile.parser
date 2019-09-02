@@ -1,0 +1,149 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/slg/Model.hpp>
+[hpp]#include <soulng/slg/TokenValueParsers.hpp>
+[cpp]#include <soulng/slg/CppDeclarator.hpp>
+[cpp]#include <soulng/slg/CppStatement.hpp>
+[cpp]#include <soulng/slg/LexerFileLexer.hpp>
+[cpp]#include <soulng/slg/LexerFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace LexerFileTokens;
+
+parser LexerFileParser
+{
+    lexer LexerFileLexer;
+
+    using CppDeclaratorParser.TypeId;
+    using CppStatementParser.CompoundStatement;
+
+    main;
+
+    LexerFile(var std::unique_ptr<soulng::slg::LexerFile> lexerFile) : soulng::slg::LexerFile*
+        ::= empty{ lexerFile.reset(new soulng::slg::LexerFile()); }
+        (
+            (Declaration:declaration{ lexerFile->Add(declaration); })*
+        )
+        {
+            return lexerFile.release();
+        }
+        ;
+
+    Declaration : soulng::slg::Declaration*
+        ::= ClassMap:classMapDeclaration{ return classMapDeclaration; }
+        |   Prefix:prefixDeclaration{ return prefixDeclaration; }
+        |   Include:includeDeclaration{ return includeDeclaration; }
+        |   Tokens:tokensDeclaration{ return tokensDeclaration; }
+        |   Keywords:keywordsDeclaration{ return keywordsDeclaration; }
+        |   Expressions:expressionsDeclaration{ return expressionsDeclaration; }
+        |   Lexer:lexerDeclaration{ return lexerDeclaration; }
+        ;
+
+    ClassMap(var std::u32string classMapName) : soulng::slg::ClassMap*
+        ::= CLASSMAP ID!{ classMapName = lexer.GetMatch(span); } SEMICOLON!{ return new soulng::slg::ClassMap(classMapName); }
+        ;
+
+    Prefix(var std::u32string prefix) : soulng::slg::Prefix*
+        ::= PREFIX STRINGLIT!{ prefix = soulng::slg::MakeStrValue(lexer.FileName(), lexer.GetToken(pos)); } SEMICOLON!{ return new soulng::slg::Prefix(prefix); }
+        ;
+
+    Include(var std::u32string path) : soulng::slg::Include*
+        ::= HASH INCLUDE FILEPATH!{ path = soulng::slg::MakePathValue(lexer.FileName(), lexer.GetToken(pos)); return new soulng::slg::Include(path); }
+        ;
+
+    Tokens(var std::u32string tokensDeclarationName, var std::unique_ptr<soulng::slg::Tokens> tokens) : soulng::slg::Tokens*
+        ::= TOKENS ID!{ tokensDeclarationName = lexer.GetMatch(span); } LBRACE!{ tokens.reset(new soulng::slg::Tokens(tokensDeclarationName)); }
+            (Token:token{ tokens->Add(token); } % COMMA)? RBRACE!
+        {
+            return tokens.release();
+        }
+        ;
+
+    Token(var std::u32string tokenName, var std::u32string tokenInfo) : soulng::slg::Token
+        ::= LPAREN ID!{ tokenName = lexer.GetMatch(span); } COMMA! STRINGLIT!{ tokenInfo = soulng::slg::MakeStrValue(lexer.FileName(), lexer.GetToken(pos)); } RPAREN!
+        {
+            return soulng::slg::Token(tokenName, ToUtf8(tokenInfo));
+        }
+        ;
+
+    Keywords(var std::u32string keywordsDeclarationName, var std::unique_ptr<soulng::slg::Keywords> keywords) : soulng::slg::Keywords*
+        ::= KEYWORDS ID!{ keywordsDeclarationName = lexer.GetMatch(span); } LBRACE!{ keywords.reset(new soulng::slg::Keywords(keywordsDeclarationName)); }
+            (Keyword:keyword{ keywords->Add(keyword); } % COMMA)? RBRACE!
+        {
+            return keywords.release();
+        }
+        ;
+
+    Keyword(var std::u32string kw, var std::u32string tokenName) : soulng::slg::Keyword*
+        ::= LPAREN STRINGLIT!{ kw = soulng::slg::MakeStrValue(lexer.FileName(), lexer.GetToken(pos)); } COMMA! ID!{ tokenName = lexer.GetMatch(span); } RPAREN!
+        {
+            return new soulng::slg::Keyword(kw, tokenName);
+        }
+        ;
+
+    Expressions(var int index, var std::unique_ptr<soulng::slg::Expressions> expressions) : soulng::slg::Expressions*
+        ::= EXPRESSIONS{ index = 0; expressions.reset(new soulng::slg::Expressions()); } LBRACE!
+            (Expression(index):expr{ expressions->Add(expr); index = index + 1; })* RBRACE!
+        {
+            return expressions.release();
+        }
+        ;
+
+    Expression(int index, var std::u32string exprName, var int line) : soulng::slg::Expression*
+        ::= ID{ exprName = lexer.GetMatch(span); } ASSIGN ExprString:exprValue!{ line = lexer.GetToken(pos).line; } SEMICOLON!
+        {
+            return new soulng::slg::Expression(index, exprName, exprValue, line);
+        }
+        ;
+
+    ExprString : std::u32string
+        ::= STRINGLIT{ return soulng::slg::MakeExprStringValue(lexer.FileName(), lexer.GetToken(pos)); }
+        ;
+
+    Lexer(var std::u32string lexerDeclarationName, var std::unique_ptr<soulng::slg::Lexer> currentLexer) : soulng::slg::Lexer*
+        ::= LEXER Api:api ID!{ lexerDeclarationName = lexer.GetMatch(span); } LBRACE!{ currentLexer.reset(new soulng::slg::Lexer(api, lexerDeclarationName)); }
+            (LexerClause(currentLexer.get()):lexerClause)* RBRACE!
+        {
+            return currentLexer.release();
+        }
+        ;
+
+    Api(var std::u32string id) : std::u32string
+        ::= API LPAREN ID!{ id = lexer.GetMatch(span); } RPAREN!{ return id; }
+        |   empty{ return std::u32string(); }
+        ;
+
+    LexerClause(soulng::slg::Lexer* currentLexer, var int line)
+        ::= (ExprString:expr{ line = lexer.GetToken(pos).line; } Action:action CompoundStatement:stmt!){ currentLexer->AddStatement(new soulng::slg::LexerStatement(expr, stmt, action, line)); }
+        |   Variables(currentLexer):variables
+        |   Actions(currentLexer):actions
+        ;
+
+    Variables(soulng::slg::Lexer* currentLexer)
+        ::= VARIABLES LBRACE! (Variable:var{ currentLexer->AddVariable(var); })* RBRACE!
+        ;
+
+    Variable(var std::u32string name): soulng::slg::Variable*
+        ::= TypeId:type ID{ name = lexer.GetMatch(span); } SEMICOLON{ return new soulng::slg::Variable(type, name); }
+        ;
+
+    Actions(soulng::slg::Lexer* currentLexer)
+        ::= ACTIONS LBRACE! ((Action:action{ pass = action != -1; } ASSIGN CompoundStatement:stmt!){ currentLexer->AddAction(new soulng::slg::Action(action, stmt)); })* RBRACE!
+        ;
+
+    Action(var int actionId) : int
+        ::= (DOLLAR LPAREN! INTLIT!{ actionId = soulng::slg::MakeActionIntValue(lexer.FileName(), lexer.GetToken(pos)); } RPAREN!){ return actionId; }
+        |   empty{ return -1; }
+        ;
+
+    ruleinfo
+    {
+        (LexerFile, "lexer file"), (Declaration, "lexer file declaration"), (ClassMap, "class map declaration"), (Prefix, "prefix declaration"), (Include, "include declaration"),
+        (Tokens, "tokens declaration"), (Token, "token declaration"), (Keywords, "keywords declaration"), (Keyword, "keyword declaration"), (Expressions, "regular expressions declaration"),
+        (Expression, "regular expression declaration"), (ExprString, "regular expression string"), (Lexer, "lexer declaration"), (Api, "API declaration"), (LexerClause, "lexer clause"),
+        (Variables, "variables"), (Variable, "variable"), (Actions, "actions"), (Action, "action identifier")
+    }
+}

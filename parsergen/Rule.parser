@@ -1,0 +1,31 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[cpp]#include <soulng/syntax/Element.hpp>
+[cpp]#include <soulng/syntax/Composite.hpp>
+[hpp]#include <soulng/parsing/Rule.hpp>
+
+namespace soulng.syntax
+{
+    grammar Rule
+    {
+        using Element.Identifier;
+        using Element.Signature;
+        using Composite.Alternative;
+        using stdlib.string;
+
+        Rule(soulng::parsing::Scope* enclosingScope): soulng::parsing::Rule*
+                    ::= RuleHeader(enclosingScope){ value = RuleHeader; } "::=" RuleBody(value)
+                    ;
+
+        RuleHeader(soulng::parsing::Scope* enclosingScope): soulng::parsing::Rule*
+                    ::= Identifier:name{value = new Rule(name, enclosingScope); value->SetSpan(span); } Signature(value)
+                    ;
+
+        RuleBody(soulng::parsing::Rule* rule)
+                    ::= (Alternative(rule->GetScope()):definition! ';'!){ rule->SetDefinition(definition); }
+                    ;
+    }
+}

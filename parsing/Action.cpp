@@ -8,7 +8,7 @@
 #include <cctype>
 
 namespace soulng { namespace parsing {
-
+     
 ParsingAction::~ParsingAction()
 {
 }

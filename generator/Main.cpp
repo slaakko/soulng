@@ -60,10 +60,10 @@ int main(int argc, const char** argv)
 #endif // defined(_MSC_VER) && !defined(NDEBUG)
     try
     {
-        std::cout << "Soulng Parser Generator version " << version << std::endl;
+        std::cout << "Cmajor Parser Generator version " << version << std::endl;
         if (argc < 2)
         {
-            std::cout << "Usage: cmpg [options] {<file>.spg}\n" << "Compile Soulng parsing project file(s) <file>.spg..." << std::endl;
+            std::cout << "Usage: cmpg [options] {<file>.pp}\n" << "Compile Cmajor parsing project file(s) <file>.pp..." << std::endl;
             std::cout << "options:\n";
             std::cout << "-L <dir1>;<dir2>;...: add <dir1>, <dir2>, ... to library reference directories" << std::endl;
             std::cout << "-F                  : force code generation" << std::endl;

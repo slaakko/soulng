@@ -1,5 +1,5 @@
-#ifndef StdLib_hpp_5649
-#define StdLib_hpp_5649
+#ifndef StdLib_hpp_24552
+#define StdLib_hpp_24552
 
 #include <soulng/parsing/Grammar.hpp>
 #include <soulng/parsing/Keyword.hpp>
@@ -36,4 +36,4 @@ private:
 
 } } // namespace soulng.parsing
 
-#endif // StdLib_hpp_5649
+#endif // StdLib_hpp_24552

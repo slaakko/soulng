@@ -108,15 +108,6 @@ CompoundStatement::CompoundStatement(): Statement(U"compound")
 {
 }
 
-void CompoundStatement::InsertFront(Statement* statement, bool own)
-{
-    if (own)
-    {
-        Own(statement);
-    }
-    statements.insert(statements.begin(), 1, statement);
-}
-
 void CompoundStatement::Add(Statement* statement) 
 { 
     Own(statement);
@@ -149,6 +140,15 @@ void CompoundStatement::Accept(Visitor& visitor)
     {
         statements[i]->Accept(visitor);
     }
+}
+
+void CompoundStatement::InsertFront(Statement* statement, bool own)
+{
+    if (own)
+    {
+        Own(statement);
+    }
+    statements.insert(statements.begin(), 1, statement);
 }
 
 SelectionStatement::SelectionStatement(const std::u32string& name_): Statement(name_) 
@@ -397,6 +397,12 @@ ReturnStatement::ReturnStatement(CppObject* expression_): JumpStatement(U"return
     Own(expression);
 }
 
+void ReturnStatement::SetExpression(CppObject* expression_)
+{
+    Own(expression_);
+    expression = expression_;
+}
+
 void ReturnStatement::Print(CodeFormatter& formatter)
 {
     formatter.Write("return");
@@ -415,12 +421,6 @@ void ReturnStatement::Accept(Visitor& visitor)
     {
         expression->Accept(visitor);
     }
-}
-
-void ReturnStatement::SetExpression(CppObject* expression_)
-{
-    Own(expression_);
-    expression = expression_;
 }
 
 ConditionWithDeclarator::ConditionWithDeclarator(TypeId* type_, const std::u32string& declarator_, CppObject* expression_):

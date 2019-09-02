@@ -8,16 +8,16 @@
 #include <soulng/lexergen/RegExParser.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Unicode.hpp>
-#include <soulng/util/InitDone.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
+#include <soulng/util/InitDone.hpp>
 #include <soulng/codedom/InitDone.hpp>
 #include <soulng/parsing/InitDone.hpp>
 #include <iostream>
 #include <stdexcept>
 #include <fstream>
 
-void PrintUsage()
+void PrintUsage() 
 {
     std::cout << "Usage: lexergen [options] <file.lexer>" << std::endl;
     std::cout << "Options:" << std::endl;

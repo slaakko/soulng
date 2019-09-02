@@ -3,8 +3,8 @@
 // Distributed under the MIT license
 // =================================
 
-#ifndef SOULNG_SYNTAX_PARSERFILECONTENT_INCLUDED
-#define SOULNG_SYNTAX_PARSERFILECONTENT_INCLUDED
+#ifndef CMAJOR_SYNTAX_PARSERFILECONTENT_INCLUDED
+#define CMAJOR_SYNTAX_PARSERFILECONTENT_INCLUDED
 
 #include <soulng/parsing/ParsingDomain.hpp>
 #include <soulng/parsing/Namespace.hpp>
@@ -37,4 +37,4 @@ private:
 
 } } // namespace soulng::syntax
 
-#endif // SOULNG_SYNTAX_PARSERFILECONTENT_INCLUDED
+#endif // CMAJOR_SYNTAX_PARSERFILECONTENT_INCLUDED

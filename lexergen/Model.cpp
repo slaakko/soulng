@@ -515,13 +515,16 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
         lexerHeaderInclude = "#include <" + Path::Combine(ToUtf8(lexerContext.GetPrefix()->Name()), ToUtf8(Name()) + ".hpp") + ">";
     }
     sourceFormatter.WriteLine(lexerHeaderInclude);
-    std::string keywordsHeaderFileName = ToUtf8(lexerContext.GetKeywords()->Name()) + ".hpp";
-    std::string keywordsFileInclude = "#include \"" + keywordsHeaderFileName + "\"";
-    if (lexerContext.GetPrefix())
+    if (lexerContext.GetKeywords())
     {
-        keywordsFileInclude = "#include <" + Path::Combine(ToUtf8(lexerContext.GetPrefix()->Name()), ToUtf8(lexerContext.GetKeywords()->Name()) + ".hpp") + ">";
+        std::string keywordsHeaderFileName = ToUtf8(lexerContext.GetKeywords()->Name()) + ".hpp";
+        std::string keywordsFileInclude = "#include \"" + keywordsHeaderFileName + "\"";
+        if (lexerContext.GetPrefix())
+        {
+            keywordsFileInclude = "#include <" + Path::Combine(ToUtf8(lexerContext.GetPrefix()->Name()), ToUtf8(lexerContext.GetKeywords()->Name()) + ".hpp") + ">";
+        }
+        sourceFormatter.WriteLine(keywordsFileInclude);
     }
-    sourceFormatter.WriteLine(keywordsFileInclude);
     sourceFormatter.WriteLine("#include <soulng/lexer/Token.hpp>");
     std::string tokensFileInclude = "#include \"" + ToUtf8(lexerContext.GetTokens()->Name()) + ".hpp\"";
     if (lexerContext.GetPrefix())
@@ -570,9 +573,12 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
         sourceFormatter.DecIndent();
     }
     sourceFormatter.WriteLine("{");
-    sourceFormatter.IncIndent();
-    sourceFormatter.WriteLine("SetKeywordMap(" + ToUtf8(lexerContext.GetKeywords()->Name()) + "::GetKeywordMap());");
-    sourceFormatter.DecIndent();
+    if (lexerContext.GetKeywords())
+    {
+        sourceFormatter.IncIndent();
+        sourceFormatter.WriteLine("SetKeywordMap(" + ToUtf8(lexerContext.GetKeywords()->Name()) + "::GetKeywordMap());");
+        sourceFormatter.DecIndent();
+    }
     sourceFormatter.WriteLine("}");
     sourceFormatter.WriteLine();
     sourceFormatter.WriteLine("int " + ToUtf8(Name()) + "::NextState(int state, char32_t c)");
@@ -673,7 +679,11 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
         sourceFormatter.WriteLine("case " + std::to_string(statement->Index()) + ":");
         if (statement->Retract())
         {
-            statement->Code()->InsertFront(new soulng::codedom::ExpressionStatement(new soulng::codedom::InvokeExpr(new soulng::codedom::IdExpr(U"Retract"), std::vector<soulng::codedom::CppObject*>())), true);
+            statement->Code()->InsertFront(
+                new soulng::codedom::ExpressionStatement(
+                    new soulng::codedom::InvokeExpr(
+                        new soulng::codedom::IdExpr(U"Retract"),
+                        std::vector<soulng::codedom::CppObject*>())), true);
         }
         if (statement->Action() != 0)
         {
@@ -754,10 +764,6 @@ void LexerFile::Process(const std::string& root, bool verbose, LexerContext& lex
     if (!lexerContext.GetTokens())
     {
         throw std::runtime_error("error: no tokens defined");
-    }
-    if (!lexerContext.GetKeywords())
-    {
-        throw std::runtime_error("error: no keywords defined");
     }
     if (!lexerContext.GetLexer())
     {

@@ -3,8 +3,8 @@
 // Distributed under the MIT license
 // =================================
 
-#ifndef SOULNG_SYNTAX_COMPILER_INCLUDED
-#define SOULNG_SYNTAX_COMPILER_INCLUDED
+#ifndef CMAJOR_SYNTAX_COMPILER_INCLUDED
+#define CMAJOR_SYNTAX_COMPILER_INCLUDED
 
 #include <string>
 #include <vector>
@@ -15,5 +15,5 @@ void Generate(const std::string& projectFilePath, const std::vector<std::string>
 
 } } // namespace soulng::syntax
 
-#endif // SOULNG_SYNTAX_COMPILER_INCLUDED
+#endif // CMAJOR_SYNTAX_COMPILER_INCLUDED
 

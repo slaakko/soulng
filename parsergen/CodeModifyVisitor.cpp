@@ -24,10 +24,12 @@ void CodeModifyVisitor::Visit(soulng::codedom::ReturnStatement& object)
     {
         soulng::codedom::TypeId* typeId = new soulng::codedom::TypeId();
         typeId->Add(new soulng::codedom::TypeSpecifier(U"soulng::parser::Value<" + returnType->Str() + U">"));
-        value = new soulng::codedom::NewExpr(false, std::vector<::soulng::codedom::CppObject*>(), typeId, false, std::vector<soulng::codedom::CppObject*>(1, value));
+        soulng::codedom::NewExpr* newExpr = new soulng::codedom::NewExpr(false, std::vector<soulng::codedom::CppObject*>(), typeId, false, std::vector<soulng::codedom::CppObject*>(1, value));
+        value = newExpr;
     }
     matchArgs.push_back(value);
-    object.SetExpression(new soulng::codedom::InvokeExpr(new soulng::codedom::IdExpr(U"soulng::parser::Match"), matchArgs));
+    soulng::codedom::InvokeExpr* invokeExpr = new soulng::codedom::InvokeExpr(new soulng::codedom::IdExpr(U"soulng::parser::Match"), matchArgs);
+    object.SetExpression(invokeExpr);
 }
 
 void CodeModifyVisitor::Visit(soulng::codedom::IdExpr& object)
