@@ -1,3 +1,6 @@
+
+// this file has been automatically generated from 'D:/work/soulng/slg/LexerFileLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <map>
 static std::map<std::u32string, int> tokenIdMap;
 #include <soulng/slg/LexerFileTokens.hpp>

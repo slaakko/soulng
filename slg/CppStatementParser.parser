@@ -1,0 +1,212 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cppcode/Statement.hpp>
+[cpp]#include <soulng/slg/CppDeclarationParser.hpp>
+[cpp]#include <soulng/slg/CppDeclaratorParser.hpp>
+[cpp]#include <soulng/slg/CppExpressionParser.hpp>
+[cpp]#include <soulng/slg/LexerFileLexer.hpp>
+[cpp]#include <soulng/slg/LexerFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace LexerFileTokens;
+
+parser CppStatementParser
+{
+    lexer LexerFileLexer;
+
+    using CppDeclarationParser.SimpleDeclaration;
+    using CppDeclarationParser.BlockDeclaration;
+    using CppDeclarationParser.TypeId;
+    using CppDeclaratorParser.TypeSpecifierSeq;
+    using CppDeclaratorParser.Declarator;
+    using CppDeclaratorParser.AbstractDeclarator;
+    using CppExpressionParser.CppExpression;
+    using CppExpressionParser.ConstantExpression;
+    using CppExpressionParser.AssignmentExpression;
+
+    Statement : soulng::cppcode::Statement*
+        ::= LabeledStatement:labeledStatement{ return labeledStatement; }
+        |   EmptyStatement:emptyStatement{ return emptyStatement; }
+        |   CompoundStatement:compoundStatement{ return compoundStatement; }
+        |   SelectionStatement:selectionStatement{ return selectionStatement; }
+        |   IterationStatement:iterationStatement{ return iterationStatement; }
+        |   JumpStatement:jumpStatement{ return jumpStatement; }
+        |   DeclarationStatement:declarationStatement{ return declarationStatement; }
+        |   TryStatement:tryStatement{ return tryStatement; }
+        |   ExpressionStatement:expressionStatement{ return expressionStatement; }
+        ;
+
+    LabeledStatement(var std::u32string label) : soulng::cppcode::Statement*
+        ::= ID{ label = lexer.GetMatch(span); } COLON Statement:stmt1!{ return new soulng::cppcode::LabeledStatement(label, stmt1); }
+        |   CASE ConstantExpression:caseExpr! COLON! Statement:stmt2!{ return new soulng::cppcode::CaseStatement(caseExpr, stmt2); }
+        |   DEFAULT COLON! Statement:stmt3!{ return new soulng::cppcode::DefaultStatement(stmt3); }
+        ;
+
+    EmptyStatement : soulng::cppcode::Statement*
+        ::= SEMICOLON{ return new soulng::cppcode::EmptyStatement(); }
+        ;
+
+    CompoundStatement(var std::unique_ptr<soulng::cppcode::CompoundStatement> compoundStatement) : soulng::cppcode::CompoundStatement*
+        ::= LBRACE{ compoundStatement.reset(new soulng::cppcode::CompoundStatement()); }
+            (Statement:stmt{ compoundStatement->Add(stmt); })*
+            RBRACE!
+        {
+            return compoundStatement.release();
+        }
+        ;
+
+    SelectionStatement : soulng::cppcode::Statement*
+        ::= IfStatement:ifStatement{ return ifStatement; }
+        |   SwitchStatement:switchStatement{ return switchStatement; }
+        ;
+
+    IfStatement : soulng::cppcode::Statement*
+        ::= (IF LPAREN! Condition:cond! RPAREN! Statement:thenS! (ELSE Statement:elseS)?)
+        {
+            return new soulng::cppcode::IfStatement(cond, thenS, elseS);
+        }
+        ;
+
+    SwitchStatement : soulng::cppcode::Statement*
+        ::= SWITCH LPAREN! Condition:cond! RPAREN! Statement:stmt!
+        {
+            return new soulng::cppcode::SwitchStatement(cond, stmt);
+        }
+        ;
+
+    IterationStatement : soulng::cppcode::Statement*
+        ::= WhileStatement:whileStatement{ return whileStatement; }
+        |   DoStatement:doStatement{ return doStatement; }
+        |   RangeForStatement:rangeForStatement{ return rangeForStatement; }
+        |   ForStatement:forStatement{ return forStatement; }
+        ;
+
+    WhileStatement : soulng::cppcode::Statement*
+        ::= WHILE LPAREN! Condition:cond! RPAREN! Statement:stmt!
+        {
+            return new soulng::cppcode::WhileStatement(cond, stmt);
+        }
+        ;
+
+    DoStatement : soulng::cppcode::Statement*
+        ::= DO Statement:stmt! WHILE! LPAREN! CppExpression:cond! RPAREN! SEMICOLON!
+        {
+            return new soulng::cppcode::DoStatement(stmt, cond);
+        }
+        ;
+
+    RangeForStatement : soulng::cppcode::Statement*
+        ::= FOR LPAREN ForRangeDeclaration:forRangeDeclaration COLON CppExpression:container! RPAREN! Statement:stmt!
+        {
+            return new soulng::cppcode::RangeForStatement(forRangeDeclaration, container, stmt);
+        }
+        ;
+
+    ForRangeDeclaration(var std::unique_ptr<soulng::cppcode::ForRangeDeclaration> forRangeDeclaration) : soulng::cppcode::ForRangeDeclaration*
+        ::=
+        (
+            empty{ forRangeDeclaration.reset(new soulng::cppcode::ForRangeDeclaration()); }
+            TypeSpecifierSeq(forRangeDeclaration->GetTypeId()):typeSpecifierSeq Declarator:declarator{ forRangeDeclaration->SetDeclarator(declarator); }
+        )
+        {
+            return forRangeDeclaration.release();
+        }
+        ;
+
+    ForStatement : soulng::cppcode::Statement*
+        ::= FOR LPAREN ForInitStatement:forInitStatement Condition:cond? SEMICOLON CppExpression:loopExpr? RPAREN! Statement:stmt!
+        {
+            return new soulng::cppcode::ForStatement(forInitStatement, cond, loopExpr, stmt);
+        }
+        ;
+
+    ForInitStatement : soulng::cppcode::CppObject*
+        ::= EmptyStatement:emptyStatement{ return emptyStatement; }
+        |   ExpressionStatement:expressionStatement{ return expressionStatement; }
+        |   SimpleDeclaration:simpleDeclaration{ return simpleDeclaration; }
+        ;
+
+    JumpStatement : soulng::cppcode::Statement*
+        ::= BreakStatement:breakStatement{ return breakStatement; }
+        |   ContinueStatement:continueStatement{ return continueStatement; }
+        |   ReturnStatement:returnStatement{ return returnStatement; }
+        |   GotoStatement:gotoStatement{ return gotoStatement; }
+        ;
+
+    BreakStatement : soulng::cppcode::Statement*
+        ::= (BREAK SEMICOLON!){ return new soulng::cppcode::BreakStatement(); }
+        ;
+
+    ContinueStatement : soulng::cppcode::Statement*
+        ::= (CONTINUE SEMICOLON!){ return new soulng::cppcode::ContinueStatement(); }
+        ;
+
+    ReturnStatement : soulng::cppcode::Statement*
+        ::= (RETURN CppExpression:returnValue? SEMICOLON!){ return new soulng::cppcode::ReturnStatement(returnValue); }
+        ;
+
+    GotoStatement(var std::u32string target) : soulng::cppcode::Statement*
+        ::= (GOTO ID!{ target = lexer.GetMatch(span); } SEMICOLON!){ return new soulng::cppcode::GotoStatement(target); }
+        ;
+
+    DeclarationStatement : soulng::cppcode::Statement*
+        ::= BlockDeclaration:declaration{ return new soulng::cppcode::DeclarationStatement(declaration); }
+        ;
+
+    Condition : soulng::cppcode::CppObject*
+        ::= TypeId:typeId Declarator:declarator ASSIGN AssignmentExpression:assignmentExpr{ return new soulng::cppcode::ConditionWithDeclarator(typeId, declarator, assignmentExpr); }
+        |   CppExpression:expr{ return expr; }
+        ;
+
+    TryStatement(var std::unique_ptr<soulng::cppcode::TryStatement> tryStatement) : soulng::cppcode::Statement*
+        ::=
+        (   TRY CompoundStatement:tryBlock{ tryStatement.reset(new soulng::cppcode::TryStatement(tryBlock)); }
+            HandlerSeq(tryStatement.get()):handlerSeq!
+        )
+        {
+            return tryStatement.release();
+        }
+        ;
+
+    HandlerSeq(soulng::cppcode::TryStatement* tryStatement)
+        ::= Handler:handler!{ tryStatement->Add(handler); } HandlerSeq(tryStatement):handlerSeq?
+        ;
+
+    Handler : soulng::cppcode::Handler*
+        ::= CATCH LPAREN! ExceptionDeclaration:exceptionDeclaration! RPAREN! CompoundStatement:catchBlock!
+        {
+            return new soulng::cppcode::Handler(exceptionDeclaration, catchBlock);
+        }
+        ;
+
+    ExceptionDeclaration(var std::unique_ptr<soulng::cppcode::ExceptionDeclaration> exceptionDeclaration) : soulng::cppcode::ExceptionDeclaration*
+        ::= empty{ exceptionDeclaration.reset(new soulng::cppcode::ExceptionDeclaration()); }
+        (   TypeSpecifierSeq(exceptionDeclaration->GetTypeId()):typeSpecifierSeq
+            (   Declarator:declarator{ exceptionDeclaration->GetTypeId()->Declarator() = declarator; }
+            |   AbstractDeclarator:abstractDeclarator{ exceptionDeclaration->GetTypeId()->Declarator() = abstractDeclarator; }
+            )?
+        |   ELLIPSIS{ exceptionDeclaration->CatchAll() = true; }
+        )
+        {
+            return exceptionDeclaration.release();
+        }
+        ;
+
+    ExpressionStatement : soulng::cppcode::Statement*
+        ::= (CppExpression:expr SEMICOLON!){ return new soulng::cppcode::ExpressionStatement(expr); }
+        ;
+
+    ruleinfo
+    {
+        (Statement, "C++ statement"), (LabeledStatement, "labeled statement"), (EmptyStatement, "empty statement"), (CompoundStatement, "compound statement"),
+        (SelectionStatement, "selection statement"), (IfStatement, "if-statement"), (SwitchStatement, "switch-statement"), (IterationStatement, "iteration statement"),
+        (WhileStatement, "while-statement"), (DoStatement, "do-statement"), (RangeForStatement, "range-based for-statement"), (ForRangeDeclaration, "for-range declaration"),
+        (ForStatement, "for-statement"), (ForInitStatement, "for initialization statement"), (JumpStatement, "jump statement"), (BreakStatement, "break-statement"),
+        (ContinueStatement, "continue-statement"), (ReturnStatement, "return-statement"), (GotoStatement, "goto-statement"), (DeclarationStatement, "declaration statement"),
+        (Condition, "condition"), (TryStatement, "try-statement"), (HandlerSeq, "handler sequence"), (Handler, "handler"), (ExceptionDeclaration, "exception declaration"),
+        (ExpressionStatement, "expression statement")
+    }
+}

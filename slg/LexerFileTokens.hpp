@@ -1,6 +1,8 @@
 #ifndef LexerFileTokens_HPP
 #define LexerFileTokens_HPP
 
+// this file has been automatically generated from 'D:/work/soulng/slg/LexerFileLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #undef NULL
 
 namespace LexerFileTokens

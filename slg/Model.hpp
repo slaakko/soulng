@@ -16,6 +16,8 @@
 
 namespace soulng { namespace slg {
 
+const char* LexerGeneratorVersionStr();
+
 using namespace soulng::util;
 
 class LexerContext;

@@ -1,3 +1,6 @@
+
+// this file has been automatically generated from 'D:/work/soulng/slg/RegExLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <soulng/slg/RegExLexer.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/slg/RegExTokens.hpp>

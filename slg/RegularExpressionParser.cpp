@@ -5,7 +5,7 @@
 
 #include <soulng/slg/RegularExpressionParser.hpp>
 #include <soulng/slg/RegExLexer.hpp>
-#include <soulng/slg/RegEx.hpp>
+#include <soulng/slg/RegExParser.hpp>
 #include <soulng/slg/LexerContext.hpp>
 #include <stdexcept>
 

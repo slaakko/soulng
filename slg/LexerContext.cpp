@@ -423,6 +423,8 @@ void LexerContext::MakeClassMap(const std::string& root, bool verbose)
         hppFormatter.WriteLine(ToUtf8(include->Header()));
     }
     hppFormatter.WriteLine();
+    hppFormatter.WriteLine("// this file has been automatically generated from '" + FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    hppFormatter.WriteLine();
     std::string api;
     if (!Api().empty())
     {
@@ -441,6 +443,9 @@ void LexerContext::MakeClassMap(const std::string& root, bool verbose)
     }
     std::ofstream cppFile(classMapSourceFileName);
     CodeFormatter cppFormatter(cppFile);
+    cppFormatter.WriteLine();
+    cppFormatter.WriteLine("// this file has been automatically generated from '" + FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    cppFormatter.WriteLine();
     std::string classMapHeaderName = "ClassMap.hpp";
     if (GetClassMap())
     {

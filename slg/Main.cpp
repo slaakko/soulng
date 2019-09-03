@@ -1,6 +1,6 @@
-#include <soulng/slg/LexerFile.hpp>
-#include <soulng/slg/LexerContext.hpp>
+#include <soulng/slg/LexerFileParser.hpp>
 #include <soulng/slg/LexerFileLexer.hpp>
+#include <soulng/slg/LexerContext.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 #include <soulng/slg/RegularExpressionParser.hpp>
 #include <soulng/cppcode/InitDone.hpp>
@@ -25,11 +25,9 @@ struct InitDone
     }
 };
 
-const char* version = "1.0.0";
-
 void PrintUsage()
 {
-    std::cout << "Soul NG Lexer Generator version " << version << std::endl;
+    std::cout << "Soul NG Lexer Generator version " << soulng::slg::LexerGeneratorVersionStr() << std::endl;
     std::cout << "Usage: slg [options] <file.lexer>" << std::endl;
     std::cout << "Options:" << std::endl;
     std::cout << "--help | -h" << std::endl;
@@ -109,6 +107,10 @@ int main(int argc, const char** argv)
         {
             PrintUsage();
             return 1;
+        }
+        if (verbose)
+        {
+            std::cout << "> " << fileName << std::endl;
         }
         std::string s = soulng::util::ReadFile(fileName);
         std::u32string content = soulng::unicode::ToUtf32(s);

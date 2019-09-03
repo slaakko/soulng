@@ -15,6 +15,11 @@
 
 namespace soulng { namespace slg {
 
+const char* LexerGeneratorVersionStr()
+{
+    return "1.0.0";
+}
+
 using namespace soulng::util;
 using namespace soulng::unicode;
 
@@ -103,6 +108,8 @@ void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerC
         formatter.WriteLine(ToUtf8(include->Header()));
     }
     formatter.WriteLine();
+    formatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    formatter.WriteLine();
     formatter.WriteLine("#undef NULL");
     formatter.WriteLine();
     formatter.WriteLine("namespace " + ToUtf8(Name()));
@@ -135,6 +142,9 @@ void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerC
     std::string tokenSourceFileName = Path::Combine(root, ToUtf8(Name()) + ".cpp");
     std::ofstream tokenSourceFile(tokenSourceFileName);
     CodeFormatter sourceFileFormatter(tokenSourceFile);
+    sourceFileFormatter.WriteLine();
+    sourceFileFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    sourceFileFormatter.WriteLine();
     sourceFileFormatter.WriteLine("#include <map>");
     sourceFileFormatter.WriteLine("static std::map<std::u32string, int> tokenIdMap;");
     std::string tokenFileInclude = "#include \"" + tokenFileName  + "\"";
@@ -282,6 +292,9 @@ void Keywords::Process(const std::string& root, bool verbose, LexerContext& lexe
     {
         headerFormatter.WriteLine(ToUtf8(include->Header()));
     }
+    headerFormatter.WriteLine();
+    headerFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    headerFormatter.WriteLine();
     headerFormatter.WriteLine("#include <soulng/lexer/Keyword.hpp>");
     headerFormatter.WriteLine();
     headerFormatter.WriteLine("namespace " + ToUtf8(Name()));
@@ -300,6 +313,9 @@ void Keywords::Process(const std::string& root, bool verbose, LexerContext& lexe
     std::string keywordsSourceFileName = Path::Combine(root, ToUtf8(Name()) + ".cpp");
     std::ofstream keywordsSourceFile(keywordsSourceFileName);
     CodeFormatter sourceFormatter(keywordsSourceFile);
+    sourceFormatter.WriteLine();
+    sourceFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    sourceFormatter.WriteLine();
     std::string keywordsHeaderFileInclude = "#include \"" + keywordsHeaderFileName + "\"";
     if (lexerContext.GetPrefix())
     {
@@ -477,6 +493,9 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
     {
         headerFormatter.WriteLine(ToUtf8(include->Header()));
     }
+    headerFormatter.WriteLine();
+    headerFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    headerFormatter.WriteLine();
     headerFormatter.WriteLine("#include <soulng/lexer/Lexer.hpp>");
     headerFormatter.WriteLine();
     std::string comma;
@@ -510,6 +529,9 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
     std::string lexerSourceFileName = Path::Combine(root, ToUtf8(Name()) + ".cpp");
     std::ofstream lexerSourceFile(lexerSourceFileName);
     CodeFormatter sourceFormatter(lexerSourceFile);
+    sourceFormatter.WriteLine();
+    sourceFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
+    sourceFormatter.WriteLine();
     std::string lexerHeaderInclude = "#include \"" + lexerHeaderFileName + "\"";
     if (lexerContext.GetPrefix())
     {
