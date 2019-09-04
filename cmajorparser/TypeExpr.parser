@@ -18,7 +18,7 @@ using namespace CmajorTokens;
 
 parser TypeExprParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
     
     using BasicTypeParser.BasicType;
     using ExpressionParser.Expression;

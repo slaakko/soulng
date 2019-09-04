@@ -21,7 +21,7 @@ public:
     int operator*() const { return current->id; }
     void operator++();
     int GetPos() const { return current - tokens.begin(); }
-    void SetPos(int pos) { current = tokens.begin() + pos; }
+    void SetPos(int pos) { current = tokens.begin() + pos;  }
     virtual int NextState(int state, char32_t c);
     void SetKeywordMap(KeywordMap* keywordMap_) { keywordMap = keywordMap_; }
     KeywordMap* GetKeywordMap() { return keywordMap; }

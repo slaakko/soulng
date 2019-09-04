@@ -11,7 +11,7 @@ using namespace LexerFileTokens;
 
 parser CppIdentifierParser
 {
-    lexer LexerFileLexer;
+    uselexer LexerFileLexer;
 
     CppIdentifier : std::u32string
         ::= ID{ return lexer.GetMatch(span); }

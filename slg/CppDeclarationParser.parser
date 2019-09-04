@@ -16,7 +16,7 @@ using namespace LexerFileTokens;
 
 parser CppDeclarationParser
 {
-    lexer LexerFileLexer;
+    uselexer LexerFileLexer;
 
     using CppIdentifierParser.CppIdentifier;
     using CppIdentifierParser.QualifiedCppId;

@@ -85,7 +85,6 @@ public:
     void PrintNonPtrType(CodeFormatter& formatter);
     void Accept(Visitor& visitor) override;
     bool IsPtrType() const;
-    std::u32string Str();
 private:
     TypeSpecifierVec typeSpecifiers;
     std::u32string declarator;

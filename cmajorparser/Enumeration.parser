@@ -17,7 +17,7 @@ using namespace CmajorTokens;
 
 parser EnumerationParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using SpecifierParser.Specifiers;
     using IdentifierParser.Identifier;

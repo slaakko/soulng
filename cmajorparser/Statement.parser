@@ -16,7 +16,7 @@ using namespace CmajorTokens;
 
 parser StatementParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using ExpressionParser.Expression;
     using ExpressionParser.ArgumentList;

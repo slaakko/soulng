@@ -62,7 +62,7 @@ namespace soulng.parsergen
             ;
 
         LexerStatement(soulng::parsergen::GrammarParser* grammar)
-            ::= (keyword("lexer") Identifier:id ';'!){ grammar->SetLexer(id); }
+            ::= (keyword("uselexer") Identifier:id ';'!){ grammar->SetLexer(id); }
             ;
 
         RuleInfoStatement(soulng::parsergen::GrammarParser* grammar)

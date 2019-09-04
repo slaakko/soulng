@@ -187,25 +187,6 @@ void TypeId::PrintNonPtrType(CodeFormatter& formatter)
     }
 }
 
-std::u32string TypeId::Str()
-{
-    std::u32string str;
-    int n = int(typeSpecifiers.size());
-    for (int i = 0; i < n; ++i)
-    {
-        if (i > 0)
-        {
-            str.append(U", ");
-        }
-        str.append(typeSpecifiers[i]->Name());
-    }
-    if (!declarator.empty())
-    {
-        str.append(declarator);
-    }
-    return str;
-}
-
 void TypeId::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);

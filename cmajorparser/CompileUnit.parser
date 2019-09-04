@@ -24,7 +24,7 @@ using namespace CmajorTokens;
 parser CompileUnitParser
 {
     main;
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using IdentifierParser.Identifier;
     using IdentifierParser.QualifiedId;

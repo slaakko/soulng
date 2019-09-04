@@ -23,15 +23,15 @@ public:
     CppObject(const CppObject&) = delete;
     CppObject& operator=(const CppObject&) = delete;
     virtual ~CppObject();
-    virtual void AddExpr(CppObject* expr);
     const std::u32string& Name() const { return name; }
     void SetName(const std::u32string& newName) { name = newName; }
     void Own(CppObject* object);
     bool IsOwned() const { return isOwned; }
     void SetOwned() { isOwned = true; }
     void ResetOwned() { isOwned = false; }
+    virtual void AddExpr(CppObject* expr);
     virtual std::u32string ToString() const;
-    virtual void Print(CodeFormatter& formatter) ;
+    virtual void Print(CodeFormatter& formatter);
     virtual void Accept(Visitor& visitor) = 0;
 private:
     std::u32string name;

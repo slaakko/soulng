@@ -19,7 +19,7 @@ using namespace CmajorTokens;
 
 parser InterfaceParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using AttributeParser.Attributes;
     using SpecifierParser.Specifiers;

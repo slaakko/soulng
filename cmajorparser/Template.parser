@@ -15,7 +15,7 @@ using namespace CmajorTokens;
 
 parser TemplateParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using IdentifierParser.Identifier;
     using IdentifierParser.QualifiedId;

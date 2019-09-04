@@ -103,13 +103,13 @@ void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerC
     CodeFormatter formatter(tokenFile);
     formatter.WriteLine("#ifndef " + ToUtf8(Name()) + "_HPP");
     formatter.WriteLine("#define " + ToUtf8(Name()) + "_HPP");
-    for (Include* include : lexerContext.Includes())
-    {
-        formatter.WriteLine(ToUtf8(include->Header()));
-    }
     formatter.WriteLine();
     formatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
     formatter.WriteLine();
+    for (Include* include : lexerContext.Includes())
+    {
+        formatter.WriteLine("#include <" + ToUtf8(include->Header()) + ">");
+    }
     formatter.WriteLine("#undef NULL");
     formatter.WriteLine();
     formatter.WriteLine("namespace " + ToUtf8(Name()));
@@ -288,13 +288,13 @@ void Keywords::Process(const std::string& root, bool verbose, LexerContext& lexe
     CodeFormatter headerFormatter(keywordsHeaderFile);
     headerFormatter.WriteLine("#ifndef " + ToUtf8(Name()) + "_HPP");
     headerFormatter.WriteLine("#define " + ToUtf8(Name()) + "_HPP");
-    for (Include* include : lexerContext.Includes())
-    {
-        headerFormatter.WriteLine(ToUtf8(include->Header()));
-    }
     headerFormatter.WriteLine();
     headerFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
     headerFormatter.WriteLine();
+    for (Include* include : lexerContext.Includes())
+    {
+        headerFormatter.WriteLine("#include <" + ToUtf8(include->Header()) + ">");
+    }
     headerFormatter.WriteLine("#include <soulng/lexer/Keyword.hpp>");
     headerFormatter.WriteLine();
     headerFormatter.WriteLine("namespace " + ToUtf8(Name()));
@@ -489,13 +489,13 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
     CodeFormatter headerFormatter(lexerHeaderFile);
     headerFormatter.WriteLine("#ifndef " + ToUtf8(Name()) + "_HPP");
     headerFormatter.WriteLine("#define " + ToUtf8(Name()) + "_HPP");
-    for (Include* include : lexerContext.Includes())
-    {
-        headerFormatter.WriteLine(ToUtf8(include->Header()));
-    }
     headerFormatter.WriteLine();
     headerFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
     headerFormatter.WriteLine();
+    for (Include* include : lexerContext.Includes())
+    {
+        headerFormatter.WriteLine("#include <" + ToUtf8(include->Header()) + ">");
+    }
     headerFormatter.WriteLine("#include <soulng/lexer/Lexer.hpp>");
     headerFormatter.WriteLine();
     std::string comma;

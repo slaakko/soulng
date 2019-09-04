@@ -12,7 +12,7 @@ using namespace CmajorTokens;
 
 parser BasicTypeParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     BasicType : Node*
         ::= BOOL{ return new BoolNode(span); }

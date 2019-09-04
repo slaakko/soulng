@@ -14,7 +14,7 @@ using namespace RegExTokens;
 
 parser RegExParser
 {
-    lexer RegExLexer;
+    uselexer RegExLexer;
 
     main;
 

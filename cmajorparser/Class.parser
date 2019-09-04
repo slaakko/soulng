@@ -27,7 +27,7 @@ using namespace CmajorTokens;
 
 parser ClassParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using AttributeParser.Attributes;
     using SpecifierParser.Specifiers;

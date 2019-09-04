@@ -61,7 +61,10 @@ private:
 class CPPCODE_API ExpressionList : public CppObject
 {
 public:
+    ExpressionList();
     void AddExpr(CppObject* arg) override;
+    void Print(CodeFormatter& formatter) override;
+    void Accept(Visitor& visitor) override;
     const std::vector<CppObject*>& Args() const { return arguments; }
 private:
     std::vector<CppObject*> arguments;

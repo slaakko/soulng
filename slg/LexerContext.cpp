@@ -418,13 +418,17 @@ void LexerContext::MakeClassMap(const std::string& root, bool verbose)
     CodeFormatter hppFormatter(hppFile);
     hppFormatter.WriteLine("#ifndef " + classMapName + "_HPP");
     hppFormatter.WriteLine("#define " + classMapName + "_HPP");
-    for (Include* include : Includes())
-    {
-        hppFormatter.WriteLine(ToUtf8(include->Header()));
-    }
     hppFormatter.WriteLine();
     hppFormatter.WriteLine("// this file has been automatically generated from '" + FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
     hppFormatter.WriteLine();
+    for (Include* include : Includes())
+    {
+        hppFormatter.WriteLine("#include <" + ToUtf8(include->Header()) + ">");
+    }
+    if (!Includes().empty())
+    {
+        hppFormatter.WriteLine();
+    }
     std::string api;
     if (!Api().empty())
     {

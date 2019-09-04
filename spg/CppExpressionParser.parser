@@ -1,0 +1,429 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cppcode/Expression.hpp>
+[cpp]#include <soulng/util/TextUtils.hpp>
+[cpp]#include <soulng/spg/CppDeclaratorParser.hpp>
+[cpp]#include <soulng/spg/CppDeclarationParser.hpp>
+[cpp]#include <soulng/spg/CppLiteralParser.hpp>
+[cpp]#include <soulng/spg/CppIdentifierParser.hpp>
+[cpp]#include <soulng/spg/ParserFileLexer.hpp>
+[cpp]#include <soulng/spg/ParserFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace ParserFileTokens;
+
+parser CppExpressionParser
+{
+    uselexer ParserFileLexer;
+
+    using CppDeclaratorParser.TypeId;
+    using CppDeclaratorParser.TypeSpecifierSeq;
+    using CppDeclaratorParser.PtrOperator;
+    using CppDeclarationParser.SimpleTypeSpecifier;
+    using CppDeclarationParser.TypeName;
+    using CppLiteralParser.CppLiteral;
+    using CppIdentifierParser.QualifiedCppId;
+
+    CppExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::= (AssignmentExpression:left{ expr.reset(left); } (COMMA AssignmentExpression:right{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), soulng::cppcode::Operator::comma, right)); })*)
+        {
+            return expr.release();
+        }
+        ;
+
+    ConstantExpression : soulng::cppcode::CppObject*
+        ::= CppExpression:expr{ return expr; }
+        ;
+
+    AssignmentExpression : soulng::cppcode::CppObject*
+        ::= LogicalOrExpression:left AssignmentOp:op AssignmentExpression:right!{ return new soulng::cppcode::BinaryOpExpr(left, op, right); }
+        |   ConditionalExpression:conditionalExpr{ return conditionalExpr; }
+        |   ThrowExpression:throwExpr{ return throwExpr; }
+        ;
+
+    AssignmentOp : soulng::cppcode::Operator
+        ::= ASSIGN{ return soulng::cppcode::Operator::assign; }
+        |   MULASSIGN{ return soulng::cppcode::Operator::mulAssign; }
+        |   DIVASSIGN{ return soulng::cppcode::Operator::divAssign; }
+        |   REMASSIGN{ return soulng::cppcode::Operator::remAssign; }
+        |   PLUSASSIGN{ return soulng::cppcode::Operator::plusAssign; }
+        |   MINUSASSIGN{ return soulng::cppcode::Operator::minusAssign; }
+        |   SHIFTLEFTASSIGN{ return soulng::cppcode::Operator::shiftLeftAssign; }
+        |   SHIFTRIGHTASSIGN{ return soulng::cppcode::Operator::shiftRightAssign; }
+        |   ANDASSIGN{ return soulng::cppcode::Operator::andAssign; }
+        |   XORASSIGN{ return soulng::cppcode::Operator::xorAssign; }
+        |   ORASSIGN{ return soulng::cppcode::Operator::orAssign; }
+        ;
+
+    ConditionalExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            LogicalOrExpression:left{ expr.reset(left); }
+            (QUEST CppExpression:ifExpr! COLON AssignmentExpression:thenExpr!{ expr.reset(new soulng::cppcode::ConditionalExpr(expr.release(), ifExpr, thenExpr)); })?
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    ThrowExpression() : soulng::cppcode::CppObject*
+        ::= (THROW AssignmentExpression:exception?){ return new soulng::cppcode::ThrowExpr(exception); }
+        ;
+
+    LogicalOrExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (   LogicalAndExpression:left{ expr.reset(left); }
+            (DISJUNCTION LogicalAndExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), soulng::cppcode::Operator::or_, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    LogicalAndExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (   InclusiveOrExpression:left{ expr.reset(left); }
+            (AMPAMP InclusiveOrExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), soulng::cppcode::Operator::and_, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    InclusiveOrExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (   ExclusiveOrExpression:left{ expr.reset(left); }
+            (BITOR ExclusiveOrExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), soulng::cppcode::Operator::bitor_, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    ExclusiveOrExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (   AndExpression:left{ expr.reset(left); }
+            (BITXOR AndExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), soulng::cppcode::Operator::bitxor, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    AndExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            EqualityExpression:left{ expr.reset(left); }
+            (AMP EqualityExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), soulng::cppcode::Operator::bitand_, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    EqualityExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            RelationalExpression:left{ expr.reset(left); }
+            (EqOp:op RelationalExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), op, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    EqOp : soulng::cppcode::Operator
+        ::= EQ{ return soulng::cppcode::Operator::eq; }
+        |   NEQ{ return soulng::cppcode::Operator::notEq; }
+        ;
+
+    RelationalExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            ShiftExpression:left{ expr.reset(left); }
+            (RelOp:op ShiftExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), op, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    RelOp : soulng::cppcode::Operator
+        ::= LANGLE{ return soulng::cppcode::Operator::less; }
+        |   RANGLE{ return soulng::cppcode::Operator::greater; }
+        |   LEQ{ return soulng::cppcode::Operator::lessOrEq; }
+        |   GEQ{ return soulng::cppcode::Operator::greaterOrEq; }
+        ;
+
+    ShiftExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            AdditiveExpression:left{ expr.reset(left); }
+            (ShiftOp:op AdditiveExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), op, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    ShiftOp : soulng::cppcode::Operator
+        ::= SHIFTLEFT{ return soulng::cppcode::Operator::shiftLeft; }
+        |   SHIFTRIGHT{ return soulng::cppcode::Operator::shiftRight; }
+        ;
+
+    AdditiveExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            MultiplicativeExpression:left{ expr.reset(left); }
+            (AddOp:op MultiplicativeExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), op, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    AddOp : soulng::cppcode::Operator
+        ::= PLUS{ return soulng::cppcode::Operator::plus; }
+        |   MINUS{ return soulng::cppcode::Operator::minus; }
+        ;
+
+    MultiplicativeExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            PmExpression:left{ expr.reset(left); }
+            (MulOp:op PmExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), op, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    MulOp : soulng::cppcode::Operator
+        ::= STAR{ return soulng::cppcode::Operator::mul; }
+        |   DIV{ return soulng::cppcode::Operator::div; }
+        |   REM{ return soulng::cppcode::Operator::rem; }
+        ;
+
+    PmExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            CastExpression:left{ expr.reset(left); } (PmOp:op CastExpression:right!{ expr.reset(new soulng::cppcode::BinaryOpExpr(expr.release(), op, right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    PmOp : soulng::cppcode::Operator
+        ::= DOTSTAR{ return soulng::cppcode::Operator::dotStar; }
+        |   ARROWSTAR{ return soulng::cppcode::Operator::arrowStar; }
+        ;
+
+    CastExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            LPAREN TypeId:typeId RPAREN CastExpression:castExpr{ expr.reset(new soulng::cppcode::CastExpr(typeId, castExpr)); }
+        |   UnaryExpression:unaryExpr{ expr.reset(unaryExpr); }
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    UnaryExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (   PostfixExpression:postfixExpr{ expr.reset(postfixExpr); }
+        |   PostCastExpression:postCastExpr{ expr.reset(postCastExpr); }
+        |   PLUSPLUS UnaryExpression:u1!{ expr.reset(new soulng::cppcode::PreIncrementExpr(u1)); }
+        |   MINUSMINUS UnaryExpression:u2!{ expr.reset(new soulng::cppcode::PreDecrementExpr(u2)); }
+        |   UnaryOperator:op CastExpression:castExpr!{ expr.reset(new soulng::cppcode::UnaryOpExpr(op, castExpr)); }
+        |   SIZEOF LPAREN TypeId:typeId! RPAREN!{ expr.reset(new soulng::cppcode::SizeOfExpr(typeId, true)); }
+        |   SIZEOF UnaryExpression:u3!{ expr.reset(new soulng::cppcode::SizeOfExpr(u3, false)); }
+        |   NewExpression:newExpr{ expr.reset(newExpr); }
+        |   DeleteExpression:deleteExpr{ expr.reset(deleteExpr); }
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    UnaryOperator : soulng::cppcode::Operator
+        ::= STAR{ return soulng::cppcode::Operator::deref; }
+        |   AMP{ return soulng::cppcode::Operator::addrOf; }
+        |   PLUS{ return soulng::cppcode::Operator::plus; }
+        |   MINUS{ return soulng::cppcode::Operator::minus; }
+        |   NOT{ return soulng::cppcode::Operator::not_; }
+        |   CPL{ return soulng::cppcode::Operator::cpl; }
+        ;
+
+    PostfixExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::=
+        (   PrimaryExpression:primaryExpr{ expr.reset(primaryExpr); }
+            (   LBRACKET CppExpression:index RBRACKET!{ expr.reset(new soulng::cppcode::IndexExpr(expr.release(), index)); }
+            |   LPAREN{ expr.reset(new soulng::cppcode::InvokeExpr(expr.release())); } ExpressionList(expr.get()):exprList? RPAREN!
+            |   DOT IdExpression:dotMember!{ expr.reset(new soulng::cppcode::MemberAccessExpr(expr.release(), dotMember)); }
+            |   ARROW IdExpression:arrowMember!{ expr.reset(new soulng::cppcode::PtrMemberAccessExpr(expr.release(), arrowMember)); }
+            |   PLUSPLUS{ expr.reset(new soulng::cppcode::PostIncrementExpr(expr.release())); }
+            |   MINUSMINUS{ expr.reset(new soulng::cppcode::PostDecrementExpr(expr.release())); }
+            )*
+        |   TypeSpecifierOrTypeName:type{ expr.reset(new soulng::cppcode::InvokeExpr(expr.release())); } LPAREN ExpressionList(expr.get()):typeExprList? RPAREN
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    PostCastExpression(var std::u32string castStr) : soulng::cppcode::CppObject*
+        ::=
+        (
+            (   DYNAMICCAST{ castStr = U"dynamic_cast"; }
+            |   STATICCAST{ castStr = U"static_cast"; }
+            |   REINTERPRETCAST{ castStr = U"reinterpret_cast"; }
+            |   CONSTCAST{ castStr = U"const_cast"; }
+            )
+            LANGLE! TypeId:typeId! RANGLE! LPAREN! CppExpression:expr! RPAREN!{ return new soulng::cppcode::PostCastExpr(castStr, typeId, expr); }
+        |   TYPEID LPAREN! CppExpression:typeIdExpr! RPAREN!{ return new soulng::cppcode::TypeIdExpr(typeIdExpr); }
+        )
+        ;
+
+    ExpressionList(soulng::cppcode::CppObject* owner)
+        ::= AssignmentExpression:expr{ owner->AddExpr(expr); } % COMMA
+        ;
+
+    PrimaryExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
+        ::= CppLiteral:literal{ return literal; }
+        |   THIS{ return new soulng::cppcode::ThisAccess(); }
+        |   LPAREN CppExpression:pexpr RPAREN!{ return new soulng::cppcode::ParenExpr(pexpr); }
+        |   IdExpression:idExpr{ return idExpr; }
+        ;
+
+    IdExpression(var Span s) : soulng::cppcode::IdExpr*
+        ::= (QualifiedCppId:id1{ s = span; } COLONCOLON OperatorFunctionId:ofId1{ s.end = span.end; }){ return new soulng::cppcode::IdExpr(lexer.GetMatch(s)); }
+        |   (empty{ s = span; } (COLONCOLON)? OperatorFunctionId:ofid2{ s.end = span.end; }){ return new soulng::cppcode::IdExpr(lexer.GetMatch(s)); }
+        |   QualifiedCppId:id2{ return new soulng::cppcode::IdExpr(id2); }
+        ;
+
+    TypeSpecifierOrTypeName : soulng::cppcode::CppObject*
+        ::= SimpleTypeSpecifier:simpleTypeSpecifier{ return simpleTypeSpecifier; }
+        |   TypeName:typeName{ return typeName; }
+        ;
+
+    NewExpression(var bool global, var std::unique_ptr<soulng::cppcode::NewExpr> newExpr) : soulng::cppcode::CppObject*
+        ::=
+        (   (COLONCOLON{ global = true; })?
+            NEW{ newExpr.reset(new soulng::cppcode::NewExpr(global)); }
+            empty{ newExpr->BeginAddPlacement(); } NewPlacement(newExpr.get()):placement? empty{ newExpr->EndAddPlacement(); }
+            (NewTypeId:newTypeId{ newExpr->SetParens(false); newExpr->SetTypeId(newTypeId); } | LPAREN TypeId:ti RPAREN{ newExpr->SetParens(true); newExpr->SetTypeId(ti); })
+            empty{ newExpr->BeginAddInitializer(); } NewInitializer(newExpr.get()):initializer? empty{ newExpr->EndAddInitializer(); }
+        )
+        {
+            return newExpr.release();
+        }
+        ;
+
+    NewPlacement(soulng::cppcode::CppObject* owner)
+        ::= LPAREN ExpressionList(owner):exprList RPAREN
+        ;
+
+    NewTypeId(var std::unique_ptr<soulng::cppcode::TypeId> ti) : soulng::cppcode::TypeId*
+        ::= empty{ ti.reset(new soulng::cppcode::TypeId()); }
+            (
+                (TypeSpecifierSeq(ti.get()):typeSpecifierSeq | TypeName:typeName{ ti->Add(typeName); })
+                (NewDeclarator:newDeclarator{ ti->Declarator() = newDeclarator; })?
+            )
+            {
+                return ti.release();
+            }
+        ;
+
+    NewDeclarator(var Span s) : std::u32string
+        ::= empty{ s = span; }
+        (   PtrOperator:ptrOperator{ s.end = span.end; } (NewDeclarator:newDeclarator{ s.end = span.end; })?
+        |   DirectNewDeclarator:directNewDeclarator{ s.end = span.end; }
+        )
+        {
+            return soulng::util::Trim(lexer.GetMatch(s));
+        }
+        ;
+
+    NewInitializer(soulng::cppcode::CppObject* owner)
+        ::= LPAREN ExpressionList(owner):initializer? RPAREN
+        ;
+
+    DirectNewDeclarator
+        ::= LBRACKET CppExpression:expr RBRACKET (LBRACKET ConstantExpression:constantExpr RBRACKET)*
+        ;
+
+    DeleteExpression(var bool global, var bool array) : soulng::cppcode::CppObject*
+        ::= ((COLONCOLON{ global = true; })? DELETE (LBRACKET RBRACKET{ array = true; })? CastExpression:ptr)
+        {
+            return new soulng::cppcode::DeleteExpr(global, array, ptr);
+        }
+        ;
+
+    OperatorFunctionId(var Span s) : std::u32string
+        ::= OPERATOR{ s = span; } Operator:oprtr{ s.end = span.end; return lexer.GetMatch(s); }
+        ;
+
+    Operator
+        ::= LBRACKET RBRACKET
+        |   LPAREN RPAREN
+        |   ARROWSTAR
+        |   ARROW
+        |   COMMA
+        |   MINUSMINUS
+        |   PLUSPLUS
+        |   DISJUNCTION
+        |   AMPAMP
+        |   LEQ
+        |   GEQ
+        |   NEQ
+        |   EQ
+        |   SHIFTLEFTASSIGN
+        |   SHIFTRIGHTASSIGN
+        |   SHIFTLEFT
+        |   SHIFTRIGHT
+        |   ORASSIGN
+        |   ANDASSIGN
+        |   XORASSIGN
+        |   REMASSIGN
+        |   DIVASSIGN
+        |   MULASSIGN
+        |   MINUSASSIGN
+        |   PLUSASSIGN
+        |   LANGLE
+        |   RANGLE
+        |   ASSIGN
+        |   NOT
+        |   CPL
+        |   BITOR
+        |   AMP
+        |   BITXOR
+        |   REM
+        |   DIV
+        |   STAR
+        |   MINUS
+        |   PLUS
+        |   NEW LBRACKET RBRACKET
+        |   DELETE LBRACKET RBRACKET
+        |   NEW
+        |   DELETE
+        ;
+
+    ruleinfo
+    {
+        (CppExpression, "C++ expression"), (ConstantExpression, "constant C++ expression"), (AssignmentExpression, "assignment expression"), (AssignmentOp, "assignment operator"),
+        (ConditionalExpression, "conditional expression"), (ThrowExpression, "throw expression"), (LogicalOrExpression, "logical OR-expression"), (LogicalAndExpression, "logical AND-expression"),
+        (InclusiveOrExpression, "inclusive OR-expression"), (ExclusiveOrExpression, "exclusive OR-expression"), (AndExpression, "AND-expression"), (EqualityExpression, "equality expression"),
+        (EqOp, "equality operator"), (RelationalExpression, "relational expression"), (RelOp, "relational operator"), (ShiftExpression, "shift expression"), (ShiftOp, "shift operator"),
+        (AdditiveExpression, "additive expression"), (AddOp, "additive operator"), (MultiplicativeExpression, "multiplicative expression"), (MulOp, "multiplicative operator"),
+        (PmExpression, "pointer-to-member expression"), (PmOp, "pointer-to-member operator"), (CastExpression, "cast-expression"), (UnaryExpression, "unary expression"),
+        (UnaryOperator, "unary operator"), (PostfixExpression, "postfix expression"), (PostCastExpression, "postfix cast-expression"), (ExpressionList, "expression list"),
+        (PrimaryExpression, "primary expression"), (IdExpression, "ID-expression"), (TypeSpecifierOrTypeName, "type specifier or type name"), (NewExpression, "new-expression"),
+        (NewPlacement, "new placement"), (NewTypeId, "new type identifier"), (NewDeclarator, "new declarator"), (NewInitializer, "new initializer"), (DirectNewDeclarator, "direct new declarator"),
+        (DeleteExpression, "delete expression"), (OperatorFunctionId, "operator function identifier"), (Operator, "operator")
+    }
+}

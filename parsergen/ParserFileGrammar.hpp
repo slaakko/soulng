@@ -1,5 +1,5 @@
-#ifndef ParserFileGrammar_hpp_8893
-#define ParserFileGrammar_hpp_8893
+#ifndef ParserFileGrammar_hpp_5757
+#define ParserFileGrammar_hpp_5757
 
 #include <soulng/parsing/Grammar.hpp>
 #include <soulng/parsing/Keyword.hpp>
@@ -53,4 +53,4 @@ private:
 
 } } // namespace soulng.parsergen
 
-#endif // ParserFileGrammar_hpp_8893
+#endif // ParserFileGrammar_hpp_5757

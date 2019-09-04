@@ -6,6 +6,7 @@
 #ifndef SOULNG_LEXER_LEXEME_INCLUDED
 #define SOULNG_LEXER_LEXEME_INCLUDED
 #include <soulng/lexer/LexerApi.hpp>
+#include <string>
 
 namespace soulng { namespace lexer {
 
@@ -13,6 +14,7 @@ struct LEXER_API Lexeme
 {
     Lexeme() : begin(nullptr), end(nullptr) { }
     Lexeme(const char32_t* begin_, const char32_t* end_) : begin(begin_), end(end_) { }
+    std::u32string ToString() const { return std::u32string(begin, end); }
     const char32_t* begin;
     const char32_t* end;
 };

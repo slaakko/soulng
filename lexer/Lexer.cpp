@@ -127,13 +127,13 @@ std::u32string Lexer::GetMatch(const Span& span) const
 {
     std::u32string match;
     Token startToken = GetToken(span.start);
-    match.append(std::u32string(startToken.match.begin, startToken.match.end));
+    match.append(startToken.match.ToString());
     const char32_t* e = startToken.match.end;
     for (int i = span.start + 1; i <= span.end; ++i)
     {
         Token token = GetToken(i);
         match.append(std::u32string(token.match.begin - e, ' '));
-        match.append(std::u32string(token.match.begin, token.match.end));
+        match.append(token.match.ToString());
         e = token.match.end;
     }
     return match;
@@ -167,7 +167,7 @@ std::u32string Lexer::ErrorLines(const Token& token) const
     const char32_t* lineStart = LineStart(start, token.match.begin);
     const char32_t* lineEnd = LineEnd(end, token.match.end);
     lines.append(std::u32string(lineStart, token.match.begin));
-    lines.append(std::u32string(token.match.begin, token.match.end));
+    lines.append(token.match.ToString());
     lines.append(std::u32string(token.match.end, lineEnd));
     lines.append(1, '\n');
     lines.append(token.match.begin - lineStart, ' ');
@@ -189,14 +189,14 @@ std::u32string Lexer::ErrorLines(const Span& span) const
     }
     const char32_t* lineEnd = LineEnd(end, endToken.match.end);
     lines.append(std::u32string(lineStart, startToken.match.begin));
-    lines.append(std::u32string(startToken.match.begin, startToken.match.end));
+    lines.append(startToken.match.ToString());
     const char32_t* s = startToken.match.begin;
     const char32_t* e = startToken.match.end;
     for (int i = span.start + 1; i <= span.end; ++i)
     {
         Token token = GetToken(i);
         lines.append(std::u32string(token.match.begin - e, ' '));
-        lines.append(std::u32string(token.match.begin, token.match.end));
+        lines.append(token.match.ToString());
         e = token.match.end;
     }
     lines.append(std::u32string(e, lineEnd));

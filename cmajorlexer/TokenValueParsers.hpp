@@ -23,5 +23,3 @@ CMAJOR_LEXER_API void ParseStringLiteral(const std::string& fileName, const Toke
 CMAJOR_LEXER_API std::string MakeFilePath(const Lexeme& lexeme);
 
 #endif // TOKEN_VALUE_PARSERS_HPP
-
-

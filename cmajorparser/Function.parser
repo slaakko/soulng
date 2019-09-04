@@ -21,7 +21,7 @@ using namespace CmajorTokens;
 
 parser FunctionParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using AttributeParser.Attributes;
     using SpecifierParser.Specifiers;

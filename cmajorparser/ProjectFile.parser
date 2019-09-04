@@ -12,7 +12,7 @@ using namespace ContainerFileTokens;
 
 parser ProjectFileParser
 {
-    lexer ContainerFileLexer;
+    uselexer ContainerFileLexer;
     main;
 
     ProjectFile(std::string config, cmajor::ast::BackEnd backend, var std::unique_ptr<Project> project) : cmajor::ast::Project*

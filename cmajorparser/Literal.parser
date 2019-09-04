@@ -14,7 +14,7 @@ using namespace CmajorTokens;
 
 parser LiteralParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using ExpressionParser.Expression;
 

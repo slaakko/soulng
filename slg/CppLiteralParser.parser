@@ -12,7 +12,7 @@ using namespace LexerFileTokens;
 
 parser CppLiteralParser
 {
-    lexer LexerFileLexer;
+    uselexer LexerFileLexer;
 
     CppLiteral : soulng::cppcode::Literal*
         ::= INTLIT{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }

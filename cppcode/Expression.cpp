@@ -80,9 +80,23 @@ void IndexExpr::Accept(Visitor& visitor)
     Child()->Accept(visitor);
 }
 
+ExpressionList::ExpressionList() : CppObject(U"expressionList")
+{
+}
+
 void ExpressionList::AddExpr(CppObject* arg)
 {
     arguments.push_back(arg);
+}
+
+void ExpressionList::Print(CodeFormatter& formatter)
+{
+    throw std::runtime_error("cannot Print: soulng::cppcode::ExpressionList is ment to be a temporary holder of expressions");
+}
+
+void ExpressionList::Accept(Visitor& visitor)
+{
+    throw std::runtime_error("cannot Accept: soulng::cppcode::ExpressionList is ment to be a temporary holder of expressions");
 }
 
 InvokeExpr::InvokeExpr(CppObject* child_): PostfixExpression(U"()", child_), arguments()

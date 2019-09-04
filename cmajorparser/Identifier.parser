@@ -12,7 +12,7 @@ using namespace CmajorTokens;
 
 parser IdentifierParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     Identifier : IdentifierNode*
         ::= ID{ return new IdentifierNode(span, lexer.GetToken(pos)); }

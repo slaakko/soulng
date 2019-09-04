@@ -16,7 +16,7 @@ using namespace CmajorTokens;
 
 parser TypedefParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using SpecifierParser.Specifiers;
     using TypeExprParser.TypeExpr;

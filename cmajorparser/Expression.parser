@@ -19,7 +19,7 @@ using namespace CmajorTokens;
 
 parser ExpressionParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using LiteralParser.Literal;
     using BasicTypeParser.BasicType;

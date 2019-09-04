@@ -36,7 +36,7 @@ void ParseHexChar(const std::string& fileName, char32_t& value, const char32_t*&
     }
     else
     {
-        throw std::runtime_error("hex character expected at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("hex character expected at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
 }
 
@@ -134,7 +134,7 @@ std::u32string MakeStrValue(const std::string& fileName, const soulng::lexer::To
     }
     if (p != e)
     {
-        throw std::runtime_error("invalid string literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("invalid string literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
     return strValue;
 }
@@ -177,7 +177,7 @@ std::u32string MakeExprStringValue(const std::string& fileName, const soulng::le
     }
     if (p != e)
     {
-        throw std::runtime_error("invalid expression string literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("invalid expression string literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
     return strValue;
 }
@@ -194,6 +194,7 @@ std::u32string MakePathValue(const std::string& fileName, const soulng::lexer::T
     while (p != e && *p != '\r' && *p != '\n' && *p != '>')
     {
         pathValue.append(1, *p);
+        ++p;
     }
     if (p != e && *p == '>')
     {
@@ -201,7 +202,7 @@ std::u32string MakePathValue(const std::string& fileName, const soulng::lexer::T
     }
     if (p != e)
     {
-        throw std::runtime_error("invalid path literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("invalid path literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
     return pathValue;
 }
@@ -213,7 +214,7 @@ int MakeActionIntValue(const std::string& fileName, const soulng::lexer::Token& 
     const char32_t* e = token.match.end;
     if (p == e)
     {
-        throw std::runtime_error("invalid action integer value at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("invalid action integer value at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
     while (p != e && *p >= '0' && *p <= '9')
     {
@@ -222,7 +223,7 @@ int MakeActionIntValue(const std::string& fileName, const soulng::lexer::Token& 
     }
     if (p != e)
     {
-        throw std::runtime_error("invalid action integer value at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("invalid action integer value at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
     return actionIntValue;
 }
@@ -264,7 +265,7 @@ char32_t MakeEscapeValue(const std::string& fileName, const soulng::lexer::Token
     escapeValue = ParseEscape(fileName, p, e, token);
     if (p != e)
     {
-        throw std::runtime_error("invalid escape at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(std::u32string(token.match.begin, token.match.end)));
+        throw std::runtime_error("invalid escape at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
     }
     return escapeValue;
 }

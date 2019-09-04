@@ -19,7 +19,7 @@ using namespace CmajorTokens;
 
 parser ConceptParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     using SpecifierParser.Specifiers;
     using IdentifierParser.Identifier;

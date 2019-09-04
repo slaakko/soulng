@@ -11,7 +11,7 @@ using namespace CmajorTokens;
 
 parser AttributeParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     Attributes(var std::unique_ptr<cmajor::ast::Attributes> attributes) : cmajor::ast::Attributes*
         ::= LBRACKET{ attributes.reset(new cmajor::ast::Attributes()); } (Attribute(attributes.get()):attribute % COMMA)? RBRACKET!

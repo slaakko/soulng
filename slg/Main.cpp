@@ -1,29 +1,20 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
 #include <soulng/slg/LexerFileParser.hpp>
 #include <soulng/slg/LexerFileLexer.hpp>
 #include <soulng/slg/LexerContext.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 #include <soulng/slg/RegularExpressionParser.hpp>
 #include <soulng/cppcode/InitDone.hpp>
+#include <soulng/util/InitDone.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
-#include <soulng/util/InitDone.hpp>
 #include <stdexcept>
 #include <iostream>
-
-struct InitDone
-{
-    InitDone()
-    {
-        soulng::util::Init();
-        soulng::cppcode::Init();
-    }
-    ~InitDone()
-    {
-        soulng::cppcode::Done();
-        soulng::util::Done();
-    }
-};
 
 void PrintUsage()
 {
@@ -39,9 +30,23 @@ void PrintUsage()
     std::cout << "  By default uses Unicode identifier classes." << std::endl;
 }
 
+struct Initializer
+{
+    Initializer()
+    {
+        soulng::util::Init();
+        soulng::cppcode::Init();
+    }
+    ~Initializer()
+    {
+        soulng::cppcode::Done();
+        soulng::util::Done();
+    }
+};
+
 int main(int argc, const char** argv)
 {
-    InitDone initDone;
+    Initializer initializer;
     try
     {
         bool verbose = false;

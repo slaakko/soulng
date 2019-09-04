@@ -1,0 +1,217 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/spg/ParserFile.hpp>
+[cpp]#include <soulng/spg/CppIdentifierParser.hpp>
+[cpp]#include <soulng/spg/CppDeclaratorParser.hpp>
+[cpp]#include <soulng/spg/CppExpressionParser.hpp>
+[cpp]#include <soulng/spg/CppStatementParser.hpp>
+[cpp]#include <soulng/spg/TokenValueParsers.hpp>
+[cpp]#include <soulng/spg/ParserFileLexer.hpp>
+[cpp]#include <soulng/spg/ParserFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace ParserFileTokens;
+
+parser ParserFileParser
+{
+    uselexer ParserFileLexer;
+    main;
+
+    using CppIdentifierParser.QualifiedCppId;
+    using CppDeclaratorParser.TypeId;
+    using CppDeclaratorParser.Declarator;
+    using CppExpressionParser.ExpressionList;
+    using CppStatementParser.CompoundStatement;
+
+    ParserFile(var std::unique_ptr<soulng::spg::ParserFile> parserFile) : soulng::spg::ParserFile*
+        ::= (empty{ parserFile.reset(new soulng::spg::ParserFile(lexer.FileName())); } Declaration(parserFile.get()):declaration*)
+        {
+            return parserFile.release();
+        }
+        ;
+
+    Declaration(soulng::spg::ParserFile* parserFile)
+        ::= IncludeDeclaration:includeDeclaration{ parserFile->AddInclude(includeDeclaration); }
+        |   UsingNamespaceDeclaration:usingNamespaceDeclaration{ parserFile->AddUsingNamespace(usingNamespaceDeclaration); }
+        |   ParserDeclaration:parserDeclaration{ parserFile->AddParser(parserDeclaration); }
+        ;
+
+    IncludeDeclaration(var bool prefix, var Span s) : soulng::spg::Include*
+        ::= empty{ lexer.parsingIncludeDeclaration = true; }
+            ((IncludePrefix:includePrefix{ prefix = includePrefix; })? HASH{ s = span; } INCLUDE FILEPATH{ s.end = span.end; })
+        {
+            lexer.parsingIncludeDeclaration = false;
+            return new soulng::spg::Include(prefix, lexer.GetMatch(s));
+        }
+        /
+        {
+            lexer.parsingIncludeDeclaration = false;
+        }
+        ;
+
+    IncludePrefix : bool
+        ::= CPPPREFIX{ return false; }
+        |   HPPPREFIX{ return true; }
+        ;
+
+    UsingNamespaceDeclaration(var Span s) : std::u32string
+        ::= USING{ s = span; } NAMESPACE QualifiedCppId:ns SEMICOLON!{ s.end = span.end; return lexer.GetMatch(s); }
+        ;
+
+    ParserDeclaration(var std::unique_ptr<soulng::spg::GrammarParser> grammarParser) : soulng::spg::GrammarParser*
+        ::= (PARSER ID{ grammarParser.reset(new soulng::spg::GrammarParser(lexer.GetMatch(span))); } LBRACE! Statement(grammarParser.get()):statement* RBRACE!)
+        {
+            return grammarParser.release();
+        }
+        ;
+
+    Statement(soulng::spg::GrammarParser* grammarParser)
+        ::= MainStatement(grammarParser):mainStatement
+        |   UsingStatement(grammarParser):usingStatement
+        |   LexerStatement(grammarParser):lexerStatement
+        |   RuleInfoStatement(grammarParser):ruleInfoStatement
+        |   RuleStatement(grammarParser):ruleStatement
+        ;
+
+    MainStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= MAIN SEMICOLON!{ grammarParser->SetMain(); }
+        ;
+
+    UsingStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= USING UsingQualifiedId:parserId! SEMICOLON!{ grammarParser->AddUsing(parserId); }
+        ;
+
+    UsingQualifiedId(var Span s) : std::u32string
+        ::= (ID{ s = span; } (DOT ID{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    LexerStatement(soulng::spg::GrammarParser* grammarParser, var std::u32string lexerName)
+        ::= USELEXER ID!{ lexerName = lexer.GetMatch(span); } SEMICOLON!{ grammarParser->SetLexer(lexerName); }
+        ;
+
+    RuleInfoStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= RULEINFO LBRACE! (RuleInfo(grammarParser):ruleInfo % COMMA)? RBRACE!
+        ;
+
+    RuleInfo(soulng::spg::GrammarParser* grammarParser, var std::u32string ruleName, var std::u32string ruleInfo)
+        ::= LPAREN ID!{ ruleName = lexer.GetMatch(span); } COMMA! STRINGLIT!{ ruleInfo = soulng::spg::ParseStringLiteral(lexer.FileName(), lexer.GetToken(pos)); } RPAREN!
+        {
+            grammarParser->AddRuleInfo(ruleName, ruleInfo);
+        }
+        ;
+
+    RuleStatement(soulng::spg::GrammarParser* grammarParser, var std::unique_ptr<soulng::spg::RuleParser> rule)
+        ::= ID{ rule.reset(new soulng::spg::RuleParser(lexer.GetMatch(span))); } ParametersAndVariables(rule.get()):paramsAndVars? ReturnType:returnType? PRODUCES RuleBody:definition! SEMICOLON!
+        {
+            rule->SetDefinition(definition);
+            rule->SetReturnType(returnType);
+            grammarParser->AddRule(rule.release());
+        }
+        ;
+
+    ParametersAndVariables(soulng::spg::RuleParser* rule)
+        ::= LPAREN (ParamOrVariable:paramOrVariable{ rule->AddParamOrVariable(paramOrVariable); } % COMMA)? RPAREN!
+        ;
+
+    ParamOrVariable : soulng::spg::Parameter*
+        ::= VAR TypeId:varType Declarator:varName{ return new soulng::spg::Variable(varType, varName); }
+        |   TypeId:paramType Declarator:paramName{ return new soulng::spg::Parameter(paramType, paramName); }
+        ;
+
+    ReturnType : soulng::cppcode::TypeId*
+        ::= COLON TypeId:type{ return type; }
+        ;
+
+    RuleBody : soulng::spg::Parser*
+        ::= Alternative:alt{ return alt; }
+        ;
+
+    Alternative(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
+        ::= (Sequence:left{ value.reset(left); } (BITOR Sequence:right!{ value.reset(new soulng::spg::AlternativeParser(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    Sequence(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
+        ::= (Difference:left{ value.reset(left); } (Difference:right{ value.reset(new soulng::spg::SequenceParser(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    Difference(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
+        ::= (List:left{ value.reset(left); } (MINUS List:right!{ value.reset(new soulng::spg::DifferenceParser(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    List(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
+        ::= (Postfix:left{ value.reset(left); } (REM Postfix:right!{ value.reset(new soulng::spg::ListParser(value.release(), right)); })?)
+        {
+            return value.release();
+        }
+        ;
+
+    Postfix(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
+        ::=
+        (   Primary:primary{ value.reset(primary); }
+            (   STAR{ value.reset(new soulng::spg::KleeneParser(value.release())); }
+            |   PLUS{ value.reset(new soulng::spg::PositiveParser(value.release())); }
+            |   QUEST{ value.reset(new soulng::spg::OptionalParser(value.release())); }
+            )?    
+        )
+        {
+            return value.release();
+        }
+        ;
+
+    Primary(var std::unique_ptr<soulng::spg::Parser> value) : soulng::spg::Parser*
+        ::=
+        (
+            (   RuleCall:ruleCall{ value.reset(ruleCall); }
+            |   Primitive:primitive{ value.reset(primitive); }
+            |   Grouping:grouping{ value.reset(grouping); }
+            )
+            (
+                EXCLAMATION{ value.reset(new soulng::spg::ExpectationParser(value.release())); }
+            )?
+            (   
+                (
+                    (CompoundStatement:successCode
+                    (DIV CompoundStatement:failureCode)?){ value.reset(new soulng::spg::ActionParser(successCode, failureCode, value.release())); }
+                )
+            )?
+        )
+        {
+            return value.release();
+        }
+        ;
+
+    RuleCall(var std::u32string ruleName, var std::unique_ptr<soulng::cppcode::ExpressionList> exprList, var std::u32string name) : soulng::spg::Parser*
+        ::= Nonterminal:nt{ ruleName = nt; } (LPAREN{ exprList.reset(new soulng::cppcode::ExpressionList()); } ExpressionList(exprList.get()):args RPAREN)? COLON ID!
+        {
+            std::u32string name = lexer.GetMatch(span);
+            soulng::spg::NonterminalParser* nonterminalParser = new soulng::spg::NonterminalParser(name, ruleName);
+            nonterminalParser->SetArguments(exprList.get());
+            return nonterminalParser;
+        }
+        ;
+
+    Nonterminal : std::u32string
+        ::= ID{ return lexer.GetMatch(span); }
+        ;
+
+    Primitive : soulng::spg::Parser*
+        ::= EMPTY{ return new soulng::spg::EmptyParser(); }
+        |   ID{ return new soulng::spg::TokenParser(lexer.GetMatch(span)); }
+        ;
+
+    Grouping : soulng::spg::Parser*
+        ::= (LPAREN Alternative:alt RPAREN!){ return new soulng::spg::GroupingParser(alt); }
+        ;
+}

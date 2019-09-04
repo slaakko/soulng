@@ -11,7 +11,7 @@ using namespace CmajorTokens;
 
 parser SpecifierParser
 {
-    lexer CmajorLexer;
+    uselexer CmajorLexer;
 
     Specifiers(var cmajor::ast::Specifiers specifiers) : cmajor::ast::Specifiers
         ::= ((Specifier:specifier{ specifiers = specifiers | specifier; })*){ return specifiers; }
