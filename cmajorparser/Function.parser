@@ -57,7 +57,7 @@ parser FunctionParser
     OperatorFunctionGroupId(ParsingContext* ctx) : std::u32string
         ::= empty{ lexer.parsingOperatorFunctionGroupId = true; }
         (   OPERATOR
-            (   ((LANGLE LANGLE) - (LANGLE LANGLE (TypeExpr(ctx):typeExpr % COMMA) RANGLE)){ lexer.parsingOperatorFunctionGroupId = false; return U"operator<<"; }
+            (   (LANGLE LANGLE - (LANGLE LANGLE (TypeExpr(ctx):typeExpr % COMMA) RANGLE)){ lexer.parsingOperatorFunctionGroupId = false; return U"operator<<"; }
             |   SHIFTRIGHT{ lexer.parsingOperatorFunctionGroupId = false; return U"operator>>"; }
             |   EQ{ lexer.parsingOperatorFunctionGroupId = false; return U"operator=="; }
             |   ASSIGN{ lexer.parsingOperatorFunctionGroupId = false; return U"operator="; }
@@ -73,7 +73,7 @@ parser FunctionParser
             |   AMP{ lexer.parsingOperatorFunctionGroupId = false; return U"operator&"; }
             |   BITOR{ lexer.parsingOperatorFunctionGroupId = false; return U"operator|"; }
             |   BITXOR{ lexer.parsingOperatorFunctionGroupId = false; return U"operator^"; }
-            |   NOT{ lexer.parsingOperatorFunctionGroupId = false; return U"operator!"; }
+            |   EXCLAMATION{ lexer.parsingOperatorFunctionGroupId = false; return U"operator!"; }
             |   CPL{ lexer.parsingOperatorFunctionGroupId = false; return U"operator~"; }
             |   LBRACKET RBRACKET{ lexer.parsingOperatorFunctionGroupId = false; return U"operator[]"; }
             |   LPAREN RPAREN{ lexer.parsingOperatorFunctionGroupId = false; return U"operator()"; }

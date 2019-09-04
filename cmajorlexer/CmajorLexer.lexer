@@ -23,7 +23,7 @@ tokens CmajorTokens
     (WHILE, "'while'"), (DO, "'do'"), (FOR, "'for'"), (BREAK, "'break'"), (CONTINUE, "'continue'"), (GOTO, "'goto'"), (TYPEDEF, "'typedef'"), (TYPENAME, "'typename'"), (TYPEID, "'typeid'"),
     (CONST, "'const'"), (CONSTEXPR, "'constexpr'"), (NULL, "'null'"), (THIS, "'this'"), (BASE, "'base'"), (CONSTRUCT, "'construct'"), (DESTROY, "'destroy'"),
     (NEW, "'new'"), (DELETE, "'delete'"), (SIZEOF, "'sizeof'"), (TRY, "'try'"), (CATCH, "'catch'"), (THROW, "'throw'"),
-    (CONCEPT, "'concept'"), (WHERE, "'where'"), (AXIOM, "'axiom'"), (AND, "'and'"), (OR, "'or'"), (NOT, "'!'"), (UNIT_TEST, "'unit_test'"),
+    (CONCEPT, "'concept'"), (WHERE, "'where'"), (AXIOM, "'axiom'"), (AND, "'and'"), (OR, "'or'"), (EXCLAMATION, "'!'"), (UNIT_TEST, "'unit_test'"),
     (ID, "identifier"), (FLOATINGLIT, "floating literal"), (INTLIT, "integer literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"),
     (EQUIVALENCE, "'<=>'"), (IMPLICATION, "'=>'"), (DISJUNCTION, "'||'"), (AMPAMP, "'&&'"),
     (BITOR, "'|'"), (BITXOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"),
@@ -43,7 +43,7 @@ keywords CmajorKeywords
     ("switch", SWITCH), ("case", CASE), ("default", DEFAULT), ("while", WHILE), ("do", DO), ("for", FOR), 
     ("break", BREAK), ("continue", CONTINUE), ("goto", GOTO), ("typedef", TYPEDEF), ("typename", TYPENAME), ("typeid", TYPEID), ("const", CONST), ("constexpr", CONSTEXPR), ("null", NULL), ("this", THIS), ("base", BASE),
     ("construct", CONSTRUCT), ("destroy", DESTROY), ("new", NEW), ("delete", DELETE), ("sizeof", SIZEOF), ("try", TRY), ("catch", CATCH), ("throw", THROW), 
-    ("concept", CONCEPT), ("where", WHERE), ("axiom", AXIOM), ("and", AND), ("or", OR), ("not", NOT), ("unit_test", UNIT_TEST)
+    ("concept", CONCEPT), ("where", WHERE), ("axiom", AXIOM), ("and", AND), ("or", OR), ("unit_test", UNIT_TEST)
 }
 
 expressions
@@ -67,7 +67,7 @@ expressions
     integer = "(0{octaldigits}?|[1-9]{decdigits}?|0(x|X){hexdigits})(u|U)?";
     floating = "({fraction}{exponent}?|{decdigits}{exponent})(f|F)?";
     escape = "\\((x|X){hexdigits}|(d|D){decdigits}|{octaldigits}|u{hex4}|U{hex8}|(a|b|f|n|r|t|v|.))";
-    char = "(w|u)?'([^\\\r\n']+|{escape})'";
+    character = "(w|u)?'([^\\\r\n']+|{escape})'";
     string = "((w|u)?@\"[^\"]*\")|(w|u)?\"([^\\\r\n\"]|{escape})*\"";
 }
 
@@ -77,7 +77,7 @@ lexer api(CMAJOR_LEXER_API) CmajorLexer
     "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
     "{integer}" { return INTLIT; }
     "{floating}" { return FLOATINGLIT; }
-    "{char}" { return CHARLIT; }
+    "{character}" { return CHARLIT; }
     "{string}" { return STRINGLIT; }
     "<=>" { return EQUIVALENCE; }
     "=>" { return IMPLICATION; }
@@ -101,7 +101,7 @@ lexer api(CMAJOR_LEXER_API) CmajorLexer
     "%" { return REM; }
     "\+\+" { return PLUSPLUS; }
     "--" { return MINUSMINUS; }
-    "!" { return NOT; }
+    "!" { return EXCLAMATION; }
     "~" { return CPL; }
     "\." { return DOT; }
     "->" { return ARROW; }

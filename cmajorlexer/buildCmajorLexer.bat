@@ -1,2 +1,2 @@
 @echo off
-lexergen --verbose CmajorLexer.lexer
+slg --verbose CmajorLexer.lexer

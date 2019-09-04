@@ -2238,7 +2238,7 @@ soulng::parser::Match ExpressionParser::Prefix(CmajorLexer& lexer, ParsingContex
                                         Span span = lexer.GetSpan();
                                         bool pass = true;
                                         soulng::parser::Match match(false);
-                                        if (*lexer == NOT)
+                                        if (*lexer == EXCLAMATION)
                                         {
                                             ++lexer;
                                             match.hit = true;

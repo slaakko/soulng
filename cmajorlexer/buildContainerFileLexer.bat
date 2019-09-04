@@ -1,2 +1,2 @@
 @echo off
-lexergen --verbose ContainerFileLexer.lexer
+slg --verbose ContainerFileLexer.lexer

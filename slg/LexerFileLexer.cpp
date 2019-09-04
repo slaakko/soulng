@@ -16603,7 +16603,7 @@ int LexerFileLexer::GetTokenId(int statementIndex)
         case 30:
         {
             Retract();
-            return NOT;
+            return EXCLAMATION;
             break;
         }
         case 31:

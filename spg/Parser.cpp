@@ -321,7 +321,7 @@ void RuleParser::SetInfo(const std::u32string& info_)
     info = info_;
 }
 
-GrammarParser::GrammarParser(const std::u32string& name_) : Parser(name_), main(false)
+GrammarParser::GrammarParser(const std::u32string& name_, const std::u32string& api_) : Parser(name_), api(api_), main(false)
 {
 }
 

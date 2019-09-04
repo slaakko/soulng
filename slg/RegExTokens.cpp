@@ -2,34 +2,34 @@
 // this file has been automatically generated from 'D:/work/soulng/slg/RegExLexer.lexer' using soulng lexer generator slg version 1.0.0
 
 #include <map>
-static std::map<std::u32string, int> tokenIdMap;
+std::map<std::u32string, int> tokenIdMapRegExTokens;
 #include <soulng/slg/RegExTokens.hpp>
-
-static void Init()
-{
-    tokenIdMap[U"ALT"] = 7;
-    tokenIdMap[U"CHAR"] = 15;
-    tokenIdMap[U"DOT"] = 11;
-    tokenIdMap[U"ESCAPE"] = 12;
-    tokenIdMap[U"INVERSE"] = 13;
-    tokenIdMap[U"LBRACE"] = 5;
-    tokenIdMap[U"LBRACKET"] = 3;
-    tokenIdMap[U"LPAREN"] = 1;
-    tokenIdMap[U"MINUS"] = 14;
-    tokenIdMap[U"PLUS"] = 9;
-    tokenIdMap[U"QUEST"] = 10;
-    tokenIdMap[U"RBRACE"] = 6;
-    tokenIdMap[U"RBRACKET"] = 4;
-    tokenIdMap[U"RPAREN"] = 2;
-    tokenIdMap[U"STAR"] = 8;
-}
 
 namespace RegExTokens
 {
+    void InitTokenIdMap()
+    {
+        tokenIdMapRegExTokens[U"ALT"] = 7;
+        tokenIdMapRegExTokens[U"CHAR"] = 15;
+        tokenIdMapRegExTokens[U"DOT"] = 11;
+        tokenIdMapRegExTokens[U"ESCAPE"] = 12;
+        tokenIdMapRegExTokens[U"INVERSE"] = 13;
+        tokenIdMapRegExTokens[U"LBRACE"] = 5;
+        tokenIdMapRegExTokens[U"LBRACKET"] = 3;
+        tokenIdMapRegExTokens[U"LPAREN"] = 1;
+        tokenIdMapRegExTokens[U"MINUS"] = 14;
+        tokenIdMapRegExTokens[U"PLUS"] = 9;
+        tokenIdMapRegExTokens[U"QUEST"] = 10;
+        tokenIdMapRegExTokens[U"RBRACE"] = 6;
+        tokenIdMapRegExTokens[U"RBRACKET"] = 4;
+        tokenIdMapRegExTokens[U"RPAREN"] = 2;
+        tokenIdMapRegExTokens[U"STAR"] = 8;
+    }
+
     int GetTokenId(const std::u32string& tokenName)
     {
-        auto it = tokenIdMap.find(tokenName);
-        if (it != tokenIdMap.cend())
+        auto it = tokenIdMapRegExTokens.find(tokenName);
+        if (it != tokenIdMapRegExTokens.cend())
         {
             return it->second;
         }
@@ -39,7 +39,7 @@ namespace RegExTokens
         }
     }
 
-    static const char* tokenName[] =
+    const char* tokenName[] =
     {
         "END",
         "LPAREN",
@@ -64,7 +64,7 @@ namespace RegExTokens
         return tokenName[tokenId];
     }
 
-    static const char* tokenInfo[] =
+    const char* tokenInfo[] =
     {
         "end of file",
         "'('",
@@ -91,7 +91,7 @@ namespace RegExTokens
 
     struct Initializer
     {
-        Initializer() { Init(); }
+        Initializer() { InitTokenIdMap(); }
     };
 
     Initializer initializer;

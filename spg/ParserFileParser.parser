@@ -62,10 +62,15 @@ parser ParserFileParser
         ;
 
     ParserDeclaration(var std::unique_ptr<soulng::spg::GrammarParser> grammarParser) : soulng::spg::GrammarParser*
-        ::= (PARSER ID{ grammarParser.reset(new soulng::spg::GrammarParser(lexer.GetMatch(span))); } LBRACE! Statement(grammarParser.get()):statement* RBRACE!)
+        ::= (PARSER Api:parserApi ID{ grammarParser.reset(new soulng::spg::GrammarParser(lexer.GetMatch(span), parserApi)); } LBRACE! Statement(grammarParser.get()):statement* RBRACE!)
         {
             return grammarParser.release();
         }
+        ;
+
+    Api(var std::u32string id) : std::u32string
+        ::= API LPAREN ID!{ id = lexer.GetMatch(span); } RPAREN!{ return id; }
+        |   empty{ return std::u32string(); }
         ;
 
     Statement(soulng::spg::GrammarParser* grammarParser)
@@ -192,8 +197,10 @@ parser ParserFileParser
         }
         ;
 
-    RuleCall(var std::u32string ruleName, var std::unique_ptr<soulng::cppcode::ExpressionList> exprList, var std::u32string name) : soulng::spg::Parser*
-        ::= Nonterminal:nt{ ruleName = nt; } (LPAREN{ exprList.reset(new soulng::cppcode::ExpressionList()); } ExpressionList(exprList.get()):args RPAREN)? COLON ID!
+    RuleCall(var std::u32string ruleName, var std::unique_ptr<soulng::cppcode::ExpressionList> exprList, var int nonterminalPos) : soulng::spg::Parser*
+        ::= Nonterminal:nt{ ruleName = nt; nonterminalPos = pos; }
+            (LPAREN{ pass = soulng::lexer::NoWhiteSpaceBetweenTokens(lexer.GetToken(nonterminalPos), lexer.GetToken(pos)); exprList.reset(new soulng::cppcode::ExpressionList()); }
+            ExpressionList(exprList.get()):args RPAREN)? COLON ID!
         {
             std::u32string name = lexer.GetMatch(span);
             soulng::spg::NonterminalParser* nonterminalParser = new soulng::spg::NonterminalParser(name, ruleName);

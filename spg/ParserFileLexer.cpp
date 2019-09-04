@@ -195,7 +195,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(49);
+            int tokenId = GetTokenId(48);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -215,7 +215,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(48);
+            int tokenId = GetTokenId(47);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -235,7 +235,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(47);
+            int tokenId = GetTokenId(46);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -255,7 +255,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(43);
+            int tokenId = GetTokenId(42);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -275,7 +275,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(42);
+            int tokenId = GetTokenId(41);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -295,7 +295,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(41);
+            int tokenId = GetTokenId(40);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -315,7 +315,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(40);
+            int tokenId = GetTokenId(39);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -335,7 +335,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(35);
+            int tokenId = GetTokenId(34);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -355,7 +355,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(34);
+            int tokenId = GetTokenId(33);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -375,7 +375,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(30);
+            int tokenId = GetTokenId(29);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -405,7 +405,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(53);
+            int tokenId = GetTokenId(52);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -425,7 +425,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(16);
+            int tokenId = GetTokenId(32);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -455,7 +455,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(59);
+            int tokenId = GetTokenId(18);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -475,7 +475,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(17);
+            int tokenId = GetTokenId(15);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -495,35 +495,11 @@ int ParserFileLexer::NextState(int state, char32_t c)
                 {
                     return 37;
                 }
-                case 49:
-                {
-                    return 38;
-                }
                 default:
                 {
                     return -1;
                 }
             }
-        }
-        case 38:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(12);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            return -1;
         }
         case 37:
         {
@@ -549,7 +525,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(15);
+            int tokenId = GetTokenId(16);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -567,11 +543,11 @@ int ParserFileLexer::NextState(int state, char32_t c)
             {
                 case 46:
                 {
-                    return 39;
+                    return 38;
                 }
                 case 48:
                 {
-                    return 40;
+                    return 39;
                 }
                 default:
                 {
@@ -579,7 +555,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 40:
+        case 39:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -599,11 +575,11 @@ int ParserFileLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 39:
+        case 38:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(60);
+            int tokenId = GetTokenId(57);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -623,7 +599,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(10);
+            int tokenId = GetTokenId(14);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -641,6 +617,10 @@ int ParserFileLexer::NextState(int state, char32_t c)
             {
                 case 46:
                 {
+                    return 40;
+                }
+                case 47:
+                {
                     return 41;
                 }
                 default:
@@ -653,7 +633,27 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(19);
+            int tokenId = GetTokenId(10);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            return -1;
+        }
+        case 40:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(59);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -673,7 +673,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(50);
+            int tokenId = GetTokenId(49);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -703,7 +703,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(18);
+            int tokenId = GetTokenId(17);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -723,7 +723,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(46);
+            int tokenId = GetTokenId(45);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -753,7 +753,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(45);
+            int tokenId = GetTokenId(44);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -803,7 +803,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(39);
+            int tokenId = GetTokenId(38);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -823,7 +823,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(38);
+            int tokenId = GetTokenId(37);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -981,7 +981,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(23);
+            int tokenId = GetTokenId(22);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1015,7 +1015,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(21);
+            int tokenId = GetTokenId(20);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1035,7 +1035,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(25);
+            int tokenId = GetTokenId(24);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1065,7 +1065,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(57);
+            int tokenId = GetTokenId(56);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1085,7 +1085,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(22);
+            int tokenId = GetTokenId(21);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1184,7 +1184,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(20);
+            int tokenId = GetTokenId(19);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1297,7 +1297,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(24);
+            int tokenId = GetTokenId(23);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -1393,7 +1393,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(56);
+            int tokenId = GetTokenId(55);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2551,7 +2551,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(27);
+            int tokenId = GetTokenId(26);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2589,7 +2589,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(55);
+            int tokenId = GetTokenId(54);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2609,7 +2609,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(37);
+            int tokenId = GetTokenId(36);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2639,7 +2639,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(14);
+            int tokenId = GetTokenId(13);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2659,7 +2659,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(32);
+            int tokenId = GetTokenId(31);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2679,7 +2679,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(26);
+            int tokenId = GetTokenId(25);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2713,7 +2713,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(54);
+            int tokenId = GetTokenId(53);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2733,7 +2733,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(31);
+            int tokenId = GetTokenId(30);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2753,7 +2753,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(36);
+            int tokenId = GetTokenId(35);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2808,7 +2808,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(44);
+            int tokenId = GetTokenId(43);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -2828,7 +2828,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(13);
+            int tokenId = GetTokenId(12);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -8805,7 +8805,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(28);
+            int tokenId = GetTokenId(27);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -8835,7 +8835,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(51);
+            int tokenId = GetTokenId(50);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -8855,7 +8855,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(29);
+            int tokenId = GetTokenId(28);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -8893,7 +8893,7 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
-            int tokenId = GetTokenId(52);
+            int tokenId = GetTokenId(51);
             if (tokenId == CONTINUE_TOKEN)
             {
                 token.id = tokenId;
@@ -16983,305 +16983,299 @@ int ParserFileLexer::GetTokenId(int statementIndex)
         case 10:
         {
             Retract();
-            return EXCLAMATION;
+            return DISJUNCTION;
             break;
         }
         case 11:
         {
             Retract();
-            return DISJUNCTION;
+            return AMPAMP;
             break;
         }
         case 12:
         {
             Retract();
-            return AMPAMP;
+            return DOTSTAR;
             break;
         }
         case 13:
         {
             Retract();
-            return DOTSTAR;
+            return ARROWSTAR;
             break;
         }
         case 14:
         {
             Retract();
-            return ARROWSTAR;
+            return BITOR;
             break;
         }
         case 15:
         {
             Retract();
-            return BITOR;
+            return BITXOR;
             break;
         }
         case 16:
         {
             Retract();
-            return BITXOR;
+            return AMP;
             break;
         }
         case 17:
         {
             Retract();
-            return AMP;
+            return EQ;
             break;
         }
         case 18:
         {
             Retract();
-            return EQ;
+            return NEQ;
             break;
         }
         case 19:
         {
             Retract();
-            return NEQ;
+            return LEQ;
             break;
         }
         case 20:
         {
             Retract();
-            return LEQ;
+            return GEQ;
             break;
         }
         case 21:
         {
             Retract();
-            return GEQ;
+            return LANGLE;
             break;
         }
         case 22:
         {
             Retract();
-            return LANGLE;
+            return RANGLE;
             break;
         }
         case 23:
         {
             Retract();
-            return RANGLE;
-            break;
-        }
-        case 24:
-        {
-            Retract();
             return SHIFTLEFT;
             break;
         }
-        case 25:
+        case 24:
         {
             if (leftAngleCount > 0) return INVALID_TOKEN;
             Retract();
             return SHIFTRIGHT;
             break;
         }
-        case 26:
+        case 25:
         {
             Retract();
             return PLUS;
             break;
         }
-        case 27:
+        case 26:
         {
             Retract();
             return MINUS;
             break;
         }
-        case 28:
+        case 27:
         {
             Retract();
             return STAR;
             break;
         }
-        case 29:
+        case 28:
         {
             Retract();
             return DIV;
             break;
         }
-        case 30:
+        case 29:
         {
             Retract();
             return REM;
             break;
         }
-        case 31:
+        case 30:
         {
             Retract();
             return PLUSPLUS;
             break;
         }
-        case 32:
+        case 31:
         {
             Retract();
             return MINUSMINUS;
             break;
         }
-        case 33:
+        case 32:
         {
             Retract();
-            return NOT;
+            return EXCLAMATION;
             break;
         }
-        case 34:
+        case 33:
         {
             Retract();
             return QUEST;
             break;
         }
-        case 35:
+        case 34:
         {
             Retract();
             return CPL;
             break;
         }
-        case 36:
+        case 35:
         {
             Retract();
             return DOT;
             break;
         }
-        case 37:
+        case 36:
         {
             Retract();
             return ARROW;
             break;
         }
-        case 38:
+        case 37:
         {
             Retract();
             return LBRACKET;
             break;
         }
-        case 39:
+        case 38:
         {
             Retract();
             return RBRACKET;
             break;
         }
-        case 40:
+        case 39:
         {
             Retract();
             return LPAREN;
             break;
         }
-        case 41:
+        case 40:
         {
             Retract();
             return RPAREN;
             break;
         }
-        case 42:
+        case 41:
         {
             Retract();
             return LBRACE;
             break;
         }
-        case 43:
+        case 42:
         {
             Retract();
             return RBRACE;
             break;
         }
-        case 44:
+        case 43:
         {
             Retract();
             return ELLIPSIS;
             break;
         }
-        case 45:
+        case 44:
         {
             Retract();
             return COLONCOLON;
             break;
         }
-        case 46:
+        case 45:
         {
             Retract();
             return COLON;
             break;
         }
-        case 47:
+        case 46:
         {
             Retract();
             return SEMICOLON;
             break;
         }
-        case 48:
+        case 47:
         {
             Retract();
             return HASH;
             break;
         }
-        case 49:
+        case 48:
         {
             Retract();
             return COMMA;
             break;
         }
-        case 50:
+        case 49:
         {
             Retract();
             return ASSIGN;
             break;
         }
-        case 51:
+        case 50:
         {
             Retract();
             return MULASSIGN;
             break;
         }
-        case 52:
+        case 51:
         {
             Retract();
             return DIVASSIGN;
             break;
         }
-        case 53:
+        case 52:
         {
             Retract();
             return REMASSIGN;
             break;
         }
-        case 54:
+        case 53:
         {
             Retract();
             return PLUSASSIGN;
             break;
         }
-        case 55:
+        case 54:
         {
             Retract();
             return MINUSASSIGN;
             break;
         }
-        case 56:
+        case 55:
         {
             Retract();
             return SHIFTLEFTASSIGN;
             break;
         }
-        case 57:
+        case 56:
         {
             Retract();
             return SHIFTRIGHTASSIGN;
             break;
         }
-        case 58:
+        case 57:
         {
             Retract();
             return ANDASSIGN;
             break;
         }
-        case 59:
+        case 58:
         {
             Retract();
             return XORASSIGN;
             break;
         }
-        case 60:
+        case 59:
         {
             Retract();
             return ORASSIGN;

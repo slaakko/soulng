@@ -1,3 +1,6 @@
+
+// this file has been automatically generated from 'D:/work/soulng/cmajorlexer/ContainerFileLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <soulng/cmajorlexer/ContainerFileKeywords.hpp>
 #include <soulng/cmajorlexer/ContainerFileTokens.hpp>
 
@@ -5,7 +8,7 @@ namespace ContainerFileKeywords
 {
     using namespace ContainerFileTokens;
 
-    static Keyword keywords[] =
+    Keyword keywords[] =
     {
         {U"project", PROJECT}, 
         {U"solution", SOLUTION}, 
@@ -20,7 +23,7 @@ namespace ContainerFileKeywords
         {nullptr, -1}
     };
 
-    static KeywordMap keywordMap(keywords);
+    KeywordMap keywordMap(keywords);
 
     KeywordMap* GetKeywordMap()
     {

@@ -7,4 +7,10 @@
 
 namespace soulng { namespace lexer {
 
+bool NoWhiteSpaceBetweenTokens(const Token& first, const Token& second)
+{
+    if (first.match.end == second.match.begin) return true;
+    return false;
+}
+
 } } // namespace soulng::lexer

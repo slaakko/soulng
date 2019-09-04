@@ -249,7 +249,7 @@ parser ExpressionParser
             |   MINUSMINUS{ s = span; op = Operator::minusminus; }
             |   PLUS{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::plus; } }
             |   MINUS{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::minus; } }
-            |   NOT{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::not_; } }
+            |   EXCLAMATION{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::not_; } }
             |   CPL{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::complement; } }
             |   STAR{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::deref; } }
             |   AMP{ if (ctx->parsingExpressionStatement && !ctx->parsingArguments) pass = false; else { s = span; op = Operator::addrOf; } }

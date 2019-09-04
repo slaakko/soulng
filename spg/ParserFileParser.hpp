@@ -18,6 +18,7 @@ struct ParserFileParser
     static soulng::parser::Match IncludePrefix(ParserFileLexer& lexer);
     static soulng::parser::Match UsingNamespaceDeclaration(ParserFileLexer& lexer);
     static soulng::parser::Match ParserDeclaration(ParserFileLexer& lexer);
+    static soulng::parser::Match Api(ParserFileLexer& lexer);
     static soulng::parser::Match Statement(ParserFileLexer& lexer, soulng::spg::GrammarParser* grammarParser);
     static soulng::parser::Match MainStatement(ParserFileLexer& lexer, soulng::spg::GrammarParser* grammarParser);
     static soulng::parser::Match UsingStatement(ParserFileLexer& lexer, soulng::spg::GrammarParser* grammarParser);

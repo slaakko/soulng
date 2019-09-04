@@ -8,7 +8,7 @@ namespace ParserFileKeywords
 {
     using namespace ParserFileTokens;
 
-    static Keyword keywords[] =
+    Keyword keywords[] =
     {
         {U"parser", PARSER}, 
         {U"api", API}, 
@@ -70,7 +70,7 @@ namespace ParserFileKeywords
         {nullptr, -1}
     };
 
-    static KeywordMap keywordMap(keywords);
+    KeywordMap keywordMap(keywords);
 
     KeywordMap* GetKeywordMap()
     {

@@ -2,136 +2,135 @@
 // this file has been automatically generated from 'D:/work/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 1.0.0
 
 #include <map>
-static std::map<std::u32string, int> tokenIdMap;
+std::map<std::u32string, int> tokenIdMapParserFileTokens;
 #include <soulng/spg/ParserFileTokens.hpp>
-
-static void Init()
-{
-    tokenIdMap[U"AMP"] = 74;
-    tokenIdMap[U"AMPAMP"] = 69;
-    tokenIdMap[U"ANDASSIGN"] = 115;
-    tokenIdMap[U"API"] = 2;
-    tokenIdMap[U"ARROW"] = 90;
-    tokenIdMap[U"ARROWSTAR"] = 71;
-    tokenIdMap[U"ASSIGN"] = 107;
-    tokenIdMap[U"AUTO"] = 14;
-    tokenIdMap[U"BITOR"] = 72;
-    tokenIdMap[U"BITXOR"] = 73;
-    tokenIdMap[U"BOOL"] = 21;
-    tokenIdMap[U"BREAK"] = 57;
-    tokenIdMap[U"CASE"] = 49;
-    tokenIdMap[U"CATCH"] = 62;
-    tokenIdMap[U"CHAR"] = 19;
-    tokenIdMap[U"CHARLIT"] = 66;
-    tokenIdMap[U"COLON"] = 103;
-    tokenIdMap[U"COLONCOLON"] = 102;
-    tokenIdMap[U"COMMA"] = 106;
-    tokenIdMap[U"CONST"] = 31;
-    tokenIdMap[U"CONSTCAST"] = 41;
-    tokenIdMap[U"CONTINUE"] = 58;
-    tokenIdMap[U"CPL"] = 88;
-    tokenIdMap[U"CPPPREFIX"] = 9;
-    tokenIdMap[U"DEFAULT"] = 50;
-    tokenIdMap[U"DELETE"] = 45;
-    tokenIdMap[U"DISJUNCTION"] = 68;
-    tokenIdMap[U"DIV"] = 84;
-    tokenIdMap[U"DIVASSIGN"] = 109;
-    tokenIdMap[U"DO"] = 55;
-    tokenIdMap[U"DOT"] = 89;
-    tokenIdMap[U"DOTSTAR"] = 70;
-    tokenIdMap[U"DOUBLE"] = 28;
-    tokenIdMap[U"DYNAMICCAST"] = 38;
-    tokenIdMap[U"ELLIPSIS"] = 101;
-    tokenIdMap[U"ELSE"] = 52;
-    tokenIdMap[U"EMPTY"] = 7;
-    tokenIdMap[U"EQ"] = 75;
-    tokenIdMap[U"EXCLAMATION"] = 13;
-    tokenIdMap[U"EXTERN"] = 17;
-    tokenIdMap[U"FALSE"] = 47;
-    tokenIdMap[U"FILEPATH"] = 11;
-    tokenIdMap[U"FLOAT"] = 27;
-    tokenIdMap[U"FLOATINGLIT"] = 65;
-    tokenIdMap[U"FOR"] = 56;
-    tokenIdMap[U"GEQ"] = 78;
-    tokenIdMap[U"GOTO"] = 60;
-    tokenIdMap[U"HASH"] = 105;
-    tokenIdMap[U"HPPPREFIX"] = 10;
-    tokenIdMap[U"ID"] = 63;
-    tokenIdMap[U"IF"] = 51;
-    tokenIdMap[U"INCLUDE"] = 3;
-    tokenIdMap[U"INT"] = 23;
-    tokenIdMap[U"INTLIT"] = 64;
-    tokenIdMap[U"LANGLE"] = 99;
-    tokenIdMap[U"LBRACE"] = 95;
-    tokenIdMap[U"LBRACKET"] = 97;
-    tokenIdMap[U"LEQ"] = 77;
-    tokenIdMap[U"LONG"] = 24;
-    tokenIdMap[U"LPAREN"] = 93;
-    tokenIdMap[U"MAIN"] = 4;
-    tokenIdMap[U"MINUS"] = 82;
-    tokenIdMap[U"MINUSASSIGN"] = 112;
-    tokenIdMap[U"MINUSMINUS"] = 87;
-    tokenIdMap[U"MULASSIGN"] = 108;
-    tokenIdMap[U"MUTABLE"] = 18;
-    tokenIdMap[U"NAMESPACE"] = 34;
-    tokenIdMap[U"NEQ"] = 76;
-    tokenIdMap[U"NEW"] = 44;
-    tokenIdMap[U"NOT"] = 91;
-    tokenIdMap[U"NULLPTR"] = 48;
-    tokenIdMap[U"OPERATOR"] = 37;
-    tokenIdMap[U"ORASSIGN"] = 117;
-    tokenIdMap[U"PARSER"] = 1;
-    tokenIdMap[U"PLUS"] = 81;
-    tokenIdMap[U"PLUSASSIGN"] = 111;
-    tokenIdMap[U"PLUSPLUS"] = 86;
-    tokenIdMap[U"PRODUCES"] = 12;
-    tokenIdMap[U"QUEST"] = 92;
-    tokenIdMap[U"RANGLE"] = 100;
-    tokenIdMap[U"RBRACE"] = 96;
-    tokenIdMap[U"RBRACKET"] = 98;
-    tokenIdMap[U"REGISTER"] = 15;
-    tokenIdMap[U"REINTERPRETCAST"] = 40;
-    tokenIdMap[U"REM"] = 85;
-    tokenIdMap[U"REMASSIGN"] = 110;
-    tokenIdMap[U"RETURN"] = 59;
-    tokenIdMap[U"RPAREN"] = 94;
-    tokenIdMap[U"RULEINFO"] = 6;
-    tokenIdMap[U"SEMICOLON"] = 104;
-    tokenIdMap[U"SHIFTLEFT"] = 79;
-    tokenIdMap[U"SHIFTLEFTASSIGN"] = 113;
-    tokenIdMap[U"SHIFTRIGHT"] = 80;
-    tokenIdMap[U"SHIFTRIGHTASSIGN"] = 114;
-    tokenIdMap[U"SHORT"] = 22;
-    tokenIdMap[U"SIGNED"] = 25;
-    tokenIdMap[U"SIZEOF"] = 36;
-    tokenIdMap[U"STAR"] = 83;
-    tokenIdMap[U"STATIC"] = 16;
-    tokenIdMap[U"STATICCAST"] = 39;
-    tokenIdMap[U"STRINGLIT"] = 67;
-    tokenIdMap[U"SWITCH"] = 53;
-    tokenIdMap[U"THIS"] = 43;
-    tokenIdMap[U"THROW"] = 35;
-    tokenIdMap[U"TRUE"] = 46;
-    tokenIdMap[U"TRY"] = 61;
-    tokenIdMap[U"TYPEDEF"] = 30;
-    tokenIdMap[U"TYPEID"] = 42;
-    tokenIdMap[U"UNSIGNED"] = 26;
-    tokenIdMap[U"USELEXER"] = 5;
-    tokenIdMap[U"USING"] = 33;
-    tokenIdMap[U"VAR"] = 8;
-    tokenIdMap[U"VOID"] = 29;
-    tokenIdMap[U"VOLATILE"] = 32;
-    tokenIdMap[U"WCHART"] = 20;
-    tokenIdMap[U"WHILE"] = 54;
-    tokenIdMap[U"XORASSIGN"] = 116;
-}
 
 namespace ParserFileTokens
 {
+    void InitTokenIdMap()
+    {
+        tokenIdMapParserFileTokens[U"AMP"] = 74;
+        tokenIdMapParserFileTokens[U"AMPAMP"] = 69;
+        tokenIdMapParserFileTokens[U"ANDASSIGN"] = 114;
+        tokenIdMapParserFileTokens[U"API"] = 2;
+        tokenIdMapParserFileTokens[U"ARROW"] = 90;
+        tokenIdMapParserFileTokens[U"ARROWSTAR"] = 71;
+        tokenIdMapParserFileTokens[U"ASSIGN"] = 106;
+        tokenIdMapParserFileTokens[U"AUTO"] = 14;
+        tokenIdMapParserFileTokens[U"BITOR"] = 72;
+        tokenIdMapParserFileTokens[U"BITXOR"] = 73;
+        tokenIdMapParserFileTokens[U"BOOL"] = 21;
+        tokenIdMapParserFileTokens[U"BREAK"] = 57;
+        tokenIdMapParserFileTokens[U"CASE"] = 49;
+        tokenIdMapParserFileTokens[U"CATCH"] = 62;
+        tokenIdMapParserFileTokens[U"CHAR"] = 19;
+        tokenIdMapParserFileTokens[U"CHARLIT"] = 66;
+        tokenIdMapParserFileTokens[U"COLON"] = 102;
+        tokenIdMapParserFileTokens[U"COLONCOLON"] = 101;
+        tokenIdMapParserFileTokens[U"COMMA"] = 105;
+        tokenIdMapParserFileTokens[U"CONST"] = 31;
+        tokenIdMapParserFileTokens[U"CONSTCAST"] = 41;
+        tokenIdMapParserFileTokens[U"CONTINUE"] = 58;
+        tokenIdMapParserFileTokens[U"CPL"] = 88;
+        tokenIdMapParserFileTokens[U"CPPPREFIX"] = 9;
+        tokenIdMapParserFileTokens[U"DEFAULT"] = 50;
+        tokenIdMapParserFileTokens[U"DELETE"] = 45;
+        tokenIdMapParserFileTokens[U"DISJUNCTION"] = 68;
+        tokenIdMapParserFileTokens[U"DIV"] = 84;
+        tokenIdMapParserFileTokens[U"DIVASSIGN"] = 108;
+        tokenIdMapParserFileTokens[U"DO"] = 55;
+        tokenIdMapParserFileTokens[U"DOT"] = 89;
+        tokenIdMapParserFileTokens[U"DOTSTAR"] = 70;
+        tokenIdMapParserFileTokens[U"DOUBLE"] = 28;
+        tokenIdMapParserFileTokens[U"DYNAMICCAST"] = 38;
+        tokenIdMapParserFileTokens[U"ELLIPSIS"] = 100;
+        tokenIdMapParserFileTokens[U"ELSE"] = 52;
+        tokenIdMapParserFileTokens[U"EMPTY"] = 7;
+        tokenIdMapParserFileTokens[U"EQ"] = 75;
+        tokenIdMapParserFileTokens[U"EXCLAMATION"] = 13;
+        tokenIdMapParserFileTokens[U"EXTERN"] = 17;
+        tokenIdMapParserFileTokens[U"FALSE"] = 47;
+        tokenIdMapParserFileTokens[U"FILEPATH"] = 11;
+        tokenIdMapParserFileTokens[U"FLOAT"] = 27;
+        tokenIdMapParserFileTokens[U"FLOATINGLIT"] = 65;
+        tokenIdMapParserFileTokens[U"FOR"] = 56;
+        tokenIdMapParserFileTokens[U"GEQ"] = 78;
+        tokenIdMapParserFileTokens[U"GOTO"] = 60;
+        tokenIdMapParserFileTokens[U"HASH"] = 104;
+        tokenIdMapParserFileTokens[U"HPPPREFIX"] = 10;
+        tokenIdMapParserFileTokens[U"ID"] = 63;
+        tokenIdMapParserFileTokens[U"IF"] = 51;
+        tokenIdMapParserFileTokens[U"INCLUDE"] = 3;
+        tokenIdMapParserFileTokens[U"INT"] = 23;
+        tokenIdMapParserFileTokens[U"INTLIT"] = 64;
+        tokenIdMapParserFileTokens[U"LANGLE"] = 98;
+        tokenIdMapParserFileTokens[U"LBRACE"] = 94;
+        tokenIdMapParserFileTokens[U"LBRACKET"] = 96;
+        tokenIdMapParserFileTokens[U"LEQ"] = 77;
+        tokenIdMapParserFileTokens[U"LONG"] = 24;
+        tokenIdMapParserFileTokens[U"LPAREN"] = 92;
+        tokenIdMapParserFileTokens[U"MAIN"] = 4;
+        tokenIdMapParserFileTokens[U"MINUS"] = 82;
+        tokenIdMapParserFileTokens[U"MINUSASSIGN"] = 111;
+        tokenIdMapParserFileTokens[U"MINUSMINUS"] = 87;
+        tokenIdMapParserFileTokens[U"MULASSIGN"] = 107;
+        tokenIdMapParserFileTokens[U"MUTABLE"] = 18;
+        tokenIdMapParserFileTokens[U"NAMESPACE"] = 34;
+        tokenIdMapParserFileTokens[U"NEQ"] = 76;
+        tokenIdMapParserFileTokens[U"NEW"] = 44;
+        tokenIdMapParserFileTokens[U"NULLPTR"] = 48;
+        tokenIdMapParserFileTokens[U"OPERATOR"] = 37;
+        tokenIdMapParserFileTokens[U"ORASSIGN"] = 116;
+        tokenIdMapParserFileTokens[U"PARSER"] = 1;
+        tokenIdMapParserFileTokens[U"PLUS"] = 81;
+        tokenIdMapParserFileTokens[U"PLUSASSIGN"] = 110;
+        tokenIdMapParserFileTokens[U"PLUSPLUS"] = 86;
+        tokenIdMapParserFileTokens[U"PRODUCES"] = 12;
+        tokenIdMapParserFileTokens[U"QUEST"] = 91;
+        tokenIdMapParserFileTokens[U"RANGLE"] = 99;
+        tokenIdMapParserFileTokens[U"RBRACE"] = 95;
+        tokenIdMapParserFileTokens[U"RBRACKET"] = 97;
+        tokenIdMapParserFileTokens[U"REGISTER"] = 15;
+        tokenIdMapParserFileTokens[U"REINTERPRETCAST"] = 40;
+        tokenIdMapParserFileTokens[U"REM"] = 85;
+        tokenIdMapParserFileTokens[U"REMASSIGN"] = 109;
+        tokenIdMapParserFileTokens[U"RETURN"] = 59;
+        tokenIdMapParserFileTokens[U"RPAREN"] = 93;
+        tokenIdMapParserFileTokens[U"RULEINFO"] = 6;
+        tokenIdMapParserFileTokens[U"SEMICOLON"] = 103;
+        tokenIdMapParserFileTokens[U"SHIFTLEFT"] = 79;
+        tokenIdMapParserFileTokens[U"SHIFTLEFTASSIGN"] = 112;
+        tokenIdMapParserFileTokens[U"SHIFTRIGHT"] = 80;
+        tokenIdMapParserFileTokens[U"SHIFTRIGHTASSIGN"] = 113;
+        tokenIdMapParserFileTokens[U"SHORT"] = 22;
+        tokenIdMapParserFileTokens[U"SIGNED"] = 25;
+        tokenIdMapParserFileTokens[U"SIZEOF"] = 36;
+        tokenIdMapParserFileTokens[U"STAR"] = 83;
+        tokenIdMapParserFileTokens[U"STATIC"] = 16;
+        tokenIdMapParserFileTokens[U"STATICCAST"] = 39;
+        tokenIdMapParserFileTokens[U"STRINGLIT"] = 67;
+        tokenIdMapParserFileTokens[U"SWITCH"] = 53;
+        tokenIdMapParserFileTokens[U"THIS"] = 43;
+        tokenIdMapParserFileTokens[U"THROW"] = 35;
+        tokenIdMapParserFileTokens[U"TRUE"] = 46;
+        tokenIdMapParserFileTokens[U"TRY"] = 61;
+        tokenIdMapParserFileTokens[U"TYPEDEF"] = 30;
+        tokenIdMapParserFileTokens[U"TYPEID"] = 42;
+        tokenIdMapParserFileTokens[U"UNSIGNED"] = 26;
+        tokenIdMapParserFileTokens[U"USELEXER"] = 5;
+        tokenIdMapParserFileTokens[U"USING"] = 33;
+        tokenIdMapParserFileTokens[U"VAR"] = 8;
+        tokenIdMapParserFileTokens[U"VOID"] = 29;
+        tokenIdMapParserFileTokens[U"VOLATILE"] = 32;
+        tokenIdMapParserFileTokens[U"WCHART"] = 20;
+        tokenIdMapParserFileTokens[U"WHILE"] = 54;
+        tokenIdMapParserFileTokens[U"XORASSIGN"] = 115;
+    }
+
     int GetTokenId(const std::u32string& tokenName)
     {
-        auto it = tokenIdMap.find(tokenName);
-        if (it != tokenIdMap.cend())
+        auto it = tokenIdMapParserFileTokens.find(tokenName);
+        if (it != tokenIdMapParserFileTokens.cend())
         {
             return it->second;
         }
@@ -141,7 +140,7 @@ namespace ParserFileTokens
         }
     }
 
-    static const char* tokenName[] =
+    const char* tokenName[] =
     {
         "END",
         "PARSER",
@@ -234,7 +233,6 @@ namespace ParserFileTokens
         "CPL",
         "DOT",
         "ARROW",
-        "NOT",
         "QUEST",
         "LPAREN",
         "RPAREN",
@@ -268,7 +266,7 @@ namespace ParserFileTokens
         return tokenName[tokenId];
     }
 
-    static const char* tokenInfo[] =
+    const char* tokenInfo[] =
     {
         "end of file",
         "'parser'",
@@ -361,7 +359,6 @@ namespace ParserFileTokens
         "'~'",
         "'.'",
         "'->'",
-        "'!'",
         "'?'",
         "'('",
         "')'",
@@ -397,7 +394,7 @@ namespace ParserFileTokens
 
     struct Initializer
     {
-        Initializer() { Init(); }
+        Initializer() { InitTokenIdMap(); }
     };
 
     Initializer initializer;

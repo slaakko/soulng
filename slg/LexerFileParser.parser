@@ -104,7 +104,7 @@ parser LexerFileParser
         ;
 
     Lexer(var std::u32string lexerDeclarationName, var std::unique_ptr<soulng::slg::Lexer> currentLexer) : soulng::slg::Lexer*
-        ::= LEXER Api:api ID!{ lexerDeclarationName = lexer.GetMatch(span); } LBRACE!{ currentLexer.reset(new soulng::slg::Lexer(api, lexerDeclarationName)); }
+        ::= LEXER Api:lexerApi ID!{ lexerDeclarationName = lexer.GetMatch(span); } LBRACE!{ currentLexer.reset(new soulng::slg::Lexer(lexerApi, lexerDeclarationName)); }
             (LexerClause(currentLexer.get()):lexerClause)* RBRACE!
         {
             return currentLexer.release();
@@ -123,7 +123,7 @@ parser LexerFileParser
         ;
 
     Variables(soulng::slg::Lexer* currentLexer)
-        ::= VARIABLES LBRACE! (Variable:var{ currentLexer->AddVariable(var); })* RBRACE!
+        ::= VARIABLES LBRACE! (Variable:variable{ currentLexer->AddVariable(variable); })* RBRACE!
         ;
 
     Variable(var std::u32string name): soulng::slg::Variable*

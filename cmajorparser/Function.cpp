@@ -462,23 +462,23 @@ soulng::parser::Match FunctionParser::OperatorFunctionGroupId(CmajorLexer& lexer
                                                                                                         int pos = lexer.GetPos();
                                                                                                         soulng::parser::Match match(false);
                                                                                                         soulng::parser::Match* parentMatch26 = &match;
-                                                                                                        int save = lexer.GetPos();
+                                                                                                        {
+                                                                                                            soulng::parser::Match match(false);
+                                                                                                            if (*lexer == LANGLE)
+                                                                                                            {
+                                                                                                                ++lexer;
+                                                                                                                match.hit = true;
+                                                                                                            }
+                                                                                                            *parentMatch26 = match;
+                                                                                                        }
+                                                                                                        if (match.hit)
                                                                                                         {
                                                                                                             soulng::parser::Match match(false);
                                                                                                             soulng::parser::Match* parentMatch27 = &match;
                                                                                                             {
                                                                                                                 soulng::parser::Match match(false);
-                                                                                                                if (*lexer == LANGLE)
-                                                                                                                {
-                                                                                                                    ++lexer;
-                                                                                                                    match.hit = true;
-                                                                                                                }
-                                                                                                                *parentMatch27 = match;
-                                                                                                            }
-                                                                                                            if (match.hit)
-                                                                                                            {
-                                                                                                                soulng::parser::Match match(false);
                                                                                                                 soulng::parser::Match* parentMatch28 = &match;
+                                                                                                                int save = lexer.GetPos();
                                                                                                                 {
                                                                                                                     soulng::parser::Match match(false);
                                                                                                                     if (*lexer == LANGLE)
@@ -488,142 +488,142 @@ soulng::parser::Match FunctionParser::OperatorFunctionGroupId(CmajorLexer& lexer
                                                                                                                     }
                                                                                                                     *parentMatch28 = match;
                                                                                                                 }
-                                                                                                                *parentMatch27 = match;
-                                                                                                            }
-                                                                                                            *parentMatch26 = match;
-                                                                                                        }
-                                                                                                        if (match.hit)
-                                                                                                        {
-                                                                                                            soulng::parser::Match match(false);
-                                                                                                            soulng::parser::Match* parentMatch29 = &match;
-                                                                                                            {
-                                                                                                                int tmp = lexer.GetPos();
-                                                                                                                lexer.SetPos(save);
-                                                                                                                save = tmp;
-                                                                                                                soulng::parser::Match match(false);
-                                                                                                                soulng::parser::Match* parentMatch30 = &match;
+                                                                                                                if (match.hit)
                                                                                                                 {
                                                                                                                     soulng::parser::Match match(false);
-                                                                                                                    soulng::parser::Match* parentMatch31 = &match;
+                                                                                                                    soulng::parser::Match* parentMatch29 = &match;
                                                                                                                     {
+                                                                                                                        int tmp = lexer.GetPos();
+                                                                                                                        lexer.SetPos(save);
+                                                                                                                        save = tmp;
                                                                                                                         soulng::parser::Match match(false);
-                                                                                                                        soulng::parser::Match* parentMatch32 = &match;
+                                                                                                                        soulng::parser::Match* parentMatch30 = &match;
                                                                                                                         {
                                                                                                                             soulng::parser::Match match(false);
-                                                                                                                            if (*lexer == LANGLE)
-                                                                                                                            {
-                                                                                                                                ++lexer;
-                                                                                                                                match.hit = true;
-                                                                                                                            }
-                                                                                                                            *parentMatch32 = match;
-                                                                                                                        }
-                                                                                                                        if (match.hit)
-                                                                                                                        {
-                                                                                                                            soulng::parser::Match match(false);
-                                                                                                                            soulng::parser::Match* parentMatch33 = &match;
+                                                                                                                            soulng::parser::Match* parentMatch31 = &match;
                                                                                                                             {
                                                                                                                                 soulng::parser::Match match(false);
-                                                                                                                                if (*lexer == LANGLE)
+                                                                                                                                soulng::parser::Match* parentMatch32 = &match;
                                                                                                                                 {
-                                                                                                                                    ++lexer;
-                                                                                                                                    match.hit = true;
+                                                                                                                                    soulng::parser::Match match(false);
+                                                                                                                                    if (*lexer == LANGLE)
+                                                                                                                                    {
+                                                                                                                                        ++lexer;
+                                                                                                                                        match.hit = true;
+                                                                                                                                    }
+                                                                                                                                    *parentMatch32 = match;
                                                                                                                                 }
-                                                                                                                                *parentMatch33 = match;
-                                                                                                                            }
-                                                                                                                            *parentMatch32 = match;
-                                                                                                                        }
-                                                                                                                        *parentMatch31 = match;
-                                                                                                                    }
-                                                                                                                    if (match.hit)
-                                                                                                                    {
-                                                                                                                        soulng::parser::Match match(false);
-                                                                                                                        soulng::parser::Match* parentMatch34 = &match;
-                                                                                                                        {
-                                                                                                                            soulng::parser::Match match(false);
-                                                                                                                            soulng::parser::Match* parentMatch35 = &match;
-                                                                                                                            {
-                                                                                                                                soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
-                                                                                                                                typeExpr.reset(static_cast<Node*>(match.value));
-                                                                                                                                *parentMatch35 = match;
+                                                                                                                                if (match.hit)
+                                                                                                                                {
+                                                                                                                                    soulng::parser::Match match(false);
+                                                                                                                                    soulng::parser::Match* parentMatch33 = &match;
+                                                                                                                                    {
+                                                                                                                                        soulng::parser::Match match(false);
+                                                                                                                                        if (*lexer == LANGLE)
+                                                                                                                                        {
+                                                                                                                                            ++lexer;
+                                                                                                                                            match.hit = true;
+                                                                                                                                        }
+                                                                                                                                        *parentMatch33 = match;
+                                                                                                                                    }
+                                                                                                                                    *parentMatch32 = match;
+                                                                                                                                }
+                                                                                                                                *parentMatch31 = match;
                                                                                                                             }
                                                                                                                             if (match.hit)
                                                                                                                             {
                                                                                                                                 soulng::parser::Match match(false);
-                                                                                                                                soulng::parser::Match* parentMatch36 = &match;
+                                                                                                                                soulng::parser::Match* parentMatch34 = &match;
                                                                                                                                 {
-                                                                                                                                    soulng::parser::Match match(true);
-                                                                                                                                    soulng::parser::Match* parentMatch37 = &match;
+                                                                                                                                    soulng::parser::Match match(false);
+                                                                                                                                    soulng::parser::Match* parentMatch35 = &match;
                                                                                                                                     {
-                                                                                                                                        while (true)
+                                                                                                                                        soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
+                                                                                                                                        typeExpr.reset(static_cast<Node*>(match.value));
+                                                                                                                                        *parentMatch35 = match;
+                                                                                                                                    }
+                                                                                                                                    if (match.hit)
+                                                                                                                                    {
+                                                                                                                                        soulng::parser::Match match(false);
+                                                                                                                                        soulng::parser::Match* parentMatch36 = &match;
                                                                                                                                         {
-                                                                                                                                            int save = lexer.GetPos();
+                                                                                                                                            soulng::parser::Match match(true);
+                                                                                                                                            soulng::parser::Match* parentMatch37 = &match;
                                                                                                                                             {
-                                                                                                                                                soulng::parser::Match match(false);
-                                                                                                                                                soulng::parser::Match* parentMatch38 = &match;
+                                                                                                                                                while (true)
                                                                                                                                                 {
-                                                                                                                                                    soulng::parser::Match match(false);
-                                                                                                                                                    if (*lexer == COMMA)
+                                                                                                                                                    int save = lexer.GetPos();
                                                                                                                                                     {
-                                                                                                                                                        ++lexer;
-                                                                                                                                                        match.hit = true;
+                                                                                                                                                        soulng::parser::Match match(false);
+                                                                                                                                                        soulng::parser::Match* parentMatch38 = &match;
+                                                                                                                                                        {
+                                                                                                                                                            soulng::parser::Match match(false);
+                                                                                                                                                            if (*lexer == COMMA)
+                                                                                                                                                            {
+                                                                                                                                                                ++lexer;
+                                                                                                                                                                match.hit = true;
+                                                                                                                                                            }
+                                                                                                                                                            *parentMatch38 = match;
+                                                                                                                                                        }
+                                                                                                                                                        if (match.hit)
+                                                                                                                                                        {
+                                                                                                                                                            soulng::parser::Match match(false);
+                                                                                                                                                            soulng::parser::Match* parentMatch39 = &match;
+                                                                                                                                                            {
+                                                                                                                                                                soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
+                                                                                                                                                                typeExpr.reset(static_cast<Node*>(match.value));
+                                                                                                                                                                *parentMatch39 = match;
+                                                                                                                                                            }
+                                                                                                                                                            *parentMatch38 = match;
+                                                                                                                                                        }
+                                                                                                                                                        if (match.hit)
+                                                                                                                                                        {
+                                                                                                                                                            *parentMatch37 = match;
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                                                            lexer.SetPos(save);
+                                                                                                                                                            break;
+                                                                                                                                                        }
                                                                                                                                                     }
-                                                                                                                                                    *parentMatch38 = match;
-                                                                                                                                                }
-                                                                                                                                                if (match.hit)
-                                                                                                                                                {
-                                                                                                                                                    soulng::parser::Match match(false);
-                                                                                                                                                    soulng::parser::Match* parentMatch39 = &match;
-                                                                                                                                                    {
-                                                                                                                                                        soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
-                                                                                                                                                        typeExpr.reset(static_cast<Node*>(match.value));
-                                                                                                                                                        *parentMatch39 = match;
-                                                                                                                                                    }
-                                                                                                                                                    *parentMatch38 = match;
-                                                                                                                                                }
-                                                                                                                                                if (match.hit)
-                                                                                                                                                {
-                                                                                                                                                    *parentMatch37 = match;
-                                                                                                                                                }
-                                                                                                                                                else
-                                                                                                                                                {
-                                                                                                                                                    lexer.SetPos(save);
-                                                                                                                                                    break;
                                                                                                                                                 }
                                                                                                                                             }
+                                                                                                                                            *parentMatch36 = match;
                                                                                                                                         }
+                                                                                                                                        *parentMatch35 = match;
                                                                                                                                     }
-                                                                                                                                    *parentMatch36 = match;
+                                                                                                                                    *parentMatch34 = match;
                                                                                                                                 }
-                                                                                                                                *parentMatch35 = match;
+                                                                                                                                *parentMatch31 = match;
                                                                                                                             }
-                                                                                                                            *parentMatch34 = match;
+                                                                                                                            *parentMatch30 = match;
                                                                                                                         }
-                                                                                                                        *parentMatch31 = match;
-                                                                                                                    }
-                                                                                                                    *parentMatch30 = match;
-                                                                                                                }
-                                                                                                                if (match.hit)
-                                                                                                                {
-                                                                                                                    soulng::parser::Match match(false);
-                                                                                                                    soulng::parser::Match* parentMatch40 = &match;
-                                                                                                                    {
-                                                                                                                        soulng::parser::Match match(false);
-                                                                                                                        if (*lexer == RANGLE)
+                                                                                                                        if (match.hit)
                                                                                                                         {
-                                                                                                                            ++lexer;
-                                                                                                                            match.hit = true;
+                                                                                                                            soulng::parser::Match match(false);
+                                                                                                                            soulng::parser::Match* parentMatch40 = &match;
+                                                                                                                            {
+                                                                                                                                soulng::parser::Match match(false);
+                                                                                                                                if (*lexer == RANGLE)
+                                                                                                                                {
+                                                                                                                                    ++lexer;
+                                                                                                                                    match.hit = true;
+                                                                                                                                }
+                                                                                                                                *parentMatch40 = match;
+                                                                                                                            }
+                                                                                                                            *parentMatch30 = match;
                                                                                                                         }
-                                                                                                                        *parentMatch40 = match;
+                                                                                                                        *parentMatch29 = match;
                                                                                                                     }
-                                                                                                                    *parentMatch30 = match;
+                                                                                                                    if (!match.hit)
+                                                                                                                    {
+                                                                                                                        lexer.SetPos(save);
+                                                                                                                    }
+                                                                                                                    *parentMatch28 = soulng::parser::Match(!match.hit, match.value);
                                                                                                                 }
-                                                                                                                *parentMatch29 = match;
+                                                                                                                *parentMatch27 = match;
                                                                                                             }
-                                                                                                            if (!match.hit)
-                                                                                                            {
-                                                                                                                lexer.SetPos(save);
-                                                                                                            }
-                                                                                                            *parentMatch26 = soulng::parser::Match(!match.hit, match.value);
+                                                                                                            *parentMatch26 = match;
                                                                                                         }
                                                                                                         if (match.hit)
                                                                                                         {
@@ -1079,7 +1079,7 @@ soulng::parser::Match FunctionParser::OperatorFunctionGroupId(CmajorLexer& lexer
                                                 {
                                                     int pos = lexer.GetPos();
                                                     soulng::parser::Match match(false);
-                                                    if (*lexer == NOT)
+                                                    if (*lexer == EXCLAMATION)
                                                     {
                                                         ++lexer;
                                                         match.hit = true;

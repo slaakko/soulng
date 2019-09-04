@@ -24,6 +24,7 @@ namespace RegExTokens
     const int MINUS = 14;
     const int CHAR = 15;
 
+    void InitTokenIdMap();
     int GetTokenId(const std::u32string& tokenName);
     const char* GetTokenName(int tokenId);
     const char* GetTokenInfo(int tokenId);

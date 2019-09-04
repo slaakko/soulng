@@ -1,3 +1,6 @@
+
+// this file has been automatically generated from 'D:/work/soulng/cmajorlexer/ContainerFileLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <soulng/cmajorlexer/ContainerFileLexer.hpp>
 #include <soulng/cmajorlexer/ContainerFileKeywords.hpp>
 #include <soulng/lexer/Token.hpp>

@@ -255,7 +255,7 @@ parser CppExpressionParser
         |   AMP{ return soulng::cppcode::Operator::addrOf; }
         |   PLUS{ return soulng::cppcode::Operator::plus; }
         |   MINUS{ return soulng::cppcode::Operator::minus; }
-        |   NOT{ return soulng::cppcode::Operator::not_; }
+        |   EXCLAMATION{ return soulng::cppcode::Operator::not_; }
         |   CPL{ return soulng::cppcode::Operator::cpl; }
         ;
 
@@ -296,7 +296,7 @@ parser CppExpressionParser
     PrimaryExpression(var std::unique_ptr<soulng::cppcode::CppObject> expr) : soulng::cppcode::CppObject*
         ::= CppLiteral:literal{ return literal; }
         |   THIS{ return new soulng::cppcode::ThisAccess(); }
-        |   LPAREN CppExpression:pexpr RPAREN!{ return new soulng::cppcode::ParenExpr(pexpr); }
+        |   LPAREN CppExpression:pexpr RPAREN{ return new soulng::cppcode::ParenExpr(pexpr); }
         |   IdExpression:idExpr{ return idExpr; }
         ;
 
@@ -397,7 +397,7 @@ parser CppExpressionParser
         |   LANGLE
         |   RANGLE
         |   ASSIGN
-        |   NOT
+        |   EXCLAMATION
         |   CPL
         |   BITOR
         |   AMP

@@ -255,7 +255,7 @@ parser CppExpressionParser
         |   AMP{ return soulng::cppcode::Operator::addrOf; }
         |   PLUS{ return soulng::cppcode::Operator::plus; }
         |   MINUS{ return soulng::cppcode::Operator::minus; }
-        |   NOT{ return soulng::cppcode::Operator::not_; }
+        |   EXCLAMATION{ return soulng::cppcode::Operator::not_; }
         |   CPL{ return soulng::cppcode::Operator::cpl; }
         ;
 
@@ -397,7 +397,7 @@ parser CppExpressionParser
         |   LANGLE
         |   RANGLE
         |   ASSIGN
-        |   NOT
+        |   EXCLAMATION
         |   CPL
         |   BITOR
         |   AMP

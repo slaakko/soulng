@@ -632,8 +632,16 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
         else
         {
             lexerTypeName = "soulng::lexer::Lexer";
+            std::cout << "warning: 'uselexer' statement missing from '" + ToUtf8(parser.Name()) + "' parser." << std::endl;
         }
-        formatter->WriteLine("struct " + ToUtf8(parser.Name()));
+        if (parser.Api().empty())
+        {
+            formatter->WriteLine("struct " + ToUtf8(parser.Name()));
+        }
+        else
+        {
+            formatter->WriteLine("struct " + ToUtf8(parser.Api()) + " " + ToUtf8(parser.Name()));
+        }
         formatter->WriteLine("{");
         formatter->IncIndent();
         if (parser.Main())

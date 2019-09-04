@@ -241,8 +241,9 @@ private:
 class GrammarParser : public Parser
 {
 public:
-    GrammarParser(const std::u32string& name_);
+    GrammarParser(const std::u32string& name_, const std::u32string& api_);
     void Accept(Visitor& visitor) override;
+    const std::u32string& Api() const { return api; }
     void SetMain() { main = true; }
     bool Main() const { return main; }
     void AddUsing(const std::u32string& using_);
@@ -256,6 +257,7 @@ public:
     void AddRuleInfo(const std::u32string& ruleName, const std::u32string& ruleInfo);
     const std::vector<std::pair<std::u32string, std::u32string>>& RuleInfos() const { return ruleInfos; }
 private:
+    std::u32string api;
     bool main;
     std::vector<std::u32string> usings;
     std::u32string lexer;

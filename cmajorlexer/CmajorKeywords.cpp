@@ -1,3 +1,6 @@
+
+// this file has been automatically generated from 'D:/work/soulng/cmajorlexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <soulng/cmajorlexer/CmajorKeywords.hpp>
 #include <soulng/cmajorlexer/CmajorTokens.hpp>
 
@@ -5,7 +8,7 @@ namespace CmajorKeywords
 {
     using namespace CmajorTokens;
 
-    static Keyword keywords[] =
+    Keyword keywords[] =
     {
         {U"assert", ASSERT}, 
         {U"elif", ELIF}, 
@@ -84,12 +87,11 @@ namespace CmajorKeywords
         {U"axiom", AXIOM}, 
         {U"and", AND}, 
         {U"or", OR}, 
-        {U"not", NOT}, 
         {U"unit_test", UNIT_TEST},
         {nullptr, -1}
     };
 
-    static KeywordMap keywordMap(keywords);
+    KeywordMap keywordMap(keywords);
 
     KeywordMap* GetKeywordMap()
     {

@@ -24,6 +24,8 @@ struct LEXER_API Token
     int line;
 };
 
+LEXER_API bool NoWhiteSpaceBetweenTokens(const Token& first, const Token& second);
+
 } } // namespace soulng::lexer
 
 #endif // SOULNG_LEXER_TOKEN_INCLUDED

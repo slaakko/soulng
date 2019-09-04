@@ -1,3 +1,6 @@
+
+// this file has been automatically generated from 'D:/work/soulng/cmajorlexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <soulng/cmajorlexer/CmajorLexer.hpp>
 #include <soulng/cmajorlexer/CmajorKeywords.hpp>
 #include <soulng/lexer/Token.hpp>
@@ -8262,7 +8265,7 @@ int CmajorLexer::GetTokenId(int statementIndex)
         case 28:
         {
             Retract();
-            return NOT;
+            return EXCLAMATION;
             break;
         }
         case 29:

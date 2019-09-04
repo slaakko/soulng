@@ -8,7 +8,7 @@ namespace LexerFileKeywords
 {
     using namespace LexerFileTokens;
 
-    static Keyword keywords[] =
+    Keyword keywords[] =
     {
         {U"classmap", CLASSMAP}, 
         {U"prefix", PREFIX}, 
@@ -72,7 +72,7 @@ namespace LexerFileKeywords
         {nullptr, -1}
     };
 
-    static KeywordMap keywordMap(keywords);
+    KeywordMap keywordMap(keywords);
 
     KeywordMap* GetKeywordMap()
     {

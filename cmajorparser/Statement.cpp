@@ -5465,7 +5465,7 @@ soulng::parser::Match StatementParser::ConditionalCompilationPrefix(CmajorLexer&
                     int pos = lexer.GetPos();
                     Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
-                    if (*lexer == NOT)
+                    if (*lexer == EXCLAMATION)
                     {
                         ++lexer;
                         match.hit = true;

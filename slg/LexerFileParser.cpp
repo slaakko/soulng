@@ -1606,7 +1606,7 @@ soulng::parser::Match LexerFileParser::Lexer(LexerFileLexer& lexer)
 {
     std::u32string lexerDeclarationName = std::u32string();
     std::unique_ptr<soulng::slg::Lexer> currentLexer = std::unique_ptr<soulng::slg::Lexer>();
-    std::unique_ptr<soulng::parser::Value<std::u32string>> api;
+    std::unique_ptr<soulng::parser::Value<std::u32string>> lexerApi;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1636,7 +1636,7 @@ soulng::parser::Match LexerFileParser::Lexer(LexerFileLexer& lexer)
                         soulng::parser::Match* parentMatch5 = &match;
                         {
                             soulng::parser::Match match = LexerFileParser::Api(lexer);
-                            api.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
+                            lexerApi.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                             *parentMatch5 = match;
                         }
                         *parentMatch4 = match;
@@ -1704,7 +1704,7 @@ soulng::parser::Match LexerFileParser::Lexer(LexerFileLexer& lexer)
                         }
                         if (match.hit)
                         {
-                            currentLexer.reset(new soulng::slg::Lexer(api->value, lexerDeclarationName));
+                            currentLexer.reset(new soulng::slg::Lexer(lexerApi->value, lexerDeclarationName));
                         }
                         *parentMatch9 = match;
                     }
@@ -2024,7 +2024,7 @@ soulng::parser::Match LexerFileParser::LexerClause(LexerFileLexer& lexer, soulng
 
 soulng::parser::Match LexerFileParser::Variables(LexerFileLexer& lexer, soulng::slg::Lexer* currentLexer)
 {
-    std::unique_ptr<soulng::slg::Variable> var;
+    std::unique_ptr<soulng::slg::Variable> variable;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -2084,10 +2084,10 @@ soulng::parser::Match LexerFileParser::Variables(LexerFileLexer& lexer, soulng::
                             {
                                 int pos = lexer.GetPos();
                                 soulng::parser::Match match = LexerFileParser::Variable(lexer);
-                                var.reset(static_cast<soulng::slg::Variable*>(match.value));
+                                variable.reset(static_cast<soulng::slg::Variable*>(match.value));
                                 if (match.hit)
                                 {
-                                    currentLexer->AddVariable(var.release());
+                                    currentLexer->AddVariable(variable.release());
                                 }
                                 *parentMatch6 = match;
                             }

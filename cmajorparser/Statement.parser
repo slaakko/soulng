@@ -325,7 +325,7 @@ parser StatementParser
 
     ConditionalCompilationPrefix(var Span s, var std::unique_ptr<ConditionalCompilationExpressionNode> condCompExpr) : ConditionalCompilationExpressionNode*
         ::=
-        (   NOT{ s = span; } ConditionalCompilationPrefix:prefix{ s.end = span.end; condCompExpr.reset(new ConditionalCompilationNotNode(s, prefix)); } 
+        (   EXCLAMATION{ s = span; } ConditionalCompilationPrefix:prefix{ s.end = span.end; condCompExpr.reset(new ConditionalCompilationNotNode(s, prefix)); } 
         |   ConditionalCompilationPrimary:primary!{ condCompExpr.reset(primary); }
         )
         {

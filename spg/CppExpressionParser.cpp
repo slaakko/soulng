@@ -2438,7 +2438,7 @@ soulng::parser::Match CppExpressionParser::UnaryOperator(ParserFileLexer& lexer)
             }
             break;
         }
-        case NOT:
+        case EXCLAMATION:
         {
             ++lexer;
             {
@@ -3531,19 +3531,11 @@ soulng::parser::Match CppExpressionParser::PrimaryExpression(ParserFileLexer& le
                             soulng::parser::Match* parentMatch11 = &match;
                             {
                                 int pos = lexer.GetPos();
-                                soulng::parser::Match match(true);
+                                soulng::parser::Match match(false);
+                                if (*lexer == RPAREN)
                                 {
-                                    int pos = lexer.GetPos();
-                                    soulng::parser::Match match(false);
-                                    if (*lexer == RPAREN)
-                                    {
-                                        ++lexer;
-                                        match.hit = true;
-                                    }
-                                    if (!match.hit)
-                                    {
-                                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
-                                    }
+                                    ++lexer;
+                                    match.hit = true;
                                 }
                                 if (match.hit)
                                 {
@@ -5535,7 +5527,7 @@ soulng::parser::Match CppExpressionParser::Operator(ParserFileLexer& lexer)
                                                                 lexer.SetPos(save);
                                                                 {
                                                                     soulng::parser::Match match(false);
-                                                                    if (*lexer == NOT)
+                                                                    if (*lexer == EXCLAMATION)
                                                                     {
                                                                         ++lexer;
                                                                         match.hit = true;

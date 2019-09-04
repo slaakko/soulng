@@ -2438,7 +2438,7 @@ soulng::parser::Match CppExpressionParser::UnaryOperator(LexerFileLexer& lexer)
             }
             break;
         }
-        case NOT:
+        case EXCLAMATION:
         {
             ++lexer;
             {
@@ -5535,7 +5535,7 @@ soulng::parser::Match CppExpressionParser::Operator(LexerFileLexer& lexer)
                                                                 lexer.SetPos(save);
                                                                 {
                                                                     soulng::parser::Match match(false);
-                                                                    if (*lexer == NOT)
+                                                                    if (*lexer == EXCLAMATION)
                                                                     {
                                                                         ++lexer;
                                                                         match.hit = true;

@@ -1,8 +1,10 @@
 #ifndef CmajorTokens_HPP
 #define CmajorTokens_HPP
+
+// this file has been automatically generated from 'D:/work/soulng/cmajorlexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.0.0
+
 #include <soulng/cmajorlexer/TokenValueParsers.hpp>
 #include <soulng/cmajorlexer/CmajorLexerApi.hpp>
-
 #undef NULL
 
 namespace CmajorTokens
@@ -85,7 +87,7 @@ namespace CmajorTokens
     const int AXIOM = 75;
     const int AND = 76;
     const int OR = 77;
-    const int NOT = 78;
+    const int EXCLAMATION = 78;
     const int UNIT_TEST = 79;
     const int ID = 80;
     const int FLOATINGLIT = 81;
@@ -129,6 +131,7 @@ namespace CmajorTokens
     const int SEMICOLON = 119;
     const int HASH = 120;
 
+    CMAJOR_LEXER_API void InitTokenIdMap();
     CMAJOR_LEXER_API int GetTokenId(const std::u32string& tokenName);
     CMAJOR_LEXER_API const char* GetTokenName(int tokenId);
     CMAJOR_LEXER_API const char* GetTokenInfo(int tokenId);

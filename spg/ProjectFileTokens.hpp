@@ -16,6 +16,7 @@ namespace ProjectFileTokens
     const int DOT = 5;
     const int SEMICOLON = 6;
 
+    void InitTokenIdMap();
     int GetTokenId(const std::u32string& tokenName);
     const char* GetTokenName(int tokenId);
     const char* GetTokenInfo(int tokenId);

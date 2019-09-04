@@ -8,14 +8,14 @@ namespace ProjectFileKeywords
 {
     using namespace ProjectFileTokens;
 
-    static Keyword keywords[] =
+    Keyword keywords[] =
     {
         {U"project", PROJECT}, 
         {U"source", SOURCE},
         {nullptr, -1}
     };
 
-    static KeywordMap keywordMap(keywords);
+    KeywordMap keywordMap(keywords);
 
     KeywordMap* GetKeywordMap()
     {
