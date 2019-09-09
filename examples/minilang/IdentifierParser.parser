@@ -1,0 +1,13 @@
+#include <minilang/MinilangLexer.hpp>
+#include <minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser IdentifierParser
+{
+    uselexer MinilangLexer;
+
+    Identifier
+        ::= ID
+        ;
+}

@@ -1,0 +1,16 @@
+#include <minilang/FunctionParser.hpp>
+#include <minilang/MinilangLexer.hpp>
+#include <minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser SourceFileParser
+{
+    uselexer MinilangLexer;
+
+    using FunctionParser.Function;
+
+    SourceFile
+        ::= Function:function*
+        ;
+}

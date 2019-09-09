@@ -1,0 +1,13 @@
+#include <soulng/minilang/MinilangLexer.hpp>
+#include <soulng/minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser MinilangIdentifierParser
+{
+    uselexer MinilangLexer;
+
+    Identifier
+        ::= ID
+        ;
+}

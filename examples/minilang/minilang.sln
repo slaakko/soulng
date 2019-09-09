@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28306.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "minilang", "minilang.vcxproj", "{882459DA-EDAE-4FD9-AF57-B2736259BDA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9FBBC9E3-0D72-4C8D-92C8-3079F85481A5}"
+	ProjectSection(SolutionItems) = preProject
+		test\empty.minilang = test\empty.minilang
+		test\fibonacci.minilang = test\fibonacci.minilang
+		test\gcd.minilang = test\gcd.minilang
+		test\invalid.minilang = test\invalid.minilang
+		test\minimal.minilang = test\minimal.minilang
+		test\unicodeid.minilang = test\unicodeid.minilang
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Debug|x64.ActiveCfg = Debug|x64
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Debug|x64.Build.0 = Debug|x64
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Debug|x86.ActiveCfg = Debug|Win32
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Debug|x86.Build.0 = Debug|Win32
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Release|x64.ActiveCfg = Release|x64
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Release|x64.Build.0 = Release|x64
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Release|x86.ActiveCfg = Release|Win32
+		{882459DA-EDAE-4FD9-AF57-B2736259BDA4}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B96C0856-3EA0-46E5-87AC-2332A53A1D24}
+	EndGlobalSection
+EndGlobal

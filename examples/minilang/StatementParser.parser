@@ -1,0 +1,49 @@
+#include <minilang/ExpressionParser.hpp>
+#include <minilang/TypeParser.hpp>
+#include <minilang/IdentifierParser.hpp>
+#include <minilang/MinilangLexer.hpp>
+#include <minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser StatementParser
+{
+    uselexer MinilangLexer;
+
+    using ExpressionParser.Expression;
+    using TypeParser.Type;
+    using IdentifierParser.Identifier;
+
+    Statement
+        ::= IfStatement:ifS
+        |   WhileStatement:whileS
+        |   ReturnStatement:returnS
+        |   ConstructionStatement:constructionS
+        |   AssignmentStatement:assignmentS
+        |   CompoundStatement:compoundS
+        ;
+
+    IfStatement
+        ::= IF LPAREN Expression:condition RPAREN Statement:thenS (ELSE Statement:elseS)?
+        ;
+
+    WhileStatement
+        ::= WHILE LPAREN Expression:condition RPAREN Statement:statement
+        ;
+
+    ReturnStatement
+        ::= RETURN Expression:returnValue? SEMICOLON
+        ;
+
+    ConstructionStatement
+        ::= Type:type Identifier:variableName ASSIGN Expression:value SEMICOLON
+        ;
+
+    AssignmentStatement
+        ::= Identifier:variableName ASSIGN Expression:value SEMICOLON
+        ;
+
+    CompoundStatement
+        ::= LBRACE Statement:statement* RBRACE
+        ;
+}

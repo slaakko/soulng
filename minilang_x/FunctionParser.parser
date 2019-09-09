@@ -1,0 +1,28 @@
+#include <soulng/minilang/TypeParser.hpp>
+#include <soulng/minilang/IdentifierParser.hpp>
+#include <soulng/minilang/StatementParser.hpp>
+#include <soulng/minilang/MinilangLexer.hpp>
+#include <soulng/minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser MinilangFunctionParser
+{
+    uselexer MinilangLexer;
+
+    using MinilangTypeParser.Type;
+    using MinilangIdentifierParser.Identifier;
+    using MinilangStatementParser.CompoundStatement;
+
+    Function
+        ::= Type:returnType Identifier:functionName LPAREN ParameterList:params? RPAREN CompoundStatement:functionBody
+        ;
+
+    ParameterList
+        ::= Parameter:left (COMMA Parameter:right)*
+        ;
+
+    Parameter
+        ::= Type:type Identifier:name
+        ;
+}

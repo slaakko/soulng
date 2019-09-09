@@ -1,0 +1,15 @@
+#include <minilang/MinilangLexer.hpp>
+#include <minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser TypeParser
+{
+    uselexer MinilangLexer;
+
+    Type
+        ::= INT
+        |   BOOL
+        |   VOID
+        ;
+}

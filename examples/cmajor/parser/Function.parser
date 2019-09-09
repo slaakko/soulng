@@ -58,7 +58,7 @@ parser api(CMAJOR_PARSER_API) FunctionParser
     OperatorFunctionGroupId(ParsingContext* ctx) : std::u32string
         ::= empty{ lexer.parsingOperatorFunctionGroupId = true; }
         (   OPERATOR
-            (   (LANGLE LANGLE - (LANGLE LANGLE (TypeExpr(ctx):typeExpr % COMMA) RANGLE)){ lexer.parsingOperatorFunctionGroupId = false; return U"operator<<"; }
+            (   ((LANGLE LANGLE) - (LANGLE LANGLE (TypeExpr(ctx):typeExpr % COMMA) RANGLE)){ lexer.parsingOperatorFunctionGroupId = false; return U"operator<<"; }
             |   SHIFTRIGHT{ lexer.parsingOperatorFunctionGroupId = false; return U"operator>>"; }
             |   EQ{ lexer.parsingOperatorFunctionGroupId = false; return U"operator=="; }
             |   ASSIGN{ lexer.parsingOperatorFunctionGroupId = false; return U"operator="; }

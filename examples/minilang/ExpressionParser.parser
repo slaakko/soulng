@@ -1,0 +1,82 @@
+#include <minilang/LiteralParser.hpp>
+#include <minilang/IdentifierParser.hpp>
+#include <minilang/MinilangLexer.hpp>
+#include <minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser ExpressionParser
+{
+    uselexer MinilangLexer;
+
+    using LiteralParser.Literal;
+    using IdentifierParser.Identifier;
+
+    Expression
+        ::= EqualityExpression:expr
+        ;
+
+    PrimaryExpression
+        ::= Literal:literal
+        |   Identifier:identifier
+        |   LPAREN Expression:expression RPAREN
+        ;
+
+    PostfixExpression
+        ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN)*
+        ;
+
+    ExpressionList
+        ::= Expression:left (COMMA Expression:right)*
+        ;
+
+    UnaryExpression
+        ::= UnaryOperator:op UnaryExpression:unaryExpr
+        |   PostfixExpression:postfixExpr
+        ;
+
+    UnaryOperator
+        ::= PLUS
+        |   MINUS
+        |   NOT
+        ;
+
+    MultiplicativeExpression
+        ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right)*
+        ;
+
+    MultiplicativeOperator
+        ::= MUL
+        |   DIV
+        |   MOD
+        ;
+
+    AdditiveExpression
+        ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right)*
+        ;
+
+    AdditiveOperator
+        ::= PLUS
+        |   MINUS
+        ;
+
+    RelationalExpression
+        ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right)*
+        ;
+
+    RelationalOperator
+        ::= LESS
+        |   GREATER
+        |   LEQ
+        |   GEQ
+        ;
+
+    EqualityExpression
+        ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right)*
+        ;
+
+    EqualityOperator
+        ::= EQ
+        |   NEQ
+        ;
+}

@@ -1,0 +1,28 @@
+#include <minilang/TypeParser.hpp>
+#include <minilang/IdentifierParser.hpp>
+#include <minilang/StatementParser.hpp>
+#include <minilang/MinilangLexer.hpp>
+#include <minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser FunctionParser
+{
+    uselexer MinilangLexer;
+
+    using TypeParser.Type;
+    using IdentifierParser.Identifier;
+    using StatementParser.CompoundStatement;
+
+    Function
+        ::= Type:returnType Identifier:functionName LPAREN ParameterList:params? RPAREN CompoundStatement:functionBody
+        ;
+
+    ParameterList
+        ::= Parameter:left (COMMA Parameter:right)*
+        ;
+
+    Parameter
+        ::= Type:type Identifier:name
+        ;
+}

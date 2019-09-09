@@ -1,0 +1,15 @@
+#include <soulng/minilang/MinilangLexer.hpp>
+#include <soulng/minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser MinilangTypeParser
+{
+    uselexer MinilangLexer;
+
+    Type
+        ::= INT
+        |   BOOL
+        |   VOID
+        ;
+}

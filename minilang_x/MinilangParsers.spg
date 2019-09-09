@@ -1,0 +1,8 @@
+project MinilangParsers;
+source <ExpressionParser.parser>;
+source <FunctionParser.parser>;
+source <IdentifierParser.parser>;
+source <LiteralParser.parser>;
+source <SourceFileParser.parser>;
+source <StatementParser.parser>;
+source <TypeParser.parser>;
