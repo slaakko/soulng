@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{44E3B211-0D82-4BAC-A948-D7F6F90F3D56}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>spg</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>spg</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>spgd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../..;C:\Program Files\boost\include\boost-1_68</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(OutDir);C:\Program Files\boost\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../..;C:\Program Files\boost\include\boost-1_68</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(OutDir);C:\Program Files\boost\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CodeEvaluationVisitor.cpp" />
+    <ClCompile Include="CodeGeneratorVisitor.cpp" />
+    <ClCompile Include="CodeModifyVisitor.cpp" />
+    <ClCompile Include="CppDeclarationParser.cpp" />
+    <ClCompile Include="CppDeclaratorParser.cpp" />
+    <ClCompile Include="CppExpressionParser.cpp" />
+    <ClCompile Include="CppIdentifierParser.cpp" />
+    <ClCompile Include="CppLiteralParser.cpp" />
+    <ClCompile Include="CppStatementParser.cpp" />
+    <ClCompile Include="Domain.cpp" />
+    <ClCompile Include="LinkerVisitor.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NonterminalInfo.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="ParserFile.cpp" />
+    <ClCompile Include="ParserFileClassMap.cpp" />
+    <ClCompile Include="ParserFileKeywords.cpp" />
+    <ClCompile Include="ParserFileLexer.cpp" />
+    <ClCompile Include="ParserFileParser.cpp" />
+    <ClCompile Include="ParserFileTokens.cpp" />
+    <ClCompile Include="ProjectFile.cpp" />
+    <ClCompile Include="ProjectFileClassMap.cpp" />
+    <ClCompile Include="ProjectFileKeywords.cpp" />
+    <ClCompile Include="ProjectFileLexer.cpp" />
+    <ClCompile Include="ProjectFileParser.cpp" />
+    <ClCompile Include="ProjectFileTokens.cpp" />
+    <ClCompile Include="TokenValueParsers.cpp" />
+    <ClCompile Include="Visitor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CodeEvaluationVisitor.hpp" />
+    <ClInclude Include="CodeGeneratorVisitor.hpp" />
+    <ClInclude Include="CodeModifyVisitor.hpp" />
+    <ClInclude Include="CppDeclarationParser.hpp" />
+    <ClInclude Include="CppDeclaratorParser.hpp" />
+    <ClInclude Include="CppExpressionParser.hpp" />
+    <ClInclude Include="CppIdentifierParser.hpp" />
+    <ClInclude Include="CppLiteralParser.hpp" />
+    <ClInclude Include="CppStatementParser.hpp" />
+    <ClInclude Include="Domain.hpp" />
+    <ClInclude Include="LinkerVisitor.hpp" />
+    <ClInclude Include="NonterminalInfo.hpp" />
+    <ClInclude Include="Parser.hpp" />
+    <ClInclude Include="ParserFile.hpp" />
+    <ClInclude Include="ParserFileClassMap.hpp" />
+    <ClInclude Include="ParserFileKeywords.hpp" />
+    <ClInclude Include="ParserFileLexer.hpp" />
+    <ClInclude Include="ParserFileParser.hpp" />
+    <ClInclude Include="ParserFileTokens.hpp" />
+    <ClInclude Include="ProjectFile.hpp" />
+    <ClInclude Include="ProjectFileClassMap.hpp" />
+    <ClInclude Include="ProjectFileKeywords.hpp" />
+    <ClInclude Include="ProjectFileLexer.hpp" />
+    <ClInclude Include="ProjectFileParser.hpp" />
+    <ClInclude Include="ProjectFileTokens.hpp" />
+    <ClInclude Include="TokenValueParsers.hpp" />
+    <ClInclude Include="Visitor.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CppDeclarationParser.parser" />
+    <None Include="CppDeclaratorParser.parser" />
+    <None Include="CppExpressionParser.parser" />
+    <None Include="CppIdentifierParser.parser" />
+    <None Include="CppLiteralParser.parser" />
+    <None Include="CppStatementParser.parser" />
+    <None Include="ParserFileLexer.lexer" />
+    <None Include="ParserFileParser.parser" />
+    <None Include="Parsers.spg" />
+    <None Include="ProjectFileLexer.lexer" />
+    <None Include="ProjectFileParser.parser" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

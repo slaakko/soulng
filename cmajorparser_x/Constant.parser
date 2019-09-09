@@ -1,0 +1,41 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cmajorast/Constant.hpp>
+[hpp]#include <soulng/cmajorparser/ParsingContext.hpp>
+[cpp]#include <soulng/cmajorparser/Specifier.hpp>
+[cpp]#include <soulng/cmajorparser/TypeExpr.hpp>
+[cpp]#include <soulng/cmajorparser/Identifier.hpp>
+[cpp]#include <soulng/cmajorparser/Expression.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorLexer.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorTokens.hpp>
+
+using namespace cmajor::ast;
+using namespace CmajorTokens;
+
+parser ConstantParser
+{
+    uselexer CmajorLexer;
+
+    using SpecifierParser.Specifiers;
+    using TypeExprParser.TypeExpr;
+    using ExpressionParser.Expression;
+    using IdentifierParser.Identifier;
+
+    Constant(ParsingContext* ctx, var Span s) : ConstantNode*
+        ::= Specifiers:specifiers{ s = span; } CONST TypeExpr(ctx):type! Identifier:id! ASSIGN Expression(ctx):expr SEMICOLON
+        {
+            s.end = span.end;
+            ConstantNode* value = new ConstantNode(s, specifiers, type, id, expr);
+            value->SetStrValue(lexer.GetMatch(s));
+            return value;
+        }
+        ;
+
+    ruleinfo
+    {
+        (Constant, "constant")
+    }
+}

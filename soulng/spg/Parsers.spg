@@ -1,0 +1,9 @@
+project Parsers;
+source <CppDeclarationParser.parser>;
+source <CppDeclaratorParser.parser>;
+source <CppExpressionParser.parser>;
+source <CppIdentifierParser.parser>;
+source <CppLiteralParser.parser>;
+source <CppStatementParser.parser>;
+source <ParserFileParser.parser>;
+source <ProjectFileParser.parser>;

@@ -1,0 +1,46 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cmajorast/Specifier.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorLexer.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorTokens.hpp>
+
+using namespace CmajorTokens;
+
+parser SpecifierParser
+{
+    uselexer CmajorLexer;
+
+    Specifiers(var cmajor::ast::Specifiers specifiers) : cmajor::ast::Specifiers
+        ::= ((Specifier:specifier{ specifiers = specifiers | specifier; })*){ return specifiers; }
+        ;
+
+    Specifier : cmajor::ast::Specifiers
+        ::= PUBLIC{ return cmajor::ast::Specifiers::public_; }
+        |   PROTECTED{ return cmajor::ast::Specifiers::protected_; }
+        |   PRIVATE{ return cmajor::ast::Specifiers::private_; }
+        |   INTERNAL{ return cmajor::ast::Specifiers::internal_; }
+        |   STATIC{ return cmajor::ast::Specifiers::static_; }
+        |   VIRTUAL{ return cmajor::ast::Specifiers::virtual_; }
+        |   OVERRIDE{ return cmajor::ast::Specifiers::override_; }
+        |   ABSTRACT{ return cmajor::ast::Specifiers::abstract_; }
+        |   INLINE{ return cmajor::ast::Specifiers::inline_; }
+        |   EXPLICIT{ return cmajor::ast::Specifiers::explicit_; }
+        |   EXTERN{ return cmajor::ast::Specifiers::external_; }
+        |   SUPPRESS{ return cmajor::ast::Specifiers::suppress_; }
+        |   DEFAULT{ return cmajor::ast::Specifiers::default_; }
+        |   CONSTEXPR{ return cmajor::ast::Specifiers::constexpr_; }
+        |   CDECL{ return cmajor::ast::Specifiers::cdecl_; }
+        |   NOTHROW{ return cmajor::ast::Specifiers::nothrow_; }
+        |   THROW{ return cmajor::ast::Specifiers::throw_; }
+        |   NEW{ return cmajor::ast::Specifiers::new_; }
+        |   UNIT_TEST{ return cmajor::ast::Specifiers::unit_test_; }
+        ;
+
+    ruleinfo
+    {
+        (Specifiers, "specifiers"), (Specifier, "specifier")
+    }
+}

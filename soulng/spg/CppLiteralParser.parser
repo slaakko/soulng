@@ -1,0 +1,31 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cppcode/Literal.hpp>
+[cpp]#include <soulng/spg/ParserFileLexer.hpp>
+[cpp]#include <soulng/spg/ParserFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace ParserFileTokens;
+
+parser CppLiteralParser
+{
+    uselexer ParserFileLexer;
+
+    CppLiteral : soulng::cppcode::Literal*
+        ::= INTLIT{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        |   FLOATINGLIT{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        |   CHARLIT{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        |   STRINGLIT{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        |   TRUE{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        |   FALSE{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        |   NULLPTR{ return new soulng::cppcode::Literal(lexer.GetMatch(span)); }
+        ;
+
+    ruleinfo
+    {
+        (CppLiteral, "C++ literal")
+    }
+}

@@ -1,0 +1,52 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/parsing/ParsingDomain.hpp>
+[cpp]#include <soulng/parsing/Rule.hpp>
+[cpp]#include <soulng/parsing/Namespace.hpp>
+[cpp]#include <soulng/syntax/Element.hpp>
+
+namespace soulng.syntax
+{
+    grammar LibraryFile
+    {
+        using stdlib.identifier;
+        using stdlib.qualified_id;
+        using stdlib.spaces_and_comments;
+        using Element.Identifier;
+        using Element.Signature;
+
+        skip spaces_and_comments;
+
+        LibraryFile(soulng::parsing::ParsingDomain* parsingDomain)
+                        ::= NamespaceContent(parsingDomain)
+                        ;
+
+        NamespaceContent(soulng::parsing::ParsingDomain* parsingDomain)
+                        ::= 
+                        (   Grammar(parsingDomain->CurrentNamespace()->GetScope()){ parsingDomain->AddGrammar(Grammar); }
+                        |   Namespace(parsingDomain)
+                        )*
+                        ;
+
+        Namespace(soulng::parsing::ParsingDomain* parsingDomain)
+                        ::= keyword("namespace") qualified_id:ns!{ parsingDomain->BeginNamespace(ns); } '{'! NamespaceContent(parsingDomain) '}'!{ parsingDomain->EndNamespace(); }
+                        ;
+
+        Grammar(soulng::parsing::Scope* enclosingScope): soulng::parsing::Grammar*
+                        ::= keyword("grammar") 
+                            Identifier:grammarName!{ value = new Grammar(grammarName, enclosingScope); value->SetNs(enclosingScope->Ns()); }
+                            '{'! GrammarContent(value) '}'!
+                        ;
+
+        GrammarContent(soulng::parsing::Grammar* grammar)
+                        ::= (Rule(grammar->GetScope()){ grammar->AddRule(Rule); })*
+                        ;
+
+        Rule(soulng::parsing::Scope* enclosingScope): soulng::parsing::Rule*
+                        ::= Identifier:ruleName{ value = new soulng::parsing::Rule(ruleName, enclosingScope); } Signature(value) ';'
+                        ;
+    }
+}

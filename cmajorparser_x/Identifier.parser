@@ -1,0 +1,35 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <soulng/cmajorast/Identifier.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorLexer.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorTokens.hpp>
+
+using namespace cmajor::ast;
+using namespace CmajorTokens;
+
+parser IdentifierParser
+{
+    uselexer CmajorLexer;
+
+    Identifier : IdentifierNode*
+        ::= ID{ return new IdentifierNode(span, lexer.GetToken(pos)); }
+        ;
+
+    QualifiedId(var std::u32string value, var Span s) : IdentifierNode*
+        ::=
+        (   ID{ s = span; Token token = lexer.GetToken(pos); value.append(std::u32string(token.match.begin, token.match.end)); }
+            (DOT ID{ s.end = span.end; Token token = lexer.GetToken(pos); value.append(1, '.'); value.append(std::u32string(token.match.begin, token.match.end)); })*
+        )
+        {
+            return new IdentifierNode(s, value);
+        }
+        ;
+
+    ruleinfo
+    {
+        (Identifier, "identifier"), (QualifiedId, "identifier")
+    }
+}

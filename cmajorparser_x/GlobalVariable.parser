@@ -1,0 +1,42 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <cmajorast/GlobalVariable.hpp>
+[hpp]#include <cmajorparser/ParsingContext.hpp>
+[cpp]#include <cmajorparser/Specifier.hpp>
+[cpp]#include <cmajorparser/Identifier.hpp>
+[cpp]#include <cmajorparser/TypeExpr.hpp>
+[cpp]#include <cmajorparser/Expression.hpp>
+
+[cpp]#include <soulng/cmajorlexer/CmajorLexer.hpp>
+[cpp]#include <soulng/cmajorlexer/CmajorTokens.hpp>
+
+using namespace cmajor::ast;
+using namespace CmajorTokens;
+
+parser GlobalVariableParser
+{
+    uselexer CmajorLexer;
+
+    using SpecifierParser.Specifiers;
+    using TypeExprParser.TypeExpr;
+    using IdentifierParser.Identifier;
+    using ExpressionParser.Expression;
+
+    GlobalVariable(ParsingContext* ctx, cmajor::ast::CompileUnitNode* cu, var Span s) : GlobalVariableNode*
+        ::= Specifiers:specifiers{ s = span; } TypeExpr(ctx):type Identifier:id (ASSIGN Expression(ctx):initializer)? SEMICOLON
+        {
+            s.end = span.end;
+            GlobalVariableNode* value = new GlobalVariableNode(s, specifiers, type, id, cu);
+            value->SetInitializer(initializer);
+            return value;
+        }
+        ;
+
+    ruleinfo
+    {
+        (GlobalVariable, "global variable")
+    }
+}
