@@ -1,0 +1,23 @@
+#include <soulng/minilang/MinilangLexer.hpp>
+#include <soulng/minilang/MinilangTokens.hpp>
+
+using namespace MinilangTokens;
+
+parser MinilangLiteralParser
+{
+    uselexer MinilangLexer;
+
+    Literal
+        ::= BooleanLiteral:booleanLiteral
+        |   IntegerLiteral:integerLiteral
+        ;
+
+    BooleanLiteral
+        ::= TRUE
+        |   FALSE
+        ;
+
+    IntegerLiteral
+        ::= INTLIT
+        ;
+}

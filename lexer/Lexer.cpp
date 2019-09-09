@@ -57,7 +57,7 @@ void Lexer::NextToken()
             }
             else if (token.id == INVALID_TOKEN)
             {
-                throw std::runtime_error("invalid character '" + ToUtf8(std::u32string(1, c)) + "' at line " + std::to_string(line));
+                throw std::runtime_error("soulng::lexer::Lexer::NextToken(): error: invalid character '" + ToUtf8(std::u32string(1, c)) + "' in file '" + fileName + "' at line " + std::to_string(line));
             }
             else
             {
@@ -211,7 +211,7 @@ std::u32string Lexer::ErrorLines(const Span& span) const
 void Lexer::ThrowExpectationFailure(int pos, const std::u32string& name)
 {
     Token token = GetToken(pos);
-    throw std::runtime_error("parsing error in " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));
+    throw std::runtime_error("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));
 }
 
 } } // namespace soulng::lexer

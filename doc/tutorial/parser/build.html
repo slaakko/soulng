@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Building the Parsers</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Building the Parsers</h1>
+
+    <p>
+        These instructions are for the Microsoft Visual Studio Community Edition.
+    </p>
+
+    <p>
+        Start by creating a text file <em>MinilangParsers.spg</em> to the directory that contains the <em>.parser</em> files.
+        Here's the contents of the MinilangParsers.spg:
+    </p>
+
+    <pre>
+        project MinilangParsers;
+        source &lt;TypeParser.parser>;
+    </pre>
+
+    <h2>Type Parser</h2>
+
+    <p>
+        We have placed each parser to a separate <em>.parser</em> file although this is not mandatory.
+        Here's the current contents of the <em>TypeParser.parser</em> containing the type parser:
+    </p>
+
+    <pre>
+        parser TypeParser
+        {
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <p>
+        Run the following command from the directory that contains the <em>MinilangParsers.spg</em>:
+    </p>
+
+    <pre>
+        > spg -v MinilangParsers.spg
+    </pre>
+
+    <p>
+        The SoulNG parser generator <strong>spg</strong> warns that a <strong>uselexer</strong> statement is missing from the TypeParser:
+    </p>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/TypeParser.parser
+        warning: 'uselexer' statement missing from 'TypeParser' parser.
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        The <strong>uselexer</strong> statement is necessary to connect the parser to the corresponding lexer.
+        The name of the lexer used is <a href="../lexer/definition.html#lexer">MinilangLexer</a>, so we add a uselexer MinilangLexer; statement to the parser,
+        and run the generator again:
+    </p>
+
+    <pre>
+        parser TypeParser
+        {
+            uselexer MinilangLexer;
+
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <pre>
+        > spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Now the tool does not warn about anything, and has generated some C++ source code, <em>TypeParser.hpp</em> and <em>TypeParser.cpp</em>.
+        Add the generated TypeParser.hpp and TypeParser.cpp files to the <strong>minilang</strong> project.
+        When trying to compile the Visual Studio compiler generates error: "use of undefined type 'MinilangLexer'".
+        The compiler has not seen the definition of the MinilangLexer class that is used in the TypeParser.cpp.
+        The <strong>spg</strong> tool recognizes simple #include directives and places them to the start of the generated <em>.cpp</em> file,
+        so we add an include to the start of the TypeParser.parser file:
+    </p>
+
+    <pre>
+        #include &ltsoulng/minilang/MinilangLexer.hpp>
+
+        parser TypeParser
+        {
+            uselexer MinilangLexer;
+
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <p>
+        Then run the generator again:
+    </p>
+
+    <pre>
+        > spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Now when trying to compile the Visual Studio compiler still generates an error: "'INT': undeclared identifier".
+    </p>
+
+    <p>
+        The lexer tokens are defined in the MinilangTokens.hpp, so we add another include directive and try again:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        parser TypeParser
+        {
+            uselexer MinilangLexer;
+
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <p>
+        Still no luck: Visual Studio compiler still generates an error: "'INT': undeclared identifier".
+        Looking to the <em>MinilangTokens.hpp</em> reveals the problem: the tokens are inside the "MinilangTokens" namespace, but the <em>TypeParser.cpp</em> does not contain a using directive.
+        The <strong>spg</strong> recognizes also simple using namespace directives, and adds them to the generated <em>.cpp</em> file , so we add a using directive
+        to the <em>TypeParser.parser</em>:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser TypeParser
+        {
+            uselexer MinilangLexer;
+
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <p>
+        Then run the generator again:
+    </p>
+
+    <pre>
+        > spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Now the code should compile, but the linker complains about an unresolved external symbol: "soulng::parser::Match::Match(bool)".
+    </p>
+
+    <p>
+        We need to add the output of the <strong>soulng/parser</strong> library, namely <strong>sngparserd.lib</strong> (DEBUG mode) and <strong>sngparser.lib</strong> (RELEASE mode),
+        to the <em>Linker / Input / Additional Dependencies</em>.
+    </p>
+
+    <p>
+        Having that done, the entire project should compile and link without errors.
+    </p>
+
+    <h2>Literal Parser</h2>
+
+    <p>Here's the current content of the <em>LiteralParser.parser</em> containing the literal parser:</p>
+
+    <pre>
+        parser LiteralParser
+        {
+            Literal
+                ::= BooleanLiteral:booleanLiteral
+                |   IntegerLiteral:integerLiteral
+                ;
+
+            BooleanLiteral
+                ::= TRUE
+                |   FALSE
+                ;
+
+            IntegerLiteral
+                ::= INTLIT
+                ;
+        }
+    </pre>
+
+    <p>
+        We have added the same <strong>uselexer</strong>, #include and using declarations as for the type parser:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser LiteralParser
+        {
+            uselexer MinilangLexer;
+
+            Literal
+                ::= BooleanLiteral:booleanLiteral
+                |   IntegerLiteral:integerLiteral
+                ;
+
+            BooleanLiteral
+                ::= TRUE
+                |   FALSE
+                ;
+
+            IntegerLiteral
+                ::= INTLIT
+                ;
+        }
+    </pre>
+
+    <p>
+        Add the <em>LiteralParser.parser</em> to the <em>MinilangParsers.spg</em> file:
+    </p>
+
+    <pre>
+        project MinilangParsers;
+        source &lt;LiteralParser.parser>;
+        source &lt;TypeParser.parser>;
+    </pre>
+
+    <p>Then run the <strong>spg</strong> tool:</p>
+
+    <pre>
+        spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/LiteralParser.parser
+        ==> D:/work/soulng/minilang/LiteralParser.hpp
+        ==> D:/work/soulng/minilang/LiteralParser.cpp
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+     </pre>
+
+    <p>
+        Now add the generated <em>LiteralParser.hpp</em> and <em>LiteralParser.cpp</em> to the project.
+    </p>
+
+    <p>
+        This time the compilation and linking should succeed without any errors.
+    </p>
+
+    <h2>Identifier Parser</h2>
+
+    <p>
+        Here's the changed contents of the IdentifierParser.parser:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser IdentifierParser
+        {
+            uselexer MinilangLexer;
+
+            Identifier
+                ::= ID
+                ;
+        }
+    </pre>
+
+    <p>
+        Add the <em>IdentifierParser.parser</em> to the <em>MinilangParsers.spg</em> file:
+    </p>
+
+    <pre>
+        project MinilangParsers;
+        source &lt;IdentifierParser.parser>;
+        source &lt;LiteralParser.parser>;
+        source &lt;TypeParser.parser>;
+    </pre>
+
+    <p>Then run the <strong>spg</strong> tool:</p>
+
+    <pre>
+        spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/IdentifierParser.parser
+        ==> D:/work/soulng/minilang/IdentifierParser.hpp
+        ==> D:/work/soulng/minilang/IdentifierParser.cpp
+        > D:/work/soulng/minilang/LiteralParser.parser
+        ==> D:/work/soulng/minilang/LiteralParser.hpp
+        ==> D:/work/soulng/minilang/LiteralParser.cpp
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Now add the generated <em>IdentifierParser.hpp</em> and <em>IdentifierParser.cpp</em> to the project, and build the project. No errors expected.
+    </p>
+
+    <h2>Expression Parser</h2>
+
+    <p>
+        Here's the changed contents of the ExpressionParser.parser:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser ExpressionParser
+        {
+            uselexer MinilangLexer;
+
+            using LiteralParser.Literal;
+            using IdentifierParser.Identifier;
+
+            Expression
+                ::= EqualityExpression:expr
+                ;
+
+            PrimaryExpression
+                ::= Literal:literal
+                |   Identifier:identifier
+                |   LPAREN Expression:expression RPAREN
+                ;
+
+            PostfixExpression
+                ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN)*
+                ;
+
+            ExpressionList
+                ::= Expression:left (COMMA Expression:right)*
+                ;
+
+            UnaryExpression
+                ::= UnaryOperator:op UnaryExpression:unaryExpr
+                |   PostfixExpression:postfixExpr
+                ;
+
+            UnaryOperator
+                ::= PLUS
+                |   MINUS
+                |   NOT
+                ;
+
+            MultiplicativeExpression
+                ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right)*
+                ;
+
+            MultiplicativeOperator
+                ::= MUL
+                |   DIV
+                |   MOD
+                ;
+
+            AdditiveExpression
+                ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right)*
+                ;
+
+            AdditiveOperator
+                ::= PLUS
+                |   MINUS
+                ;
+
+            RelationalExpression
+                ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right)*
+                ;
+
+            RelationalOperator
+                ::= LESS
+                |   GREATER
+                |   LEQ
+                |   GEQ
+                ;
+
+            EqualityExpression
+                ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right)*
+                ;
+
+            EqualityOperator
+                ::= EQ
+                |   NEQ
+                ;
+        }
+    </pre>
+
+    <p>
+        Add the <em>ExpressionParser.parser</em> to the <em>MinilangParsers.spg</em> file:
+    </p>
+
+    <pre>
+        project MinilangParsers;
+        source &lt;ExpressionParser.parser>;
+        source &lt;IdentifierParser.parser>;
+        source &lt;LiteralParser.parser>;
+        source &lt;TypeParser.parser>;
+    </pre>
+
+    <p>Then run the <strong>spg</strong> tool:</p>
+
+    <pre>
+        spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/ExpressionParser.parser
+        ==> D:/work/soulng/minilang/ExpressionParser.hpp
+        ==> D:/work/soulng/minilang/ExpressionParser.cpp
+        > D:/work/soulng/minilang/IdentifierParser.parser
+        ==> D:/work/soulng/minilang/IdentifierParser.hpp
+        ==> D:/work/soulng/minilang/IdentifierParser.cpp
+        > D:/work/soulng/minilang/LiteralParser.parser
+        ==> D:/work/soulng/minilang/LiteralParser.hpp
+        ==> D:/work/soulng/minilang/LiteralParser.cpp
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Add the generated <em>ExpressionParser.hpp</em> and <em>ExpressionParser.cpp</em> to the project, and build the project.
+    </p>
+
+    <p>
+        Add this time Visual Studio generates an error: 'LiteralParser': is not a class or namespace name.
+        The expression parser uses the <em>LiteralParser</em> and the <em>IdentifierParser</em>, but the compiler has seen no declarations for them.
+        We need to add the following #include declarations to the <em>ExpressionParser.parser</em>, run spg, and then build again:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/LiteralParser.hpp>
+        #include &lt;soulng/minilang/IdentifierParser.hpp>
+        // ...
+    </pre>
+
+    <p>
+        Now the project builds again.
+    </p>
+
+    <h2>Statement Parser</h2>
+
+    <p>
+        Here's the changed contents of the StatementParser.parser:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/ExpressionParser.hpp>
+        #include &lt;soulng/minilang/TypeParser.hpp>
+        #include &lt;soulng/minilang/IdentifierParser.hpp>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser StatementParser
+        {
+            uselexer MinilangLexer;
+
+            using ExpressionParser.Expression;
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+
+            Statement
+                ::= IfStatement:ifS
+                |   WhileStatement:whileS
+                |   ReturnStatement:returnS
+                |   ConstructionStatement:constructionS
+                |   AssignmentStatement:assignmentS
+                |   CompoundStatement:compoundS
+                ;
+
+            IfStatement
+                ::= IF LPAREN Expression:condition RPAREN Statement:thenS (ELSE Statement:elseS)?
+                ;
+
+            WhileStatement
+                ::= WHILE LPAREN Expression:condition RPAREN Statement:statement
+                ;
+
+            ReturnStatement
+                ::= RETURN Expression:returnValue? SEMICOLON
+                ;
+
+            ConstructionStatement
+                ::= Type:type Identifier:variableName ASSIGN Expression:value SEMICOLON
+                ;
+
+            AssignmentStatement
+                ::= Identifier:variableName ASSIGN Expression:value SEMICOLON
+                ;
+
+            CompoundStatement
+                ::= LBRACE Statement:statement* RBRACE
+                ;
+        }
+    </pre>
+
+    <p>
+        This time we have added the needed #includes for <em>ExpressionParser.hpp</em>, <em>TypeParser.hpp</em> and <em>IdentifierParser.hpp</em>.
+    </p>
+
+    <p>
+        Add the <em>StatementParser.parser</em> to the <em>MinilangParsers.spg</em> file:
+    </p>
+
+    <pre>
+        project MinilangParsers;
+        source &lt;ExpressionParser.parser>;
+        source &lt;IdentifierParser.parser>;
+        source &lt;LiteralParser.parser>;
+        source &lt;StatementParser.parser>;
+        source &lt;TypeParser.parser>;
+    </pre>
+
+    <p>Run the <strong>spg</strong> tool and build. No errors expected.</p>
+
+    <pre>
+        spg -v MinilangParsers.spg
+    </pre>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/ExpressionParser.parser
+        ==> D:/work/soulng/minilang/ExpressionParser.hpp
+        ==> D:/work/soulng/minilang/ExpressionParser.cpp
+        > D:/work/soulng/minilang/IdentifierParser.parser
+        ==> D:/work/soulng/minilang/IdentifierParser.hpp
+        ==> D:/work/soulng/minilang/IdentifierParser.cpp
+        > D:/work/soulng/minilang/LiteralParser.parser
+        ==> D:/work/soulng/minilang/LiteralParser.hpp
+        ==> D:/work/soulng/minilang/LiteralParser.cpp
+        > D:/work/soulng/minilang/StatementParser.parser
+        ==> D:/work/soulng/minilang/StatementParser.hpp
+        ==> D:/work/soulng/minilang/StatementParser.cpp
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <h2>Function and Source File Parsers</h2>
+
+    <p>
+        Here's the changed contents of the <em>FunctionParser.parser</em>:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/TypeParser.hpp>
+        #include &lt;soulng/minilang/IdentifierParser.hpp>
+        #include &lt;soulng/minilang/StatementParser.hpp>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser FunctionParser
+        {
+            uselexer MinilangLexer;
+
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+            using StatementParser.CompoundStatement;
+
+            Function
+                ::= Type:returnType Identifier:functionName LPAREN ParameterList:params? RPAREN CompoundStatement:functionBody
+                ;
+
+            ParameterList
+                ::= Parameter:left (COMMA Parameter:right)*
+                ;
+
+            Parameter
+                ::= Type:type Identifier:name
+                ;
+        }
+    </pre>
+
+    <p>
+        and here's the changed contents of the <em>MinilanSourceFileParser.parser:</em>
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/FunctionParser.hpp>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser SourceFileParser
+        {
+            uselexer MinilangLexer;
+
+            using FunctionParser.Function;
+
+            SourceFile
+                ::= Function:function*
+                ;
+        }
+    </pre>
+
+    <p>
+        We have added these files to the <em>MinilangParsers.spg</em>, run the <strong>spg</strong> tool, and build:
+    </p>
+
+    <pre>
+        D:\work\soulng\minilang>spg -v MinilangParsers.spg
+        > D:/work/soulng/minilang/MinilangParsers.spg
+        > D:/work/soulng/minilang/ExpressionParser.parser
+        ==> D:/work/soulng/minilang/ExpressionParser.hpp
+        ==> D:/work/soulng/minilang/ExpressionParser.cpp
+        > D:/work/soulng/minilang/FunctionParser.parser
+        ==> D:/work/soulng/minilang/FunctionParser.hpp
+        ==> D:/work/soulng/minilang/FunctionParser.cpp
+        > D:/work/soulng/minilang/IdentifierParser.parser
+        ==> D:/work/soulng/minilang/IdentifierParser.hpp
+        ==> D:/work/soulng/minilang/IdentifierParser.cpp
+        > D:/work/soulng/minilang/LiteralParser.parser
+        ==> D:/work/soulng/minilang/LiteralParser.hpp
+        ==> D:/work/soulng/minilang/LiteralParser.cpp
+        > D:/work/soulng/minilang/SourceFileParser.parser
+        ==> D:/work/soulng/minilang/SourceFileParser.hpp
+        ==> D:/work/soulng/minilang/SourceFileParser.cpp
+        > D:/work/soulng/minilang/StatementParser.parser
+        ==> D:/work/soulng/minilang/StatementParser.hpp
+        ==> D:/work/soulng/minilang/StatementParser.cpp
+        > D:/work/soulng/minilang/TypeParser.parser
+        ==> D:/work/soulng/minilang/TypeParser.hpp
+        ==> D:/work/soulng/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Now the entire project is expected to build without errors.
+    </p>
+</body>
+</html>

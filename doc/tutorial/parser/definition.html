@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Writing Parsers</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Writing Parsers
+    </h1>
+
+    <p>
+        We will convert each <a href="../language/syntax.html">Minilang</a> grammar table to a <em>parser</em> that can be feeded to the SoulNG parser generator <strong>spg</strong> as input.
+    </p>
+
+    <h2>Types</h2>
+
+    <p>We start with the types:</p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.type">type</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">int</span> |
+                <span class="kw">bool</span> |
+                <span class="kw">void</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The names of the types, int, bool and void, are keywords in the language, and the lexical analyzer has corresponding tokens INT, BOOL and VOID that it returns to the parser,
+        so the conversion is easy
+    </p>
+
+    <pre><sup><a href="#footnote-1">Footnote 1</a></sup>
+        parser TypeParser
+        {
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <p>
+        A parser consists of the keyword <strong>parser</strong>
+        followed by the name of the parser followed by the definition of the parser enclosed in braces.
+        The parser definition consists of <em>parsing rules</em> each of which consists of a name followed by the "produces" symbol, "::=",
+        followed by the body of the rule and terminated by the semicolon.
+    </p>
+
+    <p>
+        In the body of a rule lexer tokens are referred directly by name, that is typically written in capital letters.
+        The alternatives are separated by the '|' symbol.
+    </p>
+
+    <h2>Literals</h2>
+
+    <p>The grammar for literals has more complex structure:</p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.literal">literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.boolean-literal">boolean&#8209;literal</a></span> |
+                <span class="rule"><a href="#rule.integer-literal">integer&#8209;literal</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.boolean-literal">boolean&#8209;literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">true</span> |
+                <span class="kw">false</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.integer-literal">integer&#8209;literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.digit-sequence">digit&#8209;sequence</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.digit-sequence">digit&#8209;sequence</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="op">[0-9]+</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        We start with the <em>literal</em> grammar rule. This rule refers to other grammar rules <em>boolean-literal</em> and <em>integer-literal</em>.
+        That can be directly expressed in the parser:
+    </p>
+
+    <pre>
+        parser LiteralParser
+        {
+            Literal
+                ::= BooleanLiteral:booleanLiteral
+                |   IntegerLiteral:integerLiteral
+                ;
+        }
+    </pre>
+
+    <p>
+        The <em>Literal</em> parsing rule refers to parsing rules <em>BooleanLiteral</em> and <em>IntegerLiteral</em>.
+        When a parsing rule is referenced in the body of another parsing rule, it must be given a unique name within the body of that rule
+        for the reasons that will become clear in the future. The syntax for naming is ParsingRule<stong>:</stong>uniqueName.
+        So when the <em>Literal</em> parsing rule refers to <em>BooleanLiteral</em> parsing rule, the reference to <em>BooleanLiteral</em> rule has been
+        given unique name <em>booleanLiteral</em>, and the reference to <em>IntegerLiteral</em> rule has been given unique name <em>integerLiteral</em>.
+    </p>
+
+    <p>
+        The grammar rule <em>boolean-literal</em> contains just keywords, so the lexer has corresponding tokens for them:
+    </p>
+
+    <pre>
+        parser LiteralParser
+        {
+            // ..
+
+            BooleanLiteral
+                ::= TRUE
+                |   FALSE
+                ;
+        }
+    </pre>
+
+    <p>
+        The lexical analyzer has a rule <a href="../lexer/definition.html#integer-literal">integer_literal</a> that returns token INTLIT.
+        We will therefore define corresponding parsing rule <em>IntegerLiteral</em>, that consists of just that INTLIT token:
+    </p>
+
+    <pre>
+        parser LiteralParser
+        {
+            // ..
+
+            IntegerLiteral
+                ::= INTLIT
+                ;
+        }
+    </pre>
+
+    <p>
+        This is the whole parser for the <em>literal</em> grammar:
+    </p>
+
+    <pre>
+        parser LiteralParser
+        {
+            Literal
+                ::= BooleanLiteral:booleanLiteral
+                |   IntegerLiteral:integerLiteral
+                ;
+
+            BooleanLiteral
+                ::= TRUE
+                |   FALSE
+                ;
+
+            IntegerLiteral
+                ::= INTLIT
+                ;
+        }
+    </pre>
+
+    <h2>Identifiers</h2>
+
+    <p>
+        The <em>identifier</em> parser will be just as easy as the <em>type</em> parser:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.identifier">identifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="https://unicode.org/reports/tr31/#Default_Identifier_Syntax">Unicode identifier</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The lexer has rule <a href="../lexer/definition.html#identifier">identifier</a> that returns the ID token for identifiers:
+    </p>
+
+    <pre>
+        parser IdentifierParser
+        {
+            Identifier
+                ::= ID
+                ;
+        }
+    </pre>
+
+    <h2>Expressions</h2>
+
+    <p>
+        We start converting grammars for expression from the grammar for <em>primary-expression</em>:
+    </p>
+
+    <h3>Primary Expression</h3>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.primary-expression">primary&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.literal">literal</a></span> |
+                <span class="rule"><a href="#rule.identifier">identifier</a></span> |
+                <span class="mono">(</span> <span class="rule"><a href="#rule.expression">expression</a></span> <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        In the body of a parsing rule we may also refer to parsing rules defined in other parsers.
+        For that, we must include a <em>using declaration</em> for the foreign rule in the definition of a parser:
+    </p>
+
+    <pre>
+        parser ExpressionParser
+        {
+            using LiteralParser.Literal;
+            using IdentifierParser.Identifier;
+
+            Expresssion
+                ::= empty
+                ;
+
+            PrimaryExpression
+                ::= Literal:literal
+                |   Identifier:identifier
+                |   LPAREN Expression:expression RPAREN
+                ;
+        }
+    </pre>
+
+    <p>
+        A using declaration consists of the keyword <strong>using</strong> followed by the name of a parser followed by '.' followed
+        by the name of a rule defined in that parser.
+        We have included using declarations for the <em>Literal</em> rule defined in the <em>LiteralParser</em> parser and
+        the for the <em>Identifier</em> rule defined in the <em>IdentifierParser</em> parser.
+    </p>
+
+    <p>
+        We have temporarily defined a rule <em>Expression</em> whose body consists just of the keyword <strong>empty</strong>
+        in order to refer to the <em>Expression</em> rule in the body of the <em>PrimaryExpression</em> rule.
+    </p>
+
+    <p>
+        The body of the <em>PrimaryExpression</em> rule consists of alternatives for <em>Literal</em>, <em>Identifier</em> and
+        parenthesized <em>Expression</em>. A sequence consisting of tokens and references to parsing rules can be expression by separating
+        the elements of the sequence with white space.
+    </p>
+
+    <h3>Postfix Expression</h3>
+
+    <p>
+        The <em>postfix-expression</em> grammar rule has some repeating and optional elements:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.postfix-expression">postfix&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.primary-expression">primary&#8209;expression</a></span>
+                            (<span class="mono">(</span> <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>? <span class="mono">)</span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.expression-list">expression-list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                            (<span class="mono">,</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        In a body of a parsing rule the '?' symbol is used for optional elements,
+        the '*' symbol for a Kleene closure of elements and the parentheses are used for grouping elements:
+    </p>
+
+    <pre>
+        parser ExpressionParser
+        {
+            // ...
+
+            PostfixExpression
+                ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN)*
+                ;
+
+            ExpressionList
+                ::= Expression:left (COMMA Expression:right)*
+                ;
+        }
+    </pre>
+
+    <p>
+        The closure is applied to the whole LPAREN ExpressionList RPAREN sequence,
+        so those are enclosed in parentheses. Also the sequence COMMA Expression may be repeating,
+        so it is parenthesized.
+    </p>
+
+    <h3>Unary Expression</h3>
+
+    <p>
+        The <em>unary-expression</em> grammar rule is recursive:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.unary-expression">unary&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                        (<span class="mono">+</span> | <span class="mono">-</span> | <span class="mono">!</span>) <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span> |
+            <span class="rule"><a href="#rule.postfix-expression">postfix&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        We have separated the unary operator to its own parsing rule, although it is not mandatory:
+    </p>
+
+    <pre>
+        parser ExpressionParser
+        {
+            // ...
+
+            UnaryExpression
+                ::= UnaryOperator:op UnaryExpression:unaryExpr
+                |   PostfixExpression:postfixExpr
+                ;
+
+            UnaryOperator
+                ::= PLUS
+                |   MINUS
+                |   NOT
+                ;
+        }
+    </pre>
+
+    <h3>Multiplicative Expression</h3>
+
+    <p>
+        A <em>multiplicative-expression</em> consists of <em>unary-expression</em>s separated by multiplicative operator symbols:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.multiplicative-expression">multiplicative&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+            <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span>
+                        ((<span class="mono">*</span> | <span class="mono">/</span> | <span class="mono">%</span>)
+            <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        In this case we have again separated the operator to its own rule:
+    </p>
+
+    <pre>
+        parser ExpressionParser
+        {
+            // ...
+
+            MultiplicativeExpression
+                ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right)*
+                ;
+
+            MultiplicativeOperator
+                ::= MUL
+                |   DIV
+                |   MOD
+                ;
+        }
+    </pre>
+
+    <h3>Additive Expression</h3>
+
+    <p>
+        The <em>addive-expression</em> has the same structure as the <em>multiplicative-expression</em>:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.additive-expression">additive&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.multiplicative-expression">multiplicative&#8209;expression</a></span>
+                            ((<span class="mono">+</span> | <span class="mono">-</span>)
+                <span class="rule"><a href="#rule.multiplicative-expression">multiplicative&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Nothing new:
+    </p>
+
+    <pre>
+        parser ExpressionParser
+        {
+            // ...
+
+            AdditiveExpression
+                ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right)*
+                ;
+
+            AdditiveOperator
+                ::= PLUS
+                |   MINUS
+                ;
+        }
+    </pre>
+
+    <h3>Relational Expression</h3>
+
+    <p>
+        Same structure, just different symbols and different precedence level:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.relational-expression">relational&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.additive-expression">additive&#8209;expression</a></span>
+                            ((<span class="mono">&lt;</span> | <span class="mono">&gt;</span> | <span class="mono">&lt;=</span> | <span class="mono">&gt;=</span>)
+                <span class="rule"><a href="#rule.additive-expression">additive&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <pre>
+        parser ExpressionParser
+        {
+            // ...
+        
+            RelationalExpression
+                ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right)*
+                ;
+
+            RelationalOperator
+                ::= LESS
+                |   GREATER
+                |   LEQ
+                |   GEQ
+                ;
+        }
+    </pre>
+
+    <h3>Equality Expression</h3>
+
+    <p>
+        And finally the equality expression:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.equality-expression">equality&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.relational-expression">relational&#8209;expression</a></span>
+                            ((<span class="mono">==</span> | <span class="mono">!=</span>)
+                <span class="rule"><a href="#rule.relational-expression">relational&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <pre>
+        parser ExpressionParser
+        {
+            // ...
+        
+            EqualityExpression
+                ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right)*
+                ;
+
+            EqualityOperator
+                ::= EQ
+                |   NEQ
+                ;
+        }
+    </pre>
+
+    <h3>
+        Expression
+    </h3>
+
+    <p>
+        The equality expression completes the loop:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression">expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.equality-expression">equality&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Here's the whole expression parser:
+    </p>
+
+    <pre>
+        parser ExpressionParser
+        {
+            using LiteralParser.Literal;
+            using IdentifierParser.Identifier;
+
+            Expression
+                ::= EqualityExpression:expr
+                ;
+
+            PrimaryExpression
+                ::= Literal:literal
+                |   Identifier:identifier
+                |   LPAREN Expression:expression RPAREN
+                ;
+
+            PostfixExpression
+                ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN)*
+                ;
+
+            ExpressionList
+                ::= Expression:left (COMMA Expression:right)*
+                ;
+
+            UnaryExpression
+                ::= UnaryOperator:op UnaryExpression:unaryExpr
+                |   PostfixExpression:postfixExpr
+                ;
+
+            UnaryOperator
+                ::= PLUS
+                |   MINUS
+                |   NOT
+                ;
+
+            MultiplicativeExpression
+                ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right)*
+                ;
+
+            MultiplicativeOperator
+                ::= MUL
+                |   DIV
+                |   MOD
+                ;
+
+            AdditiveExpression
+                ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right)*
+                ;
+
+            AdditiveOperator
+                ::= PLUS
+                |   MINUS
+                ;
+
+            RelationalExpression
+                ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right)*
+                ;
+
+            RelationalOperator
+                ::= LESS
+                |   GREATER
+                |   LEQ
+                |   GEQ
+                ;
+
+            EqualityExpression
+                ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right)*
+                ;
+
+            EqualityOperator
+                ::= EQ
+                |   NEQ
+                ;
+        }
+    </pre>
+
+    <h2>Statements</h2>
+
+    <p>
+        The statements are next in line:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.statement">statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.if-statement">if&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.while-statement">while&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.return-statement">return&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.construction-statement">construction&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.assignment-statement">assignment&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Our stragegy is to write a skeleton containing all required rules and fill them later:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            Statement
+                ::= IfStatement:ifS
+                |   WhileStatement:whileS
+                |   ReturnStatement:returnS
+                |   ConstructionStatement:constructionS
+                |   AssignmentStatement:assignmentS
+                |   CompoundStatement:compoundS
+                ;
+
+            IfStatement
+                ::= empty
+                ;
+
+            WhileStatement
+                ::= empty
+                ;
+
+            ReturnStatement
+                ::= empty
+                ;
+
+            ConstructionStatement
+                ::= empty
+                ;
+
+            AssignmentStatement
+                ::= empty
+                ;
+
+            CompoundStatement
+                ::= empty
+                ;
+        }
+    </pre>
+
+    <h3>If Statement</h3>
+
+    <p>
+        Here's the grammar for an <em>if-statement</em>:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.if-statement">if&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">if</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+                (
+                <span class="kw">else</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+                )?
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The conversion to a parser is quite straightforward:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            using ExpressionParser.Expression;
+            
+            // ...
+
+            IfStatement
+                ::= IF LPAREN Expression:condition RPAREN Statement:thenS (ELSE Statement:elseS)?
+                ;
+        }
+    </pre>
+
+    <h3>While Statement</h3>
+
+    <p>
+        A grammar for a <em>while-statement</em> is just as easy:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.while-statement">while&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">while</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Here's the parser:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            // ...
+
+            WhileStatement
+                ::= WHILE LPAREN Expression:condition RPAREN Statement:statement
+                ;
+        }
+    </pre>
+
+    <h3>Return Statement</h3>
+
+    <p>
+        The <em>return-statement</em>:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.return-statement">return&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">return</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>?
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Converted:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            // ...
+
+            ReturnStatement
+                ::= RETURN Expression:returnValue? SEMICOLON
+                ;
+        }
+    </pre>
+
+    <h3>Construction Statement</h3>
+
+    <p>
+        A <em>construction-statement</em> creates a variable and assigns it a value:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.construction-statement">construction&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type">type</a></span>
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        We need to have some using declarations for <em>Type</em> and <em>Identifier</em> rules:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            // ...
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+
+            // ...
+
+            ConstructionStatement
+                ::= Type:type Identifier:variableName ASSIGN Expression:value SEMICOLON
+                ;
+        }
+    </pre>
+
+    <h3>Assignment Statement</h3>
+
+    <p>
+        The <em>assignment-statement</em> in turn:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.assignment-statement">assignment&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Conversion is not harder than before:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            // ...
+
+            AssignmentStatement
+                ::= Identifier:variableName ASSIGN Expression:value SEMICOLON
+                ;
+        }
+    </pre>
+
+    <h3>
+        Compound Statement
+    </h3>
+
+    <p>
+        Finally the compound statement:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.compound-statement">compound&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        A possibly empty sequence of statements enclosed in braces:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            // ...
+
+            CompoundStatement
+                ::= LBRACE Statement:statement* RBRACE
+                ;
+        }
+    </pre>
+
+    <p>
+        Here's the whole statement parser:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            using ExpressionParser.Expression;
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+
+            Statement
+                ::= IfStatement:ifS
+                |   WhileStatement:whileS
+                |   ReturnStatement:returnS
+                |   ConstructionStatement:constructionS
+                |   AssignmentStatement:assignmentS
+                |   CompoundStatement:compoundS
+                ;
+
+            IfStatement
+                ::= IF LPAREN Expression:condition RPAREN Statement:thenS (ELSE Statement:elseS)?
+                ;
+
+            WhileStatement
+                ::= WHILE LPAREN Expression:condition RPAREN Statement:statement
+                ;
+
+            ReturnStatement
+                ::= RETURN Expression:returnValue? SEMICOLON
+                ;
+
+            ConstructionStatement
+                ::= Type:type Identifier:variableName ASSIGN Expression:value SEMICOLON
+                ;
+
+            AssignmentStatement
+                ::= Identifier:variableName ASSIGN Expression:value SEMICOLON
+                ;
+
+            CompoundStatement
+                ::= LBRACE Statement:statement* RBRACE
+                ;
+        }
+    </pre>
+
+    <h2>Functions</h2>
+
+    <p>
+        A <em>function</em> has a return type, a possibly empty list of parameters enclosed in parentheses and a body:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.function">function</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type">type</a></span>
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.parameter-list">parameter&#8209;list</a></span>?
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span>
+            </td>
+        </tr>
+    <tr>
+        <td class="rule" id="rule.parameter-list">parameter&#8209;list</td>
+        <td class="sep">&rarr;</td>
+        <td class="rcontent">
+            <span class="rule"><a href="#rule.parameter">parameter</a></span>
+                        (<span class="mono">,</span>
+            <span class="rule"><a href="#rule.parameter">parameter</a></span>
+                        )*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.parameter">parameter</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type">type</a></span>
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        There's nothing new in the function conversion, so we present here the entire parser at once:
+    </p>
+
+    <pre>
+        parser FunctionParser
+        {
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+            using StatementParser.CompoundStatement;
+
+            Function
+                ::= Type:returnType Identifier:functionName LPAREN ParameterList:params? RPAREN CompoundStatement:functionBody
+                ;
+
+            ParameterList
+                ::= Parameter:left (COMMA Parameter:right)*
+                ;
+
+            Parameter
+                ::= Type:type Identifier:name
+                ;
+        }
+    </pre>
+
+    <h2>Source Files</h2>
+
+    <p>
+        A Minilang <em>source-file</em> is just a sequence of functions:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.source-file">source&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.function">function</a></span>*
+                        </td>
+        </tr>
+    </table>
+
+    <p>
+        Here's the source file parser:
+    </p>
+
+    <pre>
+        parser SourceFileParser
+        {
+            using FunctionParser.Function;
+
+            SourceFile
+                ::= Function:function*
+                ;
+        }
+    </pre>
+
+    <p>
+        Now the language has all the needed parsers defined. We will next see what additions are necessary to generate source code for the parsers and make the source code compile...
+    </p>
+
+    <hr />
+
+    <sup id="footnote-1">
+        Footnote 1: We have placed this definition in the text file <em>TypeParser.parser</em>. It is not mandatory to have each parser definition in a separate text file.
+    </sup>
+</body>
+</html>

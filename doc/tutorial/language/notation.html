@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Grammar Notation</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Grammar Notation</h1>
+
+    <p>A grammar consists of rules that have a name and body:</p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule">rule</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule">body</span>
+            </td>
+        </tr>
+    </table>
+
+    <ul>
+        <li>
+            Language keywords are in <span class="kw">bold</span> font.
+        </li>
+        <li>
+            Terminal symbols are in <span class="mono">monospace</span> font.
+        </li>
+        <li>
+            The names of the rules are in <span class="rule">italic</span> font.
+        </li>
+        <li>
+            Expression <em>e<sub>0</sub></em> | <em>e<sub>1</sub></em> represents alternatives: either <em>e<sub>0</sub></em> occurs or <em>e<sub>1</sub></em> occurs.
+        </li>
+        <li>
+            Expression <em>e<sub>0</sub></em> <em>e<sub>1</sub></em> represents a sequence: <em>e<sub>0</sub></em> occurs and then <em>e<sub>1</sub></em> occurs.
+        </li>
+        <li>
+            Expression <em>e</em>* represents Kleene closure: <em>e</em> occurs zero or more times.
+        </li>
+        <li>
+            Expression <em>e</em>+ represents positive closure: <em>e</em> occurs one or more times.
+        </li>
+        <li>
+            Expression <em>e</em>? represents optionality: either <em>e</em> occurs or not.
+        </li>
+        <li>
+            Expression [a-z] represents a character class: a single character belonging to the class occurs.
+        </li>
+        <li>
+            Grammar operator '|' has least precedence, then comes catenation. Operations '*', '+' and '?' have greatest precedence.
+            Precedence can be overridden or clarified using parentheses.
+        </li>
+    </ul>
+</body>
+</html>

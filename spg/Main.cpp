@@ -122,10 +122,6 @@ int main(int argc, const char** argv)
         for (const std::string& sourceFileName : projectFile->SourceFiles())
         {
             std::string sourceFilePath = Path::Combine(projectFile->BasePath(), sourceFileName);
-            if (verbose)
-            {
-                std::cout << ">> " << sourceFilePath << std::endl;
-            }
             std::string s = ReadFile(sourceFilePath);
             std::u32string content = ToUtf32(s);
             ParserFileLexer lexer(content, sourceFilePath, index);

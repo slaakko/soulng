@@ -1,0 +1,49 @@
+tokens MinilangTokens
+{
+    (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'"), (INT, "'int'"), (BOOL, "'bool'"), (VOID, "'void'"),
+    (ID, "identifier"), (INTLIT, "integer literal"), (TRUE, "'true'"), (FALSE, "'false'"),
+    (SEMICOLON, "';'"), (LPAREN, "'('"), (RPAREN, "')'"), (LBRACE, "'{'"), (RBRACE, "'}'"),
+    (PLUS, "'+'"), (MINUS, "'-'"), (MUL, "'*'"), (DIV, "'/'"), (MOD, "'%''"),
+    (NOT, "'!'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (LESS, "'<'"), (GREATER, "'>'"),
+    (ASSIGN, "'='"), (COMMA, "','")
+}
+
+keywords MinilangKeywords
+{
+    ("if", IF), ("else", ELSE), ("while", WHILE), ("return", RETURN), ("int", INT), ("bool", BOOL), ("void", VOID), ("true", TRUE), ("false", FALSE)
+}
+
+expressions
+{
+    digit = "[0-9]";
+    integer = "{digit}+";
+    identifier = "{idstart}{idcont}*";
+    ws = "[\n\r\t ]";
+    separators = "{ws}+";
+}
+
+lexer MinilangLexer
+{
+    "{separators}" {}
+    "{identifier}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+    "{integer}" { return INTLIT; }
+    ";" { return SEMICOLON; }
+    "\(" { return LPAREN; }
+    "\)" { return RPAREN; }
+    "\{" { return LBRACE; }
+    "\}" { return RBRACE; }
+    "\+" { return PLUS; }
+    "-" { return MINUS; }
+    "\*" { return MUL; }
+    "/" { return DIV; }
+    "%" { return MOD; }
+    "!" { return NOT; }
+    "==" { return EQ; }
+    "!=" { return NEQ; }
+    "<=" { return LEQ; }
+    ">=" { return GEQ; }
+    "<" { return LESS; }
+    ">" { return GREATER; }
+    "=" { return ASSIGN; }
+    "," { return COMMA; }
+}

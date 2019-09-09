@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Building the Lexer</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <h1>
+        Building the Lexer
+    </h1>
+
+    <p>
+        These instructions are for the Microsoft Visual Studio Community Edition.
+    </p>
+
+    <h2>
+        Generating the Lexer
+    </h2>
+
+    <p>
+        Start by creating a C++ console application project that will contain the lexer.
+        We have created a project named <strong>minilang</strong> in the <strong>soulng/minilang</strong> directory.
+        Add the <strong>Minilang.lexer</strong> file created in the previous tutorial to the project.
+    </p>
+
+    <p>
+        Create a source file containing a main function and add it to the project. We have named the source file <strong>Main.cpp</strong>. The contents of it can be as follows for now:
+    </p>
+
+    <pre>
+        #include &lt;iostream>
+
+        int main()
+        {
+            return 0;
+        }
+    </pre>
+
+    <p>
+        Execute the following command from the <strong>soulng/minilang</strong> directory:
+    </p>
+
+    <pre>
+        slg -v Minilang.lexer
+    </pre>
+
+    <p>
+        The SoulNG lexer generator <strong>slg</strong> reads a <em>Minilang.lexer</em> file.
+        If the generator detects no errors, it generates a lexical analyzer for the definitions in the <em>.lexer</em> file as C++ code:
+    </p>
+
+    <pre>
+        D:\work\soulng\minilang>slg -v Minilang.lexer
+        > D:/work/soulng/minilang/Minilang.lexer
+        ==> D:/work/soulng/minilang/MinilangTokens.hpp
+        ==> D:/work/soulng/minilang/MinilangTokens.cpp
+        ==> D:/work/soulng/minilang/MinilangKeywords.hpp
+        ==> D:/work/soulng/minilang/MinilangKeywords.cpp
+        ==> D:/work/soulng/minilang/ClassMap.hpp
+        ==> D:/work/soulng/minilang/ClassMap.cpp
+        ==> D:/work/soulng/minilang/MinilangLexer.hpp
+        ==> D:/work/soulng/minilang/MinilangLexer.cpp
+    </pre>
+
+    <p>
+        By giving the <em>-v</em> option, you can instruct the generator to print the paths of the input and output files as it reads and generates them.
+        If the <em>-v</em> option is not given, the generator prints nothing if the <em>.lexer</em> definition contains no errors.
+    </p>
+
+    <p>
+        The <strong>slg</strong> tool creates C++ header and source files with the file names corresponding to the identifiers defined
+        for the <em>tokens</em>, <em>keywords</em> and <em>lexer</em> declarations in the <em>.lexer file</em>.
+    </p>
+
+    <p>
+        The tool also generates files <strong>ClassMap.cpp</strong> and <strong>ClassMap.hpp</strong> that will contain a Unicode character class map for the lexer.
+        If a project contains many lexers, each must have a unique class map.
+        With an optional <strong>classmap</strong> declaration in the <em>.lexer</em> file you can specify the name of the generated class map files.
+    </p>
+
+    <p>
+        Add the generated source and header files to the project.
+    </p>
+
+    <h2>
+        Compiler Settings for the Lexer Project
+    </h2>
+
+    <p>
+        The generated lexer uses the <strong>soulng/lexer</strong> and the <strong>soulng/util</strong> libraries that in turn depend on the <a href="https://boost.org">Boost</a> C++ libraries.
+    </p>
+
+    <p>
+        The library output file of the <strong>soulng/lexer</strong> library is <strong>snglexerd.lib</strong> for the DEBUG mode and <strong>snglexer.lib</strong> for the RELEASE mode.
+        The library output file of the <strong>soulng/util</strong> library is <strong>sngutild.lib</strong> for the DEBUG mode and <strong>sngutil.lib</strong> for the RELEASE mode.
+        These libraries are compiled to DLL's on Windows.
+        The name of the DLL for the <strong>soulng/lexer</strong> library is <strong>snglexerd.dll</strong> for the DEBUG mode and <strong>snglexer.dll</strong> for the RELEASE mode.
+        The name of the DLL for the <strong>soulng/util</strong> library is <strong>sngutild.dll</strong> for the DEBUG mode and <strong>sngutil.dll</strong> for the RELEASE mode.
+    </p>
+
+    <p>
+        The DLL's <strong>snglexerd.dll, sngutild.dll, snglexer.dll, sngutil.dll</strong> must reside either in the same directory as the lexer (recommended),
+        or in a directory that is contained in the PATH environment variable.
+    </p>
+
+    <h3>Setting the INCLUDE path for the <strong>minilang</strong> project</h3>
+
+    <p>
+        The generated source and header files of the genereated lexer includes three header files of the <strong>soulng/lexer</strong> library:
+        <pre>
+            #include &lt;soulng/lexer/Keyword.hpp>
+            #include &lt;soulng/lexer/Lexer.hpp>
+            #include &lt;soulng/lexer/Token.hpp>
+        </pre>
+        Because we have the generated sources in the <strong>soulng/minilang</strong> directory,
+        we set the <em>C/C++ / General / Additional Include Directories</em> path first to <strong>../..</strong>.
+    </p>
+
+    <p>
+        Because we will also use the Boost libraries and they installed under the <strong>C:\Program Files\boost</strong> directory the INCLUDE path
+        (<em>C/C++ / General / Additional Include Directories</em>) must be set to <strong>../..;C:\Program Files\boost\include\boost-1_68</strong>.
+    </p>
+
+    <h3>Linker Settings</h3>
+
+    <p>
+        We must link against the <strong>snglexerd.lib</strong>, <strong>sngutild.lib</strong> and Boost C++ libraries in the DEBUG mode,
+        so we set the <em>Linker / General / Additional Library Directories</em> path to <strong>$(OutDir);C:\Program Files\boost\lib</strong>.
+        We set the library names in the <em>Linker Input / Additional Dependencies</em> to value <strong>snglexerd.lib;sngutild.lib</strong>
+    </p>
+
+    <p>
+        For the RELEASE mode, paths are the same, but the library names are without <strong>d</strong> suffixes: <strong>snglexer.lib;sngutil.lib</strong>.
+    </p>
+
+
+    <h2>
+        Compiling the Lexer Project
+    </h2>
+
+    <p>
+        Now the <strong>minilang</strong> project should compile without errors. Some warnings are generated that can be turned off by setting the <em>C/C++ Advanced / Disable Specific Warnings</em>
+        value to <strong>4251;4244</strong>.
+    </p>
+</body>
+</html>

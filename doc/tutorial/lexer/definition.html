@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Lexical Analyzer</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Lexical Analyzer
+    </h1>
+
+    <p>
+        The task of the lexical analyzer is to recognize lexical units called <em>tokens</em> from the character stream and return them to the parser.
+        Typical tokens for a language include identifiers and keywords, literals, punctuation and operator symbols.
+        The requirement for a token is that it must be able to be matched by using a regular expression pattern.
+    </p>
+
+    <p>
+        A token is defined in the SoulNG lexer generator by choosing a name and an informative string for it and including them
+        in a <em>tokens</em> declaration. Then under the <em>expressions</em> delaration and/or <em>lexer</em> definition,
+        a regular expression pattern for the token is declared and when the generated lexical analyzer recognizes that pattern,
+        the corresponding token name is returned to the parser.
+    </p>
+
+    <h2>
+        Token Declarations
+    </h2>
+
+    <p>
+        We begin defining lexical analyzer for the <a href="../language/syntax.html">Minilang language</a> by creating token declarations.
+        The language has six statements: if, while, return, construction, assignment and compound statement.
+        Of those, if, while and return statement include keywords so we create token names for them:
+    </p>
+
+    <pre>
+        tokens MinilangTokens
+        {
+            (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'")
+        }
+    </pre>
+
+    <p>
+        Tokens are declared in SoulNG in a <em>tokens</em> declaration that consists of keyword <strong>tokens</strong>
+        followed by an identifier naming the declaration followed by a comma-separated list of identifier/string literal pairs enclosed in braces.
+        The identifier is the name of a token. It is typically written in capital letters, so that is will not clash with keywords of the implementation language.
+        The informative string for a token is included in error messages produced by the parser when a token is expected to match but does not.
+        For example, for a token name LPAREN, the informative string can be "'('", so that the parser error message will say: '(' expected.
+    </p>
+
+    <p>
+        The language has three types: <strong>int</strong>, <strong>bool</strong> and <strong>void</strong>,
+        so we include token declaration for those keywords as well:
+    </p>
+
+    <pre>
+        tokens MinilangTokens
+        {
+            (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'"), (INT, "'int'"), (BOOL, "'bool'"), (VOID, "'void'")
+        }
+    </pre>
+
+    <p>
+        The names of variables and functions of the language are identifiers, so we reserve a token name ID for those.
+        We do not include single quotes in the informative string for an identifier, so that the parser error message will say: identifier expected, and not: 'identifier' expected,
+        because it's not a keyword:
+    </p>
+
+    <pre>
+        tokens MinilangTokens
+        {
+            (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'"), (INT, "'int'"), (BOOL, "'bool'"), (VOID, "'void'"),
+            (ID, "identifier")
+        }
+    </pre>
+
+    <p>
+        The language has two types of literals: integer and Boolean literals, so next we define tokens for them:
+    </p>
+
+    <pre>
+        tokens MinilangTokens
+        {
+            (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'"), (INT, "'int'"), (BOOL, "'bool'"), (VOID, "'void'"),
+            (ID, "identifier"), (INTLIT, "integer literal"), (TRUE, "'true'"), (FALSE, "'false'")
+        }
+    </pre>
+
+    <p>
+        Then come the punctuation tokens. Each statement of the Minilang language is terminated by a semicolon so we declare a SEMICOLON token name.
+        Parameters and enclosed in parentheses: LPAREN and RPAREN are token names for those. Compound statements are enclosed in braces so LBRACE and RBRACE are names for them:
+    </p>
+
+    <pre>
+        tokens MinilangTokens
+        {
+            (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'"), (INT, "'int'"), (BOOL, "'bool'"), (VOID, "'void'"),
+            (ID, "identifier"), (INTLIT, "integer literal"), (TRUE, "'true'"), (FALSE, "'false'"),
+            (SEMICOLON, "';'"), (LPAREN, "'('"), (RPAREN, "')'"), (LBRACE, "'{'"), (RBRACE, "'}'")
+        }
+    </pre>
+
+    <p>
+        Finally we declare token names for operator symbols. The language has Boolean and arithmetic expressions.
+        Arithmetic expressions have operator symbols: '+', '-', '*', '/', '%', and
+        Boolean expressions '!', '==', '!=', '<=', '>=', '<' and '>'.
+        The assignment and construction statements have the '=' symbol, and the parameter and argument lists have ',':
+    </p>
+
+    <pre>
+        tokens MinilangTokens
+        {
+            (IF, "'if'"), (ELSE, "'else'"), (WHILE, "'while'"), (RETURN, "'return'"), (INT, "'int'"), (BOOL, "'bool'"), (VOID, "'void'"),
+            (ID, "identifier"), (INTLIT, "integer literal"), (TRUE, "'true'"), (FALSE, "'false'"),
+            (SEMICOLON, "';'"), (LPAREN, "'('"), (RPAREN, "')'"), (LBRACE, "'{'"), (RBRACE, "'}'"),
+            (PLUS, "'+'"), (MINUS, "'-'"), (MUL, "'*'"), (DIV, "'/'"), (MOD, "'%''"),
+            (NOT, "'!'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (LESS, "'<'"), (GREATER, "'>'"),
+            (ASSIGN, "'='"), (COMMA, "',''")
+        }
+    </pre>
+
+    <p>
+        Now we have declared the names of for all tokens.
+        We now have a choice of defining the patterns for keywords of the language as separate regular expressions,
+        or alternatively have the lexical analyzer recognize them as identifiers and separate them in the rule for an identifier.
+        The SoulNG lexer generator has direct support for the second alternative, so we present it next.
+    </p>
+
+    <h2>
+        Keyword Declarations
+    </h2>
+
+    <p>
+        When the keywords are recognized as identifiers and separated by the rule for an identifier, we use the <em>keywords</em>
+        declaration for the keywords:
+    </p>
+
+    <pre>
+        keywords MinilangKeywords
+        {
+            ("if", IF), ("else", ELSE), ("while", WHILE), ("return", RETURN), ("int", INT), ("bool", BOOL), ("void", VOID), ("true", TRUE), ("false", FALSE)
+        }
+    </pre>
+
+    <p>
+        The <em>keywords</em> declaration consists of the keyword <strong>keywords</strong> followed by an identifier naming the keywords declaration
+        followed by a comma-separated list of string literal/identifier pairs enclosed in braces.
+        The string literal defines the keyword string and the identifier defines the corresponding token name to be returned to the parser.
+        The lexical analyzer will have a mapping of keyword string literals to keyword token names, that can be consulted from an action of a lexer rule.
+    </p>
+
+    <h2>
+        Declaring Token Pattern Expressions
+    </h2>
+
+    <p>
+        Now that we have defined the names of the tokens and the keyword strings, we turn our attention to declaring the patterns for the tokens.
+        We begin by declaring a pattern for an integer literal:
+    </p>
+
+    <pre>
+        expressions
+        {
+            digit = "[0-9]";
+            digit_sequence = "{digit}+";
+            integer_literal = "{digit_sequence}";
+        }
+    </pre>
+
+    <p>
+        Token pattern expressions are declared in SoulNG in an <em>expressions</em> declaration that consists a a keyword <strong>expressions</strong> followed by
+        expression definitions enclosed in braces. An expression definition consists of a name for the expression, an assignment symbol, a regular expression string
+        and is terminated by a semicolon. An expression string may contain references to other expressions that come before it in the expressions declaration
+        by enclosing the name of the referenced expression in braces. For example, the <em>digit_sequence</em> expression contains a reference to the <em>digit</em>
+        expression above it. In the above regular expressions pattern strings [0-9] is a <em>character class</em> containing <em>ranges</em> of characters to be matched.
+        Expression <em>e</em>+ matches one or more <em>e</em>'s, so "[0-9]" matches any single decimal digit and "[0-9]+" matches one or more decimal digits.
+        Next we have a pattern for an identifier:
+    </p>
+
+    <pre>
+        expressions
+        {
+            digit = "[0-9]";
+            digit_sequence = "{digit}+";
+            integer_literal = "{digit_sequence}";
+            identifier = "{idstart}{idcont}*";
+        }
+    </pre>
+
+    <p>
+        The expression <em>e<sub>0</sub></em> <em>e<sub>1</sub></em>, matches expression <em>e<sub>0</sub></em> followed by the expression <em>e<sub>1</sub></em>,
+        and the expression <em>e</em>* matches zero or more <em>e</em>'s, so expression "{idstart}{idcont}*" matches
+        expression <em>idstart</em> followed by zero or more matches of expression <em>idcont</em>.
+        The whole expression matches a single letter or an underscore followed by zero or more letters, digits and underscores.
+        We have not defined expressions <em>idstart</em> and <em>idcont</em> here, because those expressions are built in the SoulNG lexer generator.
+        The reason that these expression are built-in is that by default those patterns include not only the ASCII identifier ranges,
+        but also Unicode identifier ranges containing non-ASCII Unicode letters. They are too numerous to be written as literal regular expressions.
+        If only ASCII identifiers are preferred, user can request them by using the '-a' option when running the <strong>slg</strong> command,
+        or define them manually as patterns "[A&#8209;Za&#8209;z_]" and "[A&#8209;Za&#8209;z_0&#8209;9]".
+    </p>
+
+    <p>
+        To be recognized properly, the other tokens must be separated by separator tokens:
+    </p>
+
+    <pre>
+        expressions
+        {
+            digit = "[0-9]";
+            digit_sequence = "{digit}+";
+            integer_literal = "{digit_sequence}";
+            identifier = "{idstart}{idcont}*";
+            ws = "[\n\r\t ]";
+            separators = "{ws}+";
+        }
+    </pre>
+
+    <p>
+        We have defined an expression <em>ws</em> that is a character class containing one of the white space characters:
+        '\n' for a newline, '\r' for a carriage return, '\t' for a tab and ' ' for a space character.
+        Then we have defined expression <em>separators</em> to match one or more those white space characters.
+    </p>
+
+    <h2 id="lexer">
+        Defining a Lexer
+    </h2>
+
+    <p>
+        The token identifiers and regular expression patterns for recognizing the tokens are connected together in a lexer definition.
+        The lexer definition consists of keyword <strong>lexer</strong> followed by an identifier naming the lexer followed by <em>rules</em> enclosed in braces.
+        Each rule has a regular expression pattern followed by the corresponding semantic action that is written as C++ code.
+        The generated lexer operates in a loop recognizing patterns. The pattern that has the longest match wins.
+        When that happens, the generated lexer executes the semantic action associated with the matched pattern.
+        Typically the semantic action returns the token identifier that corresponds to the matched pattern to the caller, but we have two exceptions,
+        a rule for separators, and a rule for identifiers, that are described first:
+    </p>
+
+    <pre>
+        lexer MinilangLexer
+        {
+            "{separators}" {}
+        }
+    </pre>
+
+    <p>
+        First we have a rule for token separators. The semantic action for separators is special in that it does nothing.
+        In particular it does not return a token identifier to the parser as semantic actions for other rules do.
+        When the semantic action is empty, the lexer skips that token and continues recognizing other tokens.
+    </p>
+
+    <p id="identifier">
+        The next rule is for the identifiers:
+    </p>
+
+    <pre>
+        lexer MinilangLexer
+        {
+            "{separators}" {}
+            "{identifier}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+        }
+    </pre>
+
+    <p>
+        The second rule that is for the identifier is also special, because it is used for recognizing both identifiers and keywords.
+        The semantic action for that rule checks if the match is found to be a keyword string. If not, the built-in <em>GetKeywordToken()</em> function
+        returns INVALID_TOKEN, otherwise it returns the token identifier for the matched keyword. Thus when <em>GetKeywordToken()</em> returns INVALID_TOKEN,
+        we know that the match is an ordinary identifier, and we return ID to the parser; otherwise we return the token identifier for the keyword to the parser.
+    </p>
+
+    <p id="integer-literal">
+        The rule for an <em>integer-literal</em> is simpler:
+    </p>
+
+    <pre>
+        lexer MinilangLexer
+        {
+            "{separators}" {}
+            "{identifier}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+            "{integer_literal}" { return INTLIT; }
+        }
+    </pre>
+
+    <p>
+        When the match is for <em>integer_literal</em> pattern, we return INTLIT token identifier to the parser. Next come the punctuation symbols:
+    </p>
+
+    <pre>
+        lexer MinilangLexer
+        {
+            "{separators}" {}
+            "{identifier}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+            "{integer_literal}" { return INTLIT; }
+            ";" { return SEMICOLON; }
+            "\(" { return LPAREN; }
+            "\)" { return RPAREN; }
+            "\{" { return LBRACE; }
+            "\}" { return RBRACE; }
+        }
+    </pre>
+
+    <p>
+        The parentheses have special meaning in the regular expression patterns: they are used for grouping. Also the braces are used in patterns for referencing other expressions.
+        Thus when we want the literal parentheses and braces to be matched in a regular expression pattern, they must be escaped by using the backslash character.
+        Finally come the operator symbols and the assignment symbol:
+    </p>
+
+    <pre>
+        lexer MinilangLexer
+        {
+            "{separators}" {}
+            "{identifier}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+            "{integer_literal}" { return INTLIT; }
+            ";" { return SEMICOLON; }
+            "\(" { return LPAREN; }
+            "\)" { return RPAREN; }
+            "\{" { return LBRACE; }
+            "\}" { return RBRACE; }
+            "\+" { return PLUS; }
+            "-" { return MINUS; }
+            "\*" { return MUL; }
+            "/" { return DIV; }
+            "%" { return MOD; }
+            "!" { return NOT; }
+            "==" { return EQ; }
+            "!=" { return NEQ; }
+            "<=" { return LEQ; }
+            ">=" { return GEQ; }
+            "<" { return LESS; }
+            ">" { return GREATER; }
+            "=" { return ASSIGN; }
+            "," { return COMMA; }
+        }
+    </pre>
+
+    <p>
+        The '+' and '*' characters are operators in regular expressions, so they must also be escaped with the backslash.
+        Other symbols in the Minilang language stand for themselves.
+    </p>
+
+    <p>
+        Now the MinilangLexer should recognize all tokens of the language.
+    </p>
+
+    <h2>
+        The C++ Interface of the Lexer
+    </h2>
+
+    <p>
+        The interface of the lexical analyzer has two main operations: if a variable or parameter named <em>lexer</em> is of the type of the generated lexical analyzer (or reference to it),
+        then the expression <strong>*lexer</strong> returns the identifier of the current token, and the expression <strong>++lexer</strong> advances the lexer to the next token.
+        In addition the lexer has a member variable <strong>token</strong> that contains the matched <em>lexeme</em>, a pair of pointers to the beginning and end of the matching characters.
+    </p>
+
+    <p>
+        As it moves forward in the stream of tokens, the lexer will save the scanned non-separator tokens.
+        They will have indeces starting from zero. The <em>GetPos()</em> member function of the lexer will return the position,
+        or index, of the current token, and the <em>SetPos()</em> member function will set the lexer to the given position in the token stream,
+        so that the <strong>*lexer</strong> operation will return the identifier of the token in that position. In this way the parser can backtrack to a previous position and rescan
+        tokens from that position onward again. The <em>GetToken()</em> member function of the lexer will return a token in the given position.
+    </p>
+
+    <p>
+        A <em>span</em> is a range of token indeces. The <em>GetSpan()</em> member function of the lexer will return a span that has the current token index as its start and end index.
+        By setting start and/or end indeces of a span, and then calling the <em>GetMatch()</em> member function of the lexer with that span,
+        the lexer will return a string that contains all matching characters including separators for that span of tokens.
+    </p>
+</body>
+</html>

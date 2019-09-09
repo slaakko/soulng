@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Syntax</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Minilang Syntax</h1>
+
+    <p>
+        The notation used for representing the language syntax in this document is described <a href="notation.html">here</a>.
+    </p>
+
+    <h2>Types</h2>
+
+    <p>
+        The language has three types: <strong>int</strong> for representing integer values, <strong>bool</strong> for representing truth values and
+        <strong>void</strong> for representing lack of type:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.type">type</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">int</span> |
+                <span class="kw">bool</span> |
+                <span class="kw">void</span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Literals</h2>
+
+    <p>
+        The literal values of the <strong>int</strong> type are represented as non-empty sequences of decimal digits 0...9.
+        0 and 123 are examples of integer literals.
+        The literal values of the <strong>bool</strong> type are represented by keywords <strong>true</strong> and <strong>false</strong>.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.literal">literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.boolean-literal">boolean&#8209;literal</a></span> |
+                <span class="rule"><a href="#rule.integer-literal">integer&#8209;literal</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.boolean-literal">boolean&#8209;literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">true</span> |
+                <span class="kw">false</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.integer-literal">integer&#8209;literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.digit-sequence">digit&#8209;sequence</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.digit-sequence">digit&#8209;sequence</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="op">[0-9]+</span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Identifiers</h2>
+
+    The language has <em>functions</em> and <em>variables</em>.
+
+    <p>
+        The names of functions and variables are defined to be <a href="https://unicode.org/reports/tr31/#Default_Identifier_Syntax">Unicode identifiers</a>, such
+        as <em>xyzzy</em> or <em>öljy</em>, so also non-ASCII letters in the identifiers are allowed:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.identifier">identifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="https://unicode.org/reports/tr31/#Default_Identifier_Syntax">Unicode identifier</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Expressions</h2>
+
+    <p>
+        The literals, variables and function invocations can be combined as <em>expressions</em> using operators.
+    </p>
+
+    <p>
+        A literal or an identifier or an expression in parentheses is a <em>primary expression</em>:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.primary-expression">primary&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.literal">literal</a></span> |
+                <span class="rule"><a href="#rule.identifier">identifier</a></span> |
+                <span class="mono">(</span> <span class="rule"><a href="#rule.expression">expression</a></span> <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        123, <em>xyzzy</em> and (1 + 2) are examples of primary expressions.
+    </p>
+
+    <p>
+        A primary expression is also a <em>postfix expression</em>.
+        A primary expression followed by parenthesized list of arguments is a postfix expression, namely a <em>function invocation</em>:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.postfix-expression">postfix&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.primary-expression">primary&#8209;expression</a></span>
+                (<span class="mono">(</span> <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>? <span class="mono">)</span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.expression-list">expression-list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                (<span class="mono">,</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <em>foo()</em>, <em>fibonacci(10)</em>, and <em>bar(1, 2, 3)</em> are examples of function invocations.
+    </p>
+
+    <p>
+        A postfix expression is also a <em>unary expression</em>.
+        An unary operator '+', '-' or '!' followed by a unary expression is a unary expression:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.unary-expression">unary&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                (<span class="mono">+</span> | <span class="mono">-</span> | <span class="mono">!</span>) <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.postfix-expression">postfix&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <em>xyzzy</em>, <em>0</em>, <em>+5</em>, <em>-10</em> and <em>!true</em> are exmples of unary expressions.
+    </p>
+
+    <p>
+        A unary expression is also a <em>multiplicative expression</em>.
+        Unary expressions combined with multiplicative operators ('*', '/' and '%') are multiplicative expressions.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.multiplicative-expression">multiplicative&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span>
+                ((<span class="mono">*</span> | <span class="mono">/</span> | <span class="mono">%</span>)
+                <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <em>10</em>, <em>xyzzy * 2</em>, <em>100 / 5</em> and <em>(2 + 3) * 4 % 7</em> are examples of multiplicative expressions.
+    </p>
+
+    <p>
+        A multiplicative expression is also an <em>additive expression</em>.
+        Multiplicative expressions combined with additive operators ('+' and '-') are additive expressions.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.additive-expression">additive&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.multiplicative-expression">multiplicative&#8209;expression</a></span>
+                ((<span class="mono">+</span> | <span class="mono">-</span>)
+                <span class="rule"><a href="#rule.multiplicative-expression">multiplicative&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <em>1 + 2</em>, <em>xyzzy</em> and <em>(3 - 5) + 2</em> are examples of additive expressions.
+    </p>
+
+    <p>
+        An additive expression is also a <em>relational expression</em>.
+        Additive expressions combined with relational operators '&lt;', '>', '&lt;=' and '>=' are relational expressions.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.relational-expression">relational&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.additive-expression">additive&#8209;expression</a></span>
+                ((<span class="mono">&lt;</span> | <span class="mono">&gt;</span> | <span class="mono">&lt;=</span> | <span class="mono">&gt;=</span>)
+                <span class="rule"><a href="#rule.additive-expression">additive&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <em>3 >= 7</em>, <em>xyzzy < 0</em>, and <em>100</em> are examples of relational expressions.
+    </p>
+
+    <p>
+        A relational expression is also an <em>equality expression</em>.
+        Relational expressions combined with equality operators '==' and '!=' are equality expressions.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.equality-expression">equality&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.relational-expression">relational&#8209;expression</a></span>
+                ((<span class="mono">==</span> | <span class="mono">!=</span>)
+                <span class="rule"><a href="#rule.relational-expression">relational&#8209;expression</a>)*</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <em>xyzzy == 0</em>, <em>a != b</em> and <em>100</em> are examples of equality expressions.
+    </p>
+
+    <p>
+        An equality expression is an <em>expression</em>.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression">expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.equality-expression">equality&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Statements</h2>
+
+    <p>
+        The language has six statements: an if-statement, a while-statement, a return-statement, a construction statement, an assignment statement and a compound statement.
+        Besides syntax, the execution semantics is described briefly.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.statement">statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.if-statement">if&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.while-statement">while&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.return-statement">return&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.construction-statement">construction&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.assignment-statement">assignment&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        An if-statement tests a condition expression that shall have type <strong>bool</strong>.
+        If the condition evaluates to <strong>true</strong>,
+        the first statement is executed. The if-statement can have an <strong>else</strong> part.
+        If the condition evaluates to <strong>false</strong>, the statement of the <strong>else</strong> part is executed:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.if-statement">if&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">if</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+                (
+                <span class="kw">else</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+                )?
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>if</strong> <strong>(</strong> <em>xyzzy</em> > 0 <strong>)</strong> <strong>return</strong> 1<strong>;</strong> <strong>else</strong> <strong>return</strong> 2<strong>;</strong>
+        is an example of an if-statement.
+    </p>
+
+    <p>
+        A while-statement evaluates a condition expression that shall have type <strong>bool</strong>.
+        As long as the condition evaluates to <strong>true</strong> the statement is executed:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.while-statement">while&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">while</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>while</strong> <strong>(</strong> <em>i</em> > 0 <strong>)</strong> <em>i</em> <strong>=</strong> <em>i</em> - 1 <strong>;</strong> is an
+        example of a while-statement.
+    </p>
+
+    <p>
+        A return-statement returns control from the current function to the caller of the function.
+        If the function has type <strong>void</strong> the return-statement must not have an expression,
+        otherwise it must have an expression whose evaluated value is returned to the caller:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.return-statement">return&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">return</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>?
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>return</strong> 10 <strong>;</strong> is an example of a return statement.
+    </p>
+
+    <p>
+        A construction statement creates a local variable with a name of the given identifier and initializes it to the value
+        that is the value of the evaluated expression:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.construction-statement">construction&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type">type</a></span>
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>int</strong> <em>xyzzy</em> <strong>=</strong> 100 <strong>;</strong> is an
+        example of a construction statement.
+    </p>
+
+    <p>
+        An assignment statement assigns a value that is the value of the evaluated expression
+        to a local variable whose name is the identifier:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.assignment-statement">assignment&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Note: because a function cannot return an <em>lvalue</em> in this language, the target of the assignment is just an identifier,
+        not an expression.
+    </p>
+
+    <p>
+        <em>x</em> <strong>=</strong> <em>foo</em>(10) <strong>;</strong> is an example of an assignment statement.
+    </p>
+
+    <p>
+        A compound statement executes a sequence of statements enclosed in braces:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.compound-statement">compound&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>{</strong> <em>x</em> <strong>=</strong> <em>x</em> + 1 <strong>;</strong> <em>y</em> <strong>=</strong> <em>y</em> - 1 <strong>;</strong> <strong>}</strong>
+        is an example of a compound statement.
+    </p>
+
+    <h2>Functions</h2>
+
+    <p>
+        A function represents computation or is evaluated for side-effects.
+        A function has a return type, a possibly empty list of parameters and a body, a compound statement:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.function">function</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type">type</a></span>
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.parameter-list">parameter&#8209;list</a></span>?
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.parameter-list">parameter&#8209;list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.parameter">parameter</a></span>
+                (<span class="mono">,</span>
+                <span class="rule"><a href="#rule.parameter">parameter</a></span>
+                )*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.parameter">parameter</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type">type</a></span>
+                <span class="rule"><a href="#rule.identifier">identifier</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>int</strong> <em>add</em><strong>(</strong><strong>int</strong> <em>x</em><strong>,</strong> <strong>int</strong> <em>y</em><strong>)</strong> <strong>{</strong> <strong>return</strong> <em>x</em> + <em>y</em> <strong>;</strong> <strong>}</strong>
+        is an example of a function.
+    </p>
+
+    <h2>Source Files</h2>
+
+    <p>
+        A source file consists of a possibly empty sequence of functions:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.source-file">source&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.function">function</a></span>*
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>int</strong> <em>add</em><strong>(</strong><strong>int</strong> <em>x</em><strong>,</strong> <strong>int</strong> <em>y</em><strong>)</strong> <strong>{</strong> <strong>return</strong> <em>x</em> + <em>y</em> <strong>;</strong> <strong>}</strong>
+        <strong>int</strong> <em>sub</em><strong>(</strong><strong>int</strong> <em>x</em><strong>,</strong> <strong>int</strong> <em>y</em><strong>)</strong> <strong>{</strong> <strong>return</strong> <em>x</em> - <em>y</em> <strong>;</strong> <strong>}</strong>
+        is an example of a source file.
+    </p>
+</body>
+</html>

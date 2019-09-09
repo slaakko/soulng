@@ -4,7 +4,9 @@
 // =================================
 
 #include <soulng/util/MappedInputFile.hpp>
+#include <boost/filesystem.hpp>
 #include <boost/iostreams/device/mapped_file.hpp>
+#include <stdexcept>
 
 namespace soulng { namespace util {
 
@@ -65,6 +67,14 @@ const char* MappedInputFile::End() const
 
 std::string ReadFile(const std::string& fileName)
 {
+    if (!boost::filesystem::exists(fileName))
+    {
+        throw std::runtime_error("file '" + fileName + "' does not exist");
+    }
+    if (boost::filesystem::file_size(fileName) == 0)
+    {
+        return std::string();
+    }
     MappedInputFile mappedFile(fileName);
     return std::string(mappedFile.Begin(), mappedFile.End());
 }

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Testing the Lexer</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Testing the Lexer
+    </h1>
+
+    <p>
+        Our <strong>Main.cpp</strong> source file should now contain only the following content:
+    </p>
+
+    <pre>
+        #include &lt;iostream>
+
+        int main()
+        {
+            return 0;
+        }
+    </pre>
+
+    <h3>
+        Library Initialization
+    </h3>
+
+    <p>
+        The <strong>soulng/util</strong> library needs dynamic initialization, so we add the following initialization code to the <strong>Main.cpp</strong>:
+    </p>
+
+    <pre>
+        #include &lt;soulng/util/InitDone.hpp>
+        #include &lt;iostream>
+
+        struct Initializer
+        {
+            Initializer()
+            {
+                soulng::util::Init();
+            }
+            ~Initializer()
+            {
+                soulng::util::Done();
+            }
+        };
+
+        int main()
+        {
+            Initializer initializer;
+            return 0;
+        }
+    </pre>
+
+    <p>
+        We have added a class named <em>Initializer</em> that takes care of library initialization in its constructor and clean up in its destructor.
+        By adding a variable <em>initializer</em> of type <em>Initializer</em> in the <storng>main</storng> function, the initialization and tear down code is run
+        in the start and end of the program.
+    </p>
+
+    <h3>
+        Error Handling
+    </h3>
+
+    <p>
+        The <strong>soulng</strong> libraries report errors by throwing exceptions of type std::runtime_error, so the next thing to do is to handle standard exceptions:
+    </p>
+
+    <pre>
+        #include &lt;soulng/util/InitDone.hpp>
+        #include &lt;iostream>
+        #include &lt;stdexcept>
+
+        struct Initializer
+        {
+            Initializer()
+            {
+                soulng::util::Init();
+            }
+            ~Initializer()
+            {
+                soulng::util::Done();
+            }
+        };
+
+        int main()
+        {
+            Initializer initializer;
+            try
+            {
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr << ex.what() << std::endl;
+                return 1;
+            }
+            return 0;
+        }
+    </pre>
+
+    <p>
+        We have included the &lt;stdexcept> header and added a try block that prints the error to the standard error stream.
+    </p>
+
+    <h3>Tester Function</h3>
+
+    <p>
+        We will now write a tester function that will read a test file, construct a lexer and print the tokens contained in the test file to the standard output:
+    </p>
+
+    <pre>
+        // ...
+        #include &lt;soulng/util/MappedInputFile.hpp>
+
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            // ...
+        }
+    </pre>
+
+    <p>
+        First we print the path of the given test file to the standard output.
+        We then call a <em>ReadFile()</em> utility function of the <strong>soulng/util</strong> library, that will read the contents of the given UTF-8 encoded text file into a std::string.
+        We have included the &lt;soulng/util/MappedInputFile.hpp> header the contains the signature of the <em>ReadFile</em> function.
+    </p>
+
+    <p>
+        The lexer operates internally with UTF-32 characters, so we need to convert the UTF-8 string to UTF-32:
+    </p>
+
+    <pre>
+        // ...
+        #include &lt;soulng/util/Unicode.hpp>
+
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            // ...
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            // ...
+        }
+    </pre>
+
+    <p>
+        We call the <em>ToUtf32()</em> utiltity function of the <strong>soulng::util</strong> library to do the conversion.
+        We have included the &lt;soulng/util/Unicode.hpp> header that contains the signature of the <em>ToUtf32</em> function.
+    </p>
+
+    <p>
+        Now we construct the lexer and have it read the first token:
+    </p>
+
+    <pre>
+        // ...
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            // ...
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            MinilangLexer lexer(content, minilangFilePath, 0);
+            ++lexer;
+            // ...
+
+    </pre>
+
+    <p>
+        The lexer constructor takes a UTF-32 string that will be tokenized, a file path included in error messages produced by the lexer
+        and a file index included in <em>span</em>s generated by the lexer.
+        The file index is not used by this example so we set it to 0.
+        The <em>++lexer</em> call is necessary to have the lexer produce the first token.
+    </p>
+
+    <p>
+        Next we will test if the lexer has reach the end of the input, and if not get the match from the lexer:
+    </p>
+
+    <pre>
+        // ...
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            // ...
+            ++lexer;
+            while (*lexer != MinilangTokens::END)
+            {
+                std::u32string match = lexer.token.match.ToString();
+                // ...
+    </pre>
+
+    <p>
+        The <em>*lexer</em> expression returns the identifier of the current token. We compare it to the END token that represents end of input.
+    </p>
+
+    <p>
+        If the end of input not reached, we will print the name of the matched token and the matching string:
+    </p>
+
+    <pre>
+        // ...
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            // ...
+                std::u32string match = lexer.token.match.ToString();
+                std::cout << MinilangTokens::GetTokenName(*lexer) << "(" << soulng::unicode::ToUtf8(match) << ")" << std::endl;
+            // ...
+    </pre>
+
+    <p>
+        The <em>GetTokenName()</em> function returns the identifier of the token as a string.
+    </p>
+
+    <p>
+        Finally we advance the lexer to the next token with the <em>++lexer</em> expression, go to testing the while condition again, and if the end of input reached,
+        print a message to the standard output:
+    </p>
+
+    <pre>
+        // ...
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            // ...
+            while (*lexer != MinilangTokens::END)
+            {
+                // ...
+                ++lexer;
+            }
+            std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
+        }
+    </pre>
+
+    <p>
+        Here's the complete test function:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+        #include &lt;soulng/util/InitDone.hpp>
+        #include &lt;soulng/util/MappedInputFile.hpp>
+        #include &lt;soulng/util/Unicode.hpp>
+        #include &lt;iostream>
+        #include &lt;stdexcept>
+
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            MinilangLexer lexer(content, minilangFilePath, 0);
+            ++lexer;
+            while (*lexer != MinilangTokens::END)
+            {
+                std::u32string match = lexer.token.match.ToString();
+                std::cout << MinilangTokens::GetTokenName(*lexer) << "(" << soulng::unicode::ToUtf8(match) << ")" << std::endl;
+                ++lexer;
+            }
+            std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
+        }
+    </pre>
+
+    <h3>Main Function</h3>
+
+    <p>
+        We will add a simple command interface to the main function:
+        The main function checks that it has been given at least two arguments.
+        It expects that the first argument is a command, and the second argument is a test file path.
+        If the command is "test-lexer", the TestMinilangLexer() function is called with the test file path:
+    </p>
+
+    <pre>
+        int main(int argc, const char** argv)
+        {
+            Initializer initializer;
+            try
+            {
+                if (argc < 3)
+                {
+                    throw std::runtime_error("usage: minilang &lt;command> &lt;file.minilang>\ncommand: test-lexer");
+                }
+                std::string command = argv[1];
+                std::string filePath = soulng::util::GetFullPath(soulng::util::Path::MakeCanonical(argv[1]));
+                if (command == "test-lexer")
+                {
+                    TestMinilangLexer(filePath);
+                }
+                else
+                {
+                    throw std::runtime_error("unknown command: '" + command + "'");
+                }
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr << ex.what() << std::endl;
+                return 1;
+            }
+            return 0;
+        }
+    </pre>
+
+    <p>
+        The <em>MakeCanonical</em> function converts a path with backslashes to a path with slashes,
+        and the <em>GetFullPath()</em> function converts a possibly relative path to an absolute path.
+    </p>
+
+    <p>
+        Here's the complete <strong>Main.cpp</strong> file:
+    </p>
+
+    <pre>
+        #include &lt;soulng/minilang/MinilangLexer.hpp>
+        #include &lt;soulng/minilang/MinilangTokens.hpp>
+        #include &lt;soulng/util/InitDone.hpp>
+        #include &lt;soulng/util/MappedInputFile.hpp>
+        #include &lt;soulng/util/Unicode.hpp>
+        #include &lt;soulng/util/Path.hpp>
+        #include &lt;iostream>
+        #include &lt;stdexcept>
+
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            MinilangLexer lexer(content, minilangFilePath, 0);
+            ++lexer;
+            while (*lexer != MinilangTokens::END)
+            {
+                std::u32string match = lexer.token.match.ToString();
+                std::cout << MinilangTokens::GetTokenName(*lexer) << "(" << soulng::unicode::ToUtf8(match) << ")" << std::endl;
+                ++lexer;
+            }
+            std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
+        }
+
+        struct Initializer
+        {
+            Initializer()
+            {
+                soulng::util::Init();
+            }
+            ~Initializer()
+            {
+                soulng::util::Done();
+            }
+        };
+
+        int main(int argc, const char** argv)
+        {
+            Initializer initializer;
+            try
+            {
+                if (argc < 3)
+                {
+                    throw std::runtime_error("usage: minilang &lt;command> &lt;file.minilang>\ncommand: test-lexer");
+                }
+                std::string command = argv[1];
+                std::string filePath = soulng::util::GetFullPath(soulng::util::Path::MakeCanonical(argv[1]));
+                if (command == "test-lexer")
+                {
+                    TestMinilangLexer(filePath);
+                }
+                else
+                {
+                    throw std::runtime_error("unknown command: '" + command + "'");
+                }
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr << ex.what() << std::endl;
+                return 1;
+            }
+            return 0;
+        }
+    </pre>
+
+    <p>
+        The project should build now without any errors.
+    </p>
+
+    <h3>Running the First Test</h3>
+
+    <p>
+        The first test file <strong>fibocacci.minilang</strong> that is written in <a href="../language/syntax.html">Minilang language</a> contains a function generating the Fibonacci sequence:
+    </p>
+
+    <pre>
+        int fibonacci(int n)
+        {
+            if (n == 0) return 0;
+            if (n == 1) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+    </pre>
+
+    <p>
+        By running the <strong>minilang.exe</strong> with the <strong>fibonacci.minilang</strong> argument, we get the following output:
+    </p>
+
+    <pre>
+        D:\work\soulng\x64\Debug>minilang test-lexer ..\..\minilang\test\fibonacci.minilang
+
+        > D:/work/soulng/minilang/test/fibonacci.minilang
+        INT(int)
+        ID(fibonacci)
+        LPAREN(()
+        INT(int)
+        ID(n)
+        RPAREN())
+        LBRACE({)
+        IF(if)
+        LPAREN(()
+        ID(n)
+        EQ(==)
+        INTLIT(0)
+        RPAREN())
+        RETURN(return)
+        INTLIT(0)
+        SEMICOLON(;)
+        IF(if)
+        LPAREN(()
+        ID(n)
+        EQ(==)
+        INTLIT(1)
+        RPAREN())
+        RETURN(return)
+        INTLIT(1)
+        SEMICOLON(;)
+        RETURN(return)
+        ID(fibonacci)
+        LPAREN(()
+        ID(n)
+        MINUS(-)
+        INTLIT(1)
+        RPAREN())
+        PLUS(+)
+        ID(fibonacci)
+        LPAREN(()
+        ID(n)
+        MINUS(-)
+        INTLIT(2)
+        RPAREN())
+        SEMICOLON(;)
+        RBRACE(})
+        end of file 'D:/work/soulng/minilang/test/fibonacci.minilang' reached
+    </pre>
+
+    <h3>Running the Second Test</h3>
+
+    <p>
+        The lexer operates internally with UTF-32 characters and has Unicode identifier classes enabled, so we next test the lexer with some Unicode identifiers.
+    </p>
+
+    <p>
+        The <strong>unicodeid.minilang</strong> contains some Finnish characters:
+    </p>
+
+    <pre>
+        int örkki()
+        {
+            int öljyä = 1;
+            return öljyä;
+        }
+    </pre>
+
+    <p>
+        Running the <strong>minilang.exe</strong> with the <strong>unicodeid.minilang</strong> produces the following output:
+    </p>
+
+    <pre>
+        D:\work\soulng\x64\Debug>minilang ..\..\minilang\test\unicodeid.minilang
+        > D:/work/soulng/minilang/test/unicodeid.minilang
+        INT(int)
+        ID(├Ârkki)
+        LPAREN(()
+        RPAREN())
+        LBRACE({)
+        INT(int)
+        ID(├Âljy├ñ)
+        ASSIGN(=)
+        INTLIT(1)
+        SEMICOLON(;)
+        RETURN(return)
+        ID(├Âljy├ñ)
+        SEMICOLON(;)
+        RBRACE(})
+        end of file 'D:/work/soulng/minilang/test/unicodeid.minilang' reached
+    </pre>
+
+    <p>
+        The output does not look right because as far as we know the Windows console cannot handle UTF-8 text properly as Linux terminal can with UTF-8 locale enabled.
+        Texts needs to be converted to UTF-16 to show right on Windows console.
+        We have therefore added the an operator&lt;&lt;() function that can print UTF-32 strings.
+        The function is declared in ConsoleUnicode.hpp and defined in ConsoleUnicode.cpp:
+    </p>
+
+    <p>
+        // ConsoleUnicode.hpp:
+    </p>
+
+    <pre>
+        #ifndef CONSOLE_UNICODE_HPP
+        #define CONSOLE_UNICODE_HPP
+        #include &lt;ostream>
+        #include &lt;string>
+
+        std::ostream& operator&lt;&lt;(std::ostream& s, const std::u32string& utf32Str);
+        #endif // CONSOLE_UNICODE_HPP
+    </pre>
+
+    <p>
+        // ConsoleUnicode.cpp:
+    </p>
+
+    <pre>
+        #ifdef _WIN32
+            #include &lt;io.h>
+            #include &lt;fcntl.h>
+        #endif
+
+        #ifdef _WIN32
+
+        void SetStdHandlesToUtf16Mode()
+        {
+            _setmode(0, _O_U16TEXT);
+            _setmode(1, _O_U16TEXT);
+            _setmode(2, _O_U16TEXT);
+        }
+
+        void SetStdHandlesToNarrowMode()
+        {
+            _setmode(0, _O_TEXT);
+            _setmode(1, _O_TEXT);
+            _setmode(2, _O_TEXT);
+        }
+
+        bool IsHandleRedirected(int handle)
+        {
+            return !_isatty(handle);
+        }
+
+        struct UnicodeWriteGuard
+        {
+            UnicodeWriteGuard()
+            {
+                SetStdHandlesToUtf16Mode();
+            }
+            ~UnicodeWriteGuard()
+            {
+                SetStdHandlesToNarrowMode();
+            }
+        };
+
+        void WriteUtf16StrToStdOutOrStdErr(const std::u16string& str, FILE* file)
+        {
+        //  precondition: file must be stdout or stderr
+            if (file != stdout && file != stderr)
+            {
+                throw std::runtime_error("WriteUtf16StrToStdOutOrStdErr: precondition violation: file must be stdout or stderr");
+            }
+            UnicodeWriteGuard unicodeWriteGuard;
+            size_t result = std::fwrite(str.c_str(), sizeof(char16_t), str.length(), file);
+            if (result != str.length())
+            {
+                throw std::runtime_error("could not write Unicode text");
+            }
+        }
+
+        std::ostream& operator&lt;&lt;(std::ostream&amp; s, const std::u32stringm&amp; utf32Str)
+        {
+            if (&s == &std::cout && !IsHandleRedirected(1))
+            {
+                std::u16string utf16Str = soulng::unicode::ToUtf16(utf32Str);
+                WriteUtf16StrToStdOutOrStdErr(utf16Str, stdout);
+                return s;
+            }
+            else if (&s == &std::cerr && !IsHandleRedirected(2))
+            {
+                std::u16string utf16Str = soulng::unicode::ToUtf16(utf32Str);
+                WriteUtf16StrToStdOutOrStdErr(utf16Str, stderr);
+                return s;
+            }
+            else
+            {
+                return s << soulng::unicode::ToUtf8(utf32Str);
+            }
+        }
+
+        #else // !_WIN32
+
+        std::ostream& operator&lt;&lt;(std::ostream&amp; s, const std::u32string&amp; utf32Str)
+        {
+            return s << soulng::unicode::ToUtf8(utf32Str);
+        }
+
+        #endif
+    </pre>
+
+    <p>
+        Now the strings can be printed to the std::cout and std::cerr as UTF-32 strings and the operator&lt;&lt;() function calls the
+        <em>WriteUtf16StrToStdOutOrStdErr</em> function on Windows to convert the argument to UTF-16, when printing to console.
+    </p>
+
+    <p>
+        The <em>TestMinilangLexer</em> function must be changed to *not* call the <em>ToUtf8</em> for the <em>match</em> variable.
+        The <em>match</em> can now be printed as UTF-32 string:
+    </p>
+
+    <pre>
+        void TestMinilangLexer(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            MinilangLexer lexer(content, minilangFilePath, 0);
+            ++lexer;
+            while (*lexer != MinilangTokens::END)
+            {
+                std::u32string match = lexer.token.match.ToString();
+                std::cout << MinilangTokens::GetTokenName(*lexer) << "(" << match << ")" << std::endl;
+                ++lexer;
+            }
+            std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
+        }
+    </pre>
+
+    <p>
+        The main function must also be changed to print the error message having possibly non-ASCII characters as UTF-32:
+    </p>
+
+    <pre>
+        int main(int argc, const char** argv)
+        {
+            Initializer initializer;
+            try
+            {
+                if (argc < 3)
+                {
+                    throw std::runtime_error("usage: minilang &lt;command> &lt;file.minilang>\ncommand: test-lexer");
+                }
+                std::string command = argv[1];
+                std::string filePath = soulng::util::GetFullPath(soulng::util::Path::MakeCanonical(argv[1]));
+                if (command == "test-lexer")
+                {
+                    TestMinilangLexer(filePath);
+                }
+                else
+                {
+                    throw std::runtime_error("unknown command: '" + command + "'");
+                }
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr << soulng::unicode::ToUtf32(ex.what()) << std::endl;
+                return 1;
+            }
+            return 0;
+        }
+    </pre>
+
+    <p>
+        Having these changes implemented, the output looks now right also on Windows console:
+    </p>
+
+    <pre>
+        > D:/work/soulng/minilang/test/unicodeid.minilang
+        INT(int)
+        ID(örkki)
+        LPAREN(()
+        RPAREN())
+        LBRACE({)
+        INT(int)
+        ID(öljyä)
+        ASSIGN(=)
+        INTLIT(1)
+        SEMICOLON(;)
+        RETURN(return)
+        ID(öljyä)
+        SEMICOLON(;)
+        RBRACE(})
+        end of file 'D:/work/soulng/minilang/test/unicodeid.minilang' reached
+    </pre>
+
+    <h3>Running the Third Test</h3>
+
+    <p>
+        Now we test with an erroneous <strong>invalid.minilang</strong> file:
+    </p>
+
+    <pre>
+        @
+    </pre>
+
+    <p>
+        The lexer has no action for the '@' character so it produces the following error:
+    </p>
+
+    <pre>
+        D:\work\soulng\x64\Debug>minilang ..\..\minilang\test\invalid.minilang
+        > D:/work/soulng/minilang/test/invalid.minilang
+        soulng::lexer::Lexer::NextToken(): error: invalid character '@' in file 'D:/work/soulng/minilang/test/invalid.minilang' at line 1
+    </pre>
+
+    <h3>Running the Fourth Test</h3>
+
+    <p>
+        This is the greatest common divisor algorithm:
+    </p>
+
+    <pre>
+        int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                a = a % b;
+                int t = a;
+                a = b;
+                b = t;
+            }
+            return a;
+        }
+    </pre>
+
+    <p>
+        Here's the output:
+    </p>
+
+    <pre>
+        D:\work\soulng\x64\Debug>minilang ..\..\minilang\test\gcd.minilang
+        > D:/work/soulng/minilang/test/gcd.minilang
+        INT(int)
+        ID(gcd)
+        LPAREN(()
+        INT(int)
+        ID(a)
+        COMMA(,)
+        INT(int)
+        ID(b)
+        RPAREN())
+        LBRACE({)
+        WHILE(while)
+        LPAREN(()
+        ID(b)
+        NEQ(!=)
+        INTLIT(0)
+        RPAREN())
+        LBRACE({)
+        ID(a)
+        ASSIGN(=)
+        ID(a)
+        MOD(%)
+        ID(b)
+        SEMICOLON(;)
+        INT(int)
+        ID(t)
+        ASSIGN(=)
+        ID(a)
+        SEMICOLON(;)
+        ID(a)
+        ASSIGN(=)
+        ID(b)
+        SEMICOLON(;)
+        ID(b)
+        ASSIGN(=)
+        ID(t)
+        SEMICOLON(;)
+        RBRACE(})
+        RETURN(return)
+        ID(a)
+        SEMICOLON(;)
+        RBRACE(})
+        end of file 'D:/work/soulng/minilang/test/gcd.minilang' reached
+    </pre>
+
+    <p>
+        Next we will show how to write parsers that can utilize the lexer...
+    </p>
+</body>
+</html>

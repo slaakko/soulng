@@ -1,0 +1,5 @@
+int örkki()
+{
+    int öljyä = 1;
+    return öljyä;
+}

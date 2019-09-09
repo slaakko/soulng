@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Introduction</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Introduction</h1>
+
+    <p>
+        We begin defining a very small C-like language for the purpose of explaining the operation of the SoulNG lexer and parser generator tools.
+        We will call that language <em>Minilang</em>. It is just expressive enough so that we can write functions operating with integers.
+    </p>
+
+    <p>
+        Here's the greatest common divisor algorithm written in Minilang:
+    </p>
+
+    <pre>
+        int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                a = a % b;
+                int t = a;
+                a = b;
+                b = t;
+            }
+            return a;
+        }
+    </pre>
+
+    <p>
+        The language has integer and Boolean types, variables, parameters, literals and expressions.
+        It contains while loops, compound, conditional and return statements.
+        It is possible to create variables, assign them values and evaluate expressions.
+    </p>
+</body>
+</html>

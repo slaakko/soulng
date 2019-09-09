@@ -117,6 +117,24 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spg", "spg\spg.vcxproj", "{
 		{3713BAF5-D39B-4998-8B83-3E71942696E6} = {3713BAF5-D39B-4998-8B83-3E71942696E6}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "minilang", "minilang", "{2E2EFD92-99ED-4F50-AF1A-FD44D56239B8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "minilang", "minilang\minilang.vcxproj", "{4DB51665-9B9C-4C66-9514-E5F285FD25E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2584FA16-EDB1-4CAF-8137-86A229E78DBC} = {2584FA16-EDB1-4CAF-8137-86A229E78DBC}
+		{CE12F458-6BA6-4F74-A717-DE6C18C3F9FB} = {CE12F458-6BA6-4F74-A717-DE6C18C3F9FB}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{24C10C64-DABC-4958-9C32-0F7250C265BC}"
+	ProjectSection(SolutionItems) = preProject
+		minilang\test\empty.minilang = minilang\test\empty.minilang
+		minilang\test\fibonacci.minilang = minilang\test\fibonacci.minilang
+		minilang\test\gcd.minilang = minilang\test\gcd.minilang
+		minilang\test\invalid.minilang = minilang\test\invalid.minilang
+		minilang\test\minimal.minilang = minilang\test\minimal.minilang
+		minilang\test\unicodeid.minilang = minilang\test\unicodeid.minilang
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -261,6 +279,14 @@ Global
 		{5F0835B5-A489-415D-A686-29BAB1B8BA16}.Release|x64.Build.0 = Release|x64
 		{5F0835B5-A489-415D-A686-29BAB1B8BA16}.Release|x86.ActiveCfg = Release|Win32
 		{5F0835B5-A489-415D-A686-29BAB1B8BA16}.Release|x86.Build.0 = Release|Win32
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Debug|x64.ActiveCfg = Debug|x64
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Debug|x64.Build.0 = Debug|x64
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Debug|x86.Build.0 = Debug|Win32
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Release|x64.ActiveCfg = Release|x64
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Release|x64.Build.0 = Release|x64
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Release|x86.ActiveCfg = Release|Win32
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +298,9 @@ Global
 		{6C897D0B-220F-459A-BF8E-4C9AB69F5C9C} = {3CB23B55-1EF7-40B3-A196-11981FE4A63F}
 		{FA81CE86-E385-49CF-8F1D-6A9E28390E10} = {643B86D0-F0F2-480F-8D79-C0416298C21C}
 		{3CB23B55-1EF7-40B3-A196-11981FE4A63F} = {643B86D0-F0F2-480F-8D79-C0416298C21C}
+		{2E2EFD92-99ED-4F50-AF1A-FD44D56239B8} = {643B86D0-F0F2-480F-8D79-C0416298C21C}
+		{4DB51665-9B9C-4C66-9514-E5F285FD25E1} = {2E2EFD92-99ED-4F50-AF1A-FD44D56239B8}
+		{24C10C64-DABC-4958-9C32-0F7250C265BC} = {2E2EFD92-99ED-4F50-AF1A-FD44D56239B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2112AA37-22CC-4725-99AB-0E3366B383BE}
