@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9FBBC9E3-0D72-4C8D-92C8-3079F85481A5}"
 	ProjectSection(SolutionItems) = preProject
 		test\empty.minilang = test\empty.minilang
+		test\error_comma.minilang = test\error_comma.minilang
+		test\error_semicolon.minilang = test\error_semicolon.minilang
 		test\fibonacci.minilang = test\fibonacci.minilang
 		test\gcd.minilang = test\gcd.minilang
 		test\invalid.minilang = test\invalid.minilang

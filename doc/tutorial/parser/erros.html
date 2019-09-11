@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Generating Parsing Errors</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Generating Parsing Errors
+    </h1>
+
+    <p>
+        We encountered problems of having misleading error messages when running the parser tests.
+        For example, an excessive comma in a <em>error_comma.minilang</em> file...
+    </p>
+
+    <pre>
+        void foo,()
+        {
+        }
+    </pre>
+
+    <p>
+        ... is reported as "end of file expected" error:
+    </p>
+
+    <pre>
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang:1': end of file expected:
+        void foo,()
+        ^^^^
+    </pre>
+
+    <h2>
+        Operation of a Backtracking Parser
+    </h2>
+
+    <p>
+        The misleading error message arise from the way the generated parser works.
+        The generated parser is a top-down recursive descent backtracking parser.
+        This means it starts parsing from the top element of the syntax and proceeds deeper and deeper in the syntax,
+        until it hits a parsing rule that conflicts with the input.
+        When that happens, it backtracts the input to the point where it was when it started to parse the
+        current alternative, and tries the next alternative. It does this until it either succeeds with the whole input,
+        or the whole input fails to match the top rule of the syntax.
+    </p>
+
+    <h2>
+        Concrete Example
+    </h2>
+
+    <p>
+        Now to a concrete example: imagine that the <strong>minilang</strong> parser is parsing the input file <em>error_comma.minilang</em> that has the
+        following content:
+    </p>
+
+    <pre>
+        void foo,()
+        {
+        }
+    </pre>
+
+    <p>
+        The top element of the syntax of <strong>minilang</strong> is the <a href="../language/syntax.html#rule.source-file"><em>source-file</em></a> rule
+        that is implemented as the <em>SourceFile</em> parsing rule of <em>SourceFileParser</em> parser.
+        The <em>source-file</em> rule contains a closure of <a href="../language/syntax.html#rule.function"><em>function</em></a>s,
+        so a parsing proceeds to a <em>function</em> rule that is implemented as the <em>Function</em> parsing rule of the <em>FunctionParser</em> parser.
+    </p>
+
+    <p>
+        A <em>function</em> rule consists of a sequence of <a href="../language/syntax.html#rule.type"><em>type</em></a>,
+        <a href="../language/syntax.html#rule.identifier"><em>identifier</em></a>, a left parenthesis, an optional list of parameters, a right parenthesis
+        and a <a href="../language/syntax.html#rule.compound-statement"><em>compound-statement</em></a>.
+        So, the parser starts to match the keyword <strong>void</strong> to the <em>type</em> parsing rule.
+        It matches because the <em>type</em> rule has keyword <strong>void</strong> as one of its alternatives. The <em>type</em> rule is implemented in the generated parser
+        as the <em>Type</em> rule of the <em>TypeParser</em>, that contains the token VOID as one of its alternatives.
+        The lexer will return token VOID for a string <strong>void</strong>, and everything is all right so far.
+    </p>
+
+    <p>
+        So the parser advances the input to the next token, that is an ID token.
+        It matches also because the <em>Identifier</em> parsing rule of the <em>IdentifierParser</em> consists of the
+        token ID, and the lexer will return an ID token for an identifier <strong>foo</strong>.
+    </p>
+
+    <p>
+        The parser advances the input to the comma, that is returned as the token COMMA by the lexer.
+        But now we have the LPAREN token to match against the COMMA token in the <em>Function</em> parsing rule of the <em>FunctionParser</em>.
+        When that happens, the parser will backtrack to the next alternative with the input COMMA.
+        The <em>Function</em> parsing rule of the <em>FunctionParser</em> has no alternatives left,
+        so the parser backtracts to the parent of the <em>Function</em> parsing rule that is the
+        <em>SourceFile</em> parsing rule of <em>SourceFileParser</em> parser.
+    </p>
+
+    <p>
+        The <a href="../language/syntax.html#rule.source-file"><em>source-file</em></a> rule consists of a closure of
+        <a href="../language/syntax.html#rule.function"><em>function</em></a>s. The <em>function</em> rule failed to match,
+        so the parser backtracks the input to the the point where it was when tried to match the <em>function</em> rule,
+        that is the start of the input <strong>void foo,()</strong>. This means an empty sequence of functions matched.
+        But now the input contains some extra characters <strong>void foo,()</strong> and an end of the file is expected at this point,
+        so the parser will generate an error "end of file expected".
+    </p>
+
+    <h2>
+        Implementing Parsing Errors
+    </h2>
+
+    <p>
+        Parsing errors can be implemented for generated SoulNG parsers by introducing exclamation marks at suitable points of the syntax in the <em>.parser</em> files.
+        An exclamation mark after a syntax element generates an error if that syntax element fails to match.
+        A general stragegy is to introduce the exclamation marks at points in <em>sequences</em> of syntax elements
+        when we know it must be unambiguously the only alternative, so it makes no sense backtracking.
+    </p>
+
+    <h3>Function Syntax</h3>
+
+    <p>
+        The <a href="../language/syntax.html#rule.source-file"><em>source-file</em></a> rule has no such points,
+        but the <a href="../language/syntax.html#rule.function"><em>function</em></a> rule has many since the <em>.minilang</em>
+        source files consist simply sequences of functions.
+    </p>
+
+    <p>
+        At first glance we may think that <a href="../language/syntax.html#rule.type"><em>type</em></a> in the
+        <a href="../language/syntax.html#rule.function"><em>function</em></a> rule is the first such point,
+        so we introduce an exclamation mark in the <em>Function</em> rule of the <em>FunctionParser</em> after the return type:
+    </p>
+
+    <pre>
+        Function
+            ::= Type:returnType! Identifier:functionName LPAREN ParameterList:params? RPAREN CompoundStatement:functionBody
+            ;
+    </pre>
+
+    <p>
+        Then we will regenerate the parsers by running the <strong>spg</strong> tool and recompiling:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        But when running the parser with the <strong>empty.minilang</strong> test file generates a parsing error, although it should not,
+        because an empty input must be valid input:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/empty.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/empty.minilang:1': Type expected:
+        ^
+    </pre>
+
+    <p>
+        Therefore we remove the exclamation mark after the return type,
+        but after we have seen the return type of the function we know that in this syntax the only valid alternative is that after it
+        must come an identifier of the function, thus we place an exclamation mark after it.
+        Also LPAREN is mandatory, so we place another exclamation mark after it.
+        A parameter list is optional, so it has no exclamation mark, but then the RPAREN and the body of the function are mandatory,
+        so we place exclamation marks after them:
+    </p>
+
+    <pre>
+        Function
+            ::= Type:returnType Identifier:functionName! LPAREN! ParameterList:params? RPAREN! CompoundStatement:functionBody!
+            ;
+    </pre>
+
+    <p>
+        After seen a COMMA in a parameter list, there must be another parameter coming, so we introduce an exclamation mark after the second parameter element:
+    </p>
+
+    <pre>
+        ParameterList
+            ::= Parameter:left (COMMA Parameter:right!)*
+            ;
+    </pre>
+
+    <p>
+        We will regenerate the parsers by running the <strong>spg</strong> tool, recompile, and test.
+        Now empty input generates no error, as it should not:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/empty.minilang
+        end of file 'C:/soulng-1.0.0/examples/minilang/test/empty.minilang' reached
+    </pre>
+
+    <p>
+        Running the <strong>minilang</strong> tester with the input file containing an excessive comma now generates a decent error message:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang:1': '(' expected:
+        void foo,()
+                ^
+    </pre>
+
+    <p>
+        But running the <strong>minilang</strong> tester with the test file with missing semicolon generates still a misleading error message:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang:2': CompoundStatement expected:
+        {
+        ^
+    </pre>
+
+    <h3>Statement Syntax</h3>
+
+    <p>
+        The problem is that we have not yet introduced the exclamation marks in the statement syntax.
+    </p>
+
+    <h2></h2>
+
+    <p>
+        After seeing the keyword <strong>if</strong> of the if statement, we known then must unambiguously come LPAREN, a condition expression,
+        an RPAREN, and a statement:
+    </p>
+
+    <pre>
+        IfStatement
+            ::= IF LPAREN! Expression:condition! RPAREN! Statement:thenS! (ELSE Statement:elseS!)?
+            ;
+    </pre>
+
+    <p>
+        Also after the keyword <strong>else</strong> there must be a statement, although the else part is optional in full.
+    </p>
+
+    <p>
+        The while statement needs also exclamation marks for the LPAREN, condition, RPAREN and the statement,
+        because after seeing keyword <strong>while</strong> they are mandatory:
+    </p>
+
+    <pre>
+        WhileStatement
+            ::= WHILE LPAREN! Expression:condition! RPAREN! Statement:statement!
+            ;
+    </pre>
+
+    <p>
+        The semicolon is mandatory in the return statement:
+    </p>
+
+    <pre>
+        ReturnStatement
+            ::= RETURN Expression:returnValue? SEMICOLON!
+
+    </pre>
+
+    <p>
+        In this language, after seeing a type in a statement, we know it must be a construction statement,
+        so we introduce exclamation marks after the identifier, the assignment symbol, the expression, and the semicolon:
+    </p>
+
+    <pre>
+        ConstructionStatement
+            ::= Type:type Identifier:variableName! ASSIGN! Expression:value! SEMICOLON!
+            ;
+    </pre>
+
+    <p>
+        Also after seeing an identifier, it must be an assignment statement, so the assignment symbol, a source expression and the semicolon have exclamation marks:
+    </p>
+
+    <pre>
+        AssignmentStatement
+            ::= Identifier:variableName ASSIGN! Expression:value! SEMICOLON!
+            ;
+    </pre>
+
+    <p>
+        Finally the right brace in the compound statement is mandatory:
+    </p>
+
+    <pre>
+        CompoundStatement
+            ::= LBRACE Statement:statement* RBRACE!
+            ;
+    </pre>
+
+    <p>
+        Now testing with the following content with a missing semicolon... 
+    </p>
+
+    <pre>
+        int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                a = a % b;
+                int t = a
+                a = b;
+                b = t;
+            }
+            return a;
+        }
+    </pre>
+
+    <p>
+        ... generates an error message pointing to the start of the assignment statement <em>a</em> <strong>=</strong> <em>b</em>;, not pointing to the end of the preceding construction
+        statement <strong>int</strong> <em>t</em> <strong>=</strong> <em>a</em> as it should:
+    </p>
+
+    <pre>
+        C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang:7': ';' expected:
+                a = b;
+                ^
+    </pre>
+
+    <p>
+        This is unfortunate, but we have not yet found a solution to this problem.
+    </p>
+
+    <h3>Expression Syntax</h3>
+
+    <p>
+        We have inserted exclamation marks in the following places in the expression syntax:
+    </p>
+
+    <pre>
+        Expression
+            ::= EqualityExpression:expr
+            ;
+
+        PrimaryExpression
+            ::= Literal:literal
+            |   Identifier:identifier
+            |   LPAREN Expression:expression RPAREN
+            ;
+
+        PostfixExpression
+            ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN!)*
+            ;
+
+        ExpressionList
+            ::= Expression:left (COMMA Expression:right!)*
+            ;
+
+        UnaryExpression
+            ::= UnaryOperator:op UnaryExpression:unaryExpr!
+            |   PostfixExpression:postfixExpr
+            ;
+
+        UnaryOperator
+            ::= PLUS
+            |   MINUS
+            |   NOT
+            ;
+
+        MultiplicativeExpression
+            ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right!)*
+            ;
+
+        MultiplicativeOperator
+            ::= MUL
+            |   DIV
+            |   MOD
+            ;
+
+        AdditiveExpression
+            ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right!)*
+            ;
+
+        AdditiveOperator
+            ::= PLUS
+            |   MINUS
+            ;
+
+        RelationalExpression
+            ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right!)*
+            ;
+
+        RelationalOperator
+            ::= LESS
+            |   GREATER
+            |   LEQ
+            |   GEQ
+            ;
+
+        EqualityExpression
+            ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right!)*
+            ;
+    </pre>
+
+    <p>
+        The exclamation marks are inserted to the points after seeing punctuation and operator symbols.
+    </p>
+
+    <p>
+        That's the end of this section. Next we will see how to generate an abstract syntax tree along with the parsing....
+    </p>
+</body>
+</html>

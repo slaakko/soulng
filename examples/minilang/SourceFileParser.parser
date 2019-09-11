@@ -7,6 +7,7 @@ using namespace MinilangTokens;
 parser SourceFileParser
 {
     uselexer MinilangLexer;
+	main;
 
     using FunctionParser.Function;
 

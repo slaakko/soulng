@@ -10,6 +10,7 @@ class MinilangLexer;
 
 struct SourceFileParser
 {
+    static void Parse(MinilangLexer& lexer);
     static soulng::parser::Match SourceFile(MinilangLexer& lexer);
 };
 

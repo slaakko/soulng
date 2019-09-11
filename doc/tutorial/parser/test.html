@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Testing the Generated Parsers</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Testing the Generated Parsers
+    </h1>
+
+    <p>
+        Now the <strong>Main.cpp</strong> source file of the <strong>minilang</strong> project contains the <em>TestMinilangLexer</em> function for testing the generated lexer.
+    </p>
+
+    <p>
+        We will implement a similar function for testing the parsers called <em>TestMinilangParser</em>.
+        The task of the function is to parse the contents of a <em>.minilang</em> source file.
+    </p>
+
+    <h2>Tester Function</h2>
+
+    <p>
+        We begin by printing the path name of the <em>.minilang</em> file to stdout:
+    </p>
+
+    <pre>
+        void TestMinilangParser(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            // ...
+        }
+    </pre>
+
+    <p>
+        Then we read the content of the test file to a std::string:
+    </p>
+
+    <pre>
+            // ...
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+    </pre>
+
+    <p>
+        Then convert the content to a UTF-32 string:
+    </p>
+
+    <pre>
+            // ...
+            std::u32string content = soulng::unicode::ToUtf32(s);
+    </pre>
+
+    <p>
+        Then we construct a lexer with the content of the test file, the path name of it, and file index 0:
+    </p>
+
+    <pre>
+            // ...
+            MinilangLexer lexer(content, minilangFilePath, 0);
+    </pre>
+
+    <p>
+        The file index is not used here, so it can have any value.
+    </p>
+
+    <p>
+        The parser that parses a whole <em>.minilang</em> source file is generated from the <em>SourceFileParser.parser</em> file.
+        Here's the current content of the <em>SourceFileParser.parser</em>:
+    </p>
+
+    <pre>
+        #include &lt;minilang/FunctionParser.hpp>
+        #include &lt;minilang/MinilangLexer.hpp>
+        #include &lt;minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser SourceFileParser
+        {
+            uselexer MinilangLexer;
+            main;
+
+            using FunctionParser.Function;
+
+            SourceFile
+                ::= Function:function*
+                ;
+        }
+    </pre>
+
+    <p>
+        We add an include directive for the <em>SourceFileParser.hpp</em> generated from the <em>SourceFileParser.parser</em> and call the <em>Parse()</em> function of the
+        <em>SourceFileParser</em> with the constructed lexer:
+    </p>
+
+    <pre>
+        // ...
+        #include &lt;minilang/SourceFileParser.hpp>
+        // ...
+
+        void TestMinilangParser(const std::string& minilangFilePath)
+        {
+            // ...
+            SourceFileParser::Parse(lexer);
+        }
+    </pre>
+
+    <p>
+        Here's the whole <em>TestMinilangParser</em> function:
+    </p>
+
+    <pre>
+        void TestMinilangParser(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            MinilangLexer lexer(content, minilangFilePath, 0);
+            SourceFileParser::Parse(lexer);
+            std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
+        }
+    </pre>
+
+    <p>
+        The <strong>spg</strong> tool generates a <em>Parse</em> function for each parser that contains a <strong>main</strong> statement, such as this <em>SourcedFileParser</em>.
+        The <em>Parse</em> function takes a lexer parameter and delegates the parsing to the <em>first</em> parsing rule of the parser,
+        that is the one and only <em>SourceFile</em> rule for the <em>SourcedFileParser</em>.
+    </p>
+
+    <h2>Calling the Tester from Main</h2>
+
+    <p>
+        Here's additions to the <strong>Main.cpp</strong> that implement parser testing:
+    </p>
+
+    <pre>
+        void PrintUsage()
+        {
+            // ...
+            std::cout << "--parser-test | -p" << std::endl;
+            std::cout << "  Test parser with &lt;file.minilang>." << std::endl;
+        }
+
+        enum class Command
+        {
+            none, lexerTest, parserTest
+        };
+
+        int main(int argc, const char** argv)
+        {
+            // ...
+            if (soulng::util::StartsWith(arg, "--"))
+            {
+                // ...
+                else if (arg == "--parser-test")
+                {
+                    command = Command::parserTest;
+                }
+            }
+            else if (soulng::util::StartsWith(arg, "-"))
+            {
+                // ...
+                for (char o : options)
+                {
+                    // ...
+                    else if (o == 'p')
+                    {
+                        command = Command::parserTest;
+                    }
+                }
+            }
+            // ...
+            for (const std::string& filePath : files)
+            {
+                // ...
+                else if (command == Command::parserTest)
+                {
+                    TestMinilangParser(filePath);
+                }
+            }
+            // ...
+        }
+    </pre>
+
+    <p>
+        Here's the whole main function:
+    </p>
+
+    <pre>
+        void PrintUsage()
+        {
+            std::cout << "Usage: minilang [options] { file.minilang }" << std::endl;
+            std::cout << "Options:" << std::endl;
+            std::cout << "--help | -h:" << std::endl;
+            std::cout << "  Print help and exit." << std::endl;
+            std::cout << "--lexer-test | -l" << std::endl;
+            std::cout << "  Test lexical analyzer with <file.minilang>." << std::endl;
+            std::cout << "--parser-test | -p" << std::endl;
+            std::cout << "  Test parser with <file.minilang>." << std::endl;
+        }
+
+        enum class Command
+        {
+            none, lexerTest, parserTest
+        };
+
+        int main(int argc, const char** argv)
+        {
+            Initializer initializer;
+            try
+            {
+                std::vector<std::string> files;
+                Command command = Command::none;
+                for (int i = 1; i < argc; ++i)
+                {
+                    std::string arg = argv[i];
+                    if (soulng::util::StartsWith(arg, "--"))
+                    {
+                        if (arg == "--help")
+                        {
+                            PrintUsage();
+                            return 1;
+                        }
+                        else if (arg == "--lexer-test")
+                        {
+                            command = Command::lexerTest;
+                        }
+                        else if (arg == "--parser-test")
+                        {
+                            command = Command::parserTest;
+                        }
+                        else
+                        {
+                            throw std::runtime_error("unknown argument '" + arg + "'");
+                        }
+                    }
+                    else if (soulng::util::StartsWith(arg, "-"))
+                    {
+                        std::string options = arg.substr(1);
+                        if (options.empty())
+                        {
+                            throw std::runtime_error("unknown argument '" + arg + "'");
+                        }
+                        for (char o : options)
+                        {
+                            if (o == 'h')
+                            {
+                                PrintUsage();
+                                return 1;
+                            }
+                            else if (o == 'l')
+                            {
+                                command = Command::lexerTest;
+                            }
+                            else if (o == 'p')
+                            {
+                                command = Command::parserTest;
+                            }
+                            else
+                            {
+                                throw std::runtime_error("unknown argument '-" + std::string(1, o) + "'");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        files.push_back(soulng::util::GetFullPath(arg));
+                    }
+                }
+                if (files.empty() || command == Command::none)
+                {
+                    PrintUsage();
+                    return 1;
+                }
+                for (const std::string& filePath : files)
+                {
+                    if (command == Command::lexerTest)
+                    {
+                        TestMinilangLexer(filePath);
+                    }
+                    else if (command == Command::parserTest)
+                    {
+                        TestMinilangParser(filePath);
+                    }
+                    else
+                    {
+                        PrintUsage();
+                        throw std::runtime_error("minilang: unknown command");
+                    }
+                }
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr << soulng::unicode::ToUtf32(ex.what()) << std::endl;
+                return 1;
+            }
+            return 0;
+        }
+    </pre>
+
+    <h2>Running the First Test</h2>
+
+    <p>
+        We begin testing with empty input.
+        The file <strong>empty.minilang</strong> has zero length.
+    </p>
+
+    <p>
+        We set the <em>Configuration Properties / Debugging / Command Arguments</em> to the value: <strong>--parser-test test\empty.minilang</strong>,
+        and run the <strong>minilang</strong> project.
+    </p>
+
+    <p>
+        Here's the output:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/empty.minilang
+        end of file 'C:/soulng-1.0.0/examples/minilang/test/empty.minilang' reached
+    </pre>
+
+    <p>
+        The parsing succeeded without an error, so the parser can handle an empty sequence of functions.
+    </p>
+
+    <h2>Running the Second Test</h2>
+
+    <p>
+        Next we will test with a minimal <em>minimal.minilang</em> source file that contains one function that does nothing.
+        Here's the contents of the <em>minimal.minilang</em>:
+    </p>
+
+    <pre>
+        void minimal(){}
+    </pre>
+
+    <p>
+        We set the <em>Configuration Properties / Debugging / Command Arguments</em> to the value: <strong>--parser-test test\minimal.minilang</strong>,
+        and run the <strong>minilang</strong> project.
+    </p>
+
+    <p>
+        Here's the output:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/minimal.minilang
+        end of file 'C:/soulng-1.0.0/examples/minilang/test/minimal.minilang' reached
+    </pre>
+
+    <p>
+        The parsing succeeded again without an error, so the parser can handle a simple function.
+    </p>
+
+    <h2>Running the Third Test</h2>
+
+    <p>
+        Next we will test with a function that contains some computation: <em>gcd.minilang</em>:
+        Here's the contents of the <em>gcd.minilang</em>:
+    </p>
+
+    <pre>
+        int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                a = a % b;
+                int t = a;
+                a = b;
+                b = t;
+            }
+            return a;
+        }
+    </pre>
+
+    <p>
+        Here's the output:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/gcd.minilang
+        end of file 'C:/soulng-1.0.0/examples/minilang/test/gcd.minilang' reached
+    </pre>
+
+    <p>
+        So far so good...
+    </p>
+
+    <h2>Running the Fourth Test</h2>
+
+    <p>
+        Now testing with a function that contains a parsing error, <em>error_comma.minilang</em>:
+    </p>
+
+    <pre>
+        void foo,()
+        {
+        }
+    </pre>
+
+    <p>
+        Here's the output:
+    </p>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang:1': end of file expected:
+        void foo,()
+        ^^^^
+    </pre>
+
+    <p>
+        The error message says that "end of file expected" and points to the <strong>void</strong> return value of the function, not the excessive comma as it should,
+        so this test failed.
+    </p>
+
+    <h2>
+        Running the Fifth Test
+    </h2>
+
+    <p>
+        Now testing with a file with a missing semicolon, <em>error_semicolon.minilang</em>, that is modified from the <em>gcd.minilang</em> by removing the semicolon from the
+        <strong>int</strong> <em>t</em> <strong>=</strong> <em>a</em> statement:
+    </p>
+
+    <pre>
+        int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                a = a % b;
+                int t = a
+                a = b;
+                b = t;
+            }
+            return a;
+        }
+    </pre>
+
+    <pre>
+        > C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang:1': end of file expected:
+        int gcd(int a, int b)
+        ^^^
+    </pre>
+
+    <p>
+        The problem is same as in the fourth test:
+        the error message says that "end of file expected" and points to the <strong>int</strong> return value of the function, not the missing semicolon as it should.
+        This test failed also.
+    </p>
+
+    <p>
+        These problems lead to the next topic: generating parsing errors...
+    </p>
+</body>
+</html>

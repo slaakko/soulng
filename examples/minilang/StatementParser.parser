@@ -24,26 +24,26 @@ parser StatementParser
         ;
 
     IfStatement
-        ::= IF LPAREN Expression:condition RPAREN Statement:thenS (ELSE Statement:elseS)?
+        ::= IF LPAREN! Expression:condition! RPAREN! Statement:thenS! (ELSE Statement:elseS!)?
         ;
 
     WhileStatement
-        ::= WHILE LPAREN Expression:condition RPAREN Statement:statement
+        ::= WHILE LPAREN! Expression:condition! RPAREN! Statement:statement!
         ;
 
     ReturnStatement
-        ::= RETURN Expression:returnValue? SEMICOLON
+        ::= RETURN Expression:returnValue? SEMICOLON!
         ;
 
     ConstructionStatement
-        ::= Type:type Identifier:variableName ASSIGN Expression:value SEMICOLON
+        ::= Type:type Identifier:variableName! ASSIGN! Expression:value! SEMICOLON!
         ;
 
     AssignmentStatement
-        ::= Identifier:variableName ASSIGN Expression:value SEMICOLON
+        ::= Identifier:variableName ASSIGN! Expression:value! SEMICOLON!
         ;
 
     CompoundStatement
-        ::= LBRACE Statement:statement* RBRACE
+        ::= LBRACE Statement:statement* RBRACE!
         ;
 }

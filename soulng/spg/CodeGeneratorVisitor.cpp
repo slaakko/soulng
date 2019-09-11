@@ -735,8 +735,8 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                         rule->ReturnType()->Print(*formatter);
                         formatter->Write(">>");
                     }
-                }
-                formatter->WriteLine(" value;");
+					formatter->WriteLine(" value;");
+				}
                 formatter->WriteLine("++lexer;");
                 formatter->WriteLine("int pos = lexer.GetPos();");
                 std::string ruleName = ToUtf8(rule->Parent()->Name()) + "::" + ToUtf8(rule->Name());
@@ -771,14 +771,21 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("if (*lexer == soulng::lexer::END)");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                if (startRule->ReturnType()->IsPtrType())
-                {
-                    formatter->WriteLine("return value;");
-                }
-                else
-                {
-                    formatter->WriteLine("return value->value;");
-                }
+				if (startRule->ReturnType())
+				{
+					if (startRule->ReturnType()->IsPtrType())
+					{
+						formatter->WriteLine("return value;");
+					}
+					else
+					{
+						formatter->WriteLine("return value->value;");
+					}
+				}
+				else
+				{
+					formatter->WriteLine("return;");
+				}
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->WriteLine("else");
@@ -800,14 +807,21 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("lexer.ThrowExpectationFailure(pos, U\"" + ToUtf8(ruleInfo) + "\");");
                 formatter->DecIndent();
                 formatter->WriteLine("}");
-                if (startRule->ReturnType()->IsPtrType())
-                {
-                    formatter->WriteLine("return value;");
-                }
-                else
-                {
-                    formatter->WriteLine("return value->value;");
-                }
+				if (startRule->ReturnType())
+				{
+					if (startRule->ReturnType()->IsPtrType())
+					{
+						formatter->WriteLine("return value;");
+					}
+					else
+					{
+						formatter->WriteLine("return value->value;");
+					}
+				}
+				else
+				{
+					formatter->WriteLine("return;");
+				}
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->WriteLine();

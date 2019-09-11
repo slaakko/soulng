@@ -1,10 +1,12 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
 #include <minilang/ConsoleUnicode.hpp>
+#include <minilang/SourceFileParser.hpp>
 #include <soulng/util/InitDone.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <soulng/util/Path.hpp>
+#include <soulng/util/TextUtils.hpp>
 #include <iostream>
 #include <stdexcept>
 
@@ -24,6 +26,16 @@ void TestMinilangLexer(const std::string& minilangFilePath)
     std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
 }
 
+void TestMinilangParser(const std::string& minilangFilePath)
+{
+	std::cout << "> " << minilangFilePath << std::endl;
+	std::string s = soulng::util::ReadFile(minilangFilePath);
+	std::u32string content = soulng::unicode::ToUtf32(s);
+	MinilangLexer lexer(content, minilangFilePath, 0);
+	SourceFileParser::Parse(lexer);
+	std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
+}
+
 struct Initializer
 {
     Initializer()
@@ -36,24 +48,106 @@ struct Initializer
     }
 };
 
+void PrintUsage()
+{
+    std::cout << "Usage: minilang [options] { file.minilang }" << std::endl;
+    std::cout << "Options:" << std::endl;
+    std::cout << "--help | -h:" << std::endl;
+    std::cout << "  Print help and exit." << std::endl;
+    std::cout << "--lexer-test | -l" << std::endl;
+    std::cout << "  Test lexical analyzer with <file.minilang>." << std::endl;
+	std::cout << "--parser-test | -p" << std::endl;
+	std::cout << "  Test parser with <file.minilang>." << std::endl;
+}
+
+enum class Command
+{
+    none, lexerTest, parserTest
+};
+
 int main(int argc, const char** argv)
 {
     Initializer initializer;
     try
     {
-        if (argc < 3)
+        std::vector<std::string> files;
+        Command command = Command::none;
+        for (int i = 1; i < argc; ++i)
         {
-            throw std::runtime_error("usage: minilang <command> <file.minilang>\ncommand: test-lexer");
+            std::string arg = argv[i];
+            if (soulng::util::StartsWith(arg, "--"))
+            {
+                if (arg == "--help")
+                {
+                    PrintUsage();
+                    return 1;
+                }
+                else if (arg == "--lexer-test")
+                {
+                    command = Command::lexerTest;
+                }
+				else if (arg == "--parser-test")
+				{
+					command = Command::parserTest;
+				}
+                else
+                {
+                    throw std::runtime_error("unknown argument '" + arg + "'");
+                }
+            }
+            else if (soulng::util::StartsWith(arg, "-"))
+            {
+                std::string options = arg.substr(1);
+                if (options.empty())
+                {
+                    throw std::runtime_error("unknown argument '" + arg + "'");
+                }
+                for (char o : options)
+                {
+                    if (o == 'h')
+                    {
+                        PrintUsage();
+                        return 1;
+                    }
+                    else if (o == 'l')
+                    {
+                        command = Command::lexerTest;
+                    }
+					else if (o == 'p')
+					{
+						command = Command::parserTest;
+					}
+                    else
+                    {
+                        throw std::runtime_error("unknown argument '-" + std::string(1, o) + "'");
+                    }
+                }
+            }
+            else
+            {
+                files.push_back(soulng::util::GetFullPath(arg));
+            }
         }
-        std::string command = argv[1];
-        std::string filePath = soulng::util::GetFullPath(soulng::util::Path::MakeCanonical(argv[2]));
-        if (command == "test-lexer")
+        if (files.empty() || command == Command::none)
         {
-            TestMinilangLexer(filePath);
+            PrintUsage();
+            return 1;
         }
-        else
+        for (const std::string& filePath : files)
         {
-            throw std::runtime_error("unknown command: '" + command + "'");
+            if (command == Command::lexerTest)
+            {
+                TestMinilangLexer(filePath);
+            }
+			else if (command == Command::parserTest)
+			{
+				TestMinilangParser(filePath);
+			}
+            else
+            {
+                PrintUsage();
+                throw std::runtime_error("minilang: unknown command");
+            }
         }
     }
     catch (const std::exception& ex)

@@ -132,11 +132,19 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            soulng::parser::Match match(false);
-                            if (*lexer == LPAREN)
+                            soulng::parser::Match match(true);
                             {
-                                ++lexer;
-                                match.hit = true;
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match(false);
+                                if (*lexer == LPAREN)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
+                                if (!match.hit)
+                                {
+                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LPAREN)));
+                                }
                             }
                             *parentMatch5 = match;
                         }
@@ -149,7 +157,15 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch6 = &match;
                     {
-                        soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                        soulng::parser::Match match(true);
+                        {
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                            if (!match.hit)
+                            {
+                                lexer.ThrowExpectationFailure(pos, U"Expression");
+                            }
+                        }
                         *parentMatch6 = match;
                     }
                     *parentMatch3 = match;
@@ -161,11 +177,19 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
-                    soulng::parser::Match match(false);
-                    if (*lexer == RPAREN)
+                    soulng::parser::Match match(true);
                     {
-                        ++lexer;
-                        match.hit = true;
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match(false);
+                        if (*lexer == RPAREN)
+                        {
+                            ++lexer;
+                            match.hit = true;
+                        }
+                        if (!match.hit)
+                        {
+                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                        }
                     }
                     *parentMatch7 = match;
                 }
@@ -178,7 +202,15 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch8 = &match;
             {
-                soulng::parser::Match match = StatementParser::Statement(lexer);
+                soulng::parser::Match match(true);
+                {
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match = StatementParser::Statement(lexer);
+                    if (!match.hit)
+                    {
+                        lexer.ThrowExpectationFailure(pos, U"Statement");
+                    }
+                }
                 *parentMatch8 = match;
             }
             *parentMatch1 = match;
@@ -210,7 +242,15 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch12 = &match;
                     {
-                        soulng::parser::Match match = StatementParser::Statement(lexer);
+                        soulng::parser::Match match(true);
+                        {
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match = StatementParser::Statement(lexer);
+                            if (!match.hit)
+                            {
+                                lexer.ThrowExpectationFailure(pos, U"Statement");
+                            }
+                        }
                         *parentMatch12 = match;
                     }
                     *parentMatch11 = match;
@@ -258,11 +298,19 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        soulng::parser::Match match(false);
-                        if (*lexer == LPAREN)
+                        soulng::parser::Match match(true);
                         {
-                            ++lexer;
-                            match.hit = true;
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match(false);
+                            if (*lexer == LPAREN)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (!match.hit)
+                            {
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LPAREN)));
+                            }
                         }
                         *parentMatch4 = match;
                     }
@@ -275,7 +323,15 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch5 = &match;
                 {
-                    soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                    soulng::parser::Match match(true);
+                    {
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                        if (!match.hit)
+                        {
+                            lexer.ThrowExpectationFailure(pos, U"Expression");
+                        }
+                    }
                     *parentMatch5 = match;
                 }
                 *parentMatch2 = match;
@@ -287,11 +343,19 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch6 = &match;
             {
-                soulng::parser::Match match(false);
-                if (*lexer == RPAREN)
+                soulng::parser::Match match(true);
                 {
-                    ++lexer;
-                    match.hit = true;
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match(false);
+                    if (*lexer == RPAREN)
+                    {
+                        ++lexer;
+                        match.hit = true;
+                    }
+                    if (!match.hit)
+                    {
+                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                    }
                 }
                 *parentMatch6 = match;
             }
@@ -304,7 +368,15 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch7 = &match;
         {
-            soulng::parser::Match match = StatementParser::Statement(lexer);
+            soulng::parser::Match match(true);
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match = StatementParser::Statement(lexer);
+                if (!match.hit)
+                {
+                    lexer.ThrowExpectationFailure(pos, U"Statement");
+                }
+            }
             *parentMatch7 = match;
         }
         *parentMatch0 = match;
@@ -358,11 +430,19 @@ soulng::parser::Match StatementParser::ReturnStatement(MinilangLexer& lexer)
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch4 = &match;
         {
-            soulng::parser::Match match(false);
-            if (*lexer == SEMICOLON)
+            soulng::parser::Match match(true);
             {
-                ++lexer;
-                match.hit = true;
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(false);
+                if (*lexer == SEMICOLON)
+                {
+                    ++lexer;
+                    match.hit = true;
+                }
+                if (!match.hit)
+                {
+                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                }
             }
             *parentMatch4 = match;
         }
@@ -393,7 +473,15 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                        soulng::parser::Match match(true);
+                        {
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                            if (!match.hit)
+                            {
+                                lexer.ThrowExpectationFailure(pos, U"Identifier");
+                            }
+                        }
                         *parentMatch4 = match;
                     }
                     *parentMatch3 = match;
@@ -405,11 +493,19 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch5 = &match;
                 {
-                    soulng::parser::Match match(false);
-                    if (*lexer == ASSIGN)
+                    soulng::parser::Match match(true);
                     {
-                        ++lexer;
-                        match.hit = true;
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match(false);
+                        if (*lexer == ASSIGN)
+                        {
+                            ++lexer;
+                            match.hit = true;
+                        }
+                        if (!match.hit)
+                        {
+                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ASSIGN)));
+                        }
                     }
                     *parentMatch5 = match;
                 }
@@ -422,7 +518,15 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch6 = &match;
             {
-                soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                soulng::parser::Match match(true);
+                {
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                    if (!match.hit)
+                    {
+                        lexer.ThrowExpectationFailure(pos, U"Expression");
+                    }
+                }
                 *parentMatch6 = match;
             }
             *parentMatch1 = match;
@@ -434,11 +538,19 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch7 = &match;
         {
-            soulng::parser::Match match(false);
-            if (*lexer == SEMICOLON)
+            soulng::parser::Match match(true);
             {
-                ++lexer;
-                match.hit = true;
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(false);
+                if (*lexer == SEMICOLON)
+                {
+                    ++lexer;
+                    match.hit = true;
+                }
+                if (!match.hit)
+                {
+                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                }
             }
             *parentMatch7 = match;
         }
@@ -466,11 +578,19 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    soulng::parser::Match match(false);
-                    if (*lexer == ASSIGN)
+                    soulng::parser::Match match(true);
                     {
-                        ++lexer;
-                        match.hit = true;
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match(false);
+                        if (*lexer == ASSIGN)
+                        {
+                            ++lexer;
+                            match.hit = true;
+                        }
+                        if (!match.hit)
+                        {
+                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ASSIGN)));
+                        }
                     }
                     *parentMatch3 = match;
                 }
@@ -483,7 +603,15 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch4 = &match;
             {
-                soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                soulng::parser::Match match(true);
+                {
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                    if (!match.hit)
+                    {
+                        lexer.ThrowExpectationFailure(pos, U"Expression");
+                    }
+                }
                 *parentMatch4 = match;
             }
             *parentMatch1 = match;
@@ -495,11 +623,19 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch5 = &match;
         {
-            soulng::parser::Match match(false);
-            if (*lexer == SEMICOLON)
+            soulng::parser::Match match(true);
             {
-                ++lexer;
-                match.hit = true;
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(false);
+                if (*lexer == SEMICOLON)
+                {
+                    ++lexer;
+                    match.hit = true;
+                }
+                if (!match.hit)
+                {
+                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                }
             }
             *parentMatch5 = match;
         }
@@ -560,11 +696,19 @@ soulng::parser::Match StatementParser::CompoundStatement(MinilangLexer& lexer)
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch4 = &match;
         {
-            soulng::parser::Match match(false);
-            if (*lexer == RBRACE)
+            soulng::parser::Match match(true);
             {
-                ++lexer;
-                match.hit = true;
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(false);
+                if (*lexer == RBRACE)
+                {
+                    ++lexer;
+                    match.hit = true;
+                }
+                if (!match.hit)
+                {
+                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
+                }
             }
             *parentMatch4 = match;
         }

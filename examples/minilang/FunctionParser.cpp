@@ -36,7 +36,15 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                            soulng::parser::Match match(true);
+                            {
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                if (!match.hit)
+                                {
+                                    lexer.ThrowExpectationFailure(pos, U"Identifier");
+                                }
+                            }
                             *parentMatch5 = match;
                         }
                         *parentMatch4 = match;
@@ -48,11 +56,19 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch6 = &match;
                     {
-                        soulng::parser::Match match(false);
-                        if (*lexer == LPAREN)
+                        soulng::parser::Match match(true);
                         {
-                            ++lexer;
-                            match.hit = true;
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match(false);
+                            if (*lexer == LPAREN)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (!match.hit)
+                            {
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LPAREN)));
+                            }
                         }
                         *parentMatch6 = match;
                     }
@@ -90,11 +106,19 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch9 = &match;
             {
-                soulng::parser::Match match(false);
-                if (*lexer == RPAREN)
+                soulng::parser::Match match(true);
                 {
-                    ++lexer;
-                    match.hit = true;
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match(false);
+                    if (*lexer == RPAREN)
+                    {
+                        ++lexer;
+                        match.hit = true;
+                    }
+                    if (!match.hit)
+                    {
+                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                    }
                 }
                 *parentMatch9 = match;
             }
@@ -107,7 +131,15 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch10 = &match;
         {
-            soulng::parser::Match match = StatementParser::CompoundStatement(lexer);
+            soulng::parser::Match match(true);
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match = StatementParser::CompoundStatement(lexer);
+                if (!match.hit)
+                {
+                    lexer.ThrowExpectationFailure(pos, U"CompoundStatement");
+                }
+            }
             *parentMatch10 = match;
         }
         *parentMatch0 = match;
@@ -151,7 +183,15 @@ soulng::parser::Match FunctionParser::ParameterList(MinilangLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                soulng::parser::Match match = FunctionParser::Parameter(lexer);
+                                soulng::parser::Match match(true);
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = FunctionParser::Parameter(lexer);
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"Parameter");
+                                    }
+                                }
                                 *parentMatch4 = match;
                             }
                             *parentMatch3 = match;

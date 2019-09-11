@@ -9,6 +9,29 @@
 using namespace soulng::unicode;
 using namespace MinilangTokens;
 
+void SourceFileParser::Parse(MinilangLexer& lexer)
+{
+    ++lexer;
+    int pos = lexer.GetPos();
+    soulng::parser::Match match = SourceFileParser::SourceFile(lexer);
+    if (match.hit)
+    {
+        if (*lexer == soulng::lexer::END)
+        {
+            return;
+        }
+        else
+        {
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+        }
+    }
+    else
+    {
+        lexer.ThrowExpectationFailure(pos, U"SourceFile");
+    }
+    return;
+}
+
 soulng::parser::Match SourceFileParser::SourceFile(MinilangLexer& lexer)
 {
     soulng::parser::Match match(true);

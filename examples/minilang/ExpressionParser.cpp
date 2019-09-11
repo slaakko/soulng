@@ -160,11 +160,19 @@ soulng::parser::Match ExpressionParser::PostfixExpression(MinilangLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch7 = &match;
                             {
-                                soulng::parser::Match match(false);
-                                if (*lexer == RPAREN)
+                                soulng::parser::Match match(true);
                                 {
-                                    ++lexer;
-                                    match.hit = true;
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match(false);
+                                    if (*lexer == RPAREN)
+                                    {
+                                        ++lexer;
+                                        match.hit = true;
+                                    }
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                                    }
                                 }
                                 *parentMatch7 = match;
                             }
@@ -225,7 +233,15 @@ soulng::parser::Match ExpressionParser::ExpressionList(MinilangLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                                soulng::parser::Match match(true);
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = ExpressionParser::Expression(lexer);
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"Expression");
+                                    }
+                                }
                                 *parentMatch4 = match;
                             }
                             *parentMatch3 = match;
@@ -266,7 +282,15 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
+                soulng::parser::Match match(true);
+                {
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
+                    if (!match.hit)
+                    {
+                        lexer.ThrowExpectationFailure(pos, U"UnaryExpression");
+                    }
+                }
                 *parentMatch2 = match;
             }
             *parentMatch1 = match;
@@ -373,7 +397,15 @@ soulng::parser::Match ExpressionParser::MultiplicativeExpression(MinilangLexer& 
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
+                                soulng::parser::Match match(true);
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"UnaryExpression");
+                                    }
+                                }
                                 *parentMatch4 = match;
                             }
                             *parentMatch3 = match;
@@ -483,7 +515,15 @@ soulng::parser::Match ExpressionParser::AdditiveExpression(MinilangLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                soulng::parser::Match match = ExpressionParser::MultiplicativeExpression(lexer);
+                                soulng::parser::Match match(true);
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = ExpressionParser::MultiplicativeExpression(lexer);
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"MultiplicativeExpression");
+                                    }
+                                }
                                 *parentMatch4 = match;
                             }
                             *parentMatch3 = match;
@@ -571,7 +611,15 @@ soulng::parser::Match ExpressionParser::RelationalExpression(MinilangLexer& lexe
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                soulng::parser::Match match = ExpressionParser::AdditiveExpression(lexer);
+                                soulng::parser::Match match(true);
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = ExpressionParser::AdditiveExpression(lexer);
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"AdditiveExpression");
+                                    }
+                                }
                                 *parentMatch4 = match;
                             }
                             *parentMatch3 = match;
@@ -703,7 +751,15 @@ soulng::parser::Match ExpressionParser::EqualityExpression(MinilangLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                soulng::parser::Match match = ExpressionParser::RelationalExpression(lexer);
+                                soulng::parser::Match match(true);
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = ExpressionParser::RelationalExpression(lexer);
+                                    if (!match.hit)
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"RelationalExpression");
+                                    }
+                                }
                                 *parentMatch4 = match;
                             }
                             *parentMatch3 = match;

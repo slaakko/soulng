@@ -23,15 +23,15 @@ parser ExpressionParser
         ;
 
     PostfixExpression
-        ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN)*
+        ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN!)*
         ;
 
     ExpressionList
-        ::= Expression:left (COMMA Expression:right)*
+        ::= Expression:left (COMMA Expression:right!)*
         ;
 
     UnaryExpression
-        ::= UnaryOperator:op UnaryExpression:unaryExpr
+        ::= UnaryOperator:op UnaryExpression:unaryExpr!
         |   PostfixExpression:postfixExpr
         ;
 
@@ -42,7 +42,7 @@ parser ExpressionParser
         ;
 
     MultiplicativeExpression
-        ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right)*
+        ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right!)*
         ;
 
     MultiplicativeOperator
@@ -52,7 +52,7 @@ parser ExpressionParser
         ;
 
     AdditiveExpression
-        ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right)*
+        ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right!)*
         ;
 
     AdditiveOperator
@@ -61,7 +61,7 @@ parser ExpressionParser
         ;
 
     RelationalExpression
-        ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right)*
+        ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right!)*
         ;
 
     RelationalOperator
@@ -72,7 +72,7 @@ parser ExpressionParser
         ;
 
     EqualityExpression
-        ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right)*
+        ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right!)*
         ;
 
     EqualityOperator

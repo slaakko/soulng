@@ -15,11 +15,11 @@ parser FunctionParser
     using StatementParser.CompoundStatement;
 
     Function
-        ::= Type:returnType Identifier:functionName LPAREN ParameterList:params? RPAREN CompoundStatement:functionBody
+        ::= Type:returnType Identifier:functionName! LPAREN! ParameterList:params? RPAREN! CompoundStatement:functionBody!
         ;
 
     ParameterList
-        ::= Parameter:left (COMMA Parameter:right)*
+        ::= Parameter:left (COMMA Parameter:right!)*
         ;
 
     Parameter
