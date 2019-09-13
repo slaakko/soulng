@@ -3,6 +3,7 @@
 #include <minilang/IdentifierParser.hpp>
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
+#include <minilang/Tree.hpp>
 
 using namespace MinilangTokens;
 
@@ -14,36 +15,72 @@ parser StatementParser
     using TypeParser.Type;
     using IdentifierParser.Identifier;
 
-    Statement
-        ::= IfStatement:ifS
-        |   WhileStatement:whileS
-        |   ReturnStatement:returnS
-        |   ConstructionStatement:constructionS
-        |   AssignmentStatement:assignmentS
-        |   CompoundStatement:compoundS
+    Statement : minilang::Node*
+        ::= IfStatement:ifS{ return ifS; }
+        |   WhileStatement:whileS{ return whileS; }
+        |   ReturnStatement:returnS{ return returnS; }
+        |   ConstructionStatement:constructionS{ return constructionS; }
+        |   AssignmentStatement:assignmentS{ return assignmentS; }
+        |   CompoundStatement:compoundS{ return compoundS; }
         ;
 
-    IfStatement
-        ::= IF LPAREN! Expression:condition! RPAREN! Statement:thenS! (ELSE Statement:elseS!)?
+    IfStatement : minilang::Node*
+        ::= 
+		(
+			IF LPAREN! Expression:condition! RPAREN! Statement:thenS! (ELSE Statement:elseS!)?
+		)
+		{
+			return new minilang::IfStatementNode(condition, thenS, elseS);
+		}
         ;
 
-    WhileStatement
-        ::= WHILE LPAREN! Expression:condition! RPAREN! Statement:statement!
+    WhileStatement : minilang::Node*
+        ::= 
+		(
+			WHILE LPAREN! Expression:condition! RPAREN! Statement:statement!
+		)
+		{
+			return new minilang::WhileStatementNode(condition, statement);
+		}
         ;
 
-    ReturnStatement
-        ::= RETURN Expression:returnValue? SEMICOLON!
+    ReturnStatement : minilang::Node*
+        ::= 
+		(
+			RETURN Expression:returnValue? SEMICOLON!
+		)
+		{
+			return new minilang::ReturnStatementNode(returnValue);
+		}
         ;
 
-    ConstructionStatement
-        ::= Type:type Identifier:variableName! ASSIGN! Expression:value! SEMICOLON!
+    ConstructionStatement : minilang::Node*
+        ::= 
+		(
+			Type:type Identifier:variableName! ASSIGN! Expression:value! SEMICOLON!
+		)
+		{
+			return new minilang::ConstructionStatementNode(type, variableName, value);
+		}
         ;
 
-    AssignmentStatement
-        ::= Identifier:variableName ASSIGN! Expression:value! SEMICOLON!
+    AssignmentStatement : minilang::Node*
+        ::= 
+		(
+			Identifier:variableName ASSIGN! Expression:value! SEMICOLON!
+		)
+		{
+			return new minilang::AssignmentStatementNode(variableName, value);
+		}
         ;
 
-    CompoundStatement
-        ::= LBRACE Statement:statement* RBRACE!
+    CompoundStatement(var std::unique_ptr<minilang::CompoundStatementNode> compoundStatement) : minilang::CompoundStatementNode*
+        ::= 
+		(
+			LBRACE{ compoundStatement.reset(new minilang::CompoundStatementNode()); } (Statement:statement{ compoundStatement->AddStatement(statement); })* RBRACE!
+		)
+		{
+			return compoundStatement.release();
+		}
         ;
 }

@@ -1,5 +1,6 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
+#include <minilang/Tree.hpp>
 
 using namespace MinilangTokens;
 
@@ -7,9 +8,9 @@ parser TypeParser
 {
     uselexer MinilangLexer;
 
-    Type
-        ::= INT
-        |   BOOL
-        |   VOID
+    Type : minilang::Node*
+        ::= INT{ return new minilang::IntNode(); }
+        |   BOOL{ return new minilang::BoolNode(); }
+        |   VOID{ return new minilang::VoidNode(); }
         ;
 }

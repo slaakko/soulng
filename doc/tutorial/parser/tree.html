@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Abstract Syntax Tree</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Abstract Syntax Tree
+    </h1>
+
+    <p>
+        We want to construct a <em>tree</em> of nodes that represents the structure of a parsed <em>.minilang</em> source file.
+        By walking the tree we may for example pretty-print a <strong>minilang</strong> program, type check it, or compile it to machine code.
+        We are not interested in the exact details of the syntax such as white space or punctuation symbols, but want just nodes that represent the structure of a <strong>minilang</strong> program.
+        This kind of tree is called an <em>abstract syntax tree</em>. It is abstract because it does not represent the full details of the syntax as a <em>parse tree</em> does.
+    </p>
+
+    <p>
+        The strategy is to build the tree of nodes starting from the primitive syntax rules such as rules for a <a href="../language/syntax.html#rule.type"><em>type</em></a> and
+        <a href="../language/syntax.html#rule.literal"><em>literal</em></a> and working towards to the top <a href="../language/syntax.html#rule.source-file"><em>source-file</em></a> rule.
+        For that we must be able to return information from a parsing rule to its parent rule. An <em>attribute</em> for a rule is required:
+    </p>
+
+    <h2>Attributes of Parsing Rules</h2>
+
+    <p>
+        We may associate two kinds of <em>attributes</em> to parsing rules: <em>synthesized</em> attributes and <em>inherited</em> attributes.
+        A synthesized attribute returns information from a parsing rule to its parent parsing rule.
+        An inherited attribute delivers information from a parent parsing rule to its child parsing rule.
+    </p>
+
+    <p>
+        We may think that a synthesized attribute is like a <em>return value</em> of a parsing rule and that an inherited attribute is like a <em>parameter</em>
+        of a parsing rule. In fact parsing rules of a recursive descent parser are implemented as functions:
+        The synthesized attribute of a parsing rule is included in the return value of the function that implements the parsing rule
+        and the inherited attributes of a parsing rule become parameters of the function that implements the parsing rule.
+    </p>
+
+    <p>
+        The syntax for representing a synthesized attribute is:
+    </p>
+
+    <pre>
+        parser Example
+        {
+            Rule : <strong>T</strong>
+        }
+    </pre>
+
+    <p>
+        So the type <strong>T</strong> of the synthesized attribute of rule <em>Rule</em> is represented as a colon and a C++ type.
+    </p>
+
+    <p>
+        The syntax for representing an inherited attribute is:
+    </p>
+
+    <pre>
+        parser Example
+        {
+            Rule(<strong>T</strong> <strong>name</strong>)
+        }
+    </pre>
+
+    <p>
+        So the type and name of an inherited attribute of rule <em>Rule</em> is represented as a C++ type <strong>T</strong> and a name <strong>name</strong> within parentheses.
+        If a parsing rule has many inherited attributes, they are separated by commas.
+    </p>
+
+    <h2>
+        Node
+    </h2>
+
+    <p>
+        Now it becomes clear that we want a synhesized attribute that returns a syntax tree node from a parsing rule to its parent. Let's call that attribute a Node.
+    </p>
+
+    <p>
+        We have added two source files to the <strong>examples/minilang</strong> directory and added them to the <strong>minilang</strong> project:
+        The <em>Tree.hpp</em> file will contain the interface of the abstract syntax tree classes and <em>Tree.cpp</em> will contain their implementation.
+    </p>
+
+    <p>
+        We have created a class called <em>Node</em> that represents the base class of all syntax tree node classes. Here's the interface of the Node in <em>Tree.hpp</em>:
+    </p>
+
+    <pre>
+        namespace minilang {
+
+        class Node
+        {
+        public:
+            virtual ~Node();
+        };
+
+        } // namespace minilang
+    </pre>
+
+    <p>
+        The destructor is declared virtual because it will be the root class of a class hierarchy.
+        Here's the implementation of Node in <em>Tree.cpp</em>:
+    </p>
+
+    <pre>
+        #include &lt;minilang/Tree.hpp>
+
+        namespace minilang {
+
+        Node::~Node()
+        {
+        }
+
+        } // namespace minilang
+    </pre>
+
+    <h2>
+        Types
+    </h2>
+
+    <p>
+        We start by creating syntax tree node classes for <strong>minilang</strong> types.
+        The node classes are called <em>IntNode</em>, <em>BoolNode</em> and <em>VoidNode</em> and defined in <em>Tree.hpp</em>:
+    </p>
+
+    <pre>
+        // ...
+
+        class IntNode : public Node
+        {
+        };
+
+        class BoolNode : public Node
+        {
+        };
+
+        class VoidNode : public Node
+        {
+        };
+    </pre>
+
+    <p>
+        The current contents of the <em>TypeParser.parser</em> is as follows:
+    </p>
+
+    <pre>
+        #include &lt;minilang/MinilangLexer.hpp>
+        #include &lt;minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser TypeParser
+        {
+            uselexer MinilangLexer;
+
+            Type
+                ::= INT
+                |   BOOL
+                |   VOID
+                ;
+        }
+    </pre>
+
+    <p>
+        Now we add a synthesized attribute, or a return value, to the <em>Type</em> rule. The type of the synthesized attribute is <em>minilang::Node*</em>:
+    </p>
+
+    <pre>
+        #include &lt;minilang/MinilangLexer.hpp>
+        #include &lt;minilang/MinilangTokens.hpp>
+        #include &lt;minilang/Tree.hpp>
+
+        using namespace MinilangTokens;
+
+        parser TypeParser
+        {
+            uselexer MinilangLexer;
+
+            Type : minilang::Node*
+                ::= INT{ return new minilang::IntNode(); }
+                |   BOOL{ return new minilang::BoolNode(); }
+                |   VOID{ return new minilang::VoidNode(); }
+                ;
+        }
+    </pre>
+
+    <p>
+        We have also attached a <em>semantic action</em> to the INT, BOOL and VOID tokens.
+        A semantic action is a compound C++ statement that is bound to a syntax element. The semantic action gets executed when the input matches its preceding syntax element.
+        The semantic actions that are bound to the INT, BOOL and VOID tokens create and return the corresponding syntax tree nodes from the <em>Type</em> rule.
+    </p>
+
+    <p>
+        At this point we may generate code with the <strong>spg</strong> tool:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        But when we then try to build the project, the Visual Studio generates errors that point to the <em>FunctionParser.cpp</em> and <em>StatementParser.cpp</em>:
+    </p>
+
+    <pre>
+        'minilang': is not a class or namespace name	
+    </pre>
+
+    <p>
+        We need to add an #include directive for types defined in <em>Tree.hpp</em> to the <em>FunctionParser.parser</em> and to the <em>StatementParser.parser</em>:
+    </p>
+
+    <pre>
+        // FunctionParser.parser:
+        // ...
+        #include &lt;minilang/Tree.hpp>
+
+        // StatementParser.parser:
+        // ...
+        #include &lt;minilang/Tree.hpp>
+    </pre>
+
+    <p>
+        Then run the <strong>spg</strong> tool again:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        Now compilation is expected to succeed.
+    </p>
+
+    <h2>
+        Literals
+    </h2>
+
+    <p>
+        Next we create node classes for literals in <em>Tree.hpp</em>
+    </p>
+
+    <pre>
+        // ...
+
+        class BooleanLiteralNode : public Node
+        {
+        public:
+            BooleanLiteralNode(bool value_);
+            bool Value() const { return value; }
+        private:
+            bool value;
+        };
+
+        class IntegerLiteralNode : public Node
+        {
+        public:
+            IntegerLiteralNode(int64_t value_);
+            int64_t Value() const { return value; }
+        private:
+            int64_t value;
+        };
+    </pre>
+
+    <p>
+        Before changes the <em>LiteralParser.parser</em> has the following content:
+    </p>
+
+    <pre>
+        #include &lt;minilang/MinilangLexer.hpp>
+        #include &lt;minilang/MinilangTokens.hpp>
+
+        using namespace MinilangTokens;
+
+        parser LiteralParser
+        {
+            uselexer MinilangLexer;
+
+            Literal 
+                ::= BooleanLiteral:booleanLiteral
+                |   IntegerLiteral:integerLiteral
+                ;
+
+            BooleanLiteral 
+                ::= TRUE
+                |   FALSE
+                ;
+
+            IntegerLiteral 
+                ::= INTLIT
+                ;
+        }
+    </pre>
+
+    <p>
+        The body of the <em>Literal</em> rule consists of two alternatives that refer to the <em>BooleanLiteral</em> and <em>IntegerLiteral</em> rules.
+        Those rules have <a href="../parser/definition.html#unique_name">unique names</a> <em>booleanLiteral</em> and <em>integerLiteral</em> respectively.
+        Now unique names should make sense: those names represent the synthesized attributes of the <em>BooleanLiteral</em> and
+        <em>IntegerLiteral</em> rules within the body of the <em>Literal</em> rule.
+        We may also think that the <em>Literal</em> rule "calls" the <em>BooleanLiteral</em> or the <em>IntegerLiteral</em> rule,
+        and those rules "return" values that have been named <em>booleanLiteral</em> and <em>integerLiteral</em>. The semantic actions return those values:
+    </p>
+
+    <pre>
+        Literal : minilang::Node*
+            ::= BooleanLiteral:booleanLiteral{ return booleanLiteral; }
+            |   IntegerLiteral:integerLiteral{ return integerLiteral; }
+            ;
+    </pre>
+
+    <p>
+        The changed <em>BooleanLiteral</em> rule contains no new things:
+    </p>
+
+    <pre>
+        BooleanLiteral : minilang::Node*
+            ::= TRUE{ return new minilang::BooleanLiteralNode(true); }
+            |   FALSE{ return new minilang::BooleanLiteralNode(false); }
+            ;
+    </pre>
+
+    <p>
+        But the semantic action bound to the INTLIT token in the <em>IntegerLiteral</em> rule has many new things:
+    </p>
+
+    <pre>
+        IntegerLiteral : minilang::Node*
+            ::= INTLIT{ return new minilang::IntegerLiteralNode(minilang::ParseIntegerLiteral(lexer.FileName(), lexer.GetToken(pos))); }
+            ;
+    </pre>
+
+    <p>
+        First: each semantic action has symbols <em>lexer</em>, <em>pos</em> and <em>span</em> available:
+
+        <ul>
+            <li>
+                The <em>lexer</em> symbol represents the current lexer that is derived from the <em>soulng::lexer::Lexer</em> class.
+            </li>
+            <li>
+                The <em>lexer</em> has a <em>FileName()</em> function that returns the name of the file being parsed.
+            </li>
+            <li>
+                The <em>pos</em> symbol represents the index of the matching token in the stream of tokens.
+                The function call <em>lexer.GetToken(pos)</em> returns the matching token.
+            </li>
+            <li>
+                The <em>span</em> symbol represents a token range. It has not been used here.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        Second: we have created a <em>ParseIntegerLiteral</em> function that parses an integer value of a matching token.
+        It is declared in <em>TokenValueParser.hpp</em> as:
+    </p>
+
+    <pre>
+        int64_t ParseIntegerLiteral(const std::string& fileName, const soulng::lexer::Token& token);
+    </pre>
+
+    <p>
+        We have added <em>TokenValueParsers.cpp</em> and <em>TokenValueParsers.hpp</em> to the project and
+        added an #include directives for <em>Tree.hpp</em> and <em>TokenValueParsers.hpp</em> to <em>LiteralParser.parser</em>.
+        Now generate sources:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        When we build, the Visual Studio reports error "'minilang': is not a class or namespace name" this time pointing to the <em>Expression.cpp</em>,
+        so we add an #include to the <em>ExpressionParser.parser</em>:
+    </p>
+
+    <pre>
+        // ExpressionParser.parser:
+        // ...
+        #include &lt;minilang/Tree.hpp>
+    </pre>
+
+    <p>
+        Then generate sources:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        Now the project is expected to build again.
+    </p>
+
+    <h2>
+        Identifier
+    </h2>
+
+    <p>
+        We obtain the matching token from the lexer by using the <em>pos</em> symbol, and construct an identifier node with a string that has matched the ID token:
+    </p>
+
+    <pre>
+        Identifier : minilang::Node*
+            ::= ID{ soulng::lexer::Token token = lexer.GetToken(pos); return new minilang::IdentifierNode(token.match.ToString()); }
+            ;
+
+    </pre>
+
+    <p>
+        The soulng::lexer::Token class has a member variable named <em>match</em> that has begin and end pointers to the matching characters, and a member function <em>ToString()</em>,
+        that returns the match as a std::u32string.
+    </p>
+
+    <p>
+        We add an #include for <em>Tree.hpp</em> to <em>IdentifierParser.parser</em>, generate sources with <strong>spg</strong> and build. No errors expected.
+    </p>
+
+    <h2>Expressions</h2>
+
+    <p>
+        Since the parsing rules of the <em>ExpressionParser</em> are mutually recursive,
+        we need to implement changes to the entire <em>ExpressionParser.parser</em> file before the code will compile.
+    </p>
+
+    <p>
+        First we create an enumerated type for representing operators:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        enum class Operator
+        {
+            equal, notEqual, less, greater, lessOrEqual, greaterOrEqual, add, sub, mul, div, mod, unaryPlus, unaryMinus, not_
+        };
+
+    </pre>
+
+    <p>
+        Next we extend our syntax tree node hierarchy with two classes: a <em>UnaryNode</em> that has one child node, and a <em>BinaryNode</em> that has two child nodes:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class UnaryNode : public Node
+        {
+        public:
+            UnaryNode(Node* child_);
+            Node* Child() const { return child.get(); }
+        private:
+            std::unique_ptr&lt;Node> child;
+        };
+
+        class BinaryNode : public Node
+        {
+        public:
+            BinaryNode(Node* left_, Node* right_);
+            Node* Left() const { return left.get(); }
+            Node* Right() const { return right.get(); }
+        private:
+            std::unique_ptr&lt;Node> left;
+            std::unique_ptr&lt;Node> right;
+        };
+    </pre>
+
+    <h3>Expression Rule</h3>
+
+    <p>
+        Now we start with the <em>Expression</em> rule. Here's the old rule:
+    </p>
+
+    <pre>
+        Expression
+            ::= EqualityExpression:expr
+            ;
+    </pre>
+
+    <p>
+        The <em>Expression</em> rule is changed to return the synthesized attribute of the referenced <em>EqualityExpression</em>:
+    </p>
+
+    <pre>
+        Expression : minilang::Node*
+            ::= EqualityExpression:expr{ return expr; }
+            ;
+    </pre>
+
+    <h3>Primary Expression Rule</h3>
+
+    <p>
+        The <em>PrimaryExpression</em> rule consists of three alternatives, a literal, an identifier and a parenthesized expression:
+    </p>
+
+    <pre>
+        PrimaryExpression
+            ::= Literal:literal
+            |   Identifier:identifier
+            |   LPAREN Expression:expression RPAREN
+            ;
+    </pre>
+
+    <p>
+        We first extend our syntax tree node hierarchy with a node type for a parenthesized expression:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class ParenthesizedExpressionNode : public UnaryNode
+        {
+        public:
+            ParenthesizedExpressionNode(Node* child_);
+        };
+    </pre>
+
+    <p>
+        Now the <em>PrimaryExpression</em> can be changed to return a node for a literal, identifier or a parenthesized expression:
+    </p>
+
+    <pre>
+        PrimaryExpression : minilang::Node*
+            ::= Literal:literal{ return literal; }
+            |   Identifier:identifier{ return identifier; }
+            |   LPAREN Expression:expression RPAREN{ return new minilang::ParenthesizedExpressionNode(expression); }
+            ;
+    </pre>
+
+    <h3>Variables of Parsing Rules</h3>
+
+    <p>
+        Besides synthesized and inherited attributes, a parsing rule may have <em>variables</em> as well.
+        The syntax for creating a variable with type <strong>T</strong> and name <strong>name</strong> to a <em>Rule</em> is:
+    </p>
+
+    <pre>
+        parser Example
+        {
+            Rule(<strong>var</strong> <strong>T</strong> <strong>name</strong>)
+        }
+    </pre>
+
+    <p>
+        A variable of a rule can be accessed from all semantic actions of the rule.
+    </p>
+
+    <h3>
+        Postfix Expression Rule
+    </h3>
+
+    <p>
+        We first change the Node to contain a virtual member function for adding an argument.
+        The default implementation will throw an exception, because it is ment to be overridden:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class Node
+        {
+        public:
+            virtual ~Node();
+            virtual void AddArgument(Node* arg);
+        };
+
+        // Tree.cpp:
+
+        void Node::AddArgument(Node* arg)
+        {
+            throw std::runtime_error("cannot add argument to this kind of node");
+        }
+    </pre>
+
+    <p>
+        We then add a syntax tree node for a function invocation. The <em>AddArgument</em> member function is overridden in it:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class InvokeNode : public UnaryNode
+        {
+        public:
+            InvokeNode(Node* child_);
+            const std::vector&lt;std::unique_ptr&lt;Node>>& Args() const { return args; }
+            void AddArgument(Node* arg) override;
+        private:
+            std::vector&lt;std::unique_ptr&lt;Node>> args;
+        };
+
+        // Tree.cpp:
+
+        void InvokeNode::AddArgument(Node* arg)
+        {
+            args.push_back(std::unique_ptr&lt;Node>(arg));
+        }
+    </pre>
+
+    <p>
+        Now we are ready for the changes for postfix expressions.
+        This is the old content the of <em>PostfixExpression</em> rule:
+    </p>
+
+    <pre>
+        PostfixExpression
+            ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN!)*
+            ;
+    </pre>
+
+    <p>
+        It is now extended to contain a unique pointer variable <em>expr</em>:
+    </p>
+
+    <pre>
+        PostfixExpression(var std::unique_ptr&lt;minilang::Node> expr) : minilang::Node*
+        // ...
+    </pre>
+
+    <p>
+        When we have parsed a primary expression, we set the synthesized attribute of it as the contents of the <em>expr</em> variable:
+    </p>
+
+    <pre>
+        PostfixExpression(var std::unique_ptr&lt;minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                PrimaryExpression:primary{ expr.reset(primary); } // ...
+            )
+            // ...
+    </pre>
+
+    <p>
+        If the input contains an LPAREN, then when we have seen the LPAREN, we construct an <em>InvokeNode</em> with an old content of the <em>expr</em> variable.
+        It will contain a node for the primary expression if we are parsing first function invocation, otherwise it will contain another function invocation node.
+        We reset the <em>expr</em> variable to contain a new invocation node:
+    </p>
+
+    <pre>
+        PostfixExpression(var std::unique_ptr&lt;minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                PrimaryExpression:primary{ expr.reset(primary); } (LPAREN{ expr.reset(new minilang::InvokeNode(expr.release())); } // ...
+            )
+            // ...
+    </pre>
+
+    <p>
+        We are going to extend the <em>ExpressionList</em> to contain an inherited syntax tree node attribute.
+        We are now passing the contents of the <em>expr</em> unique pointer variable as an argument that will be the value of inherited attribute in the <em>ExpressionList</em> rule:
+    </p>
+
+    <pre>
+        PostfixExpression(var std::unique_ptr&lt;minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                PrimaryExpression:primary{ expr.reset(primary); } (LPAREN{ expr.reset(new minilang::InvokeNode(expr.release())); } ExpressionList(expr.get()):args? RPAREN!)*
+            )
+            // ...
+    </pre>
+
+    <p>
+        Finally we release and return the released <em>expr</em> variable as the synthesized attribute of the postfix expression.
+        It is going to be a node just for a primary expression, if the input has not contained a parenthesized list of arguments,
+        or it is going to be a node for a function invocation if the input has contained a parenthesized list of arguments:
+    </p>
+
+    <pre>
+        PostfixExpression(var std::unique_ptr&lt;minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                PrimaryExpression:primary{ expr.reset(primary); } (LPAREN{ expr.reset(new minilang::InvokeNode(expr.release())); } ExpressionList(expr.get()):args? RPAREN!)*
+            )
+            {
+                return expr.release();
+            }
+            ;
+    </pre>
+
+    <h3>Expression List Rule</h3>
+
+    <p>
+        Now this is the old content of the <em>ExpressionList</em> rule:
+    </p>
+
+    <pre>
+        ExpressionList
+            ::= Expression:left (COMMA Expression:right!)*
+            ;
+    </pre>
+
+    <p>
+        First we add an include to the start of the <em>ExpressionParser.parser</em> file:
+    </p>
+
+    <pre>
+        [hpp]#include &lt;minilang/Tree.hpp>
+        // ...
+    </pre>
+
+    <h4>[cpp] and [hpp] attribute of an include directive:</h4>
+
+    <p>
+        The <strong>[hpp]</strong> attribute of the include means that the generator will add the include to the generated <em>.hpp</em> file, not to the generated <em>.cpp</em> file as is
+        the case by default. We need to add the include to the <em>header</em> file, because we will add an inherited attribute of syntax tree node type, and the compiler must have the
+        declaration visible for it in the generated header.
+    </p>
+
+    <p>
+        If an include directive has a <strong>[cpp]</strong> attribute, that is the default, the include directived is added to the generated <em>.cpp</em> file.
+    </p>
+
+    <p>
+        The rule is: if we have a <em>variable</em> or a <em>synthesized</em> attribute of a parsing rule, the #include for its type can go to the generated <em>.cpp</em> file,
+        but if we have an <em>inherited</em> attribute, the #include for its type must be placed to the generated <em>.hpp</em> file.
+        Also if we have a <strong>main</strong> parser, #include for an attribute type must be placed to the generated <em>.hpp</em> file.
+    </p>
+
+    <p>
+        The changed <em>ExpressionList</em> rule now contains an inherited syntax tree node attribute that will in fact be an invocation node.
+        Each expression node is added to the invocation node by calling the <em>AddArgument</em> member function for it:
+    </p>
+
+    <pre>
+        ExpressionList(minilang::Node* owner)
+            ::= Expression:left{ owner->AddArgument(left); } (COMMA Expression:right!{ owner->AddArgument(right); })*
+            ;
+    </pre>
+
+    <h3>
+        Unary Expression Rule
+    </h3>
+
+    <p>
+        This is the old content of the <em>UnaryExpression</em> rule:
+    </p>
+
+    <pre>
+        UnaryExpression
+            ::= UnaryOperator:op UnaryExpression:unaryExpr!
+            |   PostfixExpression:postfixExpr
+            ;
+    </pre>
+
+    <p>
+        We extend our syntax tree node hierarchy with the node for an unary expression with an operator:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class UnaryOpExprNode : public UnaryNode
+        {
+        public:
+            UnaryOpExprNode(Operator op_, Node* child_);
+            Operator Op() const { return op; }
+        private:
+            Operator op;
+        };
+    </pre>
+
+    <p>
+        This the changed content of the <em>UnaryExpression</em> rule:
+    </p>
+
+    <pre>
+        UnaryExpression : minilang::Node*
+            ::= UnaryOperator:op UnaryExpression:unaryExpr!{ return new minilang::UnaryOpExprNode(op, unaryExpr); }
+            |   PostfixExpression:postfixExpr{ return postfixExpr; }
+            ;
+    </pre>
+
+    <p>
+        This the old content for an <em>UnaryOperator</em> rule:
+    </p>
+
+    <pre>
+        UnaryOperator
+            ::= PLUS
+            |   MINUS
+            |   NOT
+            ;
+    </pre>
+
+    <p>
+        And this is the changed content:
+    </p>
+
+    <pre>
+        UnaryOperator : minilang::Operator
+            ::= PLUS{ return minilang::Operator::unaryPlus; }
+            |   MINUS{ return minilang::Operator::unaryMinus; }
+            |   NOT{ return minilang::Operator::not_; }
+            ;
+    </pre>
+
+    <h3>
+        Rules for Binary Expressions
+    </h3>
+
+    <p>
+        We extend first our syntax tree node hierarchy with a node type for a binary expression with an operator:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class BinaryOpExprNode : public BinaryNode
+        {
+        public:
+            BinaryOpExprNode(Operator op_, Node* left_, Node* right_);
+            Operator Op() const { return op; }
+        private:
+            Operator op;
+        };
+    </pre>
+
+    <p>
+        Now these are the old binary expression rules:
+    </p>
+
+    <pre>
+        MultiplicativeExpression
+            ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right!)*
+            ;
+
+        MultiplicativeOperator
+            ::= MUL
+            |   DIV
+            |   MOD
+            ;
+
+        AdditiveExpression
+            ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right!)*
+            ;
+
+        AdditiveOperator
+            ::= PLUS
+            |   MINUS
+            ;
+
+        RelationalExpression
+            ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right!)*
+            ;
+
+        RelationalOperator
+            ::= LESS
+            |   GREATER
+            |   LEQ
+            |   GEQ
+            ;
+
+        EqualityExpression
+            ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right!)*
+            ;
+
+        EqualityOperator
+            ::= EQ
+            |   NEQ
+            ;
+    </pre>
+
+    <p>
+        These are the changed rules, all go according to the same pattern:
+    </p>
+
+    <pre>
+        MultiplicativeExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                UnaryExpression:left{ expr.reset(left); } (MultiplicativeOperator:op UnaryExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+            )
+            {
+                return expr.release();
+            }
+            ;
+
+        MultiplicativeOperator : minilang::Operator
+            ::= MUL{ return minilang::Operator::mul; }
+            |   DIV{ return minilang::Operator::div; }
+            |   MOD{ return minilang::Operator::mod; }
+            ;
+
+        AdditiveExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                MultiplicativeExpression:left{ expr.reset(left); } (AdditiveOperator:op MultiplicativeExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+            )
+            {
+                return expr.release();
+            }
+            ;
+
+        AdditiveOperator : minilang::Operator
+            ::= PLUS{ return minilang::Operator::add; }
+            |   MINUS{ return minilang::Operator::sub; }
+            ;
+
+        RelationalExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+            ::= 
+            (	
+                AdditiveExpression:left{ expr.reset(left); } (RelationalOperator:op AdditiveExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+            )
+            {
+                return expr.release();
+            }
+            ;
+
+        RelationalOperator : minilang::Operator
+            ::= LESS{ return minilang::Operator::less; }
+            |   GREATER{ return minilang::Operator::greater; }
+            |   LEQ{ return minilang::Operator::lessOrEqual; }
+            |   GEQ{ return minilang::Operator::greaterOrEqual; }
+            ;
+
+        EqualityExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+            ::= 
+            (
+                RelationalExpression:left{ expr.reset(left); } (EqualityOperator:op RelationalExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+            )
+            {
+                return expr.release();
+            }
+            ;
+
+        EqualityOperator : minilang::Operator
+            ::= EQ{ return minilang::Operator::equal; }
+            |   NEQ{ return minilang::Operator::notEqual; }
+            ;
+    </pre>
+
+    <p>
+        At this point, we may generate sources with <strong>spg</strong>:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        Build is expected to succeed.
+    </p>
+
+    <h2>
+        Statements
+    </h2>
+
+    <p>
+        The changes for the <em>StatementParser</em> go according to the same pattern as before.
+        We first extend first our syntax tree node hierarchy with node types for statements:
+    </p>
+
+    <pre>
+        class IfStatementNode : public Node
+        {
+        public:
+            IfStatementNode(Node* condition_, Node* thenS_, Node* elseS_);
+            Node* Condition() const { return condition.get(); }
+            Node* ThenS() const { return thenS.get(); }
+            Node* ElseS() const { return elseS.get(); }
+        private:
+            std::unique_ptr&lt;Node> condition;
+            std::unique_ptr&lt;Node> thenS;
+            std::unique_ptr&lt;Node> elseS;
+        };
+
+        class WhileStatementNode : public Node
+        {
+        public:
+            WhileStatementNode(Node* condition_, Node* statement_);
+            Node* Condition() const { return condition.get(); }
+            Node* Statement() const { return statement.get(); }
+        private:
+            std::unique_ptr&lt;Node> condition;
+            std::unique_ptr&lt;Node> statement;
+        };
+
+        class ReturnStatementNode : public Node
+        {
+        public:
+            ReturnStatementNode(Node* returnValue_);
+            Node* ReturnValue() const { return returnValue.get(); }
+        private:
+            std::unique_ptr&lt;Node> returnValue;
+        };
+
+        class ConstructionStatementNode : public Node
+        {
+        public:
+            ConstructionStatementNode(Node* type_, IdentifierNode* variableName_, Node* value_);
+            Node* Type() const { return type.get(); }
+            IdentifierNode* VariableName() const { return variableName.get(); }
+            Node* Value() const { return value.get(); }
+        private:
+            std::unique_ptr&lt;Node> type;
+            std::unique_ptr&lt;IdentifierNode> variableName;
+            std::unique_ptr&lt;Node> value;
+        };
+
+        class AssignmentStatementNode : public Node
+        {
+        public:
+            AssignmentStatementNode(IdentifierNode* variableName_, Node* value_);
+            IdentifierNode* VariableName() const { return variableName.get(); }
+            Node* Value() const { return value.get(); }
+        private:
+            std::unique_ptr&lt;IdentifierNode> variableName;
+            std::unique_ptr&lt;Node> value;
+        };
+
+        class CompoundStatementNode : public Node
+        {
+        public:
+            void AddStatement(Node* statement);
+            const std::vector&lt;std::unique_ptr&lt;Node>>& Statements() const { return statements; }
+        private:
+            std::vector&lt;std::unique_ptr&lt;Node>> statements;
+        };
+    </pre>
+
+    <p>
+        This is the old <em>StatementParser</em>:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            uselexer MinilangLexer;
+
+            using ExpressionParser.Expression;
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+
+            Statement
+                ::= IfStatement:ifS
+                |   WhileStatement:whileS
+                |   ReturnStatement:returnS
+                |   ConstructionStatement:constructionS
+                |   AssignmentStatement:assignmentS
+                |   CompoundStatement:compoundS
+                ;
+
+            IfStatement
+                ::= IF LPAREN! Expression:condition! RPAREN! Statement:thenS! (ELSE Statement:elseS!)?
+                ;
+
+            WhileStatement
+                ::= WHILE LPAREN! Expression:condition! RPAREN! Statement:statement!
+                ;
+
+            ReturnStatement
+                ::= RETURN Expression:returnValue? SEMICOLON!
+                ;
+
+            ConstructionStatement
+                ::= Type:type Identifier:variableName! ASSIGN! Expression:value! SEMICOLON!
+                ;
+
+            AssignmentStatement
+                ::= Identifier:variableName ASSIGN! Expression:value! SEMICOLON!
+                ;
+
+            CompoundStatement
+                ::= LBRACE Statement:statement* RBRACE!
+                ;
+        }
+    </pre>
+
+    <p>
+        And this is the <em>StatementParser</em> with changes:
+    </p>
+
+    <pre>
+        parser StatementParser
+        {
+            uselexer MinilangLexer;
+
+            using ExpressionParser.Expression;
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+
+            Statement : minilang::Node*
+                ::= IfStatement:ifS{ return ifS; }
+                |   WhileStatement:whileS{ return whileS; }
+                |   ReturnStatement:returnS{ return returnS; }
+                |   ConstructionStatement:constructionS{ return constructionS; }
+                |   AssignmentStatement:assignmentS{ return assignmentS; }
+                |   CompoundStatement:compoundS{ return compoundS; }
+                ;
+
+            IfStatement : minilang::Node*
+                ::= 
+                (
+                    IF LPAREN! Expression:condition! RPAREN! Statement:thenS! (ELSE Statement:elseS!)?
+                )
+                {
+                    return new minilang::IfStatementNode(condition, thenS, elseS);
+                }
+                ;
+
+            WhileStatement : minilang::Node*
+                ::= 
+                (
+                    WHILE LPAREN! Expression:condition! RPAREN! Statement:statement!
+                )
+                {
+                    return new minilang::WhileStatementNode(condition, statement);
+                }
+                ;
+
+            ReturnStatement : minilang::Node*
+                ::= 
+                (
+                    RETURN Expression:returnValue? SEMICOLON!
+                )
+                {
+                    return new minilang::ReturnStatementNode(returnValue);
+                }
+                ;
+
+            ConstructionStatement : minilang::Node*
+                ::= 
+                (
+                    Type:type Identifier:variableName! ASSIGN! Expression:value! SEMICOLON!
+                )
+                {
+                    return new minilang::ConstructionStatementNode(type, variableName, value);
+                }
+                ;
+
+            AssignmentStatement : minilang::Node*
+                ::= 
+                (
+                    Identifier:variableName ASSIGN! Expression:value! SEMICOLON!
+                )
+                {
+                    return new minilang::AssignmentStatementNode(variableName, value);
+                }
+                ;
+
+            CompoundStatement(var std::unique_ptr<minilang::CompoundStatementNode> compoundStatement) : minilang::CompoundStatementNode*
+                ::= 
+                (
+                    LBRACE{ compoundStatement.reset(new minilang::CompoundStatementNode()); } (Statement:statement{ compoundStatement->AddStatement(statement); })* RBRACE!
+                )
+                {
+                    return compoundStatement.release();
+                }
+                ;
+    </pre>
+
+    <p>
+        Generate sources with <strong>spg</strong>:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg MinilangParsers.spg
+    </pre>
+
+    <p>
+        Build should succeed.
+    </p>
+
+    <h2>Functions</h2>
+
+    <p>
+        We first create a syntax tree node type for a function:
+    </p>
+
+    <pre>
+        class FunctionNode : public Node
+        {
+        public:
+            FunctionNode(Node* returnType_, IdentifierNode* functionName_);
+            Node* ReturnType() const { return returnType.get(); }
+            IdentifierNode* FunctionName() const { return functionName.get(); }
+            void AddParam(ParameterNode* param);
+            const std::vector&lt;std::unique_ptr&lt;ParameterNode>>& Parameters() const { return parameters; }
+            void SetBody(CompoundStatementNode* body_);
+            CompoundStatementNode* Body() const { return body.get(); }
+        private:
+            std::unique_ptr&lt;Node> returnType;
+            std::unique_ptr&lt;IdentifierNode> functionName;
+            std::vector&lt;std::unique_ptr&lt;ParameterNode>> parameters;
+            std::unique_ptr&lt;CompoundStatementNode> body;
+        };
+    </pre>
+
+    <p>
+        This is the function parsers before changes:
+    </p>
+
+    <pre>
+        parser FunctionParser
+        {
+            uselexer MinilangLexer;
+
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+            using StatementParser.CompoundStatement;
+
+            Function
+                ::= Type:returnType Identifier:functionName! LPAREN! ParameterList:params? RPAREN! CompoundStatement:functionBody!
+                ;
+
+            ParameterList
+                ::= Parameter:left (COMMA Parameter:right!)*
+                ;
+
+            Parameter
+                ::= Type:type Identifier:name
+                ;
+        }
+    </pre>
+
+    <p>
+        And this is the <em>FunctionParser</em> with changes:
+    </p>
+
+    <pre>
+        parser FunctionParser
+        {
+            uselexer MinilangLexer;
+
+            using TypeParser.Type;
+            using IdentifierParser.Identifier;
+            using StatementParser.CompoundStatement;
+
+            Function(var std::unique_ptr&lt;minilang::FunctionNode> function) : minilang::FunctionNode*
+                ::= 
+                (
+                    Type:returnType Identifier:functionName! LPAREN!{ function.reset(new minilang::FunctionNode(returnType, functionName)); } 
+                    ParameterList(function.get()):params? RPAREN! 
+                    CompoundStatement:functionBody!{ function->SetBody(functionBody); }
+                )
+                {
+                    return function.release();
+                }
+                ;
+
+            ParameterList(minilang::FunctionNode* function)
+                ::= Parameter:left{ function->AddParam(left); } (COMMA Parameter:right!{ function->AddParam(right); })*
+                ;
+
+            Parameter : minilang::ParameterNode*
+                ::= Type:type Identifier:name
+                {
+                    return new minilang::ParameterNode(type, name);
+                }
+                ;
+        }
+    </pre>
+
+    <h2>
+        Source Files
+    </h2>
+
+    <p>
+        Now we have only the changes for source files left. We start with the syntax node type as usual:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class SourceFileNode : public Node
+        {
+        public:
+            void AddFunction(FunctionNode* function);
+            const std::vector&lt;std::unique_ptr&lt;FunctionNode>>& Functions() const { return functions; }
+        private:
+            std::vector&lt;std::unique_ptr&lt;FunctionNode>> functions;
+        };
+    </pre>
+
+    <p>
+        This is the source file parser before changes:
+    </p>
+
+    <pre>
+        parser SourceFileParser
+        {
+            uselexer MinilangLexer;
+            main
+
+            using FunctionParser.Function;
+
+            SourceFile
+                ::= Function:function*
+                ;
+        }
+    </pre>
+
+    <h3>The Empty Syntax Element</h3>
+
+    <p>
+        The changed source file parser looks otherwise familiar, but the <strong>empty</strong> keyword is new:
+    </p>
+
+    <pre>
+        parser SourceFileParser
+        {
+            uselexer MinilangLexer;
+            main;
+
+            using FunctionParser.Function;
+
+            SourceFile(var std::unique_ptr<minilang::SourceFileNode> sourceFile) : minilang::SourceFileNode*
+                ::= 
+                (
+                    empty{ sourceFile.reset(new minilang::SourceFileNode()); } (Function:function{ sourceFile->AddFunction(function); })*
+                )
+                {
+                    return sourceFile.release();
+                }
+                ;
+        }
+    </pre>
+
+    <p>
+        The <strong>empty</strong> keyword can be inserted in a sequence of syntax elements in a body of a parsing rule.
+        It represents a syntax element that will always match. The lexer is not advanced to the next input token with an <strong>empty</strong> match.
+        Thus the <strong>empty</strong> syntax element is useful when we want to execute an action at some point in syntax no matter what the current input is.
+        We can attach that kind of action to the <strong>empty</strong> element.
+    </p>
+
+    <p>
+        In the <em>SourceFileParser</em>, we first construct a <em>SourceFileNode</em>, and then add function nodes to it. Finally we return the source file node.
+    </p>
+
+    <p>
+        We now generate the sources with the <strong>spg</strong> tool. After that the code is expected to compile and link without errors.
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang>spg -v MinilangParsers.spg
+        > C:/soulng-1.0.0/examples/minilang/MinilangParsers.spg
+        > C:/soulng-1.0.0/examples/minilang/ExpressionParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/ExpressionParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/ExpressionParser.cpp
+        > C:/soulng-1.0.0/examples/minilang/FunctionParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/FunctionParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/FunctionParser.cpp
+        > C:/soulng-1.0.0/examples/minilang/IdentifierParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/IdentifierParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/IdentifierParser.cpp
+        > C:/soulng-1.0.0/examples/minilang/LiteralParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/LiteralParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/LiteralParser.cpp
+        > C:/soulng-1.0.0/examples/minilang/SourceFileParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/SourceFileParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/SourceFileParser.cpp
+        > C:/soulng-1.0.0/examples/minilang/StatementParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/StatementParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/StatementParser.cpp
+        > C:/soulng-1.0.0/examples/minilang/TypeParser.parser
+        ==> C:/soulng-1.0.0/examples/minilang/TypeParser.hpp
+        ==> C:/soulng-1.0.0/examples/minilang/TypeParser.cpp
+    </pre>
+
+    <p>
+        Next we will implement a visitor that walks the generated syntax tree...
+    </p>
+</body>
+</html>

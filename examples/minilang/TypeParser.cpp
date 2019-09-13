@@ -2,6 +2,7 @@
 #include <soulng/util/Unicode.hpp>
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
+#include <minilang/Tree.hpp>
 
 // this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/TypeParser.parser' using soulng parser generator spg version 1.0.0
 
@@ -11,53 +12,33 @@ using namespace MinilangTokens;
 soulng::parser::Match TypeParser::Type(MinilangLexer& lexer)
 {
     soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
+    int pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
+    switch (*lexer)
     {
-        int save = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        case INT:
         {
-            int save = lexer.GetPos();
-            soulng::parser::Match match(false);
-            if (*lexer == INT)
+            ++lexer;
             {
-                ++lexer;
-                match.hit = true;
+                return soulng::parser::Match(true, new minilang::IntNode);
             }
-            *parentMatch1 = match;
-            if (!match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch2 = &match;
-                lexer.SetPos(save);
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == BOOL)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    *parentMatch2 = match;
-                }
-                *parentMatch1 = match;
-            }
+            break;
         }
-        *parentMatch0 = match;
-        if (!match.hit)
+        case BOOL:
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
-            lexer.SetPos(save);
+            ++lexer;
             {
-                soulng::parser::Match match(false);
-                if (*lexer == VOID)
-                {
-                    ++lexer;
-                    match.hit = true;
-                }
-                *parentMatch3 = match;
+                return soulng::parser::Match(true, new minilang::BoolNode);
             }
-            *parentMatch0 = match;
+            break;
+        }
+        case VOID:
+        {
+            ++lexer;
+            {
+                return soulng::parser::Match(true, new minilang::VoidNode);
+            }
+            break;
         }
     }
     return match;

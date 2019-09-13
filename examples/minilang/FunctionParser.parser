@@ -1,3 +1,4 @@
+[hpp]#include <minilang/Tree.hpp>
 #include <minilang/TypeParser.hpp>
 #include <minilang/IdentifierParser.hpp>
 #include <minilang/StatementParser.hpp>
@@ -14,15 +15,26 @@ parser FunctionParser
     using IdentifierParser.Identifier;
     using StatementParser.CompoundStatement;
 
-    Function
-        ::= Type:returnType Identifier:functionName! LPAREN! ParameterList:params? RPAREN! CompoundStatement:functionBody!
+    Function(var std::unique_ptr<minilang::FunctionNode> function) : minilang::FunctionNode*
+        ::= 
+		(
+			Type:returnType Identifier:functionName! LPAREN!{ function.reset(new minilang::FunctionNode(returnType, functionName)); } 
+			ParameterList(function.get()):params? RPAREN! 
+			CompoundStatement:functionBody!{ function->SetBody(functionBody); }
+		)
+		{
+			return function.release();
+		}
         ;
 
-    ParameterList
-        ::= Parameter:left (COMMA Parameter:right!)*
+    ParameterList(minilang::FunctionNode* function)
+        ::= Parameter:left{ function->AddParam(left); } (COMMA Parameter:right!{ function->AddParam(right); })*
         ;
 
-    Parameter
+    Parameter : minilang::ParameterNode*
         ::= Type:type Identifier:name
+		{
+			return new minilang::ParameterNode(type, name);
+		}
         ;
 }

@@ -111,10 +111,13 @@
         }
     </pre>
 
+    <h3 id="unique_name">Unique Names</h3>
+
     <p>
-        The <em>Literal</em> parsing rule refers to parsing rules <em>BooleanLiteral</em> and <em>IntegerLiteral</em>.
-        When a parsing rule is referenced in the body of another parsing rule, it must be given a unique name within the body of that rule
-        for the reasons that will become clear in the future. The syntax for naming is ParsingRule<stong>:</stong>uniqueName.
+        The <em>Literal</em> parsing rule above refers to parsing rules <em>BooleanLiteral</em> and <em>IntegerLiteral</em>.
+        When a parsing rule is referenced in the body of another parsing rule, it must be given a <em>unique name</em> within the body of that rule
+        for the reasons that will become clear in the future. The syntax for naming is <em>ParsingRule</em><stong>:</stong><em>uniqueName</em>,
+        that is: separate the unique name <em>uniqueName</em> of rule <em>ParsingRule</em> with a colon.
         So when the <em>Literal</em> parsing rule refers to <em>BooleanLiteral</em> parsing rule, the reference to <em>BooleanLiteral</em> rule has been
         given unique name <em>booleanLiteral</em>, and the reference to <em>IntegerLiteral</em> rule has been given unique name <em>integerLiteral</em>.
     </p>

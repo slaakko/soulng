@@ -1,5 +1,6 @@
 #ifndef SOURCEFILEPARSER_HPP
 #define SOURCEFILEPARSER_HPP
+#include <minilang/Tree.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
@@ -10,7 +11,7 @@ class MinilangLexer;
 
 struct SourceFileParser
 {
-    static void Parse(MinilangLexer& lexer);
+    static std::unique_ptr<minilang::SourceFileNode> Parse(MinilangLexer& lexer);
     static soulng::parser::Match SourceFile(MinilangLexer& lexer);
 };
 

@@ -1,3 +1,4 @@
+[hpp]#include <minilang/Tree.hpp>
 #include <minilang/FunctionParser.hpp>
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
@@ -11,7 +12,13 @@ parser SourceFileParser
 
     using FunctionParser.Function;
 
-    SourceFile
-        ::= Function:function*
+    SourceFile(var std::unique_ptr<minilang::SourceFileNode> sourceFile) : minilang::SourceFileNode*
+        ::= 
+		(
+			empty{ sourceFile.reset(new minilang::SourceFileNode()); } (Function:function{ sourceFile->AddFunction(function); })*
+		)
+		{
+			return sourceFile.release();
+		}
         ;
 }

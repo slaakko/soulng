@@ -1,3 +1,4 @@
+[hpp]#include <minilang/Tree.hpp>
 #include <minilang/LiteralParser.hpp>
 #include <minilang/IdentifierParser.hpp>
 #include <minilang/MinilangLexer.hpp>
@@ -12,71 +13,101 @@ parser ExpressionParser
     using LiteralParser.Literal;
     using IdentifierParser.Identifier;
 
-    Expression
-        ::= EqualityExpression:expr
+    Expression : minilang::Node*
+        ::= EqualityExpression:expr{ return expr; }
         ;
 
-    PrimaryExpression
-        ::= Literal:literal
-        |   Identifier:identifier
-        |   LPAREN Expression:expression RPAREN
+    PrimaryExpression : minilang::Node*
+        ::= Literal:literal{ return literal; }
+        |   Identifier:identifier{ return identifier; }
+        |   LPAREN Expression:expression RPAREN{ return new minilang::ParenthesizedExpressionNode(expression); }
         ;
 
-    PostfixExpression
-        ::= PrimaryExpression:primary (LPAREN ExpressionList:args? RPAREN!)*
+    PostfixExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+        ::= 
+		(
+			PrimaryExpression:primary{ expr.reset(primary); } (LPAREN{ expr.reset(new minilang::InvokeNode(expr.release())); } ExpressionList(expr.get()):args? RPAREN!)*
+		)
+		{
+			return expr.release();
+		}
         ;
 
-    ExpressionList
-        ::= Expression:left (COMMA Expression:right!)*
+    ExpressionList(minilang::Node* owner)
+        ::= Expression:left{ owner->AddArgument(left); } (COMMA Expression:right!{ owner->AddArgument(right); })*
         ;
 
-    UnaryExpression
-        ::= UnaryOperator:op UnaryExpression:unaryExpr!
-        |   PostfixExpression:postfixExpr
+    UnaryExpression : minilang::Node*
+        ::= UnaryOperator:op UnaryExpression:unaryExpr!{ return new minilang::UnaryOpExprNode(op, unaryExpr); }
+        |   PostfixExpression:postfixExpr{ return postfixExpr; }
         ;
 
-    UnaryOperator
-        ::= PLUS
-        |   MINUS
-        |   NOT
+    UnaryOperator : minilang::Operator
+        ::= PLUS{ return minilang::Operator::unaryPlus; }
+        |   MINUS{ return minilang::Operator::unaryMinus; }
+        |   NOT{ return minilang::Operator::not_; }
         ;
 
-    MultiplicativeExpression
-        ::= UnaryExpression:left (MultiplicativeOperator:op UnaryExpression:right!)*
+    MultiplicativeExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+        ::= 
+		(
+			UnaryExpression:left{ expr.reset(left); } (MultiplicativeOperator:op UnaryExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+		)
+		{
+			return expr.release();
+		}
         ;
 
-    MultiplicativeOperator
-        ::= MUL
-        |   DIV
-        |   MOD
+    MultiplicativeOperator : minilang::Operator
+        ::= MUL{ return minilang::Operator::mul; }
+        |   DIV{ return minilang::Operator::div; }
+        |   MOD{ return minilang::Operator::mod; }
         ;
 
-    AdditiveExpression
-        ::= MultiplicativeExpression:left (AdditiveOperator:op MultiplicativeExpression:right!)*
+    AdditiveExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+        ::= 
+		(
+			MultiplicativeExpression:left{ expr.reset(left); } (AdditiveOperator:op MultiplicativeExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+		)
+		{
+			return expr.release();
+		}
         ;
 
-    AdditiveOperator
-        ::= PLUS
-        |   MINUS
+    AdditiveOperator : minilang::Operator
+        ::= PLUS{ return minilang::Operator::add; }
+        |   MINUS{ return minilang::Operator::sub; }
         ;
 
-    RelationalExpression
-        ::= AdditiveExpression:left (RelationalOperator:op AdditiveExpression:right!)*
+    RelationalExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+        ::= 
+		(	
+			AdditiveExpression:left{ expr.reset(left); } (RelationalOperator:op AdditiveExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+		)
+		{
+			return expr.release();
+		}
         ;
 
-    RelationalOperator
-        ::= LESS
-        |   GREATER
-        |   LEQ
-        |   GEQ
+    RelationalOperator : minilang::Operator
+        ::= LESS{ return minilang::Operator::less; }
+        |   GREATER{ return minilang::Operator::greater; }
+        |   LEQ{ return minilang::Operator::lessOrEqual; }
+        |   GEQ{ return minilang::Operator::greaterOrEqual; }
         ;
 
-    EqualityExpression
-        ::= RelationalExpression:left (EqualityOperator:op RelationalExpression:right!)*
+    EqualityExpression(var std::unique_ptr<minilang::Node> expr) : minilang::Node*
+        ::= 
+		(
+			RelationalExpression:left{ expr.reset(left); } (EqualityOperator:op RelationalExpression:right!{ expr.reset(new minilang::BinaryOpExprNode(op, expr.release(), right)); })*
+		)
+		{
+			return expr.release();
+		}
         ;
 
-    EqualityOperator
-        ::= EQ
-        |   NEQ
+    EqualityOperator : minilang::Operator
+        ::= EQ{ return minilang::Operator::equal; }
+        |   NEQ{ return minilang::Operator::notEqual; }
         ;
 }

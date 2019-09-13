@@ -1,5 +1,6 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
+#include <minilang/Tree.hpp>
 
 using namespace MinilangTokens;
 
@@ -7,7 +8,7 @@ parser IdentifierParser
 {
     uselexer MinilangLexer;
 
-    Identifier
-        ::= ID
+    Identifier : minilang::IdentifierNode*
+        ::= ID{ soulng::lexer::Token token = lexer.GetToken(pos); return new minilang::IdentifierNode(token.match.ToString()); }
         ;
 }

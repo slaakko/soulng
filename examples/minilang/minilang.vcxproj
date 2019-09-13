@@ -160,6 +160,8 @@
     <ClCompile Include="MinilangTokens.cpp" />
     <ClCompile Include="SourceFileParser.cpp" />
     <ClCompile Include="StatementParser.cpp" />
+    <ClCompile Include="TokenValueParser.cpp" />
+    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="TypeParser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,8 @@
     <ClInclude Include="MinilangTokens.hpp" />
     <ClInclude Include="SourceFileParser.hpp" />
     <ClInclude Include="StatementParser.hpp" />
+    <ClInclude Include="TokenValueParser.hpp" />
+    <ClInclude Include="Tree.hpp" />
     <ClInclude Include="TypeParser.hpp" />
   </ItemGroup>
   <ItemGroup>

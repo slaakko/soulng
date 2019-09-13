@@ -265,7 +265,7 @@ void CodeGeneratorVisitor::Visit(AlternativeParser& parser)
             Stage prevStage = stage;
             stage = Stage::generateTokenSwitch;
             formatter->WriteLine("int pos = lexer.GetPos();");
-            formatter->WriteLine("Span span = lexer.GetSpan();");
+            formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
             formatter->WriteLine("switch (*lexer)");
             formatter->WriteLine("{");
             formatter->IncIndent();
@@ -420,7 +420,7 @@ void CodeGeneratorVisitor::Visit(ActionParser& parser)
         bool hasSpan = codeEvaluationVisitor.HasSpan();
         if (hasSpan)
         {
-            formatter->WriteLine("Span span = lexer.GetSpan();");
+            formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
         }
         if (hasPass)
         {
