@@ -46,7 +46,7 @@ soulng::parser::Match TypeExprParser::PrefixTypeExpr(CmajorLexer& lexer, Parsing
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == CONST)
                 {
@@ -70,7 +70,7 @@ soulng::parser::Match TypeExprParser::PrefixTypeExpr(CmajorLexer& lexer, Parsing
                 soulng::parser::Match* parentMatch4 = &match;
                 {
                     int pos = lexer.GetPos();
-                    Span span = lexer.GetSpan();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = TypeExprParser::PostfixTypeExpr(lexer, ctx);
                     constTypeExpr.reset(static_cast<Node*>(match.value));
                     if (match.hit)
@@ -128,7 +128,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match = TypeExprParser::PrimaryTypeExpr(lexer, ctx);
                 primaryTypeExpr.reset(static_cast<Node*>(match.value));
                 if (match.hit)
@@ -188,7 +188,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                     soulng::parser::Match* parentMatch11 = &match;
                                                     {
                                                         int pos = lexer.GetPos();
-                                                        Span span = lexer.GetSpan();
+                                                        soulng::lexer::Span span = lexer.GetSpan();
                                                         soulng::parser::Match match(true);
                                                         {
                                                             int pos = lexer.GetPos();
@@ -225,7 +225,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                     soulng::parser::Match* parentMatch13 = &match;
                                                     {
                                                         int pos = lexer.GetPos();
-                                                        Span span = lexer.GetSpan();
+                                                        soulng::lexer::Span span = lexer.GetSpan();
                                                         soulng::parser::Match match(false);
                                                         if (*lexer == STAR)
                                                         {
@@ -255,7 +255,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                 soulng::parser::Match* parentMatch15 = &match;
                                                 {
                                                     int pos = lexer.GetPos();
-                                                    Span span = lexer.GetSpan();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match(false);
                                                     if (*lexer == AMPAMP)
                                                     {
@@ -285,7 +285,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                             soulng::parser::Match* parentMatch17 = &match;
                                             {
                                                 int pos = lexer.GetPos();
-                                                Span span = lexer.GetSpan();
+                                                soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match(false);
                                                 if (*lexer == AMP)
                                                 {
@@ -360,7 +360,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                 soulng::parser::Match* parentMatch24 = &match;
                                                 {
                                                     int pos = lexer.GetPos();
-                                                    Span span = lexer.GetSpan();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match(true);
                                                     {
                                                         int pos = lexer.GetPos();
@@ -475,7 +475,7 @@ soulng::parser::Match TypeExprParser::PrimaryTypeExpr(CmajorLexer& lexer, Parsin
                 soulng::parser::Match* parentMatch6 = &match;
                 {
                     int pos = lexer.GetPos();
-                    Span span = lexer.GetSpan();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == ID)
                     {

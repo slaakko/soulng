@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Communication Between Lexer and Parser</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Communication Between Lexer and Parser
+    </h1>
+
+    <p>
+        Communication between lexer and parser goes through lexer variables.
+    </p>
+
+    <h2>
+        Lexer Variables
+    </h2>
+
+    <p>
+        Lexer variables are defined within a <a href="../syntax/lexer.html#rule.variables-declaration"><em>variables declaration</em></a> that is contained by a
+        <a href="../syntax/lexer.html#rule.lexer-declaration"><em>lexer declaration</em></a> in a <a href="../syntax/lexer.html#rule.lexer-file"><em>.lexer file</em></a>:
+    </p>
+
+    <pre>
+        lexer ExampleLexer
+        {
+            variables
+            {
+                bool foo;
+                int bar;
+                double baz;
+            }
+        }
+    </pre>
+
+    <p>
+        A <em>variables</em> declaration consists of the keyword <strong>variables</strong> followed by C++ variable declarations inside braces.
+    </p>
+
+    <p>
+        The lexer variables allow communication from a lexer to a parser, or from a parser to a lexer.
+    </p>
+
+    <h3>
+        Communication from a Lexer to a Parser
+    </h3>
+
+    <p>
+        A lexer may set a variable in a semantic action before returning a token identifier:
+    </p>
+
+    <pre>
+        // lexervars.lexer:
+
+        #include &lt;TokenValueParsers.hpp>
+
+        classmap ExampleClassMap;
+
+        tokens ExampleTokens
+        {
+            (INTLIT, "integer literal")
+        }
+
+        expressions
+        {
+            intlit = "[0-9]+";
+        }
+
+        lexer ExampleLexer
+        {
+            "{intlit}" { integerValue = ParseIntegerLiteral(token.match); return INTLIT; }
+
+            variables
+            {
+                int integerValue;
+            }
+        }
+    </pre>
+
+    <p>
+        Then a parser may use the variable in a semantic action of a parsing rule:
+    </p>
+
+    <pre>
+        #include &lt;ExampleLexer.hpp>
+        #include &lt;ExampleTokens.hpp>
+
+        using namespace ExampleTokens;
+
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+            main;
+
+            IntegerLiteral : int
+                ::= INTLIT{ return lexer.integerValue; }
+                ;
+        }
+    </pre>
+
+    <h3>
+        Communication from a Parser to a Lexer
+    </h3>
+
+    <p>
+        A parser may also set a variable in a semantic action of a parsing rule to be read by the lexer:
+    </p>
+
+    <pre>
+        #include &lt;IncludeLexer.hpp>
+        #include &lt;IncludeTokens.hpp>
+
+        using namespace IncludeTokens;
+
+        parser IncludeParser
+        {
+            uselexer IncludeLexer;
+            main;
+
+            Choice
+                ::= IncludeDirective:includeDirective
+                |   Expression:expression
+                ;
+
+            IncludeDirective
+                ::= empty{ lexer.parsingIncludeDirective = true; }
+                    (HASH INCLUDE FILEPATH){ lexer.parsingIncludeDirective = false; } / { lexer.parsingIncludeDirective = false; }
+                ;
+
+            Expression
+                ::= ID LANGLE ID
+                ;
+        }
+    </pre>
+
+    <p>
+        The parser sets a lexer flag variable <em>parsingIncludeDirective</em> when it starts to parse an include directive,
+        and resets the flag when it has ended parsing the include directive, whether it matched or not.
+    </p>
+
+    <h4>Conditional Actions</h4>
+
+    <p>
+        Then the lexer may return different sequence of tokens to the parser when parsing an include directive:
+    </p>
+
+    <pre>
+        classmap IncludeClassMap;
+
+        tokens IncludeTokens
+        {
+            (FILEPATH, "file path"), (HASH, "'#'"), (LANGLE, "'<"), (RANGLE, "'>'"), (INCLUDE, "'include'"), (ID, "identifier")
+        }
+
+        keywords IncludeKeywords
+        {
+            ("include", INCLUDE)
+        }
+
+        expressions
+        {
+            ws = "[\n\r\t ]";
+            separators = "{ws}+";
+            id = "{idstart}{idcont}*";
+            filePath = "<[^\n>]+>";
+        }
+
+        lexer IncludeLexer
+        {
+            "{separators}" {}
+            "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+            "#" { return HASH; }
+            "<"{ return LANGLE; }
+            ">"{ return RANGLE; }
+            "{filePath}" $(1) { return FILEPATH; }
+
+            variables
+            {
+                bool parsingIncludeDirective;
+            }
+
+            actions
+            {
+                $(1) = { if (!parsingIncludeDirective) return INVALID_TOKEN; }
+            }
+        }
+    </pre>
+
+    <p>
+        The lexer has a Boolean variable <em>parsingIncludeDirective</em>, that is set by the parser.
+        The lexer has a <em>conditional action</em> that checks the <em>parsingIncludeDirective</em> flag.
+        By returning INVALID_TOKEN from a conditional action, the lexer <em>rejects</em> the current token and returns the token that has matched before that token.
+    </p>
+
+    <p>
+        When a <em>filePath</em> pattern is matched, the lexer checks whether parsing an include directive. If that is the case, it returns the FILEPATH token,
+        otherwise it returns a token that matched before. Because <em>filePath</em> pattern starts with a left angle bracket, LANGLE, the token that matched before is the LANGLE token.
+    </p>
+
+    <p>
+        This means that when parsing string <strong>#include &lt;file.hpp></strong>, the lexer returns token sequence HASH INCLUDE FILEPATH to the parser, but when parsing string
+        <strong>a < b</strong> the lexer returns token sequence ID LANGLE ID to the parser.
+    </p>
+
+    <p>
+        This does not work in all situations because the lexer will <em>save</em> scanned tokens, and return the same sequence of tokens to the parser if it needs to backtrack.
+        You may not be able to have a <em>keyword</em> in some context and not in another context, for example.
+    </p>
+
+    <p>
+        A conditional action is <em>declared</em> in an <a href="../syntax/lexer.html#rule.conditional-actions-declaration"><em>conditional-actions</em></a> declaration within a
+        <a href="../syntax/lexer.html#rule.lexer-declaration"><em>lexer declaration</em></a>. The action consists of the character '$' followed by the number
+        of the action in parentheses followed by the assignment symbol '=' followed by a C++ compound statement.
+        A conditional action is <em>used</em> by putting the '$' character followed by the number of the action in parentheses between a token pattern and a semantic lexer action
+        within the <em>lexer</em> declaration.
+    </p>
+</body>
+</html>

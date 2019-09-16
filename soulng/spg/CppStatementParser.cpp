@@ -287,7 +287,7 @@ soulng::parser::Match CppStatementParser::LabeledStatement(ParserFileLexer& lexe
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == ID)
                         {
@@ -2232,7 +2232,7 @@ soulng::parser::Match CppStatementParser::GotoStatement(ParserFileLexer& lexer)
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(true);
                         {
                             int pos = lexer.GetPos();

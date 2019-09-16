@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Lexer File Syntax</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Lexer File Syntax
+    </h1>
+
+    <p>
+        The notation used for representing the lexer file syntax in this document is described <a href="notation.html">here</a>.
+    </p>
+
+    <h2>
+        Keywords
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.lexer-keyword">lexer&#8209;keyword</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="cpp.html#rule.cppkeyword">cppkeyword</a></span> |
+                <span class="kw">actions</span> |
+                <span class="kw">api</span> |
+                <span class="kw">classmap</span> |
+                <span class="kw">expressions</span> |
+                <span class="kw">include</span> |
+                <span class="kw">keywords</span> |
+                <span class="kw">lexer</span> |
+                <span class="kw">prefix</span> |
+                <span class="kw">tokens</span> |
+                <span class="kw">variables</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.lexer-file">lexer&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.lexer-file-declaration">lexer&#8209;file&#8209;declaration</a></span>*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.lexer-file-declaration">lexer&#8209;file&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.class-map-declaration">class&#8209;map&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.prefix-declaration">prefix&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.include-declaration">include&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.tokens-declaration">tokens&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.keywords-declaration">keywords&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.expressions-declaration">expressions&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.lexer-declaration">lexer&#8209;declaration</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.class-map-declaration">class&#8209;map&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">classmap</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.prefix-declaration">prefix&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">prefix</span>
+                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.include-declaration">include&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">#</span>
+                <span class="kw">include</span>
+                <span class="rule"><a href="common.html#rule.file-path">file&#8209;path</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.tokens-declaration">tokens&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">tokens</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">{</span>
+                (<span class="rule"><a href="#rule.token-declaration">token&#8209;declaration</a></span>
+                (<span class="mono">,</span> <span class="rule"><a href="#rule.token-declaration">token&#8209;declaration</a></span>)*)?
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.token-declaration">token&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">,</span>
+                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.keywords-declaration">keywords&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">keywords</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">{</span>
+                (<span class="rule"><a href="#rule.keyword-declaration">keyword&#8209;declaration</a></span>
+                (<span class="mono">,</span> <span class="rule"><a href="#rule.keyword-declaration">keyword&#8209;declaration</a></span>)*)?
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.keyword-declaration">keyword&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span>
+                <span class="mono">,</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expressions-declaration">expressions&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">expressions</span>
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.expression-declaration">expression&#8209;declaration</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression-declaration">expression&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="regex.html#rule.regular-expression">regular&#8209;expression</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.lexer-declaration">lexer&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">lexer</span>
+                <span class="rule"><a href="common.html#rule.api">api</a></span>?
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.lexer-clause">lexer&#8209;clause</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.lexer-clause">lexer&#8209;clause</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="regex.html#rule.regular-expression">regular&#8209;expression</a></span>
+                <span class="rule"><a href="#rule.conditional-action-id">conditional&#8209;action&#8209;id</a></span>?
+                <span class="rule"><a href="cpp.html#rule.compound-statement">compound&#8209;statement</a></span> |<br />
+                <span class="rule"><a href="#rule.variables-declaration">variables&#8209;declaration</a></span> |<br />
+                <span class="rule"><a href="#rule.conditional-actions-declaration">conditional&#8209;actions&#8209;declaration</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.variables-declaration">variables&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">variables</span>
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.variable-declaration">variable&#8209;declaration</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.variable-declaration">variable&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="cpp.html#rule.type-id">type&#8209;id</a></span>
+                <span class="rule"><a href="common.html#rule.identifier">identifer</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.conditional-actions-declaration">conditional&#8209;actions&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">actions</span>
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.conditional-action-declaration">conditional&#8209;action&#8209;declaration</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.conditional-action-declaration">conditional&#8209;action&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.conditional-action-id">conditional&#8209;action&#8209;id</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="cpp.html#rule.compound-statement">compound&#8209;statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.conditional-action-id">conditional&#8209;action&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">$</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="common.html#rule.integer-literal">integer&#8209;literal</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

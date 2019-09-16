@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>C++ Subset Syntax</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Appendix C C++ Subset Syntax
+    </h1>
+
+    <p>
+        The notation used for representing the C++ syntax in this document is described <a href="notation.html">here</a>.
+    </p>
+
+    <h2>
+        Keywords
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.cppkeyword">cppkeyword</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">auto</span> |
+                <span class="kw">break</span> |
+                <span class="kw">bool</span> |
+                <span class="kw">case</span> |
+                <span class="kw">catch</span> |
+                <span class="kw">char</span> |
+                <span class="kw">const</span> |
+                <span class="kw">const_cast</span> |
+                <span class="kw">continue</span> |
+                <span class="kw">default</span> |
+                <span class="kw">delete</span> |
+                <span class="kw">do</span> |
+                <span class="kw">double</span> |
+                <span class="kw">dynamic_cast</span> |
+                <span class="kw">else</span> |
+                <span class="kw">extern</span> |
+                <span class="kw">false</span> |
+                <span class="kw">float</span> |
+                <span class="kw">for</span> |
+                <span class="kw">goto</span> |
+                <span class="kw">if</span> |
+                <span class="kw">int</span> |
+                <span class="kw">long</span> |
+                <span class="kw">mutable</span> |
+                <span class="kw">namespace</span> |
+                <span class="kw">new</span> |
+                <span class="kw">nullptr</span> |
+                <span class="kw">operator</span> |
+                <span class="kw">register</span> |
+                <span class="kw">reinterpret_cast</span> |
+                <span class="kw">return</span> |
+                <span class="kw">short</span> |
+                <span class="kw">signed</span> |
+                <span class="kw">sizeof</span> |
+                <span class="kw">static</span> |
+                <span class="kw">static_cast</span> |
+                <span class="kw">switch</span> |
+                <span class="kw">this</span> |
+                <span class="kw">throw</span> |
+                <span class="kw">true</span> |
+                <span class="kw">try</span> |
+                <span class="kw">typedef</span> |
+                <span class="kw">typeid</span> |
+                <span class="kw">unsigned</span> |
+                <span class="kw">using</span> |
+                <span class="kw">void</span> |
+                <span class="kw">volatile</span> |
+                <span class="kw">wchar_t</span> |
+                <span class="kw">while</span> 
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Statements
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.statement">statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.labeled-statement">labeled&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.empty-statement">empty&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.selection-statement">selection&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.iteration-statement">iteration&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.jump-statement">jump&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.declaration-statement">declaration&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.try-statement">try&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.expression-statement">expression&#8209;statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.labeled-statement">labeled&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">:</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span> |
+                <span class="kw">case</span>
+                <span class="mono">:</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span> |
+                <span class="kw">default</span>
+                <span class="mono">:</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.empty-statement">empty&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.compound-statement">compound&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>*
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.selection-statement">selection&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.if-statement">if&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.switch-statement">switch&#8209;statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.if-statement">if&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">if</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.condition">condition</a></span> |
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+                (<span class="kw">else</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>)?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.switch-statement">switch&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">switch</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.condition">condition</a></span> |
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.iteration-statement">iteration&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.while-statement">while&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.do-statement">do&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.range-for-statement">range&#8209;for&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.for-statement">for&#8209;statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.while-statement">while&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">while</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.condition">condition</a></span> |
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.do-statement">do&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">do</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+                <span class="kw">while</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.range-for-statement">range&#8209;for&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">for</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.for-range-declaration">for&#8209;range&#8209;declaration</a></span>
+                <span class="mono">:</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.for-range-declaration">for&#8209;range&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type-specifier-seq">type&#8209;specifier&#8209;seq</a></span>
+                <span class="rule"><a href="#rule.declarator">declarator</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.for-statement">for&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">for</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.for-init-statement">for&#8209;init&#8209;statement</a></span>
+                <span class="rule"><a href="#rule.condition">condition</a></span>
+                <span class="mono">;</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>?
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.statement">statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.for-init-statement">for&#8209;init&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.empty-statement">empty&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.expression-statement">expression&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.simple-declaration">simple&#8209;declaration</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.jump-statement">jump&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.break-statement">break&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.continue-statement">continue&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.return-statement">return&#8209;statement</a></span> |
+                <span class="rule"><a href="#rule.goto-statement">goto&#8209;statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.break-statement">break&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">break</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.continue-statement">continue&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">continue</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.return-statement">return&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">return</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>?
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.goto-statement">goto&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">goto</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.declaration-statement">declaration&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.block-declaration">block&#8209;declaration</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.condition">condition</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type-id">type&#8209;id</a></span>
+                <span class="rule"><a href="#rule.declarator">declarator</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.try-statement">try&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">try</span>
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span>
+                <span class="rule"><a href="#rule.handler-seq">handler&#8209;seq</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.handler-seq">handler&#8209;seq</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.handler">handler</a></span>
+                <span class="rule"><a href="#rule.handler-seq">handler&#8209;seq</a></span>?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.handler">handler</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">catch</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.exception-declaration">exception&#8209;declaration</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.compound-statement">compound&#8209;statement</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.exception-declaration">exception&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type-specifier-seq">type&#8209;specifier&#8209;seq</a></span>
+                (
+                <span class="rule"><a href="#rule.declarator">declarator</a></span> |
+                <span class="rule"><a href="#rule.abstract-declarator">abstract&#8209;declarator</a></span>
+                )? |
+                <span class="mono">...</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression-statement">expression&#8209;statement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Expressions
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression">expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>
+                (<span class="mono">,</span>
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.constant-expression">constant&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.assignment-expression">assignment&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.logical-or-expression">logical&#8209;or&#8209;expression</a></span>
+                <span class="rule"><a href="#rule.assignment-op">assignment&#8209;op</a></span>
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.conditional-expression">conditional&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.throw-expression">throw&#8209;expression</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.assignment-op">assignment&#8209;op</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">=</span> |
+                <span class="mono">*=</span> |
+                <span class="mono">/=</span> |
+                <span class="mono">%=</span> |
+                <span class="mono">+=</span> |
+                <span class="mono">-=</span> |
+                <span class="mono">&lt;&lt;=</span> |
+                <span class="mono">>>=</span> |
+                <span class="mono">&amp;=</span> |
+                <span class="mono">^=</span> |
+                <span class="mono">|=</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.conditional-expression">conditional&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.logical-or-expression">logical&#8209;or&#8209;expression</a></span>
+                <span class="mono">?</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">:</span>
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.throw-expression">throw&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">throw</span>
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>?
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.logical-or-expression">logical&#8209;or&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.logical-and-expression">logical&#8209;and&#8209;expression</a></span>
+                (<span class="mono">||</span>
+                <span class="rule"><a href="#rule.logical-and-expression">logical&#8209;and&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.logical-and-expression">logical&#8209;and&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.inclusive-or-expression">inclusive&#8209;or&#8209;expression</a></span>
+                (<span class="mono">&amp;&amp;</span>
+                <span class="rule"><a href="#rule.inclusive-or-expression">inclusive&#8209;or&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.inclusive-or-expression">inclusive&#8209;or&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.exclusive-or-expression">exclusive&#8209;or&#8209;expression</a></span>
+                (<span class="mono">|</span>
+                <span class="rule"><a href="#rule.exclusive-or-expression">exclusive&#8209;or&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.exclusive-or-expression">exclusive&#8209;or&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.and-expression">and&#8209;expression</a></span>
+                (<span class="mono">^</span>
+                <span class="rule"><a href="#rule.and-expression">and&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.and-expression">and&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.equality-expression">equality&#8209;expression</a></span>
+                (<span class="mono">&amp;</span>
+                <span class="rule"><a href="#rule.equality-expression">equality&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.equality-expression">equality&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.relational-expression">relational&#8209;expression</a></span>
+                ((<span class="mono">==</span> | <span class="mono">!=</span>)
+                <span class="rule"><a href="#rule.relational-expression">relational&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.relational-expression">relational&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.shift-expression">shift&#8209;expression</a></span>
+                ((<span class="mono">&lt;</span> | <span class="mono">></span> | <span class="mono">&lt;=</span> | <span class="mono">>=</span>)
+                <span class="rule"><a href="#rule.shift-expression">shift&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.shift-expression">shift&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.additive-expression">additive&#8209;expression</a></span>
+                ((<span class="mono">&lt;&lt;</span> | <span class="mono">>></span>)
+                <span class="rule"><a href="#rule.additive-expression">additive&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.additive-expression">additive&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.multiplicative-expression">multiplicative&#8209;expression</a></span>
+                ((<span class="mono">+</span> | <span class="mono">-</span>)
+                <span class="rule"><a href="#rule.multiplicative-expression">multiplicative&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.multiplicative-expression">multiplicative&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.pm-expression">pm&#8209;expression</a></span>
+                ((<span class="mono">*</span> | <span class="mono">/</span> | <span class="mono">%</span>)
+                <span class="rule"><a href="#rule.multiplicative-expression">pm&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.pm-expression">pm&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.cast-expression">cast&#8209;expression</a></span>
+                ((<span class="mono">.*</span> | <span class="mono">->*</span>)
+                <span class="rule"><a href="#rule.cast-expression">cast&#8209;expression</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.cast-expression">cast&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="#type-id">type&#8209;id</a></span>
+                <span class="mono">)</span>
+                <span class="rule"><a href="#rule.cast-expression">cast&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.unary-expression">unary&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.postfix-expression">postfix&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.postcast-expression">postcast&#8209;expression</a></span> |
+                <span class="mono">++</span> <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span> |
+                <span class="mono">--</span> <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.unary-operator">unary&#8209;operator</a></span> <span class="rule"><a href="#rule.cast-expression">cast&#8209;expression</a></span> |
+                <span class="kw">sizeof</span> <span class="mono">(</span> <span class="rule"><a href="#type-id">type&#8209;id</a></span> <span class="mono">)</span> |
+                <span class="kw">sizeof</span> <span class="rule"><a href="#rule.unary-expression">unary&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.new-expression">new&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.delete-expression">delete&#8209;expression</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.unary-operator">unary&#8209;operator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">+</span> |
+                <span class="mono">-</span> |
+                <span class="mono">*</span> |
+                <span class="mono">&amp;</span> |
+                <span class="mono">!</span> |
+                <span class="mono">~</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.postfix-expression">postfix&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.primary-expression">primary&#8209;expression</a></span><br />
+                (
+                <span class="mono">[</span>
+                <span class="rule"><a href="#expression">expression</a></span>
+                <span class="mono">]</span> |
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>
+                <span class="mono">)</span> |
+                <span class="mono">.</span> <span class="rule"><a href="#rule.id-expression">id&#8209;expression</a></span> |
+                <span class="mono">-></span> <span class="rule"><a href="#rule.id-expression">id&#8209;expression</a></span> |
+                <span class="mono">++</span> |
+                <span class="mono">--</span>
+                )* |
+                <span class="rule"><a href="#rule.type-specifier-or-type-name">type&#8209;specifier&#8209;or&#8209;type&#8209;name</a></span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.postcast-expression">postcast&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                (
+                <span class="kw">dynamic_cast</span> |
+                <span class="kw">static_cast</span> |
+                <span class="kw">reinterpret_cast</span> |
+                <span class="kw">const_cast</span>
+                )
+                <span class="mono">&lt;</span>
+                <span class="rule"><a href="#type-id">type&#8209;id</a></span>
+                <span class="mono">></span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#expression">expression</a></span>
+                <span class="mono">)</span> |
+                <span class="rule"><a href="#type-id">type&#8209;id</a></span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#expression">expression</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression-list">expression&#8209;list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>
+                (<span class="mono">,</span> <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.primary-expression">primary&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.literal">literal</a></span> |
+                <span class="kw">this</span> |
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">)</span> |
+                <span class="rule"><a href="#rule.id-expression">id&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.id-expression">id&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
+                <span class="mono">::</span>
+                <span class="rule"><a href="#rule.operator-function-id">operator&#8209;function&#8209;id</a></span> |
+                <span class="mono">::</span>? <span class="rule"><a href="#operator-function-id">operator&#8209;function&#8209;id</a></span> |
+                <span class="rule"><a href="#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.type-specifier-or-type-name">type&#8209;specifier&#8209;or&#8209;type&#8209;name</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.simple-type-specifier">simple&#8209;type&#8209;specifier</a></span> |
+                <span class="rule"><a href="#rule.type-name">type&#8209;name</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.new-expression">new&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">::</span>?
+                <span class="kw">new</span>
+                <span class="rule"><a href="#new-placement">new&#8209;placement</a></span>
+                (<span class="rule"><a href="#new-type-id">new&#8209;type&#8209;id</a></span> |
+                <span class="mono">(</span> <span class="rule"><a href="#type-id">type&#8209;id</a></span> <span class="mono">)</span>)
+                <span class="rule"><a href="#new-initializer">new&#8209;initializer</a></span>?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.new-placement">new&#8209;placement</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="#expression-list">expression&#8209;list</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.new-type-id">new&#8209;type&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                (<span class="rule"><a href="#rule.type-specifier-seq">type&#8209;specifier&#8209;seq</a></span> |
+                <span class="rule"><a href="#type-name">type&#8209;name</a></span>)
+                <span class="rule"><a href="#new-declarator">new&#8209;declarator</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.new-declarator">new&#8209;declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                (<span class="rule"><a href="#rule.ptr-operator">ptr&#8209;operator</a></span> <span class="rule"><a href="#new-declarator">new&#8209;declarator</a></span>? |
+                <span class="rule"><a href="#rule.direct-new-declarator">direct&#8209;new&#8209;declarator</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.new-initializer">new&#8209;initializer</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>?
+                <span class="mono">)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.direct-new-declarator">direct&#8209;new&#8209;declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">[</span>
+                <span class="rule"><a href="#rule.expression">expression</a></span>
+                <span class="mono">]</span>
+                (<span class="mono">[</span>
+                <span class="rule"><a href="#rule.constant-expression">constant&#8209;expression</a></span>
+                <span class="mono">]</span>
+                )*
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.delete-expression">delete&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">::</span>?
+                <span class="kw">delete</span>
+                (<span class="mono">[</span> <span class="mono">]</span>)?
+                <span class="rule"><a href="#rule.cast-expression">cast&#8209;expression</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.operator-function-id">operator&#8209;function&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">operator</span>
+                <span class="rule"><a href="#rule.operator">operator</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.operator">operator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">[</span>
+                <span class="mono">]</span> |
+                <span class="mono">(</span>
+                <span class="mono">)</span> |
+                <span class="mono">->*</span> |
+                <span class="mono">-></span> |
+                <span class="mono">,</span> |
+                <span class="mono">--</span> |
+                <span class="mono">++</span> |
+                <span class="mono">||</span> |
+                <span class="mono">&amp;&amp;</span> |
+                <span class="mono">&lt;=</span> |
+                <span class="mono">>=</span> |
+                <span class="mono">!=</span> |
+                <span class="mono">=</span> |
+                <span class="mono">&lt;&lt;=</span> |
+                <span class="mono">>>=</span> |
+                <span class="mono">&lt;&lt;</span> |
+                <span class="mono">>></span> |
+                <span class="mono">|=</span> |
+                <span class="mono">&amp;=</span> |
+                <span class="mono">^=</span> |
+                <span class="mono">%=</span> |
+                <span class="mono">/=</span> |
+                <span class="mono">*=</span> |
+                <span class="mono">-=</span> |
+                <span class="mono">+=</span> |
+                <span class="mono">&lt;</span> |
+                <span class="mono">></span> |
+                <span class="mono">=</span> |
+                <span class="mono">!</span> |
+                <span class="mono">~</span> |
+                <span class="mono">|</span> |
+                <span class="mono">&amp;</span> |
+                <span class="mono">^</span> |
+                <span class="mono">%</span> |
+                <span class="mono">/</span> |
+                <span class="mono">*</span> |
+                <span class="mono">-</span> |
+                <span class="mono">+</span> |
+                <span class="kw">new</span>
+                <span class="mono">[</span>
+                <span class="mono">]</span> |
+                <span class="kw">delete</span>
+                <span class="mono">[</span>
+                <span class="mono">]</span> |
+                <span class="kw">new</span> |
+                <span class="kw">delete</span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Identifiers
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">::</span>?
+                <span class="rule"><a href="common.html#rule.identifier">identifer</a></span>
+                (<span class="mono">::</span> <span class="rule"><a href="common.html#rule.identifier">identifer</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Literals
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.literal">literal</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="common.html#rule.integer-literal">integer&#8209;literal</a></span> |
+                <span class="rule"><a href="common.html#rule.floating-literal">floating&#8209;literal</a></span> |
+                <span class="rule"><a href="common.html#rule.character-literal">character&#8209;literal</a></span> |
+                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span> |
+                <span class="kw">true</span> |
+                <span class="kw">false</span> |
+                <span class="kw">nullptr</span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Declarators
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.init-declarator-list">init&#8209;declarator&#8209;list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.init-declarator">init&#8209;declarator</a></span>
+                (<span class="mono">,</span>
+                <span class="rule"><a href="#rule.init-declarator">init&#8209;declarator</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.init-declarator">init&#8209;declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.declarator">declarator</a></span>
+                <span class="rule"><a href="#rule.initiazer">initiazer</a></span>?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.declarator">declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.direct-declarator">direct&#8209;declarator</a></span> |
+                <span class="rule"><a href="#rule.ptr-operator">ptr&#8209;operator</a></span>
+                <span class="rule"><a href="#rule.declarator">declarator</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.direct-declarator">direct&#8209;declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.declarator-id">declarator&#8209;id</a></span>
+                (
+                <span class="mono">[</span>
+                <span class="rule"><a href="#rule.constant-expression">constant&#8209;expression</a></span>?
+                <span class="mono">]</span> |
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.declarator">declarator</a></span>
+                <span class="mono">)</span>
+                )*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.declarator-id">declarator&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.id-expression">id&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.type-name">type&#8209;name</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.type-id">type&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                (<span class="rule"><a href="#rule.type-specifier-seq">type&#8209;specifier&#8209;seq</a></span> |
+                <span class="rule"><a href="#rule.type-name">type&#8209;name</a></span>)
+                <span class="rule"><a href="#rule.abstract-declarator">abstract&#8209;declarator</a></span>?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.type">type</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type-specifier">type&#8209;specifier</a></span>+ |
+                <span class="rule"><a href="#rule.type-name">type&#8209;name</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.type-specifier-seq">type&#8209;specifier&#8209;seq</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type-specifier">type&#8209;specifier</a></span>+
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.abstract-declarator">abstract&#8209;declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.ptr-operator">ptr&#8209;operator</a></span> <span class="rule"><a href="#rule.abstract-declarator">abstract&#8209;declarator</a></span>? |
+                <span class="rule"><a href="#rule.direct-abstract-declarator">direct&#8209;abstract&#8209;declarator</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.direct-abstract-declarator">direct&#8209;abstract&#8209;declarator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">[</span>
+                <span class="rule"><a href="#rule.constant-expression">constant&#8209;expression</a></span>?
+                <span class="mono">]</span>
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.abstract-declarator">abstract&#8209;declarator</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.ptr-operator">ptr&#8209;operator</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">*</span> <span class="rule"><a href="#rule.cv-qualifier-seq">cv&#8209;qualifier&#8209;seq</a></span>? |
+                <span class="mono">&amp;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.cv-qualifier-seq">cv&#8209;qualifier&#8209;seq</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.cv-qualifier">cv&#8209;qualifier</a></span>+
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.initializer">initializer</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">=</span> <span class="rule"><a href="#rule.initializer-clause">initializer&#8209;clause</a></span> |
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.initializer-clause">initializer&#8209;clause</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span> |
+                <span class="mono">{</span>
+                <span class="rule"><a href="#rule.initializer-list">initializer&#8209;list</a></span>
+                <span class="mono">}</span> |
+                <span class="mono">{</span>
+                <span class="mono">}</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.initializer-list">initializer&#8209;list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.initializer-clause">initializer&#8209;clause</a></span>
+                (<span class="mono">,</span> <span class="rule"><a href="#rule.initializer-clause">initializer&#8209;clause</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Declarations
+    </h2>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.block-declaration">block&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.namespace-alias-definition">namespace&#8209;alias&#8209;definition</a></span> |
+                <span class="rule"><a href="#rule.using-directive">using&#8209;directive</a></span> |
+                <span class="rule"><a href="#rule.using-declaration">using&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.simple-declaration">simple&#8209;declaration</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.simple-declarator">simple&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.decl-specifier-seq">decl&#8209;specifier&#8209;seq</a></span>?
+                <span class="rule"><a href="#rule.init-declarator-list">init&#8209;declarator&#8209;list</a></span>?
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.decl-specifier-seq">decl&#8209;specifier&#8209;seq</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.decl-specifier">decl&#8209;specifier</a></span>+ |
+                <span class="rule"><a href="#rule.type-name">type&#8209;name</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.decl-specifier">decl&#8209;specifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.storage-class-specifier">storage&#8209;class&#8209;specifier</a></span> |
+                <span class="rule"><a href="#rule.type-specifier">type&#8209;specifier</a></span> |
+                <span class="rule"><a href="#rule.typedef">typedef</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.storage-class-specifier">storage&#8209;class&#8209;specifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">auto</span> |
+                <span class="kw">register</span> |
+                <span class="kw">static</span> |
+                <span class="kw">extern</span> |
+                <span class="kw">mutable</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.type-specifier">type&#8209;specifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.simple-type-specifier">simple&#8209;type&#8209;specifier</a></span> |
+                <span class="rule"><a href="#rule.cv-qualifier">cv&#8209;qualifier</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.simple-type-specifier">simple&#8209;type&#8209;specifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">char</span> |
+                <span class="kw">wchar_t</span> |
+                <span class="kw">bool</span> |
+                <span class="kw">short</span> |
+                <span class="kw">int</span> |
+                <span class="kw">long</span> |
+                <span class="kw">signed</span> |
+                <span class="kw">unsigned</span> |
+                <span class="kw">float</span> |
+                <span class="kw">double</span> |
+                <span class="kw">void</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.type-name">type&#8209;name</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
+                (<span class="mono">&lt;</span>
+                <span class="rule"><a href="#rule.template-argument-list">template&#8209;argument&#8209;list</a></span>
+                <span class="mono">></span>)?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.template-argument-list">template&#8209;argument&#8209;list</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.template-argument">template&#8209;argument</a></span>
+                (<span class="mono">,</span>
+                <span class="rule"><a href="#rule.template-argument">template&#8209;argument</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.template-argument">template&#8209;argument</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.type-id">type&#8209;id</a></span> |
+                <span class="rule"><a href="#rule.assignment-expression">assignment&#8209;expression</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.typedef">typedef</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">typedef</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.cv-qualifier">cv&#8209;qualifier</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">const</span> |
+                <span class="kw">volatile</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.namespace-alias-definition">namespace&#8209;alias&#8209;definition</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">namespace</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifer</a></span>
+                <span class="mono">=</span>
+                <span class="rule"><a href="#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.using-declaration">using&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">using</span>
+                <span class="rule"><a href="#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.using-directive">using&#8209;directive</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">using</span>
+                <span class="kw">namespace</span>
+                <span class="rule"><a href="#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+

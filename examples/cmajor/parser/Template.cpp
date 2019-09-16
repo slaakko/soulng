@@ -50,7 +50,7 @@ soulng::parser::Match TemplateParser::TemplateId(CmajorLexer& lexer, ParsingCont
                         soulng::parser::Match* parentMatch6 = &match;
                         {
                             int pos = lexer.GetPos();
-                            Span span = lexer.GetSpan();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match = IdentifierParser::QualifiedId(lexer);
                             primary.reset(static_cast<IdentifierNode*>(match.value));
                             if (match.hit)
@@ -188,7 +188,7 @@ soulng::parser::Match TemplateParser::TemplateId(CmajorLexer& lexer, ParsingCont
                                     soulng::parser::Match* parentMatch20 = &match;
                                     {
                                         int pos = lexer.GetPos();
-                                        Span span = lexer.GetSpan();
+                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match(false);
                                         if (*lexer == RANGLE)
                                         {
@@ -246,7 +246,7 @@ soulng::parser::Match TemplateParser::TemplateParameter(CmajorLexer& lexer, Pars
     soulng::parser::Match* parentMatch0 = &match;
     {
         int pos = lexer.GetPos();
-        Span span = lexer.GetSpan();
+        soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {

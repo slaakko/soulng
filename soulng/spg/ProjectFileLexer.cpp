@@ -26,13 +26,13 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
-                {
-                    return 1;
-                }
-                case 2:
                 case 3:
                 case 6:
                 case 7:
+                {
+                    return 1;
+                }
+                case 1:
                 {
                     return 2;
                 }
@@ -102,7 +102,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -151,7 +150,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -240,50 +238,13 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         }
         case 2:
         {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(0);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
             switch (i)
             {
-                case 0:
-                {
-                    return 1;
-                }
-                case 2:
-                case 3:
-                case 6:
-                case 7:
-                {
-                    return 2;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 1:
-        {
-            switch (i)
-            {
-                case 0:
+                case 1:
                 {
                     return 10;
                 }
-                case 1:
+                case 2:
                 {
                     return 11;
                 }
@@ -298,7 +259,7 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
-                case 2:
+                case 1:
                 case 3:
                 case 4:
                 case 5:
@@ -312,7 +273,7 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
                 }
@@ -326,15 +287,11 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 1:
+                case 2:
                 {
                     return 13;
                 }
                 case 0:
-                {
-                    return 14;
-                }
-                case 2:
                 case 3:
                 case 4:
                 case 5:
@@ -345,6 +302,10 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 10:
                 case 11:
                 case 12:
+                {
+                    return 14;
+                }
+                case 1:
                 {
                     return 15;
                 }
@@ -356,35 +317,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         }
         case 15:
         {
-            switch (i)
-            {
-                case 0:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                {
-                    return 12;
-                }
-                case 1:
-                {
-                    return 13;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 14:
-        {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
             int tokenId = GetTokenId(0);
@@ -413,18 +345,18 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
                 }
                 case 0:
-                {
-                    return 16;
-                }
-                case 2:
                 case 3:
                 case 6:
                 case 7:
+                {
+                    return 16;
+                }
+                case 1:
                 {
                     return 17;
                 }
@@ -436,26 +368,14 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         }
         case 17:
         {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(0);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
             switch (i)
             {
+                case 0:
+                case 3:
                 case 4:
                 case 5:
+                case 6:
+                case 7:
                 case 8:
                 case 9:
                 case 10:
@@ -465,49 +385,10 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                     return 12;
                 }
                 case 1:
-                {
-                    return 13;
-                }
-                case 0:
-                {
-                    return 16;
-                }
-                case 2:
-                case 3:
-                case 6:
-                case 7:
-                {
-                    return 17;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 16:
-        {
-            switch (i)
-            {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                {
-                    return 12;
-                }
-                case 0:
                 {
                     return 18;
                 }
-                case 1:
+                case 2:
                 {
                     return 19;
                 }
@@ -521,15 +402,11 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 1:
+                case 2:
                 {
                     return 13;
                 }
                 case 0:
-                {
-                    return 14;
-                }
-                case 2:
                 case 3:
                 case 4:
                 case 5:
@@ -540,6 +417,10 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 10:
                 case 11:
                 case 12:
+                {
+                    return 14;
+                }
+                case 1:
                 {
                     return 15;
                 }
@@ -554,6 +435,10 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
+                {
+                    return 20;
+                }
+                case 1:
                 case 4:
                 case 5:
                 case 6:
@@ -563,10 +448,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 10:
                 case 11:
                 case 12:
-                {
-                    return 20;
-                }
-                case 1:
                 {
                     return 21;
                 }
@@ -614,21 +495,21 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
-                }
-                case 0:
-                {
-                    return 16;
                 }
                 case 3:
                 case 6:
                 case 7:
                 {
+                    return 16;
+                }
+                case 1:
+                {
                     return 17;
                 }
-                case 2:
+                case 0:
                 {
                     return 24;
                 }
@@ -668,18 +549,18 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
                 }
                 case 0:
-                {
-                    return 16;
-                }
-                case 2:
                 case 3:
                 case 6:
                 case 7:
+                {
+                    return 16;
+                }
+                case 1:
                 {
                     return 17;
                 }
@@ -691,68 +572,17 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         }
         case 22:
         {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(0);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
             switch (i)
             {
-                case 4:
-                case 5:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                {
-                    return 12;
-                }
-                case 1:
-                {
-                    return 13;
-                }
-                case 0:
-                {
-                    return 16;
-                }
                 case 2:
-                case 3:
-                case 6:
-                case 7:
                 {
-                    return 17;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 21:
-        {
-            switch (i)
-            {
-                case 1:
-                {
-                    return 21;
+                    return 22;
                 }
                 case 0:
                 {
                     return 25;
                 }
-                case 2:
+                case 1:
                 {
                     return 26;
                 }
@@ -783,6 +613,10 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
+                {
+                    return 20;
+                }
+                case 1:
                 case 4:
                 case 5:
                 case 6:
@@ -792,10 +626,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 10:
                 case 11:
                 case 12:
-                {
-                    return 20;
-                }
-                case 1:
                 {
                     return 21;
                 }
@@ -843,21 +673,21 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
-                }
-                case 0:
-                {
-                    return 16;
                 }
                 case 3:
                 case 6:
                 case 7:
                 {
+                    return 16;
+                }
+                case 1:
+                {
                     return 17;
                 }
-                case 2:
+                case 0:
                 {
                     return 24;
                 }
@@ -895,68 +725,17 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 11:
                 case 12:
                 {
-                    return 12;
-                }
-                case 1:
-                {
-                    return 13;
-                }
-                case 0:
-                {
-                    return 16;
+                    return 21;
                 }
                 case 2:
-                case 3:
-                case 6:
-                case 7:
                 {
-                    return 17;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 25:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(0);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 4:
-                case 5:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                {
-                    return 20;
-                }
-                case 1:
-                {
-                    return 21;
+                    return 22;
                 }
                 case 0:
                 {
                     return 29;
                 }
-                case 2:
+                case 1:
                 {
                     return 30;
                 }
@@ -1003,17 +782,17 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 11:
                 case 12:
                 {
-                    return 20;
-                }
-                case 1:
-                {
                     return 21;
+                }
+                case 2:
+                {
+                    return 22;
                 }
                 case 0:
                 {
                     return 29;
                 }
-                case 2:
+                case 1:
                 {
                     return 30;
                 }
@@ -1062,21 +841,21 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
-                }
-                case 0:
-                {
-                    return 16;
                 }
                 case 3:
                 case 6:
                 case 7:
                 {
+                    return 16;
+                }
+                case 1:
+                {
                     return 17;
                 }
-                case 2:
+                case 0:
                 {
                     return 24;
                 }
@@ -1087,6 +866,82 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             }
         }
         case 30:
+        {
+            switch (i)
+            {
+                case 1:
+                {
+                    return 18;
+                }
+                case 0:
+                {
+                    return 20;
+                }
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                {
+                    return 21;
+                }
+                case 3:
+                {
+                    return 23;
+                }
+                case 2:
+                {
+                    return 33;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 33:
+        {
+            switch (i)
+            {
+                case 2:
+                {
+                    return 22;
+                }
+                case 0:
+                {
+                    return 25;
+                }
+                case 1:
+                {
+                    return 26;
+                }
+                case 3:
+                {
+                    return 27;
+                }
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                {
+                    return 28;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 29:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -1116,18 +971,18 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
-                case 1:
+                case 2:
                 {
                     return 13;
                 }
                 case 0:
-                {
-                    return 16;
-                }
-                case 2:
                 case 3:
                 case 6:
                 case 7:
+                {
+                    return 16;
+                }
+                case 1:
                 {
                     return 17;
                 }
@@ -1137,14 +992,66 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 29:
+        case 25:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(0);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 4:
+                case 5:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                {
+                    return 12;
+                }
+                case 2:
+                {
+                    return 13;
+                }
+                case 0:
+                case 3:
+                case 6:
+                case 7:
+                {
+                    return 16;
+                }
+                case 1:
+                {
+                    return 17;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 21:
         {
             switch (i)
             {
                 case 0:
                 {
-                    return 18;
+                    return 20;
                 }
+                case 1:
                 case 4:
                 case 5:
                 case 6:
@@ -1155,7 +1062,7 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 11:
                 case 12:
                 {
-                    return 20;
+                    return 21;
                 }
                 case 2:
                 {
@@ -1164,48 +1071,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 3:
                 {
                     return 23;
-                }
-                case 1:
-                {
-                    return 33;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 33:
-        {
-            switch (i)
-            {
-                case 1:
-                {
-                    return 21;
-                }
-                case 0:
-                {
-                    return 25;
-                }
-                case 2:
-                {
-                    return 26;
-                }
-                case 3:
-                {
-                    return 27;
-                }
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                {
-                    return 28;
                 }
                 default:
                 {
@@ -1215,32 +1080,48 @@ int ProjectFileLexer::NextState(int state, char32_t c)
         }
         case 20:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(0);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
-                case 0:
                 case 4:
                 case 5:
-                case 6:
-                case 7:
                 case 8:
                 case 9:
                 case 10:
                 case 11:
                 case 12:
                 {
-                    return 20;
-                }
-                case 1:
-                {
-                    return 21;
+                    return 12;
                 }
                 case 2:
                 {
-                    return 22;
+                    return 13;
                 }
+                case 0:
                 case 3:
+                case 6:
+                case 7:
                 {
-                    return 23;
+                    return 16;
+                }
+                case 1:
+                {
+                    return 17;
                 }
                 default:
                 {
@@ -1248,12 +1129,63 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 12:
+        case 16:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(0);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 4:
+                case 5:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                {
+                    return 12;
+                }
+                case 2:
+                {
+                    return 13;
+                }
+                case 0:
+                case 3:
+                case 6:
+                case 7:
+                {
+                    return 16;
+                }
+                case 1:
+                {
+                    return 17;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 14:
         {
             switch (i)
             {
                 case 0:
-                case 2:
+                case 1:
                 case 3:
                 case 4:
                 case 5:
@@ -1267,7 +1199,36 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 {
                     return 12;
                 }
+                case 2:
+                {
+                    return 13;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 12:
+        {
+            switch (i)
+            {
+                case 0:
                 case 1:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                {
+                    return 12;
+                }
+                case 2:
                 {
                     return 13;
                 }
@@ -1282,7 +1243,11 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
+                {
+                    return 34;
+                }
                 case 1:
+                case 2:
                 case 4:
                 case 5:
                 case 6:
@@ -1292,10 +1257,6 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 case 10:
                 case 11:
                 case 12:
-                {
-                    return 34;
-                }
-                case 2:
                 {
                     return 35;
                 }
@@ -1329,17 +1290,17 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             }
             switch (i)
             {
-                case 0:
-                {
-                    return 1;
-                }
                 case 3:
                 case 6:
                 case 7:
                 {
+                    return 1;
+                }
+                case 1:
+                {
                     return 2;
                 }
-                case 2:
+                case 0:
                 {
                     return 37;
                 }
@@ -1370,13 +1331,13 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
-                {
-                    return 1;
-                }
-                case 2:
                 case 3:
                 case 6:
                 case 7:
+                {
+                    return 1;
+                }
+                case 1:
                 {
                     return 2;
                 }
@@ -1387,6 +1348,38 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             }
         }
         case 35:
+        {
+            switch (i)
+            {
+                case 0:
+                {
+                    return 34;
+                }
+                case 1:
+                case 2:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                {
+                    return 35;
+                }
+                case 3:
+                {
+                    return 36;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 34:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -1407,13 +1400,13 @@ int ProjectFileLexer::NextState(int state, char32_t c)
             switch (i)
             {
                 case 0:
-                {
-                    return 1;
-                }
-                case 2:
                 case 3:
                 case 6:
                 case 7:
+                {
+                    return 1;
+                }
+                case 1:
                 {
                     return 2;
                 }
@@ -1423,31 +1416,36 @@ int ProjectFileLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 34:
+        case 1:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(0);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
                 case 0:
-                case 1:
-                case 4:
-                case 5:
+                case 3:
                 case 6:
                 case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
                 {
-                    return 34;
+                    return 1;
                 }
-                case 2:
+                case 1:
                 {
-                    return 35;
-                }
-                case 3:
-                {
-                    return 36;
+                    return 2;
                 }
                 default:
                 {

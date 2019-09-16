@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Regular Expression Syntax</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Regular Expression Syntax
+    </h1>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.regular-expression">regular&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">"</span>
+                <span class="rule"><a href="#rule.alternative">alternative</a></span>
+                <span class="mono">"</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.alternative">alternative</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.catenation">catenation</a></span>
+                (<span class="mono">|</span> <span class="rule"><a href="#rule.catenation">catenation</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.catenation">catenation</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.repetition">repetition</a></span>
+                <span class="rule"><a href="#rule.repetition">repetition</a></span>*
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.repetition">repetition</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.primary">primary</a></span>
+                (<span class="mono">*</span> | <span class="mono">+</span> | <span class="mono">?</span>)?
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.primary">primary</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.alternative">alternative</a></span>
+                <span class="mono">)</span> |
+                <span class="rule"><a href="#rule.char">char</a></span> |
+                <span class="rule"><a href="#rule.class">class</a></span> |
+                <span class="rule"><a href="#rule.expression-reference">expression&#8209;reference</a></span> |
+                <span class="mono">.</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.char">char</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="op">[</span>
+                <span class="op">^</span>
+                <span class="mono">\n\r{}\\()[\]|*+?.^-"</span>
+                <span class="op">]</span> |
+                <span class="rule"><a href="common.html#rule.escape">escape</a></span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.class">class</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">[</span>
+                <span class="mono">^</span>?
+                <span class="rule"><a href="#rule.range">range</a></span>*
+                <span class="mono">]</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.range">range</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.class-char">class&#8209;char</a></span>
+                (<span class="mono">-</span>
+                <span class="rule"><a href="#rule.class-char">class&#8209;char</a></span>)?
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.class-char">class&#8209;char</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.char">char</a></span> |
+                <span class="op">[</span>
+                <span class="mono">()[{}|*+?.^-</span>
+                <span class="op">]</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.expression-reference">expression&#8209;reference</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">{</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

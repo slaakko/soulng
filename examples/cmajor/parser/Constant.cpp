@@ -42,7 +42,7 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
                             soulng::parser::Match* parentMatch6 = &match;
                             {
                                 int pos = lexer.GetPos();
-                                Span span = lexer.GetSpan();
+                                soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match = SpecifierParser::Specifiers(lexer);
                                 specifiers.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
                                 if (match.hit)
@@ -151,7 +151,7 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
             soulng::parser::Match* parentMatch13 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)
                 {

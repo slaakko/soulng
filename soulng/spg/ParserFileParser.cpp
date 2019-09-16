@@ -251,7 +251,7 @@ soulng::parser::Match ParserFileParser::IncludeDeclaration(ParserFileLexer& lexe
                                 soulng::parser::Match* parentMatch10 = &match;
                                 {
                                     int pos = lexer.GetPos();
-                                    Span span = lexer.GetSpan();
+                                    soulng::lexer::Span span = lexer.GetSpan();
                                     soulng::parser::Match match(false);
                                     if (*lexer == HASH)
                                     {
@@ -296,7 +296,7 @@ soulng::parser::Match ParserFileParser::IncludeDeclaration(ParserFileLexer& lexe
                         soulng::parser::Match* parentMatch13 = &match;
                         {
                             int pos = lexer.GetPos();
-                            Span span = lexer.GetSpan();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(false);
                             if (*lexer == FILEPATH)
                             {
@@ -335,7 +335,7 @@ soulng::parser::Match ParserFileParser::IncludePrefix(ParserFileLexer& lexer)
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case CPPPREFIX:
@@ -375,7 +375,7 @@ soulng::parser::Match ParserFileParser::UsingNamespaceDeclaration(ParserFileLexe
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int pos = lexer.GetPos();
-                    Span span = lexer.GetSpan();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == USING)
                     {
@@ -429,7 +429,7 @@ soulng::parser::Match ParserFileParser::UsingNamespaceDeclaration(ParserFileLexe
             soulng::parser::Match* parentMatch7 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 {
                     int pos = lexer.GetPos();
@@ -511,7 +511,7 @@ soulng::parser::Match ParserFileParser::ParserDeclaration(ParserFileLexer& lexer
                             soulng::parser::Match* parentMatch8 = &match;
                             {
                                 int pos = lexer.GetPos();
-                                Span span = lexer.GetSpan();
+                                soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match(false);
                                 if (*lexer == ID)
                                 {
@@ -668,7 +668,7 @@ soulng::parser::Match ParserFileParser::Api(ParserFileLexer& lexer)
                     soulng::parser::Match* parentMatch6 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(true);
                         {
                             int pos = lexer.GetPos();
@@ -965,7 +965,7 @@ soulng::parser::Match ParserFileParser::UsingQualifiedId(ParserFileLexer& lexer)
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == ID)
                 {
@@ -1012,7 +1012,7 @@ soulng::parser::Match ParserFileParser::UsingQualifiedId(ParserFileLexer& lexer)
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
                                         int pos = lexer.GetPos();
-                                        Span span = lexer.GetSpan();
+                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match(false);
                                         if (*lexer == ID)
                                         {
@@ -1080,7 +1080,7 @@ soulng::parser::Match ParserFileParser::LexerStatement(ParserFileLexer& lexer, s
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int pos = lexer.GetPos();
-                    Span span = lexer.GetSpan();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(true);
                     {
                         int pos = lexer.GetPos();
@@ -1325,7 +1325,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                         soulng::parser::Match* parentMatch5 = &match;
                         {
                             int pos = lexer.GetPos();
-                            Span span = lexer.GetSpan();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(true);
                             {
                                 int pos = lexer.GetPos();
@@ -1472,7 +1472,7 @@ soulng::parser::Match ParserFileParser::RuleStatement(ParserFileLexer& lexer, so
                         soulng::parser::Match* parentMatch5 = &match;
                         {
                             int pos = lexer.GetPos();
-                            Span span = lexer.GetSpan();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(false);
                             if (*lexer == ID)
                             {
@@ -2786,7 +2786,7 @@ soulng::parser::Match ParserFileParser::RuleCall(ParserFileLexer& lexer)
             soulng::parser::Match* parentMatch13 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 {
                     int pos = lexer.GetPos();
@@ -2823,7 +2823,7 @@ soulng::parser::Match ParserFileParser::Nonterminal(ParserFileLexer& lexer)
     soulng::parser::Match* parentMatch0 = &match;
     {
         int pos = lexer.GetPos();
-        Span span = lexer.GetSpan();
+        soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match(false);
         if (*lexer == ID)
         {
@@ -2843,7 +2843,7 @@ soulng::parser::Match ParserFileParser::Primitive(ParserFileLexer& lexer)
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case EMPTY:

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Printer Visitor</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="visitor.html">Visitor</a> | <strong>next: </strong><a href="program.html">Program</a>
+    
+    <h1>3.7 Printer Visitor</h1>
+
+    <p>
+        We will now implement a concrete visitor that just prints code of a <em>.minilang</em> source file to standard output.
+        First we will add a virtual function to the <em>Node</em> class that tells whether the node is in fact a compound statement node,
+        and override it in the <em>CompoundStatementNode</em>:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class Node
+        {
+        public:
+            virtual ~Node();
+            virtual void AddArgument(Node* arg);
+            virtual void Accept(Visitor& visitor) = 0;
+            virtual bool IsCompoundStatement() const { return false; }
+        };
+
+        class CompoundStatementNode : public Node
+        {
+        public:
+            void AddStatement(Node* statement);
+            const std::vector&lt;std::unique_ptr&lt;Node>>& Statements() const { return statements; }
+            void Accept(Visitor& visitor) override;
+            bool IsCompoundStatement() const override { return true; }
+        private:
+            std::vector&lt;std::unique_ptr&lt;Node>> statements;
+        };
+    </pre>
+
+    <p>
+        Then we will create source files <em>PrinterVisitor.hpp</em> and <em>PrinterVisitor.cpp</em> and add them to the <strong>minilang</strong> project.
+        The interface of the <em>PrinterVisitor</em> is as follows:
+    </p>
+
+    <pre>
+        // PrinterVisitor.hpp:
+
+        class PrinterVisitor : public Visitor
+        {
+        public:
+            PrinterVisitor(soulng::util::CodeFormatter& formatter_);
+            void Visit(UnaryOpExprNode& node) override;
+            void Visit(InvokeNode& node) override;
+            void Visit(BinaryOpExprNode& node) override;
+            void Visit(IntNode& node) override;
+            void Visit(BoolNode& node) override;
+            void Visit(VoidNode& node) override;
+            void Visit(BooleanLiteralNode& node) override;
+            void Visit(IntegerLiteralNode& node) override;
+            void Visit(IdentifierNode& node) override;
+            void Visit(ParenthesizedExpressionNode& node) override;
+            void Visit(IfStatementNode& node) override;
+            void Visit(WhileStatementNode& node) override;
+            void Visit(ReturnStatementNode& node) override;
+            void Visit(ConstructionStatementNode& node) override;
+            void Visit(AssignmentStatementNode& node) override;
+            void Visit(CompoundStatementNode& node) override;
+            void Visit(ParameterNode& node) override;
+            void Visit(FunctionNode& node) override;
+            void Visit(SourceFileNode& node) override;
+        private:
+            soulng::util::CodeFormatter& formatter;
+        };
+    </pre>
+
+    <p>
+        The printer visitor uses the <em>CodeFormatter</em> utility class for printing indented text.
+    </p>
+
+    <p>
+        We add a function for returning a string representation of an operator:
+    </p>
+
+    <pre>
+        // PrinterVisitor.cpp:
+
+        std::string OperatorStr(Operator op)
+        {
+            switch (op)
+            {
+                case Operator::equal: return "==";
+                case Operator::notEqual: return "!=";
+                case Operator::less: return "<";
+                case Operator::greater: return ">";
+                case Operator::lessOrEqual: return "<=";
+                case Operator::greaterOrEqual: return ">=";
+                case Operator::add: return "+";
+                case Operator::sub: return "-";
+                case Operator::mul: return "*";
+                case Operator::div: return "/";
+                case Operator::mod: return "%";
+                case Operator::unaryPlus: return "+";
+                case Operator::unaryMinus: return "-";
+                case Operator::not_: return "!";
+            }
+            return std::string();
+        }
+    </pre>
+
+    <p>
+        We start with a syntax tree node for a <a href="../language/syntax.html#rule.unary-expression">unary expression</a>.
+        We will print the operator symbol of the expression and then call the <em>Accept()</em> member function to print the child expression of it:
+    </p>
+
+    <pre>
+        // PrinterVisitor.cpp:
+
+        void PrinterVisitor::Visit(UnaryOpExprNode& node)
+        {
+            formatter.Write(OperatorStr(node.Op()));
+            node.Child()->Accept(*this);
+        }
+    </pre>
+
+    <p>
+        The function invocation expression is next in line.
+        We call the <em>Accept</em> member function to print the receiver of the invocation and then print the parenthesized list of arguments of the invocation:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(InvokeNode& node)
+        {
+            node.Child()->Accept(*this);
+            formatter.Write("(");
+            bool first = true;
+            for (const auto& arg : node.Args())
+            {
+                if (first)
+                {
+                    first = false;
+                }
+                else
+                {
+                    formatter.Write(", ");
+                }
+                arg->Accept(*this);
+            }
+            formatter.Write(")");
+        }
+    </pre>
+
+    <p>
+        We continue with syntax tree nodes for binary expressions.
+        We print the left operand, the operator symbol and then the right operand:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(BinaryOpExprNode& node)
+        {
+            node.Left()->Accept(*this);
+            formatter.Write(" ");
+            formatter.Write(OperatorStr(node.Op()));
+            formatter.Write(" ");
+            node.Right()->Accept(*this);
+        }
+    </pre>
+
+    <p>
+        The type nodes are very simple:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(IntNode& node)
+        {
+            formatter.Write("int");
+        }
+
+        void PrinterVisitor::Visit(BoolNode& node)
+        {
+            formatter.Write("bool");
+        }
+
+        void PrinterVisitor::Visit(VoidNode& node)
+        {
+            formatter.Write("void");
+        }
+    </pre>
+
+    <p>
+        And literals:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(BooleanLiteralNode& node)
+        {
+            if (node.Value())
+            {
+                formatter.Write("true");
+            }
+            else
+            {
+                formatter.Write("false");
+            }
+        }
+
+        void PrinterVisitor::Visit(IntegerLiteralNode& node)
+        {
+            formatter.Write(std::to_string(node.Value()));
+        }
+    </pre>
+
+    <p>
+        The code formatter will convert UTF-8 text to UTF-16 when printing to Windows Console:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(IdentifierNode& node)
+        {
+            formatter.Write(soulng::unicode::ToUtf8(node.Str()));
+        }
+    </pre>
+
+    <p>
+        A parenthesized expression:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(ParenthesizedExpressionNode& node)
+        {
+            formatter.Write("(");
+            node.Child()->Accept(*this);
+            formatter.Write(")");
+        }
+    </pre>
+
+    <p>
+        Little more work for printing an if statement.
+        Printing contained compound statements differs from the contained non-compound statements:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(IfStatementNode& node)
+        {
+            formatter.Write("if (");
+            node.Condition()->Accept(*this);
+            formatter.Write(")");
+            if (node.ThenS()->IsCompoundStatement())
+            {
+                formatter.WriteLine();
+            }
+            else
+            {
+                formatter.Write(" ");
+            }
+            node.ThenS()->Accept(*this);
+            if (node.ElseS() != nullptr)
+            {
+                if (node.ThenS()->IsCompoundStatement())
+                {
+                    formatter.WriteLine();
+                }
+                else
+                {
+                    formatter.Write(" ");
+                }
+                formatter.Write("else");
+                if (node.ElseS()->IsCompoundStatement())
+                {
+                    formatter.WriteLine();
+                }
+                else
+                {
+                    formatter.Write(" ");
+                }
+                node.ElseS()->Accept(*this);
+            }
+        }
+    </pre>
+
+    <p>
+        Printing code for the rest of the simple statements is as follows:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(WhileStatementNode& node)
+        {
+            formatter.Write("while (");
+            node.Condition()->Accept(*this);
+            formatter.Write(")");
+            if (node.Statement()->IsCompoundStatement())
+            {
+                formatter.WriteLine();
+            }
+            else
+            {
+                formatter.Write(" ");
+            }
+            node.Statement()->Accept(*this);
+        }
+
+        void PrinterVisitor::Visit(ReturnStatementNode& node)
+        {
+            formatter.Write("return");
+            if (node.ReturnValue() != nullptr)
+            {
+                formatter.Write(" ");
+                node.ReturnValue()->Accept(*this);
+            }
+            formatter.WriteLine(";");
+        }
+
+        void PrinterVisitor::Visit(ConstructionStatementNode& node)
+        {
+            node.Type()->Accept(*this);
+            formatter.Write(" ");
+            node.VariableName()->Accept(*this);
+            formatter.Write(" = ");
+            node.Value()->Accept(*this);
+            formatter.WriteLine(";");
+        }
+
+        void PrinterVisitor::Visit(AssignmentStatementNode& node)
+        {
+            node.VariableName()->Accept(*this);
+            formatter.Write(" = ");
+            node.Value()->Accept(*this);
+            formatter.WriteLine(";");
+        }
+    </pre>
+
+    <p>
+        We increase the indentation when printing the statements contained by a compound statement:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(CompoundStatementNode& node)
+        {
+            formatter.WriteLine("{");
+            formatter.IncIndent();
+            for (const auto& statement : node.Statements())
+            {
+                statement->Accept(*this);
+            }
+            formatter.DecIndent();
+            formatter.WriteLine("}");
+        }
+    </pre>
+
+    <p>
+        And finally the printing code for the rest of the syntax tree nodes:
+    </p>
+
+    <pre>
+        void PrinterVisitor::Visit(ParameterNode& node)
+        {
+            node.ParamType()->Accept(*this);
+            formatter.Write(" ");
+            node.ParamName()->Accept(*this);
+        }
+
+        void PrinterVisitor::Visit(FunctionNode& node)
+        {
+            node.ReturnType()->Accept(*this);
+            formatter.Write(" ");
+            node.FunctionName()->Accept(*this);
+            formatter.Write("(");
+            bool first = true;
+            for (const auto& param : node.Parameters())
+            {
+                if (first)
+                {
+                    first = false;
+                }
+                else
+                {
+                    formatter.Write(", ");
+                }
+                param->Accept(*this);
+            }
+            formatter.WriteLine(")");
+            node.Body()->Accept(*this);
+        }
+
+        void PrinterVisitor::Visit(SourceFileNode& node)
+        {
+            bool first = true;
+            for (const auto& function : node.Functions())
+            {
+                if (first)
+                {
+                    first = false;
+                }
+                else
+                {
+                    formatter.WriteLine();
+                }
+                function->Accept(*this);
+            }
+        }
+    </pre>
+
+    <p>
+        Next we will use the printer visitor in the main program...
+    </p>
+    
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="visitor.html">Visitor</a> | <strong>next: </strong><a href="program.html">Program</a>
+</body>
+</html>

@@ -158,11 +158,13 @@
     <ClCompile Include="MinilangKeywords.cpp" />
     <ClCompile Include="MinilangLexer.cpp" />
     <ClCompile Include="MinilangTokens.cpp" />
+    <ClCompile Include="PrinterVisitor.cpp" />
     <ClCompile Include="SourceFileParser.cpp" />
     <ClCompile Include="StatementParser.cpp" />
     <ClCompile Include="TokenValueParser.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="TypeParser.cpp" />
+    <ClCompile Include="Visitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassMap.hpp" />
@@ -174,11 +176,13 @@
     <ClInclude Include="MinilangKeywords.hpp" />
     <ClInclude Include="MinilangLexer.hpp" />
     <ClInclude Include="MinilangTokens.hpp" />
+    <ClInclude Include="PrinterVisitor.hpp" />
     <ClInclude Include="SourceFileParser.hpp" />
     <ClInclude Include="StatementParser.hpp" />
     <ClInclude Include="TokenValueParser.hpp" />
     <ClInclude Include="Tree.hpp" />
     <ClInclude Include="TypeParser.hpp" />
+    <ClInclude Include="Visitor.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ExpressionParser.parser" />

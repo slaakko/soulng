@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/Minilang.lexer' using soulng lexer generator slg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/minilang.lexer' using soulng lexer generator slg version 1.0.0
 
 #include <map>
 std::map<std::u32string, int> tokenIdMapMinilangTokens;

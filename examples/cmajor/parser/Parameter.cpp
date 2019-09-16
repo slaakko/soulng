@@ -171,7 +171,7 @@ soulng::parser::Match ParameterParser::Parameter(CmajorLexer& lexer, ParsingCont
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
                 type.reset(static_cast<Node*>(match.value));
                 if (match.hit)
@@ -195,7 +195,7 @@ soulng::parser::Match ParameterParser::Parameter(CmajorLexer& lexer, ParsingCont
                     soulng::parser::Match* parentMatch5 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                         id.reset(static_cast<IdentifierNode*>(match.value));
                         if (match.hit)

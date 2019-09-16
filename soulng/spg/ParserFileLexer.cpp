@@ -1101,7 +1101,6 @@ int ParserFileLexer::NextState(int state, char32_t c)
             }
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -1200,7 +1199,6 @@ int ParserFileLexer::NextState(int state, char32_t c)
             }
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -1313,7 +1311,6 @@ int ParserFileLexer::NextState(int state, char32_t c)
             }
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -1409,7 +1406,6 @@ int ParserFileLexer::NextState(int state, char32_t c)
             }
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:
@@ -1486,7 +1482,6 @@ int ParserFileLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 0:
                 case 1:
                 case 2:
                 case 3:

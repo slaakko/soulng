@@ -28,7 +28,7 @@ expressions
     comment = "{linecomment}|{blockcomment}";
     separators = "({ws}|{comment})+";
     id = "{idstart}{idcont}*";
-    filepath = "<[^>]*>";
+    filepath = "<[^\n>]*>";
 }
 
 lexer ProjectFileLexer

@@ -173,7 +173,7 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ProjectFileLexer& lexer)
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == ID)
                 {
@@ -220,7 +220,7 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ProjectFileLexer& lexer)
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
                                         int pos = lexer.GetPos();
-                                        Span span = lexer.GetSpan();
+                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match(false);
                                         if (*lexer == ID)
                                         {

@@ -61,7 +61,7 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case TRUE:
@@ -203,7 +203,7 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == LBRACKET)
                 {
@@ -328,7 +328,7 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
             soulng::parser::Match* parentMatch13 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 {
                     int pos = lexer.GetPos();
@@ -371,7 +371,7 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == LBRACE)
                 {
@@ -496,7 +496,7 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
             soulng::parser::Match* parentMatch13 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 {
                     int pos = lexer.GetPos();

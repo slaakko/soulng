@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Grammar Notation</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Appendix A Syntax Table Notation</h1>
+
+    <p>A syntax table consists of rules that have name and body:</p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule">rule</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule">body</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The name and body of the rule are separated by the <span class="sep">&rarr;</span> symbol.
+    </p>
+
+    <p>
+        In the body of a rule there can be terminal symbols, language keywords, references to other rules, character classes in brackets, and
+        expressions containing those primitives and expressions combined with operators '|', catenation, '*', '+', and '?'.
+    </p>
+
+    <ul>
+        <li>
+            Terminal symbols are in <span class="mono">monospace</span> font. A terminal symbol matches a literal input character.
+        </li>
+        <li>
+            Language keywords are in <span class="kw">bold</span> font. A keyword matches a literal string of input characters.
+        </li>
+        <li>
+            The names of the rules are in <span class="rule">italic</span> font.
+        </li>
+        <li>
+            Symbols in brackets denote a <em>character class</em>. A character class matches a single input character belonging to the class.
+            A character class can contain single terminal symbols represented in <span class="mono">monospace</span> font and ranges of characters.
+            For example a character class <span class="op">[</span><span class="mono">0</span> <span class="op">-</span> <span class="mono">9</span> <span class="op">]</span>
+            represents a character class that matches a single decimal digit.
+            If the class starts with a caret character, '^', the class is <em>inverted</em>.
+            For example a character class <span class="op">[</span><span class="op">^</span><span class="mono">0</span> <span class="op">-</span> <span class="mono">9</span> <span class="op">]</span>
+            matches a single input character that is not a decimal digit.
+        </li>
+        <li>
+            Expression <em>e<sub>0</sub></em> | <em>e<sub>1</sub></em> matches either <em>e<sub>0</sub></em> or <em>e<sub>1</sub></em>.
+        </li>
+        <li>
+            Expression <em>e<sub>0</sub></em> <em>e<sub>1</sub></em> matches a sequence of <em>e<sub>0</sub></em> and <em>e<sub>1</sub></em>.
+        </li>
+        <li>
+            Expression <em>e</em>* represents Kleene closure: <em>e</em> matches zero or more times.
+        </li>
+        <li>
+            Expression <em>e</em>+ represents positive closure: <em>e</em> matches one or more times.
+        </li>
+        <li>
+            Expression <em>e</em>? represents optionality: <em>e</em> matches zero or one time.
+        </li>
+        <li>
+            Operator '|' has least precedence, then comes catenation. Operations '*', '+' and '?' have greatest precedence.
+            Precedence can be overridden or clarified using parentheses.
+        </li>
+    </ul>
+</body>
+</html>

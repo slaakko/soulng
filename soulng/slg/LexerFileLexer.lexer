@@ -89,7 +89,7 @@ lexer LexerFileLexer
     "{floatingliteral}" { return FLOATINGLIT; }
     "{charliteral}" { return CHARLIT; }
     "{stringliteral}" { return STRINGLIT; }
-    "<[^>]*>" { return FILEPATH; }
+    "<[^\n>]*>" { return FILEPATH; }
     "$" { return DOLLAR; }
     "\|\|" { return DISJUNCTION; }
     "&&" { return AMPAMP; }

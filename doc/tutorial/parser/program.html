@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Program</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="printer.html">Printer Visitor</a> | <strong>next</strong>
+    
+    <h1>
+        3.8 Program
+    </h1>
+
+    <p>
+        We will now write a function that will parse a given <em>.minilang</em> file, construct an abstract syntax tree while parsing and then print the code to standard output.
+        The name of the function is <em>PrintMinilangCode</em>.
+    </p>
+
+    <pre>
+        // Main.cpp:
+        // ...
+        #include &lt;minilang/PrinterVisitor.hpp>
+        // ...
+
+        void PrintMinilangCode(const std::string& minilangFilePath)
+        {
+            // ...
+        }
+
+        // ...
+    </pre>
+
+    <h2>
+        Using the Printer Visitor
+    </h2>
+
+    <p>
+        We start by printing the path name of the given <em>.minilang</em> file:
+    </p>
+
+    <pre>
+        // Main.cpp:
+        // ...
+        #include &lt;minilang/PrinterVisitor.hpp>
+        // ...
+
+        void PrintMinilangCode(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;
+            // ...
+        }
+    </pre>
+
+    <p>
+        Then read the file into a string:
+    </p>
+
+    <pre>
+        // ....
+        std::string s = soulng::util::ReadFile(minilangFilePath);
+    </pre>
+
+    <p>
+        Then convert the content to UTF-32:
+    </p>
+
+    <pre>
+        // ...
+        std::u32string content = soulng::unicode::ToUtf32(s);
+    </pre>
+
+    <p>
+        Construct a lexer...
+    </p>
+
+    <pre>
+        // ...
+        MinilangLexer lexer(content, minilangFilePath, 0);
+    </pre>
+
+    <p>
+        And parse the content. The <em>Parse()</em> function of the <em>SourceFileParser</em> will now
+        return the abstract syntax tree representation of the parsed program:
+    </p>
+
+    <pre>
+        // ...
+        std::unique_ptr&lt;minilang::SourceFileNode> sourceFile = SourceFileParser::Parse(lexer);
+    </pre>
+
+    <p>
+        Then we construct a code formatter that will print the code to the standard output as indented text:
+    </p>
+
+    <pre>
+        // ...
+        soulng::util::CodeFormatter formatter(std::cout);
+    </pre>
+
+    <p>
+        Now we construct a printer visitor with the formatter:
+    </p>
+
+    <pre>
+        minilang::PrinterVisitor visitor(formatter);
+    </pre>
+
+    <p>
+        ... and walk the syntax tree with the printer visitor:
+    </p>
+
+    <pre>
+        sourceFile->Accept(visitor);
+    </pre>
+
+    <p>
+        This is the whole function:
+    </p>
+
+    <pre>
+        void PrintMinilangCode(const std::string& minilangFilePath)
+        {
+            std::cout << "> " << minilangFilePath << std::endl;std::cout << "> " << minilangFilePath << std::endl;
+            std::string s = soulng::util::ReadFile(minilangFilePath);
+            std::u32string content = soulng::unicode::ToUtf32(s);
+            MinilangLexer lexer(content, minilangFilePath, 0);
+            std::unique_ptr&lt;minilang::SourceFileNode> sourceFile = SourceFileParser::Parse(lexer);
+            soulng::util::CodeFormatter formatter(std::cout);
+            minilang::PrinterVisitor visitor(formatter);
+            sourceFile->Accept(visitor);
+        }
+    </pre>
+
+    <h2>
+        Changes to the Main Program
+    </h2>
+
+    <p>
+        The main program is changed to print the given <em>.minilang</em> code by default.
+        This is the changed main program:
+    </p>
+
+    <pre>
+        // Main.cpp:
+        // ...
+
+        enum class Command
+        {
+            none, lexerTest, parserTest, print
+        };
+
+        // ...
+
+        int main(int argc, const char** argv)
+        {
+            Initializer initializer;
+            try
+            {
+                std::vector<std::string> files;
+                Command command = Command::print;
+                for (int i = 1; i < argc; ++i)
+                {
+                    std::string arg = argv[i];
+                    if (soulng::util::StartsWith(arg, "--"))
+                    {
+                        if (arg == "--help")
+                        {
+                            PrintUsage();
+                            return 1;
+                        }
+                        else if (arg == "--lexer-test")
+                        {
+                            command = Command::lexerTest;
+                        }
+                        else if (arg == "--parser-test")
+                        {
+                            command = Command::parserTest;
+                        }
+                        else
+                        {
+                            throw std::runtime_error("unknown argument '" + arg + "'");
+                        }
+                    }
+                    else if (soulng::util::StartsWith(arg, "-"))
+                    {
+                        std::string options = arg.substr(1);
+                        if (options.empty())
+                        {
+                            throw std::runtime_error("unknown argument '" + arg + "'");
+                        }
+                        for (char o : options)
+                        {
+                            if (o == 'h')
+                            {
+                                PrintUsage();
+                                return 1;
+                            }
+                            else if (o == 'l')
+                            {
+                                command = Command::lexerTest;
+                            }
+                            else if (o == 'p')
+                            {
+                                command = Command::parserTest;
+                            }
+                            else
+                            {
+                                throw std::runtime_error("unknown argument '-" + std::string(1, o) + "'");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        files.push_back(soulng::util::GetFullPath(arg));
+                    }
+                }
+                if (files.empty() || command == Command::none)
+                {
+                    PrintUsage();
+                    return 1;
+                }
+                for (const std::string& filePath : files)
+                {
+                    if (command == Command::lexerTest)
+                    {
+                        TestMinilangLexer(filePath);
+                    }
+                    else if (command == Command::parserTest)
+                    {
+                        TestMinilangParser(filePath);
+                    }
+                    else if (command == Command::print)
+                    {
+                        PrintMinilangCode(filePath);
+                    }
+                    else
+                    {
+                        PrintUsage();
+                        throw std::runtime_error("minilang: unknown command");
+                    }
+                }
+            }
+            catch (const std::exception& ex)
+            {
+                std::cerr << soulng::unicode::ToUtf32(ex.what()) << std::endl;
+                return 1;
+            }
+            return 0;
+        }
+    </pre>
+
+    <h2>
+        Testing
+    </h2>
+
+    <p>
+        We now run the <strong>minilang</strong> program with the test files.
+        This is the test output:
+    </p>
+
+    <pre>
+        C:\soulng-1.0.0\examples\minilang\test>minilang empty.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/empty.minilang
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang error_comma.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_comma.minilang:1': '(' expected:
+        void foo,()
+                ^
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang error_semicolon.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang
+        parsing error in 'C:/soulng-1.0.0/examples/minilang/test/error_semicolon.minilang:7': ';' expected:
+                a = b;
+                ^
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang fibonacci.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/fibonacci.minilang
+        int fibonacci(int n)
+        {
+            if (n == 0) return 0;
+            if (n == 1) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang gcd.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/gcd.minilang
+        int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                a = a % b;
+                int t = a;
+                a = b;
+                b = t;
+            }
+            return a;
+        }
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang invalid.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/invalid.minilang
+        soulng::lexer::Lexer::NextToken(): error: invalid character '@' in file 'C:/soulng-1.0.0/examples/minilang/test/invalid.minilang' at line 1
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang minimal.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/minimal.minilang
+        void minimal()
+        {
+        }
+
+        C:\soulng-1.0.0\examples\minilang\test>minilang unicodeid.minilang
+        > C:/soulng-1.0.0/examples/minilang/test/unicodeid.minilang
+        int örkki()
+        {
+            int öljyä = 1;
+            return öljyä;
+        }        
+
+        C:\soulng-1.0.0\examples\minilang\test>
+    </pre>
+
+    <p>
+        Tests succeeded.
+    </p>
+
+    <h2>
+        Deploying a Parser Project
+    </h2>
+
+    <p>
+        The SoulNG libraries are built as DLL's. The generated parser will use DLL's sngutil.dll, snglexer.dll and sngparser.dll, (RELEASE mode) or
+        sngutild.dll, snglexerd.dll and sngparserd.dll (DEBUG mode).
+        The DLL's are found in the soulng-1.0.0/bin directory. These must be located in the same directory as the executable (recommeded) or found from the PATH.
+    </p>
+    
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="printer.html">Printer Visitor</a> | <strong>next</strong>
+</body>
+</html>

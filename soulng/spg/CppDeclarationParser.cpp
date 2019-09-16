@@ -396,7 +396,7 @@ soulng::parser::Match CppDeclarationParser::StorageClassSpecifier(ParserFileLexe
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case AUTO:
@@ -494,7 +494,7 @@ soulng::parser::Match CppDeclarationParser::SimpleTypeSpecifier(ParserFileLexer&
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case CHAR:
@@ -862,7 +862,7 @@ soulng::parser::Match CppDeclarationParser::CVQualifier(ParserFileLexer& lexer)
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case CONST:

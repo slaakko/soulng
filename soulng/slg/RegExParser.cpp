@@ -567,7 +567,7 @@ soulng::parser::Match RegExParser::Primary(RegExLexer& lexer, soulng::slg::Lexer
                                 soulng::parser::Match* parentMatch20 = &match;
                                 {
                                     int pos = lexer.GetPos();
-                                    Span span = lexer.GetSpan();
+                                    soulng::lexer::Span span = lexer.GetSpan();
                                     soulng::parser::Match match(false);
                                     if (*lexer == CHAR)
                                     {
@@ -917,7 +917,7 @@ soulng::parser::Match RegExParser::Char(RegExLexer& lexer)
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case LPAREN:
@@ -1050,7 +1050,7 @@ soulng::parser::Match RegExParser::ExpressionReference(RegExLexer& lexer)
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == LBRACE)
                 {
@@ -1122,7 +1122,7 @@ soulng::parser::Match RegExParser::ExpressionReference(RegExLexer& lexer)
             soulng::parser::Match* parentMatch7 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == RBRACE)
                 {

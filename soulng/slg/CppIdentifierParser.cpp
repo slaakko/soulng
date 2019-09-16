@@ -15,7 +15,7 @@ soulng::parser::Match CppIdentifierParser::CppIdentifier(LexerFileLexer& lexer)
     soulng::parser::Match* parentMatch0 = &match;
     {
         int pos = lexer.GetPos();
-        Span span = lexer.GetSpan();
+        soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match(false);
         if (*lexer == ID)
         {
@@ -51,7 +51,7 @@ soulng::parser::Match CppIdentifierParser::QualifiedCppId(LexerFileLexer& lexer)
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(true);
                         if (match.hit)
                         {
@@ -100,7 +100,7 @@ soulng::parser::Match CppIdentifierParser::QualifiedCppId(LexerFileLexer& lexer)
                     soulng::parser::Match* parentMatch8 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == ID)
                         {
@@ -151,7 +151,7 @@ soulng::parser::Match CppIdentifierParser::QualifiedCppId(LexerFileLexer& lexer)
                                     soulng::parser::Match* parentMatch13 = &match;
                                     {
                                         int pos = lexer.GetPos();
-                                        Span span = lexer.GetSpan();
+                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match(false);
                                         if (*lexer == ID)
                                         {

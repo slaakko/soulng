@@ -7,9 +7,15 @@
     <link href="../../style/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="../language/syntax.html">Minilang Syntax</a> | <strong>next: </strong><a href="build.html">Building the Lexer</a>
+    
     <h1>
-        Lexical Analyzer
+        2.1 Lexical Analyzer
     </h1>
+
+    <h2>
+        Operation of a Lexical Analyzer
+    </h2>
 
     <p>
         The task of the lexical analyzer is to recognize lexical units called <em>tokens</em> from the character stream and return them to the parser.
@@ -18,10 +24,10 @@
     </p>
 
     <p>
-        A token is defined in the SoulNG lexer generator by choosing a name and an informative string for it and including them
-        in a <em>tokens</em> declaration. Then under the <em>expressions</em> delaration and/or <em>lexer</em> definition,
-        a regular expression pattern for the token is declared and when the generated lexical analyzer recognizes that pattern,
-        the corresponding token name is returned to the parser.
+        A token is defined by choosing a name and an informative string for it and including them
+        in a <em>tokens</em> declaration that is put to a <em>.lexer</em> file. Under an <em>expressions</em> delaration and/or <em>lexer</em>
+        definition that are also put in the <em>.lexer</em> file, a regular expression pattern for each token is declared.
+        When the generated lexical analyzer recognizes that pattern, the corresponding token name is returned to the parser.
     </p>
 
     <h2>
@@ -29,7 +35,7 @@
     </h2>
 
     <p>
-        We begin defining lexical analyzer for the <a href="../language/syntax.html">Minilang language</a> by creating token declarations.
+        We begin defining lexical analyzer for the <a href="../language/syntax.html">Minilang language</a> by creating token declarations in <em>Minilang.lexer</em> file.
         The language has six statements: if, while, return, construction, assignment and compound statement.
         Of those, if, while and return statement include keywords so we create token names for them:
     </p>
@@ -42,7 +48,7 @@
     </pre>
 
     <p>
-        Tokens are declared in SoulNG in a <em>tokens</em> declaration that consists of keyword <strong>tokens</strong>
+        Tokens are declared in a <em>tokens</em> declaration that consists of keyword <strong>tokens</strong>
         followed by an identifier naming the declaration followed by a comma-separated list of identifier/string literal pairs enclosed in braces.
         The identifier is the name of a token. It is typically written in capital letters, so that is will not clash with keywords of the implementation language.
         The informative string for a token is included in error messages produced by the parser when a token is expected to match but does not.
@@ -369,5 +375,7 @@
     <p>
         Now the MinilangLexer should recognize all tokens of the language. Next we will build the lexer and compile it...
     </p>
+    
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="../language/syntax.html">Minilang Syntax</a> | <strong>next: </strong><a href="build.html">Building the Lexer</a>
 </body>
 </html>

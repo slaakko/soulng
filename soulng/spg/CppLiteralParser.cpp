@@ -13,7 +13,7 @@ soulng::parser::Match CppLiteralParser::CppLiteral(ParserFileLexer& lexer)
 {
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
-    Span span = lexer.GetSpan();
+    soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
         case INTLIT:

@@ -54,7 +54,7 @@ soulng::parser::Match CompileUnitParser::CompileUnit(CmajorLexer& lexer, Parsing
         soulng::parser::Match* parentMatch1 = &match;
         {
             int pos = lexer.GetPos();
-            Span span = lexer.GetSpan();
+            soulng::lexer::Span span = lexer.GetSpan();
             soulng::parser::Match match(true);
             if (match.hit)
             {
@@ -201,7 +201,7 @@ soulng::parser::Match CompileUnitParser::UsingAliasDirective(CmajorLexer& lexer)
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == USING)
                         {
@@ -276,7 +276,7 @@ soulng::parser::Match CompileUnitParser::UsingAliasDirective(CmajorLexer& lexer)
             soulng::parser::Match* parentMatch9 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 {
                     int pos = lexer.GetPos();
@@ -319,7 +319,7 @@ soulng::parser::Match CompileUnitParser::UsingNamespaceDirective(CmajorLexer& le
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == USING)
                 {
@@ -364,7 +364,7 @@ soulng::parser::Match CompileUnitParser::UsingNamespaceDirective(CmajorLexer& le
             soulng::parser::Match* parentMatch5 = &match;
             {
                 int pos = lexer.GetPos();
-                Span span = lexer.GetSpan();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 {
                     int pos = lexer.GetPos();
@@ -759,7 +759,7 @@ soulng::parser::Match CompileUnitParser::NamespaceDefinition(CmajorLexer& lexer,
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int pos = lexer.GetPos();
-                        Span span = lexer.GetSpan();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == NAMESPACE)
                         {
@@ -783,7 +783,7 @@ soulng::parser::Match CompileUnitParser::NamespaceDefinition(CmajorLexer& lexer,
                         soulng::parser::Match* parentMatch6 = &match;
                         {
                             int pos = lexer.GetPos();
-                            Span span = lexer.GetSpan();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match = IdentifierParser::QualifiedId(lexer);
                             nsName.reset(static_cast<IdentifierNode*>(match.value));
                             if (match.hit)

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Visitor</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="tree.html">Abstract Syntax Tree</a> | <strong>next: </strong><a href="printer.html">Printer Visitor</a>
+    
+    <h1>
+        3.6 Visitor
+    </h1>
+
+    <p>
+        We now implement a base class for walking a tree of syntax nodes.
+        It is called the <em>Visitor</em>.
+    </p>
+
+    <h2>
+        Visit Operation
+    </h2>
+
+    <p>
+        We start by adding a virtual <em>Visit</em> operation for each concrete syntax node to the <em>Visitor</em> class:
+    </p>
+
+    <pre>
+        // Visitor.hpp:
+
+        namespace minilang {
+
+        class UnaryOpExprNode;
+        class InvokeNode;
+        class BinaryOpExprNode;
+        class IntNode;
+        class BoolNode;
+        class VoidNode;
+        class BooleanLiteralNode;
+        class IntegerLiteralNode;
+        class IdentifierNode;
+        class ParenthesizedExpressionNode;
+        class IfStatementNode;
+        class WhileStatementNode;
+        class ReturnStatementNode;
+        class ConstructionStatementNode;
+        class AssignmentStatementNode;
+        class CompoundStatementNode;
+        class ParameterNode;
+        class FunctionNode;
+        class SourceFileNode;
+
+        class Visitor
+        {
+        public:
+            virtual void Visit(UnaryOpExprNode& node) {}
+            virtual void Visit(InvokeNode& node) {}
+            virtual void Visit(BinaryOpExprNode& node) {}
+            virtual void Visit(IntNode& node) {}
+            virtual void Visit(BoolNode& node) {}
+            virtual void Visit(VoidNode& node) {}
+            virtual void Visit(BooleanLiteralNode& node) {}
+            virtual void Visit(IntegerLiteralNode& node) {}
+            virtual void Visit(IdentifierNode& node) {}
+            virtual void Visit(ParenthesizedExpressionNode& node) {}
+            virtual void Visit(IfStatementNode& node) {}
+            virtual void Visit(WhileStatementNode& node) {}
+            virtual void Visit(ReturnStatementNode& node) {}
+            virtual void Visit(ConstructionStatementNode& node) {}
+            virtual void Visit(AssignmentStatementNode& node) {}
+            virtual void Visit(CompoundStatementNode& node) {}
+            virtual void Visit(ParameterNode& node) {}
+            virtual void Visit(FunctionNode& node) {}
+            virtual void Visit(SourceFileNode& node) {}
+        };
+
+        } // namespace minilang
+    </pre>
+
+    <h2>
+        Accept Operation
+    </h2>
+
+    <p>
+        Then we add a pure virtual operation called <em>Accept</em> to the <em>Node</em> class. It takes a <em>Visitor</em> argument.
+        When we want to visit a syntax tree node with a concrete visitor, we will call the <em>Accept</em> member function of the node with the visitor argument.
+    </p>
+
+    <pre>
+        // Tree.hpp:
+        // ...
+
+        class Visitor;
+
+        // ...
+
+        class Node
+        {
+        public:
+            virtual ~Node();
+            virtual void AddArgument(Node* arg);
+            virtual void Accept(Visitor& visitor) = 0;
+        };
+
+    </pre>
+
+    <p>
+        Now we will override the virtual <em>Accept</em> member function in each concrete syntax tree node class:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        // ...
+
+        class UnaryOpExprNode : public UnaryNode
+        {
+        public:
+            UnaryOpExprNode(Operator op_, Node* child_);
+            Operator Op() const { return op; }
+            void Accept(Visitor& visitor) override;
+        private:
+            Operator op;
+        };
+
+        // ...
+    </pre>
+
+    <p>
+        The <em>Accept</em> member function of the syntax tree node class calls the visitor's <em>Visit</em> member function with the syntax tree node itself as argument.
+        For example the <em>UnaryOpExprNode</em> calls the <em>Visit</em> member function of the visitor with itself as argument, so the call is resolved to
+        the visitor's <em>Visit(UnaryOpExprNode&amp; node)</em> function:
+    </p>
+
+    <pre>
+        // Tree.cpp:
+
+        void UnaryOpExprNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        // Visitor.hpp:
+
+        class Visitor
+        {
+            virtual void Visit(UnaryOpExprNode& node) {}
+            // ...
+        }
+    </pre>
+
+    <p>
+        The implementation goes according to the same pattern for the rest of the syntax tree node classes:
+    </p>
+
+    <pre>
+        // Tree.hpp:
+
+        class InvokeNode : public UnaryNode
+        {
+        public:
+            InvokeNode(Node* child_);
+            const std::vector&lt;std::unique_ptr<Node>>& Args() const { return args; }
+            void AddArgument(Node* arg) override;
+            void Accept(Visitor& visitor) override;
+        private:
+            std::vector&lt;std::unique_ptr&lt;Node>> args;
+        };
+
+        // ...
+
+        class BinaryOpExprNode : public BinaryNode
+        {
+        public:
+            BinaryOpExprNode(Operator op_, Node* left_, Node* right_);
+            Operator Op() const { return op; }
+            void Accept(Visitor& visitor) override;
+        private:
+            Operator op;
+        };
+
+        class IntNode : public Node
+        {
+        public:
+            void Accept(Visitor& visitor) override,
+        };
+
+        class BoolNode : public Node
+        {
+        public:
+            void Accept(Visitor& visitor) override,
+        };
+
+        class VoidNode : public Node
+        {
+        public:
+            void Accept(Visitor& visitor) override,
+        };
+
+        class BooleanLiteralNode : public Node
+        {
+        public:
+            BooleanLiteralNode(bool value_);
+            bool Value() const { return value; }
+            void Accept(Visitor& visitor) override;
+        private:
+            bool value;
+        };
+
+        class IntegerLiteralNode : public Node
+        {
+        public:
+            IntegerLiteralNode(int64_t value_);
+            int64_t Value() const { return value; }
+            void Accept(Visitor& visitor) override;
+        private:
+            int64_t value;
+        };
+
+        class IdentifierNode : public Node
+        {
+        public:
+            IdentifierNode(const std::u32string& str_);
+            const std::u32string& Str() const { return str; }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::u32string str;
+        };
+
+        class ParenthesizedExpressionNode : public UnaryNode
+        {
+        public:
+            ParenthesizedExpressionNode(Node* child_);
+            void Accept(Visitor& visitor) override;
+        };
+
+        class IfStatementNode : public Node
+        {
+        public:
+            IfStatementNode(Node* condition_, Node* thenS_, Node* elseS_);
+            Node* Condition() const { return condition.get(); }
+            Node* ThenS() const { return thenS.get(); }
+            Node* ElseS() const { return elseS.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;Node> condition;
+            std::unique_ptr&lt;Node> thenS;
+            std::unique_ptr&lt;Node> elseS;
+        };
+
+        class WhileStatementNode : public Node
+        {
+        public:
+            WhileStatementNode(Node* condition_, Node* statement_);
+            Node* Condition() const { return condition.get(); }
+            Node* Statement() const { return statement.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;Node> condition;
+            std::unique_ptr&lt;Node> statement;
+        };
+
+        class ReturnStatementNode : public Node
+        {
+        public:
+            ReturnStatementNode(Node* returnValue_);
+            Node* ReturnValue() const { return returnValue.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;Node> returnValue;
+        };
+
+        class ConstructionStatementNode : public Node
+        {
+        public:
+            ConstructionStatementNode(Node* type_, IdentifierNode* variableName_, Node* value_);
+            Node* Type() const { return type.get(); }
+            IdentifierNode* VariableName() const { return variableName.get(); }
+            Node* Value() const { return value.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;Node> type;
+            std::unique_ptr&lt;IdentifierNode> variableName;
+            std::unique_ptr&lt;Node> value;
+        };
+
+        class AssignmentStatementNode : public Node
+        {
+        public:
+            AssignmentStatementNode(IdentifierNode* variableName_, Node* value_);
+            IdentifierNode* VariableName() const { return variableName.get(); }
+            Node* Value() const { return value.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;IdentifierNode> variableName;
+            std::unique_ptr&lt;Node> value;
+        };
+
+        class CompoundStatementNode : public Node
+        {
+        public:
+            void AddStatement(Node* statement);
+            const std::vector&lt;std::unique_ptr&lt;Node>>& Statements() const { return statements; }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::vector&lt;std::unique_ptr&lt;Node>> statements;
+        };
+
+        class ParameterNode : public Node
+        {
+        public:
+            ParameterNode(Node* paramType_, IdentifierNode* paramName_);
+            Node* ParamType() const { return paramType.get(); }
+            IdentifierNode* ParamName() const { return paramName.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;Node> paramType;
+            std::unique_ptr&lt;IdentifierNode> paramName;
+        };
+
+        class FunctionNode : public Node
+        {
+        public:
+            FunctionNode(Node* returnType_, IdentifierNode* functionName_);
+            Node* ReturnType() const { return returnType.get(); }
+            IdentifierNode* FunctionName() const { return functionName.get(); }
+            void AddParam(ParameterNode* param);
+            const std::vector&lt;std::unique_ptr&lt;ParameterNode>>& Parameters() const { return parameters; }
+            void SetBody(CompoundStatementNode* body_);
+            CompoundStatementNode* Body() const { return body.get(); }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::unique_ptr&lt;Node> returnType;
+            std::unique_ptr&lt;IdentifierNode> functionName;
+            std::vector&lt;std::unique_ptr&lt;ParameterNode>> parameters;
+            std::unique_ptr&lt;CompoundStatementNode> body;
+        };
+
+        class SourceFileNode : public Node
+        {
+        public:
+            void AddFunction(FunctionNode* function);
+            const std::vector&lt;std::unique_ptr&lt;FunctionNode>>& Functions() const { return functions; }
+            void Accept(Visitor& visitor) override;
+        private:
+            std::vector&lt;std::unique_ptr&lt;FunctionNode>> functions;
+        };
+
+        // Tree.cpp:
+
+        Node::~Node()
+        {
+        }
+
+        void Node::AddArgument(Node* arg)
+        {
+            throw std::runtime_error("cannot add argument to this kind of node");
+        }
+
+        UnaryNode::UnaryNode(Node* child_) : child(child_)
+        {
+        }
+
+        UnaryOpExprNode::UnaryOpExprNode(Operator op_, Node* child_) : UnaryNode(child_), op(op_)
+        {
+        }
+
+        void UnaryOpExprNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        InvokeNode::InvokeNode(Node* child_) : UnaryNode(child_)
+        {
+        }
+
+        void InvokeNode::AddArgument(Node* arg)
+        {
+            args.push_back(std::unique_ptr&lt;Node>(arg));
+        }
+
+        void InvokeNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        BinaryNode::BinaryNode(Node* left_, Node* right_) : left(left_), right(right_)
+        {
+        }
+
+        BinaryOpExprNode::BinaryOpExprNode(Operator op_, Node* left_, Node* right_) : BinaryNode(left_, right_), op(op_)
+        {
+        }
+
+        void BinaryOpExprNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        void IntNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        void BoolNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        void VoidNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        BooleanLiteralNode::BooleanLiteralNode(bool value_) : value(value_)
+        {
+        }
+
+        void BooleanLiteralNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        IntegerLiteralNode::IntegerLiteralNode(int64_t value_) : value(value_)
+        {
+        }
+
+        void IntegerLiteralNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        IdentifierNode::IdentifierNode(const std::u32string& str_) : str(str_)
+        {
+        }
+
+        void IdentifierNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        ParenthesizedExpressionNode::ParenthesizedExpressionNode(Node* child_) : UnaryNode(child_)
+        {
+        }
+
+        void ParenthesizedExpressionNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        IfStatementNode::IfStatementNode(Node* condition_, Node* thenS_, Node* elseS_) : condition(condition_), thenS(thenS_), elseS(elseS_)
+        {
+        }
+
+        void IfStatementNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        WhileStatementNode::WhileStatementNode(Node* condition_, Node* statement_) : condition(condition_), statement(statement_)
+        {
+        }
+
+        void WhileStatementNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        ReturnStatementNode::ReturnStatementNode(Node* returnValue_) : returnValue(returnValue_)
+        {
+        }
+
+        void ReturnStatementNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        ConstructionStatementNode::ConstructionStatementNode(Node* type_, IdentifierNode* variableName_, Node* value_) : type(type_), variableName(variableName_), value(value_)
+        {
+        }
+
+        void ConstructionStatementNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        AssignmentStatementNode::AssignmentStatementNode(IdentifierNode* variableName_, Node* value_) : variableName(variableName_), value(value_)
+        {
+        }
+
+        void AssignmentStatementNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        void CompoundStatementNode::AddStatement(Node* statement)
+        {
+            statements.push_back(std::unique_ptr&lt;Node>(statement));
+        }
+
+        void CompoundStatementNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        ParameterNode::ParameterNode(Node* paramType_, IdentifierNode* paramName_) : paramType(paramType_), paramName(paramName_)
+        {
+        }
+
+        void ParameterNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        FunctionNode::FunctionNode(Node* returnType_, IdentifierNode* functionName_) : returnType(returnType_), functionName(functionName_)
+        {
+        }
+
+        void FunctionNode::AddParam(ParameterNode* param)
+        {
+            parameters.push_back(std::unique_ptr&lt;ParameterNode>(param));
+        }
+
+        void FunctionNode::SetBody(CompoundStatementNode* body_)
+        {
+            body.reset(body_);
+        }
+
+        void FunctionNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+
+        void SourceFileNode::AddFunction(FunctionNode* function)
+        {
+            functions.push_back(std::unique_ptr&lt;FunctionNode>(function));
+        }
+
+        void SourceFileNode::Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
+        }
+    </pre>
+
+    <p>
+        Now we have the syntax tree node class hierarchy ready for visiting with a concrete <em>Visitor</em>.
+    </p>
+
+    <p>
+        Next we will implement a concrete <em>Visitor</em> that prints each syntax node to standard output...
+    </p>
+    
+    <strong>up: </strong><a href="../../contents.html">Table of contents</a> | <strong>prev: </strong> <a href="tree.html">Abstract Syntax Tree</a> | <strong>next: </strong><a href="printer.html">Printer Visitor</a>
+</body>
+</html>
