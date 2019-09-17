@@ -8,8 +8,14 @@
 </head>
 <body>
     <h1>
-        Regular Expression Syntax
+        Appendix C Regular Expression Syntax
     </h1>
+
+    <p>
+        A regular expression is used for matching input strings.
+        It consists of primary expressions and expressions combined with regular operators '|', catenation, '*', '+', and '?'.
+        The whole regular expression is enclosed in double quotes.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -23,6 +29,10 @@
         </tr>
     </table>
 
+    <p>
+        Expression <em>a</em> | <em>b</em> matches input strings that match either expression <em>a</em> or expression <em>b</em>:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.alternative">alternative</td>
@@ -33,6 +43,10 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        Expression <em>ab</em> matches input strings that match <em>a</em> followed by input strings that match <em>b</em>:
+    </p>
 
     <table class="grammar">
         <tr>
@@ -45,6 +59,12 @@
         </tr>
     </table>
 
+    <p>
+        Expression <em>a</em>* match input strings that match <em>a</em> zero or more times.
+        Expression <em>a</em>+ match input strings that match <em>a</em> one or more times.
+        Expression <em>a</em>? match input strings that match <em>a</em> zero or one time:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.repetition">repetition</td>
@@ -55,6 +75,11 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        A primary expression is either a parenthesized expression, an ordinary character or an escape sequence, a character class, an expression reference or a dot expression.
+        A dot expression matches any single character.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -72,6 +97,10 @@
         </tr>
     </table>
 
+    <p>
+        An ordinary character is any other character than a newline, a carriage return, a backslash, an operator or punctuation character, or a double quote:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.char">char</td>
@@ -79,12 +108,23 @@
             <td class="rcontent">
                 <span class="op">[</span>
                 <span class="op">^</span>
-                <span class="mono">\n\r{}\\()[\]|*+?.^-"</span>
+                <span class="mono">\n\r\\{}()[\]|*+?."</span>
                 <span class="op">]</span> |
                 <span class="rule"><a href="common.html#rule.escape">escape</a></span>
             </td>
         </tr>
     </table>
+
+    <p>
+        An escape sequence starts with the backslash character. It removes the operator meaning from an operator symbol, that is: the symbol is matched literally.
+        It is also used for representing non-printable characters, and to match parentheses, brackets and braces literally.
+    </p>
+
+    <p>
+        A character class consists of characters and ranges of characters enclosed in brackets. It may also contain escape sequences.
+        A character class matches a single input symbol that match enumerated characters and ranges of characters.
+        If the class starts with the caret symbol, the class matches any other symbols than the enumerated characters and ranges.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -117,6 +157,14 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        Parentheses, the left bracket, braces, and the operator symbols need not be escaped within a character class, although it would do no harm to do so.
+    </p>
+
+    <p>
+        An identifier in braces is used to reference a named regular expression that comes before the regular expression defined currently:
+    </p>
 
     <table class="grammar">
         <tr>

@@ -28,6 +28,14 @@
 
     <h2>Literals</h2>
 
+    <p>
+        We try to be compatible with C++ literal syntax, and to accept a superset of valid C++ literals.
+    </p>
+
+    <p>
+        A string literal consists of a possibly empty sequence of string characters enclosed in double quotes:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.string-literal">string&#8209;literal</td>
@@ -64,6 +72,15 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        A string character may be an ordinary character that is not a double quote, a backslash, a newline or a carriage return, or it may be an escape sequence.
+        A string literal may start with an optional encoding prefix.
+    </p>
+
+    <p>
+        A character literal may be a narrow character literal, a universal character literal or a wide character litera.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -119,6 +136,17 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        A narrow character literal consists of a non-empty sequence of symbols matching the <em>cchar</em> rule enclosed in single quotes.
+        A <em>cchar</em> is either an ordinary character that is not a single quote, a backslash, a newline or a carriage return, or it may be an escape sequence.
+        A universal character literal has a 'u' or 'U' prefix. A wide character literal has an 'L' prefix.
+    </p>
+
+    <p>
+        An escape sequence starts with the backslash character that is followed by a hexadecimal escape, a decimal escape, an octal escape, a UTF-16 escape, a UTF-32 escape, a C-escape,
+        or any other single character.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -190,6 +218,14 @@
         </tr>
     </table>
 
+    <p>
+        We have tried to define an escape sequence that is a superset of a valid C++ escape sequence, so it can be used in all contexts in SoulNG syntax files.
+    </p>
+
+    <p>
+        An integer literal can be an octal literal, a decimal literal, or a hexadecimal literal. It may have an optional integer suffix:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.integer-literal">integer&#8209;literal</td>
@@ -259,6 +295,10 @@
         </tr>
     </table>
 
+    <p>
+        A floating-point literal may be a fractional floating-point literal or an exponential floating-point literal. It may have an optional floating-point suffix:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.floating-literal">floating&#8209;literal</td>
@@ -308,6 +348,10 @@
 
     <h2>File Paths</h2>
 
+    <p>
+        A file path consists of a non-empty sequence of characters enclosed in angle brackets. A character inside the angle brackets may be any other character than a newline or a right angle bracket.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.file-path">file&#8209;path</td>
@@ -322,17 +366,22 @@
 
     <h2>API Specifier</h2>
 
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.api">api</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="kw">api</span>
-                <span class="mono">(</span>
-                <span class="rule"><a href="#rule.identifier">identifer</a></span>
-                <span class="mono">)</span>
-            </td>
-        </tr>
-    </table>
+    <p>
+        An API specifier defines a macro symbol to use for exporting generated classes and functions from a Windows DLL.
+        See <strong>cmajor</strong> example in the <strong>examples/cmajor</strong> directory for an example use.
+    <p>
+
+        <table class="grammar">
+            <tr>
+                <td class="rule" id="rule.api">api</td>
+                <td class="sep">&rarr;</td>
+                <td class="rcontent">
+                    <span class="kw">api</span>
+                    <span class="mono">(</span>
+                    <span class="rule"><a href="#rule.identifier">identifer</a></span>
+                    <span class="mono">)</span>
+                </td>
+            </tr>
+        </table>
 </body>
 </html>
