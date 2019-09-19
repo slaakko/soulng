@@ -11,31 +11,38 @@
         Parser File Syntax
     </h1>
 
+    <h2>Table of contents</h2>
+
+    <div class="toc">
+        1 <a href="#parser-file-declarations">Parser File Declarations</a><br />
+        2 <a href="#include-declaration">Include Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;2.1 <a href="#include-declaration-example">Example</a><br />
+        3 <a href="#using-namespace-declaration">Using Namespace Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;3.1 <a href="#using-namespace-declaration-example">Example</a><br />
+        4 <a href="#parser-declaration">Parser Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4.1 <a href="#parser-declaration-example">Example</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4.2 <a href="#parsing-rules">Parsing Rules</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.1 <a href="#parsing-rule-body">Parsing Rule Body</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4.3 <a href="#main-declaration">Main Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.1 <a href="#main-declaration-example">Example</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4.4 <a href="#using-declaration">Using Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1 <a href="#using-declaration-example">Example</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4.5 <a href="#use-lexer-declaration">Use Lexer Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5.1 <a href="#use-lexer-declaration-example">Example</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;4.6 <a href="#rule-info-declaration">Rule Info Declaration</a><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.6.1 <a href="#rule-info-declaration-example">Example</a><br />
+        5 <a href="#keywords">Keywords</a><br />
+    </div>
+
     <p>
         The notation used for representing the parser file syntax in this document is described <a href="notation.html">here</a>.
     </p>
 
-    <h2>
-        Keywords
-    </h2>
+    <h2 id="parser-file-declarations">1 Parser File Declarations</h2>
 
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.parser-keyword">parser&#8209;keyword</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="rule"><a href="cpp.html#rule.cppkeyword">cppkeyword</a></span> |
-                <span class="kw">api</span> |
-                <span class="kw">empty</span> |
-                <span class="kw">include</span> |
-                <span class="kw">main</span> |
-                <span class="kw">parser</span> |
-                <span class="kw">ruleinfo</span> |
-                <span class="kw">uselexer</span> |
-                <span class="kw">var</span>
-            </td>
-        </tr>
-    </table>
+    <p>
+        A <em>.parser</em> file consists of <em>parser-file-declaration</em>s:
+    </p>
 
     <table class="grammar">
         <tr>
@@ -55,6 +62,23 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        If the <em>.parser</em> file contains Unicode identifiers with non-ASCII characters, the encoding of it should be UTF-8.
+        The parser generator <strong>spg</strong> will generate C++ source and header files whose encoding is UTF-8.
+    </p>
+
+    <p>
+        For a given parser file <em>ExampleParser.parser</em> the <strong>spg</strong> tool generates a C++ source file <em>ExampleParser.cpp</em> and
+        a header file <em>ExampleParser.hpp</em>.
+    </p>
+
+    <h2 id="include-declaration">2 Include Declaration</h2>
+
+    <p>
+        An <em>include-declaration</em> is used for inserting an include directive to the start of the generated C++ source or header file.
+        An include declaration consists of an optional <em>include-prefix</em>, a '#' symbol, an <strong>include</strong> keyword and a file path in angle brackets:
+    </p>
 
     <table class="grammar">
         <tr>
@@ -91,6 +115,52 @@
         </tr>
     </table>
 
+    <p>
+        An <em>include-prefix</em> can be "[cpp]" or "[hpp]".
+    </p>
+
+    <p>
+        If an include declaration has a <em>[cpp]</em> include prefix or it has no include prefix, <strong>spg</strong> puts the include directive to the generated <em>.cpp</em> file.
+        If an include declaration has a <em>[hpp]</em> include prefix, <strong>spg</strong> puts the include directive to the generated <em>.hpp</em> file.
+    </p>
+
+    <h3 id="include-declaration-example">2.1 Example</h3>
+
+    <p>
+        For the following include declarations in <em>ExampleParser.parser</em>:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+
+        [hpp]#include &lt;ExampleAST.hpp>
+        [cpp]#include &lt;ExampleLexer.hpp>
+        [cpp]#include &lt;ExampleTokens.hpp>
+        #include &lt;boost/filesystem.hpp>
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates following #include directives to generated source files <em>ExampleParser.hpp</em> and <em>ExampleParser.cpp</em>:
+    </p>
+
+    <pre>
+        // ExampleParser.hpp:
+
+        #include &lt;ExampleAST.hpp>
+
+        // ExampleParser.cpp:
+
+        #include &lt;ExampleLexer.hpp>
+        #include &lt;ExampleTokens.hpp>
+        #include &lt;boost/filesystem.hpp>
+    </pre>
+
+    <h2 id="using-namespace-declaration">3 Using Namespace Declaration</h2>
+
+    <p>
+        A <em>using-namespace-declaration</em> is used for inserting a C++ using directive to the generated C++ source file.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.using-namespace-declaration">using&#8209;namespace&#8209;declaration</td>
@@ -98,11 +168,47 @@
             <td class="rcontent">
                 <span class="kw">using</span>
                 <span class="kw">namespace</span>
-                <span class="rule"><a href="cpp.html#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>?
+                <span class="rule"><a href="cpp.html#rule.qualified-cpp-id">qualified&#8209;cpp&#8209;id</a></span>
                 <span class="mono">;</span>
             </td>
         </tr>
     </table>
+
+    <p>
+        A using namespace declaration consists of the keywords <strong>using</strong> and <strong>namespace</strong>, a qualified C++ identifier that is the name of a namespace,
+        and a semicolon.
+    </p>
+
+    <h3 id="using-namespace-declaration-example">3.1 Example</h3>
+
+    <p>
+        For the following using namespace declarations:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+
+        using namespace ExampleTokens;
+        using namespace boost::filesystem;
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following using directives to the <em>ExampleParser.cpp</em> file:
+    </p>
+
+    <pre>
+        // ExampleParser.cpp:
+
+        using namespace ExampleTokens;
+        using namespace boost::filesystem;
+    </pre>
+
+    <h2 id="parser-declaration">4 Parser Declaration</h2>
+
+    <p>
+        A <em>parser-declaration</em> consists of the keyword <strong>parser</strong> followed by an optional API specifier followed by
+        the name of the parser followed by <em>parsing-declaration</em>s enclosed in braces:
+    </p>
 
     <table class="grammar">
         <tr>
@@ -113,102 +219,88 @@
                 <span class="rule"><a href="common.html#rule.api">api</a></span>?
                 <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
                 <span class="mono">{</span>
-                <span class="rule"><a href="#rule.parser-statement">parser&#8209;statement</a></span>*
+                <span class="rule"><a href="#rule.parsing-declaration">parsing&#8209;declaration</a></span>*
                 <span class="mono">}</span>
             </td>
         </tr>
-    </table>
-
-    <table class="grammar">
         <tr>
-            <td class="rule" id="rule.parser-statement">parser&#8209;statement</td>
+            <td class="rule" id="rule.parsing-declaration">parsing&#8209;declaration</td>
             <td class="sep">&rarr;</td>
             <td class="rcontent">
-                <span class="rule"><a href="#rule.main-statement">main&#8209;statement</a></span> |
-                <span class="rule"><a href="#rule.using-statement">using&#8209;statement</a></span> |
-                <span class="rule"><a href="#rule.use-lexer-statement">use&#8209;lexer&#8209;statement</a></span> |
-                <span class="rule"><a href="#rule.rule-info-statement">rule&#8209;info&#8209;statement</a></span> |
-                <span class="rule"><a href="#rule.rule-statement">rule&#8209;statement</a></span>
+                <span class="rule"><a href="#rule.parsing-rule">parsing&#8209;rule</a></span> |
+                <span class="rule"><a href="#rule.main-declaration">main&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.using-declaration">using&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.use-lexer-declaration">use&#8209;lexer&#8209;declaration</a></span> |
+                <span class="rule"><a href="#rule.rule-info-declaration">rule&#8209;info&#8209;declaration</a></span>
             </td>
         </tr>
     </table>
 
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.main-statement">main&#8209;statement</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="kw">main</span>
-                <span class="mono">;</span>
-            </td>
-        </tr>
-    </table>
+    <p>
+        For a parser declaration the <strong>spg</strong> tool generates a C++ class having the name of the parser.
+        The class will contain a static member function for each parsing rule contained by the parser.
+    </p>
+
+    <h3 id="parser-declaration-example">4.1 Example</h3>
+
+    <p>
+        For the following parser declaration:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+
+            Statement
+                ::= WhileStatement:whileStatement
+                |   EmptyStatement:emptyStatement
+                // ...
+                ;
+
+            WhileStatement
+                ::= WHILE LPAREN Expression:cond RPAREN Statement:stmt
+                ;
+
+            EmptyStatement
+                ::= SEMICOLON
+                ;
+
+            Expression
+                ::= ID
+                // ....
+                ;
+        }
+    </pre>
+
+    <strong>spg</strong> generates the following C++ class:
+
+    <pre>
+        // ExampleParser.hpp:
+
+        class ExampleLexer;
+
+        struct ExampleParser
+        {
+            static soulng::parser::Match Statement(ExampleLexer& lexer);
+            static soulng::parser::Match WhileStatement(ExampleLexer& lexer);
+            static soulng::parser::Match EmptyStatement(ExampleLexer& lexer);
+            static soulng::parser::Match Expression(ExampleLexer& lexer);
+        };
+    </pre>
+
+    <h3 id="parsing-rules">4.2 Parsing Rules</h3>
+
+    <p>
+        A <em>parsing-rule</em> has a name and a body separated by the "::=" symbol.
+        It is terminated by a semicolon.
+    </p>
 
     <table class="grammar">
         <tr>
-            <td class="rule" id="rule.using-statement">using&#8209;statement</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="kw">using</span>
-                <span class="rule"><a href="#rule.parser-rule-id">parser&#8209;rule&#8209;id</a></span>
-                <span class="mono">;</span>
-            </td>
-        </tr>
-    </table>
-
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.parser-rule-id">parser&#8209;rule&#8209;id</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
-                (<span class="mono">.</span> <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>)*
-            </td>
-        </tr>
-    </table>
-
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.use-lexer-statement">use&#8209;lexer&#8209;statement</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="kw">uselexer</span>
-                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
-                <span class="mono">;</span>
-            </td>
-        </tr>
-    </table>
-
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.rule-info-statement">rule&#8209;info&#8209;statement</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="kw">ruleinfo</span>
-                <span class="mono">{</span>
-                <span class="rule"><a href="#rule.rule-info">rule&#8209;info</a></span>*
-                <span class="mono">}</span>
-            </td>
-        </tr>
-    </table>
-
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.rule-info">rule&#8209;info</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="mono">(</span>
-                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
-                <span class="mono">,</span>
-                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span>
-                <span class="mono">)</span>
-            </td>
-        </tr>
-    </table>
-
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.rule-statement">rule&#8209;statement</td>
+            <td class="rule" id="rule.parsing-rule">parsing&#8209;rule</td>
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="#rule.name">rule&#8209;name</a></span>
@@ -233,7 +325,7 @@
                 <span class="mono">(</span>
                 <span class="rule"><a href="#rule.param-or-var">param&#8209;or&#8209;var</a></span>
                 (<span class="mono">,</span>
-                <span class="rule"><a href="#rule.param-or-var">param&#8209;or&#8209;var</a></span>)?
+                <span class="rule"><a href="#rule.param-or-var">param&#8209;or&#8209;var</a></span>)*
                 <span class="mono">)</span>
             </td>
         </tr>
@@ -265,6 +357,26 @@
         </tr>
     </table>
 
+    <p>
+        A parsing rule may have parameters, local variables and a return value.
+        The declared parameters become parameters of the static member function generated by <strong>spg</strong>.
+        The declared variables become local variables of that function.
+        The return value of the parsing rule is transferred to the caller of the parsing rule in the <strong>soulng::parser::Match</strong> structure
+        that is returned by the generated function. This <a href="ast.html">AST example</a> contains rules with parameters and return values.
+    </p>
+
+    <h4 id="parsing-rule-body">4.2.1 Parsing Rule Body</h4>
+
+    <p>
+        The body of a parsing rule consists of <em>parsing expressions</em>.
+    </p>
+
+    <p>
+        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em> | <em>b</em> is a parsing expression.
+        For parsing expression <em>a</em> | <em>b</em>, the generated parser will try to match <em>a</em>. If input matches <em>a</em>, <em>b</em> is not matched, and parsing proceeds.
+        Otherwise the generated parser will backtrack the input where it was when tried to match <em>a</em> and then try to match <em>b</em>.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.alternative">alternative</td>
@@ -275,6 +387,12 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em><em>b</em> is a parsing expression.
+        For parsing expression <em>a</em><em>b</em>, the generated parser will match <em>a</em> and then <em>b</em> in sequence.
+        If both will match, parsing proceeds. Otherwise the parser will backtrack.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -287,6 +405,12 @@
         </tr>
     </table>
 
+    <p>
+        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em> - <em>b</em> is a parsing expression.
+        For parsing expression <em>a - b</em>, the parser will first match <em>a</em>. If <em>a</em> matches, then it will backtrack the input and try to match <em>b</em>.
+        If <em>a</em> matches and <em>b</em> does not, parsing proceeds. Otherwise the generated parser will backtrack.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.difference">difference</td>
@@ -297,6 +421,11 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        Let <em>a</em> and <em>b</em> be parsing expressions.
+        Then parsing expression <em>a % b</em> is equivalent to a parsing expression <em>a</em> (<em>b</em> <em>a</em>)*, that is: one or more <em>a</em>'s separated by <em>b</em>'s.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -309,6 +438,13 @@
         </tr>
     </table>
 
+    <p>
+        Let <em>a</em> be a parsing expression. Then <em>a</em>*, <em>a</em>+ and <em>a</em>? are parsing expressions.
+        For parsing expression <em>a</em>*, the generated parser will match zero or more <em>a</em>'s.
+        For parsing expression <em>a</em>+, the generated parser will match one or more <em>a</em>'s.
+        For parsing expression <em>a</em>?, the generated parser will match zero or one <em>a</em>'s.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.postfix">postfix</td>
@@ -319,6 +455,11 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        The <em>primary</em> parsing expressions are <em>rule-call</em>, a <em>primitive</em> parsing expression, and a <em>grouping</em> parsing expression.
+        They may be followed by <em>expectation</em> and <em>semantic action</em>.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -336,12 +477,19 @@
         </tr>
     </table>
 
+    <p>
+        The <em>rule-call</em> consists of a name of a rule, let's call it <em>r</em>, an optional argument list in parentheses, a colon, and an identifier.
+        The generated parser will recursively match <em>r</em>.
+        The identifier is a <em>unique name</em> of the <em>r</em> within the body the current rule.
+        It represents the synthesized attribute of <em>r</em> in a <em>semantic action</em> possibly attached to the rule call.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.rule-call">rule&#8209;call</td>
             <td class="sep">&rarr;</td>
             <td class="rcontent">
-                <span class="rule"><a href="#rule.nonterminal">nonterminal</a></span>
+                <span class="rule"><a href="#rule.rule-name">rule&#8209;name</a></span>
                 (
                 <span class="mono">(</span>
                 <span class="rule"><a href="#rule.expression-list">expression&#8209;list</a></span>
@@ -351,8 +499,46 @@
                 <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
             </td>
         </tr>
+    </table>
+
+    <p>
+        The call of a rule <em>r</em> is implemented as a function call. The function to be called is the function generated from rule <em>r</em> by <strong>spg</strong>.
+    </p>
+
+    <p>
+        If the rule <em>r</em> has <em>n</em> parameters, it must be passed <em>n</em> arguments in the argument list of the rule call.
+        If the number of parameters differs from the number of arguments, <strong>spg</strong> will produce an error.
+    </p>
+
+    <p>
+        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, or a <em>token expression</em>:
+    </p>
+
+    <table class="grammar">
         <tr>
-            <td class="rule" id="rule.nonterminal">nonterminal</td>
+            <td class="rule" id="rule.primitive">primitive</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.empty-expression">empty&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.token-expression">token&#8209;expression</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.empty-expression">empty&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">empty</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.token-expression">token&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.token-id">token&#8209;id</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.token-id">token&#8209;id</td>
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
@@ -360,16 +546,20 @@
         </tr>
     </table>
 
-    <table class="grammar">
-        <tr>
-            <td class="rule" id="rule.primitive">primitive</td>
-            <td class="sep">&rarr;</td>
-            <td class="rcontent">
-                <span class="kw">empty</span> |
-                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
-            </td>
-        </tr>
-    </table>
+    <p>
+        An empty expression consists of the keyword <strong>empty</strong>.
+        An empty expression matches always. Input position of the used lexer is not advanced for an empty expression.
+    </p>
+
+    <p>
+        For a token expression, the generated parser will compare the current input token of the used lexer to the <em>token-id</em> of the token expression.
+        If the current input token matches the <em>token-id</em>, the input position of the used lexer is advanced, and parsing proceeds.
+        Otherwise the generated parser will backtrack.
+    </p>
+
+    <p>
+        A <em>grouping expression</em> is a parenthesized parsing expression.
+    </p>
 
     <table class="grammar">
         <tr>
@@ -383,6 +573,11 @@
         </tr>
     </table>
 
+    <p>
+        Let <em>a</em> be a primary parsing expression. Then <em>a!</em> is a parsing expression, an <em>expectation</em> expression.
+        For an expectation expression <em>a!</em>, instead of backtracking the generated parser will produce an error if <em>a</em> does not match:
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.expectation">expectation</td>
@@ -393,6 +588,14 @@
         </tr>
     </table>
 
+    <p>
+        Let <em>a</em> be a primary parsing expression or an expectation expression.
+        Two C++ compound statements may be attached to <em>a</em>.
+        The first one will be executed if <em>a</em> matches. The second one, separated by a slash character,
+        is an optional compound statement that will be executed if <em>a</em> does not match.
+        The C++ compound statements attached to <em>a</em> are called <em>semantic actions</em>.
+    </p>
+
     <table class="grammar">
         <tr>
             <td class="rule" id="rule.action">action</td>
@@ -401,6 +604,300 @@
                 <span class="rule"><a href="cpp.html#rule.compound-statement">compound&#8209;statement</a></span>
                 (<span class="mono">/</span>
                 <span class="rule"><a href="cpp.html#rule.compound-statement">compound&#8209;statement</a></span>)?
+            </td>
+        </tr>
+    </table>
+
+    <h3 id="main-declaration">4.3 Main Declaration</h3>
+
+    <p>
+        A <em>main-declaration</em> consists of the keyword <strong>main</strong> and a semicolon.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.main-declaration">main&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">main</span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The <strong>spg</strong> tool will implement a <em>Parse</em> function for each parser that has a <em>main</em> declaration.
+        The <em>Parse</em> function will take a lexer argument and arguments that the the <em>first</em> parsing rule of the parser takes.
+        It will parse the content using the given lexer by calling the first parsing rule of the parser with the lexer and other arguments.
+    </p>
+
+    <h4 id="main-declaration-example">4.3.1 Example</h4>
+
+    <p>
+        For the following example parser with the <em>main</em> declaration:
+    </p>
+
+    <pre>
+        // ExampleParser.parser:
+    
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+
+            main;
+
+            Statement(SymbolTable* symbolTable) : Node*
+                ::= WhileStatement(symbolTable):whileStatement{ return whileStatement; }
+                |   EmptyStatement:emptyStatement{ return emptyStatement; }
+                ;
+
+            WhileStatement(SymbolTable* symbolTable) : Node*
+                ::= WHILE LPAREN Expression:cond RPAREN Statement(symbolTable):stmt{ return new WhileStatementNode(cond, stmt); }
+                ;
+
+            EmptyStatement : Node*
+                ::= SEMICOLON{ return new EmptyStatementNode(); }
+                ;
+
+            Expression : Node*
+                ::= ID{ soulng::lexer::Token token = lexer.GetToken(pos); return new IdentifierNode(token.match.ToString()); }
+                // ....
+                ;
+        }
+    </pre>
+
+    <p>
+        the <strong>spg</strong> tool will generate the following class declaration with the <em>Parse</em> function in it,
+        and implement the <em>Parse</em> function in the generated source file:
+    </p>
+
+    <pre>
+        // ExampleParser.hpp:
+
+        struct ExampleParser
+        {
+            static std::unique_ptr&lt;Node> Parse(ExampleLexer& lexer, SymbolTable* symbolTable);
+            static soulng::parser::Match Statement(ExampleLexer& lexer, SymbolTable* symbolTable);
+            static soulng::parser::Match WhileStatement(ExampleLexer& lexer, SymbolTable* symbolTable);
+            static soulng::parser::Match EmptyStatement(ExampleLexer& lexer);
+            static soulng::parser::Match Expression(ExampleLexer& lexer);
+        };
+    </pre>
+
+    <h3 id="using-declaration">4.4 Using Declaration</h3>
+
+    <p>
+        A <em>using-dedclaration</em> consists of the keyword <strong>using</strong>, a <em>parsing-rule-id</em> and a semicolon:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.using-declaration">using&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">using</span>
+                <span class="rule"><a href="#rule.parsing-rule-id">parsing&#8209;rule&#8209;id</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.parsing-rule-id">parsing&#8209;rule&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                (<span class="mono">.</span> <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>)*
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        A <em>parsing-rule-id</em> consists of the name of a parser, a period, and a name of a rule in that parser.
+    </p>
+
+    <p>
+        The using declaration imports a name of a rule from another parser to the current parser,
+        so that it can be called from the current parser.
+    </p>
+
+    <h4 id="using-declaration-example">4.4.1 Example</h4>
+
+    <p>
+        The using declaration in the following <em>StatementParser.parser</em> file imports the name of the
+        <em>Expression</em> rule from the <em>ExpressionParser</em> to the <em>StatementParser</em>,
+        so that it can be called from the <em>IfStatement</em>:
+    </p>
+
+    <pre>
+        // StatementParser.parser:
+
+        parser StatementParser
+        {
+            uselexer SomeLexer;
+
+            using ExpressionParser.Expression;
+
+            Statement
+                ::= IfStatement
+                    // ...
+                ;
+
+            IfStatement
+                ::= IF LPAREN Expression:condition RPAREN Statement
+                ;
+        }
+
+        // ExpressionParser.parser:
+
+        parser ExpressionParser
+        {
+            uselexer SomeLexer;
+
+            Expression
+                ::= // ...
+                ;
+        }
+    </pre>
+
+    <h3 id="use-lexer-declaration">4.5 Use Lexer Declaration</h3>
+
+    <p>
+        The <em>use-lexer-declaration</em> declaration consists of the keyword <strong>uselexer</strong> followed
+        by the name of the lexer to use for tokenizing input in the current parser, and a semicolon:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.use-lexer-declaration">use&#8209;lexer&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">uselexer</span>
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <h4 id="use-lexer-declaration-example">4.5.1 Example</h4>
+
+    <p>
+        The following use-lexer declaration sets the name of the lexer to use in the <em>FunctionParser</em> to <em>CmajorLexer</em>:
+    </p>
+
+    <pre>
+        // CmajorLexer.lexer:
+
+        lexer CmajorLexer
+        {
+            // ...
+        }
+
+        // Function.parser:
+
+        parser FunctionParser
+        {
+            uselexer CmajorLexer;
+
+            // ...
+        }
+    </pre>
+
+    <h3 id="rule-info-declaration">4.6 Rule Info Declaration</h3>
+
+    <p>
+        A <em>rule-info-declaration</em> consists of the keyword <strong>ruleinfo</strong> followed by <em>rule-info</em>s enclosed in braces and separated by commas:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.rule-info-declaration">rule&#8209;info&#8209;declaration</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">ruleinfo</span>
+                <span class="mono">{</span>
+                (<span class="rule"><a href="#rule.rule-info">rule&#8209;info</a></span> (<span class="mono">,</span> <span class="rule"><a href="#rule.rule-info">rule&#8209;info</a></span>)*)?
+                <span class="mono">}</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        A <em>rule-info</em> consists of a name of a rule followed by a comma followed by an informative string for that rule.
+        It is enclosed in parentheses:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.rule-info">rule&#8209;info</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="mono">(</span>
+                <span class="rule"><a href="#rule.rule-name">rule&#8209;name</a></span>
+                <span class="mono">,</span>
+                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span>
+                <span class="mono">)</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The rule info declaration is used for setting informative strings of rules to use in error messages produced by the parser.
+    </p>
+
+    <h4 id="rule-info-declaration-example">4.6.1 Example</h4>
+
+    <p>
+        The names of the rules of the <em>FunctionParser</em> are given informative strings "function", "function group identifier" and "operator function group identifier"
+        in the following <em>Function.parser</em> file:
+    </p>
+
+    <pre>
+        // Function.parser:
+
+        parser FunctionParser
+        {
+            // ...
+
+            Function
+                ::= //
+                ;
+
+            FunctionGroupId
+                ::= //
+                ;
+
+            OperatorFunctionGroupId
+                ::= //
+                ;
+
+            ruleinfo
+            {
+                (Function, "function"), (FunctionGroupId, "function group identifier"), (OperatorFunctionGroupId, "operator function group identifier")
+            }
+        }
+    </pre>
+
+    <h2 id="keywords">
+        5 Keywords
+    </h2>
+
+    <p>
+        The following keywords may not be used as identifiers in <em>.parser</em> files:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.parser-file-keyword">parser&#8209;file&#8209;keyword</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="cpp.html#rule.cppkeyword">cppkeyword</a></span> |
+                <span class="kw">api</span> |
+                <span class="kw">empty</span> |
+                <span class="kw">include</span> |
+                <span class="kw">main</span> |
+                <span class="kw">parser</span> |
+                <span class="kw">ruleinfo</span> |
+                <span class="kw">uselexer</span> |
+                <span class="kw">var</span>
             </td>
         </tr>
     </table>

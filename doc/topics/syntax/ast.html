@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>AST Example</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h1>AST Example</h1>
+
+    <p>
+        For this skeleton lexer:
+    </p>
+
+    <pre>
+        // ExampleLexer.lexer:
+
+        tokens ExampleTokens
+        {
+            (ID, "identifier"), (WHILE, "'while'"), (LPAREN, "'('"), (RPAREN, "')'"), (SEMICOLON, "';'")
+        }
+
+        keywords ExampleKeywords
+        {
+            ("while", WHILE)
+        }
+
+        expressions
+        {
+            ws = "[\n\r\t ]";
+            newline = "\r\n|\n|\r";
+            linecomment = "//[^\n\r]*{newline}";
+            blockcomment = "/\*([^*]|\*[^/])*\*/";
+            comment = "{linecomment}|{blockcomment}";
+            separators = "({ws}|{comment})+";
+            id = "{idstart}{idcont}*";
+        }
+
+        lexer ExampleLexer
+        {
+            "{separators}" {}
+            "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+            "\(" { return LPAREN; }
+            "\)" { return RPAREN; }
+            ";" { return SEMICOLON; }
+        }
+    </pre>
+
+    <p>
+        ...and this skeleton AST:
+    </p>
+
+    <pre>
+        // ExampleAST.hpp:
+
+        #ifndef EXAMPLEAST_HPP
+        #define EXAMPLEAST_HPP
+        #include &lt;string>
+
+        class Node
+        {
+            // ...
+        };
+
+        class WhileStatementNode : public Node
+        {
+        public:
+            WhileStatementNode(Node* cond_, Node* stmt_);
+            // ...
+        };
+
+        class EmptyStatementNode : public Node
+        {
+            // ...
+        };
+
+        class IdentifierNode : public Node
+        {
+        public:
+            IdentifierNode(const std::u32string& str_);
+        };
+
+        class SymbolTable
+        {
+            // ...
+        };
+
+        #endif // EXAMPLEAST_HPP
+    </pre>
+
+    <p>
+        ... and this skeleton parser:
+    </p>
+
+    <pre>
+        [hpp]#include &lt;ExampleAST.hpp>
+        [cpp]#include &lt;ExampleLexer.hpp>
+        [cpp]#include &lt;ExampleTokens.hpp>
+        #include &lt;boost/filesystem.hpp>
+
+        using namespace ExampleTokens;
+        using namespace boost::filesystem;
+
+        parser ExampleParser
+        {
+            uselexer ExampleLexer;
+
+            Statement(SymbolTable* symbolTable) : Node*
+                ::= WhileStatement(symbolTable):whileStatement{ return whileStatement; }
+                |   EmptyStatement:emptyStatement{ return emptyStatement; }
+                ;
+
+            WhileStatement(SymbolTable* symbolTable) : Node*
+                ::= WHILE LPAREN Expression:cond RPAREN Statement(symbolTable):stmt{ return new WhileStatementNode(cond, stmt); }
+                ;
+
+            EmptyStatement : Node*
+                ::= SEMICOLON{ return new EmptyStatementNode(); }
+                ;
+
+            Expression : Node*
+                ::= ID{ soulng::lexer::Token token = lexer.GetToken(pos); return new IdentifierNode(token.match.ToString()); }
+                // ....
+                ;
+        }
+    </pre>
+
+    <p>
+        The <strong>spg</strong> tool generates the following header file:
+    </p>
+
+    <pre>
+        // ExampleParser.hpp:
+
+        #ifndef EXAMPLEPARSER_HPP
+        #define EXAMPLEPARSER_HPP
+        #include &lt;ExampleAST.hpp>
+        #include &lt;soulng/lexer/Token.hpp>
+        #include &lt;soulng/parser/Match.hpp>
+        #include &lt;soulng/parser/Value.hpp>
+
+        // this file has been automatically generated from 'D:/work/soulng-project/doc/topics/syntax/ast/ExampleParser.parser' using soulng parser generator spg version 1.0.0
+
+        class ExampleLexer;
+
+        struct ExampleParser
+        {
+            static soulng::parser::Match Statement(ExampleLexer& lexer, SymbolTable* symbolTable);
+            static soulng::parser::Match WhileStatement(ExampleLexer& lexer, SymbolTable* symbolTable);
+            static soulng::parser::Match EmptyStatement(ExampleLexer& lexer);
+            static soulng::parser::Match Expression(ExampleLexer& lexer);
+        };
+
+        #endif // EXAMPLEPARSER_HPP
+    </pre>
+
+    <p>
+        And the following source file:
+    </p>
+
+    <pre>
+        // ExampleParser.cpp:
+
+        #include "ExampleParser.hpp"
+        #include &lt;soulng/util/Unicode.hpp>
+        #include &lt;ExampleLexer.hpp>
+        #include &lt;ExampleTokens.hpp>
+        #include &lt;boost/filesystem.hpp>
+
+        // this file has been automatically generated from 'D:/work/soulng-project/doc/topics/syntax/ast/ExampleParser.parser' using soulng parser generator spg version 1.0.0
+
+        using namespace soulng::unicode;
+        using namespace ExampleTokens;
+        using namespace boost::filesystem;
+
+        soulng::parser::Match ExampleParser::Statement(ExampleLexer& lexer, SymbolTable* symbolTable)
+        {
+            std::unique_ptr&lt;Node> whileStatement;
+            std::unique_ptr&lt;Node> emptyStatement;
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int save = lexer.GetPos();
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch1 = &match;
+                {
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match = ExampleParser::WhileStatement(lexer, symbolTable);
+                    whileStatement.reset(static_cast&lt;Node*>(match.value));
+                    if (match.hit)
+                    {
+                        return soulng::parser::Match(true, whileStatement.release());
+                    }
+                    *parentMatch1 = match;
+                }
+                *parentMatch0 = match;
+                if (!match.hit)
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch2 = &match;
+                    lexer.SetPos(save);
+                    {
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch3 = &match;
+                        {
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match = ExampleParser::EmptyStatement(lexer);
+                            emptyStatement.reset(static_cast&lt;Node*>(match.value));
+                            if (match.hit)
+                            {
+                                return soulng::parser::Match(true, emptyStatement.release());
+                            }
+                            *parentMatch3 = match;
+                        }
+                        *parentMatch2 = match;
+                    }
+                    *parentMatch0 = match;
+                }
+            }
+            return match;
+        }
+
+        soulng::parser::Match ExampleParser::WhileStatement(ExampleLexer& lexer, SymbolTable* symbolTable)
+        {
+            std::unique_ptr&lt;Node> cond;
+            std::unique_ptr&lt;Node> stmt;
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch1 = &match;
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch2 = &match;
+                    {
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch3 = &match;
+                        {
+                            soulng::parser::Match match(false);
+                            if (*lexer == WHILE)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            *parentMatch3 = match;
+                        }
+                        if (match.hit)
+                        {
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch4 = &match;
+                            {
+                                soulng::parser::Match match(false);
+                                if (*lexer == LPAREN)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
+                                *parentMatch4 = match;
+                            }
+                            *parentMatch3 = match;
+                        }
+                        *parentMatch2 = match;
+                    }
+                    if (match.hit)
+                    {
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch5 = &match;
+                        {
+                            soulng::parser::Match match = ExampleParser::Expression(lexer);
+                            cond.reset(static_cast&lt;Node*>(match.value));
+                            *parentMatch5 = match;
+                        }
+                        *parentMatch2 = match;
+                    }
+                    *parentMatch1 = match;
+                }
+                if (match.hit)
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch6 = &match;
+                    {
+                        soulng::parser::Match match(false);
+                        if (*lexer == RPAREN)
+                        {
+                            ++lexer;
+                            match.hit = true;
+                        }
+                        *parentMatch6 = match;
+                    }
+                    *parentMatch1 = match;
+                }
+                *parentMatch0 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch7 = &match;
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch8 = &match;
+                    {
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match = ExampleParser::Statement(lexer, symbolTable);
+                        stmt.reset(static_cast&lt;Node*>(match.value));
+                        if (match.hit)
+                        {
+                            return soulng::parser::Match(true, new WhileStatementNode(cond.release(), stmt.release()));
+                        }
+                        *parentMatch8 = match;
+                    }
+                    *parentMatch7 = match;
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+
+        soulng::parser::Match ExampleParser::EmptyStatement(ExampleLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(false);
+                if (*lexer == SEMICOLON)
+                {
+                    ++lexer;
+                    match.hit = true;
+                }
+                if (match.hit)
+                {
+                    return soulng::parser::Match(true, new EmptyStatementNode);
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+
+        soulng::parser::Match ExampleParser::Expression(ExampleLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(false);
+                if (*lexer == ID)
+                {
+                    ++lexer;
+                    match.hit = true;
+                }
+                if (match.hit)
+                {
+                    soulng::lexer::Token token = lexer.GetToken(pos);
+                    return soulng::parser::Match(true, new IdentifierNode(token.match.ToString()));
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+    </pre>
+</body>
+</html>

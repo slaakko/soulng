@@ -3,7 +3,7 @@
 
 // this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 1.0.0
 
-#undef NULL
+#include <string>
 
 namespace ParserFileTokens
 {

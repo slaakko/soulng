@@ -5,7 +5,7 @@
 
 #include <cmajor/lexer/CmajorLexerApi.hpp>
 #include <cmajor/lexer/TokenValueParsers.hpp>
-#undef NULL
+#include <string>
 
 namespace ContainerFileTokens
 {

@@ -1,0 +1,32 @@
+parser StatementParser
+{
+    using ExpressionParser.Expression;
+
+    Statement
+        ::= IfStatement
+            // ...
+        ;
+
+    IfStatement
+        ::= IF LPAREN Expression:condition RPAREN Statement
+        ;
+}
+
+parser ExpressionParser
+{
+    Expression
+        ::= // ...
+        ;
+}
+
+lexer CmajorLexer
+{
+    // ...
+}
+
+parser CmajorFunctionParser
+{
+    uselexer CmajorLexer;
+
+    // ...
+}

@@ -1,9 +1,9 @@
 #ifndef MinilangTokens_HPP
 #define MinilangTokens_HPP
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/minilang.lexer' using soulng lexer generator slg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/Minilang.lexer' using soulng lexer generator slg version 1.0.0
 
-#undef NULL
+#include <string>
 
 namespace MinilangTokens
 {

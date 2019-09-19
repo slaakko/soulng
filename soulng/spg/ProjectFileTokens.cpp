@@ -1,26 +1,27 @@
 
 // this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 1.0.0
 
-#include <map>
-std::map<std::u32string, int> tokenIdMapProjectFileTokens;
 #include <soulng/spg/ProjectFileTokens.hpp>
+#include <map>
 
 namespace ProjectFileTokens
 {
+    std::map<std::u32string, int> tokenIdMap;
+
     void InitTokenIdMap()
     {
-        tokenIdMapProjectFileTokens[U"DOT"] = 5;
-        tokenIdMapProjectFileTokens[U"FILEPATH"] = 4;
-        tokenIdMapProjectFileTokens[U"ID"] = 3;
-        tokenIdMapProjectFileTokens[U"PROJECT"] = 1;
-        tokenIdMapProjectFileTokens[U"SEMICOLON"] = 6;
-        tokenIdMapProjectFileTokens[U"SOURCE"] = 2;
+        tokenIdMap[U"DOT"] = 5;
+        tokenIdMap[U"FILEPATH"] = 4;
+        tokenIdMap[U"ID"] = 3;
+        tokenIdMap[U"PROJECT"] = 1;
+        tokenIdMap[U"SEMICOLON"] = 6;
+        tokenIdMap[U"SOURCE"] = 2;
     }
 
     int GetTokenId(const std::u32string& tokenName)
     {
-        auto it = tokenIdMapProjectFileTokens.find(tokenName);
-        if (it != tokenIdMapProjectFileTokens.cend())
+        auto it = tokenIdMap.find(tokenName);
+        if (it != tokenIdMap.cend())
         {
             return it->second;
         }

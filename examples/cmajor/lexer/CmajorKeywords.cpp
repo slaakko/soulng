@@ -71,7 +71,7 @@ namespace CmajorKeywords
         {U"typeid", TYPEID}, 
         {U"const", CONST}, 
         {U"constexpr", CONSTEXPR}, 
-        {U"null", NULL}, 
+        {U"null", NULLLIT}, 
         {U"this", THIS}, 
         {U"base", BASE}, 
         {U"construct", CONSTRUCT}, 

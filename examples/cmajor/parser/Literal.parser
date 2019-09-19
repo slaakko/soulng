@@ -65,7 +65,7 @@ parser api(CMAJOR_PARSER_API) LiteralParser
             value->SetText(lexer.GetMatch(span));
             return value;
         }
-        |   NULL
+        |   NULLLIT
         {
             LiteralNode* value = new NullLiteralNode(span);
             value->SetText(lexer.GetMatch(span));

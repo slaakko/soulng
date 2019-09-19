@@ -5,7 +5,7 @@
 
 #include <cmajor/lexer/TokenValueParsers.hpp>
 #include <cmajor/lexer/CmajorLexerApi.hpp>
-#undef NULL
+#include <string>
 
 namespace CmajorTokens
 {
@@ -71,7 +71,7 @@ namespace CmajorTokens
     const int TYPEID = 59;
     const int CONST = 60;
     const int CONSTEXPR = 61;
-    const int NULL = 62;
+    const int NULLLIT = 62;
     const int THIS = 63;
     const int BASE = 64;
     const int CONSTRUCT = 65;

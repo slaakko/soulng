@@ -1,0 +1,32 @@
+[hpp]#include <ExampleAST.hpp>
+[cpp]#include <ExampleLexer.hpp>
+[cpp]#include <ExampleTokens.hpp>
+#include <boost/filesystem.hpp>
+
+using namespace ExampleTokens;
+using namespace boost::filesystem;
+
+parser ExampleParser
+{
+    uselexer ExampleLexer;
+
+    main;
+
+    Statement(SymbolTable* symbolTable) : Node*
+        ::= WhileStatement(symbolTable):whileStatement{ return whileStatement; }
+        |   EmptyStatement:emptyStatement{ return emptyStatement; }
+        ;
+
+    WhileStatement(SymbolTable* symbolTable) : Node*
+        ::= WHILE LPAREN Expression:cond RPAREN Statement(symbolTable):stmt{ return new WhileStatementNode(cond, stmt); }
+        ;
+
+    EmptyStatement : Node*
+        ::= SEMICOLON{ return new EmptyStatementNode(); }
+        ;
+
+    Expression : Node*
+        ::= ID{ soulng::lexer::Token token = lexer.GetToken(pos); return new IdentifierNode(token.match.ToString()); }
+        // ....
+        ;
+}

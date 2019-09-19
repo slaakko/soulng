@@ -110,7 +110,7 @@ void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerC
     {
         formatter.WriteLine("#include <" + ToUtf8(include->Header()) + ">");
     }
-    formatter.WriteLine("#undef NULL");
+    formatter.WriteLine("#include <string>");
     formatter.WriteLine();
     formatter.WriteLine("namespace " + ToUtf8(Name()));
     formatter.WriteLine("{");
@@ -146,24 +146,25 @@ void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerC
     sourceFileFormatter.WriteLine();
     sourceFileFormatter.WriteLine("// this file has been automatically generated from '" + lexerContext.FileName() + "' using soulng lexer generator slg version " + LexerGeneratorVersionStr());
     sourceFileFormatter.WriteLine();
-    sourceFileFormatter.WriteLine("#include <map>");
-    sourceFileFormatter.WriteLine("std::map<std::u32string, int> tokenIdMap" + ToUtf8(Name()) + ";");
-    std::string tokenFileInclude = "#include \"" + tokenFileName  + "\"";
+    std::string tokenFileInclude = "#include \"" + tokenFileName + "\"";
     if (lexerContext.GetPrefix())
     {
         tokenFileInclude = "#include <" + Path::Combine(ToUtf8(lexerContext.GetPrefix()->Name()), ToUtf8(Name()) + ".hpp") + ">";
     }
     sourceFileFormatter.WriteLine(tokenFileInclude);
+    sourceFileFormatter.WriteLine("#include <map>");
     sourceFileFormatter.WriteLine();
     sourceFileFormatter.WriteLine("namespace " + ToUtf8(Name()));
     sourceFileFormatter.WriteLine("{");
     sourceFileFormatter.IncIndent();
+    sourceFileFormatter.WriteLine("std::map<std::u32string, int> tokenIdMap;");
+    sourceFileFormatter.WriteLine();
     sourceFileFormatter.WriteLine("void InitTokenIdMap()");
     sourceFileFormatter.WriteLine("{");
     sourceFileFormatter.IncIndent();
     for (const auto& p : tokenIdMap)
     {
-        sourceFileFormatter.WriteLine("tokenIdMap" + ToUtf8(Name()) + "[U\"" + ToUtf8(p.first) + "\"] = " + std::to_string(p.second) + ";");
+        sourceFileFormatter.WriteLine("tokenIdMap[U\"" + ToUtf8(p.first) + "\"] = " + std::to_string(p.second) + ";");
     }
     sourceFileFormatter.DecIndent();
     sourceFileFormatter.WriteLine("}");
@@ -171,8 +172,8 @@ void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerC
     sourceFileFormatter.WriteLine("int GetTokenId(const std::u32string& tokenName)");
     sourceFileFormatter.WriteLine("{");
     sourceFileFormatter.IncIndent();
-    sourceFileFormatter.WriteLine("auto it = tokenIdMap" + ToUtf8(Name()) + ".find(tokenName);");
-    sourceFileFormatter.WriteLine("if (it != tokenIdMap" + ToUtf8(Name()) + ".cend())");
+    sourceFileFormatter.WriteLine("auto it = tokenIdMap.find(tokenName);");
+    sourceFileFormatter.WriteLine("if (it != tokenIdMap.cend())");
     sourceFileFormatter.WriteLine("{");
     sourceFileFormatter.IncIndent();
     sourceFileFormatter.WriteLine("return it->second;");

@@ -69,7 +69,7 @@
     </table>
 
     <p>
-        If the <em>.lexer </em>file contains Unicode identifiers with non-ASCII characters, the encoding of it should be UTF-8.
+        If the <em>.lexer</em> file contains Unicode identifiers with non-ASCII characters, the encoding of it should be UTF-8.
         The lexer generator <strong>slg</strong> will generate C++ source and header files whose encoding is UTF-8.
     </p>
 
@@ -233,7 +233,7 @@
     <pre>
         tokens ExampleTokens
         {
-            (ID, "identifier"), (IF, "'if'"), (ELSE, "'else'"), (LPAREN, "'('"), (RPAREN, "')'")
+            (ID, "identifier"), (IF, "'if'"), (ELSE, "'else'"), (LPAREN, "'('"), (RPAREN, "')'"), (SEMICOLON, "';'")
         }
     </pre>
 
@@ -253,6 +253,7 @@
             const int ELSE = 3;
             const int LPAREN = 4;
             const int RPAREN = 5;
+            const int SEMICOLON = 6;
             // ...
         }
     </pre>
@@ -471,7 +472,7 @@
     <pre>
         tokens ExampleTokens
         {
-            (ID, "identifier"), (IF, "'if'"), (ELSE, "'else'"), (LPAREN, "'('"), (RPAREN, "')'")
+            (ID, "identifier"), (IF, "'if'"), (ELSE, "'else'"), (LPAREN, "'('"), (RPAREN, "')'"), (SEMICOLON, "';'")
         }
 
         keywords ExampleKeywords
@@ -496,6 +497,7 @@
             "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
             "\(" { return LPAREN; }
             "\)" { return RPAREN; }
+            ";" { return SEMICOLON; }
         }
     </pre>
 
@@ -633,7 +635,7 @@
 
     <table class="grammar">
         <tr>
-            <td class="rule" id="rule.lexer-keyword">lexer&#8209;keyword</td>
+            <td class="rule" id="rule.lexer-file-keyword">lexer&#8209;file&#8209;keyword</td>
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="cpp.html#rule.cppkeyword">cppkeyword</a></span> |

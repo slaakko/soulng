@@ -128,7 +128,7 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
             }
             break;
         }
-        case NULL:
+        case NULLLIT:
         {
             ++lexer;
             {

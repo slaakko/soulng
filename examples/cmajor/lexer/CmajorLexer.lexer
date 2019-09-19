@@ -21,7 +21,7 @@ tokens CmajorTokens
     (SUPPRESS, "'suppress'"), (OPERATOR, "'operator'"), (CLASS, "'class'"), (RETURN, "'return'"),
     (IF, "'if'"), (ELSE, "'else'"), (SWITCH, "'switch'"), (CASE, "'case'"), (DEFAULT, "'default'"),
     (WHILE, "'while'"), (DO, "'do'"), (FOR, "'for'"), (BREAK, "'break'"), (CONTINUE, "'continue'"), (GOTO, "'goto'"), (TYPEDEF, "'typedef'"), (TYPENAME, "'typename'"), (TYPEID, "'typeid'"),
-    (CONST, "'const'"), (CONSTEXPR, "'constexpr'"), (NULL, "'null'"), (THIS, "'this'"), (BASE, "'base'"), (CONSTRUCT, "'construct'"), (DESTROY, "'destroy'"),
+    (CONST, "'const'"), (CONSTEXPR, "'constexpr'"), (NULLLIT, "'null'"), (THIS, "'this'"), (BASE, "'base'"), (CONSTRUCT, "'construct'"), (DESTROY, "'destroy'"),
     (NEW, "'new'"), (DELETE, "'delete'"), (SIZEOF, "'sizeof'"), (TRY, "'try'"), (CATCH, "'catch'"), (THROW, "'throw'"),
     (CONCEPT, "'concept'"), (WHERE, "'where'"), (AXIOM, "'axiom'"), (AND, "'and'"), (OR, "'or'"), (EXCLAMATION, "'!'"), (UNIT_TEST, "'unit_test'"),
     (ID, "identifier"), (FLOATINGLIT, "floating literal"), (INTLIT, "integer literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"),
@@ -41,7 +41,7 @@ keywords CmajorKeywords
     ("public", PUBLIC), ("protected", PROTECTED), ("private", PRIVATE), ("internal", INTERNAL), ("virtual", VIRTUAL), ("abstract", ABSTRACT), ("override", OVERRIDE), ("suppress", SUPPRESS),
     ("operator", OPERATOR), ("class", CLASS), ("return", RETURN), ("if", IF), ("else", ELSE), 
     ("switch", SWITCH), ("case", CASE), ("default", DEFAULT), ("while", WHILE), ("do", DO), ("for", FOR), 
-    ("break", BREAK), ("continue", CONTINUE), ("goto", GOTO), ("typedef", TYPEDEF), ("typename", TYPENAME), ("typeid", TYPEID), ("const", CONST), ("constexpr", CONSTEXPR), ("null", NULL), ("this", THIS), ("base", BASE),
+    ("break", BREAK), ("continue", CONTINUE), ("goto", GOTO), ("typedef", TYPEDEF), ("typename", TYPENAME), ("typeid", TYPEID), ("const", CONST), ("constexpr", CONSTEXPR), ("null", NULLLIT), ("this", THIS), ("base", BASE),
     ("construct", CONSTRUCT), ("destroy", DESTROY), ("new", NEW), ("delete", DELETE), ("sizeof", SIZEOF), ("try", TRY), ("catch", CATCH), ("throw", THROW), 
     ("concept", CONCEPT), ("where", WHERE), ("axiom", AXIOM), ("and", AND), ("or", OR), ("unit_test", UNIT_TEST)
 }

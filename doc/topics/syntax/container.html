@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Container File Syntax</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Container File Syntax
+    </h1>
+
+    <p>
+        A container file should have an <em>.spg</em> extension.
+        It is used for listing the paths of the <em>.parser</em> source files that belong to parser project.
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.container-file">container&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">project</span>
+                <span class="rule"><a href="#rule.qualified-id">qualified&#8209;id</a></span>
+                <span class="mono">;</span>
+                <span class="rule"><a href="#rule.container-file-content">container&#8209;file&#8209;content</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.container-file-content">container&#8209;file&#8209;content</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="#rule.source-file">source&#8209;file</a></span>*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.qualified-id">qualified&#8209;id</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
+                (<span class="mono">.</span> <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>)*
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.source-file">source&#8209;file</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">source</span>
+                <span class="rule"><a href="common.html#rule.file-path">file&#8209;path</a></span>
+                <span class="mono">;</span>
+            </td>
+        </tr>
+    </table>
+
+    <h2>
+        Keywords
+    </h2>
+
+    <p>
+        The following keywords may not be used as identifiers in the container file:
+    </p>
+
+    <table class="grammar">
+        <tr>
+            <td class="rule" id="rule.spg-keyword">container&#8209;file&#8209;keyword</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">project</span> |
+                <span class="kw">source</span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

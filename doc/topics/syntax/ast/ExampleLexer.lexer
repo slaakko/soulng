@@ -1,0 +1,31 @@
+// ExampleLexer.lexer:
+
+tokens ExampleTokens
+{
+    (ID, "identifier"), (WHILE, "'while'"), (LPAREN, "'('"), (RPAREN, "')'"), (SEMICOLON, "';'")
+}
+
+keywords ExampleKeywords
+{
+    ("while", WHILE)
+}
+
+expressions
+{
+    ws = "[\n\r\t ]";
+    newline = "\r\n|\n|\r";
+    linecomment = "//[^\n\r]*{newline}";
+    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    comment = "{linecomment}|{blockcomment}";
+    separators = "({ws}|{comment})+";
+    id = "{idstart}{idcont}*";
+}
+
+lexer ExampleLexer
+{
+    "{separators}" {}
+    "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+    "\(" { return LPAREN; }
+    "\)" { return RPAREN; }
+    ";" { return SEMICOLON; }
+}
