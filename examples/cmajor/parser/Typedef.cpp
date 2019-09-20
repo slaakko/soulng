@@ -68,11 +68,16 @@ soulng::parser::Match TypedefParser::Typedef(CmajorLexer& lexer, ParsingContext*
                 soulng::parser::Match* parentMatch6 = &match;
                 {
                     soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch7 = &match;
                     {
                         int pos = lexer.GetPos();
                         soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
                         type.reset(static_cast<Node*>(match.value));
-                        if (!match.hit)
+                        if (match.hit)
+                        {
+                            *parentMatch7 = match;
+                        }
+                        else
                         {
                             lexer.ThrowExpectationFailure(pos, U"type expression");
                         }
@@ -86,19 +91,24 @@ soulng::parser::Match TypedefParser::Typedef(CmajorLexer& lexer, ParsingContext*
         if (match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch7 = &match;
+            soulng::parser::Match* parentMatch8 = &match;
             {
                 soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch9 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                     id.reset(static_cast<IdentifierNode*>(match.value));
-                    if (!match.hit)
+                    if (match.hit)
+                    {
+                        *parentMatch9 = match;
+                    }
+                    else
                     {
                         lexer.ThrowExpectationFailure(pos, U"identifier");
                     }
                 }
-                *parentMatch7 = match;
+                *parentMatch8 = match;
             }
             *parentMatch1 = match;
         }
@@ -107,14 +117,15 @@ soulng::parser::Match TypedefParser::Typedef(CmajorLexer& lexer, ParsingContext*
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch8 = &match;
+        soulng::parser::Match* parentMatch10 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch9 = &match;
+            soulng::parser::Match* parentMatch11 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch12 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -123,7 +134,11 @@ soulng::parser::Match TypedefParser::Typedef(CmajorLexer& lexer, ParsingContext*
                         ++lexer;
                         match.hit = true;
                     }
-                    if (!match.hit)
+                    if (match.hit)
+                    {
+                        *parentMatch12 = match;
+                    }
+                    else
                     {
                         lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
                     }
@@ -133,9 +148,9 @@ soulng::parser::Match TypedefParser::Typedef(CmajorLexer& lexer, ParsingContext*
                     s.end = span.end;
                     return soulng::parser::Match(true, new TypedefNode(s, specifiers->value, type.release(), id.release()));
                 }
-                *parentMatch9 = match;
+                *parentMatch11 = match;
             }
-            *parentMatch8 = match;
+            *parentMatch10 = match;
         }
         *parentMatch0 = match;
     }

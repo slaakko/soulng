@@ -190,6 +190,7 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                         int pos = lexer.GetPos();
                                                         soulng::lexer::Span span = lexer.GetSpan();
                                                         soulng::parser::Match match(true);
+                                                        soulng::parser::Match* parentMatch12 = &match;
                                                         {
                                                             int pos = lexer.GetPos();
                                                             soulng::parser::Match match(false);
@@ -198,7 +199,11 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                                 ++lexer;
                                                                 match.hit = true;
                                                             }
-                                                            if (!match.hit)
+                                                            if (match.hit)
+                                                            {
+                                                                *parentMatch12 = match;
+                                                            }
+                                                            else
                                                             {
                                                                 lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ID)));
                                                             }
@@ -218,11 +223,11 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                             if (!match.hit)
                                             {
                                                 soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch12 = &match;
+                                                soulng::parser::Match* parentMatch13 = &match;
                                                 lexer.SetPos(save);
                                                 {
                                                     soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch13 = &match;
+                                                    soulng::parser::Match* parentMatch14 = &match;
                                                     {
                                                         int pos = lexer.GetPos();
                                                         soulng::lexer::Span span = lexer.GetSpan();
@@ -237,9 +242,9 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                             s.end = span.end;
                                                             typeExpr.reset(new PointerNode(s, typeExpr.release()));
                                                         }
-                                                        *parentMatch13 = match;
+                                                        *parentMatch14 = match;
                                                     }
-                                                    *parentMatch12 = match;
+                                                    *parentMatch13 = match;
                                                 }
                                                 *parentMatch8 = match;
                                             }
@@ -248,11 +253,11 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                         if (!match.hit)
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch14 = &match;
+                                            soulng::parser::Match* parentMatch15 = &match;
                                             lexer.SetPos(save);
                                             {
                                                 soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch15 = &match;
+                                                soulng::parser::Match* parentMatch16 = &match;
                                                 {
                                                     int pos = lexer.GetPos();
                                                     soulng::lexer::Span span = lexer.GetSpan();
@@ -267,9 +272,9 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                         s.end = span.end;
                                                         typeExpr.reset(new RValueRefNode(s, typeExpr.release()));
                                                     }
-                                                    *parentMatch15 = match;
+                                                    *parentMatch16 = match;
                                                 }
-                                                *parentMatch14 = match;
+                                                *parentMatch15 = match;
                                             }
                                             *parentMatch7 = match;
                                         }
@@ -278,11 +283,11 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                     if (!match.hit)
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch16 = &match;
+                                        soulng::parser::Match* parentMatch17 = &match;
                                         lexer.SetPos(save);
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch17 = &match;
+                                            soulng::parser::Match* parentMatch18 = &match;
                                             {
                                                 int pos = lexer.GetPos();
                                                 soulng::lexer::Span span = lexer.GetSpan();
@@ -297,9 +302,9 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                     s.end = span.end;
                                                     typeExpr.reset(new LValueRefNode(s, typeExpr.release()));
                                                 }
-                                                *parentMatch17 = match;
+                                                *parentMatch18 = match;
                                             }
-                                            *parentMatch16 = match;
+                                            *parentMatch17 = match;
                                         }
                                         *parentMatch6 = match;
                                     }
@@ -308,14 +313,14 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                 if (!match.hit)
                                 {
                                     soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch18 = &match;
+                                    soulng::parser::Match* parentMatch19 = &match;
                                     lexer.SetPos(save);
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch19 = &match;
+                                        soulng::parser::Match* parentMatch20 = &match;
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch20 = &match;
+                                            soulng::parser::Match* parentMatch21 = &match;
                                             {
                                                 soulng::parser::Match match(false);
                                                 if (*lexer == LBRACKET)
@@ -323,45 +328,46 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                     ++lexer;
                                                     match.hit = true;
                                                 }
-                                                *parentMatch20 = match;
+                                                *parentMatch21 = match;
                                             }
                                             if (match.hit)
                                             {
                                                 soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch21 = &match;
+                                                soulng::parser::Match* parentMatch22 = &match;
                                                 {
                                                     soulng::parser::Match match(true);
                                                     int save = lexer.GetPos();
-                                                    soulng::parser::Match* parentMatch22 = &match;
+                                                    soulng::parser::Match* parentMatch23 = &match;
                                                     {
                                                         soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
                                                         size.reset(static_cast<Node*>(match.value));
                                                         if (match.hit)
                                                         {
-                                                            *parentMatch22 = match;
+                                                            *parentMatch23 = match;
                                                         }
                                                         else
                                                         {
                                                             lexer.SetPos(save);
                                                         }
                                                     }
-                                                    *parentMatch21 = match;
+                                                    *parentMatch22 = match;
                                                 }
-                                                *parentMatch20 = match;
+                                                *parentMatch21 = match;
                                             }
-                                            *parentMatch19 = match;
+                                            *parentMatch20 = match;
                                         }
                                         if (match.hit)
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch23 = &match;
+                                            soulng::parser::Match* parentMatch24 = &match;
                                             {
                                                 soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch24 = &match;
+                                                soulng::parser::Match* parentMatch25 = &match;
                                                 {
                                                     int pos = lexer.GetPos();
                                                     soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match(true);
+                                                    soulng::parser::Match* parentMatch26 = &match;
                                                     {
                                                         int pos = lexer.GetPos();
                                                         soulng::parser::Match match(false);
@@ -370,7 +376,11 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                             ++lexer;
                                                             match.hit = true;
                                                         }
-                                                        if (!match.hit)
+                                                        if (match.hit)
+                                                        {
+                                                            *parentMatch26 = match;
+                                                        }
+                                                        else
                                                         {
                                                             lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACKET)));
                                                         }
@@ -380,13 +390,13 @@ soulng::parser::Match TypeExprParser::PostfixTypeExpr(CmajorLexer& lexer, Parsin
                                                         s.end = span.end;
                                                         typeExpr.reset(new ArrayNode(s, typeExpr.release(), size.release()));
                                                     }
-                                                    *parentMatch24 = match;
+                                                    *parentMatch25 = match;
                                                 }
-                                                *parentMatch23 = match;
+                                                *parentMatch24 = match;
                                             }
-                                            *parentMatch19 = match;
+                                            *parentMatch20 = match;
                                         }
-                                        *parentMatch18 = match;
+                                        *parentMatch19 = match;
                                     }
                                     *parentMatch5 = match;
                                 }

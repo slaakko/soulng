@@ -776,7 +776,7 @@ void LexerFile::Add(Declaration* declaration)
     declarationMap[declaration->Name()] = declaration;
 }
 
-void LexerFile::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void LexerFile::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
     for (auto& d : declarations)
     {
@@ -795,7 +795,7 @@ void LexerFile::Process(const std::string& root, bool verbose, LexerContext& lex
         d->Process(root, verbose, lexerContext);
     }
     lexerContext.MakeCanonicalClasses();
-    lexerContext.MakeClassPartition();
+    lexerContext.MakeClassPartition(debug);
     lexerContext.MakeClassMap(root, verbose);
     lexerContext.GetLexer()->MakeMasterNfa(lexerContext);
     lexerContext.GetLexer()->MakeDfa(lexerContext);

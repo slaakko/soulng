@@ -25,13 +25,15 @@ LexerContext::LexerContext(IdentifierClassKind identifierClassKind) :
     if (identifierClassKind == IdentifierClassKind::unicode)
     {
         MakeUnicodeIdentifierClasses(*this);
+        symbols.push_back(idStart);
+        symbols.push_back(idCont);
     }
     else if (identifierClassKind == IdentifierClassKind::ascii)
     {
         MakeAsciiIdentifierClasses(*this);
+        symbols.push_back(idStart);
+        symbols.push_back(idCont);
     }
-    symbols.push_back(idStart);
-    symbols.push_back(idCont);
 }
 
 LexerContext::~LexerContext()
@@ -272,7 +274,7 @@ struct ClassesEqual
     }
 };
 
-void LexerContext::MakeClassPartition()
+void LexerContext::MakeClassPartition(bool debug)
 {
     std::list<Class*> classes;
     for (Class* cls : canonicalClasses)
@@ -376,6 +378,19 @@ void LexerContext::MakeClassPartition()
     {
         Class* cls = partition[i];
         cls->SetIndex(i);
+    }
+    if (debug)
+    {
+        CodeFormatter formatter(std::cout);
+        formatter.WriteLine("partition:");
+        for (int i = 0; i < partition.size(); ++i)
+        {
+            Class* cls = partition[i];
+            formatter.Write(std::to_string(cls->Index()));
+            formatter.Write(" : ");
+            cls->Print(formatter);
+            formatter.WriteLine();
+        }
     }
 }
 

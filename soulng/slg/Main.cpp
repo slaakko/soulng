@@ -25,9 +25,13 @@ void PrintUsage()
     std::cout << "  Print help and exit." << std::endl;
     std::cout << "--verbose | -v" << std::endl;
     std::cout << "  Be verbose." << std::endl;
+    std::cout << "--debug | -d" << std::endl;
+    std::cout << "  Print character class partition to stdout" << std::endl;
     std::cout << "--use-ascii-identifier-classes | -a" << std::endl;
     std::cout << "  Use ASCII identifier classes." << std::endl;
     std::cout << "  By default uses Unicode identifier classes." << std::endl;
+    std::cout << "--no-identifier-classes | -n" << std::endl;
+    std::cout << "  No predefined identifier classes" << std::endl;
 }
 
 struct Initializer
@@ -50,6 +54,7 @@ int main(int argc, const char** argv)
     try
     {
         bool verbose = false;
+        bool debug = false;
         soulng::slg::IdentifierClassKind identifierClassKind = soulng::slg::IdentifierClassKind::unicode;
         std::string fileName;
         for (int i = 1; i < argc; ++i)
@@ -66,9 +71,17 @@ int main(int argc, const char** argv)
                 {
                     verbose = true;
                 }
+                else if (arg == "--debug")
+                {
+                    debug = true;
+                }
                 else if (arg == "--use-ascii-identifier-classes")
                 {
                     identifierClassKind = soulng::slg::IdentifierClassKind::ascii;
+                }
+                else if (arg == "--no-identifier-classes")
+                {
+                    identifierClassKind = soulng::slg::IdentifierClassKind::none;
                 }
                 else
                 {
@@ -93,9 +106,17 @@ int main(int argc, const char** argv)
                     {
                         verbose = true;
                     }
+                    else if (o == 'd')
+                    {
+                        debug = true;
+                    }
                     else if (o == 'a')
                     {
                         identifierClassKind = soulng::slg::IdentifierClassKind::ascii;
+                    }
+                    else if (o == 'n')
+                    {
+                        identifierClassKind = soulng::slg::IdentifierClassKind::none;
                     }
                     else
                     {
@@ -126,7 +147,7 @@ int main(int argc, const char** argv)
         soulng::slg::RegularExpressionParser regularExpressionParser;
         lexerContext.SetParser(&regularExpressionParser);
         std::string root = soulng::util::Path::GetDirectoryName(fileName);
-        lexerFile->Process(root, verbose, lexerContext);
+        lexerFile->Process(root, verbose, debug, lexerContext);
     }
     catch (const std::exception& ex)
     {

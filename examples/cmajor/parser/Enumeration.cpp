@@ -83,11 +83,16 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                                 int pos = lexer.GetPos();
                                 soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match(true);
+                                soulng::parser::Match* parentMatch10 = &match;
                                 {
                                     int pos = lexer.GetPos();
                                     soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                                     enumTypeId.reset(static_cast<IdentifierNode*>(match.value));
-                                    if (!match.hit)
+                                    if (match.hit)
+                                    {
+                                        *parentMatch10 = match;
+                                    }
+                                    else
                                     {
                                         lexer.ThrowExpectationFailure(pos, U"identifier");
                                     }
@@ -108,14 +113,14 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch10 = &match;
+                    soulng::parser::Match* parentMatch11 = &match;
                     {
                         soulng::parser::Match match(true);
                         int save = lexer.GetPos();
-                        soulng::parser::Match* parentMatch11 = &match;
+                        soulng::parser::Match* parentMatch12 = &match;
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch12 = &match;
+                            soulng::parser::Match* parentMatch13 = &match;
                             {
                                 int pos = lexer.GetPos();
                                 soulng::parser::Match match = EnumerationParser::UnderlyingType(lexer, ctx);
@@ -124,18 +129,18 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                                 {
                                     enumTypeNode->SetUnderlyingType(underlyingType.release());
                                 }
-                                *parentMatch12 = match;
+                                *parentMatch13 = match;
                             }
                             if (match.hit)
                             {
-                                *parentMatch11 = match;
+                                *parentMatch12 = match;
                             }
                             else
                             {
                                 lexer.SetPos(save);
                             }
                         }
-                        *parentMatch10 = match;
+                        *parentMatch11 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -144,14 +149,15 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch13 = &match;
+                soulng::parser::Match* parentMatch14 = &match;
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch14 = &match;
+                    soulng::parser::Match* parentMatch15 = &match;
                     {
                         int pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch16 = &match;
                         {
                             int pos = lexer.GetPos();
                             soulng::parser::Match match(false);
@@ -160,7 +166,11 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                                 ++lexer;
                                 match.hit = true;
                             }
-                            if (!match.hit)
+                            if (match.hit)
+                            {
+                                *parentMatch16 = match;
+                            }
+                            else
                             {
                                 lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
                             }
@@ -169,9 +179,9 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                         {
                             beginBraceSpan = span;
                         }
-                        *parentMatch14 = match;
+                        *parentMatch15 = match;
                     }
-                    *parentMatch13 = match;
+                    *parentMatch14 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -180,10 +190,10 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
         if (match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch15 = &match;
+            soulng::parser::Match* parentMatch17 = &match;
             {
                 soulng::parser::Match match = EnumerationParser::EnumConstants(lexer, ctx, enumTypeNode.get());
-                *parentMatch15 = match;
+                *parentMatch17 = match;
             }
             *parentMatch1 = match;
         }
@@ -192,14 +202,15 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch16 = &match;
+        soulng::parser::Match* parentMatch18 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch17 = &match;
+            soulng::parser::Match* parentMatch19 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch20 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -208,7 +219,11 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                         ++lexer;
                         match.hit = true;
                     }
-                    if (!match.hit)
+                    if (match.hit)
+                    {
+                        *parentMatch20 = match;
+                    }
+                    else
                     {
                         lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
                     }
@@ -220,9 +235,9 @@ soulng::parser::Match EnumerationParser::EnumType(CmajorLexer& lexer, ParsingCon
                     enumTypeNode->SetEndBraceSpan(endBraceSpan);
                     return soulng::parser::Match(true, enumTypeNode.release());
                 }
-                *parentMatch17 = match;
+                *parentMatch19 = match;
             }
-            *parentMatch16 = match;
+            *parentMatch18 = match;
         }
         *parentMatch0 = match;
     }
@@ -278,11 +293,16 @@ soulng::parser::Match EnumerationParser::EnumConstants(CmajorLexer& lexer, Parsi
         {
             int pos = lexer.GetPos();
             soulng::parser::Match match(true);
+            soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::parser::Match match = EnumerationParser::EnumConstant(lexer, ctx, enumType);
                 enumConstant.reset(static_cast<EnumConstantNode*>(match.value));
-                if (!match.hit)
+                if (match.hit)
+                {
+                    *parentMatch2 = match;
+                }
+                else
                 {
                     lexer.ThrowExpectationFailure(pos, U"enumeration constant");
                 }
@@ -298,17 +318,17 @@ soulng::parser::Match EnumerationParser::EnumConstants(CmajorLexer& lexer, Parsi
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch2 = &match;
+        soulng::parser::Match* parentMatch3 = &match;
         {
             soulng::parser::Match match(true);
-            soulng::parser::Match* parentMatch3 = &match;
+            soulng::parser::Match* parentMatch4 = &match;
             {
                 while (true)
                 {
                     int save = lexer.GetPos();
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch4 = &match;
+                        soulng::parser::Match* parentMatch5 = &match;
                         {
                             soulng::parser::Match match(false);
                             if (*lexer == COMMA)
@@ -316,23 +336,28 @@ soulng::parser::Match EnumerationParser::EnumConstants(CmajorLexer& lexer, Parsi
                                 ++lexer;
                                 match.hit = true;
                             }
-                            *parentMatch4 = match;
+                            *parentMatch5 = match;
                         }
                         if (match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
+                            soulng::parser::Match* parentMatch6 = &match;
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch6 = &match;
+                                soulng::parser::Match* parentMatch7 = &match;
                                 {
                                     int pos = lexer.GetPos();
                                     soulng::parser::Match match(true);
+                                    soulng::parser::Match* parentMatch8 = &match;
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match = EnumerationParser::EnumConstant(lexer, ctx, enumType);
                                         enumConstant.reset(static_cast<EnumConstantNode*>(match.value));
-                                        if (!match.hit)
+                                        if (match.hit)
+                                        {
+                                            *parentMatch8 = match;
+                                        }
+                                        else
                                         {
                                             lexer.ThrowExpectationFailure(pos, U"enumeration constant");
                                         }
@@ -341,15 +366,15 @@ soulng::parser::Match EnumerationParser::EnumConstants(CmajorLexer& lexer, Parsi
                                     {
                                         enumType->AddConstant(enumConstant.release());
                                     }
-                                    *parentMatch6 = match;
+                                    *parentMatch7 = match;
                                 }
-                                *parentMatch5 = match;
+                                *parentMatch6 = match;
                             }
-                            *parentMatch4 = match;
+                            *parentMatch5 = match;
                         }
                         if (match.hit)
                         {
-                            *parentMatch3 = match;
+                            *parentMatch4 = match;
                         }
                         else
                         {
@@ -359,7 +384,7 @@ soulng::parser::Match EnumerationParser::EnumConstants(CmajorLexer& lexer, Parsi
                     }
                 }
             }
-            *parentMatch2 = match;
+            *parentMatch3 = match;
         }
         *parentMatch0 = match;
     }
@@ -380,11 +405,16 @@ soulng::parser::Match EnumerationParser::EnumConstant(CmajorLexer& lexer, Parsin
             int pos = lexer.GetPos();
             soulng::lexer::Span span = lexer.GetSpan();
             soulng::parser::Match match(true);
+            soulng::parser::Match* parentMatch2 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                 constantId.reset(static_cast<IdentifierNode*>(match.value));
-                if (!match.hit)
+                if (match.hit)
+                {
+                    *parentMatch2 = match;
+                }
+                else
                 {
                     lexer.ThrowExpectationFailure(pos, U"identifier");
                 }
@@ -400,14 +430,14 @@ soulng::parser::Match EnumerationParser::EnumConstant(CmajorLexer& lexer, Parsin
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch2 = &match;
+        soulng::parser::Match* parentMatch3 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
+            soulng::parser::Match* parentMatch4 = &match;
             {
                 int save = lexer.GetPos();
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch4 = &match;
+                soulng::parser::Match* parentMatch5 = &match;
                 {
                     soulng::parser::Match match(false);
                     if (*lexer == ASSIGN)
@@ -415,15 +445,15 @@ soulng::parser::Match EnumerationParser::EnumConstant(CmajorLexer& lexer, Parsin
                         ++lexer;
                         match.hit = true;
                     }
-                    *parentMatch4 = match;
+                    *parentMatch5 = match;
                 }
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch5 = &match;
+                    soulng::parser::Match* parentMatch6 = &match;
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch6 = &match;
+                        soulng::parser::Match* parentMatch7 = &match;
                         {
                             int pos = lexer.GetPos();
                             soulng::lexer::Span span = lexer.GetSpan();
@@ -437,21 +467,21 @@ soulng::parser::Match EnumerationParser::EnumConstant(CmajorLexer& lexer, Parsin
                                 value->SetStrValue(lexer.GetMatch(s));
                                 return soulng::parser::Match(true, value);
                             }
-                            *parentMatch6 = match;
+                            *parentMatch7 = match;
                         }
-                        *parentMatch5 = match;
+                        *parentMatch6 = match;
                     }
-                    *parentMatch4 = match;
+                    *parentMatch5 = match;
                 }
-                *parentMatch3 = match;
+                *parentMatch4 = match;
                 if (!match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch7 = &match;
+                    soulng::parser::Match* parentMatch8 = &match;
                     lexer.SetPos(save);
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch8 = &match;
+                        soulng::parser::Match* parentMatch9 = &match;
                         {
                             int pos = lexer.GetPos();
                             soulng::parser::Match match(true);
@@ -459,14 +489,14 @@ soulng::parser::Match EnumerationParser::EnumConstant(CmajorLexer& lexer, Parsin
                             {
                                 return soulng::parser::Match(true, new EnumConstantNode(s, constantId.release(), MakeNextEnumConstantValue(s, enumType)));
                             }
-                            *parentMatch8 = match;
+                            *parentMatch9 = match;
                         }
-                        *parentMatch7 = match;
+                        *parentMatch8 = match;
                     }
-                    *parentMatch3 = match;
+                    *parentMatch4 = match;
                 }
             }
-            *parentMatch2 = match;
+            *parentMatch3 = match;
         }
         *parentMatch0 = match;
     }

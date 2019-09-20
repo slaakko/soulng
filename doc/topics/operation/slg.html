@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Operation of the Lexer Generator</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Operation of the Lexer Generator
+    </h1>
+
+    <h2>
+        Debug Lexer
+    </h2>
+
+    <p>
+        We have made a simplified lexer for showing the operation of the lexer generator <strong>slg</strong>:
+    </p>
+
+    <pre>
+        // DebugLexer.lexer:
+
+        tokens DebugTokens
+        {
+            (ID, "identifier"), (INTLIT, "integer literal"), (LPAREN, "'('"), (RPAREN, "')'"), (SEMICOLON, "';'")
+        }
+
+        expressions
+        {
+            ws = "[\n\r\t ]+";
+            identifier = "[a-zA-Z_][a-zA-Z_0-9]*";
+            integer = "[0-9]+";
+        }
+
+        lexer DebugLexer
+        {
+            "{ws}" {}
+            "{identifier}" { return ID; }
+            "{integer}" { return INTLIT; }
+            "\(" { return LPAREN; }
+            "\)" { return RPAREN; }
+            ";" { return SEMICOLON; }
+        }
+    </pre>
+
+    <p>
+        <ul>
+            <li>
+                The lexer skips white space because the semantic action for "{ws}" is empty.
+            </li>
+            <li>
+                For ASCII identifiers it returns the ID token.
+            </li>
+            <li>
+                For integer literals it returns the INTLIT token.
+            </li>
+            <li>
+                For the parentheses it returns tokens LPAREN and RPAREN.
+            </li>
+            <li>
+                For a semicolon it returns the SEMICOLON token.
+            </li>
+        </ul>
+    </p>
+
+    <h2 id="equivalence-class">
+        Partitioning Unicode Characters into Equivalence Classes
+    </h2>
+
+    <p>
+        The lexer generator partitions the Unicode character set, the code point range [1, 0x10FFFF], to distinct <em>equivalence classes</em>.
+        Each equivalence class is given an integer number starting from 0.
+        The idea is that all characters in the same equivalence class behave the same with respect to the finite automaton built from the regular expressions.
+        This means that if we would build a finite automaton that had transitions for each Unicode character,
+        the transitions for all characters belonging to the same equivalence class would be to the same state.
+    </p>
+
+    <p>
+        Running the <strong>slg</strong> tool with the -d option shows the partition of the Unicode character set:
+    </p>
+
+    <pre>
+        > slg -nd DebugLexer.lexer
+        partition:
+        0 : {\n-\n}
+        1 : {\r-\r}
+        2 : {\t-\t}
+        3 : { - }
+        4 : {A-Za-z}
+        5 : {_-_}
+        6 : {0-9}
+        7 : {(-(}
+        8 : {)-)}
+        9 : {;-;}
+    </pre>
+
+    <p>
+        The equivalence classes above have numbers 0-9. Each single character in some regular expression has its own equivalence class,
+        and each distinct set of character ranges have also its own class.
+        Thus single characters '\n', '\r', '\t', ' ', '(', ')', ';' and '_' have their own equivalence class, and the sets {A-Za-z} and {0-9} have their own class.
+    </p>
+
+    <h2 id="class-map">Class Map</h2>
+
+    <p>
+        The <strong>slg</strong> tool converts the partition to a big integer array [0..0x10FFFF] that gives the number of the <a href="#equivalence-class">equivalence class</a>
+        for each Unicode character. This array is called the <em>class map</em>.
+    </p>
+
+    <h2>
+        Finite Automaton
+    </h2>
+
+    <p>
+        The <strong>slg</strong> tool builds a big nondeterministic finite automaton, NFA with &epsilon;-transitions, from the regular expressions contained by a <em>.lexer</em> file.
+        First each primitive in each regular expression is converted to an NFA, and then those NFA's are combined to make bigger NFA's.
+        Finally each regular expression in a <a href="../syntax/lexer.html#lexer-declaration"><em>lexer declaration</em></a> has its own NFA.
+        The accepting states of the NFA's are numbered starting from zero. Let's call those NFA's NFA<sub>0</sub>, NFA<sub>1</sub>, ..., NFA<sub><em>n</em></sub>.
+        Those NFA's are then combined to a single big NFA. The starting state of the big NFA contains an &epsilon;-transitions to the starting states of
+        NFA<sub>0</sub>, NFA<sub>1</sub>, ..., NFA<sub><em>n</em></sub>.
+    </p>
+
+    <p>
+        The next step is to convert the single big NFA to a deterministic finite automaton, DFA, using the <em>subset construction</em> algorithm.
+        The resulting DFA has states numbered starting from zero. Each state has transitions for each <a href="#equivalence-class">equivalence class</a> number.
+        The accepting states of the NFA<sub>0</sub>, NFA<sub>1</sub>, ..., NFA<sub><em>n</em></sub> become the accepting states of the DFA.
+        Each accepting states of the DFA contain the statement number contained by the accepting states of NFA<sub>0</sub>, NFA<sub>1</sub>, ..., NFA<sub><em>n</em></sub>.
+    </p>
+
+    <p>
+        The <strong>slg</strong> tool then converts the DFA to the <em>NextState()</em> member function of the generated lexer.
+        The <em>NextState()</em> function take a state number and a Unicode character and give the next state number of the DFA for that Unicode character.
+        The <em>NextState()</em> function first converts the Unicode character to an equivalence class number by calling the <em>GetClass()</em> function
+        of the <a href="#class-map"><em>class map</em></a>. Then it branches for each state, and for each equivalence class number.
+        For example, the DFA built from the <em>DebugLexer.lexer</em> has states 0...7 and each state has transitions for each equivalence class number 0...9:
+    </p>
+
+    <pre>
+        int DebugLexer::NextState(int state, char32_t c)
+        {
+            int i = ClassMap::GetClass(c);
+            switch (state)
+            {
+                case 0:
+                // ...
+                case 1:
+                // ...
+                case 7:
+                // ...
+            }
+        }
+    </pre>
+
+    <h3>Start State</h3>
+
+    <p>
+        This is the code for the starting state, state 0, of the DFA:
+    </p>
+
+    <pre>
+    case 0:
+    {
+        switch (i)
+        {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            {
+                return 1;
+            }
+            case 4:
+            case 5:
+            {
+                return 2;
+            }
+            case 6:
+            {
+                return 3;
+            }
+            case 7:
+            {
+                return 4;
+            }
+            case 8:
+            {
+                return 5;
+            }
+            case 9:
+            {
+                return 6;
+            }
+            default:
+            {
+                return -1;
+            }
+        }
+    </pre>
+
+    <p>
+        The state 0 has transition to the state 1 for equivalence class numbers 0...3 that correspond to the Unicode characters {\n\r\t }.
+        It has transition to the state 2 for equivalence class numbers 4 and 5 that correspond to the Unicode characters {A-Za-z_}.
+        And to state 3 for the equivalence class number 6 that corresponds to the Unicode characters {0-9}.
+        Etc...
+        If the state has no transition to a next state for a given Unicode character it returns state number -1.
+    </p>
+
+    <h3>Accepting States</h3>
+
+    <p>
+        For each accepting state of the DFA, the automaton calls the <em>GetTokenId()</em> function of the generated lexer with the statement number that is contained by the accepting state.
+        For example the following state number 2, that is an accepting state for the "{identifier}" expression, calls the <em>GetTokenId()</em> with the statement number 1,
+        that is the statement that returns the ID token:
+    </p>
+
+    <pre>
+        case 2:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(1);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 4:
+                case 5:
+                case 6:
+                {
+                    return 7;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+    </pre>
+
+    <p>
+        The search for a token is not stopped even though the state machine has entered an accepting state.
+        That's because we want the longest match. For example, the state machine enters an accepting state for an identifier three times with an input string <strong>abc</strong>:
+        first for the character <strong>a</strong>, then for the character <strong>b</strong> and finally for the character <strong>c</strong>.
+        We want the longest match, the match for the complete string <strong>abc</strong>, not matches for strings <strong>a</strong> and <strong>ab</strong>.
+    </p>
+
+    <h3>GetTokenId Function</h3>
+
+    <p>
+        The <em>GetTokenId</em> function has a branch for each statement number of the <em>lexer</em>.
+        If the corresponding semantic action of the lexer returns a token identifier, the <em>GetTokenId()</em> function returns that token identifier,
+        otherwise the <em>GetTokenId()</em> returns value CONTINUE_TOKEN:
+    </p>
+
+    <pre>
+        int DebugLexer::GetTokenId(int statementIndex)
+        {
+            switch (statementIndex)
+            {
+                case 0:
+                {
+                    Retract();
+                    break;
+                }
+                case 1:
+                {
+                    Retract();
+                    return ID;
+                    break;
+                }
+                case 2:
+                {
+                    Retract();
+                    return INTLIT;
+                    break;
+                }
+                case 3:
+                {
+                    Retract();
+                    return LPAREN;
+                    break;
+                }
+                case 4:
+                {
+                    Retract();
+                    return RPAREN;
+                    break;
+                }
+                case 5:
+                {
+                    Retract();
+                    return SEMICOLON;
+                    break;
+                }
+            }
+            return CONTINUE_TOKEN;
+        }
+    </pre>
+
+    <h2>
+        Operation of the Lexer Driver
+    </h2>
+
+    <p>
+        When starting to match each token, the finite state machine is in the state 0.
+        The lexer driver drives the finite state machine until it returns -1 from the <em>NextState()</em> function, or the end of input is encountered.
+        The value of -1 means that the current state has no transition to a state with the current character, or the <em>GetTokenId</em> returned CONTINUE_TOKEN.
+        The state machine may have passed many accepting states before it returns -1.
+        Then the longest match, that is the latest token id returned by the <em>GetTokenId()</em> function, wins, and the driver returns that token id to the parser.
+        If the token id is CONTINUE_TOKEN, the state machine is moved to the starting state again and the driver continues without returning.
+        When starting to match the next token, the input position is set to the end of the previously matched token, and the state is set to 0.
+    </p>
+</body>
+</html>

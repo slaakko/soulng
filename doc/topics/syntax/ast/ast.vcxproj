@@ -166,6 +166,7 @@
     <None Include="ExampleLexer.lexer" />
     <None Include="ExampleParser.parser" />
     <None Include="ExampleParser.spg" />
+    <None Include="StatementParser.parser" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

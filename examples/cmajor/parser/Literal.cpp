@@ -330,6 +330,7 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch14 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -338,7 +339,11 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
                         ++lexer;
                         match.hit = true;
                     }
-                    if (!match.hit)
+                    if (match.hit)
+                    {
+                        *parentMatch14 = match;
+                    }
+                    else
                     {
                         lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACKET)));
                     }
@@ -498,6 +503,7 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch14 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -506,7 +512,11 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
                         ++lexer;
                         match.hit = true;
                     }
-                    if (!match.hit)
+                    if (match.hit)
+                    {
+                        *parentMatch14 = match;
+                    }
+                    else
                     {
                         lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
                     }

@@ -6,6 +6,7 @@
 #include <soulng/slg/Symbol.hpp>
 #include <soulng/slg/LexerContext.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <soulng/util/TextUtils.hpp>
 #include <algorithm>
 
 namespace soulng { namespace slg {
@@ -68,6 +69,13 @@ bool Range::Match(char32_t c)
 void Range::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
+}
+
+void Range::Print(CodeFormatter& formatter)
+{
+    formatter.Write(soulng::unicode::ToUtf8(soulng::util::CharStr(start)));
+    formatter.Write("-");
+    formatter.Write(soulng::unicode::ToUtf8(soulng::util::CharStr(end)));
 }
 
 bool Intersect(const Range& left, const Range& right)
@@ -336,6 +344,16 @@ void Class::AddSymbol(Symbol* symbol)
 void Class::AddChar(char32_t c)
 {
     chars.push_back(c);
+}
+
+void Class::Print(CodeFormatter& formatter)
+{
+    formatter.Write("{");
+    for (auto& range : ranges)
+    {
+        range.Print(formatter);
+    }
+    formatter.Write("}");
 }
 
 bool operator==(const Class& left, const Class& right)

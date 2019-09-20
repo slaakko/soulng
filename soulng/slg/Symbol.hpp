@@ -6,11 +6,14 @@
 #ifndef SOULNG_SLG_SYMBOL_INCLUDED
 #define SOULNG_SLG_SYMBOL_INCLUDED
 #include <soulng/slg/Visitor.hpp>
+#include <soulng/util/CodeFormatter.hpp>
 #include <vector>
 #include <set>
 #include <list>
 
 namespace soulng { namespace slg {
+
+using soulng::util::CodeFormatter;
 
 const char32_t eps = '\0';
 
@@ -70,6 +73,7 @@ public:
     bool IsEmpty() const { return start > end; }
     char32_t Start() const { return start; }
     char32_t End() const { return end; }
+    void Print(CodeFormatter& formatter);
 private:
     char32_t start;
     char32_t end;
@@ -117,6 +121,7 @@ public:
     bool IsEmpty() const { return symbols.empty(); }
     const std::list<Range>& Ranges() const { return ranges; }
     std::list<Range>& Ranges() { return ranges; }
+    void Print(CodeFormatter& formatter);
 private:
     int index;
     bool inverse;

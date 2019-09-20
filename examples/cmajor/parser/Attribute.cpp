@@ -124,6 +124,7 @@ soulng::parser::Match AttributeParser::Attributes(CmajorLexer& lexer)
             {
                 int pos = lexer.GetPos();
                 soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch12 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -132,7 +133,11 @@ soulng::parser::Match AttributeParser::Attributes(CmajorLexer& lexer)
                         ++lexer;
                         match.hit = true;
                     }
-                    if (!match.hit)
+                    if (match.hit)
+                    {
+                        *parentMatch12 = match;
+                    }
+                    else
                     {
                         lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACKET)));
                     }

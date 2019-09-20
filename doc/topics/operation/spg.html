@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Operation of the Parser Generator</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Operation of the Parser Generator
+    </h1>
+
+    <p>
+        The parser generator <strong>spg</strong> generates a source and a header file for each <em>.parser</em> file with the same base name as the <em>.parser</em> file.
+        For each parser in a <em>.parser</em> file, the generator produces a C++ class with a static member function for each parsing rule of the parser.
+        The first parameter of the static member function is of the type defined in the <strong>uselexer</strong> declaration of the parser.
+        There's additional parameters for each inherited attribute of a parsing rule.
+        Each static member function returns a <em>soulng::parser::Match</em> object.
+        The <em>Match</em> object contains a Boolean member variable <em>hit</em> that is set to the value <strong>true</strong> if the rule matched, and to the value <strong>false</strong> otherwise.
+        The <em>Match</em> object also contains a <strong>void</strong>* member variable <em>value</em>, that is used for returning the synthesized attribute of the rule, if any.
+    </p>
+
+    <p>
+        The body of a parsing rule consists of <em>parsing expressions</em> for which <strong>spg</strong> generates ordinary procedural code with nested scopes.
+        Each scope contains an object of type <em>Match</em> with the name <em>match</em> and for many parsing expressions also a pointer variable of type <em>Match</em>*
+        with the name <em>parentMatch<sub>i</sub></em> that is set to point to the <em>match</em> object. The index <em>i</em> is a serial number starting from 0.
+        The <em>parentMatch<sub>i</sub></em> pointer variable is used for setting a <em>match</em> variable in an outer scope to the value of a <em>match</em> variable in an inner scope.
+    </p>
+
+    <h2>Debug Parser</h2>
+
+    <p>
+        To show the operation of <strong>spg</strong>, we have made a parser that has each kind of parsing expression in the body of its rules.
+        Here's the skeleton of the <em>DebugParser.parser</em>:
+    </p>
+
+    <pre>
+        // DebugParser.parser
+
+        #include &lt;DebugLexer.hpp>
+        #include &lt;DebugTokens.hpp>
+        #include &lt;DebugAST.hpp>
+        #include &lt;iostream>
+
+        using namespace DebugTokens;
+
+        parser DebugParser
+        {
+            uselexer DebugLexer;
+            main;
+
+            Token
+                ::= ID
+                ;
+
+            // ...
+        }
+    </pre>
+
+    <h2>Parse Function</h2>
+
+    <p>
+        The first rule of the parser is a rule called <em>Token</em>. Since the <em>DebugParser</em> has a <strong>main</strong> declaration,
+        <strong>spg</strong> generates a <em>Parse</em> function that calls the <em>Token</em> rule:
+    </p>
+
+    <pre>
+        void DebugParser::Parse(DebugLexer& lexer)
+        {
+            ++lexer;
+            int pos = lexer.GetPos();
+            soulng::parser::Match match = DebugParser::Token(lexer);
+            if (match.hit)
+            {
+                if (*lexer == soulng::lexer::END)
+                {
+                    return;
+                }
+                else
+                {
+                    lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+                }
+            }
+            else
+            {
+                lexer.ThrowExpectationFailure(pos, U"Token");
+            }
+            return;
+        }
+    </pre>
+
+    <p>
+        The <em>Parse</em> function first advances the lexer to the first token by calling <em>++lexer</em>.
+        Then it calls the <em>Token</em> member function with the lexer argument.
+        If the <em>Token</em> rule matched, and the whole input has been consumed, the function just returns, because the <em>Token</em> rule has no synthesized attribute to return.
+        The whole input has been consumed, if the current token after parsing the <em>Token</em> rule is soulng::lexer::END token.
+        If the whole input has not been consumed, the parser throws std::runtime_error with message "end of input expected".
+    </p>
+
+    <p>
+        If the <em>Token</em> rule did not match, the parser throws std::runtime_error with message "Token expected".
+        We have could have provided a different informative string for the <em>Token</em> rule by using the <a href="../syntax/parser.html#rule.rule-info-declaration"><strong>ruleinfo</strong></a> declaration.
+    </p>
+
+    <h2>Code Generated for Parsing Expressions</h2>
+
+    <p>
+        We now look at the C++ code generated for each kind of parsing expression.
+    </p>
+
+    <h3>Token Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.token-expression">token-expression</a> with ID as a <em>token-id</em>:
+    </p>
+
+    <pre>
+        // ...
+
+        Token
+            ::= ID
+            ;
+
+        // ...
+
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Token(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            if (*lexer == ID)
+            {
+                ++lexer;
+                match.hit = true;
+            }
+            return match;
+        }
+
+    </pre>
+
+    <p>
+        First a <em>match</em> object with the <em>hit</em> member set to <strong>false</strong> is constructed.
+        Then if the current lexer token is ID, the lexer is advanced to the next token and the <em>hit</em> member is changed to <strong>true</strong>,
+        otherwise the lexer is not advanced, and the <em>hit</em> member stays <strong>false</strong>.
+        In any case the parser returns the <em>match</em> object.
+    </p>
+
+    <h3>Rule-Call Expressions</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.rule-call">rule-call</a> expression with <em>rule-name</em> as <strong>Token</strong> and <em>unique name</em> as <strong>token</strong>:
+    </p>
+
+    <pre>
+        // ...
+
+        RuleCall1
+            ::= Token:token
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::RuleCall1(DebugLexer& lexer)
+        {
+            soulng::parser::Match match = DebugParser::Token(lexer);
+            return match;
+        }
+    </pre>
+
+    <p>
+        Since the <em>Token</em> rule has no synthesized attribute, the unique name <strong>token</strong> is not used.
+        The parser simply calls the <em>Token</em> rule with the lexer argument, and returns the match object returned by the <em>Token</em> rule.
+    </p>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.rule-call">rule-call</a> expression with <em>rule-name</em> as <strong>Synthesized</strong>, that returns a value type,
+        and <em>unique name</em> set as <strong>synthesized</strong>:
+    </p>
+
+    <pre>
+        // ...
+
+        Synthesized : int
+            ::= empty{ return 1; }
+            ;
+
+        RuleCall2 : int
+            ::=  Synthesized:synthesized{ return synthesized; }
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Synthesized(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(true);
+                if (match.hit)
+                {
+                    return soulng::parser::Match(true, new soulng::parser::Value&lt;int>(1));
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+
+        soulng::parser::Match DebugParser::RuleCall2(DebugLexer& lexer)
+        {
+            std::unique_ptr&lt;soulng::parser::Value&lt;int>> synthesized;
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match = DebugParser::Synthesized(lexer);
+                synthesized.reset(static_cast&lt;soulng::parser::Value&lt;int>*>(match.value));
+                if (match.hit)
+                {
+                    return soulng::parser::Match(true, new soulng::parser::Value&lt;int>(synthesized->value));
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        Since the called <em>Synthesized</em> rule has a synthesized attribute, a local variable for it is generated in the <em>RuleCall2</em> function.
+        The name of the local variable, <strong>synthesized</strong>, is the unique name given to the synthesized attribute in the call of the <em>Synthesized</em> rule.
+        If the <em>Synthesized</em> rule matches the parser returns a <em>Match</em> object with <em>hit</em> member set true, and a the <em>value</em> member set as the value returned by
+        the <em>Synthesized</em> rule.
+    </p>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.rule-call">rule-call</a> expression with <em>rule-name</em> as <strong>PtrSynthesized</strong>, that returns a pointer type,
+        and <em>unique name</em> set as <strong>ptrSynthesized</strong>:
+    </p>
+
+    <pre>
+        // ...
+
+        PtrSynthesized : Node*
+            ::= empty{ return new Node(); }
+            ;
+
+        RuleCall3 : Node*
+            ::= PtrSynthesized:ptrSynthesized{ return ptrSynthesized; }
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::PtrSynthesized(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match(true);
+                if (match.hit)
+                {
+                    return soulng::parser::Match(true, new Node);
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+
+        soulng::parser::Match DebugParser::RuleCall3(DebugLexer& lexer)
+        {
+            std::unique_ptr&lt;Node> ptrSynthesized;
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match = DebugParser::PtrSynthesized(lexer);
+                ptrSynthesized.reset(static_cast&lt;Node*>(match.value));
+                if (match.hit)
+                {
+                    return soulng::parser::Match(true, ptrSynthesized.release());
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+
+    </pre>
+
+    <p>
+        This time, since the synthesized attribute is of a pointer type, the local variable, <strong>ptrSynthesized</strong>, holding a unique pointer to the synthesized attribute of the <em>PtrSynthesized</em> rule,
+        is <em>reset</em> after a call to <em>PtrSynthesized</em> and <em>released</em> when returned from the <em>RuleCall3</em> function.
+    </p>
+
+    <h3>Alternative Expression</h3>
+
+    <p>
+        For an <a href="../syntax/parser.html#rule.alternative">alternative</a> expression:
+    </p>
+
+    <pre>
+        A   ::= Token:token
+            ;
+
+        B   ::= Token:token
+            ;
+
+    Alternative
+        ::= A:a | B:b
+        ;
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::A(DebugLexer& lexer)
+        {
+            soulng::parser::Match match = DebugParser::Token(lexer);
+            return match;
+        }
+
+        soulng::parser::Match DebugParser::B(DebugLexer& lexer)
+        {
+            soulng::parser::Match match = DebugParser::Token(lexer);
+            return match;
+        }
+
+        soulng::parser::Match DebugParser::Alternative(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int save = lexer.GetPos();
+                soulng::parser::Match match = DebugParser::A(lexer);
+                *parentMatch0 = match;
+                if (!match.hit)
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch1 = &match;
+                    lexer.SetPos(save);
+                    {
+                        soulng::parser::Match match = DebugParser::B(lexer);
+                        *parentMatch1 = match;
+                    }
+                    *parentMatch0 = match;
+                }
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>false</strong> is constructed.
+        Then the parser saves the current position of the lexer to an integer variable <em>save</em>.
+        Then the first alternative, <em>A</em>, is parsed and the result is set to the outer <em>match</em> object.
+        If <em>A</em> matches the outer <em>match</em> object is returned.
+        Otherwise the parser backtracks the input to the saved position by calling <em>lexer.SetPos</em> with <em>save</em>, parses the second
+        alternative <em>B</em>, sets the result to the outer <em>match</em> object, and returns the result.
+    </p>
+
+    <h3>Sequence Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.sequence">sequence</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Sequence
+            ::= A:a B:b
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Sequence(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                soulng::parser::Match match = DebugParser::A(lexer);
+                *parentMatch0 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch1 = &match;
+                {
+                    soulng::parser::Match match = DebugParser::B(lexer);
+                    *parentMatch1 = match;
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>false</strong> is constructed.
+        Then the first member of the sequence, <em>A</em>, is parsed and the result is set to the outer <em>match</em> object.
+        If <em>A</em> matches the second member of the sequence, <em>B</em>, is parsed and the result is set to the outer <em>match</em> object.
+        In any case the outer <em>match</em> object that contains the result is returned.
+    </p>
+
+    <h3>Difference Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.difference">difference</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Difference
+            ::= A:a - B:b
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Difference(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            int save = lexer.GetPos();
+            {
+                soulng::parser::Match match = DebugParser::A(lexer);
+                *parentMatch0 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch1 = &match;
+                {
+                    int tmp = lexer.GetPos();
+                    lexer.SetPos(save);
+                    save = tmp;
+                    soulng::parser::Match match = DebugParser::B(lexer);
+                    *parentMatch1 = match;
+                }
+                if (!match.hit)
+                {
+                    lexer.SetPos(save);
+                }
+                *parentMatch0 = soulng::parser::Match(!match.hit, match.value);
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>false</strong> is constructed.
+        Then the parser saves the current position of the lexer to an integer variable <em>save</em>.
+        Then the first member of the difference, <em>A</em>, is parsed and the result is set to the outer <em>match</em> object.
+        If <em>A</em> matches, the current end position after parsing <em>A</em> is saved to an integer variable <em>tmp</em>,
+        the input is backtracked to the previously saved position by calling <em>lexer.SetPos</em> with <em>save</em>,
+        then the <em>tmp</em> value is set to the <em>save</em> value.
+        Now the second member of the difference, <em>B</em>, is parsed.
+        If <em>B</em> did not match, the input position is set to the position where it was after parsing <em>A</em>,
+        and a successful match object is set to the outer <em>match</em> object.
+        Otherwise, if <em>B</em> matched, an unsuccessful match object is set to the outer <em>match</em> object.
+        In any case the outer <em>match</em> object that contains the result is returned.
+    </p>
+
+    <h3>List Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.list">list</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        List
+            ::= A:a % B:b
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::List(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                soulng::parser::Match match = DebugParser::A(lexer);
+                *parentMatch0 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch1 = &match;
+                {
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch2 = &match;
+                    {
+                        while (true)
+                        {
+                            int save = lexer.GetPos();
+                            {
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch3 = &match;
+                                {
+                                    soulng::parser::Match match = DebugParser::B(lexer);
+                                    *parentMatch3 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch4 = &match;
+                                    {
+                                        soulng::parser::Match match = DebugParser::A(lexer);
+                                        *parentMatch4 = match;
+                                    }
+                                    *parentMatch3 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    *parentMatch2 = match;
+                                }
+                                else
+                                {
+                                    lexer.SetPos(save);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    *parentMatch1 = match;
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        The list expression <em>A</em> % <em>B</em> is an abbreviation for an expression <em>A</em> (<em>B</em> <em>A</em>)*.
+        The generated code is for the longer expression.
+    </p>
+
+    <h3>Closure Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.postfix">closure</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Closure
+            ::= A:a*
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Closure(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(true);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                while (true)
+                {
+                    int save = lexer.GetPos();
+                    {
+                        soulng::parser::Match match = DebugParser::A(lexer);
+                        if (match.hit)
+                        {
+                            *parentMatch0 = match;
+                        }
+                        else
+                        {
+                            lexer.SetPos(save);
+                            break;
+                        }
+                    }
+                }
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>true</strong> is constructed.
+        The parser then saves the last successful input position to the integer variable <em>save</em>.
+        Then <em>A</em> is parsed. If <em>A</em> matched, the result is set to the outer <em>match</em> object.
+        Otherwise the input is backtracked to the last successfully parsed input position in the variable <em>save</em>.
+        In any case the outer <em>match</em> object with a successful result is returned.
+    </p>
+
+    <h3>Positive Closure Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.postfix">positive closure</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Positive
+            ::= A:a+
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Positive(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                soulng::parser::Match match = DebugParser::A(lexer);
+                *parentMatch0 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch1 = &match;
+                while (true)
+                {
+                    int save = lexer.GetPos();
+                    {
+                        soulng::parser::Match match = DebugParser::A(lexer);
+                        if (match.hit)
+                        {
+                            *parentMatch1 = match;
+                        }
+                        else
+                        {
+                            lexer.SetPos(save);
+                            break;
+                        }
+                    }
+                }
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>false</strong> is constructed.
+        Then the first occurrence of <em>A</em> is parsed, and the result is set to the outer <em>match</em> object.
+        If the first occurrence matched, then the generated code is the same as for the <em>A*</em> expression.
+        In any case the outer <em>match</em> object with the result is returned.
+    </p>
+
+    <h3>Optional Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.postfix">optional</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Optional
+            ::= A:a?
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Optional(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(true);
+            int save = lexer.GetPos();
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                soulng::parser::Match match = DebugParser::A(lexer);
+                if (match.hit)
+                {
+                    *parentMatch0 = match;
+                }
+                else
+                {
+                    lexer.SetPos(save);
+                }
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>true</strong> is constructed.
+        Then the current input position is saved to an integer variable <em>save</em>.
+        Then <em>A</em> is parsed. If <em>A</em> matched, the result is set to the outer <em>match</em> object.
+        Otherwise the parser backtracks the input to the saved position.
+        In any case the outer <em>match</em> object with a successful result is returned.
+    </p>
+
+    <h3>Empty Expression</h3>
+
+    <p>
+        For an <a href="../syntax/parser.html#rule.empty-expression">empty</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Empty
+            ::= empty
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Empty(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(true);
+            return match;
+        }
+    </pre>
+
+    <p>
+        The parser constructs and returns a successful match object.
+    </p>
+
+    <h3>Grouping Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.grouping">grouping</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Grouping
+            ::= (A:a B:b)
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Grouping(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                soulng::parser::Match match = DebugParser::A(lexer);
+                *parentMatch0 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch1 = &match;
+                {
+                    soulng::parser::Match match = DebugParser::B(lexer);
+                    *parentMatch1 = match;
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        The code is the same as for the contained expression.
+    </p>
+
+    <h3>Expectation Expression</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.expectation">expectation</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Expectation
+            ::= A:a!
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Expectation(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(true);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match = DebugParser::A(lexer);
+                if (match.hit)
+                {
+                    *parentMatch0 = match;
+                }
+                else
+                {
+                    lexer.ThrowExpectationFailure(pos, U"A");
+                }
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>true</strong> is constructed.
+        The parser then parses <em>A</em>. If <em>A</em> matches, the result is set to the outer <em>match</em> object,
+        and the successful result is returned.
+        Otherwise the parser throws a std::runtime_error exception with message "A expected".
+    </p>
+
+    <h3>Semantic Actions</h3>
+
+    <p>
+        For a <a href="../syntax/parser.html#rule.action">action</a> expression:
+    </p>
+
+    <pre>
+        // ...
+
+        Action
+            ::= A:a{ std::cout << "A" << std::endl; } / { std::cout << "~A" << std::endl; }
+            ;
+
+        // ...
+    </pre>
+
+    <p>
+        <strong>spg</strong> generates the following code:
+    </p>
+
+    <pre>
+        soulng::parser::Match DebugParser::Action(DebugLexer& lexer)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch0 = &match;
+            {
+                int pos = lexer.GetPos();
+                soulng::parser::Match match = DebugParser::A(lexer);
+                if (match.hit)
+                {
+                    std::cout << "A" << std::endl;
+                }
+                else
+                {
+                    std::cout << "~A" << std::endl;
+                }
+                *parentMatch0 = match;
+            }
+            return match;
+        }
+    </pre>
+
+    <p>
+        First an outer <em>match</em> object with value <strong>false</strong> is constructed.
+        Then the parser parses <em>A</em>.
+        If <em>A</em> matched the semantic action for a successful match is executed.
+        Otherwise the semantic action for an unsuccessful match, if any, is executed.
+        In any case the result of parsing <em>A</em> is set to the outer <em>match</em> object and returned.
+    </p>
+</body>
+</html>

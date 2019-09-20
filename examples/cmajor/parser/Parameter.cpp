@@ -135,6 +135,7 @@ soulng::parser::Match ParameterParser::ParameterList(CmajorLexer& lexer, Parsing
         soulng::parser::Match* parentMatch11 = &match;
         {
             soulng::parser::Match match(true);
+            soulng::parser::Match* parentMatch12 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::parser::Match match(false);
@@ -143,7 +144,11 @@ soulng::parser::Match ParameterParser::ParameterList(CmajorLexer& lexer, Parsing
                     ++lexer;
                     match.hit = true;
                 }
-                if (!match.hit)
+                if (match.hit)
+                {
+                    *parentMatch12 = match;
+                }
+                else
                 {
                     lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
                 }

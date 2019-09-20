@@ -25,7 +25,7 @@ class Parser;
 
 enum class IdentifierClassKind
 {
-    unicode, ascii
+    none, unicode, ascii
 };
 
 class LexerContext
@@ -62,7 +62,7 @@ public:
     Nfa MakeExpr(const std::u32string& id);
     void SetCurrentExpression(Expression* currentExpression_) { currentExpression = currentExpression_; }
     void MakeCanonicalClasses();
-    void MakeClassPartition();
+    void MakeClassPartition(bool debug);
     void MakeClassMap(const std::string& root, bool verbose);
     const std::vector<Class*>& Partition() const { return partition; }
     const std::vector<Include*>& Includes() const { return includes; }

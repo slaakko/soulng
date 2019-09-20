@@ -372,7 +372,7 @@
     </p>
 
     <p>
-        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em> | <em>b</em> is a parsing expression.
+        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em> | <em>b</em> is a parsing expression with two <em>alternatives</em>.
         For parsing expression <em>a</em> | <em>b</em>, the generated parser will try to match <em>a</em>. If input matches <em>a</em>, <em>b</em> is not matched, and parsing proceeds.
         Otherwise the generated parser will backtrack the input where it was when tried to match <em>a</em> and then try to match <em>b</em>.
     </p>
@@ -389,7 +389,7 @@
     </table>
 
     <p>
-        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em><em>b</em> is a parsing expression.
+        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em><em>b</em> is a parsing expression, a <em>sequence</em> expression.
         For parsing expression <em>a</em><em>b</em>, the generated parser will match <em>a</em> and then <em>b</em> in sequence.
         If both will match, parsing proceeds. Otherwise the parser will backtrack.
     </p>
@@ -406,7 +406,7 @@
     </table>
 
     <p>
-        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em> - <em>b</em> is a parsing expression.
+        Let <em>a</em> and <em>b</em> be parsing expressions. Then <em>a</em> - <em>b</em> is a parsing expression, a <em>difference</em> expression.
         For parsing expression <em>a - b</em>, the parser will first match <em>a</em>. If <em>a</em> matches, then it will backtrack the input and try to match <em>b</em>.
         If <em>a</em> matches and <em>b</em> does not, parsing proceeds. Otherwise the generated parser will backtrack.
     </p>
@@ -553,7 +553,7 @@
 
     <p>
         For a token expression, the generated parser will compare the current input token of the used lexer to the <em>token-id</em> of the token expression.
-        If the current input token matches the <em>token-id</em>, the input position of the used lexer is advanced, and parsing proceeds.
+        If the current input token matches the <em>token-id</em>, the input position of the used lexer is advanced to the next token using expression <em>++lexer</em>, and parsing proceeds.
         Otherwise the generated parser will backtrack.
     </p>
 
@@ -592,7 +592,7 @@
         Let <em>a</em> be a primary parsing expression or an expectation expression.
         Two C++ compound statements may be attached to <em>a</em>.
         The first one will be executed if <em>a</em> matches. The second one, separated by a slash character,
-        is an optional compound statement that will be executed if <em>a</em> does not match.
+        is an optional compound statement that will be executed if <em>a</em> does <em>not</em> match.
         The C++ compound statements attached to <em>a</em> are called <em>semantic actions</em>.
     </p>
 
@@ -607,6 +607,39 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        There are special symbols that are available in semantic actions:
+        <ul>
+            <li>
+                <em>lexer</em> is a reference to the lexer used by the current parser.
+                The <a href="../interface/lexer.html">lexer interface</a> document contains descriptions of the member functions of the lexer.
+            </li>
+            <li>
+                <em>pos</em> is an <strong>int</strong> variable that contains the index of the token that has matched. That matched token may be obtained using expression <em>lexer.GetToken(pos)</em>
+            </li>
+            <li>
+                <em>span</em> is a <em>soulng::lexer::Span</em> variable that represents a token range with start and end index of the <em>span</em> set to <em>pos</em>.
+                By changing the start/end token index of the <em>span</em>, and then calling <em>lexer.GetMatch(span)</em> a string matching a token range may be obtained.
+            </li>
+            <li>
+                <em>pass</em> is a <strong>bool</strong> variable. By setting <em>pass</em> to <strong>false</strong> in a semantic action,
+                the semantic action can conditionally <em>reject</em> the current alternative that has matched, and cause the parser to backtrack and try the next alternative.
+                In that case the parser acts as if the current alternative has <em>not</em> been matched.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        If the current parsing rule has a synthesized attribute, that is: it returns a value, and it has no semantic action that contains a return statement,
+        the <strong>spg</strong> tool produces a warning.
+    </p>
+
+    <p>
+        If the current parsing rule calls another rule that has a synthesized attribute, and that synthesized attribute is referenced many times in a semantic action,
+        <strong>spg</strong> warns about this, because a synthesized attribute is represented as a unique pointer that will be released many times.
+        However, if the semantic action consists of a switch statement that has many branches that refer to the same synthesized attribute, this warning can be ignored.
+    </p>
 
     <h3 id="main-declaration">4.3 Main Declaration</h3>
 
@@ -776,6 +809,10 @@
             </td>
         </tr>
     </table>
+
+    <p>
+        The <strong>spg</strong> tool will warn if the <strong>uselexer</strong> declaration is missing.
+    </p>
 
     <h4 id="use-lexer-declaration-example">4.5.1 Example</h4>
 

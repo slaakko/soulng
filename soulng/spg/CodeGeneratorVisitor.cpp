@@ -180,11 +180,20 @@ void CodeGeneratorVisitor::Visit(PositiveParser& parser)
 void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
 {
     formatter->WriteLine("soulng::parser::Match match(true);");
+    int prevSetParentMatchNumber0 = setParentMatchNumber;
+    setParentMatchNumber = parentMatchNumber;
+    formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
     formatter->WriteLine("{");
     formatter->IncIndent();
     formatter->WriteLine("int pos = lexer.GetPos();");
     parser.Child()->Accept(*this);
-    formatter->WriteLine("if (!match.hit)");
+    formatter->WriteLine("if (match.hit)");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    formatter->WriteLine("else");
     formatter->WriteLine("{");
     formatter->IncIndent();
     if (parser.Child()->IsNonterminal())
@@ -212,6 +221,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
     formatter->WriteLine("}");
     formatter->DecIndent();
     formatter->WriteLine("}");
+    setParentMatchNumber = prevSetParentMatchNumber0;
 }
 
 void CodeGeneratorVisitor::Visit(GroupingParser& parser)

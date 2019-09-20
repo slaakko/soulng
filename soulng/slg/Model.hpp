@@ -218,7 +218,7 @@ class LexerFile
 {
 public:
     void Add(Declaration* declaration);
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext);
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext);
 private:
     std::vector<std::unique_ptr<Declaration>> declarations;
     std::map<std::u32string, Declaration*> declarationMap;

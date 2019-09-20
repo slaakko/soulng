@@ -236,6 +236,7 @@ soulng::parser::Match ExpressionParser::PostfixExpression(MinilangLexer& lexer)
                                 soulng::parser::Match* parentMatch10 = &match;
                                 {
                                     soulng::parser::Match match(true);
+                                    soulng::parser::Match* parentMatch11 = &match;
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match(false);
@@ -244,7 +245,11 @@ soulng::parser::Match ExpressionParser::PostfixExpression(MinilangLexer& lexer)
                                             ++lexer;
                                             match.hit = true;
                                         }
-                                        if (!match.hit)
+                                        if (match.hit)
+                                        {
+                                            *parentMatch11 = match;
+                                        }
+                                        else
                                         {
                                             lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
                                         }
@@ -332,11 +337,16 @@ soulng::parser::Match ExpressionParser::ExpressionList(MinilangLexer& lexer, min
                                 {
                                     int pos = lexer.GetPos();
                                     soulng::parser::Match match(true);
+                                    soulng::parser::Match* parentMatch7 = &match;
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match = ExpressionParser::Expression(lexer);
                                         right.reset(static_cast<minilang::Node*>(match.value));
-                                        if (!match.hit)
+                                        if (match.hit)
+                                        {
+                                            *parentMatch7 = match;
+                                        }
+                                        else
                                         {
                                             lexer.ThrowExpectationFailure(pos, U"Expression");
                                         }
@@ -396,11 +406,16 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch4 = &match;
                     {
                         int pos = lexer.GetPos();
                         soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
                         unaryExpr.reset(static_cast<minilang::Node*>(match.value));
-                        if (!match.hit)
+                        if (match.hit)
+                        {
+                            *parentMatch4 = match;
+                        }
+                        else
                         {
                             lexer.ThrowExpectationFailure(pos, U"UnaryExpression");
                         }
@@ -419,11 +434,11 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
         if (!match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch4 = &match;
+            soulng::parser::Match* parentMatch5 = &match;
             lexer.SetPos(save);
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
+                soulng::parser::Match* parentMatch6 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match = ExpressionParser::PostfixExpression(lexer);
@@ -432,9 +447,9 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
                     {
                         return soulng::parser::Match(true, postfixExpr.release());
                     }
-                    *parentMatch5 = match;
+                    *parentMatch6 = match;
                 }
-                *parentMatch4 = match;
+                *parentMatch5 = match;
             }
             *parentMatch0 = match;
         }
@@ -533,11 +548,16 @@ soulng::parser::Match ExpressionParser::MultiplicativeExpression(MinilangLexer& 
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match(true);
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
                                             int pos = lexer.GetPos();
                                             soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
                                             right.reset(static_cast<minilang::Node*>(match.value));
-                                            if (!match.hit)
+                                            if (match.hit)
+                                            {
+                                                *parentMatch8 = match;
+                                            }
+                                            else
                                             {
                                                 lexer.ThrowExpectationFailure(pos, U"UnaryExpression");
                                             }
@@ -668,11 +688,16 @@ soulng::parser::Match ExpressionParser::AdditiveExpression(MinilangLexer& lexer)
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match(true);
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
                                             int pos = lexer.GetPos();
                                             soulng::parser::Match match = ExpressionParser::MultiplicativeExpression(lexer);
                                             right.reset(static_cast<minilang::Node*>(match.value));
-                                            if (!match.hit)
+                                            if (match.hit)
+                                            {
+                                                *parentMatch8 = match;
+                                            }
+                                            else
                                             {
                                                 lexer.ThrowExpectationFailure(pos, U"MultiplicativeExpression");
                                             }
@@ -795,11 +820,16 @@ soulng::parser::Match ExpressionParser::RelationalExpression(MinilangLexer& lexe
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match(true);
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
                                             int pos = lexer.GetPos();
                                             soulng::parser::Match match = ExpressionParser::AdditiveExpression(lexer);
                                             right.reset(static_cast<minilang::Node*>(match.value));
-                                            if (!match.hit)
+                                            if (match.hit)
+                                            {
+                                                *parentMatch8 = match;
+                                            }
+                                            else
                                             {
                                                 lexer.ThrowExpectationFailure(pos, U"AdditiveExpression");
                                             }
@@ -938,11 +968,16 @@ soulng::parser::Match ExpressionParser::EqualityExpression(MinilangLexer& lexer)
                                     {
                                         int pos = lexer.GetPos();
                                         soulng::parser::Match match(true);
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
                                             int pos = lexer.GetPos();
                                             soulng::parser::Match match = ExpressionParser::RelationalExpression(lexer);
                                             right.reset(static_cast<minilang::Node*>(match.value));
-                                            if (!match.hit)
+                                            if (match.hit)
+                                            {
+                                                *parentMatch8 = match;
+                                            }
+                                            else
                                             {
                                                 lexer.ThrowExpectationFailure(pos, U"RelationalExpression");
                                             }
