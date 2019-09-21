@@ -4,6 +4,7 @@
 // =================================
 
 #include <soulng/util/MemoryWriter.hpp>
+#include <stdexcept>
 
 namespace soulng { namespace util {
 

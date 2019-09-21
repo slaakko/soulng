@@ -4,6 +4,7 @@
 // =================================
 
 [hpp]#include <soulng/spg/ProjectFile.hpp>
+[hpp]#include <memory>
 [cpp]#include <soulng/spg/ProjectFileLexer.hpp>
 [cpp]#include <soulng/spg/ProjectFileTokens.hpp>
 
