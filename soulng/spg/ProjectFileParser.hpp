@@ -1,6 +1,7 @@
 #ifndef PROJECTFILEPARSER_HPP
 #define PROJECTFILEPARSER_HPP
 #include <soulng/spg/ProjectFile.hpp>
+#include <memory>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
