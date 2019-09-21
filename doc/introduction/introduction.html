@@ -12,11 +12,12 @@
     </h1>
 
     <p>
-        The <em>SoulNG</em> project contains two tools: a lexical analyzer generator <strong>slg</strong> and a parser generator <strong>spg</strong>.
+        The <em>SoulNG</em> project contains two C++ tools: a lexical analyzer generator <strong>slg</strong> and a parser generator <strong>spg</strong>.
     </p>
 
     <p>
-        The generators and the produced lexical analyzers and parsers use three libraries also included in the project:
+        The generators and the produced lexical analyzers and parsers use four libraries also included in the project:
+        The <strong>soulng/cppcode</strong> library is used for representing C++ code in the generators.
         The <strong>soulng/lexer</strong> library contains a base class for generated lexical analyzer classes.
         The <strong>soulng/parser</strong> library contains two small classes needed in parsing.
         The <strong>soulng/util</strong> library contains common utilities,
@@ -25,8 +26,8 @@
     </p>
 
     <p>
-        The tools and libraries of the <em>SoulNG</em> project are implemented and tested using Microsoft Visual Studio Community Edition 2017 using x64 configuration,
-        with <a href="http://boost.org">Boost</a> version 1.68 libraries installed.
+        The tools and libraries of the <em>SoulNG</em> project are implemented and tested using Microsoft Visual Studio Community Edition 2017 for Windows using x64 configuration,
+        with <a href="http://boost.org">Boost</a> version 1.68 libraries installed. Visual Studio C++ compiler is needed for utilizing these tools and libraries.
         A Linux port is planned as of this writing.
     </p>
 
