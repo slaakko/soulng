@@ -1,0 +1,24 @@
+@echo off
+xcopy /Y /D ..\soulng\x64\Debug\sngutild.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Release\sngutil.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Debug\sngcppcoded.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Release\sngcppcode.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Debug\snglexerd.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Release\snglexer.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Debug\sngparserd.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Release\sngparser.lib ..\lib
+xcopy /Y /D ..\soulng\x64\Debug\sngutild.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Release\sngutil.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Debug\sngcppcoded.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Release\sngcppcode.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Debug\snglexerd.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Release\snglexer.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Debug\sngparserd.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Release\sngparser.dll ..\bin
+xcopy /Y /D ..\soulng\x64\Debug\slgd.exe ..\bin
+xcopy /Y /D ..\soulng\x64\Release\slg.exe ..\bin
+xcopy /Y /D ..\soulng\x64\Debug\spgd.exe ..\bin
+xcopy /Y /D ..\soulng\x64\Release\spg.exe ..\bin
+xcopy /Y /D ..\examples\cmajor\bin\*.* ..\bin
+xcopy /Y /D ..\examples\minilang\x64\Debug\minilangd.exe ..\bin
+xcopy /Y /D ..\examples\minilang\x64\Release\minilang.exe ..\bin
