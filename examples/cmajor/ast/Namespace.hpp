@@ -22,7 +22,7 @@ public:
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
     void AddMember(Node* member);
-    IdentifierNode* Id() const { return id.get(); }
+    IdentifierNode* Id() const;
     NodeList<Node>& Members() { return members; }
     const NodeList<Node>& Members() const { return members; }
 private:
@@ -39,8 +39,8 @@ public:
     void Accept(Visitor& visitor) override;
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
-    IdentifierNode* Id() const { return id.get(); }
-    IdentifierNode* Qid() const { return qid.get(); }
+    IdentifierNode* Id() const;
+    IdentifierNode* Qid() const;
 private:
     std::unique_ptr<IdentifierNode> id;
     std::unique_ptr<IdentifierNode> qid;
@@ -55,7 +55,7 @@ public:
     void Accept(Visitor& visitor) override;
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
-    IdentifierNode* Ns() const { return ns.get(); }
+    IdentifierNode* Ns() const;
 private:
     std::unique_ptr<IdentifierNode> ns;
 };

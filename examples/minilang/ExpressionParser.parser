@@ -1,4 +1,5 @@
 [hpp]#include <minilang/Tree.hpp>
+[hpp]#include <memory>
 #include <minilang/LiteralParser.hpp>
 #include <minilang/IdentifierParser.hpp>
 #include <minilang/MinilangLexer.hpp>

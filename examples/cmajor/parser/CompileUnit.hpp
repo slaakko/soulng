@@ -3,6 +3,7 @@
 #include <cmajor/parser/ParserApi.hpp>
 #include <cmajor/ast/CompileUnit.hpp>
 #include <cmajor/parser/ParsingContext.hpp>
+#include <memory>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>

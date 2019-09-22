@@ -6,6 +6,7 @@
 [hpp]#include <cmajor/parser/ParserApi.hpp>
 [hpp]#include <cmajor/ast/CompileUnit.hpp>
 [hpp]#include <cmajor/parser/ParsingContext.hpp>
+[hpp]#include <memory>
 [cpp]#include <cmajor/parser/Typedef.hpp>
 [cpp]#include <cmajor/parser/Identifier.hpp>
 [cpp]#include <cmajor/parser/Concept.hpp>

@@ -1,6 +1,7 @@
 #ifndef EXPRESSIONPARSER_HPP
 #define EXPRESSIONPARSER_HPP
 #include <minilang/Tree.hpp>
+#include <memory>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>

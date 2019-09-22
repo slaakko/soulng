@@ -1,4 +1,5 @@
 #include <cmajor/ast/InitDone.hpp>
+#include <cmajor/ast/Identifier.hpp>
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/ContainerFileLexer.hpp>
 #include <cmajor/parser/CompileUnit.hpp>

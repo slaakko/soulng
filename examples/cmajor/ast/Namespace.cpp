@@ -19,6 +19,11 @@ NamespaceNode::NamespaceNode(const Span& span_, IdentifierNode* id_) : Node(Node
     id->SetParent(this);
 }
 
+IdentifierNode* NamespaceNode::Id() const
+{
+    return id.get();
+}
+
 Node* NamespaceNode::Clone(CloneContext& cloneContext) const
 {
     NamespaceNode* clone = new NamespaceNode(GetSpan(), static_cast<IdentifierNode*>(id->Clone(cloneContext)));
@@ -103,6 +108,16 @@ void AliasNode::Read(AstReader& reader)
     qid->SetParent(this);
 }
 
+IdentifierNode* AliasNode::Id() const
+{
+    return id.get();
+}
+
+IdentifierNode* AliasNode::Qid() const
+{
+    return qid.get();
+}
+
 NamespaceImportNode::NamespaceImportNode(const Span& span_) : Node(NodeType::namespaceImportNode, span_), ns()
 {
 }
@@ -133,6 +148,11 @@ void NamespaceImportNode::Read(AstReader& reader)
     Node::Read(reader);
     ns.reset(reader.ReadIdentifierNode());
     ns->SetParent(this);
+}
+
+IdentifierNode* NamespaceImportNode::Ns() const
+{
+    return ns.get();
 }
 
 } } // namespace cmajor::ast
