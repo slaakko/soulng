@@ -9,12 +9,84 @@
 <body>
     <h1>Installation</h1>
 
+    <h2>Installation on Windows</h2>
+
     <ul>
         <li><a href="../download/download.html">Download</a> the setup executable and run it.</li>
-        <li>The SoulNG is by default installed to the <strong>C:\soulng-1.0.0</strong> directory.</li>
-        <li>The <strong>C:\soulng-1.0.0\bin</strong> directory is added to the system PATH environment variable.</li>
-        <li>The setup creates a system environment variable <strong>SOULNG_ROOT</strong> that contains the path to the installation directory.</li>
+        <li>The SoulNG is by default installed to the <strong>C:\soulng-1.1.0</strong> directory.</li>
+        <li>The <strong>C:\soulng-1.1.0\bin</strong> directory is added to the system PATH environment variable.</li>
+        <li>The setup creates a system environment variable <strong>SOULNG_ROOT</strong> that contains the path to the installation directory, that is by default <strong>C:\soulng-1.1.0</strong>.</li>
         <li>The <strong>SOULNG_ROOT</strong> environment variable is needed at runtime to locate the Unicode character database <strong>soulng_ucd.bin</strong> in the <strong>unicode</strong> subdirectory.</li>
+    </ul>
+
+    <h2>Installation on Linux / on WSL</h2>
+
+    <h3>
+        Building and installing the binaries
+    </h3>
+
+    <ul>
+        <li><a href="../download/download.html">Download</a> source package <strong>soulng-1.1.0-src.tar.bz2</strong>.</li>
+        <li>Extract it to a directory of your choice here called <strong>soulng-1.1.0</strong></li>
+        <li>
+            change to the <strong>soulng</strong> subdirectory:
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0$ cd soulng
+            </pre>
+        </li>
+        <li>
+            run make:
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0/soulng$ make
+            </pre>
+        </li>
+        <li>
+            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-1.1.0</strong> directory.
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0/soulng$ export SOULNG_ROOT=~/soulng-1.1.0  
+            </pre>
+            You have to put it to your profile script to make it permanent.
+            The SOULNG_ROOT environment variable is needed at runtime to locate the Unicode database that is in the <strong>soung-1.1.0/unicode</strong> subdirectory.
+        </li>
+        <li>
+            run [sudo] make install
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0/soulng$ sudo make install
+            </pre>
+            The binaries are installed by default to the <strong>/usr/local/bin</strong>,
+            libraries to the <strong>/usr/local/lib</strong>,
+            and headers to the <strong>/usr/local/include/soulng</strong> directory.
+            You can set the installation location by giving the <strong>prefix</strong> argument:<br />
+            <strong>[sudo] make prefix=</strong><em>/where/to/install</em> <strong>install</strong>.
+        </li>
+    </ul>
+
+    <h3>
+        Building and installing the examples
+    </h3>
+
+    <ul>
+        <li>
+            change to the <strong>examples</strong> subdirectory:
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0$ cd examples
+            </pre>
+        </li>
+        <li>
+            run make:
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0/examples$ make
+            </pre>
+        </li>
+        <li>
+            run [sudo] make install:
+            <pre>
+                slaakko@pluto:~/soulng-1.1.0/examples$ sudo make install
+            </pre>
+            The example binaries <strong>minilang</strong> and <strong>cmajortester</strong> are installed by default to the <strong>/usr/local/bin</strong> directory.
+            You can set the installation location by giving the <strong>prefix</strong> argument:<br />
+            <strong>[sudo] make prefix=</strong><em>/where/to/install</em> <strong>install</strong>.
+        </li>
     </ul>
 </body>
 </html>
