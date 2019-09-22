@@ -16,7 +16,7 @@
         <li>The SoulNG is by default installed to the <strong>C:\soulng-1.1.0</strong> directory.</li>
         <li>The <strong>C:\soulng-1.1.0\bin</strong> directory is added to the system PATH environment variable.</li>
         <li>The setup creates a system environment variable <strong>SOULNG_ROOT</strong> that contains the path to the installation directory, that is by default <strong>C:\soulng-1.1.0</strong>.</li>
-        <li>The <strong>SOULNG_ROOT</strong> environment variable is needed at runtime to locate the Unicode character database <strong>soulng_ucd.bin</strong> in the <strong>unicode</strong> subdirectory.</li>
+        <li>The <strong>SOULNG_ROOT</strong> environment variable is needed at run-time to locate the Unicode character database <strong>soulng_ucd.bin</strong> in the <strong>unicode</strong> subdirectory.</li>
     </ul>
 
     <h2>Installation on Linux / on WSL</h2>
@@ -26,7 +26,7 @@
     </h3>
 
     <ul>
-        <li><a href="../download/download.html">Download</a> source package <strong>soulng-1.1.0-src.tar.bz2</strong>.</li>
+        <li><a href="../download/download.html">Download</a> the SoulNG 1.1.0 Source Package.</li>
         <li>Extract it to a directory of your choice here called <strong>soulng-1.1.0</strong></li>
         <li>
             change to the <strong>soulng</strong> subdirectory:
@@ -46,7 +46,7 @@
                 slaakko@pluto:~/soulng-1.1.0/soulng$ export SOULNG_ROOT=~/soulng-1.1.0  
             </pre>
             You have to put it to your profile script to make it permanent.
-            The SOULNG_ROOT environment variable is needed at runtime to locate the Unicode database that is in the <strong>soung-1.1.0/unicode</strong> subdirectory.
+            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-1.1.0/unicode</strong> subdirectory.
         </li>
         <li>
             run [sudo] make install
