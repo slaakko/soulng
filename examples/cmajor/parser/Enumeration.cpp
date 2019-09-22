@@ -7,7 +7,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Enumeration.parser' using soulng parser generator spg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Enumeration.parser' using soulng parser generator spg version 1.1.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;

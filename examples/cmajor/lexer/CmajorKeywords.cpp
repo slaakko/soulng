@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.1.0
 
 #include <cmajor/lexer/CmajorKeywords.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>

@@ -6,7 +6,7 @@
 #include <soulng/slg/LexerFileTokens.hpp>
 #include <soulng/util/TextUtils.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/CppDeclaratorParser.parser' using soulng parser generator spg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/CppDeclaratorParser.parser' using soulng parser generator spg version 1.1.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;

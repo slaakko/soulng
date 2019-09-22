@@ -1,7 +1,7 @@
 #ifndef ParserFileLexer_HPP
 #define ParserFileLexer_HPP
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 1.1.0
 
 #include <soulng/lexer/Lexer.hpp>
 

@@ -8,7 +8,7 @@
 #include <soulng/slg/LexerFileLexer.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/CppExpressionParser.parser' using soulng parser generator spg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/CppExpressionParser.parser' using soulng parser generator spg version 1.1.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;

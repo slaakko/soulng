@@ -3,7 +3,7 @@
 #include <soulng/spg/ParserFileLexer.hpp>
 #include <soulng/spg/ParserFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/CppLiteralParser.parser' using soulng parser generator spg version 1.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/CppLiteralParser.parser' using soulng parser generator spg version 1.1.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;

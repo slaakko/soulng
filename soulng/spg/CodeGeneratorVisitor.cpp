@@ -22,7 +22,7 @@ using namespace soulng::util;
 
 std::string ParserGeneratorVersionStr()
 {
-    return  "1.0.0";
+    return  "1.1.0";
 }
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_) :
