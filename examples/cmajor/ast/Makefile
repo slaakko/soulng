@@ -7,9 +7,9 @@ SystemFileIndex.o Template.o TypeExpr.o Typedef.o Visitor.o
 %o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<
 	
-../../lib/libcmajorast.a: $(OBJECTS)
+../../../lib/libcmajorast.a: $(OBJECTS)
 	$(AR) $(ARFLAGS) $@ $(OBJECTS)
 
 clean:
 	rm -f *.o
-	rm -f ../../lib/libcmajorast.a
+	rm -f ../../../lib/libcmajorast.a
