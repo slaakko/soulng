@@ -1,7 +1,7 @@
 #ifndef ProjectFileTokens_HPP
 #define ProjectFileTokens_HPP
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 1.2.0
 
 #include <soulng/spg/TokenValueParsers.hpp>
 #include <string>

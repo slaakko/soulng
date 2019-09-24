@@ -3,7 +3,7 @@
 #include <soulng/spg/ProjectFileLexer.hpp>
 #include <soulng/spg/ProjectFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ProjectFileParser.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ProjectFileParser.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -182,46 +182,36 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ProjectFileLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
-                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
-                if (*lexer == ID)
+                soulng::parser::Match* parentMatch3 = &match;
                 {
-                    ++lexer;
-                    match.hit = true;
-                }
-                if (match.hit)
-                {
-                    s = span;
+                    int pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
+                    soulng::parser::Match match(false);
+                    if (*lexer == ID)
+                    {
+                        ++lexer;
+                        match.hit = true;
+                    }
+                    if (match.hit)
+                    {
+                        s = span;
+                    }
+                    *parentMatch3 = match;
                 }
                 *parentMatch2 = match;
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
+            if (match.hit)
             {
-                soulng::parser::Match match(true);
+                soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch4 = &match;
                 {
-                    while (true)
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch5 = &match;
                     {
-                        int save = lexer.GetPos();
+                        while (true)
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
-                            {
-                                soulng::parser::Match match(false);
-                                if (*lexer == DOT)
-                                {
-                                    ++lexer;
-                                    match.hit = true;
-                                }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
+                            int save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -229,37 +219,57 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ProjectFileLexer& lexer)
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
-                                        int pos = lexer.GetPos();
-                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match(false);
-                                        if (*lexer == ID)
+                                        if (*lexer == DOT)
                                         {
                                             ++lexer;
                                             match.hit = true;
                                         }
-                                        if (match.hit)
+                                        *parentMatch7 = match;
+                                    }
+                                    if (match.hit)
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
-                                            s.end = span.end;
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch9 = &match;
+                                            {
+                                                int pos = lexer.GetPos();
+                                                soulng::lexer::Span span = lexer.GetSpan();
+                                                soulng::parser::Match match(false);
+                                                if (*lexer == ID)
+                                                {
+                                                    ++lexer;
+                                                    match.hit = true;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    s.end = span.end;
+                                                }
+                                                *parentMatch9 = match;
+                                            }
+                                            *parentMatch8 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
                                     *parentMatch6 = match;
                                 }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
-                            {
-                                *parentMatch4 = match;
-                            }
-                            else
-                            {
-                                lexer.SetPos(save);
-                                break;
+                                if (match.hit)
+                                {
+                                    *parentMatch5 = match;
+                                }
+                                else
+                                {
+                                    lexer.SetPos(save);
+                                    break;
+                                }
                             }
                         }
                     }
+                    *parentMatch4 = match;
                 }
-                *parentMatch3 = match;
+                *parentMatch2 = match;
             }
             *parentMatch1 = match;
         }

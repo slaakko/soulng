@@ -5,6 +5,7 @@
 
 #ifndef SOULNG_SPG_PARSER_INCLUDED
 #define SOULNG_SPG_PARSER_INCLUDED
+#include <soulng/spg/CharSet.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/cppcode/Expression.hpp>
 #include <soulng/cppcode/Statement.hpp>
@@ -75,6 +76,45 @@ public:
     const std::u32string& TokenName() const { return tokenName; }
 private:
     std::u32string tokenName;
+};
+
+class CharParser : public Parser
+{
+public:
+    CharParser(char32_t chr_);
+    Parser* Clone() const override;
+    void Accept(Visitor& visitor) override;
+    char32_t Chr() const { return chr; }
+private:
+    char32_t chr;
+};
+
+class StringParser : public Parser
+{
+public:
+    StringParser(const std::u32string& str_);
+    Parser* Clone() const override;
+    void Accept(Visitor& visitor) override;
+    const std::u32string& Str() const { return str; }
+    void SetArrayName(const std::string& arrayName_);
+    const std::string& ArrayName() const { return arrayName;  }
+private:
+    std::u32string str;
+    std::string arrayName;
+};
+
+class CharSetParser : public Parser
+{
+public:
+    CharSetParser(const CharSet& set_);
+    Parser* Clone() const override;
+    void Accept(Visitor& visitor) override;
+    const CharSet& Set() const { return set; }
+    void SetArrayName(const std::string& arrayName_);
+    const std::string& ArrayName() const { return arrayName; }
+private:
+    CharSet set;
+    std::string arrayName;
 };
 
 class OptionalParser : public UnaryParser

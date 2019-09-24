@@ -216,6 +216,19 @@ parser ParserFileParser
     Primitive : soulng::spg::Parser*
         ::= EMPTY{ return new soulng::spg::EmptyParser(); }
         |   ID{ return new soulng::spg::TokenParser(lexer.GetMatch(span)); }
+        |   CHARLIT{ return new soulng::spg::CharParser(soulng::spg::ParseCharLiteral(lexer.FileName(), lexer.GetToken(pos))); }
+        |   STRINGLIT
+        {
+            std::u32string strLit = soulng::spg::ParseStringLiteral(lexer.FileName(), lexer.GetToken(pos));
+            if (strLit.length() > 0 && strLit[0] == '[' && strLit[strLit.length() - 1] == ']')
+            {
+                return new soulng::spg::CharSetParser(soulng::spg::ParseCharSet(lexer.FileName(), lexer.GetToken(pos), strLit));
+            }
+            else
+            {
+                return new soulng::spg::StringParser(strLit);
+            }
+        }
         ;
 
     Grouping : soulng::spg::Parser*

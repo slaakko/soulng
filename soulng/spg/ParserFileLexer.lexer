@@ -10,7 +10,7 @@ prefix "soulng/spg";
 tokens ParserFileTokens
 {
     (PARSER, "'parser'"), (API, "'api'"), (INCLUDE, "'include'"), (MAIN, "'main'"), (USELEXER, "'uselexer'"), (RULEINFO, "'ruleinfo'"), (EMPTY, "'empty'"), (VAR, "'var'"),
-    (CPPPREFIX, "cpp-prefix"), (HPPPREFIX, "hpp-prefix"), (FILEPATH, "file path"), (PRODUCES, "'::='"), (EXCLAMATION, "'!'"),
+    (CPPPREFIX, "cpp-prefix"), (HPPPREFIX, "hpp-prefix"), (FILEPATH, "file path"), (PRODUCES, "'::='"), (EXCLAMATION, "'!'"), (CHARSET, "charset"),
     (AUTO, "'auto'"), (REGISTER, "'register'"), (STATIC, "'static'"), (EXTERN, "'extern'"), (MUTABLE, "'mutable'"),
     (CHAR, "'char'"), (WCHART, "'wchar_t'"), (BOOL, "'bool'"), (SHORT, "'short'"), (INT, "'int'"), (LONG, "'long'"), (SIGNED, "'signed'"), (UNSIGNED, "'unsigned'"),
     (FLOAT, "'float'"), (DOUBLE, "'double'"), (VOID, "'void'"),

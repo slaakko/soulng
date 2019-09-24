@@ -151,11 +151,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Match.cpp" />
+    <ClCompile Include="Range.cpp" />
     <ClCompile Include="Value.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Match.hpp" />
     <ClInclude Include="ParserApi.hpp" />
+    <ClInclude Include="Range.hpp" />
     <ClInclude Include="Value.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

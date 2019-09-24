@@ -23,6 +23,9 @@ public:
     CodeGeneratorVisitor(bool verbose_);
     void Visit(EmptyParser& parser) override;
     void Visit(TokenParser& parser) override;
+    void Visit(CharParser& parser) override;
+    void Visit(StringParser& parser) override;
+    void Visit(CharSetParser& parser) override;
     void Visit(OptionalParser& parser) override;
     void Visit(KleeneParser& parser) override;
     void Visit(PositiveParser& parser) override;
@@ -49,6 +52,7 @@ private:
     std::vector<NonterminalInfo> nonterminalInfos;
     int parentMatchNumber;
     int setParentMatchNumber;
+    int sn;
 };
 
 } } // namespae soulng::spg

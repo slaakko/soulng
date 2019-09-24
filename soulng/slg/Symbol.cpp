@@ -116,11 +116,17 @@ std::vector<Range> operator-(const Range& left, const Range& right)
     {
         if (right.Start() >= left.Start() && right.Start() <= left.End())
         {
-            ranges.push_back(Range(left.Start(), right.Start() - 1));
+            if (left.Start() <= right.Start() - 1)
+            {
+                ranges.push_back(Range(left.Start(), right.Start() - 1));
+            }
         }
         if (right.End() >= left.Start() && right.End() <= left.End())
         {
-            ranges.push_back(Range(right.End() + 1, left.End()));
+            if (right.End() + 1 <= left.End())
+            {
+                ranges.push_back(Range(right.End() + 1, left.End()));
+            }
         }
     }
     return ranges;

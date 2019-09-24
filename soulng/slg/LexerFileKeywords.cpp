@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/LexerFileLexer.lexer' using soulng lexer generator slg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/LexerFileLexer.lexer' using soulng lexer generator slg version 1.2.0
 
 #include <soulng/slg/LexerFileKeywords.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>

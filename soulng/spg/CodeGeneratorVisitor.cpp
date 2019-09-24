@@ -6,6 +6,7 @@
 #include <soulng/spg/CodeGeneratorVisitor.hpp>
 #include <soulng/spg/CodeEvaluationVisitor.hpp>
 #include <soulng/spg/CodeModifyVisitor.hpp>
+#include <soulng/spg/ArrayGeneratorVisitor.hpp>
 #include <soulng/spg/Domain.hpp>
 #include <soulng/util/CodeFormatter.hpp>
 #include <soulng/util/Error.hpp>
@@ -22,12 +23,12 @@ using namespace soulng::util;
 
 std::string ParserGeneratorVersionStr()
 {
-    return  "1.1.0";
+    return  "1.2.0";
 }
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_) :
     verbose(verbose_), domain(nullptr), currentParser(nullptr), currentRule(nullptr), stage(Stage::generateHeader), formatter(nullptr),
-    lexerTypeName("soulng::lexer::Lexer"), parentMatchNumber(0), setParentMatchNumber(-1)
+    lexerTypeName("soulng::lexer::Lexer"), parentMatchNumber(0), setParentMatchNumber(-1), sn(0)
 {
 }
 
@@ -59,6 +60,84 @@ void CodeGeneratorVisitor::Visit(TokenParser& parser)
         formatter->IncIndent();
         formatter->WriteLine("++lexer;");
         formatter->WriteLine("match.hit = true;");
+        formatter->DecIndent();
+        formatter->WriteLine("}");
+    }
+}
+
+void CodeGeneratorVisitor::Visit(CharParser& parser)
+{
+    formatter->WriteLine("soulng::parser::Match match(false);");
+    formatter->WriteLine("if (*lexer == " + std::to_string(static_cast<int>(parser.Chr())) + ")");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("++lexer;");
+    formatter->WriteLine("match.hit = true;");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+}
+
+void CodeGeneratorVisitor::Visit(StringParser& parser)
+{
+    formatter->WriteLine("soulng::parser::Match match(true);");
+    formatter->WriteLine("for (int i : " + parser.ArrayName() + ")");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("if (*lexer == i)");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("++lexer;");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    formatter->WriteLine("else");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("match.hit = false;");
+    formatter->WriteLine("break;");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+}
+
+void CodeGeneratorVisitor::Visit(CharSetParser& parser)
+{
+    if (parser.Set().Inverse())
+    {
+        formatter->WriteLine("soulng::parser::Match match(true);");
+        formatter->WriteLine("for (const soulng::parser::Range& range : " + parser.ArrayName() + ")");
+        formatter->WriteLine("{");
+        formatter->IncIndent();
+        formatter->WriteLine("if (*lexer >= range.first && *lexer <= range.last)");
+        formatter->WriteLine("{");
+        formatter->IncIndent();
+        formatter->WriteLine("match.hit = false;");
+        formatter->WriteLine("break;");
+        formatter->DecIndent();
+        formatter->WriteLine("}");
+        formatter->DecIndent();
+        formatter->WriteLine("}");
+        formatter->WriteLine("if (match.hit)");
+        formatter->WriteLine("{");
+        formatter->IncIndent();
+        formatter->WriteLine("++lexer;");
+        formatter->DecIndent();
+        formatter->WriteLine("}");
+    }
+    else
+    {
+        formatter->WriteLine("soulng::parser::Match match(false);");
+        formatter->WriteLine("for (const soulng::parser::Range& range : " + parser.ArrayName() + ")");
+        formatter->WriteLine("{");
+        formatter->IncIndent();
+        formatter->WriteLine("if (*lexer >= range.first && *lexer <= range.last)");
+        formatter->WriteLine("{");
+        formatter->IncIndent();
+        formatter->WriteLine("match.hit = true;");
+        formatter->WriteLine("++lexer;");
+        formatter->WriteLine("break;");
+        formatter->DecIndent();
+        formatter->WriteLine("}");
         formatter->DecIndent();
         formatter->WriteLine("}");
     }
@@ -226,7 +305,17 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
 
 void CodeGeneratorVisitor::Visit(GroupingParser& parser)
 {
+    formatter->WriteLine("soulng::parser::Match match(false);");
+    int prevSetParentMatchNumber = setParentMatchNumber;
+    setParentMatchNumber = parentMatchNumber;
+    formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
     parser.Child()->Accept(*this);
+    formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+    setParentMatchNumber = prevSetParentMatchNumber;
 }
 
 void CodeGeneratorVisitor::Visit(SequenceParser& parser)
@@ -850,6 +939,7 @@ void CodeGeneratorVisitor::Visit(ParserFile& parserFile)
     {
         std::cout << "> " << parserFile.FileName() << std::endl;
     }
+    sn = 0;
     stage = Stage::generateHeader;
     std::string headerFileName = Path::ChangeExtension(parserFile.FileName(), ".hpp");
     std::ofstream headerFile(headerFileName);
@@ -908,6 +998,8 @@ void CodeGeneratorVisitor::Visit(ParserFile& parserFile)
     formatter->WriteLine();
     formatter->WriteLine("// this file has been automatically generated from '" + parserFile.FileName() + "' using soulng parser generator spg version " + ParserGeneratorVersionStr());
     formatter->WriteLine();
+    ArrayGeneratorVisitor arrayGeneratorVisitor(formatter, sn);
+    parserFile.Accept(arrayGeneratorVisitor);
     formatter->WriteLine("using namespace soulng::unicode;");
     bool hasUsings = true;
     for (const auto& usingNs : parserFile.UsingNamespaceDeclarations())

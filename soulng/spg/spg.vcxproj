@@ -148,6 +148,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayGeneratorVisitor.cpp" />
+    <ClCompile Include="CharSet.cpp" />
     <ClCompile Include="CodeEvaluationVisitor.cpp" />
     <ClCompile Include="CodeGeneratorVisitor.cpp" />
     <ClCompile Include="CodeModifyVisitor.cpp" />
@@ -178,6 +180,8 @@
     <ClCompile Include="Visitor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayGeneratorVisitor.hpp" />
+    <ClInclude Include="CharSet.hpp" />
     <ClInclude Include="CodeEvaluationVisitor.hpp" />
     <ClInclude Include="CodeGeneratorVisitor.hpp" />
     <ClInclude Include="CodeModifyVisitor.hpp" />

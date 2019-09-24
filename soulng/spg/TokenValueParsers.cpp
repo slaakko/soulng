@@ -168,4 +168,119 @@ std::u32string ParseStringLiteral(const std::string& fileName, const soulng::lex
     return stringLiteral;
 }
 
+char32_t ParseCharLiteral(const std::string& fileName, const soulng::lexer::Token& token)
+{
+    char32_t charLit = '\0';
+    const char32_t* p = token.match.begin;
+    const char32_t* e = token.match.end;
+    bool first = true;
+    if (p != e && *p == '\'')
+    {
+        ++p;
+        while (p != e && *p != '\r' && *p != '\n' && *p != '\'')
+        {
+            if (*p == '\\')
+            {
+                ++p;
+                if (first)
+                {
+                    charLit = ParseEscape(fileName, p, e, token);
+                    first = false;
+                }
+                else
+                {
+                    throw std::runtime_error("invalid character literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
+                }
+            }
+            else
+            {
+                if (first)
+                {
+                    charLit = *p;
+                    first = false;
+                }
+                else
+                {
+                    throw std::runtime_error("invalid character literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
+                }
+                ++p;
+            }
+        }
+        if (p != e && *p == '\'')
+        {
+            ++p;
+        }
+        if (p != e)
+        {
+            throw std::runtime_error("invalid character literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
+        }
+    }
+    else
+    {
+        throw std::runtime_error("invalid character literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
+    }
+    return charLit;
+}
+
+CharSet ParseCharSet(const std::string& fileName, const soulng::lexer::Token& token, const std::u32string& str)
+{
+    CharSet set;
+    const char32_t* p = str.c_str();
+    const char32_t* e = str.c_str() + str.length();
+    bool inverse = false;
+    if (p != e && *p == '[')
+    {
+        ++p;
+        if (p != e && *p == '^')
+        {
+            set.SetInverse();
+            ++p;
+        }
+        while (p != e && *p != ']')
+        {
+            char32_t first = *p;
+            char32_t last = first;
+            ++p;
+            if (p != e && *p != ']')
+            {
+                if (*p == '-')
+                {
+                    ++p;
+                    if (p != e && *p != ']')
+                    {
+                        last = *p;
+                        ++p;
+                    }
+                    else
+                    {
+                        soulng::parser::Range range;
+                        range.first = first;
+                        range.last = first;
+                        set.AddRange(range);
+                        first = '-';
+                        last = '-';
+                    }
+                }
+            }
+            soulng::parser::Range range;
+            range.first = first;
+            range.last = last;
+            set.AddRange(range);
+        }
+        if (p != e && *p == ']')
+        {
+            ++p;
+        }
+        if (p != e)
+        {
+            throw std::runtime_error("invalid character set literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
+        }
+    }
+    else
+    {
+        throw std::runtime_error("invalid character set literal at " + fileName + ":" + std::to_string(token.line) + ": " + ToUtf8(token.match.ToString()));
+    }
+    return set;
+}
+
 } } // namespapce soulng::spg

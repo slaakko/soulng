@@ -64,6 +64,58 @@ void TokenParser::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+CharParser::CharParser(char32_t chr_) : Parser(std::u32string(1, chr_)), chr(chr_)
+{
+}
+
+Parser* CharParser::Clone() const
+{
+    return new CharParser(chr);
+}
+
+void CharParser::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+StringParser::StringParser(const std::u32string& str_) : Parser(str_), str(str_)
+{
+}
+
+Parser* StringParser::Clone() const
+{
+    return new StringParser(str);
+}
+
+void StringParser::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void StringParser::SetArrayName(const std::string& arrayName_)
+{
+    arrayName = arrayName_;
+}
+
+CharSetParser::CharSetParser(const CharSet& set_) : Parser(U"charset"), set(set_)
+{
+}
+
+Parser* CharSetParser::Clone() const
+{
+    return new CharSetParser(set);
+}
+
+void CharSetParser::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void CharSetParser::SetArrayName(const std::string& arrayName_)
+{
+    arrayName = arrayName_;
+}
+
 OptionalParser::OptionalParser(Parser* child_) : UnaryParser(U"optional", child_)
 {
 }

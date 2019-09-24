@@ -37,11 +37,11 @@ public:
     void ThrowExpectationFailure(int pos, const std::u32string& name);
 protected:
     Lexeme lexeme;
+    int line;
 private:
     std::u32string content;
     std::string fileName;
     int fileIndex;
-    int line;
     KeywordMap* keywordMap;
     const char32_t* start;
     const char32_t* end;
