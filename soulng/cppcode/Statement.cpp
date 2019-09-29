@@ -13,13 +13,32 @@ namespace soulng { namespace cppcode  {
 using namespace soulng::util;
 using namespace soulng::unicode;
 
-Statement::Statement(const std::u32string& name_): CppObject(name_)
+Statement::Statement(const std::u32string& name_): CppObject(name_), parent(nullptr)
 {
+}
+
+void Statement::Replace(Statement* oldS, Statement* newS)
+{
+    throw std::runtime_error(ToUtf8(Name()) + ": cannot replace statement");
 }
 
 LabeledStatement::LabeledStatement(const std::u32string& label_, Statement* statement_): Statement(U"labeledStatement"), label(label_), statement(statement_) 
 {
+    statement->SetParent(this);
     Own(statement);
+}
+
+void LabeledStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void LabeledStatement::Print(CodeFormatter& formatter)
@@ -37,8 +56,22 @@ void LabeledStatement::Accept(Visitor& visitor)
 
 CaseStatement::CaseStatement(CppObject* expression_, Statement* statement_): Statement(U"case"), expression(expression_), statement(statement_) 
 {
+    statement->SetParent(this);
     Own(expression);
     Own(statement);
+}
+
+void CaseStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void CaseStatement::Print(CodeFormatter& formatter)
@@ -58,7 +91,21 @@ void CaseStatement::Accept(Visitor& visitor)
 
 DefaultStatement::DefaultStatement(Statement* statement_): Statement(U"default"), statement(statement_) 
 {
+    statement->SetParent(this);
     Own(statement);
+}
+
+void DefaultStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void DefaultStatement::Print(CodeFormatter& formatter)
@@ -110,6 +157,7 @@ CompoundStatement::CompoundStatement(): Statement(U"compound")
 
 void CompoundStatement::InsertFront(Statement* statement, bool own)
 {
+    statement->SetParent(this);
     if (own)
     {
         Own(statement);
@@ -118,9 +166,27 @@ void CompoundStatement::InsertFront(Statement* statement, bool own)
 }
 
 void CompoundStatement::Add(Statement* statement) 
-{ 
+{
+    statement->SetParent(this);
     Own(statement);
     statements.push_back(statement); 
+}
+
+void CompoundStatement::Replace(Statement* oldS, Statement* newS)
+{
+    std::vector<Statement*>::iterator it = statements.begin();
+    for (std::vector<Statement*>::iterator it = statements.begin(); it != statements.end(); ++it)
+    {
+        if (*it == oldS)
+        {
+            Own(newS);
+            it = statements.insert(it, newS);
+            ++it;
+            statements.erase(it);
+            return;
+        }
+    }
+    Statement::Replace(oldS, newS);
 }
 
 void CompoundStatement::Print(CodeFormatter& formatter)
@@ -158,9 +224,32 @@ SelectionStatement::SelectionStatement(const std::u32string& name_): Statement(n
 IfStatement::IfStatement(CppObject* condition_, Statement* thenStatement_, Statement* elseStatement_):
     SelectionStatement(U"if"), condition(condition_), thenStatement(thenStatement_), elseStatement(elseStatement_) 
 {
+    thenStatement->SetParent(this);
+    if (elseStatement)
+    {
+        elseStatement->SetParent(this);
+    }
     Own(condition);
     Own(thenStatement);
     Own(elseStatement);
+}
+
+void IfStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (thenStatement == oldS)
+    {
+        Own(newS);
+        thenStatement = newS;
+    }
+    else if (elseStatement == oldS)
+    {
+        Own(newS);
+        elseStatement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void IfStatement::Print(CodeFormatter& formatter)
@@ -206,8 +295,22 @@ void IfStatement::Accept(Visitor& visitor)
 SwitchStatement::SwitchStatement(CppObject* condition_, Statement* statement_):
     SelectionStatement(U"switch"), condition(condition_), statement(statement_) 
 {
+    statement->SetParent(this);
     Own(condition);
     Own(statement);
+}
+
+void SwitchStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void SwitchStatement::Print(CodeFormatter& formatter)
@@ -232,8 +335,22 @@ IterationStatement::IterationStatement(const std::u32string& name_): Statement(n
 WhileStatement::WhileStatement(CppObject* condition_, Statement* statement_):
     IterationStatement(U"while"), condition(condition_), statement(statement_) 
 {
+    statement->SetParent(this);
     Own(condition);
     Own(statement);
+}
+
+void WhileStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void WhileStatement::Print(CodeFormatter& formatter)
@@ -262,8 +379,22 @@ void WhileStatement::Accept(Visitor& visitor)
 DoStatement::DoStatement(Statement* statement_, CppObject* condition_):
     IterationStatement(U"do"), statement(statement_), condition(condition_) 
 {
+    statement->SetParent(this);
     Own(statement);
     Own(condition);
+}
+
+void DoStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void DoStatement::Print(CodeFormatter& formatter)
@@ -293,6 +424,7 @@ void DoStatement::Accept(Visitor& visitor)
 ForStatement::ForStatement(CppObject* initialization_, CppObject* condition_, CppObject* iteration_, Statement* statement_):
     IterationStatement(U"for"), initialization(initialization_), condition(condition_), iteration(iteration_), statement(statement_) 
 {
+    statement->SetParent(this);
     Own(initialization);
     Own(condition);
     Own(iteration);
@@ -346,7 +478,20 @@ void ForStatement::Accept(Visitor& visitor)
     statement->Accept(visitor);
 }
 
-JumpStatement::JumpStatement(const std::u32string& name_): Statement(name_) 
+void ForStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
+}
+
+JumpStatement::JumpStatement(const std::u32string& name_): Statement(name_)
 {
 }
 
@@ -469,9 +614,23 @@ void ForRangeDeclaration::Accept(Visitor& visitor)
 RangeForStatement::RangeForStatement(ForRangeDeclaration* declaration_, CppObject* container_, Statement* statement_) :
     Statement(U"forRangeStatement"), declaration(declaration_), container(container_), statement(statement_)
 {
+    statement->SetParent(this);
     Own(declaration);
     Own(container);
     Own(statement);
+}
+
+void RangeForStatement::Replace(Statement* oldS, Statement* newS)
+{
+    if (statement == oldS)
+    {
+        Own(newS);
+        statement = newS;
+    }
+    else
+    {
+        Statement::Replace(oldS, newS);
+    }
 }
 
 void RangeForStatement::Print(CodeFormatter& formatter)
@@ -552,6 +711,7 @@ void Handler::Accept(Visitor& visitor)
 
 TryStatement::TryStatement(CompoundStatement* statement_): Statement(U"try"), statement(statement_) 
 {
+    statement->SetParent(this);
 }
 
 void TryStatement::Add(Handler* handler)
@@ -580,6 +740,47 @@ void TryStatement::Accept(Visitor& visitor)
     {
         handlers[i]->Accept(visitor);
     }
+}
+
+IfDefStatement::IfDefStatement(CppObject* symbol_) : Statement(U"#ifdef"), symbol(symbol_)
+{
+    Own(symbol);
+}
+
+void IfDefStatement::Print(CodeFormatter& formatter)
+{
+    formatter.Write("#ifdef ");
+    symbol->Print(formatter);
+    formatter.WriteLine();
+}
+
+void IfDefStatement::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+EndIfStatement::EndIfStatement(CppObject* comment_) : Statement(U"#endif"), comment(comment_)
+{
+    Own(comment);
+}
+
+void EndIfStatement::Print(CodeFormatter& formatter)
+{
+    if (comment)
+    {
+        formatter.Write("#endif ");
+        comment->Print(formatter);
+        formatter.WriteLine();
+    }
+    else
+    {
+        formatter.WriteLine("#endif");
+    }
+}
+
+void EndIfStatement::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 } } // namespace soulng::cppcode

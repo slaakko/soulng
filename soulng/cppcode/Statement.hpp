@@ -14,6 +14,11 @@ class CPPCODE_API Statement: public CppObject
 public:
     Statement(const std::u32string& name_);
     virtual bool IsCompoundStatement() const { return false; }
+    void SetParent(Statement* parent_) { parent = parent_; }
+    Statement* Parent() const { return parent; }
+    virtual void Replace(Statement* oldS, Statement* newS);
+private:
+    Statement* parent;
 };
 
 class CPPCODE_API LabeledStatement: public Statement
@@ -22,6 +27,7 @@ public:
     LabeledStatement(const std::u32string& label_, Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     std::u32string label;
     Statement* statement;
@@ -33,6 +39,7 @@ public:
     CaseStatement(CppObject* expression_, Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     CppObject* expression;
     Statement* statement;
@@ -44,6 +51,7 @@ public:
     DefaultStatement(Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     Statement* statement;
 };
@@ -76,6 +84,7 @@ public:
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
     const std::vector<Statement*> Statements() const { return statements; }
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     std::vector<Statement*> statements;
 };
@@ -94,6 +103,7 @@ public:
     IfStatement(CppObject* condition_, Statement* thenStatement_, Statement* elseStatement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     CppObject* condition;
     Statement* thenStatement;
@@ -106,6 +116,7 @@ public:
     SwitchStatement(CppObject* condition_, Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     CppObject* condition;
     Statement* statement;
@@ -123,6 +134,7 @@ public:
     WhileStatement(CppObject* condition_, Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     CppObject* condition;
     Statement* statement;
@@ -134,6 +146,7 @@ public:
     DoStatement(Statement* statement_, CppObject* condition_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     Statement* statement;
     CppObject* condition;
@@ -145,6 +158,7 @@ public:
     ForStatement(CppObject* initialization_, CppObject* condition_, CppObject* iteration_, Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     CppObject* initialization;
     CppObject* condition;
@@ -232,6 +246,7 @@ public:
     RangeForStatement(ForRangeDeclaration* declaration_, CppObject* container_, Statement* statement_);
     void Print(CodeFormatter& formatter) override;
     void Accept(Visitor& visitor) override;
+    void Replace(Statement* oldS, Statement* newS) override;
 private:
     ForRangeDeclaration* declaration;
     CppObject* container;
@@ -286,6 +301,26 @@ public:
 private:
     CompoundStatement* statement;
     std::vector<Handler*> handlers;
+};
+
+class CPPCODE_API IfDefStatement : public Statement
+{
+public:
+    IfDefStatement(CppObject* symbol_);
+    void Print(CodeFormatter& formatter) override;
+    void Accept(Visitor& visitor) override;
+private:
+    CppObject* symbol;
+};
+
+class CPPCODE_API EndIfStatement : public Statement
+{
+public:
+    EndIfStatement(CppObject* comment_);
+    void Print(CodeFormatter& formatter) override;
+    void Accept(Visitor& visitor) override;
+private:
+    CppObject* comment;
 };
 
 } } // namespace soulng::cppcode

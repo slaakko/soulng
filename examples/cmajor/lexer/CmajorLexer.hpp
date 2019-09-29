@@ -1,7 +1,7 @@
 #ifndef CmajorLexer_HPP
 #define CmajorLexer_HPP
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.2.0
 
 #include <cmajor/lexer/TokenValueParsers.hpp>
 #include <cmajor/lexer/CmajorLexerApi.hpp>

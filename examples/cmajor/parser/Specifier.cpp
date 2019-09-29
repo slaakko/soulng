@@ -3,61 +3,101 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Specifier.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Specifier.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace CmajorTokens;
 
 soulng::parser::Match SpecifierParser::Specifiers(CmajorLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Specifiers"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     cmajor::ast::Specifiers specifiers = cmajor::ast::Specifiers();
     std::unique_ptr<soulng::parser::Value<cmajor::ast::Specifiers>> specifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int pos = lexer.GetPos();
-        soulng::parser::Match match(true);
+        soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            while (true)
+            soulng::parser::Match match(true);
+            soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                while (true)
                 {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch2 = &match;
+                    int save = lexer.GetPos();
                     {
-                        int pos = lexer.GetPos();
-                        soulng::parser::Match match = SpecifierParser::Specifier(lexer);
-                        specifier.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch3 = &match;
+                        {
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch4 = &match;
+                            {
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match = SpecifierParser::Specifier(lexer);
+                                specifier.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
+                                if (match.hit)
+                                {
+                                    specifiers = specifiers | specifier->value;
+                                }
+                                *parentMatch4 = match;
+                            }
+                            *parentMatch3 = match;
+                        }
                         if (match.hit)
                         {
-                            specifiers = specifiers | specifier->value;
+                            *parentMatch2 = match;
                         }
-                        *parentMatch2 = match;
-                    }
-                    if (match.hit)
-                    {
-                        *parentMatch1 = match;
-                    }
-                    else
-                    {
-                        lexer.SetPos(save);
-                        break;
+                        else
+                        {
+                            lexer.SetPos(save);
+                            break;
+                        }
                     }
                 }
             }
+            *parentMatch1 = match;
         }
         if (match.hit)
         {
-            return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(specifiers));
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifiers"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(specifiers));
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifiers"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Specifiers"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Specifier"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
@@ -67,7 +107,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::public_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::public_));
+                }
             }
             break;
         }
@@ -75,7 +120,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::protected_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::protected_));
+                }
             }
             break;
         }
@@ -83,7 +133,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::private_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::private_));
+                }
             }
             break;
         }
@@ -91,7 +146,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::internal_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::internal_));
+                }
             }
             break;
         }
@@ -99,7 +159,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::static_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::static_));
+                }
             }
             break;
         }
@@ -107,7 +172,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::virtual_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::virtual_));
+                }
             }
             break;
         }
@@ -115,7 +185,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::override_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::override_));
+                }
             }
             break;
         }
@@ -123,7 +198,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::abstract_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::abstract_));
+                }
             }
             break;
         }
@@ -131,7 +211,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::inline_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::inline_));
+                }
             }
             break;
         }
@@ -139,7 +224,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::explicit_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::explicit_));
+                }
             }
             break;
         }
@@ -147,7 +237,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::external_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::external_));
+                }
             }
             break;
         }
@@ -155,7 +250,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::suppress_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::suppress_));
+                }
             }
             break;
         }
@@ -163,7 +263,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::default_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::default_));
+                }
             }
             break;
         }
@@ -171,7 +276,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::constexpr_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::constexpr_));
+                }
             }
             break;
         }
@@ -179,7 +289,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::cdecl_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::cdecl_));
+                }
             }
             break;
         }
@@ -187,7 +302,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::nothrow_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::nothrow_));
+                }
             }
             break;
         }
@@ -195,7 +315,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::throw_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::throw_));
+                }
             }
             break;
         }
@@ -203,7 +328,12 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::new_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::new_));
+                }
             }
             break;
         }
@@ -211,10 +341,22 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::unit_test_));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::parser::Value<cmajor::ast::Specifiers>(cmajor::ast::Specifiers::unit_test_));
+                }
             }
             break;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Specifier"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Specifier"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

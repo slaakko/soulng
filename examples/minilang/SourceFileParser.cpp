@@ -4,7 +4,7 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/SourceFileParser.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/SourceFileParser.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -12,10 +12,24 @@ using namespace MinilangTokens;
 std::unique_ptr<minilang::SourceFileNode> SourceFileParser::Parse(MinilangLexer& lexer)
 {
     std::unique_ptr<minilang::SourceFileNode> value;
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (lexer.Log())
+    {
+        lexer.Log()->WriteBeginRule(soulng::unicode::ToUtf32("parse"));
+        lexer.Log()->IncIndent();
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
     int pos = lexer.GetPos();
     soulng::parser::Match match = SourceFileParser::SourceFile(lexer);
     value.reset(static_cast<minilang::SourceFileNode*>(match.value));
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (lexer.Log())
+    {
+        lexer.Log()->DecIndent();
+        lexer.Log()->WriteEndRule(soulng::unicode::ToUtf32("parse"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
         if (*lexer == soulng::lexer::END)
@@ -36,6 +50,15 @@ std::unique_ptr<minilang::SourceFileNode> SourceFileParser::Parse(MinilangLexer&
 
 soulng::parser::Match SourceFileParser::SourceFile(MinilangLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SourceFile"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<minilang::SourceFileNode> sourceFile = std::unique_ptr<minilang::SourceFileNode>();
     std::unique_ptr<minilang::FunctionNode> function;
     soulng::parser::Match match(false);
@@ -48,11 +71,61 @@ soulng::parser::Match SourceFileParser::SourceFile(MinilangLexer& lexer)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
-                soulng::parser::Match match(true);
-                if (match.hit)
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch3 = &match;
                 {
-                    sourceFile.reset(new minilang::SourceFileNode);
+                    int pos = lexer.GetPos();
+                    soulng::parser::Match match(true);
+                    if (match.hit)
+                    {
+                        sourceFile.reset(new minilang::SourceFileNode);
+                    }
+                    *parentMatch3 = match;
+                }
+                *parentMatch2 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch4 = &match;
+                {
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch5 = &match;
+                    {
+                        while (true)
+                        {
+                            int save = lexer.GetPos();
+                            {
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch6 = &match;
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch7 = &match;
+                                    {
+                                        int pos = lexer.GetPos();
+                                        soulng::parser::Match match = FunctionParser::Function(lexer);
+                                        function.reset(static_cast<minilang::FunctionNode*>(match.value));
+                                        if (match.hit)
+                                        {
+                                            sourceFile->AddFunction(function.release());
+                                        }
+                                        *parentMatch7 = match;
+                                    }
+                                    *parentMatch6 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    *parentMatch5 = match;
+                                }
+                                else
+                                {
+                                    lexer.SetPos(save);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    *parentMatch4 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -60,49 +133,21 @@ soulng::parser::Match SourceFileParser::SourceFile(MinilangLexer& lexer)
         }
         if (match.hit)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
             {
-                soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch4 = &match;
-                {
-                    while (true)
-                    {
-                        int save = lexer.GetPos();
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
-                            {
-                                int pos = lexer.GetPos();
-                                soulng::parser::Match match = FunctionParser::Function(lexer);
-                                function.reset(static_cast<minilang::FunctionNode*>(match.value));
-                                if (match.hit)
-                                {
-                                    sourceFile->AddFunction(function.release());
-                                }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
-                            {
-                                *parentMatch4 = match;
-                            }
-                            else
-                            {
-                                lexer.SetPos(save);
-                                break;
-                            }
-                        }
-                    }
-                }
-                *parentMatch3 = match;
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SourceFile"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, sourceFile.release());
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            return soulng::parser::Match(true, sourceFile.release());
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SourceFile"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SourceFile"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

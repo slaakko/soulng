@@ -15,7 +15,8 @@ namespace soulng { namespace spg {
 class CodeModifyVisitor : public soulng::cppcode::Visitor
 {
 public:
-    CodeModifyVisitor(bool valueOfPtrType_, const std::u32string& nonterminalName_, const std::vector<NonterminalInfo>& nonterminalInfos_, soulng::cppcode::TypeId* returnType_);
+    CodeModifyVisitor(bool valueOfPtrType_, const std::u32string& nonterminalName_, const std::vector<NonterminalInfo>& nonterminalInfos_, soulng::cppcode::TypeId* returnType_,
+        bool noParserDebugSupport_, const std::u32string& parserName_);
     void Visit(soulng::cppcode::ReturnStatement& object) override;
     void Visit(soulng::cppcode::IdExpr& object);
 private:
@@ -24,6 +25,8 @@ private:
     std::vector<NonterminalInfo> nonterminalInfos;
     std::vector<int> nonterminalCounts;
     soulng::cppcode::TypeId* returnType;
+    bool noParserDebugSupport;
+    std::u32string parserName;
 };
 
 } } // namespae soulng::spg

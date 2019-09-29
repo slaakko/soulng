@@ -27,6 +27,8 @@ void PrintHelp()
     std::cout << "  Print help and exit." << std::endl;
     std::cout << "--verbose | -v" << std::endl;
     std::cout << "  Be verbose." << std::endl;
+    std::cout << "--no-parser-debug-support | -n" << std::endl;
+    std::cout << "  Do not generate parser debug support code to the generated parsers." << std::endl;
 }
 
 using namespace soulng::unicode;
@@ -52,6 +54,7 @@ int main(int argc, const char** argv)
     try
     {
         bool verbose = false;
+        bool noParserDebugSupport = false;
         std::string projectFilePath;
         for (int i = 1; i < argc; ++i)
         {
@@ -66,6 +69,10 @@ int main(int argc, const char** argv)
                 else if (arg == "--verbose")
                 {
                     verbose = true;
+                }
+                else if (arg == "--no-parser-debug-support")
+                {
+                    noParserDebugSupport = true;
                 }
                 else
                 {
@@ -91,6 +98,10 @@ int main(int argc, const char** argv)
                         else if (o == 'v')
                         {
                             verbose = true;
+                        }
+                        else if (o == 'n')
+                        {
+                            noParserDebugSupport = true;
                         }
                         else
                         {
@@ -141,7 +152,7 @@ int main(int argc, const char** argv)
         }
         soulng::spg::LinkerVisitor linkerVisitor;
         domain.Accept(linkerVisitor);
-        soulng::spg::CodeGeneratorVisitor codeGeneratorVisitor(verbose);
+        soulng::spg::CodeGeneratorVisitor codeGeneratorVisitor(verbose, noParserDebugSupport);
         domain.Accept(codeGeneratorVisitor);
     }
     catch (const std::exception& ex)

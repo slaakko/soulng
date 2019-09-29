@@ -7,7 +7,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Constant.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Constant.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -15,6 +15,15 @@ using namespace CmajorTokens;
 
 soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Constant"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<soulng::parser::Value<cmajor::ast::Specifiers>> specifiers;
     std::unique_ptr<Node> type;
@@ -173,7 +182,12 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
                     s.end = span.end;
                     ConstantNode * value = new ConstantNode(s, specifiers->value, type.release(), id.release(), expr.release());
                     value->SetStrValue(lexer.GetMatch(s));
-                    return soulng::parser::Match(true, value);
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Constant"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, value);
+                    }
                 }
                 *parentMatch15 = match;
             }
@@ -181,5 +195,12 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Constant"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Constant"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

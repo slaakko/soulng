@@ -7,6 +7,7 @@
 #define SOULNG_LEXER_LEXER_INCLUDED
 #include <soulng/lexer/Keyword.hpp>
 #include <soulng/lexer/Span.hpp>
+#include <soulng/lexer/ParsingLog.hpp>
 #include <vector>
 #include <list>
 #include <map>
@@ -35,6 +36,12 @@ public:
     std::u32string ErrorLines(const Token& token) const;
     std::u32string ErrorLines(const Span& span) const;
     void ThrowExpectationFailure(int pos, const std::u32string& name);
+    const char32_t* Start() const { return start; }
+    const char32_t* End() const { return end; }
+    const char32_t* Pos() const { return pos; }
+    void SetLog(ParsingLog* log_) { log = log_; }
+    ParsingLog* Log() const { return log; }
+    std::u32string RestOfLine(int maxLineLength);
 protected:
     Lexeme lexeme;
     int line;
@@ -48,8 +55,13 @@ private:
     const char32_t* pos;
     std::vector<Token> tokens;
     std::vector<Token>::iterator current;
+    ParsingLog* log;
     void NextToken();
 };
+
+SOULNG_LEXER_API void WriteBeginRuleToLog(Lexer& lexer, const std::u32string& ruleName);
+SOULNG_LEXER_API void WriteSuccessToLog(Lexer& lexer, const Span& matchSpan, const std::u32string& ruleName);
+SOULNG_LEXER_API void WriteFailureToLog(Lexer& lexer, const std::u32string& ruleName);
 
 } } // namespace soulng::lexer
 

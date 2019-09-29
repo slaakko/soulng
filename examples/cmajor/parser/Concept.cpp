@@ -9,7 +9,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Concept.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Concept.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -17,6 +17,15 @@ using namespace CmajorTokens;
 
 soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Concept"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConceptNode> concept = std::unique_ptr<ConceptNode>();
     std::unique_ptr<WhereConstraintNode> constraint = std::unique_ptr<WhereConstraintNode>();
     Span s = Span();
@@ -76,24 +85,73 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch11 = &match;
                                             {
-                                                int pos = lexer.GetPos();
-                                                soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch12 = &match;
                                                 {
+                                                    int pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match(false);
                                                     soulng::parser::Match* parentMatch13 = &match;
                                                     {
                                                         soulng::parser::Match match(false);
                                                         soulng::parser::Match* parentMatch14 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
-                                                            soulng::lexer::Span span = lexer.GetSpan();
-                                                            soulng::parser::Match match = SpecifierParser::Specifiers(lexer);
-                                                            specifiers.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
+                                                            soulng::parser::Match match(false);
+                                                            soulng::parser::Match* parentMatch15 = &match;
+                                                            {
+                                                                soulng::parser::Match match(false);
+                                                                soulng::parser::Match* parentMatch16 = &match;
+                                                                {
+                                                                    int pos = lexer.GetPos();
+                                                                    soulng::lexer::Span span = lexer.GetSpan();
+                                                                    soulng::parser::Match match = SpecifierParser::Specifiers(lexer);
+                                                                    specifiers.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
+                                                                    if (match.hit)
+                                                                    {
+                                                                        s = span;
+                                                                    }
+                                                                    *parentMatch16 = match;
+                                                                }
+                                                                *parentMatch15 = match;
+                                                            }
                                                             if (match.hit)
                                                             {
-                                                                s = span;
+                                                                soulng::parser::Match match(false);
+                                                                soulng::parser::Match* parentMatch17 = &match;
+                                                                {
+                                                                    soulng::parser::Match match(false);
+                                                                    if (*lexer == CONCEPT)
+                                                                    {
+                                                                        ++lexer;
+                                                                        match.hit = true;
+                                                                    }
+                                                                    *parentMatch17 = match;
+                                                                }
+                                                                *parentMatch15 = match;
+                                                            }
+                                                            *parentMatch14 = match;
+                                                        }
+                                                        if (match.hit)
+                                                        {
+                                                            soulng::parser::Match match(false);
+                                                            soulng::parser::Match* parentMatch18 = &match;
+                                                            {
+                                                                soulng::parser::Match match(true);
+                                                                soulng::parser::Match* parentMatch19 = &match;
+                                                                {
+                                                                    int pos = lexer.GetPos();
+                                                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                                                    conceptName.reset(static_cast<IdentifierNode*>(match.value));
+                                                                    if (match.hit)
+                                                                    {
+                                                                        *parentMatch19 = match;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        lexer.ThrowExpectationFailure(pos, U"identifier");
+                                                                    }
+                                                                }
+                                                                *parentMatch18 = match;
                                                             }
                                                             *parentMatch14 = match;
                                                         }
@@ -101,48 +159,37 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                                                     }
                                                     if (match.hit)
                                                     {
-                                                        soulng::parser::Match match(false);
-                                                        soulng::parser::Match* parentMatch15 = &match;
-                                                        {
-                                                            soulng::parser::Match match(false);
-                                                            if (*lexer == CONCEPT)
-                                                            {
-                                                                ++lexer;
-                                                                match.hit = true;
-                                                            }
-                                                            *parentMatch15 = match;
-                                                        }
-                                                        *parentMatch13 = match;
+                                                        concept.reset(new ConceptNode(span, specifiers->value, conceptName.release()));
                                                     }
                                                     *parentMatch12 = match;
                                                 }
-                                                if (match.hit)
+                                                *parentMatch11 = match;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch20 = &match;
                                                 {
-                                                    soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch16 = &match;
+                                                    soulng::parser::Match match(true);
+                                                    soulng::parser::Match* parentMatch21 = &match;
                                                     {
-                                                        soulng::parser::Match match(true);
-                                                        soulng::parser::Match* parentMatch17 = &match;
+                                                        int pos = lexer.GetPos();
+                                                        soulng::parser::Match match(false);
+                                                        if (*lexer == LANGLE)
                                                         {
-                                                            int pos = lexer.GetPos();
-                                                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                                            conceptName.reset(static_cast<IdentifierNode*>(match.value));
-                                                            if (match.hit)
-                                                            {
-                                                                *parentMatch17 = match;
-                                                            }
-                                                            else
-                                                            {
-                                                                lexer.ThrowExpectationFailure(pos, U"identifier");
-                                                            }
+                                                            ++lexer;
+                                                            match.hit = true;
                                                         }
-                                                        *parentMatch16 = match;
+                                                        if (match.hit)
+                                                        {
+                                                            *parentMatch21 = match;
+                                                        }
+                                                        else
+                                                        {
+                                                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LANGLE)));
+                                                        }
                                                     }
-                                                    *parentMatch12 = match;
-                                                }
-                                                if (match.hit)
-                                                {
-                                                    concept.reset(new ConceptNode(span, specifiers->value, conceptName.release()));
+                                                    *parentMatch20 = match;
                                                 }
                                                 *parentMatch11 = match;
                                             }
@@ -151,28 +198,91 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                                         if (match.hit)
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch18 = &match;
+                                            soulng::parser::Match* parentMatch22 = &match;
                                             {
-                                                soulng::parser::Match match(true);
-                                                soulng::parser::Match* parentMatch19 = &match;
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch23 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
                                                     soulng::parser::Match match(false);
-                                                    if (*lexer == LANGLE)
+                                                    soulng::parser::Match* parentMatch24 = &match;
                                                     {
-                                                        ++lexer;
-                                                        match.hit = true;
+                                                        soulng::parser::Match match(false);
+                                                        soulng::parser::Match* parentMatch25 = &match;
+                                                        {
+                                                            int pos = lexer.GetPos();
+                                                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                                            typeParam.reset(static_cast<IdentifierNode*>(match.value));
+                                                            if (match.hit)
+                                                            {
+                                                                concept->AddTypeParameter(typeParam.release());
+                                                            }
+                                                            *parentMatch25 = match;
+                                                        }
+                                                        *parentMatch24 = match;
                                                     }
                                                     if (match.hit)
                                                     {
-                                                        *parentMatch19 = match;
+                                                        soulng::parser::Match match(false);
+                                                        soulng::parser::Match* parentMatch26 = &match;
+                                                        {
+                                                            soulng::parser::Match match(true);
+                                                            soulng::parser::Match* parentMatch27 = &match;
+                                                            {
+                                                                while (true)
+                                                                {
+                                                                    int save = lexer.GetPos();
+                                                                    {
+                                                                        soulng::parser::Match match(false);
+                                                                        soulng::parser::Match* parentMatch28 = &match;
+                                                                        {
+                                                                            soulng::parser::Match match(false);
+                                                                            if (*lexer == COMMA)
+                                                                            {
+                                                                                ++lexer;
+                                                                                match.hit = true;
+                                                                            }
+                                                                            *parentMatch28 = match;
+                                                                        }
+                                                                        if (match.hit)
+                                                                        {
+                                                                            soulng::parser::Match match(false);
+                                                                            soulng::parser::Match* parentMatch29 = &match;
+                                                                            {
+                                                                                soulng::parser::Match match(false);
+                                                                                soulng::parser::Match* parentMatch30 = &match;
+                                                                                {
+                                                                                    int pos = lexer.GetPos();
+                                                                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                                                                    typeParam.reset(static_cast<IdentifierNode*>(match.value));
+                                                                                    if (match.hit)
+                                                                                    {
+                                                                                        concept->AddTypeParameter(typeParam.release());
+                                                                                    }
+                                                                                    *parentMatch30 = match;
+                                                                                }
+                                                                                *parentMatch29 = match;
+                                                                            }
+                                                                            *parentMatch28 = match;
+                                                                        }
+                                                                        if (match.hit)
+                                                                        {
+                                                                            *parentMatch27 = match;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            lexer.SetPos(save);
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            *parentMatch26 = match;
+                                                        }
+                                                        *parentMatch24 = match;
                                                     }
-                                                    else
-                                                    {
-                                                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LANGLE)));
-                                                    }
+                                                    *parentMatch23 = match;
                                                 }
-                                                *parentMatch18 = match;
+                                                *parentMatch22 = match;
                                             }
                                             *parentMatch10 = match;
                                         }
@@ -181,86 +291,28 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                                     if (match.hit)
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch20 = &match;
+                                        soulng::parser::Match* parentMatch31 = &match;
                                         {
-                                            soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch21 = &match;
+                                            soulng::parser::Match match(true);
+                                            soulng::parser::Match* parentMatch32 = &match;
                                             {
+                                                int pos = lexer.GetPos();
                                                 soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch22 = &match;
+                                                if (*lexer == RANGLE)
                                                 {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                                    typeParam.reset(static_cast<IdentifierNode*>(match.value));
-                                                    if (match.hit)
-                                                    {
-                                                        concept->AddTypeParameter(typeParam.release());
-                                                    }
-                                                    *parentMatch22 = match;
+                                                    ++lexer;
+                                                    match.hit = true;
                                                 }
-                                                *parentMatch21 = match;
-                                            }
-                                            if (match.hit)
-                                            {
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch23 = &match;
+                                                if (match.hit)
                                                 {
-                                                    soulng::parser::Match match(true);
-                                                    soulng::parser::Match* parentMatch24 = &match;
-                                                    {
-                                                        while (true)
-                                                        {
-                                                            int save = lexer.GetPos();
-                                                            {
-                                                                soulng::parser::Match match(false);
-                                                                soulng::parser::Match* parentMatch25 = &match;
-                                                                {
-                                                                    soulng::parser::Match match(false);
-                                                                    if (*lexer == COMMA)
-                                                                    {
-                                                                        ++lexer;
-                                                                        match.hit = true;
-                                                                    }
-                                                                    *parentMatch25 = match;
-                                                                }
-                                                                if (match.hit)
-                                                                {
-                                                                    soulng::parser::Match match(false);
-                                                                    soulng::parser::Match* parentMatch26 = &match;
-                                                                    {
-                                                                        soulng::parser::Match match(false);
-                                                                        soulng::parser::Match* parentMatch27 = &match;
-                                                                        {
-                                                                            int pos = lexer.GetPos();
-                                                                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                                                            typeParam.reset(static_cast<IdentifierNode*>(match.value));
-                                                                            if (match.hit)
-                                                                            {
-                                                                                concept->AddTypeParameter(typeParam.release());
-                                                                            }
-                                                                            *parentMatch27 = match;
-                                                                        }
-                                                                        *parentMatch26 = match;
-                                                                    }
-                                                                    *parentMatch25 = match;
-                                                                }
-                                                                if (match.hit)
-                                                                {
-                                                                    *parentMatch24 = match;
-                                                                }
-                                                                else
-                                                                {
-                                                                    lexer.SetPos(save);
-                                                                    break;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    *parentMatch23 = match;
+                                                    *parentMatch32 = match;
                                                 }
-                                                *parentMatch21 = match;
+                                                else
+                                                {
+                                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RANGLE)));
+                                                }
                                             }
-                                            *parentMatch20 = match;
+                                            *parentMatch31 = match;
                                         }
                                         *parentMatch9 = match;
                                     }
@@ -269,28 +321,102 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                                 if (match.hit)
                                 {
                                     soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch28 = &match;
+                                    soulng::parser::Match* parentMatch33 = &match;
                                     {
-                                        soulng::parser::Match match(true);
-                                        soulng::parser::Match* parentMatch29 = &match;
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch34 = &match;
                                         {
                                             int pos = lexer.GetPos();
                                             soulng::parser::Match match(false);
-                                            if (*lexer == RANGLE)
+                                            soulng::parser::Match* parentMatch35 = &match;
                                             {
-                                                ++lexer;
-                                                match.hit = true;
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch36 = &match;
+                                                {
+                                                    soulng::parser::Match match(true);
+                                                    int save = lexer.GetPos();
+                                                    soulng::parser::Match* parentMatch37 = &match;
+                                                    {
+                                                        soulng::parser::Match match(false);
+                                                        soulng::parser::Match* parentMatch38 = &match;
+                                                        {
+                                                            soulng::parser::Match match(false);
+                                                            soulng::parser::Match* parentMatch39 = &match;
+                                                            {
+                                                                int pos = lexer.GetPos();
+                                                                soulng::parser::Match match = ConceptParser::Refinement(lexer);
+                                                                refinement.reset(static_cast<ConceptIdNode*>(match.value));
+                                                                if (match.hit)
+                                                                {
+                                                                    concept->SetRefinement(refinement.release());
+                                                                }
+                                                                *parentMatch39 = match;
+                                                            }
+                                                            *parentMatch38 = match;
+                                                        }
+                                                        if (match.hit)
+                                                        {
+                                                            *parentMatch37 = match;
+                                                        }
+                                                        else
+                                                        {
+                                                            lexer.SetPos(save);
+                                                        }
+                                                    }
+                                                    *parentMatch36 = match;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch40 = &match;
+                                                    {
+                                                        soulng::parser::Match match(true);
+                                                        int save = lexer.GetPos();
+                                                        soulng::parser::Match* parentMatch41 = &match;
+                                                        {
+                                                            soulng::parser::Match match(false);
+                                                            soulng::parser::Match* parentMatch42 = &match;
+                                                            {
+                                                                soulng::parser::Match match(false);
+                                                                soulng::parser::Match* parentMatch43 = &match;
+                                                                {
+                                                                    int pos = lexer.GetPos();
+                                                                    soulng::lexer::Span span = lexer.GetSpan();
+                                                                    soulng::parser::Match match = ConceptParser::WhereConstraint(lexer, ctx);
+                                                                    c.reset(static_cast<WhereConstraintNode*>(match.value));
+                                                                    if (match.hit)
+                                                                    {
+                                                                        s.end = span.end;
+                                                                        constraint.reset(c.release());
+                                                                        constraint->SetHeaderConstraint();
+                                                                        concept->AddConstraint(constraint.release());
+                                                                    }
+                                                                    *parentMatch43 = match;
+                                                                }
+                                                                *parentMatch42 = match;
+                                                            }
+                                                            if (match.hit)
+                                                            {
+                                                                *parentMatch41 = match;
+                                                            }
+                                                            else
+                                                            {
+                                                                lexer.SetPos(save);
+                                                            }
+                                                        }
+                                                        *parentMatch40 = match;
+                                                    }
+                                                    *parentMatch36 = match;
+                                                }
+                                                *parentMatch35 = match;
                                             }
                                             if (match.hit)
                                             {
-                                                *parentMatch29 = match;
+                                                concept->SetSpan(s);
                                             }
-                                            else
-                                            {
-                                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RANGLE)));
-                                            }
+                                            *parentMatch34 = match;
                                         }
-                                        *parentMatch28 = match;
+                                        *parentMatch33 = match;
                                     }
                                     *parentMatch8 = match;
                                 }
@@ -299,87 +425,39 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                             if (match.hit)
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch30 = &match;
+                                soulng::parser::Match* parentMatch44 = &match;
                                 {
                                     soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch31 = &match;
+                                    soulng::parser::Match* parentMatch45 = &match;
                                     {
                                         int pos = lexer.GetPos();
-                                        soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch32 = &match;
+                                        soulng::lexer::Span span = lexer.GetSpan();
+                                        soulng::parser::Match match(true);
+                                        soulng::parser::Match* parentMatch46 = &match;
                                         {
-                                            soulng::parser::Match match(true);
-                                            int save = lexer.GetPos();
-                                            soulng::parser::Match* parentMatch33 = &match;
-                                            {
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch34 = &match;
-                                                {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = ConceptParser::Refinement(lexer);
-                                                    refinement.reset(static_cast<ConceptIdNode*>(match.value));
-                                                    if (match.hit)
-                                                    {
-                                                        concept->SetRefinement(refinement.release());
-                                                    }
-                                                    *parentMatch34 = match;
-                                                }
-                                                if (match.hit)
-                                                {
-                                                    *parentMatch33 = match;
-                                                }
-                                                else
-                                                {
-                                                    lexer.SetPos(save);
-                                                }
-                                            }
-                                            *parentMatch32 = match;
-                                        }
-                                        if (match.hit)
-                                        {
+                                            int pos = lexer.GetPos();
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch35 = &match;
+                                            if (*lexer == LBRACE)
                                             {
-                                                soulng::parser::Match match(true);
-                                                int save = lexer.GetPos();
-                                                soulng::parser::Match* parentMatch36 = &match;
-                                                {
-                                                    soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch37 = &match;
-                                                    {
-                                                        int pos = lexer.GetPos();
-                                                        soulng::lexer::Span span = lexer.GetSpan();
-                                                        soulng::parser::Match match = ConceptParser::WhereConstraint(lexer, ctx);
-                                                        c.reset(static_cast<WhereConstraintNode*>(match.value));
-                                                        if (match.hit)
-                                                        {
-                                                            s.end = span.end;
-                                                            constraint.reset(c.release());
-                                                            constraint->SetHeaderConstraint();
-                                                            concept->AddConstraint(constraint.release());
-                                                        }
-                                                        *parentMatch37 = match;
-                                                    }
-                                                    if (match.hit)
-                                                    {
-                                                        *parentMatch36 = match;
-                                                    }
-                                                    else
-                                                    {
-                                                        lexer.SetPos(save);
-                                                    }
-                                                }
-                                                *parentMatch35 = match;
+                                                ++lexer;
+                                                match.hit = true;
                                             }
-                                            *parentMatch32 = match;
+                                            if (match.hit)
+                                            {
+                                                *parentMatch46 = match;
+                                            }
+                                            else
+                                            {
+                                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
+                                            }
                                         }
                                         if (match.hit)
                                         {
-                                            concept->SetSpan(s);
+                                            beginBraceSpan = span;
                                         }
-                                        *parentMatch31 = match;
+                                        *parentMatch45 = match;
                                     }
-                                    *parentMatch30 = match;
+                                    *parentMatch44 = match;
                                 }
                                 *parentMatch7 = match;
                             }
@@ -388,39 +466,23 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                         if (match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch38 = &match;
+                            soulng::parser::Match* parentMatch47 = &match;
                             {
-                                soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch39 = &match;
+                                soulng::parser::Match match(true);
+                                soulng::parser::Match* parentMatch48 = &match;
                                 {
                                     int pos = lexer.GetPos();
-                                    soulng::lexer::Span span = lexer.GetSpan();
-                                    soulng::parser::Match match(true);
-                                    soulng::parser::Match* parentMatch40 = &match;
-                                    {
-                                        int pos = lexer.GetPos();
-                                        soulng::parser::Match match(false);
-                                        if (*lexer == LBRACE)
-                                        {
-                                            ++lexer;
-                                            match.hit = true;
-                                        }
-                                        if (match.hit)
-                                        {
-                                            *parentMatch40 = match;
-                                        }
-                                        else
-                                        {
-                                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
-                                        }
-                                    }
+                                    soulng::parser::Match match = ConceptParser::ConceptBody(lexer, ctx, concept.get());
                                     if (match.hit)
                                     {
-                                        beginBraceSpan = span;
+                                        *parentMatch48 = match;
                                     }
-                                    *parentMatch39 = match;
+                                    else
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, U"concept body");
+                                    }
                                 }
-                                *parentMatch38 = match;
+                                *parentMatch47 = match;
                             }
                             *parentMatch6 = match;
                         }
@@ -429,64 +491,41 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch41 = &match;
+                        soulng::parser::Match* parentMatch49 = &match;
                         {
-                            soulng::parser::Match match(true);
-                            soulng::parser::Match* parentMatch42 = &match;
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch50 = &match;
                             {
                                 int pos = lexer.GetPos();
-                                soulng::parser::Match match = ConceptParser::ConceptBody(lexer, ctx, concept.get());
+                                soulng::lexer::Span span = lexer.GetSpan();
+                                soulng::parser::Match match(true);
+                                soulng::parser::Match* parentMatch51 = &match;
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match(false);
+                                    if (*lexer == RBRACE)
+                                    {
+                                        ++lexer;
+                                        match.hit = true;
+                                    }
+                                    if (match.hit)
+                                    {
+                                        *parentMatch51 = match;
+                                    }
+                                    else
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
+                                    }
+                                }
                                 if (match.hit)
                                 {
-                                    *parentMatch42 = match;
+                                    endBraceSpan = span;
                                 }
-                                else
-                                {
-                                    lexer.ThrowExpectationFailure(pos, U"concept body");
-                                }
+                                *parentMatch50 = match;
                             }
-                            *parentMatch41 = match;
+                            *parentMatch49 = match;
                         }
                         *parentMatch5 = match;
-                    }
-                    *parentMatch4 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch43 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch44 = &match;
-                        {
-                            int pos = lexer.GetPos();
-                            soulng::lexer::Span span = lexer.GetSpan();
-                            soulng::parser::Match match(true);
-                            soulng::parser::Match* parentMatch45 = &match;
-                            {
-                                int pos = lexer.GetPos();
-                                soulng::parser::Match match(false);
-                                if (*lexer == RBRACE)
-                                {
-                                    ++lexer;
-                                    match.hit = true;
-                                }
-                                if (match.hit)
-                                {
-                                    *parentMatch45 = match;
-                                }
-                                else
-                                {
-                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
-                                }
-                            }
-                            if (match.hit)
-                            {
-                                endBraceSpan = span;
-                            }
-                            *parentMatch44 = match;
-                        }
-                        *parentMatch43 = match;
                     }
                     *parentMatch4 = match;
                 }
@@ -495,7 +534,12 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
                     ctx->EndParsingConcept();
                     concept->SetBeginBraceSpan(beginBraceSpan);
                     concept->SetEndBraceSpan(endBraceSpan);
-                    return soulng::parser::Match(true, concept.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Concept"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, concept.release());
+                    }
                 }
                 else
                 {
@@ -507,11 +551,27 @@ soulng::parser::Match ConceptParser::Concept(CmajorLexer& lexer, ParsingContext*
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Concept"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Concept"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::Refinement(CmajorLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Refinement"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConceptIdNode> conceptId = std::unique_ptr<ConceptIdNode>();
     std::unique_ptr<IdentifierNode> refinedConcept;
     std::unique_ptr<IdentifierNode> typeParam;
@@ -532,32 +592,65 @@ soulng::parser::Match ConceptParser::Refinement(CmajorLexer& lexer)
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         soulng::parser::Match match(false);
-                        if (*lexer == COLON)
+                        soulng::parser::Match* parentMatch5 = &match;
                         {
-                            ++lexer;
-                            match.hit = true;
+                            soulng::parser::Match match(false);
+                            if (*lexer == COLON)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            *parentMatch5 = match;
+                        }
+                        if (match.hit)
+                        {
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch6 = &match;
+                            {
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch7 = &match;
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::lexer::Span span = lexer.GetSpan();
+                                    soulng::parser::Match match = IdentifierParser::QualifiedId(lexer);
+                                    refinedConcept.reset(static_cast<IdentifierNode*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        conceptId.reset(new ConceptIdNode(span, refinedConcept.release()));
+                                    }
+                                    *parentMatch7 = match;
+                                }
+                                *parentMatch6 = match;
+                            }
+                            *parentMatch5 = match;
                         }
                         *parentMatch4 = match;
                     }
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch5 = &match;
+                        soulng::parser::Match* parentMatch8 = &match;
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch6 = &match;
+                            soulng::parser::Match match(true);
+                            soulng::parser::Match* parentMatch9 = &match;
                             {
                                 int pos = lexer.GetPos();
-                                soulng::lexer::Span span = lexer.GetSpan();
-                                soulng::parser::Match match = IdentifierParser::QualifiedId(lexer);
-                                refinedConcept.reset(static_cast<IdentifierNode*>(match.value));
+                                soulng::parser::Match match(false);
+                                if (*lexer == LANGLE)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
                                 if (match.hit)
                                 {
-                                    conceptId.reset(new ConceptIdNode(span, refinedConcept.release()));
+                                    *parentMatch9 = match;
                                 }
-                                *parentMatch6 = match;
+                                else
+                                {
+                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LANGLE)));
+                                }
                             }
-                            *parentMatch5 = match;
+                            *parentMatch8 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -566,28 +659,91 @@ soulng::parser::Match ConceptParser::Refinement(CmajorLexer& lexer)
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch7 = &match;
+                    soulng::parser::Match* parentMatch10 = &match;
                     {
-                        soulng::parser::Match match(true);
-                        soulng::parser::Match* parentMatch8 = &match;
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
                             soulng::parser::Match match(false);
-                            if (*lexer == LANGLE)
+                            soulng::parser::Match* parentMatch12 = &match;
                             {
-                                ++lexer;
-                                match.hit = true;
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch13 = &match;
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                    typeParam.reset(static_cast<IdentifierNode*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        conceptId->AddTypeParameter(typeParam.release());
+                                    }
+                                    *parentMatch13 = match;
+                                }
+                                *parentMatch12 = match;
                             }
                             if (match.hit)
                             {
-                                *parentMatch8 = match;
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch14 = &match;
+                                {
+                                    soulng::parser::Match match(true);
+                                    soulng::parser::Match* parentMatch15 = &match;
+                                    {
+                                        while (true)
+                                        {
+                                            int save = lexer.GetPos();
+                                            {
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch16 = &match;
+                                                {
+                                                    soulng::parser::Match match(false);
+                                                    if (*lexer == COMMA)
+                                                    {
+                                                        ++lexer;
+                                                        match.hit = true;
+                                                    }
+                                                    *parentMatch16 = match;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch17 = &match;
+                                                    {
+                                                        soulng::parser::Match match(false);
+                                                        soulng::parser::Match* parentMatch18 = &match;
+                                                        {
+                                                            int pos = lexer.GetPos();
+                                                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                                            typeParam.reset(static_cast<IdentifierNode*>(match.value));
+                                                            if (match.hit)
+                                                            {
+                                                                conceptId->AddTypeParameter(typeParam.release());
+                                                            }
+                                                            *parentMatch18 = match;
+                                                        }
+                                                        *parentMatch17 = match;
+                                                    }
+                                                    *parentMatch16 = match;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    *parentMatch15 = match;
+                                                }
+                                                else
+                                                {
+                                                    lexer.SetPos(save);
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    *parentMatch14 = match;
+                                }
+                                *parentMatch12 = match;
                             }
-                            else
-                            {
-                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LANGLE)));
-                            }
+                            *parentMatch11 = match;
                         }
-                        *parentMatch7 = match;
+                        *parentMatch10 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -596,86 +752,28 @@ soulng::parser::Match ConceptParser::Refinement(CmajorLexer& lexer)
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch9 = &match;
+                soulng::parser::Match* parentMatch19 = &match;
                 {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch10 = &match;
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch20 = &match;
                     {
+                        int pos = lexer.GetPos();
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch11 = &match;
+                        if (*lexer == RANGLE)
                         {
-                            int pos = lexer.GetPos();
-                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                            typeParam.reset(static_cast<IdentifierNode*>(match.value));
-                            if (match.hit)
-                            {
-                                conceptId->AddTypeParameter(typeParam.release());
-                            }
-                            *parentMatch11 = match;
+                            ++lexer;
+                            match.hit = true;
                         }
-                        *parentMatch10 = match;
-                    }
-                    if (match.hit)
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch12 = &match;
+                        if (match.hit)
                         {
-                            soulng::parser::Match match(true);
-                            soulng::parser::Match* parentMatch13 = &match;
-                            {
-                                while (true)
-                                {
-                                    int save = lexer.GetPos();
-                                    {
-                                        soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch14 = &match;
-                                        {
-                                            soulng::parser::Match match(false);
-                                            if (*lexer == COMMA)
-                                            {
-                                                ++lexer;
-                                                match.hit = true;
-                                            }
-                                            *parentMatch14 = match;
-                                        }
-                                        if (match.hit)
-                                        {
-                                            soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch15 = &match;
-                                            {
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch16 = &match;
-                                                {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                                    typeParam.reset(static_cast<IdentifierNode*>(match.value));
-                                                    if (match.hit)
-                                                    {
-                                                        conceptId->AddTypeParameter(typeParam.release());
-                                                    }
-                                                    *parentMatch16 = match;
-                                                }
-                                                *parentMatch15 = match;
-                                            }
-                                            *parentMatch14 = match;
-                                        }
-                                        if (match.hit)
-                                        {
-                                            *parentMatch13 = match;
-                                        }
-                                        else
-                                        {
-                                            lexer.SetPos(save);
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            *parentMatch12 = match;
+                            *parentMatch20 = match;
                         }
-                        *parentMatch10 = match;
+                        else
+                        {
+                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RANGLE)));
+                        }
                     }
-                    *parentMatch9 = match;
+                    *parentMatch19 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -683,43 +781,36 @@ soulng::parser::Match ConceptParser::Refinement(CmajorLexer& lexer)
         }
         if (match.hit)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch17 = &match;
             {
-                soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch18 = &match;
-                {
-                    int pos = lexer.GetPos();
-                    soulng::parser::Match match(false);
-                    if (*lexer == RANGLE)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    if (match.hit)
-                    {
-                        *parentMatch18 = match;
-                    }
-                    else
-                    {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RANGLE)));
-                    }
-                }
-                *parentMatch17 = match;
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Refinement"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, conceptId.release());
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            return soulng::parser::Match(true, conceptId.release());
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Refinement"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Refinement"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::ConceptBody(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::ConceptNode* concept)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConceptBody"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(true);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -730,20 +821,25 @@ soulng::parser::Match ConceptParser::ConceptBody(CmajorLexer& lexer, ParsingCont
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch1 = &match;
                 {
-                    int save = lexer.GetPos();
-                    soulng::parser::Match match = ConceptParser::ConceptBodyConstraint(lexer, ctx, concept);
-                    *parentMatch1 = match;
-                    if (!match.hit)
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch2 = &match;
                     {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch2 = &match;
-                        lexer.SetPos(save);
+                        int save = lexer.GetPos();
+                        soulng::parser::Match match = ConceptParser::ConceptBodyConstraint(lexer, ctx, concept);
+                        *parentMatch2 = match;
+                        if (!match.hit)
                         {
-                            soulng::parser::Match match = ConceptParser::Axiom(lexer, ctx, concept);
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch3 = &match;
+                            lexer.SetPos(save);
+                            {
+                                soulng::parser::Match match = ConceptParser::Axiom(lexer, ctx, concept);
+                                *parentMatch3 = match;
+                            }
                             *parentMatch2 = match;
                         }
-                        *parentMatch1 = match;
                     }
+                    *parentMatch1 = match;
                 }
                 if (match.hit)
                 {
@@ -757,11 +853,27 @@ soulng::parser::Match ConceptParser::ConceptBody(CmajorLexer& lexer, ParsingCont
             }
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConceptBody"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ConceptBody"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::ConceptBodyConstraint(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::ConceptNode* concept)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConceptBodyConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> typeNameConstraint;
     std::unique_ptr<ConstraintNode> signatureConstraint;
     std::unique_ptr<WhereConstraintNode> embeddedConstraint;
@@ -833,11 +945,27 @@ soulng::parser::Match ConceptParser::ConceptBodyConstraint(CmajorLexer& lexer, P
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConceptBodyConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ConceptBodyConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::TypeNameConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeNameConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<Node> type;
     soulng::parser::Match match(false);
@@ -923,7 +1051,12 @@ soulng::parser::Match ConceptParser::TypeNameConstraint(CmajorLexer& lexer, Pars
                 if (match.hit)
                 {
                     s.end = span.end;
-                    return soulng::parser::Match(true, new TypeNameConstraintNode(s, type.release()));
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeNameConstraint"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new TypeNameConstraintNode(s, type.release()));
+                    }
                 }
                 *parentMatch6 = match;
             }
@@ -931,11 +1064,27 @@ soulng::parser::Match ConceptParser::TypeNameConstraint(CmajorLexer& lexer, Pars
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeNameConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("TypeNameConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::SignatureConstraint(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::IdentifierNode* firstTypeParameter)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SignatureConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> constructorConstraint;
     std::unique_ptr<ConstraintNode> destructorConstraint;
     std::unique_ptr<ConstraintNode> memberFunctionConstraint;
@@ -960,7 +1109,12 @@ soulng::parser::Match ConceptParser::SignatureConstraint(CmajorLexer& lexer, Par
                     constructorConstraint.reset(static_cast<ConstraintNode*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, constructorConstraint.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SignatureConstraint"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, constructorConstraint.release());
+                        }
                     }
                     *parentMatch3 = match;
                 }
@@ -979,7 +1133,12 @@ soulng::parser::Match ConceptParser::SignatureConstraint(CmajorLexer& lexer, Par
                             destructorConstraint.reset(static_cast<ConstraintNode*>(match.value));
                             if (match.hit)
                             {
-                                return soulng::parser::Match(true, destructorConstraint.release());
+                                {
+                                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SignatureConstraint"));
+                                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                    return soulng::parser::Match(true, destructorConstraint.release());
+                                }
                             }
                             *parentMatch5 = match;
                         }
@@ -1003,7 +1162,12 @@ soulng::parser::Match ConceptParser::SignatureConstraint(CmajorLexer& lexer, Par
                         memberFunctionConstraint.reset(static_cast<ConstraintNode*>(match.value));
                         if (match.hit)
                         {
-                            return soulng::parser::Match(true, memberFunctionConstraint.release());
+                            {
+                                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SignatureConstraint"));
+                                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                return soulng::parser::Match(true, memberFunctionConstraint.release());
+                            }
                         }
                         *parentMatch7 = match;
                     }
@@ -1027,7 +1191,12 @@ soulng::parser::Match ConceptParser::SignatureConstraint(CmajorLexer& lexer, Par
                     functionConstraint.reset(static_cast<ConstraintNode*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, functionConstraint.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SignatureConstraint"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, functionConstraint.release());
+                        }
                     }
                     *parentMatch9 = match;
                 }
@@ -1036,11 +1205,27 @@ soulng::parser::Match ConceptParser::SignatureConstraint(CmajorLexer& lexer, Par
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SignatureConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SignatureConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::ConstructorConstraint(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::IdentifierNode* firstTypeParameter)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConstructorConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> ctorConstraint = std::unique_ptr<ConstraintNode>();
     Span e = Span();
     std::unique_ptr<IdentifierNode> id;
@@ -1057,53 +1242,68 @@ soulng::parser::Match ConceptParser::ConstructorConstraint(CmajorLexer& lexer, P
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    soulng::parser::Match match(true);
-                    int save = lexer.GetPos();
+                    soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
+                        soulng::parser::Match match(true);
+                        int save = lexer.GetPos();
+                        soulng::parser::Match* parentMatch5 = &match;
+                        {
+                            soulng::parser::Match match(false);
+                            if (*lexer == EXPLICIT)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                *parentMatch5 = match;
+                            }
+                            else
+                            {
+                                lexer.SetPos(save);
+                            }
+                        }
+                        *parentMatch4 = match;
+                    }
+                    if (match.hit)
+                    {
                         soulng::parser::Match match(false);
-                        if (*lexer == EXPLICIT)
+                        soulng::parser::Match* parentMatch6 = &match;
                         {
-                            ++lexer;
-                            match.hit = true;
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch7 = &match;
+                            {
+                                int pos = lexer.GetPos();
+                                soulng::lexer::Span span = lexer.GetSpan();
+                                bool pass = true;
+                                soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                id.reset(static_cast<IdentifierNode*>(match.value));
+                                if (match.hit)
+                                {
+                                    std::u32string className = lexer.GetMatch(span);
+                                    pass = className == firstTypeParameter->Str();
+                                    if (pass) ctorConstraint.reset(new ConstructorConstraintNode(span, id.release()));
+                                }
+                                if (match.hit && !pass)
+                                {
+                                    match = soulng::parser::Match(false);
+                                }
+                                *parentMatch7 = match;
+                            }
+                            *parentMatch6 = match;
                         }
-                        if (match.hit)
-                        {
-                            *parentMatch4 = match;
-                        }
-                        else
-                        {
-                            lexer.SetPos(save);
-                        }
+                        *parentMatch4 = match;
                     }
                     *parentMatch3 = match;
                 }
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch5 = &match;
+                    soulng::parser::Match* parentMatch8 = &match;
                     {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch6 = &match;
-                        {
-                            int pos = lexer.GetPos();
-                            soulng::lexer::Span span = lexer.GetSpan();
-                            bool pass = true;
-                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                            id.reset(static_cast<IdentifierNode*>(match.value));
-                            if (match.hit)
-                            {
-                                std::u32string className = lexer.GetMatch(span);
-                                pass = className == firstTypeParameter->Str();
-                                if (pass) ctorConstraint.reset(new ConstructorConstraintNode(span, id.release()));
-                            }
-                            if (match.hit && !pass)
-                            {
-                                match = soulng::parser::Match(false);
-                            }
-                            *parentMatch6 = match;
-                        }
-                        *parentMatch5 = match;
+                        soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, ctorConstraint.get());
+                        *parentMatch8 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -1112,10 +1312,39 @@ soulng::parser::Match ConceptParser::ConstructorConstraint(CmajorLexer& lexer, P
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch7 = &match;
+                soulng::parser::Match* parentMatch9 = &match;
                 {
-                    soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, ctorConstraint.get());
-                    *parentMatch7 = match;
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch10 = &match;
+                    {
+                        int pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
+                        soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch11 = &match;
+                        {
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match(false);
+                            if (*lexer == SEMICOLON)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                *parentMatch11 = match;
+                            }
+                            else
+                            {
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                            }
+                        }
+                        if (match.hit)
+                        {
+                            e = span;
+                        }
+                        *parentMatch10 = match;
+                    }
+                    *parentMatch9 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -1123,55 +1352,37 @@ soulng::parser::Match ConceptParser::ConstructorConstraint(CmajorLexer& lexer, P
         }
         if (match.hit)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch8 = &match;
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch9 = &match;
-                {
-                    int pos = lexer.GetPos();
-                    soulng::lexer::Span span = lexer.GetSpan();
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch10 = &match;
-                    {
-                        int pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == SEMICOLON)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        if (match.hit)
-                        {
-                            *parentMatch10 = match;
-                        }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
-                        }
-                    }
-                    if (match.hit)
-                    {
-                        e = span;
-                    }
-                    *parentMatch9 = match;
-                }
-                *parentMatch8 = match;
-            }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
             ctorConstraint->SetSpanEnd(e.end);
-            return soulng::parser::Match(true, ctorConstraint.release());
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConstructorConstraint"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, ctorConstraint.release());
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConstructorConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ConstructorConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::DestructorConstraint(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::IdentifierNode* firstTypeParameter)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DestructorConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<IdentifierNode> id;
     soulng::parser::Match match(false);
@@ -1193,17 +1404,50 @@ soulng::parser::Match ConceptParser::DestructorConstraint(CmajorLexer& lexer, Pa
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int pos = lexer.GetPos();
-                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(false);
-                            if (*lexer == CPL)
+                            soulng::parser::Match* parentMatch6 = &match;
                             {
-                                ++lexer;
-                                match.hit = true;
+                                int pos = lexer.GetPos();
+                                soulng::lexer::Span span = lexer.GetSpan();
+                                soulng::parser::Match match(false);
+                                if (*lexer == CPL)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
+                                if (match.hit)
+                                {
+                                    s = span;
+                                }
+                                *parentMatch6 = match;
                             }
-                            if (match.hit)
+                            *parentMatch5 = match;
+                        }
+                        if (match.hit)
+                        {
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch7 = &match;
                             {
-                                s = span;
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch8 = &match;
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::lexer::Span span = lexer.GetSpan();
+                                    bool pass = true;
+                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                    id.reset(static_cast<IdentifierNode*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        std::u32string className = lexer.GetMatch(span);
+                                        pass = className == firstTypeParameter->Str();
+                                    }
+                                    if (match.hit && !pass)
+                                    {
+                                        match = soulng::parser::Match(false);
+                                    }
+                                    *parentMatch8 = match;
+                                }
+                                *parentMatch7 = match;
                             }
                             *parentMatch5 = match;
                         }
@@ -1212,28 +1456,28 @@ soulng::parser::Match ConceptParser::DestructorConstraint(CmajorLexer& lexer, Pa
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch6 = &match;
+                        soulng::parser::Match* parentMatch9 = &match;
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch7 = &match;
+                            soulng::parser::Match match(true);
+                            soulng::parser::Match* parentMatch10 = &match;
                             {
                                 int pos = lexer.GetPos();
-                                soulng::lexer::Span span = lexer.GetSpan();
-                                bool pass = true;
-                                soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                id.reset(static_cast<IdentifierNode*>(match.value));
+                                soulng::parser::Match match(false);
+                                if (*lexer == LPAREN)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
                                 if (match.hit)
                                 {
-                                    std::u32string className = lexer.GetMatch(span);
-                                    pass = className == firstTypeParameter->Str();
+                                    *parentMatch10 = match;
                                 }
-                                if (match.hit && !pass)
+                                else
                                 {
-                                    match = soulng::parser::Match(false);
+                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LPAREN)));
                                 }
-                                *parentMatch7 = match;
                             }
-                            *parentMatch6 = match;
+                            *parentMatch9 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -1242,28 +1486,28 @@ soulng::parser::Match ConceptParser::DestructorConstraint(CmajorLexer& lexer, Pa
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch8 = &match;
+                    soulng::parser::Match* parentMatch11 = &match;
                     {
                         soulng::parser::Match match(true);
-                        soulng::parser::Match* parentMatch9 = &match;
+                        soulng::parser::Match* parentMatch12 = &match;
                         {
                             int pos = lexer.GetPos();
                             soulng::parser::Match match(false);
-                            if (*lexer == LPAREN)
+                            if (*lexer == RPAREN)
                             {
                                 ++lexer;
                                 match.hit = true;
                             }
                             if (match.hit)
                             {
-                                *parentMatch9 = match;
+                                *parentMatch12 = match;
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LPAREN)));
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
                             }
                         }
-                        *parentMatch8 = match;
+                        *parentMatch11 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -1272,28 +1516,39 @@ soulng::parser::Match ConceptParser::DestructorConstraint(CmajorLexer& lexer, Pa
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch10 = &match;
+                soulng::parser::Match* parentMatch13 = &match;
                 {
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch11 = &match;
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch14 = &match;
                     {
                         int pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == RPAREN)
+                        soulng::lexer::Span span = lexer.GetSpan();
+                        soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch15 = &match;
                         {
-                            ++lexer;
-                            match.hit = true;
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match(false);
+                            if (*lexer == SEMICOLON)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                *parentMatch15 = match;
+                            }
+                            else
+                            {
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                            }
                         }
                         if (match.hit)
                         {
-                            *parentMatch11 = match;
+                            s.end = span.end;
                         }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
-                        }
+                        *parentMatch14 = match;
                     }
-                    *parentMatch10 = match;
+                    *parentMatch13 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -1301,54 +1556,36 @@ soulng::parser::Match ConceptParser::DestructorConstraint(CmajorLexer& lexer, Pa
         }
         if (match.hit)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch12 = &match;
             {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch13 = &match;
-                {
-                    int pos = lexer.GetPos();
-                    soulng::lexer::Span span = lexer.GetSpan();
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch14 = &match;
-                    {
-                        int pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == SEMICOLON)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        if (match.hit)
-                        {
-                            *parentMatch14 = match;
-                        }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
-                        }
-                    }
-                    if (match.hit)
-                    {
-                        s.end = span.end;
-                    }
-                    *parentMatch13 = match;
-                }
-                *parentMatch12 = match;
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("DestructorConstraint"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new DestructorConstraintNode(s, id.release()));
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            return soulng::parser::Match(true, new DestructorConstraintNode(s, id.release()));
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("DestructorConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("DestructorConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("MemberFunctionConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> memberFunctionConstraint = std::unique_ptr<ConstraintNode>();
     std::unique_ptr<Node> returnType;
     std::unique_ptr<IdentifierNode> typeParam;
@@ -1373,18 +1610,38 @@ soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
-                            returnType.reset(static_cast<Node*>(match.value));
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch6 = &match;
+                            {
+                                soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
+                                returnType.reset(static_cast<Node*>(match.value));
+                                *parentMatch6 = match;
+                            }
+                            if (match.hit)
+                            {
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch7 = &match;
+                                {
+                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                    typeParam.reset(static_cast<IdentifierNode*>(match.value));
+                                    *parentMatch7 = match;
+                                }
+                                *parentMatch6 = match;
+                            }
                             *parentMatch5 = match;
                         }
                         if (match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch6 = &match;
+                            soulng::parser::Match* parentMatch8 = &match;
                             {
-                                soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                typeParam.reset(static_cast<IdentifierNode*>(match.value));
-                                *parentMatch6 = match;
+                                soulng::parser::Match match(false);
+                                if (*lexer == DOT)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
+                                *parentMatch8 = match;
                             }
                             *parentMatch5 = match;
                         }
@@ -1393,41 +1650,26 @@ soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch7 = &match;
-                        {
-                            soulng::parser::Match match(false);
-                            if (*lexer == DOT)
-                            {
-                                ++lexer;
-                                match.hit = true;
-                            }
-                            *parentMatch7 = match;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch8 = &match;
-                    {
-                        soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch9 = &match;
                         {
-                            int pos = lexer.GetPos();
-                            soulng::parser::Match match = FunctionParser::FunctionGroupId(lexer, ctx);
-                            functionGroupId.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
-                            if (match.hit)
+                            soulng::parser::Match match(true);
+                            soulng::parser::Match* parentMatch10 = &match;
                             {
-                                *parentMatch9 = match;
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match = FunctionParser::FunctionGroupId(lexer, ctx);
+                                functionGroupId.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
+                                if (match.hit)
+                                {
+                                    *parentMatch10 = match;
+                                }
+                                else
+                                {
+                                    lexer.ThrowExpectationFailure(pos, U"function group identifier");
+                                }
                             }
-                            else
-                            {
-                                lexer.ThrowExpectationFailure(pos, U"function group identifier");
-                            }
+                            *parentMatch9 = match;
                         }
-                        *parentMatch8 = match;
+                        *parentMatch4 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -1442,23 +1684,23 @@ soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer
         if (match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch10 = &match;
+            soulng::parser::Match* parentMatch11 = &match;
             {
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch11 = &match;
+                soulng::parser::Match* parentMatch12 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, memberFunctionConstraint.get());
                     if (match.hit)
                     {
-                        *parentMatch11 = match;
+                        *parentMatch12 = match;
                     }
                     else
                     {
                         lexer.ThrowExpectationFailure(pos, U"parameter list");
                     }
                 }
-                *parentMatch10 = match;
+                *parentMatch11 = match;
             }
             *parentMatch1 = match;
         }
@@ -1467,15 +1709,15 @@ soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch12 = &match;
+        soulng::parser::Match* parentMatch13 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch13 = &match;
+            soulng::parser::Match* parentMatch14 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch14 = &match;
+                soulng::parser::Match* parentMatch15 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -1486,7 +1728,7 @@ soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer
                     }
                     if (match.hit)
                     {
-                        *parentMatch14 = match;
+                        *parentMatch15 = match;
                     }
                     else
                     {
@@ -1496,19 +1738,40 @@ soulng::parser::Match ConceptParser::MemberFunctionConstraint(CmajorLexer& lexer
                 if (match.hit)
                 {
                     memberFunctionConstraint->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, memberFunctionConstraint.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MemberFunctionConstraint"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, memberFunctionConstraint.release());
+                    }
                 }
-                *parentMatch13 = match;
+                *parentMatch14 = match;
             }
-            *parentMatch12 = match;
+            *parentMatch13 = match;
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MemberFunctionConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MemberFunctionConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::FunctionConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("FunctionConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> functionConstraint = std::unique_ptr<ConstraintNode>();
     std::unique_ptr<Node> returnType;
     std::unique_ptr<soulng::parser::Value<std::u32string>> functionGroupId;
@@ -1526,29 +1789,34 @@ soulng::parser::Match ConceptParser::FunctionConstraint(CmajorLexer& lexer, Pars
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
-                    returnType.reset(static_cast<Node*>(match.value));
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
-                {
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        soulng::parser::Match match(true);
+                        soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
+                        returnType.reset(static_cast<Node*>(match.value));
+                        *parentMatch4 = match;
+                    }
+                    if (match.hit)
+                    {
+                        soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int pos = lexer.GetPos();
-                            soulng::parser::Match match = FunctionParser::FunctionGroupId(lexer, ctx);
-                            functionGroupId.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
-                            if (match.hit)
+                            soulng::parser::Match match(true);
+                            soulng::parser::Match* parentMatch6 = &match;
                             {
-                                *parentMatch5 = match;
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match = FunctionParser::FunctionGroupId(lexer, ctx);
+                                functionGroupId.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
+                                if (match.hit)
+                                {
+                                    *parentMatch6 = match;
+                                }
+                                else
+                                {
+                                    lexer.ThrowExpectationFailure(pos, U"function group identifier");
+                                }
                             }
-                            else
-                            {
-                                lexer.ThrowExpectationFailure(pos, U"function group identifier");
-                            }
+                            *parentMatch5 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -1565,23 +1833,23 @@ soulng::parser::Match ConceptParser::FunctionConstraint(CmajorLexer& lexer, Pars
         if (match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch6 = &match;
+            soulng::parser::Match* parentMatch7 = &match;
             {
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch7 = &match;
+                soulng::parser::Match* parentMatch8 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, functionConstraint.get());
                     if (match.hit)
                     {
-                        *parentMatch7 = match;
+                        *parentMatch8 = match;
                     }
                     else
                     {
                         lexer.ThrowExpectationFailure(pos, U"parameter list");
                     }
                 }
-                *parentMatch6 = match;
+                *parentMatch7 = match;
             }
             *parentMatch1 = match;
         }
@@ -1590,15 +1858,15 @@ soulng::parser::Match ConceptParser::FunctionConstraint(CmajorLexer& lexer, Pars
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch8 = &match;
+        soulng::parser::Match* parentMatch9 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch9 = &match;
+            soulng::parser::Match* parentMatch10 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch10 = &match;
+                soulng::parser::Match* parentMatch11 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -1609,7 +1877,7 @@ soulng::parser::Match ConceptParser::FunctionConstraint(CmajorLexer& lexer, Pars
                     }
                     if (match.hit)
                     {
-                        *parentMatch10 = match;
+                        *parentMatch11 = match;
                     }
                     else
                     {
@@ -1619,19 +1887,40 @@ soulng::parser::Match ConceptParser::FunctionConstraint(CmajorLexer& lexer, Pars
                 if (match.hit)
                 {
                     functionConstraint->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, functionConstraint.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("FunctionConstraint"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, functionConstraint.release());
+                    }
                 }
-                *parentMatch9 = match;
+                *parentMatch10 = match;
             }
-            *parentMatch8 = match;
+            *parentMatch9 = match;
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("FunctionConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("FunctionConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::EmbeddedConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EmbeddedConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<WhereConstraintNode> constraint = std::unique_ptr<WhereConstraintNode>();
     std::unique_ptr<WhereConstraintNode> c;
     soulng::parser::Match match(false);
@@ -1641,33 +1930,38 @@ soulng::parser::Match ConceptParser::EmbeddedConstraint(CmajorLexer& lexer, Pars
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            soulng::parser::Match match = ConceptParser::WhereConstraint(lexer, ctx);
-            c.reset(static_cast<WhereConstraintNode*>(match.value));
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                soulng::parser::Match match(true);
+                soulng::parser::Match match = ConceptParser::WhereConstraint(lexer, ctx);
+                c.reset(static_cast<WhereConstraintNode*>(match.value));
+                *parentMatch2 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
-                    soulng::parser::Match match(false);
-                    if (*lexer == SEMICOLON)
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch4 = &match;
                     {
-                        ++lexer;
-                        match.hit = true;
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match(false);
+                        if (*lexer == SEMICOLON)
+                        {
+                            ++lexer;
+                            match.hit = true;
+                        }
+                        if (match.hit)
+                        {
+                            *parentMatch4 = match;
+                        }
+                        else
+                        {
+                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                        }
                     }
-                    if (match.hit)
-                    {
-                        *parentMatch3 = match;
-                    }
-                    else
-                    {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
-                    }
+                    *parentMatch3 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -1677,15 +1971,36 @@ soulng::parser::Match ConceptParser::EmbeddedConstraint(CmajorLexer& lexer, Pars
         {
             constraint.reset(c.release());
             constraint->SetSemicolon();
-            return soulng::parser::Match(true, constraint.release());
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("EmbeddedConstraint"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, constraint.release());
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("EmbeddedConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EmbeddedConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::WhereConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("WhereConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<ConstraintNode> constraint;
     soulng::parser::Match match(false);
@@ -1738,7 +2053,12 @@ soulng::parser::Match ConceptParser::WhereConstraint(CmajorLexer& lexer, Parsing
                 if (match.hit)
                 {
                     s.end = span.end;
-                    return soulng::parser::Match(true, new WhereConstraintNode(span, constraint.release()));
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("WhereConstraint"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new WhereConstraintNode(span, constraint.release()));
+                    }
                 }
                 *parentMatch3 = match;
             }
@@ -1746,11 +2066,27 @@ soulng::parser::Match ConceptParser::WhereConstraint(CmajorLexer& lexer, Parsing
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("WhereConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("WhereConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::ConstraintExpr(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> disjunctiveConstraint;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -1760,15 +2096,36 @@ soulng::parser::Match ConceptParser::ConstraintExpr(CmajorLexer& lexer, ParsingC
         disjunctiveConstraint.reset(static_cast<ConstraintNode*>(match.value));
         if (match.hit)
         {
-            return soulng::parser::Match(true, disjunctiveConstraint.release());
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConstraintExpr"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, disjunctiveConstraint.release());
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConstraintExpr"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::DisjunctiveConstraintExpr(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DisjunctiveConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<ConstraintNode> constraint = std::unique_ptr<ConstraintNode>();
     std::unique_ptr<ConstraintNode> left;
@@ -1783,43 +2140,33 @@ soulng::parser::Match ConceptParser::DisjunctiveConstraintExpr(CmajorLexer& lexe
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
-                soulng::lexer::Span span = lexer.GetSpan();
-                soulng::parser::Match match = ConceptParser::ConjunctiveConstraintExpr(lexer, ctx);
-                left.reset(static_cast<ConstraintNode*>(match.value));
-                if (match.hit)
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch3 = &match;
                 {
-                    constraint.reset(left.release());
-                    s = span;
+                    int pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
+                    soulng::parser::Match match = ConceptParser::ConjunctiveConstraintExpr(lexer, ctx);
+                    left.reset(static_cast<ConstraintNode*>(match.value));
+                    if (match.hit)
+                    {
+                        constraint.reset(left.release());
+                        s = span;
+                    }
+                    *parentMatch3 = match;
                 }
                 *parentMatch2 = match;
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
+            if (match.hit)
             {
-                soulng::parser::Match match(true);
+                soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch4 = &match;
                 {
-                    while (true)
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch5 = &match;
                     {
-                        int save = lexer.GetPos();
+                        while (true)
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
-                            {
-                                soulng::parser::Match match(false);
-                                if (*lexer == OR)
-                                {
-                                    ++lexer;
-                                    match.hit = true;
-                                }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
+                            int save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -1827,48 +2174,89 @@ soulng::parser::Match ConceptParser::DisjunctiveConstraintExpr(CmajorLexer& lexe
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
-                                        int pos = lexer.GetPos();
-                                        soulng::lexer::Span span = lexer.GetSpan();
-                                        soulng::parser::Match match = ConceptParser::ConjunctiveConstraintExpr(lexer, ctx);
-                                        right.reset(static_cast<ConstraintNode*>(match.value));
-                                        if (match.hit)
+                                        soulng::parser::Match match(false);
+                                        if (*lexer == OR)
                                         {
-                                            s.end = span.end;
-                                            constraint.reset(new DisjunctiveConstraintNode(s, constraint.release(), right.release()));
+                                            ++lexer;
+                                            match.hit = true;
+                                        }
+                                        *parentMatch7 = match;
+                                    }
+                                    if (match.hit)
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch8 = &match;
+                                        {
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch9 = &match;
+                                            {
+                                                int pos = lexer.GetPos();
+                                                soulng::lexer::Span span = lexer.GetSpan();
+                                                soulng::parser::Match match = ConceptParser::ConjunctiveConstraintExpr(lexer, ctx);
+                                                right.reset(static_cast<ConstraintNode*>(match.value));
+                                                if (match.hit)
+                                                {
+                                                    s.end = span.end;
+                                                    constraint.reset(new DisjunctiveConstraintNode(s, constraint.release(), right.release()));
+                                                }
+                                                *parentMatch9 = match;
+                                            }
+                                            *parentMatch8 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
                                     *parentMatch6 = match;
                                 }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
-                            {
-                                *parentMatch4 = match;
-                            }
-                            else
-                            {
-                                lexer.SetPos(save);
-                                break;
+                                if (match.hit)
+                                {
+                                    *parentMatch5 = match;
+                                }
+                                else
+                                {
+                                    lexer.SetPos(save);
+                                    break;
+                                }
                             }
                         }
                     }
+                    *parentMatch4 = match;
                 }
-                *parentMatch3 = match;
+                *parentMatch2 = match;
             }
             *parentMatch1 = match;
         }
         if (match.hit)
         {
-            return soulng::parser::Match(true, constraint.release());
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("DisjunctiveConstraintExpr"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, constraint.release());
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("DisjunctiveConstraintExpr"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("DisjunctiveConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::ConjunctiveConstraintExpr(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConjunctiveConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<ConstraintNode> constraint = std::unique_ptr<ConstraintNode>();
     std::unique_ptr<ConstraintNode> left;
@@ -1883,43 +2271,33 @@ soulng::parser::Match ConceptParser::ConjunctiveConstraintExpr(CmajorLexer& lexe
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
-                soulng::lexer::Span span = lexer.GetSpan();
-                soulng::parser::Match match = ConceptParser::PrimaryConstraintExpr(lexer, ctx);
-                left.reset(static_cast<ConstraintNode*>(match.value));
-                if (match.hit)
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch3 = &match;
                 {
-                    constraint.reset(left.release());
-                    s = span;
+                    int pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
+                    soulng::parser::Match match = ConceptParser::PrimaryConstraintExpr(lexer, ctx);
+                    left.reset(static_cast<ConstraintNode*>(match.value));
+                    if (match.hit)
+                    {
+                        constraint.reset(left.release());
+                        s = span;
+                    }
+                    *parentMatch3 = match;
                 }
                 *parentMatch2 = match;
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
+            if (match.hit)
             {
-                soulng::parser::Match match(true);
+                soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch4 = &match;
                 {
-                    while (true)
+                    soulng::parser::Match match(true);
+                    soulng::parser::Match* parentMatch5 = &match;
                     {
-                        int save = lexer.GetPos();
+                        while (true)
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
-                            {
-                                soulng::parser::Match match(false);
-                                if (*lexer == AND)
-                                {
-                                    ++lexer;
-                                    match.hit = true;
-                                }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
+                            int save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -1927,48 +2305,89 @@ soulng::parser::Match ConceptParser::ConjunctiveConstraintExpr(CmajorLexer& lexe
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
-                                        int pos = lexer.GetPos();
-                                        soulng::lexer::Span span = lexer.GetSpan();
-                                        soulng::parser::Match match = ConceptParser::PrimaryConstraintExpr(lexer, ctx);
-                                        right.reset(static_cast<ConstraintNode*>(match.value));
-                                        if (match.hit)
+                                        soulng::parser::Match match(false);
+                                        if (*lexer == AND)
                                         {
-                                            s.end = span.end;
-                                            constraint.reset(new ConjunctiveConstraintNode(s, constraint.release(), right.release()));
+                                            ++lexer;
+                                            match.hit = true;
+                                        }
+                                        *parentMatch7 = match;
+                                    }
+                                    if (match.hit)
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch8 = &match;
+                                        {
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch9 = &match;
+                                            {
+                                                int pos = lexer.GetPos();
+                                                soulng::lexer::Span span = lexer.GetSpan();
+                                                soulng::parser::Match match = ConceptParser::PrimaryConstraintExpr(lexer, ctx);
+                                                right.reset(static_cast<ConstraintNode*>(match.value));
+                                                if (match.hit)
+                                                {
+                                                    s.end = span.end;
+                                                    constraint.reset(new ConjunctiveConstraintNode(s, constraint.release(), right.release()));
+                                                }
+                                                *parentMatch9 = match;
+                                            }
+                                            *parentMatch8 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
                                     *parentMatch6 = match;
                                 }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
-                            {
-                                *parentMatch4 = match;
-                            }
-                            else
-                            {
-                                lexer.SetPos(save);
-                                break;
+                                if (match.hit)
+                                {
+                                    *parentMatch5 = match;
+                                }
+                                else
+                                {
+                                    lexer.SetPos(save);
+                                    break;
+                                }
                             }
                         }
                     }
+                    *parentMatch4 = match;
                 }
-                *parentMatch3 = match;
+                *parentMatch2 = match;
             }
             *parentMatch1 = match;
         }
         if (match.hit)
         {
-            return soulng::parser::Match(true, constraint.release());
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConjunctiveConstraintExpr"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, constraint.release());
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConjunctiveConstraintExpr"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ConjunctiveConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::PrimaryConstraintExpr(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("PrimaryConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<ConstraintNode> constraint;
     std::unique_ptr<ConstraintNode> atomicConstraint;
@@ -2046,7 +2465,12 @@ soulng::parser::Match ConceptParser::PrimaryConstraintExpr(CmajorLexer& lexer, P
                     if (match.hit)
                     {
                         s.end = span.end;
-                        return soulng::parser::Match(true, new ParenthesizedConstraintNode(s, constraint.release()));
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryConstraintExpr"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, new ParenthesizedConstraintNode(s, constraint.release()));
+                        }
                     }
                     *parentMatch6 = match;
                 }
@@ -2069,7 +2493,12 @@ soulng::parser::Match ConceptParser::PrimaryConstraintExpr(CmajorLexer& lexer, P
                     atomicConstraint.reset(static_cast<ConstraintNode*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, atomicConstraint.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryConstraintExpr"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, atomicConstraint.release());
+                        }
                     }
                     *parentMatch9 = match;
                 }
@@ -2078,11 +2507,27 @@ soulng::parser::Match ConceptParser::PrimaryConstraintExpr(CmajorLexer& lexer, P
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryConstraintExpr"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PrimaryConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::AtomicConstraintExpr(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AtomicConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ConstraintNode> predicateConstraint;
     std::unique_ptr<ConstraintNode> isConstraint;
     std::unique_ptr<ConstraintNode> multiParamConstraint;
@@ -2102,7 +2547,12 @@ soulng::parser::Match ConceptParser::AtomicConstraintExpr(CmajorLexer& lexer, Pa
                 predicateConstraint.reset(static_cast<ConstraintNode*>(match.value));
                 if (match.hit)
                 {
-                    return soulng::parser::Match(true, predicateConstraint.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AtomicConstraintExpr"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, predicateConstraint.release());
+                    }
                 }
                 *parentMatch2 = match;
             }
@@ -2121,7 +2571,12 @@ soulng::parser::Match ConceptParser::AtomicConstraintExpr(CmajorLexer& lexer, Pa
                         isConstraint.reset(static_cast<ConstraintNode*>(match.value));
                         if (match.hit)
                         {
-                            return soulng::parser::Match(true, isConstraint.release());
+                            {
+                                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AtomicConstraintExpr"));
+                                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                return soulng::parser::Match(true, isConstraint.release());
+                            }
                         }
                         *parentMatch4 = match;
                     }
@@ -2145,7 +2600,12 @@ soulng::parser::Match ConceptParser::AtomicConstraintExpr(CmajorLexer& lexer, Pa
                     multiParamConstraint.reset(static_cast<ConstraintNode*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, multiParamConstraint.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AtomicConstraintExpr"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, multiParamConstraint.release());
+                        }
                     }
                     *parentMatch6 = match;
                 }
@@ -2154,11 +2614,27 @@ soulng::parser::Match ConceptParser::AtomicConstraintExpr(CmajorLexer& lexer, Pa
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AtomicConstraintExpr"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AtomicConstraintExpr"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::PredicateConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("PredicateConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<Node> invokeExpr;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -2169,15 +2645,36 @@ soulng::parser::Match ConceptParser::PredicateConstraint(CmajorLexer& lexer, Par
         invokeExpr.reset(static_cast<Node*>(match.value));
         if (match.hit)
         {
-            return soulng::parser::Match(true, new PredicateConstraintNode(span, invokeExpr.release()));
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PredicateConstraint"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new PredicateConstraintNode(span, invokeExpr.release()));
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PredicateConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PredicateConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::IsConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("IsConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<Node> type;
     std::unique_ptr<Node> conceptOrTypeName;
@@ -2247,7 +2744,12 @@ soulng::parser::Match ConceptParser::IsConstraint(CmajorLexer& lexer, ParsingCon
                 if (match.hit)
                 {
                     s.end = span.end;
-                    return soulng::parser::Match(true, new IsConstraintNode(s, type.release(), conceptOrTypeName.release()));
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("IsConstraint"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new IsConstraintNode(s, type.release(), conceptOrTypeName.release()));
+                    }
                 }
                 *parentMatch5 = match;
             }
@@ -2255,11 +2757,27 @@ soulng::parser::Match ConceptParser::IsConstraint(CmajorLexer& lexer, ParsingCon
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("IsConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IsConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::ConceptOrTypeName(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ConceptOrTypeName"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<Node> conceptOrTypeName;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -2269,15 +2787,36 @@ soulng::parser::Match ConceptParser::ConceptOrTypeName(CmajorLexer& lexer, Parsi
         conceptOrTypeName.reset(static_cast<Node*>(match.value));
         if (match.hit)
         {
-            return soulng::parser::Match(true, conceptOrTypeName.release());
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConceptOrTypeName"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, conceptOrTypeName.release());
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConceptOrTypeName"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ConceptOrTypeName"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::MultiParamConstraint(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("MultiParamConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<MultiParamConstraintNode> constraint = std::unique_ptr<MultiParamConstraintNode>();
     std::unique_ptr<IdentifierNode> id;
     std::unique_ptr<Node> typeExpr;
@@ -2333,74 +2872,79 @@ soulng::parser::Match ConceptParser::MultiParamConstraint(CmajorLexer& lexer, Pa
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch7 = &match;
                     {
-                        int pos = lexer.GetPos();
-                        soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
-                        typeExpr.reset(static_cast<Node*>(match.value));
-                        if (match.hit)
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch8 = &match;
                         {
-                            constraint->AddTypeExpr(typeExpr.release());
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
+                            typeExpr.reset(static_cast<Node*>(match.value));
+                            if (match.hit)
+                            {
+                                constraint->AddTypeExpr(typeExpr.release());
+                            }
+                            *parentMatch8 = match;
                         }
                         *parentMatch7 = match;
                     }
-                    *parentMatch6 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch8 = &match;
+                    if (match.hit)
                     {
-                        soulng::parser::Match match(true);
+                        soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch9 = &match;
                         {
-                            while (true)
+                            soulng::parser::Match match(true);
+                            soulng::parser::Match* parentMatch10 = &match;
                             {
-                                int save = lexer.GetPos();
+                                while (true)
                                 {
-                                    soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch10 = &match;
-                                    {
-                                        soulng::parser::Match match(false);
-                                        if (*lexer == COMMA)
-                                        {
-                                            ++lexer;
-                                            match.hit = true;
-                                        }
-                                        *parentMatch10 = match;
-                                    }
-                                    if (match.hit)
+                                    int save = lexer.GetPos();
                                     {
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch11 = &match;
                                         {
                                             soulng::parser::Match match(false);
+                                            if (*lexer == COMMA)
+                                            {
+                                                ++lexer;
+                                                match.hit = true;
+                                            }
+                                            *parentMatch11 = match;
+                                        }
+                                        if (match.hit)
+                                        {
+                                            soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch12 = &match;
                                             {
-                                                int pos = lexer.GetPos();
-                                                soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
-                                                typeExpr.reset(static_cast<Node*>(match.value));
-                                                if (match.hit)
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch13 = &match;
                                                 {
-                                                    constraint->AddTypeExpr(typeExpr.release());
+                                                    int pos = lexer.GetPos();
+                                                    soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
+                                                    typeExpr.reset(static_cast<Node*>(match.value));
+                                                    if (match.hit)
+                                                    {
+                                                        constraint->AddTypeExpr(typeExpr.release());
+                                                    }
+                                                    *parentMatch13 = match;
                                                 }
                                                 *parentMatch12 = match;
                                             }
                                             *parentMatch11 = match;
                                         }
-                                        *parentMatch10 = match;
-                                    }
-                                    if (match.hit)
-                                    {
-                                        *parentMatch9 = match;
-                                    }
-                                    else
-                                    {
-                                        lexer.SetPos(save);
-                                        break;
+                                        if (match.hit)
+                                        {
+                                            *parentMatch10 = match;
+                                        }
+                                        else
+                                        {
+                                            lexer.SetPos(save);
+                                            break;
+                                        }
                                     }
                                 }
                             }
+                            *parentMatch9 = match;
                         }
-                        *parentMatch8 = match;
+                        *parentMatch7 = match;
                     }
                     *parentMatch6 = match;
                 }
@@ -2413,15 +2957,15 @@ soulng::parser::Match ConceptParser::MultiParamConstraint(CmajorLexer& lexer, Pa
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch13 = &match;
+        soulng::parser::Match* parentMatch14 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch14 = &match;
+            soulng::parser::Match* parentMatch15 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch15 = &match;
+                soulng::parser::Match* parentMatch16 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -2432,7 +2976,7 @@ soulng::parser::Match ConceptParser::MultiParamConstraint(CmajorLexer& lexer, Pa
                     }
                     if (match.hit)
                     {
-                        *parentMatch15 = match;
+                        *parentMatch16 = match;
                     }
                     else
                     {
@@ -2442,19 +2986,40 @@ soulng::parser::Match ConceptParser::MultiParamConstraint(CmajorLexer& lexer, Pa
                 if (match.hit)
                 {
                     constraint->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, constraint.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MultiParamConstraint"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, constraint.release());
+                    }
                 }
-                *parentMatch14 = match;
+                *parentMatch15 = match;
             }
-            *parentMatch13 = match;
+            *parentMatch14 = match;
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MultiParamConstraint"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MultiParamConstraint"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::ConceptNode* concept)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Axiom"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<AxiomNode> axiom = std::unique_ptr<AxiomNode>();
     Span axiomSpan = Span();
     Span beginBraceSpan = Span();
@@ -2485,17 +3050,46 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int pos = lexer.GetPos();
-                                    soulng::lexer::Span span = lexer.GetSpan();
                                     soulng::parser::Match match(false);
-                                    if (*lexer == AXIOM)
+                                    soulng::parser::Match* parentMatch8 = &match;
                                     {
-                                        ++lexer;
-                                        match.hit = true;
+                                        int pos = lexer.GetPos();
+                                        soulng::lexer::Span span = lexer.GetSpan();
+                                        soulng::parser::Match match(false);
+                                        if (*lexer == AXIOM)
+                                        {
+                                            ++lexer;
+                                            match.hit = true;
+                                        }
+                                        if (match.hit)
+                                        {
+                                            axiomSpan = span;
+                                        }
+                                        *parentMatch8 = match;
                                     }
-                                    if (match.hit)
+                                    *parentMatch7 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch9 = &match;
                                     {
-                                        axiomSpan = span;
+                                        soulng::parser::Match match(true);
+                                        int save = lexer.GetPos();
+                                        soulng::parser::Match* parentMatch10 = &match;
+                                        {
+                                            soulng::parser::Match match = IdentifierParser::Identifier(lexer);
+                                            id.reset(static_cast<IdentifierNode*>(match.value));
+                                            if (match.hit)
+                                            {
+                                                *parentMatch10 = match;
+                                            }
+                                            else
+                                            {
+                                                lexer.SetPos(save);
+                                            }
+                                        }
+                                        *parentMatch9 = match;
                                     }
                                     *parentMatch7 = match;
                                 }
@@ -2504,24 +3098,20 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                             if (match.hit)
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch8 = &match;
+                                soulng::parser::Match* parentMatch11 = &match;
                                 {
-                                    soulng::parser::Match match(true);
-                                    int save = lexer.GetPos();
-                                    soulng::parser::Match* parentMatch9 = &match;
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch12 = &match;
                                     {
-                                        soulng::parser::Match match = IdentifierParser::Identifier(lexer);
-                                        id.reset(static_cast<IdentifierNode*>(match.value));
+                                        int pos = lexer.GetPos();
+                                        soulng::parser::Match match(true);
                                         if (match.hit)
                                         {
-                                            *parentMatch9 = match;
+                                            axiom.reset(new AxiomNode(axiomSpan, id.release()));
                                         }
-                                        else
-                                        {
-                                            lexer.SetPos(save);
-                                        }
+                                        *parentMatch12 = match;
                                     }
-                                    *parentMatch8 = match;
+                                    *parentMatch11 = match;
                                 }
                                 *parentMatch6 = match;
                             }
@@ -2530,20 +3120,23 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                         if (match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch10 = &match;
+                            soulng::parser::Match* parentMatch13 = &match;
                             {
-                                soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch11 = &match;
+                                soulng::parser::Match match(true);
+                                int save = lexer.GetPos();
+                                soulng::parser::Match* parentMatch14 = &match;
                                 {
-                                    int pos = lexer.GetPos();
-                                    soulng::parser::Match match(true);
+                                    soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, axiom.get());
                                     if (match.hit)
                                     {
-                                        axiom.reset(new AxiomNode(axiomSpan, id.release()));
+                                        *parentMatch14 = match;
                                     }
-                                    *parentMatch11 = match;
+                                    else
+                                    {
+                                        lexer.SetPos(save);
+                                    }
                                 }
-                                *parentMatch10 = match;
+                                *parentMatch13 = match;
                             }
                             *parentMatch5 = match;
                         }
@@ -2552,23 +3145,39 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch12 = &match;
+                        soulng::parser::Match* parentMatch15 = &match;
                         {
-                            soulng::parser::Match match(true);
-                            int save = lexer.GetPos();
-                            soulng::parser::Match* parentMatch13 = &match;
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch16 = &match;
                             {
-                                soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, axiom.get());
+                                int pos = lexer.GetPos();
+                                soulng::lexer::Span span = lexer.GetSpan();
+                                soulng::parser::Match match(true);
+                                soulng::parser::Match* parentMatch17 = &match;
+                                {
+                                    int pos = lexer.GetPos();
+                                    soulng::parser::Match match(false);
+                                    if (*lexer == LBRACE)
+                                    {
+                                        ++lexer;
+                                        match.hit = true;
+                                    }
+                                    if (match.hit)
+                                    {
+                                        *parentMatch17 = match;
+                                    }
+                                    else
+                                    {
+                                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
+                                    }
+                                }
                                 if (match.hit)
                                 {
-                                    *parentMatch13 = match;
+                                    beginBraceSpan = span;
                                 }
-                                else
-                                {
-                                    lexer.SetPos(save);
-                                }
+                                *parentMatch16 = match;
                             }
-                            *parentMatch12 = match;
+                            *parentMatch15 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -2577,39 +3186,23 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch14 = &match;
+                    soulng::parser::Match* parentMatch18 = &match;
                     {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch15 = &match;
+                        soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch19 = &match;
                         {
                             int pos = lexer.GetPos();
-                            soulng::lexer::Span span = lexer.GetSpan();
-                            soulng::parser::Match match(true);
-                            soulng::parser::Match* parentMatch16 = &match;
-                            {
-                                int pos = lexer.GetPos();
-                                soulng::parser::Match match(false);
-                                if (*lexer == LBRACE)
-                                {
-                                    ++lexer;
-                                    match.hit = true;
-                                }
-                                if (match.hit)
-                                {
-                                    *parentMatch16 = match;
-                                }
-                                else
-                                {
-                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
-                                }
-                            }
+                            soulng::parser::Match match = ConceptParser::AxiomBody(lexer, ctx, axiom.get());
                             if (match.hit)
                             {
-                                beginBraceSpan = span;
+                                *parentMatch19 = match;
                             }
-                            *parentMatch15 = match;
+                            else
+                            {
+                                lexer.ThrowExpectationFailure(pos, U"axiom body");
+                            }
                         }
-                        *parentMatch14 = match;
+                        *parentMatch18 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -2618,64 +3211,41 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch17 = &match;
-                {
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch18 = &match;
-                    {
-                        int pos = lexer.GetPos();
-                        soulng::parser::Match match = ConceptParser::AxiomBody(lexer, ctx, axiom.get());
-                        if (match.hit)
-                        {
-                            *parentMatch18 = match;
-                        }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(pos, U"axiom body");
-                        }
-                    }
-                    *parentMatch17 = match;
-                }
-                *parentMatch2 = match;
-            }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch19 = &match;
-            {
-                soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch20 = &match;
                 {
-                    int pos = lexer.GetPos();
-                    soulng::lexer::Span span = lexer.GetSpan();
-                    soulng::parser::Match match(true);
+                    soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch21 = &match;
                     {
                         int pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == RBRACE)
+                        soulng::lexer::Span span = lexer.GetSpan();
+                        soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch22 = &match;
                         {
-                            ++lexer;
-                            match.hit = true;
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match(false);
+                            if (*lexer == RBRACE)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                *parentMatch22 = match;
+                            }
+                            else
+                            {
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
+                            }
                         }
                         if (match.hit)
                         {
-                            *parentMatch21 = match;
+                            endBraceSpan = span;
                         }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
-                        }
-                    }
-                    if (match.hit)
-                    {
-                        endBraceSpan = span;
+                        *parentMatch21 = match;
                     }
                     *parentMatch20 = match;
                 }
-                *parentMatch19 = match;
+                *parentMatch2 = match;
             }
             *parentMatch1 = match;
         }
@@ -2687,11 +3257,27 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Axiom"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Axiom"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::AxiomBody(CmajorLexer& lexer, ParsingContext* ctx, cmajor::ast::AxiomNode* axiom)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AxiomBody"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<AxiomStatementNode> stmt;
     soulng::parser::Match match(true);
     soulng::parser::Match* parentMatch0 = &match;
@@ -2703,12 +3289,17 @@ soulng::parser::Match ConceptParser::AxiomBody(CmajorLexer& lexer, ParsingContex
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch1 = &match;
                 {
-                    int pos = lexer.GetPos();
-                    soulng::parser::Match match = ConceptParser::AxiomStatement(lexer, ctx);
-                    stmt.reset(static_cast<AxiomStatementNode*>(match.value));
-                    if (match.hit)
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch2 = &match;
                     {
-                        axiom->AddStatement(stmt.release());
+                        int pos = lexer.GetPos();
+                        soulng::parser::Match match = ConceptParser::AxiomStatement(lexer, ctx);
+                        stmt.reset(static_cast<AxiomStatementNode*>(match.value));
+                        if (match.hit)
+                        {
+                            axiom->AddStatement(stmt.release());
+                        }
+                        *parentMatch2 = match;
                     }
                     *parentMatch1 = match;
                 }
@@ -2724,11 +3315,27 @@ soulng::parser::Match ConceptParser::AxiomBody(CmajorLexer& lexer, ParsingContex
             }
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxiomBody"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AxiomBody"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ConceptParser::AxiomStatement(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AxiomStatement"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<Node> expr;
     soulng::parser::Match match(false);
@@ -2741,13 +3348,57 @@ soulng::parser::Match ConceptParser::AxiomStatement(CmajorLexer& lexer, ParsingC
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
-                soulng::lexer::Span span = lexer.GetSpan();
-                soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                expr.reset(static_cast<Node*>(match.value));
-                if (match.hit)
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch3 = &match;
                 {
-                    s = span;
+                    int pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
+                    soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
+                    expr.reset(static_cast<Node*>(match.value));
+                    if (match.hit)
+                    {
+                        s = span;
+                    }
+                    *parentMatch3 = match;
+                }
+                *parentMatch2 = match;
+            }
+            if (match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch4 = &match;
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch5 = &match;
+                    {
+                        int pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
+                        soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch6 = &match;
+                        {
+                            int pos = lexer.GetPos();
+                            soulng::parser::Match match(false);
+                            if (*lexer == SEMICOLON)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                *parentMatch6 = match;
+                            }
+                            else
+                            {
+                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                            }
+                        }
+                        if (match.hit)
+                        {
+                            s.end = span.end;
+                        }
+                        *parentMatch5 = match;
+                    }
+                    *parentMatch4 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -2755,48 +3406,21 @@ soulng::parser::Match ConceptParser::AxiomStatement(CmajorLexer& lexer, ParsingC
         }
         if (match.hit)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch3 = &match;
             {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch4 = &match;
-                {
-                    int pos = lexer.GetPos();
-                    soulng::lexer::Span span = lexer.GetSpan();
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch5 = &match;
-                    {
-                        int pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == SEMICOLON)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        if (match.hit)
-                        {
-                            *parentMatch5 = match;
-                        }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
-                        }
-                    }
-                    if (match.hit)
-                    {
-                        s.end = span.end;
-                    }
-                    *parentMatch4 = match;
-                }
-                *parentMatch3 = match;
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxiomStatement"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new AxiomStatementNode(s, expr.release(), lexer.GetMatch(s)));
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            return soulng::parser::Match(true, new AxiomStatementNode(s, expr.release(), lexer.GetMatch(s)));
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxiomStatement"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AxiomStatement"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

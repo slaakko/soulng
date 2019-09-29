@@ -5,13 +5,22 @@
 #include <minilang/Tree.hpp>
 #include <minilang/TokenValueParser.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/LiteralParser.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/LiteralParser.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
 
 soulng::parser::Match LiteralParser::Literal(MinilangLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Literal"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<minilang::Node> booleanLiteral;
     std::unique_ptr<minilang::Node> integerLiteral;
     soulng::parser::Match match(false);
@@ -26,7 +35,12 @@ soulng::parser::Match LiteralParser::Literal(MinilangLexer& lexer)
             booleanLiteral.reset(static_cast<minilang::Node*>(match.value));
             if (match.hit)
             {
-                return soulng::parser::Match(true, booleanLiteral.release());
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, booleanLiteral.release());
+                }
             }
             *parentMatch1 = match;
         }
@@ -45,7 +59,12 @@ soulng::parser::Match LiteralParser::Literal(MinilangLexer& lexer)
                     integerLiteral.reset(static_cast<minilang::Node*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, integerLiteral.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, integerLiteral.release());
+                        }
                     }
                     *parentMatch3 = match;
                 }
@@ -54,11 +73,27 @@ soulng::parser::Match LiteralParser::Literal(MinilangLexer& lexer)
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Literal"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match LiteralParser::BooleanLiteral(MinilangLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("BooleanLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
@@ -68,7 +103,12 @@ soulng::parser::Match LiteralParser::BooleanLiteral(MinilangLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new minilang::BooleanLiteralNode(true));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BooleanLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new minilang::BooleanLiteralNode(true));
+                }
             }
             break;
         }
@@ -76,16 +116,37 @@ soulng::parser::Match LiteralParser::BooleanLiteral(MinilangLexer& lexer)
         {
             ++lexer;
             {
-                return soulng::parser::Match(true, new minilang::BooleanLiteralNode(false));
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BooleanLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new minilang::BooleanLiteralNode(false));
+                }
             }
             break;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BooleanLiteral"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("BooleanLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match LiteralParser::IntegerLiteral(MinilangLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("IntegerLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -98,9 +159,21 @@ soulng::parser::Match LiteralParser::IntegerLiteral(MinilangLexer& lexer)
         }
         if (match.hit)
         {
-            return soulng::parser::Match(true, new minilang::IntegerLiteralNode(minilang::ParseIntegerLiteral(lexer.FileName(), lexer.GetToken(pos))));
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("IntegerLiteral"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new minilang::IntegerLiteralNode(minilang::ParseIntegerLiteral(lexer.FileName(), lexer.GetToken(pos))));
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("IntegerLiteral"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IntegerLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

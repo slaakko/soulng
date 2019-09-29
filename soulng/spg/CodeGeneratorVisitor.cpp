@@ -26,8 +26,8 @@ std::string ParserGeneratorVersionStr()
     return  "1.2.0";
 }
 
-CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_) :
-    verbose(verbose_), domain(nullptr), currentParser(nullptr), currentRule(nullptr), stage(Stage::generateHeader), formatter(nullptr),
+CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_) :
+    verbose(verbose_), noParserDebugSupport(noParserDebugSupport_), domain(nullptr), currentParser(nullptr), currentRule(nullptr), stage(Stage::generateHeader), formatter(nullptr),
     lexerTypeName("soulng::lexer::Lexer"), parentMatchNumber(0), setParentMatchNumber(-1), sn(0)
 {
 }
@@ -493,7 +493,7 @@ void CodeGeneratorVisitor::Visit(ActionParser& parser)
         }
         NonterminalCountingVisitor countingVisitor(nonterminalInfos);
         parser.SuccessCode()->Accept(countingVisitor);
-        CodeModifyVisitor modifyVisitor(ptrType, nonterminalName, nonterminalInfos, returnType);
+        CodeModifyVisitor modifyVisitor(ptrType, nonterminalName, nonterminalInfos, returnType, noParserDebugSupport, currentRule->Name());
         parser.SuccessCode()->Accept(modifyVisitor);
         parser.SuccessCode()->Print(*formatter);
         stage = Stage::endGenerateTokenSwitch;
@@ -546,7 +546,7 @@ void CodeGeneratorVisitor::Visit(ActionParser& parser)
         }
         NonterminalCountingVisitor countingVisitor(nonterminalInfos);
         parser.SuccessCode()->Accept(countingVisitor);
-        CodeModifyVisitor modifyVisitor(ptrType, nonterminalName, nonterminalInfos, returnType);
+        CodeModifyVisitor modifyVisitor(ptrType, nonterminalName, nonterminalInfos, returnType, noParserDebugSupport, currentRule->Name());
         parser.SuccessCode()->Accept(modifyVisitor);
         parser.SuccessCode()->Print(*formatter);
         if (parser.FailCode())
@@ -643,6 +643,20 @@ void CodeGeneratorVisitor::Visit(RuleParser& parser)
         formatter->WriteLine(")");
         formatter->WriteLine("{");
         formatter->IncIndent();
+        if (!noParserDebugSupport)
+        {
+            formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
+            formatter->WriteLine("soulng::lexer::Span parser_debug_match_span;");
+            formatter->WriteLine("bool parser_debug_write_to_log = lexer.Log() != nullptr;");
+            formatter->WriteLine("if (parser_debug_write_to_log)");
+            formatter->WriteLine("{");
+            formatter->IncIndent();
+            formatter->WriteLine("parser_debug_match_span = lexer.GetSpan();");
+            formatter->WriteLine("soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+            formatter->DecIndent();
+            formatter->WriteLine("}");
+            formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
+        }
         for (const auto& variable : parser.Variables())
         {
             variable->type->Print(*formatter);
@@ -698,6 +712,18 @@ void CodeGeneratorVisitor::Visit(RuleParser& parser)
             formatter->WriteLine("soulng::parser::Match match(false);");
         }
         parser.Definition()->Accept(*this);
+        if (!noParserDebugSupport)
+        {
+            formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
+            formatter->WriteLine("if (parser_debug_write_to_log)");
+            formatter->WriteLine("{");
+            formatter->IncIndent();
+            formatter->WriteLine("if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+            formatter->WriteLine("else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32(\"" + ToUtf8(parser.Name()) + "\"));");
+            formatter->DecIndent();
+            formatter->WriteLine("}");
+            formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
+        }
         formatter->WriteLine("return match;");
         formatter->DecIndent();
         formatter->WriteLine("}");
@@ -836,6 +862,18 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                     }
 					formatter->WriteLine(" value;");
 				}
+                if (!noParserDebugSupport)
+                {
+                    formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
+                    formatter->WriteLine("if (lexer.Log())");
+                    formatter->WriteLine("{");
+                    formatter->IncIndent();
+                    formatter->WriteLine("lexer.Log()->WriteBeginRule(soulng::unicode::ToUtf32(\"parse\"));");
+                    formatter->WriteLine("lexer.Log()->IncIndent();");
+                    formatter->DecIndent();
+                    formatter->WriteLine("}");
+                    formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
+                }
                 formatter->WriteLine("++lexer;");
                 formatter->WriteLine("int pos = lexer.GetPos();");
                 std::string ruleName = ToUtf8(rule->Parent()->Name()) + "::" + ToUtf8(rule->Name());
@@ -863,6 +901,18 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                         calledRule->ReturnType()->Print(*formatter);
                         formatter->WriteLine(">*>(match.value));");
                     }
+                }
+                if (!noParserDebugSupport)
+                {
+                    formatter->WriteLine("#ifdef SOULNG_PARSER_DEBUG_SUPPORT");
+                    formatter->WriteLine("if (lexer.Log())");
+                    formatter->WriteLine("{");
+                    formatter->IncIndent();
+                    formatter->WriteLine("lexer.Log()->DecIndent();");
+                    formatter->WriteLine("lexer.Log()->WriteEndRule(soulng::unicode::ToUtf32(\"parse\"));");
+                    formatter->DecIndent();
+                    formatter->WriteLine("}");
+                    formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
                 }
                 formatter->WriteLine("if (match.hit)");
                 formatter->WriteLine("{");

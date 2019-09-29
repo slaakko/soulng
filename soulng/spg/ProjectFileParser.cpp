@@ -12,10 +12,24 @@ using namespace ProjectFileTokens;
 std::unique_ptr<soulng::spg::ProjectFile> ProjectFileParser::Parse(ProjectFileLexer& lexer)
 {
     std::unique_ptr<soulng::spg::ProjectFile> value;
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (lexer.Log())
+    {
+        lexer.Log()->WriteBeginRule(soulng::unicode::ToUtf32("parse"));
+        lexer.Log()->IncIndent();
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
     int pos = lexer.GetPos();
     soulng::parser::Match match = ProjectFileParser::ProjectFile(lexer);
     value.reset(static_cast<soulng::spg::ProjectFile*>(match.value));
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (lexer.Log())
+    {
+        lexer.Log()->DecIndent();
+        lexer.Log()->WriteEndRule(soulng::unicode::ToUtf32("parse"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
         if (*lexer == soulng::lexer::END)
@@ -36,6 +50,15 @@ std::unique_ptr<soulng::spg::ProjectFile> ProjectFileParser::Parse(ProjectFileLe
 
 soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ProjectFile"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<soulng::spg::ProjectFile> projectFile = std::unique_ptr<soulng::spg::ProjectFile>();
     std::unique_ptr<soulng::parser::Value<std::u32string>> projectName;
     soulng::parser::Match match(false);
@@ -133,7 +156,12 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
                 soulng::parser::Match match = ProjectFileParser::ProjectFileContent(lexer, projectFile.get());
                 if (match.hit)
                 {
-                    return soulng::parser::Match(true, projectFile.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ProjectFile"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, projectFile.release());
+                    }
                 }
                 *parentMatch9 = match;
             }
@@ -141,11 +169,27 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ProjectFileLexer& lexer)
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ProjectFile"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ProjectFile"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ProjectFileParser::ProjectFileContent(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ProjectFileContent"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(true);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -166,11 +210,27 @@ soulng::parser::Match ProjectFileParser::ProjectFileContent(ProjectFileLexer& le
             }
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ProjectFileContent"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ProjectFileContent"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ProjectFileParser::QualifiedId(ProjectFileLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("QualifiedId"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -275,15 +335,36 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ProjectFileLexer& lexer)
         }
         if (match.hit)
         {
-            return soulng::parser::Match(true, new soulng::parser::Value<std::u32string>(lexer.GetMatch(s)));
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("QualifiedId"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new soulng::parser::Value<std::u32string>(lexer.GetMatch(s)));
+            }
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("QualifiedId"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("QualifiedId"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match ProjectFileParser::SourceFile(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SourceFile"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -366,5 +447,12 @@ soulng::parser::Match ProjectFileParser::SourceFile(ProjectFileLexer& lexer, sou
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SourceFile"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SourceFile"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

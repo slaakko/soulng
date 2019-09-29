@@ -67,6 +67,8 @@ class DeclarationStatement;
 class TryStatement;
 class Handler;
 class ExceptionDeclaration;
+class IfDefStatement;
+class EndIfStatement;
 
 class Visitor
 {
@@ -129,6 +131,8 @@ public:
     virtual void Visit(TryStatement& object) {}
     virtual void Visit(Handler& object) {}
     virtual void Visit(ExceptionDeclaration& object) {}
+    virtual void Visit(IfDefStatement& object) {}
+    virtual void Visit(EndIfStatement& object) {}
 };
 
 } } // namespace soulng::cppcode

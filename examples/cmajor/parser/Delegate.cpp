@@ -7,7 +7,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Delegate.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Delegate.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -15,6 +15,15 @@ using namespace CmajorTokens;
 
 soulng::parser::Match DelegateParser::Delegate(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Delegate"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<DelegateNode> dlg = std::unique_ptr<DelegateNode>();
     std::unique_ptr<soulng::parser::Value<cmajor::ast::Specifiers>> specifiers;
@@ -186,7 +195,12 @@ soulng::parser::Match DelegateParser::Delegate(CmajorLexer& lexer, ParsingContex
                 if (match.hit)
                 {
                     dlg->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, dlg.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Delegate"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, dlg.release());
+                    }
                 }
                 *parentMatch15 = match;
             }
@@ -194,11 +208,27 @@ soulng::parser::Match DelegateParser::Delegate(CmajorLexer& lexer, ParsingContex
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Delegate"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Delegate"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match DelegateParser::ClassDelegate(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ClassDelegate"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     Span s = Span();
     std::unique_ptr<ClassDelegateNode> clsDlg = std::unique_ptr<ClassDelegateNode>();
     std::unique_ptr<soulng::parser::Value<cmajor::ast::Specifiers>> specifiers;
@@ -390,7 +420,12 @@ soulng::parser::Match DelegateParser::ClassDelegate(CmajorLexer& lexer, ParsingC
                 if (match.hit)
                 {
                     clsDlg->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, clsDlg.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ClassDelegate"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, clsDlg.release());
+                    }
                 }
                 *parentMatch17 = match;
             }
@@ -398,5 +433,12 @@ soulng::parser::Match DelegateParser::ClassDelegate(CmajorLexer& lexer, ParsingC
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ClassDelegate"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ClassDelegate"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

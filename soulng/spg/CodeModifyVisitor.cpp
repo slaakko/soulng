@@ -11,7 +11,9 @@
 namespace soulng { namespace spg {
 
 CodeModifyVisitor::CodeModifyVisitor(bool valueOfPtrType_, const std::u32string& nonterminalName_, const std::vector<NonterminalInfo>& nonterminalInfos_,
-    soulng::cppcode::TypeId* returnType_) : valueOfPtrType(valueOfPtrType_), nonterminalName(nonterminalName_), nonterminalInfos(nonterminalInfos_), returnType(returnType_)
+    soulng::cppcode::TypeId* returnType_, bool noParserDebugSupport_, const std::u32string& parserName_) :
+    valueOfPtrType(valueOfPtrType_), nonterminalName(nonterminalName_), nonterminalInfos(nonterminalInfos_), returnType(returnType_), noParserDebugSupport(noParserDebugSupport_),
+    parserName(parserName_)
 {
 }
 
@@ -38,6 +40,24 @@ void CodeModifyVisitor::Visit(soulng::cppcode::ReturnStatement& object)
         invokeExpr->AddExpr(arg);
     }
     object.SetExpression(invokeExpr);
+    if (!noParserDebugSupport)
+    {
+        soulng::cppcode::Statement* parent = object.Parent();
+        soulng::cppcode::CompoundStatement* debugBlock = new soulng::cppcode::CompoundStatement();
+        debugBlock->Add(new soulng::cppcode::IfDefStatement(new soulng::cppcode::Literal(U"SOULNG_PARSER_DEBUG_SUPPORT")));
+        soulng::cppcode::InvokeExpr* writeSuccessToLogCall = new soulng::cppcode::InvokeExpr(new soulng::cppcode::IdExpr(U"soulng::lexer::WriteSuccessToLog"));
+        writeSuccessToLogCall->AddExpr(new soulng::cppcode::IdExpr(U"lexer"));
+        writeSuccessToLogCall->AddExpr(new soulng::cppcode::IdExpr(U"parser_debug_match_span"));
+        soulng::cppcode::InvokeExpr* parserNameToUtf32 = new soulng::cppcode::InvokeExpr(new soulng::cppcode::IdExpr(U"soulng::unicode::ToUtf32")); 
+        parserNameToUtf32->AddExpr(new soulng::cppcode::Literal(U"\"" + parserName + U"\""));
+        writeSuccessToLogCall->AddExpr(parserNameToUtf32);
+        soulng::cppcode::ExpressionStatement* writeSuccessToLogCallStatement = new soulng::cppcode::ExpressionStatement(writeSuccessToLogCall);
+        soulng::cppcode::IfStatement* ifS = new soulng::cppcode::IfStatement(new soulng::cppcode::Literal(U"parser_debug_write_to_log"), writeSuccessToLogCallStatement, nullptr);
+        debugBlock->Add(ifS);
+        debugBlock->Add(new soulng::cppcode::EndIfStatement(new soulng::cppcode::Literal(U"// SOULNG_PARSER_DEBUG_SUPPORT")));
+        debugBlock->Add(&object);
+        parent->Replace(&object, debugBlock);
+    }
 }
 
 void CodeModifyVisitor::Visit(soulng::cppcode::IdExpr& object)

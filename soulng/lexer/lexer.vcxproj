@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Comment.cpp" />
+    <ClCompile Include="ParsingLog.cpp" />
     <ClCompile Include="TrivialLexer.cpp" />
     <ClCompile Include="Keyword.cpp" />
     <ClCompile Include="Lexeme.cpp" />
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Comment.hpp" />
+    <ClInclude Include="ParsingLog.hpp" />
     <ClInclude Include="TrivialLexer.hpp" />
     <ClInclude Include="Keyword.hpp" />
     <ClInclude Include="Lexeme.hpp" />

@@ -24,4 +24,3 @@ struct SOULNG_LEXER_API Span
 } } // namespace soulng::lexer
 
 #endif // SOULNG_LEXER_SPAN_INCLUDED
-

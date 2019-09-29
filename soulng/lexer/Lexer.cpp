@@ -13,7 +13,8 @@ namespace soulng { namespace lexer {
 using namespace soulng::unicode;
 
 Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) :
-    content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end())
+    content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
+    log(nullptr)
 {
 }
 
@@ -212,6 +213,40 @@ void Lexer::ThrowExpectationFailure(int pos, const std::u32string& name)
 {
     Token token = GetToken(pos);
     throw std::runtime_error("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));
+}
+
+std::u32string Lexer::RestOfLine(int maxLineLength)
+{
+    std::u32string restOfLine(current->match.ToString() + std::u32string(pos, LineEnd(end, pos)));
+    if (maxLineLength != 0)
+    {
+        restOfLine = restOfLine.substr(0, maxLineLength);
+    }
+    return restOfLine;
+}
+
+void WriteBeginRuleToLog(Lexer& lexer, const std::u32string& ruleName)
+{
+    lexer.Log()->WriteBeginRule(ruleName);
+    lexer.Log()->IncIndent();
+    lexer.Log()->WriteTry(lexer.RestOfLine(lexer.Log()->MaxLineLength()));
+    lexer.Log()->IncIndent();
+}
+
+void WriteSuccessToLog(Lexer& lexer, const Span& matchSpan, const std::u32string& ruleName)
+{
+    lexer.Log()->DecIndent();
+    lexer.Log()->WriteSuccess(lexer.GetMatch(matchSpan));
+    lexer.Log()->DecIndent();
+    lexer.Log()->WriteEndRule(ruleName);
+}
+
+void WriteFailureToLog(Lexer& lexer, const std::u32string& ruleName)
+{
+    lexer.Log()->DecIndent();
+    lexer.Log()->WriteFail();
+    lexer.Log()->DecIndent();
+    lexer.Log()->WriteEndRule(ruleName);
 }
 
 } } // namespace soulng::lexer

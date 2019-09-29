@@ -4,7 +4,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Literal.parser' using soulng parser generator spg version 1.1.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Literal.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -12,6 +12,15 @@ using namespace CmajorTokens;
 
 soulng::parser::Match LiteralParser::Literal(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Literal"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<LiteralNode> simpleLiteral;
     std::unique_ptr<LiteralNode> complexLiteral;
     soulng::parser::Match match(false);
@@ -26,7 +35,12 @@ soulng::parser::Match LiteralParser::Literal(CmajorLexer& lexer, ParsingContext*
             simpleLiteral.reset(static_cast<LiteralNode*>(match.value));
             if (match.hit)
             {
-                return soulng::parser::Match(true, simpleLiteral.release());
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, simpleLiteral.release());
+                }
             }
             *parentMatch1 = match;
         }
@@ -45,7 +59,12 @@ soulng::parser::Match LiteralParser::Literal(CmajorLexer& lexer, ParsingContext*
                     complexLiteral.reset(static_cast<LiteralNode*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, complexLiteral.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, complexLiteral.release());
+                        }
                     }
                     *parentMatch3 = match;
                 }
@@ -54,11 +73,27 @@ soulng::parser::Match LiteralParser::Literal(CmajorLexer& lexer, ParsingContext*
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Literal"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
@@ -70,7 +105,12 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
             {
                 LiteralNode * value = new BooleanLiteralNode(span, true);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
@@ -80,7 +120,12 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
             {
                 LiteralNode * value = new BooleanLiteralNode(span, false);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
@@ -91,7 +136,12 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
                 ParseFloatingLiteral(lexer.FileName(), lexer.GetToken(pos), lexer.floatingLit, lexer.floatingLitFloat);
                 LiteralNode * value = CreateFloatingLiteralNode(span, lexer.floatingLit, lexer.floatingLitFloat);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
@@ -102,7 +152,12 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
                 ParseIntegerLiteral(lexer.FileName(), lexer.GetToken(pos), lexer.intLit, lexer.intLitUnsigned);
                 LiteralNode * value = CreateIntegerLiteralNode(span, lexer.intLit, lexer.intLitUnsigned);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
@@ -113,7 +168,12 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
                 ParseCharacterLiteral(lexer.FileName(), lexer.GetToken(pos), lexer.chrLit, lexer.chrLitPrefix);
                 LiteralNode * value = CreateCharacterLiteralNode(span, lexer.chrLit, lexer.chrLitPrefix);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
@@ -124,7 +184,12 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
                 ParseStringLiteral(lexer.FileName(), lexer.GetToken(pos), lexer.strLit, lexer.strLitPrefix);
                 LiteralNode * value = CreateStringLiteralNode(span, lexer.strLit, lexer.strLitPrefix);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
@@ -134,16 +199,37 @@ soulng::parser::Match LiteralParser::SimpleLiteral(CmajorLexer& lexer)
             {
                 LiteralNode * value = new NullLiteralNode(span);
                 value->SetText(lexer.GetMatch(span));
-                return soulng::parser::Match(true, value);
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, value);
+                }
             }
             break;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleLiteral"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SimpleLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match LiteralParser::ComplexLiteral(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ComplexLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ArrayLiteralNode> arrayLiteral;
     std::unique_ptr<StructuredLiteralNode> structuredLiteral;
     soulng::parser::Match match(false);
@@ -158,7 +244,12 @@ soulng::parser::Match LiteralParser::ComplexLiteral(CmajorLexer& lexer, ParsingC
             arrayLiteral.reset(static_cast<ArrayLiteralNode*>(match.value));
             if (match.hit)
             {
-                return soulng::parser::Match(true, arrayLiteral.release());
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ComplexLiteral"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, arrayLiteral.release());
+                }
             }
             *parentMatch1 = match;
         }
@@ -177,7 +268,12 @@ soulng::parser::Match LiteralParser::ComplexLiteral(CmajorLexer& lexer, ParsingC
                     structuredLiteral.reset(static_cast<StructuredLiteralNode*>(match.value));
                     if (match.hit)
                     {
-                        return soulng::parser::Match(true, structuredLiteral.release());
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ComplexLiteral"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, structuredLiteral.release());
+                        }
                     }
                     *parentMatch3 = match;
                 }
@@ -186,11 +282,27 @@ soulng::parser::Match LiteralParser::ComplexLiteral(CmajorLexer& lexer, ParsingC
             *parentMatch0 = match;
         }
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ComplexLiteral"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ComplexLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ArrayLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<ArrayLiteralNode> arrayLiteral = std::unique_ptr<ArrayLiteralNode>();
     std::unique_ptr<Node> expr;
     soulng::parser::Match match(false);
@@ -233,74 +345,79 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch6 = &match;
                         {
-                            int pos = lexer.GetPos();
-                            soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                            expr.reset(static_cast<Node*>(match.value));
-                            if (match.hit)
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch7 = &match;
                             {
-                                arrayLiteral->AddValue(expr.release());
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
+                                expr.reset(static_cast<Node*>(match.value));
+                                if (match.hit)
+                                {
+                                    arrayLiteral->AddValue(expr.release());
+                                }
+                                *parentMatch7 = match;
                             }
                             *parentMatch6 = match;
                         }
-                        *parentMatch5 = match;
-                    }
-                    if (match.hit)
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch7 = &match;
+                        if (match.hit)
                         {
-                            soulng::parser::Match match(true);
+                            soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch8 = &match;
                             {
-                                while (true)
+                                soulng::parser::Match match(true);
+                                soulng::parser::Match* parentMatch9 = &match;
                                 {
-                                    int save = lexer.GetPos();
+                                    while (true)
                                     {
-                                        soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch9 = &match;
-                                        {
-                                            soulng::parser::Match match(false);
-                                            if (*lexer == COMMA)
-                                            {
-                                                ++lexer;
-                                                match.hit = true;
-                                            }
-                                            *parentMatch9 = match;
-                                        }
-                                        if (match.hit)
+                                        int save = lexer.GetPos();
                                         {
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch10 = &match;
                                             {
                                                 soulng::parser::Match match(false);
+                                                if (*lexer == COMMA)
+                                                {
+                                                    ++lexer;
+                                                    match.hit = true;
+                                                }
+                                                *parentMatch10 = match;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch11 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                                                    expr.reset(static_cast<Node*>(match.value));
-                                                    if (match.hit)
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch12 = &match;
                                                     {
-                                                        arrayLiteral->AddValue(expr.release());
+                                                        int pos = lexer.GetPos();
+                                                        soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
+                                                        expr.reset(static_cast<Node*>(match.value));
+                                                        if (match.hit)
+                                                        {
+                                                            arrayLiteral->AddValue(expr.release());
+                                                        }
+                                                        *parentMatch12 = match;
                                                     }
                                                     *parentMatch11 = match;
                                                 }
                                                 *parentMatch10 = match;
                                             }
-                                            *parentMatch9 = match;
-                                        }
-                                        if (match.hit)
-                                        {
-                                            *parentMatch8 = match;
-                                        }
-                                        else
-                                        {
-                                            lexer.SetPos(save);
-                                            break;
+                                            if (match.hit)
+                                            {
+                                                *parentMatch9 = match;
+                                            }
+                                            else
+                                            {
+                                                lexer.SetPos(save);
+                                                break;
+                                            }
                                         }
                                     }
                                 }
+                                *parentMatch8 = match;
                             }
-                            *parentMatch7 = match;
+                            *parentMatch6 = match;
                         }
                         *parentMatch5 = match;
                     }
@@ -322,15 +439,15 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch12 = &match;
+        soulng::parser::Match* parentMatch13 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch13 = &match;
+            soulng::parser::Match* parentMatch14 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch14 = &match;
+                soulng::parser::Match* parentMatch15 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -341,7 +458,7 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
                     }
                     if (match.hit)
                     {
-                        *parentMatch14 = match;
+                        *parentMatch15 = match;
                     }
                     else
                     {
@@ -351,19 +468,40 @@ soulng::parser::Match LiteralParser::ArrayLiteral(CmajorLexer& lexer, ParsingCon
                 if (match.hit)
                 {
                     arrayLiteral->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, arrayLiteral.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ArrayLiteral"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, arrayLiteral.release());
+                    }
                 }
-                *parentMatch13 = match;
+                *parentMatch14 = match;
             }
-            *parentMatch12 = match;
+            *parentMatch13 = match;
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ArrayLiteral"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ArrayLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }
 
 soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, ParsingContext* ctx)
 {
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("StructuredLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<StructuredLiteralNode> structuredLiteral = std::unique_ptr<StructuredLiteralNode>();
     std::unique_ptr<Node> expr;
     soulng::parser::Match match(false);
@@ -406,74 +544,79 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch6 = &match;
                         {
-                            int pos = lexer.GetPos();
-                            soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                            expr.reset(static_cast<Node*>(match.value));
-                            if (match.hit)
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch7 = &match;
                             {
-                                structuredLiteral->AddMember(expr.release());
+                                int pos = lexer.GetPos();
+                                soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
+                                expr.reset(static_cast<Node*>(match.value));
+                                if (match.hit)
+                                {
+                                    structuredLiteral->AddMember(expr.release());
+                                }
+                                *parentMatch7 = match;
                             }
                             *parentMatch6 = match;
                         }
-                        *parentMatch5 = match;
-                    }
-                    if (match.hit)
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch7 = &match;
+                        if (match.hit)
                         {
-                            soulng::parser::Match match(true);
+                            soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch8 = &match;
                             {
-                                while (true)
+                                soulng::parser::Match match(true);
+                                soulng::parser::Match* parentMatch9 = &match;
                                 {
-                                    int save = lexer.GetPos();
+                                    while (true)
                                     {
-                                        soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch9 = &match;
-                                        {
-                                            soulng::parser::Match match(false);
-                                            if (*lexer == COMMA)
-                                            {
-                                                ++lexer;
-                                                match.hit = true;
-                                            }
-                                            *parentMatch9 = match;
-                                        }
-                                        if (match.hit)
+                                        int save = lexer.GetPos();
                                         {
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch10 = &match;
                                             {
                                                 soulng::parser::Match match(false);
+                                                if (*lexer == COMMA)
+                                                {
+                                                    ++lexer;
+                                                    match.hit = true;
+                                                }
+                                                *parentMatch10 = match;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch11 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                                                    expr.reset(static_cast<Node*>(match.value));
-                                                    if (match.hit)
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch12 = &match;
                                                     {
-                                                        structuredLiteral->AddMember(expr.release());
+                                                        int pos = lexer.GetPos();
+                                                        soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
+                                                        expr.reset(static_cast<Node*>(match.value));
+                                                        if (match.hit)
+                                                        {
+                                                            structuredLiteral->AddMember(expr.release());
+                                                        }
+                                                        *parentMatch12 = match;
                                                     }
                                                     *parentMatch11 = match;
                                                 }
                                                 *parentMatch10 = match;
                                             }
-                                            *parentMatch9 = match;
-                                        }
-                                        if (match.hit)
-                                        {
-                                            *parentMatch8 = match;
-                                        }
-                                        else
-                                        {
-                                            lexer.SetPos(save);
-                                            break;
+                                            if (match.hit)
+                                            {
+                                                *parentMatch9 = match;
+                                            }
+                                            else
+                                            {
+                                                lexer.SetPos(save);
+                                                break;
+                                            }
                                         }
                                     }
                                 }
+                                *parentMatch8 = match;
                             }
-                            *parentMatch7 = match;
+                            *parentMatch6 = match;
                         }
                         *parentMatch5 = match;
                     }
@@ -495,15 +638,15 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch12 = &match;
+        soulng::parser::Match* parentMatch13 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch13 = &match;
+            soulng::parser::Match* parentMatch14 = &match;
             {
                 int pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch14 = &match;
+                soulng::parser::Match* parentMatch15 = &match;
                 {
                     int pos = lexer.GetPos();
                     soulng::parser::Match match(false);
@@ -514,7 +657,7 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
                     }
                     if (match.hit)
                     {
-                        *parentMatch14 = match;
+                        *parentMatch15 = match;
                     }
                     else
                     {
@@ -524,13 +667,25 @@ soulng::parser::Match LiteralParser::StructuredLiteral(CmajorLexer& lexer, Parsi
                 if (match.hit)
                 {
                     structuredLiteral->SetSpanEnd(span.end);
-                    return soulng::parser::Match(true, structuredLiteral.release());
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("StructuredLiteral"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, structuredLiteral.release());
+                    }
                 }
-                *parentMatch13 = match;
+                *parentMatch14 = match;
             }
-            *parentMatch12 = match;
+            *parentMatch13 = match;
         }
         *parentMatch0 = match;
     }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("StructuredLiteral"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("StructuredLiteral"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
     return match;
 }

@@ -28,12 +28,17 @@ void TestMinilangLexer(const std::string& minilangFilePath)
     std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
 }
 
-void TestMinilangParser(const std::string& minilangFilePath)
+void TestMinilangParser(const std::string& minilangFilePath, bool debug)
 {
 	std::cout << "> " << minilangFilePath << std::endl;
 	std::string s = soulng::util::ReadFile(minilangFilePath);
 	std::u32string content = soulng::unicode::ToUtf32(s);
-	MinilangLexer lexer(content, minilangFilePath, 0);
+    soulng::lexer::XmlParsingLog debugLog(std::cerr);
+    MinilangLexer lexer(content, minilangFilePath, 0);
+    if (debug)
+    {
+        lexer.SetLog(&debugLog);
+    }
 	SourceFileParser::Parse(lexer);
 	std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;
 }
@@ -72,6 +77,8 @@ void PrintUsage()
     std::cout << "  Test lexical analyzer with <file.minilang>." << std::endl;
 	std::cout << "--parser-test | -p" << std::endl;
 	std::cout << "  Test parser with <file.minilang>." << std::endl;
+    std::cout << "--debug | -d" << std::endl;
+    std::cout << "  Debug parsing and print debug log to stderr." << std::endl;
 }
 
 enum class Command
@@ -86,6 +93,7 @@ int main(int argc, const char** argv)
     {
         std::vector<std::string> files;
 		Command command = Command::print;
+        bool debug = false;
         for (int i = 1; i < argc; ++i)
         {
             std::string arg = argv[i];
@@ -104,6 +112,10 @@ int main(int argc, const char** argv)
 				{
 					command = Command::parserTest;
 				}
+                else if (arg == "--debug")
+                {
+                    debug = true;
+                }
                 else
                 {
                     throw std::runtime_error("unknown argument '" + arg + "'");
@@ -131,6 +143,10 @@ int main(int argc, const char** argv)
 					{
 						command = Command::parserTest;
 					}
+                    else if (o == 'd')
+                    {
+                        debug = true;
+                    }
                     else
                     {
                         throw std::runtime_error("unknown argument '-" + std::string(1, o) + "'");
@@ -155,7 +171,7 @@ int main(int argc, const char** argv)
             }
 			else if (command == Command::parserTest)
 			{
-				TestMinilangParser(filePath);
+				TestMinilangParser(filePath, debug);
 			}
 			else if (command == Command::print)
 			{

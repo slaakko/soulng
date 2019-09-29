@@ -20,7 +20,7 @@ class CodeGeneratorVisitor : public Visitor
 {
 public:
     enum class Stage { generateHeader, generateSource, generateTokenSwitch, beginGenerateTokenSwitch, endGenerateTokenSwitch };
-    CodeGeneratorVisitor(bool verbose_);
+    CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_);
     void Visit(EmptyParser& parser) override;
     void Visit(TokenParser& parser) override;
     void Visit(CharParser& parser) override;
@@ -43,6 +43,7 @@ public:
     void Visit(Domain& domain) override;
 private:
     bool verbose;
+    bool noParserDebugSupport;
     Domain* domain;
     GrammarParser* currentParser;
     RuleParser* currentRule;

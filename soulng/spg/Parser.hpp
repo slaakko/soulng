@@ -5,6 +5,7 @@
 
 #ifndef SOULNG_SPG_PARSER_INCLUDED
 #define SOULNG_SPG_PARSER_INCLUDED
+#undef PARSER_DEBUG_SUPPORT
 #include <soulng/spg/CharSet.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/cppcode/Expression.hpp>
