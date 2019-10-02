@@ -511,7 +511,7 @@
     </p>
 
     <p>
-        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, or a <em>token expression</em>:
+        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, a <em>token expression</em>, or a <em>scannerless expression</em>:
     </p>
 
     <table class="grammar">
@@ -520,7 +520,8 @@
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="#rule.empty-expression">empty&#8209;expression</a></span> |
-                <span class="rule"><a href="#rule.token-expression">token&#8209;expression</a></span>
+                <span class="rule"><a href="#rule.token-expression">token&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.scannerless-expression">scannerless&#8209;expression</a></span>
             </td>
         </tr>
         <tr>
@@ -544,18 +545,58 @@
                 <span class="rule"><a href="common.html#rule.identifier">identifier</a></span>
             </td>
         </tr>
+        <tr>
+            <td class="rule" id="rule.scannerless-expression">scannerless&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="rule"><a href="common.html#rule.character-literal">character&#8209;literal</a></span> |
+                <span class="rule"><a href="common.html#rule.string-literal">string&#8209;literal</a></span>
+            </td>
+        </tr>
     </table>
+
+    <h5>Empty expression</h5>
 
     <p>
         An empty expression consists of the keyword <strong>empty</strong>.
         An empty expression matches always. Input position of the used lexer is not advanced for an empty expression.
     </p>
 
+    <h5>Token expression</h5>
+
     <p>
         For a token expression, the generated parser will compare the current input token of the used lexer to the <em>token-id</em> of the token expression.
         If the current input token matches the <em>token-id</em>, the input position of the used lexer is advanced to the next token using expression <em>++lexer</em>, and parsing proceeds.
         Otherwise the generated parser will backtrack.
     </p>
+
+    <h5>Scannerless expressions</h5>
+
+    <p>
+        To support scannerless parsing, a parsing expression can be a character or string literal.
+        In this case the lexer, that is assumed to be a trivial lexer, produces lexical tokens that are in fact Unicode characters.
+        There are three cases:
+        <ul>
+            <li>
+                The expression is a character literal: the parser compares the current input token, that is in fact a Unicode character, to the character literal.
+                If the current input token matches the character literal, the input position of the used lexer is advanced to the next token using expression <em>++lexer</em>, and parsing proceeds.
+                Otherwise the generated parser will backtrack.
+            </li>
+            <li>
+                The expression is an ordinary string literal: the parser compares input tokens that are in fact a sequence of Unicode characters, to the string literal.
+                If the sequence matches, the input position of the used lexer is advanced by the number of characters in the sequence,  and parsing proceeds.
+                Otherwise the generated parser will backtrack.
+            </li>
+            <li>
+                The expression is a string literal that contains a <a href="regex.html#character-class">character class</a> in brackets:
+                the parser compares the current input token, that is in fact a Unicode character, to the characters in the character class..
+                If the current input token is in the character class, the input position of the used lexer is advanced to the next token using expression <em>++lexer</em>, and parsing proceeds.
+                Otherwise the generated parser will backtrack.
+            </li>
+        </ul>
+    </p>
+
+    <h5>Grouping expression</h5>
 
     <p>
         A <em>grouping expression</em> is a parenthesized parsing expression.
@@ -573,6 +614,8 @@
         </tr>
     </table>
 
+    <h5>Expectation expression</h5>
+
     <p>
         Let <em>a</em> be a primary parsing expression. Then <em>a!</em> is a parsing expression, an <em>expectation</em> expression.
         For an expectation expression <em>a!</em>, instead of backtracking the generated parser will produce an error if <em>a</em> does not match:
@@ -587,6 +630,8 @@
             </td>
         </tr>
     </table>
+
+    <h5>Semantic actions</h5>
 
     <p>
         Let <em>a</em> be a primary parsing expression or an expectation expression.

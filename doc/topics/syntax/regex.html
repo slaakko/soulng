@@ -97,6 +97,8 @@
         </tr>
     </table>
 
+    <h5 id="ordinary-character">Ordinary characters</h5>
+
     <p>
         An ordinary character is any other character than a newline, a carriage return, a backslash, an operator or punctuation character, or a double quote:
     </p>
@@ -115,10 +117,14 @@
         </tr>
     </table>
 
+    <h5 id="escape-sequence">Escape sequences</h5>
+
     <p>
         An escape sequence starts with the backslash character. It removes the operator meaning from an operator symbol, that is: the symbol is matched literally.
         It is also used for representing non-printable characters, and to match parentheses, brackets and braces literally.
     </p>
+
+    <h5 id="character-class">Character classes</h5>
 
     <p>
         A character class consists of characters and ranges of characters enclosed in brackets. It may also contain escape sequences.
@@ -161,6 +167,8 @@
     <p>
         Parentheses, the left bracket, braces, and the operator symbols need not be escaped within a character class, although it would do no harm to do so.
     </p>
+
+    <h5 id="expression-reference">Expression references</h5>
 
     <p>
         An identifier in braces is used to reference a named regular expression that comes before the regular expression defined currently:
