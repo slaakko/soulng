@@ -159,6 +159,7 @@
     <ClCompile Include="Span.cpp" />
     <ClCompile Include="Token.cpp" />
     <ClCompile Include="Value.cpp" />
+    <ClCompile Include="XmlParsingLog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Comment.hpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Span.hpp" />
     <ClInclude Include="Token.hpp" />
     <ClInclude Include="Value.hpp" />
+    <ClInclude Include="XmlParsingLog.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

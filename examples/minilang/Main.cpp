@@ -3,6 +3,7 @@
 #include <minilang/ConsoleUnicode.hpp>
 #include <minilang/PrinterVisitor.hpp>
 #include <minilang/SourceFileParser.hpp>
+#include <soulng/lexer/XmlParsingLog.hpp>
 #include <soulng/util/CodeFormatter.hpp>
 #include <soulng/util/InitDone.hpp>
 #include <soulng/util/MappedInputFile.hpp>
