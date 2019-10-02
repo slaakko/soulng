@@ -1,6 +1,6 @@
 include ../Makefile.common
 
-OBJECTS = Match.o Value.o
+OBJECTS = Match.o Range.o Value.o
 
 %o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

@@ -1,9 +1,9 @@
 include ../Makefile.common
 
-OBJECTS = CodeEvaluationVisitor.o CodeGeneratorVisitor.o CodeModifyVisitor.o CppDeclarationParser.o CppDeclaratorParser.o CppExpressionParser.o CppIdentifierParser.o \
-CppLiteralParser.o CppStatementParser.o Domain.o LinkerVisitor.o Main.o NonterminalInfo.o Parser.o ParserFile.o ParserFileClassMap.o ParserFileKeywords.o ParserFileLexer.o \
-ParserFileParser.o ParserFileTokens.o ProjectFile.o ProjectFileClassMap.o ProjectFileKeywords.o ProjectFileLexer.o ProjectFileParser.o ProjectFileTokens.o TokenValueParsers.o \
-Visitor.o
+OBJECTS = ArrayGeneratorVisitor.o CharSet.o CodeEvaluationVisitor.o CodeGeneratorVisitor.o CodeModifyVisitor.o CppDeclarationParser.o CppDeclaratorParser.o CppExpressionParser.o \
+CppIdentifierParser.o CppLiteralParser.o CppStatementParser.o Domain.o LinkerVisitor.o Main.o NonterminalInfo.o Parser.o ParserFile.o ParserFileClassMap.o ParserFileKeywords.o \
+ParserFileLexer.o ParserFileParser.o ParserFileTokens.o ProjectFile.o ProjectFileClassMap.o ProjectFileKeywords.o ProjectFileLexer.o ProjectFileParser.o ProjectFileTokens.o \
+TokenValueParsers.o Visitor.o
 
 LIBRARIES = ../../lib/libsngcppcode.a ../../lib/libsngutil.a ../../lib/libsnglexer.a ../../lib/libsngparser.a
 

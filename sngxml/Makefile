@@ -15,7 +15,7 @@ clean:
 sources:
 	spg -v xml/XmlParser.spg
 	slg -vn xpath/XPathLexer.lexer
-    spg -v xpath/XPathParser.spg
+	spg -v xpath/XPathParser.spg
 
 prefix := /usr/local
 
