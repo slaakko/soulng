@@ -24,7 +24,7 @@ public:
     virtual void WriteTry(const std::u32string& s) = 0;
     virtual void WriteSuccess(const std::u32string& match) = 0;
     virtual void WriteFail() = 0;
-    virtual int MaxLineLength() const { return maxLineLength; }
+    virtual int MaxLineLength() const;
 private:
     int maxLineLength;
 };
@@ -34,13 +34,13 @@ class SOULNG_LEXER_API XmlParsingLog : public ParsingLog
 public:
     XmlParsingLog(std::ostream& stream_);
     XmlParsingLog(std::ostream& stream_, int maxLineLength_);
-    void IncIndent() override { formatter.IncIndent(); }
-    void DecIndent() override { formatter.DecIndent(); }
-    void WriteBeginRule(const std::u32string& ruleName) override { Write(U"<" + ruleName + U">"); }
-    void WriteEndRule(const std::u32string& ruleName) override { Write(U"</" + ruleName + U">"); }
-    void WriteTry(const std::u32string& s) override { WriteElement(U"try", s); }
-    void WriteSuccess(const std::u32string& match) override { WriteElement(U"success", match); }
-    void WriteFail() override { Write(U"<fail/>"); }
+    void IncIndent() override;
+    void DecIndent() override;
+    void WriteBeginRule(const std::u32string& ruleName) override;
+    void WriteEndRule(const std::u32string& ruleName) override;
+    void WriteTry(const std::u32string& s) override;
+    void WriteSuccess(const std::u32string& match) override;
+    void WriteFail() override;
     void WriteElement(const std::u32string& elementName, const std::u32string& elementContent);
     void Write(const std::u32string& s);
     soulng::util::CodeFormatter& Formatter() { return formatter; }

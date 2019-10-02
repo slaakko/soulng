@@ -72,6 +72,11 @@ ParsingLog::~ParsingLog()
 {
 }
 
+int ParsingLog::MaxLineLength() const
+{
+    return maxLineLength;
+}
+
 XmlParsingLog::XmlParsingLog(std::ostream& stream_) : ParsingLog(), formatter(stream_)
 {
     formatter.SetIndentSize(1);
@@ -80,6 +85,41 @@ XmlParsingLog::XmlParsingLog(std::ostream& stream_) : ParsingLog(), formatter(st
 XmlParsingLog::XmlParsingLog(std::ostream& stream_, int maxLineLength_) : ParsingLog(maxLineLength_), formatter(stream_)
 {
     formatter.SetIndentSize(1);
+}
+
+void XmlParsingLog::IncIndent()
+{
+    formatter.IncIndent();
+}
+
+void XmlParsingLog::DecIndent()
+{
+    formatter.DecIndent();
+}
+
+void XmlParsingLog::WriteBeginRule(const std::u32string& ruleName)
+{
+    Write(U"<" + ruleName + U">");
+}
+
+void XmlParsingLog::WriteEndRule(const std::u32string& ruleName)
+{
+    Write(U"</" + ruleName + U">");
+}
+
+void XmlParsingLog::WriteTry(const std::u32string& s)
+{
+    WriteElement(U"try", s);
+}
+
+void XmlParsingLog::WriteSuccess(const std::u32string& match)
+{
+    WriteElement(U"success", match);
+}
+
+void XmlParsingLog::WriteFail()
+{
+    Write(U"<fail/>");
 }
 
 void XmlParsingLog::WriteElement(const std::u32string& elementName, const std::u32string& elementContent)
