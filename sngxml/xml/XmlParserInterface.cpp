@@ -6,6 +6,7 @@
 #include <sngxml/xml/XmlParserInterface.hpp>
 #include <sngxml/xml/XmlParser.hpp>
 #include <soulng/lexer/TrivialLexer.hpp>
+#include <soulng/lexer/XmlParsingLog.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <iostream>

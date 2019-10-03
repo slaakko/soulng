@@ -6,7 +6,6 @@
 #ifndef SOULNG_LEXER_XML_PARSING_LOG_INCLUDED
 #define SOULNG_LEXER_XML_PARSING_LOG_INCLUDED
 #include <soulng/lexer/ParsingLog.hpp>
-#include <memory>
 
 namespace soulng { namespace lexer {
 
@@ -32,8 +31,6 @@ private:
 SOULNG_LEXER_API std::u32string XmlHexEscape(char32_t c);
 SOULNG_LEXER_API std::u32string XmlCharStr(char32_t c);
 SOULNG_LEXER_API std::u32string XmlEscape(const std::u32string& s);
-
-SOULNG_LEXER_API std::unique_ptr<ParsingLog> CreateXmlParsingLog(std::ostream& stream);
 
 } } // namespace soulng::lexer
 

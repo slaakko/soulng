@@ -9,6 +9,7 @@
 #include <sngxml/xpath/XPathLexer.hpp>
 #include <sngxml/xpath/XPathDebug.hpp>
 #include <sngxml/dom/Document.hpp>
+#include <soulng/lexer/XmlParsingLog.hpp>
 #include <iostream>
 #include <chrono>
 
