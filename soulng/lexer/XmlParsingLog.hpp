@@ -6,6 +6,7 @@
 #ifndef SOULNG_LEXER_XML_PARSING_LOG_INCLUDED
 #define SOULNG_LEXER_XML_PARSING_LOG_INCLUDED
 #include <soulng/lexer/ParsingLog.hpp>
+#include <memory>
 
 namespace soulng { namespace lexer {
 
