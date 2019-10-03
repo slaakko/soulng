@@ -32,6 +32,8 @@ SOULNG_LEXER_API std::u32string XmlHexEscape(char32_t c);
 SOULNG_LEXER_API std::u32string XmlCharStr(char32_t c);
 SOULNG_LEXER_API std::u32string XmlEscape(const std::u32string& s);
 
+SOULNG_LEXER_API std::unique_ptr<ParsingLog> CreateXmlParsingLog(std::ostream& stream);
+
 } } // namespace soulng::lexer
 
 #endif // SOULNG_LEXER_XML_PARSING_LOG_INCLUDED

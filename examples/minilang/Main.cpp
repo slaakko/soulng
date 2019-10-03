@@ -34,11 +34,11 @@ void TestMinilangParser(const std::string& minilangFilePath, bool debug)
 	std::cout << "> " << minilangFilePath << std::endl;
 	std::string s = soulng::util::ReadFile(minilangFilePath);
 	std::u32string content = soulng::unicode::ToUtf32(s);
-    soulng::lexer::XmlParsingLog debugLog(std::cerr);
+    std::unique_ptr<soulng::lexer::ParsingLog> debugLog = soulng::lexer::CreateXmlParsingLog(std::cerr);
     MinilangLexer lexer(content, minilangFilePath, 0);
     if (debug)
     {
-        lexer.SetLog(&debugLog);
+        lexer.SetLog(debugLog.get());
     }
 	SourceFileParser::Parse(lexer);
 	std::cout << "end of file '" << minilangFilePath << "' reached" << std::endl;

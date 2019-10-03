@@ -124,4 +124,9 @@ void XmlParsingLog::Write(const std::u32string& s)
     formatter.WriteLine(ToUtf8(s));
 }
 
+std::unique_ptr<ParsingLog> CreateXmlParsingLog(std::ostream& stream)
+{
+    return std::unique_ptr<ParsingLog>(new XmlParsingLog(stream));
+}
+
 } } // namespace soulng::lexer
