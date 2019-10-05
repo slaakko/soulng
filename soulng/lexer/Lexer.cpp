@@ -217,7 +217,7 @@ void Lexer::ThrowExpectationFailure(int pos, const std::u32string& name)
 
 std::u32string Lexer::RestOfLine(int maxLineLength)
 {
-    std::u32string restOfLine(current->match.ToString() + std::u32string(pos, LineEnd(end, pos)));
+    std::u32string restOfLine(current->match.ToString() + std::u32string(current->match.end, pos) + std::u32string(pos, LineEnd(end, pos)));
     if (maxLineLength != 0)
     {
         restOfLine = restOfLine.substr(0, maxLineLength);

@@ -1,0 +1,507 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/ast/Expression.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[cpp]#include <sngcpp/parser/Declarator.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/SimpleType.hpp>
+[cpp]#include <sngcpp/parser/Template.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+
+using namespace CppLexerTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) ExpressionParser
+{
+    uselexer CppLexer;
+
+    using TypeExprParser.TypeExpr;
+    using DeclaratorParser.InitializerList;
+    using DeclaratorParser.InitializerClause;
+    using DeclaratorParser.BracedInitializerList;
+    using LiteralParser.Literal;
+    using SimpleTypeParser.SimpleTypeSpecifier;
+    using IdentifierParser.Identifier;
+    using IdentifierParser.NestedNameSpecifier;
+    using TemplateParser.TemplateId;
+
+    Expression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   AssignmentExpression(ctx):left{ expr.reset(left); s = span; }
+            (COMMA AssignmentExpression(ctx):right{ s.end = span.end; expr.reset(new sngcpp::ast::CommaExpressionNode(s, expr.release(), right)); })*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    AssignmentExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr) : sngcpp::ast::Node*
+        ::= empty{ ctx->BeginParsingLvalue(); }
+        (   LogicalOrExpression(ctx):logicalOrExpression{ ctx->EndParsingLvalue(); expr.reset(logicalOrExpression); } / { ctx->EndParsingLvalue(); }
+            AssignmentOperator:op
+            InitializerClause(ctx):initializerClause{ expr.reset(new sngcpp::ast::AssignmentExpressionNode(span, expr.release(), op, initializerClause)); }
+        |   ConditionalExpression(ctx):conditionalExpression{ expr.reset(conditionalExpression); }
+        |   ThrowExpression(ctx):throwExpression{ expr.reset(throwExpression); }
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    AssignmentOperator : sngcpp::ast::Operator
+        ::= ASSIGN{ return sngcpp::ast::Operator::assign; }
+        |   MULASSIGN{ return sngcpp::ast::Operator::mulAssign; }
+        |   DIVASSIGN{ return sngcpp::ast::Operator::divAssign; }
+        |   REMASSIGN{ return sngcpp::ast::Operator::remAssign; }
+        |   ADDASSIGN{ return sngcpp::ast::Operator::addAssign; }
+        |   SUBASSIGN{ return sngcpp::ast::Operator::subAssign; }
+        |   SHIFTRIGHTASSIGN{ return sngcpp::ast::Operator::shiftRightAssign; }
+        |   SHIFTLEFTASSIGN{ return sngcpp::ast::Operator::shiftLeftAssign; }
+        |   ANDASSIGN{ return sngcpp::ast::Operator::andAssign; }
+        |   XORASSIGN{ return sngcpp::ast::Operator::xorAssign; }
+        |   ORASSIGN{ return sngcpp::ast::Operator::orAssign; }
+        ;
+
+    ConditionalExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   LogicalOrExpression(ctx):logicalOrExpression{ expr.reset(logicalOrExpression); s = span; }
+            (QUEST Expression(ctx):thenExpr COLON AssignmentExpression(ctx):elseExpr{ s.end = span.end; expr.reset(new sngcpp::ast::ConditionalExpressionNode(s, expr.release(), thenExpr, elseExpr)); })?
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    ThrowExpression(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= (THROW{ s = span; } (AssignmentExpression(ctx):exception{ s.end = span.end; })?)
+        {
+            return new sngcpp::ast::ThrowExpressionNode(s, exception);
+        }
+        ;
+
+    LogicalOrExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   LogicalAndExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                OROR LogicalAndExpression(ctx):right
+                {
+                    if (ctx->ParsingTemplateIdOrLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::LogicalOrExpressionNode(s, expr.release(), right));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    LogicalAndExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   InclusiveOrExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                ANDAND InclusiveOrExpression(ctx):right
+                {
+                    if (ctx->ParsingTemplateIdOrLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::LogicalAndExpressionNode(s, expr.release(), right));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    InclusiveOrExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   ExclusiveOrExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                OR ExclusiveOrExpression(ctx):right
+                {
+                    if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::InclusiveOrExpressionNode(s, expr.release(), right));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    ExclusiveOrExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::= 
+        (   AndExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                XOR AndExpression(ctx):right
+                {
+                    if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::ExclusiveOrExpressionNode(s, expr.release(), right));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    AndExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::= 
+        (   EqualityExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                AMP EqualityExpression(ctx):right
+                {
+                    if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::AndExpressionNode(s, expr.release(), right));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    EqualityExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   RelationalExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                EqualityOperator:op RelationalExpression(ctx):right
+                {
+                    if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::EqualityExpressionNode(s, expr.release(), right, op));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    EqualityOperator : sngcpp::ast::Operator
+        ::= EQ{ return sngcpp::ast::Operator::equal; }
+        |   NEQ{ return sngcpp::ast::Operator::notEqual; }
+        ;
+
+    RelationalExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::= 
+        (   ShiftExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                RelationalOperator:op ShiftExpression(ctx):right
+                {
+                    if (ctx->ParsingTemplateIdOrLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::RelationalExpressionNode(s, expr.release(), right, op));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    RelationalOperator : sngcpp::ast::Operator
+        ::= LEQ{ return sngcpp::ast::Operator::lessOrEqual; }
+        |   GEQ{ return sngcpp::ast::Operator::greaterOrEqual; }
+        |   LANGLE{ returm sngcpp::ast::Operator::less; }
+        |   RANGLE{ returm sngcpp::ast::Operator::greater; }
+        ;
+
+    ShiftExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::= 
+        (   AdditiveExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                ShiftOperator:op AdditiveExpression(ctx):right
+                {
+                    if (ctx->ParsingTemplateIdOrLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::ShiftExpressionNode(s, expr.release(), right, op));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    ShiftOperator : sngcpp::ast::Operator
+        ::= SHIFTLEFT{ return sngcpp::ast::Operator::shiftLeft; }
+        |   SHIFTRIGHT{ return sngcpp::ast::Operator::shiftRight; }
+        ;
+
+    AdditiveExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::= 
+        (   MultiplicativeExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                AdditiveOperator:op MultiplicativeExpression(ctx):right
+                {
+                    if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::ShiftExpressionNode(s, expr.release(), right, op));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    AdditiveOperator : sngcpp::ast::Operator
+        ::= PLUS{ return sngcpp::ast::Operator::add; }
+        |   MINUS{ return sngcpp::ast::Operator::sub; }
+        ;
+
+    MultiplicativeExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::= 
+        (   PMExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                MultiplicativeOperator:op PMExpression(ctx):right
+                {
+                    if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
+                    {
+                        s.end = span.end;
+                        expr.reset(new sngcpp::ast::ShiftExpressionNode(s, expr.release(), right, op));
+                    }
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    MultiplicativeOperator : sngcpp::ast::Operator
+        ::= STAR{ return sngcpp::ast::Operator::mul; }
+        |   DIV{ return sngcpp::ast::Operator::div; }
+        |   MOD{ return sngcpp::ast::Operator::rem; }
+        ;
+
+    PMExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   CastExpression(ctx):left{ expr.reset(left); s = span; }
+            (
+                PMOperator:op CastExpression(ctx):right
+                {
+                    s.end = span.end;
+                    expr.reset(new sngcpp::ast::PMExpressionNode(s, expr.release(), right, op));
+                }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    PMOperator : sngcpp::ast::Operator
+        ::= DOTSTAR{ return sngcpp::ast::Operator::dotStar; }
+        |   ARROWSTAR{ return sngcpp::ast::Operator::arrowStar; }
+        ;
+
+    CastExpression(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= LPAREN{ s = span; } TypeExpr(ctx):typeExpr RPAREN CastExpression(ctx):castExpr{ s.end = span.end; return new sngcpp::ast::CastExpressionNode(s, typeExpr, castExpr); }
+        |   UnaryExpression(ctx):unaryExpression{ return unaryExpression; }
+        ;
+
+    UnaryExpression(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= PLUSPLUS{ s = span; } CastExpression(ctx):c1{ s.end = span.end; return new sngcpp::ast::UnaryExpressionNode(s, sngcpp::ast::Operator::inc, c1); }
+        |   MINUSMINUS{ s = span; } CastExpression(ctx):c2{ s.end = span.end; return new sngcpp::ast::UnaryExpressionNode(s, sngcpp::ast::Operator::dec, c2); }
+        |   UnaryOperator:op{ s = span; } CastExpression(ctx):c3{ s.end = span.end; return new sngcpp::ast::UnaryExpressionNode(s, op, c3); }
+        |   SIZEOF{ s = span; } UnaryExpression(ctx):u4{ s.end = span.end; return new sngcpp::ast::UnaryExpressionNode(s, sngcpp::ast::Operator::sizeOf, u4); }
+        |   ALIGNOF{ s = span; } LPAREN TypeExpr(ctx):t5 RPAREN{ s.end = span.end; return new sngcpp::ast::UnaryExpressionNode(s, sngcpp::ast::Operator::alignOf, t5); }
+        |   NewExpression(ctx):newExpr{ return newExpr; }
+        |   DeleteExpression(ctx):deleteExpr{ return deleteExpr; }
+        |   PostfixExpression(ctx):postfixExpr{ return postfixExpr; }
+        ;
+
+    UnaryOperator : sngcpp::ast::Operator
+        ::= STAR{ return sngcpp::ast::Operator::deref; }
+        |   AMP{ return sngcpp::ast::Operator::addrOf; }
+        |   PLUS{ return sngcpp::ast::Operator::unaryPlus; }
+        |   MINUS{ return sngcpp::ast::Operator::unaryMinus; }
+        |   EXCLAMATION{ return sngcpp::ast::Operator::not_; }
+        |   TILDE{ return sngcpp::ast::Operator::complement; }
+        ;
+
+    NewExpression(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= (NEW{ s = span; } NewPlacement(ctx):placement? TypeExpr(ctx):typeExpr{ s.end = span.end; } (NewInitializer(ctx):initializer{ s.end = span.end; })?)
+        {
+            return new sngcpp::ast::NewExpressionNode(s, placement, typeExpr, initializer);
+        }
+        ;
+
+    NewPlacement(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= LPAREN ExpressionList(ctx):exprList RPAREN{ return exprList; }
+        ;
+
+    NewInitializer(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= LPAREN ArgumentList(ctx):args RPAREN{ return args; }
+        ;
+
+    ExpressionList(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= InitializerList(ctx):initializerList{ return initializerList; }
+        ;
+
+    ArgumentList(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= ExpressionList(ctx):exprList{ return exprList; }
+        |   empty{ return nullptr; }
+        ;
+
+    DeleteExpression(sngcpp::cppparser::ParsingContext* ctx, var bool array, var Span s) : sngcpp::ast::Node*
+        ::= DELETE{ s = span; } (LRACKET RBRACKET{ array = true; })? CastExpression(ctx):castExpr{ s.end = span.end; return new sngcpp::ast::DeleteExpressionNode(s, array, castExpr); }
+        ;
+
+    PostfixExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   PrimaryExpression(ctx):primaryExpr{ expr.reset(primaryExpr); s = span; }
+            (   LBRACKET{ ctx->BeginParsingArguments(); }
+                (Expression(ctx):index
+                RBRACKET){ s.end = span.end; ctx->EndParsingArguments(); expr.reset(new sngcpp::ast::SubscriptExpressionNode(s, expr.release(), index)); } / { ctx->EndParsingArguments(); }
+            |   LPAREN{ ctx->BeginParsingArguments(); }
+                (ArgumentList(ctx):args
+                RPAREN){ s.end = span.end; ctx->EndParsingArguments(); expr.reset(new sngcpp::ast::InvokeExpressionNode(s, expr.release(), args)); } / { ctx->EndParsingArguments(); }
+            |   DOT IdExpression(ctx):id1{ s.end = span.end; expr.reset(new sngcpp::ast::DotNode(s, expr.release(), id1)); }
+            |   ARROW IdExpression(ctx):id2{ s.end = span.end; expr.reset(new sngcpp::ast::ArrowNode(s, expr.release(), id2)); }
+            |   PLUSPLUS{ s.end = span.end; expr.reset(new sngcpp::ast::PostfixIncNode(s, expr.release())); }
+            |   MINUSMINUS{ s.end = span.end; expr.reset(new sngcpp::ast::PostfixDecNode(s, expr.release())); }
+            )*
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    PrimaryExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   Literal:literal{ expr.reset(literal); }
+        |   THIS{ expr.reset(new sngcpp::ast::ThisNode(span)); }
+        |   LPAREN{ s = span; } Expression(ctx):e RPAREN{ s.end = span.end; expr.reset(new sngcpp::ast::ParenthesizedExprNode(s, e)); }
+        |   CppCastExpression(ctx):cppCastExpr{ expr.reset(cppCastExpr); }
+        |   TypeIdExpression(ctx):typeIdExpr{ expr.reset(typeIdExpr); }
+        |   IdExpression(ctx):idExpr{ expr.reset(idExpr); }
+        |   SimpleTypeSpecifier:s1{ s = span; } LPAREN ArgumentList(ctx):args RPAREN
+            {
+                s.end = span.end;
+                expr.reset(new sngcpp::ast::SimpleTypeCastExpressionNode(s, new sngcpp::ast::SimpleTypeNode(s, std::vector<sngcpp::ast::SimpleTypeSpecifier>(1, s1)), args));
+            }
+        |   SimpleTypeSpecifier:s2{ s = span; } BracedInitializerList(ctx):bracedInitializerList
+            {
+                s.end = span.end;
+                expr.reset(new sngcpp::ast::SimpleTypeCastExpressionNode(s, new sngcpp::ast::SimpleTypeNode(s, std::vector<sngcpp::ast::SimpleTypeSpecifier>(1, s2)), bracedInitializerList));
+            }
+        )
+        {
+            return expr.release();
+        }
+        ;
+
+    CppCastExpression(sngcpp::cppparser::ParsingContext* ctx, var sngcpp::ast::Operator op, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   (   DYNAMIC_CAST{ s = span; op = sngcpp::ast::Operator::dynamicCast; }
+            |   STATIC_CAST{ s = span; op = sngcpp::ast::Operator::staticCast; }
+            |   REINTERPRET_CAST{ s = span; op = sngcpp::ast::Operator::reinterpretCast; }
+            |   CONST_CAST{ s = span; op = sngcpp::ast::Operator::constCast; }
+            )
+            LANGLE TypeExpr(ctx):typeExpr RANGLE LPAREN ExpressionList(ctx):exprList RPAREN{ s.end = span.end; }
+        )
+        {
+            return new sngcpp::ast::CppCastExpressionNode(s, typeExpr, exprList, op);
+        }
+        ;
+
+    TypeIdExpression(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= TYPEID LPAREN TypeExpr(ctx):typeExpr RPAREN{ return new sngcpp::ast::TypeIdExpressionNode(typeExpr); }
+        |   TYPEID LPAREN Expression(ctc):exptr RPAREN{ return new sngcpp::ast::TypeIdExpressionNode(expr); }
+        ;
+
+    IdExpression(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= QualifiedId(ctx):qualifiedId{ return qualifiedId; }
+        |   UnqualifiedId(ctx):unqualifiedId{ return unqualifiedId; }
+        ;
+
+    UnqualifiedId(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TemplateId(ctx):templateId{ return templateId; }
+        |   Identifier:id1{ return new sngcpp::ast::IdentifierNode(span, id1); }
+        |   OperatorFunctionId:operatorFunctionId{ return operatorFunctionId; }
+        |   ConversionFunctionId(ctx):conversionFunctionId{ return conversionFunctionId; }
+        |   TILDE{ s = span; } Identifier:id2{ s.end = span.end; return new sngcpp::ast::DtorIdNode(s, id2); }
+        ;
+
+    QualifiedId(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= COLONCOLON{ s = span; } TemplateId(ctx):templateId{ s.end = span.end; return new sngcpp::ast::NestedIdNode(s, nullptr, templateId); }
+        |   COLONCOLON{ s = span; } NestedNameSpecifier(ctx):ns1 UnqualifiedId(ctx):uid1{ s.end = span.end; return new sngcpp::ast::NestedIdNode(s, new sngcpp::ast::NestedIdNode(s, nullptr, ns1), uid1); }
+        |   COLONCOLON{ s = span; } Identifier:id1{ s.end = span.end; return new sngcpp::ast::NestedIdNode(s, nullptr, new sngcpp::ast::IdentifierNode(s, id1)); }
+        |   COLONCOLON{ s = span; } OperatorFunctionId:operatorFunctionId{ s.end = span.end; return new sngcpp::ast::NestedIdNode(s, nullptr, operatorFunctionId); }
+        |   NestedNameSpecifier(ctx):ns2{ s = span; } UnqualifiedId(ctx):uid2{ s.end = span.end; return new sngcpp::ast::NestedIdNode(s, ns2, uid2); }
+        ;
+
+    OperatorFunctionId(var Span s) : sngcpp::ast::Node*
+        ::= OPERATOR{ s = span; } Operator:op{ s.end = span.end; return new sngcpp::ast::OperatorFunctionIdNode(s, op); }
+        ;
+
+    Operator : sngcpp::ast::Operator
+        ::= NEW LBRACKET RBRACKET{ return sngcpp::ast::Operator::newArray; }
+        |   DELETE LBRACKET RBRACKET{ return sngcpp::ast::Operator::deleteArray; }
+        |   NEW{ return sngcpp::ast::Operator::new_; }
+        |   DELETE{ return sngcpp::ast::Operator::delete_; }
+        |   AssignmentOperator:assignmentOp{ return assignmentOp; }
+        |   PLUSPLUS{ return sngcpp::ast::Operator::inc; }
+        |   MINUSMINUS{ return sngcpp::ast::Operator::dec; }
+        |   SHIFTLEFT{ return sngcpp::ast::Operator::shiftLeft; }
+        |   SHIFTRIGHT{ return sngcpp::ast::Operator::shiftRight; }
+        |   ANDAND{ return sngcpp::ast::Operator::logicalAnd; }
+        |   OROR{ return sngcpp::ast::Operator::logicalOr; }
+        |   EQ{ return sngcpp::ast::Operator::equal; }
+        |   NEQ{ return sngcpp::ast::Operator::notEqual; }
+        |   LEQ{ return sngcpp::ast::Operator::lessOrEqual; }
+        |   GEQ{ return sngcpp::ast::Operator::greaterOrEqual; }
+        |   LANGLE{ return sngcpp::ast::Operator::less; }
+        |   RANGLE{ return sngcpp::ast::Operator::greater; }
+        |   DOTSTAR{ return sngcpp::ast::Operator::dotStar; }
+        |   ARROWSTAR{ return sngcpp::ast::Operator::arrowStar; }
+        |   ARROW{ return sngcpp::ast::Operator::arrow; }
+        |   LPAREN RPAREN{ return sngcpp::ast::Operator::apply; }
+        |   LBRACKET RBRACKET{ return sngcpp::ast::Operator::subscript; }
+        |   PLUS{ return sngcpp::ast::Operator::add; }
+        |   MINUS{ return sngcpp::ast::Operator::sub; }
+        |   STAR{ return sngcpp::ast::Operator::mul; }
+        |   DIV{ return sngcpp::ast::Operator::div; }
+        |   MOD{ return sngcpp::ast::Operator::rem; }
+        |   XOR{ return sngcpp::ast::Operator::xor_; }
+        |   AMP{ return sngcpp::ast::Operator::and_; }
+        |   OR{ return sngcpp::ast::Operator::or_; }
+        |   TILDE{ return sngcpp::ast::Operator::complement; }
+        |   EXCLAMATION{ return sngcpp::ast::Operator::not_; }
+        |   COMMA{ return sngcpp::ast::Operator::comma; }
+        ;
+
+    ConversionFunctionId(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= OPERATOR{ s = span; } TypeExpr(ctx):typeExpr{ s.end = span.end; return new sngcpp::ast::ConversionFunctionIdNode(s, typeExpr); }
+        ;
+}

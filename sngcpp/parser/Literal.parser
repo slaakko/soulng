@@ -1,0 +1,68 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/TokenValueParsers.hpp>
+[hpp]#include <sngcpp/ast/Literal.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+
+using namespace CppLexerTokens;
+
+parser api(SNGCPP_PARSER_API) LiteralParser
+{
+    uselexer CppLexer;
+
+    Literal : sngcpp::ast::LiteralNode*
+        ::= FLOATLIT
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                double value = 0.0;
+                sngcpp::ast::Suffix suffix = sngcpp::ast::Suffix::none;
+                sngcpp::cppparser::ParseFloatingLiteral(lexer.FileName(), token, value, suffix);
+                return new sngcpp::ast::FloatingLiteralNode(span, value, suffix, token.match.ToString());
+            }
+        |   INTLIT
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                uint64_t value = 0;
+                sngcpp::ast::Base base = sngcpp::ast::Base::decimal;
+                sngcpp::ast::Suffix suffix = sngcpp::ast::Suffix::none;
+                sngcpp::cppparser::ParseIntegerLiteral(lexer.FileName(), token, value, base, suffix);
+                return new sngcpp::ast::IntegerLiteralNode(span, value, suffix, base, token.match.ToString());
+            }
+        |   CHARLIT
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                std::u32string value;
+                char32_t prefix = '\0';
+                sngcpp::cppparser::ParseCharacterLiteral(lexer.FileName(), token, value, prefix);
+                return new sngcpp::ast::CharacterLiteralNode(span, prefix, value, token.match.ToString());
+            }
+        |   STRINGLIT
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                std::u32string value;
+                std::u32string encodingPrefix;
+                sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, value, encodingPrefix);
+                return new sngcpp::ast::StringLiteralNode(span, encodingPrefix, value, token.match.ToString());
+            }
+        |   TRUE
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                return new sngcpp::ast::BooleanLiteralNode(span, true, token.match.ToString());
+            }
+        |   FALSE
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                return new sngcpp::ast::BooleanLiteralNode(span, false, token.match.ToString());
+            }
+        |   NULLPTR
+            {
+                soulng::lexer::Token token = lexer.GetToken(pos);
+                return new sngcpp::ast::NullPtrLiteralNode(span, token.match.ToString());
+            }
+        ;
+}

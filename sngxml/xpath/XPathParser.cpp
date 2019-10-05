@@ -4,7 +4,7 @@
 #include <sngxml/xpath/XPathTokens.hpp>
 #include <sngxml/xpath/XPathTokenValueParsers.hpp>
 
-// this file has been automatically generated from 'D:/work/sngxml-project/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
 using namespace XPathTokens;
@@ -2206,20 +2206,12 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
                                                     switch (op)
                                                     {
                                                         case sngxml::xpath::Operator::slashSlash: {
-                                                            {
-                                                                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                                                                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("RelativeLocationPath"));
-                                                                #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                                return soulng::parser::Match(true, new sngxml::xpath::XPathCombineStepExpr(expr.release(), new sngxml::xpath::XPathCombineStepExpr(new sngxml::xpath::XPathLocationStepExpr(sngxml::xpath::Axis::descendantOrSelf, new sngxml::xpath::XPathAnyNodeTest), right.release())));
-                                                            }
+                                                            expr.reset(new sngxml::xpath::XPathCombineStepExpr(expr.release(), new sngxml::xpath::XPathCombineStepExpr(new sngxml::xpath::XPathLocationStepExpr(sngxml::xpath::Axis::descendantOrSelf, new sngxml::xpath::XPathAnyNodeTest), right.release())));
+                                                            break;
                                                         }
                                                         case sngxml::xpath::Operator::slash: {
-                                                            {
-                                                                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                                                                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("RelativeLocationPath"));
-                                                                #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                                return soulng::parser::Match(true, new sngxml::xpath::XPathCombineStepExpr(expr.release(), right.release()));
-                                                            }
+                                                            expr.reset(new sngxml::xpath::XPathCombineStepExpr(expr.release(), right.release()));
+                                                            break;
                                                         }
                                                     }
                                                 }

@@ -187,12 +187,14 @@ parser XPathParser
                 {
                     case sngxml::xpath::Operator::slashSlash:
                     {
-                        return new sngxml::xpath::XPathCombineStepExpr(expr.release(), new sngxml::xpath::XPathCombineStepExpr(
-                            new sngxml::xpath::XPathLocationStepExpr(sngxml::xpath::Axis::descendantOrSelf, new sngxml::xpath::XPathAnyNodeTest()), right));
+                        expr.reset(new sngxml::xpath::XPathCombineStepExpr(expr.release(), new sngxml::xpath::XPathCombineStepExpr(
+                            new sngxml::xpath::XPathLocationStepExpr(sngxml::xpath::Axis::descendantOrSelf, new sngxml::xpath::XPathAnyNodeTest()), right)));
+                        break;
                     }
                     case sngxml::xpath::Operator::slash:
                     {
-                        return new sngxml::xpath::XPathCombineStepExpr(expr.release(), right);
+                        expr.reset(new sngxml::xpath::XPathCombineStepExpr(expr.release(), right));
+                        break;
                     }
                 }
             }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="util">
+    <vcxproject file="../../../soulng/util/util.vcxproj"/>
+  </project>
+  <filter>
+    <file exclude="*"/>
+    <file include="UtilApi.hpp"/>
+  </filter>
+</gendoc>

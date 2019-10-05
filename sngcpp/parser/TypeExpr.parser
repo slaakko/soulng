@@ -1,0 +1,20 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+#include <sngcpp/lexer/CppLexer.hpp>
+#include <sngcpp/lexer/CppLexerTokens.hpp>
+
+using namespace CppLexerTokens;
+
+parser api(SNGCPP_PARSER_API) TypeExprParser
+{
+    uselexer CppLexer;
+
+    TypeExpr(sngcpp::cppparser::ParsingContext* ctx)
+        ::= empty
+        ;
+}

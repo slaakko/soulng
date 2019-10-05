@@ -1,0 +1,40 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/ast/SimpleType.hpp>
+#include <sngcpp/lexer/CppLexer.hpp>
+#include <sngcpp/lexer/CppLexerTokens.hpp>
+
+using namespace CppLexerTokens;
+
+parser api(SNGCPP_PARSER_API) SimpleTypeParser
+{
+    uselexer CppLexer;
+
+    SimpleType(var std::vector<sngcpp::ast::SimpleTypeSpecifier> specifiers) : sngcpp::ast::SimpleTypeNode*
+        ::= ((SimpleTypeSpecifier:s{ specifiers.push_back(s); })+)
+        {
+            return new sngcpp::ast::SimpleTypeNode(span, specifiers); 
+        }
+        ;
+
+    SimpleTypeSpecifier : sngcpp::ast::SimpleTypeSpecifier
+        ::= CHAR{ return sngcpp::ast::SimpleTypeSpecifier::char_; }
+        |   CHAR16_T{ return sngcpp::ast::SimpleTypeSpecifier::char16; }
+        |   CHAR32_T{ return sngcpp::ast::SimpleTypeSpecifier::char32; }
+        |   WCHAR_T{ return sngcpp::ast::SimpleTypeSpecifier::wchar; }
+        |   BOOL{ return sngcpp::ast::SimpleTypeSpecifier::bool_; }
+        |   SHORT{ return sngcpp::ast::SimpleTypeSpecifier::short_; }
+        |   INT{ return sngcpp::ast::SimpleTypeSpecifier::int_; }
+        |   LONG{ return sngcpp::ast::SimpleTypeSpecifier::long_; }
+        |   SIGNED{ return sngcpp::ast::SimpleTypeSpecifier::signed_; }
+        |   UNSIGNED{ return sngcpp::ast::SimpleTypeSpecifier::unsigned_; }
+        |   FLOAT{ return sngcpp::ast::SimpleTypeSpecifier::float_; }
+        |   DOUBLE{ return sngcpp::ast::SimpleTypeSpecifier::double_; }
+        |   VOID{ return sngcpp::ast::SimpleTypeSpecifier::void_; }
+        |   AUTO{ return sngcpp::ast::SimpleTypeSpecifier::auto_; }
+        ;
+}

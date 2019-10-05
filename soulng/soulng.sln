@@ -38,6 +38,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spg", "spg\spg.vcxproj", "{
 		{2C00AAD9-0AF5-4B18-B894-93EAFD2912B8} = {2C00AAD9-0AF5-4B18-B894-93EAFD2912B8}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rex", "rex\rex.vcxproj", "{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EC2AEB11-F4B2-4549-AF28-BA853DD5F748} = {EC2AEB11-F4B2-4549-AF28-BA853DD5F748}
+		{3B441D59-4CF7-4D78-9121-7A13A1A2E877} = {3B441D59-4CF7-4D78-9121-7A13A1A2E877}
+		{2C00AAD9-0AF5-4B18-B894-93EAFD2912B8} = {2C00AAD9-0AF5-4B18-B894-93EAFD2912B8}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -94,6 +101,14 @@ Global
 		{44E3B211-0D82-4BAC-A948-D7F6F90F3D56}.Release|x64.Build.0 = Release|x64
 		{44E3B211-0D82-4BAC-A948-D7F6F90F3D56}.Release|x86.ActiveCfg = Release|Win32
 		{44E3B211-0D82-4BAC-A948-D7F6F90F3D56}.Release|x86.Build.0 = Release|Win32
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Debug|x64.ActiveCfg = Debug|x64
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Debug|x64.Build.0 = Debug|x64
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Debug|x86.ActiveCfg = Debug|Win32
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Debug|x86.Build.0 = Debug|Win32
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Release|x64.ActiveCfg = Release|x64
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Release|x64.Build.0 = Release|x64
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Release|x86.ActiveCfg = Release|Win32
+		{2BF358DF-53EF-468F-9B48-847DA5CAFBF4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

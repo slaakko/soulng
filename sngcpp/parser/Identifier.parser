@@ -1,0 +1,46 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/ast/Expression.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[cpp]#include <sngcpp/parser/Template.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+
+using namespace CppLexerTokens;
+
+parser api(SNGCPP_PARSER_API) IdentifierParser
+{
+    uselexer CppLexer;
+
+    using TemplateParser.SimpleTemplateId;
+
+    Identifier : std::u32string
+        ::= ID{ soulng::lexer::Token token = lexer.GetToken(pos); return token.match.ToString(); }
+        ;
+
+    IdNode(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= SimpleTemplateId(ctx):simpleTemplateId{ return simpleTemplateId; }
+        |   Identifier:identifier{ return new sngcpp::ast::IdentifierNode(span, identifier); }
+        ;
+
+    NestedNameSpecifier(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> node) : sngcpp::ast::Node*
+        ::= (IdNode(ctx):left{ node.reset(left); } COLONCOLON (IdNode(ctx):right COLONCOLON{ node.reset(new sngcpp::ast::NestedIdNode(span, node.release(), right)); })*)
+        {
+            return node.release();
+        }
+        ;
+
+    QualifiedIdNode(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> node) : sngcpp::ast::Node*
+        ::= ((COLONCOLON NestedNameSpecifier(ctx):ns1{ node.reset(ns1); } IdNode(ctx):id1){ node.reset(new sngcpp::ast::NestedIdNode(span, new sngcpp::ast::NestedIdNode(span, nullptr, node.release()), id1)); }
+        |   (NestedNameSpecifier(ctx):ns2{ node.reset(ns2); } IdNode(ctx):id2){ node.reset(new sngcpp::ast::NestedIdNode(span, node.release(), id2)); }
+        |   IdNode(ctx):id3{ node.reset(id3); }
+        )
+        {
+            return node.release();
+        }
+        ;
+}

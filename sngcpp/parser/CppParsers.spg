@@ -1,0 +1,8 @@
+project CppParsers;
+source <Declarator.parser>;
+source <Expression.parser>;
+source <Identifier.parser>;
+source <SimpleType.parser>;
+source <Literal.parser>;
+source <Template.parser>;
+source <TypeExpr.parser>;
