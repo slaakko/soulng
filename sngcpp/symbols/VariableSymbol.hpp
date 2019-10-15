@@ -1,0 +1,30 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+#ifndef SNGCPP_SYMBOLS_VARIABLE_SYMBOL_INCLUDED
+#define SNGCPP_SYMBOLS_VARIABLE_SYMBOL_INCLUDED
+#include <sngcpp/symbols/TypeSymbol.hpp>
+
+namespace sngcpp { namespace symbols {
+
+class SNGCPP_SYMBOLS_API VariableSymbol : public Symbol
+{
+public:
+    VariableSymbol(const Span& span_, const std::u32string& name_);
+    std::u32string KindStr() override { return U"variable"; }
+    std::unique_ptr<sngxml::dom::Element> CreateElement() override;
+    bool IsVariableSymbol() const override { return true; }
+    void AddSpecifiers(Specifier specifiers_);
+    Specifier Specifiers() const { return specifiers; }
+    TypeSymbol* GetType() override { return type; }
+    void SetType(TypeSymbol* type_) { type = type_; }
+private:
+    Specifier specifiers;
+    TypeSymbol * type;
+};
+
+} } // namespace sngcpp::symbols
+
+#endif // SNGCPP_SYMBOLS_VARIABLE_SYMBOL_INCLUDED

@@ -40,3 +40,6 @@ xcopy /Y /D ..\sngxml\x64\Debug\sngxmlxpathd.dll ..\bin
 xcopy /Y /D ..\sngxml\x64\Release\sngxmlxpath.dll ..\bin
 xcopy /Y /D ..\sngxml\x64\Debug\sngxmltesterd.exe ..\bin
 xcopy /Y /D ..\sngxml\x64\Release\sngxmltester.exe ..\bin
+xcopy /Y /D ..\sngcpp\bin\*.* ..\bin
+xcopy /Y /D ..\sngcpp\lib\*.* ..\lib
+

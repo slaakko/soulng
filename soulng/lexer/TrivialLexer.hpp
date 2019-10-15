@@ -11,6 +11,7 @@ class SOULNG_LEXER_API TrivialLexer : public soulng::lexer::Lexer
 {
 public:
     TrivialLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_);
+    TrivialLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);
     int NextState(int state, char32_t c) override;
 };
 

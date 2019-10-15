@@ -7,28 +7,34 @@
 [hpp]#include <sngcpp/ast/Expression.hpp>
 [hpp]#include <sngcpp/parser/ParsingContext.hpp>
 [cpp]#include <sngcpp/parser/Declarator.hpp>
+[cpp]#include <sngcpp/parser/Function.hpp>
 [cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/Literal.hpp>
 [cpp]#include <sngcpp/parser/SimpleType.hpp>
+[cpp]#include <sngcpp/parser/Statement.hpp>
 [cpp]#include <sngcpp/parser/Template.hpp>
 [cpp]#include <sngcpp/parser/TypeExpr.hpp>
 [cpp]#include <sngcpp/lexer/CppLexer.hpp>
-[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
 using namespace soulng::lexer;
 
 parser api(SNGCPP_PARSER_API) ExpressionParser
 {
     uselexer CppLexer;
+    main;
 
     using TypeExprParser.TypeExpr;
     using DeclaratorParser.InitializerList;
     using DeclaratorParser.InitializerClause;
     using DeclaratorParser.BracedInitializerList;
+    using FunctionParser.ParameterList;
     using LiteralParser.Literal;
     using SimpleTypeParser.SimpleTypeSpecifier;
     using IdentifierParser.Identifier;
     using IdentifierParser.NestedNameSpecifier;
+    using StatementParser.CompoundStatement;
     using TemplateParser.TemplateId;
 
     Expression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
@@ -39,6 +45,10 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         {
             return expr.release();
         }
+        ;
+
+    ConstantExpression(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= Expression(ctx):expr{ return expr; }
         ;
 
     AssignmentExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr) : sngcpp::ast::Node*
@@ -108,7 +118,7 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         ::=
         (   InclusiveOrExpression(ctx):left{ expr.reset(left); s = span; }
             (
-                ANDAND InclusiveOrExpression(ctx):right
+                AMPAMP InclusiveOrExpression(ctx):right
                 {
                     if (ctx->ParsingTemplateIdOrLvalueAndNotArguments()) pass = false; else
                     {
@@ -226,8 +236,8 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
     RelationalOperator : sngcpp::ast::Operator
         ::= LEQ{ return sngcpp::ast::Operator::lessOrEqual; }
         |   GEQ{ return sngcpp::ast::Operator::greaterOrEqual; }
-        |   LANGLE{ returm sngcpp::ast::Operator::less; }
-        |   RANGLE{ returm sngcpp::ast::Operator::greater; }
+        |   LANGLE{ return sngcpp::ast::Operator::less; }
+        |   RANGLE{ return sngcpp::ast::Operator::greater; }
         ;
 
     ShiftExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
@@ -263,7 +273,7 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
                     if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
                     {
                         s.end = span.end;
-                        expr.reset(new sngcpp::ast::ShiftExpressionNode(s, expr.release(), right, op));
+                        expr.reset(new sngcpp::ast::AdditiveExpressionNode(s, expr.release(), right, op));
                     }
                 }
             )*
@@ -287,7 +297,7 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
                     if (ctx->ParsingLvalueAndNotArguments()) pass = false; else
                     {
                         s.end = span.end;
-                        expr.reset(new sngcpp::ast::ShiftExpressionNode(s, expr.release(), right, op));
+                        expr.reset(new sngcpp::ast::MultiplicativeExpressionNode(s, expr.release(), right, op));
                     }
                 }
             )*
@@ -374,7 +384,7 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         ;
 
     DeleteExpression(sngcpp::cppparser::ParsingContext* ctx, var bool array, var Span s) : sngcpp::ast::Node*
-        ::= DELETE{ s = span; } (LRACKET RBRACKET{ array = true; })? CastExpression(ctx):castExpr{ s.end = span.end; return new sngcpp::ast::DeleteExpressionNode(s, array, castExpr); }
+        ::= DELETE{ s = span; } (LBRACKET RBRACKET{ array = true; })? CastExpression(ctx):castExpr{ s.end = span.end; return new sngcpp::ast::DeleteExpressionNode(s, array, castExpr); }
         ;
 
     PostfixExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
@@ -404,17 +414,28 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         |   LPAREN{ s = span; } Expression(ctx):e RPAREN{ s.end = span.end; expr.reset(new sngcpp::ast::ParenthesizedExprNode(s, e)); }
         |   CppCastExpression(ctx):cppCastExpr{ expr.reset(cppCastExpr); }
         |   TypeIdExpression(ctx):typeIdExpr{ expr.reset(typeIdExpr); }
+        |   SimpleTypeSpecifier:s1{ s = span; } LPAREN ArgumentList(ctx):args1 RPAREN
+            {
+                s.end = span.end;
+                expr.reset(new sngcpp::ast::InvokeExpressionNode(s, new sngcpp::ast::SimpleTypeNode(s, std::vector<sngcpp::ast::SimpleTypeSpecifier>(1, s1)), args1));
+            }
+        |   SimpleTypeSpecifier:s2{ s = span; } BracedInitializerList(ctx):bracedInitializerList1
+            {
+                s.end = span.end;
+                expr.reset(new sngcpp::ast::InvokeExpressionNode(s, new sngcpp::ast::SimpleTypeNode(s, std::vector<sngcpp::ast::SimpleTypeSpecifier>(1, s2)), bracedInitializerList1));
+            }
+        |   TypeExpr(ctx):t1{ s = span; } LPAREN ArgumentList(ctx):args2 RPAREN
+            {
+                s.end = span.end;
+                expr.reset(new sngcpp::ast::InvokeExpressionNode(s, t1, args2));
+            }
+        |   TypeExpr(ctx):t2{ s = span; } BracedInitializerList(ctx):bracedInitializerList2
+            {
+                s.end = span.end;
+                expr.reset(new sngcpp::ast::InvokeExpressionNode(s, t2, bracedInitializerList2));
+            }
         |   IdExpression(ctx):idExpr{ expr.reset(idExpr); }
-        |   SimpleTypeSpecifier:s1{ s = span; } LPAREN ArgumentList(ctx):args RPAREN
-            {
-                s.end = span.end;
-                expr.reset(new sngcpp::ast::SimpleTypeCastExpressionNode(s, new sngcpp::ast::SimpleTypeNode(s, std::vector<sngcpp::ast::SimpleTypeSpecifier>(1, s1)), args));
-            }
-        |   SimpleTypeSpecifier:s2{ s = span; } BracedInitializerList(ctx):bracedInitializerList
-            {
-                s.end = span.end;
-                expr.reset(new sngcpp::ast::SimpleTypeCastExpressionNode(s, new sngcpp::ast::SimpleTypeNode(s, std::vector<sngcpp::ast::SimpleTypeSpecifier>(1, s2)), bracedInitializerList));
-            }
+        |   LambdaExpression(ctx):lambdaExpr{ return lambdaExpr; }
         )
         {
             return expr.release();
@@ -435,9 +456,9 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         }
         ;
 
-    TypeIdExpression(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
-        ::= TYPEID LPAREN TypeExpr(ctx):typeExpr RPAREN{ return new sngcpp::ast::TypeIdExpressionNode(typeExpr); }
-        |   TYPEID LPAREN Expression(ctc):exptr RPAREN{ return new sngcpp::ast::TypeIdExpressionNode(expr); }
+    TypeIdExpression(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TYPEID{ s = span; } LPAREN TypeExpr(ctx):typeExpr RPAREN{ s.end = span.end; return new sngcpp::ast::TypeIdExpressionNode(s, typeExpr); }
+        |   TYPEID{ s = span; } LPAREN Expression(ctx):expr RPAREN{ s.end = span.end; return new sngcpp::ast::TypeIdExpressionNode(s, expr); }
         ;
 
     IdExpression(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
@@ -475,7 +496,7 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         |   MINUSMINUS{ return sngcpp::ast::Operator::dec; }
         |   SHIFTLEFT{ return sngcpp::ast::Operator::shiftLeft; }
         |   SHIFTRIGHT{ return sngcpp::ast::Operator::shiftRight; }
-        |   ANDAND{ return sngcpp::ast::Operator::logicalAnd; }
+        |   AMPAMP{ return sngcpp::ast::Operator::logicalAnd; }
         |   OROR{ return sngcpp::ast::Operator::logicalOr; }
         |   EQ{ return sngcpp::ast::Operator::equal; }
         |   NEQ{ return sngcpp::ast::Operator::notEqual; }
@@ -503,5 +524,28 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
 
     ConversionFunctionId(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
         ::= OPERATOR{ s = span; } TypeExpr(ctx):typeExpr{ s.end = span.end; return new sngcpp::ast::ConversionFunctionIdNode(s, typeExpr); }
+        ;
+
+    LambdaExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::LambdaExpressionNode> node) : sngcpp::ast::Node*
+        ::= LBRACKET{ node.reset(new sngcpp::ast::LambdaExpressionNode(span)); } LambdaCaptures(node.get()):captures RBRACKET! (ParameterList(ctx):params{ node->SetParameters(params); })?
+            CompoundStatement(ctx):body!{ node->SetBody(body); return node.release(); }
+        ;
+
+    LambdaCaptures(sngcpp::ast::LambdaExpressionNode* lambdaExpression)
+        ::= (CaptureDefault:captureDefault{ lambdaExpression->AddCapture(captureDefault); })? Captures(lambdaExpression):captures?
+        ;
+
+    CaptureDefault : sngcpp::ast::Node*
+        ::= ASSIGN{ return new sngcpp::ast::AssignCapture(span); }
+        |   AMP{ return new sngcpp::ast::RefCapture(span); }
+        ;
+
+    Captures(sngcpp::ast::LambdaExpressionNode* lambdaExpression)
+        ::= Capture:left{ lambdaExpression->AddCapture(left); } (COMMA Capture:right{ lambdaExpression->AddCapture(right); })*
+        ;
+
+    Capture : sngcpp::ast::Node*
+        ::= Identifier:id{ return new sngcpp::ast::IdentifierCapture(span, new sngcpp::ast::IdentifierNode(span, id)); }
+        |   THIS{ return new sngcpp::ast::ThisCapture(span); }
         ;
 }

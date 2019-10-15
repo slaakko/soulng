@@ -126,7 +126,7 @@ parser LexerFileParser
         ::= VARIABLES LBRACE! (Variable:variable{ currentLexer->AddVariable(variable); })* RBRACE!
         ;
 
-    Variable(var std::u32string name): soulng::slg::Variable*
+    Variable(var std::u32string name) : soulng::slg::Variable*
         ::= TypeId:type ID{ name = lexer.GetMatch(span); } SEMICOLON{ return new soulng::slg::Variable(type, name); }
         ;
 

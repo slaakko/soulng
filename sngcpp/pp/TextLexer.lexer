@@ -1,0 +1,115 @@
+#include <sngcpp/pp/PP.hpp>
+
+classmap TextClassMap;
+
+prefix "sngcpp/pp";
+
+tokens TextTokens
+{
+    (DEFINED, "'defined'"), (ANGLEHEADERNAME, "angleheadername"), (QUOTEHEADERNAME, "quoteheadername"), (PPNUMBER, "preprocessing number"), (CHARLITERAL, "character literal"),
+    (STRINGLITERAL, "string literal"), (CHAR, "character"),
+    (ID, "identifier"), (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
+    (SHIFTRIGHTASSIGN, "'>>='"), (SHIFTLEFTASSIGN, "'<<='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"), (QUEST, "'?'"), (COLON, "':'"),
+    (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
+    (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
+    (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (KEYWORD, "keyword"), (WS, "white space"),
+    (MAX, "max")
+}
+
+expressions
+{
+    ws = "[\t ]+";
+    newline = "\r\n|\n|\r";
+    linecontinuation = "\\{newline}";
+    linecomment = "//[^\n\r]*{newline}";
+    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    id = "{idstart}{idcont}*";
+    digit = "[0-9]";
+    nondigit = "[a-zA-Z_]";
+    hexdigit = "[0-9a-fA-F]";
+    hexquad = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    universalcharactername = "\\u{hexquad}|\\U{hexquad}{hexquad}";
+    identifiernondigit = "{nondigit}|{universalcharactername}";
+    sign = "\+|-";
+    ppnumber = "({digit}+\.?|\.{digit}+)([eE]{sign}|{identifiernondigit})*";
+    octaldigit = "[0-7]";
+    simpleescape = "\\['\"\?\\abfnrtv]";
+    octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";
+    hexescape = "\\x{hexdigit}+";
+    escape = "{simpleescape}|{octalescape}|{hexescape}";
+    cchar = "[^\r\n\\']|{escape}|{universalcharactername}";
+    characterliteral = "[uUL]?'{cchar}+'";
+    encodingprefix = "u8|u|U|L";
+    schar = "[^\r\n\\\"]|{escape}|{universalcharactername}";
+    stringliteral = "{encodingprefix}?\"{schar}*\"|{encodingprefix}?R\"[^\n\r\"]*\"";
+}
+
+lexer api(SNGCPP_PP_API) TextLexer
+{
+    "{ws}" { return WS; }
+    "{linecontinuation}" {}
+    "{blockcomment}" { pp->Emit(U" "); }
+    "{linecomment}" { pp->Emit(U" "); }
+    "{newline}" {}
+    "{id}" { if (pp->IsKeywordToken(token)) return KEYWORD; else return ID; }
+    "{ppnumber}" { return PPNUMBER; }
+    "{characterliteral}" { return CHARLITERAL; }
+    "{stringliteral}" { return STRINGLITERAL; }
+    "::" { return COLONCOLON; }
+    "," { return COMMA; }
+    "=" { return ASSIGN; }
+    "\*=" { return MULASSIGN; }
+    "/=" { return DIVASSIGN; }
+    "%=" { return REMASSIGN; }
+    "\+=" { return ADDASSIGN; }
+    "-=" { return SUBASSIGN; }
+    ">>=" { return SHIFTRIGHTASSIGN; }
+    "<<=" { return SHIFTLEFTASSIGN; }
+    "&=" { return ANDASSIGN; }
+    "^=" { return XORASSIGN; }
+    "\|=" { return ORASSIGN; }
+    "\?" { return QUEST; }
+    ":" { return COLON; }
+    "\|\|" { return OROR; }
+    "&&" { return AMPAMP; }
+    "\|" { return OR; }
+    "^" { return XOR; }
+    "&" { return AMP; }
+    "==" { return EQ; }
+    "!=" { return NEQ; }
+    "<=" { return LEQ; }
+    ">=" { return GEQ; }
+    "<=>" { return SPACESHIP; }
+    "<" { return LANGLE; }
+    ">" { return RANGLE; }
+    "<<" { return SHIFTLEFT; }
+    ">>" { return SHIFTRIGHT; }
+    "\+" { return PLUS; }
+    "-" { return MINUS; }
+    "\*" { return STAR; }
+    "/" { return DIV; }
+    "%" { return MOD; }
+    "\.\*" { return DOTSTAR; }
+    "->\*" { return ARROWSTAR; }
+    "\(" { return LPAREN; }
+    "\)" { return RPAREN; }
+    "\+\+" { return PLUSPLUS; }
+    "--" { return MINUSMINUS; }
+    "!" { return EXCLAMATION; }
+    "~" { return TILDE; }
+    "\[" { return LBRACKET; }
+    "\]" { return RBRACKET; }
+    "\." { return DOT; }
+    "->" { return ARROW; }
+    ";" { return SEMICOLON; }
+    "\.\.\." { return ELLIPSES; }
+    "\{" { return LBRACE; }
+    "\}" { return RBRACE; }
+
+    variables
+    {
+        sngcpp::pp::PP* pp;
+    }
+}

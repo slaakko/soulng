@@ -14,6 +14,8 @@ class CppLexer;
 struct SNGCPP_PARSER_API LiteralParser
 {
     static soulng::parser::Match Literal(CppLexer& lexer);
+    static soulng::parser::Match StringLiteral(CppLexer& lexer);
+    static soulng::parser::Match IntegerLiteral(CppLexer& lexer);
 };
 
 #endif // LITERAL_HPP

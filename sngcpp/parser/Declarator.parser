@@ -5,25 +5,78 @@
 
 [hpp]#include <sngcpp/parser/ParserApi.hpp>
 [hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[cpp]#include <sngcpp/parser/Function.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/Expression.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
 [cpp]#include <sngcpp/lexer/CppLexer.hpp>
-[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
 using namespace soulng::lexer;
 
 parser api(SNGCPP_PARSER_API) DeclaratorParser
 {
     uselexer CppLexer;
 
-    InitializerClause(sngcpp::cppparser::ParsingContext* ctx)
-        ::= empty
+    using IdentifierParser.Identifier;
+    using IdentifierParser.NestedNameSpecifier;
+    using ExpressionParser.AssignmentExpression;
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.IdExpression;
+    using ExpressionParser.ExpressionList;
+    using FunctionParser.ParameterList;
+    using TypeExprParser.CVSpecifierSequence;
+
+    InitDeclarator(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node* 
+        ::= Declarator(ctx):declarator{ s = span; }
+            (   Initializer(ctx):initializer{ s.end = span.end; return new sngcpp::ast::InitDeclaratorNode(s, declarator, initializer); }
+            |   empty{ return declarator; }
+            )
         ;
 
-    InitializerList(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
-        ::= empty
+    Declarator(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> node, var Span s) : sngcpp::ast::Node*
+        ::=
+        (
+            (   IdExpression(ctx):idExpr{ node.reset(new sngcpp::ast::IdDeclaratorNode(span, idExpr)); s = span; }
+            |   (LPAREN{ s = span; } STAR Identifier:id1 RPAREN{ s.end = span.end; node.reset(new sngcpp::ast::FunctionPtrIdNode(s, id1)); })
+            |   (LPAREN{ s = span; } NestedNameSpecifier(ctx):nns{ node.reset(nns); } STAR Identifier:id2 RPAREN{ s.end = span.end; node.reset(new sngcpp::ast::MemberFunctionPtrIdNode(s, node.release(), id2)); })
+            )
+                (   empty{ pass = !ctx->InFunctionBody(); } ParameterList(ctx):params CVSpecifierSequence:cvseq{ s.end = span.end; node.reset(new sngcpp::ast::FunctionDeclaratorNode(s, node.release(), params, cvseq)); }
+                |   (LBRACKET ConstantExpression(ctx):size? RBRACKET!{ s.end = span.end; node.reset(new sngcpp::ast::ArrayDeclaratorNode(s, node.release(), size)); })*
+                )
+        )
+        {
+            return node.release();
+        }
         ;
 
-    BracedInitializerList(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
-        ::= empty
+    Initializer(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= ASSIGN{ s = span; } InitializerClause(ctx):ic{ s.end = span.end; return new sngcpp::ast::AssignmentInitializerNode(s, ic); }
+        |   LPAREN{ s = span; } ExpressionList(ctx):exprs RPAREN{ s.end = span.end; return new sngcpp::ast::ExpressionListInitializerNode(s, exprs); }
+        |   BracedInitializerList(ctx):bi{ return bi; }
+        ;
+
+    BraceOrEqualInitializer(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= ASSIGN{ s = span; } InitializerClause(ctx):ic{ s.end = span.end; return new sngcpp::ast::AssignmentInitializerNode(s, ic); }
+        |   BracedInitializerList(ctx):bi{ return bi; }
+        ;
+
+    BracedInitializerList(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::BracedInitializerListNode> node, var Span s) : sngcpp::ast::Node*
+        ::= LBRACE{ s = span; node.reset(new sngcpp::ast::BracedInitializerListNode(s)); }
+            (InitializerClause(ctx):left{ s.end = span.end; node->AddInitializer(s, left); } (COMMA InitializerClause(ctx):right{ s.end = span.end; node->AddInitializer(s, right); })*)?
+            RBRACE{ node->SetEndBraceSpan(span); node->SetSpanEnd(span.end); return node.release(); }
+        ;
+
+    InitializerClause(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node* 
+        ::= AssignmentExpression(ctx):expr{ return new sngcpp::ast::ExpressionInitializerNode(span, expr); }
+        |   BracedInitializerList(ctx):bi{ return bi; }
+        ;
+
+    InitializerList(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> node, var Span s) : sngcpp::ast::Node*
+        ::= (InitializerClause(ctx):left{ s = span; node.reset(left); } (COMMA InitializerClause(ctx):right{ s.end = span.end; node.reset(new sngcpp::ast::ExpressionSequenceNode(s, node.release(), right)); })*)
+        {
+            return node.release();
+        }
         ;
 }

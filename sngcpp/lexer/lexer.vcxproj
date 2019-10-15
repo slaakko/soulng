@@ -150,17 +150,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CppClassMap.cpp" />
+    <ClCompile Include="CppKeywords.cpp" />
     <ClCompile Include="CppLexer.cpp" />
-    <ClCompile Include="CppLexerClassMap.cpp" />
-    <ClCompile Include="CppLexerKeywords.cpp" />
-    <ClCompile Include="CppLexerTokens.cpp" />
+    <ClCompile Include="CppTokens.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CppClassMap.hpp" />
+    <ClInclude Include="CppKeywords.hpp" />
     <ClInclude Include="CppLexer.hpp" />
     <ClInclude Include="CppLexerApi.hpp" />
-    <ClInclude Include="CppLexerClassMap.hpp" />
-    <ClInclude Include="CppLexerKeywords.hpp" />
-    <ClInclude Include="CppLexerTokens.hpp" />
+    <ClInclude Include="CppTokens.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CppLexer.lexer" />

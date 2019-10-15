@@ -6,8 +6,11 @@
 #ifndef SNGCPP_AST_EXPRESSION_INCLUDED
 #define SNGCPP_AST_EXPRESSION_INCLUDED
 #include <sngcpp/ast/SimpleType.hpp>
+#include <sngcpp/ast/Statement.hpp>
 
 namespace sngcpp { namespace ast {
+
+class CompoundStatementNode;
 
 enum class Operator : uint8_t
 {
@@ -273,18 +276,6 @@ private:
     Operator op;
 };
 
-class SNGCPP_AST_API SimpleTypeCastExpressionNode : public Node
-{
-public:
-    SimpleTypeCastExpressionNode(const Span& span_, SimpleTypeNode* simpleType_, Node* expr_);
-    void Accept(Visitor& visitor) override;
-    SimpleTypeNode* SimpleType() { return simpleType.get(); }
-    Node* Expr() { return expr.get(); }
-private:
-    std::unique_ptr<SimpleTypeNode> simpleType;
-    std::unique_ptr<Node> expr;
-};
-
 class SNGCPP_AST_API TypeIdExpressionNode : public UnaryNode
 {
 public:
@@ -354,6 +345,55 @@ class SNGCPP_AST_API ParenthesizedExprNode : public UnaryNode
 {
 public:
     ParenthesizedExprNode(const Span& span_, Node* expr_);
+    void Accept(Visitor& visitor) override;
+};
+
+class SNGCPP_AST_API LambdaExpressionNode : public Node
+{
+public:
+    LambdaExpressionNode(const Span& span_);
+    void AddCapture(Node* capture);
+    void SetParameters(Node* parameters_);
+    void SetBody(CompoundStatementNode* body_);
+    void Accept(Visitor& visitor) override;
+private:
+    std::unique_ptr<Node> captures;
+    std::unique_ptr<Node> parameters;
+    std::unique_ptr<CompoundStatementNode> body;
+};
+
+class SNGCPP_AST_API CaptureSequenceNode : public BinaryNode
+{
+public:
+    CaptureSequenceNode(const Span& span_, Node* left_, Node* right_);
+    void Accept(Visitor& visitor) override;
+};
+
+class SNGCPP_AST_API AssignCapture : public Node
+{
+public:
+    AssignCapture(const Span& span_);
+    void Accept(Visitor& visitor) override;
+};
+
+class SNGCPP_AST_API RefCapture : public Node
+{
+public:
+    RefCapture(const Span& span_);
+    void Accept(Visitor& visitor) override;
+};
+
+class SNGCPP_AST_API ThisCapture : public Node
+{
+public:
+    ThisCapture(const Span& span_);
+    void Accept(Visitor& visitor) override;
+};
+
+class SNGCPP_AST_API IdentifierCapture : public UnaryNode
+{
+public:
+    IdentifierCapture(const Span& span_, IdentifierNode* id_);
     void Accept(Visitor& visitor) override;
 };
 

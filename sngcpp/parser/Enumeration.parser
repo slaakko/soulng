@@ -1,0 +1,86 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[hpp]#include <sngcpp/ast/Enumeration.hpp>
+[cpp]#include <sngcpp/parser/Expression.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) EnumerationParser
+{
+    uselexer CppLexer;
+
+    using IdentifierParser.Identifier;
+    using IdentifierParser.QualifiedIdNode;
+    using TypeExprParser.TypeExpr;
+    using ExpressionParser.ConstantExpression;
+
+    EnumDeclaration(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= EnumSpecifier(ctx):enumSpecifier SEMICOLON{ return enumSpecifier; }
+        ;
+
+    EnumSpecifier(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::EnumTypeNode> enumTypeNode, var Span openBraceSpan, var Span closeBraceSpan) : sngcpp::ast::Node*
+        ::= (EnumHead(ctx):enumHead{ enumTypeNode.reset(enumHead); } LBRACE{ openBraceSpan = span; } Enumerators(ctx, enumTypeNode.get()):enumerators RBRACE!{ closeBraceSpan = span; })
+        {
+            enumTypeNode->SetOpenBraceSpan(openBraceSpan);
+            enumTypeNode->SetCloseBraceSpan(closeBraceSpan);
+            return enumTypeNode.release();
+        }
+        ;
+
+    EnumHead(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::EnumTypeNode*
+        ::= (EnumKey:enumKey{ s = span; } EnumName(ctx):enumName{ s.end = span.end; } (EnumBase(ctx):enumBase{ s.end = span.end; })?)
+        {
+            return new sngcpp::ast::EnumTypeNode(s, enumKey, enumName, enumBase);
+        }
+        ;
+
+    OpaqueEnumDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= EnumKey:enumKey{ s = span; } EnumName(ctx):enumName (EnumBase(ctx):enumBase)? SEMICOLON
+        {
+            s.end = span.end; 
+            return new sngcpp::ast::EnumTypeNode(s, enumKey, enumName, enumBase);
+        }
+        ;
+
+    EnumKey : sngcpp::ast::EnumKey
+        ::= ENUM CLASS{ return sngcpp::ast::EnumKey::enumClass_; }
+        |   ENUM STRUCT { return sngcpp::ast::EnumKey::enumStruct_; }
+        |   ENUM{ return sngcpp::ast::EnumKey::enum_; }
+        ;
+
+    EnumName(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= QualifiedIdNode(ctx):enumName{ return enumName; }
+        ;
+
+    EnumBase(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= COLON TypeExpr(ctx):typeExpr{ return typeExpr; }
+        ;
+
+    Enumerators(sngcpp::cppparser::ParsingContext* ctx, sngcpp::ast::EnumTypeNode* enumTypeNode, var Span s)
+        ::=
+        (   EnumeratorDefinition(ctx):left{ s = span; enumTypeNode->AddEnumerator(s, left); }
+            (COMMA EnumeratorDefinition(ctx):right{ s.end = span.end; enumTypeNode->AddEnumerator(s, right); })*
+        )?
+        ;
+
+    EnumeratorDefinition(sngcpp::cppparser::ParsingContext* ctx, var Span s, var Span assignmentSpan, var std::u32string valueStr) : sngcpp::ast::EnumeratorNode*
+        ::= (Enumerator:enumerator{ s = span; } (ASSIGN{ assignmentSpan = span; } ConstantExpression(ctx):value{ valueStr = lexer.GetMatch(span); s.end = span.end; })?)
+        {
+            return new sngcpp::ast::EnumeratorNode(s, enumerator, value, valueStr);
+        }
+        ;
+
+    Enumerator : std::u32string
+        ::= Identifier:id{ return id; }
+        ;
+}

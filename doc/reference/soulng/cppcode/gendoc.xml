@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="cppcode">
+    <vcxproject file="../../../../soulng/cppcode/cppcode.vcxproj"/>
+    <include path="../.."/>
+  </project>
+  <filter>
+  </filter>
+</gendoc>

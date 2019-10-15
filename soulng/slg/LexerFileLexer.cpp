@@ -16,6 +16,12 @@ LexerFileLexer::LexerFileLexer(const std::u32string& content_, const std::string
     SetKeywordMap(LexerFileKeywords::GetKeywordMap());
 }
 
+LexerFileLexer::LexerFileLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_),
+    leftAngleCount()
+{
+    SetKeywordMap(LexerFileKeywords::GetKeywordMap());
+}
+
 int LexerFileLexer::NextState(int state, char32_t c)
 {
     int i = LexerFileClassMap::GetClass(c);

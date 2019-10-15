@@ -18,6 +18,7 @@ class SOULNG_LEXER_API Lexer
 {
 public:
     Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_);
+    Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);
     virtual ~Lexer();
     int operator*() const { return current->id; }
     void operator++();
@@ -31,6 +32,9 @@ public:
     const std::string& FileName() const { return fileName; }
     Span GetSpan() const { return Span(fileIndex, line, GetPos()); }
     Token GetToken(int tokenIndex) const;
+    void SetTokens(const std::vector<Token>& tokens_);
+    void SetLine(int line_) { line = line_; }
+    void SetCountLines(bool countLines_) { countLines = countLines_; }
     Token token;
     std::u32string GetMatch(const Span& span) const;
     std::u32string ErrorLines(const Token& token) const;
@@ -42,6 +46,7 @@ public:
     void SetLog(ParsingLog* log_) { log = log_; }
     ParsingLog* Log() const { return log; }
     std::u32string RestOfLine(int maxLineLength);
+    void SetSeparatorChar(char32_t separatorChar_) { separatorChar = separatorChar_; }
 protected:
     Lexeme lexeme;
     int line;
@@ -56,6 +61,8 @@ private:
     std::vector<Token> tokens;
     std::vector<Token>::iterator current;
     ParsingLog* log;
+    bool countLines;
+    char32_t separatorChar;
     void NextToken();
 };
 

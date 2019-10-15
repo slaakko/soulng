@@ -9,6 +9,10 @@ TrivialLexer::TrivialLexer(const std::u32string& content_, const std::string& fi
 {
 }
 
+TrivialLexer::TrivialLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : Lexer(start_, end_, fileName_, fileIndex_)
+{
+}
+
 int TrivialLexer::NextState(int state, char32_t c)
 {
     token.id = static_cast<int>(c);

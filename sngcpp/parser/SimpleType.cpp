@@ -1,12 +1,12 @@
 #include "SimpleType.hpp"
 #include <soulng/util/Unicode.hpp>
 #include <sngcpp/lexer/CppLexer.hpp>
-#include <sngcpp/lexer/CppLexerTokens.hpp>
+#include <sngcpp/lexer/CppTokens.hpp>
 
 // this file has been automatically generated from 'D:/work/soulng-project/sngcpp/parser/SimpleType.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
-using namespace CppLexerTokens;
+using namespace CppTokens;
 
 soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer)
 {

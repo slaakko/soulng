@@ -5,16 +5,77 @@
 
 [hpp]#include <sngcpp/parser/ParserApi.hpp>
 [hpp]#include <sngcpp/parser/ParsingContext.hpp>
-#include <sngcpp/lexer/CppLexer.hpp>
-#include <sngcpp/lexer/CppLexerTokens.hpp>
+[hpp]#include <sngcpp/ast/TypeExpr.hpp>
+[cpp]#include <sngcpp/parser/Class.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/SimpleType.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
+using namespace soulng::lexer;
 
 parser api(SNGCPP_PARSER_API) TypeExprParser
 {
     uselexer CppLexer;
 
-    TypeExpr(sngcpp::cppparser::ParsingContext* ctx)
-        ::= empty
+    using SimpleTypeParser.SimpleType;
+    using ClassParser.ClassKey;
+    using IdentifierParser.QualifiedIdNode;
+
+    TypeExpr(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node* 
+        ::= PrefixTypeExpr(ctx):prefixTypeExpr{ return new sngcpp::ast::TypeExprNode(span, prefixTypeExpr); }
+        ;
+
+    PrefixTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= CVSpecifierSequence:cvSpecifierSequence{ s = span; } PostfixTypeExpr(ctx):postfixTypeExpr
+        {
+            s.end = span.end;
+            return sngcpp::ast::CreatePrefixTypeExprNode(s, cvSpecifierSequence, postfixTypeExpr);
+        }
+        ;
+
+    CVSpecifierSequence(var sngcpp::ast::Specifier specifiers) : sngcpp::ast::Specifier
+        ::=
+        (
+            (CVSpecifier:cv{ specifiers = specifiers | cv; })*
+        )
+        {
+            return specifiers;
+        }
+        ;
+
+    CVSpecifier : sngcpp::ast::Specifier
+        ::= CONST{ return sngcpp::ast::Specifier::const_; }
+        |   VOLATILE{ return sngcpp::ast::Specifier::volatile_; }
+        ;
+
+    PostfixTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> typeExpr, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   PrimaryTypeExpr(ctx):primary{ typeExpr.reset(primary); s = span; }
+            (   STAR{ s.end = span.end; typeExpr.reset(new sngcpp::ast::PointerNode(s, typeExpr.release())); }
+            |   AMPAMP{ s.end = span.end; typeExpr.reset(new sngcpp::ast::RValueRefNode(s, typeExpr.release())); }
+            |   AMP{ s.end = span.end; typeExpr.reset(new sngcpp::ast::LValueRefNode(s, typeExpr.release())); }
+            )*
+        )
+        {
+            return typeExpr.release();
+        }
+        ;
+
+    PrimaryTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var sngcpp::ast::ClassKey key, var Span s) : sngcpp::ast::Node*
+        ::= SimpleType:simpleType{ return simpleType; }
+        |   (TYPENAME{ s = span; key = sngcpp::ast::ClassKey::typename_; } | ClassKey:classKey{ s = span; key = classKey; })? QualifiedIdNode(ctx):qid
+        {
+            s.end = span.end;
+            if (key != sngcpp::ast::ClassKey::none)
+            {
+                return new sngcpp::ast::ElaborateClassNameNode(s, key, qid);
+            }
+            else
+            {
+                return qid;
+            }
+        }
         ;
 }

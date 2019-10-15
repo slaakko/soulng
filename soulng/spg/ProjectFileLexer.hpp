@@ -10,6 +10,7 @@ class ProjectFileLexer : public soulng::lexer::Lexer
 {
 public:
     ProjectFileLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_);
+    ProjectFileLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);
     int NextState(int state, char32_t c) override;
     std::string filePath;
 private:

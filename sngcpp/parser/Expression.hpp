@@ -13,7 +13,9 @@ class CppLexer;
 
 struct SNGCPP_PARSER_API ExpressionParser
 {
+    static std::unique_ptr<sngcpp::ast::Node> Parse(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
     static soulng::parser::Match Expression(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match ConstantExpression(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
     static soulng::parser::Match AssignmentExpression(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
     static soulng::parser::Match AssignmentOperator(CppLexer& lexer);
     static soulng::parser::Match ConditionalExpression(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
@@ -54,6 +56,11 @@ struct SNGCPP_PARSER_API ExpressionParser
     static soulng::parser::Match OperatorFunctionId(CppLexer& lexer);
     static soulng::parser::Match Operator(CppLexer& lexer);
     static soulng::parser::Match ConversionFunctionId(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match LambdaExpression(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match LambdaCaptures(CppLexer& lexer, sngcpp::ast::LambdaExpressionNode* lambdaExpression);
+    static soulng::parser::Match CaptureDefault(CppLexer& lexer);
+    static soulng::parser::Match Captures(CppLexer& lexer, sngcpp::ast::LambdaExpressionNode* lambdaExpression);
+    static soulng::parser::Match Capture(CppLexer& lexer);
 };
 
 #endif // EXPRESSION_HPP

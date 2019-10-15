@@ -1,0 +1,163 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[hpp]#include <sngcpp/ast/Declaration.hpp>
+[cpp]#include <sngcpp/parser/SourceFile.hpp>
+[cpp]#include <sngcpp/parser/Declarator.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/parser/Function.hpp>
+[cpp]#include <sngcpp/parser/Class.hpp>
+[cpp]#include <sngcpp/parser/Enumeration.hpp>
+[cpp]#include <sngcpp/parser/Literal.hpp>
+[cpp]#include <sngcpp/parser/Template.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) DeclarationParser
+{
+    uselexer CppLexer;
+
+    using SourceFileParser.Declarations;
+    using DeclaratorParser.InitDeclarator;
+    using DeclaratorParser.Declarator;
+    using IdentifierParser.Identifier;
+    using IdentifierParser.QualifiedIdNode;
+    using TypeExprParser.TypeExpr;
+    using FunctionParser.FunctionDefinition;
+    using ClassParser.SpecialMemberFunctionDefinition;
+    using TemplateParser.TemplateDeclaration;
+    using TemplateParser.ExplicitInstantiation;
+    using TemplateParser.ExplicitSpecialization;
+    using ClassParser.ClassDeclaration;
+    using ClassParser.ForwardClassDeclaration;
+    using EnumerationParser.EnumDeclaration;
+    using EnumerationParser.OpaqueEnumDeclaration;
+    using LiteralParser.StringLiteral;
+
+    Declaration(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= NamespaceDefinition(ctx):namespaceDefinition{ return namespaceDefinition; }
+        |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
+        |   SpecialMemberFunctionDefinition(ctx):specialMemberFunctionDefinition{ return specialMemberFunctionDefinition; }
+        |   TemplateDeclaration(ctx):templateDeclaration{ return templateDeclaration; }
+        |   ExplicitInstantiation(ctx):explicitInstantiation{ return explicitInstantiation; }
+        |   ExplicitSpecialization(ctx):explicitSpecialization{ return explicitSpecialization; }
+        |   ClassDeclaration(ctx):classDeclaration{ return classDeclaration; }
+        |   EnumDeclaration(ctx):enumDeclaration{ return enumDeclaration; }
+        |   LinkageSpecification(ctx):linkageSpecification{ return linkageSpecification; }
+        |   BlockDeclaration(ctx):blockDeclaration{ return blockDeclaration; }
+        ;
+
+    NamespaceDefinition(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= NamedNamespaceDefinition(ctx):namedNamespaceDefinition{ return namedNamespaceDefinition; }
+        |   UnnamedNamespaceDefinition(ctx):unnamedNamespaceDefinition{ return unnamedNamespaceDefinition; }
+        ;
+
+    NamedNamespaceDefinition(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::NamespaceNode> ns, var Span s) : sngcpp::ast::Node*
+        ::= NAMESPACE{ s = span; } Identifier:id LBRACE{ s.end = span.end; ns.reset(new sngcpp::ast::NamespaceNode(s, id)); } Declarations(ctx, ns.get()):declarations RBRACE!
+        {
+            return ns.release();
+        }
+        ;
+
+    UnnamedNamespaceDefinition(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::NamespaceNode> ns, var Span s) : sngcpp::ast::Node*
+        ::= NAMESPACE{ s = span; } LBRACE{ s.end = span.end; ns.reset(new sngcpp::ast::NamespaceNode(s)); } Declarations(ctx, ns.get()):declarations RBRACE!
+        {
+            return ns.release();
+        }
+        ;
+
+    BlockDeclaration(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= SimpleDeclaration(ctx):simpleDeclaration{ return simpleDeclaration; }
+        |   AliasDeclaration(ctx):aliasDeclaration{ return aliasDeclaration; }
+        |   UsingDirective(ctx):usingDirective{ return usingDirective; }
+        |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
+        |   OpaqueEnumDeclaration(ctx):opaqueEnumDeclaration{ return opaqueEnumDeclaration; }
+        |   TypedefDeclaration(ctx):typedefDeclaration{ return typedefDeclaration; }
+        |   ForwardClassDeclaration(ctx):forwardClassDeclaration{ return forwardClassDeclaration; }
+        ;
+
+    SimpleDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= DeclSpecifiers:declSpecifiers{ s = span; } TypeExpr(ctx):typeExpr InitDeclarator(ctx):initDeclarator SEMICOLON
+        {
+            s.end = span.end;
+            return new sngcpp::ast::SimpleDeclarationNode(s, declSpecifiers, typeExpr, initDeclarator);
+        }
+        ;
+
+    DeclSpecifiers(var sngcpp::ast::Specifier specifiers) : sngcpp::ast::Specifier
+        ::= ((DeclSpecifier:declSpecifier{ specifiers = specifiers | declSpecifier; })*)
+        {
+            return specifiers;
+        }
+        ;
+
+    DeclSpecifier : sngcpp::ast::Specifier
+        ::= StorageClassSpecifier:storageClassSpecifier{ return storageClassSpecifier; }
+        |   FunctionSpecifier:functionSpecifier{ return functionSpecifier; }
+        |   FRIEND{ return sngcpp::ast::Specifier::friend_; }
+        |   CONSTEXPR{ return sngcpp::ast::Specifier::constExpr; }
+        |   __DECLSPEC LPAREN ID RPAREN{ return sngcpp::ast::Specifier::extension; }
+        |   __THREAD{ return sngcpp::ast::Specifier::extension; }
+        ;
+
+    StorageClassSpecifier : sngcpp::ast::Specifier
+        ::= REGISTER{ return sngcpp::ast::Specifier::register_; }
+        |   STATIC{ return sngcpp::ast::Specifier::static_; }
+        |   EXTERN{ return sngcpp::ast::Specifier::extern_; }
+        |   MUTABLE{ return sngcpp::ast::Specifier::mutable_; }
+        ;
+
+    FunctionSpecifier : sngcpp::ast::Specifier
+        ::= INLINE{ return sngcpp::ast::Specifier::inline_; }
+        |   VIRTUAL{ return sngcpp::ast::Specifier::virtual_; }
+        |   EXPLICIT{ return sngcpp::ast::Specifier::explicit_; }
+        ;
+
+    AliasDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= USING{ s = span; } Identifier:id ASSIGN TypeExpr(ctx):typeExpr! SEMICOLON!{ s.end = span.end; return new sngcpp::ast::AliasDeclarationNode(s, id, typeExpr); }
+        ;
+
+    UsingDirective(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= USING{ s = span; } NAMESPACE QualifiedIdNode(ctx):qid! SEMICOLON!
+        {
+            s.end = span.end;
+            sngcpp::ast::Node* value = new sngcpp::ast::UsingDirectiveNode(s, qid);
+            ctx->GetSourceFileNode()->AddUsingDirectiveOrDeclaration(value);
+            return value;
+        }
+        ;
+
+    UsingDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= USING{ s = span; } QualifiedIdNode(ctx):qid SEMICOLON
+        {
+            s.end = span.end;
+            sngcpp::ast::Node* value = new sngcpp::ast::UsingDeclarationNode(s, qid);
+            ctx->GetSourceFileNode()->AddUsingDirectiveOrDeclaration(value);
+            return value;
+        }
+        ;
+
+    TypedefDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TYPEDEF{ s = span; } TypeExpr(ctx):typeExpr! Declarator(ctx):declarator! SEMICOLON!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::TypedefNode(s, typeExpr, declarator);
+        }
+        ;
+
+    LinkageSpecification(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::LinkageSpecificationNode> ls, var Span s) : sngcpp::ast::Node*
+        ::= EXTERN{ s = span; } StringLiteral:language{ s.end = span.end; ls.reset(new sngcpp::ast::LinkageSpecificationNode(s, language)); }
+            (LBRACE (Declaration(ctx):d1{ ls->AddDeclaration(span, d1); })* RBRACE! | Declaration(ctx):d2{ ls->AddDeclaration(span, d2); })
+        {
+            return ls.release();
+        }
+        ;
+}

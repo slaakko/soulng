@@ -16,6 +16,12 @@ ParserFileLexer::ParserFileLexer(const std::u32string& content_, const std::stri
     SetKeywordMap(ParserFileKeywords::GetKeywordMap());
 }
 
+ParserFileLexer::ParserFileLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_),
+    leftAngleCount(), parsingIncludeDeclaration()
+{
+    SetKeywordMap(ParserFileKeywords::GetKeywordMap());
+}
+
 int ParserFileLexer::NextState(int state, char32_t c)
 {
     int i = ParserFileClassMap::GetClass(c);

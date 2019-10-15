@@ -1,0 +1,57 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[hpp]#include <sngcpp/ast/Function.hpp>
+[cpp]#include <sngcpp/parser/Class.hpp>
+[cpp]#include <sngcpp/parser/Declaration.hpp>
+[cpp]#include <sngcpp/parser/Declarator.hpp>
+[cpp]#include <sngcpp/parser/Statement.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) FunctionParser
+{
+    uselexer CppLexer;
+
+    using ClassParser.VirtPureSpecifiers;
+    using DeclarationParser.DeclSpecifiers;
+    using DeclaratorParser.Declarator;
+    using StatementParser.CompoundStatement;
+    using TypeExprParser.TypeExpr;
+
+    FunctionDefinition(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> declarator, var sngcpp::ast::Specifier defaultOrDeleteSpecifier, var Span s) : sngcpp::ast::Node*
+        ::= DeclSpecifiers:declSpecifiers{ s = span; } TypeExpr(ctx):typeExpr Declarator(ctx):d{ declarator.reset(d); pass = sngcpp::ast::IsFunctionDeclarator(declarator.get()); }
+            VirtPureSpecifiers(true):virtPureSpecifiers
+                    (   FunctionBody(ctx):body{ s.end = span.end; }
+                    |   ASSIGN (DEFAULT{ defaultOrDeleteSpecifier = sngcpp::ast::Specifier::default_; } | DELETE{ defaultOrDeleteSpecifier = sngcpp::ast::Specifier::delete_; }) SEMICOLON{ s.end = span.end; }
+                    |   SEMICOLON{ s.end = span.end; pass = sngcpp::ast::HasPureSpecifier(virtPureSpecifiers); }
+                    ) 
+            {
+                return new sngcpp::ast::FunctionNode(s, declSpecifiers | defaultOrDeleteSpecifier | virtPureSpecifiers, typeExpr, declarator.release(), body);
+            }
+        ;
+
+    FunctionBody(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::CompoundStatementNode*
+        ::= empty{ ctx->BeginFunctionBody(); } CompoundStatement(ctx):body{ ctx->EndFunctionBody(); return body; } / { ctx->EndFunctionBody(); }
+        ;
+
+    ParameterList(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> param, var Span s) : sngcpp::ast::Node* 
+        ::= LPAREN{ s = span; }
+            (   ParameterDeclaration(ctx):left{ param.reset(left); }
+                (COMMA ParameterDeclaration(ctx):right{ s.end = span.end; param.reset(new sngcpp::ast::ParameterSequenceNode(s, param.release(), right)); })*
+            )?
+            RPAREN{ s.end = span.end; return param.release(); }
+        ;
+
+    ParameterDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= (TypeExpr(ctx):typeExpr{ s = span; } (Declarator(ctx):declarator{ s.end = span.end; })?){ return new sngcpp::ast::ParameterNode(s, typeExpr, declarator); }
+        ;
+}

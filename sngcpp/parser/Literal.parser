@@ -7,9 +7,9 @@
 [hpp]#include <sngcpp/parser/TokenValueParsers.hpp>
 [hpp]#include <sngcpp/ast/Literal.hpp>
 [cpp]#include <sngcpp/lexer/CppLexer.hpp>
-[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
 
 parser api(SNGCPP_PARSER_API) LiteralParser
 {
@@ -64,5 +64,28 @@ parser api(SNGCPP_PARSER_API) LiteralParser
                 soulng::lexer::Token token = lexer.GetToken(pos);
                 return new sngcpp::ast::NullPtrLiteralNode(span, token.match.ToString());
             }
+        ;
+
+    StringLiteral : sngcpp::ast::StringLiteralNode*
+        ::= STRINGLIT
+        {
+            soulng::lexer::Token token = lexer.GetToken(pos);
+            std::u32string value;
+            std::u32string encodingPrefix;
+            sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, value, encodingPrefix);
+            return new sngcpp::ast::StringLiteralNode(span, encodingPrefix, value, token.match.ToString());
+        }
+        ;
+
+    IntegerLiteral : sngcpp::ast::IntegerLiteralNode*
+        ::= INTLIT
+        {
+            soulng::lexer::Token token = lexer.GetToken(pos);
+            uint64_t value = 0;
+            sngcpp::ast::Base base = sngcpp::ast::Base::decimal;
+            sngcpp::ast::Suffix suffix = sngcpp::ast::Suffix::none;
+            sngcpp::cppparser::ParseIntegerLiteral(lexer.FileName(), token, value, base, suffix);
+            return new sngcpp::ast::IntegerLiteralNode(span, value, suffix, base, token.match.ToString());
+        }
         ;
 }

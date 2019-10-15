@@ -8,9 +8,9 @@
 [hpp]#include <sngcpp/parser/ParsingContext.hpp>
 [cpp]#include <sngcpp/parser/Template.hpp>
 [cpp]#include <sngcpp/lexer/CppLexer.hpp>
-[cpp]#include <sngcpp/lexer/CppLexerTokens.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
 
 parser api(SNGCPP_PARSER_API) IdentifierParser
 {

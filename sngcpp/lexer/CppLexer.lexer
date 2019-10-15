@@ -1,39 +1,59 @@
 #include <sngcpp/lexer/CppLexerApi.hpp>
 
-classmap CppLexerClassMap;
+classmap CppClassMap;
 
 prefix "sngcpp/lexer";
 
-tokens CppLexerTokens
+tokens CppTokens
 {
-    (CHAR, "'char'"), (CHAR16_T, "'char16_t'"), (CHAR32_T, "'char32_t'"), (WCHAR_T, "'wchar_t'"), (BOOL, "'bool'"), (SHORT, "'short'"), (INT, "'int'"), (LONG, "'long'"),
-    (SIGNED, "'signed'"), (UNSIGNED, "'unsigned'"), (FLOAT, "'float'"), (DOUBLE, "'double'"), (VOID, "'void'"), (AUTO, "'auto'"),
-    (FLOATLIT, "floating literal"), (INTLIT, "integer literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"), (NULLPTR, "'nullptr'"), (TRUE, "'true'"), (FALSE, "'false'"),
+    (ALIGNAS, "'alignas'"), (ALIGNOF, "'alignof'"), (ASM, "'asm'"), (AUTO, "'auto'"), (BOOL, "'bool'"), (BREAK, "'break'"), (CASE, "'case'"), (CATCH, "'catch'"), 
+    (CHAR, "'char'"), (CHAR8_T, "'char8_t'"), (CHAR16_T, "'char16_t'"), (CHAR32_T, "'char32_t'"), (CLASS, "'class'"), (CONCEPT, "'concept'"), (CONST, "'const'"),
+    (CONSTEVAL, "'consteval'"), (CONSTEXPR, "'constexpr'"),
+    (CONSTINIT, "'constinit'"), (CONST_CAST, "'const_cast'"), (CONTINUE, "'continue'"), (CO_AWAIT, "'co_await'"), (CO_RETURN, "'co_return'"), (CO_YIELD, "'co_yield'"),
+    (DECLTYPE, "'decltype'"), (DEFAULT, "'default'"), (DELETE, "'delete'"), (DO, "'do'"), (DOUBLE, "'double'"), (DYNAMIC_CAST, "'dynamic_cast'"), (ELSE, "'else'"),
+    (ENUM, "'enum'"), (EXPLICIT, "'explicit'"), (EXPORT, "'export'"), (EXTERN, "'extern'"),
+    (FALSE, "'false'"), (FLOAT, "'float'"), (FOR, "'for'"), (FRIEND, "'friend'"), (GOTO, "'goto'"), (IF, "'if'"), (INLINE, "'inline'"), (INT, "'int'"), (LONG, "'long'"),
+    (MUTABLE, "'mutable'"), (NAMESPACE, "'namespace'"), (NEW, "'new'"), (NOEXCEPT, "'noexcept'"), (NULLPTR, "'nullptr'"), (OPERATOR, "'operator'"), (PRIVATE, "'private'"),
+    (PROTECTED, "'protected'"),
+    (PUBLIC, "'public'"), (REGISTER, "'register'"), (REINTERPRET_CAST, "'reinterpret_cast'"), (REQUIRES, "'requires'"), (RETURN, "'return'"), (SHORT, "'short'"), (SIGNED, "'signed'"),
+    (SIZEOF, "'sizeof'"), (STATIC, "'static'"), (STATIC_ASSERT, "'static_assert'"), (STATIC_CAST, "'static_cast'"), (STRUCT, "'struct'"), (SWITCH, "'switch'"), (TEMPLATE, "'template'"),
+    (THIS, "'this'"), (THREAD_LOCAL, "'thread_local'"), (THROW, "'throw'"),
+    (TRUE, "'true'"), (TRY, "'try'"), (TYPEDEF, "'typedef'"), (TYPEID, "'typeid'"), (TYPENAME, "'typename'"), (UNION, "'union'"), (UNSIGNED, "'unsigned'"), (USING, "'using'"),
+    (VIRTUAL, "'virtual'"), (VOID, "'void'"), (VOLATILE, "'volatile'"), (WCHAR_T, "'wchar_t'"), (WHILE, "'while'"),
+    (OVERRIDE, "'override'"), (FINAL, "'final'"), (__DECLSPEC, "'__declspec'"), (__THREAD, "'__thread'"),
+    (FLOATLIT, "floating literal"), (INTLIT, "integer literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"),
     (ID, "identifier"), (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
     (SHIFTRIGHTASSIGN, "'>>='"), (SHIFTLEFTASSIGN, "'<<='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"), (QUEST, "'?'"), (COLON, "':'"),
-    (THROW, "'throw'"), (OROR, "'||'"), (ANDAND, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (LANGLE, "'<'"), (RANGLE, "'>'"),
+    (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
-    (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), (SIZEOF, "'sizeof'"), (ALIGNOF, "'alignof'"), (NEW, "'new'"), (DELETE, "'delete'"),
-    (LBRACKET, "'['"), (RBRACKET, "']'"), (DOT, "'.'"), (ARROW, "'->'"), (THIS, "'this'"), (STATIC_CAST, "'static_cast'"), (DYNAMIC_CAST, "'dynamic_cast'"), (REINTERPRET_CAST, "'reinterpret_cast'"),
-    (CONST_CAST, "'const_cast'"), (TYPEID, "'typeid'"), (OPERATOR, "'operator'")
+    (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (MAX, "max")
 }
 
-keywords CppLexerKeywords
+keywords CppKeywords
 {
-    ("char", CHAR), ("char16_t", CHAR16_T), ("char32_t", CHAR32_T), ("wchar_t", WCHAR_T), ("bool", BOOL), ("short", SHORT), ("int", INT), ("long", LONG),
-    ("signed", SIGNED), ("unsigned", UNSIGNED), ("float", FLOAT), ("double", DOUBLE), ("void", VOID), ("auto", AUTO), ("nullptr", NULLPTR), ("true", TRUE), ("false", FALSE),
-    ("throw", THROW), ("sizeof", SIZEOF), ("alignof", ALIGNOF), ("new", NEW), ("delete", DELETE), ("this", THIS), ("static_cast", STATIC_CAST), ("dynamic_cast", DYNAMIC_CAST),
-    ("reinterpret_cast", REINTERPRET_CAST), ("const_cast", CONST_CAST), ("typeid", TYPEID), ("operator", OPERATOR)
+    ("alignas", ALIGNAS), ("alignof", ALIGNOF), ("asm", ASM), ("auto", AUTO), ("bool", BOOL), ("break", BREAK), ("case", CASE), ("catch", CATCH),
+    ("char", CHAR), ("char8_t", CHAR8_T), ("char16_t", CHAR16_T), ("char32_t", CHAR32_T), ("class", CLASS), ("concept", CONCEPT), ("const", CONST),
+    ("consteval", CONSTEVAL), ("constexpr", CONSTEXPR),
+    ("constinit", CONSTINIT), ("const_cast", CONST_CAST), ("continue", CONTINUE), ("co_await", CO_AWAIT), ("co_return", CO_RETURN), ("co_yield", CO_YIELD),
+    ("decltype", DECLTYPE), ("default", DEFAULT), ("delete", DELETE), ("do", DO), ("double", DOUBLE), ("dynamic_cast", DYNAMIC_CAST), ("else", ELSE),
+    ("enum", ENUM), ("explicit", EXPLICIT), ("export", EXPORT), ("extern", EXTERN),
+    ("false", FALSE), ("float", FLOAT), ("for", FOR), ("friend", FRIEND), ("goto", GOTO), ("if", IF), ("inline", INLINE), ("int", INT), ("long", LONG),
+    ("mutable", MUTABLE), ("namespace", NAMESPACE), ("new", NEW), ("noexcept", NOEXCEPT), ("nullptr", NULLPTR), ("operator", OPERATOR), ("private", PRIVATE),
+    ("protected", PROTECTED),
+    ("public", PUBLIC), ("register", REGISTER), ("reinterpret_cast", REINTERPRET_CAST), ("requires", REQUIRES), ("return", RETURN), ("short", SHORT), ("signed", SIGNED),
+    ("sizeof", SIZEOF), ("static", STATIC), ("static_assert", STATIC_ASSERT), ("static_cast", STATIC_CAST), ("struct", STRUCT), ("switch", SWITCH), ("template", TEMPLATE),
+    ("this", THIS), ("thread_local", THREAD_LOCAL), ("throw", THROW),
+    ("true", TRUE), ("try", TRY), ("typedef", TYPEDEF), ("typeid", TYPEID), ("typename", TYPENAME), ("union", UNION), ("unsigned", UNSIGNED), ("using", USING),
+    ("virtual", VIRTUAL), ("void", VOID), ("volatile", VOLATILE), ("wchar_t", WCHAR_T), ("while", WHILE), ("override", OVERRIDE), ("final", FINAL),
+    ("__thread", __THREAD), ("__declspec", __DECLSPEC)
 }
 
 expressions
 {
     ws = "[\n\r\t ]";
-    newline = "\r\n|\n|\r";
-    linecomment = "//[^\n\r]*{newline}";
-    blockcomment = "/\*([^*]|\*[^/])*\*/";
-    comment = "{linecomment}|{blockcomment}";
-    separators = "({ws}|{comment})+";
+    separators = "{ws}+";
     id = "{idstart}{idcont}*";
     decimaldigit = "[0-9]";
     digitsequence = "{decimaldigit}+";
@@ -86,18 +106,19 @@ lexer api(SNGCPP_LEXER_API) CppLexer
     "\?" { return QUEST; }
     ":" { return COLON; }
     "\|\|" { return OROR; }
-    "&&" { return ANDAND; }
+    "&&" { return AMPAMP; }
     "\|" { return OR; }
     "^" { return XOR; }
     "&" { return AMP; }
     "==" { return EQ; }
-    "!=" { return EQ; }
+    "!=" { return NEQ; }
     "<=" { return LEQ; }
     ">=" { return GEQ; }
-    "<<" { return SHIFTLEFT; }
-    ">>" $(1) { return SHIFTRIGHT; }
+    "<=>" { return SPACESHIP; }
     "<" { return LANGLE; }
     ">" { return RANGLE; }
+    "<<" { return SHIFTLEFT; }
+    ">>" $(1) { return SHIFTRIGHT; }
     "\+" { return PLUS; }
     "-" { return MINUS; }
     "\*" { return STAR; }
@@ -115,6 +136,10 @@ lexer api(SNGCPP_LEXER_API) CppLexer
     "\]" { return RBRACKET; }
     "\." { return DOT; }
     "->" { return ARROW; }
+    ";" { return SEMICOLON; }
+    "\.\.\." { return ELLIPSES; }
+    "\{" { return LBRACE; }
+    "\}" { return RBRACE; }
 
     variables
     {

@@ -1,0 +1,107 @@
+
+// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/lexer/CppLexer.lexer' using soulng lexer generator slg version 1.2.0
+
+#include <sngcpp/lexer/CppKeywords.hpp>
+#include <sngcpp/lexer/CppTokens.hpp>
+
+namespace CppKeywords
+{
+    using namespace CppTokens;
+
+    Keyword keywords[] =
+    {
+        {U"alignas", ALIGNAS}, 
+        {U"alignof", ALIGNOF}, 
+        {U"asm", ASM}, 
+        {U"auto", AUTO}, 
+        {U"bool", BOOL}, 
+        {U"break", BREAK}, 
+        {U"case", CASE}, 
+        {U"catch", CATCH}, 
+        {U"char", CHAR}, 
+        {U"char8_t", CHAR8_T}, 
+        {U"char16_t", CHAR16_T}, 
+        {U"char32_t", CHAR32_T}, 
+        {U"class", CLASS}, 
+        {U"concept", CONCEPT}, 
+        {U"const", CONST}, 
+        {U"consteval", CONSTEVAL}, 
+        {U"constexpr", CONSTEXPR}, 
+        {U"constinit", CONSTINIT}, 
+        {U"const_cast", CONST_CAST}, 
+        {U"continue", CONTINUE}, 
+        {U"co_await", CO_AWAIT}, 
+        {U"co_return", CO_RETURN}, 
+        {U"co_yield", CO_YIELD}, 
+        {U"decltype", DECLTYPE}, 
+        {U"default", DEFAULT}, 
+        {U"delete", DELETE}, 
+        {U"do", DO}, 
+        {U"double", DOUBLE}, 
+        {U"dynamic_cast", DYNAMIC_CAST}, 
+        {U"else", ELSE}, 
+        {U"enum", ENUM}, 
+        {U"explicit", EXPLICIT}, 
+        {U"export", EXPORT}, 
+        {U"extern", EXTERN}, 
+        {U"false", FALSE}, 
+        {U"float", FLOAT}, 
+        {U"for", FOR}, 
+        {U"friend", FRIEND}, 
+        {U"goto", GOTO}, 
+        {U"if", IF}, 
+        {U"inline", INLINE}, 
+        {U"int", INT}, 
+        {U"long", LONG}, 
+        {U"mutable", MUTABLE}, 
+        {U"namespace", NAMESPACE}, 
+        {U"new", NEW}, 
+        {U"noexcept", NOEXCEPT}, 
+        {U"nullptr", NULLPTR}, 
+        {U"operator", OPERATOR}, 
+        {U"private", PRIVATE}, 
+        {U"protected", PROTECTED}, 
+        {U"public", PUBLIC}, 
+        {U"register", REGISTER}, 
+        {U"reinterpret_cast", REINTERPRET_CAST}, 
+        {U"requires", REQUIRES}, 
+        {U"return", RETURN}, 
+        {U"short", SHORT}, 
+        {U"signed", SIGNED}, 
+        {U"sizeof", SIZEOF}, 
+        {U"static", STATIC}, 
+        {U"static_assert", STATIC_ASSERT}, 
+        {U"static_cast", STATIC_CAST}, 
+        {U"struct", STRUCT}, 
+        {U"switch", SWITCH}, 
+        {U"template", TEMPLATE}, 
+        {U"this", THIS}, 
+        {U"thread_local", THREAD_LOCAL}, 
+        {U"throw", THROW}, 
+        {U"true", TRUE}, 
+        {U"try", TRY}, 
+        {U"typedef", TYPEDEF}, 
+        {U"typeid", TYPEID}, 
+        {U"typename", TYPENAME}, 
+        {U"union", UNION}, 
+        {U"unsigned", UNSIGNED}, 
+        {U"using", USING}, 
+        {U"virtual", VIRTUAL}, 
+        {U"void", VOID}, 
+        {U"volatile", VOLATILE}, 
+        {U"wchar_t", WCHAR_T}, 
+        {U"while", WHILE}, 
+        {U"override", OVERRIDE}, 
+        {U"final", FINAL}, 
+        {U"__thread", __THREAD}, 
+        {U"__declspec", __DECLSPEC},
+        {nullptr, -1}
+    };
+
+    KeywordMap keywordMap(keywords);
+
+    KeywordMap* GetKeywordMap()
+    {
+        return &keywordMap;
+    }
+}

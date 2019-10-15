@@ -56,6 +56,9 @@ public:
     void SetProcessed() { processed = true; }
     void ComputeLineStarts(const std::u32string& sourceFileContent);
     std::vector<int>* LineStarts() { return &lineStarts; }
+    void SetContent(std::unique_ptr<std::u32string>&& content_) { content = std::move(content_); }
+    void SetHeaderFilePaths(std::vector<std::string>&& headerFilePaths_) { headerFilePaths = std::move(headerFilePaths_); }
+    const std::vector<std::string>& HeaderFilePaths() const { return headerFilePaths; }
 private:
     std::string sourceFilePath;
     std::string relativeSourceFilePath;
@@ -68,6 +71,8 @@ private:
     std::vector<Node*> usingDirectivesAndDeclarations;
     bool processed;
     std::vector<int> lineStarts;
+    std::unique_ptr<std::u32string> content;
+    std::vector<std::string> headerFilePaths;
 };
 
 class SNGCPP_AST_API SourceFileSequenceNode : public BinaryNode

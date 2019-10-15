@@ -71,10 +71,15 @@ class ArrowNode;
 class PostfixIncNode;
 class PostfixDecNode;
 class CppCastExpressionNode;
-class SimpleTypeCastExpressionNode;
 class TypeIdExpressionNode;
 class ThisNode;
 class ParenthesizedExprNode;
+class LambdaExpressionNode;
+class CaptureSequenceNode;
+class AssignCapture;
+class RefCapture;
+class ThisCapture;
+class IdentifierCapture;
 class IdentifierNode;
 class OperatorFunctionIdNode;
 class ConversionFunctionIdNode;
@@ -193,10 +198,15 @@ public:
     virtual void Visit(PostfixIncNode& postfixIncNode) {}
     virtual void Visit(PostfixDecNode& postfixDecNode) {}
     virtual void Visit(CppCastExpressionNode& cppCastExpressionNode) {}
-    virtual void Visit(SimpleTypeCastExpressionNode& simpleTypeCastExpressionNode) {}
     virtual void Visit(TypeIdExpressionNode& typeIdExpressionNode) {}
     virtual void Visit(ThisNode& thisNode) {}
     virtual void Visit(ParenthesizedExprNode& parenthesizedExprNode) {}
+    virtual void Visit(LambdaExpressionNode& lambdaExpressionNode) {}
+    virtual void Visit(CaptureSequenceNode& captureSequenceNode) {}
+    virtual void Visit(AssignCapture& assignCapture) {}
+    virtual void Visit(RefCapture& refCapture) {}
+    virtual void Visit(ThisCapture& thisCapture) {}
+    virtual void Visit(IdentifierCapture& identifierCapture) {}
     virtual void Visit(IdentifierNode& identifierNode) {}
     virtual void Visit(OperatorFunctionIdNode& operatorFunctionIdNode) {}
     virtual void Visit(ConversionFunctionIdNode& conversionFunctionIdNode) {}

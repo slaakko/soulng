@@ -6,9 +6,9 @@
 [hpp]#include <sngcpp/parser/ParserApi.hpp>
 [hpp]#include <sngcpp/ast/SimpleType.hpp>
 #include <sngcpp/lexer/CppLexer.hpp>
-#include <sngcpp/lexer/CppLexerTokens.hpp>
+#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
 
 parser api(SNGCPP_PARSER_API) SimpleTypeParser
 {

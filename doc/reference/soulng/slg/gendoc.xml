@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="slg">
+    <vcxproject file="../../../../soulng/slg/slg.vcxproj"/>
+    <include path="../.."/>
+  </project>
+  <filter>
+    <file exclude="LexerFileClassMap.cpp"/>
+    <file exclude="RegExClassMap.cpp"/>
+  </filter>
+</gendoc>

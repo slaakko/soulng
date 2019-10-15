@@ -1,0 +1,243 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[hpp]#include <sngcpp/ast/Class.hpp>
+[cpp]#include <sngcpp/parser/Declaration.hpp>
+[cpp]#include <sngcpp/parser/Declarator.hpp>
+[cpp]#include <sngcpp/parser/Enumeration.hpp>
+[cpp]#include <sngcpp/parser/Expression.hpp>
+[cpp]#include <sngcpp/parser/Function.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/Literal.hpp>
+[cpp]#include <sngcpp/parser/Template.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) ClassParser
+{
+    uselexer CppLexer;
+
+    using DeclaratorParser.Declarator;
+    using DeclaratorParser.BracedInitializerList;
+    using DeclaratorParser.BraceOrEqualInitializer;
+    using DeclarationParser.AliasDeclaration;
+    using DeclarationParser.DeclSpecifiers;
+    using DeclarationParser.UsingDeclaration;
+    using DeclarationParser.TypedefDeclaration;
+    using IdentifierParser.QualifiedIdNode;
+    using EnumerationParser.EnumDeclaration;
+    using ExpressionParser.ArgumentList;
+    using FunctionParser.FunctionBody;
+    using FunctionParser.FunctionDefinition;
+    using LiteralParser.IntegerLiteral;
+    using TemplateParser.TemplateDeclaration;
+    using TypeExprParser.TypeExpr;
+
+    ClassDeclaration(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= ClassSpecifier(ctx):classSpecifier SEMICOLON{ return classSpecifier; }
+        ;
+
+    ClassSpecifier(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::ClassNode> classNode) : sngcpp::ast::Node*
+        ::=
+        (   ClassHead(ctx):classHead{ classNode.reset(classHead); }
+            LBRACE{ classNode->SetOpenBraceSpan(span); }
+            MemberSpecifications(ctx, classNode.get()):memberSpecifications
+            RBRACE{ classNode->SetCloseBraceSpan(span); }
+        )
+        {
+            return classNode.release();
+        }
+        ;
+
+    MemberSpecifications(sngcpp::cppparser::ParsingContext* ctx, sngcpp::ast::ClassNode* classNode)
+        ::= MemberSpecification(ctx, classNode):memberSpecification*
+        ;
+
+    MemberSpecification(sngcpp::cppparser::ParsingContext* ctx, sngcpp::ast::ClassNode* classNode, var Span s)
+        ::=
+        (   AccessSpecifier:accessSpecifier{ s = span; } COLON
+            (MemberDeclaration(ctx):m1{ s.end = span.end; classNode->AddDeclaration(s, new sngcpp::ast::MemberAccessDeclarationNode(s, accessSpecifier, m1, true)); })*
+        |   (MemberDeclaration(ctx):m2{ s = span; classNode->AddDeclaration(s, new sngcpp::ast::MemberAccessDeclarationNode(s, classNode->DefaultAccess(), m2, false)); })+
+        )
+        ;
+
+    MemberDeclaration(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> declarator, var Span s) : sngcpp::ast::Node*
+        ::= DeclSpecifiers:declSpecifiers{ s = span; }
+            TypeExpr(ctx):typeExpr
+            Declarator(ctx):d{ declarator.reset(d); }
+            VirtPureSpecifiers(sngcpp::ast::IsFunctionDeclarator(declarator.get())):virtPureSpecifiers
+            BraceOrEqualInitializer(ctx):initializer? SEMICOLON{ s.end = span.end; return new sngcpp::ast::MemberDeclarationNode(s, declSpecifiers | virtPureSpecifiers, typeExpr, declarator.release(), initializer); }
+        |   SpecialMemberFunctionDeclaration(ctx):specialMemberFunctionDeclaration{ return specialMemberFunctionDeclaration; }
+        |   (FunctionDefinition(ctx):functionDefinition SEMICOLON?){ return functionDefinition; }
+        |   (SpecialMemberFunctionDefinition(ctx):specialMemberFunctionDefition SEMICOLON?){ return specialMemberFunctionDefition; }
+        |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
+        |   TypedefDeclaration(ctx):typedefDeclaration{ return typedefDeclaration; }
+        |   TemplateDeclaration(ctx):templateDeclaration{ return templateDeclaration; }
+        |   ClassDeclaration(ctx):classDeclaration{ return classDeclaration; }
+        |   EnumDeclaration(ctx):enumDeclaration{ return enumDeclaration; }
+        |   AliasDeclaration(ctx):aliasDeclaration{ return aliasDeclaration; }
+        |   ForwardClassDeclaration(ctx):forwardClassDeclaration{ return forwardClassDeclaration; }
+        ;
+
+    SpecialMemberFunctionDeclaration(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> declarator, var Span s) : sngcpp::ast::Node*
+        ::= DeclSpecifiers:declSpecifiers{ s = span; }
+            Declarator(ctx):d{ declarator.reset(d); pass = sngcpp::ast::IsFunctionDeclarator(declarator.get()); }
+            VirtPureSpecifiers(true):virtPureSpecifiers
+            SEMICOLON
+        {
+            s.end = span.end;
+            return new sngcpp::ast::MemberDeclarationNode(s, declSpecifiers | virtPureSpecifiers, nullptr, declarator.release(), nullptr);
+        }
+        ;
+
+    ClassHead(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::ClassNode*
+        ::= (ClassKey:classKey{ s = span; } ClassName(ctx):className ClassVirtSpecifiers:classVirtSpecifiers{ s.end = span.end; } (BaseClause(ctx):baseClause{ s.end = span.end; })?)
+        {
+            return new sngcpp::ast::ClassNode(s, classKey, className, classVirtSpecifiers, baseClause);
+        }
+        ;
+
+    ForwardClassDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= ClassKey:classKey{ s = span; } ClassName(ctx):className SEMICOLON{ s.end = span.end; return new sngcpp::ast::ForwardClassDeclarationNode(s, classKey, className); }
+        ;
+
+    ClassKey : sngcpp::ast::ClassKey
+        ::= CLASS{ return sngcpp::ast::ClassKey::class_; }
+        |   STRUCT{ return sngcpp::ast::ClassKey::struct_; }
+        |   UNION{ return sngcpp::ast::ClassKey::union_; }
+        ;
+
+    ClassName(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= QualifiedIdNode(ctx):className{ return className; }
+        ;
+
+    ClassVirtSpecifiers(var sngcpp::ast::Specifier specifiers) : sngcpp::ast::Specifier
+        ::= ((ClassVirtSpecifier:specifier{ specifiers = specifiers | specifier; })*)
+        {
+            return specifiers;
+        }
+        ;
+
+    ClassVirtSpecifier : sngcpp::ast::Specifier
+        ::= FINAL{ return sngcpp::ast::Specifier::final_; }
+        |   EXPLICIT{ return sngcpp::ast::Specifier::explicit_; }
+        ;
+
+    BaseClause(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= COLON BaseClassSpecifierList(ctx):bc{ return bc; }
+        ;
+
+    BaseClassSpecifierList(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> node, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   BaseClassSpecifier(ctx):b1{ s = span; node.reset(b1); }
+            (COMMA BaseClassSpecifier(ctx):b2{ s.end = span.end; node.reset(new sngcpp::ast::BaseClassSpecifierSequenceNode(s, node.release(), b2)); })*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    BaseClassSpecifier(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= BaseSpecifiers:baseSpecifiers{ s = span; } ClassName(ctx):className
+        {
+            s.end = span.end; 
+            return new sngcpp::ast::BaseClassSpecifierNode(s, baseSpecifiers, className);
+        }
+        ;
+
+    BaseSpecifiers(var sngcpp::ast::Specifier specifiers) : sngcpp::ast::Specifier
+        ::=
+        (
+            (BaseSpecifier:specifier{ specifiers = specifiers | specifier; })*
+        )
+        {
+            return specifiers;
+        }
+        ;
+
+    BaseSpecifier : sngcpp::ast::Specifier
+        ::= VIRTUAL{ return sngcpp::ast::Specifier::virtual_; }
+        |   AccessSpecifier:accessSpecifier{ return accessSpecifier; }
+        ;
+
+    AccessSpecifier : sngcpp::ast::Specifier
+        ::= PUBLIC{ return sngcpp::ast::Specifier::public_; }
+        |   PROTECTED{ return sngcpp::ast::Specifier::protected_; }
+        |   PRIVATE{ return sngcpp::ast::Specifier::private_; }
+        ;
+
+    VirtPureSpecifiers(bool functionMember, var sngcpp::ast::Specifier specifiers) : sngcpp::ast::Specifier
+        ::=
+        (
+            (VirtSpecifier(functionMember):virtSpecifier{ specifiers = specifiers | virtSpecifier; })* (PureSpecifier(functionMember):pureSpecifier{ specifiers = specifiers | pureSpecifier; })?
+        )
+        {
+            return specifiers;
+        }
+        ;
+
+    VirtSpecifier(bool functionMember, var sngcpp::ast::Specifier specifier) : sngcpp::ast::Specifier
+        ::=
+        (   OVERRIDE{ pass = functionMember; specifier = sngcpp::ast::Specifier::override_; }
+        |   FINAL{ pass = functionMember; specifier = sngcpp::ast::Specifier::final_; }
+        |   NEW{ pass = functionMember; specifier = sngcpp::ast::Specifier::new_; }
+        )
+        {
+            return specifier;
+        }
+        ;
+
+    PureSpecifier(bool functionMember) : sngcpp::ast::Specifier
+        ::= (ASSIGN IntegerLiteral:integerLiteral{ pass = functionMember && integerLiteral->Value() == 0; })
+        {
+            return sngcpp::ast::Specifier::pure_;
+        }
+        ;
+
+    SpecialMemberFunctionDefinition(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> declarator, var sngcpp::ast::Specifier defaultOrDeleteSpecifier, var Span s) : sngcpp::ast::Node*
+        ::= DeclSpecifiers:declSpecifiers{ s = span; } Declarator(ctx):d{ declarator.reset(d); pass = sngcpp::ast::IsFunctionDeclarator(declarator.get()); }
+            CtorInitializer(ctx):ctorInitializer?
+                (   FunctionBody(ctx):body{ s.end = span.end; }
+                |   ASSIGN (DEFAULT{ defaultOrDeleteSpecifier = sngcpp::ast::Specifier::default_; } | DELETE{ defaultOrDeleteSpecifier = sngcpp::ast::Specifier::delete_; }) SEMICOLON{ s.end = span.end; }
+                )
+        {
+            return new sngcpp::ast::SpecialMemberFunctionNode(s, declSpecifiers | defaultOrDeleteSpecifier, declarator.release(), ctorInitializer, body);
+        }
+        ;
+
+    CtorInitializer(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= COLON{ s = span; } MemberInitializerList(ctx):mil{ s.end = span.end; return new sngcpp::ast::CtorInitializerNode(s, mil); }
+        ;
+
+    MemberInitializerList(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> list) : sngcpp::ast::Node*
+        ::= (MemberInitializer(ctx):left{ list.reset(left); } (COMMA MemberInitializer(ctx):right{ list.reset(new sngcpp::ast::MemberInitializerSequenceNode(span, list.release(), right)); })*)
+        {
+            return list.release();
+        }
+        ;
+
+    MemberInitializer(sngcpp::cppparser::ParsingContext* ctx, var Span s, var Span argsSpan) : sngcpp::ast::Node*
+        ::= (MemberInitializerId(ctx):id1{ s = span; } LPAREN{ argsSpan = span; } ArgumentList(ctx):args RPAREN{ argsSpan.end = span.end; })
+        {
+            s.end = span.end;
+            return new sngcpp::ast::MemberInitializerNode(s, id1, new sngcpp::ast::ExpressionListInitializerNode(argsSpan, args));
+        }
+        |   MemberInitializerId(ctx):id2{ s = span; } BracedInitializerList(ctx):bi
+        {
+            s.end = span.end;
+            return new sngcpp::ast::MemberInitializerNode(s, id2, bi);
+        }
+        ;
+
+    MemberInitializerId(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= QualifiedIdNode(ctx):qid{ return qid; }
+        ;
+}

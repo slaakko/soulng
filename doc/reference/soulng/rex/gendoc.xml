@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="rex">
+    <vcxproject file="../../../../soulng/rex/rex.vcxproj"/>
+    <include path="../.."/>
+  </project>
+  <filter>
+    <file exclude="RexClassMap.cpp"/>
+  </filter>
+</gendoc>

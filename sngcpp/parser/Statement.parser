@@ -1,0 +1,158 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/ast/Statement.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[cpp]#include <sngcpp/parser/Declaration.hpp>
+[cpp]#include <sngcpp/parser/Declarator.hpp>
+[cpp]#include <sngcpp/parser/Expression.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) StatementParser
+{
+    uselexer CppLexer;
+
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.Expression;
+    using DeclarationParser.BlockDeclaration;
+    using DeclarationParser.SimpleDeclaration;
+    using DeclaratorParser.BracedInitializerList;
+    using DeclaratorParser.Declarator;
+    using DeclaratorParser.InitializerClause;
+    using IdentifierParser.Identifier;
+    using TypeExprParser.TypeExpr;
+
+    Statement(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= LabeledStatement(ctx):labeledStatement{ return labeledStatement; }
+        |   ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
+        |   CompoundStatement(ctx):compoundStatement{ return compoundStatement; }
+        |   SelectionStatement(ctx):selectionStatement{ return selectionStatement; }
+        |   IterationStatement(ctx):iterationStatement{ return iterationStatement; }
+        |   JumpStatement(ctx):jumpStatement{ return jumpStatement; }
+        |   DeclarationStatement(ctx):declarationStatement{ return declarationStatement; }
+        |   TryStatement(ctx):tryStatement{ return tryStatement; }
+        ;
+
+    LabeledStatement(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= Identifier:id{ s = span; } COLON Statement(ctx):ls{ s.end = span.end; return new sngcpp::ast::LabeledStatementNode(s, id, ls); }
+        |   CASE{ s = span; } ConstantExpression(ctx):caseExpr! COLON! Statement(ctx):cs!{ s.end = span.end; return new sngcpp::ast::CaseStatementNode(s, caseExpr, cs); }
+        |   DEFAULT{ s = span; } COLON! Statement(ctx):ds!{ s.end = span.end; return new sngcpp::ast::DefaultStatementNode(s, ds); }
+        ;
+
+    ExpressionStatement(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= empty{ s = span; } Expression(ctx):expr? SEMICOLON{ s.end = span.end; return new sngcpp::ast::ExpressionStatementNode(s, expr); }
+        ;
+
+    CompoundStatement(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::CompoundStatementNode> node) : sngcpp::ast::CompoundStatementNode*
+        ::= LBRACE{ node.reset(new sngcpp::ast::CompoundStatementNode(span)); } (Statement(ctx):stmt{ node->AddStatement(span, stmt); })* RBRACE!{ node->SetEndBraceSpan(span); return node.release(); }
+        ;
+
+    SelectionStatement(sngcpp::cppparser::ParsingContext* ctx, var Span s, var Span elseSpan) : sngcpp::ast::Node*
+        ::= (IF{ s = span; } LPAREN! Condition(ctx):cond1! RPAREN! Statement(ctx):thenS!{ s.end = span.end; } (ELSE{ elseSpan = span; } Statement(ctx):elseS!{ s.end = span.end; })?)
+        {
+            return new sngcpp::ast::IfStatementNode(s, cond1, thenS, elseS, elseSpan);
+        }
+        |   (SWITCH{ s = span; } LPAREN! Condition(ctx):cond2! RPAREN! Statement(ctx):stmt!{ s.end = span.end; })
+        {
+            return new sngcpp::ast::SwitchStatementNode(s, cond2, stmt);
+        }
+        ;
+
+    IterationStatement(sngcpp::cppparser::ParsingContext* ctx, var Span s, var Span whileSpan) : sngcpp::ast::Node*
+        ::= WHILE{ s = span; } LPAREN! Condition(ctx):cond1! RPAREN! Statement(ctx):stmt1!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::WhileStatementNode(s, cond1, stmt1);
+        }
+        |   DO{ s = span; } Statement(ctx):stmt2 WHILE!{ whileSpan = span; } LPAREN! Expression(ctx):cond2! RPAREN! SEMICOLON!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::DoStatementNode(s, stmt2, cond2, whileSpan);
+        }
+        |   FOR{ s = span; } LPAREN ForRangeDeclaration(ctx):forRange COLON ForRangeInitializer(ctx):forRangeInit! RPAREN! Statement(ctx):stmt3!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::RangeForStatementNode(s, forRange, forRangeInit, stmt3);
+        }
+        |   FOR{ s = span; } LPAREN ForInitStatement(ctx):forInit Condition(ctx):cond4? SEMICOLON Expression(ctx):loopExpr? RPAREN! Statement(ctx):stmt4!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::ForStatementNode(s, forInit, cond4, loopExpr, stmt4);
+        }
+        ;
+
+    JumpStatement(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= BREAK{ s = span; } SEMICOLON!{ s.end = span.end; return new sngcpp::ast::BreakStatementNode(s); }
+        |   CONTINUE{ s = span; } SEMICOLON!{ s.end = span.end; return new sngcpp::ast::ContinueStatementNode(s); }
+        |   RETURN{ s = span; } Expression(ctx):expr? SEMICOLON!{ s.end = span.end; return new sngcpp::ast::ReturnStatementNode(s, expr); }
+        |   RETURN{ s = span; } BracedInitializerList(ctx):bi SEMICOLON!{ s.end = span.end; return new sngcpp::ast::ReturnStatementNode(s, bi); }
+        |   GOTO{ s = span; } Identifier:target! SEMICOLON!{ s.end = span.end; return new sngcpp::ast::GotoStatementNode(s, target); }
+        ;
+
+    DeclarationStatement(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= BlockDeclaration(ctx):declaration{ return new sngcpp::ast::DeclarationStatementNode(span, declaration); }
+        ;
+
+    TryStatement(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::TryStatementNode> node, var Span s) : sngcpp::ast::Node*
+        ::= TRY{ s = span; } CompoundStatement(ctx):tryBlock!{ s.end = span.end; node.reset(new sngcpp::ast::TryStatementNode(s, tryBlock)); } HandlerSequence(ctx, node.get()):handlerSequence!
+        {
+            return node.release();
+        }
+        ;
+
+    HandlerSequence(sngcpp::cppparser::ParsingContext* ctx, sngcpp::ast::TryStatementNode* tryStatementNode)
+        ::= (Handler(ctx):handler{ tryStatementNode->AddHandler(span, handler); })+
+        ;
+
+    Handler(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= CATCH{ s = span; } LPAREN! ExceptionDeclaration(ctx):exceptionDeclaration! RPAREN! CompoundStatement(ctx):catchBlock!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::HandlerNode(s, exceptionDeclaration, catchBlock);
+        }
+        ;
+
+    Condition(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TypeExpr(ctx):typeExpr{ s = span; } Declarator(ctx):declarator
+        (   ASSIGN InitializerClause(ctx):ic
+            {
+                s.end = span.end;
+                return new sngcpp::ast::SimpleDeclarationNode(s, sngcpp::ast::Specifier::none, typeExpr, new sngcpp::ast::InitDeclaratorNode(s, declarator, new sngcpp::ast::AssignmentInitializerNode(s, ic)));
+            }
+        |   BracedInitializerList(ctx):bi
+            {
+                s.end = span.end;
+                return new sngcpp::ast::SimpleDeclarationNode(s, sngcpp::ast::Specifier::none, typeExpr, new sngcpp::ast::InitDeclaratorNode(s, declarator, bi));
+            }
+        )
+        |   Expression(ctx):expr{ return expr; }
+        ;
+
+    ForRangeDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TypeExpr(ctx):typeExpr{ s = span; } Declarator(ctx):declarator{ s.end = span.end; return new sngcpp::ast::SimpleDeclarationNode(s, sngcpp::ast::Specifier::none, typeExpr, declarator); }
+        ;
+
+    ForRangeInitializer(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= Expression(ctx):expr{ return expr;}
+        |   BracedInitializerList(ctx):bi{ return bi; }
+        ;
+
+    ForInitStatement(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
+        |   SimpleDeclaration(ctx):simpleDeclaration{ return simpleDeclaration; }
+        ;
+
+    ExceptionDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= (TypeExpr(ctx):typeExpr{ s = span; } (Declarator(ctx):declarator{ s.end = span.end; })?){ return new sngcpp::ast::SimpleDeclarationNode(s, sngcpp::ast::Specifier::none, typeExpr, declarator); }
+        |   ELLIPSES{ return new sngcpp::ast::CatchAllNode(span); }
+        ;
+}

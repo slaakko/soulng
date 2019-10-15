@@ -9,6 +9,7 @@ class LexerFileLexer : public soulng::lexer::Lexer
 {
 public:
     LexerFileLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_);
+    LexerFileLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);
     int NextState(int state, char32_t c) override;
     int leftAngleCount;
 private:

@@ -51,7 +51,7 @@ private:
     bool preserveSpace;
 };
 
-void WriteUtf8(std::ostream& s, const std::string& str);
+UTIL_API void WriteUtf8(std::ostream& s, const std::string& str);
 
 } } // namespace soulng::util
 

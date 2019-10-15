@@ -510,6 +510,7 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
     headerFormatter.WriteLine("public:");
     headerFormatter.IncIndent();
     headerFormatter.WriteLine(ToUtf8(Name()) + "(const std::u32string& content_, const std::string& fileName_, int fileIndex_);");
+    headerFormatter.WriteLine(ToUtf8(Name()) + "(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);");
     headerFormatter.WriteLine("int NextState(int state, char32_t c) override;");
     for (const auto& variable : variables)
     {
@@ -578,6 +579,35 @@ void Lexer::WriteAutomaton(const std::string& root, bool verbose, LexerContext& 
     sourceFormatter.WriteLine("using namespace " + ToUtf8(lexerContext.GetTokens()->Name()) + ";");
     sourceFormatter.WriteLine();
     sourceFormatter.WriteLine(ToUtf8(Name()) + "::" + ToUtf8(Name()) + "(const std::u32string& content_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(content_, fileName_, fileIndex_)" + comma);
+    if (!variables.empty())
+    {
+        sourceFormatter.IncIndent();
+        bool first = true;
+        for (const auto& variable : variables)
+        {
+            if (first)
+            {
+                first = false;
+            }
+            else
+            {
+                sourceFormatter.Write(", ");
+            }
+            sourceFormatter.Write(ToUtf8(variable->Name()) + "()");
+        }
+        sourceFormatter.WriteLine();
+        sourceFormatter.DecIndent();
+    }
+    sourceFormatter.WriteLine("{");
+    if (lexerContext.GetKeywords())
+    {
+        sourceFormatter.IncIndent();
+        sourceFormatter.WriteLine("SetKeywordMap(" + ToUtf8(lexerContext.GetKeywords()->Name()) + "::GetKeywordMap());");
+        sourceFormatter.DecIndent();
+    }
+    sourceFormatter.WriteLine("}");
+    sourceFormatter.WriteLine();
+    sourceFormatter.WriteLine(ToUtf8(Name()) + "::" + ToUtf8(Name()) + "(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_)" + comma);
     if (!variables.empty())
     {
         sourceFormatter.IncIndent();

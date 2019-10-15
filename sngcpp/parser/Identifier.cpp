@@ -2,12 +2,12 @@
 #include <soulng/util/Unicode.hpp>
 #include <sngcpp/parser/Template.hpp>
 #include <sngcpp/lexer/CppLexer.hpp>
-#include <sngcpp/lexer/CppLexerTokens.hpp>
+#include <sngcpp/lexer/CppTokens.hpp>
 
 // this file has been automatically generated from 'D:/work/soulng-project/sngcpp/parser/Identifier.parser' using soulng parser generator spg version 1.2.0
 
 using namespace soulng::unicode;
-using namespace CppLexerTokens;
+using namespace CppTokens;
 
 soulng::parser::Match IdentifierParser::Identifier(CppLexer& lexer)
 {

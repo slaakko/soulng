@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="spg">
+    <vcxproject file="../../../../soulng/spg/spg.vcxproj"/>
+    <include path="../.."/>
+  </project>
+  <filter>
+    <file exclude="ParserFileClassMap.cpp"/>
+    <file exclude="ProjectFileClassMap.cpp"/>
+  </filter>
+</gendoc>

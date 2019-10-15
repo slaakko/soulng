@@ -15,6 +15,11 @@ XPathLexer::XPathLexer(const std::u32string& content_, const std::string& fileNa
     SetKeywordMap(XPathKeywords::GetKeywordMap());
 }
 
+XPathLexer::XPathLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_)
+{
+    SetKeywordMap(XPathKeywords::GetKeywordMap());
+}
+
 int XPathLexer::NextState(int state, char32_t c)
 {
     int i = XPathClassMap::GetClass(c);

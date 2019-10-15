@@ -16,6 +16,12 @@ ProjectFileLexer::ProjectFileLexer(const std::u32string& content_, const std::st
     SetKeywordMap(ProjectFileKeywords::GetKeywordMap());
 }
 
+ProjectFileLexer::ProjectFileLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_),
+    filePath()
+{
+    SetKeywordMap(ProjectFileKeywords::GetKeywordMap());
+}
+
 int ProjectFileLexer::NextState(int state, char32_t c)
 {
     int i = ProjectFileClassMap::GetClass(c);

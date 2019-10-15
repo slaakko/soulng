@@ -39,5 +39,5 @@ lexer RegExLexer
     "{escape}" { return ESCAPE; }
     "^" { return INVERSE; }
     "-" { return MINUS; }
-    "[^\r\n{}\\()[\]|*+?.^-]" { return CHAR; }
+    "[^\x0\r\n{}\\()[\]|*+?.^-]" { return CHAR; }
 }

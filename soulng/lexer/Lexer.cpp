@@ -14,7 +14,13 @@ using namespace soulng::unicode;
 
 Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) :
     content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
-    log(nullptr)
+    log(nullptr), countLines(true), separatorChar('\0')
+{
+}
+
+Lexer::Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) :
+    content(), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(start_), end(end_), pos(start), current(tokens.end()),
+    log(nullptr), countLines(true), separatorChar('\0')
 {
 }
 
@@ -37,28 +43,57 @@ void Lexer::operator++()
 void Lexer::NextToken()
 {
     int state = 0;
-    while (pos != end)
+    while (true)
     {
-        char32_t c = *pos;
+        char32_t c = separatorChar;
+        if (pos != end)
+        {
+            c = *pos;
+        }
+        else if (c == '\0')
+        {
+            break;
+        }
         if (state == 0)
         {
             lexeme.begin = pos;
             token.id = INVALID_TOKEN;
             token.line = line;
         }
-        lexeme.end = pos + 1;
+        if (pos == end)
+        {
+            lexeme.end = end;
+        }
+        else
+        {
+            lexeme.end = pos + 1;
+        }
         state = NextState(state, c);
         if (state == -1)
         {
             if (token.id == CONTINUE_TOKEN)
             {
-                pos = token.match.end;
+                if (pos == end)
+                {
+                    break;
+                }
+                else
+                {
+                    pos = token.match.end;
+                }
                 state = 0;
                 continue;
             }
             else if (token.id == INVALID_TOKEN)
             {
-                throw std::runtime_error("soulng::lexer::Lexer::NextToken(): error: invalid character '" + ToUtf8(std::u32string(1, c)) + "' in file '" + fileName + "' at line " + std::to_string(line));
+                if (pos == end)
+                {
+                    break;
+                }
+                else
+                {
+                    throw std::runtime_error("soulng::lexer::Lexer::NextToken(): error: invalid character '" + ToUtf8(std::u32string(1, c)) + "' in file '" + fileName + "' at line " + std::to_string(line));
+                }
             }
             else
             {
@@ -68,7 +103,7 @@ void Lexer::NextToken()
                 return;
             }
         }
-        if (c == '\n')
+        if (c == '\n' && countLines)
         {
             ++line;
         }
@@ -122,6 +157,24 @@ Token Lexer::GetToken(int tokenIndex) const
     {
         throw std::runtime_error("invalid token index");
     }
+}
+
+void Lexer::SetTokens(const std::vector<Token>& tokens_)
+{
+    if (!tokens_.empty())
+    {
+        tokens.push_back(tokens_.front());
+    }
+    else
+    {
+        tokens.push_back(Token(END, Lexeme(end, end), 1));
+    }
+    for (const Token& token : tokens_)
+    {
+        tokens.push_back(token);
+    }
+    tokens.push_back(Token(END, Lexeme(end, end), 1));
+    current = tokens.begin();
 }
 
 std::u32string Lexer::GetMatch(const Span& span) const

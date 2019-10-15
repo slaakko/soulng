@@ -5,7 +5,7 @@
 
 #ifndef SNGCPP_AST_DECLARATOR_INCLUDED
 #define SNGCPP_AST_DECLARATOR_INCLUDED
-#include <sngcpp/ast/Node.hpp>
+#include <sngcpp/ast/Statement.hpp>
 #include <sngcpp/ast/Specifier.hpp>
 
 namespace sngcpp { namespace ast {

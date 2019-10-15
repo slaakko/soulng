@@ -150,34 +150,52 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Class.hpp" />
+    <ClInclude Include="Declaration.hpp" />
     <ClInclude Include="Declarator.hpp" />
+    <ClInclude Include="Enumeration.hpp" />
     <ClInclude Include="Expression.hpp" />
+    <ClInclude Include="Function.hpp" />
     <ClInclude Include="Identifier.hpp" />
     <ClInclude Include="Literal.hpp" />
     <ClInclude Include="ParserApi.hpp" />
     <ClInclude Include="ParsingContext.hpp" />
     <ClInclude Include="SimpleType.hpp" />
+    <ClInclude Include="SourceFile.hpp" />
+    <ClInclude Include="Statement.hpp" />
     <ClInclude Include="Template.hpp" />
     <ClInclude Include="TokenValueParsers.hpp" />
     <ClInclude Include="TypeExpr.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Class.parser" />
     <None Include="CppParsers.spg" />
+    <None Include="Declaration.parser" />
     <None Include="Declarator.parser" />
+    <None Include="Enumeration.parser" />
     <None Include="Expression.parser" />
+    <None Include="Function.parser" />
     <None Include="Identifier.parser" />
     <None Include="Literal.parser" />
     <None Include="SimpleType.parser" />
+    <None Include="SourceFile.parser" />
+    <None Include="Statement.parser" />
     <None Include="Template.parser" />
     <None Include="TypeExpr.parser" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Class.cpp" />
+    <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="Declarator.cpp" />
+    <ClCompile Include="Enumeration.cpp" />
     <ClCompile Include="Expression.cpp" />
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="Identifier.cpp" />
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="ParsingContext.cpp" />
     <ClCompile Include="SimpleType.cpp" />
+    <ClCompile Include="SourceFile.cpp" />
+    <ClCompile Include="Statement.cpp" />
     <ClCompile Include="Template.cpp" />
     <ClCompile Include="TokenValueParsers.cpp" />
     <ClCompile Include="TypeExpr.cpp" />

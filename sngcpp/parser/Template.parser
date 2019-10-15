@@ -5,20 +5,100 @@
 
 [hpp]#include <sngcpp/parser/ParserApi.hpp>
 [hpp]#include <sngcpp/parser/ParsingContext.hpp>
-#include <sngcpp/lexer/CppLexer.hpp>
-#include <sngcpp/lexer/CppLexerTokens.hpp>
+[hpp]#include <sngcpp/ast/Template.hpp>
+[cpp]#include <sngcpp/parser/Declaration.hpp>
+[cpp]#include <sngcpp/parser/Expression.hpp>
+[cpp]#include <sngcpp/parser/Function.hpp>
+[cpp]#include <sngcpp/parser/Identifier.hpp>
+[cpp]#include <sngcpp/parser/TypeExpr.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
 
-using namespace CppLexerTokens;
+using namespace CppTokens;
+using namespace soulng::lexer;
 
 parser api(SNGCPP_PARSER_API) TemplateParser
 {
     uselexer CppLexer;
 
-    TemplateId(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
-        ::= empty
+    using IdentifierParser.Identifier;
+    using DeclarationParser.Declaration;
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.ConditionalExpression;
+    using FunctionParser.ParameterDeclaration;
+    using TypeExprParser.TypeExpr;
+
+    TemplateDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TEMPLATE{ s = span; } LANGLE TemplateParameterList(ctx):templateParameterList RANGLE! Declaration(ctx):declaration!
+        {
+            s.end = span.end;
+            return new sngcpp::ast::TemplateDeclarationNode(s, templateParameterList, declaration);
+        }
         ;
 
-    SimpleTemplateId(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
-        ::= empty
+    TemplateParameterList(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> node, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   TemplateParameter(ctx):left{ s = span; node.reset(left); }
+            (COMMA TemplateParameter(ctx):right{ s.end = span.end; node.reset(new sngcpp::ast::TemplateParameterSequenceNode(s, node.release(), right)); })*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    TemplateParameter(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= TypeParameter(ctx):typeParam{ return typeParam; }
+        |   ParameterDeclaration(ctx):paramDeclaration{ return paramDeclaration; }
+        ;
+
+    TypeParameter(sngcpp::cppparser::ParsingContext* ctx, var bool typenameUsed, var Span s) : sngcpp::ast::Node*
+        ::= ((CLASS{ s = span; typenameUsed = false; } | TYPENAME{ s = span; typenameUsed = true; }) Identifier:id{ s.end = span.end; } (ASSIGN TypeExpr(ctx):typeExpr{ s.end = span.end; })?)
+        {
+            return new sngcpp::ast::TypeParameterNode(s, id, typeExpr, typenameUsed);
+        }
+        ;
+
+    SimpleTemplateId(sngcpp::cppparser::ParsingContext* ctx, var int arity, var Span s) : sngcpp::ast::Node*
+        ::=
+        (   TemplateName:templateName{ s = span; }
+            LANGLE{ ++lexer.langleCount; ctx->BeginParsingTemplateId(); }
+            TemplateArgumentList(ctx, &arity):args?
+            RANGLE{ --lexer.langleCount; ctx->EndParsingTemplateId(); } / { --lexer.langleCount; ctx->EndParsingTemplateId(); }
+        )
+        {
+            s.end = span.end;
+            return new sngcpp::ast::TemplateIdNode(s, templateName, args, arity);
+        }
+        ;
+
+    TemplateId(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= SimpleTemplateId(ctx):simpleTemplateId{ return simpleTemplateId; }
+        ;
+
+    TemplateName : sngcpp::ast::IdentifierNode*
+        ::= Identifier:id{ return new sngcpp::ast::IdentifierNode(span, id); }
+        ;
+
+    TemplateArgumentList(sngcpp::cppparser::ParsingContext* ctx, int* arity, var std::unique_ptr<sngcpp::ast::Node> arg) : sngcpp::ast::Node*
+        ::=
+        (   TemplateArgument(ctx):left{ arg.reset(new sngcpp::ast::TemplateArgumentNode(span, left)); ++*arity; }
+            (COMMA TemplateArgument(ctx):right{ arg.reset(new sngcpp::ast::TemplateArgumentSequenceNode(span, arg.release(), new sngcpp::ast::TemplateArgumentNode(span, right))); ++*arity; })*
+        )
+        {
+            return arg.release();
+        }
+        ;
+
+    TemplateArgument(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
+        ::= TypeExpr(ctx):typeExpr{ return typeExpr; }
+        |   ConditionalExpression(ctx):condExpr{ return condExpr; }
+        ;
+
+    ExplicitInstantiation(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TEMPLATE{ s = span; } Declaration(ctx):declaration{ s.end = span.end; return new sngcpp::ast::ExplicitInstantiationNode(s, declaration); }
+        ;
+
+    ExplicitSpecialization(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
+        ::= TEMPLATE{ s = span; } LANGLE RANGLE Declaration(ctx):declaration{ s.end = span.end; return new sngcpp::ast::ExplicitSpecializationNode(s, declaration); }
         ;
 }

@@ -12,9 +12,13 @@ class CppLexer;
 
 struct SNGCPP_PARSER_API DeclaratorParser
 {
+    static soulng::parser::Match InitDeclarator(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match Declarator(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match Initializer(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match BraceOrEqualInitializer(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
+    static soulng::parser::Match BracedInitializerList(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
     static soulng::parser::Match InitializerClause(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
     static soulng::parser::Match InitializerList(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
-    static soulng::parser::Match BracedInitializerList(CppLexer& lexer, sngcpp::cppparser::ParsingContext* ctx);
 };
 
 #endif // DECLARATOR_HPP

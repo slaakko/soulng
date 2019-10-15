@@ -314,15 +314,6 @@ void CppCastExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-SimpleTypeCastExpressionNode::SimpleTypeCastExpressionNode(const Span& span_, SimpleTypeNode* simpleType_, Node* expr_) : Node(span_), simpleType(simpleType_), expr(expr_)
-{
-}
-
-void SimpleTypeCastExpressionNode::Accept(Visitor& visitor)
-{
-    visitor.Visit(*this);
-}
-
 TypeIdExpressionNode::TypeIdExpressionNode(const Span& span_, Node* subject_) : UnaryNode(span_, subject_)
 {
 }
@@ -544,6 +535,82 @@ ParenthesizedExprNode::ParenthesizedExprNode(const Span& span_, Node* expr_) : U
 }
 
 void ParenthesizedExprNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+LambdaExpressionNode::LambdaExpressionNode(const Span& span_) : Node(span_)
+{
+}
+
+void LambdaExpressionNode::AddCapture(Node* capture)
+{
+    if (captures)
+    {
+        captures.reset(new CaptureSequenceNode(capture->GetSpan(), captures.release(), capture));
+    }
+    else
+    {
+        captures.reset(capture);
+    }
+}
+
+void LambdaExpressionNode::SetParameters(Node* parameters_)
+{
+    parameters.reset(parameters_);
+}
+
+void LambdaExpressionNode::SetBody(CompoundStatementNode* body_)
+{
+    body.reset(body_);
+}
+
+void LambdaExpressionNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+CaptureSequenceNode::CaptureSequenceNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+{
+}
+
+void CaptureSequenceNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+AssignCapture::AssignCapture(const Span& span_) : Node(span_)
+{
+}
+
+void AssignCapture::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+RefCapture::RefCapture(const Span& span_) : Node(span_)
+{
+}
+
+void RefCapture::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+ThisCapture::ThisCapture(const Span& span_) : Node(span_)
+{
+}
+
+void ThisCapture::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+IdentifierCapture::IdentifierCapture(const Span& span_, IdentifierNode* id_) : UnaryNode(span_, id_)
+{
+}
+
+void IdentifierCapture::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }

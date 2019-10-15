@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="parser">
+    <vcxproject file="../../../../soulng/parser/parser.vcxproj"/>
+    <include path="../.."/>
+  </project>
+  <filter>
+  </filter>
+</gendoc>

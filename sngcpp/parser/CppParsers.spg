@@ -1,8 +1,14 @@
 project CppParsers;
+source <Class.parser>;
+source <Declaration.parser>;
 source <Declarator.parser>;
+source <Enumeration.parser>;
 source <Expression.parser>;
+source <Function.parser>;
 source <Identifier.parser>;
 source <SimpleType.parser>;
+source <SourceFile.parser>;
+source <Statement.parser>;
 source <Literal.parser>;
 source <Template.parser>;
 source <TypeExpr.parser>;

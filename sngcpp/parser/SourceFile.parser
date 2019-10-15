@@ -1,0 +1,30 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[hpp]#include <sngcpp/parser/ParsingContext.hpp>
+[hpp]#include <sngcpp/parser/Declaration.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) SourceFileParser
+{
+    uselexer CppLexer;
+    main;
+
+    using DeclarationParser.Declaration;
+
+    SourceFile(sngcpp::ast::SourceFileNode* sourceFile, var sngcpp::cppparser::ParsingContext ctx)
+        ::= empty{ ctx.SetSourceFileNode(sourceFile); }
+            Declarations(&ctx, sourceFile->GlobalNs()):declarations
+        ;
+
+    Declarations(sngcpp::cppparser::ParsingContext* ctx, sngcpp::ast::NamespaceNode* ns)
+        ::= (Declaration(ctx):declaration{ ns->AddMember(span, declaration); })*
+        ;
+}

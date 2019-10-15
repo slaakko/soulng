@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <import project="util"/>
+  <import project="cppcode"/>
+  <import project="lexer"/>
+  <import project="parser"/>
+  <import project="rex"/>
+  <import project="slg"/>
+  <import project="spg"/>
+</gendoc>

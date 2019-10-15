@@ -19,6 +19,7 @@ struct SOULNG_LEXER_API Token
 {
     Token() : id(INVALID_TOKEN), match(), line(1) { }
     Token(int id_) : id(id_), match(), line(1) { }
+    Token(int id_, const Lexeme& match_, int line_) : id(id_), match(match_), line(line_) { }
     int id;
     Lexeme match;
     int line;
