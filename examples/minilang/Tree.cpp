@@ -1,5 +1,6 @@
 #include <minilang/Tree.hpp>
 #include <minilang/Visitor.hpp>
+#include <stdexcept>
 
 namespace minilang {
 

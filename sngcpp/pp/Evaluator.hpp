@@ -7,6 +7,7 @@
 #define SNGCPP_PP_EVALUATOR_INCLUDED
 #include <sngcpp/pp/PPApi.hpp>
 #include <sngcpp/ast/Visitor.hpp>
+#include <string>
 #include <map>
 #include <memory>
 #include <vector>

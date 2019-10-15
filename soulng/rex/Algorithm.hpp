@@ -6,6 +6,7 @@
 #ifndef SOULNG_REX_ALGORITHM_INCLUDED
 #define SOULNG_REX_ALGORITHM_INCLUDED
 #include <soulng/rex/RexApi.hpp>
+#include <string>
 #include <vector>
 
 namespace soulng { namespace rex {

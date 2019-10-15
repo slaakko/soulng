@@ -8,6 +8,7 @@
 #include <sngcpp/ast/Enumeration.hpp>
 #include <sngcpp/ast/Literal.hpp>
 #include <functional>
+#include <stdexcept>
 
 namespace sngcpp { namespace pp {
 
