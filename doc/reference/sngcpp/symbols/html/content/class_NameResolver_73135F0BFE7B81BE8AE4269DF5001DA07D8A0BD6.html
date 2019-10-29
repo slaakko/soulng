@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>NameResolver Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_LambdaExpressionSymbol_18B7D83302A73F8DB16D599B39A49C9724862CF6.html">prev</a>
+         | <a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html">next</a>
+        <hr/>
+        <h1>NameResolver Class</h1>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#14">14</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::u32string>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html#function_NameSequence_F72AED494CD6CDF810D207B000C0CBDF6B71DBD4">NameSequence</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html#function_Visit_4379234F12ACE390D26148869438AA7BD2B536AB">Visit</a>(IdentifierNode&amp; identifierNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html#function_Visit_774A9070C57D8A5C4405A31004B2A6F7FE54DC84">Visit</a>(NestedIdNode&amp; nestedIdNode) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_nameSequence_8023B7EC47A79F846C7DCF41D6F2977C22FAA7E1">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nameSequence</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_NameSequence_F72AED494CD6CDF810D207B000C0CBDF6B71DBD4">NameSequence Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::u32string>&amp; sngcpp::symbols::NameResolver::NameSequence() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#19">19</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">nameSequence</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_C402F7B54A8F52FA84FD772ED61E2944743E99AD">sngcpp::symbols::Scope::Lookup</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_4379234F12ACE390D26148869438AA7BD2B536AB">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::NameResolver::Visit(IdentifierNode&amp; identifierNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#24">24</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html#variable_nameSequence_8023B7EC47A79F846C7DCF41D6F2977C22FAA7E1">nameSequence</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">identifierNode</span><span class="other">.</span><span class="identifier">Identifier</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#17">17</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_774A9070C57D8A5C4405A31004B2A6F7FE54DC84">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::NameResolver::Visit(NestedIdNode&amp; nestedIdNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#29">29</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#18">18</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_LambdaExpressionSymbol_18B7D83302A73F8DB16D599B39A49C9724862CF6.html">prev</a>
+         | <a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html">next</a>
+    </body>
+</html>

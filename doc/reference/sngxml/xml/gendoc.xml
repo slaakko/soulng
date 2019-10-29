@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="xml">
+    <vcxproject file="../../../../sngxml/xml/xml.vcxproj"/>
+    <documentation file="docs.xml"/>
+    <include path="../.."/>
+    <imports>
+      <import project="../../soulng/util"/>
+      <import project="../../soulng/lexer"/>
+    </imports>
+  </project>
+  <filter>
+    <file exclude="XmlParser.cpp"/>
+    <file exclude="XmlParser.hpp"/>
+  </filter>
+</gendoc>

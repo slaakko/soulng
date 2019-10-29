@@ -1,0 +1,288 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Enumeration.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Visitor.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Writer.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Reader.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">&nbsp;10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">ast</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html#function_ToString_257DC3CAA273E34AB2494847823B36F5C3AA364A">ToString</a><span class="other">(</span><a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html">EnumKey</a>&nbsp;<span class="identifier">enumKey</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">switch&nbsp;</span><span class="other">(</span><span class="identifier">enumKey</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html">EnumKey</a><span class="other">::</span><a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html#enumerator_enumClass__9A1A8142FBF34C61FB1B3208318761AF2308104B">enumClass_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"enum&nbsp;class"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html">EnumKey</a><span class="other">::</span><a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html#enumerator_enumStruct__321D2CF7D03DF4772056B80BBA14BE43F01EE529">enumStruct_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"enum&nbsp;struct"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html">EnumKey</a><span class="other">::</span><a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html#enumerator_enum__239AFB05EB23F13DF53103FCBDAF27EC73C60E55">enum_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"enum"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html">EnumTypeNode</a><span class="other">::</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#constructor_EnumTypeNode_841992763D34E8DC960DD9A47858035AF989387A">EnumTypeNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_enumTypeNode_226063240145512B29091827AE432AFC150E8327">enumTypeNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumKey_426EC08AB99B912EEF7777527881FC7E0C874AF0">enumKey</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html">EnumTypeNode</a><span class="other">::</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#constructor_EnumTypeNode_DEFC5D8C96D2EF5BC1FA06016FB0E4BCCC37AEFC">EnumTypeNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html">EnumKey</a>&nbsp;<span class="identifier">enumKey_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">enumName_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">enumBase_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_enumTypeNode_226063240145512B29091827AE432AFC150E8327">enumTypeNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumKey_426EC08AB99B912EEF7777527881FC7E0C874AF0">enumKey</a><span class="other">(</span><span class="identifier">enumKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumName_A0237523FDCC4B182D824C67ADA1CD4424D131B4">enumName</a><span class="other">(</span><span class="identifier">enumName_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumBase_2B0D49BECCC2F8975934CBAE308C89C0F93D1399">enumBase</a><span class="other">(</span><span class="identifier">enumBase_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html">EnumTypeNode</a><span class="other">::</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#function_Accept_AAD45D4D8091A7CCDC83C3586A709B80B1B87D4B">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_35B3462A83AF1C2A245575355860492F2F280AFE">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html">EnumTypeNode</a><span class="other">::</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#function_Write_C8C8DF68614E4D3F36F2AFE074F0A2314C2D90F7">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_C599A16A659BEB25B61F0E646CF33072BF55D26C">Write</a><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumKey_426EC08AB99B912EEF7777527881FC7E0C874AF0">enumKey</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumName_A0237523FDCC4B182D824C67ADA1CD4424D131B4">enumName</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumBase_2B0D49BECCC2F8975934CBAE308C89C0F93D1399">enumBase</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumBase_2B0D49BECCC2F8975934CBAE308C89C0F93D1399">enumBase</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumBase_2B0D49BECCC2F8975934CBAE308C89C0F93D1399">enumBase</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">Write</a><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_openBraceSpan_9D66E89B29EFA8686EF1A60C48088460FE25FBA5">openBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">Write</a><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_closeBraceSpan_4E9EF5D3F6E0407C85B926D235F027A63040DD99">closeBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html">EnumTypeNode</a><span class="other">::</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#function_Read_16842B2F56D9987C46DD265E5305C6ECEA2272F0">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumKey_426EC08AB99B912EEF7777527881FC7E0C874AF0">enumKey</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadEnumKey_0085E92431AC3B32C0C7FD227AE04E13EA8AAEB8">ReadEnumKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumName_A0237523FDCC4B182D824C67ADA1CD4424D131B4">enumName</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasEnumBase</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasEnumBase</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumBase_2B0D49BECCC2F8975934CBAE308C89C0F93D1399">enumBase</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasEnumerators</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasEnumerators</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_openBraceSpan_9D66E89B29EFA8686EF1A60C48088460FE25FBA5">openBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_closeBraceSpan_4E9EF5D3F6E0407C85B926D235F027A63040DD99">closeBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html">EnumTypeNode</a><span class="other">::</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#function_AddEnumerator_E20898F929194DEEB055CF87C3464DA6FA2302D9">AddEnumerator</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">enumerator_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html">EnumeratorSequenceNode</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">enumerator_</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#variable_enumerators_E00DAF0DB28CE66844E33B81360CE0549C61FF8A">enumerators</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">enumerator_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html">EnumeratorNode</a><span class="other">::</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#constructor_EnumeratorNode_6EC291347E6B375ECCD69D28BE7683018952EACE">EnumeratorNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_enumeratorNode_9156D1F1AF4693A02506F4D05F0368190DF46049">enumeratorNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html">EnumeratorNode</a><span class="other">::</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#constructor_EnumeratorNode_D230D99E8E873A7024C1F3956E0EB7A1039F3E81">EnumeratorNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">enumerator_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">value_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">valueStr_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_enumeratorNode_9156D1F1AF4693A02506F4D05F0368190DF46049">enumeratorNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_enumerator_9D7DB46FCE94FDBF8BAB8017271AAA23E0147254">enumerator</a><span class="other">(</span><span class="identifier">enumerator_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_value_12CA83EC6E64320C3693860BC502BC89F4DD9379">value</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_valueStr_3B1C8C3F2DD33F31C9C0CA5EC93EBA4CB9271A8A">valueStr</a><span class="other">(</span><span class="identifier">valueStr_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="95" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="96" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html">EnumeratorNode</a><span class="other">::</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#function_Accept_06985082B16879A7A011FFEE4078E45ABF4E76DF">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="97" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="98" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_76FDA752E82C463B5ECA80F77E7716F7140168DA">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="99" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="100" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="101" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html">EnumeratorNode</a><span class="other">::</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#function_Write_0AC06DF886A0CAB2AC27AE70F1BECC7CCA879392">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="102" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="103" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="104" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_enumerator_9D7DB46FCE94FDBF8BAB8017271AAA23E0147254">enumerator</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="105" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_value_12CA83EC6E64320C3693860BC502BC89F4DD9379">value</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="106" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_value_12CA83EC6E64320C3693860BC502BC89F4DD9379">value</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="107" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="108" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_value_12CA83EC6E64320C3693860BC502BC89F4DD9379">value</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="109" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="110" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_valueStr_3B1C8C3F2DD33F31C9C0CA5EC93EBA4CB9271A8A">valueStr</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="111" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">Write</a><span class="other">(</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_assignmentSignSpan_2C2308A3F032C67763D59208A1C1A62B371B0E9E">assignmentSignSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="112" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="113" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="114" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html">EnumeratorNode</a><span class="other">::</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#function_Read_91D784916A3DD4D372E16023974F33035D1C0085">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="115" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="116" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="117" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_enumerator_9D7DB46FCE94FDBF8BAB8017271AAA23E0147254">enumerator</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="118" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasValue</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="119" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasValue</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="120" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="121" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_value_12CA83EC6E64320C3693860BC502BC89F4DD9379">value</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="122" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="123" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_valueStr_3B1C8C3F2DD33F31C9C0CA5EC93EBA4CB9271A8A">valueStr</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="124" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><a href="../class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#variable_assignmentSignSpan_2C2308A3F032C67763D59208A1C1A62B371B0E9E">assignmentSignSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="125" xml:space="preserve"><span class="lineNumber">125</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="126" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="127" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;<a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html">EnumeratorSequenceNode</a><span class="other">::</span><a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html#constructor_EnumeratorSequenceNode_542F332602889601662367FAF14DF43D7FE4F1EB">EnumeratorSequenceNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_enumeratorSequenceNode_24FBF16F8FDFA101B2CF29E1BFDA1E82BE2D9C1E">enumeratorSequenceNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="128" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="129" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="130" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="131" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;<a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html">EnumeratorSequenceNode</a><span class="other">::</span><a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html#constructor_EnumeratorSequenceNode_C2961DCD7F58262676E5E0B676FC9BFDF44B36A8">EnumeratorSequenceNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">left_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">right_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_enumeratorSequenceNode_24FBF16F8FDFA101B2CF29E1BFDA1E82BE2D9C1E">enumeratorSequenceNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="132" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="133" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="134" xml:space="preserve"><span class="lineNumber">134</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="135" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html">EnumeratorSequenceNode</a><span class="other">::</span><a href="../class_EnumeratorSequenceNode_73ACB424CE484448001A1D5E3F05742EC9689138.html#function_Accept_9565FA8B9BA0AA424046725BE8D9033A7FA2AD1A">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="136" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="137" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_2E1020B63D344C9E07507B61EDEB336D0004D46E">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="138" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="139" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="140" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::ast</span></span>
+  <br/>
+ </body>
+</html>

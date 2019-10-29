@@ -1,0 +1,88 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SNGCPP_SYMBOLS_CLASS_TEMPLATE_SPECIALIZATION_SYMBOL_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SNGCPP_SYMBOLS_CLASS_TEMPLATE_SPECIALIZATION_SYMBOL_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/symbols/ClassTypeSymbol.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Template.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">symbols</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html#function_MakeClassTemplateSpecializationId_FBFA2C745312D53AA5192F1CDCEFB845900F6A6D">MakeClassTemplateSpecializationId</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">primaryClassTemplateSymbol</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateArgumentSymbols</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html#function_MakeClassTemplateSpecializationName_AFF7508D16CBE8220186067A8799CD0F48B0E2EC">MakeClassTemplateSpecializationName</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">primaryClassTemplateSymbol</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateArgumentSymbols</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html">ClassTemplateSpecializationSymbol</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#constructor_ClassTemplateSpecializationSymbol_D8C982CCCD0900404F0F3B0D1C6F1924F69698FA">ClassTemplateSpecializationSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">primaryClassTemplateSymbol_</span><span class="other">,&nbsp;</span><span class="type">TemplateIdNode</span><span class="other">*</span>&nbsp;<span class="identifier">templateIdNode_</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateArgumentSymbols_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="type">Node</span><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateArgumentNodes_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">id_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_IsClassTemplateSpecializationSymbol_9F3DF1F3F32578E9B638C56943EAAE74DDC54420">IsClassTemplateSpecializationSymbol</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_HasBaseClass_09BEFE8F1CD958D4949E41C6FD93FFEFE7CB9A12">HasBaseClass</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">type</span><span class="other">,&nbsp;</span><span class="kw">int</span><span class="other">&amp;</span>&nbsp;<span class="identifier">distance</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">ClassKey</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_GetClassKey_249FF928A3C04E628230B7F312D30F67BB292B1E">GetClassKey</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">primaryClassTemplateSymbol</span><span class="other">-></span><span class="identifier">GetClassKey</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_PrimaryClassTemplateSymbol_8177F5DA24E285F82B4695850431CBD4E6CB68D0">PrimaryClassTemplateSymbol</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">primaryClassTemplateSymbol</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">TemplateIdNode</span><span class="other">*</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_GetTemplateIdNode_E96157A23E4B3019000200553ED3A18E7886390D">GetTemplateIdNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">templateIdNode</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_TemplateArgumentSymbols_4DD6009ECE28F7A2DB19AD866AD85EBED59CD579">TemplateArgumentSymbols</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">templateArgumentSymbols</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="type">Node</span><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_TemplateArgumentNodes_09F8C6E78BA9DEE8C8491A41A23C01ED9C6B5524">TemplateArgumentNodes</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">templateArgumentNodes</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_CreateElement_3DA4F6683FAF5CA08EA54628BEC65D7086330D03">CreateElement</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_Id_E53EDACB6DF4A2188DDCEEE6ED9DD308C034A4FC">Id</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">id</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">primaryClassTemplateSymbol</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">TemplateIdNode</span><span class="other">*</span>&nbsp;<span class="identifier">templateIdNode</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">templateArgumentSymbols</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="type">Node</span><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">templateArgumentNodes</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::symbols</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNGCPP_SYMBOLS_CLASS_TEMPLATE_SPECIALIZATION_SYMBOL_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

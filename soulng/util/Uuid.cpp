@@ -28,5 +28,5 @@ void IntsToUuid(uint64_t int1, uint64_t int2, boost::uuids::uuid& id)
     *i64++ = int1;
     *i64 = int2;
 }
-
+ 
 } } // namespace soulng::util

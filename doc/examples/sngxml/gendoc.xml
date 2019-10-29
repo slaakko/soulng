@@ -1,0 +1,7 @@
+<gendoc>
+  <project name="sngxmlexamples">
+  </project>
+  <child project="xml"/>
+  <child project="dom"/>
+  <child project="xpath"/>
+</gendoc>

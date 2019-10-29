@@ -1,0 +1,251 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ParameterSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html">prev</a>
+         | <a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html">next</a>
+        <hr/>
+        <h1>ParameterSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#14">14</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#constructor_ParameterSymbol_8D6976DD83707F8E7E7CC531C59AFD37E8293132">ParameterSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_CreateElement_77938B4C4F03960CF7175A0EE332AE244F70C752">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_GetType_013AA28774995A99067884F9349BB4AE52055FEE">GetType</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">IdStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IsParameterSymbol_167190A8913EDF4233708600B3F433A21FBDC147">IsParameterSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_KindStr_A330D81264D72EBC3C621C626DFA64C4771A92A0">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_SetType_1C5A8E78DBBD31120887103693DE05ED40FFDF18">SetType</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* type_)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">type</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ParameterSymbol_8D6976DD83707F8E7E7CC531C59AFD37E8293132">ParameterSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::ParameterSymbol::ParameterSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.cpp_7825B1C47E7B0FD75B79190110E325BA6413F007.html#14">14</a>
+             of <a href="file/ParameterSymbol.cpp_7825B1C47E7B0FD75B79190110E325BA6413F007.html">ParameterSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">type</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#17">17</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CreateElement_77938B4C4F03960CF7175A0EE332AE244F70C752">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::ParameterSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.cpp_7825B1C47E7B0FD75B79190110E325BA6413F007.html#34">34</a>
+             of <a href="file/ParameterSymbol.cpp_7825B1C47E7B0FD75B79190110E325BA6413F007.html">ParameterSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">parameterElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"parameter"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parameterElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"type"</span><span class="other">,&nbsp;</span><a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">type</a><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parameterElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#20">20</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetType_013AA28774995A99067884F9349BB4AE52055FEE">GetType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::ParameterSymbol::GetType() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#22">22</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">type</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetType_EB05CD37379610821205706D48043CBB476E66C6">sngcpp::symbols::Symbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_GetFunctionDeclaration_CBCD8FA4EF5EB6E7A4D96691639542456514E65B">sngcpp::symbols::FunctionGroupSymbol::GetFunctionDeclaration</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_42927DD553AD60AA77C1E500920851EA72F6214D">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">sngcpp::symbols::FunctionSymbol::IdStr</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">IdStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::ParameterSymbol::IdStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.cpp_7825B1C47E7B0FD75B79190110E325BA6413F007.html#18">18</a>
+             of <a href="file/ParameterSymbol.cpp_7825B1C47E7B0FD75B79190110E325BA6413F007.html">ParameterSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#19">19</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">sngcpp::symbols::Symbol::IdStr</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Index_02ACEF482CD72C091A6B0A7ADEEF470A2B5A8B04">sngcpp::symbols::FunctionSymbol::Index</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">sngcpp::symbols::Symbol::IdStr</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">sngcpp::symbols::Symbol::IsFunctionSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">sngcpp::symbols::Symbol::Parent</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsParameterSymbol_167190A8913EDF4233708600B3F433A21FBDC147">IsParameterSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::ParameterSymbol::IsParameterSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#21">21</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsParameterSymbol_CC7D265F4C87A4CD4E56488EE25210447AB36BDA">sngcpp::symbols::Symbol::IsParameterSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_A330D81264D72EBC3C621C626DFA64C4771A92A0">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::ParameterSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#18">18</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"parameter"</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetType_1C5A8E78DBBD31120887103693DE05ED40FFDF18">SetType Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::ParameterSymbol::SetType(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * type_)</h4>
+        <span>
+            Definition at line <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html#23">23</a>
+             of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">type</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">type_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html">prev</a>
+         | <a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html">next</a>
+    </body>
+</html>

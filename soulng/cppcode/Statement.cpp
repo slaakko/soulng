@@ -612,7 +612,7 @@ void ForRangeDeclaration::Accept(Visitor& visitor)
 }
 
 RangeForStatement::RangeForStatement(ForRangeDeclaration* declaration_, CppObject* container_, Statement* statement_) :
-    Statement(U"forRangeStatement"), declaration(declaration_), container(container_), statement(statement_)
+    IterationStatement(U"forRangeStatement"), declaration(declaration_), container(container_), statement(statement_)
 {
     statement->SetParent(this);
     Own(declaration);

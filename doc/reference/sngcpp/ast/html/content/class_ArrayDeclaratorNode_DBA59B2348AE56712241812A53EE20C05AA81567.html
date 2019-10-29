@@ -1,0 +1,293 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ArrayDeclaratorNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_AndExpressionNode_EAA6E87D0F37B6C3E51FF2229988ECACD7CB19B1.html">prev</a>
+         | <a href="class_ArrowNode_D5F4EE9F04DA45CFBDA007DF3BB38425574A9348.html">next</a>
+        <hr/>
+        <h1>ArrayDeclaratorNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#26">26</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#constructor_ArrayDeclaratorNode_56EA5DDEDD223709C6A1746C2898DF77C3DE0884">ArrayDeclaratorNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#constructor_ArrayDeclaratorNode_95B1B9E463F8B22C7137806890B7C75E3F664F8B">ArrayDeclaratorNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* declarator_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* size_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Accept_FAC27084F6E6D36FDFD27C587E58F7BD104E060C">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Declarator_8D014ABED01C1E25FD61EBB9B5785583A4352FC0">Declarator</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Read_2D01EF8C22AE7AA6CF71FE480CDE0B92D995DFD8">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Size_710C1593CEDE646703CFF79204D2644ECDA15DFD">Size</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Write_6C8B7EBFB81B103AFBA528BE64C20AF08B7667E0">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_declarator_597293EF89ACCC42472DBF62B7A6677BF25A58DE">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarator</td>
+            </tr>
+            <tr id="variable_size_FEA9946AAFC84E1CEFB2A27AE9D8E303A523BA93">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">size</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ArrayDeclaratorNode_56EA5DDEDD223709C6A1746C2898DF77C3DE0884">ArrayDeclaratorNode Constructor</h3>
+        <h4>
+            sngcpp::ast::ArrayDeclaratorNode::ArrayDeclaratorNode()</h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#39">39</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_arrayDeclaratorNode_68B2BC330950811D8BF48F259C3F83A93099F7FF">arrayDeclaratorNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#29">29</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_ArrayDeclaratorNode_95B1B9E463F8B22C7137806890B7C75E3F664F8B">ArrayDeclaratorNode Constructor</h3>
+        <h4>
+            sngcpp::ast::ArrayDeclaratorNode::ArrayDeclaratorNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * declarator_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * size_)</h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#43">43</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_arrayDeclaratorNode_68B2BC330950811D8BF48F259C3F83A93099F7FF">arrayDeclaratorNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_declarator_597293EF89ACCC42472DBF62B7A6677BF25A58DE">declarator</a><span class="other">(</span><span class="identifier">declarator_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_size_FEA9946AAFC84E1CEFB2A27AE9D8E303A523BA93">size</a><span class="other">(</span><span class="identifier">size_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#30">30</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_FAC27084F6E6D36FDFD27C587E58F7BD104E060C">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::ArrayDeclaratorNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#47">47</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_5AC5D99073E063308E84FA33507C745D99C5132D">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#31">31</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_5AC5D99073E063308E84FA33507C745D99C5132D">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Declarator_8D014ABED01C1E25FD61EBB9B5785583A4352FC0">Declarator Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::ArrayDeclaratorNode::Declarator()</h4>
+        <span>
+            Definition at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#34">34</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarator</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_2D01EF8C22AE7AA6CF71FE480CDE0B92D995DFD8">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::ArrayDeclaratorNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#63">63</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_declarator_597293EF89ACCC42472DBF62B7A6677BF25A58DE">declarator</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasSize</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasSize</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_size_FEA9946AAFC84E1CEFB2A27AE9D8E303A523BA93">size</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#33">33</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Size_710C1593CEDE646703CFF79204D2644ECDA15DFD">Size Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::ArrayDeclaratorNode::Size()</h4>
+        <span>
+            Definition at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#35">35</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">size</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_6C8B7EBFB81B103AFBA528BE64C20AF08B7667E0">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::ArrayDeclaratorNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#52">52</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_declarator_597293EF89ACCC42472DBF62B7A6677BF25A58DE">declarator</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_size_FEA9946AAFC84E1CEFB2A27AE9D8E303A523BA93">size</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_size_FEA9946AAFC84E1CEFB2A27AE9D8E303A523BA93">size</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#variable_size_FEA9946AAFC84E1CEFB2A27AE9D8E303A523BA93">size</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#32">32</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_AndExpressionNode_EAA6E87D0F37B6C3E51FF2229988ECACD7CB19B1.html">prev</a>
+         | <a href="class_ArrowNode_D5F4EE9F04DA45CFBDA007DF3BB38425574A9348.html">next</a>
+    </body>
+</html>

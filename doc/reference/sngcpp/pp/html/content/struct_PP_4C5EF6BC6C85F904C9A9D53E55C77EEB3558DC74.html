@@ -1,0 +1,759 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>PP Struct</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_pp_F064E4B780601768159C53EC012AB3AFEFE76BF4.html">up</a>
+         | <a href="struct_File_2F12EC24FA653C9D7249D618392EEEF76E32E99C.html">prev</a>
+         | <a href="class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html">next</a>
+        <hr/>
+        <h1>PP Struct</h1>
+        <span>
+            Definition at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#20">20</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#constructor_PP_DFD3CE1A18684AD7E7A51B14F169162DA923D476">PP</a>(EvaluationContext&amp; context_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#constructor_PP_C0B8241D4D27A49CFBFD623A7780DAF7CD8D20D7">PP</a>(<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#constructor_PP_910F96853AF90E2CD32B6094ABFB0BDB9D975ED8">PP</a>(<span class="kw">const </span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;soulng::lexer::Token>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_BeginDefine_1458ED765DCB1C3E0913E354F0303BE4CFF477D0">BeginDefine</a>(<span class="kw">const </span>soulng::lexer::Lexeme&amp; id)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Define_A2CB6CB771C3F7D0F011FBC004F7C58373CEC0D9">Define</a>(<span class="kw">const </span>soulng::lexer::Lexeme&amp; lexeme)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Elif_8345ECA9E635359E4311A688C1082D7DCC0DC3E2">Elif</a>(<span class="kw">const </span>std::vector&lt;soulng::lexer::Token>&amp; exprPPTokens)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Else_7158E5F42E2BB2CE3F2CBBA9536E82A71F15AD1F">Else</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Emit_67254C1D170383FF90432A02061D4AF941EB1313">Emit</a>(<span class="kw">const </span><span class="kw">char32_t</span>* s)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Emit_77D3081F2E3B3FDF027B61A74159582AFDDB8F1A">Emit</a>(<span class="kw">const </span><span class="kw">char32_t</span>* s, <span class="kw">const </span>soulng::lexer::Lexeme&amp; lexeme, <span class="kw">int</span> tokenID)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Emit_CF613FBE4FFAFC745C3D7908DBD1C2A621CFE3E4">Emit</a>(<span class="kw">const </span>soulng::lexer::Lexeme&amp; lexeme)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_EndDefine_7AABD735BE0CDF0B0B1FE1E8796C0FB5438F797F">EndDefine</a>(std::vector&lt;soulng::lexer::Token>&amp; tokens)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Endif_4474DFA1CA6DF1BFC686E7E13D28A584496852D5">Endif</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Evaluate_1C2F59E449EEF83603B4F62D3C3138A0E99EDC2A">Evaluate</a>(<span class="kw">const </span>std::vector&lt;soulng::lexer::Token>&amp; exprPPTokens) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_If_6706DD2009E0B7CA7290765BC4FD24EB2D989757">If</a>(<span class="kw">const </span>std::vector&lt;soulng::lexer::Token>&amp; exprPPTokens)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Ifdef_F751E4A0A2C220712B256303724B407CCFD27013">Ifdef</a>(<span class="kw">bool</span> defined)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Ifndef_6DF5E24B2D34CF57F5CE4F2D40DC0C6F77ACD34E">Ifndef</a>(<span class="kw">bool</span> defined)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Include_7B924E6B0A9F0DEB3143378C1CBC8E272A10BF6B">Include</a>(<span class="kw">bool</span> isAngleHeader, <span class="kw">const </span>std::string&amp; headerName)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_IsDefined_A8ACE7938C180E948DDECA7443295F0F46E01559">IsDefined</a>(<span class="kw">const </span>soulng::lexer::Lexeme&amp; lexeme) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_IsKeywordToken_82B07880504D0AA2B052825F35299FB96AE10ECB">IsKeywordToken</a>(<span class="kw">const </span>soulng::lexer::Token&amp; token) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_IsProjectHeaderFile_2224D5F0CC2F51C6FD7539F7D19E2B44073AB919">IsProjectHeaderFile</a>(<span class="kw">const </span>std::string&amp; headerFilePath) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_operator_assign_5066CAF5F3C04A2C1AA979A36708A827E9B65D42">operator=</a>(<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_operator_assign_27813F37246FD7A68A756A2792B7805AD80351AF">operator=</a>(<span class="kw">const </span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_context_DD5C90F8743BD19901416F6BA11080C0135732AC">
+                <td class="functionTableFirstCol" xml:space="preserve">EvaluationContext&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">context</td>
+            </tr>
+            <tr id="variable_ctext_66C70E93B41FD935981D7E1613CECBFC8EF216EC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">ctext</td>
+            </tr>
+            <tr id="variable_elseGroupProcessed_B66399187A7E76BDCE8266B8A0B2AD632B5F508C">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">elseGroupProcessed</td>
+            </tr>
+            <tr id="variable_elseGroupProcessedStack_47700065ECF61935DB50362BEF5B3B86B34F8ED7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::stack&lt;<span class="kw">bool</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">elseGroupProcessedStack</td>
+            </tr>
+            <tr id="variable_fileIndex_74B51CE137933A08DE5D34921FAE1DD79C657434">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileIndex</td>
+            </tr>
+            <tr id="variable_fileName_65F65FCED534EAAA947EF5587E1DC020D1A78EFD">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileName</td>
+            </tr>
+            <tr id="variable_files_F866236A9D157F17E2C34E406D100CE35EFF5350">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./struct_File_2F12EC24FA653C9D7249D618392EEEF76E32E99C.html">File</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">files</td>
+            </tr>
+            <tr id="variable_headerFilePaths_4BA99053A608427D20A54C5FFDF664946F90934F">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">headerFilePaths</td>
+            </tr>
+            <tr id="variable_inIfGroup_6C876750C9D3548F267679F475B773E43E33F4EB">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">inIfGroup</td>
+            </tr>
+            <tr id="variable_inIfGroupStack_B08B91094B31E8944771D66D5C4C431D00432D0F">
+                <td class="functionTableFirstCol" xml:space="preserve">std::stack&lt;<span class="kw">bool</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">inIfGroupStack</td>
+            </tr>
+            <tr id="variable_includePath_DEECEB2E7A8EED39C684083079D1E78D3412CA57">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">includePath</td>
+            </tr>
+            <tr id="variable_line_CB2D672698E891E37B3BEE72B8E69E5A577FC7D9">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">line</td>
+            </tr>
+            <tr id="variable_macroMap_52148CA062E3EA7CD4BDF1CF0D8CDA6BB73B9566">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;soulng::lexer::Lexeme, std::vector&lt;soulng::lexer::Token>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">macroMap</td>
+            </tr>
+            <tr id="variable_process_C792A70CFE9BCB61BC754144A4BD9EAC036AA72A">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">process</td>
+            </tr>
+            <tr id="variable_processStack_4D986BD0C64910F04B0D53156ECB62F2D2C1136B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::stack&lt;<span class="kw">bool</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">processStack</td>
+            </tr>
+            <tr id="variable_processed_505AA2E9E5F781EFA1478D33F9EAADD479E7023A">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">processed</td>
+            </tr>
+            <tr id="variable_processedStack_A919DDA2EFA89FA8C995236BE17C136FBD3D2388">
+                <td class="functionTableFirstCol" xml:space="preserve">std::stack&lt;<span class="kw">bool</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">processedStack</td>
+            </tr>
+            <tr id="variable_projectHeaderFileSet_CA68F3B6A6324BB067A2EA79BFB00127324E443F">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html">ProjectHeaderFileSet</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectHeaderFileSet</td>
+            </tr>
+            <tr id="variable_root_5A8181A6E98454CE79EB3D854FD4002395F0C0AE">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">root</td>
+            </tr>
+            <tr id="variable_rootMode_814C6756799832181A7E8233450BEA26BF63D620">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">rootMode</td>
+            </tr>
+            <tr id="variable_save_85B84C13BDAC42FB296D1C6D264106CFE87DB2EE">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">save</td>
+            </tr>
+            <tr id="variable_text_7A8C9A8172EA0CE0CE5EEE4DFDAF6CA118F13184">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">text</td>
+            </tr>
+            <tr id="variable_tokens_304E40F21D68AFC808B395E42DD0D85B90669523">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;soulng::lexer::Token>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">tokens</td>
+            </tr>
+            <tr id="variable_verbose_A9E3CFBBC312A250BE2CB2F19D5C1B3C95A891D5">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">verbose</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_PP_DFD3CE1A18684AD7E7A51B14F169162DA923D476">PP Constructor</h3>
+        <h4>
+            sngcpp::pp::PP::PP(EvaluationContext&amp; context_)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#329">329</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">329</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">330</span>&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_fileIndex_74B51CE137933A08DE5D34921FAE1DD79C657434">fileIndex</a><span class="other">(</span><span class="other">0</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_save_85B84C13BDAC42FB296D1C6D264106CFE87DB2EE">save</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_process_C792A70CFE9BCB61BC754144A4BD9EAC036AA72A">process</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_processed_505AA2E9E5F781EFA1478D33F9EAADD479E7023A">processed</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_elseGroupProcessed_B66399187A7E76BDCE8266B8A0B2AD632B5F508C">elseGroupProcessed</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_inIfGroup_6C876750C9D3548F267679F475B773E43E33F4EB">inIfGroup</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_verbose_A9E3CFBBC312A250BE2CB2F19D5C1B3C95A891D5">verbose</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">331</span>&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_projectHeaderFileSet_CA68F3B6A6324BB067A2EA79BFB00127324E443F">projectHeaderFileSet</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_root_5A8181A6E98454CE79EB3D854FD4002395F0C0AE">root</a><span class="other">(</span><span class="type">GetCurrentWorkingDirectory</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_line_CB2D672698E891E37B3BEE72B8E69E5A577FC7D9">line</a><span class="other">(</span><span class="other">1</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_context_DD5C90F8743BD19901416F6BA11080C0135732AC">context</a><span class="other">(</span><span class="identifier">context_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_rootMode_814C6756799832181A7E8233450BEA26BF63D620">rootMode</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_tokens_304E40F21D68AFC808B395E42DD0D85B90669523">tokens</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">332</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">333</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#22">22</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_PP_C0B8241D4D27A49CFBFD623A7780DAF7CD8D20D7">PP Constructor</h3>
+        <h4>
+            sngcpp::pp::PP::PP(<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#25">25</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_PP_910F96853AF90E2CD32B6094ABFB0BDB9D975ED8">PP Constructor</h3>
+        <h4>
+            sngcpp::pp::PP::PP(<span class="kw">const </span>
+            <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#24">24</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_BeginDefine_1458ED765DCB1C3E0913E354F0303BE4CFF477D0">BeginDefine Member Function</h3>
+        <h4>
+            std::vector&lt;soulng::lexer::Token>* sngcpp::pp::PP::BeginDefine(<span class="kw">const </span>
+            soulng::lexer::Lexeme&amp; id)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#339">339</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">340</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">341</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_process_C792A70CFE9BCB61BC754144A4BD9EAC036AA72A">process</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">342</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">343</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_macroMap_52148CA062E3EA7CD4BDF1CF0D8CDA6BB73B9566">macroMap</a><span class="other">[</span><span class="identifier">id</span><span class="other">]</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">344</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">345</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">346</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">347</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">348</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">349</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#28">28</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Define_A2CB6CB771C3F7D0F011FBC004F7C58373CEC0D9">sngcpp::pp::PP::Define</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Define_A2CB6CB771C3F7D0F011FBC004F7C58373CEC0D9">Define Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Define(<span class="kw">const </span>
+            soulng::lexer::Lexeme&amp; lexeme)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#360">360</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">361</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">362</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="type">Token</span><span class="other">></span><span class="other">*</span>&nbsp;<span class="identifier">def</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_BeginDefine_1458ED765DCB1C3E0913E354F0303BE4CFF477D0">BeginDefine</a><span class="other">(</span><span class="identifier">lexeme</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">363</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_EndDefine_7AABD735BE0CDF0B0B1FE1E8796C0FB5438F797F">EndDefine</a><span class="other">(</span><span class="other">*</span><span class="identifier">def</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">364</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#30">30</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_BeginDefine_1458ED765DCB1C3E0913E354F0303BE4CFF477D0">sngcpp::pp::PP::BeginDefine</a>
+            , <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_EndDefine_7AABD735BE0CDF0B0B1FE1E8796C0FB5438F797F">sngcpp::pp::PP::EndDefine</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Elif_8345ECA9E635359E4311A688C1082D7DCC0DC3E2">Elif Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Elif(<span class="kw">const </span>
+            std::vector&lt;soulng::lexer::Token>&amp; exprPPTokens)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#482">482</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#39">39</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Evaluate_1C2F59E449EEF83603B4F62D3C3138A0E99EDC2A">sngcpp::pp::PP::Evaluate</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Else_7158E5F42E2BB2CE3F2CBBA9536E82A71F15AD1F">Else Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Else()</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#503">503</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#40">40</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Emit_67254C1D170383FF90432A02061D4AF941EB1313">Emit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Emit(<span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * s)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#544">544</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">545</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">546</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_save_85B84C13BDAC42FB296D1C6D264106CFE87DB2EE">save</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">547</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">548</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="other">*</span><span class="identifier">s</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">549</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">550</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_text_7A8C9A8172EA0CE0CE5EEE4DFDAF6CA118F13184">text</a><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="other">*</span><span class="identifier">s</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">551</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">++</span><span class="identifier">s</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">552</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">553</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">554</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#42">42</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Emit_77D3081F2E3B3FDF027B61A74159582AFDDB8F1A">sngcpp::pp::PP::Emit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Emit_77D3081F2E3B3FDF027B61A74159582AFDDB8F1A">Emit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Emit(<span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * s, <span class="kw">const </span>
+            soulng::lexer::Lexeme&amp; lexeme, <span class="kw">int</span>
+             tokenID)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#570">570</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#44">44</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Emit_67254C1D170383FF90432A02061D4AF941EB1313">sngcpp::pp::PP::Emit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Emit_CF613FBE4FFAFC745C3D7908DBD1C2A621CFE3E4">Emit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Emit(<span class="kw">const </span>
+            soulng::lexer::Lexeme&amp; lexeme)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#556">556</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#43">43</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_EndDefine_7AABD735BE0CDF0B0B1FE1E8796C0FB5438F797F">EndDefine Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::EndDefine(std::vector&lt;soulng::lexer::Token>&amp; tokens)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#351">351</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">352</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">353</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_process_C792A70CFE9BCB61BC754144A4BD9EAC036AA72A">process</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">354</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">355</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="type">Token</span><span class="other">></span>&nbsp;<span class="identifier">textTokens</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./namespace_pp_F064E4B780601768159C53EC012AB3AFEFE76BF4.html#function_ConvertPPTokensToTextTokens_AE2A73777F13F45D8FC0A4D7678AF57E429B755E">ConvertPPTokensToTextTokens</a><span class="other">(</span><span class="identifier">tokens</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">356</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">swap</span><span class="other">(</span><span class="identifier">tokens</span><span class="other">,&nbsp;</span><span class="identifier">textTokens</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">357</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">358</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#29">29</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Define_A2CB6CB771C3F7D0F011FBC004F7C58373CEC0D9">sngcpp::pp::PP::Define</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Endif_4474DFA1CA6DF1BFC686E7E13D28A584496852D5">Endif Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Endif()</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#528">528</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#41">41</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Evaluate_1C2F59E449EEF83603B4F62D3C3138A0E99EDC2A">Evaluate Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::pp::PP::Evaluate(<span class="kw">const </span>
+            std::vector&lt;soulng::lexer::Token>&amp; exprPPTokens) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#426">426</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#35">35</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Elif_8345ECA9E635359E4311A688C1082D7DCC0DC3E2">sngcpp::pp::PP::Elif</a>
+            , <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_If_6706DD2009E0B7CA7290765BC4FD24EB2D989757">sngcpp::pp::PP::If</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_If_6706DD2009E0B7CA7290765BC4FD24EB2D989757">If Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::If(<span class="kw">const </span>
+            std::vector&lt;soulng::lexer::Token>&amp; exprPPTokens)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#443">443</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#36">36</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Evaluate_1C2F59E449EEF83603B4F62D3C3138A0E99EDC2A">sngcpp::pp::PP::Evaluate</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Ifdef_F751E4A0A2C220712B256303724B407CCFD27013">Ifdef Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Ifdef(<span class="kw">bool</span>
+             defined)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#456">456</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#37">37</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Ifndef_6DF5E24B2D34CF57F5CE4F2D40DC0C6F77ACD34E">Ifndef Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Ifndef(<span class="kw">bool</span>
+             defined)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#469">469</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#38">38</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Include_7B924E6B0A9F0DEB3143378C1CBC8E272A10BF6B">Include Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::PP::Include(<span class="kw">bool</span>
+             isAngleHeader, <span class="kw">const </span>
+            std::string&amp; headerName)</h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#386">386</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#34">34</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_IsProjectHeaderFile_2224D5F0CC2F51C6FD7539F7D19E2B44073AB919">sngcpp::pp::PP::IsProjectHeaderFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsDefined_A8ACE7938C180E948DDECA7443295F0F46E01559">IsDefined Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::pp::PP::IsDefined(<span class="kw">const </span>
+            soulng::lexer::Lexeme&amp; lexeme) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#366">366</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">367</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">368</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_macroMap_52148CA062E3EA7CD4BDF1CF0D8CDA6BB73B9566">macroMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">lexeme</span><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_macroMap_52148CA062E3EA7CD4BDF1CF0D8CDA6BB73B9566">macroMap</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">369</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#31">31</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsKeywordToken_82B07880504D0AA2B052825F35299FB96AE10ECB">IsKeywordToken Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::pp::PP::IsKeywordToken(<span class="kw">const </span>
+            soulng::lexer::Token&amp; token) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#371">371</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">372</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">373</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="type">KeywordMap</span><span class="other">*</span>&nbsp;<span class="identifier">keywordMap</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">CppKeywords</span><span class="other">::</span><span class="type">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">374</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">keywordMap</span><span class="other">-></span><span class="identifier">GetKeywordToken</span><span class="other">(</span><span class="identifier">token</span><span class="other">.</span><span class="identifier">match</span><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">INVALID_TOKEN</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">375</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#32">32</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsProjectHeaderFile_2224D5F0CC2F51C6FD7539F7D19E2B44073AB919">IsProjectHeaderFile Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::pp::PP::IsProjectHeaderFile(<span class="kw">const </span>
+            std::string&amp; headerFilePath) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html#377">377</a>
+             of <a href="file/PP.cpp_37A51564109A8EC66B4F9B618459A255727CFC50.html">PP.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">378</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">379</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_projectHeaderFileSet_CA68F3B6A6324BB067A2EA79BFB00127324E443F">projectHeaderFileSet</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">380</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">381</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#variable_projectHeaderFileSet_CA68F3B6A6324BB067A2EA79BFB00127324E443F">projectHeaderFileSet</a><span class="other">-></span><a href="./class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#function_IsProjectHeaderFile_740D2B7978D6E0FEF81383B7CDE4CE64CBE91F39">IsProjectHeaderFile</a><span class="other">(</span><span class="identifier">headerFilePath</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">382</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">383</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">384</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#33">33</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#function_IsProjectHeaderFile_740D2B7978D6E0FEF81383B7CDE4CE64CBE91F39">sngcpp::pp::ProjectHeaderFileSet::IsProjectHeaderFile</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_Include_7B924E6B0A9F0DEB3143378C1CBC8E272A10BF6B">sngcpp::pp::PP::Include</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_5066CAF5F3C04A2C1AA979A36708A827E9B65D42">operator= Member Function</h3>
+        <h4>
+            <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>
+            &amp; sngcpp::pp::PP::operator=(<a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#27">27</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_27813F37246FD7A68A756A2792B7805AD80351AF">operator= Member Function</h3>
+        <h4>
+            <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>
+            &amp; sngcpp::pp::PP::operator=(<span class="kw">const </span>
+            <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html#26">26</a>
+             of <a href="file/PP.hpp_0AD3A8E94CD888BB716C90B03C8E82A608654EB6.html">PP.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_pp_F064E4B780601768159C53EC012AB3AFEFE76BF4.html">up</a>
+         | <a href="struct_File_2F12EC24FA653C9D7249D618392EEEF76E32E99C.html">prev</a>
+         | <a href="class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html">next</a>
+    </body>
+</html>

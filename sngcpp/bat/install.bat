@@ -15,6 +15,10 @@ xcopy /Y /D ..\x64\Debug\sngcppsymbolsd.lib ..\lib
 xcopy /Y /D ..\x64\Debug\sngcppsymbolsd.dll ..\bin
 xcopy /Y /D ..\x64\Release\sngcppsymbols.lib ..\lib
 xcopy /Y /D ..\x64\Release\sngcppsymbols.dll ..\bin
+xcopy /Y /D ..\x64\Debug\sngcppbinderd.lib ..\lib
+xcopy /Y /D ..\x64\Debug\sngcppbinderd.dll ..\bin
+xcopy /Y /D ..\x64\Release\sngcppbinder.lib ..\lib
+xcopy /Y /D ..\x64\Release\sngcppbinder.dll ..\bin
 xcopy /Y /D ..\x64\Debug\sngcppppd.lib ..\lib
 xcopy /Y /D ..\x64\Release\sngcpppp.lib ..\lib
 xcopy /Y /D ..\x64\Debug\sngcppppd.dll ..\bin

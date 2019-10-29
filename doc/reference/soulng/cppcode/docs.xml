@@ -1,0 +1,5 @@
+<docs>
+  <doc id="cppcode">
+    <description>Contains C++ statement and expression AST for representing semantic actions in lexers and parsers.</description>
+  </doc>
+</docs>

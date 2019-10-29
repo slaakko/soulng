@@ -1,0 +1,268 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>InvokeExpressionNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_IntegerLiteralNode_9474DF73DF5CD9D4919AF57C69EA261851CD09A0.html">prev</a>
+         | <a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html">next</a>
+        <hr/>
+        <h1>InvokeExpressionNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#268">268</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#constructor_InvokeExpressionNode_BA74916D0213811962F676D3061297E54E8F5576">InvokeExpressionNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#constructor_InvokeExpressionNode_64B7664B1D072ADF839FF54CA881E23D941371FC">InvokeExpressionNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* subject_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* arguments_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Accept_349E8BF195E84702B49D3677D22E5375E960EAC0">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Arguments_992B0481F10563895153C166DF824CB8CC979C30">Arguments</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Read_36B7DF9E65A55C65B71E8718E55338C34C309F03">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Write_3C307F1517EFF2997BCAA143842EE14DDC7610D5">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_arguments_87841F1D7AB2D4544526750B8AC90D8825948966">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">arguments</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_InvokeExpressionNode_BA74916D0213811962F676D3061297E54E8F5576">InvokeExpressionNode Constructor</h3>
+        <h4>
+            sngcpp::ast::InvokeExpressionNode::InvokeExpressionNode()</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#531">531</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;531</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_invokeExpressionNode_10AF7C9D46116E2BD59F658927ED465FDB3406C4">invokeExpressionNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;532</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;533</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#271">271</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_InvokeExpressionNode_64B7664B1D072ADF839FF54CA881E23D941371FC">InvokeExpressionNode Constructor</h3>
+        <h4>
+            sngcpp::ast::InvokeExpressionNode::InvokeExpressionNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * subject_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * arguments_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#535">535</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;535</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_invokeExpressionNode_10AF7C9D46116E2BD59F658927ED465FDB3406C4">invokeExpressionNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">subject_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#variable_arguments_87841F1D7AB2D4544526750B8AC90D8825948966">arguments</a><span class="other">(</span><span class="identifier">arguments_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;536</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;537</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#272">272</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_349E8BF195E84702B49D3677D22E5375E960EAC0">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::InvokeExpressionNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#539">539</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;540</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;541</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_197B57F004E0978CD5AC61525CC7556235D0FDF0">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;542</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#273">273</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_197B57F004E0978CD5AC61525CC7556235D0FDF0">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Arguments_992B0481F10563895153C166DF824CB8CC979C30">Arguments Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::InvokeExpressionNode::Arguments()</h4>
+        <span>
+            Definition at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#276">276</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">276</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">arguments</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_36B7DF9E65A55C65B71E8718E55338C34C309F03">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::InvokeExpressionNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#554">554</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;555</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;556</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">UnaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;557</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasArguments</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;558</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasArguments</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;559</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;560</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#variable_arguments_87841F1D7AB2D4544526750B8AC90D8825948966">arguments</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;561</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;562</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#275">275</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Read_CD96300DF5D61F69E8B0DEB4BFCCB174951E6104">sngcpp::ast::UnaryNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_3C307F1517EFF2997BCAA143842EE14DDC7610D5">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::InvokeExpressionNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#544">544</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;545</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;546</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">UnaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;547</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#variable_arguments_87841F1D7AB2D4544526750B8AC90D8825948966">arguments</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;548</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#variable_arguments_87841F1D7AB2D4544526750B8AC90D8825948966">arguments</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;549</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;550</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#variable_arguments_87841F1D7AB2D4544526750B8AC90D8825948966">arguments</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;551</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;552</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#274">274</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59">sngcpp::ast::UnaryNode::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_IntegerLiteralNode_9474DF73DF5CD9D4919AF57C69EA261851CD09A0.html">prev</a>
+         | <a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html">next</a>
+    </body>
+</html>

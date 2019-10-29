@@ -2,6 +2,7 @@
 <gendoc>
   <project name="util">
     <vcxproject file="../../../../soulng/util/util.vcxproj"/>
+    <documentation file="docs.xml"/>
     <include path="../.."/>
   </project>
   <filter>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="xml">
+    <description>Contains a non-validating XML 1.0 parser and SAX-like parsing API.</description>
+    <body>
+      <h2>Examples</h2>
+      <ul>
+          <li><a href="../../../examples/sngxml/xml/html/content/file/XmlExample.cpp_32E5A55B015CB9ED5835EF1084B01A2A07349199.html">Parsing an XML file with a custom content handler.</a></li>
+      </ul>
+    </body>
+  </doc>
+</docs>

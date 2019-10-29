@@ -18,6 +18,7 @@ namespace TextTokens
         tokenIdMap[U"ARROW"] = 56;
         tokenIdMap[U"ARROWSTAR"] = 44;
         tokenIdMap[U"ASSIGN"] = 11;
+        tokenIdMap[U"BLOCKCOMMENT"] = 61;
         tokenIdMap[U"CHAR"] = 7;
         tokenIdMap[U"CHARLITERAL"] = 5;
         tokenIdMap[U"COLON"] = 23;
@@ -38,8 +39,9 @@ namespace TextTokens
         tokenIdMap[U"LBRACE"] = 53;
         tokenIdMap[U"LBRACKET"] = 51;
         tokenIdMap[U"LEQ"] = 31;
+        tokenIdMap[U"LINECOMMENT"] = 62;
         tokenIdMap[U"LPAREN"] = 45;
-        tokenIdMap[U"MAX"] = 61;
+        tokenIdMap[U"MAX"] = 63;
         tokenIdMap[U"MINUS"] = 39;
         tokenIdMap[U"MINUSMINUS"] = 48;
         tokenIdMap[U"MOD"] = 42;
@@ -149,6 +151,8 @@ namespace TextTokens
         "ELLIPSES",
         "KEYWORD",
         "WS",
+        "BLOCKCOMMENT",
+        "LINECOMMENT",
         "MAX"
     };
 
@@ -220,6 +224,8 @@ namespace TextTokens
         "'...'",
         "keyword",
         "white space",
+        "block comment",
+        "line comment",
         "max"
     };
 

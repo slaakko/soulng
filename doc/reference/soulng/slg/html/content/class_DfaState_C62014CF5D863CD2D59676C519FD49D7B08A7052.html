@@ -1,0 +1,335 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>DfaState Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html">prev</a>
+         | <a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">next</a>
+        <hr/>
+        <h1>DfaState Class</h1>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#12">12</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#constructor_DfaState_20FF484292296561A305D04D8ACA1108FFA11C87">DfaState</a>(<span class="kw">int</span> id_, <span class="kw">const </span>std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*>&amp; nfaStates_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Accept_3F47070B882266DB1DB4D7D5D37D013E7272A66D">Accept</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_AddNext_33B2A07F249434996F849ABBDFDE74AEFAA452E4">AddNext</a>(<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>* n)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Id_DCDBF279DAF2083798025FCC616289B6BD41D2D4">Id</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_IsMarked_573D3713AA65C1C3A3B4B186704876EA484A75DC">IsMarked</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Mark_6E2AB924BF846629140A0E964EF36F91B3608F31">Mark</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Next_5B49DF9C61F31023D1EA8A54EF90B8B5905CBC32">Next</a>(<span class="kw">int</span> i) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_NfaStates_3D399CD6E527400C08D8F5C95D23554AFA432552">NfaStates</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_SetAccept_5C14F83A9253DAE322FC55A01FE615D2045920B5">SetAccept</a>(<span class="kw">bool</span> accept_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_SetStatementIndex_B3C7FC5AB813E098CD2CD0D6436C1FDCAA72D13A">SetStatementIndex</a>(<span class="kw">int</span> index)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_StatementIndex_21FD8BD9803B1C402A264B49F404C627C6C637EA">StatementIndex</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_accept_39885F59E5F8887A4F42425B8B04027D81C9ECB4">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">accept</td>
+            </tr>
+            <tr id="variable_id_AD02B67B03628D4BE6E147F812C9F779A53DC2CC">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+            <tr id="variable_marked_BEE755623A078F7D739A94C6DDCAB5927A7A6AF0">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">marked</td>
+            </tr>
+            <tr id="variable_next_2D367038B87A61340AAEF3B82381E2B3FD96EB33">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">next</td>
+            </tr>
+            <tr id="variable_nfaStates_465FD2EF4BE24C896C40557753E8B96BECE090D9">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nfaStates</td>
+            </tr>
+            <tr id="variable_statementIndex_DC5FB8739D74C3BA3703CFD021FE23C6DDA10DE3">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">statementIndex</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_DfaState_20FF484292296561A305D04D8ACA1108FFA11C87">DfaState Constructor</h3>
+        <h4>
+            soulng::slg::DfaState::DfaState(<span class="kw">int</span>
+             id_, <span class="kw">const </span>
+            std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>
+            *>&amp; nfaStates_)</h4>
+        <span>
+            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#10">10</a>
+             of <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html">Dfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_id_AD02B67B03628D4BE6E147F812C9F779A53DC2CC">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_nfaStates_465FD2EF4BE24C896C40557753E8B96BECE090D9">nfaStates</a><span class="other">(</span><span class="identifier">nfaStates_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_next_2D367038B87A61340AAEF3B82381E2B3FD96EB33">next</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_marked_BEE755623A078F7D739A94C6DDCAB5927A7A6AF0">marked</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_accept_39885F59E5F8887A4F42425B8B04027D81C9ECB4">accept</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_statementIndex_DC5FB8739D74C3BA3703CFD021FE23C6DDA10DE3">statementIndex</a><span class="other">(</span><span class="other">-</span><span class="other">1</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#15">15</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_3F47070B882266DB1DB4D7D5D37D013E7272A66D">Accept Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::slg::DfaState::Accept() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#19">19</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">accept</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_AddNext_33B2A07F249434996F849ABBDFDE74AEFAA452E4">AddNext Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::DfaState::AddNext(<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>
+            * n)</h4>
+        <span>
+            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#14">14</a>
+             of <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html">Dfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_next_2D367038B87A61340AAEF3B82381E2B3FD96EB33">next</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">n</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#24">24</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Id_DCDBF279DAF2083798025FCC616289B6BD41D2D4">Id Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             soulng::slg::DfaState::Id() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#16">16</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsMarked_573D3713AA65C1C3A3B4B186704876EA484A75DC">IsMarked Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::slg::DfaState::IsMarked() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#17">17</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">marked</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Mark_6E2AB924BF846629140A0E964EF36F91B3608F31">Mark Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::DfaState::Mark()</h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#18">18</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">marked</span><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Next_5B49DF9C61F31023D1EA8A54EF90B8B5905CBC32">Next Member Function</h3>
+        <h4>
+            <a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>
+            * soulng::slg::DfaState::Next(<span class="kw">int</span>
+             i) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#19">19</a>
+             of <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html">Dfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">i</span><span class="other">&nbsp;>=&nbsp;</span><span class="other">0</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">i</span><span class="other">&nbsp;&lt;&nbsp;</span><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_next_2D367038B87A61340AAEF3B82381E2B3FD96EB33">next</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#variable_next_2D367038B87A61340AAEF3B82381E2B3FD96EB33">next</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#25">25</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NfaStates_3D399CD6E527400C08D8F5C95D23554AFA432552">NfaStates Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>
+            *>&amp; soulng::slg::DfaState::NfaStates() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#23">23</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">nfaStates</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeDfaState_91652CF9F851EF50A18D4985387775AD84CB4B17">soulng::slg::LexerContext::MakeDfaState</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetAccept_5C14F83A9253DAE322FC55A01FE615D2045920B5">SetAccept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::DfaState::SetAccept(<span class="kw">bool</span>
+             accept_)</h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#20">20</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">accept</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">accept_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetStatementIndex_B3C7FC5AB813E098CD2CD0D6436C1FDCAA72D13A">SetStatementIndex Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::DfaState::SetStatementIndex(<span class="kw">int</span>
+             index)</h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#22">22</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">index</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_StatementIndex_21FD8BD9803B1C402A264B49F404C627C6C637EA">StatementIndex Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             soulng::slg::DfaState::StatementIndex() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#21">21</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html">prev</a>
+         | <a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">next</a>
+    </body>
+</html>

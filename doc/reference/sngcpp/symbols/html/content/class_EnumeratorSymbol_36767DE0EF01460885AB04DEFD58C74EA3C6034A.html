@@ -1,0 +1,206 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>EnumeratorSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html">prev</a>
+         | <a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html">next</a>
+        <hr/>
+        <h1>EnumeratorSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#36">36</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#constructor_EnumeratorSymbol_E9DB1E8BF3D8C6FDB20A34EA2DD60D030AD3A15E">EnumeratorSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::u32string&amp; value_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_CreateElement_84AC864C8BCC7D40B23FC01002D2A717A48D6CB5">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_GetType_75038814768A6AE0059C164DEBB43C2881DD4077">GetType</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_IsEnumeratorSymbol_749BD34D23E2D218DEA7F344B576D5F9F8AE62BC">IsEnumeratorSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_KindStr_3D76D7843A751BA3BB6AEF37011613B98ED129FC">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_Value_9D8F578462CFE5CB5DAFADB6AC7944C6E0E1F6AA">Value</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_value_0E95D96F6606305EA84D86A390B6861341EF14E2">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">value</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_EnumeratorSymbol_E9DB1E8BF3D8C6FDB20A34EA2DD60D030AD3A15E">EnumeratorSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::EnumeratorSymbol::EnumeratorSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_, <span class="kw">const </span>
+            std::u32string&amp; value_)</h4>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.cpp_DCCE30F329CDD2BFE9B317EDF13784CCFC982C57.html#34">34</a>
+             of <a href="file/EnumerationSymbol.cpp_DCCE30F329CDD2BFE9B317EDF13784CCFC982C57.html">EnumerationSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#variable_value_0E95D96F6606305EA84D86A390B6861341EF14E2">value</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#39">39</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CreateElement_84AC864C8BCC7D40B23FC01002D2A717A48D6CB5">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::EnumeratorSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.cpp_DCCE30F329CDD2BFE9B317EDF13784CCFC982C57.html#38">38</a>
+             of <a href="file/EnumerationSymbol.cpp_DCCE30F329CDD2BFE9B317EDF13784CCFC982C57.html">EnumerationSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">enumeratorElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"enumerator"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumeratorElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"value"</span><span class="other">,&nbsp;</span><a href="./class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#variable_value_0E95D96F6606305EA84D86A390B6861341EF14E2">value</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">enumeratorElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#42">42</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetType_75038814768A6AE0059C164DEBB43C2881DD4077">GetType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::EnumeratorSymbol::GetType() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#40">40</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Parent</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">GetType</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetType_EB05CD37379610821205706D48043CBB476E66C6">sngcpp::symbols::Symbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsEnumeratorSymbol_749BD34D23E2D218DEA7F344B576D5F9F8AE62BC">IsEnumeratorSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::EnumeratorSymbol::IsEnumeratorSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#43">43</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsEnumeratorSymbol_8E2FD3EC2D284461DF1787BE2CAE6B597D89B01B">sngcpp::symbols::Symbol::IsEnumeratorSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_3D76D7843A751BA3BB6AEF37011613B98ED129FC">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::EnumeratorSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#41">41</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"enumerator"</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Value_9D8F578462CFE5CB5DAFADB6AC7944C6E0E1F6AA">Value Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::EnumeratorSymbol::Value() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html#44">44</a>
+             of <a href="file/EnumerationSymbol.hpp_B4FFF98B85F2B0B8C01945BB1BE4C2310CB5B337.html">EnumerationSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">value</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html">prev</a>
+         | <a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html">next</a>
+    </body>
+</html>

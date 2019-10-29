@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="symbols">
+    <vcxproject file="../../../../sngcpp/symbols/symbols.vcxproj"/>
+    <include path="../.."/>
+    <imports>
+      <import project="../ast"/>
+      <import project="../lexer"/>
+      <import project="../parser"/>
+      <import project="../pp"/>
+    </imports>
+  </project>
+</gendoc>

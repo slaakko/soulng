@@ -378,10 +378,7 @@ struct BetterFunctionMatch
             {
                 int leftMatchValue = left.second.matchValues[i];
                 int rightMatchValue = right.second.matchValues[i];
-                if (leftMatchValue > 1 || rightMatchValue > 1)
-                {
-                    int x = 0;
-                }
+                // todo?
             }
         }
         return false;
@@ -409,7 +406,6 @@ FunctionSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>&
     }
     else
     {
-        int x = 0;
         std::vector<std::pair<FunctionSymbol*, FunctionMatch>> functionMatches;
         int n = viableFunctions.size();
         for (int i = 0; i < n; ++i)

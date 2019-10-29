@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="xpath">
+    <description>Contains XPATH 1.0 query parser and execution engine.</description>
+    <body>
+      <h2>Examples</h2>
+      <ul>
+          <li><a href="../../../examples/sngxml/xpath/html/content/file/XPathExample.cpp_0E8AC9964FDF3EA79D0FD7BC08C474B9CD837C86.html">Executing an XPATH location path query against an XML document.</a></li>
+      </ul>
+    </body>
+  </doc>
+</docs>

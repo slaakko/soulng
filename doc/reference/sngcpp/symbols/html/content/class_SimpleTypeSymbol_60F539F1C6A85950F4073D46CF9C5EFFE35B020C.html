@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SimpleTypeSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">prev</a>
+         | <a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">next</a>
+        <hr/>
+        <h1>SimpleTypeSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#12">12</a>
+             of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#constructor_SimpleTypeSymbol_571516536E4241EF8AEE0271C52713582551485C">SimpleTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::u32string&amp; id_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_Id_D47C10FDC6E771FEE00DE5ADEDF249861682A4C3">Id</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_IsSimpleTypeSymbol_9ACC21E69134D7AD2F7879FA06D7284FBCFA2BF0">IsSimpleTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_SimpleTypeSymbol_571516536E4241EF8AEE0271C52713582551485C">SimpleTypeSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::SimpleTypeSymbol::SimpleTypeSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_, <span class="kw">const </span>
+            std::u32string&amp; id_)</h4>
+        <span>
+            Definition at line <a href="file/SimpleTypeSymbol.cpp_AAB02332E54F4587BC96ED55A476CD210499A759.html#10">10</a>
+             of <a href="file/SimpleTypeSymbol.cpp_AAB02332E54F4587BC96ED55A476CD210499A759.html">SimpleTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#15">15</a>
+             of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::SimpleTypeSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SimpleTypeSymbol.cpp_AAB02332E54F4587BC96ED55A476CD210499A759.html#14">14</a>
+             of <a href="file/SimpleTypeSymbol.cpp_AAB02332E54F4587BC96ED55A476CD210499A759.html">SimpleTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"simpleType"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#17">17</a>
+             of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">sngcpp::symbols::TypeSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Id_D47C10FDC6E771FEE00DE5ADEDF249861682A4C3">Id Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::SimpleTypeSymbol::Id() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#18">18</a>
+             of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsSimpleTypeSymbol_9ACC21E69134D7AD2F7879FA06D7284FBCFA2BF0">IsSimpleTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::SimpleTypeSymbol::IsSimpleTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#16">16</a>
+             of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsSimpleTypeSymbol_C1CEBB4B38D5EF620E88768AAA09E33898B60C28">sngcpp::symbols::TypeSymbol::IsSimpleTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">prev</a>
+         | <a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">next</a>
+    </body>
+</html>

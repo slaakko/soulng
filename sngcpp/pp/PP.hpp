@@ -41,6 +41,7 @@ struct SNGCPP_PP_API PP
     void Endif();
     void Emit(const char32_t* s);
     void Emit(const soulng::lexer::Lexeme& lexeme);
+    void Emit(const char32_t* s, const soulng::lexer::Lexeme& lexeme, int tokenID);
     int fileIndex;
     bool save;
     bool process;
@@ -55,6 +56,7 @@ struct SNGCPP_PP_API PP
     std::string fileName;
     int line;
     std::u32string text;
+    std::u32string ctext;
     std::vector<std::unique_ptr<File>> files;
     std::map<soulng::lexer::Lexeme, std::vector<soulng::lexer::Token>> macroMap;
     std::string root;
@@ -63,6 +65,7 @@ struct SNGCPP_PP_API PP
     EvaluationContext& context;
     bool rootMode;
     std::vector<std::string> headerFilePaths;
+    std::vector<soulng::lexer::Token>* tokens;
 };
 
 SNGCPP_PP_API void InitTextTokenCppTokenMap();

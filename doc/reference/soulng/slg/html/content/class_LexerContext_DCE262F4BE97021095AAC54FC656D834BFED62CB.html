@@ -1,0 +1,1236 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>LexerContext Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">prev</a>
+         | <a href="class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html">next</a>
+        <hr/>
+        <h1>LexerContext Class</h1>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#31">31</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#constructor_LexerContext_0AA710A90CC482493DA22BD72D9472E2E0C9E0E4">LexerContext</a>(<a href="./enum_IdentifierClassKind_00E6864A239BB829621E70E38437787E7099566B.html">IdentifierClassKind</a> identifierClassKind)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_AddInclude_E5AB1092185165DBDCCE53CA65CE2FECDBBB1EAB">AddInclude</a>(<a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">Include</a>* include)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Api_1EE4B450DFA5522A2A374477DAE281C800356213">Api</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475">FileName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.html">ClassMap</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetClassMap_9B9D121F9D4803AF8D1FFD93E3147D0BBBFB4622">GetClassMap</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html">Keywords</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetKeywords_48D6AD2DB1D02B338B59173E4C5D6C5E93DA27FB">GetKeywords</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">Lexer</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetLexer_5187ABF0B3E6C917E3BE338F6AB5539D7F02A7EE">GetLexer</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_CBFB7C85EBBE4374B64E3EC3EBD39D7CFD528768.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetParser_FFA47C25F67D793C14943DEAFB9326C31E51EE7D">GetParser</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">Prefix</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetPrefix_DF06272127B1D4A9AE1C58FD26B344981FDECC5C">GetPrefix</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html">Tokens</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461">GetTokens</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">Include</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961">Includes</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeAny_495297D0F401C7BAA4623F7337A5D01DB30CE89D">MakeAny</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA">MakeCanonicalClasses</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552">MakeChar</a>(<span class="kw">char32_t</span> c)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClass_BBDE59CB51E6E5518D78B7874EAC97CA5E0917C6">MakeClass</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">MakeClassMap</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2">MakeClassPartition</a>(<span class="kw">bool</span> debug)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeDfaState_91652CF9F851EF50A18D4985387775AD84CB4B17">MakeDfaState</a>(<span class="kw">const </span>std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*>&amp; nfaStates)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E">MakeEpsilon</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">MakeExpr</a>(<span class="kw">const </span>std::u32string&amp; id)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94">MakeIdCont</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7">MakeIdStart</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7">MakeNfaState</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange</a>(<span class="kw">char32_t</span> start, <span class="kw">char32_t</span> end)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_NfaStates_BDEB4D1AADDA53EA67E7DF6C0E7F6B7CCD924D5D">NfaStates</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Partition_0485D4E0D8B669ACCCBF31C50607CB79308107A0">Partition</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetApi_0D4555EB6CE087D8175DA38013EE4749E246D4BA">SetApi</a>(<span class="kw">const </span>std::u32string&amp; api_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetClassMap_A6AA9E15F96EF2CCAF837881522B35895A6465BA">SetClassMap</a>(<a href="./class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.html">ClassMap</a>* classMap_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetCurrentExpression_34D15C1C1D3295873AAA0DBAC24277A46A6C585E">SetCurrentExpression</a>(<a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>* currentExpression_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetExpressions_FFB1FEE907B387BB6E1996A1B64D1A62E4BACB9C">SetExpressions</a>(<a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html">Expressions</a>* expressions_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetFileName_688922C3F1B94983D12FF13D75C090A7584B3ABB">SetFileName</a>(<span class="kw">const </span>std::string&amp; fileName_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetKeywords_F10CB643F72C8932400C9CADD2DC2381B87AD960">SetKeywords</a>(<a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html">Keywords</a>* keywords_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetLexer_CA3DF256DBB4C0B313CA7123A8782F99CA84B087">SetLexer</a>(<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">Lexer</a>* lexer_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetParser_D959177ED63906150206E98FB007DAB6BD984D52">SetParser</a>(<a href="./class_Parser_CBFB7C85EBBE4374B64E3EC3EBD39D7CFD528768.html">Parser</a>* parser_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetPrefix_CCDB00D6DB269F5C53084DF7AA3DDE403EC2B388">SetPrefix</a>(<a href="./class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">Prefix</a>* prefix_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetTokens_E6D33C072C2B2D4950F13AA809AB21B0D8ECB28D">SetTokens</a>(<a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html">Tokens</a>* tokens_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Symbols_F786CEBAB635DA6ED8A88F73BC914B057A933CFA">Symbols</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_any_711967731E102D8D2D66A6B2BD5577791D66D7C7">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Any_097E4D675F759F1FDECFC680DE2E3EB79DC5CBFA.html">Any</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">any</td>
+            </tr>
+            <tr id="variable_api_4E3869E8465F319997B4D1C2432398E22E2632ED">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">api</td>
+            </tr>
+            <tr id="variable_canonicalClasses_3ABA57C796D512A799CA4E7D976FE2739C24F7D4">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">canonicalClasses</td>
+            </tr>
+            <tr id="variable_charSymbols_9E7CB8299C36750331953FCCE7AB1FA11F900C72">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;<span class="kw">char32_t</span>, <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">charSymbols</td>
+            </tr>
+            <tr id="variable_classIndex_16944193AE220CB60CB4B79E02356EB460C4E86B">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">classIndex</td>
+            </tr>
+            <tr id="variable_classMap_0063582A811F56D85CB7DE7E1EF0904A9A2D568E">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.html">ClassMap</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">classMap</td>
+            </tr>
+            <tr id="variable_currentExpression_4E40113F1421CA431AB5F34F20B821354C9FA2C7">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentExpression</td>
+            </tr>
+            <tr id="variable_dfaStates_1CA0AB7A3F363FF76FFD7BC5E40263892A55A375">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">dfaStates</td>
+            </tr>
+            <tr id="variable_epsilon_D1ABF9A5AFE459D72D3A3DFDCDCAD914EAD29510">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Char_D9D3457DCD24A91A73CFA85124A822F214DA6D74.html">Char</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">epsilon</td>
+            </tr>
+            <tr id="variable_expressions_FA87199765BA49AF527C6D2ACC7E5472FE42BEA9">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html">Expressions</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">expressions</td>
+            </tr>
+            <tr id="variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileName</td>
+            </tr>
+            <tr id="variable_idCont_795694889B5CF9B076E58D38FC540BDB0D631415">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">idCont</td>
+            </tr>
+            <tr id="variable_idStart_03A5D8218668E9AAB8222662682E300FD9B9FDAC">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">idStart</td>
+            </tr>
+            <tr id="variable_includes_8BFD09137CE7D6084F3CD3E2D593E50C6F7007AB">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">Include</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">includes</td>
+            </tr>
+            <tr id="variable_keywords_30F386B45770B41A0850C668FEEC3A625827C991">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html">Keywords</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">keywords</td>
+            </tr>
+            <tr id="variable_lexer_7F418FD161A8A51311B9244E2F53122CF13A9836">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">Lexer</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexer</td>
+            </tr>
+            <tr id="variable_lexerStatementIndex_51CCC746F2D178028D7FA83D55CDCFB8B38D95FE">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexerStatementIndex</td>
+            </tr>
+            <tr id="variable_nextDfaStateId_78AA45C6BEBE647193286868FE44FB0089A3F01B">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nextDfaStateId</td>
+            </tr>
+            <tr id="variable_nextNfaStateId_5353651293C467D09ABC6CF44FEB72835683ED0E">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nextNfaStateId</td>
+            </tr>
+            <tr id="variable_nfaStates_A8ABECB535E94B88F1FB9A31B57917D95275C764">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nfaStates</td>
+            </tr>
+            <tr id="variable_parser_64D84FDD5CB82EA4A069382ED3D2EEEA13945D29">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_CBFB7C85EBBE4374B64E3EC3EBD39D7CFD528768.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">parser</td>
+            </tr>
+            <tr id="variable_partition_8335B4B44A38DA5C9A57E3590AF91360D2308C63">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">partition</td>
+            </tr>
+            <tr id="variable_prefix_AA3D86A79E307B9E6CBC5287DE047B50198E4F44">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">Prefix</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">prefix</td>
+            </tr>
+            <tr id="variable_rangeSymbols_2ED4EF796B8952DBEBE98B2AC78F7A6509E134DB">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;<a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>, <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">rangeSymbols</td>
+            </tr>
+            <tr id="variable_symbols_FE947B6B2503CD228FBE42CC13B2CCEEF474B42C">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">symbols</td>
+            </tr>
+            <tr id="variable_tokens_7D26EDB53C4784CE9BFF888A65824AFC0F996B51">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html">Tokens</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">tokens</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_LexerContext_0AA710A90CC482493DA22BD72D9472E2E0C9E0E4">LexerContext Constructor</h3>
+        <h4>
+            soulng::slg::LexerContext::LexerContext(<a href="./enum_IdentifierClassKind_00E6864A239BB829621E70E38437787E7099566B.html">IdentifierClassKind</a>
+             identifierClassKind)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#21">21</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#34">34</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddInclude_E5AB1092185165DBDCCE53CA65CE2FECDBBB1EAB">AddInclude Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::AddInclude(<a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">Include</a>
+            * include)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#524">524</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">525</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">526</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_includes_8BFD09137CE7D6084F3CD3E2D593E50C6F7007AB">includes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">include</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">527</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#69">69</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html#function_FillContext_6A4111F17F668FF26A4040E8615B4C4AE17EF211">soulng::slg::Include::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213">Api Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; soulng::slg::LexerContext::Api() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#71">71</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">api</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475">FileName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; soulng::slg::LexerContext::FileName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#48">48</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+            , <a href="./class_RegularExpressionParser_D9FFA2EEC477407FB40163AC34B1B72DB1ED90B6.html#function_Parse_6660FE1D5187382B5F49C88FA72C4370B4F631DC">soulng::slg::RegularExpressionParser::Parse</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetClassMap_9B9D121F9D4803AF8D1FFD93E3147D0BBBFB4622">GetClassMap Member Function</h3>
+        <h4>
+            <a href="./class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.html">ClassMap</a>
+            * soulng::slg::LexerContext::GetClassMap() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#50">50</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">classMap</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetKeywords_48D6AD2DB1D02B338B59173E4C5D6C5E93DA27FB">GetKeywords Member Function</h3>
+        <h4>
+            <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html">Keywords</a>
+            * soulng::slg::LexerContext::GetKeywords() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#56">56</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">keywords</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetLexer_5187ABF0B3E6C917E3BE338F6AB5539D7F02A7EE">GetLexer Member Function</h3>
+        <h4>
+            <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">Lexer</a>
+            * soulng::slg::LexerContext::GetLexer() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#59">59</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">lexer</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetParser_FFA47C25F67D793C14943DEAFB9326C31E51EE7D">GetParser Member Function</h3>
+        <h4>
+            <a href="./class_Parser_CBFB7C85EBBE4374B64E3EC3EBD39D7CFD528768.html">Parser</a>
+            * soulng::slg::LexerContext::GetParser() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#61">61</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parser</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html#function_Process_4BC4D471C9F8BE94F5D68C298B565381682F8E3C">soulng::slg::LexerStatement::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetPrefix_DF06272127B1D4A9AE1C58FD26B344981FDECC5C">GetPrefix Member Function</h3>
+        <h4>
+            <a href="./class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">Prefix</a>
+            * soulng::slg::LexerContext::GetPrefix() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#52">52</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">prefix</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461">GetTokens Member Function</h3>
+        <h4>
+            <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html">Tokens</a>
+            * soulng::slg::LexerContext::GetTokens() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#54">54</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">tokens</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961">Includes Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">Include</a>
+            *>&amp; soulng::slg::LexerContext::Includes() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#68">68</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">includes</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeAny_495297D0F401C7BAA4623F7337A5D01DB30CE89D">MakeAny Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>
+            * soulng::slg::LexerContext::MakeAny()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#40">40</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">any</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA">MakeCanonicalClasses Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::MakeCanonicalClasses()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#206">206</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#64">64</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Char_D9D3457DCD24A91A73CFA85124A822F214DA6D74.html#function_Chr_D8526C9CED0FC66C41AD4DA73B1B81D9C34A401A">soulng::slg::Char::Chr</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A">soulng::slg::Class::AddChar</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259">soulng::slg::Class::Chars</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeCanonical_A36A7F554992792215E3BA559D7E215CBFCA26CB">soulng::slg::Class::MakeCanonical</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">soulng::slg::LexerContext::MakeRange</a>
+            , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">soulng::slg::Range::Start</a>
+            , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_Contained_A58E2537589F6186F1D64F468DA6C6458062A9F4">soulng::slg::Symbol::Contained</a>
+            , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_IsAny_1DD9B76B0670925302C82BBF5FA5C23DA640EDCC">soulng::slg::Symbol::IsAny</a>
+            , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_IsChar_D9B3FC38D1E4162123E026C333D45FD468B7F94E">soulng::slg::Symbol::IsChar</a>
+            , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_IsClass_154D9DAEDBFE9896C0452F0C0AD087A7D299A5BD">soulng::slg::Symbol::IsClass</a>
+            , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424">soulng::slg::Symbol::IsRange</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552">MakeChar Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>
+            * soulng::slg::LexerContext::MakeChar(<span class="kw">char32_t</span>
+             c)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#82">82</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#39">39</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_DontSetContained_F61843921CA801A7019EAA197EBFA326EC25A368">soulng::slg::Symbol::DontSetContained</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeClass_BBDE59CB51E6E5518D78B7874EAC97CA5E0917C6">MakeClass Member Function</h3>
+        <h4>
+            <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>
+            * soulng::slg::LexerContext::MakeClass()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#110">110</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a><span class="other">*</span>&nbsp;<span class="identifier">cls</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_classIndex_16944193AE220CB60CB4B79E02356EB460C4E86B">classIndex</a><span class="other">++</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_symbols_FE947B6B2503CD228FBE42CC13B2CCEEF474B42C">symbols</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">cls</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#45">45</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">MakeClassMap Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::MakeClassMap(<span class="kw">const </span>
+            std::string&amp; root, <span class="kw">bool</span>
+             verbose)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#397">397</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#66">66</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012">soulng::slg::Class::Index</a>
+            , <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE">soulng::slg::Declaration::Name</a>
+            , <a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html#function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6">soulng::slg::Include::Header</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Api_1EE4B450DFA5522A2A374477DAE281C800356213">soulng::slg::LexerContext::Api</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475">soulng::slg::LexerContext::FileName</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetClassMap_9B9D121F9D4803AF8D1FFD93E3147D0BBBFB4622">soulng::slg::LexerContext::GetClassMap</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961">soulng::slg::LexerContext::Includes</a>
+            , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">soulng::slg::Range::End</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED">soulng::util::Path::Combine</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2">MakeClassPartition Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::MakeClassPartition(<span class="kw">bool</span>
+             debug)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#277">277</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#65">65</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012">soulng::slg::Class::Index</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425">soulng::slg::Class::MakeMinimal</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Print_BD25FCA80EA89CD6D7ED22B57E358112A08F81C5">soulng::slg::Class::Print</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_SetIndex_A92C2E0638A74AF2F96A16F30BACCFCDBFBF8048">soulng::slg::Class::SetIndex</a>
+            , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B">soulng::slg::Range::IsEmpty</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeDfaState_91652CF9F851EF50A18D4985387775AD84CB4B17">MakeDfaState Member Function</h3>
+        <h4>
+            <a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>
+            * soulng::slg::LexerContext::MakeDfaState(<span class="kw">const </span>
+            std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>
+            *>&amp; nfaStates)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#66">66</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#38">38</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_NfaStates_3D399CD6E527400C08D8F5C95D23554AFA432552">soulng::slg::DfaState::NfaStates</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E">MakeEpsilon Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>
+            * soulng::slg::LexerContext::MakeEpsilon()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#41">41</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">epsilon</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">soulng::slg::Lexer::MakeMasterNfa</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">MakeExpr Member Function</h3>
+        <h4>
+            <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>
+             soulng::slg::LexerContext::MakeExpr(<span class="kw">const </span>
+            std::u32string&amp; id)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#167">167</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#62">62</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC">soulng::slg::Expression::Id</a>
+            , <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2">soulng::slg::Expression::Index</a>
+            , <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Line_FDF049A9A03E0C5525C5F6BCFEEA330D3F0CECD6">soulng::slg::Expression::Line</a>
+            , <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Value_E597C1DF6D896584AB66027A818C902CA6F6E7AF">soulng::slg::Expression::Value</a>
+            , <a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Get_1BBE60F0BD8F636C40C4F4A6D4F84EC074FCE276">soulng::slg::Expressions::Get</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94">soulng::slg::LexerContext::MakeIdCont</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7">soulng::slg::LexerContext::MakeIdStart</a>
+            , <a href="./class_Parser_CBFB7C85EBBE4374B64E3EC3EBD39D7CFD528768.html#function_Parse_AEB006204105E9B03EA4A167DD2D8B5AEFBD7BD1">soulng::slg::Parser::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94">MakeIdCont Member Function</h3>
+        <h4>
+            <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>
+            * soulng::slg::LexerContext::MakeIdCont()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#44">44</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idCont</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7">MakeIdStart Member Function</h3>
+        <h4>
+            <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>
+            * soulng::slg::LexerContext::MakeIdStart()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#43">43</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idStart</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7">MakeNfaState Member Function</h3>
+        <h4>
+            <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>
+            * soulng::slg::LexerContext::MakeNfaState()</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#59">59</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_nextNfaStateId_5353651293C467D09ABC6CF44FEB72835683ED0E">nextNfaStateId</a><span class="other">++</span><span class="other">,&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_lexerStatementIndex_51CCC746F2D178028D7FA83D55CDCFB8B38D95FE">lexerStatementIndex</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_nfaStates_A8ABECB535E94B88F1FB9A31B57917D95275C764">nfaStates</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">state</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#36">36</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">soulng::slg::Lexer::MakeMasterNfa</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>
+            * soulng::slg::LexerContext::MakeRange(<span class="kw">char32_t</span>
+             start, <span class="kw">char32_t</span>
+             end)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#96">96</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#42">42</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA">soulng::slg::LexerContext::MakeCanonicalClasses</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NfaStates_BDEB4D1AADDA53EA67E7DF6C0E7F6B7CCD924D5D">NfaStates Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>
+            *>&amp; soulng::slg::LexerContext::NfaStates() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#37">37</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">nfaStates</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Partition_0485D4E0D8B669ACCCBF31C50607CB79308107A0">Partition Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>
+            *>&amp; soulng::slg::LexerContext::Partition() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#67">67</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">partition</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetApi_0D4555EB6CE087D8175DA38013EE4749E246D4BA">SetApi Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetApi(<span class="kw">const </span>
+            std::u32string&amp; api_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#70">70</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">api</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">api_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A">soulng::slg::Lexer::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetClassMap_A6AA9E15F96EF2CCAF837881522B35895A6465BA">SetClassMap Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetClassMap(<a href="./class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.html">ClassMap</a>
+            * classMap_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#117">117</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_classMap_0063582A811F56D85CB7DE7E1EF0904A9A2D568E">classMap</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;class&nbsp;map&nbsp;declaration&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_classMap_0063582A811F56D85CB7DE7E1EF0904A9A2D568E">classMap</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">classMap_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#49">49</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.html#function_FillContext_D0576F03B2B55FDF929E4949400D1102409B8A94">soulng::slg::ClassMap::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetCurrentExpression_34D15C1C1D3295873AAA0DBAC24277A46A6C585E">SetCurrentExpression Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetCurrentExpression(<a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>
+            * currentExpression_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#63">63</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">currentExpression</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">currentExpression_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetExpressions_FFB1FEE907B387BB6E1996A1B64D1A62E4BACB9C">SetExpressions Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetExpressions(<a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html">Expressions</a>
+            * expressions_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#153">153</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_expressions_FA87199765BA49AF527C6D2ACC7E5472FE42BEA9">expressions</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;set&nbsp;of&nbsp;expressions&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_expressions_FA87199765BA49AF527C6D2ACC7E5472FE42BEA9">expressions</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">expressions_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#57">57</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_FillContext_942B8048888DEF28117078334F7F0503190C99A8">soulng::slg::Expressions::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetFileName_688922C3F1B94983D12FF13D75C090A7584B3ABB">SetFileName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetFileName(<span class="kw">const </span>
+            std::string&amp; fileName_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#162">162</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileName_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#47">47</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetKeywords_F10CB643F72C8932400C9CADD2DC2381B87AD960">SetKeywords Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetKeywords(<a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html">Keywords</a>
+            * keywords_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#144">144</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_keywords_30F386B45770B41A0850C668FEEC3A625827C991">keywords</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;set&nbsp;of&nbsp;keyword&nbsp;definitions&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_keywords_30F386B45770B41A0850C668FEEC3A625827C991">keywords</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">keywords_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#55">55</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_FillContext_DACDD162974C3244955C54792E7E18D8303CBE7A">soulng::slg::Keywords::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetLexer_CA3DF256DBB4C0B313CA7123A8782F99CA84B087">SetLexer Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetLexer(<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">Lexer</a>
+            * lexer_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#58">58</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">lexer</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">lexer_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A">soulng::slg::Lexer::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetParser_D959177ED63906150206E98FB007DAB6BD984D52">SetParser Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetParser(<a href="./class_Parser_CBFB7C85EBBE4374B64E3EC3EBD39D7CFD528768.html">Parser</a>
+            * parser_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#60">60</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">parser</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parser_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetPrefix_CCDB00D6DB269F5C53084DF7AA3DDE403EC2B388">SetPrefix Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetPrefix(<a href="./class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">Prefix</a>
+            * prefix_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#126">126</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_prefix_AA3D86A79E307B9E6CBC5287DE047B50198E4F44">prefix</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;prefix&nbsp;declaration&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_prefix_AA3D86A79E307B9E6CBC5287DE047B50198E4F44">prefix</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">prefix_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#51">51</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html#function_FillContext_44578F50C09FA19E3B29DAF5258549A434E8BC0D">soulng::slg::Prefix::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetTokens_E6D33C072C2B2D4950F13AA809AB21B0D8ECB28D">SetTokens Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::SetTokens(<a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html">Tokens</a>
+            * tokens_)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#135">135</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_tokens_7D26EDB53C4784CE9BFF888A65824AFC0F996B51">tokens</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;set&nbsp;of&nbsp;token&nbsp;definitions&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_tokens_7D26EDB53C4784CE9BFF888A65824AFC0F996B51">tokens</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">tokens_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#53">53</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_FillContext_9D5CC1C1AF0E3D5725AF5B3483FF14FF0C8F0F38">soulng::slg::Tokens::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Symbols_F786CEBAB635DA6ED8A88F73BC914B057A933CFA">Symbols Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>
+            *>&amp; soulng::slg::LexerContext::Symbols() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#46">46</a>
+             of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">symbols</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html">prev</a>
+         | <a href="class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html">next</a>
+    </body>
+</html>

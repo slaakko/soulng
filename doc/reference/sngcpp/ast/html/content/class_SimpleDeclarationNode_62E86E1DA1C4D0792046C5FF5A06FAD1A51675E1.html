@@ -1,0 +1,308 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SimpleDeclarationNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html">prev</a>
+         | <a href="class_SimpleTypeNode_C1B8B4343B9E5F70772809DEB68F19BD9BF25116.html">next</a>
+        <hr/>
+        <h1>SimpleDeclarationNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#14">14</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#constructor_SimpleDeclarationNode_C1E5FE2BFA0FF2AC032265416367CABA952E1347">SimpleDeclarationNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#constructor_SimpleDeclarationNode_EC56F763F423A58853F278924BC28E88C7A38E5B">SimpleDeclarationNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a> specifiers_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* typeExpr_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* declarator_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Accept_09B6BF0CED3A3B34D0E59ABAC7E5FBD607ABEF81">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Declarator_F2C134986AFD9FBC99BA680FEAB6E0999AC2FFD3">Declarator</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Read_8EDE3D01CFCDD15706003E8F36AB39CBD574A15E">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Specifiers_E5F5EE9C0F88D8C3FA07EBFA120983B1C1BE520A">Specifiers</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_TypeExpr_3D854027DF767A3EB68AD6018F671E83F14195D2">TypeExpr</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Write_E18D23102B68A6039FFAAD19611A7AA5F915EE65">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_declarator_027E9A4F0BFD80D830E02B69264A924DEE8BE070">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarator</td>
+            </tr>
+            <tr id="variable_specifiers_DCFD0CF4EADF03790E0164BD45EFEDDAD1F0DE09">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">specifiers</td>
+            </tr>
+            <tr id="variable_typeExpr_416CFC3ECF7C7368153F6D81776252D7DE447AAC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">typeExpr</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_SimpleDeclarationNode_C1E5FE2BFA0FF2AC032265416367CABA952E1347">SimpleDeclarationNode Constructor</h3>
+        <h4>
+            sngcpp::ast::SimpleDeclarationNode::SimpleDeclarationNode()</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html#13">13</a>
+             of <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_simpleDeclarationNode_680C42E50EDFC7A8549738D45A13D792A58C245D">simpleDeclarationNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_specifiers_DCFD0CF4EADF03790E0164BD45EFEDDAD1F0DE09">specifiers</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#17">17</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_SimpleDeclarationNode_EC56F763F423A58853F278924BC28E88C7A38E5B">SimpleDeclarationNode Constructor</h3>
+        <h4>
+            sngcpp::ast::SimpleDeclarationNode::SimpleDeclarationNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>
+             specifiers_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * typeExpr_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * declarator_)</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html#17">17</a>
+             of <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_simpleDeclarationNode_680C42E50EDFC7A8549738D45A13D792A58C245D">simpleDeclarationNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_specifiers_DCFD0CF4EADF03790E0164BD45EFEDDAD1F0DE09">specifiers</a><span class="other">(</span><span class="identifier">specifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_typeExpr_416CFC3ECF7C7368153F6D81776252D7DE447AAC">typeExpr</a><span class="other">(</span><span class="identifier">typeExpr_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_declarator_027E9A4F0BFD80D830E02B69264A924DEE8BE070">declarator</a><span class="other">(</span><span class="identifier">declarator_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#18">18</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_09B6BF0CED3A3B34D0E59ABAC7E5FBD607ABEF81">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SimpleDeclarationNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html#22">22</a>
+             of <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_1E7003BFC6706BB56E7DAEFF4F08E3336606A164">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#19">19</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_1E7003BFC6706BB56E7DAEFF4F08E3336606A164">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Declarator_F2C134986AFD9FBC99BA680FEAB6E0999AC2FFD3">Declarator Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::SimpleDeclarationNode::Declarator()</h4>
+        <span>
+            Definition at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#24">24</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarator</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_8EDE3D01CFCDD15706003E8F36AB39CBD574A15E">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SimpleDeclarationNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html#35">35</a>
+             of <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_specifiers_DCFD0CF4EADF03790E0164BD45EFEDDAD1F0DE09">specifiers</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_typeExpr_416CFC3ECF7C7368153F6D81776252D7DE447AAC">typeExpr</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_declarator_027E9A4F0BFD80D830E02B69264A924DEE8BE070">declarator</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#21">21</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">sngcpp::ast::Reader::ReadSpecifiers</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Specifiers_E5F5EE9C0F88D8C3FA07EBFA120983B1C1BE520A">Specifiers Member Function</h3>
+        <h4>
+            <a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>
+             sngcpp::ast::SimpleDeclarationNode::Specifiers() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#22">22</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">specifiers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_TypeExpr_3D854027DF767A3EB68AD6018F671E83F14195D2">TypeExpr Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::SimpleDeclarationNode::TypeExpr()</h4>
+        <span>
+            Definition at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#23">23</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeExpr</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_E18D23102B68A6039FFAAD19611A7AA5F915EE65">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SimpleDeclarationNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html#27">27</a>
+             of <a href="file/Declaration.cpp_F7C1CC6A3F27E46C2DC468112EBFCF138222A60E.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_specifiers_DCFD0CF4EADF03790E0164BD45EFEDDAD1F0DE09">specifiers</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_typeExpr_416CFC3ECF7C7368153F6D81776252D7DE447AAC">typeExpr</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#variable_declarator_027E9A4F0BFD80D830E02B69264A924DEE8BE070">declarator</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html#20">20</a>
+             of <a href="file/Declaration.hpp_6DCBD1867A99109ECF90D7B45B51A5A482609177.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">sngcpp::ast::Writer::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html">prev</a>
+         | <a href="class_SimpleTypeNode_C1B8B4343B9E5F70772809DEB68F19BD9BF25116.html">next</a>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp/parser/ParserApi.hpp>
+[cpp]#include <sngcpp/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp/lexer/CppTokens.hpp>
+
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(SNGCPP_PARSER_API) SourceLineParser
+{
+    uselexer TrivialLexer;
+    main;
+
+    SourceLine(SourceCodeWriter* writer)
+        ::= SourceToken(writer)*
+        ;
+            
+    SourceToken(SourceCodeWriter* writer)
+        ::= LineComment:lineComment{ writer->WriteComment(lineComment); }
+        |   BlockComment:blockComment{ writer->WriteComment(blockComment); }
+        |   PPLine::ppLine{ writer->WritePP(ppLine); }
+        |   Keyword{ writer->WriteKeyword(std::u32string(matchBegin, matchEnd)); }
+        |   (identifier - Keyword){ writer->WriteIdentifier(std::u32string(matchBegin, matchEnd)); }
+        |   string{ writer->WriteString(std::u32string(matchBegin, matchEnd)); }
+        |   char{ writer->WriteString(std::u32string(matchBegin, matchEnd)); }
+        |   Spaces:spaces{ writer->WriteSpace(spaces); }
+        |   anychar{ writer->WriteOther(std::u32string(matchBegin, matchEnd)); }
+        ;
+
+    LineComment(var Span s) : std::u32string
+        ::= ("//"{ s = span; } ([^\r\n]{ s.end = span.end; })*)
+        {
+            return lexer.GetMatch(s);
+        }
+        ;
+
+    BlockComment(var Span s) : std::u32string
+        ::= ("/*"{ s = span; } ((anychar - "*/"){ s.end = span.end; )* ("*/"{ s.end = span.end; )?)
+        {
+            return lexer.GetMatch(s);
+        }
+        ;
+
+    PPLine(var Span s) : std::u32string
+        ::= (empty{ s = span; } Space:space* '#'{ s.end = span.end; } ([^\r\n]{ s.end = span.end; })*)
+        {
+            return lexer.GetMatch(s);
+        }
+        ;
+
+    Spaces(var int n) : int
+        ::= ((Space:space{ ++n; })+)
+        {
+            return n;
+        }
+        ;
+
+    Space
+        ::= [\t ]
+        ;
+}

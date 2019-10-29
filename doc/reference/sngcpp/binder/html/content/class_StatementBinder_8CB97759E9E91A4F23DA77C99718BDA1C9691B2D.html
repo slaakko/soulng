@@ -1,0 +1,1105 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>StatementBinder Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html">up</a>
+         | <a href="class_SourceFileResolver_2FBE49A2E28D9B2355FB436716C01EC1DCA231DD.html">prev</a>
+         | <a href="class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html">next</a>
+        <hr/>
+        <h1>StatementBinder Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#16">16</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#constructor_StatementBinder_DE221E826257CD2281ED185D536D58556DC9616F">StatementBinder</a>(SymbolTable&amp; symbolTable_, <span class="kw">const </span>std::unordered_map&lt;<a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>*, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>*>&amp; sourceFileMap_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_A16FDD10D4080EFF6463DE2B85AC4274C7BC0461">Visit</a>(<a href="./../../../ast/html/content/class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html">CaseStatementNode</a>&amp; caseStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_F110604C52A2EF50D3D6AE3F9E7891977AB303E6">Visit</a>(<a href="./../../../ast/html/content/class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a>&amp; classNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_A08384C1C49585D4244330C7E6F926467553F606">Visit</a>(<a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html">CompoundStatementNode</a>&amp; compoundStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_C7895C3D6C612E6BE0270A8834648FCF6A5B5752">Visit</a>(<a href="./../../../ast/html/content/class_DeclarationSequenceNode_444826008D36CF350146CAF1A142FB443400C179.html">DeclarationSequenceNode</a>&amp; declarationSequenceNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_0D299083A0F0DE64917DE5DCA9B1D8F82A007CE3">Visit</a>(<a href="./../../../ast/html/content/class_DeclarationStatementNode_56981ECCE4AAD995F8EDB3BCC5CE4BB17C78FF5A.html">DeclarationStatementNode</a>&amp; declarationStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_6641E68238E61D960BBB6D26E963CAD9F9132B75">Visit</a>(<a href="./../../../ast/html/content/class_DefaultStatementNode_68BB3EDA2C243E5BC80E7397389D27645BEED449.html">DefaultStatementNode</a>&amp; defaultStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_EA28547C9B2BCF4E299FDC46656A70164EBB499C">Visit</a>(<a href="./../../../ast/html/content/class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html">DoStatementNode</a>&amp; doStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_DBB61FF4F1CC2E8AC26BD4B7CCD166BBEC560F3E">Visit</a>(<a href="./../../../ast/html/content/class_ExpressionStatementNode_214B8E296B636ADE9D97717653DF813740CD49D4.html">ExpressionStatementNode</a>&amp; expressionStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_0E86A4384196F6F0CFD9D1FE062029869FE4D59C">Visit</a>(<a href="./../../../ast/html/content/class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html">ForStatementNode</a>&amp; forStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_C8598C48F24C9EE6C667AD5985027F75CBC7FAC5">Visit</a>(<a href="./../../../ast/html/content/class_FunctionNode_FF33E683A8B619C8B0C68E2611A5570F3A4BADD6.html">FunctionNode</a>&amp; functionNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_B4D0353169AE75EEC646460E5AD232167131831B">Visit</a>(<a href="./../../../ast/html/content/class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html">HandlerNode</a>&amp; handlerNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_E832416D34299E7B7A028501B7A8DEAA1C76B6C8">Visit</a>(<a href="./../../../ast/html/content/class_HandlerSequenceNode_D916768D9CA685962F0ED6219BABD986E23F57E1.html">HandlerSequenceNode</a>&amp; handlerSequenceNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_40893544882EEF5AA6B867FC502E8D93198DA7BA">Visit</a>(<a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html">IfStatementNode</a>&amp; ifStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_AE853596117AAD74979253FEFDBE6CF78A696BE6">Visit</a>(<a href="./../../../ast/html/content/class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html">LabeledStatementNode</a>&amp; labeledStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_9F55EE3C0259FC996567D2FAEA6B1447BB525816">Visit</a>(<a href="./../../../ast/html/content/class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html">NamespaceNode</a>&amp; namespaceNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_82024E492114EFC104357B5D249FDB7AD281CE94">Visit</a>(<a href="./../../../ast/html/content/class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html">RangeForStatementNode</a>&amp; rangeForStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_8BAADEE28FA785DAC434F8A307D1843D3F3BFB4D">Visit</a>(<a href="./../../../ast/html/content/class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html">ReturnStatementNode</a>&amp; returnStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_AD2D5AF2FCE663C1AEC34320715BCCE6F4BFA90E">Visit</a>(<a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>&amp; sourceFileNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_2B9757EB21F66776DCB79A020B82BAA22A4AA773">Visit</a>(<a href="./../../../ast/html/content/class_SourceFileSequenceNode_EA4B27A6A4CFF856C66D11F91A61E50A03FFF342.html">SourceFileSequenceNode</a>&amp; sourceFileSequenceNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_232354DA13974F57FC17113C387FE389A41E8734">Visit</a>(<a href="./../../../ast/html/content/class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a>&amp; specialMemberFunctionNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_58D26C66AB783127F8809641CB9D907B4C3201F7">Visit</a>(<a href="./../../../ast/html/content/class_StatementSequenceNode_0AA0650E957BB86C07F016304980D95A7B5F6DCD.html">StatementSequenceNode</a>&amp; statementSequenceNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_425BEE990B79BA22C0A0836E30DC05F4394E156B">Visit</a>(<a href="./../../../ast/html/content/class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html">SwitchStatementNode</a>&amp; switchStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_1E66A921B4355111ADE995B01B0875D651754949">Visit</a>(<a href="./../../../ast/html/content/class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html">TryStatementNode</a>&amp; tryStatementNode) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_7A18048F519403E2F30486872ED80F840C5F4285">Visit</a>(<a href="./../../../ast/html/content/class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html">WhileStatementNode</a>&amp; whileStatementNode) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../symbols/html/content/class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">containerScope</td>
+            </tr>
+            <tr id="variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../symbols/html/content/class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentFunction</td>
+            </tr>
+            <tr id="variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentSourceFile</td>
+            </tr>
+            <tr id="variable_sourceFileMap_40619059D7A69EE3071FD51E61304C61F683412A">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::unordered_map&lt;<a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>*, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">sourceFileMap</td>
+            </tr>
+            <tr id="variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html">SymbolTable</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">symbolTable</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_StatementBinder_DE221E826257CD2281ED185D536D58556DC9616F">StatementBinder Constructor</h3>
+        <h4>
+            sngcpp::binder::StatementBinder::StatementBinder(SymbolTable&amp; symbolTable_, <span class="kw">const </span>
+            std::unordered_map&lt;<a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>
+            *, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            *>&amp; sourceFileMap_)</h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#12">12</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">(</span><span class="identifier">symbolTable_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_sourceFileMap_40619059D7A69EE3071FD51E61304C61F683412A">sourceFileMap</a><span class="other">(</span><span class="identifier">sourceFileMap_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Visit_A16FDD10D4080EFF6463DE2B85AC4274C7BC0461">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html">CaseStatementNode</a>
+            &amp; caseStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#173">173</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">175</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">caseStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html#function_CaseExpr_DB46A94805F836508BA84F4F18284757E3C7EF00">CaseExpr</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">caseStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#32">32</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_3ACDBAC820D172E8D1AFA4F05D2087C8F4DBF487">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html#function_CaseExpr_DB46A94805F836508BA84F4F18284757E3C7EF00">sngcpp::ast::CaseStatementNode::CaseExpr</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_F110604C52A2EF50D3D6AE3F9E7891977AB303E6">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a>
+            &amp; classNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#52">52</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#24">24</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_7920B5A85128A771A90BB871281F2397B31760BE">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Declarations_26C263862F0C669075CB97FCCD57CCE0519BE859">sngcpp::ast::ClassNode::Declarations</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetSymbol_1F18F78B6B4CA5F942355EE0FC556B60DF5897DD">sngcpp::symbols::SymbolTable::GetSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_A08384C1C49585D4244330C7E6F926467553F606">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html">CompoundStatementNode</a>
+            &amp; compoundStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#126">126</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#27">27</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_5E60DE0D44BA08DDC10AAF060870518DF2D89AD4">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetSymbol_1F18F78B6B4CA5F942355EE0FC556B60DF5897DD">sngcpp::symbols::SymbolTable::GetSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_C7895C3D6C612E6BE0270A8834648FCF6A5B5752">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_DeclarationSequenceNode_444826008D36CF350146CAF1A142FB443400C179.html">DeclarationSequenceNode</a>
+            &amp; declarationSequenceNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#46">46</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">declarationSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">declarationSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#23">23</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_BEDBFEB560F47229658E65D7F3AEBDF8E5C2E01C">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">sngcpp::ast::BinaryNode::Left</a>
+            , <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">sngcpp::ast::BinaryNode::Right</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_0D299083A0F0DE64917DE5DCA9B1D8F82A007CE3">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_DeclarationStatementNode_56981ECCE4AAD995F8EDB3BCC5CE4BB17C78FF5A.html">DeclarationStatementNode</a>
+            &amp; declarationStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#260">260</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">261</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">262</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">declarationStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">263</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#40">40</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_39087FD7ADAFC35D396F1FA5750C4EE1A361099F">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_6641E68238E61D960BBB6D26E963CAD9F9132B75">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_DefaultStatementNode_68BB3EDA2C243E5BC80E7397389D27645BEED449.html">DefaultStatementNode</a>
+            &amp; defaultStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#179">179</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">180</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">181</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">defaultStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">182</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#33">33</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_F4193378B4EE03B4E9DF4718E5841E69474FCC4F">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_EA28547C9B2BCF4E299FDC46656A70164EBB499C">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html">DoStatementNode</a>
+            &amp; doStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#198">198</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">199</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">200</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">doStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html#function_Statement_8E375A06CCCBFC292F58FDD92F7197CD9EA694CD">Statement</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">201</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">doStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html#function_Condition_86B14834C80889D05461A67F45325C29C7345F26">Condition</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">202</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#36">36</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_ABA3C141372ECA3862AFB0BCF8995833DD6A4A0C">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html#function_Condition_86B14834C80889D05461A67F45325C29C7345F26">sngcpp::ast::DoStatementNode::Condition</a>
+            , <a href="./../../../ast/html/content/class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html#function_Statement_8E375A06CCCBFC292F58FDD92F7197CD9EA694CD">sngcpp::ast::DoStatementNode::Statement</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_DBB61FF4F1CC2E8AC26BD4B7CCD166BBEC560F3E">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_ExpressionStatementNode_214B8E296B636ADE9D97717653DF813740CD49D4.html">ExpressionStatementNode</a>
+            &amp; expressionStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#184">184</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">186</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">expressionStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">187</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">expressionStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#34">34</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_8AC2DB0E2E389F1E267B62129EB83874A55A9396">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_0E86A4384196F6F0CFD9D1FE062029869FE4D59C">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html">ForStatementNode</a>
+            &amp; forStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#223">223</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#38">38</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_6F993046348E8886452F7EBAF6D39095C7310B80">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html#function_ActionS_449E0BF3D0CC23EA2F3FD6039889781FD78633F8">sngcpp::ast::ForStatementNode::ActionS</a>
+            , <a href="./../../../ast/html/content/class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html#function_Condition_45277C16B423ABFE7A512EFA4B88D6197872F02D">sngcpp::ast::ForStatementNode::Condition</a>
+            , <a href="./../../../ast/html/content/class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html#function_InitS_BF5C72805A890D5B4C66F51F380ABB872A761608">sngcpp::ast::ForStatementNode::InitS</a>
+            , <a href="./../../../ast/html/content/class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html#function_LoopExpr_794CCE6321CFD7A9B808763D841B478D33F99613">sngcpp::ast::ForStatementNode::LoopExpr</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetSymbol_1F18F78B6B4CA5F942355EE0FC556B60DF5897DD">sngcpp::symbols::SymbolTable::GetSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_C8598C48F24C9EE6C667AD5985027F75CBC7FAC5">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_FunctionNode_FF33E683A8B619C8B0C68E2611A5570F3A4BADD6.html">FunctionNode</a>
+            &amp; functionNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#72">72</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#25">25</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_95016EDAB58ADB5DE6AAD499C6AAFAAE4F605FA8">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Accept_AC762CDF08894FFF22B578C48D3DCD5BE7937EED">sngcpp::ast::CompoundStatementNode::Accept</a>
+            , <a href="./../../../ast/html/content/class_FunctionNode_FF33E683A8B619C8B0C68E2611A5570F3A4BADD6.html#function_Body_9BB9D974AADBBF4AB3371E36B56F4C9BC1E50560">sngcpp::ast::FunctionNode::Body</a>
+            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetSymbolNothrow_5F9F7C1EF2DBE957F5B4CA9C1E9C412C5AC6C5F6">sngcpp::symbols::SymbolTable::GetSymbolNothrow</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_B4D0353169AE75EEC646460E5AD232167131831B">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html">HandlerNode</a>
+            &amp; handlerNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#271">271</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">272</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">273</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">handlerNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html#function_ExceptionDeclaration_A7FFE17F9F815894E769B1611289CA1D01724309">ExceptionDeclaration</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">274</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">handlerNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html#function_CatchBlock_919CD96A34AFE9973E1C94799F2F735C13BB2F1D">CatchBlock</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Accept_AC762CDF08894FFF22B578C48D3DCD5BE7937EED">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">275</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#42">42</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_87062D68C590E0AA33D283237DF21BE4570EF28F">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Accept_AC762CDF08894FFF22B578C48D3DCD5BE7937EED">sngcpp::ast::CompoundStatementNode::Accept</a>
+            , <a href="./../../../ast/html/content/class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html#function_CatchBlock_919CD96A34AFE9973E1C94799F2F735C13BB2F1D">sngcpp::ast::HandlerNode::CatchBlock</a>
+            , <a href="./../../../ast/html/content/class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html#function_ExceptionDeclaration_A7FFE17F9F815894E769B1611289CA1D01724309">sngcpp::ast::HandlerNode::ExceptionDeclaration</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_E832416D34299E7B7A028501B7A8DEAA1C76B6C8">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_HandlerSequenceNode_D916768D9CA685962F0ED6219BABD986E23F57E1.html">HandlerSequenceNode</a>
+            &amp; handlerSequenceNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#277">277</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">278</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">279</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">handlerSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">280</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">handlerSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">281</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#43">43</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_434262A88B16B838DE3B11E7266C288BD89C3E41">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">sngcpp::ast::BinaryNode::Left</a>
+            , <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">sngcpp::ast::BinaryNode::Right</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_40893544882EEF5AA6B867FC502E8D93198DA7BA">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html">IfStatementNode</a>
+            &amp; ifStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#157">157</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">ifStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_Condition_3863547C7F8F8D8EC323B43F7B98273BA61B4CB3">Condition</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ifStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_ThenS_4562450AA603F2DA7C2479081E30BAAA72A5521E">ThenS</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">ifStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_ElseS_E814700F8290FF93EA53E9D518D03EFF56CB11B2">ElseS</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ifStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_ElseS_E814700F8290FF93EA53E9D518D03EFF56CB11B2">ElseS</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#30">30</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_5AD9764D4E8868BA8C895E31057564B7CE8A2FFC">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_Condition_3863547C7F8F8D8EC323B43F7B98273BA61B4CB3">sngcpp::ast::IfStatementNode::Condition</a>
+            , <a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_ElseS_E814700F8290FF93EA53E9D518D03EFF56CB11B2">sngcpp::ast::IfStatementNode::ElseS</a>
+            , <a href="./../../../ast/html/content/class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_ThenS_4562450AA603F2DA7C2479081E30BAAA72A5521E">sngcpp::ast::IfStatementNode::ThenS</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_AE853596117AAD74979253FEFDBE6CF78A696BE6">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html">LabeledStatementNode</a>
+            &amp; labeledStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#152">152</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">labeledStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#29">29</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_0D4B58DBB0E8D9D70348C2468BECE23675E4BA62">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_9F55EE3C0259FC996567D2FAEA6B1447BB525816">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html">NamespaceNode</a>
+            &amp; namespaceNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#38">38</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">namespaceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">namespaceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#22">22</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_6628B838AAA2FC6286204B160E94A117AC665114">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_82024E492114EFC104357B5D249FDB7AD281CE94">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html">RangeForStatementNode</a>
+            &amp; rangeForStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#204">204</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#37">37</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_119B77C3EF686D6B3CB668CB1B8F6B5112B87FD1">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html#function_ForRangeDeclaration_8355810D89C03E694730F0C2E7E3F8AC61A9D2D6">sngcpp::ast::RangeForStatementNode::ForRangeDeclaration</a>
+            , <a href="./../../../ast/html/content/class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html#function_ForRangeInitializer_618A6E67A69F4FBB6A73DE037BCFEB831ECE47D3">sngcpp::ast::RangeForStatementNode::ForRangeInitializer</a>
+            , <a href="./../../../ast/html/content/class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html#function_Statement_44B9C3D8DCB26B90AED09BD369083777B24E0F61">sngcpp::ast::RangeForStatementNode::Statement</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetSymbol_1F18F78B6B4CA5F942355EE0FC556B60DF5897DD">sngcpp::symbols::SymbolTable::GetSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_8BAADEE28FA785DAC434F8A307D1843D3F3BFB4D">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html">ReturnStatementNode</a>
+            &amp; returnStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#252">252</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">253</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">254</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">returnStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html#function_ReturnExpr_CC716E72C66585A3851EB3EF9694233AF2FA1C4B">ReturnExpr</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">255</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">256</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">returnStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html#function_ReturnExpr_CC716E72C66585A3851EB3EF9694233AF2FA1C4B">ReturnExpr</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">257</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">258</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#39">39</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_8141A5A021D045F7F511502C536FDE2C7B320B4E">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html#function_ReturnExpr_CC716E72C66585A3851EB3EF9694233AF2FA1C4B">sngcpp::ast::ReturnStatementNode::ReturnExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_AD2D5AF2FCE663C1AEC34320715BCCE6F4BFA90E">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>
+            &amp; sourceFileNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#17">17</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#20">20</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_7F09400DC36667CC707A399494A28681E4F13E11">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html#function_Accept_E4E12039640D77FA02C1178041A9566F08C68663">sngcpp::ast::NamespaceNode::Accept</a>
+            , <a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html#function_GlobalNs_8C513C97261380FDD3979029D248C982CF6BFE8B">sngcpp::ast::SourceFileNode::GlobalNs</a>
+            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GlobalNs_72B63F2D1788FAD5C72A6D121F9BADFC03C4B16B">sngcpp::symbols::SymbolTable::GlobalNs</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_2B9757EB21F66776DCB79A020B82BAA22A4AA773">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_SourceFileSequenceNode_EA4B27A6A4CFF856C66D11F91A61E50A03FFF342.html">SourceFileSequenceNode</a>
+            &amp; sourceFileSequenceNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#32">32</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sourceFileSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sourceFileSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#21">21</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_87B9DA4F957CF2B1724F1B0F1A5A6881332940F2">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">sngcpp::ast::BinaryNode::Left</a>
+            , <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">sngcpp::ast::BinaryNode::Right</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_232354DA13974F57FC17113C387FE389A41E8734">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a>
+            &amp; specialMemberFunctionNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#97">97</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#26">26</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_60BFD58D11135FE096B9477890D2516FCEBB93FF">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Accept_AC762CDF08894FFF22B578C48D3DCD5BE7937EED">sngcpp::ast::CompoundStatementNode::Accept</a>
+            , <a href="./../../../ast/html/content/class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_CtorInitializer_B288937572F82DEB57B3E872A3D5419CBD5EDD96">sngcpp::ast::SpecialMemberFunctionNode::CtorInitializer</a>
+            , <a href="./../../../ast/html/content/class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_FunctionBody_A6EC3A4743FCE12655E49ADF6A91238113C64C87">sngcpp::ast::SpecialMemberFunctionNode::FunctionBody</a>
+            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+            , <a href="./../../../symbols/html/content/class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetSymbolNothrow_5F9F7C1EF2DBE957F5B4CA9C1E9C412C5AC6C5F6">sngcpp::symbols::SymbolTable::GetSymbolNothrow</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_58D26C66AB783127F8809641CB9D907B4C3201F7">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_StatementSequenceNode_0AA0650E957BB86C07F016304980D95A7B5F6DCD.html">StatementSequenceNode</a>
+            &amp; statementSequenceNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#146">146</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">statementSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">statementSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#28">28</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_8CA3A2777BF350215851D3F52461D0850DC11BDB">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">sngcpp::ast::BinaryNode::Left</a>
+            , <a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">sngcpp::ast::BinaryNode::Right</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_425BEE990B79BA22C0A0836E30DC05F4394E156B">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html">SwitchStatementNode</a>
+            &amp; switchStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#167">167</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">switchStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html#function_Condition_6B854C495A580E879957B717185F0ED839768659">Condition</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">switchStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html#function_Statement_F8CB5293703E20A52157DD4A3D9BDFDFBA875460">Statement</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#31">31</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_4250F89E628DCA19860D5A4B1079416E0AF01BE4">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html#function_Condition_6B854C495A580E879957B717185F0ED839768659">sngcpp::ast::SwitchStatementNode::Condition</a>
+            , <a href="./../../../ast/html/content/class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html#function_Statement_F8CB5293703E20A52157DD4A3D9BDFDFBA875460">sngcpp::ast::SwitchStatementNode::Statement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_1E66A921B4355111ADE995B01B0875D651754949">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html">TryStatementNode</a>
+            &amp; tryStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#265">265</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">266</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">267</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">tryStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html#function_TryBlock_290E917F248735175FDBCAF8F852C5E30FA30221">TryBlock</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Accept_AC762CDF08894FFF22B578C48D3DCD5BE7937EED">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">tryStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html#function_Handlers_93E10205A5425079E1E15DA7245C9AD54A5B3C08">Handlers</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">269</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#41">41</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_53717B7F7E890E9A4B1E3CD069DC08E539E00F49">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Accept_AC762CDF08894FFF22B578C48D3DCD5BE7937EED">sngcpp::ast::CompoundStatementNode::Accept</a>
+            , <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html#function_Handlers_93E10205A5425079E1E15DA7245C9AD54A5B3C08">sngcpp::ast::TryStatementNode::Handlers</a>
+            , <a href="./../../../ast/html/content/class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html#function_TryBlock_290E917F248735175FDBCAF8F852C5E30FA30221">sngcpp::ast::TryStatementNode::TryBlock</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_7A18048F519403E2F30486872ED80F840C5F4285">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::StatementBinder::Visit(<a href="./../../../ast/html/content/class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html">WhileStatementNode</a>
+            &amp; whileStatementNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html#192">192</a>
+             of <a href="file/StatementBinder.cpp_693A0A66B95F7C1F66CFDBE13AFABAF105485241.html">StatementBinder.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">194</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a><span class="other">(</span><span class="identifier">whileStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html#function_Condition_521E0490CF4D9ABD02FA2D03BA47EFF160BF898D">Condition</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_symbolTable_2197CE44C67A6EF4C60F793A9F3F7D885DABFC47">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_containerScope_FE74B27FC38CE3E9E3C1AF659D21FA0B96554DA2">containerScope</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentSourceFile_B06DAEC5563F55C4007333EBC0BD34764B88E19F">currentSourceFile</a><span class="other">,&nbsp;</span><a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#variable_currentFunction_1761EDC43E4A5C972C750CE9F597B2736DE920B8">currentFunction</a><span class="other">,&nbsp;</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">195</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">whileStatementNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html#function_Statement_176AE0EA1903666E2E826FCA11060F72D96A9103">Statement</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">196</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html#35">35</a>
+             of <a href="file/StatementBinder.hpp_612AEAF1A5BA3F3EFF9C268C17307E8348D09482.html">StatementBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_3D4D9706CA492716DAD07B38792CD14A14A6AC76">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+            , <a href="./../../../ast/html/content/class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html#function_Condition_521E0490CF4D9ABD02FA2D03BA47EFF160BF898D">sngcpp::ast::WhileStatementNode::Condition</a>
+            , <a href="./../../../ast/html/content/class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html#function_Statement_176AE0EA1903666E2E826FCA11060F72D96A9103">sngcpp::ast::WhileStatementNode::Statement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html">up</a>
+         | <a href="class_SourceFileResolver_2FBE49A2E28D9B2355FB436716C01EC1DCA231DD.html">prev</a>
+         | <a href="class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html">next</a>
+    </body>
+</html>

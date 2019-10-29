@@ -1,0 +1,100 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SNGCPP_AST_READER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SNGCPP_AST_READER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/AstApi.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/SimpleType.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Specifier.hpp></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Class.hpp></span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Enumeration.hpp></span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Expression.hpp></span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Literal.hpp></span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Namespace.hpp></span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Lexer.hpp></span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/BinaryReader.hpp></span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">ast</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#constructor_Reader_CAD3B16301152618E212C68F40DDCA1B2E1A3632">Reader</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">::</span><span class="type">BinaryReader</span><span class="other">&amp;</span>&nbsp;<span class="identifier">binaryReader_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">::</span><span class="type">BinaryReader</span><span class="other">&amp;</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">binaryReader</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_SimpleTypeSpecifier_380FF09915F2A3422F24E56786B4742925F366E2.html">SimpleTypeSpecifier</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSimpleTypeSpecifier_15C86292B43CD61475FC4A8B8A07196146F57A23">ReadSimpleTypeSpecifier</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNodeType_385C4152E74CB7DBD4984DB136920149874903AE">ReadNodeType</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadClassKey_8EBF4D34405C1D455B05479D18F404606C5C4EDA">ReadClassKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_EnumKey_A55102664E98266E1540671D92722ED39F7D0C58.html">EnumKey</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadEnumKey_0085E92431AC3B32C0C7FD227AE04E13EA8AAEB8">ReadEnumKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558.html">Operator</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadOperator_231D741B918C05B9581EBBFF4106A455883B5CA3">ReadOperator</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSuffix_C37786498F66C45A7E251E47B2D7DB4BEC3B9C93">ReadSuffix</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Base_FF9719A9A8C28517E9516B32F91AA7544CED3B28.html">Base</a>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadBase_DD55C321EDCFE289376BAD254A10541DE32E52EE">ReadBase</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html">CompoundStatementNode</a><span class="other">*</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadCompoundStatementNode_D8ACA0E2E5E3FFA86F9BE04B1B6040037F0BBE23">ReadCompoundStatementNode</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html">StringLiteralNode</a><span class="other">*</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadStringLiteralNode_B99077CD819AB03D2AB1C0E2927217017F12B7F7">ReadStringLiteralNode</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html">NamespaceNode</a><span class="other">*</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNamespaceNode_37C11F847521CC2E51594BB2A1E00484A5F77C65">ReadNamespaceNode</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html">IdentifierNode</a><span class="other">*</span>&nbsp;<a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadIdentifierNode_F3163E379666D1037AA6BD1E0472673A382D829C">ReadIdentifierNode</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">::</span><span class="type">BinaryReader</span><span class="other">&amp;</span>&nbsp;<span class="identifier">binaryReader</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::ast</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNGCPP_AST_READER_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

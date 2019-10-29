@@ -20,14 +20,14 @@ parser XPathParser
         ;
 
     OrExpr(var std::unique_ptr<sngxml::xpath::XPathExpr> expr) : sngxml::xpath::XPathExpr*
-        ::= (AndExpr:left{ expr.reset(left); } (OR AndExpr:right!{ expr.reset(new sngxml::xpath::XPathOrExpr(expr.release(), right)); })*)
+        ::= (AndExpr:left{ expr.reset(left); } (NAME{ soulng::lexer::Token token = lexer.GetToken(pos); pass = lexer.GetKeywordToken(token.match) == OR; } AndExpr:right{ expr.reset(new sngxml::xpath::XPathOrExpr(expr.release(), right)); })*)
         {
             return expr.release();
         }
         ;
 
     AndExpr(var std::unique_ptr<sngxml::xpath::XPathExpr> expr) : sngxml::xpath::XPathExpr*
-        ::= (EqualityExpr:left{ expr.reset(left); } (AND EqualityExpr:right!{ expr.reset(new sngxml::xpath::XPathAndExpr(expr.release(), right)); })*)
+        ::= (EqualityExpr:left{ expr.reset(left); } (NAME{ soulng::lexer::Token token = lexer.GetToken(pos); pass = lexer.GetKeywordToken(token.match) == AND; } EqualityExpr:right{ expr.reset(new sngxml::xpath::XPathAndExpr(expr.release(), right)); })*)
         {
             return expr.release();
         }
@@ -95,7 +95,18 @@ parser XPathParser
     MultiplicativeExpr(var std::unique_ptr<sngxml::xpath::XPathExpr> expr, var sngxml::xpath::Operator op) : sngxml::xpath::XPathExpr*
         ::=
         (   UnaryExpr:left{ expr.reset(left); }
-            (   (STAR{ op = sngxml::xpath::Operator::mul; } | DIV{ op = sngxml::xpath::Operator::div; } | MOD{ op = sngxml::xpath::Operator::mod; })
+            (   (STAR{ op = sngxml::xpath::Operator::mul; }
+                |   NAME
+                {
+                    soulng::lexer::Token token = lexer.GetToken(pos);
+                    switch (lexer.GetKeywordToken(token.match))
+                    {
+                        case DIV: op = sngxml::xpath::Operator::div; break;
+                        case MOD: op = sngxml::xpath::Operator::mod; break;
+                        default: pass = false; break;
+                    }
+                }
+            )
                 UnaryExpr:right!
                 {
                     switch (op)
@@ -221,19 +232,70 @@ parser XPathParser
         ;
 
     AxisName : sngxml::xpath::Axis
-        ::= ANCESTOR{ return sngxml::xpath::Axis::ancestor; }
-        |   ANCESTOR_OR_SELF{ return sngxml::xpath::Axis::ancestorOrSelf; }
-        |   ATTRIBUTE{ return sngxml::xpath::Axis::attribute; }
-        |   CHILD{ return sngxml::xpath::Axis::child; }
-        |   DESCENDANT{ return sngxml::xpath::Axis::descendant; }
-        |   DESCENDANT_OR_SELF{ return sngxml::xpath::Axis::descendantOrSelf; }
-        |   FOLLOWING{ return sngxml::xpath::Axis::following; }
-        |   FOLLOWING_SIBLING{ return sngxml::xpath::Axis::followingSibling; }
-        |   NAMESPACE{ return sngxml::xpath::Axis::ns; }
-        |   PARENT{ return sngxml::xpath::Axis::parent; }
-        |   PRECEDING{ return sngxml::xpath::Axis::preceding; }
-        |   PRECEDING_SIBLING{ return sngxml::xpath::Axis::precedingSibling; }
-        |   SELF{ return sngxml::xpath::Axis::self; }
+        ::= NAME
+        {
+            soulng::lexer::Token token = lexer.GetToken(pos);
+            switch (lexer.GetKeywordToken(token.match))
+            {
+                case ANCESTOR:
+                {
+                    return sngxml::xpath::Axis::ancestor;
+                }
+                case ANCESTOR_OR_SELF:
+                {
+                    return sngxml::xpath::Axis::ancestorOrSelf;
+                }
+                case ATTRIBUTE:
+                {
+                    return sngxml::xpath::Axis::attribute;
+                }
+                case CHILD :
+                {
+                    return sngxml::xpath::Axis::child;
+                }
+                case DESCENDANT:
+                {
+                    return sngxml::xpath::Axis::descendant;
+                }
+                case DESCENDANT_OR_SELF:
+                {
+                    return sngxml::xpath::Axis::descendantOrSelf;
+                }
+                case FOLLOWING:
+                {
+                    return sngxml::xpath::Axis::following;
+                }
+                case FOLLOWING_SIBLING:
+                {
+                    return sngxml::xpath::Axis::followingSibling;
+                }
+                case NAMESPACE:
+                {
+                    return sngxml::xpath::Axis::ns;
+                }
+                case PARENT:
+                {
+                    return sngxml::xpath::Axis::parent;
+                }
+                case PRECEDING:
+                {
+                    return sngxml::xpath::Axis::preceding;
+                }
+                case PRECEDING_SIBLING:
+                {
+                    return sngxml::xpath::Axis::precedingSibling;
+                }
+                case SELF:
+                {
+                    return sngxml::xpath::Axis::self;
+                }
+                default:
+                {
+                    pass = false;
+                    break;
+                }
+            }
+        }
         ;
 
     AbbreviatedAxisSpecifier : sngxml::xpath::Axis
@@ -242,16 +304,28 @@ parser XPathParser
         ;
 
     NodeTest : sngxml::xpath::XPathNodeTestExpr*
-        ::= PROCESSING_INSTRUCTION LPAREN Literal:pi RPAREN{ return new sngxml::xpath::XPathPILiteralTest(pi); }
+        ::= NAME{ soulng::lexer::Token token = lexer.GetToken(pos); pass = lexer.GetKeywordToken(token.match) == PROCESSING_INSTRUCTION; } LPAREN Literal:pi RPAREN{ return new sngxml::xpath::XPathPILiteralTest(pi); }
         |   NodeType:nodeType LPAREN RPAREN{ return nodeType; }
         |   NameTest:nameTest{ return nameTest; }
         ;
 
     NodeType : sngxml::xpath::XPathNodeTestExpr*
-        ::= COMMENT{ return new sngxml::xpath::XPathCommentNodeTest(); }
-        |   TEXT{ return new sngxml::xpath::XPathTextNodeTest(); }
-        |   PROCESSING_INSTRUCTION{ return new sngxml::xpath::XPathPINodeTest(); }
-        |   NODE{ return new sngxml::xpath::XPathAnyNodeTest(); }
+        ::= NAME
+        {
+            soulng::lexer::Token token = lexer.GetToken(pos);
+            switch (lexer.GetKeywordToken(token.match))
+            {
+                case COMMENT: return new sngxml::xpath::XPathCommentNodeTest();
+                case TEXT: return new sngxml::xpath::XPathTextNodeTest();
+                case PROCESSING_INSTRUCTION: return new sngxml::xpath::XPathPINodeTest();
+                case NODE: return new sngxml::xpath::XPathAnyNodeTest();
+                default:
+                {
+                    pass = false;
+                    break;
+                }
+            }
+        }
         ;
 
     NameTest : sngxml::xpath::XPathNodeTestExpr*

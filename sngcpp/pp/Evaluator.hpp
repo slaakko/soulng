@@ -126,8 +126,6 @@ public:
     void Visit(MemberInitializerSequenceNode& memberInitializerSequenceNode) override;
     void Visit(SourceFileNode& sourceFileNode) override;
     void Visit(SourceFileSequenceNode& sourceFileSequenceNode) override;
-    void Visit(IncludeDirectiveNode& includeDirectiveNode) override;
-    void Visit(IncludeDirectiveSequenceNode& includeDirectiveSequenceNode) override;
     void Visit(SimpleDeclarationNode& simpleDeclarationNode) override;
     void Visit(AliasDeclarationNode& aliasDeclarationNode) override;
     void Visit(UsingDirectiveNode& usingDirectiveNode) override;
@@ -180,10 +178,10 @@ public:
     void Visit(ParenthesizedExprNode& parenthesizedExprNode) override;
     void Visit(LambdaExpressionNode& lambdaExpressionNode) override;
     void Visit(CaptureSequenceNode& captureSequenceNode) override;
-    void Visit(AssignCapture& assignCapture) override;
-    void Visit(RefCapture& refCapture) override;
-    void Visit(ThisCapture& thisCapture) override;
-    void Visit(IdentifierCapture& identifierCapture) override;
+    void Visit(AssignCaptureNode& assignCaptureNode) override;
+    void Visit(RefCaptureNode& refCaptureNode) override;
+    void Visit(ThisCaptureNode& thisCaptureNode) override;
+    void Visit(IdentifierCaptureNode& identifierCaptureNode) override;
     void Visit(IdentifierNode& identifierNode) override;
     void Visit(OperatorFunctionIdNode& operatorFunctionIdNode) override;
     void Visit(ConversionFunctionIdNode& conversionFunctionIdNode) override;

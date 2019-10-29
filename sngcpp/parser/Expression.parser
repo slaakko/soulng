@@ -48,14 +48,14 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         ;
 
     ConstantExpression(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node*
-        ::= Expression(ctx):expr{ return expr; }
+        ::= ConditionalExpression(ctx):expr{ return expr; }
         ;
 
-    AssignmentExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr) : sngcpp::ast::Node*
+    AssignmentExpression(sngcpp::cppparser::ParsingContext* ctx, var std::unique_ptr<sngcpp::ast::Node> expr, var Span s) : sngcpp::ast::Node*
         ::= empty{ ctx->BeginParsingLvalue(); }
-        (   LogicalOrExpression(ctx):logicalOrExpression{ ctx->EndParsingLvalue(); expr.reset(logicalOrExpression); } / { ctx->EndParsingLvalue(); }
+        (   LogicalOrExpression(ctx):logicalOrExpression{ s = span; ctx->EndParsingLvalue(); expr.reset(logicalOrExpression); } / { ctx->EndParsingLvalue(); }
             AssignmentOperator:op
-            InitializerClause(ctx):initializerClause{ expr.reset(new sngcpp::ast::AssignmentExpressionNode(span, expr.release(), op, initializerClause)); }
+            InitializerClause(ctx):initializerClause{ s.end = span.end; expr.reset(new sngcpp::ast::AssignmentExpressionNode(s, expr.release(), op, initializerClause)); }
         |   ConditionalExpression(ctx):conditionalExpression{ expr.reset(conditionalExpression); }
         |   ThrowExpression(ctx):throwExpression{ expr.reset(throwExpression); }
         )
@@ -536,8 +536,8 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         ;
 
     CaptureDefault : sngcpp::ast::Node*
-        ::= ASSIGN{ return new sngcpp::ast::AssignCapture(span); }
-        |   AMP{ return new sngcpp::ast::RefCapture(span); }
+        ::= ASSIGN{ return new sngcpp::ast::AssignCaptureNode(span); }
+        |   AMP{ return new sngcpp::ast::RefCaptureNode(span); }
         ;
 
     Captures(sngcpp::ast::LambdaExpressionNode* lambdaExpression)
@@ -545,7 +545,7 @@ parser api(SNGCPP_PARSER_API) ExpressionParser
         ;
 
     Capture : sngcpp::ast::Node*
-        ::= Identifier:id{ return new sngcpp::ast::IdentifierCapture(span, new sngcpp::ast::IdentifierNode(span, id)); }
-        |   THIS{ return new sngcpp::ast::ThisCapture(span); }
+        ::= Identifier:id{ return new sngcpp::ast::IdentifierCaptureNode(span, new sngcpp::ast::IdentifierNode(span, id)); }
+        |   THIS{ return new sngcpp::ast::ThisCaptureNode(span); }
         ;
 }

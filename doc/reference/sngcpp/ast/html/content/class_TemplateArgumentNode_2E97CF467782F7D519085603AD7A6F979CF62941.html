@@ -1,0 +1,403 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>TemplateArgumentNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html">prev</a>
+         | <a href="class_TemplateArgumentSequenceNode_4EA9BC8EE2FA867B3692B25DEE7A4C59A861F36E.html">next</a>
+        <hr/>
+        <h1>TemplateArgumentNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#79">79</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#constructor_TemplateArgumentNode_289245233CE8A1A2B9677114ABEF5A85685CAC03">TemplateArgumentNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#constructor_TemplateArgumentNode_5A0C35D1324698728D07D5AB0A33C657B8586C7D">TemplateArgumentNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* arg_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Accept_E1BA485EB01426AB29965050719E0A5C43C3E2DA">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Arg_3A4440261BA1E48BB505F5411016C69E8A4733C2">Arg</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_arg_A205C5EB9DE3200975369C9FFE566F12887EF185">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">arg</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_TemplateArgumentNode_289245233CE8A1A2B9677114ABEF5A85685CAC03">TemplateArgumentNode Constructor</h3>
+        <h4>
+            sngcpp::ast::TemplateArgumentNode::TemplateArgumentNode()</h4>
+        <span>
+            Definition at line <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html#135">135</a>
+             of <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html">Template.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_templateArgumentNode_4A9D464C83021B5239E9B1B74E1802098CE7D729">templateArgumentNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#82">82</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_TemplateArgumentNode_5A0C35D1324698728D07D5AB0A33C657B8586C7D">TemplateArgumentNode Constructor</h3>
+        <h4>
+            sngcpp::ast::TemplateArgumentNode::TemplateArgumentNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * arg_)</h4>
+        <span>
+            Definition at line <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html#139">139</a>
+             of <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html">Template.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_templateArgumentNode_4A9D464C83021B5239E9B1B74E1802098CE7D729">templateArgumentNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#variable_arg_A205C5EB9DE3200975369C9FFE566F12887EF185">arg</a><span class="other">(</span><span class="identifier">arg_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#83">83</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_E1BA485EB01426AB29965050719E0A5C43C3E2DA">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::TemplateArgumentNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html#143">143</a>
+             of <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html">Template.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_C5CC422D441B592BFD9EF0FCF493B22161F1712D">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#84">84</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_C5CC422D441B592BFD9EF0FCF493B22161F1712D">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Arg_3A4440261BA1E48BB505F5411016C69E8A4733C2">Arg Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::TemplateArgumentNode::Arg()</h4>
+        <span>
+            Definition at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#87">87</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">arg</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::TemplateArgumentNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html#154">154</a>
+             of <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html">Template.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#variable_arg_A205C5EB9DE3200975369C9FFE566F12887EF185">arg</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#86">86</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#function_Read_F4A94FA7F4F75987B75E955CFD713CCEDD6183CF">sngcpp::ast::AdditiveExpressionNode::Read</a>
+            , <a href="./class_AliasDeclarationNode_10402FF684BE7A307DBD58D52E2B317B134BE264.html#function_Read_198195AF2CA72EBA65427A0E18CB1C9A47B52FE4">sngcpp::ast::AliasDeclarationNode::Read</a>
+            , <a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Read_2D01EF8C22AE7AA6CF71FE480CDE0B92D995DFD8">sngcpp::ast::ArrayDeclaratorNode::Read</a>
+            , <a href="./class_ArrowNode_D5F4EE9F04DA45CFBDA007DF3BB38425574A9348.html#function_Read_A46C2DA0310B0D76419F43D94AEA998D77F816F4">sngcpp::ast::ArrowNode::Read</a>
+            , <a href="./class_AssignmentExpressionNode_36B361F3EEBB5596F336CE1E115440D2CEB00567.html#function_Read_3CBE531DDFAB60B53C7961CF4C161A2DCE9DB026">sngcpp::ast::AssignmentExpressionNode::Read</a>
+            , <a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Read_93D761D565B7F060AD3A4E342C01152BFFAFECDC">sngcpp::ast::BaseClassSpecifierNode::Read</a>
+            , <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Read_03AD4452AA36CE7AD10DC7D9D959550B072EB8DD">sngcpp::ast::BinaryNode::Read</a>
+            , <a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#function_Read_6CD1BE154DCCA492AF8FFE9C6790F4F1E7B8E5AC">sngcpp::ast::BooleanLiteralNode::Read</a>
+            , <a href="./class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Read_F801A2AE5BEC0047B741B106F3A747B47B66D925">sngcpp::ast::BracedInitializerListNode::Read</a>
+            , <a href="./class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html#function_Read_6733D5903C2C7A0912C930BFAAF18C1147FA2E00">sngcpp::ast::CaseStatementNode::Read</a>
+            , <a href="./class_CastExpressionNode_ED673063A7C81F228164D0772E91919A1A368CD2.html#function_Read_28D9AC6A49E876A5507432E4C4DE3F0C522D360D">sngcpp::ast::CastExpressionNode::Read</a>
+            , <a href="./class_CharacterLiteralNode_1BBDA6256614B008A440C8A56A3B6AEE422FD57F.html#function_Read_41EEFFD84F2A029876DEDF1D2DE62DC324C640F0">sngcpp::ast::CharacterLiteralNode::Read</a>
+            , <a href="./class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Read_2695F7583818AD360D5211C928D31D7D416B3D53">sngcpp::ast::ClassNode::Read</a>
+            , <a href="./class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Read_E852779A7EEE63100832C89108728B27646D6894">sngcpp::ast::CompoundStatementNode::Read</a>
+            , <a href="./class_ConditionalExpressionNode_1F8B641EFBDFC3607B4D79D9DD0761E37AD60427.html#function_Read_3FF3E886D4978097E9FCA7ABFCA4FF98077D410B">sngcpp::ast::ConditionalExpressionNode::Read</a>
+            , <a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#function_Read_031F0799E07621294EC7AA11C605C17E872BB56B">sngcpp::ast::ConversionFunctionIdNode::Read</a>
+            , <a href="./class_CppCastExpressionNode_184B9A0ABA8D688BBC71A32F1AA792C86622D1AF.html#function_Read_C0BD0A8753797CE1CB11200B89DBAC666EEEC1EC">sngcpp::ast::CppCastExpressionNode::Read</a>
+            , <a href="./class_DeleteExpressionNode_A4FC110FE7CB621D52C19118DA061E0BD2CFA981.html#function_Read_A609E6AE2E8EC00B638C0D83A721150587B9EF83">sngcpp::ast::DeleteExpressionNode::Read</a>
+            , <a href="./class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html#function_Read_63EEFC2C4D2E55A29988A37A3F0B9328E504BD23">sngcpp::ast::DoStatementNode::Read</a>
+            , <a href="./class_DotNode_D560426060C063A8546B2C8C79EB8598802EF710.html#function_Read_48935CE093A5F3D24ECB8F2274E43A4DC407BB2A">sngcpp::ast::DotNode::Read</a>
+            , <a href="./class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_Read_21AC0F69F2C06FD2ED91E352C332E06FB3BBCC7E">sngcpp::ast::ElaborateClassNameNode::Read</a>
+            , <a href="./class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#function_Read_16842B2F56D9987C46DD265E5305C6ECEA2272F0">sngcpp::ast::EnumTypeNode::Read</a>
+            , <a href="./class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#function_Read_91D784916A3DD4D372E16023974F33035D1C0085">sngcpp::ast::EnumeratorNode::Read</a>
+            , <a href="./class_EqualityExpressionNode_451EFFA2481F9F45A091C4CF6FBC0BEAF8A243E1.html#function_Read_E672F5EFBB7BA6EE00615D54E9E18DFC85E8D183">sngcpp::ast::EqualityExpressionNode::Read</a>
+            , <a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_Read_EB5F37F505C2B4771462F98E9D163720FB8CC869">sngcpp::ast::FloatingLiteralNode::Read</a>
+            , <a href="./class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html#function_Read_E28CD86816A0BA284636FF246D98A230875EACD7">sngcpp::ast::ForStatementNode::Read</a>
+            , <a href="./class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_Read_A27CC4C0AC262D7643ADDCCF25838CE967DE02F1">sngcpp::ast::ForwardClassDeclarationNode::Read</a>
+            , <a href="./class_FunctionDeclaratorNode_4EBA1ECC56E8C1F0BB45D24FF59BD26AADC1C969.html#function_Read_D5D7451CC8150B683B3B33953DEFF4BFFA7C5861">sngcpp::ast::FunctionDeclaratorNode::Read</a>
+            , <a href="./class_FunctionNode_FF33E683A8B619C8B0C68E2611A5570F3A4BADD6.html#function_Read_48B8B3A0DEC3ED748265B1F39D7B633D9C7CB3B3">sngcpp::ast::FunctionNode::Read</a>
+            , <a href="./class_FunctionPtrIdNode_DFD2EC8BA4FA02EE5D6D9F13B0109A5ECCE6F8FA.html#function_Read_393A57C01F95E65430B8A18903BF43C126B154BB">sngcpp::ast::FunctionPtrIdNode::Read</a>
+            , <a href="./class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#function_Read_871B28F85DEF72DBA9946C0FC02640844FA6CF93">sngcpp::ast::GotoStatementNode::Read</a>
+            , <a href="./class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html#function_Read_12C55E6C5C45A1BC9F4536FEEF2AD4CD4194D06A">sngcpp::ast::HandlerNode::Read</a>
+            , <a href="./class_IdDeclaratorNode_8D2A8F5FFBDE065A43A1519036D9DF476AE19B2D.html#function_Read_9FA98535918BF29AB363E136A7C227EF707B8FE2">sngcpp::ast::IdDeclaratorNode::Read</a>
+            , <a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#function_Read_1A29BAE56253FE2B49A64D344E5847610C165E13">sngcpp::ast::IdentifierNode::Read</a>
+            , <a href="./class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_Read_B6DC01BCCF1885522EBB099B402061BF0028A8DC">sngcpp::ast::IfStatementNode::Read</a>
+            , <a href="./class_InitDeclaratorNode_0B94468547B968BA2C0286E75A8DC28EECA494C8.html#function_Read_A41CA1B37D721108B1B4DE723D0DAAA4AF03B3B4">sngcpp::ast::InitDeclaratorNode::Read</a>
+            , <a href="./class_IntegerLiteralNode_9474DF73DF5CD9D4919AF57C69EA261851CD09A0.html#function_Read_35C2A06A4AFEC2BCBD278685D0183DF153F26E4C">sngcpp::ast::IntegerLiteralNode::Read</a>
+            , <a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Read_36B7DF9E65A55C65B71E8718E55338C34C309F03">sngcpp::ast::InvokeExpressionNode::Read</a>
+            , <a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Read_4F6BE0FF06B56B71B242FEE4932E826EFD4F297A">sngcpp::ast::LabeledStatementNode::Read</a>
+            , <a href="./class_LambdaExpressionNode_8EAB242A1154BEB49E6CDEB72EEFA86405D54C07.html#function_Read_83ABFC4EE49B081AF9F2F28F90AEBFFC7C88AEA9">sngcpp::ast::LambdaExpressionNode::Read</a>
+            , <a href="./class_LinkageSpecificationNode_D8A925830B1217F15E8926C048493F535A59AAA5.html#function_Read_4B52A8FF2A27E6A6C8549C12B9F337805127932F">sngcpp::ast::LinkageSpecificationNode::Read</a>
+            , <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Read_2615515C93184178E873D6CD819E879F5605D942">sngcpp::ast::LiteralNode::Read</a>
+            , <a href="./class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#function_Read_3B63BEEC375A478920A647123FB3AFD4D69CACDE">sngcpp::ast::MemberAccessDeclarationNode::Read</a>
+            , <a href="./class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#function_Read_31354FC53C5A330CD3031037753E00406ABCDDB5">sngcpp::ast::MemberDeclarationNode::Read</a>
+            , <a href="./class_MemberFunctionPtrIdNode_1B89DAF5BF8E58F8381FD79C01270D5310F53D69.html#function_Read_C63B87BAF0B5E9AA307AC9346EFFA97DF1D09444">sngcpp::ast::MemberFunctionPtrIdNode::Read</a>
+            , <a href="./class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#function_Read_8136C4E4D26130C2C474635F48B3205B1B337D92">sngcpp::ast::MemberInitializerNode::Read</a>
+            , <a href="./class_MultiplicativeExpressionNode_194B2D3A8A640406E728FE4BAD0E8C5AC7A46EA5.html#function_Read_244198CCEC7017FA65FDEE6A28E5B1B2E10547EB">sngcpp::ast::MultiplicativeExpressionNode::Read</a>
+            , <a href="./class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html#function_Read_B3D4A3C2A1898B1B10D903238A024E59F948AA41">sngcpp::ast::NamespaceNode::Read</a>
+            , <a href="./class_NewExpressionNode_6CE8CBB219536BBB5618356B7338DFFD655FC9A1.html#function_Read_F50DCF3BCD3C37FFD50EFF378E10455F8324B86F">sngcpp::ast::NewExpressionNode::Read</a>
+            , <a href="./class_OperatorFunctionIdNode_2FB359DA0330D9E3C94408C0726F3C660035FA1B.html#function_Read_AFE496E4411F63F15115362F1B82468684C30863">sngcpp::ast::OperatorFunctionIdNode::Read</a>
+            , <a href="./class_PMExpressionNode_5629B6FF862318FC8BF5BB40A325CB4F53EAEFD9.html#function_Read_62614755601AF6F1E262E2F462B31709BB9513DB">sngcpp::ast::PMExpressionNode::Read</a>
+            , <a href="./class_ParameterNode_C04B10A2ED38A6C5383CA46B1C6AC713CCFE0B57.html#function_Read_9A2D5A76D1B60F0CD9280CFE9E7D909A6208B26C">sngcpp::ast::ParameterNode::Read</a>
+            , <a href="./class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html#function_Read_84C12F550FAFDDF80140510C551C2964BB4BE4B4">sngcpp::ast::RangeForStatementNode::Read</a>
+            , <a href="./class_RelationalExpressionNode_6583AC7AE0D894AE3DCC0AFEB133CB1B7FC45943.html#function_Read_E0F40AA3EDCD09C4413D0133BE453E8AF0A449A6">sngcpp::ast::RelationalExpressionNode::Read</a>
+            , <a href="./class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html#function_Read_35669FAD4FD49B5210DC2D72ACA561E769C8A716">sngcpp::ast::ReturnStatementNode::Read</a>
+            , <a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#function_Read_E980EB205EEB78AE1935D12CA200620A84E8B3A4">sngcpp::ast::ShiftExpressionNode::Read</a>
+            , <a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Read_8EDE3D01CFCDD15706003E8F36AB39CBD574A15E">sngcpp::ast::SimpleDeclarationNode::Read</a>
+            , <a href="./class_SimpleTypeNode_C1B8B4343B9E5F70772809DEB68F19BD9BF25116.html#function_Read_D7869C852E20CC4B56737B7FD098B688219EF950">sngcpp::ast::SimpleTypeNode::Read</a>
+            , <a href="./class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html#function_Read_804C7ADD2A79336D5B2DA13154AF574FE716558A">sngcpp::ast::SourceFileNode::Read</a>
+            , <a href="./class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_Read_5976543B2BAF4C3B601A7CA929E0A706F943A773">sngcpp::ast::SpecialMemberFunctionNode::Read</a>
+            , <a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_Read_4874B546E196852821238E8A3128DFFDFD57D579">sngcpp::ast::StringLiteralNode::Read</a>
+            , <a href="./class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html#function_Read_528C4E63A5E064F5E92A4218368154B19BF424BF">sngcpp::ast::SubscriptExpressionNode::Read</a>
+            , <a href="./class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html#function_Read_50CA052D962257AE43907DF1E71F850704D49E1D">sngcpp::ast::SwitchStatementNode::Read</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+            , <a href="./class_TemplateDeclarationNode_C3E60CC2D83CB6A8AD00E259AC31ECADBECE6569.html#function_Read_748C937C673052C18503E0B87DC9A86A7EDB813C">sngcpp::ast::TemplateDeclarationNode::Read</a>
+            , <a href="./class_TemplateIdNode_A852BC0337977094554D7B57B6E2254321E7CE80.html#function_Read_1E726A3B1B51B19D129B31328DEDB67C778B8BA8">sngcpp::ast::TemplateIdNode::Read</a>
+            , <a href="./class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html#function_Read_836302A30B03B4B6F2B871147CF5265760F24A41">sngcpp::ast::TryStatementNode::Read</a>
+            , <a href="./class_TypeParameterNode_80AE4C948E43708AD4682F77F1D97C98B693EF82.html#function_Read_6D35E2073BE58C809F01730D8B18504F11509C0F">sngcpp::ast::TypeParameterNode::Read</a>
+            , <a href="./class_TypedefNode_97C0EC0AC48A1196D83029269F6F6548B97B19CB.html#function_Read_7764CCA7AD4341850500C6DE5164528AD2FC8920">sngcpp::ast::TypedefNode::Read</a>
+            , <a href="./class_UnaryExpressionNode_0158205C576BD308E68A0A8F334BB20449473A4E.html#function_Read_398520065FFB0EB83AB0301EE3D60E7B1D5ECB42">sngcpp::ast::UnaryExpressionNode::Read</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Read_CD96300DF5D61F69E8B0DEB4BFCCB174951E6104">sngcpp::ast::UnaryNode::Read</a>
+            , <a href="./class_UsingDeclarationNode_47A7186316328E1256FA6692D853868EDE3D1A6F.html#function_Read_0C491DECED7D42C51BED15ACE914E88C5A90FB71">sngcpp::ast::UsingDeclarationNode::Read</a>
+            , <a href="./class_UsingDirectiveNode_A0CBB938BF2FC81F8B1D12066937ABD2455063C2.html#function_Read_70D07F999C148CC5C45621253F53F64C78DF6929">sngcpp::ast::UsingDirectiveNode::Read</a>
+            , <a href="./class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html#function_Read_A5AE9C76C95BF0C210790F8E38E4BAC503DB7583">sngcpp::ast::WhileStatementNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::TemplateArgumentNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html#148">148</a>
+             of <a href="file/Template.cpp_F6A7949AE314761BEE9AF9D6B601965701094560.html">Template.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#variable_arg_A205C5EB9DE3200975369C9FFE566F12887EF185">arg</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html#85">85</a>
+             of <a href="file/Template.hpp_29D8FF12C921C244B37762DE847228E6A570BF73.html">Template.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#function_Write_07E57D026E0478D7F46EF275A26D1E80C887538D">sngcpp::ast::AdditiveExpressionNode::Write</a>
+            , <a href="./class_AliasDeclarationNode_10402FF684BE7A307DBD58D52E2B317B134BE264.html#function_Write_FA345C5C936C14BA3C03F38B357C2517B81151C7">sngcpp::ast::AliasDeclarationNode::Write</a>
+            , <a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Write_6C8B7EBFB81B103AFBA528BE64C20AF08B7667E0">sngcpp::ast::ArrayDeclaratorNode::Write</a>
+            , <a href="./class_ArrowNode_D5F4EE9F04DA45CFBDA007DF3BB38425574A9348.html#function_Write_2073F3F0437A88B55F1EFBE835E298E021B43F41">sngcpp::ast::ArrowNode::Write</a>
+            , <a href="./class_AssignmentExpressionNode_36B361F3EEBB5596F336CE1E115440D2CEB00567.html#function_Write_CEB5A1E7D4CFEAAE3C8E7B0AC130491842E49075">sngcpp::ast::AssignmentExpressionNode::Write</a>
+            , <a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Write_B42904DAC752003488CCA4C4FAA238A2910FD58B">sngcpp::ast::BaseClassSpecifierNode::Write</a>
+            , <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Write_9F252F93CCB5F5C430641DA5A67E81687114B9DA">sngcpp::ast::BinaryNode::Write</a>
+            , <a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#function_Write_4FADAFE79FCC745F01A156EE891BEEA9B4846837">sngcpp::ast::BooleanLiteralNode::Write</a>
+            , <a href="./class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Write_D1AB13795D53246411B84E4240E6CF305EEE29F1">sngcpp::ast::BracedInitializerListNode::Write</a>
+            , <a href="./class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html#function_Write_C766B0AFBA507D67A6FAFBE40FF016E25704FF1F">sngcpp::ast::CaseStatementNode::Write</a>
+            , <a href="./class_CastExpressionNode_ED673063A7C81F228164D0772E91919A1A368CD2.html#function_Write_43DB76B4CD85ED5CA08377D47C369ECE137F3F9A">sngcpp::ast::CastExpressionNode::Write</a>
+            , <a href="./class_CharacterLiteralNode_1BBDA6256614B008A440C8A56A3B6AEE422FD57F.html#function_Write_E2F398B13CE506D625E45C1C03E384DEB71EA349">sngcpp::ast::CharacterLiteralNode::Write</a>
+            , <a href="./class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Write_601D139C2389F5A3C508CE720AAE919A36FD86ED">sngcpp::ast::ClassNode::Write</a>
+            , <a href="./class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Write_E84BCA503614690E85DDDD51E6701C380398C489">sngcpp::ast::CompoundStatementNode::Write</a>
+            , <a href="./class_ConditionalExpressionNode_1F8B641EFBDFC3607B4D79D9DD0761E37AD60427.html#function_Write_458E1D2606B58D5B74102F38B3F7B1143886CFB6">sngcpp::ast::ConditionalExpressionNode::Write</a>
+            , <a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#function_Write_D55C67B3DCD36A8915F0EBB7511FB26AB587FA92">sngcpp::ast::ConversionFunctionIdNode::Write</a>
+            , <a href="./class_CppCastExpressionNode_184B9A0ABA8D688BBC71A32F1AA792C86622D1AF.html#function_Write_13E51ECB520C167079A58C837F37EE83033F283E">sngcpp::ast::CppCastExpressionNode::Write</a>
+            , <a href="./class_DeleteExpressionNode_A4FC110FE7CB621D52C19118DA061E0BD2CFA981.html#function_Write_FC5EF67AB392922536BF63748D5D265DC4338E93">sngcpp::ast::DeleteExpressionNode::Write</a>
+            , <a href="./class_DoStatementNode_603ADC1AA05B49545D9AE828E2708B0B65BE9B93.html#function_Write_D2B36E691ED76DB813C2AF5CA29ADFB98B93CF41">sngcpp::ast::DoStatementNode::Write</a>
+            , <a href="./class_DotNode_D560426060C063A8546B2C8C79EB8598802EF710.html#function_Write_0908D216D6E4E8CC9D999C682701007A1285D5C6">sngcpp::ast::DotNode::Write</a>
+            , <a href="./class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_Write_65D7D87A286599AC111747BBCFF28F03A0304C77">sngcpp::ast::ElaborateClassNameNode::Write</a>
+            , <a href="./class_EnumTypeNode_742B6AEC3845ABAF76692A4CA17EB41A26B488F5.html#function_Write_C8C8DF68614E4D3F36F2AFE074F0A2314C2D90F7">sngcpp::ast::EnumTypeNode::Write</a>
+            , <a href="./class_EnumeratorNode_E1B360D299ABD7FC74863AB2CA7C5C6429832F6D.html#function_Write_0AC06DF886A0CAB2AC27AE70F1BECC7CCA879392">sngcpp::ast::EnumeratorNode::Write</a>
+            , <a href="./class_EqualityExpressionNode_451EFFA2481F9F45A091C4CF6FBC0BEAF8A243E1.html#function_Write_533BC2C0079E6609290E4BFEAF9D58381A0A1E92">sngcpp::ast::EqualityExpressionNode::Write</a>
+            , <a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_Write_1E3BFB7B85C270728FBC0E06832525ECD41D5EA6">sngcpp::ast::FloatingLiteralNode::Write</a>
+            , <a href="./class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html#function_Write_4B3E55964521A21F3880D38D768FE1EC0AF2253A">sngcpp::ast::ForStatementNode::Write</a>
+            , <a href="./class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_Write_D8AFFD97FD795889747942B208F871FEF54F3EBE">sngcpp::ast::ForwardClassDeclarationNode::Write</a>
+            , <a href="./class_FunctionDeclaratorNode_4EBA1ECC56E8C1F0BB45D24FF59BD26AADC1C969.html#function_Write_1FD1B449CD60D5DEC0A24A0963D0094F391365CE">sngcpp::ast::FunctionDeclaratorNode::Write</a>
+            , <a href="./class_FunctionNode_FF33E683A8B619C8B0C68E2611A5570F3A4BADD6.html#function_Write_4ACB2B8DC2509396FA95068F97605FAD43BD6AB4">sngcpp::ast::FunctionNode::Write</a>
+            , <a href="./class_FunctionPtrIdNode_DFD2EC8BA4FA02EE5D6D9F13B0109A5ECCE6F8FA.html#function_Write_E883DE7164FEC9015C0983F4153549B69699F359">sngcpp::ast::FunctionPtrIdNode::Write</a>
+            , <a href="./class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#function_Write_8E7926E2B630989D15B9CF034A084B4446116335">sngcpp::ast::GotoStatementNode::Write</a>
+            , <a href="./class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html#function_Write_BD973EEC214359CAAC954627C723157E3FB35540">sngcpp::ast::HandlerNode::Write</a>
+            , <a href="./class_IdDeclaratorNode_8D2A8F5FFBDE065A43A1519036D9DF476AE19B2D.html#function_Write_3AF37A4AE6BEFC25C7837979F4ED9768D1E7F115">sngcpp::ast::IdDeclaratorNode::Write</a>
+            , <a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#function_Write_CE1538D419EDBD06C2FB4CB0421CADE11F26BDE7">sngcpp::ast::IdentifierNode::Write</a>
+            , <a href="./class_IfStatementNode_690F01C4A6AF4447794F72C75179CF3D3449FDBD.html#function_Write_199813D437C83F3E1751D02DF59B2DF6E38E9919">sngcpp::ast::IfStatementNode::Write</a>
+            , <a href="./class_InitDeclaratorNode_0B94468547B968BA2C0286E75A8DC28EECA494C8.html#function_Write_6CA4B5320840B7FF339853857318C669C697FED4">sngcpp::ast::InitDeclaratorNode::Write</a>
+            , <a href="./class_IntegerLiteralNode_9474DF73DF5CD9D4919AF57C69EA261851CD09A0.html#function_Write_9A4D493720CA47F1B8058C2B67EE9362AA4C13C4">sngcpp::ast::IntegerLiteralNode::Write</a>
+            , <a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Write_3C307F1517EFF2997BCAA143842EE14DDC7610D5">sngcpp::ast::InvokeExpressionNode::Write</a>
+            , <a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Write_B721F81DE6DE4C871369FACB216C250249CB4231">sngcpp::ast::LabeledStatementNode::Write</a>
+            , <a href="./class_LambdaExpressionNode_8EAB242A1154BEB49E6CDEB72EEFA86405D54C07.html#function_Write_3B0860A9C7FC48BADC0905805EDD68DC6D2D63C9">sngcpp::ast::LambdaExpressionNode::Write</a>
+            , <a href="./class_LinkageSpecificationNode_D8A925830B1217F15E8926C048493F535A59AAA5.html#function_Write_9599664AD8DD57C01CD19E74EC09AC1048C768AF">sngcpp::ast::LinkageSpecificationNode::Write</a>
+            , <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Write_2665681733401DC7E0ED572D99634D44ADFF407B">sngcpp::ast::LiteralNode::Write</a>
+            , <a href="./class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#function_Write_95854E1BA057AF8AC6AC01194E4DC63D73B812C6">sngcpp::ast::MemberAccessDeclarationNode::Write</a>
+            , <a href="./class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#function_Write_97DA8EDB112C563EBA003AE1F596B5466297C203">sngcpp::ast::MemberDeclarationNode::Write</a>
+            , <a href="./class_MemberFunctionPtrIdNode_1B89DAF5BF8E58F8381FD79C01270D5310F53D69.html#function_Write_528C2051CC06F917F57748A89305CC06F437D4A9">sngcpp::ast::MemberFunctionPtrIdNode::Write</a>
+            , <a href="./class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#function_Write_589DA488F21D586AC5F572496B48166C71E6AAB7">sngcpp::ast::MemberInitializerNode::Write</a>
+            , <a href="./class_MultiplicativeExpressionNode_194B2D3A8A640406E728FE4BAD0E8C5AC7A46EA5.html#function_Write_F359860C7772F022B551A2076D56DAA986091CB3">sngcpp::ast::MultiplicativeExpressionNode::Write</a>
+            , <a href="./class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html#function_Write_33A1838F7DACC12B0B00250439C3E7AF415E62FB">sngcpp::ast::NamespaceNode::Write</a>
+            , <a href="./class_NewExpressionNode_6CE8CBB219536BBB5618356B7338DFFD655FC9A1.html#function_Write_1CBD4CB77C9E2C41322DACC339B4C863C4D1E255">sngcpp::ast::NewExpressionNode::Write</a>
+            , <a href="./class_OperatorFunctionIdNode_2FB359DA0330D9E3C94408C0726F3C660035FA1B.html#function_Write_5F122882E4F5FF366A3D922ED9F0C9C22CF1E45F">sngcpp::ast::OperatorFunctionIdNode::Write</a>
+            , <a href="./class_PMExpressionNode_5629B6FF862318FC8BF5BB40A325CB4F53EAEFD9.html#function_Write_76B2F0345C13A92EE0BD3F2758CCC7E70545FD9E">sngcpp::ast::PMExpressionNode::Write</a>
+            , <a href="./class_ParameterNode_C04B10A2ED38A6C5383CA46B1C6AC713CCFE0B57.html#function_Write_064FA6EC777EAF97D8315622AA4AEFB0B50C4779">sngcpp::ast::ParameterNode::Write</a>
+            , <a href="./class_RangeForStatementNode_40456C6F00B7B00EFC6C6F8DF1F8D798AA15820C.html#function_Write_5B461064DA032645C43D5EC31A004A560DA6A44C">sngcpp::ast::RangeForStatementNode::Write</a>
+            , <a href="./class_RelationalExpressionNode_6583AC7AE0D894AE3DCC0AFEB133CB1B7FC45943.html#function_Write_6D46A38AF5D785C0BD353A2AA6E25DCFD40CFB84">sngcpp::ast::RelationalExpressionNode::Write</a>
+            , <a href="./class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html#function_Write_4E6CFFA7A659A0D6F59894DE1B67390445517A90">sngcpp::ast::ReturnStatementNode::Write</a>
+            , <a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#function_Write_FFE367B65F41D7BBA95EB980FB2B74938661EC08">sngcpp::ast::ShiftExpressionNode::Write</a>
+            , <a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Write_E18D23102B68A6039FFAAD19611A7AA5F915EE65">sngcpp::ast::SimpleDeclarationNode::Write</a>
+            , <a href="./class_SimpleTypeNode_C1B8B4343B9E5F70772809DEB68F19BD9BF25116.html#function_Write_21300520D2843003F6D8E7D437C1D76E24067209">sngcpp::ast::SimpleTypeNode::Write</a>
+            , <a href="./class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html#function_Write_EF9894E1F57A3178C87A80127E2489C33BEB120F">sngcpp::ast::SourceFileNode::Write</a>
+            , <a href="./class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_Write_60C849B0BACCC4EB3EC1F346D0D48F75D7A49B6D">sngcpp::ast::SpecialMemberFunctionNode::Write</a>
+            , <a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_Write_AA7E13813AFCD8E4A4DBF93DCFB1329B16D30338">sngcpp::ast::StringLiteralNode::Write</a>
+            , <a href="./class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html#function_Write_3CCD58014B0942BE4EE7831D6A35D8E4F23A65C5">sngcpp::ast::SubscriptExpressionNode::Write</a>
+            , <a href="./class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html#function_Write_D2868234F865DEE9B3F9BC599B95D3111E2B69F1">sngcpp::ast::SwitchStatementNode::Write</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_TemplateDeclarationNode_C3E60CC2D83CB6A8AD00E259AC31ECADBECE6569.html#function_Write_81BB8AB5BC63AC42B4CC42BF625F167E646F0C4F">sngcpp::ast::TemplateDeclarationNode::Write</a>
+            , <a href="./class_TemplateIdNode_A852BC0337977094554D7B57B6E2254321E7CE80.html#function_Write_9F2929D2AE861E176A9D79E9EA3147DEF7ED5BB0">sngcpp::ast::TemplateIdNode::Write</a>
+            , <a href="./class_TryStatementNode_3C9E925D6F4DA97983073F4ACB6F1BA2B5C6CA30.html#function_Write_306F88CE2969E8D7A509202DE7A401C227226534">sngcpp::ast::TryStatementNode::Write</a>
+            , <a href="./class_TypeParameterNode_80AE4C948E43708AD4682F77F1D97C98B693EF82.html#function_Write_8FDBE13DE48E01B2BDDE57F66A881035D893CA89">sngcpp::ast::TypeParameterNode::Write</a>
+            , <a href="./class_TypedefNode_97C0EC0AC48A1196D83029269F6F6548B97B19CB.html#function_Write_3DD2147A58E331583F29E3763D1D87E3A6F4B112">sngcpp::ast::TypedefNode::Write</a>
+            , <a href="./class_UnaryExpressionNode_0158205C576BD308E68A0A8F334BB20449473A4E.html#function_Write_9A9D6F703F2FB1C5BC3BE9CB7A713FE717357785">sngcpp::ast::UnaryExpressionNode::Write</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59">sngcpp::ast::UnaryNode::Write</a>
+            , <a href="./class_UsingDeclarationNode_47A7186316328E1256FA6692D853868EDE3D1A6F.html#function_Write_8A8844DBB63CF8E5037CF731A9FDD204D827D584">sngcpp::ast::UsingDeclarationNode::Write</a>
+            , <a href="./class_UsingDirectiveNode_A0CBB938BF2FC81F8B1D12066937ABD2455063C2.html#function_Write_4A51CAA663464A44A54B132769CCF87227C10E59">sngcpp::ast::UsingDirectiveNode::Write</a>
+            , <a href="./class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4.html#function_Write_366E7CC72C0E3188B37EDD4BBCA0575556C22FB8">sngcpp::ast::WhileStatementNode::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_SwitchStatementNode_8CAA57C7B9EBE35296DBBBD59DE2FCAA5BBF8BE4.html">prev</a>
+         | <a href="class_TemplateArgumentSequenceNode_4EA9BC8EE2FA867B3692B25DEE7A4C59A861F36E.html">next</a>
+    </body>
+</html>

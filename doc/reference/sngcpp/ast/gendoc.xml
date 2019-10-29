@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="ast">
+    <vcxproject file="../../../../sngcpp/ast/ast.vcxproj"/>
+    <include path="../.."/>
+  </project>
+</gendoc>

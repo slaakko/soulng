@@ -1,0 +1,261 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>DerivedTypeSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html">prev</a>
+         | <a href="class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html">next</a>
+        <hr/>
+        <h1>DerivedTypeSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#22">22</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#constructor_DerivedTypeSymbol_4900B8103DDB7F3387B3BA7AFB88A4347B45108C">DerivedTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* baseType_, <span class="kw">const </span>std::vector&lt;<a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a>>&amp; derivations_, <span class="kw">const </span>std::u32string&amp; id_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_BaseType_FD936C7DFEEAC85CDDF0F48E01F78426EE76751F">BaseType</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_CreateElement_22157CC1450C38D721ABA795AAA66FF393079A20">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_Derivations_752B8B5B21CBE28C812894BBB93170F4B51B18EC">Derivations</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_Id_24342702F0B60C01FA48BBE8264228D1DE5F4B8E">Id</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_IsDerivedTypeSymbol_E0D59D43256E0AD8F8FD423351B9D61C5B593A49">IsDerivedTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">MatchValue</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* argumentType) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_baseType_4EB620474ECC4F62239E8918325787C64447F71B">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">baseType</td>
+            </tr>
+            <tr id="variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">derivations</td>
+            </tr>
+            <tr id="variable_id_1D04510255B1F78929A6EF73727F9F5B775118A1">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_DerivedTypeSymbol_4900B8103DDB7F3387B3BA7AFB88A4347B45108C">DerivedTypeSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::DerivedTypeSymbol::DerivedTypeSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_, <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * baseType_, <span class="kw">const </span>
+            std::vector&lt;<a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a>
+            >&amp; derivations_, <span class="kw">const </span>
+            std::u32string&amp; id_)</h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#138">138</a>
+             of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_baseType_4EB620474ECC4F62239E8918325787C64447F71B">baseType</a><span class="other">(</span><span class="identifier">baseType_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">(</span><span class="identifier">derivations_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_id_1D04510255B1F78929A6EF73727F9F5B775118A1">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#25">25</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_BaseType_FD936C7DFEEAC85CDDF0F48E01F78426EE76751F">BaseType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::DerivedTypeSymbol::BaseType() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#28">28</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">baseType</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">sngcpp::symbols::TypeSymbol::BaseType</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeDerivedTypeSymbol_5D80CD812A114B8870D7FB92197C50B69B2CE764">sngcpp::symbols::SymbolTable::MakeDerivedTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_22157CC1450C38D721ABA795AAA66FF393079A20">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::DerivedTypeSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#166">166</a>
+             of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#30">30</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">sngcpp::symbols::TypeSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Derivations_752B8B5B21CBE28C812894BBB93170F4B51B18EC">Derivations Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a>
+            >&amp; sngcpp::symbols::DerivedTypeSymbol::Derivations() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#26">26</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">derivations</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeDerivedTypeSymbol_5D80CD812A114B8870D7FB92197C50B69B2CE764">sngcpp::symbols::SymbolTable::MakeDerivedTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Id_24342702F0B60C01FA48BBE8264228D1DE5F4B8E">Id Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::DerivedTypeSymbol::Id() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#31">31</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsDerivedTypeSymbol_E0D59D43256E0AD8F8FD423351B9D61C5B593A49">IsDerivedTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::DerivedTypeSymbol::IsDerivedTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#29">29</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsDerivedTypeSymbol_BF194DE5D9D1398870B4812E4ED78707B29F741B">sngcpp::symbols::TypeSymbol::IsDerivedTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">MatchValue Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::DerivedTypeSymbol::MatchValue(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * argumentType) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#143">143</a>
+             of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#27">27</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">sngcpp::symbols::TypeSymbol::BaseType</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_MatchValue_8F77DE55938449D94873EC50D8F4CFE24F082D5F">sngcpp::symbols::ClassTypeSymbol::MatchValue</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html">prev</a>
+         | <a href="class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html">next</a>
+    </body>
+</html>

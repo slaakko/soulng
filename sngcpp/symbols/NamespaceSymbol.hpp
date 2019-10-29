@@ -19,6 +19,8 @@ public:
     bool IsNamespaceSymbol() const override { return true; }
     bool IsParentSymbol() const override { return true; }
     void AddProject(const std::u32string& projectName);
+    bool HasProject(const std::u32string& projectName) const;
+    std::u32string FirstProject() const;
 private:
     std::set<std::u32string> projects;
 };

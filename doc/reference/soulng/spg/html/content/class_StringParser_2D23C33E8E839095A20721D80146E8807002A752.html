@@ -1,0 +1,237 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>StringParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_SequenceParser_E5072D7D7C4A1719B78D7481F0C708AF1BE7B253.html">prev</a>
+         | <a href="class_TokenParser_39F28A41BD113685B1F59F046B078CFE61235A36.html">next</a>
+        <hr/>
+        <h1>StringParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#92">92</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#constructor_StringParser_D983128DDBBB1FA23A002C8FE2A81649952933E1">StringParser</a>(<span class="kw">const </span>std::u32string&amp; str_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#function_Accept_617C013594D3C5DFB32CEA355D7A09267D95D3BC">Accept</a>(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#function_ArrayName_BC3999236C1D333CB35DAD5F808F22FCD2641F35">ArrayName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#function_Clone_EDEFA886C5DBD8F19EC0F39569D02DAB22BBD80C">Clone</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#function_SetArrayName_BE041D88B1C4D9E3E3DD1B8E775AFB4EB528CDFF">SetArrayName</a>(<span class="kw">const </span>std::string&amp; arrayName_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#function_Str_5087AF824ED233A79E4FA5FEF0CC7821700D8089">Str</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_arrayName_EC61C130039528F05EE6659763854CE6087065DF">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">arrayName</td>
+            </tr>
+            <tr id="variable_str_3AE2ABA86C3514F61B8C8E0D1256961E1126E542">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">str</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_StringParser_D983128DDBBB1FA23A002C8FE2A81649952933E1">StringParser Constructor</h3>
+        <h4>
+            soulng::spg::StringParser::StringParser(<span class="kw">const </span>
+            std::u32string&amp; str_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#81">81</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a><span class="other">(</span><span class="identifier">str_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#variable_str_3AE2ABA86C3514F61B8C8E0D1256961E1126E542">str</a><span class="other">(</span><span class="identifier">str_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#95">95</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_617C013594D3C5DFB32CEA355D7A09267D95D3BC">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::StringParser::Accept(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#90">90</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_3B1250E8A97B6AE512953EE47CBB87D1D932B630">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#97">97</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Accept_1909C96AE52A2B305A815693715F56E7651FBBBD">soulng::spg::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_3B1250E8A97B6AE512953EE47CBB87D1D932B630">soulng::spg::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ArrayName_BC3999236C1D333CB35DAD5F808F22FCD2641F35">ArrayName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; soulng::spg::StringParser::ArrayName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#100">100</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">arrayName</span><span class="other">;</span>&nbsp;&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_66A6F0E59D51406A94272074FC14E64A4FE83F6E">soulng::spg::CodeGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_EDEFA886C5DBD8F19EC0F39569D02DAB22BBD80C">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * soulng::spg::StringParser::Clone() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#85">85</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html">StringParser</a><span class="other">(</span><a href="./class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#variable_str_3AE2ABA86C3514F61B8C8E0D1256961E1126E542">str</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#96">96</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">soulng::spg::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetArrayName_BE041D88B1C4D9E3E3DD1B8E775AFB4EB528CDFF">SetArrayName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::StringParser::SetArrayName(<span class="kw">const </span>
+            std::string&amp; arrayName_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#95">95</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html#variable_arrayName_EC61C130039528F05EE6659763854CE6087065DF">arrayName</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">arrayName_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#99">99</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_FAA6FDCC900F673EE1E7F2F62A040D93B94A2EFC">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Str_5087AF824ED233A79E4FA5FEF0CC7821700D8089">Str Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; soulng::spg::StringParser::Str() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#98">98</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">str</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_FAA6FDCC900F673EE1E7F2F62A040D93B94A2EFC">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_SequenceParser_E5072D7D7C4A1719B78D7481F0C708AF1BE7B253.html">prev</a>
+         | <a href="class_TokenParser_39F28A41BD113685B1F59F046B078CFE61235A36.html">next</a>
+    </body>
+</html>

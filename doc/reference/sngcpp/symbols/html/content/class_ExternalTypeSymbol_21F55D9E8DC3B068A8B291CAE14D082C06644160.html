@@ -1,0 +1,185 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ExternalTypeSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html">prev</a>
+         | <a href="class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html">next</a>
+        <hr/>
+        <h1>ExternalTypeSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html#13">13</a>
+             of <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html">ExternalTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#constructor_ExternalTypeSymbol_589340006B8DCF26CFB981C956855FBB2A1B6093">ExternalTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, ClassKey classKey_, <span class="kw">const </span>std::u32string&amp; id_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_CreateElement_60A50EF7E25688F659528BE49E802238FADB50A1">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">ClassKey</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_GetClassKey_EEDBFF05D623C9676482EF1E9524A259E2735D7B">GetClassKey</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_Id_60C61DFCD20D06D8F925D394CD2BB47A61F88566">Id</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_IsExternalTypeSymbol_BA31F3A5BA2AE08168E1CF116EBAE2449D1E1408">IsExternalTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_classKey_4BB9E975AE58A554AB2EFA96B49637AF62D6D11C">
+                <td class="functionTableFirstCol" xml:space="preserve">ClassKey</td>
+                <td class="functionTableSecondCol" xml:space="preserve">classKey</td>
+            </tr>
+            <tr id="variable_id_45A8715EE5B8E28F79C7E372A6D861768523FDC7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ExternalTypeSymbol_589340006B8DCF26CFB981C956855FBB2A1B6093">ExternalTypeSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::ExternalTypeSymbol::ExternalTypeSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_, ClassKey classKey_, <span class="kw">const </span>
+            std::u32string&amp; id_)</h4>
+        <span>
+            Definition at line <a href="file/ExternalTypeSymbol.cpp_D98BCF2E2C167F86B292A5300A2117566D577DBA.html#10">10</a>
+             of <a href="file/ExternalTypeSymbol.cpp_D98BCF2E2C167F86B292A5300A2117566D577DBA.html">ExternalTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#variable_classKey_4BB9E975AE58A554AB2EFA96B49637AF62D6D11C">classKey</a><span class="other">(</span><span class="identifier">classKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#variable_id_45A8715EE5B8E28F79C7E372A6D861768523FDC7">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html#16">16</a>
+             of <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html">ExternalTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CreateElement_60A50EF7E25688F659528BE49E802238FADB50A1">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::ExternalTypeSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ExternalTypeSymbol.cpp_D98BCF2E2C167F86B292A5300A2117566D577DBA.html#15">15</a>
+             of <a href="file/ExternalTypeSymbol.cpp_D98BCF2E2C167F86B292A5300A2117566D577DBA.html">ExternalTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"externalType"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html#19">19</a>
+             of <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html">ExternalTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">sngcpp::symbols::TypeSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetClassKey_EEDBFF05D623C9676482EF1E9524A259E2735D7B">GetClassKey Member Function</h3>
+        <h4>
+            ClassKey sngcpp::symbols::ExternalTypeSymbol::GetClassKey() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html#18">18</a>
+             of <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html">ExternalTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">classKey</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Id_60C61DFCD20D06D8F925D394CD2BB47A61F88566">Id Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::ExternalTypeSymbol::Id() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html#20">20</a>
+             of <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html">ExternalTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsExternalTypeSymbol_BA31F3A5BA2AE08168E1CF116EBAE2449D1E1408">IsExternalTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::ExternalTypeSymbol::IsExternalTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html#17">17</a>
+             of <a href="file/ExternalTypeSymbol.hpp_31FAD23AD3E303EF94D293FC65C017F6BAB1FC03.html">ExternalTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsExternalTypeSymbol_8FE552A52252A2E5E42351833889211F63E79480">sngcpp::symbols::TypeSymbol::IsExternalTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html">prev</a>
+         | <a href="class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html">next</a>
+    </body>
+</html>

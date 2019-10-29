@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>PtrMemberAccessExpr Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_PreIncrementExpr_4E1B5BDEBD5DD530F5C1AA274D4FFFC8CBC5BB99.html">prev</a>
+         | <a href="class_RangeForStatement_9D5F9477D7196D08EA52386794F75A086AF2FA74.html">next</a>
+        <hr/>
+        <h1>PtrMemberAccessExpr Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#94">94</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20.html#constructor_PtrMemberAccessExpr_66042D96F6E5681FCB4552FC69DF19225DB878AA">PtrMemberAccessExpr</a>(<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>* child_, <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>* member_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20.html#function_Accept_3126F69B3029B3F8C3BEA2F417B6C670AB86BD7E">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20.html#function_Print_02B71A223FA2062FAC65B3AB3ECEBB90F889E087">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_member_0A811B4DDDF90FEFA25B07696F622625EA91D557">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">member</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_PtrMemberAccessExpr_66042D96F6E5681FCB4552FC69DF19225DB878AA">PtrMemberAccessExpr Constructor</h3>
+        <h4>
+            soulng::cppcode::PtrMemberAccessExpr::PtrMemberAccessExpr(<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>
+            * child_, <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>
+            * member_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#148">148</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_PostfixExpression_CB0B530BAAD1EE0DB5E8B1E9379CA72466B2A9DE.html">PostfixExpression</a><span class="other">(</span><span class="string">U"->"</span><span class="other">,&nbsp;</span><span class="identifier">child_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20.html#variable_member_0A811B4DDDF90FEFA25B07696F622625EA91D557">member</a><span class="other">(</span><span class="identifier">member_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><a href="./class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20.html#variable_member_0A811B4DDDF90FEFA25B07696F622625EA91D557">member</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#97">97</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_3126F69B3029B3F8C3BEA2F417B6C670AB86BD7E">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::PtrMemberAccessExpr::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#160">160</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_8063765339AE8FD0DFDF5064833B264A69343933">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#99">99</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+            , <a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">soulng::cppcode::UnaryExpression::Child</a>
+            , <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_8063765339AE8FD0DFDF5064833B264A69343933">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_02B71A223FA2062FAC65B3AB3ECEBB90F889E087">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::PtrMemberAccessExpr::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#153">153</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Print_840A65B572BABC439A24E645220C72B18EBB3B82">Print</a><span class="other">(</span><span class="identifier">formatter</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">Write</a><span class="other">(</span><span class="string">"->"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_PtrMemberAccessExpr_03A19650693911FFC273A02319052A65F13E1B20.html#variable_member_0A811B4DDDF90FEFA25B07696F622625EA91D557">member</a><span class="other">-></span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Print_840A65B572BABC439A24E645220C72B18EBB3B82">Print</a><span class="other">(</span><span class="identifier">formatter</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Print_840A65B572BABC439A24E645220C72B18EBB3B82">soulng::cppcode::CppObject::Print</a>
+            , <a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">soulng::cppcode::UnaryExpression::Child</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_PreIncrementExpr_4E1B5BDEBD5DD530F5C1AA274D4FFFC8CBC5BB99.html">prev</a>
+         | <a href="class_RangeForStatement_9D5F9477D7196D08EA52386794F75A086AF2FA74.html">next</a>
+    </body>
+</html>

@@ -19,7 +19,7 @@ void SourceFileParser::Parse(CppLexer& lexer, sngcpp::ast::SourceFileNode* sourc
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::parser::Match match = SourceFileParser::SourceFile(lexer, sourceFile);
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (lexer.Log())
@@ -64,7 +64,7 @@ soulng::parser::Match SourceFileParser::SourceFile(CppLexer& lexer, sngcpp::ast:
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match(true);
             if (match.hit)
             {
@@ -111,7 +111,7 @@ soulng::parser::Match SourceFileParser::Declarations(CppLexer& lexer, sngcpp::cp
     {
         while (true)
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             {
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch1 = &match;
@@ -119,7 +119,7 @@ soulng::parser::Match SourceFileParser::Declarations(CppLexer& lexer, sngcpp::cp
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch2 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match = DeclarationParser::Declaration(lexer, ctx);
                         declaration.reset(static_cast<sngcpp::ast::Node*>(match.value));

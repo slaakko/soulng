@@ -2,10 +2,45 @@
 <gendoc>
   <project name="slg">
     <vcxproject file="../../../../soulng/slg/slg.vcxproj"/>
+    <documentation file="docs.xml"/>
     <include path="../.."/>
+    <imports>
+      <import project="../util"/>
+      <import project="../cppcode"/>
+      <import project="../lexer"/>
+      <import project="../parser"/>
+    </imports>
   </project>
   <filter>
+    <file exclude="CppDeclarationParser.cpp"/>
+    <file exclude="CppDeclarationParser.hpp"/>
+    <file exclude="CppDeclaratorParser.cpp"/>
+    <file exclude="CppDeclaratorParser.hpp"/>
+    <file exclude="CppExpressionParser.cpp"/>
+    <file exclude="CppExpressionParser.hpp"/>
+    <file exclude="CppIdentifierParser.cpp"/>
+    <file exclude="CppIdentifierParser.hpp"/>
+    <file exclude="CppLiteralParser.cpp"/>
+    <file exclude="CppLiteralParser.hpp"/>
+    <file exclude="CppStatementParser.cpp"/>
+    <file exclude="CppStatementParser.hpp"/>
     <file exclude="LexerFileClassMap.cpp"/>
+    <file exclude="LexerFileClassMap.hpp"/>
+    <file exclude="LexerFileKeywords.cpp"/>
+    <file exclude="LexerFileKeywords.hpp"/>
+    <file exclude="LexerFileLexer.cpp"/>
+    <file exclude="LexerFileLexer.hpp"/>
+    <file exclude="LexerFileParser.cpp"/>
+    <file exclude="LexerFileParser.hpp"/>
+    <file exclude="LexerFileTokens.cpp"/>
+    <file exclude="LexerFileTokens.hpp"/>
+    <file exclude="RegExClassMap.hpp"/>
     <file exclude="RegExClassMap.cpp"/>
+    <file exclude="RegExLexer.cpp"/>
+    <file exclude="RegExLexer.hpp"/>
+    <file exclude="RegExParser.cpp"/>
+    <file exclude="RegExParser.hpp"/>
+    <file exclude="RegExTokens.cpp"/>
+    <file exclude="RegExTokens.hpp"/>
   </filter>
 </gendoc>

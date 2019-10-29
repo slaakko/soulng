@@ -1,0 +1,98 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/symbols/EnumerationSymbol.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/Unicode.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">symbols</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html">EnumTypeSymbol</a><span class="other">::</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#constructor_EnumTypeSymbol_E09FBEE0D7D61842AE76D2601CF697BBB4757380">EnumTypeSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="type">EnumKey</span>&nbsp;<span class="identifier">enumKey_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_enumKey_621C5BD1A991B651B9D273A72C223705DC6FD93B">enumKey</a><span class="other">(</span><span class="identifier">enumKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_baseType_2FBF2412DEC8BD650DADC070DCDC029C2DCD39CC">baseType</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html">EnumTypeSymbol</a><span class="other">::</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_CreateElement_5FAF01DCFB9AA0DE152B9FA40A4F87AE52335EDE">CreateElement</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">enumTypeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"enumType"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumTypeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"key"</span><span class="other">,&nbsp;</span><a href="../namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html#function_ToString_E53B4356F1A036583D256A46C606F922AF740FDC">ToString</a><span class="other">(</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_enumKey_621C5BD1A991B651B9D273A72C223705DC6FD93B">enumKey</a><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_baseType_2FBF2412DEC8BD650DADC070DCDC029C2DCD39CC">baseType</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumTypeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"baseType"</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_baseType_2FBF2412DEC8BD650DADC070DCDC029C2DCD39CC">baseType</a><span class="other">-></span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Valid</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumTypeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"definitionFile"</span><span class="other">,&nbsp;</span><span class="type">ToUtf32</span><span class="other">(</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_fileName_456FDA8B541EC212FD35C0E944117DE9BAA513BC">fileName</a><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumTypeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"definitionLine"</span><span class="other">,&nbsp;</span><span class="type">ToUtf32</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">to_string</span><span class="other">(</span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">line</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumTypeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"definitionFileId"</span><span class="other">,&nbsp;</span><a href="../class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#variable_fileId_6392B610F834F8D6C4449957E8868421C90D8C7B">fileId</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">enumTypeElement</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<a href="../class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html">EnumeratorSymbol</a><span class="other">::</span><a href="../class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#constructor_EnumeratorSymbol_E9DB1E8BF3D8C6FDB20A34EA2DD60D030AD3A15E">EnumeratorSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">value_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#variable_value_0E95D96F6606305EA84D86A390B6861341EF14E2">value</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html">EnumeratorSymbol</a><span class="other">::</span><a href="../class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_CreateElement_84AC864C8BCC7D40B23FC01002D2A717A48D6CB5">CreateElement</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">enumeratorElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"enumerator"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">enumeratorElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"value"</span><span class="other">,&nbsp;</span><a href="../class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#variable_value_0E95D96F6606305EA84D86A390B6861341EF14E2">value</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">enumeratorElement</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::symbols</span></span>
+  <br/>
+ </body>
+</html>

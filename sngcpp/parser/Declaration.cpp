@@ -42,43 +42,43 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int save = lexer.GetPos();
+                                int64_t save = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int save = lexer.GetPos();
+                                    int64_t save = lexer.GetPos();
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch8 = &match;
                                     {
-                                        int save = lexer.GetPos();
+                                        int64_t save = lexer.GetPos();
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch9 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = DeclarationParser::NamespaceDefinition(lexer, ctx);
                                             namespaceDefinition.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                             if (match.hit)
@@ -102,7 +102,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch11 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = FunctionParser::FunctionDefinition(lexer, ctx);
                                                     functionDefinition.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                                     if (match.hit)
@@ -131,7 +131,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch13 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match = ClassParser::SpecialMemberFunctionDefinition(lexer, ctx);
                                                 specialMemberFunctionDefinition.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                                 if (match.hit)
@@ -160,7 +160,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch15 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = TemplateParser::TemplateDeclaration(lexer, ctx);
                                             templateDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                             if (match.hit)
@@ -189,7 +189,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch17 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = TemplateParser::ExplicitInstantiation(lexer, ctx);
                                         explicitInstantiation.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                         if (match.hit)
@@ -218,7 +218,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch19 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = TemplateParser::ExplicitSpecialization(lexer, ctx);
                                     explicitSpecialization.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                     if (match.hit)
@@ -247,7 +247,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch21 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = ClassParser::ClassDeclaration(lexer, ctx);
                                 classDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                 if (match.hit)
@@ -276,7 +276,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch23 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = EnumerationParser::EnumDeclaration(lexer, ctx);
                             enumDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                             if (match.hit)
@@ -305,7 +305,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch25 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = DeclarationParser::LinkageSpecification(lexer, ctx);
                         linkageSpecification.reset(static_cast<sngcpp::ast::Node*>(match.value));
                         if (match.hit)
@@ -334,7 +334,7 @@ soulng::parser::Match DeclarationParser::Declaration(CppLexer& lexer, sngcpp::cp
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch27 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = DeclarationParser::BlockDeclaration(lexer, ctx);
                     blockDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
@@ -379,11 +379,11 @@ soulng::parser::Match DeclarationParser::NamespaceDefinition(CppLexer& lexer, sn
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match = DeclarationParser::NamedNamespaceDefinition(lexer, ctx);
             namedNamespaceDefinition.reset(static_cast<sngcpp::ast::Node*>(match.value));
             if (match.hit)
@@ -407,7 +407,7 @@ soulng::parser::Match DeclarationParser::NamespaceDefinition(CppLexer& lexer, sn
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = DeclarationParser::UnnamedNamespaceDefinition(lexer, ctx);
                     unnamedNamespaceDefinition.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
@@ -465,7 +465,7 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == NAMESPACE)
@@ -502,7 +502,7 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch7 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == LBRACE)
@@ -543,11 +543,11 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch10 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch11 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == RBRACE)
                     {
@@ -613,7 +613,7 @@ soulng::parser::Match DeclarationParser::UnnamedNamespaceDefinition(CppLexer& le
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == NAMESPACE)
@@ -637,7 +637,7 @@ soulng::parser::Match DeclarationParser::UnnamedNamespaceDefinition(CppLexer& le
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch5 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == LBRACE)
@@ -678,11 +678,11 @@ soulng::parser::Match DeclarationParser::UnnamedNamespaceDefinition(CppLexer& le
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch8 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch9 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == RBRACE)
                     {
@@ -744,31 +744,31 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = DeclarationParser::SimpleDeclaration(lexer, ctx);
                                 simpleDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                 if (match.hit)
@@ -792,7 +792,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch8 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = DeclarationParser::AliasDeclaration(lexer, ctx);
                                         aliasDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                         if (match.hit)
@@ -821,7 +821,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch10 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = DeclarationParser::UsingDirective(lexer, ctx);
                                     usingDirective.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                     if (match.hit)
@@ -850,7 +850,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch12 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = DeclarationParser::UsingDeclaration(lexer, ctx);
                                 usingDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                 if (match.hit)
@@ -879,7 +879,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch14 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = EnumerationParser::OpaqueEnumDeclaration(lexer, ctx);
                             opaqueEnumDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                             if (match.hit)
@@ -908,7 +908,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch16 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = DeclarationParser::TypedefDeclaration(lexer, ctx);
                         typedefDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                         if (match.hit)
@@ -937,7 +937,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch18 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = ClassParser::ForwardClassDeclaration(lexer, ctx);
                     forwardClassDeclaration.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
@@ -993,7 +993,7 @@ soulng::parser::Match DeclarationParser::SimpleDeclaration(CppLexer& lexer, sngc
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = DeclarationParser::DeclSpecifiers(lexer);
                     declSpecifiers.reset(static_cast<soulng::parser::Value<sngcpp::ast::Specifier>*>(match.value));
@@ -1039,7 +1039,7 @@ soulng::parser::Match DeclarationParser::SimpleDeclaration(CppLexer& lexer, sngc
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch7 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)
@@ -1089,7 +1089,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifiers(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1098,7 +1098,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifiers(CppLexer& lexer)
             {
                 while (true)
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     {
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch3 = &match;
@@ -1106,7 +1106,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifiers(CppLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = DeclarationParser::DeclSpecifier(lexer);
                                 declSpecifier.reset(static_cast<soulng::parser::Value<sngcpp::ast::Specifier>*>(match.value));
                                 if (match.hit)
@@ -1168,27 +1168,27 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = DeclarationParser::StorageClassSpecifier(lexer);
                             storageClassSpecifier.reset(static_cast<soulng::parser::Value<sngcpp::ast::Specifier>*>(match.value));
                             if (match.hit)
@@ -1212,7 +1212,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer)
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = DeclarationParser::FunctionSpecifier(lexer);
                                     functionSpecifier.reset(static_cast<soulng::parser::Value<sngcpp::ast::Specifier>*>(match.value));
                                     if (match.hit)
@@ -1241,7 +1241,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == FRIEND)
                                 {
@@ -1274,7 +1274,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(false);
                             if (*lexer == CONSTEXPR)
                             {
@@ -1363,7 +1363,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch19 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == RPAREN)
                                 {
@@ -1400,7 +1400,7 @@ soulng::parser::Match DeclarationParser::DeclSpecifier(CppLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch21 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == __THREAD)
                     {
@@ -1445,7 +1445,7 @@ soulng::parser::Match DeclarationParser::StorageClassSpecifier(CppLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -1524,7 +1524,7 @@ soulng::parser::Match DeclarationParser::FunctionSpecifier(CppLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -1607,7 +1607,7 @@ soulng::parser::Match DeclarationParser::AliasDeclaration(CppLexer& lexer, sngcp
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == USING)
@@ -1661,7 +1661,7 @@ soulng::parser::Match DeclarationParser::AliasDeclaration(CppLexer& lexer, sngcp
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch8 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
                     typeExpr.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
@@ -1687,12 +1687,12 @@ soulng::parser::Match DeclarationParser::AliasDeclaration(CppLexer& lexer, sngcp
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch10 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch11 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -1759,7 +1759,7 @@ soulng::parser::Match DeclarationParser::UsingDirective(CppLexer& lexer, sngcpp:
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == USING)
@@ -1800,7 +1800,7 @@ soulng::parser::Match DeclarationParser::UsingDirective(CppLexer& lexer, sngcpp:
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch6 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = IdentifierParser::QualifiedIdNode(lexer, ctx);
                     qid.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
@@ -1826,12 +1826,12 @@ soulng::parser::Match DeclarationParser::UsingDirective(CppLexer& lexer, sngcpp:
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch8 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch9 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -1897,7 +1897,7 @@ soulng::parser::Match DeclarationParser::UsingDeclaration(CppLexer& lexer, sngcp
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == USING)
@@ -1934,7 +1934,7 @@ soulng::parser::Match DeclarationParser::UsingDeclaration(CppLexer& lexer, sngcp
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch5 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)
@@ -1996,7 +1996,7 @@ soulng::parser::Match DeclarationParser::TypedefDeclaration(CppLexer& lexer, sng
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == TYPEDEF)
@@ -2020,7 +2020,7 @@ soulng::parser::Match DeclarationParser::TypedefDeclaration(CppLexer& lexer, sng
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch5 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
                         typeExpr.reset(static_cast<sngcpp::ast::Node*>(match.value));
                         if (match.hit)
@@ -2046,7 +2046,7 @@ soulng::parser::Match DeclarationParser::TypedefDeclaration(CppLexer& lexer, sng
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = DeclaratorParser::Declarator(lexer, ctx);
                     declarator.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
@@ -2072,12 +2072,12 @@ soulng::parser::Match DeclarationParser::TypedefDeclaration(CppLexer& lexer, sng
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch9 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch10 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -2144,7 +2144,7 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == EXTERN)
@@ -2168,7 +2168,7 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch4 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = LiteralParser::StringLiteral(lexer);
                     language.reset(static_cast<sngcpp::ast::StringLiteralNode*>(match.value));
@@ -2193,14 +2193,14 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch6 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch8 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch9 = &match;
                         {
@@ -2225,7 +2225,7 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
                                     {
                                         while (true)
                                         {
-                                            int save = lexer.GetPos();
+                                            int64_t save = lexer.GetPos();
                                             {
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch13 = &match;
@@ -2233,7 +2233,7 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
                                                     soulng::parser::Match match(false);
                                                     soulng::parser::Match* parentMatch14 = &match;
                                                     {
-                                                        int pos = lexer.GetPos();
+                                                        int64_t pos = lexer.GetPos();
                                                         soulng::lexer::Span span = lexer.GetSpan();
                                                         soulng::parser::Match match = DeclarationParser::Declaration(lexer, ctx);
                                                         d1.reset(static_cast<sngcpp::ast::Node*>(match.value));
@@ -2271,7 +2271,7 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
                                 soulng::parser::Match match(true);
                                 soulng::parser::Match* parentMatch16 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match(false);
                                     if (*lexer == RBRACE)
                                     {
@@ -2301,7 +2301,7 @@ soulng::parser::Match DeclarationParser::LinkageSpecification(CppLexer& lexer, s
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch18 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::lexer::Span span = lexer.GetSpan();
                                     soulng::parser::Match match = DeclarationParser::Declaration(lexer, ctx);
                                     d2.reset(static_cast<sngcpp::ast::Node*>(match.value));

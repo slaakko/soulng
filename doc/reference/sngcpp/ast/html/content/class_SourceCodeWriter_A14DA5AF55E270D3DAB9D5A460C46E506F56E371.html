@@ -1,0 +1,268 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SourceCodeWriter Abstract Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_Solution_F69044BD979C05F62375A80E7FDA8280F8CC4708.html">prev</a>
+         | <a href="class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">next</a>
+        <hr/>
+        <h1>SourceCodeWriter Abstract Class</h1>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#13">13</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteBlockComment_0B39E9C21C226C7C5515232A96B2D206EA7ABA04">WriteBlockComment</a>(<span class="kw">const </span>std::u32string&amp; comment) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteChar_2EEA7EFCE63CD37825BB547DA0AA2EBC08CAE62F">WriteChar</a>(<span class="kw">const </span>std::u32string&amp; chars) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteIdentifier_9105C8EAA76AE0EDF8B3F41A9EEBA72DA3DF59A1">WriteIdentifier</a>(<span class="kw">const </span>std::u32string&amp; identifier) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteKeyword_4C7FF49CD82A4DBFAD5706CE47A2608BA52C84D7">WriteKeyword</a>(<span class="kw">const </span>std::u32string&amp; keyword) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteLineComment_4358E13E1DE78477E5FFA2276F9E9105E14DF6CF">WriteLineComment</a>(<span class="kw">const </span>std::u32string&amp; comment) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteLineNumber_E4747A1F35A43A45DB7F3EB7637C0530A49D7154">WriteLineNumber</a>(<span class="kw">const </span>std::u32string&amp; lineNumber) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteLink_CD228DA171EC78A75B0931710484E250E4412E1B">WriteLink</a>(<span class="kw">const </span>std::u32string&amp; identifier, <span class="kw">const </span>std::u32string&amp; ref) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteNumber_0D02416297D56BCB25AF4C29156CFAD35C815C73">WriteNumber</a>(<span class="kw">const </span>std::u32string&amp; number) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteOther_FA1EBDF243C9529E37CB0E4973BC7716A39D4280">WriteOther</a>(<span class="kw">const </span>std::u32string&amp; other) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WritePP_AB8C3DCD58C493A0B2DD67F8087B36F8196FF653">WritePP</a>(<span class="kw">const </span>std::u32string&amp; pp) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteSpace_63F0587CCAAAE2EF5DAC9ED945621A2F2FFE2C4F">WriteSpace</a>(<span class="kw">int</span> numSpaces) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteSpaces_85A945DD324C39214230CA933067D3ACB642864F">WriteSpaces</a>(<span class="kw">const </span>std::u32string&amp; spaces) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteString_3CC2F92083054EF63FD31464484D7DF313C5DB04">WriteString</a>(<span class="kw">const </span>std::u32string&amp; string) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.html#function_WriteType_9B662C2DBDDFE338597D592D5DBC846BB4296287">WriteType</a>(<span class="kw">const </span>std::u32string&amp; type) <span class="kw">pure virtual</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_WriteBlockComment_0B39E9C21C226C7C5515232A96B2D206EA7ABA04">WriteBlockComment Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteBlockComment(<span class="kw">const </span>
+            std::u32string&amp; comment) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#19">19</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteChar_2EEA7EFCE63CD37825BB547DA0AA2EBC08CAE62F">WriteChar Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteChar(<span class="kw">const </span>
+            std::u32string&amp; chars) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#24">24</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteIdentifier_9105C8EAA76AE0EDF8B3F41A9EEBA72DA3DF59A1">WriteIdentifier Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteIdentifier(<span class="kw">const </span>
+            std::u32string&amp; identifier) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#21">21</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteKeyword_4C7FF49CD82A4DBFAD5706CE47A2608BA52C84D7">WriteKeyword Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteKeyword(<span class="kw">const </span>
+            std::u32string&amp; keyword) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#20">20</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteLineComment_4358E13E1DE78477E5FFA2276F9E9105E14DF6CF">WriteLineComment Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteLineComment(<span class="kw">const </span>
+            std::u32string&amp; comment) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#18">18</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteLineNumber_E4747A1F35A43A45DB7F3EB7637C0530A49D7154">WriteLineNumber Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteLineNumber(<span class="kw">const </span>
+            std::u32string&amp; lineNumber) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#17">17</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteLink_CD228DA171EC78A75B0931710484E250E4412E1B">WriteLink Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteLink(<span class="kw">const </span>
+            std::u32string&amp; identifier, <span class="kw">const </span>
+            std::u32string&amp; ref) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#22">22</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteNumber_0D02416297D56BCB25AF4C29156CFAD35C815C73">WriteNumber Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteNumber(<span class="kw">const </span>
+            std::u32string&amp; number) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#26">26</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteOther_FA1EBDF243C9529E37CB0E4973BC7716A39D4280">WriteOther Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteOther(<span class="kw">const </span>
+            std::u32string&amp; other) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#30">30</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WritePP_AB8C3DCD58C493A0B2DD67F8087B36F8196FF653">WritePP Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WritePP(<span class="kw">const </span>
+            std::u32string&amp; pp) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#23">23</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteSpace_63F0587CCAAAE2EF5DAC9ED945621A2F2FFE2C4F">WriteSpace Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteSpace(<span class="kw">int</span>
+             numSpaces) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#28">28</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteSpaces_85A945DD324C39214230CA933067D3ACB642864F">WriteSpaces Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteSpaces(<span class="kw">const </span>
+            std::u32string&amp; spaces) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#29">29</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteString_3CC2F92083054EF63FD31464484D7DF313C5DB04">WriteString Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteString(<span class="kw">const </span>
+            std::u32string&amp; string) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#25">25</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteType_9B662C2DBDDFE338597D592D5DBC846BB4296287">WriteType Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::SourceCodeWriter::WriteType(<span class="kw">const </span>
+            std::u32string&amp; type) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html#27">27</a>
+             of <a href="file/SourceCodeWriter.hpp_029C8EB10D0460B3CADCF713433BD3689AA84160.html">SourceCodeWriter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_Solution_F69044BD979C05F62375A80E7FDA8280F8CC4708.html">prev</a>
+         | <a href="class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">next</a>
+    </body>
+</html>

@@ -20,7 +20,7 @@ soulng::parser::Match LiteralParser::Literal(CppLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -64,7 +64,7 @@ soulng::parser::Match LiteralParser::Literal(CppLexer& lexer)
             ++lexer;
             {
                 soulng::lexer::Token token = lexer.GetToken(pos);
-                std::u32string value;
+                char32_t value = '\0';
                 char32_t prefix = '\0';
                 sngcpp::cppparser::ParseCharacterLiteral(lexer.FileName(), token, value, prefix);
                 {
@@ -83,7 +83,7 @@ soulng::parser::Match LiteralParser::Literal(CppLexer& lexer)
                 soulng::lexer::Token token = lexer.GetToken(pos);
                 std::u32string value;
                 std::u32string encodingPrefix;
-                sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, value, encodingPrefix);
+                sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, encodingPrefix, value);
                 {
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));
@@ -160,7 +160,7 @@ soulng::parser::Match LiteralParser::StringLiteral(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match(false);
         if (*lexer == STRINGLIT)
@@ -173,7 +173,7 @@ soulng::parser::Match LiteralParser::StringLiteral(CppLexer& lexer)
             soulng::lexer::Token token = lexer.GetToken(pos);
             std::u32string value;
             std::u32string encodingPrefix;
-            sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, value, encodingPrefix);
+            sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, encodingPrefix, value);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("StringLiteral"));
@@ -207,7 +207,7 @@ soulng::parser::Match LiteralParser::IntegerLiteral(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match(false);
         if (*lexer == INTLIT)

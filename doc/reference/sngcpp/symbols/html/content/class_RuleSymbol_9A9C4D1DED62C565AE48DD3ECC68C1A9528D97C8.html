@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>RuleSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html">prev</a>
+         | <a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">next</a>
+        <hr/>
+        <h1>RuleSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html#12">12</a>
+             of <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html">RuleSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#constructor_RuleSymbol_147D8ED35AB88E012AD53111654CE5F286F7FA6F">RuleSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngxml::dom::Element*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_Body_23D0CF1B1CF85169FCCC924958A3C4AB5F61B6EA">Body</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_CreateElement_C530CA0684A5FE363E43922C0A9A08D336877068">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_IsRuleSymbol_7A86D38868F74A2E0AA301974CA73038A2445C79">IsRuleSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_KindStr_D1FD1788B80AC2AA4457B0F78E676A26018AE009">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_ruleBody_23332DBDADE30EAEA41016250890D2BE2409736F">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ruleBody</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_RuleSymbol_147D8ED35AB88E012AD53111654CE5F286F7FA6F">RuleSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::RuleSymbol::RuleSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/RuleSymbol.cpp_F32738C720D3CC10E8EC8CDFADB80F84D56D9864.html#10">10</a>
+             of <a href="file/RuleSymbol.cpp_F32738C720D3CC10E8EC8CDFADB80F84D56D9864.html">RuleSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetAccess_3184F8F8BB6CBCD79E7ED03004D546D6E4460BD1">SetAccess</a><span class="other">(</span><span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">public_</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#variable_ruleBody_23332DBDADE30EAEA41016250890D2BE2409736F">ruleBody</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#variable_ruleBody_23332DBDADE30EAEA41016250890D2BE2409736F">ruleBody</a><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"xml:space"</span><span class="other">,&nbsp;</span><span class="string">U"preserve"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html#15">15</a>
+             of <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html">RuleSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Body_23D0CF1B1CF85169FCCC924958A3C4AB5F61B6EA">Body Member Function</h3>
+        <h4>
+            sngxml::dom::Element* sngcpp::symbols::RuleSymbol::Body()</h4>
+        <span>
+            Definition at line <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html#19">19</a>
+             of <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html">RuleSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ruleBody</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_C530CA0684A5FE363E43922C0A9A08D336877068">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::RuleSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/RuleSymbol.cpp_F32738C720D3CC10E8EC8CDFADB80F84D56D9864.html#22">22</a>
+             of <a href="file/RuleSymbol.cpp_F32738C720D3CC10E8EC8CDFADB80F84D56D9864.html">RuleSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">ruleElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"rule"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ruleElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><a href="./class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#variable_ruleBody_23332DBDADE30EAEA41016250890D2BE2409736F">ruleBody</a><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ruleElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html#17">17</a>
+             of <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html">RuleSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsRuleSymbol_7A86D38868F74A2E0AA301974CA73038A2445C79">IsRuleSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::RuleSymbol::IsRuleSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html#18">18</a>
+             of <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html">RuleSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsRuleSymbol_D05149F9FA5AB8B2CD5DFBD4781A08E73E4C221E">sngcpp::symbols::Symbol::IsRuleSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_D1FD1788B80AC2AA4457B0F78E676A26018AE009">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::RuleSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/RuleSymbol.cpp_F32738C720D3CC10E8EC8CDFADB80F84D56D9864.html#17">17</a>
+             of <a href="file/RuleSymbol.cpp_F32738C720D3CC10E8EC8CDFADB80F84D56D9864.html">RuleSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"rule"</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html#16">16</a>
+             of <a href="file/RuleSymbol.hpp_340AF6A624A73D8D3596E4BC7D23CE8495A5CC3C.html">RuleSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html">prev</a>
+         | <a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">next</a>
+    </body>
+</html>

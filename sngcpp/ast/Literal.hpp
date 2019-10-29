@@ -29,7 +29,7 @@ SNGCPP_AST_API inline Suffix operator&(Suffix left, Suffix right)
     return Suffix(uint8_t(left) & uint8_t(right));
 }
 
-enum class Base
+enum class Base : uint8_t
 {
     decimal, hex, octal
 };
@@ -39,7 +39,10 @@ SNGCPP_AST_API std::u32string ToString(Suffix suffix);
 class SNGCPP_AST_API LiteralNode : public Node
 {
 public:
-    LiteralNode(const Span& span_, const std::u32string& rep_);
+    LiteralNode(NodeType nodeType_);
+    LiteralNode(NodeType nodeType_, const Span& span_, const std::u32string& rep_);
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const std::u32string& Rep() const { return rep; }
 private:
     std::u32string rep;
@@ -48,8 +51,11 @@ private:
 class SNGCPP_AST_API FloatingLiteralNode : public LiteralNode
 {
 public:
+    FloatingLiteralNode();
     FloatingLiteralNode(const Span& span_, double value_, Suffix suffix_, const std::u32string& rep_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     double Value() const { return value; }
     Suffix GetSuffix() const { return suffix; }
 private:
@@ -60,8 +66,11 @@ private:
 class SNGCPP_AST_API IntegerLiteralNode : public LiteralNode
 {
 public:
+    IntegerLiteralNode();
     IntegerLiteralNode(const Span& span_, uint64_t value_, Suffix suffix_, Base base_, const std::u32string& rep_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     uint64_t Value() const { return value; }
     Suffix GetSuffix() const { return suffix; }
     Base GetBase() const { return base; }
@@ -74,20 +83,26 @@ private:
 class SNGCPP_AST_API CharacterLiteralNode : public LiteralNode
 {
 public:
-    CharacterLiteralNode(const Span& span_, char32_t prefix_, const std::u32string& chars_, const std::u32string& rep_);
+    CharacterLiteralNode();
+    CharacterLiteralNode(const Span& span_, char32_t prefix_, char32_t chr_, const std::u32string& rep_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     char32_t Prefix() const { return prefix; }
-    const std::u32string& Chars() const { return chars; }
+    char32_t Chr() const { return chr; }
 private:
     char32_t prefix;
-    std::u32string chars;
+    char32_t chr;
 };
 
 class SNGCPP_AST_API StringLiteralNode : public LiteralNode
 {
 public:
+    StringLiteralNode();
     StringLiteralNode(const Span& span_, const std::u32string& encodingPrefix_, const std::u32string& chars_, const std::u32string& rep_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const std::u32string& EncodigPrefix() const { return encodingPrefix; }
     const std::u32string& Chars() const { return chars; }
 private:
@@ -98,8 +113,11 @@ private:
 class SNGCPP_AST_API BooleanLiteralNode : public LiteralNode
 {
 public:
+    BooleanLiteralNode();
     BooleanLiteralNode(const Span& span_, bool value_, const std::u32string& rep_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     bool Value() const { return value; }
 private:
     bool value;
@@ -108,6 +126,7 @@ private:
 class SNGCPP_AST_API NullPtrLiteralNode : public LiteralNode
 {
 public:
+    NullPtrLiteralNode();
     NullPtrLiteralNode(const Span& span_, const std::u32string& rep_);
     void Accept(Visitor& visitor) override;
 };

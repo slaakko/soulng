@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="lexer">
+    <vcxproject file="../../../../sngcpp/lexer/lexer.vcxproj"/>
+    <include path="../.."/>
+    <imports>
+      <import project="../ast"/>
+    </imports>
+  </project>
+  <filter>
+    <file exclude="CppClassMap.cpp"/>
+    <file exclude="CppClassMap.hpp"/>
+    <file exclude="CppKeywords.cpp"/>
+    <file exclude="CppKeywords.hpp"/>
+    <file exclude="CppLexer.cpp"/>
+    <file exclude="CppLexer.hpp"/>
+    <file exclude="CppTokenLexer.cpp"/>
+    <file exclude="CppTokenLexer.hpp"/>
+    <file exclude="CppTokenLexerClassMap.cpp"/>
+    <file exclude="CppTokenLexerClassMap.hpp"/>
+    <file exclude="CppTokenLexerKeywords.cpp"/>
+    <file exclude="CppTokenLexerKeywords.hpp"/>
+    <file exclude="CppTokenLexerTokens.cpp"/>
+    <file exclude="CppTokenLexerTokens.hpp"/>
+    <file exclude="CppTokens.cpp"/>
+    <file exclude="CppTokens.hpp"/>
+  </filter>
+</gendoc>

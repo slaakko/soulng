@@ -30,11 +30,22 @@ std::unique_ptr<sngxml::dom::Element> NamespaceSymbol::CreateElement()
 
 void NamespaceSymbol::AddProject(const std::u32string& projectName)
 {
-    if (projectName == U"binder")
-    {
-        int x = 0;
-    }
     projects.insert(projectName);
+}
+
+bool NamespaceSymbol::HasProject(const std::u32string& projectName) const
+{
+    for (const auto& project : projects)
+    {
+        if (project == projectName) return true;
+    }
+    return false;
+}
+
+std::u32string NamespaceSymbol::FirstProject() const
+{
+    if (projects.empty()) return std::u32string();
+    return *projects.begin();
 }
 
 } } // namespace sngcpp::symbols

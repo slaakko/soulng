@@ -24,7 +24,7 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
@@ -38,7 +38,7 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = SimpleTypeParser::SimpleTypeSpecifier(lexer);
                         s.reset(static_cast<soulng::parser::Value<sngcpp::ast::SimpleTypeSpecifier>*>(match.value));
                         if (match.hit)
@@ -57,7 +57,7 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer)
                 soulng::parser::Match* parentMatch5 = &match;
                 while (true)
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     {
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch6 = &match;
@@ -65,7 +65,7 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch7 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = SimpleTypeParser::SimpleTypeSpecifier(lexer);
                                 s.reset(static_cast<soulng::parser::Value<sngcpp::ast::SimpleTypeSpecifier>*>(match.value));
                                 if (match.hit)
@@ -123,7 +123,7 @@ soulng::parser::Match SimpleTypeParser::SimpleTypeSpecifier(CppLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

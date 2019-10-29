@@ -1,0 +1,172 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>UnaryOpExpr Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_UnaryOpExpr_67D1B16A9C79AFD1D7DCC9256C4953AF32EE00F3_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html">prev</a>
+         | <a href="class_UsingDeclaration_D3A53E65D75E8181751E9863CA869333C06F4CAC.html">next</a>
+        <hr/>
+        <h1>UnaryOpExpr Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#154">154</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_UnaryOpExpr_67D1B16A9C79AFD1D7DCC9256C4953AF32EE00F3.html#constructor_UnaryOpExpr_E3D7F23DA94F4E6671807B424ECD92B3FC91FD97">UnaryOpExpr</a>(<a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a> op_, <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>* child_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_UnaryOpExpr_67D1B16A9C79AFD1D7DCC9256C4953AF32EE00F3.html#function_Accept_6A388375C3E9708A0077A25B203F13B1783EB4DE">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_UnaryOpExpr_67D1B16A9C79AFD1D7DCC9256C4953AF32EE00F3.html#function_Op_66CA2AE08F586D9792958A0A313D20CC9D03B89F">Op</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_UnaryOpExpr_67D1B16A9C79AFD1D7DCC9256C4953AF32EE00F3.html#function_Print_972C99FB12BC0FC0CCB448AE0085C64E1A29C40E">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_op_01FEFCE0FB841DA964A062A74D8B7194B739A281">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">op</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_UnaryOpExpr_E3D7F23DA94F4E6671807B424ECD92B3FC91FD97">UnaryOpExpr Constructor</h3>
+        <h4>
+            soulng::cppcode::UnaryOpExpr::UnaryOpExpr(<a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>
+             op_, <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>
+            * child_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#268">268</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html">UnaryExpression</a><span class="other">(</span><a href="./namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html#function_GetOperatorStr_4BA486ABCDBCF366AFC59564C91AEFB418B4FE06">GetOperatorStr</a><span class="other">(</span><span class="identifier">op_</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">child_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_UnaryOpExpr_67D1B16A9C79AFD1D7DCC9256C4953AF32EE00F3.html#variable_op_01FEFCE0FB841DA964A062A74D8B7194B739A281">op</a><span class="other">(</span><span class="identifier">op_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">269</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">270</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#157">157</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_6A388375C3E9708A0077A25B203F13B1783EB4DE">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::UnaryOpExpr::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#278">278</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">279</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">280</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_3DAA14A35738B7A99D0AD4B1E88823B975888901">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">281</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">282</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#159">159</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+            , <a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">soulng::cppcode::UnaryExpression::Child</a>
+            , <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_3DAA14A35738B7A99D0AD4B1E88823B975888901">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Op_66CA2AE08F586D9792958A0A313D20CC9D03B89F">Op Member Function</h3>
+        <h4>
+            <a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>
+             soulng::cppcode::UnaryOpExpr::Op() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#160">160</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">op</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_972C99FB12BC0FC0CCB448AE0085C64E1A29C40E">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::UnaryOpExpr::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#272">272</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">273</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">274</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">Write</a><span class="other">(</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Name_82BD0D38BF5573433CF020A50647B584C2B8BF30">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">275</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Print_840A65B572BABC439A24E645220C72B18EBB3B82">Print</a><span class="other">(</span><span class="identifier">formatter</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">276</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Name_82BD0D38BF5573433CF020A50647B584C2B8BF30">soulng::cppcode::CppObject::Name</a>
+            , <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Print_840A65B572BABC439A24E645220C72B18EBB3B82">soulng::cppcode::CppObject::Print</a>
+            , <a href="./class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html#function_Child_B030CE5290E100F6DD0044C67B640BCF5EEAB5DD">soulng::cppcode::UnaryExpression::Child</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_UnaryExpression_024470784B1CF554A203EA614605F15AB3C7013E.html">prev</a>
+         | <a href="class_UsingDeclaration_D3A53E65D75E8181751E9863CA869333C06F4CAC.html">next</a>
+    </body>
+</html>

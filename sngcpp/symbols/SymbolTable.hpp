@@ -21,6 +21,7 @@
 #include <sngcpp/ast/SimpleType.hpp>
 #include <sngcpp/ast/Expression.hpp>
 #include <sngcpp/ast/Template.hpp>
+#include <sngcpp/ast/TypeExpr.hpp>
 #include <sngxml/dom/Document.hpp>
 #include <sngxml/dom/Element.hpp>
 #include <stack>
@@ -42,16 +43,18 @@ public:
     void EndNameSequence(int n);
     void BeginNamespace(const std::u32string& namespaceName, const std::u32string& projectName);
     void EndNamespace();
-    void BeginClass(ClassNode* classNode, const std::u32string& className, std::vector<std::unique_ptr<TypeSymbol>>& templateParameters);
+    void BeginClass(ClassNode* classNode, const std::u32string& className, std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, const std::u32string& projectName);
     void EndClass(const std::u32string& projectName);
-    void BeginGrammar(const Span& span, const std::u32string& grammarName);
+    void BeginLambdaExpression(LambdaExpressionNode* lambdaExpressionNode);
+    void EndLambdaExpression();
+    void BeginGrammar(const Span& span, const std::u32string& grammarName, const std::u32string& projectName);
     void EndGrammar(const std::u32string& projectName);
     RuleSymbol* AddRule(const Span& span, const std::u32string& ruleName);
-    void BeginEnumType(EnumTypeNode* enumTypeNode, const std::u32string& enumTypeName);
+    void BeginEnumType(EnumTypeNode* enumTypeNode, const std::u32string& enumTypeName, const std::u32string& projectName);
     void EndEnumType(const std::u32string& projectName);
     void AddEnumerator(EnumeratorNode* enumeratorNode, const std::u32string& enumeratorName, const std::u32string& enumeratorValue);
     void BeginFunction(FunctionDeclaratorNode* functionDeclaratorNode, const std::u32string& groupName, const std::u32string& functionName,
-        std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, Specifier specifiers);
+        std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, Specifier specifiers, const std::u32string& projectName);
     void EndFunction(const std::u32string& projectName);
     void BeginFunctionDeclaration(FunctionDeclaratorNode* functionDeclaratorNode, const std::u32string& groupName, const std::u32string& functionName, Specifier specifiers);
     void EndFunctionDeclaration();
@@ -73,8 +76,11 @@ public:
     TypeSymbol* MakeExternalTypeSymbol(const Span& span, const std::u32string& name, ClassKey classKey);
     TypeSymbol* MakeClassGroupTypeSymbol(ClassGroupSymbol* classGroup);
     TypeSymbol* MakeClassTemplateSpecializationSymbol(const Span& span, TypeSymbol* primaryClassTemplate, TemplateIdNode* templateIdNode,
-        const std::vector<TypeSymbol*>& templateArguments, const std::vector<Node*>& templateArgumentNodes);
+        const std::vector<TypeSymbol*>& templateArguments, const std::vector<Node*>& templateArgumentNodes, TypeExprNode* typeExprNode);
     TypeSymbol* MakeIntegerLiteralTypeSymbol(const Span& span, const std::u32string& valueName);
+    TypeSymbol* MakePseudoTypeSymbol(const Span& span, const std::u32string& name);
+    TemplateIdNode* GetTemplateIdNodeForTypeExprNode(TypeExprNode* typeExprNode) const;
+    Node* GetTemplateArgumentNodeForTypeExprNode(TypeExprNode* typeExprNode) const;
 private:
     NamespaceSymbol globalNs;
     ContainerSymbol* container;
@@ -83,7 +89,10 @@ private:
     std::unordered_map<Node*, std::vector<IdentifierNode*>> idNodeSequenceMap;
     int blockNumber;
     std::unordered_map<std::u32string, TypeSymbol*> idTypeMap;
+    std::unordered_map<TypeExprNode*, TemplateIdNode*> templateIdNodeMap;
+    std::unordered_map<TypeExprNode*, Node*> templateIdTemplateArgumentNodeMap;
     std::vector<std::unique_ptr<TypeSymbol>> types;
+    std::vector<std::unique_ptr<Node>> ownedNodes;
 };
 
 } } // namespace sngcpp::symbols

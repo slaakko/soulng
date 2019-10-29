@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ProjectFile Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_PositiveParser_F25F4CE8B7DFFBA65B5A2B75826C9B59E3AA2BA2.html">prev</a>
+         | <a href="class_RuleParser_70D9DD72A49D7FCCCA0EB22A38416E3B2E1D3925.html">next</a>
+        <hr/>
+        <h1>ProjectFile Class</h1>
+        <span>
+            Definition at line <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html#13">13</a>
+             of <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html">ProjectFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#constructor_ProjectFile_E9F3BB4C962B1CCBAE5F258B9E76578819450818">ProjectFile</a>(<span class="kw">const </span>std::string&amp; fileName_, <span class="kw">const </span>std::u32string&amp; projectName_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#function_AddSourceFile_2AF7D19CC0A5C4E6A43AE98D0AE83EDA74FACE89">AddSourceFile</a>(<span class="kw">const </span>std::string&amp; sourceFile)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#function_BasePath_65777520CA299492A6DA14D943F66BA092F430B1">BasePath</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::string>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#function_SourceFiles_8A51E74A57C1A35CBAF53E9D74BD00BFBE21EFC9">SourceFiles</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_basePath_2D74611ED548BDB77CE779FE324BCFE45E400D5D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">basePath</td>
+            </tr>
+            <tr id="variable_fileName_C7D53E4DE0A909442200BC492C390AD45FF1C412">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileName</td>
+            </tr>
+            <tr id="variable_projectName_F1ABC1C8AFFC735A91BCA10108DB1E86835C2DE7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectName</td>
+            </tr>
+            <tr id="variable_sourceFiles_C0C6BB5F7AD12B2CEA3D0D6D9236155F9647AF4E">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">sourceFiles</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ProjectFile_E9F3BB4C962B1CCBAE5F258B9E76578819450818">ProjectFile Constructor</h3>
+        <h4>
+            soulng::spg::ProjectFile::ProjectFile(<span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">const </span>
+            std::u32string&amp; projectName_)</h4>
+        <span>
+            Definition at line <a href="file/ProjectFile.cpp_4B0F9853A85276BC62A346B26FF0C6AC4B340A26.html#13">13</a>
+             of <a href="file/ProjectFile.cpp_4B0F9853A85276BC62A346B26FF0C6AC4B340A26.html">ProjectFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#variable_fileName_C7D53E4DE0A909442200BC492C390AD45FF1C412">fileName</a><span class="other">(</span><span class="identifier">fileName_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#variable_projectName_F1ABC1C8AFFC735A91BCA10108DB1E86835C2DE7">projectName</a><span class="other">(</span><span class="identifier">projectName_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<a href="./class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#variable_basePath_2D74611ED548BDB77CE779FE324BCFE45E400D5D">basePath</a><span class="other">(</span><span class="identifier">Path</span><span class="other">::</span><a href="./../../../util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_GetDirectoryName_851015B1DE2A4159F6DAC0A7A2E2F1ACAC9FE5D6">GetDirectoryName</a><span class="other">(</span><a href="./../../../util/html/content/namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_GetFullPath_376A6C8B9F758F2E3DCF6D591FF734857AEAC42B">GetFullPath</a><span class="other">(</span><a href="./class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#variable_fileName_C7D53E4DE0A909442200BC492C390AD45FF1C412">fileName</a><span class="other">)</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html#16">16</a>
+             of <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html">ProjectFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddSourceFile_2AF7D19CC0A5C4E6A43AE98D0AE83EDA74FACE89">AddSourceFile Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::ProjectFile::AddSourceFile(<span class="kw">const </span>
+            std::string&amp; sourceFile)</h4>
+        <span>
+            Definition at line <a href="file/ProjectFile.cpp_4B0F9853A85276BC62A346B26FF0C6AC4B340A26.html#18">18</a>
+             of <a href="file/ProjectFile.cpp_4B0F9853A85276BC62A346B26FF0C6AC4B340A26.html">ProjectFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ProjectFile_4846DB91D0A98517D406D731E4E79390D60425F2.html#variable_sourceFiles_C0C6BB5F7AD12B2CEA3D0D6D9236155F9647AF4E">sourceFiles</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">sourceFile</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html#18">18</a>
+             of <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html">ProjectFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_BasePath_65777520CA299492A6DA14D943F66BA092F430B1">BasePath Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; soulng::spg::ProjectFile::BasePath() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html#17">17</a>
+             of <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html">ProjectFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">basePath</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SourceFiles_8A51E74A57C1A35CBAF53E9D74BD00BFBE21EFC9">SourceFiles Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::string>&amp; soulng::spg::ProjectFile::SourceFiles() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html#19">19</a>
+             of <a href="file/ProjectFile.hpp_4D17590A87F09D63E4ABCA38A2F421A4ACE651E6.html">ProjectFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">sourceFiles</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_PositiveParser_F25F4CE8B7DFFBA65B5A2B75826C9B59E3AA2BA2.html">prev</a>
+         | <a href="class_RuleParser_70D9DD72A49D7FCCCA0EB22A38416E3B2E1D3925.html">next</a>
+    </body>
+</html>

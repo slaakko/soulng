@@ -1,0 +1,102 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/spg/Domain.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/spg/Visitor.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/Unicode.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">spg</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html">Domain</a><span class="other">::</span><a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#function_Accept_2F378B41CE1805078BE577264F32069A00816C8A">Accept</a><span class="other">(</span><a href="../class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_777B2BC170859D4D2FC03125182E9C23D7C560BE">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html">Domain</a><span class="other">::</span><a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#function_AddParserFile_10D892B9482EA01121BEF9EE1DF2A6F243087E2A">AddParserFile</a><span class="other">(</span><a href="../class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html">ParserFile</a><span class="other">*</span>&nbsp;<span class="identifier">parserFile</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserFiles_DBC1E7E61599605266575813A725B07836262DC1">parserFiles</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">parserFile</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html">Domain</a><span class="other">::</span><a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#function_AddParser_24E26C3E4E5620859166BB8CC879D66E7A16107F">AddParser</a><span class="other">(</span><a href="../class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a><span class="other">*</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">parser</span><span class="other">-></span><a href="../class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Name_FE5E39A77776A2869F1CE1CB4A54DAAD30DDB70A">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"parser&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><a href="../../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">parser</span><span class="other">-></span><a href="../class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Name_FE5E39A77776A2869F1CE1CB4A54DAAD30DDB70A">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;already&nbsp;exists"</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">[</span><span class="identifier">parser</span><span class="other">-></span><a href="../class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Name_FE5E39A77776A2869F1CE1CB4A54DAAD30DDB70A">Name</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parser</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<a href="../class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a><span class="other">*</span>&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html">Domain</a><span class="other">::</span><a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#function_GetParser_03E0FC9C4139FB3FD966C2F197563A8566BAEA5A">GetParser</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parserName</span><span class="other">)</span>&nbsp;<span class="kw">const</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">parserName</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="../class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">it</span><span class="other">-></span><span class="identifier">second</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"parser&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><a href="../../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">parserName</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;not&nbsp;found"</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespae&nbsp;soulng::spg</span></span>
+  <br/>
+ </body>
+</html>

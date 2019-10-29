@@ -1,0 +1,156 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SNGCPP_AST_SPECIFIER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SNGCPP_AST_SPECIFIER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/AstApi.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;stdint.h></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="pp">#include&nbsp;&lt;string></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">ast</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">&nbsp;:&nbsp;</span><span class="type">uint32_t</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">none</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">0</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">register_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">static_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">threadLocal</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">extern_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">mutable_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">inline_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">virtual_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">explicit_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">override_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">pure_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">final_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">new_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">default_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">delete_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">friend_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">constExpr</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">const_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">volatile_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">public_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">protected_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">private_</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">extension</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">access</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">public_</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">virtuality</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">virtual_</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="kw">constexpr</span><span class="other">,&nbsp;</span><span class="kw">inline</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="kw">operator</span><span class="other">|</span><span class="other">(</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">left</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">right</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">(</span><span class="type">uint32_t</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">&nbsp;|&nbsp;</span><span class="type">uint32_t</span><span class="other">(</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="kw">constexpr</span><span class="other">,&nbsp;</span><span class="kw">inline</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="kw">operator</span><span class="other">&amp;</span><span class="other">(</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">left</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">right</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">(</span><span class="type">uint32_t</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="type">uint32_t</span><span class="other">(</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html#function_SpecifierStr_AC08858C5F08FCEDE54793C67357C695139CE53E">SpecifierStr</a><span class="other">(</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">specifiers</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;<span class="kw">constexpr</span><span class="other">,&nbsp;</span><span class="kw">inline</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<a href="../namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html#function_DeclSpecifierMask_0260FC5480A53727DDF984A70CF5B7DEBAA9B63A">DeclSpecifierMask</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_register__DC2A3DCDD4058988BBEE387ED1EFB45EB57B0807">register_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_static__9020B1332098967AE89F3EDDCE09C2ED9F039F1C">static_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_threadLocal_DBB11FD6A852EB1E5D1BD639CE5EB2841C7466CA">threadLocal</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_extern__3620ED2C91458165E83BBC60D80702A9EDAB29EB">extern_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_mutable__9168BBB92A3AD89E6DC6236F2A1708791261C367">mutable_</a><span class="other">&nbsp;|&nbsp;</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_inline__243FD45ADDB569361FC35DDC76F944452B4FAB04">inline_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_virtual__72AC4FDBF120FA199558217B7730C76C8E9119F5">virtual_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_explicit__F98E90B6B6D604E29783A3977188521F96FA399B">explicit_</a><span class="other">&nbsp;|&nbsp;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_friend__79AF47B26C4178B0B66059EF826026D12656ECF0">friend_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_constExpr_B55AB3C70E6FE9ABF832954C4B79B491A3739F59">constExpr</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;<span class="kw">constexpr</span><span class="other">,&nbsp;</span><span class="kw">inline</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<a href="../namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html#function_VirtPureSpecifierMask_8968944C2ED7BFC98E3C42B5A79D18121416429A">VirtPureSpecifierMask</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">63</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_override__7722CE142C816B20CCEBE7AA56F2F33215CD7E9A">override_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_final__0605BC6CFC4CDB00FC063CAC53134CEEA8BC2DC1">final_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_new__AC0E9A81B8E1BB72884CAB188C13A80D4735FB3E">new_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_pure__E067C3FAD0E87E3E0D97610FFED611588B16C93F">pure_</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">65</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">66</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">67</span>&nbsp;<span class="kw">constexpr</span><span class="other">,&nbsp;</span><span class="kw">inline</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<a href="../namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html#function_DefaultDeleteSpecifierMask_F0BC20A975CDA84C7B7D4C8D3F51F81CE5B9384D">DefaultDeleteSpecifierMask</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">68</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_default__364FAA9467D2D708D47556B0D1695771D4C59AD9">default_</a><span class="other">&nbsp;|&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_delete__90136AB7D5AE7D40C8543F13F34E9B9A437F8C79">delete_</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">70</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">72</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::ast</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">73</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">74</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNGCPP_AST_SPECIFIER_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

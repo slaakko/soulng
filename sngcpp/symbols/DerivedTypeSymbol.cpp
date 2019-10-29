@@ -113,6 +113,7 @@ std::u32string MakeDerivedTypeId(const std::vector<Derivation>& derivations, Typ
         case Derivation::ptr: id.append(U"ptr"); break;
         }
     }
+    id.append(U".").append(baseType->Id());
     return id;
 }
 

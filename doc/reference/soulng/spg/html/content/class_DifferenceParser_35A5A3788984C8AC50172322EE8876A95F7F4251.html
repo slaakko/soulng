@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>DifferenceParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html">prev</a>
+         | <a href="class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html">next</a>
+        <hr/>
+        <h1>DifferenceParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#178">178</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html#constructor_DifferenceParser_63029953A3122FD1CC9724CEF4267E635B5E7495">DifferenceParser</a>(<a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>* left_, <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>* right_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html#function_Accept_327FCB3A3CBD43ADB9399920E0AED169DA5BA684">Accept</a>(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html#function_Clone_6C1D7C3618B6F7218E2673ADB516EFFD406BDD1E">Clone</a>() <span class="kw">const override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_DifferenceParser_63029953A3122FD1CC9724CEF4267E635B5E7495">DifferenceParser Constructor</h3>
+        <h4>
+            soulng::spg::DifferenceParser::DifferenceParser(<a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * left_, <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * right_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#217">217</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html">BinaryParser</a><span class="other">(</span><span class="string">U"difference"</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">218</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">219</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#181">181</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_327FCB3A3CBD43ADB9399920E0AED169DA5BA684">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::DifferenceParser::Accept(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#226">226</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">227</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">228</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_8762EDD79EC9560D8C7DA83A088EBF0EAAD11C77">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">229</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#183">183</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Accept_1909C96AE52A2B305A815693715F56E7651FBBBD">soulng::spg::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_8762EDD79EC9560D8C7DA83A088EBF0EAAD11C77">soulng::spg::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_6C1D7C3618B6F7218E2673ADB516EFFD406BDD1E">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * soulng::spg::DifferenceParser::Clone() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#221">221</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">222</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">223</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html">DifferenceParser</a><span class="other">(</span><a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Left_639C72B82C302D44B1E8B5C669095F9D5AD18861">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">Clone</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Right_B0CCD713B3DA25D5F2D714866AD364C97D897B48">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">Clone</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">224</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#182">182</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">soulng::spg::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Left_639C72B82C302D44B1E8B5C669095F9D5AD18861">soulng::spg::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Right_B0CCD713B3DA25D5F2D714866AD364C97D897B48">soulng::spg::BinaryParser::Right</a>
+            , <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">soulng::spg::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html">prev</a>
+         | <a href="class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html">next</a>
+    </body>
+</html>

@@ -1,0 +1,221 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>NfaState Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html">up</a>
+         | <a href="class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">prev</a>
+         | <a href="class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html">next</a>
+        <hr/>
+        <h1>NfaState Class</h1>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#26">26</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#constructor_NfaState_AAE08C642D52A1827C715FAF1B8FE06CB297B436">NfaState</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_Accept_7284EF031E3F3625014927F389405AE12B78A9D2">Accept</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87">AddEdge</a>(<span class="kw">const </span><a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>&amp; edge)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8">Edges</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD">Next</a>(<span class="kw">char32_t</span> c) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE">SetAccept</a>(<span class="kw">bool</span> accept_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3">SetEdges</a>(<span class="kw">const </span>std::vector&lt;<a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>>&amp; edges_)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_accept_9FD406F994D71370F8F777FF2E6659D7AE01E4C2">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">accept</td>
+            </tr>
+            <tr id="variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">edges</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_NfaState_AAE08C642D52A1827C715FAF1B8FE06CB297B436">NfaState Constructor</h3>
+        <h4>
+            soulng::rex::NfaState::NfaState()</h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#15">15</a>
+             of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_accept_9FD406F994D71370F8F777FF2E6659D7AE01E4C2">accept</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">edges</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#29">29</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_7284EF031E3F3625014927F389405AE12B78A9D2">Accept Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::rex::NfaState::Accept() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#30">30</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">accept</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87">AddEdge Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::rex::NfaState::AddEdge(<span class="kw">const </span>
+            <a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>
+            &amp; edge)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#24">24</a>
+             of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">edges</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">edge</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#34">34</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8">Edges Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>
+            >&amp; soulng::rex::NfaState::Edges() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#32">32</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">edges</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD">Next Member Function</h3>
+        <h4>
+            std::vector&lt;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            *> soulng::rex::NfaState::Next(<span class="kw">char32_t</span>
+             c) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#29">29</a>
+             of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#35">35</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html#function_Match_1AE201DEDEF5F1D2AC6D097941F5C1E6325263C3">soulng::rex::Symbol::Match</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE">SetAccept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::rex::NfaState::SetAccept(<span class="kw">bool</span>
+             accept_)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#31">31</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">accept</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">accept_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3">SetEdges Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::rex::NfaState::SetEdges(<span class="kw">const </span>
+            std::vector&lt;<a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a>
+            >&amp; edges_)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#19">19</a>
+             of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">edges</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">edges_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#33">33</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html">up</a>
+         | <a href="class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">prev</a>
+         | <a href="class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html">next</a>
+    </body>
+</html>

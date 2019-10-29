@@ -1,0 +1,90 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SOULNG_SPG_ARRAY_WRITER_VISITOR_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SOULNG_SPG_ARRAY_WRITER_VISITOR_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/spg/Visitor.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/CodeFormatter.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">spg</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">::</span><span class="identifier">CodeFormatter</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html">ArrayGeneratorVisitor</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span><a href="../class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ArrayGeneratorVisitor</span><span class="other">(</span><a href="../../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a><span class="other">*</span>&nbsp;<span class="identifier">formatter_</span><span class="other">,&nbsp;</span><span class="kw">int</span><span class="other">&amp;</span>&nbsp;<span class="identifier">sn_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_FAA6FDCC900F673EE1E7F2F62A040D93B94A2EFC">Visit</a><span class="other">(</span><a href="../class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html">StringParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_2C10D1ABB692A41F3855E044F8C763F2EF6A56C6">Visit</a><span class="other">(</span><a href="../class_CharSetParser_B6ECE7C272FD123E9CA2B19F60F55F3C157AA96F.html">CharSetParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_9580BC2B5C7BD2DCFA07B8D17C7C9850892FD60D">Visit</a><span class="other">(</span><a href="../class_OptionalParser_F14A0491BA72F7601618ADFDCFBCACCB7D10D4CF.html">OptionalParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_B30391FAF65CA5E8991E4F5065A994962F98BE8B">Visit</a><span class="other">(</span><a href="../class_KleeneParser_311292922CFBF0B9743ECECCF7E2AEFE89DAF3AF.html">KleeneParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_8F6E011A03CC0CF2CDA2D0520F91F9D6A4B05347">Visit</a><span class="other">(</span><a href="../class_PositiveParser_F25F4CE8B7DFFBA65B5A2B75826C9B59E3AA2BA2.html">PositiveParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_F5AFCC7D3B047DBFCE5C3E7C6DEB8E6C2D2FF86E">Visit</a><span class="other">(</span><a href="../class_ExpectationParser_704056B2242AA5EC5158989278817A053D2AE9B3.html">ExpectationParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_A690D7B323449D26FEBCF11467EF6B5286472830">Visit</a><span class="other">(</span><a href="../class_GroupingParser_8245FB770478492CA46FBF557B6E2146BC217BA8.html">GroupingParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_0F3568CB0D9C1E9EFA1CB590C0C368FE0A67E0D3">Visit</a><span class="other">(</span><a href="../class_SequenceParser_E5072D7D7C4A1719B78D7481F0C708AF1BE7B253.html">SequenceParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_5A7E622FA8B1965DEA8ECC598F4E56097ABE01A7">Visit</a><span class="other">(</span><a href="../class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html">AlternativeParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_994E321F609D2B458B446ABC7255E52CD4E560F2">Visit</a><span class="other">(</span><a href="../class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html">DifferenceParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_0C178E98DC3FD55C391543840F0B2AC484C73BBD">Visit</a><span class="other">(</span><a href="../class_ListParser_17B9807C88F86A83C66D3A53A7AAC67F4518C860.html">ListParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_A8C9176D68BFF0F64385316E0D8E55C199F8EF6E">Visit</a><span class="other">(</span><a href="../class_ActionParser_2A28E040507CD53767D4AA9148CC127D2955F8F7.html">ActionParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_5186FF74B1A0CFDBF19E9869F539C94C89A27B7D">Visit</a><span class="other">(</span><a href="../class_RuleParser_70D9DD72A49D7FCCCA0EB22A38416E3B2E1D3925.html">RuleParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_2936537FFBDC164E6A8A65061769C8ACF380172F">Visit</a><span class="other">(</span><a href="../class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_D92FB10738CBE8E6A5929109106DABF8B2F84FD9">Visit</a><span class="other">(</span><a href="../class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html">ParserFile</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parserFile</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a><span class="other">*</span>&nbsp;<span class="identifier">formatter</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span><span class="other">&amp;</span>&nbsp;<span class="identifier">sn</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;soulng::spg</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SOULNG_SPG_ARRAY_WRITER_VISITOR_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

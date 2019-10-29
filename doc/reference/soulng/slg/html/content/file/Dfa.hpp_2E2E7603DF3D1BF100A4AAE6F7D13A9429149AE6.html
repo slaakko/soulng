@@ -1,0 +1,102 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SOULNG_SLG_DFA_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SOULNG_SLG_DFA_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/slg/Nfa.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">slg</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#constructor_DfaState_20FF484292296561A305D04D8ACA1108FFA11C87">DfaState</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">id_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">nfaStates_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Id_DCDBF279DAF2083798025FCC616289B6BD41D2D4">Id</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_IsMarked_573D3713AA65C1C3A3B4B186704876EA484A75DC">IsMarked</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">marked</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Mark_6E2AB924BF846629140A0E964EF36F91B3608F31">Mark</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">marked</span><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Accept_3F47070B882266DB1DB4D7D5D37D013E7272A66D">Accept</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">accept</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_SetAccept_5C14F83A9253DAE322FC55A01FE615D2045920B5">SetAccept</a><span class="other">(</span><span class="kw">bool</span>&nbsp;<span class="identifier">accept_</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">accept</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">accept_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_StatementIndex_21FD8BD9803B1C402A264B49F404C627C6C637EA">StatementIndex</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_SetStatementIndex_B3C7FC5AB813E098CD2CD0D6436C1FDCAA72D13A">SetStatementIndex</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">index</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">index</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_NfaStates_3D399CD6E527400C08D8F5C95D23554AFA432552">NfaStates</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">nfaStates</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_AddNext_33B2A07F249434996F849ABBDFDE74AEFAA452E4">AddNext</a><span class="other">(</span><a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a><span class="other">*</span>&nbsp;<span class="identifier">next</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a><span class="other">*</span>&nbsp;<a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Next_5B49DF9C61F31023D1EA8A54EF90B8B5905CBC32">Next</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">i</span><span class="other">)</span>&nbsp;<span class="kw">const</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">id</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">nfaStates</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">next</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">marked</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">accept</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html">Dfa</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html#function_AddState_35252569CE26965F7A2DE8D8991CD499DF0E14F8">AddState</a><span class="other">(</span><a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<a href="../class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html#function_States_BF40D7D6FAA894DD655D19CE155C61EDB4A6A0AD">States</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">states</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html#function_Finalize_E9DA72EFAEE723AA2B47822D2CD563A81A69BC05">Finalize</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">states</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;soulng::slg</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SOULNG_SLG_DFA_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>OperatorTable Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="struct_OperatorHash_4F6B5C3A372C3157E18B41CFC65536BDE6ADBBF4.html">prev</a>
+         | <a href="class_ParenExpr_95E3941488711D8BA09D55868D89115C25A2885C.html">next</a>
+        <hr/>
+        <h1>OperatorTable Class</h1>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#21">21</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#constructor_OperatorTable_055EF137A04E881B135D2C26B26BF998F5EA45CE">OperatorTable</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#function_Done_79910B18C24D0F0C3F561517083EAFD26B08C986">Done</a>() <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#function_GetOperator_523625AD5B5A90EFC212192E6E290A641C90A5A8">GetOperator</a>(<span class="kw">const </span>std::u32string&amp; operatorName)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#function_GetOperatorStr_D9FA681382F9E1C7ED784697F4C2431CED8EBD43">GetOperatorStr</a>(<a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a> op)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#function_Init_E8987AC9A2CD7CB6CDA38B4CD2ECE1269A5BDC4E">Init</a>() <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html">OperatorTable</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#function_Instance_376E3B3D55252F441CE36891F5F983C7D84FBE0D">Instance</a>() <span class="kw">static</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_instance_D446AFD575CB051CBDC6AD4DD181A4702D32DBA7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html">OperatorTable</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">instance <span class="kw">static</span></td>
+            </tr>
+            <tr id="variable_operatorMap_A1B57B98645CE426FB19A2E29897525CB847333D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, <a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">operatorMap</td>
+            </tr>
+            <tr id="variable_operatorStrMap_2D5271EBD81DC3AEDD6EA4F66C471926AF3C597D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;<a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>, std::u32string, <a href="./struct_OperatorHash_4F6B5C3A372C3157E18B41CFC65536BDE6ADBBF4.html">OperatorHash</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">operatorStrMap</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_OperatorTable_055EF137A04E881B135D2C26B26BF998F5EA45CE">OperatorTable Constructor</h3>
+        <h4>
+            soulng::cppcode::OperatorTable::OperatorTable()</h4>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#41">41</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#34">34</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Done_79910B18C24D0F0C3F561517083EAFD26B08C986">Done Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::OperatorTable::Done() <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#120">120</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_instance_D446AFD575CB051CBDC6AD4DD181A4702D32DBA7">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#25">25</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetOperator_523625AD5B5A90EFC212192E6E290A641C90A5A8">GetOperator Member Function</h3>
+        <h4>
+            <a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>
+             soulng::cppcode::OperatorTable::GetOperator(<span class="kw">const </span>
+            std::u32string&amp; operatorName)</h4>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#125">125</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><span class="type">Operator</span><span class="other">,&nbsp;</span><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a><span class="other">></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorMap_A1B57B98645CE426FB19A2E29897525CB847333D">operatorMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">operatorName</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">i</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorMap_A1B57B98645CE426FB19A2E29897525CB847333D">operatorMap</a><span class="other">.</span><span class="identifier">end</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">i</span><span class="other">-></span><span class="identifier">second</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"unknown&nbsp;operator&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">operatorName</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#30">30</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetOperatorStr_D9FA681382F9E1C7ED784697F4C2431CED8EBD43">GetOperatorStr Member Function</h3>
+        <h4>
+            std::u32string soulng::cppcode::OperatorTable::GetOperatorStr(<a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>
+             op)</h4>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#135">135</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a><span class="other">,&nbsp;</span><span class="type">OperatorHash</span><span class="other">,&nbsp;</span><a href="./struct_OperatorHash_4F6B5C3A372C3157E18B41CFC65536BDE6ADBBF4.html">OperatorHash</a><span class="other">></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorStrMap_2D5271EBD81DC3AEDD6EA4F66C471926AF3C597D">operatorStrMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">op</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">i</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorStrMap_2D5271EBD81DC3AEDD6EA4F66C471926AF3C597D">operatorStrMap</a><span class="other">.</span><span class="identifier">end</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">i</span><span class="other">-></span><span class="identifier">second</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"unknown&nbsp;operator"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#31">31</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Init_E8987AC9A2CD7CB6CDA38B4CD2ECE1269A5BDC4E">Init Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::OperatorTable::Init() <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#115">115</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_instance_D446AFD575CB051CBDC6AD4DD181A4702D32DBA7">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html">OperatorTable</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#24">24</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Instance_376E3B3D55252F441CE36891F5F983C7D84FBE0D">Instance Member Function</h3>
+        <h4>
+            <a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html">OperatorTable</a>
+            &amp; soulng::cppcode::OperatorTable::Instance() <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#26">26</a>
+             of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">*</span><span class="identifier">instance</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="struct_OperatorHash_4F6B5C3A372C3157E18B41CFC65536BDE6ADBBF4.html">prev</a>
+         | <a href="class_ParenExpr_95E3941488711D8BA09D55868D89115C25A2885C.html">next</a>
+    </body>
+</html>

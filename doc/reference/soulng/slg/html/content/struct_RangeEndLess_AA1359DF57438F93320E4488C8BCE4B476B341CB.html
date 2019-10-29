@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>RangeEndLess Struct</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">prev</a>
+         | <a href="class_RegularExpressionParser_D9FFA2EEC477407FB40163AC34B1B72DB1ED90B6.html">next</a>
+        <hr/>
+        <h1>RangeEndLess Struct</h1>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#390">390</a>
+             of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_RangeEndLess_AA1359DF57438F93320E4488C8BCE4B476B341CB.html#function_operator_apply_824A541DE211425614BA4872C1CDF06EBA5E6469">operator()</a>(<span class="kw">const </span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>&amp; left, <span class="kw">const </span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>&amp; right) <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_operator_apply_824A541DE211425614BA4872C1CDF06EBA5E6469">operator() Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::slg::RangeEndLess::operator()(<span class="kw">const </span>
+            <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>
+            &amp; left, <span class="kw">const </span>
+            <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>
+            &amp; right) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#392">392</a>
+             of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">393</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">394</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">395</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;>&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">396</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">397</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">prev</a>
+         | <a href="class_RegularExpressionParser_D9FFA2EEC477407FB40163AC34B1B72DB1ED90B6.html">next</a>
+    </body>
+</html>

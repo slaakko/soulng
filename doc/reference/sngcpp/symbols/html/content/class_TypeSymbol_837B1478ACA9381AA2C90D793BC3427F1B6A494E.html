@@ -1,0 +1,461 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>TypeSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html">prev</a>
+         | <a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html">next</a>
+        <hr/>
+        <h1>TypeSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#15">15</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#constructor_TypeSymbol_5B0D8337FDE28454A645316343239784853B946C">TypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">BaseType</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../ast/html/content/enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_GetClassKey_063441F4A343FA25C8F3DE749D11F0A7151A6B61">GetClassKey</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_GetType_EE682DFC701E0FD1E38265CCB2E8FC9A43F78D7C">GetType</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_HasBaseClass_4C22C0711D45191749E1631966D9223C9942BE7F">HasBaseClass</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* type, <span class="kw">int</span>&amp; distance) <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsDerivedTypeSymbol_BF194DE5D9D1398870B4812E4ED78707B29F741B">IsDerivedTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsElaborateClassTypeSymbol_7394D42B22EBE4DC768428585F105AB5098592D4">IsElaborateClassTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsExternalTypeSymbol_8FE552A52252A2E5E42351833889211F63E79480">IsExternalTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsSimpleTypeSymbol_C1CEBB4B38D5EF620E88768AAA09E33898B60C28">IsSimpleTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsTypeSymbol_369AB43672FFF7801A7F208655FF3ABDC8A9E69D">IsTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_KindStr_B607621E0E115094C947C0FD4D3DEF911AF33664">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">MatchValue</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* argumentType) <span class="kw">virtual</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_TypeSymbol_5B0D8337FDE28454A645316343239784853B946C">TypeSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::TypeSymbol::TypeSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html#10">10</a>
+             of <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html">TypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#18">18</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">BaseType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::TypeSymbol::BaseType() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#21">21</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">this</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_BaseType_FD936C7DFEEAC85CDDF0F48E01F78426EE76751F">sngcpp::symbols::DerivedTypeSymbol::BaseType</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_MatchValue_8F77DE55938449D94873EC50D8F4CFE24F082D5F">sngcpp::symbols::ClassTypeSymbol::MatchValue</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::TypeSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html#14">14</a>
+             of <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html">TypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"type"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#30">30</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_CreateElement_3DA4F6683FAF5CA08EA54628BEC65D7086330D03">sngcpp::symbols::ClassTemplateSpecializationSymbol::CreateElement</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_CreateElement_CB77F4C0BE84A3AA45F763E8F302CBA1C25232A4">sngcpp::symbols::ClassTypeSymbol::CreateElement</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_CreateElement_22157CC1450C38D721ABA795AAA66FF393079A20">sngcpp::symbols::DerivedTypeSymbol::CreateElement</a>
+            , <a href="./class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#function_CreateElement_68084451A0393DC2550D07F7952BEEDE69291A21">sngcpp::symbols::ElaborateClassTypeSymbol::CreateElement</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_CreateElement_5FAF01DCFB9AA0DE152B9FA40A4F87AE52335EDE">sngcpp::symbols::EnumTypeSymbol::CreateElement</a>
+            , <a href="./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_CreateElement_60A50EF7E25688F659528BE49E802238FADB50A1">sngcpp::symbols::ExternalTypeSymbol::CreateElement</a>
+            , <a href="./class_IntegerLiteralTypeSymbol_30260614C598B4E861119D6434267E2F40F526F9.html#function_CreateElement_3A2697890AD5DA9192FCA63C3F6407DF1EC49F72">sngcpp::symbols::IntegerLiteralTypeSymbol::CreateElement</a>
+            , <a href="./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_CreateElement_6BB1D90E6DBDDC8939E5B1EFADB3B048AB656309">sngcpp::symbols::PseudoTypeSymbol::CreateElement</a>
+            , <a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">sngcpp::symbols::SimpleTypeSymbol::CreateElement</a>
+            , <a href="./class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_CreateElement_A37DC6511929AD7E2224986AEE3807DF0DE677EC">sngcpp::symbols::TemplateParameterSymbol::CreateElement</a>
+            , <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_CreateElement_735FB34D73A0B1B035E888D1AE4E5488F9A6A1BF">sngcpp::symbols::TypedefSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetClassKey_063441F4A343FA25C8F3DE749D11F0A7151A6B61">GetClassKey Member Function</h3>
+        <h4>
+            <a href="./../../../ast/html/content/enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>
+             sngcpp::symbols::TypeSymbol::GetClassKey() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#28">28</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ClassKey</span><span class="other">::</span><span class="identifier">class_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_GetClassKey_249FF928A3C04E628230B7F312D30F67BB292B1E">sngcpp::symbols::ClassTemplateSpecializationSymbol::GetClassKey</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_GetClassKey_C3A6EDF2DF47AB1CE9A12EC875B84EB74B3B8E67">sngcpp::symbols::ClassTypeSymbol::GetClassKey</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetType_EE682DFC701E0FD1E38265CCB2E8FC9A43F78D7C">GetType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::TypeSymbol::GetType() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#20">20</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">this</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetType_EB05CD37379610821205706D48043CBB476E66C6">sngcpp::symbols::Symbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_GetType_D9B02BD603D00146F3794D61FCB301ED997C6296">sngcpp::symbols::TypedefSymbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_HasBaseClass_4C22C0711D45191749E1631966D9223C9942BE7F">HasBaseClass Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TypeSymbol::HasBaseClass(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * type, <span class="kw">int</span>
+            &amp; distance) <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html#19">19</a>
+             of <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html">TypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#22">22</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_HasBaseClass_09BEFE8F1CD958D4949E41C6FD93FFEFE7CB9A12">sngcpp::symbols::ClassTemplateSpecializationSymbol::HasBaseClass</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_HasBaseClass_8269D297CF665FC76D23F2A89B05D99BA8952D81">sngcpp::symbols::ClassTypeSymbol::HasBaseClass</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_HasBaseClass_09BEFE8F1CD958D4949E41C6FD93FFEFE7CB9A12">sngcpp::symbols::ClassTemplateSpecializationSymbol::HasBaseClass</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_HasBaseClass_8269D297CF665FC76D23F2A89B05D99BA8952D81">sngcpp::symbols::ClassTypeSymbol::HasBaseClass</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_MatchValue_8F77DE55938449D94873EC50D8F4CFE24F082D5F">sngcpp::symbols::ClassTypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsDerivedTypeSymbol_BF194DE5D9D1398870B4812E4ED78707B29F741B">IsDerivedTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TypeSymbol::IsDerivedTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#26">26</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_IsDerivedTypeSymbol_E0D59D43256E0AD8F8FD423351B9D61C5B593A49">sngcpp::symbols::DerivedTypeSymbol::IsDerivedTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeDerivedTypeSymbol_5D80CD812A114B8870D7FB92197C50B69B2CE764">sngcpp::symbols::SymbolTable::MakeDerivedTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsElaborateClassTypeSymbol_7394D42B22EBE4DC768428585F105AB5098592D4">IsElaborateClassTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TypeSymbol::IsElaborateClassTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#25">25</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#function_IsElaborateClassTypeSymbol_DE53E1491AFD840D9566B20BE3F9D84061F5F3D0">sngcpp::symbols::ElaborateClassTypeSymbol::IsElaborateClassTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsExternalTypeSymbol_8FE552A52252A2E5E42351833889211F63E79480">IsExternalTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TypeSymbol::IsExternalTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#27">27</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_IsExternalTypeSymbol_BA31F3A5BA2AE08168E1CF116EBAE2449D1E1408">sngcpp::symbols::ExternalTypeSymbol::IsExternalTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeClassTemplateSpecializationSymbol_74288D85452AD1BC51DB4FB0E4B1173994271BCA">sngcpp::symbols::SymbolTable::MakeClassTemplateSpecializationSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsSimpleTypeSymbol_C1CEBB4B38D5EF620E88768AAA09E33898B60C28">IsSimpleTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TypeSymbol::IsSimpleTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#24">24</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_IsSimpleTypeSymbol_9ACC21E69134D7AD2F7879FA06D7284FBCFA2BF0">sngcpp::symbols::SimpleTypeSymbol::IsSimpleTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsTypeSymbol_369AB43672FFF7801A7F208655FF3ABDC8A9E69D">IsTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TypeSymbol::IsTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#19">19</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsTypeSymbol_90B67418728ADC224614C38B59DC2044B72F78FB">sngcpp::symbols::Symbol::IsTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_B607621E0E115094C947C0FD4D3DEF911AF33664">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::TypeSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#29">29</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"type"</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_KindStr_A5B984BC29240989F3E06FD2E51E9CBE0F180759">sngcpp::symbols::ClassTypeSymbol::KindStr</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_KindStr_A3A4DAAEEF002B25E706A4F219B8253A101DFE4C">sngcpp::symbols::EnumTypeSymbol::KindStr</a>
+            , <a href="./class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_KindStr_9F82A38E8F69F431ED61F70EEC1B8CFBA554BAFE">sngcpp::symbols::TemplateParameterSymbol::KindStr</a>
+            , <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_KindStr_55642B68B5358372C379491F54DAC91F78FB24A0">sngcpp::symbols::TypedefSymbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">MatchValue Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::TypeSymbol::MatchValue(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * argumentType) <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html#24">24</a>
+             of <a href="file/TypeSymbol.cpp_4611F8037DBC680F5A9E9D8A357E1D8C0A4EF37B.html">TypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">argumentType</span><span class="other">&nbsp;==&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">1</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">argumentType</span><span class="other">&nbsp;==&nbsp;</span><span class="kw">this</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">numeric_limits</span><span class="other">&lt;</span><span class="kw">int</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">0</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html#23">23</a>
+             of <a href="file/TypeSymbol.hpp_D31B78657F53135F3190DA70015C214FA27CE608.html">TypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_MatchValue_8F77DE55938449D94873EC50D8F4CFE24F082D5F">sngcpp::symbols::ClassTypeSymbol::MatchValue</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_42927DD553AD60AA77C1E500920851EA72F6214D">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html">prev</a>
+         | <a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html">next</a>
+    </body>
+</html>

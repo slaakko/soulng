@@ -5,6 +5,8 @@
 
 #include <sngcpp/ast/SimpleType.hpp>
 #include <sngcpp/ast/Visitor.hpp>
+#include <sngcpp/ast/Writer.hpp>
+#include <sngcpp/ast/Reader.hpp>
 
 namespace sngcpp { namespace ast {
 
@@ -18,13 +20,38 @@ std::u32string ToString(SimpleTypeSpecifier specifier)
     return simpleTypeSpecifierStr[uint8_t(specifier)];
 }
 
-SimpleTypeNode::SimpleTypeNode(const Span& span_, const std::vector<SimpleTypeSpecifier>& specifiers_) : Node(span_), specifiers(specifiers_)
+SimpleTypeNode::SimpleTypeNode() : Node(NodeType::simpleTypeNode)
+{
+}
+
+SimpleTypeNode::SimpleTypeNode(const Span& span_, const std::vector<SimpleTypeSpecifier>& specifiers_) : Node(NodeType::simpleTypeNode, span_), specifiers(specifiers_)
 {
 }
 
 void SimpleTypeNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
+}
+
+void SimpleTypeNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    uint8_t n = specifiers.size();
+    writer.GetBinaryWriter().Write(n);
+    for (const auto& specifier : specifiers)
+    {
+        writer.Write(specifier);
+    }
+}
+
+void SimpleTypeNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    uint8_t n = reader.GetBinaryReader().ReadByte();
+    for (uint8_t i = 0; i < n; ++i)
+    {
+        specifiers.push_back(reader.ReadSimpleTypeSpecifier());
+    }
 }
 
 std::u32string SimpleTypeNode::Str()

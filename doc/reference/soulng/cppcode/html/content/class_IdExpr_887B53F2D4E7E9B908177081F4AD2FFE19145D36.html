@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>IdExpr Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_IdExpr_887B53F2D4E7E9B908177081F4AD2FFE19145D36_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_Handler_37EBA6A52016752592721942279CC4B9B9BB9C61.html">prev</a>
+         | <a href="class_IfDefStatement_045EB6442FC205D038A4FB7F1F6EF85AE4696234.html">next</a>
+        <hr/>
+        <h1>IdExpr Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#28">28</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_IdExpr_887B53F2D4E7E9B908177081F4AD2FFE19145D36.html#constructor_IdExpr_8B6C869B57475117E6FEE6F40C3A4E7082D67106">IdExpr</a>(<span class="kw">const </span>std::u32string&amp; value_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_IdExpr_887B53F2D4E7E9B908177081F4AD2FFE19145D36.html#function_Accept_95B27436EA5D9CA685F96F1F7107FF55B3BA43B5">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_IdExpr_8B6C869B57475117E6FEE6F40C3A4E7082D67106">IdExpr Constructor</h3>
+        <h4>
+            soulng::cppcode::IdExpr::IdExpr(<span class="kw">const </span>
+            std::u32string&amp; value_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#46">46</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Expression_71A19889F7103883BC3FEF4C076452FA63C307E7.html">Expression</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#31">31</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_95B27436EA5D9CA685F96F1F7107FF55B3BA43B5">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::IdExpr::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#50">50</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_9DDACE0B3626F41F4B65E666FF5E54FA000F9E71">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#32">32</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_9DDACE0B3626F41F4B65E666FF5E54FA000F9E71">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_Handler_37EBA6A52016752592721942279CC4B9B9BB9C61.html">prev</a>
+         | <a href="class_IfDefStatement_045EB6442FC205D038A4FB7F1F6EF85AE4696234.html">next</a>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="soulng">
+    <description>Core libraries and tools</description>
+  </doc>
+  <doc id="cppcode">
+    <description>C++ statement and expression AST for representing semantic actions in lexers and parsers.</description>
+  </doc>
+  <doc id="lexer">
+    <description>Lexer base class</description>
+  </doc>
+  <doc id="parser">
+    <description>Parsing helpers</description>
+  </doc>
+  <doc id="util">
+    <description>Generic utilities and Unicode</description>
+  </doc>
+  <doc id="slg">
+    <description>Lexer generator</description>
+  </doc>
+  <doc id="spg">
+    <description>Parser generator</description>
+  </doc>
+  <doc id="rex">
+    <description>Regular expression library</description>
+  </doc>
+</docs>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="dom">
+    <description>Contains classes that can be used to represent an XML document tree in memory.</description>
+    <body>
+      <h2>Examples</h2>
+      <ul>
+          <li><a href="../../../examples/sngxml/dom/html/content/file/DomExample.cpp_4EF510D6CDE73BB2BB4EE1D6E51EC04588D6C274.html">Reading an XML document into memory and printing its contents to standard output.</a></li>
+      </ul>
+    </body>
+  </doc>
+</docs>

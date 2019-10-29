@@ -1,0 +1,322 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>BracedInitializerListNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html">prev</a>
+         | <a href="class_BreakStatementNode_D907D6C137DC609E987B2A9EC4418DE2E42DE210.html">next</a>
+        <hr/>
+        <h1>BracedInitializerListNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#126">126</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#constructor_BracedInitializerListNode_ECF4D1B2EE35FEE38FA4E7404E33ED2A20D0BF62">BracedInitializerListNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#constructor_BracedInitializerListNode_194DFF3C5CA1FF57D83FECC9E5D6FD13CDABFD46">BracedInitializerListNode</a>(<span class="kw">const </span>Span&amp; span_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Accept_5BB7C144917A5AD4A706054085081EC89ECFFEB6">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_AddInitializer_BA04102ED7C0FED943013184006057CE2A151C1F">AddInitializer</a>(<span class="kw">const </span>Span&amp; span, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* initializer)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>Span&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_EndBraceSpan_3A1704A9BFD6F0DC94EC3D2B83B6686287235717">EndBraceSpan</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Read_F801A2AE5BEC0047B741B106F3A747B47B66D925">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_SetEndBraceSpan_AC0ADC1B27D9F1F9189BF81E83160A3DD38AD3B4">SetEndBraceSpan</a>(<span class="kw">const </span>Span&amp; endBraceSpan_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Write_D1AB13795D53246411B84E4240E6CF305EEE29F1">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_endBraceSpan_D54C3E311A195DF84D09B5DEE0C1ECE91653A0A9">
+                <td class="functionTableFirstCol" xml:space="preserve">Span</td>
+                <td class="functionTableSecondCol" xml:space="preserve">endBraceSpan</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_BracedInitializerListNode_ECF4D1B2EE35FEE38FA4E7404E33ED2A20D0BF62">BracedInitializerListNode Constructor</h3>
+        <h4>
+            sngcpp::ast::BracedInitializerListNode::BracedInitializerListNode()</h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#239">239</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">239</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_bracedInitializerListNode_43ED70142BEFEAA5FDF345BEB50563BA288F6017">bracedInitializerListNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">240</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">241</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#129">129</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_BracedInitializerListNode_194DFF3C5CA1FF57D83FECC9E5D6FD13CDABFD46">BracedInitializerListNode Constructor</h3>
+        <h4>
+            sngcpp::ast::BracedInitializerListNode::BracedInitializerListNode(<span class="kw">const </span>
+            Span&amp; span_)</h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#243">243</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">243</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_bracedInitializerListNode_43ED70142BEFEAA5FDF345BEB50563BA288F6017">bracedInitializerListNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">244</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">245</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#130">130</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_5BB7C144917A5AD4A706054085081EC89ECFFEB6">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BracedInitializerListNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#247">247</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">248</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">249</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_1C69D9881FB53C72ED7485A1F49610D298AF3C7A">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">250</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#131">131</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_1C69D9881FB53C72ED7485A1F49610D298AF3C7A">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddInitializer_BA04102ED7C0FED943013184006057CE2A151C1F">AddInitializer Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BracedInitializerListNode::AddInitializer(<span class="kw">const </span>
+            Span&amp; span, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * initializer)</h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#252">252</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">253</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">254</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">255</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">256</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_SetChild_F478BD9221673118D95765E8E9BC4AAADDE33BD1">SetChild</a><span class="other">(</span><span class="kw">new&nbsp;</span><a href="./class_ExpressionSequenceNode_03D6A15310B2531C99B39C361E7E3586DA7F410E.html">ExpressionSequenceNode</a><span class="other">(</span><span class="identifier">span</span><span class="other">,&nbsp;</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_ReleaseChild_B093EB620798B30C78C4917B33C55C4DC8CC6384">ReleaseChild</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">initializer</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">257</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">258</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">259</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">260</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_SetChild_F478BD9221673118D95765E8E9BC4AAADDE33BD1">SetChild</a><span class="other">(</span><span class="identifier">initializer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">261</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">262</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#134">134</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_ReleaseChild_B093EB620798B30C78C4917B33C55C4DC8CC6384">sngcpp::ast::UnaryNode::ReleaseChild</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_SetChild_F478BD9221673118D95765E8E9BC4AAADDE33BD1">sngcpp::ast::UnaryNode::SetChild</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_EndBraceSpan_3A1704A9BFD6F0DC94EC3D2B83B6686287235717">EndBraceSpan Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            Span&amp; sngcpp::ast::BracedInitializerListNode::EndBraceSpan() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#136">136</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">endBraceSpan</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_F801A2AE5BEC0047B741B106F3A747B47B66D925">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BracedInitializerListNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#270">270</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">271</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">272</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">UnaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">273</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><a href="./class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#variable_endBraceSpan_D54C3E311A195DF84D09B5DEE0C1ECE91653A0A9">endBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">274</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#133">133</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Read_CD96300DF5D61F69E8B0DEB4BFCCB174951E6104">sngcpp::ast::UnaryNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">sngcpp::ast::Reader::Read</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetEndBraceSpan_AC0ADC1B27D9F1F9189BF81E83160A3DD38AD3B4">SetEndBraceSpan Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BracedInitializerListNode::SetEndBraceSpan(<span class="kw">const </span>
+            Span&amp; endBraceSpan_)</h4>
+        <span>
+            Definition at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#135">135</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">endBraceSpan</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">endBraceSpan_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_D1AB13795D53246411B84E4240E6CF305EEE29F1">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BracedInitializerListNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html#264">264</a>
+             of <a href="file/Declarator.cpp_B8A2448D1B8E53A3FA84D617F7CC67CB0D183A10.html">Declarator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">265</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">266</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">UnaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">267</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">Write</a><span class="other">(</span><a href="./class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#variable_endBraceSpan_D54C3E311A195DF84D09B5DEE0C1ECE91653A0A9">endBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html#132">132</a>
+             of <a href="file/Declarator.hpp_F88DD354864E9521B3C6E00C17E63BB30B323A3F.html">Declarator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59">sngcpp::ast::UnaryNode::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">sngcpp::ast::Writer::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html">prev</a>
+         | <a href="class_BreakStatementNode_D907D6C137DC609E987B2A9EC4418DE2E42DE210.html">next</a>
+    </body>
+</html>

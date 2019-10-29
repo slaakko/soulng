@@ -86,11 +86,15 @@ public:
     virtual bool IsDeclarationBlockSymbol() const { return false; }
     virtual bool IsGrammarSymbol() const { return false; }
     virtual bool IsRuleSymbol() const { return false; }
+    virtual bool IsPseudoTypeSymbol() const { return false; }
+    void SetProjectName(const std::u32string& projectName_);
+    const std::u32string& ProjectName() const { return projectName; }
 private:
     Span span;
     std::u32string name;
     ContainerSymbol* parent;
     SymbolAccess access;
+    std::u32string projectName;
 };
 
 } } // namespace sngcpp::symbols

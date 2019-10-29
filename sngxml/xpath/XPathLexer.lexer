@@ -37,7 +37,7 @@ expressions
 lexer api(SNGXML_XPATH_API) XPathLexer
 {
     "{separators}" {}
-    "{name}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return NAME; else return kw; }
+    "{name}" { return NAME; }
     "{number}" { return NUMBER; }
     "{dqstring}" { return DQSTRING; }
     "{sqstring}" { return SQSTRING; }

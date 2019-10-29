@@ -10,6 +10,8 @@
 #include <sngcpp/symbols/ExternalTypeSymbol.hpp>
 #include <sngcpp/symbols/ClassTemplateSpecializationSymbol.hpp>
 #include <sngcpp/symbols/IntegerLiteralTypeSymbol.hpp>
+#include <sngcpp/symbols/LambdaExpressionSymbol.hpp>
+#include <sngcpp/symbols/PseudoTypeSymbol.hpp>
 #include <sngcpp/symbols/GrammarSymbol.hpp>
 #include <sngcpp/ast/Class.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -170,9 +172,10 @@ void SymbolTable::EndNamespace()
     EndContainer();
 }
 
-void SymbolTable::BeginClass(ClassNode* classNode, const std::u32string& className, std::vector<std::unique_ptr<TypeSymbol>>& templateParameters)
+void SymbolTable::BeginClass(ClassNode* classNode, const std::u32string& className, std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, const std::u32string& projectName)
 {
     ClassTypeSymbol* classType = new ClassTypeSymbol(classNode->GetSpan(), className, classNode->GetClassKey());
+    classType->SetProjectName(projectName);
     MapNode(classNode, classType);
     for (std::unique_ptr<TypeSymbol>& templateParameter : templateParameters)
     {
@@ -186,16 +189,34 @@ void SymbolTable::EndClass(const std::u32string& projectName)
     ClassTypeSymbol* classType = static_cast<ClassTypeSymbol*>(container);
     EndContainer();
     container->AddMember(std::unique_ptr<Symbol>(classType));
-    if (container->IsNamespaceSymbol() && container->Name() == U"")
+    if (container->IsNamespaceSymbol())
     {
-        NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(container);
-        ns->AddProject(projectName);
+        if (container->Name() == U"")
+        {
+            NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(container);
+            ns->AddProject(projectName);
+        }
     }
 }
 
-void SymbolTable::BeginGrammar(const Span& span, const std::u32string& grammarName)
+void SymbolTable::BeginLambdaExpression(LambdaExpressionNode* lambdaExpressionNode)
+{
+    LambdaExpressionSymbol* lambdaExpression = new LambdaExpressionSymbol(lambdaExpressionNode->GetSpan());
+    MapNode(lambdaExpressionNode, lambdaExpression);
+    BeginContainer(lambdaExpression);
+}
+
+void SymbolTable::EndLambdaExpression()
+{
+    LambdaExpressionSymbol* lambdaExpression = static_cast<LambdaExpressionSymbol*>(container);
+    EndContainer();
+    container->AddMember(std::unique_ptr<Symbol>(lambdaExpression));
+}
+
+void SymbolTable::BeginGrammar(const Span& span, const std::u32string& grammarName, const std::u32string& projectName)
 {
     GrammarSymbol* grammar = new GrammarSymbol(span, grammarName);
+    grammar->SetProjectName(projectName);
     BeginContainer(grammar);
 }
 
@@ -218,9 +239,10 @@ RuleSymbol* SymbolTable::AddRule(const Span& span, const std::u32string& ruleNam
     return rule;
 }
 
-void SymbolTable::BeginEnumType(EnumTypeNode* enumTypeNode, const std::u32string& enumTypeName)
+void SymbolTable::BeginEnumType(EnumTypeNode* enumTypeNode, const std::u32string& enumTypeName, const std::u32string& projectName)
 {
     EnumTypeSymbol* enumType = new EnumTypeSymbol(enumTypeNode->GetSpan(), enumTypeName, enumTypeNode->GetEnumKey());
+    enumType->SetProjectName(projectName);
     MapNode(enumTypeNode, enumType);
     BeginContainer(enumType);
 }
@@ -245,11 +267,12 @@ void SymbolTable::AddEnumerator(EnumeratorNode* enumeratorNode, const std::u32st
 }
 
 void SymbolTable::BeginFunction(FunctionDeclaratorNode* functionDeclaratorNode, const std::u32string& groupName, const std::u32string& functionName,
-    std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, Specifier specifiers)
+    std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, Specifier specifiers, const std::u32string& projectName)
 {
     if (container->IsClassTypeSymbol() && groupName == container->Name())
     {
         ConstructorSymbol* constructorSymbol = new ConstructorSymbol(functionDeclaratorNode->GetSpan(), groupName, specifiers);
+        constructorSymbol->SetProjectName(projectName);
         MapNode(functionDeclaratorNode, constructorSymbol);
         BeginContainer(constructorSymbol);
         for (std::unique_ptr<TypeSymbol>& templateParameter : templateParameters)
@@ -260,6 +283,7 @@ void SymbolTable::BeginFunction(FunctionDeclaratorNode* functionDeclaratorNode, 
     else
     {
         FunctionSymbol* functionSymbol = new FunctionSymbol(functionDeclaratorNode->GetSpan(), groupName, functionName, specifiers);
+        functionSymbol->SetProjectName(projectName);
         MapNode(functionDeclaratorNode, functionSymbol);
         BeginContainer(functionSymbol);
         for (std::unique_ptr<TypeSymbol>& templateParameter : templateParameters)
@@ -331,6 +355,7 @@ void SymbolTable::EndDeclarationBlock()
 void SymbolTable::AddTypedef(TypedefNode* node, const std::u32string& typedefName, const std::u32string& projectName)
 {
     TypedefSymbol* typedefSymbol = new TypedefSymbol(node->GetSpan(), typedefName);
+    typedefSymbol->SetProjectName(projectName);
     MapNode(node, typedefSymbol);
     container->AddMember(std::unique_ptr<Symbol>(typedefSymbol));
     if (container->IsNamespaceSymbol() && container->Name() == U"")
@@ -350,6 +375,7 @@ void SymbolTable::AddVariable(Node* node, const std::u32string& variableName, co
     else
     {
         VariableSymbol* variableSymbol = new VariableSymbol(node->GetSpan(), variableName);
+        variableSymbol->SetProjectName(projectName);
         MapNode(node, variableSymbol);
         container->AddMember(std::unique_ptr<Symbol>(variableSymbol));
         if (container->IsNamespaceSymbol() && container->Name() == U"")
@@ -455,10 +481,6 @@ TypeSymbol* SymbolTable::MakeDerivedTypeSymbol(std::vector<Derivation>& derivati
     if (baseType->IsDerivedTypeSymbol())
     {
         DerivedTypeSymbol* derivedType = static_cast<DerivedTypeSymbol*>(baseType);
-        if (derivedType->BaseType() != baseType)
-        {
-            int x = 0;
-        }
         derivations = UnifyDerivations(derivations, derivedType->Derivations());
         baseType = derivedType->BaseType();
     }
@@ -520,8 +542,16 @@ TypeSymbol* SymbolTable::MakeClassGroupTypeSymbol(ClassGroupSymbol* classGroup)
 }
 
 TypeSymbol* SymbolTable::MakeClassTemplateSpecializationSymbol(const Span& span, TypeSymbol* primaryClassTemplate, TemplateIdNode* templateIdNode,
-    const std::vector<TypeSymbol*>& templateArguments, const std::vector<Node*>& templateArgumentNodes)
+    const std::vector<TypeSymbol*>& templateArguments, const std::vector<Node*>& templateArgumentNodes, TypeExprNode* typeExprNode)
 {
+    if (typeExprNode)
+    {
+        templateIdNodeMap[typeExprNode] = templateIdNode;
+        for (int i = 0; i < templateArgumentNodes.size(); ++i)
+        {
+            templateIdTemplateArgumentNodeMap[typeExprNode] = templateArgumentNodes[i];
+        }
+    }
     std::u32string id = MakeClassTemplateSpecializationId(primaryClassTemplate, templateArguments);
     auto it = idTypeMap.find(id);
     if (it != idTypeMap.cend())
@@ -536,6 +566,20 @@ TypeSymbol* SymbolTable::MakeClassTemplateSpecializationSymbol(const Span& span,
         classTemplateSpecializationSymbol->SetAccess(Specifier::public_);
         idTypeMap[id] = classTemplateSpecializationSymbol;
         types.push_back(std::unique_ptr<TypeSymbol>(classTemplateSpecializationSymbol));
+        if (primaryClassTemplate->IsExternalTypeSymbol() && primaryClassTemplate->Name() == U"std::unique_ptr")
+        {
+            BeginContainer(classTemplateSpecializationSymbol);
+            FunctionDeclaratorNode* functionDeclaratorNode = new FunctionDeclaratorNode(span, new IdDeclaratorNode(span, new IdentifierNode(span, U"get")), nullptr, Specifier());
+            ownedNodes.push_back(std::unique_ptr<Node>(functionDeclaratorNode));
+            std::vector<std::unique_ptr<TypeSymbol>> templateParameters;
+            BeginFunction(functionDeclaratorNode, U"get", U"get()", templateParameters, Specifier(), std::u32string());
+            FunctionSymbol* functionSymbol = static_cast<FunctionSymbol*>(container);
+            std::vector<Derivation> derivations;
+            derivations.push_back(Derivation::ptr);
+            functionSymbol->SetReturnType(MakeDerivedTypeSymbol(derivations, templateArguments.front()));
+            EndFunction(std::u32string());
+            EndContainer();
+        }
         return classTemplateSpecializationSymbol;
     }
 }
@@ -555,6 +599,50 @@ TypeSymbol* SymbolTable::MakeIntegerLiteralTypeSymbol(const Span& span, const st
         idTypeMap[id] = integerLiteralTypeSymbol;
         types.push_back(std::unique_ptr<TypeSymbol>(integerLiteralTypeSymbol));
         return integerLiteralTypeSymbol;
+    }
+}
+
+TypeSymbol* SymbolTable::MakePseudoTypeSymbol(const Span& span, const std::u32string& name)
+{
+    std::u32string id = U"pseudotype_" + name;
+    auto it = idTypeMap.find(id);
+    if (it != idTypeMap.cend())
+    {
+        return it->second;
+    }
+    else
+    {
+        PseudoTypeSymbol* pseudoTypeSymbol = new PseudoTypeSymbol(span, name, id);
+        pseudoTypeSymbol->SetAccess(Specifier::public_);
+        idTypeMap[id] = pseudoTypeSymbol;
+        types.push_back(std::unique_ptr<TypeSymbol>(pseudoTypeSymbol));
+        return pseudoTypeSymbol;
+    }
+}
+
+TemplateIdNode* SymbolTable::GetTemplateIdNodeForTypeExprNode(TypeExprNode* typeExprNode) const
+{
+    auto it = templateIdNodeMap.find(typeExprNode);
+    if (it != templateIdNodeMap.cend())
+    {
+        return it->second;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
+Node* SymbolTable::GetTemplateArgumentNodeForTypeExprNode(TypeExprNode* typeExprNode) const
+{
+    auto it = templateIdTemplateArgumentNodeMap.find(typeExprNode);
+    if (it != templateIdTemplateArgumentNodeMap.cend())
+    {
+        return it->second;
+    }
+    else
+    {
+        return nullptr;
     }
 }
 

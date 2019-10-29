@@ -1,0 +1,400 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/symbols/ClassTypeSymbol.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/symbols/TemplateSymbol.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/Unicode.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;algorithm></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">&nbsp;10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">symbols</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#constructor_ClassTypeSymbol_280EE43AD0576CCD97EBA1350E3025BE8CD5CEBC">ClassTypeSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="type">ClassKey</span>&nbsp;<span class="identifier">classKey_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_classKey_7FFC117C36F79BFB3877F8D6532EFF8C97F91245">classKey</a><span class="other">(</span><span class="identifier">classKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_isAbstract_48EA78C2E85DAB5100C92900F7B6B06E090C77FF">isAbstract</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_HasBaseClass_8269D297CF665FC76D23F2A89B05D99BA8952D81">HasBaseClass</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">type</span><span class="other">,&nbsp;</span><span class="kw">int</span><span class="other">&amp;</span>&nbsp;<span class="identifier">distance</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span>&nbsp;<span class="identifier">i</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">n</span><span class="other">;</span>&nbsp;<span class="other">++</span><span class="identifier">i</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">baseClass</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">baseClass</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">type</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">++</span><span class="identifier">distance</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">baseClass</span><span class="other">-></span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_HasBaseClass_4C22C0711D45191749E1631966D9223C9942BE7F">HasBaseClass</a><span class="other">(</span><span class="identifier">type</span><span class="other">,&nbsp;</span><span class="identifier">distance</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">++</span><span class="identifier">distance</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_MatchValue_8F77DE55938449D94873EC50D8F4CFE24F082D5F">MatchValue</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">argumentType</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">parentMatchValue</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">TypeSymbol</span><span class="other">::</span><a href="../class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">MatchValue</a><span class="other">(</span><span class="identifier">argumentType</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">parentMatchValue</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">numeric_limits</span><span class="other">&lt;</span><span class="kw">int</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parentMatchValue</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">argumentType</span><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">distance</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">1</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">argumentType</span><span class="other">-></span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">BaseType</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_HasBaseClass_4C22C0711D45191749E1631966D9223C9942BE7F">HasBaseClass</a><span class="other">(</span><span class="kw">this</span><span class="other">,&nbsp;</span><span class="identifier">distance</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">distance</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">parentMatchValue</span><span class="other">&nbsp;>&nbsp;</span><span class="other">0</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parentMatchValue</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">0</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_AddTemplateParameter_D3FDB3389EBD5BA8ADA4BFEBE34024D1D08B75AE">AddTemplateParameter</a><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">></span><span class="other">&amp;&amp;</span>&nbsp;<span class="identifier">templateParameter</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">move</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<a href="../class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a><span class="other">*</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_GetBase_763B5D3AB60B9752A1B539FEA8633DE8D70E9745">GetBase</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">i</span><span class="other">)</span>&nbsp;<span class="kw">const</span></span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_AddBaseClass_8B56CAA4012467A2E444F76112008A96A0542C53">AddBaseClass</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">baseClass</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">baseClass</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_AddDerivedClass_E1B3E3030C5A5DBFEBDD0B50B709AA2C92998A17">AddDerivedClass</a><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">derivedClass</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">derivedClass</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_IdStr_A2FD12F512364C911369063D4C17E70B306BDE46">IdStr</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">idStr</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">FullName</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateParameter</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStr</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="string">'_'</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idStr</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_KindStr_A5B984BC29240989F3E06FD2E51E9CBE0F180759">KindStr</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html#function_ToString_E53B4356F1A036583D256A46C606F922AF740FDC">ToString</a><span class="other">(</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_classKey_7FFC117C36F79BFB3877F8D6532EFF8C97F91245">classKey</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="95" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="96" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_CreateElement_CB77F4C0BE84A3AA45F763E8F302CBA1C25232A4">CreateElement</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="97" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="98" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">classElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"class"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="99" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"key"</span><span class="other">,&nbsp;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">ast</span><span class="other">::</span><a href="../namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html#function_ToString_E53B4356F1A036583D256A46C606F922AF740FDC">ToString</a><span class="other">(</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_classKey_7FFC117C36F79BFB3877F8D6532EFF8C97F91245">classKey</a><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="100" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="101" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="102" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">templateParametersElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"templateParameters"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="103" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateParameter</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="104" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="105" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">templateParameterElement</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">templateParameter</span><span class="other">-></span><span class="identifier">ToDomElement</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="106" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">templateParametersElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><span class="identifier">templateParameterElement</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="107" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="108" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><span class="identifier">templateParametersElement</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="109" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="110" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="111" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="112" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">baseClassesElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"baseClasses"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="113" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">sort</span><span class="other">(</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">end</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../struct_ByName_DC619DBBB3FB968F6E703C19D3553E66B00182C9.html">ByName</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="114" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">baseClass</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="115" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="116" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">baseClassElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"baseClass"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="117" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">baseClassElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"baseClassId"</span><span class="other">,&nbsp;</span><span class="identifier">baseClass</span><span class="other">-></span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="118" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">baseClassesElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><span class="identifier">baseClassElement</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="119" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="120" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><span class="identifier">baseClassesElement</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="121" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="122" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="123" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="124" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">derivedClassesElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"derivedClasses"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="125" xml:space="preserve"><span class="lineNumber">125</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">sort</span><span class="other">(</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">.</span><span class="identifier">end</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../struct_ByName_DC619DBBB3FB968F6E703C19D3553E66B00182C9.html">ByName</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="126" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">derivedClass</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="127" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="128" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">derivedClassElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"derivedClass"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="129" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">derivedClassElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"derivedClassId"</span><span class="other">,&nbsp;</span><span class="identifier">derivedClass</span><span class="other">-></span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="130" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">derivedClassesElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><span class="identifier">derivedClassElement</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="131" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="132" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Node</span><span class="other">></span><span class="other">(</span><span class="identifier">derivedClassesElement</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="133" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="134" xml:space="preserve"><span class="lineNumber">134</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Valid</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="135" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="136" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"definitionFile"</span><span class="other">,&nbsp;</span><span class="type">ToUtf32</span><span class="other">(</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_fileName_84AF16D756BA3018DACA14EB663EACBE0C627B45">fileName</a><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="137" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"definitionLine"</span><span class="other">,&nbsp;</span><span class="type">ToUtf32</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">to_string</span><span class="other">(</span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">line</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="138" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"definitionFileId"</span><span class="other">,&nbsp;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_fileId_AD23B64EBCEBE9BCDFFCED78B9A8D0A764A0A4B7">fileId</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="139" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="140" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_isAbstract_48EA78C2E85DAB5100C92900F7B6B06E090C77FF">isAbstract</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="141" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="142" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">classElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"abstract"</span><span class="other">,&nbsp;</span><span class="string">U"true"</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="143" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="144" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">classElement</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="145" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="146" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="147" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">::</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_AddVirtualFunction_E628187B728689DD9868422AC709C0AB32B1A642">AddVirtualFunction</a><span class="other">(</span><a href="../class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">virtualFunction</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="148" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="149" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_virtualFunctions_F341634617982954F93601884026038D693D17FB">virtualFunctions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">virtualFunction</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="150" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="151" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="152" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;<a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html">ElaborateClassTypeSymbol</a><span class="other">::</span><a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#constructor_ElaborateClassTypeSymbol_204A61E34914ECD6917644F2BD363ACFC2D8B04A">ElaborateClassTypeSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="type">ClassKey</span>&nbsp;<span class="identifier">classKey_</span><span class="other">,&nbsp;</span><a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">classType_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">id_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="153" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">classType_</span><span class="other">-></span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#variable_classKey_86A89286FD6057D550ED205B346EEAF4A9D426B4">classKey</a><span class="other">(</span><span class="identifier">classKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#variable_classType_4213040F8DFABA12CB61626D1863CE9E0A785C13">classType</a><span class="other">(</span><span class="identifier">classType_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#variable_id_650907083F1929827BA7889437FF77F4A3B56B4A">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="154" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="155" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="156" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="157" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html">ElaborateClassTypeSymbol</a><span class="other">::</span><a href="../class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#function_CreateElement_68084451A0393DC2550D07F7952BEEDE69291A21">CreateElement</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="158" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="159" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">elaborateClassElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"elaborate_class"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="160" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">elaborateClassElement</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="161" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="162" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="163" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">ClassGroupSymbol</a><span class="other">::</span><a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#constructor_ClassGroupSymbol_7E5F534E0A177733EB3AA3E15323EFDEB4C5B187">ClassGroupSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="164" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="165" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="166" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="167" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">ClassGroupSymbol</a><span class="other">::</span><a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_AddClass_39D40CB7C87AFAC6FCE69423B9A8A990721CB2F0">AddClass</a><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">></span><span class="other">&amp;&amp;</span>&nbsp;<span class="identifier">cls</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="168" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="169" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">cls</span><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">Parent</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="170" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_arityClassMap_B0425CB55EC300E077C7ABE941B8BAA8591FEB99">arityClassMap</a><span class="other">[</span><span class="identifier">cls</span><span class="other">-></span><span class="identifier">Arity</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">cls</span><span class="other">.</span><a href="#function_get_A466278C1F10070A3B4F6F62594FDDFCDAF5BFCA">get</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="171" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_classes_36F2CDEBCCF473D2078A5E5EC455D2C42FE7D967">classes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">move</span><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="172" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="173" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="174" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;<a href="../class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">*</span>&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">ClassGroupSymbol</a><span class="other">::</span><a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_GetClass_D9A2317AE973F98FE73A6F136CB02919EAD20BC8">GetClass</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">arity</span><span class="other">)</span>&nbsp;<span class="kw">const</span></span>
+  <br/>
+  <span class="code" id="175" xml:space="preserve"><span class="lineNumber">175</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="176" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_arityClassMap_B0425CB55EC300E077C7ABE941B8BAA8591FEB99">arityClassMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">arity</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="177" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_arityClassMap_B0425CB55EC300E077C7ABE941B8BAA8591FEB99">arityClassMap</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="178" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="179" xml:space="preserve"><span class="lineNumber">179</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">it</span><span class="other">-></span><span class="identifier">second</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="180" xml:space="preserve"><span class="lineNumber">180</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="181" xml:space="preserve"><span class="lineNumber">181</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+  <br/>
+  <span class="code" id="182" xml:space="preserve"><span class="lineNumber">182</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="183" xml:space="preserve"><span class="lineNumber">183</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="184" xml:space="preserve"><span class="lineNumber">184</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="185" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="186" xml:space="preserve"><span class="lineNumber">186</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="187" xml:space="preserve"><span class="lineNumber">187</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">ClassGroupSymbol</a><span class="other">::</span><a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_CreateElement_B4ABF47CA83EA8297863BEA29FF4760B831F58D7">CreateElement</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="188" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="189" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"class_group"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="190" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="191" xml:space="preserve"><span class="lineNumber">191</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="192" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;<a href="../class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html">ClassGroupTypeSymbol</a><span class="other">::</span><a href="../class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html#constructor_ClassGroupTypeSymbol_B5EE45C055144CCE9067F3F8A46556A0D64F01CE">ClassGroupTypeSymbol</a><span class="other">(</span><a href="../class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">ClassGroupSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">classGroup_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">classGroup_</span><span class="other">-></span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">classGroup_</span><span class="other">-></span><a href="../class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html#variable_classGroup_DEBC6DE8AD890435FF72A436F06C5D545B957706">classGroup</a><span class="other">(</span><span class="identifier">classGroup_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="193" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="194" xml:space="preserve"><span class="lineNumber">194</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="195" xml:space="preserve"><span class="lineNumber">195</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="196" xml:space="preserve"><span class="lineNumber">196</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::symbols</span></span>
+  <br/>
+ </body>
+</html>

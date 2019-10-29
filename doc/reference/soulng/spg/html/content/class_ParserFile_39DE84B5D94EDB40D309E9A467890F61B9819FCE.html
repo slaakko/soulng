@@ -1,0 +1,314 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ParserFile Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">prev</a>
+         | <a href="class_PositiveParser_F25F4CE8B7DFFBA65B5A2B75826C9B59E3AA2BA2.html">next</a>
+        <hr/>
+        <h1>ParserFile Class</h1>
+        <span>
+            Definition at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#23">23</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#constructor_ParserFile_2355511E647A993CB004A725432EF4034EB4FAAD">ParserFile</a>(<span class="kw">const </span>std::string&amp; fileName_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_Accept_FEE2392AD494F4DA87F23BCCE7460B3C156E3BC1">Accept</a>(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>&amp; visitor)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_AddInclude_ACA9A0516B0ED96150B58F49891C3AD67F10BDB6">AddInclude</a>(<a href="./class_Include_B38E418C70FD700E11A2521D156910B542165327.html">Include</a>* include)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_AddParser_5463A044FAA0460FC5C41EBEBFF1B819D35ED39E">AddParser</a>(<a href="./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a>* parser)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_AddUsingNamespace_E737D543E0D7139A9D9188754A664CFBA9D2EE43">AddUsingNamespace</a>(<span class="kw">const </span>std::u32string&amp; usingNs)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_FileName_13C7D0AC2299BF63FA10C4E125B281585F1CB2A4">FileName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::unique_ptr&lt;<a href="./class_Include_B38E418C70FD700E11A2521D156910B542165327.html">Include</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_Includes_E956C9AABDC981DEC4029A4A3A72E81A0F98F217">Includes</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::unique_ptr&lt;<a href="./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_Parsers_0365007B3CF467C1D113D098F450F2DAC5129038">Parsers</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::u32string>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_UsingNamespaceDeclarations_CE62772352B5E8A05CD98A548DA514B105914E10">UsingNamespaceDeclarations</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_fileName_352B7B941A9CD39EFA0CED642A8E5C285FF7651D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileName</td>
+            </tr>
+            <tr id="variable_includes_58A0710283C30E637651059FD80781D1B00418B6">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_Include_B38E418C70FD700E11A2521D156910B542165327.html">Include</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">includes</td>
+            </tr>
+            <tr id="variable_parsers_27CB15C6470B5E99B34E8BA4C9995AF5DBC93424">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">parsers</td>
+            </tr>
+            <tr id="variable_usingNamespaceDeclarations_EE08FFCD757AE9944949FCBD315D7DC2A1CB8773">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">usingNamespaceDeclarations</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ParserFile_2355511E647A993CB004A725432EF4034EB4FAAD">ParserFile Constructor</h3>
+        <h4>
+            soulng::spg::ParserFile::ParserFile(<span class="kw">const </span>
+            std::string&amp; fileName_)</h4>
+        <span>
+            Definition at line <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html#15">15</a>
+             of <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html">ParserFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#variable_fileName_352B7B941A9CD39EFA0CED642A8E5C285FF7651D">fileName</a><span class="other">(</span><span class="identifier">fileName_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#26">26</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_FEE2392AD494F4DA87F23BCCE7460B3C156E3BC1">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::ParserFile::Accept(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>
+            &amp; visitor)</h4>
+        <span>
+            Definition at line <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html#34">34</a>
+             of <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html">ParserFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_00C99A20DE36E16B5B72B0DD509715F7AB8BFE16">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#30">30</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_00C99A20DE36E16B5B72B0DD509715F7AB8BFE16">soulng::spg::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_58425CC6B53E1DD2FA39477F1DC37C92009F00FC">soulng::spg::CodeGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddInclude_ACA9A0516B0ED96150B58F49891C3AD67F10BDB6">AddInclude Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::ParserFile::AddInclude(<a href="./class_Include_B38E418C70FD700E11A2521D156910B542165327.html">Include</a>
+            * include)</h4>
+        <span>
+            Definition at line <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html#19">19</a>
+             of <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html">ParserFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#variable_includes_58A0710283C30E637651059FD80781D1B00418B6">includes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Include_B38E418C70FD700E11A2521D156910B542165327.html">Include</a><span class="other">></span><span class="other">(</span><span class="identifier">include</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#27">27</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddParser_5463A044FAA0460FC5C41EBEBFF1B819D35ED39E">AddParser Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::ParserFile::AddParser(<a href="./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a>
+            * parser)</h4>
+        <span>
+            Definition at line <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html#29">29</a>
+             of <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html">ParserFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#variable_parsers_27CB15C6470B5E99B34E8BA4C9995AF5DBC93424">parsers</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a><span class="other">></span><span class="other">(</span><span class="identifier">parser</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#29">29</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddUsingNamespace_E737D543E0D7139A9D9188754A664CFBA9D2EE43">AddUsingNamespace Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::ParserFile::AddUsingNamespace(<span class="kw">const </span>
+            std::u32string&amp; usingNs)</h4>
+        <span>
+            Definition at line <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html#24">24</a>
+             of <a href="file/ParserFile.cpp_EBA66D0C8A24A96C1F257384EC9EA2FE10418082.html">ParserFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#variable_usingNamespaceDeclarations_EE08FFCD757AE9944949FCBD315D7DC2A1CB8773">usingNamespaceDeclarations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">usingNs</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#28">28</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FileName_13C7D0AC2299BF63FA10C4E125B281585F1CB2A4">FileName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; soulng::spg::ParserFile::FileName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#31">31</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_58425CC6B53E1DD2FA39477F1DC37C92009F00FC">soulng::spg::CodeGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Includes_E956C9AABDC981DEC4029A4A3A72E81A0F98F217">Includes Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::unique_ptr&lt;<a href="./class_Include_B38E418C70FD700E11A2521D156910B542165327.html">Include</a>
+            >>&amp; soulng::spg::ParserFile::Includes() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#32">32</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">includes</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_58425CC6B53E1DD2FA39477F1DC37C92009F00FC">soulng::spg::CodeGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parsers_0365007B3CF467C1D113D098F450F2DAC5129038">Parsers Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::unique_ptr&lt;<a href="./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html">GrammarParser</a>
+            >>&amp; soulng::spg::ParserFile::Parsers() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#34">34</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parsers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_D92FB10738CBE8E6A5929109106DABF8B2F84FD9">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+            , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_58425CC6B53E1DD2FA39477F1DC37C92009F00FC">soulng::spg::CodeGeneratorVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_A9916DE9DFFAEBF94570000D126C20B3FEF54A2D">soulng::spg::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_UsingNamespaceDeclarations_CE62772352B5E8A05CD98A548DA514B105914E10">UsingNamespaceDeclarations Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::u32string>&amp; soulng::spg::ParserFile::UsingNamespaceDeclarations() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html#33">33</a>
+             of <a href="file/ParserFile.hpp_575B32EAFFFB70F1A5507C1AAA4DE39A61B5DA28.html">ParserFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">usingNamespaceDeclarations</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_58425CC6B53E1DD2FA39477F1DC37C92009F00FC">soulng::spg::CodeGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">prev</a>
+         | <a href="class_PositiveParser_F25F4CE8B7DFFBA65B5A2B75826C9B59E3AA2BA2.html">next</a>
+    </body>
+</html>

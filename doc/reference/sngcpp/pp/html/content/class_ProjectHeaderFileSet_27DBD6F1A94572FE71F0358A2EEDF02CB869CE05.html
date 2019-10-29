@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ProjectHeaderFileSet Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_pp_F064E4B780601768159C53EC012AB3AFEFE76BF4.html">up</a>
+         | <a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">prev</a>
+         | next<hr/>
+        <h1>ProjectHeaderFileSet Class</h1>
+        <span>
+            Definition at line <a href="file/File.hpp_6CED23E75BE336C754A686138CD1C9C76B2195E8.html#25">25</a>
+             of <a href="file/File.hpp_6CED23E75BE336C754A686138CD1C9C76B2195E8.html">File.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#function_AddProjectHeaderFile_2A7AB4EB1DC3EE15A8568AB3F8B412D99F514873">AddProjectHeaderFile</a>(<span class="kw">const </span>std::string&amp; headerFilePath)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#function_IsProjectHeaderFile_740D2B7978D6E0FEF81383B7CDE4CE64CBE91F39">IsProjectHeaderFile</a>(<span class="kw">const </span>std::string&amp; headerFilePath) <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_headerFileSet_7C44587EA127551CD7ED13A19C3D0019F60559CB">
+                <td class="functionTableFirstCol" xml:space="preserve">std::set&lt;std::string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">headerFileSet</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddProjectHeaderFile_2A7AB4EB1DC3EE15A8568AB3F8B412D99F514873">AddProjectHeaderFile Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::pp::ProjectHeaderFileSet::AddProjectHeaderFile(<span class="kw">const </span>
+            std::string&amp; headerFilePath)</h4>
+        <span>
+            Definition at line <a href="file/File.cpp_6550E13BC0DB1A1DC314D7D7ED26E98363ADA55C.html#18">18</a>
+             of <a href="file/File.cpp_6550E13BC0DB1A1DC314D7D7ED26E98363ADA55C.html">File.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#variable_headerFileSet_7C44587EA127551CD7ED13A19C3D0019F60559CB">headerFileSet</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><span class="identifier">headerFilePath</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/File.hpp_6CED23E75BE336C754A686138CD1C9C76B2195E8.html#28">28</a>
+             of <a href="file/File.hpp_6CED23E75BE336C754A686138CD1C9C76B2195E8.html">File.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsProjectHeaderFile_740D2B7978D6E0FEF81383B7CDE4CE64CBE91F39">IsProjectHeaderFile Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::pp::ProjectHeaderFileSet::IsProjectHeaderFile(<span class="kw">const </span>
+            std::string&amp; headerFilePath) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/File.cpp_6550E13BC0DB1A1DC314D7D7ED26E98363ADA55C.html#23">23</a>
+             of <a href="file/File.cpp_6550E13BC0DB1A1DC314D7D7ED26E98363ADA55C.html">File.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#variable_headerFileSet_7C44587EA127551CD7ED13A19C3D0019F60559CB">headerFileSet</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">headerFilePath</span><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_ProjectHeaderFileSet_27DBD6F1A94572FE71F0358A2EEDF02CB869CE05.html#variable_headerFileSet_7C44587EA127551CD7ED13A19C3D0019F60559CB">headerFileSet</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/File.hpp_6CED23E75BE336C754A686138CD1C9C76B2195E8.html#29">29</a>
+             of <a href="file/File.hpp_6CED23E75BE336C754A686138CD1C9C76B2195E8.html">File.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html#function_IsProjectHeaderFile_2224D5F0CC2F51C6FD7539F7D19E2B44073AB919">sngcpp::pp::PP::IsProjectHeaderFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_pp_F064E4B780601768159C53EC012AB3AFEFE76BF4.html">up</a>
+         | <a href="struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">prev</a>
+         | next</body>
+</html>

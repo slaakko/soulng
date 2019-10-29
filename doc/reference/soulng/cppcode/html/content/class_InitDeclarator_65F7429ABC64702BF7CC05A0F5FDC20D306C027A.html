@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>InitDeclarator Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_IndexExpr_774F05AF147C08C14140554436F0E101320DD986.html">prev</a>
+         | <a href="class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html">next</a>
+        <hr/>
+        <h1>InitDeclarator Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#36">36</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#constructor_InitDeclarator_3853E55C6E1FC3811C0B26C3B048A7C996635BFC">InitDeclarator</a>(<span class="kw">const </span>std::u32string&amp; declarator_, <a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html">Initializer</a>* initializer_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#function_Accept_599E356E628E4A5D21AEB7D7D475307515101839">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#function_Print_C8CA26F51F5C5DB178468250EEF81AF0547433E2">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_declarator_73548BDCF8685F24B335FAFF6F495A71ECE60A01">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarator</td>
+            </tr>
+            <tr id="variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html">Initializer</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">initializer</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_InitDeclarator_3853E55C6E1FC3811C0B26C3B048A7C996635BFC">InitDeclarator Constructor</h3>
+        <h4>
+            soulng::cppcode::InitDeclarator::InitDeclarator(<span class="kw">const </span>
+            std::u32string&amp; declarator_, <a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html">Initializer</a>
+            * initializer_)</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#109">109</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a><span class="other">(</span><span class="string">U"initDeclarator"</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_declarator_73548BDCF8685F24B335FAFF6F495A71ECE60A01">declarator</a><span class="other">(</span><span class="identifier">declarator_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">initializer</a><span class="other">(</span><span class="identifier">initializer_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">initializer</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#39">39</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_599E356E628E4A5D21AEB7D7D475307515101839">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::InitDeclarator::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#123">123</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">125</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_7BD9A57798CC39D3D794E6AFD9584D54871972BB">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">initializer</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">initializer</a><span class="other">-></span><a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html#function_Accept_EBE1CF3FE1B346EA459A37C07E7B7F91D58200BA">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#41">41</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html#function_Accept_EBE1CF3FE1B346EA459A37C07E7B7F91D58200BA">soulng::cppcode::Initializer::Accept</a>
+            , <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_7BD9A57798CC39D3D794E6AFD9584D54871972BB">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_C8CA26F51F5C5DB178468250EEF81AF0547433E2">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::InitDeclarator::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#114">114</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">Write</a><span class="other">(</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_declarator_73548BDCF8685F24B335FAFF6F495A71ECE60A01">declarator</a><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">initializer</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_InitDeclarator_65F7429ABC64702BF7CC05A0F5FDC20D306C027A.html#variable_initializer_58D732089377C3631C7D1A375A6869EA16EC6EDD">initializer</a><span class="other">-></span><a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html#function_Print_0BE8DDAEA0B2093448FAFC9113BCD4BA26FBDBD6">Print</a><span class="other">(</span><span class="identifier">formatter</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Calls: <a href="./class_Initializer_E7849535337E9735E13262B2FE8C0BE12A7DFC20.html#function_Print_0BE8DDAEA0B2093448FAFC9113BCD4BA26FBDBD6">soulng::cppcode::Initializer::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_IndexExpr_774F05AF147C08C14140554436F0E101320DD986.html">prev</a>
+         | <a href="class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html">next</a>
+    </body>
+</html>

@@ -36,7 +36,7 @@ parser api(SNGCPP_PARSER_API) LiteralParser
         |   CHARLIT
             {
                 soulng::lexer::Token token = lexer.GetToken(pos);
-                std::u32string value;
+                char32_t value = '\0';
                 char32_t prefix = '\0';
                 sngcpp::cppparser::ParseCharacterLiteral(lexer.FileName(), token, value, prefix);
                 return new sngcpp::ast::CharacterLiteralNode(span, prefix, value, token.match.ToString());
@@ -46,7 +46,7 @@ parser api(SNGCPP_PARSER_API) LiteralParser
                 soulng::lexer::Token token = lexer.GetToken(pos);
                 std::u32string value;
                 std::u32string encodingPrefix;
-                sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, value, encodingPrefix);
+                sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, encodingPrefix, value);
                 return new sngcpp::ast::StringLiteralNode(span, encodingPrefix, value, token.match.ToString());
             }
         |   TRUE
@@ -72,7 +72,7 @@ parser api(SNGCPP_PARSER_API) LiteralParser
             soulng::lexer::Token token = lexer.GetToken(pos);
             std::u32string value;
             std::u32string encodingPrefix;
-            sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, value, encodingPrefix);
+            sngcpp::cppparser::ParseStringLiteral(lexer.FileName(), token, encodingPrefix, value);
             return new sngcpp::ast::StringLiteralNode(span, encodingPrefix, value, token.match.ToString());
         }
         ;

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="tester">
+    <description>Contains an XML, DOM and XPATH library tester application.</description>
+  </doc>
+</docs>

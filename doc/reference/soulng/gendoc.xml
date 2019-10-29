@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <gendoc>
-  <import project="util"/>
-  <import project="cppcode"/>
-  <import project="lexer"/>
-  <import project="parser"/>
-  <import project="rex"/>
-  <import project="slg"/>
-  <import project="spg"/>
+  <project name="soulng">
+    <documentation file="docs.xml"/>
+  </project>
+  <child project="util"/>
+  <child project="cppcode"/>
+  <child project="lexer"/>
+  <child project="parser"/>
+  <child project="rex"/>
+  <child project="slg"/>
+  <child project="spg"/>
 </gendoc>

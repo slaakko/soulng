@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Context Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html">up</a>
+         | <a href="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.html">prev</a>
+         | <a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">next</a>
+        <hr/>
+        <h1>Context Class</h1>
+        <span>
+            Definition at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#15">15</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#constructor_Context_DFEE6FE4EA61F3BAF75BFD63C6952766FE288BDC">Context</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeAny_343AB66EE153AC2E50C406CEEBA00CA740C7B756">MakeAny</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669">MakeChar</a>(<span class="kw">char32_t</span> c)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.html">Class</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79">MakeClass</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED">MakeEpsilon</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021">MakeNfaState</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeRange_C8B174D1BCDE425D9181331D3D8100C183918A10">MakeRange</a>(<span class="kw">char32_t</span> start, <span class="kw">char32_t</span> end)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_any_8842B36BF440A731225C7A6ACA2E41D1956D6D44">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Any_809C33B4A561CEA6BDBABDE231D8CB6C70FE577F.html">Any</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">any</td>
+            </tr>
+            <tr id="variable_charSymbols_BBBBACBAE8FB9DEDF9CFEF76184F78A2E792BBAA">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;<span class="kw">char32_t</span>, <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">charSymbols</td>
+            </tr>
+            <tr id="variable_epsilon_5A4B72B5CD783943A28623DD7B2184C0C7C274B6">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Char_13972EFAC0DF296531E0C6695DD97C43A740C532.html">Char</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">epsilon</td>
+            </tr>
+            <tr id="variable_nfaStates_E4F790EB07E74933C06CF82F644A25E584E8C654">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nfaStates</td>
+            </tr>
+            <tr id="variable_rangeSymbols_5D734F221479B878FC55F1E1B487B014567BA17B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;<a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html">Range</a>, <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">rangeSymbols</td>
+            </tr>
+            <tr id="variable_symbols_C1571F1AC21182C8DAFD4440CE94E4295BDE755D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">symbols</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Context_DFEE6FE4EA61F3BAF75BFD63C6952766FE288BDC">Context Constructor</h3>
+        <h4>
+            soulng::rex::Context::Context()</h4>
+        <span>
+            Definition at line <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html#12">12</a>
+             of <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html">Context.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_any_8842B36BF440A731225C7A6ACA2E41D1956D6D44">any</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_epsilon_5A4B72B5CD783943A28623DD7B2184C0C7C274B6">epsilon</a><span class="other">(</span><a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#variable_eps_5B8229618B1C9A3B8C367F7EEC3ECDA068E45BA6">eps</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#18">18</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_MakeAny_343AB66EE153AC2E50C406CEEBA00CA740C7B756">MakeAny Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>
+            * soulng::rex::Context::MakeAny()</h4>
+        <span>
+            Definition at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#23">23</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">any</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669">MakeChar Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>
+            * soulng::rex::Context::MakeChar(<span class="kw">char32_t</span>
+             c)</h4>
+        <span>
+            Definition at line <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html#35">35</a>
+             of <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html">Context.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#21">21</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79">MakeClass Member Function</h3>
+        <h4>
+            <a href="./class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.html">Class</a>
+            * soulng::rex::Context::MakeClass()</h4>
+        <span>
+            Definition at line <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html#68">68</a>
+             of <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html">Context.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">69</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.html">Class</a><span class="other">*</span>&nbsp;<span class="identifier">cls</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.html">Class</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_symbols_C1571F1AC21182C8DAFD4440CE94E4295BDE755D">symbols</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">cls</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">73</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#25">25</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED">MakeEpsilon Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>
+            * soulng::rex::Context::MakeEpsilon()</h4>
+        <span>
+            Definition at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#24">24</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">epsilon</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021">MakeNfaState Member Function</h3>
+        <h4>
+            <a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * soulng::rex::Context::MakeNfaState()</h4>
+        <span>
+            Definition at line <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html#28">28</a>
+             of <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html">Context.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_nfaStates_E4F790EB07E74933C06CF82F644A25E584E8C654">nfaStates</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">state</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#20">20</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeRange_C8B174D1BCDE425D9181331D3D8100C183918A10">MakeRange Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a>
+            * soulng::rex::Context::MakeRange(<span class="kw">char32_t</span>
+             start, <span class="kw">char32_t</span>
+             end)</h4>
+        <span>
+            Definition at line <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html#51">51</a>
+             of <a href="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html">Context.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html#22">22</a>
+             of <a href="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html">Context.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html">up</a>
+         | <a href="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.html">prev</a>
+         | <a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">next</a>
+    </body>
+</html>

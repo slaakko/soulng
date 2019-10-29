@@ -79,12 +79,21 @@ std::u32string Symbol::Id()
     return id;
 }
 
+void Symbol::SetProjectName(const std::u32string& projectName_)
+{
+    projectName = projectName_;
+}
+
 std::unique_ptr<sngxml::dom::Element> Symbol::ToDomElement()
 {
     std::unique_ptr<sngxml::dom::Element> element = CreateElement();
     element->SetAttribute(U"name", Name());
     element->SetAttribute(U"id", Id());
     element->SetAttribute(U"access", ToString(access));
+    if (!IsNamespaceSymbol() && parent && parent->IsNamespaceSymbol())
+    {
+        element->SetAttribute(U"project", projectName);
+    }
     std::unique_ptr<sngxml::dom::Element> namespaces = Namespaces();
     if (namespaces)
     {

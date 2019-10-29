@@ -1,0 +1,62 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SOULNG_CPPCODE_OPERATOR_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SOULNG_CPPCODE_OPERATOR_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/cppcode/CppCodeApi.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;string></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">cppcode</span>&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<a href="../enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">deref</span><span class="other">,&nbsp;</span><span class="identifier">addrOf</span><span class="other">,&nbsp;</span><span class="identifier">plus</span><span class="other">,&nbsp;</span><span class="identifier">minus</span><span class="other">,&nbsp;</span><span class="identifier">and_</span><span class="other">,&nbsp;</span><span class="identifier">or_</span><span class="other">,&nbsp;</span><span class="identifier">not_</span><span class="other">,&nbsp;</span><span class="identifier">cpl</span><span class="other">,&nbsp;</span><span class="identifier">dotStar</span><span class="other">,&nbsp;</span><span class="identifier">arrowStar</span><span class="other">,&nbsp;</span><span class="identifier">bitand_</span><span class="other">,&nbsp;</span><span class="identifier">bitxor</span><span class="other">,&nbsp;</span><span class="identifier">bitor_</span><span class="other">,&nbsp;</span><span class="identifier">mul</span><span class="other">,&nbsp;</span><span class="identifier">div</span><span class="other">,&nbsp;</span><span class="identifier">rem</span><span class="other">,&nbsp;</span><span class="identifier">shiftLeft</span><span class="other">,&nbsp;</span><span class="identifier">shiftRight</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">less</span><span class="other">,&nbsp;</span><span class="identifier">greater</span><span class="other">,&nbsp;</span><span class="identifier">lessOrEq</span><span class="other">,&nbsp;</span><span class="identifier">greaterOrEq</span><span class="other">,&nbsp;</span><span class="identifier">eq</span><span class="other">,&nbsp;</span><span class="identifier">notEq</span><span class="other">,&nbsp;</span><span class="identifier">comma</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">assign</span><span class="other">,&nbsp;</span><span class="identifier">mulAssign</span><span class="other">,&nbsp;</span><span class="identifier">divAssign</span><span class="other">,&nbsp;</span><span class="identifier">remAssign</span><span class="other">,&nbsp;</span><span class="identifier">plusAssign</span><span class="other">,&nbsp;</span><span class="identifier">minusAssign</span><span class="other">,&nbsp;</span><span class="identifier">shiftLeftAssign</span><span class="other">,&nbsp;</span><span class="identifier">shiftRightAssign</span><span class="other">,&nbsp;</span><span class="identifier">andAssign</span><span class="other">,&nbsp;</span><span class="identifier">xorAssign</span><span class="other">,&nbsp;</span><span class="identifier">orAssign</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<a href="../enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>&nbsp;<a href="../namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html#function_GetOperator_BD2EB5756EF6DBAC4CCE1CB5010C8F691211E8E4">GetOperator</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">operatorName</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html#function_GetOperatorStr_4BA486ABCDBCF366AFC59564C91AEFB418B4FE06">GetOperatorStr</a><span class="other">(</span><a href="../enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a>&nbsp;<span class="identifier">op</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html#function_OperatorInit_416C5AD103B9421D409666EACD45496E2441B784">OperatorInit</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html#function_OperatorDone_0D3EEF63215CE902A20D07187A5F882BA5C3F56D">OperatorDone</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;soulng::cppcode</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SOULNG_CPPCODE_OPERATOR_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

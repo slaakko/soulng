@@ -5616,13 +5616,13 @@ int TextLexer::GetTokenId(int statementIndex)
         case 2:
         {
             Retract();
-            pp->Emit(U" ");
+            pp->Emit(U" ", token.match, BLOCKCOMMENT);
             break;
         }
         case 3:
         {
             Retract();
-            pp->Emit(U" ");
+            pp->Emit(U" ", token.match, LINECOMMENT);
             break;
         }
         case 4:

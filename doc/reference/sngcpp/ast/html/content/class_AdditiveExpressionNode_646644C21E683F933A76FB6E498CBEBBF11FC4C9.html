@@ -1,0 +1,251 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>AdditiveExpressionNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | prev | <a href="class_AliasDeclarationNode_10402FF684BE7A307DBD58D52E2B317B134BE264.html">next</a>
+        <hr/>
+        <h1>AdditiveExpressionNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#158">158</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#constructor_AdditiveExpressionNode_6A82430D3B07274708F66AF6BE60B147417FAEFB">AdditiveExpressionNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#constructor_AdditiveExpressionNode_46061F8FFBC42E92B1F818474EB83F0F08D1751F">AdditiveExpressionNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* left_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* right_, <a href="./enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558.html">Operator</a> op_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#function_Accept_5F074CDCCA733C4138E010884C865105B415BEE5">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558.html">Operator</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#function_Op_EA92EEBA656335B7096AE5FDF098A70D0FF54774">Op</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#function_Read_F4A94FA7F4F75987B75E955CFD713CCEDD6183CF">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#function_Write_07E57D026E0478D7F46EF275A26D1E80C887538D">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_op_1FE9BD257A19D6F32B417D9F4BF1A4451777A21F">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558.html">Operator</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">op</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_AdditiveExpressionNode_6A82430D3B07274708F66AF6BE60B147417FAEFB">AdditiveExpressionNode Constructor</h3>
+        <h4>
+            sngcpp::ast::AdditiveExpressionNode::AdditiveExpressionNode()</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#308">308</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;308</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_additiveExpressionNode_AB33AF01650BE76835E79336CA702BF024098E6B">additiveExpressionNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#variable_op_1FE9BD257A19D6F32B417D9F4BF1A4451777A21F">op</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;309</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;310</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#161">161</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_AdditiveExpressionNode_46061F8FFBC42E92B1F818474EB83F0F08D1751F">AdditiveExpressionNode Constructor</h3>
+        <h4>
+            sngcpp::ast::AdditiveExpressionNode::AdditiveExpressionNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * left_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * right_, <a href="./enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558.html">Operator</a>
+             op_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#312">312</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;312</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_additiveExpressionNode_AB33AF01650BE76835E79336CA702BF024098E6B">additiveExpressionNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#variable_op_1FE9BD257A19D6F32B417D9F4BF1A4451777A21F">op</a><span class="other">(</span><span class="identifier">op_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;313</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;314</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#162">162</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_5F074CDCCA733C4138E010884C865105B415BEE5">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::AdditiveExpressionNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#316">316</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;317</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;318</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_7C61490C98E6A23A3F35C1E3148A7278C70A91F4">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;319</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#163">163</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_7C61490C98E6A23A3F35C1E3148A7278C70A91F4">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Op_EA92EEBA656335B7096AE5FDF098A70D0FF54774">Op Member Function</h3>
+        <h4>
+            <a href="./enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558.html">Operator</a>
+             sngcpp::ast::AdditiveExpressionNode::Op() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#166">166</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">op</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_F4A94FA7F4F75987B75E955CFD713CCEDD6183CF">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::AdditiveExpressionNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#327">327</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;328</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;329</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">BinaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;330</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#variable_op_1FE9BD257A19D6F32B417D9F4BF1A4451777A21F">op</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadOperator_231D741B918C05B9581EBBFF4106A455883B5CA3">ReadOperator</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;331</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#165">165</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Read_03AD4452AA36CE7AD10DC7D9D959550B072EB8DD">sngcpp::ast::BinaryNode::Read</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadOperator_231D741B918C05B9581EBBFF4106A455883B5CA3">sngcpp::ast::Reader::ReadOperator</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_07E57D026E0478D7F46EF275A26D1E80C887538D">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::AdditiveExpressionNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#321">321</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;322</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;323</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">BinaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;324</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B5383BE8E57A42F21077B308A15B01959A1B4C67">Write</a><span class="other">(</span><a href="./class_AdditiveExpressionNode_646644C21E683F933A76FB6E498CBEBBF11FC4C9.html#variable_op_1FE9BD257A19D6F32B417D9F4BF1A4451777A21F">op</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;325</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#164">164</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Write_9F252F93CCB5F5C430641DA5A67E81687114B9DA">sngcpp::ast::BinaryNode::Write</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B5383BE8E57A42F21077B308A15B01959A1B4C67">sngcpp::ast::Writer::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | prev | <a href="class_AliasDeclarationNode_10402FF684BE7A307DBD58D52E2B317B134BE264.html">next</a>
+    </body>
+</html>

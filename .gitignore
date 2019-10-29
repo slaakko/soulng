@@ -13,6 +13,7 @@ bin
 *.debug
 *.release
 *.log
+*.ast
 lib
 Debug
 Release

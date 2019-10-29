@@ -20,8 +20,11 @@ SNGCPP_AST_API std::u32string ToString(ClassKey classKey);
 class SNGCPP_AST_API BaseClassSpecifierNode : public Node
 {
 public:
+    BaseClassSpecifierNode();
     BaseClassSpecifierNode(const Span& span_, Specifier baseSpecifiers_, Node* className_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Specifier BaseSpecifiers() const { return baseSpecifiers; }
     Node* ClassName() { return className.get(); }
 private:
@@ -32,6 +35,7 @@ private:
 class SNGCPP_AST_API BaseClassSpecifierSequenceNode : public BinaryNode
 {
 public:
+    BaseClassSpecifierSequenceNode();
     BaseClassSpecifierSequenceNode(const Span& span_, Node* left_, Node* right_);
     void Accept(Visitor& visitor) override;
 };
@@ -39,8 +43,11 @@ public:
 class SNGCPP_AST_API ForwardClassDeclarationNode : public Node
 {
 public:
+    ForwardClassDeclarationNode();
     ForwardClassDeclarationNode(const Span& span_, ClassKey classKey_, Node* className_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     ClassKey GetClassKey() const { return classKey; }
     Node* ClassName() { return className.get(); }
 private:
@@ -51,8 +58,11 @@ private:
 class SNGCPP_AST_API ElaborateClassNameNode : public Node
 {
 public:
+    ElaborateClassNameNode();
     ElaborateClassNameNode(const Span& span_, ClassKey classKey_, Node* className_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     ClassKey GetClassKey() const { return classKey; }
     Node* ClassName() { return className.get(); }
 private:
@@ -63,8 +73,11 @@ private:
 class SNGCPP_AST_API ClassNode : public Node
 {
 public:
+    ClassNode();
     ClassNode(const Span& span_, ClassKey classKey_, Node* className_, Specifier classVirtSpecifiers_, Node* baseClasses_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     void AddDeclaration(const Span& span, Node* declaration);
     Node* ClassName() { return className.get(); }
     ClassKey GetClassKey() const { return classKey; }
@@ -89,8 +102,11 @@ private:
 class SNGCPP_AST_API MemberAccessDeclarationNode : public Node
 {
 public:
+    MemberAccessDeclarationNode();
     MemberAccessDeclarationNode(const Span& span_, Specifier accessSpecifier_, Node* declaration_, bool explicitAccess_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Specifier AccessSpecifier() const { return accessSpecifier; }
     Node* Declaration() { return declaration.get(); }
     bool ExplicitAccess() const { return explicitAccess; }
@@ -103,8 +119,11 @@ private:
 class SNGCPP_AST_API MemberDeclarationNode : public Node
 {
 public:
+    MemberDeclarationNode();
     MemberDeclarationNode(const Span& span_, Specifier specifiers_, Node* typeExpr_, Node* declarator_, Node* initializer_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Specifier Specifiers() const { return specifiers; }
     Node* TypeExpr() { return typeExpr.get(); }
     Node* Declarator() { return declarator.get(); }
@@ -119,8 +138,11 @@ private:
 class SNGCPP_AST_API SpecialMemberFunctionNode : public Node
 {
 public:
+    SpecialMemberFunctionNode();
     SpecialMemberFunctionNode(const Span& span_, Specifier specifiers_, Node* declarator_, Node* ctorInitializer_, CompoundStatementNode* functionBody_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Specifier Specifiers() const { return specifiers; }
     Node* Declarator() { return declarator.get(); }
     Node* CtorInitializer() { return ctorInitializer.get(); }
@@ -135,6 +157,7 @@ private:
 class SNGCPP_AST_API CtorInitializerNode : public UnaryNode
 {
 public:
+    CtorInitializerNode();
     CtorInitializerNode(const Span& span_, Node* memberInitializers_);
     void Accept(Visitor& visitor) override;
 };
@@ -142,8 +165,11 @@ public:
 class SNGCPP_AST_API MemberInitializerNode : public Node
 {
 public:
+    MemberInitializerNode();
     MemberInitializerNode(const Span& span_, Node* id_, Node* initializer_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Id() { return id.get(); }
     Node* Initializer() { return initializer.get(); }
 private:
@@ -154,6 +180,7 @@ private:
 class SNGCPP_AST_API MemberInitializerSequenceNode : public BinaryNode
 {
 public:
+    MemberInitializerSequenceNode();
     MemberInitializerSequenceNode(const Span& span_, Node* left_, Node* right_);
     void Accept(Visitor& visitor) override;
 };

@@ -1,0 +1,249 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>GotoStatementNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_FunctionPtrIdNode_DFD2EC8BA4FA02EE5D6D9F13B0109A5ECCE6F8FA.html">prev</a>
+         | <a href="class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html">next</a>
+        <hr/>
+        <h1>GotoStatementNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#209">209</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#constructor_GotoStatementNode_269D4745D0F71118C82B846318B61A4EE795E454">GotoStatementNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#constructor_GotoStatementNode_9D986254CC0A6DFECA434FA43258F88D36877C16">GotoStatementNode</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; target_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#function_Accept_882729E99E14F604CA7307BFC01FFF19891D218A">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#function_Read_871B28F85DEF72DBA9946C0FC02640844FA6CF93">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#function_Target_5D201BE9B9844EEFB1909E2B324F5A34067AF391">Target</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#function_Write_8E7926E2B630989D15B9CF034A084B4446116335">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_target_2127BA27A3319ED00A7104FED973C7661388BB52">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">target</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_GotoStatementNode_269D4745D0F71118C82B846318B61A4EE795E454">GotoStatementNode Constructor</h3>
+        <h4>
+            sngcpp::ast::GotoStatementNode::GotoStatementNode()</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#400">400</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">400</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_gotoStatementNode_599CF017684E8D80D42A7DDFF1B59DE1110AADB7">gotoStatementNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">401</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">402</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#212">212</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_GotoStatementNode_9D986254CC0A6DFECA434FA43258F88D36877C16">GotoStatementNode Constructor</h3>
+        <h4>
+            sngcpp::ast::GotoStatementNode::GotoStatementNode(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; target_)</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#404">404</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">404</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_gotoStatementNode_599CF017684E8D80D42A7DDFF1B59DE1110AADB7">gotoStatementNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#variable_target_2127BA27A3319ED00A7104FED973C7661388BB52">target</a><span class="other">(</span><span class="identifier">target_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">405</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">406</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#213">213</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_882729E99E14F604CA7307BFC01FFF19891D218A">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::GotoStatementNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#408">408</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">409</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">410</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_632F37139B61B656753BE6AA5CED4533463124F0">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">411</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#214">214</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_632F37139B61B656753BE6AA5CED4533463124F0">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_871B28F85DEF72DBA9946C0FC02640844FA6CF93">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::GotoStatementNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#419">419</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">420</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">421</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">422</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#variable_target_2127BA27A3319ED00A7104FED973C7661388BB52">target</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">423</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#216">216</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Target_5D201BE9B9844EEFB1909E2B324F5A34067AF391">Target Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::ast::GotoStatementNode::Target() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#217">217</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">target</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_8E7926E2B630989D15B9CF034A084B4446116335">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::GotoStatementNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#413">413</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">414</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">415</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">416</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.html#variable_target_2127BA27A3319ED00A7104FED973C7661388BB52">target</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">417</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#215">215</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_FunctionPtrIdNode_DFD2EC8BA4FA02EE5D6D9F13B0109A5ECCE6F8FA.html">prev</a>
+         | <a href="class_HandlerNode_A7E54921D954123477FCE948F213B34EE4AF1E65.html">next</a>
+    </body>
+</html>

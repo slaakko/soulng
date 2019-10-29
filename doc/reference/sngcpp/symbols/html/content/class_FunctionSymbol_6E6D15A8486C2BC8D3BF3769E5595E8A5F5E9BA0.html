@@ -1,0 +1,1169 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>FunctionSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="struct_FunctionMatch_C7C73C8A4478B2B062131DFEC2F9F4BD7A51C46C.html">prev</a>
+         | <a href="class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html">next</a>
+        <hr/>
+        <h1>FunctionSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#61">61</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#constructor_FunctionSymbol_F62176514930591CD21BFBD01E77FD2C28FE0F36">FunctionSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; groupName_, <span class="kw">const </span>std::u32string&amp; name_, Specifier specifiers_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddMember_AA17FB6AEEA9DC74DEF605CB77D74BD5FFDBF47B">AddMember</a>(std::unique_ptr&lt;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>>&amp;&amp; member) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddOverridden_05D8C7CC022B754CF96F806659FF34A71F689F05">AddOverridden</a>(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>* overridden_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddOverride_CE65E1A1E6D3DEC35CEE164740BD03E7FD92A18E">AddOverride</a>(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>* override_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddSpecifiers_0E2933C56C56D227E0EAF67CFE6616D10424B910">AddSpecifiers</a>(Specifier specifiers_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddTemplateParameter_5CFA1178E0C9D78AC4D221AF94B4683FBFE671A4">AddTemplateParameter</a>(std::unique_ptr&lt;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>>&amp;&amp; templateParameter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddToCalledBy_DBBD7B161DCEEA4A78DED9CBE7BB2531D8C3DAAF">AddToCalledBy</a>(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>* function)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddToCalls_5C02E82F917ABECC768F00E4D81BDFD47AD877AF">AddToCalls</a>(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>* function)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Arity_BB91CFE3B2EC9E6757287584D430E3A9C77575A4">Arity</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_CalledBy_12653A9045428B36F12D8A4DCE52AFF27E91C255">CalledBy</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Calls_FAFF7924244300FDB1EFC3FD11B33AF2B1881B7A">Calls</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_CreateElement_EB6C047AFBE94A9D88E136D9041BC1C81A202903">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_DeclarationFileId_45C52CD7C3960FB8E0F793E5C1191C4CA2AF75ED">DeclarationFileId</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_DeclarationFileName_991B715B1BA2C3391F5DA653AAFA7C6C5C61FED4">DeclarationFileName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>Span&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_DeclarationSpan_719DAF800E86BCB31C1AE96EB7D907383A9FEA95">DeclarationSpan</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_FileId_07435E67EE21749063FBB7844BE76386DF672B6D">FileId</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_FileName_D9207B01131242527BCF5524CAFABA15582BB4E8">FileName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_FunctionGroup_AD0F9DE4017237BC3A040A361D7FFADBE37EB8EB">FunctionGroup</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_GetType_F96003CE8D5265F36320610231550F65BC12355E">GetType</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_GroupName_57BB21C9C7E96183F5533CBEC2049414D9C51D25">GroupName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">IdStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Index_02ACEF482CD72C091A6B0A7ADEEF470A2B5A8B04">Index</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IsFunctionSymbol_2217A293F50155A9593544287564F742DB8AF4CD">IsFunctionSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IsInstallSymbol_10455FCF3F997FEEEA724E354B4B9E978D2D75BF">IsInstallSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IsPureVirtual_713DB4A7EE0EF815E38B4C7DF721908642321CF6">IsPureVirtual</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_KindStr_D83F691E499A9138162C2A43AB4D3681D4D90F9C">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">NameBefore</a>(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>* that) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Overridden_68DA48C7D628B3F2404E4873C689A5D796382738">Overridden</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Overrides_70D44196413DAEC7D40FAF5E6CB8D99B8E52583A">Overrides</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">ParameterSymbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Parameters_6848EFC503D2107DFE1C937C48A9D20E51A7BB1B">Parameters</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_ReturnType_BF1B1C9CFC39D0A82777FEAD4E69872C611773A7">ReturnType</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetDeclarationFileId_F460A0D7BBFC52F411C208BA327BC4883E2E0D83">SetDeclarationFileId</a>(<span class="kw">const </span>std::u32string&amp; declarationFileId_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetDeclarationFileName_CFFE8CCE19EA952865CCA560EC60430AEC066AF1">SetDeclarationFileName</a>(<span class="kw">const </span>std::string&amp; declarationFileName_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetDeclarationSpan_C310E91E47D6D4E76772EF36AF5935705E4747F4">SetDeclarationSpan</a>(<span class="kw">const </span>Span&amp; declarationSpan_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetFileId_5326BE73989FB14FB3BA33B4928F97FABE7AFAF1">SetFileId</a>(<span class="kw">const </span>std::u32string&amp; fileId_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetFileName_FF6F8A52025CE68D2491BA34B047D9776DF0C73F">SetFileName</a>(<span class="kw">const </span>std::string&amp; fileName_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetFunctionGroup_65009D99AE366EFACA9D27FE2514003901C8C0CD">SetFunctionGroup</a>(<a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>* functionGroup_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetIndex_391A8FA8C2F472F7CE71C51DA8BFE955F5E8820B">SetIndex</a>(<span class="kw">int</span> index_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SetReturnType_5F8AFCA0166B51434A3EBC85C74F3301F23F4B22">SetReturnType</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* returnType_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SimpleName_BF25DF95E718F9B69D06D729B1AB65E0CC2597B6">SimpleName</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">Specifier</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Specifiers_9146642FD26A3D36B9027AAF22DA6D73A58B035B">Specifiers</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_calledBy_6BB86EC60241A7C8067F1534A5954CC97D3FCC74">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">calledBy</td>
+            </tr>
+            <tr id="variable_calls_E88C701B3F7DDAF11DC2A819E5D06FADF7CA1EA7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">calls</td>
+            </tr>
+            <tr id="variable_declarationFileId_BCB4F179370A851F21C71E5FB5BBC8460F341079">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarationFileId</td>
+            </tr>
+            <tr id="variable_declarationFileName_F1684A65BB5BDD7C09F684F6D66D2E458F08921F">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarationFileName</td>
+            </tr>
+            <tr id="variable_declarationSpan_6669F756137DC91DE35FF5F9CF73A71579F7F39C">
+                <td class="functionTableFirstCol" xml:space="preserve">Span</td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarationSpan</td>
+            </tr>
+            <tr id="variable_fileId_3FAFFE00F422331E5962F6A507D741DCD1C8CED8">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileId</td>
+            </tr>
+            <tr id="variable_fileName_FCD3413392312EC575D476D251205CC005C22391">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileName</td>
+            </tr>
+            <tr id="variable_functionGroup_F67A62785446443F24A3B9E5340E9679EFE0EE9F">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">functionGroup</td>
+            </tr>
+            <tr id="variable_groupName_418750DD25D14CE69FD8349D171EA4919DF0C5A2">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">groupName</td>
+            </tr>
+            <tr id="variable_index_4943A8254D4863905586B8A5C5993D03765E310D">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">index</td>
+            </tr>
+            <tr id="variable_overridden_581250C984E8FCC2C8355F3831D28136AD609193">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">overridden</td>
+            </tr>
+            <tr id="variable_overrides_3050A2E2286FA6A5317C6AA91A8C8D0BF3AC66A8">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">overrides</td>
+            </tr>
+            <tr id="variable_parameters_E90DE73321FB23A7B42EB674461D75EAFEF5108C">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">ParameterSymbol</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">parameters</td>
+            </tr>
+            <tr id="variable_returnType_9E5380FE55602B06687DFD71FF900E318DDD037B">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">returnType</td>
+            </tr>
+            <tr id="variable_specifiers_2CF2E20211E85483E4958BE06D275FAAFB6BEF9F">
+                <td class="functionTableFirstCol" xml:space="preserve">Specifier</td>
+                <td class="functionTableSecondCol" xml:space="preserve">specifiers</td>
+            </tr>
+            <tr id="variable_templateParameters_C5A0864E14EF1AD2C086780A1A192C1775A7A00B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">templateParameters</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_FunctionSymbol_F62176514930591CD21BFBD01E77FD2C28FE0F36">FunctionSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::FunctionSymbol::FunctionSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; groupName_, <span class="kw">const </span>
+            std::u32string&amp; name_, Specifier specifiers_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#53">53</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_index_4943A8254D4863905586B8A5C5993D03765E310D">index</a><span class="other">(</span><span class="other">0</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_groupName_418750DD25D14CE69FD8349D171EA4919DF0C5A2">groupName</a><span class="other">(</span><span class="identifier">groupName_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_returnType_9E5380FE55602B06687DFD71FF900E318DDD037B">returnType</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_specifiers_2CF2E20211E85483E4958BE06D275FAAFB6BEF9F">specifiers</a><span class="other">(</span><span class="identifier">specifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_functionGroup_F67A62785446443F24A3B9E5340E9679EFE0EE9F">functionGroup</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_declarationSpan_6669F756137DC91DE35FF5F9CF73A71579F7F39C">declarationSpan</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#64">64</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddMember_AA17FB6AEEA9DC74DEF605CB77D74BD5FFDBF47B">AddMember Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddMember(std::unique_ptr&lt;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            >&amp;&amp; member) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#59">59</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">*</span>&nbsp;<span class="identifier">symbol</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">member</span><span class="other">.</span><a href="#function_get_F2436EF9C2D96434D92FFC486767BBB45EB6A300">get</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">symbol</span><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsParameterSymbol_CC7D265F4C87A4CD4E56488EE25210447AB36BDA">IsParameterSymbol</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_parameters_E90DE73321FB23A7B42EB674461D75EAFEF5108C">parameters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="kw">static_cast</span><span class="other">&lt;</span><a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">ParameterSymbol</a><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">symbol</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ContainerSymbol</span><span class="other">::</span><a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_AddMember_47AC8B2F6282BCC5F698D8E41D8A9B37C9B96640">AddMember</a><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">move</span><span class="other">(</span><span class="identifier">member</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#65">65</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_AddMember_47AC8B2F6282BCC5F698D8E41D8A9B37C9B96640">sngcpp::symbols::GrammarSymbol::AddMember</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsParameterSymbol_CC7D265F4C87A4CD4E56488EE25210447AB36BDA">sngcpp::symbols::Symbol::IsParameterSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddOverridden_05D8C7CC022B754CF96F806659FF34A71F689F05">AddOverridden Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddOverridden(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            * overridden_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#221">221</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">222</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">223</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_overridden_581250C984E8FCC2C8355F3831D28136AD609193">overridden</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><span class="identifier">overridden_</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">224</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#98">98</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddOverride_CE65E1A1E6D3DEC35CEE164740BD03E7FD92A18E">AddOverride Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddOverride(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            * override_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#216">216</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">218</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_overrides_3050A2E2286FA6A5317C6AA91A8C8D0BF3AC66A8">overrides</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><span class="identifier">override_</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">219</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#96">96</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddSpecifiers_0E2933C56C56D227E0EAF67CFE6616D10424B910">AddSpecifiers Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddSpecifiers(Specifier specifiers_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#211">211</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">212</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">213</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_specifiers_2CF2E20211E85483E4958BE06D275FAAFB6BEF9F">specifiers</a><span class="other">&nbsp;=&nbsp;</span><a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_specifiers_2CF2E20211E85483E4958BE06D275FAAFB6BEF9F">specifiers</a><span class="other">&nbsp;|&nbsp;</span><span class="identifier">specifiers_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#81">81</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddTemplateParameter_5CFA1178E0C9D78AC4D221AF94B4683FBFE671A4">AddTemplateParameter Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddTemplateParameter(std::unique_ptr&lt;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            >&amp;&amp; templateParameter)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#69">69</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_templateParameters_C5A0864E14EF1AD2C086780A1A192C1775A7A00B">templateParameters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">move</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#68">68</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginFunction_ABF11344F7C51B51C02387A8683947F8E75DB9E2">sngcpp::symbols::SymbolTable::BeginFunction</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddToCalledBy_DBBD7B161DCEEA4A78DED9CBE7BB2531D8C3DAAF">AddToCalledBy Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddToCalledBy(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            * function)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#231">231</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">232</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">233</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_calledBy_6BB86EC60241A7C8067F1534A5954CC97D3FCC74">calledBy</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><span class="identifier">function</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">234</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#102">102</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddToCalls_5C02E82F917ABECC768F00E4D81BDFD47AD877AF">AddToCalls Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::AddToCalls(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            * function)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#226">226</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">227</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">228</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#variable_calls_E88C701B3F7DDAF11DC2A819E5D06FADF7CA1EA7">calls</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><span class="identifier">function</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">229</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#100">100</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Arity_BB91CFE3B2EC9E6757287584D430E3A9C77575A4">Arity Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::FunctionSymbol::Arity() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#83">83</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parameters</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_CalledBy_12653A9045428B36F12D8A4DCE52AFF27E91C255">CalledBy Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            *>&amp; sngcpp::symbols::FunctionSymbol::CalledBy() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#103">103</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">calledBy</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Calls_FAFF7924244300FDB1EFC3FD11B33AF2B1881B7A">Calls Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            *>&amp; sngcpp::symbols::FunctionSymbol::Calls() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#101">101</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">calls</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_EB6C047AFBE94A9D88E136D9041BC1C81A202903">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::FunctionSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#96">96</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#71">71</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">sngcpp::symbols::Symbol::GetSpan</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_DeclarationFileId_45C52CD7C3960FB8E0F793E5C1191C4CA2AF75ED">DeclarationFileId Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::FunctionSymbol::DeclarationFileId() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#91">91</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarationFileId</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_DeclarationFileName_991B715B1BA2C3391F5DA653AAFA7C6C5C61FED4">DeclarationFileName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; sngcpp::symbols::FunctionSymbol::DeclarationFileName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#93">93</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarationFileName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_DeclarationSpan_719DAF800E86BCB31C1AE96EB7D907383A9FEA95">DeclarationSpan Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            Span&amp; sngcpp::symbols::FunctionSymbol::DeclarationSpan() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#95">95</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarationSpan</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FileId_07435E67EE21749063FBB7844BE76386DF672B6D">FileId Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::FunctionSymbol::FileId() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#87">87</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileId</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FileName_D9207B01131242527BCF5524CAFABA15582BB4E8">FileName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; sngcpp::symbols::FunctionSymbol::FileName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#89">89</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FunctionGroup_AD0F9DE4017237BC3A040A361D7FFADBE37EB8EB">FunctionGroup Member Function</h3>
+        <h4>
+            <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>
+            * sngcpp::symbols::FunctionSymbol::FunctionGroup()</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#84">84</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">functionGroup</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_GetType_F96003CE8D5265F36320610231550F65BC12355E">GetType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::FunctionSymbol::GetType() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#76">76</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">returnType</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetType_EB05CD37379610821205706D48043CBB476E66C6">sngcpp::symbols::Symbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GroupName_57BB21C9C7E96183F5533CBEC2049414D9C51D25">GroupName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::FunctionSymbol::GroupName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#72">72</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">groupName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">IdStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::FunctionSymbol::IdStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#74">74</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#69">69</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">sngcpp::symbols::Symbol::IdStr</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_GetType_013AA28774995A99067884F9349BB4AE52055FEE">sngcpp::symbols::ParameterSymbol::GetType</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Index_02ACEF482CD72C091A6B0A7ADEEF470A2B5A8B04">Index Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::FunctionSymbol::Index() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#79">79</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">index</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">sngcpp::symbols::ParameterSymbol::IdStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsFunctionSymbol_2217A293F50155A9593544287564F742DB8AF4CD">IsFunctionSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::FunctionSymbol::IsFunctionSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#67">67</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">sngcpp::symbols::Symbol::IsFunctionSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsInstallSymbol_10455FCF3F997FEEEA724E354B4B9E978D2D75BF">IsInstallSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::FunctionSymbol::IsInstallSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#66">66</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsInstallSymbol_D5B31C8D979DB0B6929D6BF562E97D58E3B6A056">sngcpp::symbols::Symbol::IsInstallSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsPureVirtual_713DB4A7EE0EF815E38B4C7DF721908642321CF6">IsPureVirtual Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::FunctionSymbol::IsPureVirtual() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#104">104</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">(</span><span class="type">specifiers</span><span class="other">&amp;</span><span class="other">(</span>&nbsp;&nbsp;<span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">virtual_</span><span class="other">&nbsp;|&nbsp;</span><span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">pure_</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="other">(</span><span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">virtual_</span><span class="other">&nbsp;|&nbsp;</span><span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">pure_</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_D83F691E499A9138162C2A43AB4D3681D4D90F9C">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::FunctionSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#70">70</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"function"</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_KindStr_2C965D817BFDC6AD8DA6D28AC19B8D073706A41D">sngcpp::symbols::ConstructorSymbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">NameBefore Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::FunctionSymbol::NameBefore(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * that) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#186">186</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#75">75</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_NameBefore_464D093921D1D090533DDB5974084BFD4D029767">sngcpp::symbols::Symbol::NameBefore</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_GetType_013AA28774995A99067884F9349BB4AE52055FEE">sngcpp::symbols::ParameterSymbol::GetType</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">sngcpp::symbols::Symbol::IsFunctionSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_NameBefore_464D093921D1D090533DDB5974084BFD4D029767">sngcpp::symbols::Symbol::NameBefore</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Overridden_68DA48C7D628B3F2404E4873C689A5D796382738">Overridden Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            *>&amp; sngcpp::symbols::FunctionSymbol::Overridden()</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#99">99</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">overridden</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Overrides_70D44196413DAEC7D40FAF5E6CB8D99B8E52583A">Overrides Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::unordered_set&lt;<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
+            *>&amp; sngcpp::symbols::FunctionSymbol::Overrides() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#97">97</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">overrides</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Parameters_6848EFC503D2107DFE1C937C48A9D20E51A7BB1B">Parameters Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">ParameterSymbol</a>
+            *>&amp; sngcpp::symbols::FunctionSymbol::Parameters() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#74">74</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parameters</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_42927DD553AD60AA77C1E500920851EA72F6214D">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReturnType_BF1B1C9CFC39D0A82777FEAD4E69872C611773A7">ReturnType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::FunctionSymbol::ReturnType()</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#77">77</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">returnType</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetDeclarationFileId_F460A0D7BBFC52F411C208BA327BC4883E2E0D83">SetDeclarationFileId Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetDeclarationFileId(<span class="kw">const </span>
+            std::u32string&amp; declarationFileId_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#90">90</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">declarationFileId</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">declarationFileId_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetDeclarationFileName_CFFE8CCE19EA952865CCA560EC60430AEC066AF1">SetDeclarationFileName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetDeclarationFileName(<span class="kw">const </span>
+            std::string&amp; declarationFileName_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#92">92</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">declarationFileName</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">declarationFileName_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetDeclarationSpan_C310E91E47D6D4E76772EF36AF5935705E4747F4">SetDeclarationSpan Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetDeclarationSpan(<span class="kw">const </span>
+            Span&amp; declarationSpan_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#94">94</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">declarationSpan</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">declarationSpan_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetFileId_5326BE73989FB14FB3BA33B4928F97FABE7AFAF1">SetFileId Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetFileId(<span class="kw">const </span>
+            std::u32string&amp; fileId_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#86">86</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">fileId</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileId_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetFileName_FF6F8A52025CE68D2491BA34B047D9776DF0C73F">SetFileName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetFileName(<span class="kw">const </span>
+            std::string&amp; fileName_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#88">88</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">fileName</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileName_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetFunctionGroup_65009D99AE366EFACA9D27FE2514003901C8C0CD">SetFunctionGroup Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetFunctionGroup(<a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>
+            * functionGroup_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#85">85</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">functionGroup</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">functionGroup_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetIndex_391A8FA8C2F472F7CE71C51DA8BFE955F5E8820B">SetIndex Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetIndex(<span class="kw">int</span>
+             index_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#80">80</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">index</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">index_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetReturnType_5F8AFCA0166B51434A3EBC85C74F3301F23F4B22">SetReturnType Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::FunctionSymbol::SetReturnType(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * returnType_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#78">78</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">returnType</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">returnType_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeClassTemplateSpecializationSymbol_74288D85452AD1BC51DB4FB0E4B1173994271BCA">sngcpp::symbols::SymbolTable::MakeClassTemplateSpecializationSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SimpleName_BF25DF95E718F9B69D06D729B1AB65E0CC2597B6">SimpleName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::FunctionSymbol::SimpleName() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#73">73</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">groupName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SimpleName_EED205298A68F207A136564A59D40E52EE91F34D">sngcpp::symbols::Symbol::SimpleName</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_SimpleName_A713E41BCA070E4C6645DAD72895870BAE2DEB2D">sngcpp::symbols::ConstructorSymbol::SimpleName</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Specifiers_9146642FD26A3D36B9027AAF22DA6D73A58B035B">Specifiers Member Function</h3>
+        <h4>
+            Specifier sngcpp::symbols::FunctionSymbol::Specifiers() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#82">82</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">specifiers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="struct_FunctionMatch_C7C73C8A4478B2B062131DFEC2F9F4BD7A51C46C.html">prev</a>
+         | <a href="class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html">next</a>
+    </body>
+</html>

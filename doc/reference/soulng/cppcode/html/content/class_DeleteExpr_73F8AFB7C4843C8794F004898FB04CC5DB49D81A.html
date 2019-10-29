@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>DeleteExpr Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_DefaultStatement_D081110C2ABB4B8842017387DCC99D95D31DED36.html">prev</a>
+         | <a href="class_DoStatement_CF86F87A0AFD3997B3745BAF14CDEA7810E1C29C.html">next</a>
+        <hr/>
+        <h1>DeleteExpr Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#255">255</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#constructor_DeleteExpr_8124A00D54A9BFE068FDF78DF2D043D9FF65FB80">DeleteExpr</a>(<span class="kw">bool</span> global_, <span class="kw">bool</span> isArray_, <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>* expr_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#function_Accept_1B3019B994F96DA07B2439CE48C4DD22ABA26644">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#function_Print_66666F3A5EFF923511B48D1D851A1364B8E00A52">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_expr_1B8758770F7567E2CC1C23173C3C5E8DD883E872">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">expr</td>
+            </tr>
+            <tr id="variable_global_5347DE3F17C3BE779C4D0BDA020F6027D2B4A106">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">global</td>
+            </tr>
+            <tr id="variable_isArray_FAEC5892AD57AC0EEF7B7207D15ADDB3B3C248FC">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">isArray</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_DeleteExpr_8124A00D54A9BFE068FDF78DF2D043D9FF65FB80">DeleteExpr Constructor</h3>
+        <h4>
+            soulng::cppcode::DeleteExpr::DeleteExpr(<span class="kw">bool</span>
+             global_, <span class="kw">bool</span>
+             isArray_, <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a>
+            * expr_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#479">479</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">479</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Expression_71A19889F7103883BC3FEF4C076452FA63C307E7.html">Expression</a><span class="other">(</span><span class="string">U"delete"</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#variable_global_5347DE3F17C3BE779C4D0BDA020F6027D2B4A106">global</a><span class="other">(</span><span class="identifier">global_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#variable_isArray_FAEC5892AD57AC0EEF7B7207D15ADDB3B3C248FC">isArray</a><span class="other">(</span><span class="identifier">isArray_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#variable_expr_1B8758770F7567E2CC1C23173C3C5E8DD883E872">expr</a><span class="other">(</span><span class="identifier">expr_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">480</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">481</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><a href="./class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#variable_expr_1B8758770F7567E2CC1C23173C3C5E8DD883E872">expr</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">482</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#258">258</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_1B3019B994F96DA07B2439CE48C4DD22ABA26644">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::DeleteExpr::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#499">499</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">500</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">501</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_020F2E1CF7242FEC217AA4288C6ED2689D881F19">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">502</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_DeleteExpr_73F8AFB7C4843C8794F004898FB04CC5DB49D81A.html#variable_expr_1B8758770F7567E2CC1C23173C3C5E8DD883E872">expr</a><span class="other">-></span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">503</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html#260">260</a>
+             of <a href="file/Expression.hpp_CE53DFD4151B3A7257EE985CF7CB2531464363EB.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+            , <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_020F2E1CF7242FEC217AA4288C6ED2689D881F19">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_66666F3A5EFF923511B48D1D851A1364B8E00A52">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::DeleteExpr::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html#484">484</a>
+             of <a href="file/Expression.cpp_2DE83D1516F8A710985624310EBF9D4FF79009C1.html">Expression.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Print_840A65B572BABC439A24E645220C72B18EBB3B82">soulng::cppcode::CppObject::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_DefaultStatement_D081110C2ABB4B8842017387DCC99D95D31DED36.html">prev</a>
+         | <a href="class_DoStatement_CF86F87A0AFD3997B3745BAF14CDEA7810E1C29C.html">next</a>
+    </body>
+</html>

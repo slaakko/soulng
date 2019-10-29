@@ -14,7 +14,7 @@ tokens TextTokens
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
     (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
-    (KEYWORD, "keyword"), (WS, "white space"),
+    (KEYWORD, "keyword"), (WS, "white space"), (BLOCKCOMMENT, "block comment"), (LINECOMMENT, "line comment"),
     (MAX, "max")
 }
 
@@ -50,8 +50,8 @@ lexer api(SNGCPP_PP_API) TextLexer
 {
     "{ws}" { return WS; }
     "{linecontinuation}" {}
-    "{blockcomment}" { pp->Emit(U" "); }
-    "{linecomment}" { pp->Emit(U" "); }
+    "{blockcomment}" { pp->Emit(U" ", token.match, BLOCKCOMMENT); }
+    "{linecomment}" { pp->Emit(U" ", token.match, LINECOMMENT); }
     "{newline}" {}
     "{id}" { if (pp->IsKeywordToken(token)) return KEYWORD; else return ID; }
     "{ppnumber}" { return PPNUMBER; }

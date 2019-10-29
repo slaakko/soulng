@@ -13,6 +13,7 @@ namespace sngcpp { namespace ast {
 class SNGCPP_AST_API ConstNode : public UnaryNode
 {
 public:
+    ConstNode();
     ConstNode(const Span& span_, Node* subject_);
     void Accept(Visitor& visitor) override;
 };
@@ -20,6 +21,7 @@ public:
 class SNGCPP_AST_API VolatileNode : public UnaryNode
 {
 public:
+    VolatileNode();
     VolatileNode(const Span& span_, Node* subject_);
     void Accept(Visitor& visitor) override;
 };
@@ -29,6 +31,7 @@ SNGCPP_AST_API Node* CreatePrefixTypeExprNode(const Span& span_, Specifier cvSpe
 class SNGCPP_AST_API PointerNode : public UnaryNode
 {
 public:
+    PointerNode();
     PointerNode(const Span& span_, Node* subject_);
     void Accept(Visitor& visitor) override;
 };
@@ -36,6 +39,7 @@ public:
 class SNGCPP_AST_API RValueRefNode : public UnaryNode
 {
 public:
+    RValueRefNode();
     RValueRefNode(const Span& span_, Node* subject_);
     void Accept(Visitor& visitor) override;
 };
@@ -43,6 +47,7 @@ public:
 class SNGCPP_AST_API LValueRefNode : public UnaryNode
 {
 public:
+    LValueRefNode();
     LValueRefNode(const Span& span_, Node* subject_);
     void Accept(Visitor& visitor) override;
 };
@@ -50,9 +55,12 @@ public:
 class SNGCPP_AST_API TypeExprNode : public UnaryNode
 {
 public:
+    TypeExprNode();
     TypeExprNode(const Span& span_, Node* typeExpr_);
     void Accept(Visitor& visitor) override;
 };
+
+SNGCPP_AST_API bool IsConstructorName(Node* node);
 
 } } // namespace sngcpp::ast
 

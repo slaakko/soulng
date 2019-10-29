@@ -1,0 +1,179 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>AlternativeParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_ActionParser_2A28E040507CD53767D4AA9148CC127D2955F8F7.html">prev</a>
+         | <a href="class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html">next</a>
+        <hr/>
+        <h1>AlternativeParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#169">169</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#constructor_AlternativeParser_EA7D02A8128EA53D1C51E7CFC0F7457E1991DD94">AlternativeParser</a>(<a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>* left_, <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>* right_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_Accept_7A852D57457F5D19C4B172215D6B67735EE26BF4">Accept</a>(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_Clone_F5936AC964B5550C556E9FCDB88A59323AD944CA">Clone</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_IsTokenSwitch_778C337844087274952843DDD53B3ED7EE3E021E">IsTokenSwitch</a>() <span class="kw">const override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_AlternativeParser_EA7D02A8128EA53D1C51E7CFC0F7457E1991DD94">AlternativeParser Constructor</h3>
+        <h4>
+            soulng::spg::AlternativeParser::AlternativeParser(<a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * left_, <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * right_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#203">203</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">203</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html">BinaryParser</a><span class="other">(</span><span class="string">U"alternative"</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">204</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">205</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#172">172</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_7A852D57457F5D19C4B172215D6B67735EE26BF4">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::AlternativeParser::Accept(<a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#212">212</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">213</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_054488F6024416A0E09222D92325BA19FCC4FAC4">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">215</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#175">175</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Accept_1909C96AE52A2B305A815693715F56E7651FBBBD">soulng::spg::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_054488F6024416A0E09222D92325BA19FCC4FAC4">soulng::spg::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_F5936AC964B5550C556E9FCDB88A59323AD944CA">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a>
+            * soulng::spg::AlternativeParser::Clone() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#207">207</a>
+             of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">208</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">209</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html">AlternativeParser</a><span class="other">(</span><a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Left_639C72B82C302D44B1E8B5C669095F9D5AD18861">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">Clone</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Right_B0CCD713B3DA25D5F2D714866AD364C97D897B48">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">Clone</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">210</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#174">174</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">soulng::spg::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Left_639C72B82C302D44B1E8B5C669095F9D5AD18861">soulng::spg::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#function_Right_B0CCD713B3DA25D5F2D714866AD364C97D897B48">soulng::spg::BinaryParser::Right</a>
+            , <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Clone_61F6D6C86DE6BD57BB66F61165E167A9BEDA3CFE">soulng::spg::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsTokenSwitch_778C337844087274952843DDD53B3ED7EE3E021E">IsTokenSwitch Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::spg::AlternativeParser::IsTokenSwitch() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#173">173</a>
+             of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">IsActionToken</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">IsActionToken</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;||&nbsp;</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">IsTokenSwitch</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">IsActionToken</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_IsTokenSwitch_BAB8E5A74555E23836D34E0D19F273D10907A15F">soulng::spg::Parser::IsTokenSwitch</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_C873701A6CCD06D021BA273848746305071FF1CA">soulng::spg::CodeGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_ActionParser_2A28E040507CD53767D4AA9148CC127D2955F8F7.html">prev</a>
+         | <a href="class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html">next</a>
+    </body>
+</html>

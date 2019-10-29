@@ -1,6 +1,7 @@
 #include <sngcpp/lexer/CppLexer.hpp>
 #include <soulng/lexer/XmlParsingLog.hpp>
 #include <sngcpp/parser/SourceFile.hpp>
+#include <sngcpp/ast/InitDone.hpp>
 #include <sngcpp/pp/InitDone.hpp>
 #include <sngcpp/pp/PP.hpp>
 #include <soulng/util/InitDone.hpp>
@@ -36,9 +37,11 @@ struct Initializer
     {
         soulng::util::Init();
         sngcpp::pp::Init();
+        sngcpp::ast::Init();
     }
     ~Initializer()
     {
+        sngcpp::ast::Done();
         sngcpp::pp::Done();
         soulng::util::Done();
     }

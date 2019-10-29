@@ -146,7 +146,7 @@ void CodeGeneratorVisitor::Visit(CharSetParser& parser)
 void CodeGeneratorVisitor::Visit(OptionalParser& parser)
 {
     formatter->WriteLine("soulng::parser::Match match(true);");
-    formatter->WriteLine("int save = lexer.GetPos();");
+    formatter->WriteLine("int64_t save = lexer.GetPos();");
     int prevSetParentMatchNumber = setParentMatchNumber;
     setParentMatchNumber = parentMatchNumber;
     formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
@@ -181,7 +181,7 @@ void CodeGeneratorVisitor::Visit(KleeneParser& parser)
     formatter->WriteLine("while (true)");
     formatter->WriteLine("{");
     formatter->IncIndent();
-    formatter->WriteLine("int save = lexer.GetPos();");
+    formatter->WriteLine("int64_t save = lexer.GetPos();");
     formatter->WriteLine("{");
     formatter->IncIndent();
     parser.Child()->Accept(*this);
@@ -229,7 +229,7 @@ void CodeGeneratorVisitor::Visit(PositiveParser& parser)
     formatter->WriteLine("while (true)");
     formatter->WriteLine("{");
     formatter->IncIndent();
-    formatter->WriteLine("int save = lexer.GetPos();");
+    formatter->WriteLine("int64_t save = lexer.GetPos();");
     formatter->WriteLine("{");
     formatter->IncIndent();
     parser.Child()->Accept(*this);
@@ -264,7 +264,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
     formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
     formatter->WriteLine("{");
     formatter->IncIndent();
-    formatter->WriteLine("int pos = lexer.GetPos();");
+    formatter->WriteLine("int64_t pos = lexer.GetPos();");
     parser.Child()->Accept(*this);
     formatter->WriteLine("if (match.hit)");
     formatter->WriteLine("{");
@@ -363,7 +363,7 @@ void CodeGeneratorVisitor::Visit(AlternativeParser& parser)
         {
             Stage prevStage = stage;
             stage = Stage::generateTokenSwitch;
-            formatter->WriteLine("int pos = lexer.GetPos();");
+            formatter->WriteLine("int64_t pos = lexer.GetPos();");
             formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
             formatter->WriteLine("switch (*lexer)");
             formatter->WriteLine("{");
@@ -382,7 +382,7 @@ void CodeGeneratorVisitor::Visit(AlternativeParser& parser)
             formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
             formatter->WriteLine("{");
             formatter->IncIndent();
-            formatter->WriteLine("int save = lexer.GetPos();");
+            formatter->WriteLine("int64_t save = lexer.GetPos();");
             parser.Left()->Accept(*this);
             formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
             formatter->WriteLine("if (!match.hit)");
@@ -416,7 +416,7 @@ void CodeGeneratorVisitor::Visit(DifferenceParser& parser)
     int prevSetParentMatchNumber0 = setParentMatchNumber;
     setParentMatchNumber = parentMatchNumber;
     formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
-    formatter->WriteLine("int save = lexer.GetPos();");
+    formatter->WriteLine("int64_t save = lexer.GetPos();");
     formatter->WriteLine("{");
     formatter->IncIndent();
     parser.Left()->Accept(*this);
@@ -432,7 +432,7 @@ void CodeGeneratorVisitor::Visit(DifferenceParser& parser)
     formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
     formatter->WriteLine("{");
     formatter->IncIndent();
-    formatter->WriteLine("int tmp = lexer.GetPos();");
+    formatter->WriteLine("int64_t tmp = lexer.GetPos();");
     formatter->WriteLine("lexer.SetPos(save);");
     formatter->WriteLine("save = tmp;");
     parser.Right()->Accept(*this);
@@ -508,7 +508,7 @@ void CodeGeneratorVisitor::Visit(ActionParser& parser)
         formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
         formatter->WriteLine("{");
         formatter->IncIndent();
-        formatter->WriteLine("int pos = lexer.GetPos();");
+        formatter->WriteLine("int64_t pos = lexer.GetPos();");
         CodeEvaluationVisitor codeEvaluationVisitor;
         parser.SuccessCode()->Accept(codeEvaluationVisitor);
         if (codeEvaluationVisitor.HasReturn())
@@ -875,7 +875,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                     formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
                 }
                 formatter->WriteLine("++lexer;");
-                formatter->WriteLine("int pos = lexer.GetPos();");
+                formatter->WriteLine("int64_t pos = lexer.GetPos();");
                 std::string ruleName = ToUtf8(rule->Parent()->Name()) + "::" + ToUtf8(rule->Name());
                 formatter->Write("soulng::parser::Match match = " + ruleName + "(lexer");
                 for (const auto& param : startRule->Parameters())

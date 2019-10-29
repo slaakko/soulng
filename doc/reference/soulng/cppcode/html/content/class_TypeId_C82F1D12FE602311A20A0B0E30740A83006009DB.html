@@ -1,0 +1,385 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>TypeId Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_Type_E47C5856BD3BD952E77D61A7255FDCCB09C10797.html">prev</a>
+         | <a href="class_TypeIdExpr_6F6629B79672A36602F762EA8E33711868A70170.html">next</a>
+        <hr/>
+        <h1>TypeId Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#73">73</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#constructor_TypeId_E515F3C436EA64CAD2EA23AB30628741D54D5247">TypeId</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Accept_02BA3EC401411277EEE7CE683BEEC8B58C6B5BA0">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Add_28D949E2A4EC132758093BDF9FAD1BA508B12E7A">Add</a>(<a href="./class_TypeSpecifier_61154F991BC5F0683D42B983260812D492480BA5.html">TypeSpecifier</a>* typeSpecifier)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Declarator_D52AA01A438422C7A40185D8415EE68D8B8EAE9D">Declarator</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Declarator_B3607AB73015974180E254DAF86B07833D68D74D">Declarator</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_IsPtrType_F8DB9A05FAAF6925429F9C3DBD03E1BEF400B703">IsPtrType</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Print_B81409A21742A0D0EA34B917F3A91F082ADD0C81">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_PrintNonPtrType_82AB469DFAE235A9F602B60F8AEC8BEC137E0E79">PrintNonPtrType</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_ToString_982497AB633179FE63D80CA442673289F89E84E8">ToString</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span><a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#typedef_TypeSpecifierVec_01FEFBF632C3D51BF4528F4808DE4FBB01EDAB6E">TypeSpecifierVec</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_TypeSpecifiers_2A5EAF32E7F938D48C55DEA737C80F863798D04A">TypeSpecifiers</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#typedef_TypeSpecifierVec_01FEFBF632C3D51BF4528F4808DE4FBB01EDAB6E">TypeSpecifierVec</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_TypeSpecifiers_3455ABFA5F76B943DE4A3944D7386BD009E44F36">TypeSpecifiers</a>()</td>
+            </tr>
+        </table>
+        <h2>Typedefs</h2>
+        <table>
+            <tr id="typedef_TypeSpecifierVec_01FEFBF632C3D51BF4528F4808DE4FBB01EDAB6E">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_TypeSpecifier_61154F991BC5F0683D42B983260812D492480BA5.html">TypeSpecifier</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">TypeSpecifierVec</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_declarator_089ED7E987E181254B0162278C990DCE4360288F">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarator</td>
+            </tr>
+            <tr id="variable_typeSpecifiers_2B75090AF0C3909FA62FD634292CFA2F6792C559">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#typedef_TypeSpecifierVec_01FEFBF632C3D51BF4528F4808DE4FBB01EDAB6E">TypeSpecifierVec</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">typeSpecifiers</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_TypeId_E515F3C436EA64CAD2EA23AB30628741D54D5247">TypeId Constructor</h3>
+        <h4>
+            soulng::cppcode::TypeId::TypeId()</h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#120">120</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a><span class="other">(</span><span class="string">U"typeId"</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#77">77</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_02BA3EC401411277EEE7CE683BEEC8B58C6B5BA0">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::TypeId::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#190">190</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">191</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_2FA1C17695E476FB994C3851B8D51DBE10D6BC8A">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#86">86</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_2FA1C17695E476FB994C3851B8D51DBE10D6BC8A">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConditionWithDeclarator_F15EB583611320C3552113D0204DE4016708D16B.html#function_Accept_614B006F3B360B71E82BD0BCA904B915C36EFE8B">soulng::cppcode::ConditionWithDeclarator::Accept</a>
+            , <a href="./class_ExceptionDeclaration_2615669B97BBE1E8119C7F8C7CA91FEAA6089654.html#function_Accept_191CC34A7E5D9284C262F16050884FEA07A6D89A">soulng::cppcode::ExceptionDeclaration::Accept</a>
+            , <a href="./class_ForRangeDeclaration_D4955B7008E5920E0172CD2E6696F2FD02A23238.html#function_Accept_94855FB46AC8B0C3625C6F48FD38F1BFBD075FE6">soulng::cppcode::ForRangeDeclaration::Accept</a>
+            , <a href="./class_NewExpr_80C2D7BEC1F947B995330A83A0B29FB296D82CA5.html#function_Accept_D76E9C0BAC6731307E6FE8C71C835F2AC9D46136">soulng::cppcode::NewExpr::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Add_28D949E2A4EC132758093BDF9FAD1BA508B12E7A">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::TypeId::Add(<a href="./class_TypeSpecifier_61154F991BC5F0683D42B983260812D492480BA5.html">TypeSpecifier</a>
+            * typeSpecifier)</h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#124">124</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">125</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><span class="identifier">typeSpecifier</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#variable_typeSpecifiers_2B75090AF0C3909FA62FD634292CFA2F6792C559">typeSpecifiers</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">typeSpecifier</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#78">78</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">soulng::cppcode::CppObject::Own</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Declarator_D52AA01A438422C7A40185D8415EE68D8B8EAE9D">Declarator Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; soulng::cppcode::TypeId::Declarator() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#81">81</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarator</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Declarator_B3607AB73015974180E254DAF86B07833D68D74D">Declarator Member Function</h3>
+        <h4>
+            std::u32string&amp; soulng::cppcode::TypeId::Declarator()</h4>
+        <span>
+            Definition at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#82">82</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">declarator</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_IsPtrType_F8DB9A05FAAF6925429F9C3DBD03E1BEF400B703">IsPtrType Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::cppcode::TypeId::IsPtrType() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#195">195</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">196</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">197</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#variable_declarator_089ED7E987E181254B0162278C990DCE4360288F">declarator</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">198</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">199</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#variable_declarator_089ED7E987E181254B0162278C990DCE4360288F">declarator</a><span class="other">.</span><span class="identifier">back</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="string">'*'</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">200</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">201</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">202</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">203</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">204</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">205</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#87">87</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_PrintNonPtrType_82AB469DFAE235A9F602B60F8AEC8BEC137E0E79">soulng::cppcode::TypeId::PrintNonPtrType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_B81409A21742A0D0EA34B917F3A91F082ADD0C81">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::TypeId::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#149">149</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Print_B81409A21742A0D0EA34B917F3A91F082ADD0C81">soulng::cppcode::TypeId::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConditionWithDeclarator_F15EB583611320C3552113D0204DE4016708D16B.html#function_Print_4BCE2CA8D372888C9B435B3A6140B243EDDBEF0C">soulng::cppcode::ConditionWithDeclarator::Print</a>
+            , <a href="./class_ExceptionDeclaration_2615669B97BBE1E8119C7F8C7CA91FEAA6089654.html#function_Print_A2438D49739E821FAA97EE99BDBE539E922AABE6">soulng::cppcode::ExceptionDeclaration::Print</a>
+            , <a href="./class_ForRangeDeclaration_D4955B7008E5920E0172CD2E6696F2FD02A23238.html#function_Print_9FFF5566D7BC00908B08A6C3E17006E876EBF99B">soulng::cppcode::ForRangeDeclaration::Print</a>
+            , <a href="./class_NewExpr_80C2D7BEC1F947B995330A83A0B29FB296D82CA5.html#function_Print_DE9827313C7E299A49C9FDC989759A80308BA5C9">soulng::cppcode::NewExpr::Print</a>
+            , <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Print_B81409A21742A0D0EA34B917F3A91F082ADD0C81">soulng::cppcode::TypeId::Print</a>
+            , <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_PrintNonPtrType_82AB469DFAE235A9F602B60F8AEC8BEC137E0E79">soulng::cppcode::TypeId::PrintNonPtrType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_PrintNonPtrType_82AB469DFAE235A9F602B60F8AEC8BEC137E0E79">PrintNonPtrType Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::TypeId::PrintNonPtrType(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#166">166</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_IsPtrType_F8DB9A05FAAF6925429F9C3DBD03E1BEF400B703">soulng::cppcode::TypeId::IsPtrType</a>
+            , <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Print_B81409A21742A0D0EA34B917F3A91F082ADD0C81">soulng::cppcode::TypeId::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ToString_982497AB633179FE63D80CA442673289F89E84E8">ToString Member Function</h3>
+        <h4>
+            std::u32string soulng::cppcode::TypeId::ToString() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html#130">130</a>
+             of <a href="file/Type.cpp_9E7DD4CE5623F5F27D5DCFB3C415114A4EDFFBF0.html">Type.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#83">83</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_ToString_3EF21D9567730868A82511F744F77CC7ACBB30D7">soulng::cppcode::CppObject::ToString</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_ToString_982497AB633179FE63D80CA442673289F89E84E8">soulng::cppcode::TypeId::ToString</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_ToString_982497AB633179FE63D80CA442673289F89E84E8">soulng::cppcode::TypeId::ToString</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_TypeSpecifiers_2A5EAF32E7F938D48C55DEA737C80F863798D04A">TypeSpecifiers Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#typedef_TypeSpecifierVec_01FEFBF632C3D51BF4528F4808DE4FBB01EDAB6E">TypeSpecifierVec</a>
+            &amp; soulng::cppcode::TypeId::TypeSpecifiers() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#79">79</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeSpecifiers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_TypeSpecifiers_3455ABFA5F76B943DE4A3944D7386BD009E44F36">TypeSpecifiers Member Function</h3>
+        <h4>
+            <a href="./class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#typedef_TypeSpecifierVec_01FEFBF632C3D51BF4528F4808DE4FBB01EDAB6E">TypeSpecifierVec</a>
+            &amp; soulng::cppcode::TypeId::TypeSpecifiers()</h4>
+        <span>
+            Definition at line <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html#80">80</a>
+             of <a href="file/Type.hpp_87B843B858F498D822AAA0ECFE53DD265D5146BD.html">Type.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeSpecifiers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_Type_E47C5856BD3BD952E77D61A7255FDCCB09C10797.html">prev</a>
+         | <a href="class_TypeIdExpr_6F6629B79672A36602F762EA8E33711868A70170.html">next</a>
+    </body>
+</html>

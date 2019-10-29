@@ -1,0 +1,135 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ExpressionSequenceNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_ExpressionSequenceNode_03D6A15310B2531C99B39C361E7E3586DA7F410E_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_ExpressionListInitializerNode_E33491DA42E5C8F345FF5CF8ECFBCFBE06AB3123.html">prev</a>
+         | <a href="class_ExpressionStatementNode_214B8E296B636ADE9D97717653DF813740CD49D4.html">next</a>
+        <hr/>
+        <h1>ExpressionSequenceNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#25">25</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ExpressionSequenceNode_03D6A15310B2531C99B39C361E7E3586DA7F410E.html#constructor_ExpressionSequenceNode_60A9A1C19B432FAFFC52D0FB5A45CABB0BCA692F">ExpressionSequenceNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ExpressionSequenceNode_03D6A15310B2531C99B39C361E7E3586DA7F410E.html#constructor_ExpressionSequenceNode_4EFBDF383F8C76959509636D19AB97DC11D6CA65">ExpressionSequenceNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* left_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* right_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ExpressionSequenceNode_03D6A15310B2531C99B39C361E7E3586DA7F410E.html#function_Accept_5DC1A3D8E467EA5FFEEA15A34A869BB8AE4FD3DB">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ExpressionSequenceNode_60A9A1C19B432FAFFC52D0FB5A45CABB0BCA692F">ExpressionSequenceNode Constructor</h3>
+        <h4>
+            sngcpp::ast::ExpressionSequenceNode::ExpressionSequenceNode()</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#74">74</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;74</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_expressionSequenceNode_0B8E97F74A756DE4777D11716100E24EE5764BE7">expressionSequenceNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;75</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;76</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#28">28</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_ExpressionSequenceNode_4EFBDF383F8C76959509636D19AB97DC11D6CA65">ExpressionSequenceNode Constructor</h3>
+        <h4>
+            sngcpp::ast::ExpressionSequenceNode::ExpressionSequenceNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * left_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * right_)</h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#78">78</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;78</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_expressionSequenceNode_0B8E97F74A756DE4777D11716100E24EE5764BE7">expressionSequenceNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;79</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;80</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#29">29</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_5DC1A3D8E467EA5FFEEA15A34A869BB8AE4FD3DB">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::ExpressionSequenceNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html#82">82</a>
+             of <a href="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html">Expression.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;83</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_EDAE6BC4293176C61A6E48B52458CAE89CC86111">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;85</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html#30">30</a>
+             of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_EDAE6BC4293176C61A6E48B52458CAE89CC86111">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_ExpressionListInitializerNode_E33491DA42E5C8F345FF5CF8ECFBCFBE06AB3123.html">prev</a>
+         | <a href="class_ExpressionStatementNode_214B8E296B636ADE9D97717653DF813740CD49D4.html">next</a>
+    </body>
+</html>

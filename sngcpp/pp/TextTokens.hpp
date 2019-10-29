@@ -69,7 +69,9 @@ namespace TextTokens
     const int ELLIPSES = 58;
     const int KEYWORD = 59;
     const int WS = 60;
-    const int MAX = 61;
+    const int BLOCKCOMMENT = 61;
+    const int LINECOMMENT = 62;
+    const int MAX = 63;
 
     SNGCPP_PP_API void InitTokenIdMap();
     SNGCPP_PP_API int GetTokenId(const std::u32string& tokenName);

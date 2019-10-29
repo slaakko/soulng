@@ -22,8 +22,6 @@ class MemberInitializerNode;
 class MemberInitializerSequenceNode;
 class SourceFileNode;
 class SourceFileSequenceNode;
-class IncludeDirectiveNode;
-class IncludeDirectiveSequenceNode;
 class SimpleDeclarationNode;
 class AliasDeclarationNode;
 class UsingDirectiveNode;
@@ -76,10 +74,10 @@ class ThisNode;
 class ParenthesizedExprNode;
 class LambdaExpressionNode;
 class CaptureSequenceNode;
-class AssignCapture;
-class RefCapture;
-class ThisCapture;
-class IdentifierCapture;
+class AssignCaptureNode;
+class RefCaptureNode;
+class ThisCaptureNode;
+class IdentifierCaptureNode;
 class IdentifierNode;
 class OperatorFunctionIdNode;
 class ConversionFunctionIdNode;
@@ -149,8 +147,6 @@ public:
     virtual void Visit(MemberInitializerSequenceNode& memberInitializerSequenceNode) {}
     virtual void Visit(SourceFileNode& sourceFileNode) {}
     virtual void Visit(SourceFileSequenceNode& sourceFileSequenceNode) {}
-    virtual void Visit(IncludeDirectiveNode& includeDirectiveNode) {}
-    virtual void Visit(IncludeDirectiveSequenceNode& includeDirectiveSequenceNode) {}
     virtual void Visit(SimpleDeclarationNode& simpleDeclarationNode) {}
     virtual void Visit(AliasDeclarationNode& aliasDeclarationNode) {}
     virtual void Visit(UsingDirectiveNode& usingDirectiveNode) {}
@@ -203,10 +199,10 @@ public:
     virtual void Visit(ParenthesizedExprNode& parenthesizedExprNode) {}
     virtual void Visit(LambdaExpressionNode& lambdaExpressionNode) {}
     virtual void Visit(CaptureSequenceNode& captureSequenceNode) {}
-    virtual void Visit(AssignCapture& assignCapture) {}
-    virtual void Visit(RefCapture& refCapture) {}
-    virtual void Visit(ThisCapture& thisCapture) {}
-    virtual void Visit(IdentifierCapture& identifierCapture) {}
+    virtual void Visit(AssignCaptureNode& assignCaptureNode) {}
+    virtual void Visit(RefCaptureNode& refCaptureNode) {}
+    virtual void Visit(ThisCaptureNode& thisCaptureNode) {}
+    virtual void Visit(IdentifierCaptureNode& identifierCaptureNode) {}
     virtual void Visit(IdentifierNode& identifierNode) {}
     virtual void Visit(OperatorFunctionIdNode& operatorFunctionIdNode) {}
     virtual void Visit(ConversionFunctionIdNode& conversionFunctionIdNode) {}

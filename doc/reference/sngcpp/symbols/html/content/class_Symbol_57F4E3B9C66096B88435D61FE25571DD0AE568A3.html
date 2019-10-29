@@ -1,0 +1,1841 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Symbol Abstract Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html">prev</a>
+         | <a href="class_SymbolCreator_B503539C43AAA8D3D3F6E9121C9797363D9C8151.html">next</a>
+        <hr/>
+        <h1>Symbol Abstract Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#31">31</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#constructor_Symbol_30AA73B3E9513410A338055BBE821F242E7F77CF">Symbol</a>(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#constructor_Symbol_8F559A48999E268809597C5F761983F26842ACCB">Symbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#constructor_Symbol_F7BB422FCC0C9DF9E768BEFDD12FAB4A4B309D44">Symbol</a>(<span class="kw">const </span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_SymbolAccess_C0B60A164BF58BE56AA3391B28FB98B51B5D0CD7.html">SymbolAccess</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Access_BE36CCFF44CEEB7D239969940C9CF995E9C51F37">Access</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Class_7D3A7FB7693FBC77F6E93B2D76F6547CA1E928AD">Class</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Classes_0DF475D208F10A1F8C7C6D493E49B2FC6CD642DC">Classes</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Constructors_475EDB092F4FFBB5F1BB12E29B7E79AAB4B4FB5B">Constructors</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">CreateElement</a>() <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_EnumTypes_4F03AE604078779D3DF8B1918A69D965E9C89E83">EnumTypes</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Enumerators_7385C8AEB31AA26B3A08DAF32AE2B920816BBC27">Enumerators</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">FullName</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Functions_F1A695A0AEBCBF15D7307867BC160FF96CF437DC">Functions</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetContainerScope_5CF49F719C0B2B205335E25B5620EAEFA9E95381">GetContainerScope</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>Span&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetType_EB05CD37379610821205706D48043CBB476E66C6">GetType</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Grammars_F6DACEC492F5AB8A47FFAA2402A76295F74EDA0C">Grammars</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">IdStr</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassGroupSymbol_8F3E94683D0C80319F14B51D947FBA0BF170ED8F">IsClassGroupSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassGroupTypeSymbol_6E9D95EE2B048FC02D179F61F686DCB98BB0A74C">IsClassGroupTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassTemplateSpecializationSymbol_02A2C8B928A78D41C649A86E493C175C061A51B0">IsClassTemplateSpecializationSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassTypeSymbol_A16ED1C3208B8443DA7E57E42FBE7658A8155ED8">IsClassTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsConstructorDeclarationSymbol_D979522DDFF1E7BA0E48D8DA9642DF45C6EB7B93">IsConstructorDeclarationSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsConstructorSymbol_A6192AF051630C88D5880FF863E85A8BF4661F26">IsConstructorSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsContainerSymbol_DD1D65F4722A1F0919F5547640F35117B7CB4070">IsContainerSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsDeclarationBlockSymbol_76A47304016A26801940E9F4207478D622C9222D">IsDeclarationBlockSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsEnumTypeSymbol_69134E545714CF6E729202248DE76A49BD09ADD7">IsEnumTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsEnumeratorSymbol_8E2FD3EC2D284461DF1787BE2CAE6B597D89B01B">IsEnumeratorSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionDeclarationSymbol_6B0D5CC628182380CDFF22AF6694B7FA33C4F1AC">IsFunctionDeclarationSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionGroupSymbol_2DA82061BF34A1C13AB053B6538A7299AFBD4DA2">IsFunctionGroupSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">IsFunctionSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsGrammarSymbol_1F98ABAFE04C5C58D772EAB1D1D434BCB05585BE">IsGrammarSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsInstallSymbol_D5B31C8D979DB0B6929D6BF562E97D58E3B6A056">IsInstallSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsNamespaceSymbol_B31F06A521EE617A0BA75D888242ABFAA921AA07">IsNamespaceSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsParameterSymbol_CC7D265F4C87A4CD4E56488EE25210447AB36BDA">IsParameterSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsParentSymbol_F88ADE2E62BB4298F8A5419E1FA9CA9A650C4EE5">IsParentSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsPseudoTypeSymbol_6195124A8ADD3EC8D51655F481C733057535796B">IsPseudoTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsRuleSymbol_D05149F9FA5AB8B2CD5DFBD4781A08E73E4C221E">IsRuleSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsTypeSymbol_90B67418728ADC224614C38B59DC2044B72F78FB">IsTypeSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsTypedefSymbol_2F562AF9243B6B8B1B8DF5DF5DEEC9AF11D066D3">IsTypedefSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsVariableSymbol_4E8C11889A8B5CA709217C0E8B4FE5219A1F8B09">IsVariableSymbol</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">KindStr</a>() <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">Name</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_NameBefore_464D093921D1D090533DDB5974084BFD4D029767">NameBefore</a>(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>* that) <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Namespaces_D27DFA804A03841F7D4C10E2C09525D38FF158F0">Namespaces</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">Parent</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ProjectName_01DFE2A0D7303AC270062F48568E2CB34AAF0F91">ProjectName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetAccess_3184F8F8BB6CBCD79E7ED03004D546D6E4460BD1">SetAccess</a>(Specifier accessSpecifier)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetName_DFBE1F2D9D55E29B4BFD24780F1C4F0D0EE6DED8">SetName</a>(<span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetParent_F78F6B260EA6242F49F86FE9EF9F163F1A4FC9F9">SetParent</a>(<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a>* parent_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetProjectName_462CB0F5F5A7BAA4353DF1B7F86AFBDF0D0BEAE5">SetProjectName</a>(<span class="kw">const </span>std::u32string&amp; projectName_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SimpleName_EED205298A68F207A136564A59D40E52EE91F34D">SimpleName</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">ToDomElement</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Typedefs_88D05934A466EF100B4D1636460885E9D3FA0B2F">Typedefs</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Variables_53328A8FBA0E1AA956267D931B5361BFDEE1DBE8">Variables</a>() <span class="kw">virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_operator_assign_22AE721007270AD488F500E060D0AD11AB442ED7">operator=</a>(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_operator_assign_CA7B0E23B90367BECF7F4F91F7DC2E1474B4F673">operator=</a>(<span class="kw">const </span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_access_9CF99C0975B08FFB8264508D13F571BAB0977357">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_SymbolAccess_C0B60A164BF58BE56AA3391B28FB98B51B5D0CD7.html">SymbolAccess</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">access</td>
+            </tr>
+            <tr id="variable_name_392EDDDC601213D81718209F6254BE57B2DBCE46">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">name</td>
+            </tr>
+            <tr id="variable_parent_96E1AF36CC75EED51C986292B7BF207505DDBB61">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">parent</td>
+            </tr>
+            <tr id="variable_projectName_4EEC73C4C60B6726FE573EAF7DC20F45955161A0">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectName</td>
+            </tr>
+            <tr id="variable_span_E7A3399FE764BA57533EF7A12F0AD3D3FEF3133B">
+                <td class="functionTableFirstCol" xml:space="preserve">Span</td>
+                <td class="functionTableSecondCol" xml:space="preserve">span</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Symbol_30AA73B3E9513410A338055BBE821F242E7F77CF">Symbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::Symbol::Symbol(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#36">36</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_Symbol_8F559A48999E268809597C5F761983F26842ACCB">Symbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::Symbol::Symbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#28">28</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#variable_span_E7A3399FE764BA57533EF7A12F0AD3D3FEF3133B">span</a><span class="other">(</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#variable_name_392EDDDC601213D81718209F6254BE57B2DBCE46">name</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#variable_parent_96E1AF36CC75EED51C986292B7BF207505DDBB61">parent</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#variable_access_9CF99C0975B08FFB8264508D13F571BAB0977357">access</a><span class="other">(</span><a href="./enum_SymbolAccess_C0B60A164BF58BE56AA3391B28FB98B51B5D0CD7.html">SymbolAccess</a><span class="other">::</span><a href="./enum_SymbolAccess_C0B60A164BF58BE56AA3391B28FB98B51B5D0CD7.html#enumerator_private__09C0C02D37FF5478C65E9B021CF063EDA6D0FE9A">private_</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#34">34</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_Symbol_F7BB422FCC0C9DF9E768BEFDD12FAB4A4B309D44">Symbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::Symbol::Symbol(<span class="kw">const </span>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#35">35</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Access_BE36CCFF44CEEB7D239969940C9CF995E9C51F37">Access Member Function</h3>
+        <h4>
+            <a href="./enum_SymbolAccess_C0B60A164BF58BE56AA3391B28FB98B51B5D0CD7.html">SymbolAccess</a>
+             sngcpp::symbols::Symbol::Access() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#48">48</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">access</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Class_7D3A7FB7693FBC77F6E93B2D76F6547CA1E928AD">Class Member Function</h3>
+        <h4>
+            <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a>
+            * sngcpp::symbols::Symbol::Class()</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#190">190</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#67">67</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Class_7D3A7FB7693FBC77F6E93B2D76F6547CA1E928AD">sngcpp::symbols::Symbol::Class</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassTypeSymbol_A16ED1C3208B8443DA7E57E42FBE7658A8155ED8">sngcpp::symbols::Symbol::IsClassTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Class_7D3A7FB7693FBC77F6E93B2D76F6547CA1E928AD">sngcpp::symbols::Symbol::Class</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Classes_0DF475D208F10A1F8C7C6D493E49B2FC6CD642DC">Classes Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Classes() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#150">150</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#57">57</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Classes_350195062B1E238540C03D14C8CB0AD4C77CDBD2">sngcpp::symbols::ContainerSymbol::Classes</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Constructors_475EDB092F4FFBB5F1BB12E29B7E79AAB4B4FB5B">Constructors Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Constructors() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#155">155</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#58">58</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Constructors_71C3AB2529759CB21784FF33EC60E07186AA91DC">sngcpp::symbols::ContainerSymbol::Constructors</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::CreateElement() <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#54">54</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_CreateElement_B4ABF47CA83EA8297863BEA29FF4760B831F58D7">sngcpp::symbols::ClassGroupSymbol::CreateElement</a>
+            , <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_CreateElement_3DA4F6683FAF5CA08EA54628BEC65D7086330D03">sngcpp::symbols::ClassTemplateSpecializationSymbol::CreateElement</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_CreateElement_CB77F4C0BE84A3AA45F763E8F302CBA1C25232A4">sngcpp::symbols::ClassTypeSymbol::CreateElement</a>
+            , <a href="./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html#function_CreateElement_AC0B3D4E697925EC22E0B1EE5E28A108EA146727">sngcpp::symbols::ConstructorDeclarationSymbol::CreateElement</a>
+            , <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+            , <a href="./class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html#function_CreateElement_47E768D7B3E8063A8E98094859873A48ED883BF7">sngcpp::symbols::DeclarationBlockSymbol::CreateElement</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_CreateElement_22157CC1450C38D721ABA795AAA66FF393079A20">sngcpp::symbols::DerivedTypeSymbol::CreateElement</a>
+            , <a href="./class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#function_CreateElement_68084451A0393DC2550D07F7952BEEDE69291A21">sngcpp::symbols::ElaborateClassTypeSymbol::CreateElement</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_CreateElement_5FAF01DCFB9AA0DE152B9FA40A4F87AE52335EDE">sngcpp::symbols::EnumTypeSymbol::CreateElement</a>
+            , <a href="./class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_CreateElement_84AC864C8BCC7D40B23FC01002D2A717A48D6CB5">sngcpp::symbols::EnumeratorSymbol::CreateElement</a>
+            , <a href="./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_CreateElement_60A50EF7E25688F659528BE49E802238FADB50A1">sngcpp::symbols::ExternalTypeSymbol::CreateElement</a>
+            , <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_CreateElement_201694A4658EA810D09BCC7B51F61E01DAFECD51">sngcpp::symbols::FunctionDeclarationSymbol::CreateElement</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_CreateElement_52B4F1AF6E9A6D20BAD9490953C79042B6B198C8">sngcpp::symbols::FunctionGroupSymbol::CreateElement</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_CreateElement_EB6C047AFBE94A9D88E136D9041BC1C81A202903">sngcpp::symbols::FunctionSymbol::CreateElement</a>
+            , <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_CreateElement_D9BF8F4465578DBEB205319B4070E7002D284730">sngcpp::symbols::GrammarSymbol::CreateElement</a>
+            , <a href="./class_IntegerLiteralTypeSymbol_30260614C598B4E861119D6434267E2F40F526F9.html#function_CreateElement_3A2697890AD5DA9192FCA63C3F6407DF1EC49F72">sngcpp::symbols::IntegerLiteralTypeSymbol::CreateElement</a>
+            , <a href="./class_LambdaExpressionSymbol_18B7D83302A73F8DB16D599B39A49C9724862CF6.html#function_CreateElement_142C01F4BE8D6B85D4B660F5FBEFC46859197DC7">sngcpp::symbols::LambdaExpressionSymbol::CreateElement</a>
+            , <a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_CreateElement_E2496B7A4409B7964F4D59627686A4E7D6639B79">sngcpp::symbols::NamespaceSymbol::CreateElement</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_CreateElement_77938B4C4F03960CF7175A0EE332AE244F70C752">sngcpp::symbols::ParameterSymbol::CreateElement</a>
+            , <a href="./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_CreateElement_6BB1D90E6DBDDC8939E5B1EFADB3B048AB656309">sngcpp::symbols::PseudoTypeSymbol::CreateElement</a>
+            , <a href="./class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_CreateElement_C530CA0684A5FE363E43922C0A9A08D336877068">sngcpp::symbols::RuleSymbol::CreateElement</a>
+            , <a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">sngcpp::symbols::SimpleTypeSymbol::CreateElement</a>
+            , <a href="./class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_CreateElement_A37DC6511929AD7E2224986AEE3807DF0DE677EC">sngcpp::symbols::TemplateParameterSymbol::CreateElement</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">sngcpp::symbols::TypeSymbol::CreateElement</a>
+            , <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_CreateElement_735FB34D73A0B1B035E888D1AE4E5488F9A6A1BF">sngcpp::symbols::TypedefSymbol::CreateElement</a>
+            , <a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_CreateElement_2657DDC09FB3B7B80F87DF11DCB0AA197419C337">sngcpp::symbols::VariableSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_EnumTypes_4F03AE604078779D3DF8B1918A69D965E9C89E83">EnumTypes Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::EnumTypes() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#165">165</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#60">60</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_EnumTypes_E6FDA146BB09C9E6400DE199A78A0A4B123D978C">sngcpp::symbols::ContainerSymbol::EnumTypes</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Enumerators_7385C8AEB31AA26B3A08DAF32AE2B920816BBC27">Enumerators Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Enumerators() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#170">170</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#61">61</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Enumerators_55D34C55F2459F73E111D8739ACD29D90738BB74">sngcpp::symbols::ContainerSymbol::Enumerators</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">FullName Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::Symbol::FullName()</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#36">36</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#47">47</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">sngcpp::symbols::Symbol::Name</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">sngcpp::symbols::Symbol::Parent</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_IdStr_A2FD12F512364C911369063D4C17E70B306BDE46">sngcpp::symbols::ClassTypeSymbol::IdStr</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">sngcpp::symbols::FunctionSymbol::IdStr</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">sngcpp::symbols::Symbol::IdStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Functions_F1A695A0AEBCBF15D7307867BC160FF96CF437DC">Functions Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Functions() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#160">160</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#59">59</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Functions_134CC3C0CBC92F4A8B02B37C7F9589C5D2FC583E">sngcpp::symbols::ContainerSymbol::Functions</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetContainerScope_5CF49F719C0B2B205335E25B5620EAEFA9E95381">GetContainerScope Member Function</h3>
+        <h4>
+            <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>
+            * sngcpp::symbols::Symbol::GetContainerScope() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#50">50</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_26E40801646C47918CE3A1996A87925368D53010">sngcpp::symbols::FileScope::Install</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">GetSpan Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            Span&amp; sngcpp::symbols::Symbol::GetSpan() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#40">40</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">span</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_CreateElement_CB77F4C0BE84A3AA45F763E8F302CBA1C25232A4">sngcpp::symbols::ClassTypeSymbol::CreateElement</a>
+            , <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_CreateElement_5FAF01DCFB9AA0DE152B9FA40A4F87AE52335EDE">sngcpp::symbols::EnumTypeSymbol::CreateElement</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_CreateElement_EB6C047AFBE94A9D88E136D9041BC1C81A202903">sngcpp::symbols::FunctionSymbol::CreateElement</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeDerivedTypeSymbol_5D80CD812A114B8870D7FB92197C50B69B2CE764">sngcpp::symbols::SymbolTable::MakeDerivedTypeSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeElaborateClassTypeSymbol_129E369D3A99D90E32B1C30FD6B2B3E09C38924A">sngcpp::symbols::SymbolTable::MakeElaborateClassTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetType_EB05CD37379610821205706D48043CBB476E66C6">GetType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::Symbol::GetType() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#45">45</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_GetType_75038814768A6AE0059C164DEBB43C2881DD4077">sngcpp::symbols::EnumeratorSymbol::GetType</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_GetType_F96003CE8D5265F36320610231550F65BC12355E">sngcpp::symbols::FunctionSymbol::GetType</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_GetType_013AA28774995A99067884F9349BB4AE52055FEE">sngcpp::symbols::ParameterSymbol::GetType</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_GetType_EE682DFC701E0FD1E38265CCB2E8FC9A43F78D7C">sngcpp::symbols::TypeSymbol::GetType</a>
+            , <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_GetType_D9B02BD603D00146F3794D61FCB301ED997C6296">sngcpp::symbols::TypedefSymbol::GetType</a>
+            , <a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_GetType_7A76EB9EA00C441FFC42E6A9A8AC06CD3C6A6E96">sngcpp::symbols::VariableSymbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_42927DD553AD60AA77C1E500920851EA72F6214D">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Grammars_F6DACEC492F5AB8A47FFAA2402A76295F74EDA0C">Grammars Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Grammars() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#185">185</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">186</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">187</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#64">64</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Grammars_D89064B2114E5B43F9BA705D05138CFD3D07D197">sngcpp::symbols::ContainerSymbol::Grammars</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::Symbol::Id() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#75">75</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">id</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">KindStr</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">id</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="string">'_'</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SimpleName_EED205298A68F207A136564A59D40E52EE91F34D">SimpleName</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="string">'_'</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="type">ToUtf32</span><span class="other">(</span><span class="type">GetSha1MessageDigest</span><span class="other">(</span><span class="type">ToUtf8</span><span class="other">(</span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">IdStr</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#53">53</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html#function_Id_53270D2E14012B069D3BBB512363ED97D14BB1CC">sngcpp::symbols::ClassGroupTypeSymbol::Id</a>
+            , <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_Id_E53EDACB6DF4A2188DDCEEE6ED9DD308C034A4FC">sngcpp::symbols::ClassTemplateSpecializationSymbol::Id</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_Id_24342702F0B60C01FA48BBE8264228D1DE5F4B8E">sngcpp::symbols::DerivedTypeSymbol::Id</a>
+            , <a href="./class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html#function_Id_DE730F0814FE5266584CC52AD071BFF271D0C7C1">sngcpp::symbols::ElaborateClassTypeSymbol::Id</a>
+            , <a href="./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html#function_Id_60C61DFCD20D06D8F925D394CD2BB47A61F88566">sngcpp::symbols::ExternalTypeSymbol::Id</a>
+            , <a href="./class_IntegerLiteralTypeSymbol_30260614C598B4E861119D6434267E2F40F526F9.html#function_Id_26F86670CBA69741FA81B3D46091B895E2F807D2">sngcpp::symbols::IntegerLiteralTypeSymbol::Id</a>
+            , <a href="./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_Id_F368AED94C7575CC3DE5AA1167D77BEFB0CA160E">sngcpp::symbols::PseudoTypeSymbol::Id</a>
+            , <a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_Id_D47C10FDC6E771FEE00DE5ADEDF249861682A4C3">sngcpp::symbols::SimpleTypeSymbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">sngcpp::symbols::Symbol::IdStr</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SimpleName_EED205298A68F207A136564A59D40E52EE91F34D">sngcpp::symbols::Symbol::SimpleName</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_CreateElement_3DA4F6683FAF5CA08EA54628BEC65D7086330D03">sngcpp::symbols::ClassTemplateSpecializationSymbol::CreateElement</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_CreateElement_CB77F4C0BE84A3AA45F763E8F302CBA1C25232A4">sngcpp::symbols::ClassTypeSymbol::CreateElement</a>
+            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_CreateElement_22157CC1450C38D721ABA795AAA66FF393079A20">sngcpp::symbols::DerivedTypeSymbol::CreateElement</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_CreateElement_5FAF01DCFB9AA0DE152B9FA40A4F87AE52335EDE">sngcpp::symbols::EnumTypeSymbol::CreateElement</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_GetFunctionDeclaration_CBCD8FA4EF5EB6E7A4D96691639542456514E65B">sngcpp::symbols::FunctionGroupSymbol::GetFunctionDeclaration</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_CreateElement_EB6C047AFBE94A9D88E136D9041BC1C81A202903">sngcpp::symbols::FunctionSymbol::CreateElement</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">sngcpp::symbols::FunctionSymbol::IdStr</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_CreateElement_77938B4C4F03960CF7175A0EE332AE244F70C752">sngcpp::symbols::ParameterSymbol::CreateElement</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeClassGroupTypeSymbol_C7C8B023A514AF016BCFD2DA4736B1FEBD3C1AF7">sngcpp::symbols::SymbolTable::MakeClassGroupTypeSymbol</a>
+            , <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_CreateElement_735FB34D73A0B1B035E888D1AE4E5488F9A6A1BF">sngcpp::symbols::TypedefSymbol::CreateElement</a>
+            , <a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_CreateElement_2657DDC09FB3B7B80F87DF11DCB0AA197419C337">sngcpp::symbols::VariableSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IdStr_FCF94650E4C686B2E39910B18EECB8F4436EE229">IdStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::Symbol::IdStr() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#70">70</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">FullName</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#52">52</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_IdStr_A2FD12F512364C911369063D4C17E70B306BDE46">sngcpp::symbols::ClassTypeSymbol::IdStr</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">sngcpp::symbols::FunctionSymbol::IdStr</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">sngcpp::symbols::ParameterSymbol::IdStr</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">sngcpp::symbols::ParameterSymbol::IdStr</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeElaborateClassTypeSymbol_129E369D3A99D90E32B1C30FD6B2B3E09C38924A">sngcpp::symbols::SymbolTable::MakeElaborateClassTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsClassGroupSymbol_8F3E94683D0C80319F14B51D947FBA0BF170ED8F">IsClassGroupSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsClassGroupSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#79">79</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_IsClassGroupSymbol_24FC21B3A0CBAE0697700ADC0EE9231206CFDB6F">sngcpp::symbols::ClassGroupSymbol::IsClassGroupSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeClassGroupSymbol_6F19066E87278AEF601C37C28D71F60239FF5C03">sngcpp::symbols::ContainerSymbol::MakeClassGroupSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNameSequence_F9ADA0CDA70D40C3592F668A680828C7AFE7DAB3">sngcpp::symbols::SymbolTable::BeginNameSequence</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsClassGroupTypeSymbol_6E9D95EE2B048FC02D179F61F686DCB98BB0A74C">IsClassGroupTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsClassGroupTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#80">80</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html#function_IsClassGroupTypeSymbol_1832625E9E3573D847A80E0537C54D4D662E25E3">sngcpp::symbols::ClassGroupTypeSymbol::IsClassGroupTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsClassTemplateSpecializationSymbol_02A2C8B928A78D41C649A86E493C175C061A51B0">IsClassTemplateSpecializationSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsClassTemplateSpecializationSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#73">73</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTemplateSpecializationSymbol_AA279A41D18F8A599D0B9E836672D704826EA71F.html#function_IsClassTemplateSpecializationSymbol_9F3DF1F3F32578E9B638C56943EAAE74DDC54420">sngcpp::symbols::ClassTemplateSpecializationSymbol::IsClassTemplateSpecializationSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsClassTypeSymbol_A16ED1C3208B8443DA7E57E42FBE7658A8155ED8">IsClassTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsClassTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#72">72</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_IsClassTypeSymbol_0D84E15485BBCE51D83570E9043BA4EB5A4A804D">sngcpp::symbols::ClassTypeSymbol::IsClassTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Class_7D3A7FB7693FBC77F6E93B2D76F6547CA1E928AD">sngcpp::symbols::Symbol::Class</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginFunction_ABF11344F7C51B51C02387A8683947F8E75DB9E2">sngcpp::symbols::SymbolTable::BeginFunction</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginFunctionDeclaration_5F180C87B4E74440592D5927C12FCAAB791EF255">sngcpp::symbols::SymbolTable::BeginFunctionDeclaration</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsConstructorDeclarationSymbol_D979522DDFF1E7BA0E48D8DA9642DF45C6EB7B93">IsConstructorDeclarationSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsConstructorDeclarationSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#77">77</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html#function_IsConstructorDeclarationSymbol_0C4E056D92F2016D0E5E9F22C729C3489A782E94">sngcpp::symbols::ConstructorDeclarationSymbol::IsConstructorDeclarationSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsConstructorSymbol_A6192AF051630C88D5880FF863E85A8BF4661F26">IsConstructorSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsConstructorSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#74">74</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_IsConstructorSymbol_06676F34AD5F8C3F6902873C1BE6AF2C56BA06BA">sngcpp::symbols::ConstructorSymbol::IsConstructorSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsContainerSymbol_DD1D65F4722A1F0919F5547640F35117B7CB4070">IsContainerSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsContainerSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#70">70</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_IsContainerSymbol_CA6B54D3F928C79D244047F894447CBDD67CE9C2">sngcpp::symbols::ContainerSymbol::IsContainerSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNameSequence_F9ADA0CDA70D40C3592F668A680828C7AFE7DAB3">sngcpp::symbols::SymbolTable::BeginNameSequence</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsDeclarationBlockSymbol_76A47304016A26801940E9F4207478D622C9222D">IsDeclarationBlockSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsDeclarationBlockSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#86">86</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html#function_IsDeclarationBlockSymbol_EDA4453EED98E179DB49AABD0FE9065DE1460EAF">sngcpp::symbols::DeclarationBlockSymbol::IsDeclarationBlockSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsEnumTypeSymbol_69134E545714CF6E729202248DE76A49BD09ADD7">IsEnumTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsEnumTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#81">81</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_IsEnumTypeSymbol_052A0EADD2B9083ED07572A30C54AC3AFD63BF35">sngcpp::symbols::EnumTypeSymbol::IsEnumTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsEnumeratorSymbol_8E2FD3EC2D284461DF1787BE2CAE6B597D89B01B">IsEnumeratorSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsEnumeratorSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#82">82</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_IsEnumeratorSymbol_749BD34D23E2D218DEA7F344B576D5F9F8AE62BC">sngcpp::symbols::EnumeratorSymbol::IsEnumeratorSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsFunctionDeclarationSymbol_6B0D5CC628182380CDFF22AF6694B7FA33C4F1AC">IsFunctionDeclarationSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsFunctionDeclarationSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#76">76</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_IsFunctionDeclarationSymbol_01D2DBF4B221F52D05D2D93294E9F534F52162D3">sngcpp::symbols::FunctionDeclarationSymbol::IsFunctionDeclarationSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsFunctionGroupSymbol_2DA82061BF34A1C13AB053B6538A7299AFBD4DA2">IsFunctionGroupSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsFunctionGroupSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#78">78</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_IsFunctionGroupSymbol_C7E376FCCDF40F8D9B4420BB986BCDD39D51AE8E">sngcpp::symbols::FunctionGroupSymbol::IsFunctionGroupSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeFunctionGroupSymbol_0BCC980B5EE798F799722604807ACE12282357AC">sngcpp::symbols::ContainerSymbol::MakeFunctionGroupSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">IsFunctionSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsFunctionSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#75">75</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IsFunctionSymbol_2217A293F50155A9593544287564F742DB8AF4CD">sngcpp::symbols::FunctionSymbol::IsFunctionSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">sngcpp::symbols::ParameterSymbol::IdStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsGrammarSymbol_1F98ABAFE04C5C58D772EAB1D1D434BCB05585BE">IsGrammarSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsGrammarSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#87">87</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_IsGrammarSymbol_2D6E5DD9492D376E15485B26694A7B5318D42989">sngcpp::symbols::GrammarSymbol::IsGrammarSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsInstallSymbol_D5B31C8D979DB0B6929D6BF562E97D58E3B6A056">IsInstallSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsInstallSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#68">68</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_IsInstallSymbol_8436D2A26B8B85505123CAE5191690FB6C3514E5">sngcpp::symbols::ClassTypeSymbol::IsInstallSymbol</a>
+            , <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_IsInstallSymbol_B175F444B05022A446CD9065970155FB06FB04DB">sngcpp::symbols::FunctionDeclarationSymbol::IsInstallSymbol</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IsInstallSymbol_10455FCF3F997FEEEA724E354B4B9E978D2D75BF">sngcpp::symbols::FunctionSymbol::IsInstallSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsNamespaceSymbol_B31F06A521EE617A0BA75D888242ABFAA921AA07">IsNamespaceSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsNamespaceSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#69">69</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_IsNamespaceSymbol_FD95327040D5A627F883DDD91B5A67EAB91024E3">sngcpp::symbols::NamespaceSymbol::IsNamespaceSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_26E40801646C47918CE3A1996A87925368D53010">sngcpp::symbols::FileScope::Install</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddTypedef_419EF08BEC632DA403007D907494E1788A7C8B32">sngcpp::symbols::SymbolTable::AddTypedef</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNamespace_1D7D7E041E7FDDB74E62D4F6EE7A8EAB12021B34">sngcpp::symbols::SymbolTable::BeginNamespace</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndClass_1ED66A41F4BFF73BBD8F2503511D9A9C7B3B2DC9">sngcpp::symbols::SymbolTable::EndClass</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndEnumType_4ADD9A897A78E4950D42DC7DD351493630A6031E">sngcpp::symbols::SymbolTable::EndEnumType</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndFunction_D8B735E9DF75450A5D020BDE2F989B15002ED382">sngcpp::symbols::SymbolTable::EndFunction</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndGrammar_5598AC1CD47D69652A743D98A63793E0FF191BF9">sngcpp::symbols::SymbolTable::EndGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsParameterSymbol_CC7D265F4C87A4CD4E56488EE25210447AB36BDA">IsParameterSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsParameterSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#84">84</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IsParameterSymbol_167190A8913EDF4233708600B3F433A21FBDC147">sngcpp::symbols::ParameterSymbol::IsParameterSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_AddMember_1E49E141A2AB89977E1DBC588E9B30FD4FD02ED5">sngcpp::symbols::FunctionDeclarationSymbol::AddMember</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddMember_AA17FB6AEEA9DC74DEF605CB77D74BD5FFDBF47B">sngcpp::symbols::FunctionSymbol::AddMember</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsParentSymbol_F88ADE2E62BB4298F8A5419E1FA9CA9A650C4EE5">IsParentSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsParentSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#46">46</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_IsParentSymbol_92DF71796201EE11B0E8DC574ED8F9A48205ACA1">sngcpp::symbols::ClassTypeSymbol::IsParentSymbol</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_IsParentSymbol_B53EBFB03165BCC0F162BFCFAA8A832904D79370">sngcpp::symbols::EnumTypeSymbol::IsParentSymbol</a>
+            , <a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_IsParentSymbol_BBD8198E540A03B5A31EE4D441F7C0083EC77AEE">sngcpp::symbols::NamespaceSymbol::IsParentSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsPseudoTypeSymbol_6195124A8ADD3EC8D51655F481C733057535796B">IsPseudoTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsPseudoTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#89">89</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_IsPseudoTypeSymbol_B9E06100639514DB716619F15B44A4C13048C697">sngcpp::symbols::PseudoTypeSymbol::IsPseudoTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsRuleSymbol_D05149F9FA5AB8B2CD5DFBD4781A08E73E4C221E">IsRuleSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsRuleSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#88">88</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_IsRuleSymbol_7A86D38868F74A2E0AA301974CA73038A2445C79">sngcpp::symbols::RuleSymbol::IsRuleSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_AddMember_47AC8B2F6282BCC5F698D8E41D8A9B37C9B96640">sngcpp::symbols::GrammarSymbol::AddMember</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsTypeSymbol_90B67418728ADC224614C38B59DC2044B72F78FB">IsTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsTypeSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#71">71</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsTypeSymbol_369AB43672FFF7801A7F208655FF3ABDC8A9E69D">sngcpp::symbols::TypeSymbol::IsTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsTypedefSymbol_2F562AF9243B6B8B1B8DF5DF5DEEC9AF11D066D3">IsTypedefSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsTypedefSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#83">83</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_IsTypedefSymbol_B02F78C4D0F7C75184A05F0990E379A345457EE9">sngcpp::symbols::TypedefSymbol::IsTypedefSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsVariableSymbol_4E8C11889A8B5CA709217C0E8B4FE5219A1F8B09">IsVariableSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::IsVariableSymbol() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#85">85</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_IsVariableSymbol_2155664833DD1200ACE1FAEDBC187D7FDC643CA6">sngcpp::symbols::VariableSymbol::IsVariableSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::Symbol::KindStr() <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#51">51</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_KindStr_1C9397AB24FFCB1C5E6BBB0FEEC4A493A98D0343">sngcpp::symbols::ClassGroupSymbol::KindStr</a>
+            , <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_KindStr_A5B984BC29240989F3E06FD2E51E9CBE0F180759">sngcpp::symbols::ClassTypeSymbol::KindStr</a>
+            , <a href="./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html#function_KindStr_B32F04886D188CECEF9176631DF44DC3B0F521D1">sngcpp::symbols::ConstructorDeclarationSymbol::KindStr</a>
+            , <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_KindStr_2C965D817BFDC6AD8DA6D28AC19B8D073706A41D">sngcpp::symbols::ConstructorSymbol::KindStr</a>
+            , <a href="./class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html#function_KindStr_143406100E15AFC59F6BAEDD276FC83AF5B8B362">sngcpp::symbols::DeclarationBlockSymbol::KindStr</a>
+            , <a href="./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html#function_KindStr_A3A4DAAEEF002B25E706A4F219B8253A101DFE4C">sngcpp::symbols::EnumTypeSymbol::KindStr</a>
+            , <a href="./class_EnumeratorSymbol_36767DE0EF01460885AB04DEFD58C74EA3C6034A.html#function_KindStr_3D76D7843A751BA3BB6AEF37011613B98ED129FC">sngcpp::symbols::EnumeratorSymbol::KindStr</a>
+            , <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_KindStr_F69B798E7C99AB2C7BA5BBEA88775A9F9BD35A54">sngcpp::symbols::FunctionDeclarationSymbol::KindStr</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_KindStr_32D770148164B9679AF32E63D9F478A736028E40">sngcpp::symbols::FunctionGroupSymbol::KindStr</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_KindStr_D83F691E499A9138162C2A43AB4D3681D4D90F9C">sngcpp::symbols::FunctionSymbol::KindStr</a>
+            , <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_KindStr_752090D8BCEF2EB15521E79AA7B4BAA585491E51">sngcpp::symbols::GrammarSymbol::KindStr</a>
+            , <a href="./class_LambdaExpressionSymbol_18B7D83302A73F8DB16D599B39A49C9724862CF6.html#function_KindStr_D2A84A02B54102C32E0374C3B6DA9E150E8730DD">sngcpp::symbols::LambdaExpressionSymbol::KindStr</a>
+            , <a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_KindStr_C754B0A1F384D2E7EFD378A9F88C347CAA4127D8">sngcpp::symbols::NamespaceSymbol::KindStr</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_KindStr_A330D81264D72EBC3C621C626DFA64C4771A92A0">sngcpp::symbols::ParameterSymbol::KindStr</a>
+            , <a href="./class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html#function_KindStr_D1FD1788B80AC2AA4457B0F78E676A26018AE009">sngcpp::symbols::RuleSymbol::KindStr</a>
+            , <a href="./class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_KindStr_9F82A38E8F69F431ED61F70EEC1B8CFBA554BAFE">sngcpp::symbols::TemplateParameterSymbol::KindStr</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_KindStr_B607621E0E115094C947C0FD4D3DEF911AF33664">sngcpp::symbols::TypeSymbol::KindStr</a>
+            , <a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_KindStr_55642B68B5358372C379491F54DAC91F78FB24A0">sngcpp::symbols::TypedefSymbol::KindStr</a>
+            , <a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_KindStr_F7878F11AD54187CDE975071991EB79B15141D4C">sngcpp::symbols::VariableSymbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">Name Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::Symbol::Name() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#41">41</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">name</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Install_A12F268F71C2E39EBA72733B0B263FE343173093">sngcpp::symbols::ContainerScope::Install</a>
+            , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_68551ACCDD94D9E3A04B0B4589048CFA470C303B">sngcpp::symbols::FileScope::Install</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            , <a href="./class_SymbolCreator_B503539C43AAA8D3D3F6E9121C9797363D9C8151.html#function_Visit_B5E8AD72A1D89FB95B0A0D63E89AC7D062A505A5">sngcpp::symbols::SymbolCreator::Visit</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddTypedef_419EF08BEC632DA403007D907494E1788A7C8B32">sngcpp::symbols::SymbolTable::AddTypedef</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginFunction_ABF11344F7C51B51C02387A8683947F8E75DB9E2">sngcpp::symbols::SymbolTable::BeginFunction</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginFunctionDeclaration_5F180C87B4E74440592D5927C12FCAAB791EF255">sngcpp::symbols::SymbolTable::BeginFunctionDeclaration</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndClass_1ED66A41F4BFF73BBD8F2503511D9A9C7B3B2DC9">sngcpp::symbols::SymbolTable::EndClass</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndEnumType_4ADD9A897A78E4950D42DC7DD351493630A6031E">sngcpp::symbols::SymbolTable::EndEnumType</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndFunction_D8B735E9DF75450A5D020BDE2F989B15002ED382">sngcpp::symbols::SymbolTable::EndFunction</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndGrammar_5598AC1CD47D69652A743D98A63793E0FF191BF9">sngcpp::symbols::SymbolTable::EndGrammar</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeClassTemplateSpecializationSymbol_74288D85452AD1BC51DB4FB0E4B1173994271BCA">sngcpp::symbols::SymbolTable::MakeClassTemplateSpecializationSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NameBefore_464D093921D1D090533DDB5974084BFD4D029767">NameBefore Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::Symbol::NameBefore(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * that) <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#43">43</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">name</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">that</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Namespaces_D27DFA804A03841F7D4C10E2C09525D38FF158F0">Namespaces Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Namespaces() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#145">145</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#56">56</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Namespaces_289DF064675B029027F2780ED17A0F1044BAB28E">sngcpp::symbols::ContainerSymbol::Namespaces</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">Parent Member Function</h3>
+        <h4>
+            <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a>
+            * sngcpp::symbols::Symbol::Parent()</h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#65">65</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parent</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_AddClass_39D40CB7C87AFAC6FCE69423B9A8A990721CB2F0">sngcpp::symbols::ClassGroupSymbol::AddClass</a>
+            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_GlobalNs_71462AB42F42CE0F7EBEEE9A10FF1918F5670FD2">sngcpp::symbols::ContainerScope::GlobalNs</a>
+            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_AddFunction_F249081149D70DE11E22CEA378087D0977D63763">sngcpp::symbols::FunctionGroupSymbol::AddFunction</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_AddFunctionDeclaration_F905E5A64F20545C1F146046AA28EFC005CAB76B">sngcpp::symbols::FunctionGroupSymbol::AddFunctionDeclaration</a>
+            , <a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#function_IdStr_A98C8827D1223611E7A01E15BC5B6BC0BE7150A3">sngcpp::symbols::ParameterSymbol::IdStr</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ProjectName_01DFE2A0D7303AC270062F48568E2CB34AAF0F91">ProjectName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::Symbol::ProjectName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#91">91</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">projectName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetAccess_3184F8F8BB6CBCD79E7ED03004D546D6E4460BD1">SetAccess Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::Symbol::SetAccess(Specifier accessSpecifier)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#54">54</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddParameter_44DBF4F5FC91C8BA1C054FB4F32C589571EE0D91">sngcpp::symbols::SymbolTable::AddParameter</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginDeclarationBlock_7FCD5ABD40A61079080F3E08DAA70C185D376664">sngcpp::symbols::SymbolTable::BeginDeclarationBlock</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeClassTemplateSpecializationSymbol_74288D85452AD1BC51DB4FB0E4B1173994271BCA">sngcpp::symbols::SymbolTable::MakeClassTemplateSpecializationSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeDerivedTypeSymbol_5D80CD812A114B8870D7FB92197C50B69B2CE764">sngcpp::symbols::SymbolTable::MakeDerivedTypeSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeExternalTypeSymbol_565D5A8DB377659238B4F929A26AF19F5CD6512D">sngcpp::symbols::SymbolTable::MakeExternalTypeSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeIntegerLiteralTypeSymbol_E437651CEAADD2C7FCA31EC2D1FB5C522830BFD6">sngcpp::symbols::SymbolTable::MakeIntegerLiteralTypeSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakePseudoTypeSymbol_89436A0A9F3E9FBE90BE048576FA8924E351D341">sngcpp::symbols::SymbolTable::MakePseudoTypeSymbol</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_MakeSimpleTypeSymbol_12D224327EB0EE30648ADADBABBC0AED56B240EB">sngcpp::symbols::SymbolTable::MakeSimpleTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetName_DFBE1F2D9D55E29B4BFD24780F1C4F0D0EE6DED8">SetName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::Symbol::SetName(<span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#42">42</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">name</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">name_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetParent_F78F6B260EA6242F49F86FE9EF9F163F1A4FC9F9">SetParent Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::Symbol::SetParent(<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a>
+            * parent_)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#66">66</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">parent</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parent_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetProjectName_462CB0F5F5A7BAA4353DF1B7F86AFBDF0D0BEAE5">SetProjectName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::Symbol::SetProjectName(<span class="kw">const </span>
+            std::u32string&amp; projectName_)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#82">82</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#variable_projectName_4EEC73C4C60B6726FE573EAF7DC20F45955161A0">projectName</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">projectName_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#90">90</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddTypedef_419EF08BEC632DA403007D907494E1788A7C8B32">sngcpp::symbols::SymbolTable::AddTypedef</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginClass_28CD51B752CB190DBC356E2A0B74A7D310A0F799">sngcpp::symbols::SymbolTable::BeginClass</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginEnumType_D679777705313FC649D227CFD848D6C722D2D5BD">sngcpp::symbols::SymbolTable::BeginEnumType</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginFunction_ABF11344F7C51B51C02387A8683947F8E75DB9E2">sngcpp::symbols::SymbolTable::BeginFunction</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginGrammar_48BAF375096A535AB84D69AFD6148918D4BD9369">sngcpp::symbols::SymbolTable::BeginGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SimpleName_EED205298A68F207A136564A59D40E52EE91F34D">SimpleName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::Symbol::SimpleName() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#44">44</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">name</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html#function_SimpleName_1453134CE18B7026AD56E35213821EBD0FC67829">sngcpp::symbols::ConstructorDeclarationSymbol::SimpleName</a>
+            , <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_SimpleName_A713E41BCA070E4C6645DAD72895870BAE2DEB2D">sngcpp::symbols::ConstructorSymbol::SimpleName</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_SimpleName_BF25DF95E718F9B69D06D729B1AB65E0CC2597B6">sngcpp::symbols::FunctionSymbol::SimpleName</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">ToDomElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::ToDomElement()</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#87">87</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#55">55</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Classes_0DF475D208F10A1F8C7C6D493E49B2FC6CD642DC">sngcpp::symbols::Symbol::Classes</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Constructors_475EDB092F4FFBB5F1BB12E29B7E79AAB4B4FB5B">sngcpp::symbols::Symbol::Constructors</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_EnumTypes_4F03AE604078779D3DF8B1918A69D965E9C89E83">sngcpp::symbols::Symbol::EnumTypes</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Enumerators_7385C8AEB31AA26B3A08DAF32AE2B920816BBC27">sngcpp::symbols::Symbol::Enumerators</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Functions_F1A695A0AEBCBF15D7307867BC160FF96CF437DC">sngcpp::symbols::Symbol::Functions</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Grammars_F6DACEC492F5AB8A47FFAA2402A76295F74EDA0C">sngcpp::symbols::Symbol::Grammars</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsNamespaceSymbol_B31F06A521EE617A0BA75D888242ABFAA921AA07">sngcpp::symbols::Symbol::IsNamespaceSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">sngcpp::symbols::Symbol::Name</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Namespaces_D27DFA804A03841F7D4C10E2C09525D38FF158F0">sngcpp::symbols::Symbol::Namespaces</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Typedefs_88D05934A466EF100B4D1636460885E9D3FA0B2F">sngcpp::symbols::Symbol::Typedefs</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Variables_53328A8FBA0E1AA956267D931B5361BFDEE1DBE8">sngcpp::symbols::Symbol::Variables</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_CreateElement_E0BCBA6C1C8184B5BFADB9F6079EA07579C6A4D5">sngcpp::symbols::ConstructorSymbol::CreateElement</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Classes_350195062B1E238540C03D14C8CB0AD4C77CDBD2">sngcpp::symbols::ContainerSymbol::Classes</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Constructors_71C3AB2529759CB21784FF33EC60E07186AA91DC">sngcpp::symbols::ContainerSymbol::Constructors</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_EnumTypes_E6FDA146BB09C9E6400DE199A78A0A4B123D978C">sngcpp::symbols::ContainerSymbol::EnumTypes</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Enumerators_55D34C55F2459F73E111D8739ACD29D90738BB74">sngcpp::symbols::ContainerSymbol::Enumerators</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Functions_134CC3C0CBC92F4A8B02B37C7F9589C5D2FC583E">sngcpp::symbols::ContainerSymbol::Functions</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Grammars_D89064B2114E5B43F9BA705D05138CFD3D07D197">sngcpp::symbols::ContainerSymbol::Grammars</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Namespaces_289DF064675B029027F2780ED17A0F1044BAB28E">sngcpp::symbols::ContainerSymbol::Namespaces</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Typedefs_ADD4747C2740FC9426763E2784CE23119165D110">sngcpp::symbols::ContainerSymbol::Typedefs</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Variables_20FC19C260F2034B4F522AF9766367F78D4C33D0">sngcpp::symbols::ContainerSymbol::Variables</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_CreateElement_EB6C047AFBE94A9D88E136D9041BC1C81A202903">sngcpp::symbols::FunctionSymbol::CreateElement</a>
+            , <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_CreateElement_D9BF8F4465578DBEB205319B4070E7002D284730">sngcpp::symbols::GrammarSymbol::CreateElement</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_CreateTypesElement_DCD90C83F651F774162C64BCEC294D5422269760">sngcpp::symbols::SymbolTable::CreateTypesElement</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_ToDomElement_BD74058BD572538298CB59AD3FA3AED770B9A5C9">sngcpp::symbols::SymbolTable::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Typedefs_88D05934A466EF100B4D1636460885E9D3FA0B2F">Typedefs Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Typedefs() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#175">175</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#62">62</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Typedefs_ADD4747C2740FC9426763E2784CE23119165D110">sngcpp::symbols::ContainerSymbol::Typedefs</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Variables_53328A8FBA0E1AA956267D931B5361BFDEE1DBE8">Variables Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::Symbol::Variables() <span class="kw">virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html#180">180</a>
+             of <a href="file/Symbol.cpp_9907E15E3CEA3268AB78C2C2A9BCBD6567B96068.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">181</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">182</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">183</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#63">63</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Variables_20FC19C260F2034B4F522AF9766367F78D4C33D0">sngcpp::symbols::ContainerSymbol::Variables</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_22AE721007270AD488F500E060D0AD11AB442ED7">operator= Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            &amp; sngcpp::symbols::Symbol::operator=(<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#38">38</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_CA7B0E23B90367BECF7F4F91F7DC2E1474B4F673">operator= Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            &amp; sngcpp::symbols::Symbol::operator=(<span class="kw">const </span>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html#37">37</a>
+             of <a href="file/Symbol.hpp_396B8B78049126C03FB17BCE9E2FDFAB3687BBAB.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html">prev</a>
+         | <a href="class_SymbolCreator_B503539C43AAA8D3D3F6E9121C9797363D9C8151.html">next</a>
+    </body>
+</html>

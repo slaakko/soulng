@@ -20,7 +20,7 @@ std::unique_ptr<sngxml::xpath::XPathExpr> XPathParser::Parse(XPathLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::parser::Match match = XPathParser::Expr(lexer);
     value.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
@@ -63,7 +63,7 @@ soulng::parser::Match XPathParser::Expr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = XPathParser::OrExpr(lexer);
         orExpr.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
         if (match.hit)
@@ -104,7 +104,7 @@ soulng::parser::Match XPathParser::OrExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -114,7 +114,7 @@ soulng::parser::Match XPathParser::OrExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::AndExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -135,7 +135,7 @@ soulng::parser::Match XPathParser::OrExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -144,44 +144,47 @@ soulng::parser::Match XPathParser::OrExpr(XPathLexer& lexer)
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
                                         soulng::parser::Match match(false);
-                                        if (*lexer == OR)
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
-                                            ++lexer;
-                                            match.hit = true;
+                                            int64_t pos = lexer.GetPos();
+                                            bool pass = true;
+                                            soulng::parser::Match match(false);
+                                            if (*lexer == NAME)
+                                            {
+                                                ++lexer;
+                                                match.hit = true;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                soulng::lexer::Token token = lexer.GetToken(pos);
+                                                pass = lexer.GetKeywordToken(token.match) == OR;
+                                            }
+                                            if (match.hit && !pass)
+                                            {
+                                                match = soulng::parser::Match(false);
+                                            }
+                                            *parentMatch8 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
                                     if (match.hit)
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch8 = &match;
+                                        soulng::parser::Match* parentMatch9 = &match;
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch9 = &match;
+                                            soulng::parser::Match* parentMatch10 = &match;
                                             {
-                                                int pos = lexer.GetPos();
-                                                soulng::parser::Match match(true);
-                                                soulng::parser::Match* parentMatch10 = &match;
-                                                {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = XPathParser::AndExpr(lexer);
-                                                    right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
-                                                    if (match.hit)
-                                                    {
-                                                        *parentMatch10 = match;
-                                                    }
-                                                    else
-                                                    {
-                                                        lexer.ThrowExpectationFailure(pos, U"AndExpr");
-                                                    }
-                                                }
+                                                int64_t pos = lexer.GetPos();
+                                                soulng::parser::Match match = XPathParser::AndExpr(lexer);
+                                                right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                 if (match.hit)
                                                 {
                                                     expr.reset(new sngxml::xpath::XPathOrExpr(expr.release(), right.release()));
                                                 }
-                                                *parentMatch9 = match;
+                                                *parentMatch10 = match;
                                             }
-                                            *parentMatch8 = match;
+                                            *parentMatch9 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
@@ -243,7 +246,7 @@ soulng::parser::Match XPathParser::AndExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -253,7 +256,7 @@ soulng::parser::Match XPathParser::AndExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::EqualityExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -274,7 +277,7 @@ soulng::parser::Match XPathParser::AndExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -283,44 +286,47 @@ soulng::parser::Match XPathParser::AndExpr(XPathLexer& lexer)
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
                                         soulng::parser::Match match(false);
-                                        if (*lexer == AND)
+                                        soulng::parser::Match* parentMatch8 = &match;
                                         {
-                                            ++lexer;
-                                            match.hit = true;
+                                            int64_t pos = lexer.GetPos();
+                                            bool pass = true;
+                                            soulng::parser::Match match(false);
+                                            if (*lexer == NAME)
+                                            {
+                                                ++lexer;
+                                                match.hit = true;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                soulng::lexer::Token token = lexer.GetToken(pos);
+                                                pass = lexer.GetKeywordToken(token.match) == AND;
+                                            }
+                                            if (match.hit && !pass)
+                                            {
+                                                match = soulng::parser::Match(false);
+                                            }
+                                            *parentMatch8 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
                                     if (match.hit)
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch8 = &match;
+                                        soulng::parser::Match* parentMatch9 = &match;
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch9 = &match;
+                                            soulng::parser::Match* parentMatch10 = &match;
                                             {
-                                                int pos = lexer.GetPos();
-                                                soulng::parser::Match match(true);
-                                                soulng::parser::Match* parentMatch10 = &match;
-                                                {
-                                                    int pos = lexer.GetPos();
-                                                    soulng::parser::Match match = XPathParser::EqualityExpr(lexer);
-                                                    right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
-                                                    if (match.hit)
-                                                    {
-                                                        *parentMatch10 = match;
-                                                    }
-                                                    else
-                                                    {
-                                                        lexer.ThrowExpectationFailure(pos, U"EqualityExpr");
-                                                    }
-                                                }
+                                                int64_t pos = lexer.GetPos();
+                                                soulng::parser::Match match = XPathParser::EqualityExpr(lexer);
+                                                right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                 if (match.hit)
                                                 {
                                                     expr.reset(new sngxml::xpath::XPathAndExpr(expr.release(), right.release()));
                                                 }
-                                                *parentMatch9 = match;
+                                                *parentMatch10 = match;
                                             }
-                                            *parentMatch8 = match;
+                                            *parentMatch9 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
@@ -383,7 +389,7 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -393,7 +399,7 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::RelationalExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -414,7 +420,7 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -428,11 +434,11 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int save = lexer.GetPos();
+                                                int64_t save = lexer.GetPos();
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match(false);
                                                     if (*lexer == EQ)
                                                     {
@@ -455,7 +461,7 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
                                                         soulng::parser::Match match(false);
                                                         soulng::parser::Match* parentMatch12 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
+                                                            int64_t pos = lexer.GetPos();
                                                             soulng::parser::Match match(false);
                                                             if (*lexer == NEQ)
                                                             {
@@ -485,11 +491,11 @@ soulng::parser::Match XPathParser::EqualityExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch14 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch15 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = XPathParser::RelationalExpr(lexer);
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
@@ -576,7 +582,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -586,7 +592,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::AdditiveExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -607,7 +613,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -621,19 +627,19 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int save = lexer.GetPos();
+                                                int64_t save = lexer.GetPos();
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int save = lexer.GetPos();
+                                                    int64_t save = lexer.GetPos();
                                                     soulng::parser::Match match(false);
                                                     soulng::parser::Match* parentMatch11 = &match;
                                                     {
-                                                        int save = lexer.GetPos();
+                                                        int64_t save = lexer.GetPos();
                                                         soulng::parser::Match match(false);
                                                         soulng::parser::Match* parentMatch12 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
+                                                            int64_t pos = lexer.GetPos();
                                                             soulng::parser::Match match(false);
                                                             if (*lexer == LEQ)
                                                             {
@@ -656,7 +662,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                                                                 soulng::parser::Match match(false);
                                                                 soulng::parser::Match* parentMatch14 = &match;
                                                                 {
-                                                                    int pos = lexer.GetPos();
+                                                                    int64_t pos = lexer.GetPos();
                                                                     soulng::parser::Match match(false);
                                                                     if (*lexer == GEQ)
                                                                     {
@@ -684,7 +690,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                                                             soulng::parser::Match match(false);
                                                             soulng::parser::Match* parentMatch16 = &match;
                                                             {
-                                                                int pos = lexer.GetPos();
+                                                                int64_t pos = lexer.GetPos();
                                                                 soulng::parser::Match match(false);
                                                                 if (*lexer == LESS)
                                                                 {
@@ -712,7 +718,7 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                                                         soulng::parser::Match match(false);
                                                         soulng::parser::Match* parentMatch18 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
+                                                            int64_t pos = lexer.GetPos();
                                                             soulng::parser::Match match(false);
                                                             if (*lexer == GREATER)
                                                             {
@@ -742,11 +748,11 @@ soulng::parser::Match XPathParser::RelationalExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch20 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch21 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = XPathParser::AdditiveExpr(lexer);
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
@@ -837,7 +843,7 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -847,7 +853,7 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::MultiplicativeExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -868,7 +874,7 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -882,11 +888,11 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int save = lexer.GetPos();
+                                                int64_t save = lexer.GetPos();
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match(false);
                                                     if (*lexer == PLUS)
                                                     {
@@ -909,7 +915,7 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
                                                         soulng::parser::Match match(false);
                                                         soulng::parser::Match* parentMatch12 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
+                                                            int64_t pos = lexer.GetPos();
                                                             soulng::parser::Match match(false);
                                                             if (*lexer == MINUS)
                                                             {
@@ -939,11 +945,11 @@ soulng::parser::Match XPathParser::AdditiveExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch14 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch15 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = XPathParser::MultiplicativeExpr(lexer);
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
@@ -1030,7 +1036,7 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1040,7 +1046,7 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::UnaryExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1061,7 +1067,7 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -1075,79 +1081,61 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int save = lexer.GetPos();
+                                                int64_t save = lexer.GetPos();
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int save = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch11 = &match;
+                                                    if (*lexer == STAR)
                                                     {
-                                                        int pos = lexer.GetPos();
-                                                        soulng::parser::Match match(false);
-                                                        if (*lexer == STAR)
-                                                        {
-                                                            ++lexer;
-                                                            match.hit = true;
-                                                        }
-                                                        if (match.hit)
-                                                        {
-                                                            op = sngxml::xpath::Operator::mul;
-                                                        }
-                                                        *parentMatch11 = match;
+                                                        ++lexer;
+                                                        match.hit = true;
+                                                    }
+                                                    if (match.hit)
+                                                    {
+                                                        op = sngxml::xpath::Operator::mul;
                                                     }
                                                     *parentMatch10 = match;
-                                                    if (!match.hit)
-                                                    {
-                                                        soulng::parser::Match match(false);
-                                                        soulng::parser::Match* parentMatch12 = &match;
-                                                        lexer.SetPos(save);
-                                                        {
-                                                            soulng::parser::Match match(false);
-                                                            soulng::parser::Match* parentMatch13 = &match;
-                                                            {
-                                                                int pos = lexer.GetPos();
-                                                                soulng::parser::Match match(false);
-                                                                if (*lexer == DIV)
-                                                                {
-                                                                    ++lexer;
-                                                                    match.hit = true;
-                                                                }
-                                                                if (match.hit)
-                                                                {
-                                                                    op = sngxml::xpath::Operator::div;
-                                                                }
-                                                                *parentMatch13 = match;
-                                                            }
-                                                            *parentMatch12 = match;
-                                                        }
-                                                        *parentMatch10 = match;
-                                                    }
                                                 }
                                                 *parentMatch9 = match;
                                                 if (!match.hit)
                                                 {
                                                     soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch14 = &match;
+                                                    soulng::parser::Match* parentMatch11 = &match;
                                                     lexer.SetPos(save);
                                                     {
                                                         soulng::parser::Match match(false);
-                                                        soulng::parser::Match* parentMatch15 = &match;
+                                                        soulng::parser::Match* parentMatch12 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
+                                                            int64_t pos = lexer.GetPos();
+                                                            bool pass = true;
                                                             soulng::parser::Match match(false);
-                                                            if (*lexer == MOD)
+                                                            if (*lexer == NAME)
                                                             {
                                                                 ++lexer;
                                                                 match.hit = true;
                                                             }
                                                             if (match.hit)
                                                             {
-                                                                op = sngxml::xpath::Operator::mod;
+                                                                soulng::lexer::Token token = lexer.GetToken(pos);
+                                                                switch (lexer.GetKeywordToken(token.match))
+                                                                {
+                                                                    case DIV: op = sngxml::xpath::Operator::div;
+                                                                    break;
+                                                                    case MOD: op = sngxml::xpath::Operator::mod;
+                                                                    break;
+                                                                    default: pass = false;
+                                                                    break;
+                                                                }
                                                             }
-                                                            *parentMatch15 = match;
+                                                            if (match.hit && !pass)
+                                                            {
+                                                                match = soulng::parser::Match(false);
+                                                            }
+                                                            *parentMatch12 = match;
                                                         }
-                                                        *parentMatch14 = match;
+                                                        *parentMatch11 = match;
                                                     }
                                                     *parentMatch9 = match;
                                                 }
@@ -1159,21 +1147,21 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
                                     if (match.hit)
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch16 = &match;
+                                        soulng::parser::Match* parentMatch13 = &match;
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch17 = &match;
+                                            soulng::parser::Match* parentMatch14 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match(true);
-                                                soulng::parser::Match* parentMatch18 = &match;
+                                                soulng::parser::Match* parentMatch15 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = XPathParser::UnaryExpr(lexer);
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
                                                     {
-                                                        *parentMatch18 = match;
+                                                        *parentMatch15 = match;
                                                     }
                                                     else
                                                     {
@@ -1192,9 +1180,9 @@ soulng::parser::Match XPathParser::MultiplicativeExpr(XPathLexer& lexer)
                                                         break;
                                                     }
                                                 }
-                                                *parentMatch17 = match;
+                                                *parentMatch14 = match;
                                             }
-                                            *parentMatch16 = match;
+                                            *parentMatch13 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
@@ -1255,7 +1243,7 @@ soulng::parser::Match XPathParser::UnaryExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1275,7 +1263,7 @@ soulng::parser::Match XPathParser::UnaryExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::UnaryExpr(lexer);
                     subject.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1303,7 +1291,7 @@ soulng::parser::Match XPathParser::UnaryExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch5 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::UnionExpr(lexer);
                     unionExpr.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1349,7 +1337,7 @@ soulng::parser::Match XPathParser::UnionExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1359,7 +1347,7 @@ soulng::parser::Match XPathParser::UnionExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::PathExpr(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1380,7 +1368,7 @@ soulng::parser::Match XPathParser::UnionExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -1404,7 +1392,7 @@ soulng::parser::Match XPathParser::UnionExpr(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match = XPathParser::PathExpr(lexer);
                                                 right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                 if (match.hit)
@@ -1478,17 +1466,17 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 {
                     soulng::parser::Match match = XPathParser::LocationPath(lexer);
                     locationPath.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
@@ -1499,7 +1487,7 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int tmp = lexer.GetPos();
+                        int64_t tmp = lexer.GetPos();
                         lexer.SetPos(save);
                         save = tmp;
                         soulng::parser::Match match = XPathParser::FunctionCall(lexer);
@@ -1535,7 +1523,7 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch6 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch7 = &match;
                     {
@@ -1545,7 +1533,7 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = XPathParser::FilterExpr(lexer);
                                 filterExpr.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                 if (match.hit)
@@ -1562,7 +1550,7 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                             soulng::parser::Match* parentMatch10 = &match;
                             {
                                 soulng::parser::Match match(true);
-                                int save = lexer.GetPos();
+                                int64_t save = lexer.GetPos();
                                 soulng::parser::Match* parentMatch11 = &match;
                                 {
                                     soulng::parser::Match match(false);
@@ -1577,11 +1565,11 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch15 = &match;
                                                 {
-                                                    int save = lexer.GetPos();
+                                                    int64_t save = lexer.GetPos();
                                                     soulng::parser::Match match(false);
                                                     soulng::parser::Match* parentMatch16 = &match;
                                                     {
-                                                        int pos = lexer.GetPos();
+                                                        int64_t pos = lexer.GetPos();
                                                         soulng::parser::Match match(false);
                                                         if (*lexer == SLASHSLASH)
                                                         {
@@ -1604,7 +1592,7 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                                                             soulng::parser::Match match(false);
                                                             soulng::parser::Match* parentMatch18 = &match;
                                                             {
-                                                                int pos = lexer.GetPos();
+                                                                int64_t pos = lexer.GetPos();
                                                                 soulng::parser::Match match(false);
                                                                 if (*lexer == SLASH)
                                                                 {
@@ -1634,7 +1622,7 @@ soulng::parser::Match XPathParser::PathExpr(XPathLexer& lexer)
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch20 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = XPathParser::RelativeLocationPath(lexer);
                                                     right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                     if (match.hit)
@@ -1725,7 +1713,7 @@ soulng::parser::Match XPathParser::FilterExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1735,7 +1723,7 @@ soulng::parser::Match XPathParser::FilterExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::PrimaryExpr(lexer);
                     primaryExpr.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1756,7 +1744,7 @@ soulng::parser::Match XPathParser::FilterExpr(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -1764,7 +1752,7 @@ soulng::parser::Match XPathParser::FilterExpr(XPathLexer& lexer)
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch7 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = XPathParser::Predicate(lexer);
                                         predicate.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                         if (match.hit)
@@ -1830,11 +1818,11 @@ soulng::parser::Match XPathParser::LocationPath(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match = XPathParser::AbsoluteLocationPath(lexer);
             absoluteLocationPath.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
             if (match.hit)
@@ -1858,7 +1846,7 @@ soulng::parser::Match XPathParser::LocationPath(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::RelativeLocationPath(lexer);
                     relativeLocationPath.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1904,18 +1892,18 @@ soulng::parser::Match XPathParser::AbsoluteLocationPath(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::AbbreviatedAbsoluteLocationPath(lexer);
                     abbreviatedAbsoluteLocationPath.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -1937,7 +1925,7 @@ soulng::parser::Match XPathParser::AbsoluteLocationPath(XPathLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == SLASH)
                                 {
@@ -1958,7 +1946,7 @@ soulng::parser::Match XPathParser::AbsoluteLocationPath(XPathLexer& lexer)
                             soulng::parser::Match* parentMatch7 = &match;
                             {
                                 soulng::parser::Match match(true);
-                                int save = lexer.GetPos();
+                                int64_t save = lexer.GetPos();
                                 soulng::parser::Match* parentMatch8 = &match;
                                 {
                                     soulng::parser::Match match(false);
@@ -1967,7 +1955,7 @@ soulng::parser::Match XPathParser::AbsoluteLocationPath(XPathLexer& lexer)
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch10 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = XPathParser::RelativeLocationPath(lexer);
                                             right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                             if (match.hit)
@@ -2050,7 +2038,7 @@ soulng::parser::Match XPathParser::AbbreviatedAbsoluteLocationPath(XPathLexer& l
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match = XPathParser::RelativeLocationPath(lexer);
                 right.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                 if (match.hit)
@@ -2096,7 +2084,7 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -2106,7 +2094,7 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::Step(lexer);
                     left.reset(static_cast<sngxml::xpath::XPathLocationStepExpr*>(match.value));
                     if (match.hit)
@@ -2127,7 +2115,7 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -2141,11 +2129,11 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int save = lexer.GetPos();
+                                                int64_t save = lexer.GetPos();
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int pos = lexer.GetPos();
+                                                    int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match(false);
                                                     if (*lexer == SLASHSLASH)
                                                     {
@@ -2168,7 +2156,7 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
                                                         soulng::parser::Match match(false);
                                                         soulng::parser::Match* parentMatch12 = &match;
                                                         {
-                                                            int pos = lexer.GetPos();
+                                                            int64_t pos = lexer.GetPos();
                                                             soulng::parser::Match match(false);
                                                             if (*lexer == SLASH)
                                                             {
@@ -2198,7 +2186,7 @@ soulng::parser::Match XPathParser::RelativeLocationPath(XPathLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch14 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::parser::Match match = XPathParser::Step(lexer);
                                                 right.reset(static_cast<sngxml::xpath::XPathLocationStepExpr*>(match.value));
                                                 if (match.hit)
@@ -2281,14 +2269,14 @@ soulng::parser::Match XPathParser::Step(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
@@ -2307,7 +2295,7 @@ soulng::parser::Match XPathParser::Step(XPathLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = XPathParser::NodeTest(lexer);
                                 nodeTest.reset(static_cast<sngxml::xpath::XPathNodeTestExpr*>(match.value));
                                 if (match.hit)
@@ -2332,7 +2320,7 @@ soulng::parser::Match XPathParser::Step(XPathLexer& lexer)
                         {
                             while (true)
                             {
-                                int save = lexer.GetPos();
+                                int64_t save = lexer.GetPos();
                                 {
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch9 = &match;
@@ -2340,7 +2328,7 @@ soulng::parser::Match XPathParser::Step(XPathLexer& lexer)
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch10 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = XPathParser::Predicate(lexer);
                                             predicate.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                             if (match.hit)
@@ -2377,7 +2365,7 @@ soulng::parser::Match XPathParser::Step(XPathLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch12 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = XPathParser::AbbreviatedStep(lexer);
                             abbreviatedStep.reset(static_cast<sngxml::xpath::XPathLocationStepExpr*>(match.value));
                             if (match.hit)
@@ -2430,7 +2418,7 @@ soulng::parser::Match XPathParser::AxisSpecifier(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -2446,7 +2434,7 @@ soulng::parser::Match XPathParser::AxisSpecifier(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == COLONCOLON)
                     {
@@ -2478,7 +2466,7 @@ soulng::parser::Match XPathParser::AxisSpecifier(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch5 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::AbbreviatedAxisSpecifier(lexer);
                     abbreviatedAxisSpecifier.reset(static_cast<soulng::parser::Value<sngxml::xpath::Axis>*>(match.value));
                     if (match.hit)
@@ -2519,179 +2507,136 @@ soulng::parser::Match XPathParser::AxisName(XPathLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
-    soulng::lexer::Span span = lexer.GetSpan();
-    switch (*lexer)
+    soulng::parser::Match* parentMatch0 = &match;
     {
-        case ANCESTOR:
+        int64_t pos = lexer.GetPos();
+        bool pass = true;
+        soulng::parser::Match match(false);
+        if (*lexer == NAME)
         {
             ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::ancestor));
-                }
-            }
-            break;
+            match.hit = true;
         }
-        case ANCESTOR_OR_SELF:
+        if (match.hit)
         {
-            ++lexer;
+            soulng::lexer::Token token = lexer.GetToken(pos);
+            switch (lexer.GetKeywordToken(token.match))
             {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::ancestorOrSelf));
+                case ANCESTOR: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::ancestor));
+                    }
+                }
+                case ANCESTOR_OR_SELF: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::ancestorOrSelf));
+                    }
+                }
+                case ATTRIBUTE: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::attribute));
+                    }
+                }
+                case CHILD: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::child));
+                    }
+                }
+                case DESCENDANT: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::descendant));
+                    }
+                }
+                case DESCENDANT_OR_SELF: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::descendantOrSelf));
+                    }
+                }
+                case FOLLOWING: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::following));
+                    }
+                }
+                case FOLLOWING_SIBLING: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::followingSibling));
+                    }
+                }
+                case NAMESPACE: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::ns));
+                    }
+                }
+                case PARENT: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::parent));
+                    }
+                }
+                case PRECEDING: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::preceding));
+                    }
+                }
+                case PRECEDING_SIBLING: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::precedingSibling));
+                    }
+                }
+                case SELF: {
+                    {
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::self));
+                    }
+                }
+                default: {
+                    pass = false;
+                    break;
                 }
             }
-            break;
         }
-        case ATTRIBUTE:
+        if (match.hit && !pass)
         {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::attribute));
-                }
-            }
-            break;
+            match = soulng::parser::Match(false);
         }
-        case CHILD:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::child));
-                }
-            }
-            break;
-        }
-        case DESCENDANT:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::descendant));
-                }
-            }
-            break;
-        }
-        case DESCENDANT_OR_SELF:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::descendantOrSelf));
-                }
-            }
-            break;
-        }
-        case FOLLOWING:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::following));
-                }
-            }
-            break;
-        }
-        case FOLLOWING_SIBLING:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::followingSibling));
-                }
-            }
-            break;
-        }
-        case NAMESPACE:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::ns));
-                }
-            }
-            break;
-        }
-        case PARENT:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::parent));
-                }
-            }
-            break;
-        }
-        case PRECEDING:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::preceding));
-                }
-            }
-            break;
-        }
-        case PRECEDING_SIBLING:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::precedingSibling));
-                }
-            }
-            break;
-        }
-        case SELF:
-        {
-            ++lexer;
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AxisName"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new soulng::parser::Value<sngxml::xpath::Axis>(sngxml::xpath::Axis::self));
-                }
-            }
-            break;
-        }
+        *parentMatch0 = match;
     }
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (parser_debug_write_to_log)
@@ -2717,11 +2662,11 @@ soulng::parser::Match XPathParser::AbbreviatedAxisSpecifier(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match(false);
             if (*lexer == AT)
             {
@@ -2749,7 +2694,7 @@ soulng::parser::Match XPathParser::AbbreviatedAxisSpecifier(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(true);
                     if (match.hit)
                     {
@@ -2794,11 +2739,11 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
@@ -2809,17 +2754,33 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         soulng::parser::Match match(false);
-                        if (*lexer == PROCESSING_INSTRUCTION)
+                        soulng::parser::Match* parentMatch5 = &match;
                         {
-                            ++lexer;
-                            match.hit = true;
+                            int64_t pos = lexer.GetPos();
+                            bool pass = true;
+                            soulng::parser::Match match(false);
+                            if (*lexer == NAME)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                soulng::lexer::Token token = lexer.GetToken(pos);
+                                pass = lexer.GetKeywordToken(token.match) == PROCESSING_INSTRUCTION;
+                            }
+                            if (match.hit && !pass)
+                            {
+                                match = soulng::parser::Match(false);
+                            }
+                            *parentMatch5 = match;
                         }
                         *parentMatch4 = match;
                     }
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch5 = &match;
+                        soulng::parser::Match* parentMatch6 = &match;
                         {
                             soulng::parser::Match match(false);
                             if (*lexer == LPAREN)
@@ -2827,7 +2788,7 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                                 ++lexer;
                                 match.hit = true;
                             }
-                            *parentMatch5 = match;
+                            *parentMatch6 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -2836,11 +2797,11 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch6 = &match;
+                    soulng::parser::Match* parentMatch7 = &match;
                     {
                         soulng::parser::Match match = XPathParser::Literal(lexer);
                         pi.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
-                        *parentMatch6 = match;
+                        *parentMatch7 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -2849,12 +2810,12 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch7 = &match;
+                soulng::parser::Match* parentMatch8 = &match;
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch8 = &match;
+                    soulng::parser::Match* parentMatch9 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -2870,9 +2831,9 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                                 return soulng::parser::Match(true, new sngxml::xpath::XPathPILiteralTest(pi.release()));
                             }
                         }
-                        *parentMatch8 = match;
+                        *parentMatch9 = match;
                     }
-                    *parentMatch7 = match;
+                    *parentMatch8 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -2880,23 +2841,23 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
             if (!match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch9 = &match;
+                soulng::parser::Match* parentMatch10 = &match;
                 lexer.SetPos(save);
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch10 = &match;
+                    soulng::parser::Match* parentMatch11 = &match;
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch11 = &match;
+                        soulng::parser::Match* parentMatch12 = &match;
                         {
                             soulng::parser::Match match = XPathParser::NodeType(lexer);
                             nodeType.reset(static_cast<sngxml::xpath::XPathNodeTestExpr*>(match.value));
-                            *parentMatch11 = match;
+                            *parentMatch12 = match;
                         }
                         if (match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch12 = &match;
+                            soulng::parser::Match* parentMatch13 = &match;
                             {
                                 soulng::parser::Match match(false);
                                 if (*lexer == LPAREN)
@@ -2904,21 +2865,21 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                                     ++lexer;
                                     match.hit = true;
                                 }
-                                *parentMatch12 = match;
+                                *parentMatch13 = match;
                             }
-                            *parentMatch11 = match;
+                            *parentMatch12 = match;
                         }
-                        *parentMatch10 = match;
+                        *parentMatch11 = match;
                     }
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch13 = &match;
+                        soulng::parser::Match* parentMatch14 = &match;
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch14 = &match;
+                            soulng::parser::Match* parentMatch15 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == RPAREN)
                                 {
@@ -2934,13 +2895,13 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                                         return soulng::parser::Match(true, nodeType.release());
                                     }
                                 }
-                                *parentMatch14 = match;
+                                *parentMatch15 = match;
                             }
-                            *parentMatch13 = match;
+                            *parentMatch14 = match;
                         }
-                        *parentMatch10 = match;
+                        *parentMatch11 = match;
                     }
-                    *parentMatch9 = match;
+                    *parentMatch10 = match;
                 }
                 *parentMatch1 = match;
             }
@@ -2949,13 +2910,13 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
         if (!match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch15 = &match;
+            soulng::parser::Match* parentMatch16 = &match;
             lexer.SetPos(save);
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch16 = &match;
+                soulng::parser::Match* parentMatch17 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::NameTest(lexer);
                     nameTest.reset(static_cast<sngxml::xpath::XPathNodeTestExpr*>(match.value));
                     if (match.hit)
@@ -2967,9 +2928,9 @@ soulng::parser::Match XPathParser::NodeTest(XPathLexer& lexer)
                             return soulng::parser::Match(true, nameTest.release());
                         }
                     }
-                    *parentMatch16 = match;
+                    *parentMatch17 = match;
                 }
-                *parentMatch15 = match;
+                *parentMatch16 = match;
             }
             *parentMatch0 = match;
         }
@@ -2996,62 +2957,56 @@ soulng::parser::Match XPathParser::NodeType(XPathLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
-    soulng::lexer::Span span = lexer.GetSpan();
-    switch (*lexer)
+    soulng::parser::Match* parentMatch0 = &match;
     {
-        case COMMENT:
+        int64_t pos = lexer.GetPos();
+        bool pass = true;
+        soulng::parser::Match match(false);
+        if (*lexer == NAME)
         {
             ++lexer;
+            match.hit = true;
+        }
+        if (match.hit)
+        {
+            soulng::lexer::Token token = lexer.GetToken(pos);
+            switch (lexer.GetKeywordToken(token.match))
             {
-                {
+                case COMMENT: {
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NodeType"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
                     return soulng::parser::Match(true, new sngxml::xpath::XPathCommentNodeTest);
                 }
-            }
-            break;
-        }
-        case TEXT:
-        {
-            ++lexer;
-            {
-                {
+                case TEXT: {
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NodeType"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
                     return soulng::parser::Match(true, new sngxml::xpath::XPathTextNodeTest);
                 }
-            }
-            break;
-        }
-        case PROCESSING_INSTRUCTION:
-        {
-            ++lexer;
-            {
-                {
+                case PROCESSING_INSTRUCTION: {
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NodeType"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
                     return soulng::parser::Match(true, new sngxml::xpath::XPathPINodeTest);
                 }
-            }
-            break;
-        }
-        case NODE:
-        {
-            ++lexer;
-            {
-                {
+                case NODE: {
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NodeType"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
                     return soulng::parser::Match(true, new sngxml::xpath::XPathAnyNodeTest);
                 }
+                default: {
+                    pass = false;
+                    break;
+                }
             }
-            break;
         }
+        if (match.hit && !pass)
+        {
+            match = soulng::parser::Match(false);
+        }
+        *parentMatch0 = match;
     }
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (parser_debug_write_to_log)
@@ -3079,15 +3034,15 @@ soulng::parser::Match XPathParser::NameTest(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(false);
                 if (*lexer == STAR)
                 {
@@ -3147,7 +3102,7 @@ soulng::parser::Match XPathParser::NameTest(XPathLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch8 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == STAR)
                                 {
@@ -3184,7 +3139,7 @@ soulng::parser::Match XPathParser::NameTest(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch10 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::QName(lexer);
                     qname.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                     if (match.hit)
@@ -3225,7 +3180,7 @@ soulng::parser::Match XPathParser::AbbreviatedStep(XPathLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -3278,7 +3233,7 @@ soulng::parser::Match XPathParser::Literal(XPathLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -3335,7 +3290,7 @@ soulng::parser::Match XPathParser::Number(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         if (*lexer == NUMBER)
         {
@@ -3379,7 +3334,7 @@ soulng::parser::Match XPathParser::Predicate(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -3463,7 +3418,7 @@ soulng::parser::Match XPathParser::PredicateExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = XPathParser::Expr(lexer);
         expr.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
         if (match.hit)
@@ -3506,23 +3461,23 @@ soulng::parser::Match XPathParser::PrimaryExpr(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = XPathParser::FunctionCall(lexer);
                         functionCall.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                         if (match.hit)
@@ -3546,7 +3501,7 @@ soulng::parser::Match XPathParser::PrimaryExpr(XPathLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = XPathParser::VariableReference(lexer);
                                 variableReference.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                 if (match.hit)
@@ -3575,7 +3530,7 @@ soulng::parser::Match XPathParser::PrimaryExpr(XPathLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch8 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
@@ -3649,7 +3604,7 @@ soulng::parser::Match XPathParser::PrimaryExpr(XPathLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch15 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = XPathParser::Literal(lexer);
                         literal.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                         if (match.hit)
@@ -3678,7 +3633,7 @@ soulng::parser::Match XPathParser::PrimaryExpr(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch17 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::Number(lexer);
                     number.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                     if (match.hit)
@@ -3722,7 +3677,7 @@ soulng::parser::Match XPathParser::VariableReference(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -3788,7 +3743,7 @@ soulng::parser::Match XPathParser::FunctionCall(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -3813,7 +3768,7 @@ soulng::parser::Match XPathParser::FunctionCall(XPathLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == LPAREN)
                                 {
@@ -3838,7 +3793,7 @@ soulng::parser::Match XPathParser::FunctionCall(XPathLexer& lexer)
                     soulng::parser::Match* parentMatch7 = &match;
                     {
                         soulng::parser::Match match(true);
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match* parentMatch8 = &match;
                         {
                             soulng::parser::Match match(false);
@@ -3850,7 +3805,7 @@ soulng::parser::Match XPathParser::FunctionCall(XPathLexer& lexer)
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch11 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = XPathParser::Argument(lexer);
                                         arg.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                         if (match.hit)
@@ -3871,7 +3826,7 @@ soulng::parser::Match XPathParser::FunctionCall(XPathLexer& lexer)
                                         {
                                             while (true)
                                             {
-                                                int save = lexer.GetPos();
+                                                int64_t save = lexer.GetPos();
                                                 {
                                                     soulng::parser::Match match(false);
                                                     soulng::parser::Match* parentMatch14 = &match;
@@ -3892,7 +3847,7 @@ soulng::parser::Match XPathParser::FunctionCall(XPathLexer& lexer)
                                                             soulng::parser::Match match(false);
                                                             soulng::parser::Match* parentMatch16 = &match;
                                                             {
-                                                                int pos = lexer.GetPos();
+                                                                int64_t pos = lexer.GetPos();
                                                                 soulng::parser::Match match = XPathParser::Argument(lexer);
                                                                 arg.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
                                                                 if (match.hit)
@@ -3992,13 +3947,13 @@ soulng::parser::Match XPathParser::FunctionName(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             {
                 soulng::parser::Match match = XPathParser::QName(lexer);
                 qname.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
@@ -4009,7 +3964,7 @@ soulng::parser::Match XPathParser::FunctionName(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int tmp = lexer.GetPos();
+                    int64_t tmp = lexer.GetPos();
                     lexer.SetPos(save);
                     save = tmp;
                     soulng::parser::Match match = XPathParser::NodeType(lexer);
@@ -4060,7 +4015,7 @@ soulng::parser::Match XPathParser::Argument(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = XPathParser::Expr(lexer);
         expr.reset(static_cast<sngxml::xpath::XPathExpr*>(match.value));
         if (match.hit)
@@ -4100,11 +4055,11 @@ soulng::parser::Match XPathParser::QName(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match = XPathParser::PrefixedName(lexer);
             prefixedName.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
             if (match.hit)
@@ -4128,7 +4083,7 @@ soulng::parser::Match XPathParser::QName(XPathLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = XPathParser::UnprefixedName(lexer);
                     unprefixedName.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                     if (match.hit)
@@ -4173,7 +4128,7 @@ soulng::parser::Match XPathParser::PrefixedName(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -4253,7 +4208,7 @@ soulng::parser::Match XPathParser::Prefix(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = XPathParser::NCName(lexer);
         ncname.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
         if (match.hit)
@@ -4292,7 +4247,7 @@ soulng::parser::Match XPathParser::UnprefixedName(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = XPathParser::LocalPart(lexer);
         localPart.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
         if (match.hit)
@@ -4331,7 +4286,7 @@ soulng::parser::Match XPathParser::LocalPart(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = XPathParser::NCName(lexer);
         ncname.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
         if (match.hit)
@@ -4369,7 +4324,7 @@ soulng::parser::Match XPathParser::NCName(XPathLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         if (*lexer == NAME)
         {

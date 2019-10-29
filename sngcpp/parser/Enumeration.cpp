@@ -39,7 +39,7 @@ soulng::parser::Match EnumerationParser::EnumDeclaration(CppLexer& lexer, sngcpp
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)
                 {
@@ -89,7 +89,7 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -105,7 +105,7 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = EnumerationParser::EnumHead(lexer, ctx);
                             enumHead.reset(static_cast<sngcpp::ast::EnumTypeNode*>(match.value));
                             if (match.hit)
@@ -124,7 +124,7 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch7 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match(false);
                                 if (*lexer == LBRACE)
@@ -164,12 +164,12 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch10 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(false);
                             if (*lexer == RBRACE)
                             {
@@ -238,7 +238,7 @@ soulng::parser::Match EnumerationParser::EnumHead(CppLexer& lexer, sngcpp::cpppa
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -251,7 +251,7 @@ soulng::parser::Match EnumerationParser::EnumHead(CppLexer& lexer, sngcpp::cpppa
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match = EnumerationParser::EnumKey(lexer);
                         enumKey.reset(static_cast<soulng::parser::Value<sngcpp::ast::EnumKey>*>(match.value));
@@ -271,7 +271,7 @@ soulng::parser::Match EnumerationParser::EnumHead(CppLexer& lexer, sngcpp::cpppa
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch6 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match = EnumerationParser::EnumName(lexer, ctx);
                             enumName.reset(static_cast<sngcpp::ast::Node*>(match.value));
@@ -293,7 +293,7 @@ soulng::parser::Match EnumerationParser::EnumHead(CppLexer& lexer, sngcpp::cpppa
                 soulng::parser::Match* parentMatch7 = &match;
                 {
                     soulng::parser::Match match(true);
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match* parentMatch8 = &match;
                     {
                         soulng::parser::Match match(false);
@@ -302,7 +302,7 @@ soulng::parser::Match EnumerationParser::EnumHead(CppLexer& lexer, sngcpp::cpppa
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch10 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match = EnumerationParser::EnumBase(lexer, ctx);
                                 enumBase.reset(static_cast<sngcpp::ast::Node*>(match.value));
@@ -377,7 +377,7 @@ soulng::parser::Match EnumerationParser::OpaqueEnumDeclaration(CppLexer& lexer, 
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = EnumerationParser::EnumKey(lexer);
                     enumKey.reset(static_cast<soulng::parser::Value<sngcpp::ast::EnumKey>*>(match.value));
@@ -408,7 +408,7 @@ soulng::parser::Match EnumerationParser::OpaqueEnumDeclaration(CppLexer& lexer, 
             soulng::parser::Match* parentMatch5 = &match;
             {
                 soulng::parser::Match match(true);
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match* parentMatch6 = &match;
                 {
                     soulng::parser::Match match(false);
@@ -441,7 +441,7 @@ soulng::parser::Match EnumerationParser::OpaqueEnumDeclaration(CppLexer& lexer, 
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch9 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)
@@ -489,11 +489,11 @@ soulng::parser::Match EnumerationParser::EnumKey(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
@@ -513,7 +513,7 @@ soulng::parser::Match EnumerationParser::EnumKey(CppLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == CLASS)
                         {
@@ -561,7 +561,7 @@ soulng::parser::Match EnumerationParser::EnumKey(CppLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch8 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == STRUCT)
                                 {
@@ -598,7 +598,7 @@ soulng::parser::Match EnumerationParser::EnumKey(CppLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch10 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == ENUM)
                     {
@@ -646,7 +646,7 @@ soulng::parser::Match EnumerationParser::EnumName(CppLexer& lexer, sngcpp::cpppa
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = IdentifierParser::QualifiedIdNode(lexer, ctx);
         enumName.reset(static_cast<sngcpp::ast::Node*>(match.value));
         if (match.hit)
@@ -701,7 +701,7 @@ soulng::parser::Match EnumerationParser::EnumBase(CppLexer& lexer, sngcpp::cpppa
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
                 typeExpr.reset(static_cast<sngcpp::ast::Node*>(match.value));
                 if (match.hit)
@@ -744,7 +744,7 @@ soulng::parser::Match EnumerationParser::Enumerators(CppLexer& lexer, sngcpp::cp
     std::unique_ptr<sngcpp::ast::EnumeratorNode> left;
     std::unique_ptr<sngcpp::ast::EnumeratorNode> right;
     soulng::parser::Match match(true);
-    int save = lexer.GetPos();
+    int64_t save = lexer.GetPos();
     soulng::parser::Match* parentMatch0 = &match;
     {
         soulng::parser::Match match(false);
@@ -756,7 +756,7 @@ soulng::parser::Match EnumerationParser::Enumerators(CppLexer& lexer, sngcpp::cp
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = EnumerationParser::EnumeratorDefinition(lexer, ctx);
                     left.reset(static_cast<sngcpp::ast::EnumeratorNode*>(match.value));
@@ -779,7 +779,7 @@ soulng::parser::Match EnumerationParser::Enumerators(CppLexer& lexer, sngcpp::cp
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -803,7 +803,7 @@ soulng::parser::Match EnumerationParser::Enumerators(CppLexer& lexer, sngcpp::cp
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match = EnumerationParser::EnumeratorDefinition(lexer, ctx);
                                                 right.reset(static_cast<sngcpp::ast::EnumeratorNode*>(match.value));
@@ -876,7 +876,7 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -886,7 +886,7 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = EnumerationParser::Enumerator(lexer);
                     enumerator.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
@@ -904,7 +904,7 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
                 soulng::parser::Match* parentMatch4 = &match;
                 {
                     soulng::parser::Match match(true);
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match* parentMatch5 = &match;
                     {
                         soulng::parser::Match match(false);
@@ -916,7 +916,7 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch8 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::lexer::Span span = lexer.GetSpan();
                                     soulng::parser::Match match(false);
                                     if (*lexer == ASSIGN)
@@ -940,7 +940,7 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch10 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match = ExpressionParser::ConstantExpression(lexer, ctx);
                                         value.reset(static_cast<sngcpp::ast::Node*>(match.value));
@@ -1008,7 +1008,7 @@ soulng::parser::Match EnumerationParser::Enumerator(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match = IdentifierParser::Identifier(lexer);
         id.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
         if (match.hit)

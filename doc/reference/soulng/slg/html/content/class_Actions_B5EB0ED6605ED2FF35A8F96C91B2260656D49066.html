@@ -1,0 +1,202 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Actions Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">prev</a>
+         | <a href="class_Any_097E4D675F759F1FDECFC680DE2E3EB79DC5CBFA.html">next</a>
+        <hr/>
+        <h1>Actions Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#183">183</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#constructor_Actions_91F20F036CBA3659A454D8AD2988E2945689A54F">Actions</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_Add_82322B43F98E6D59B9798BE56C08AF61CF15D2C3">Add</a>(<a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>* action)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_FillContext_C426CAB374ED6FDE79DCB55D56362707243AD5D2">FillContext</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_Get_4040AE26948F373AADA6D7C5C5B5B9EDEF9E7556">Get</a>(<span class="kw">int</span> id) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_Process_26C2880EB70B0863E6C54DF0C5DE81937BB7AC39">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_actionMap_04D9534E04F8856EC8709E17AE4191AB5E1AEA58">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;<span class="kw">int</span>, <a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">actionMap</td>
+            </tr>
+            <tr id="variable_actions_1CB09771183025D63DEA292A361E3D403843E879">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">actions</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Actions_91F20F036CBA3659A454D8AD2988E2945689A54F">Actions Constructor</h3>
+        <h4>
+            soulng::slg::Actions::Actions()</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#772">772</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">772</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">(</span><span class="string">U"actions"</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">773</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">774</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#186">186</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Add_82322B43F98E6D59B9798BE56C08AF61CF15D2C3">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Actions::Add(<a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>
+            * action)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#784">784</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">785</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">786</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#variable_actions_1CB09771183025D63DEA292A361E3D403843E879">actions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a><span class="other">></span><span class="other">(</span><span class="identifier">action</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">787</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#variable_actionMap_04D9534E04F8856EC8709E17AE4191AB5E1AEA58">actionMap</a><span class="other">[</span><span class="identifier">action</span><span class="other">-></span><a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html#function_Id_6B46228FAF724521795950FD19A2ACD0BE7AE1EB">Id</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">action</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">788</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#189">189</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html#function_Id_6B46228FAF724521795950FD19A2ACD0BE7AE1EB">soulng::slg::Action::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_AddAction_A88DA71465FB7F4733E17C7EF0797740E71DEE0E">soulng::slg::Lexer::AddAction</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FillContext_C426CAB374ED6FDE79DCB55D56362707243AD5D2">FillContext Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Actions::FillContext(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+            &amp; lexerContext)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#776">776</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">777</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">778</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#187">187</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Get_4040AE26948F373AADA6D7C5C5B5B9EDEF9E7556">Get Member Function</h3>
+        <h4>
+            <a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>
+            * soulng::slg::Actions::Get(<span class="kw">int</span>
+             id) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#790">790</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#190">190</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Process_26C2880EB70B0863E6C54DF0C5DE81937BB7AC39">Process Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Actions::Process(<span class="kw">const </span>
+            std::string&amp; root, <span class="kw">bool</span>
+             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+            &amp; lexerContext)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#780">780</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">781</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">782</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#188">188</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">prev</a>
+         | <a href="class_Any_097E4D675F759F1FDECFC680DE2E3EB79DC5CBFA.html">next</a>
+    </body>
+</html>

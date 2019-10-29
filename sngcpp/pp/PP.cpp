@@ -161,6 +161,7 @@ void InitPPTokenTextTokenMap()
 
 std::vector<soulng::lexer::Token> MacroExpand(const std::vector<soulng::lexer::Token>& tokens, const PP* pp)
 {
+    bool prevWasMacro = false;
     std::vector<soulng::lexer::Token> expandedTokens;
     for (const soulng::lexer::Token& token : tokens)
     {
@@ -174,6 +175,7 @@ std::vector<soulng::lexer::Token> MacroExpand(const std::vector<soulng::lexer::T
                 {
                     expandedTokens.push_back(replacementToken);
                 }
+                prevWasMacro = true;
             }
             else
             {
@@ -182,7 +184,18 @@ std::vector<soulng::lexer::Token> MacroExpand(const std::vector<soulng::lexer::T
         }
         else
         {
-            expandedTokens.push_back(token);
+            if (prevWasMacro)
+            {
+                prevWasMacro = false;
+                if (token.id != TextTokens::WS)
+                {
+                    expandedTokens.push_back(token);
+                }
+            }
+            else
+            {
+                expandedTokens.push_back(token);
+            }
         }
     }
     return expandedTokens;
@@ -315,7 +328,7 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
 
 PP::PP(EvaluationContext& context_) :
     fileIndex(0), save(true), process(true), processed(false), elseGroupProcessed(false), inIfGroup(false), verbose(false),
-    projectHeaderFileSet(nullptr), root(GetCurrentWorkingDirectory()), line(1), context(context_), rootMode(false)
+    projectHeaderFileSet(nullptr), root(GetCurrentWorkingDirectory()), line(1), context(context_), rootMode(false), tokens(nullptr)
 {
 }
 
@@ -552,6 +565,25 @@ void PP::Emit(const soulng::lexer::Lexeme& lexeme)
             ++p;
         }
     }
+}
+
+void PP::Emit(const char32_t* s, const soulng::lexer::Lexeme& lexeme, int tokenID)
+{
+    Emit(s);
+    soulng::lexer::Lexeme match;
+    match.begin = lexeme.begin;
+    match.end = lexeme.end;
+    if (lexeme.end > lexeme.begin)
+    {
+        const char32_t* p = lexeme.end - 1;
+        while (p != lexeme.begin && (*p == '\r' || *p == '\n'))
+        {
+            --p;
+        }
+        ++p;
+        match.end = p;
+    }
+    tokens->push_back(soulng::lexer::Token(tokenID, match, line));
 }
 
 inline bool IsPPLine(const char32_t* p, const char32_t* e)
@@ -855,6 +887,16 @@ void Preprocess(const std::string& fileName, PP* pp)
             lexer.SetLine(pp->line);
             lexer.SetCountLines(false);
             PPLineParser::Parse(lexer, pp);
+            if (pp->save)
+            {
+                for (const char32_t* p = begin; p != end; ++p)
+                {
+                    if (*p != '\n' && *p != '\r')
+                    {
+                        pp->ctext.append(1, *p);
+                    }
+                }
+            }
         }
         else if (pp->process)
         {
@@ -863,8 +905,9 @@ void Preprocess(const std::string& fileName, PP* pp)
             lexer.pp = pp;
             lexer.SetLine(pp->line);
             lexer.SetCountLines(false);
-            ++lexer;
             std::vector<soulng::lexer::Token> tokens;
+            pp->tokens = &tokens;
+            ++lexer;
             int i = 0;
             while (*lexer != TextTokens::END)
             {
@@ -874,7 +917,14 @@ void Preprocess(const std::string& fileName, PP* pp)
             tokens = MacroExpand(tokens, pp);
             for (const soulng::lexer::Token& token : tokens)
             {
-                pp->Emit(token.match);
+                if (token.id != TextTokens::BLOCKCOMMENT && token.id != TextTokens::LINECOMMENT)
+                {
+                    pp->Emit(token.match);
+                }
+                if (pp->save)
+                {
+                    pp->ctext.append(token.match.ToString());
+                }
             }
         }
         for (int i = 0; i < numNewLines; ++i)
@@ -883,6 +933,10 @@ void Preprocess(const std::string& fileName, PP* pp)
             ++pp->line;
         }
         pp->Emit(U"\n");
+        if (pp->save)
+        {
+            pp->ctext.append(U"\n");
+        }
         ++pp->line;
     }
     pp->fileName = prevFileName;

@@ -11,6 +11,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <stdint.h>
 
 namespace soulng { namespace lexer {
 
@@ -22,16 +23,17 @@ public:
     virtual ~Lexer();
     int operator*() const { return current->id; }
     void operator++();
-    int GetPos() const { return current - tokens.begin(); }
-    void SetPos(int pos) { current = tokens.begin() + pos;  }
+    int64_t GetPos() const;
+    void SetPos(int64_t pos);
     virtual int NextState(int state, char32_t c);
     void SetKeywordMap(KeywordMap* keywordMap_) { keywordMap = keywordMap_; }
     KeywordMap* GetKeywordMap() { return keywordMap; }
     int GetKeywordToken(const Lexeme& lexeme) const;
     void Retract() { token.match.end = pos; }
     const std::string& FileName() const { return fileName; }
-    Span GetSpan() const { return Span(fileIndex, line, GetPos()); }
-    Token GetToken(int tokenIndex) const;
+    Span GetSpan() const { return Span(fileIndex, line, int32_t(GetPos())); }
+    void ConvertExternal(Span& span);
+    Token GetToken(int64_t pos) const;
     void SetTokens(const std::vector<Token>& tokens_);
     void SetLine(int line_) { line = line_; }
     void SetCountLines(bool countLines_) { countLines = countLines_; }
@@ -39,7 +41,7 @@ public:
     std::u32string GetMatch(const Span& span) const;
     std::u32string ErrorLines(const Token& token) const;
     std::u32string ErrorLines(const Span& span) const;
-    void ThrowExpectationFailure(int pos, const std::u32string& name);
+    void ThrowExpectationFailure(int64_t pos, const std::u32string& name);
     const char32_t* Start() const { return start; }
     const char32_t* End() const { return end; }
     const char32_t* Pos() const { return pos; }
@@ -49,7 +51,7 @@ public:
     void SetSeparatorChar(char32_t separatorChar_) { separatorChar = separatorChar_; }
 protected:
     Lexeme lexeme;
-    int line;
+    int32_t line;
 private:
     std::u32string content;
     std::string fileName;

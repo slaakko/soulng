@@ -1,4 +1,5 @@
 #include <sngcpp/pp/InitDone.hpp>
+#include <sngcpp/ast/InitDone.hpp>
 #include <soulng/util/InitDone.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
@@ -19,9 +20,11 @@ struct Initializer
     {
         soulng::util::Init();
         sngcpp::pp::Init();
+        sngcpp::ast::Init();
     }
     ~Initializer()
     {
+        sngcpp::ast::Done();
         sngcpp::pp::Done();
         soulng::util::Done();
     }

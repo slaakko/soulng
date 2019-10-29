@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>NamespaceSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html">prev</a>
+         | <a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">next</a>
+        <hr/>
+        <h1>NamespaceSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#13">13</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#constructor_NamespaceSymbol_E207ABA62BA71AAAE2026CFED3874F97899E3A4E">NamespaceSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_AddProject_E2D3E0CE56DE9DC517B5D8C358F9146AC0B6009F">AddProject</a>(<span class="kw">const </span>std::u32string&amp; projectName)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_CreateElement_E2496B7A4409B7964F4D59627686A4E7D6639B79">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_FirstProject_359A5A032F3B513659E272E4AC7650F7B167E5DB">FirstProject</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_HasProject_53CC32C10D4CB33F8DBF41DE11E63E97A45827A7">HasProject</a>(<span class="kw">const </span>std::u32string&amp; projectName) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_IsNamespaceSymbol_FD95327040D5A627F883DDD91B5A67EAB91024E3">IsNamespaceSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_IsParentSymbol_BBD8198E540A03B5A31EE4D441F7C0083EC77AEE">IsParentSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#function_KindStr_C754B0A1F384D2E7EFD378A9F88C347CAA4127D8">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_projects_127481290A5990CFBFC5A6FB61DFDEB0F6423A6C">
+                <td class="functionTableFirstCol" xml:space="preserve">std::set&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">projects</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_NamespaceSymbol_E207ABA62BA71AAAE2026CFED3874F97899E3A4E">NamespaceSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::NamespaceSymbol::NamespaceSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html#10">10</a>
+             of <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html">NamespaceSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#16">16</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddProject_E2D3E0CE56DE9DC517B5D8C358F9146AC0B6009F">AddProject Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::NamespaceSymbol::AddProject(<span class="kw">const </span>
+            std::u32string&amp; projectName)</h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html#31">31</a>
+             of <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html">NamespaceSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#variable_projects_127481290A5990CFBFC5A6FB61DFDEB0F6423A6C">projects</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><span class="identifier">projectName</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#21">21</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddTypedef_419EF08BEC632DA403007D907494E1788A7C8B32">sngcpp::symbols::SymbolTable::AddTypedef</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNamespace_1D7D7E041E7FDDB74E62D4F6EE7A8EAB12021B34">sngcpp::symbols::SymbolTable::BeginNamespace</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndClass_1ED66A41F4BFF73BBD8F2503511D9A9C7B3B2DC9">sngcpp::symbols::SymbolTable::EndClass</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndEnumType_4ADD9A897A78E4950D42DC7DD351493630A6031E">sngcpp::symbols::SymbolTable::EndEnumType</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndFunction_D8B735E9DF75450A5D020BDE2F989B15002ED382">sngcpp::symbols::SymbolTable::EndFunction</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndGrammar_5598AC1CD47D69652A743D98A63793E0FF191BF9">sngcpp::symbols::SymbolTable::EndGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_E2496B7A4409B7964F4D59627686A4E7D6639B79">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::NamespaceSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html#14">14</a>
+             of <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html">NamespaceSymbol.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#18">18</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FirstProject_359A5A032F3B513659E272E4AC7650F7B167E5DB">FirstProject Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::NamespaceSymbol::FirstProject() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html#45">45</a>
+             of <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html">NamespaceSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#variable_projects_127481290A5990CFBFC5A6FB61DFDEB0F6423A6C">projects</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">*</span><a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#variable_projects_127481290A5990CFBFC5A6FB61DFDEB0F6423A6C">projects</a><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#23">23</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_HasProject_53CC32C10D4CB33F8DBF41DE11E63E97A45827A7">HasProject Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::NamespaceSymbol::HasProject(<span class="kw">const </span>
+            std::u32string&amp; projectName) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html#36">36</a>
+             of <a href="file/NamespaceSymbol.cpp_FC408CF8715894DF01A98EFF815D7230C000884C.html">NamespaceSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">project</span><span class="other">&nbsp;:&nbsp;</span><a href="./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html#variable_projects_127481290A5990CFBFC5A6FB61DFDEB0F6423A6C">projects</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">project</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">projectName</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#22">22</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsNamespaceSymbol_FD95327040D5A627F883DDD91B5A67EAB91024E3">IsNamespaceSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::NamespaceSymbol::IsNamespaceSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#19">19</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsNamespaceSymbol_B31F06A521EE617A0BA75D888242ABFAA921AA07">sngcpp::symbols::Symbol::IsNamespaceSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsParentSymbol_BBD8198E540A03B5A31EE4D441F7C0083EC77AEE">IsParentSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::NamespaceSymbol::IsParentSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#20">20</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsParentSymbol_F88ADE2E62BB4298F8A5419E1FA9CA9A650C4EE5">sngcpp::symbols::Symbol::IsParentSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_C754B0A1F384D2E7EFD378A9F88C347CAA4127D8">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::NamespaceSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html#17">17</a>
+             of <a href="file/NamespaceSymbol.hpp_A4B7249990A941BEB5CE12135703CF3DB0371CB6.html">NamespaceSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"namespace"</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html">prev</a>
+         | <a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">next</a>
+    </body>
+</html>

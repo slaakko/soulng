@@ -2,9 +2,22 @@
 <gendoc>
   <project name="rex">
     <vcxproject file="../../../../soulng/rex/rex.vcxproj"/>
+    <documentation file="docs.xml"/>
     <include path="../.."/>
+    <imports>
+      <import project="../util"/>
+      <import project="../lexer"/>
+      <import project="../parser"/>
+    </imports>
   </project>
   <filter>
     <file exclude="RexClassMap.cpp"/>
+    <file exclude="RexClassMap.hpp"/>
+    <file exclude="RexTokens.cpp"/>
+    <file exclude="RexTokens.hpp"/>
+    <file exclude="RexLexer.cpp"/>
+    <file exclude="RexLexer.hpp"/>
+    <file exclude="RexParser.cpp"/>
+    <file exclude="RexParser.hpp"/>
   </filter>
 </gendoc>

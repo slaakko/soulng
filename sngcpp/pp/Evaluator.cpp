@@ -576,16 +576,6 @@ void Evaluator::Visit(SourceFileSequenceNode& sourceFileSequenceNode)
     ThrowCannotEvaluateStatically(fileName, line);
 }
 
-void Evaluator::Visit(IncludeDirectiveNode& includeDirectiveNode)
-{
-    ThrowCannotEvaluateStatically(fileName, line);
-}
-
-void Evaluator::Visit(IncludeDirectiveSequenceNode& includeDirectiveSequenceNode)
-{
-    ThrowCannotEvaluateStatically(fileName, line);
-}
-
 void Evaluator::Visit(SimpleDeclarationNode& simpleDeclarationNode)
 {
     ThrowCannotEvaluateStatically(fileName, line);
@@ -1018,22 +1008,22 @@ void Evaluator::Visit(CaptureSequenceNode& captureSequenceNode)
     ThrowCannotEvaluateStatically(fileName, line);
 }
 
-void Evaluator::Visit(AssignCapture& assignCapture)
+void Evaluator::Visit(AssignCaptureNode& assignCaptureNode)
 {
     ThrowCannotEvaluateStatically(fileName, line);
 }
 
-void Evaluator::Visit(RefCapture& refCapture)
+void Evaluator::Visit(RefCaptureNode& refCaptureNode)
 {
     ThrowCannotEvaluateStatically(fileName, line);
 }
 
-void Evaluator::Visit(ThisCapture& thisCapture)
+void Evaluator::Visit(ThisCaptureNode& thisCaptureNode)
 {
     ThrowCannotEvaluateStatically(fileName, line);
 }
 
-void Evaluator::Visit(IdentifierCapture& identifierCapture)
+void Evaluator::Visit(IdentifierCaptureNode& identifierCaptureNode)
 {
     ThrowCannotEvaluateStatically(fileName, line);
 }
@@ -1090,7 +1080,7 @@ void Evaluator::Visit(IntegerLiteralNode& integerLiteralNode)
 
 void Evaluator::Visit(CharacterLiteralNode& characterLiteralNode)
 {
-    value = context.MakeValue(static_cast<int64_t>(characterLiteralNode.Chars().front()));
+    value = context.MakeValue(static_cast<int64_t>(characterLiteralNode.Chr()));
 }
 
 void Evaluator::Visit(StringLiteralNode& stringLiteralNode)

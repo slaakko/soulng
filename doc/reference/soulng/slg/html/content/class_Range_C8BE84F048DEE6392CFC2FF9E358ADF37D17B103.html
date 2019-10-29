@@ -1,0 +1,289 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Range Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">prev</a>
+         | <a href="struct_RangeEndLess_AA1359DF57438F93320E4488C8BCE4B476B341CB.html">next</a>
+        <hr/>
+        <h1>Range Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#66">66</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#constructor_Range_70CE7C0718816108B91847DF8C2EE89A3D2DA725">Range</a>(<span class="kw">char32_t</span> start_, <span class="kw">char32_t</span> end_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Accept_C5FEC781ED2DA01EE8C940EB897AD6C4ED36B885">Accept</a>(<a href="./class_Visitor_E756CBD61FBCE4CCBE4C96F29F29589590EBAAE5.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">char32_t</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B">IsEmpty</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_IsRange_6C86D7FF02995D8CC868F3B407E82B7C4F45113F">IsRange</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Match_55ABC5F54CCE51ABAD4C4AACC7DFE88097D3104F">Match</a>(<span class="kw">char32_t</span> c) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Print_8BCEAF871326EDD2C3B83C4545357A317A5E2F8D">Print</a>(CodeFormatter&amp; formatter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">char32_t</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_end_4D102C4BAB6111F0F172BFEE386AE3375275089B">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">char32_t</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">end</td>
+            </tr>
+            <tr id="variable_start_3FAD30F22821FE5BCF1084ABC695AC1545372F15">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">char32_t</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">start</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Range_70CE7C0718816108B91847DF8C2EE89A3D2DA725">Range Constructor</h3>
+        <h4>
+            soulng::slg::Range::Range(<span class="kw">char32_t</span>
+             start_, <span class="kw">char32_t</span>
+             end_)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#59">59</a>
+             of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_start_3FAD30F22821FE5BCF1084ABC695AC1545372F15">start</a><span class="other">(</span><span class="identifier">start_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_end_4D102C4BAB6111F0F172BFEE386AE3375275089B">end</a><span class="other">(</span><span class="identifier">end_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3">SetName</a><span class="other">(</span><span class="string">"("</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_start_3FAD30F22821FE5BCF1084ABC695AC1545372F15">start</a><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"-"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_end_4D102C4BAB6111F0F172BFEE386AE3375275089B">end</a><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">")"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#69">69</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_C5FEC781ED2DA01EE8C940EB897AD6C4ED36B885">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Range::Accept(<a href="./class_Visitor_E756CBD61FBCE4CCBE4C96F29F29589590EBAAE5.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#69">69</a>
+             of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_E756CBD61FBCE4CCBE4C96F29F29589590EBAAE5.html#function_Visit_173C5C999444A0A19E0E2AD46B42FCAF4FEEB0EB">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#71">71</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_Accept_B4CB50494AF1C1EE722C567B7F2B26147647F256">soulng::slg::Symbol::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_E756CBD61FBCE4CCBE4C96F29F29589590EBAAE5.html#function_Visit_173C5C999444A0A19E0E2AD46B42FCAF4FEEB0EB">soulng::slg::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End Member Function</h3>
+        <h4>
+            <span class="kw">char32_t</span>
+             soulng::slg::Range::End() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#75">75</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">end</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC">soulng::slg::Class::MakeInverse</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425">soulng::slg::Class::MakeMinimal</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B">IsEmpty Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::slg::Range::IsEmpty() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#73">73</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">start</span><span class="other">&nbsp;>&nbsp;</span><span class="identifier">end</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC">soulng::slg::Class::MakeInverse</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425">soulng::slg::Class::MakeMinimal</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2">soulng::slg::LexerContext::MakeClassPartition</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsRange_6C86D7FF02995D8CC868F3B407E82B7C4F45113F">IsRange Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::slg::Range::IsRange() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#72">72</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424">soulng::slg::Symbol::IsRange</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Match_55ABC5F54CCE51ABAD4C4AACC7DFE88097D3104F">Match Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::slg::Range::Match(<span class="kw">char32_t</span>
+             c) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#64">64</a>
+             of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">c</span><span class="other">&nbsp;>=&nbsp;</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_start_3FAD30F22821FE5BCF1084ABC695AC1545372F15">start</a><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">c</span><span class="other">&nbsp;&lt;=&nbsp;</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_end_4D102C4BAB6111F0F172BFEE386AE3375275089B">end</a><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#70">70</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_Match_274FF62C61D6CEEB44AF5F9E31EDEA8A1C0BE11B">soulng::slg::Symbol::Match</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_8BCEAF871326EDD2C3B83C4545357A317A5E2F8D">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Range::Print(CodeFormatter&amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#74">74</a>
+             of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">::</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">::</span><a href="./../../../util/html/content/namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_CharStr_3DFCEE18E4C52B92F8E91031BDD99144A1D9CCF4">CharStr</a><span class="other">(</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_start_3FAD30F22821FE5BCF1084ABC695AC1545372F15">start</a><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><span class="string">"-"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">::</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">::</span><a href="./../../../util/html/content/namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_CharStr_3DFCEE18E4C52B92F8E91031BDD99144A1D9CCF4">CharStr</a><span class="other">(</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#variable_end_4D102C4BAB6111F0F172BFEE386AE3375275089B">end</a><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start Member Function</h3>
+        <h4>
+            <span class="kw">char32_t</span>
+             soulng::slg::Range::Start() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#74">74</a>
+             of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">start</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC">soulng::slg::Class::MakeInverse</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425">soulng::slg::Class::MakeMinimal</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA">soulng::slg::LexerContext::MakeCanonicalClasses</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.html">prev</a>
+         | <a href="struct_RangeEndLess_AA1359DF57438F93320E4488C8BCE4B476B341CB.html">next</a>
+    </body>
+</html>

@@ -1,0 +1,252 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>LabeledStatementNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html">prev</a>
+         | <a href="class_LambdaExpressionNode_8EAB242A1154BEB49E6CDEB72EEFA86405D54C07.html">next</a>
+        <hr/>
+        <h1>LabeledStatementNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#13">13</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#constructor_LabeledStatementNode_6090A8E1E33E858D623A00F61F7C747C1ADEBA01">LabeledStatementNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#constructor_LabeledStatementNode_A19D21D0A25C5D322B3ED6183A992E1AF318B256">LabeledStatementNode</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; label_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* statement_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Accept_3784D4193BCB7EE64F5C63CCBB73DC7BC3705FC6">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Label_7610FAB9D499F19858DA300A43B9E4AB18D66255">Label</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Read_4F6BE0FF06B56B71B242FEE4932E826EFD4F297A">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Write_B721F81DE6DE4C871369FACB216C250249CB4231">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_label_163990B2F398E6436C6DBACE82A90931B4F3F22A">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">label</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_LabeledStatementNode_6090A8E1E33E858D623A00F61F7C747C1ADEBA01">LabeledStatementNode Constructor</h3>
+        <h4>
+            sngcpp::ast::LabeledStatementNode::LabeledStatementNode()</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#13">13</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_labeledStatementNode_CEA6ACBA16D783DD70E5E1078DD06B5F639191AF">labeledStatementNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#16">16</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_LabeledStatementNode_A19D21D0A25C5D322B3ED6183A992E1AF318B256">LabeledStatementNode Constructor</h3>
+        <h4>
+            sngcpp::ast::LabeledStatementNode::LabeledStatementNode(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; label_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * statement_)</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#17">17</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_labeledStatementNode_CEA6ACBA16D783DD70E5E1078DD06B5F639191AF">labeledStatementNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">statement_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#variable_label_163990B2F398E6436C6DBACE82A90931B4F3F22A">label</a><span class="other">(</span><span class="identifier">label_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#17">17</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_3784D4193BCB7EE64F5C63CCBB73DC7BC3705FC6">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::LabeledStatementNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#21">21</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_0D4B58DBB0E8D9D70348C2468BECE23675E4BA62">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#18">18</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_0D4B58DBB0E8D9D70348C2468BECE23675E4BA62">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Label_7610FAB9D499F19858DA300A43B9E4AB18D66255">Label Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::ast::LabeledStatementNode::Label() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#21">21</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">label</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_4F6BE0FF06B56B71B242FEE4932E826EFD4F297A">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::LabeledStatementNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#32">32</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">UnaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#variable_label_163990B2F398E6436C6DBACE82A90931B4F3F22A">label</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#20">20</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Read_CD96300DF5D61F69E8B0DEB4BFCCB174951E6104">sngcpp::ast::UnaryNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_B721F81DE6DE4C871369FACB216C250249CB4231">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::LabeledStatementNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html#26">26</a>
+             of <a href="file/Statement.cpp_C4C941D11909E04EEDF086AE2D86ED33A2093177.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">UnaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#variable_label_163990B2F398E6436C6DBACE82A90931B4F3F22A">label</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html#19">19</a>
+             of <a href="file/Statement.hpp_4E44633EE06E59C3828503A41C06AB77EE18864F.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59">sngcpp::ast::UnaryNode::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html">prev</a>
+         | <a href="class_LambdaExpressionNode_8EAB242A1154BEB49E6CDEB72EEFA86405D54C07.html">next</a>
+    </body>
+</html>

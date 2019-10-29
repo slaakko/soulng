@@ -16,17 +16,13 @@
 namespace sngcpp { namespace symbols {
 
 SymbolCreator::SymbolCreator(SymbolTable& symbolTable_, const std::u32string& projectName_) :
-    symbolTable(symbolTable_), projectName(projectName_), functionBodyFollowsOrIsPure(false), nameSequenceCount(0), wasFunctionDeclaration(false), wasArrayDeclaration(false),
+    symbolTable(symbolTable_), projectName(projectName_), functionBodyFollowsOrIsPureDeletedOrDefault(false), nameSequenceCount(0), wasFunctionDeclaration(false), wasArrayDeclaration(false),
     specifiers(Specifier::none), skip(false), processingTemplateArguments(false)
 {
 }
 
 void SymbolCreator::Visit(SourceFileNode& sourceFileNode)
 {
-    if (sourceFileNode.RelativeSourceFilePath() == "BasicTypeOperation.hpp")
-    {
-        int x = 0;
-    }
     sourceFileNode.GlobalNs()->Accept(*this);
 }
 
@@ -92,7 +88,7 @@ void SymbolCreator::Visit(ClassNode& classNode)
     nameSequence.clear();
     classNode.ClassName()->Accept(*this);
     int n = symbolTable.BeginNameSequence(nameSequence);
-    symbolTable.BeginClass(&classNode, nameSequence.back().first, templateParameters);
+    symbolTable.BeginClass(&classNode, nameSequence.back().first, templateParameters, projectName);
     templateParameters.clear();
     if (classNode.Declarations())
     {
@@ -112,7 +108,8 @@ void SymbolCreator::Visit(MemberAccessDeclarationNode& memberAccessDeclarationNo
 
 void SymbolCreator::Visit(MemberDeclarationNode& memberDeclarationNode)
 {
-    bool prevFunctionBodyFollowsOrIsPure = functionBodyFollowsOrIsPure;
+    specifiers = Specifier::none;
+    bool prevFunctionBodyFollowsOrIsPureDeletedOrDefault = functionBodyFollowsOrIsPureDeletedOrDefault;
     bool prevWasFunctionDeclaration = wasFunctionDeclaration;
     bool prevWasArrayDeclaration = wasArrayDeclaration;
     wasFunctionDeclaration = false;
@@ -120,14 +117,14 @@ void SymbolCreator::Visit(MemberDeclarationNode& memberDeclarationNode)
     if (memberDeclarationNode.Declarator())
     {
         specifiers = memberDeclarationNode.Specifiers();
-        bool wasPure = false;
-        if ((specifiers & Specifier::pure_) != Specifier::none)
+        bool wasPureDeletedOrDefault = false;
+        if ((specifiers & (Specifier::pure_ | Specifier::delete_ | Specifier::default_)) != Specifier::none)
         {
-            wasPure = true;
-            functionBodyFollowsOrIsPure = true;
+            wasPureDeletedOrDefault = true;
+            functionBodyFollowsOrIsPureDeletedOrDefault = true;
         }
         memberDeclarationNode.Declarator()->Accept(*this);
-        if (wasPure)
+        if (wasPureDeletedOrDefault)
         {
             symbolTable.EndFunction(projectName);
             symbolTable.EndNameSequence(nameSequenceCount);
@@ -142,7 +139,7 @@ void SymbolCreator::Visit(MemberDeclarationNode& memberDeclarationNode)
     }
     wasFunctionDeclaration = prevWasFunctionDeclaration;
     wasArrayDeclaration = prevWasArrayDeclaration;
-    functionBodyFollowsOrIsPure = prevFunctionBodyFollowsOrIsPure;
+    functionBodyFollowsOrIsPureDeletedOrDefault = prevFunctionBodyFollowsOrIsPureDeletedOrDefault;
 }
 
 void SymbolCreator::Visit(ArrayDeclaratorNode& arrayDeclaratorNode)
@@ -155,7 +152,7 @@ void SymbolCreator::Visit(EnumTypeNode& enumTypeNode)
     nameSequence.clear();
     enumTypeNode.EnumName()->Accept(*this);
     int n = symbolTable.BeginNameSequence(nameSequence);
-    symbolTable.BeginEnumType(&enumTypeNode, nameSequence.back().first);
+    symbolTable.BeginEnumType(&enumTypeNode, nameSequence.back().first, projectName);
     if (enumTypeNode.Enumerators())
     {
         enumTypeNode.Enumerators()->Accept(*this);
@@ -194,6 +191,10 @@ void SymbolCreator::Visit(IdentifierNode& identifierNode)
     {
         nameSequence.push_back(std::make_pair(identifierNode.Identifier(), 0));
         groupName = identifierNode.Identifier();
+        if (groupName == U"ParseXmlContent")
+        {
+            int x = 0;
+        }
     }
 }
 
@@ -201,7 +202,7 @@ void SymbolCreator::Visit(TemplateIdNode& templateIdNode)
 {
     nameSequence.push_back(std::make_pair(templateIdNode.Id()->Identifier(), templateIdNode.Arity()));
     groupName = templateIdNode.Id()->Identifier();
-    if (functionBodyFollowsOrIsPure)
+    if (functionBodyFollowsOrIsPureDeletedOrDefault)
     {
         if (templateIdNode.TemplateArguments())
         {
@@ -259,6 +260,7 @@ void SymbolCreator::Visit(DtorIdNode& dDtorIdNode)
 
 void SymbolCreator::Visit(SimpleDeclarationNode& simpleDeclarationNode)
 {
+    specifiers = Specifier::none;
     bool prevWasFunctionDeclaration = wasFunctionDeclaration;
     bool prevWasArrayDeclaration = wasArrayDeclaration;
     wasFunctionDeclaration = false;
@@ -297,7 +299,7 @@ void SymbolCreator::Visit(FunctionDeclaratorNode& functionDeclaratorNode)
 {
     wasFunctionDeclaration = true;
     skip = false;
-    if (functionBodyFollowsOrIsPure)
+    if (functionBodyFollowsOrIsPureDeletedOrDefault)
     {
         functionDeclaratorNode.Declarator()->Accept(*this);
         if (!nameSequence.empty())
@@ -306,7 +308,7 @@ void SymbolCreator::Visit(FunctionDeclaratorNode& functionDeclaratorNode)
             {
                 specifiers = specifiers | functionDeclaratorNode.CVSpecifiers();
                 nameSequenceCount = symbolTable.BeginNameSequence(nameSequence);
-                symbolTable.BeginFunction(&functionDeclaratorNode, groupName, nameSequence.back().first, templateParameters, specifiers);
+                symbolTable.BeginFunction(&functionDeclaratorNode, groupName, nameSequence.back().first, templateParameters, specifiers, projectName);
                 templateParameters.clear();
                 if (functionDeclaratorNode.Parameters())
                 {
@@ -346,10 +348,15 @@ void SymbolCreator::Visit(MemberFunctionPtrIdNode& memberFunctionPtrIdNode)
 
 void SymbolCreator::Visit(FunctionNode& functionNode)
 {
-    bool prevFunctionBodyFollowsOrIsPure = functionBodyFollowsOrIsPure;
+    bool prevFunctionBodyFollowsOrIsPureDeletedOrDefault = functionBodyFollowsOrIsPureDeletedOrDefault;
     int prevNameSequenceCount = nameSequenceCount;
-    functionBodyFollowsOrIsPure = true;
+    functionBodyFollowsOrIsPureDeletedOrDefault = true;
     specifiers = functionNode.Specifiers();
+    bool wasDefaultOrDeleted = false;
+    if ((specifiers & (Specifier::delete_ | Specifier::default_)) != Specifier::none)
+    {
+        wasDefaultOrDeleted = true;
+    }
     functionNode.Declarator()->Accept(*this);
     if (functionNode.Body() && groupName != U"destructor")
     {
@@ -357,16 +364,26 @@ void SymbolCreator::Visit(FunctionNode& functionNode)
         symbolTable.EndFunction(projectName);
         symbolTable.EndNameSequence(nameSequenceCount);
     }
-    functionBodyFollowsOrIsPure = prevFunctionBodyFollowsOrIsPure;
+    else if (wasDefaultOrDeleted)
+    {
+        symbolTable.EndFunction(projectName);
+        symbolTable.EndNameSequence(nameSequenceCount);
+    }
+    functionBodyFollowsOrIsPureDeletedOrDefault = prevFunctionBodyFollowsOrIsPureDeletedOrDefault;
     nameSequenceCount = prevNameSequenceCount;
 }
 
 void SymbolCreator::Visit(SpecialMemberFunctionNode& specialMemberFunctionNode)
 {
-    bool prevFunctionBodyFollowsOrIsPure = functionBodyFollowsOrIsPure;
+    bool prevFunctionBodyFollowsOrIsPureDeletedOrDefault = functionBodyFollowsOrIsPureDeletedOrDefault;
     int prevNameSequenceCount = nameSequenceCount;
-    functionBodyFollowsOrIsPure = true;
+    functionBodyFollowsOrIsPureDeletedOrDefault = true;
+    bool wasDefaultOrDeleted = false;
     specifiers = specialMemberFunctionNode.Specifiers();
+    if ((specifiers & (Specifier::delete_ | Specifier::default_)) != Specifier::none)
+    {
+        wasDefaultOrDeleted = true;
+    }
     specialMemberFunctionNode.Declarator()->Accept(*this);
     if (specialMemberFunctionNode.FunctionBody() && groupName != U"destructor")
     {
@@ -374,8 +391,18 @@ void SymbolCreator::Visit(SpecialMemberFunctionNode& specialMemberFunctionNode)
         symbolTable.EndFunction(projectName);
         symbolTable.EndNameSequence(nameSequenceCount);
     }
-    functionBodyFollowsOrIsPure = prevFunctionBodyFollowsOrIsPure;
+    else if (wasDefaultOrDeleted)
+    {
+        symbolTable.EndFunction(projectName);
+        symbolTable.EndNameSequence(nameSequenceCount);
+    }
+    functionBodyFollowsOrIsPureDeletedOrDefault = prevFunctionBodyFollowsOrIsPureDeletedOrDefault;
     nameSequenceCount = prevNameSequenceCount;
+}
+
+void SymbolCreator::Visit(LabeledStatementNode& labeledStatementNode)
+{
+    labeledStatementNode.Child()->Accept(*this);
 }
 
 void SymbolCreator::Visit(CompoundStatementNode& compoundStatementNode)
@@ -465,6 +492,14 @@ void SymbolCreator::Visit(ForStatementNode& forStatementNode)
     symbolTable.EndDeclarationBlock();
 }
 
+void SymbolCreator::Visit(ReturnStatementNode& returnStatementNode)
+{
+    if (returnStatementNode.ReturnExpr())
+    {
+        returnStatementNode.ReturnExpr()->Accept(*this);
+    }
+}
+
 void SymbolCreator::Visit(TryStatementNode& tryStatementNode)
 {
     tryStatementNode.TryBlock()->Accept(*this);
@@ -512,6 +547,212 @@ void SymbolCreator::Visit(ParameterSequenceNode& parameterSequenceNode)
 {
     parameterSequenceNode.Left()->Accept(*this);
     parameterSequenceNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ExpressionStatementNode& expressionStatementNode)
+{
+    nameSequence.clear();
+    if (expressionStatementNode.Child())
+    {
+        expressionStatementNode.Child()->Accept(*this);
+    }
+}
+
+void SymbolCreator::Visit(CommaExpressionNode& commaExpressionNode)
+{
+    commaExpressionNode.Left()->Accept(*this);
+    commaExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(AssignmentExpressionNode& assignmentExpressionNode)
+{
+    assignmentExpressionNode.Left()->Accept(*this);
+    assignmentExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ConditionalExpressionNode& conditionalExpressionNode)
+{
+    conditionalExpressionNode.Condition()->Accept(*this);
+    conditionalExpressionNode.ThenExpr()->Accept(*this);
+    conditionalExpressionNode.ElseExpr()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ThrowExpressionNode& throwExpressionNode)
+{
+    if (throwExpressionNode.Child())
+    {
+        throwExpressionNode.Child()->Accept(*this);
+    }
+}
+
+void SymbolCreator::Visit(LogicalOrExpressionNode& logicalOrExpressionNode)
+{
+    logicalOrExpressionNode.Left()->Accept(*this);
+    logicalOrExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(LogicalAndExpressionNode& logicalAndExpressionNode)
+{
+    logicalAndExpressionNode.Left()->Accept(*this);
+    logicalAndExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(InclusiveOrExpressionNode& inclusiveOrExpressionNode)
+{
+    inclusiveOrExpressionNode.Left()->Accept(*this);
+    inclusiveOrExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ExclusiveOrExpressionNode& exclusiveOrExpressionNode)
+{
+    exclusiveOrExpressionNode.Left()->Accept(*this);
+    exclusiveOrExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(AndExpressionNode& andExpressionNode)
+{
+    andExpressionNode.Left()->Accept(*this);
+    andExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(EqualityExpressionNode& equalityExpressionNode)
+{
+    equalityExpressionNode.Left()->Accept(*this);
+    equalityExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(RelationalExpressionNode& relationalExpressionNode)
+{
+    relationalExpressionNode.Left()->Accept(*this);
+    relationalExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ShiftExpressionNode& shiftExpressionNode)
+{
+    shiftExpressionNode.Left()->Accept(*this);
+    shiftExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(AdditiveExpressionNode& additiveExpressionNode)
+{
+    additiveExpressionNode.Left()->Accept(*this);
+    additiveExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(MultiplicativeExpressionNode& multiplicativeExpressionNode)
+{
+    multiplicativeExpressionNode.Left()->Accept(*this);
+    multiplicativeExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(PMExpressionNode& pmExpressionNode)
+{
+    pmExpressionNode.Left()->Accept(*this);
+    pmExpressionNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(CastExpressionNode& castExpressionNode)
+{
+    castExpressionNode.TypeExpr()->Accept(*this);
+    castExpressionNode.Expr()->Accept(*this);
+}
+
+void SymbolCreator::Visit(UnaryExpressionNode& unaryExpressionNode)
+{
+    unaryExpressionNode.Child()->Accept(*this);
+}
+
+void SymbolCreator::Visit(NewExpressionNode& newExpressionNode)
+{
+    if (newExpressionNode.Placement())
+    {
+        newExpressionNode.Placement()->Accept(*this);
+    }
+    newExpressionNode.TypeExpr()->Accept(*this);
+    if (newExpressionNode.Initializer())
+    {
+        newExpressionNode.Initializer()->Accept(*this);
+    }
+}
+
+void SymbolCreator::Visit(DeleteExpressionNode& deleteExpressionNode)
+{
+    deleteExpressionNode.Child()->Accept(*this);
+}
+
+void SymbolCreator::Visit(SubscriptExpressionNode& subscriptExpressionNode)
+{
+    subscriptExpressionNode.Child()->Accept(*this);
+    subscriptExpressionNode.Index()->Accept(*this);
+}
+
+void SymbolCreator::Visit(DotNode& dotNode)
+{
+    nameSequence.clear();
+    dotNode.Child()->Accept(*this);
+    nameSequence.clear();
+    dotNode.Id()->Accept(*this);
+}
+
+void SymbolCreator::Visit(InvokeExpressionNode& invokeExpressionNode)
+{
+    invokeExpressionNode.Child()->Accept(*this);
+    if (invokeExpressionNode.Arguments())
+    {
+        invokeExpressionNode.Arguments()->Accept(*this);
+    }
+}
+
+void SymbolCreator::Visit(AssignmentInitializerNode& assignmentInitializerNode)
+{
+    assignmentInitializerNode.Child()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ExpressionListInitializerNode& expressionListInitializerNode)
+{
+    expressionListInitializerNode.Child()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ExpressionInitializerNode& expressionInitializerNode)
+{
+    expressionInitializerNode.Child()->Accept(*this);
+}
+
+void SymbolCreator::Visit(BracedInitializerListNode& bracedInitializerListNode)
+{
+    bracedInitializerListNode.Child()->Accept(*this);
+}
+
+void SymbolCreator::Visit(ExpressionSequenceNode& expressionSequenceNode)
+{
+    expressionSequenceNode.Left()->Accept(*this);
+    expressionSequenceNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(LambdaExpressionNode& lambdaExpressionNode)
+{
+    symbolTable.BeginLambdaExpression(&lambdaExpressionNode);
+    if (lambdaExpressionNode.Captures())
+    {
+        lambdaExpressionNode.Captures()->Accept(*this);
+    }
+    if (lambdaExpressionNode.Parameters())
+    {
+        lambdaExpressionNode.Parameters()->Accept(*this);
+    }
+    lambdaExpressionNode.Body()->Accept(*this);
+    symbolTable.EndLambdaExpression();
+}
+
+void SymbolCreator::Visit(CaptureSequenceNode& captureSequenceNode)
+{
+    captureSequenceNode.Left()->Accept(*this);
+    captureSequenceNode.Right()->Accept(*this);
+}
+
+void SymbolCreator::Visit(IdentifierCaptureNode& identifierCaptureNode)
+{
+    identifierCaptureNode.Child()->Accept(*this);
 }
 
 } } // namespace sngcpp::symbols

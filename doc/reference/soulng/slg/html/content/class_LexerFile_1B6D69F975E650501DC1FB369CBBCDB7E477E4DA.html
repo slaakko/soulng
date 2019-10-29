@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>LexerFile Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">prev</a>
+         | <a href="class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html">next</a>
+        <hr/>
+        <h1>LexerFile Class</h1>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#217">217</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Add_C9464005DA65900342F7C2D63CBB640D4030A824">Add</a>(<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a>* declaration)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <span class="kw">bool</span> debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_declarationMap_604A59B9A2DD9FCA2C691132177059A2B82C1D71">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;std::u32string, <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarationMap</td>
+            </tr>
+            <tr id="variable_declarations_A4DFD2B136D05EB2BC212E43CAB6FD8AC4C1DD8E">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">declarations</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Add_C9464005DA65900342F7C2D63CBB640D4030A824">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerFile::Add(<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a>
+            * declaration)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#803">803</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">804</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">805</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#variable_declarations_A4DFD2B136D05EB2BC212E43CAB6FD8AC4C1DD8E">declarations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">></span><span class="other">(</span><span class="identifier">declaration</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">806</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#variable_declarationMap_604A59B9A2DD9FCA2C691132177059A2B82C1D71">declarationMap</a><span class="other">[</span><span class="identifier">declaration</span><span class="other">-></span><a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE">Name</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">declaration</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">807</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#220">220</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE">soulng::slg::Declaration::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">Process Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerFile::Process(<span class="kw">const </span>
+            std::string&amp; root, <span class="kw">bool</span>
+             verbose, <span class="kw">bool</span>
+             debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+            &amp; lexerContext)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#809">809</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#221">221</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeDfa_0632796D8414395C0C109EE393D5FD9DBA74AF93">soulng::slg::Lexer::MakeDfa</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">soulng::slg::Lexer::MakeMasterNfa</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetLexer_5187ABF0B3E6C917E3BE338F6AB5539D7F02A7EE">soulng::slg::LexerContext::GetLexer</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461">soulng::slg::LexerContext::GetTokens</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA">soulng::slg::LexerContext::MakeCanonicalClasses</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2">soulng::slg::LexerContext::MakeClassPartition</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">prev</a>
+         | <a href="class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html">next</a>
+    </body>
+</html>

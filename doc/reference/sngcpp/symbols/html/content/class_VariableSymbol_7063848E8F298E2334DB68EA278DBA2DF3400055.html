@@ -1,0 +1,268 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>VariableSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html">prev</a>
+         | next<hr/>
+        <h1>VariableSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#12">12</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#constructor_VariableSymbol_123EF0D9EF64A2235C595321BA27DAECE24EE42B">VariableSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_AddSpecifiers_1121BCD2BC92C041687F63D23DBACD45D76806B9">AddSpecifiers</a>(Specifier specifiers_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_CreateElement_2657DDC09FB3B7B80F87DF11DCB0AA197419C337">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_GetType_7A76EB9EA00C441FFC42E6A9A8AC06CD3C6A6E96">GetType</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_IsVariableSymbol_2155664833DD1200ACE1FAEDBC187D7FDC643CA6">IsVariableSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_KindStr_F7878F11AD54187CDE975071991EB79B15141D4C">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_SetType_5B94E3E938CD3FDB9B4670CBCB25912DE11CBD7F">SetType</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* type_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">Specifier</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#function_Specifiers_59EA72BB71CE1A219A5F82653110085C279CA941">Specifiers</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_specifiers_B1E38B3104B1BEE48CF85A06848DB0748009B869">
+                <td class="functionTableFirstCol" xml:space="preserve">Specifier</td>
+                <td class="functionTableSecondCol" xml:space="preserve">specifiers</td>
+            </tr>
+            <tr id="variable_type_AC5AB6604EE605C8BA4B86AF6F0C675759E2A594">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">type</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_VariableSymbol_123EF0D9EF64A2235C595321BA27DAECE24EE42B">VariableSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::VariableSymbol::VariableSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.cpp_DF1B1E90B4F7ADFC8EDAA8EBD3290626865EB491.html#10">10</a>
+             of <a href="file/VariableSymbol.cpp_DF1B1E90B4F7ADFC8EDAA8EBD3290626865EB491.html">VariableSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_specifiers_B1E38B3104B1BEE48CF85A06848DB0748009B869">specifiers</a><span class="other">(</span><span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">none</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_type_AC5AB6604EE605C8BA4B86AF6F0C675759E2A594">type</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#15">15</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddSpecifiers_1121BCD2BC92C041687F63D23DBACD45D76806B9">AddSpecifiers Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::VariableSymbol::AddSpecifiers(Specifier specifiers_)</h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.cpp_DF1B1E90B4F7ADFC8EDAA8EBD3290626865EB491.html#14">14</a>
+             of <a href="file/VariableSymbol.cpp_DF1B1E90B4F7ADFC8EDAA8EBD3290626865EB491.html">VariableSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_specifiers_B1E38B3104B1BEE48CF85A06848DB0748009B869">specifiers</a><span class="other">&nbsp;=&nbsp;</span><a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_specifiers_B1E38B3104B1BEE48CF85A06848DB0748009B869">specifiers</a><span class="other">&nbsp;|&nbsp;</span><span class="identifier">specifiers_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#19">19</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateElement_2657DDC09FB3B7B80F87DF11DCB0AA197419C337">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::VariableSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.cpp_DF1B1E90B4F7ADFC8EDAA8EBD3290626865EB491.html#19">19</a>
+             of <a href="file/VariableSymbol.cpp_DF1B1E90B4F7ADFC8EDAA8EBD3290626865EB491.html">VariableSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">variableElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"variable"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">variableElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"type"</span><span class="other">,&nbsp;</span><a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_type_AC5AB6604EE605C8BA4B86AF6F0C675759E2A594">type</a><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_specifiers_B1E38B3104B1BEE48CF85A06848DB0748009B869">specifiers</a><span class="other">&nbsp;!=&nbsp;</span><span class="identifier">Specifier</span><span class="other">::</span><span class="identifier">none</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">variableElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"specifiers"</span><span class="other">,&nbsp;</span><span class="type">SpecifierStr</span><span class="other">(</span><a href="./class_VariableSymbol_7063848E8F298E2334DB68EA278DBA2DF3400055.html#variable_specifiers_B1E38B3104B1BEE48CF85A06848DB0748009B869">specifiers</a><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">variableElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#17">17</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetType_7A76EB9EA00C441FFC42E6A9A8AC06CD3C6A6E96">GetType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::VariableSymbol::GetType() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#21">21</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">type</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetType_EB05CD37379610821205706D48043CBB476E66C6">sngcpp::symbols::Symbol::GetType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsVariableSymbol_2155664833DD1200ACE1FAEDBC187D7FDC643CA6">IsVariableSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::VariableSymbol::IsVariableSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#18">18</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsVariableSymbol_4E8C11889A8B5CA709217C0E8B4FE5219A1F8B09">sngcpp::symbols::Symbol::IsVariableSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_KindStr_F7878F11AD54187CDE975071991EB79B15141D4C">KindStr Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::VariableSymbol::KindStr() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#16">16</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"variable"</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetType_5B94E3E938CD3FDB9B4670CBCB25912DE11CBD7F">SetType Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::VariableSymbol::SetType(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * type_)</h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#22">22</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">type</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">type_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Specifiers_59EA72BB71CE1A219A5F82653110085C279CA941">Specifiers Member Function</h3>
+        <h4>
+            Specifier sngcpp::symbols::VariableSymbol::Specifiers() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html#20">20</a>
+             of <a href="file/VariableSymbol.hpp_87B21832DA2F84056095D0341CE393F985E62278.html">VariableSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">specifiers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html">prev</a>
+         | next</body>
+</html>

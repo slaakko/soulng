@@ -104,14 +104,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;SNGCPP_AST_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\Program Files\boost\include\boost-1_68</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;C:\Boost\include\boost-1_71</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Program Files\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,7 +138,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;SNGCPP_AST_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\Program Files\boost\include\boost-1_68</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;C:\Boost\include\boost-1_71</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -146,7 +146,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Program Files\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -156,9 +156,11 @@
     <ClCompile Include="Enumeration.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="Function.cpp" />
+    <ClCompile Include="InitDone.cpp" />
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="Namespace.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Reader.cpp" />
     <ClCompile Include="SimpleType.cpp" />
     <ClCompile Include="Solution.cpp" />
     <ClCompile Include="SourceCodeWriter.cpp" />
@@ -168,6 +170,7 @@
     <ClCompile Include="Template.cpp" />
     <ClCompile Include="TypeExpr.cpp" />
     <ClCompile Include="Visitor.cpp" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class.hpp" />
@@ -177,9 +180,11 @@
     <ClInclude Include="Enumeration.hpp" />
     <ClInclude Include="Expression.hpp" />
     <ClInclude Include="Function.hpp" />
+    <ClInclude Include="InitDone.hpp" />
     <ClInclude Include="Literal.hpp" />
     <ClInclude Include="Namespace.hpp" />
     <ClInclude Include="Node.hpp" />
+    <ClInclude Include="Reader.hpp" />
     <ClInclude Include="SimpleType.hpp" />
     <ClInclude Include="Solution.hpp" />
     <ClInclude Include="SourceCodeWriter.hpp" />
@@ -189,6 +194,7 @@
     <ClInclude Include="Template.hpp" />
     <ClInclude Include="TypeExpr.hpp" />
     <ClInclude Include="Visitor.hpp" />
+    <ClInclude Include="Writer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

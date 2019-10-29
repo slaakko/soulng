@@ -1,0 +1,780 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Class.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Declaration.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Visitor.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Writer.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">&nbsp;10</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Reader.hpp></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">ast</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html#function_ToString_08729E3CAFE44D9B3CFE7D655FE24592C3EB5839">ToString</a><span class="other">(</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>&nbsp;<span class="identifier">classKey</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">switch&nbsp;</span><span class="other">(</span><span class="identifier">classKey</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a><span class="other">::</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html#enumerator_class__155707DD109B8583CB5880D349FE3F375024484A">class_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"class"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a><span class="other">::</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html#enumerator_struct__EFE90B828D40D6520687A5A1A0AD1D87850BA0B3">struct_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"struct"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a><span class="other">::</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html#enumerator_union__C1F8FA3019D93840321FA702249EB18459F5D4A9">union_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"union"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a><span class="other">::</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html#enumerator_typename__027A60B9F289CAC9DCF3C093087D23B64716A3D3">typename_</a><span class="other">:</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="string">U"typename"</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html">BaseClassSpecifierNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#constructor_BaseClassSpecifierNode_1456F593842666A5E262E8C516D3E1FFA16135A4">BaseClassSpecifierNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_baseClassSpecifierNode_5134807C712F3D0886BD69263E0CB5731F54FF9E">baseClassSpecifierNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html">BaseClassSpecifierNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#constructor_BaseClassSpecifierNode_74E302AA903F1E81F5DE1AF5FF954E434436F826">BaseClassSpecifierNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">baseSpecifiers_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">className_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_baseClassSpecifierNode_5134807C712F3D0886BD69263E0CB5731F54FF9E">baseClassSpecifierNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">baseSpecifiers</a><span class="other">(</span><span class="identifier">baseSpecifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">className</a><span class="other">(</span><span class="identifier">className_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html">BaseClassSpecifierNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Accept_4E897471F840396EA58E85188BF50CC4D9DFB9FC">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_6F801507919F9222CE5A0865FA0F4FED5D8905E8">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html">BaseClassSpecifierNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Write_B42904DAC752003488CCA4C4FAA238A2910FD58B">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">baseSpecifiers</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">className</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html">BaseClassSpecifierNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Read_93D761D565B7F060AD3A4E342C01152BFFAFECDC">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">baseSpecifiers</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">className</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<a href="../class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html">BaseClassSpecifierSequenceNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html#constructor_BaseClassSpecifierSequenceNode_0C60992EBE42D2D7BB470B50570BD1392010F9BE">BaseClassSpecifierSequenceNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_baseClassSpecifierSequenceNode_7CF7335B281C40BFE2E586A1FD41F94BA6E07FD9">baseClassSpecifierSequenceNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;<a href="../class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html">BaseClassSpecifierSequenceNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html#constructor_BaseClassSpecifierSequenceNode_7544BBEB3F265CFE801AEBA3AA13A81068980BA4">BaseClassSpecifierSequenceNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">left_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">right_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_baseClassSpecifierSequenceNode_7CF7335B281C40BFE2E586A1FD41F94BA6E07FD9">baseClassSpecifierSequenceNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html">BaseClassSpecifierSequenceNode</a><span class="other">::</span><a href="../class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html#function_Accept_3A7546CE24FD4DB22E15704C79B4921D13E46FD8">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_82CE517A86C822D9031FBA9413862E4D6C7CA4E9">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html">ForwardClassDeclarationNode</a><span class="other">::</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#constructor_ForwardClassDeclarationNode_912ECD721553D4B5076D6BAD8E4A44986870A2E3">ForwardClassDeclarationNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_forwardClassDeclarationNode_CF94C687D07C7763DB5DC69395C8D6D3EC48E6F6">forwardClassDeclarationNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html">ForwardClassDeclarationNode</a><span class="other">::</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#constructor_ForwardClassDeclarationNode_705D72B6AB7509FCB7BE8850B3A058E3F2EE846D">ForwardClassDeclarationNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>&nbsp;<span class="identifier">classKey_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">className_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_forwardClassDeclarationNode_CF94C687D07C7763DB5DC69395C8D6D3EC48E6F6">forwardClassDeclarationNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#variable_classKey_55B2C8927DDFE7CBE7BCBE3599CF1BA1865A9A32">classKey</a><span class="other">(</span><span class="identifier">classKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#variable_className_3380491852BCBC16B18CA7A5980E565DA4E12634">className</a><span class="other">(</span><span class="identifier">className_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html">ForwardClassDeclarationNode</a><span class="other">::</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_Accept_29E164C7A98D2C25EB1978597602383D63B11BD7">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_08A057C50D49BABB0480B66EC00841D961301449">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html">ForwardClassDeclarationNode</a><span class="other">::</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_Write_D8AFFD97FD795889747942B208F871FEF54F3EBE">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_91323A9D06CDE52E9B0272691B410A3D7AB9E135">Write</a><span class="other">(</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#variable_classKey_55B2C8927DDFE7CBE7BCBE3599CF1BA1865A9A32">classKey</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#variable_className_3380491852BCBC16B18CA7A5980E565DA4E12634">className</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html">ForwardClassDeclarationNode</a><span class="other">::</span><a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_Read_A27CC4C0AC262D7643ADDCCF25838CE967DE02F1">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#variable_classKey_55B2C8927DDFE7CBE7BCBE3599CF1BA1865A9A32">classKey</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadClassKey_8EBF4D34405C1D455B05479D18F404606C5C4EDA">ReadClassKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#variable_className_3380491852BCBC16B18CA7A5980E565DA4E12634">className</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html">ElaborateClassNameNode</a><span class="other">::</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#constructor_ElaborateClassNameNode_5AE71A493847F991C947A440B6C02F99159AA4BB">ElaborateClassNameNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_elaborateClassNameNode_FC7BDA587B7EDA64DF915080C0B2C82433F54877">elaborateClassNameNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="95" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="96" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="97" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="98" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html">ElaborateClassNameNode</a><span class="other">::</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#constructor_ElaborateClassNameNode_A83F6496724675C86FAC97B8C6A66C7EF6295970">ElaborateClassNameNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>&nbsp;<span class="identifier">classKey_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">className_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_elaborateClassNameNode_FC7BDA587B7EDA64DF915080C0B2C82433F54877">elaborateClassNameNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#variable_classKey_291B443F1B5BB71C1FC6C300093FF7F3E9E348AE">classKey</a><span class="other">(</span><span class="identifier">classKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#variable_className_87CF79F58B03BBF89FB95FB57E794C6B9EDBAB01">className</a><span class="other">(</span><span class="identifier">className_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="99" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="100" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="101" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="102" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html">ElaborateClassNameNode</a><span class="other">::</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_Accept_18E7BE1602940876D40675E7803254198B4AF95B">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="103" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="104" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_C511C31726605EA582A1E4073E2DDF24FE2E5942">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="105" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="106" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="107" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html">ElaborateClassNameNode</a><span class="other">::</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_Write_65D7D87A286599AC111747BBCFF28F03A0304C77">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="108" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="109" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="110" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_91323A9D06CDE52E9B0272691B410A3D7AB9E135">Write</a><span class="other">(</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#variable_classKey_291B443F1B5BB71C1FC6C300093FF7F3E9E348AE">classKey</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="111" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#variable_className_87CF79F58B03BBF89FB95FB57E794C6B9EDBAB01">className</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="112" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="113" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="114" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html">ElaborateClassNameNode</a><span class="other">::</span><a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_Read_21AC0F69F2C06FD2ED91E352C332E06FB3BBCC7E">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="115" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="116" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="117" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#variable_classKey_291B443F1B5BB71C1FC6C300093FF7F3E9E348AE">classKey</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadClassKey_8EBF4D34405C1D455B05479D18F404606C5C4EDA">ReadClassKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="118" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#variable_className_87CF79F58B03BBF89FB95FB57E794C6B9EDBAB01">className</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="119" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="120" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="121" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#constructor_ClassNode_15B4EF182AF99E0AB84A5111F102B1DAEF31EB4A">ClassNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_classNode_E44F56EB40761B311274D32DC4190E5CE1322037">classNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classKey_614E701CA8926F0AA16328FFE3B298C67892E8EC">classKey</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classVirtSpecifiers_00AB84ADA5437A26CAA665A4FB2184CA650E7920">classVirtSpecifiers</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="122" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="123" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="124" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="125" xml:space="preserve"><span class="lineNumber">125</span>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#constructor_ClassNode_E68AFC0DA5E5312122DF0FE8136AC8473772337E">ClassNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>&nbsp;<span class="identifier">classKey_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">className_</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">classVirtSpecifiers_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">baseClasses_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="126" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_classNode_E44F56EB40761B311274D32DC4190E5CE1322037">classNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classKey_614E701CA8926F0AA16328FFE3B298C67892E8EC">classKey</a><span class="other">(</span><span class="identifier">classKey_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_className_63127D9F11908B3BD4363756CE54C91323F66F0F">className</a><span class="other">(</span><span class="identifier">className_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classVirtSpecifiers_00AB84ADA5437A26CAA665A4FB2184CA650E7920">classVirtSpecifiers</a><span class="other">(</span><span class="identifier">classVirtSpecifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_baseClasses_D537974346481D8B9947E7797BFE7004AC4244CD">baseClasses</a><span class="other">(</span><span class="identifier">baseClasses_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="127" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="128" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="129" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="130" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Accept_20C0974CC4522299B5FC22A0799D97D2F4D8CB08">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="131" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="132" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_7920B5A85128A771A90BB871281F2397B31760BE">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="133" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="134" xml:space="preserve"><span class="lineNumber">134</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="135" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Write_601D139C2389F5A3C508CE720AAE919A36FD86ED">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="136" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="137" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="138" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_91323A9D06CDE52E9B0272691B410A3D7AB9E135">Write</a><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classKey_614E701CA8926F0AA16328FFE3B298C67892E8EC">classKey</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="139" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_className_63127D9F11908B3BD4363756CE54C91323F66F0F">className</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="140" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classVirtSpecifiers_00AB84ADA5437A26CAA665A4FB2184CA650E7920">classVirtSpecifiers</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="141" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_baseClasses_D537974346481D8B9947E7797BFE7004AC4244CD">baseClasses</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="142" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_baseClasses_D537974346481D8B9947E7797BFE7004AC4244CD">baseClasses</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="143" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="144" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_baseClasses_D537974346481D8B9947E7797BFE7004AC4244CD">baseClasses</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="145" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="146" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="147" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="148" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="149" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="150" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="151" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">Write</a><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_openBraceSpan_8F24285CF7B02D47970A80EB46253E862B1A8C24">openBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="152" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_4AE24CA9475146FA7569FE42D65B87CF30640799">Write</a><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_closeBraceSpan_2761A19AE422BB472FD1A2A81DC21645855DDD60">closeBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="153" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="154" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="155" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Read_2695F7583818AD360D5211C928D31D7D416B3D53">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="156" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="157" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="158" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classKey_614E701CA8926F0AA16328FFE3B298C67892E8EC">classKey</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadClassKey_8EBF4D34405C1D455B05479D18F404606C5C4EDA">ReadClassKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="159" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_className_63127D9F11908B3BD4363756CE54C91323F66F0F">className</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="160" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classVirtSpecifiers_00AB84ADA5437A26CAA665A4FB2184CA650E7920">classVirtSpecifiers</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="161" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasBaseClasses</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="162" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasBaseClasses</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="163" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="164" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_baseClasses_D537974346481D8B9947E7797BFE7004AC4244CD">baseClasses</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="165" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="166" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasDeclarations</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="167" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasDeclarations</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="168" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="169" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="170" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="171" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_openBraceSpan_8F24285CF7B02D47970A80EB46253E862B1A8C24">openBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="172" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_Read_12E2239D5D13C39D54D05DCB5943F921E2D583B0">Read</a><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_closeBraceSpan_2761A19AE422BB472FD1A2A81DC21645855DDD60">closeBraceSpan</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="173" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="174" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="175" xml:space="preserve"><span class="lineNumber">175</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_DefaultAccess_9F2A7EBE31A7895964F681044B82A70BA3507F90">DefaultAccess</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span></span>
+  <br/>
+  <span class="code" id="176" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="177" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_classKey_614E701CA8926F0AA16328FFE3B298C67892E8EC">classKey</a><span class="other">&nbsp;==&nbsp;</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a><span class="other">::</span><a href="../enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html#enumerator_class__155707DD109B8583CB5880D349FE3F375024484A">class_</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="178" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="179" xml:space="preserve"><span class="lineNumber">179</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_private__94135C8518ED802F3782093C3F8F72B4325BDF6C">private_</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="180" xml:space="preserve"><span class="lineNumber">180</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="181" xml:space="preserve"><span class="lineNumber">181</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+  <br/>
+  <span class="code" id="182" xml:space="preserve"><span class="lineNumber">182</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="183" xml:space="preserve"><span class="lineNumber">183</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a><span class="other">::</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html#enumerator_public__C4180BF817434B194CE2344BD4535D3A4BC8830E">public_</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="184" xml:space="preserve"><span class="lineNumber">184</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="185" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="186" xml:space="preserve"><span class="lineNumber">186</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="187" xml:space="preserve"><span class="lineNumber">187</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html">ClassNode</a><span class="other">::</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_AddDeclaration_234280CB65C05B9217AAD6E768104CA1F96608C5">AddDeclaration</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">declaration</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="188" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="189" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="190" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="191" xml:space="preserve"><span class="lineNumber">191</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><a href="../class_DeclarationSequenceNode_444826008D36CF350146CAF1A142FB443400C179.html">DeclarationSequenceNode</a><span class="other">(</span><span class="identifier">span</span><span class="other">,&nbsp;</span><a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">declaration</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="192" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="193" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+  <br/>
+  <span class="code" id="194" xml:space="preserve"><span class="lineNumber">194</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="195" xml:space="preserve"><span class="lineNumber">195</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#variable_declarations_9899C11206EC04638D7C6EDD6E30E58CBD979D1E">declarations</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">declaration</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="196" xml:space="preserve"><span class="lineNumber">196</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="197" xml:space="preserve"><span class="lineNumber">197</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="198" xml:space="preserve"><span class="lineNumber">198</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="199" xml:space="preserve"><span class="lineNumber">199</span>&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html">MemberAccessDeclarationNode</a><span class="other">::</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#constructor_MemberAccessDeclarationNode_530D4430843EB375A19497B020239F1A38D9DD49">MemberAccessDeclarationNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberAccessDeclarationNode_7329413C1168832B0C3C21D2540777C5A9062E15">memberAccessDeclarationNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_accessSpecifier_4F25EBAE9BC7994D3AD4EAA523BD8600623633C4">accessSpecifier</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_explicitAccess_1A7FC6EE4D7FE1E4D92B3399D231FBD019F99069">explicitAccess</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="200" xml:space="preserve"><span class="lineNumber">200</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="201" xml:space="preserve"><span class="lineNumber">201</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="202" xml:space="preserve"><span class="lineNumber">202</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="203" xml:space="preserve"><span class="lineNumber">203</span>&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html">MemberAccessDeclarationNode</a><span class="other">::</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#constructor_MemberAccessDeclarationNode_233F690AB944DD68A10F5E7A3DC41E395FDD6F8B">MemberAccessDeclarationNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">accessSpecifier_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">declaration_</span><span class="other">,&nbsp;</span><span class="kw">bool</span>&nbsp;<span class="identifier">explicitAccess_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="204" xml:space="preserve"><span class="lineNumber">204</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberAccessDeclarationNode_7329413C1168832B0C3C21D2540777C5A9062E15">memberAccessDeclarationNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_accessSpecifier_4F25EBAE9BC7994D3AD4EAA523BD8600623633C4">accessSpecifier</a><span class="other">(</span><span class="identifier">accessSpecifier_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_declaration_3E1F484CEFEC1E8D41F70A827233FD7255A5F612">declaration</a><span class="other">(</span><span class="identifier">declaration_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_explicitAccess_1A7FC6EE4D7FE1E4D92B3399D231FBD019F99069">explicitAccess</a><span class="other">(</span><span class="identifier">explicitAccess_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="205" xml:space="preserve"><span class="lineNumber">205</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="206" xml:space="preserve"><span class="lineNumber">206</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="207" xml:space="preserve"><span class="lineNumber">207</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="208" xml:space="preserve"><span class="lineNumber">208</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html">MemberAccessDeclarationNode</a><span class="other">::</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#function_Accept_0281D3D9CFC2D75EF467A0A43C4D2A81665DDAF6">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="209" xml:space="preserve"><span class="lineNumber">209</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="210" xml:space="preserve"><span class="lineNumber">210</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_2D8444FF7E2F6C44ED8DD6F227554AE72C88CC41">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="211" xml:space="preserve"><span class="lineNumber">211</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="212" xml:space="preserve"><span class="lineNumber">212</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="213" xml:space="preserve"><span class="lineNumber">213</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html">MemberAccessDeclarationNode</a><span class="other">::</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#function_Write_95854E1BA057AF8AC6AC01194E4DC63D73B812C6">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="214" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="215" xml:space="preserve"><span class="lineNumber">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="216" xml:space="preserve"><span class="lineNumber">216</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_accessSpecifier_4F25EBAE9BC7994D3AD4EAA523BD8600623633C4">accessSpecifier</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="217" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_declaration_3E1F484CEFEC1E8D41F70A827233FD7255A5F612">declaration</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="218" xml:space="preserve"><span class="lineNumber">218</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_explicitAccess_1A7FC6EE4D7FE1E4D92B3399D231FBD019F99069">explicitAccess</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="219" xml:space="preserve"><span class="lineNumber">219</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="220" xml:space="preserve"><span class="lineNumber">220</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="221" xml:space="preserve"><span class="lineNumber">221</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html">MemberAccessDeclarationNode</a><span class="other">::</span><a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#function_Read_3B63BEEC375A478920A647123FB3AFD4D69CACDE">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="222" xml:space="preserve"><span class="lineNumber">222</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="223" xml:space="preserve"><span class="lineNumber">223</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="224" xml:space="preserve"><span class="lineNumber">224</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_accessSpecifier_4F25EBAE9BC7994D3AD4EAA523BD8600623633C4">accessSpecifier</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="225" xml:space="preserve"><span class="lineNumber">225</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_declaration_3E1F484CEFEC1E8D41F70A827233FD7255A5F612">declaration</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="226" xml:space="preserve"><span class="lineNumber">226</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberAccessDeclarationNode_E0F904CBD0B6CCEF311E44CDF4402D0CCA6AAE61.html#variable_explicitAccess_1A7FC6EE4D7FE1E4D92B3399D231FBD019F99069">explicitAccess</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="227" xml:space="preserve"><span class="lineNumber">227</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="228" xml:space="preserve"><span class="lineNumber">228</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="229" xml:space="preserve"><span class="lineNumber">229</span>&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html">MemberDeclarationNode</a><span class="other">::</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#constructor_MemberDeclarationNode_EB6F38610A96A63E008608C76126FCE5A46356A4">MemberDeclarationNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberDeclarationNode_AB34956EDE4FA4528E7F8F8D143ADC761F574D37">memberDeclarationNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_specifiers_4605B1F61A0B5C41474B0E60D6298EB1296DC66B">specifiers</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="230" xml:space="preserve"><span class="lineNumber">230</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="231" xml:space="preserve"><span class="lineNumber">231</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="232" xml:space="preserve"><span class="lineNumber">232</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="233" xml:space="preserve"><span class="lineNumber">233</span>&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html">MemberDeclarationNode</a><span class="other">::</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#constructor_MemberDeclarationNode_D2774B4251FE29AF1A09010743570000B2621257">MemberDeclarationNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">specifiers_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">typeExpr_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">declarator_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">initializer_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="234" xml:space="preserve"><span class="lineNumber">234</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberDeclarationNode_AB34956EDE4FA4528E7F8F8D143ADC761F574D37">memberDeclarationNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_specifiers_4605B1F61A0B5C41474B0E60D6298EB1296DC66B">specifiers</a><span class="other">(</span><span class="identifier">specifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_typeExpr_4FD06DE8D38F5DE940DFD0938BACF00631EA51E6">typeExpr</a><span class="other">(</span><span class="identifier">typeExpr_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_declarator_1FB1BA7038A7E0C5FB6A579D2A06ED316596DC66">declarator</a><span class="other">(</span><span class="identifier">declarator_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_initializer_07B51CDA3BAEC77E1E09691072C84ABF2195DBFD">initializer</a><span class="other">(</span><span class="identifier">initializer_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="235" xml:space="preserve"><span class="lineNumber">235</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="236" xml:space="preserve"><span class="lineNumber">236</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="237" xml:space="preserve"><span class="lineNumber">237</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="238" xml:space="preserve"><span class="lineNumber">238</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html">MemberDeclarationNode</a><span class="other">::</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#function_Accept_0331C7079E3733C8AB0E024D46937C06C68E7F33">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="239" xml:space="preserve"><span class="lineNumber">239</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="240" xml:space="preserve"><span class="lineNumber">240</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_BCDE395D41FB459766D612AE9BB0659E8413BE22">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="241" xml:space="preserve"><span class="lineNumber">241</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="242" xml:space="preserve"><span class="lineNumber">242</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="243" xml:space="preserve"><span class="lineNumber">243</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html">MemberDeclarationNode</a><span class="other">::</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#function_Write_97DA8EDB112C563EBA003AE1F596B5466297C203">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="244" xml:space="preserve"><span class="lineNumber">244</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="245" xml:space="preserve"><span class="lineNumber">245</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="246" xml:space="preserve"><span class="lineNumber">246</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_specifiers_4605B1F61A0B5C41474B0E60D6298EB1296DC66B">specifiers</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="247" xml:space="preserve"><span class="lineNumber">247</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_typeExpr_4FD06DE8D38F5DE940DFD0938BACF00631EA51E6">typeExpr</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="248" xml:space="preserve"><span class="lineNumber">248</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_typeExpr_4FD06DE8D38F5DE940DFD0938BACF00631EA51E6">typeExpr</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="249" xml:space="preserve"><span class="lineNumber">249</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="250" xml:space="preserve"><span class="lineNumber">250</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_typeExpr_4FD06DE8D38F5DE940DFD0938BACF00631EA51E6">typeExpr</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="251" xml:space="preserve"><span class="lineNumber">251</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="252" xml:space="preserve"><span class="lineNumber">252</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_declarator_1FB1BA7038A7E0C5FB6A579D2A06ED316596DC66">declarator</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="253" xml:space="preserve"><span class="lineNumber">253</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_initializer_07B51CDA3BAEC77E1E09691072C84ABF2195DBFD">initializer</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="254" xml:space="preserve"><span class="lineNumber">254</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_initializer_07B51CDA3BAEC77E1E09691072C84ABF2195DBFD">initializer</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="255" xml:space="preserve"><span class="lineNumber">255</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="256" xml:space="preserve"><span class="lineNumber">256</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_initializer_07B51CDA3BAEC77E1E09691072C84ABF2195DBFD">initializer</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="257" xml:space="preserve"><span class="lineNumber">257</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="258" xml:space="preserve"><span class="lineNumber">258</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="259" xml:space="preserve"><span class="lineNumber">259</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="260" xml:space="preserve"><span class="lineNumber">260</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html">MemberDeclarationNode</a><span class="other">::</span><a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#function_Read_31354FC53C5A330CD3031037753E00406ABCDDB5">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="261" xml:space="preserve"><span class="lineNumber">261</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="262" xml:space="preserve"><span class="lineNumber">262</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="263" xml:space="preserve"><span class="lineNumber">263</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_specifiers_4605B1F61A0B5C41474B0E60D6298EB1296DC66B">specifiers</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="264" xml:space="preserve"><span class="lineNumber">264</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasTypeExpr</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="265" xml:space="preserve"><span class="lineNumber">265</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasTypeExpr</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="266" xml:space="preserve"><span class="lineNumber">266</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="267" xml:space="preserve"><span class="lineNumber">267</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_typeExpr_4FD06DE8D38F5DE940DFD0938BACF00631EA51E6">typeExpr</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="268" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="269" xml:space="preserve"><span class="lineNumber">269</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_declarator_1FB1BA7038A7E0C5FB6A579D2A06ED316596DC66">declarator</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="270" xml:space="preserve"><span class="lineNumber">270</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasInitializer</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="271" xml:space="preserve"><span class="lineNumber">271</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasInitializer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="272" xml:space="preserve"><span class="lineNumber">272</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="273" xml:space="preserve"><span class="lineNumber">273</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberDeclarationNode_44B15F34178D45004B25CEBCFF8ABF790AC48516.html#variable_initializer_07B51CDA3BAEC77E1E09691072C84ABF2195DBFD">initializer</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="274" xml:space="preserve"><span class="lineNumber">274</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="275" xml:space="preserve"><span class="lineNumber">275</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="276" xml:space="preserve"><span class="lineNumber">276</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="277" xml:space="preserve"><span class="lineNumber">277</span>&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a><span class="other">::</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#constructor_SpecialMemberFunctionNode_00D33F19284D40ABEDF126EF7E27436E7B1C78AE">SpecialMemberFunctionNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_specialMemberFunctionNode_42C030B2EA19276EF662B44B2A76BD608B87CB0C">specialMemberFunctionNode</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_specifiers_B8A95779662259C7A61BCE6FE63905FFA76B2EF2">specifiers</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="278" xml:space="preserve"><span class="lineNumber">278</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="279" xml:space="preserve"><span class="lineNumber">279</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="280" xml:space="preserve"><span class="lineNumber">280</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="281" xml:space="preserve"><span class="lineNumber">281</span>&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a><span class="other">::</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#constructor_SpecialMemberFunctionNode_FC851D52CDA32746F7352BB10A7688BD5CAE0054">SpecialMemberFunctionNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>&nbsp;<span class="identifier">specifiers_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">declarator_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">ctorInitializer_</span><span class="other">,&nbsp;</span><a href="../class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html">CompoundStatementNode</a><span class="other">*</span>&nbsp;<span class="identifier">functionBody_</span><span class="other">)</span>&nbsp;<span class="other">:</span></span>
+  <br/>
+  <span class="code" id="282" xml:space="preserve"><span class="lineNumber">282</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_specialMemberFunctionNode_42C030B2EA19276EF662B44B2A76BD608B87CB0C">specialMemberFunctionNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_specifiers_B8A95779662259C7A61BCE6FE63905FFA76B2EF2">specifiers</a><span class="other">(</span><span class="identifier">specifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_declarator_367833D52802CB94F57F83372841E75B93C17E48">declarator</a><span class="other">(</span><span class="identifier">declarator_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_ctorInitializer_AA43E710AA32AC4520848768DDD2344092E828DE">ctorInitializer</a><span class="other">(</span><span class="identifier">ctorInitializer_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_functionBody_A3E7922539D2AF1C6693E9A6DB772F7F2301EA75">functionBody</a><span class="other">(</span><span class="identifier">functionBody_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="283" xml:space="preserve"><span class="lineNumber">283</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="284" xml:space="preserve"><span class="lineNumber">284</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="285" xml:space="preserve"><span class="lineNumber">285</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="286" xml:space="preserve"><span class="lineNumber">286</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a><span class="other">::</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_Accept_CD54F7AA0BF0CE02239664789187BAFC7D978EE7">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="287" xml:space="preserve"><span class="lineNumber">287</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="288" xml:space="preserve"><span class="lineNumber">288</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_60BFD58D11135FE096B9477890D2516FCEBB93FF">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="289" xml:space="preserve"><span class="lineNumber">289</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="290" xml:space="preserve"><span class="lineNumber">290</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="291" xml:space="preserve"><span class="lineNumber">291</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a><span class="other">::</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_Write_60C849B0BACCC4EB3EC1F346D0D48F75D7A49B6D">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="292" xml:space="preserve"><span class="lineNumber">292</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="293" xml:space="preserve"><span class="lineNumber">293</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="294" xml:space="preserve"><span class="lineNumber">294</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_specifiers_B8A95779662259C7A61BCE6FE63905FFA76B2EF2">specifiers</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="295" xml:space="preserve"><span class="lineNumber">295</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_declarator_367833D52802CB94F57F83372841E75B93C17E48">declarator</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="296" xml:space="preserve"><span class="lineNumber">296</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_ctorInitializer_AA43E710AA32AC4520848768DDD2344092E828DE">ctorInitializer</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="297" xml:space="preserve"><span class="lineNumber">297</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_ctorInitializer_AA43E710AA32AC4520848768DDD2344092E828DE">ctorInitializer</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="298" xml:space="preserve"><span class="lineNumber">298</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="299" xml:space="preserve"><span class="lineNumber">299</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_ctorInitializer_AA43E710AA32AC4520848768DDD2344092E828DE">ctorInitializer</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="300" xml:space="preserve"><span class="lineNumber">300</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="301" xml:space="preserve"><span class="lineNumber">301</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_functionBody_A3E7922539D2AF1C6693E9A6DB772F7F2301EA75">functionBody</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="302" xml:space="preserve"><span class="lineNumber">302</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_functionBody_A3E7922539D2AF1C6693E9A6DB772F7F2301EA75">functionBody</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="303" xml:space="preserve"><span class="lineNumber">303</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="304" xml:space="preserve"><span class="lineNumber">304</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_functionBody_A3E7922539D2AF1C6693E9A6DB772F7F2301EA75">functionBody</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="305" xml:space="preserve"><span class="lineNumber">305</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="306" xml:space="preserve"><span class="lineNumber">306</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="307" xml:space="preserve"><span class="lineNumber">307</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="308" xml:space="preserve"><span class="lineNumber">308</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html">SpecialMemberFunctionNode</a><span class="other">::</span><a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_Read_5976543B2BAF4C3B601A7CA929E0A706F943A773">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="309" xml:space="preserve"><span class="lineNumber">309</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="310" xml:space="preserve"><span class="lineNumber">310</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="311" xml:space="preserve"><span class="lineNumber">311</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_specifiers_B8A95779662259C7A61BCE6FE63905FFA76B2EF2">specifiers</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="312" xml:space="preserve"><span class="lineNumber">312</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_declarator_367833D52802CB94F57F83372841E75B93C17E48">declarator</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="313" xml:space="preserve"><span class="lineNumber">313</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasCtorInitializer</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="314" xml:space="preserve"><span class="lineNumber">314</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasCtorInitializer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="315" xml:space="preserve"><span class="lineNumber">315</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="316" xml:space="preserve"><span class="lineNumber">316</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_ctorInitializer_AA43E710AA32AC4520848768DDD2344092E828DE">ctorInitializer</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="317" xml:space="preserve"><span class="lineNumber">317</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="318" xml:space="preserve"><span class="lineNumber">318</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasFunctionBody</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="319" xml:space="preserve"><span class="lineNumber">319</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasFunctionBody</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="320" xml:space="preserve"><span class="lineNumber">320</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="321" xml:space="preserve"><span class="lineNumber">321</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#variable_functionBody_A3E7922539D2AF1C6693E9A6DB772F7F2301EA75">functionBody</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadCompoundStatementNode_D8ACA0E2E5E3FFA86F9BE04B1B6040037F0BBE23">ReadCompoundStatementNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="322" xml:space="preserve"><span class="lineNumber">322</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="323" xml:space="preserve"><span class="lineNumber">323</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="324" xml:space="preserve"><span class="lineNumber">324</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="325" xml:space="preserve"><span class="lineNumber">325</span>&nbsp;<a href="../class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.html">CtorInitializerNode</a><span class="other">::</span><a href="../class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.html#constructor_CtorInitializerNode_EEC5AD745DB9ABAC39783FC7C48AE6D74B58D9CE">CtorInitializerNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_ctorInitializerNode_DA4DA5731BE49229DF2C3F557DDD3D76E5441F7F">ctorInitializerNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="326" xml:space="preserve"><span class="lineNumber">326</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="327" xml:space="preserve"><span class="lineNumber">327</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="328" xml:space="preserve"><span class="lineNumber">328</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="329" xml:space="preserve"><span class="lineNumber">329</span>&nbsp;<a href="../class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.html">CtorInitializerNode</a><span class="other">::</span><a href="../class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.html#constructor_CtorInitializerNode_6B69663DD81ED588FA25309A46F0197D7B3310C8">CtorInitializerNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">memberInitializers_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_ctorInitializerNode_DA4DA5731BE49229DF2C3F557DDD3D76E5441F7F">ctorInitializerNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">memberInitializers_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="330" xml:space="preserve"><span class="lineNumber">330</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="331" xml:space="preserve"><span class="lineNumber">331</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="332" xml:space="preserve"><span class="lineNumber">332</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="333" xml:space="preserve"><span class="lineNumber">333</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.html">CtorInitializerNode</a><span class="other">::</span><a href="../class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.html#function_Accept_28BFD47F2534CD731ADEB9356CDB5708BBF971B1">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="334" xml:space="preserve"><span class="lineNumber">334</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="335" xml:space="preserve"><span class="lineNumber">335</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_DB403CB94F305538659A00E7F70B63D58ED66D4F">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="336" xml:space="preserve"><span class="lineNumber">336</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="337" xml:space="preserve"><span class="lineNumber">337</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="338" xml:space="preserve"><span class="lineNumber">338</span>&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html">MemberInitializerNode</a><span class="other">::</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#constructor_MemberInitializerNode_9009D4E31AA9F3D97F8EF1E63B48D29872C74880">MemberInitializerNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberInitializerNode_D0D467C86F03FC6FFE8C8C2F0960BC2B525610EA">memberInitializerNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="339" xml:space="preserve"><span class="lineNumber">339</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="340" xml:space="preserve"><span class="lineNumber">340</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="341" xml:space="preserve"><span class="lineNumber">341</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="342" xml:space="preserve"><span class="lineNumber">342</span>&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html">MemberInitializerNode</a><span class="other">::</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#constructor_MemberInitializerNode_E8DD9F7B28DA4A1D6B983324DB35624C193D8068">MemberInitializerNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">id_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">initializer_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberInitializerNode_D0D467C86F03FC6FFE8C8C2F0960BC2B525610EA">memberInitializerNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_id_524B88A753DB526851E28CEC1EA7113100AF9C4A">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_initializer_580043435E9DCE5CC1733783753048E45CF8C1AF">initializer</a><span class="other">(</span><span class="identifier">initializer_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="343" xml:space="preserve"><span class="lineNumber">343</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="344" xml:space="preserve"><span class="lineNumber">344</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="345" xml:space="preserve"><span class="lineNumber">345</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="346" xml:space="preserve"><span class="lineNumber">346</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html">MemberInitializerNode</a><span class="other">::</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#function_Accept_4D3C3A9D6FC5FAA82D8FDAD4DF2D81A4DD61BD69">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="347" xml:space="preserve"><span class="lineNumber">347</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="348" xml:space="preserve"><span class="lineNumber">348</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_F4583934E80B37A6F1970736D1D3C7861A8CDC0D">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="349" xml:space="preserve"><span class="lineNumber">349</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="350" xml:space="preserve"><span class="lineNumber">350</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="351" xml:space="preserve"><span class="lineNumber">351</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html">MemberInitializerNode</a><span class="other">::</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#function_Write_589DA488F21D586AC5F572496B48166C71E6AAB7">Write</a><span class="other">(</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">writer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="352" xml:space="preserve"><span class="lineNumber">352</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="353" xml:space="preserve"><span class="lineNumber">353</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="354" xml:space="preserve"><span class="lineNumber">354</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_id_524B88A753DB526851E28CEC1EA7113100AF9C4A">id</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="355" xml:space="preserve"><span class="lineNumber">355</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="../class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_initializer_580043435E9DCE5CC1733783753048E45CF8C1AF">initializer</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="356" xml:space="preserve"><span class="lineNumber">356</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_initializer_580043435E9DCE5CC1733783753048E45CF8C1AF">initializer</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="357" xml:space="preserve"><span class="lineNumber">357</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="358" xml:space="preserve"><span class="lineNumber">358</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_initializer_580043435E9DCE5CC1733783753048E45CF8C1AF">initializer</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="359" xml:space="preserve"><span class="lineNumber">359</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="360" xml:space="preserve"><span class="lineNumber">360</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="361" xml:space="preserve"><span class="lineNumber">361</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="362" xml:space="preserve"><span class="lineNumber">362</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html">MemberInitializerNode</a><span class="other">::</span><a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#function_Read_8136C4E4D26130C2C474635F48B3205B1B337D92">Read</a><span class="other">(</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a><span class="other">&amp;</span>&nbsp;<span class="identifier">reader</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="363" xml:space="preserve"><span class="lineNumber">363</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="364" xml:space="preserve"><span class="lineNumber">364</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="../class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="365" xml:space="preserve"><span class="lineNumber">365</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_id_524B88A753DB526851E28CEC1EA7113100AF9C4A">id</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="366" xml:space="preserve"><span class="lineNumber">366</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasInitializer</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="367" xml:space="preserve"><span class="lineNumber">367</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasInitializer</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="368" xml:space="preserve"><span class="lineNumber">368</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="369" xml:space="preserve"><span class="lineNumber">369</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MemberInitializerNode_36375DAC454AA7FDEAA5CEDD10015FE9759D6D3D.html#variable_initializer_580043435E9DCE5CC1733783753048E45CF8C1AF">initializer</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="../class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="370" xml:space="preserve"><span class="lineNumber">370</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="371" xml:space="preserve"><span class="lineNumber">371</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="372" xml:space="preserve"><span class="lineNumber">372</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="373" xml:space="preserve"><span class="lineNumber">373</span>&nbsp;<a href="../class_MemberInitializerSequenceNode_97F2CC1363114BA6A6B2CE536B21C9825288B45E.html">MemberInitializerSequenceNode</a><span class="other">::</span><a href="../class_MemberInitializerSequenceNode_97F2CC1363114BA6A6B2CE536B21C9825288B45E.html#constructor_MemberInitializerSequenceNode_20D9D97BCE440324B1DAB8BF213F684599A75D34">MemberInitializerSequenceNode</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberInitializerSequenceNode_B6ECAE53EB5B43B25F2E2826B312C05945671413">memberInitializerSequenceNode</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="374" xml:space="preserve"><span class="lineNumber">374</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="375" xml:space="preserve"><span class="lineNumber">375</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="376" xml:space="preserve"><span class="lineNumber">376</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="377" xml:space="preserve"><span class="lineNumber">377</span>&nbsp;<a href="../class_MemberInitializerSequenceNode_97F2CC1363114BA6A6B2CE536B21C9825288B45E.html">MemberInitializerSequenceNode</a><span class="other">::</span><a href="../class_MemberInitializerSequenceNode_97F2CC1363114BA6A6B2CE536B21C9825288B45E.html#constructor_MemberInitializerSequenceNode_2BDECA06F7B4BA83E68549FBC6B97ED9DC32A692">MemberInitializerSequenceNode</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">left_</span><span class="other">,&nbsp;</span><a href="../class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">right_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">(</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="../enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_memberInitializerSequenceNode_B6ECAE53EB5B43B25F2E2826B312C05945671413">memberInitializerSequenceNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="378" xml:space="preserve"><span class="lineNumber">378</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="379" xml:space="preserve"><span class="lineNumber">379</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="380" xml:space="preserve"><span class="lineNumber">380</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="381" xml:space="preserve"><span class="lineNumber">381</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_MemberInitializerSequenceNode_97F2CC1363114BA6A6B2CE536B21C9825288B45E.html">MemberInitializerSequenceNode</a><span class="other">::</span><a href="../class_MemberInitializerSequenceNode_97F2CC1363114BA6A6B2CE536B21C9825288B45E.html#function_Accept_55CE87CE6E5B95889890FF17E2248475396175BB">Accept</a><span class="other">(</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="382" xml:space="preserve"><span class="lineNumber">382</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="383" xml:space="preserve"><span class="lineNumber">383</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="../class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_8DF5934BC9E28B19E2B690382091641D5EBCAD95">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="384" xml:space="preserve"><span class="lineNumber">384</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="385" xml:space="preserve"><span class="lineNumber">385</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="386" xml:space="preserve"><span class="lineNumber">386</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::ast</span></span>
+  <br/>
+ </body>
+</html>

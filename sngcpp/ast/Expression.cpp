@@ -5,6 +5,8 @@
 
 #include <sngcpp/ast/Expression.hpp>
 #include <sngcpp/ast/Visitor.hpp>
+#include <sngcpp/ast/Writer.hpp>
+#include <sngcpp/ast/Reader.hpp>
 
 namespace sngcpp { namespace ast {
 
@@ -69,7 +71,11 @@ std::u32string OpStr(Operator op)
     return std::u32string();
 }
 
-ExpressionSequenceNode::ExpressionSequenceNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+ExpressionSequenceNode::ExpressionSequenceNode() : BinaryNode(NodeType::expressionSequenceNode)
+{
+}
+
+ExpressionSequenceNode::ExpressionSequenceNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::expressionSequenceNode, span_, left_, right_)
 {
 }
 
@@ -78,7 +84,11 @@ void ExpressionSequenceNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-CommaExpressionNode::CommaExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+CommaExpressionNode::CommaExpressionNode() : BinaryNode(NodeType::commaExpressionNode)
+{
+}
+
+CommaExpressionNode::CommaExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::commaExpressionNode, span_, left_, right_)
 {
 }
 
@@ -87,7 +97,11 @@ void CommaExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-AssignmentExpressionNode::AssignmentExpressionNode(const Span& span_, Node* left_, Operator op_, Node* right_) : BinaryNode(span_, left_, right_), op(op_)
+AssignmentExpressionNode::AssignmentExpressionNode() : BinaryNode(NodeType::assignmentExpressionNode)
+{
+}
+
+AssignmentExpressionNode::AssignmentExpressionNode(const Span& span_, Node* left_, Operator op_, Node* right_) : BinaryNode(NodeType::assignmentExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -96,8 +110,24 @@ void AssignmentExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+void AssignmentExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void AssignmentExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+ConditionalExpressionNode::ConditionalExpressionNode() : Node(NodeType::conditionalExpressionNode)
+{
+}
+
 ConditionalExpressionNode::ConditionalExpressionNode(const Span& span_, Node* condition_, Node* thenExpr_, Node* elseExpr_) :
-    Node(span_), condition(condition_), thenExpr(thenExpr_), elseExpr(elseExpr_)
+    Node(NodeType::conditionalExpressionNode, span_), condition(condition_), thenExpr(thenExpr_), elseExpr(elseExpr_)
 {
 }
 
@@ -106,7 +136,27 @@ void ConditionalExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ThrowExpressionNode::ThrowExpressionNode(const Span& span_, Node* exceptionExpr_) : UnaryNode(span_, exceptionExpr_)
+void ConditionalExpressionNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    condition->Write(writer);
+    thenExpr->Write(writer);
+    elseExpr->Write(writer);
+}
+
+void ConditionalExpressionNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    condition.reset(reader.ReadNode());
+    thenExpr.reset(reader.ReadNode());
+    elseExpr.reset(reader.ReadNode());
+}
+
+ThrowExpressionNode::ThrowExpressionNode() : UnaryNode(NodeType::throwExpressionNode)
+{
+}
+
+ThrowExpressionNode::ThrowExpressionNode(const Span& span_, Node* exceptionExpr_) : UnaryNode(NodeType::throwExpressionNode, span_, exceptionExpr_)
 {
 }
 
@@ -115,7 +165,11 @@ void ThrowExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-LogicalOrExpressionNode::LogicalOrExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+LogicalOrExpressionNode::LogicalOrExpressionNode() : BinaryNode(NodeType::logicalOrExpressionNode)
+{
+}
+
+LogicalOrExpressionNode::LogicalOrExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::logicalOrExpressionNode, span_, left_, right_)
 {
 }
 
@@ -124,7 +178,11 @@ void LogicalOrExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-LogicalAndExpressionNode::LogicalAndExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+LogicalAndExpressionNode::LogicalAndExpressionNode() : BinaryNode(NodeType::logicalAndExpressionNode)
+{
+}
+
+LogicalAndExpressionNode::LogicalAndExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::logicalAndExpressionNode, span_, left_, right_)
 {
 }
 
@@ -133,7 +191,11 @@ void LogicalAndExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-InclusiveOrExpressionNode::InclusiveOrExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+InclusiveOrExpressionNode::InclusiveOrExpressionNode() : BinaryNode(NodeType::inclusiveOrExpressionNode)
+{
+}
+
+InclusiveOrExpressionNode::InclusiveOrExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::inclusiveOrExpressionNode, span_, left_, right_)
 {
 }
 
@@ -142,7 +204,11 @@ void InclusiveOrExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ExclusiveOrExpressionNode::ExclusiveOrExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+ExclusiveOrExpressionNode::ExclusiveOrExpressionNode() : BinaryNode(NodeType::exclusiveOrExpressionNode)
+{
+}
+
+ExclusiveOrExpressionNode::ExclusiveOrExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::exclusiveOrExpressionNode, span_, left_, right_)
 {
 }
 
@@ -151,7 +217,11 @@ void ExclusiveOrExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-AndExpressionNode::AndExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+AndExpressionNode::AndExpressionNode() : BinaryNode(NodeType::andExpressionNode)
+{
+}
+
+AndExpressionNode::AndExpressionNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::andExpressionNode, span_, left_, right_)
 {
 }
 
@@ -160,7 +230,11 @@ void AndExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-EqualityExpressionNode::EqualityExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(span_, left_, right_), op(op_)
+EqualityExpressionNode::EqualityExpressionNode() : BinaryNode(NodeType::equalityExpressionNode), op()
+{
+}
+
+EqualityExpressionNode::EqualityExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(NodeType::equalityExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -169,7 +243,23 @@ void EqualityExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-RelationalExpressionNode::RelationalExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(span_, left_, right_), op(op_)
+void EqualityExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void EqualityExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+RelationalExpressionNode::RelationalExpressionNode() : BinaryNode(NodeType::relationalExpressionNode), op()
+{
+}
+
+RelationalExpressionNode::RelationalExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(NodeType::relationalExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -178,7 +268,23 @@ void RelationalExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ShiftExpressionNode::ShiftExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(span_, left_, right_), op(op_)
+void RelationalExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void RelationalExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+ShiftExpressionNode::ShiftExpressionNode() : BinaryNode(NodeType::shiftExpressionNode), op()
+{
+}
+
+ShiftExpressionNode::ShiftExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(NodeType::shiftExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -187,7 +293,23 @@ void ShiftExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-AdditiveExpressionNode::AdditiveExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(span_, left_, right_), op(op_)
+void ShiftExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void ShiftExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+AdditiveExpressionNode::AdditiveExpressionNode() : BinaryNode(NodeType::additiveExpressionNode), op()
+{
+}
+
+AdditiveExpressionNode::AdditiveExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(NodeType::additiveExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -196,7 +318,23 @@ void AdditiveExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-MultiplicativeExpressionNode::MultiplicativeExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(span_, left_, right_), op(op_)
+void AdditiveExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void AdditiveExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+MultiplicativeExpressionNode::MultiplicativeExpressionNode() : BinaryNode(NodeType::multiplicativeExpressionNode), op()
+{
+}
+
+MultiplicativeExpressionNode::MultiplicativeExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(NodeType::multiplicativeExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -205,7 +343,23 @@ void MultiplicativeExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-PMExpressionNode::PMExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(span_, left_, right_), op(op_)
+void MultiplicativeExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void MultiplicativeExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+PMExpressionNode::PMExpressionNode() : BinaryNode(NodeType::pmExpressionNode), op()
+{
+}
+
+PMExpressionNode::PMExpressionNode(const Span& span_, Node* left_, Node* right_, Operator op_) : BinaryNode(NodeType::pmExpressionNode, span_, left_, right_), op(op_)
 {
 }
 
@@ -214,7 +368,23 @@ void PMExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-CastExpressionNode::CastExpressionNode(const Span& span_, Node* typeExpr_, Node* expr_) : Node(span_), typeExpr(typeExpr_), expr(expr_)
+void PMExpressionNode::Write(Writer& writer)
+{
+    BinaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void PMExpressionNode::Read(Reader& reader)
+{
+    BinaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+CastExpressionNode::CastExpressionNode() : Node(NodeType::castExpressionNode)
+{
+}
+
+CastExpressionNode::CastExpressionNode(const Span& span_, Node* typeExpr_, Node* expr_) : Node(NodeType::castExpressionNode, span_), typeExpr(typeExpr_), expr(expr_)
 {
 }
 
@@ -223,7 +393,25 @@ void CastExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-UnaryExpressionNode::UnaryExpressionNode(const Span& span_, Operator op_, Node* expr_) : UnaryNode(span_, expr_), op(op_)
+void CastExpressionNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    typeExpr->Write(writer);
+    expr->Write(writer);
+}
+
+void CastExpressionNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    typeExpr.reset(reader.ReadNode());
+    expr.reset(reader.ReadNode());
+}
+
+UnaryExpressionNode::UnaryExpressionNode() : UnaryNode(NodeType::unaryExpressionNode), op()
+{
+}
+
+UnaryExpressionNode::UnaryExpressionNode(const Span& span_, Operator op_, Node* expr_) : UnaryNode(NodeType::unaryExpressionNode, span_, expr_), op(op_)
 {
 }
 
@@ -232,8 +420,24 @@ void UnaryExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+void UnaryExpressionNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    writer.Write(op);
+}
+
+void UnaryExpressionNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    op = reader.ReadOperator();
+}
+
+NewExpressionNode::NewExpressionNode() : Node(NodeType::newExpressionNode)
+{
+}
+
 NewExpressionNode::NewExpressionNode(const Span& span_, Node* placement_, Node* typeExpr_, Node* initializer_) :
-    Node(span_), placement(placement_), typeExpr(typeExpr_), initializer(initializer_)
+    Node(NodeType::newExpressionNode, span_), placement(placement_), typeExpr(typeExpr_), initializer(initializer_)
 {
 }
 
@@ -242,7 +446,43 @@ void NewExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-DeleteExpressionNode::DeleteExpressionNode(const Span& span_, bool array__, Node* ptr_) : UnaryNode(span_, ptr_), array_(array__)
+void NewExpressionNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    writer.GetBinaryWriter().Write(placement != nullptr);
+    if (placement)
+    {
+        placement->Write(writer);
+    }
+    typeExpr->Write(writer);
+    writer.GetBinaryWriter().Write(initializer != nullptr);
+    if (initializer)
+    {
+        initializer->Write(writer);
+    }
+}
+
+void NewExpressionNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    bool hasPlacement = reader.GetBinaryReader().ReadBool();
+    if (hasPlacement)
+    {
+        placement.reset(reader.ReadNode());
+    }
+    typeExpr.reset(reader.ReadNode());
+    bool hasInitializer = reader.GetBinaryReader().ReadBool();
+    if (hasInitializer)
+    {
+        initializer.reset(reader.ReadNode());
+    }
+}
+
+DeleteExpressionNode::DeleteExpressionNode() : UnaryNode(NodeType::deleteExpressionNode), array_()
+{
+}
+
+DeleteExpressionNode::DeleteExpressionNode(const Span& span_, bool array__, Node* ptr_) : UnaryNode(NodeType::deleteExpressionNode, span_, ptr_), array_(array__)
 {
 }
 
@@ -251,7 +491,23 @@ void DeleteExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-SubscriptExpressionNode::SubscriptExpressionNode(const Span& span_, Node* subject_, Node* index_) : UnaryNode(span_, subject_), index(index_)
+void DeleteExpressionNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    writer.GetBinaryWriter().Write(array_);
+}
+
+void DeleteExpressionNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    array_ = reader.GetBinaryReader().ReadBool();
+}
+
+SubscriptExpressionNode::SubscriptExpressionNode() : UnaryNode(NodeType::subscriptExpressionNode)
+{
+}
+
+SubscriptExpressionNode::SubscriptExpressionNode(const Span& span_, Node* subject_, Node* index_) : UnaryNode(NodeType::subscriptExpressionNode, span_, subject_), index(index_)
 {
 }
 
@@ -260,7 +516,23 @@ void SubscriptExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-InvokeExpressionNode::InvokeExpressionNode(const Span& span_, Node* subject_, Node* arguments_) : UnaryNode(span_, subject_), arguments(arguments_)
+void SubscriptExpressionNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    index->Write(writer);
+}
+
+void SubscriptExpressionNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    index.reset(reader.ReadNode());
+}
+
+InvokeExpressionNode::InvokeExpressionNode() : UnaryNode(NodeType::invokeExpressionNode)
+{
+}
+
+InvokeExpressionNode::InvokeExpressionNode(const Span& span_, Node* subject_, Node* arguments_) : UnaryNode(NodeType::invokeExpressionNode, span_, subject_), arguments(arguments_)
 {
 }
 
@@ -269,7 +541,31 @@ void InvokeExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-DotNode::DotNode(const Span& span_, Node* subject_, Node* id_) : UnaryNode(span_, subject_), id(id_)
+void InvokeExpressionNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    writer.GetBinaryWriter().Write(arguments != nullptr);
+    if (arguments)
+    {
+        arguments->Write(writer);
+    }
+}
+
+void InvokeExpressionNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    bool hasArguments = reader.GetBinaryReader().ReadBool();
+    if (hasArguments)
+    {
+        arguments.reset(reader.ReadNode());
+    }
+}
+
+DotNode::DotNode() : UnaryNode(NodeType::dotNode)
+{
+}
+
+DotNode::DotNode(const Span& span_, Node* subject_, Node* id_) : UnaryNode(NodeType::dotNode, span_, subject_), id(id_)
 {
 }
 
@@ -278,7 +574,23 @@ void DotNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ArrowNode::ArrowNode(const Span& span_, Node* subject_, Node* id_) : UnaryNode(span_, subject_), id(id_)
+void DotNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    id->Write(writer);
+}
+
+void DotNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    id.reset(reader.ReadNode());
+}
+
+ArrowNode::ArrowNode() : UnaryNode(NodeType::arrowNode)
+{
+}
+
+ArrowNode::ArrowNode(const Span& span_, Node* subject_, Node* id_) : UnaryNode(NodeType::arrowNode, span_, subject_), id(id_)
 {
 }
 
@@ -287,7 +599,23 @@ void ArrowNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-PostfixIncNode::PostfixIncNode(const Span& span_, Node* subject_) : UnaryNode(span_, subject_)
+void ArrowNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    id->Write(writer);
+}
+
+void ArrowNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    id.reset(reader.ReadNode());
+}
+
+PostfixIncNode::PostfixIncNode() : UnaryNode(NodeType::postfixIncNode)
+{
+}
+
+PostfixIncNode::PostfixIncNode(const Span& span_, Node* subject_) : UnaryNode(NodeType::postfixIncNode, span_, subject_)
 {
 }
 
@@ -296,7 +624,11 @@ void PostfixIncNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-PostfixDecNode::PostfixDecNode(const Span& span_, Node* subject_) : UnaryNode(span_, subject_)
+PostfixDecNode::PostfixDecNode() : UnaryNode(NodeType::postfixDecNode)
+{
+}
+
+PostfixDecNode::PostfixDecNode(const Span& span_, Node* subject_) : UnaryNode(NodeType::postfixDecNode, span_, subject_)
 {
 }
 
@@ -305,7 +637,11 @@ void PostfixDecNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-CppCastExpressionNode::CppCastExpressionNode(const Span& span_, Node* typeExpr_, Node* expr_, Operator op_) : Node(span_), typeExpr(typeExpr_), expr(expr_), op(op_)
+CppCastExpressionNode::CppCastExpressionNode() : Node(NodeType::cppCastExpressionNode), op()
+{
+}
+
+CppCastExpressionNode::CppCastExpressionNode(const Span& span_, Node* typeExpr_, Node* expr_, Operator op_) : Node(NodeType::cppCastExpressionNode, span_), typeExpr(typeExpr_), expr(expr_), op(op_)
 {
 }
 
@@ -314,7 +650,27 @@ void CppCastExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-TypeIdExpressionNode::TypeIdExpressionNode(const Span& span_, Node* subject_) : UnaryNode(span_, subject_)
+void CppCastExpressionNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    typeExpr->Write(writer);
+    expr->Write(writer);
+    writer.Write(op);
+}
+
+void CppCastExpressionNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    typeExpr.reset(reader.ReadNode());
+    expr.reset(reader.ReadNode());
+    op = reader.ReadOperator();
+}
+
+TypeIdExpressionNode::TypeIdExpressionNode() : UnaryNode(NodeType::typeIdExpressionNode)
+{
+}
+
+TypeIdExpressionNode::TypeIdExpressionNode(const Span& span_, Node* subject_) : UnaryNode(NodeType::typeIdExpressionNode, span_, subject_)
 {
 }
 
@@ -323,7 +679,11 @@ void TypeIdExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ThisNode::ThisNode(const Span& span_) : Node(span_)
+ThisNode::ThisNode() : Node(NodeType::thisNode)
+{
+}
+
+ThisNode::ThisNode(const Span& span_) : Node(NodeType::thisNode, span_)
 {
 }
 
@@ -332,7 +692,19 @@ void ThisNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-IdentifierNode::IdentifierNode(const Span& span_, const std::u32string& identifier_) : Node(span_), identifier(identifier_)
+IdentifierNode::IdentifierNode() : Node(NodeType::identifierNode)
+{
+}
+
+IdentifierNode::IdentifierNode(NodeType nodeType_) : Node(nodeType_)
+{
+}
+
+IdentifierNode::IdentifierNode(const Span& span_, const std::u32string& identifier_) : Node(NodeType::identifierNode, span_), identifier(identifier_)
+{
+}
+
+IdentifierNode::IdentifierNode(NodeType nodeType_, const Span& span_, const std::u32string& identifier_) : Node(nodeType_, span_), identifier(identifier_)
 {
 }
 
@@ -341,13 +713,41 @@ void IdentifierNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-OperatorFunctionIdNode::OperatorFunctionIdNode(const Span& span_, Operator op_) : IdentifierNode(span_, U"operator"), op(op_)
+void IdentifierNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    writer.GetBinaryWriter().Write(identifier);
+}
+
+void IdentifierNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    identifier = reader.GetBinaryReader().ReadUtf32String();
+}
+
+OperatorFunctionIdNode::OperatorFunctionIdNode() : IdentifierNode(NodeType::operatorFunctionIdNode), op()
+{
+}
+
+OperatorFunctionIdNode::OperatorFunctionIdNode(const Span& span_, Operator op_) : IdentifierNode(NodeType::operatorFunctionIdNode, span_, U"operator"), op(op_)
 {
 }
 
 void OperatorFunctionIdNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
+}
+
+void OperatorFunctionIdNode::Write(Writer& writer)
+{
+    IdentifierNode::Write(writer);
+    writer.Write(op);
+}
+
+void OperatorFunctionIdNode::Read(Reader& reader)
+{
+    IdentifierNode::Read(reader);
+    op = reader.ReadOperator();
 }
 
 std::u32string OperatorFunctionIdNode::OpStr() const
@@ -503,7 +903,11 @@ std::u32string OperatorFunctionIdNode::GroupName() const
     return std::u32string();
 }
 
-ConversionFunctionIdNode::ConversionFunctionIdNode(const Span& span_, Node* typeExpr_) : IdentifierNode(span_, U"operator"), typeExpr(typeExpr_)
+ConversionFunctionIdNode::ConversionFunctionIdNode() : IdentifierNode(NodeType::conversionFunctionIdNode)
+{
+}
+
+ConversionFunctionIdNode::ConversionFunctionIdNode(const Span& span_, Node* typeExpr_) : IdentifierNode(NodeType::conversionFunctionIdNode, span_, U"operator"), typeExpr(typeExpr_)
 {
 }
 
@@ -512,7 +916,23 @@ void ConversionFunctionIdNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-DtorIdNode::DtorIdNode(const Span& span_, const std::u32string& identifier_) : IdentifierNode(span_, identifier_)
+void ConversionFunctionIdNode::Write(Writer& writer)
+{
+    IdentifierNode::Write(writer);
+    typeExpr->Write(writer);
+}
+
+void ConversionFunctionIdNode::Read(Reader& reader)
+{
+    IdentifierNode::Read(reader);
+    typeExpr.reset(reader.ReadNode());
+}
+
+DtorIdNode::DtorIdNode() : IdentifierNode(NodeType::dtorIdNode)
+{
+}
+
+DtorIdNode::DtorIdNode(const Span& span_, const std::u32string& identifier_) : IdentifierNode(NodeType::dtorIdNode, span_, identifier_)
 {
 }
 
@@ -521,7 +941,11 @@ void DtorIdNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-NestedIdNode::NestedIdNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+NestedIdNode::NestedIdNode() : BinaryNode(NodeType::nestedIdNode)
+{
+}
+
+NestedIdNode::NestedIdNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::nestedIdNode, span_, left_, right_)
 {
 }
 
@@ -530,7 +954,11 @@ void NestedIdNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ParenthesizedExprNode::ParenthesizedExprNode(const Span& span_, Node* expr_) : UnaryNode(span_, expr_)
+ParenthesizedExprNode::ParenthesizedExprNode() : UnaryNode(NodeType::parenthesizedExprNode)
+{
+}
+
+ParenthesizedExprNode::ParenthesizedExprNode(const Span& span_, Node* expr_) : UnaryNode(NodeType::parenthesizedExprNode, span_, expr_)
 {
 }
 
@@ -539,7 +967,11 @@ void ParenthesizedExprNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-LambdaExpressionNode::LambdaExpressionNode(const Span& span_) : Node(span_)
+LambdaExpressionNode::LambdaExpressionNode() : Node(NodeType::lambdaExpressionNode)
+{
+}
+
+LambdaExpressionNode::LambdaExpressionNode(const Span& span_) : Node(NodeType::lambdaExpressionNode, span_)
 {
 }
 
@@ -570,7 +1002,43 @@ void LambdaExpressionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-CaptureSequenceNode::CaptureSequenceNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(span_, left_, right_)
+void LambdaExpressionNode::Write(Writer& writer)
+{
+    Node::Write(writer);
+    writer.GetBinaryWriter().Write(captures != nullptr);
+    if (captures)
+    {
+        captures->Write(writer);
+    }
+    writer.GetBinaryWriter().Write(parameters != nullptr);
+    if (parameters)
+    {
+        parameters->Write(writer);
+    }
+    body->Write(writer);
+}
+
+void LambdaExpressionNode::Read(Reader& reader)
+{
+    Node::Read(reader);
+    bool hasCaptures = reader.GetBinaryReader().ReadBool();
+    if (hasCaptures)
+    {
+        captures.reset(reader.ReadNode());
+    }
+    bool hasParameters = reader.GetBinaryReader().ReadBool();
+    if (hasParameters)
+    {
+        parameters.reset(reader.ReadNode());
+    }
+    body.reset(reader.ReadCompoundStatementNode());
+}
+
+CaptureSequenceNode::CaptureSequenceNode() : BinaryNode(NodeType::captureSequenceNode)
+{
+}
+
+CaptureSequenceNode::CaptureSequenceNode(const Span& span_, Node* left_, Node* right_) : BinaryNode(NodeType::captureSequenceNode, span_, left_, right_)
 {
 }
 
@@ -579,38 +1047,54 @@ void CaptureSequenceNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-AssignCapture::AssignCapture(const Span& span_) : Node(span_)
+AssignCaptureNode::AssignCaptureNode() : Node(NodeType::assignCaptureNode)
 {
 }
 
-void AssignCapture::Accept(Visitor& visitor)
-{
-    visitor.Visit(*this);
-}
-
-RefCapture::RefCapture(const Span& span_) : Node(span_)
+AssignCaptureNode::AssignCaptureNode(const Span& span_) : Node(NodeType::assignCaptureNode, span_)
 {
 }
 
-void RefCapture::Accept(Visitor& visitor)
+void AssignCaptureNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-ThisCapture::ThisCapture(const Span& span_) : Node(span_)
+RefCaptureNode::RefCaptureNode() : Node(NodeType::refCaptureNode)
 {
 }
 
-void ThisCapture::Accept(Visitor& visitor)
+RefCaptureNode::RefCaptureNode(const Span& span_) : Node(NodeType::refCaptureNode, span_)
+{
+}
+
+void RefCaptureNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-IdentifierCapture::IdentifierCapture(const Span& span_, IdentifierNode* id_) : UnaryNode(span_, id_)
+ThisCaptureNode::ThisCaptureNode() : Node(NodeType::thisCaptureNode)
 {
 }
 
-void IdentifierCapture::Accept(Visitor& visitor)
+ThisCaptureNode::ThisCaptureNode(const Span& span_) : Node(NodeType::thisCaptureNode, span_)
+{
+}
+
+void ThisCaptureNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+IdentifierCaptureNode::IdentifierCaptureNode() : UnaryNode(NodeType::identifierCaptureNode)
+{
+}
+
+IdentifierCaptureNode::IdentifierCaptureNode(const Span& span_, IdentifierNode* id_) : UnaryNode(NodeType::identifierCaptureNode, span_, id_)
+{
+}
+
+void IdentifierCaptureNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }

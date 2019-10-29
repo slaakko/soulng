@@ -1,0 +1,216 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SimpleDeclaration Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_SelectionStatement_362CBE2330027FFB87F0F07993F13FAAA4480E99.html">prev</a>
+         | <a href="class_SizeOfExpr_77497C49764C5BF15A9258FE3A5E694F5BDE6E1A.html">next</a>
+        <hr/>
+        <h1>SimpleDeclaration Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#60">60</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#constructor_SimpleDeclaration_E97DAC82DD13F744695CCD16FD8E5CAC28731D10">SimpleDeclaration</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Accept_151FA90E71FDA5D70477914FE5F3B94DC5C96350">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Add_7904EA9E7E75ED9ADB6C9AA5D2B498845EA766A7">Add</a>(<a href="./class_DeclSpecifier_DBEA828075F453A882D6B26CCD2221C799BEFEBC.html">DeclSpecifier</a>* declSpecifier)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Print_61D0083A213511BEF02DEEB7351A6384E864CE04">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_SetInitDeclaratorList_6E211683FE7ADBD444DBA3404AEC48460681D087">SetInitDeclaratorList</a>(<a href="./class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html">InitDeclaratorList</a>* initDeclaratorList_)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_declSpecifiers_BB6DB1BDC7079131C6101ECFFA0B249EB3B2D2B7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_DeclSpecifier_DBEA828075F453A882D6B26CCD2221C799BEFEBC.html">DeclSpecifier</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">declSpecifiers</td>
+            </tr>
+            <tr id="variable_initDeclaratorList_7C7316341ADED5FDD97C10DEEE35ED6F44D32D65">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html">InitDeclaratorList</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">initDeclaratorList</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_SimpleDeclaration_E97DAC82DD13F744695CCD16FD8E5CAC28731D10">SimpleDeclaration Constructor</h3>
+        <h4>
+            soulng::cppcode::SimpleDeclaration::SimpleDeclaration()</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#165">165</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a><span class="other">(</span><span class="string">U"simpleDeclaration"</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#variable_initDeclaratorList_7C7316341ADED5FDD97C10DEEE35ED6F44D32D65">initDeclaratorList</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#63">63</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_151FA90E71FDA5D70477914FE5F3B94DC5C96350">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::SimpleDeclaration::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#202">202</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#67">67</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html#function_Accept_A83C8B44929ABA5FF194B618E01BBBA7DDB48745">soulng::cppcode::InitDeclaratorList::Accept</a>
+            , <a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Accept_151FA90E71FDA5D70477914FE5F3B94DC5C96350">soulng::cppcode::SimpleDeclaration::Accept</a>
+            , <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_C9FC2753172C155467B90D8CD98F9883DCF0681E">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Accept_151FA90E71FDA5D70477914FE5F3B94DC5C96350">soulng::cppcode::SimpleDeclaration::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Add_7904EA9E7E75ED9ADB6C9AA5D2B498845EA766A7">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::SimpleDeclaration::Add(<a href="./class_DeclSpecifier_DBEA828075F453A882D6B26CCD2221C799BEFEBC.html">DeclSpecifier</a>
+            * declSpecifier)</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#169">169</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><span class="identifier">declSpecifier</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#variable_declSpecifiers_BB6DB1BDC7079131C6101ECFFA0B249EB3B2D2B7">declSpecifiers</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">declSpecifier</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#64">64</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">soulng::cppcode::CppObject::Own</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_61D0083A213511BEF02DEEB7351A6384E864CE04">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::SimpleDeclaration::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#181">181</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html#function_Print_AB36EBFCA06DA21A09E922692D98313891F8E5A9">soulng::cppcode::InitDeclaratorList::Print</a>
+            , <a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Print_61D0083A213511BEF02DEEB7351A6384E864CE04">soulng::cppcode::SimpleDeclaration::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#function_Print_61D0083A213511BEF02DEEB7351A6384E864CE04">soulng::cppcode::SimpleDeclaration::Print</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetInitDeclaratorList_6E211683FE7ADBD444DBA3404AEC48460681D087">SetInitDeclaratorList Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::SimpleDeclaration::SetInitDeclaratorList(<a href="./class_InitDeclaratorList_C4FBEFC661FCE92E7F72C03AFC0FFAA76FAFDB4B.html">InitDeclaratorList</a>
+            * initDeclaratorList_)</h4>
+        <span>
+            Definition at line <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html#175">175</a>
+             of <a href="file/Declaration.cpp_6FAE47EB4E7BE72902D8EF6F256E487EE556A900.html">Declaration.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#variable_initDeclaratorList_7C7316341ADED5FDD97C10DEEE35ED6F44D32D65">initDeclaratorList</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">initDeclaratorList_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><a href="./class_SimpleDeclaration_A79C1FC1C9ADD7A630EE7F36D0AB5E37516FDB27.html#variable_initDeclaratorList_7C7316341ADED5FDD97C10DEEE35ED6F44D32D65">initDeclaratorList</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">179</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html#65">65</a>
+             of <a href="file/Declaration.hpp_67F257CDF331A59897037B755BE29AB4B7539311.html">Declaration.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">soulng::cppcode::CppObject::Own</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_SelectionStatement_362CBE2330027FFB87F0F07993F13FAAA4480E99.html">prev</a>
+         | <a href="class_SizeOfExpr_77497C49764C5BF15A9258FE3A5E694F5BDE6E1A.html">next</a>
+    </body>
+</html>

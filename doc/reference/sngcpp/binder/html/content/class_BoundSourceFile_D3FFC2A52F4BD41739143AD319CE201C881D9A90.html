@@ -1,0 +1,192 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>BoundSourceFile Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html">up</a>
+         | prev | <a href="class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html">next</a>
+        <hr/>
+        <h1>BoundSourceFile Class</h1>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#16">16</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#constructor_BoundSourceFile_A0FD954B83AE3A556FFBC09DC81C0BD443A84F46">BoundSourceFile</a>(<a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#constructor_BoundSourceFile_C64AA10B8816785D872E821C8045A29250F0E14E">BoundSourceFile</a>(SourceFileNode&amp; sourceFileNode_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#constructor_BoundSourceFile_ADCBE723268B9706094A494AFEA0FA6553956C86">BoundSourceFile</a>(<span class="kw">const </span><a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#function_AddFileScope_3D7FCE6A043FD16193C890E0492471A7709D0783">AddFileScope</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./../../../symbols/html/content/class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html">FileScope</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#function_FileScopes_7312843E090FB5EBA5CE16CA7ECDE0B380C2A2BE">FileScopes</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#function_operator_assign_D11853EC0B0C289AB1C3D51E41B2DA3875E72657">operator=</a>(<a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#function_operator_assign_C025B4F5BF5FAE8708C37ABF6FD163FF8AF9C7EB">operator=</a>(<span class="kw">const </span><a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_fileScopes_0163C7B3079619DC8D9887D72D7295F886BC4A63">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./../../../symbols/html/content/class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html">FileScope</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">fileScopes</td>
+            </tr>
+            <tr id="variable_sourceFileNode_0C623EBA6AE3CC1890062A946FC0867872806EAF">
+                <td class="functionTableFirstCol" xml:space="preserve">SourceFileNode&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">sourceFileNode</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_BoundSourceFile_A0FD954B83AE3A556FFBC09DC81C0BD443A84F46">BoundSourceFile Constructor</h3>
+        <h4>
+            sngcpp::binder::BoundSourceFile::BoundSourceFile(<a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#21">21</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_BoundSourceFile_C64AA10B8816785D872E821C8045A29250F0E14E">BoundSourceFile Constructor</h3>
+        <h4>
+            sngcpp::binder::BoundSourceFile::BoundSourceFile(SourceFileNode&amp; sourceFileNode_)</h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.cpp_B0E0C2680370EF7BAAF212F0A0B15F3AA6624E5E.html#10">10</a>
+             of <a href="file/BoundSourceFile.cpp_B0E0C2680370EF7BAAF212F0A0B15F3AA6624E5E.html">BoundSourceFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#variable_sourceFileNode_0C623EBA6AE3CC1890062A946FC0867872806EAF">sourceFileNode</a><span class="other">(</span><span class="identifier">sourceFileNode_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#19">19</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_BoundSourceFile_ADCBE723268B9706094A494AFEA0FA6553956C86">BoundSourceFile Constructor</h3>
+        <h4>
+            sngcpp::binder::BoundSourceFile::BoundSourceFile(<span class="kw">const </span>
+            <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#20">20</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddFileScope_3D7FCE6A043FD16193C890E0492471A7709D0783">AddFileScope Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::binder::BoundSourceFile::AddFileScope()</h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.cpp_B0E0C2680370EF7BAAF212F0A0B15F3AA6624E5E.html#14">14</a>
+             of <a href="file/BoundSourceFile.cpp_B0E0C2680370EF7BAAF212F0A0B15F3AA6624E5E.html">BoundSourceFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html#variable_fileScopes_0163C7B3079619DC8D9887D72D7295F886BC4A63">fileScopes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="type">FileScope</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="type">FileScope</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#24">24</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FileScopes_7312843E090FB5EBA5CE16CA7ECDE0B380C2A2BE">FileScopes Member Function</h3>
+        <h4>
+            std::vector&lt;std::unique_ptr&lt;<a href="./../../../symbols/html/content/class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html">FileScope</a>
+            >>&amp; sngcpp::binder::BoundSourceFile::FileScopes()</h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#25">25</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileScopes</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_8FD01D287E0321A12A2EF4B2F20A95EA6B9AC83C">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_A6291D1A0192E0A05AF7AE7E5B336F986CFD81FD">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_ECEFAA4620FFE6B58A438ADCAF64AEA564B7B78C">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_Visit_6A7DB6AC019FB1C37C91AF06DC129B82E94321C7">sngcpp::binder::TypeResolver::Visit</a>
+            , <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_Visit_D81EA0F7910341F598FBD2773E0715230E322CAB">sngcpp::binder::TypeResolver::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_D11853EC0B0C289AB1C3D51E41B2DA3875E72657">operator= Member Function</h3>
+        <h4>
+            <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp; sngcpp::binder::BoundSourceFile::operator=(<a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#23">23</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_C025B4F5BF5FAE8708C37ABF6FD163FF8AF9C7EB">operator= Member Function</h3>
+        <h4>
+            <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp; sngcpp::binder::BoundSourceFile::operator=(<span class="kw">const </span>
+            <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html#22">22</a>
+             of <a href="file/BoundSourceFile.hpp_FBCE4DD522B9870AC0B2BD53746DF6BFB74BDCE8.html">BoundSourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html">up</a>
+         | prev | <a href="class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html">next</a>
+    </body>
+</html>

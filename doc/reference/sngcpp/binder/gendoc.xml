@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="binder">
+    <vcxproject file="../../../../sngcpp/binder/binder.vcxproj"/>
+    <include path="../.."/>
+    <imports>
+      <import project="../ast"/>
+      <import project="../lexer"/>
+      <import project="../parser"/>
+      <import project="../pp"/>
+      <import project="../symbols"/>
+    </imports>
+  </project>
+</gendoc>

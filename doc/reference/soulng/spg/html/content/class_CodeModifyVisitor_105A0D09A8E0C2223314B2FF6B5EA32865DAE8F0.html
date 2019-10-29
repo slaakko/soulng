@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>CodeModifyVisitor Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html">prev</a>
+         | <a href="class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html">next</a>
+        <hr/>
+        <h1>CodeModifyVisitor Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html#15">15</a>
+             of <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html">CodeModifyVisitor.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#constructor_CodeModifyVisitor_97F25195F6C6AD92F9D83A2BDE6DBF5E6A97A072">CodeModifyVisitor</a>(<span class="kw">bool</span> valueOfPtrType_, <span class="kw">const </span>std::u32string&amp; nonterminalName_, <span class="kw">const </span>std::vector&lt;<a href="./struct_NonterminalInfo_A6E84DE8853D100461FF0FBB0EEBC11200A2C9D0.html">NonterminalInfo</a>>&amp; nonterminalInfos_, <a href="./../../../cppcode/html/content/class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html">TypeId</a>* returnType_, <span class="kw">bool</span> noParserDebugSupport_, <span class="kw">const </span>std::u32string&amp; parserName_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#function_Visit_F7861EC1A1BD332E423A60B78471A193BE599D1A">Visit</a>(<a href="./../../../cppcode/html/content/class_IdExpr_887B53F2D4E7E9B908177081F4AD2FFE19145D36.html">IdExpr</a>&amp; object)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#function_Visit_AC78985E0EDDA8888D5236504DB901BFA35D0356">Visit</a>(<a href="./../../../cppcode/html/content/class_ReturnStatement_1E10BABA11E38437C42B7E8FC834949651382BB9.html">ReturnStatement</a>&amp; object) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_noParserDebugSupport_D2B7BDDC8E18D8328792A17672BF29ECBFA3C6CB">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">noParserDebugSupport</td>
+            </tr>
+            <tr id="variable_nonterminalCounts_4B7CC9D40CEA7988EF7876F4EA06A01032278CC6">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<span class="kw">int</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nonterminalCounts</td>
+            </tr>
+            <tr id="variable_nonterminalInfos_5B3A3044FC63FE275925880476B09510D661B232">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./struct_NonterminalInfo_A6E84DE8853D100461FF0FBB0EEBC11200A2C9D0.html">NonterminalInfo</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nonterminalInfos</td>
+            </tr>
+            <tr id="variable_nonterminalName_900A5C8A814D07D9F94B6EC83ACB5496B8A1AD65">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">nonterminalName</td>
+            </tr>
+            <tr id="variable_parserName_5880139E2F7ED958D12189F30F7203A394BC3683">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">parserName</td>
+            </tr>
+            <tr id="variable_returnType_4C6408F11AE2E4AB247ED69ADE429BBBD29B78F7">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../cppcode/html/content/class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html">TypeId</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">returnType</td>
+            </tr>
+            <tr id="variable_valueOfPtrType_B5C067FDBE17E4031A67101D6C72E7C1A54752FA">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">valueOfPtrType</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_CodeModifyVisitor_97F25195F6C6AD92F9D83A2BDE6DBF5E6A97A072">CodeModifyVisitor Constructor</h3>
+        <h4>
+            soulng::spg::CodeModifyVisitor::CodeModifyVisitor(<span class="kw">bool</span>
+             valueOfPtrType_, <span class="kw">const </span>
+            std::u32string&amp; nonterminalName_, <span class="kw">const </span>
+            std::vector&lt;<a href="./struct_NonterminalInfo_A6E84DE8853D100461FF0FBB0EEBC11200A2C9D0.html">NonterminalInfo</a>
+            >&amp; nonterminalInfos_, <a href="./../../../cppcode/html/content/class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html">TypeId</a>
+            * returnType_, <span class="kw">bool</span>
+             noParserDebugSupport_, <span class="kw">const </span>
+            std::u32string&amp; parserName_)</h4>
+        <span>
+            Definition at line <a href="file/CodeModifyVisitor.cpp_D0EF158272411B461CFDFF2D108D2AE313DCD6B0.html#13">13</a>
+             of <a href="file/CodeModifyVisitor.cpp_D0EF158272411B461CFDFF2D108D2AE313DCD6B0.html">CodeModifyVisitor.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<a href="./class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#variable_valueOfPtrType_B5C067FDBE17E4031A67101D6C72E7C1A54752FA">valueOfPtrType</a><span class="other">(</span><span class="identifier">valueOfPtrType_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#variable_nonterminalName_900A5C8A814D07D9F94B6EC83ACB5496B8A1AD65">nonterminalName</a><span class="other">(</span><span class="identifier">nonterminalName_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#variable_nonterminalInfos_5B3A3044FC63FE275925880476B09510D661B232">nonterminalInfos</a><span class="other">(</span><span class="identifier">nonterminalInfos_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#variable_returnType_4C6408F11AE2E4AB247ED69ADE429BBBD29B78F7">returnType</a><span class="other">(</span><span class="identifier">returnType_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#variable_noParserDebugSupport_D2B7BDDC8E18D8328792A17672BF29ECBFA3C6CB">noParserDebugSupport</a><span class="other">(</span><span class="identifier">noParserDebugSupport_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<a href="./class_CodeModifyVisitor_105A0D09A8E0C2223314B2FF6B5EA32865DAE8F0.html#variable_parserName_5880139E2F7ED958D12189F30F7203A394BC3683">parserName</a><span class="other">(</span><span class="identifier">parserName_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html#18">18</a>
+             of <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html">CodeModifyVisitor.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Visit_F7861EC1A1BD332E423A60B78471A193BE599D1A">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::CodeModifyVisitor::Visit(<a href="./../../../cppcode/html/content/class_IdExpr_887B53F2D4E7E9B908177081F4AD2FFE19145D36.html">IdExpr</a>
+            &amp; object)</h4>
+        <span>
+            Definition at line <a href="file/CodeModifyVisitor.cpp_D0EF158272411B461CFDFF2D108D2AE313DCD6B0.html#63">63</a>
+             of <a href="file/CodeModifyVisitor.cpp_D0EF158272411B461CFDFF2D108D2AE313DCD6B0.html">CodeModifyVisitor.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html#21">21</a>
+             of <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html">CodeModifyVisitor.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../cppcode/html/content/class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Name_82BD0D38BF5573433CF020A50647B584C2B8BF30">soulng::cppcode::CppObject::Name</a>
+            , <a href="./../../../cppcode/html/content/class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_SetName_75389574AC6BB5948D52D06815BE305EEB8E86EA">soulng::cppcode::CppObject::SetName</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_AC78985E0EDDA8888D5236504DB901BFA35D0356">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::CodeModifyVisitor::Visit(<a href="./../../../cppcode/html/content/class_ReturnStatement_1E10BABA11E38437C42B7E8FC834949651382BB9.html">ReturnStatement</a>
+            &amp; object) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CodeModifyVisitor.cpp_D0EF158272411B461CFDFF2D108D2AE313DCD6B0.html#20">20</a>
+             of <a href="file/CodeModifyVisitor.cpp_D0EF158272411B461CFDFF2D108D2AE313DCD6B0.html">CodeModifyVisitor.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html#20">20</a>
+             of <a href="file/CodeModifyVisitor.hpp_FC0599905403C626840B2493E646BFAD2E314E7C.html">CodeModifyVisitor.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./../../../cppcode/html/content/class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_C022124AB95569D05508B0646D36911E1697259F">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../cppcode/html/content/class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Add_C1287C7D68D28BD2775FACF1078166DD4C5FF471">soulng::cppcode::CompoundStatement::Add</a>
+            , <a href="./../../../cppcode/html/content/class_InvokeExpr_471267A59BD7CACA97DC27B8D146378CEF2A6413.html#function_AddExpr_6F77FDE506314E8809010C80DCC4E382B658C767">soulng::cppcode::InvokeExpr::AddExpr</a>
+            , <a href="./../../../cppcode/html/content/class_NewExpr_80C2D7BEC1F947B995330A83A0B29FB296D82CA5.html#function_AddExpr_8E852878F9383A3484FAB3B4A1D107754E5954E6">soulng::cppcode::NewExpr::AddExpr</a>
+            , <a href="./../../../cppcode/html/content/class_NewExpr_80C2D7BEC1F947B995330A83A0B29FB296D82CA5.html#function_BeginAddInitializer_66BCE7918BAC9FD157452207B5B75AB5973AFD8B">soulng::cppcode::NewExpr::BeginAddInitializer</a>
+            , <a href="./../../../cppcode/html/content/class_NewExpr_80C2D7BEC1F947B995330A83A0B29FB296D82CA5.html#function_EndAddInitializer_77DEF9838D9292E75703EE011671E7E2BC8D76B2">soulng::cppcode::NewExpr::EndAddInitializer</a>
+            , <a href="./../../../cppcode/html/content/class_NewExpr_80C2D7BEC1F947B995330A83A0B29FB296D82CA5.html#function_SetTypeId_75CEDBBCA45FED526449590DC3ED0F31C7B9EC47">soulng::cppcode::NewExpr::SetTypeId</a>
+            , <a href="./../../../cppcode/html/content/class_ReturnStatement_1E10BABA11E38437C42B7E8FC834949651382BB9.html#function_GetExpression_CD7D6B7FBB6E64D374CB57B334E3202129A56C55">soulng::cppcode::ReturnStatement::GetExpression</a>
+            , <a href="./../../../cppcode/html/content/class_ReturnStatement_1E10BABA11E38437C42B7E8FC834949651382BB9.html#function_SetExpression_317F020E4CE94DAC79FCD2ECF4D515BAA4A32685">soulng::cppcode::ReturnStatement::SetExpression</a>
+            , <a href="./../../../cppcode/html/content/class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_Parent_BE9047955D1B1E3C3B6E8C40B697C13FE84CB8EA">soulng::cppcode::Statement::Parent</a>
+            , <a href="./../../../cppcode/html/content/class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_Replace_27DC2AEE7FA63F8D0695D090B929C9A3C74CBDEE">soulng::cppcode::Statement::Replace</a>
+            , <a href="./../../../cppcode/html/content/class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_Add_28D949E2A4EC132758093BDF9FAD1BA508B12E7A">soulng::cppcode::TypeId::Add</a>
+            , <a href="./../../../cppcode/html/content/class_TypeId_C82F1D12FE602311A20A0B0E30740A83006009DB.html#function_ToString_982497AB633179FE63D80CA442673289F89E84E8">soulng::cppcode::TypeId::ToString</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_spg_BC068A12CDB07C9E61C9BF5E8829B6713262D5E9.html">up</a>
+         | <a href="class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html">prev</a>
+         | <a href="class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html">next</a>
+    </body>
+</html>

@@ -1,0 +1,217 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Expressions Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">prev</a>
+         | <a href="class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">next</a>
+        <hr/>
+        <h1>Expressions Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#126">126</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#constructor_Expressions_3606A2E016DB2BF8AA55B2EEF022199004FD74DB">Expressions</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Add_4E0FE4C0BBF9423228D6B6B24BED6853B8AB606D">Add</a>(<a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>* expression)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_FillContext_942B8048888DEF28117078334F7F0503190C99A8">FillContext</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Get_1BBE60F0BD8F636C40C4F4A6D4F84EC074FCE276">Get</a>(<span class="kw">const </span>std::u32string&amp; id) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Process_97AD6F66EE31DB59DE6A4A51B40A41E58B9E5145">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_exprMap_AFDB4EE11CB8381696B16F122025778C29245821">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;std::u32string, <span class="kw">int</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">exprMap</td>
+            </tr>
+            <tr id="variable_expressions_6F34B7DF544A36EADF9CFC57A05B76ECAF3EA388">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">expressions</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Expressions_3606A2E016DB2BF8AA55B2EEF022199004FD74DB">Expressions Constructor</h3>
+        <h4>
+            soulng::slg::Expressions::Expressions()</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#385">385</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">385</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">(</span><span class="string">U"expressions"</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">386</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">387</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#129">129</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Add_4E0FE4C0BBF9423228D6B6B24BED6853B8AB606D">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Expressions::Add(<a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>
+            * expression)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#389">389</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">390</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">391</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#variable_expressions_6F34B7DF544A36EADF9CFC57A05B76ECAF3EA388">expressions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a><span class="other">></span><span class="other">(</span><span class="identifier">expression</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">392</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#variable_exprMap_AFDB4EE11CB8381696B16F122025778C29245821">exprMap</a><span class="other">[</span><span class="identifier">expression</span><span class="other">-></span><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC">Id</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">expression</span><span class="other">-></span><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2">Index</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">393</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#130">130</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC">soulng::slg::Expression::Id</a>
+            , <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2">soulng::slg::Expression::Index</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FillContext_942B8048888DEF28117078334F7F0503190C99A8">FillContext Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Expressions::FillContext(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+            &amp; lexerContext) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#409">409</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">410</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">411</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetExpressions_FFB1FEE907B387BB6E1996A1B64D1A62E4BACB9C">SetExpressions</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">412</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#132">132</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_FillContext_7B96BE1B79B13A25A765A92BA2E808A23BCB8F50">soulng::slg::Declaration::FillContext</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetExpressions_FFB1FEE907B387BB6E1996A1B64D1A62E4BACB9C">soulng::slg::LexerContext::SetExpressions</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Get_1BBE60F0BD8F636C40C4F4A6D4F84EC074FCE276">Get Member Function</h3>
+        <h4>
+            <a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">Expression</a>
+            * soulng::slg::Expressions::Get(<span class="kw">const </span>
+            std::u32string&amp; id) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#395">395</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#131">131</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Process_97AD6F66EE31DB59DE6A4A51B40A41E58B9E5145">Process Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Expressions::Process(<span class="kw">const </span>
+            std::string&amp; root, <span class="kw">bool</span>
+             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+            &amp; lexerContext) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#414">414</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">415</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">416</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#133">133</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_5B73D958C55323FABDD19047045BD23363561D3A">soulng::slg::Declaration::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html">prev</a>
+         | <a href="class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html">next</a>
+    </body>
+</html>

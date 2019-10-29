@@ -1,0 +1,11 @@
+<gendoc>
+  <project name="domexample">
+    <vcxproject file="../../../../examples/sngxml/dom/domexample.vcxproj"/>
+    <include path="../../.."/>
+    <imports>
+      <import project="../../../reference/soulng/util"/>
+      <import project="../../../reference/sngxml/xml"/>
+      <import project="../../../reference/sngxml/dom"/>
+    </imports>
+  </project>
+</gendoc>

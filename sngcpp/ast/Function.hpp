@@ -13,8 +13,11 @@ namespace sngcpp { namespace ast {
 class SNGCPP_AST_API ParameterNode : public Node
 {
 public:
+    ParameterNode();
     ParameterNode(const Span& span_, Node* typeExpr_, Node* declarator_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* TypeExpr() { return typeExpr.get(); }
     Node* Declarator() { return declarator.get(); }
 private:
@@ -25,6 +28,7 @@ private:
 class SNGCPP_AST_API ParameterSequenceNode : public BinaryNode
 {
 public:
+    ParameterSequenceNode();
     ParameterSequenceNode(const Span& span_, Node* left_, Node* right_);
     void Accept(Visitor& visitor) override;
 };
@@ -32,8 +36,11 @@ public:
 class SNGCPP_AST_API FunctionNode : public Node
 {
 public:
+    FunctionNode();
     FunctionNode(const Span& span_, Specifier specifiers_, Node* typeExpr_, Node* declarator_, CompoundStatementNode* body_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Specifier Specifiers() const { return specifiers; }
     Node* TypeExpr() { return typeExpr.get(); }
     Node* Declarator() { return declarator.get(); }

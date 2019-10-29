@@ -1,0 +1,204 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>PseudoTypeSymbol Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">prev</a>
+         | <a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html">next</a>
+        <hr/>
+        <h1>PseudoTypeSymbol Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#12">12</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#constructor_PseudoTypeSymbol_BC169F797A3250CFBD6C6E278A1B930446D36D3E">PseudoTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::u32string&amp; id_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_CreateElement_6BB1D90E6DBDDC8939E5B1EFADB3B048AB656309">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_GetFunctionGroup_D6E7859273B87C3389C2B5E3B4504F4A593FA9DA">GetFunctionGroup</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_Id_F368AED94C7575CC3DE5AA1167D77BEFB0CA160E">Id</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_IsPseudoTypeSymbol_B9E06100639514DB716619F15B44A4C13048C697">IsPseudoTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#function_SetFunctionGroup_2CD8E550253F2D32E55EE208F3B6F63F4056F4BB">SetFunctionGroup</a>(<a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>* functionGroup_)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_functionGroup_194F390CD2EC992F3C6AC22DC50F33DF6347A0FE">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">functionGroup</td>
+            </tr>
+            <tr id="variable_id_223E36C61EC4D4CE952CAA5AF6A0F3F19160F64B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_PseudoTypeSymbol_BC169F797A3250CFBD6C6E278A1B930446D36D3E">PseudoTypeSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::PseudoTypeSymbol::PseudoTypeSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_, <span class="kw">const </span>
+            std::u32string&amp; id_)</h4>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.cpp_D7082FB1AC9961388BE578F0EAD156B96946CD1B.html#10">10</a>
+             of <a href="file/PseudoTypeSymbol.cpp_D7082FB1AC9961388BE578F0EAD156B96946CD1B.html">PseudoTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#variable_id_223E36C61EC4D4CE952CAA5AF6A0F3F19160F64B">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html#variable_functionGroup_194F390CD2EC992F3C6AC22DC50F33DF6347A0FE">functionGroup</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#15">15</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CreateElement_6BB1D90E6DBDDC8939E5B1EFADB3B048AB656309">CreateElement Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::PseudoTypeSymbol::CreateElement() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.cpp_D7082FB1AC9961388BE578F0EAD156B96946CD1B.html#14">14</a>
+             of <a href="file/PseudoTypeSymbol.cpp_D7082FB1AC9961388BE578F0EAD156B96946CD1B.html">PseudoTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"pseudoType"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#16">16</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_CreateElement_7910349AAB75DBA5136C96292447C650FEF11500">sngcpp::symbols::Symbol::CreateElement</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_CreateElement_7A9E8E85CD4CB73B7E46B56A88B9725B18C0ED2B">sngcpp::symbols::TypeSymbol::CreateElement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetFunctionGroup_D6E7859273B87C3389C2B5E3B4504F4A593FA9DA">GetFunctionGroup Member Function</h3>
+        <h4>
+            <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>
+            * sngcpp::symbols::PseudoTypeSymbol::GetFunctionGroup() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#20">20</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">functionGroup</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Id_F368AED94C7575CC3DE5AA1167D77BEFB0CA160E">Id Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::PseudoTypeSymbol::Id() <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#17">17</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsPseudoTypeSymbol_B9E06100639514DB716619F15B44A4C13048C697">IsPseudoTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::PseudoTypeSymbol::IsPseudoTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#18">18</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsPseudoTypeSymbol_6195124A8ADD3EC8D51655F481C733057535796B">sngcpp::symbols::Symbol::IsPseudoTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetFunctionGroup_2CD8E550253F2D32E55EE208F3B6F63F4056F4BB">SetFunctionGroup Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::PseudoTypeSymbol::SetFunctionGroup(<a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>
+            * functionGroup_)</h4>
+        <span>
+            Definition at line <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html#19">19</a>
+             of <a href="file/PseudoTypeSymbol.hpp_ED756CE4C66085DD4C5246FC968F40589EC8FF6F.html">PseudoTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">functionGroup</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">functionGroup_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">prev</a>
+         | <a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html">next</a>
+    </body>
+</html>

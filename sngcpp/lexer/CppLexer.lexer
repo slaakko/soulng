@@ -53,7 +53,11 @@ keywords CppKeywords
 expressions
 {
     ws = "[\n\r\t ]";
-    separators = "{ws}+";
+    newline = "\r\n|\n|\r";
+    linecomment = "//[^\n\r]*{newline}";
+    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    ppline = "[\t ]*#[^\x0\r\n]*{newline}";
+    separators = "({ppline}|{linecomment}|{blockcomment}|{ws})+";
     id = "{idstart}{idcont}*";
     decimaldigit = "[0-9]";
     digitsequence = "{decimaldigit}+";

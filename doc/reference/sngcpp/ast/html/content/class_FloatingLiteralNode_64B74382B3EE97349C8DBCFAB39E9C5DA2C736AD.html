@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>FloatingLiteralNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_ExpressionStatementNode_214B8E296B636ADE9D97717653DF813740CD49D4.html">prev</a>
+         | <a href="class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html">next</a>
+        <hr/>
+        <h1>FloatingLiteralNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#51">51</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#constructor_FloatingLiteralNode_448425019C9D038A6CB22ADE0D338FF0622CCCED">FloatingLiteralNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#constructor_FloatingLiteralNode_DB04AAF9254B2EF420F451066BCA74F6C3A7BDBE">FloatingLiteralNode</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">double</span> value_, <a href="./enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a> suffix_, <span class="kw">const </span>std::u32string&amp; rep_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_Accept_74E455BF0FAD0A9E327912B6D39069BFA9EB717A">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_GetSuffix_19463F2E202CAF41D000A58AF731B79F22BCD840">GetSuffix</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_Read_EB5F37F505C2B4771462F98E9D163720FB8CC869">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">double</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_Value_DF8E07A40999B9A1A19E207E3888510E5C0FD4C6">Value</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#function_Write_1E3BFB7B85C270728FBC0E06832525ECD41D5EA6">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_suffix_6A459DA87D84BD8E8B5224D88444550952172577">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">suffix</td>
+            </tr>
+            <tr id="variable_value_38B2E860CA849D5B96C69EDE668479BE924BD025">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">double</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">value</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_FloatingLiteralNode_448425019C9D038A6CB22ADE0D338FF0622CCCED">FloatingLiteralNode Constructor</h3>
+        <h4>
+            sngcpp::ast::FloatingLiteralNode::FloatingLiteralNode()</h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#55">55</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html">LiteralNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_floatingLiteralNode_15463C6EDC885B682B5B790310BD7454A288DB5A">floatingLiteralNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#54">54</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_FloatingLiteralNode_DB04AAF9254B2EF420F451066BCA74F6C3A7BDBE">FloatingLiteralNode Constructor</h3>
+        <h4>
+            sngcpp::ast::FloatingLiteralNode::FloatingLiteralNode(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">double</span>
+             value_, <a href="./enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>
+             suffix_, <span class="kw">const </span>
+            std::u32string&amp; rep_)</h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#59">59</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html">LiteralNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_floatingLiteralNode_15463C6EDC885B682B5B790310BD7454A288DB5A">floatingLiteralNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">rep_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#variable_value_38B2E860CA849D5B96C69EDE668479BE924BD025">value</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#variable_suffix_6A459DA87D84BD8E8B5224D88444550952172577">suffix</a><span class="other">(</span><span class="identifier">suffix_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#55">55</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_74E455BF0FAD0A9E327912B6D39069BFA9EB717A">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::FloatingLiteralNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#63">63</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_4D8ADFAAB6D52F834278A8D787BF94D9B1B3F205">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#56">56</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_4D8ADFAAB6D52F834278A8D787BF94D9B1B3F205">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetSuffix_19463F2E202CAF41D000A58AF731B79F22BCD840">GetSuffix Member Function</h3>
+        <h4>
+            <a href="./enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>
+             sngcpp::ast::FloatingLiteralNode::GetSuffix() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#60">60</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">suffix</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_EB5F37F505C2B4771462F98E9D163720FB8CC869">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::FloatingLiteralNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#75">75</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LiteralNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#variable_value_38B2E860CA849D5B96C69EDE668479BE924BD025">value</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadDouble</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#variable_suffix_6A459DA87D84BD8E8B5224D88444550952172577">suffix</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSuffix_C37786498F66C45A7E251E47B2D7DB4BEC3B9C93">ReadSuffix</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#58">58</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Read_2615515C93184178E873D6CD819E879F5605D942">sngcpp::ast::LiteralNode::Read</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSuffix_C37786498F66C45A7E251E47B2D7DB4BEC3B9C93">sngcpp::ast::Reader::ReadSuffix</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Value_DF8E07A40999B9A1A19E207E3888510E5C0FD4C6">Value Member Function</h3>
+        <h4>
+            <span class="kw">double</span>
+             sngcpp::ast::FloatingLiteralNode::Value() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#59">59</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">value</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_1E3BFB7B85C270728FBC0E06832525ECD41D5EA6">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::FloatingLiteralNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#68">68</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LiteralNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#variable_value_38B2E860CA849D5B96C69EDE668479BE924BD025">value</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_8DBC103706746274E37F61ECE2275C963F649AAF">Write</a><span class="other">(</span><a href="./class_FloatingLiteralNode_64B74382B3EE97349C8DBCFAB39E9C5DA2C736AD.html#variable_suffix_6A459DA87D84BD8E8B5224D88444550952172577">suffix</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#57">57</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Write_2665681733401DC7E0ED572D99634D44ADFF407B">sngcpp::ast::LiteralNode::Write</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_8DBC103706746274E37F61ECE2275C963F649AAF">sngcpp::ast::Writer::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_ExpressionStatementNode_214B8E296B636ADE9D97717653DF813740CD49D4.html">prev</a>
+         | <a href="class_ForStatementNode_E9C60AE4EA25A10C9746D6E6B2184D6B49D306D6.html">next</a>
+    </body>
+</html>

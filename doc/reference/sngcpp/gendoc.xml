@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="sngcpp"/>
+  <child project="ast"/>
+  <child project="lexer"/>
+  <child project="parser"/>
+  <child project="parsertester"/>
+  <child project="pp"/>
+  <child project="pptester"/>
+  <child project="symbols"/>
+  <child project="binder"/>
+</gendoc>

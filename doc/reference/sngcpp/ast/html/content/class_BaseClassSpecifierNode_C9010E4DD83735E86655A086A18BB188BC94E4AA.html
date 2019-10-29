@@ -1,0 +1,280 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>BaseClassSpecifierNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_AssignmentInitializerNode_6522CF0B0160BB491A775C1C61705B36F0B11DCA.html">prev</a>
+         | <a href="class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html">next</a>
+        <hr/>
+        <h1>BaseClassSpecifierNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#20">20</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#constructor_BaseClassSpecifierNode_1456F593842666A5E262E8C516D3E1FFA16135A4">BaseClassSpecifierNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#constructor_BaseClassSpecifierNode_74E302AA903F1E81F5DE1AF5FF954E434436F826">BaseClassSpecifierNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a> baseSpecifiers_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* className_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Accept_4E897471F840396EA58E85188BF50CC4D9DFB9FC">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_BaseSpecifiers_55E4CAB5870EB386C58A792D2EA8E843A0E8385A">BaseSpecifiers</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_ClassName_F1C70B5D79C0BE9B5E6F01D6B3EA5EAADD55BBA8">ClassName</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Read_93D761D565B7F060AD3A4E342C01152BFFAFECDC">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#function_Write_B42904DAC752003488CCA4C4FAA238A2910FD58B">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">baseSpecifiers</td>
+            </tr>
+            <tr id="variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">className</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_BaseClassSpecifierNode_1456F593842666A5E262E8C516D3E1FFA16135A4">BaseClassSpecifierNode Constructor</h3>
+        <h4>
+            sngcpp::ast::BaseClassSpecifierNode::BaseClassSpecifierNode()</h4>
+        <span>
+            Definition at line <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html#26">26</a>
+             of <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html">Class.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_baseClassSpecifierNode_5134807C712F3D0886BD69263E0CB5731F54FF9E">baseClassSpecifierNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#23">23</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_BaseClassSpecifierNode_74E302AA903F1E81F5DE1AF5FF954E434436F826">BaseClassSpecifierNode Constructor</h3>
+        <h4>
+            sngcpp::ast::BaseClassSpecifierNode::BaseClassSpecifierNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>
+             baseSpecifiers_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * className_)</h4>
+        <span>
+            Definition at line <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html#30">30</a>
+             of <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html">Class.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_baseClassSpecifierNode_5134807C712F3D0886BD69263E0CB5731F54FF9E">baseClassSpecifierNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">baseSpecifiers</a><span class="other">(</span><span class="identifier">baseSpecifiers_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">className</a><span class="other">(</span><span class="identifier">className_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#24">24</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_4E897471F840396EA58E85188BF50CC4D9DFB9FC">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BaseClassSpecifierNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html#35">35</a>
+             of <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html">Class.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_6F801507919F9222CE5A0865FA0F4FED5D8905E8">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#25">25</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_6F801507919F9222CE5A0865FA0F4FED5D8905E8">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_BaseSpecifiers_55E4CAB5870EB386C58A792D2EA8E843A0E8385A">BaseSpecifiers Member Function</h3>
+        <h4>
+            <a href="./enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D.html">Specifier</a>
+             sngcpp::ast::BaseClassSpecifierNode::BaseSpecifiers() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#28">28</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">baseSpecifiers</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_ClassName_F1C70B5D79C0BE9B5E6F01D6B3EA5EAADD55BBA8">ClassName Member Function</h3>
+        <h4>
+            <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * sngcpp::ast::BaseClassSpecifierNode::ClassName()</h4>
+        <span>
+            Definition at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#29">29</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">className</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_93D761D565B7F060AD3A4E342C01152BFFAFECDC">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BaseClassSpecifierNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html#47">47</a>
+             of <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html">Class.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">baseSpecifiers</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">ReadSpecifiers</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">className</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#27">27</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadSpecifiers_11079191DC06A41B266B908361D52E28CC3FEF96">sngcpp::ast::Reader::ReadSpecifiers</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_B42904DAC752003488CCA4C4FAA238A2910FD58B">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::BaseClassSpecifierNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html#40">40</a>
+             of <a href="file/Class.cpp_9A4E56511EFCD18C1270A57788E465C1D65C4565.html">Class.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">Write</a><span class="other">(</span><a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_baseSpecifiers_36857A74B827884F8B2FEF2A25190BA9244034F2">baseSpecifiers</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BaseClassSpecifierNode_C9010E4DD83735E86655A086A18BB188BC94E4AA.html#variable_className_EFD1F1E476B59E42D6C6D627AEC58433C651336B">className</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html#26">26</a>
+             of <a href="file/Class.hpp_642F285FA08A3281AB386B155523AD05154B9BE7.html">Class.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B253F0C4C3C0C89B59C04EC06111EFCA636304F2">sngcpp::ast::Writer::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_AssignmentInitializerNode_6522CF0B0160BB491A775C1C61705B36F0B11DCA.html">prev</a>
+         | <a href="class_BaseClassSpecifierSequenceNode_C72D3A70369BD87D826A1C9BCFEC824017A72543.html">next</a>
+    </body>
+</html>

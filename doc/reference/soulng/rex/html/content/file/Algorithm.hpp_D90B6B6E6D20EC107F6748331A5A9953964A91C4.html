@@ -1,0 +1,56 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SOULNG_REX_ALGORITHM_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SOULNG_REX_ALGORITHM_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/rex/RexApi.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;string></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="pp">#include&nbsp;&lt;vector></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">rex</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F">EpsilonClosure</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">states</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7">EpsilonClosure</a><span class="other">(</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07">Move</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">states</span><span class="other">,&nbsp;</span><span class="kw">char32_t</span>&nbsp;<span class="identifier">c</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="kw">bool</span>&nbsp;<a href="../namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_Match_702E71A3715413D6F47C8F847383155C298FC89C">Match</a><span class="other">(</span><a href="../class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a><span class="other">&amp;</span>&nbsp;<span class="identifier">nfa</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">s</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;soulng::rex</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SOULNG_REX_ALGORITHM_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

@@ -1,0 +1,12 @@
+<gendoc>
+  <project name="xpathexample">
+    <vcxproject file="../../../../examples/sngxml/xpath/xpathexample.vcxproj"/>
+    <include path="../../.."/>
+    <imports>
+      <import project="../../../reference/soulng/util"/>
+      <import project="../../../reference/sngxml/xml"/>
+      <import project="../../../reference/sngxml/dom"/>
+      <import project="../../../reference/sngxml/xpath"/>
+    </imports>
+  </project>
+</gendoc>

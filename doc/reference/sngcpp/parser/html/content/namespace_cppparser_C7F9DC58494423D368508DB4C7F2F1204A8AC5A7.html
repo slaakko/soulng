@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>cppparser Namespace</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="../../parser.html">up</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">prev</a>
+         | next<hr/>
+        <h1>cppparser Namespace</h1>
+        <h2>Classes</h2>
+        <table>
+            <tr>
+                <td>
+                    class <a href="class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a>
+                </td>
+            </tr>
+        </table>
+        <h2>Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_cppparser_C7F9DC58494423D368508DB4C7F2F1204A8AC5A7.html#function_ParseCharacterLiteral_539D498E180BF5874E0B30A015814EFFF5BC0C3E">ParseCharacterLiteral</a>(<span class="kw">const </span>std::string&amp; fileName, <span class="kw">const </span>soulng::lexer::Token&amp; token, <span class="kw">char32_t</span>&amp; value, <span class="kw">char32_t</span>&amp; prefix)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_cppparser_C7F9DC58494423D368508DB4C7F2F1204A8AC5A7.html#function_ParseEscape_859E7E23259D97095FE1B0A71848485E961B3ABB">ParseEscape</a>(<span class="kw">const </span>std::string&amp; fileName, <span class="kw">const </span>soulng::lexer::Token&amp; token, <span class="kw">const </span><span class="kw">char32_t</span>*&amp; p, <span class="kw">const </span><span class="kw">char32_t</span>* e, <span class="kw">char32_t</span>&amp; value)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_cppparser_C7F9DC58494423D368508DB4C7F2F1204A8AC5A7.html#function_ParseFloatingLiteral_4B71B1C655ABFEAADE7A1430EFD5A8485F2C1F0A">ParseFloatingLiteral</a>(<span class="kw">const </span>std::string&amp; fileName, <span class="kw">const </span>soulng::lexer::Token&amp; token, <span class="kw">double</span>&amp; value, <a href="./../../../ast/html/content/enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>&amp; suffix)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_cppparser_C7F9DC58494423D368508DB4C7F2F1204A8AC5A7.html#function_ParseHexChar_261B83FCD8CFC61429D3F87259F050DB6A24EB1B">ParseHexChar</a>(<span class="kw">const </span>std::string&amp; fileName, <span class="kw">const </span>soulng::lexer::Token&amp; token, <span class="kw">const </span><span class="kw">char32_t</span>*&amp; p, <span class="kw">const </span><span class="kw">char32_t</span>* e, <span class="kw">char32_t</span>&amp; value)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_cppparser_C7F9DC58494423D368508DB4C7F2F1204A8AC5A7.html#function_ParseIntegerLiteral_B2B63F925C93498B70E46713C28DB3A5D788451E">ParseIntegerLiteral</a>(<span class="kw">const </span>std::string&amp; fileName, <span class="kw">const </span>soulng::lexer::Token&amp; token, uint64_t&amp; value, <a href="./../../../ast/html/content/enum_Base_FF9719A9A8C28517E9516B32F91AA7544CED3B28.html">Base</a>&amp; base, <a href="./../../../ast/html/content/enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>&amp; suffix)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_cppparser_C7F9DC58494423D368508DB4C7F2F1204A8AC5A7.html#function_ParseStringLiteral_3C00FC618E9FC0B9700FA76BF48A06795EDB183F">ParseStringLiteral</a>(<span class="kw">const </span>std::string&amp; fileName, <span class="kw">const </span>soulng::lexer::Token&amp; token, std::u32string&amp; encodingPrefix, std::u32string&amp; value)</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Function Details</h2>
+        <h3 id="function_ParseCharacterLiteral_539D498E180BF5874E0B30A015814EFFF5BC0C3E">ParseCharacterLiteral Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::cppparser::ParseCharacterLiteral(<span class="kw">const </span>
+            std::string&amp; fileName, <span class="kw">const </span>
+            soulng::lexer::Token&amp; token, <span class="kw">char32_t</span>
+            &amp; value, <span class="kw">char32_t</span>
+            &amp; prefix)</h4>
+        <span>
+            Definition at line <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html#255">255</a>
+             of <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html">TokenValueParsers.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html#16">16</a>
+             of <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html">TokenValueParsers.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParseEscape_859E7E23259D97095FE1B0A71848485E961B3ABB">ParseEscape Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::cppparser::ParseEscape(<span class="kw">const </span>
+            std::string&amp; fileName, <span class="kw">const </span>
+            soulng::lexer::Token&amp; token, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            *&amp; p, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * e, <span class="kw">char32_t</span>
+            &amp; value)</h4>
+        <span>
+            Definition at line <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html#186">186</a>
+             of <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html">TokenValueParsers.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParseFloatingLiteral_4B71B1C655ABFEAADE7A1430EFD5A8485F2C1F0A">ParseFloatingLiteral Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::cppparser::ParseFloatingLiteral(<span class="kw">const </span>
+            std::string&amp; fileName, <span class="kw">const </span>
+            soulng::lexer::Token&amp; token, <span class="kw">double</span>
+            &amp; value, <a href="./../../../ast/html/content/enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>
+            &amp; suffix)</h4>
+        <span>
+            Definition at line <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html#14">14</a>
+             of <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html">TokenValueParsers.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html#14">14</a>
+             of <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html">TokenValueParsers.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParseHexChar_261B83FCD8CFC61429D3F87259F050DB6A24EB1B">ParseHexChar Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::cppparser::ParseHexChar(<span class="kw">const </span>
+            std::string&amp; fileName, <span class="kw">const </span>
+            soulng::lexer::Token&amp; token, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            *&amp; p, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * e, <span class="kw">char32_t</span>
+            &amp; value)</h4>
+        <span>
+            Definition at line <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html#156">156</a>
+             of <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html">TokenValueParsers.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParseIntegerLiteral_B2B63F925C93498B70E46713C28DB3A5D788451E">ParseIntegerLiteral Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::cppparser::ParseIntegerLiteral(<span class="kw">const </span>
+            std::string&amp; fileName, <span class="kw">const </span>
+            soulng::lexer::Token&amp; token, uint64_t&amp; value, <a href="./../../../ast/html/content/enum_Base_FF9719A9A8C28517E9516B32F91AA7544CED3B28.html">Base</a>
+            &amp; base, <a href="./../../../ast/html/content/enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1.html">Suffix</a>
+            &amp; suffix)</h4>
+        <span>
+            Definition at line <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html#71">71</a>
+             of <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html">TokenValueParsers.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html#15">15</a>
+             of <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html">TokenValueParsers.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParseStringLiteral_3C00FC618E9FC0B9700FA76BF48A06795EDB183F">ParseStringLiteral Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::cppparser::ParseStringLiteral(<span class="kw">const </span>
+            std::string&amp; fileName, <span class="kw">const </span>
+            soulng::lexer::Token&amp; token, std::u32string&amp; encodingPrefix, std::u32string&amp; value)</h4>
+        <span>
+            Definition at line <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html#303">303</a>
+             of <a href="file/TokenValueParsers.cpp_F420BFDFE26FE405354CED6CCC1F0BDBE665C791.html">TokenValueParsers.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html#17">17</a>
+             of <a href="file/TokenValueParsers.hpp_9366497A5F54DB90490FD1973B215662B54B0895.html">TokenValueParsers.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="../../parser.html">up</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">prev</a>
+         | next</body>
+</html>

@@ -22,8 +22,11 @@ SNGCPP_AST_API std::u32string ToString(SimpleTypeSpecifier specifier);
 class SNGCPP_AST_API SimpleTypeNode : public Node
 {
 public:
+    SimpleTypeNode();
     SimpleTypeNode(const Span& span_, const std::vector<SimpleTypeSpecifier>& specifiers_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const std::vector<SimpleTypeSpecifier>& Specifiers() const { return specifiers; }
     std::u32string Str();
     std::u32string Id();

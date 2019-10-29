@@ -23,7 +23,7 @@ soulng::parser::Match IdentifierParser::Identifier(CppLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         if (*lexer == ID)
         {
@@ -68,11 +68,11 @@ soulng::parser::Match IdentifierParser::IdNode(CppLexer& lexer, sngcpp::cppparse
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int pos = lexer.GetPos();
+            int64_t pos = lexer.GetPos();
             soulng::parser::Match match = TemplateParser::SimpleTemplateId(lexer, ctx);
             simpleTemplateId.reset(static_cast<sngcpp::ast::Node*>(match.value));
             if (match.hit)
@@ -96,7 +96,7 @@ soulng::parser::Match IdentifierParser::IdNode(CppLexer& lexer, sngcpp::cppparse
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                     identifier.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
@@ -143,7 +143,7 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -156,7 +156,7 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = IdentifierParser::IdNode(lexer, ctx);
                         left.reset(static_cast<sngcpp::ast::Node*>(match.value));
                         if (match.hit)
@@ -194,7 +194,7 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch8 = &match;
@@ -214,7 +214,7 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch11 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match(false);
                                                 if (*lexer == COLONCOLON)
@@ -293,22 +293,22 @@ soulng::parser::Match IdentifierParser::QualifiedIdNode(CppLexer& lexer, sngcpp:
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
@@ -335,7 +335,7 @@ soulng::parser::Match IdentifierParser::QualifiedIdNode(CppLexer& lexer, sngcpp:
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch9 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = IdentifierParser::NestedNameSpecifier(lexer, ctx);
                                             ns1.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                             if (match.hit)
@@ -379,7 +379,7 @@ soulng::parser::Match IdentifierParser::QualifiedIdNode(CppLexer& lexer, sngcpp:
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch12 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch13 = &match;
@@ -390,7 +390,7 @@ soulng::parser::Match IdentifierParser::QualifiedIdNode(CppLexer& lexer, sngcpp:
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch15 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = IdentifierParser::NestedNameSpecifier(lexer, ctx);
                                             ns2.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                             if (match.hit)
@@ -435,7 +435,7 @@ soulng::parser::Match IdentifierParser::QualifiedIdNode(CppLexer& lexer, sngcpp:
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch18 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = IdentifierParser::IdNode(lexer, ctx);
                             id3.reset(static_cast<sngcpp::ast::Node*>(match.value));
                             if (match.hit)

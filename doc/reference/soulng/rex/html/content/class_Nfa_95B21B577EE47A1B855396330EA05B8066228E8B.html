@@ -1,0 +1,180 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Nfa Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html">up</a>
+         | <a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">prev</a>
+         | <a href="class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">next</a>
+        <hr/>
+        <h1>Nfa Class</h1>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#41">41</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#constructor_Nfa_40E84A8302446406CCCDE0CE26C3464A0E1039F9">Nfa</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#constructor_Nfa_FDB18C33C4107362AD266EF07E6869328ADFD91D">Nfa</a>(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>* start_, <a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>* end_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88">End</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E">SetEnd</a>(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>* end_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1">SetStart</a>(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>* start_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1">Start</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_end_0703C1ADFFE919FF59D3D8932A2EDDADF311BB40">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">end</td>
+            </tr>
+            <tr id="variable_start_90530440D5856E612B1073CA6A1CA97EDE4EF53C">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">start</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Nfa_40E84A8302446406CCCDE0CE26C3464A0E1039F9">Nfa Constructor</h3>
+        <h4>
+            soulng::rex::Nfa::Nfa()</h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#43">43</a>
+             of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#variable_start_90530440D5856E612B1073CA6A1CA97EDE4EF53C">start</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#variable_end_0703C1ADFFE919FF59D3D8932A2EDDADF311BB40">end</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#44">44</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_Nfa_FDB18C33C4107362AD266EF07E6869328ADFD91D">Nfa Constructor</h3>
+        <h4>
+            soulng::rex::Nfa::Nfa(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * start_, <a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * end_)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#47">47</a>
+             of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#variable_start_90530440D5856E612B1073CA6A1CA97EDE4EF53C">start</a><span class="other">(</span><span class="identifier">start_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#variable_end_0703C1ADFFE919FF59D3D8932A2EDDADF311BB40">end</a><span class="other">(</span><span class="identifier">end_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#45">45</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88">End Member Function</h3>
+        <h4>
+            <a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * soulng::rex::Nfa::End() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#48">48</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">end</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E">SetEnd Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::rex::Nfa::SetEnd(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * end_)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#49">49</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">end</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">end_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1">SetStart Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::rex::Nfa::SetStart(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * start_)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#47">47</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">start</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">start_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1">Start Member Function</h3>
+        <h4>
+            <a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
+            * soulng::rex::Nfa::Start() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#46">46</a>
+             of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">start</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html">up</a>
+         | <a href="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">prev</a>
+         | <a href="class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">next</a>
+    </body>
+</html>

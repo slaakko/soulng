@@ -1,0 +1,331 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>CompoundStatement Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_CastExpr_63E05C34F867196C1731C27DF561821391485992.html">prev</a>
+         | <a href="class_ConditionWithDeclarator_F15EB583611320C3552113D0204DE4016708D16B.html">next</a>
+        <hr/>
+        <h1>CompoundStatement Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#77">77</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#constructor_CompoundStatement_C11C68FF04777CCE90E56F78E03BDADBA56090E2">CompoundStatement</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Accept_1B9A347BFBD358A390B2C100D4D6C7AF88CE7B9E">Accept</a>(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Add_C1287C7D68D28BD2775FACF1078166DD4C5FF471">Add</a>(<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>* statement)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_InsertFront_A5EEFE195C067008E22C3F124294FD30A09BCC42">InsertFront</a>(<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>* statement, <span class="kw">bool</span> own)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_IsCompoundStatement_78F69BA9712D6D023D8637CB5861B21D84D7FC56">IsCompoundStatement</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Print_167D78984474FE31E52F06F64E50CABAACCDE52D">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Replace_BF79CC7AD8514D64BA3A73812FF185A1F51B9BF1">Replace</a>(<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>* oldS, <a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>* newS) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Statements_DA40E73DBAE291E1B3FE924C17CF1C4550B4E365">Statements</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_statements_B246A0E71DE4A58F104980DB8C22BBBA95F73BB3">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">statements</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_CompoundStatement_C11C68FF04777CCE90E56F78E03BDADBA56090E2">CompoundStatement Constructor</h3>
+        <h4>
+            soulng::cppcode::CompoundStatement::CompoundStatement()</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#154">154</a>
+             of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a><span class="other">(</span><span class="string">U"compound"</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#80">80</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_1B9A347BFBD358A390B2C100D4D6C7AF88CE7B9E">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::CompoundStatement::Accept(<a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#210">210</a>
+             of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">211</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">212</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_3D2B4D0D44A77E620EBDCC3E37217B32702AB7FD">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">213</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#variable_statements_B246A0E71DE4A58F104980DB8C22BBBA95F73BB3">statements</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span>&nbsp;<span class="identifier">i</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">n</span><span class="other">;</span>&nbsp;<span class="other">++</span><span class="identifier">i</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">216</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#variable_statements_B246A0E71DE4A58F104980DB8C22BBBA95F73BB3">statements</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">-></span><a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Accept_1B9A347BFBD358A390B2C100D4D6C7AF88CE7B9E">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">218</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#85">85</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Accept_C29B84036FED3FC1D14560D408F3C42EDAF96852">soulng::cppcode::CppObject::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Accept_1B9A347BFBD358A390B2C100D4D6C7AF88CE7B9E">soulng::cppcode::CompoundStatement::Accept</a>
+            , <a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_3D2B4D0D44A77E620EBDCC3E37217B32702AB7FD">soulng::cppcode::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Accept_1B9A347BFBD358A390B2C100D4D6C7AF88CE7B9E">soulng::cppcode::CompoundStatement::Accept</a>
+            , <a href="./class_Handler_37EBA6A52016752592721942279CC4B9B9BB9C61.html#function_Accept_63C50316411D924F7E9F94BF037CE43A22EDB875">soulng::cppcode::Handler::Accept</a>
+            , <a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#function_Accept_1748A8491326D2B2F2C2A7D953A565116794D672">soulng::cppcode::TryStatement::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Add_C1287C7D68D28BD2775FACF1078166DD4C5FF471">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::CompoundStatement::Add(<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>
+            * statement)</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#168">168</a>
+             of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">statement</span><span class="other">-></span><a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_SetParent_894C426F8D3FBAA9297E19D767174E12E80CB317">SetParent</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><span class="identifier">statement</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#variable_statements_B246A0E71DE4A58F104980DB8C22BBBA95F73BB3">statements</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">statement</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#82">82</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">soulng::cppcode::CppObject::Own</a>
+            , <a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_SetParent_894C426F8D3FBAA9297E19D767174E12E80CB317">soulng::cppcode::Statement::SetParent</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_InsertFront_A5EEFE195C067008E22C3F124294FD30A09BCC42">InsertFront Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::CompoundStatement::InsertFront(<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>
+            * statement, <span class="kw">bool</span>
+             own)</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#158">158</a>
+             of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">statement</span><span class="other">-></span><a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_SetParent_894C426F8D3FBAA9297E19D767174E12E80CB317">SetParent</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">own</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><span class="identifier">statement</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#variable_statements_B246A0E71DE4A58F104980DB8C22BBBA95F73BB3">statements</a><span class="other">.</span><span class="identifier">insert</span><span class="other">(</span><a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#variable_statements_B246A0E71DE4A58F104980DB8C22BBBA95F73BB3">statements</a><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">statement</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#81">81</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">soulng::cppcode::CppObject::Own</a>
+            , <a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_SetParent_894C426F8D3FBAA9297E19D767174E12E80CB317">soulng::cppcode::Statement::SetParent</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsCompoundStatement_78F69BA9712D6D023D8637CB5861B21D84D7FC56">IsCompoundStatement Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             soulng::cppcode::CompoundStatement::IsCompoundStatement() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#83">83</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_IsCompoundStatement_6A3760910BC7F190A87A1913B454852F26AF53C3">soulng::cppcode::Statement::IsCompoundStatement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_167D78984474FE31E52F06F64E50CABAACCDE52D">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::CompoundStatement::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#192">192</a>
+             of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Print_167D78984474FE31E52F06F64E50CABAACCDE52D">soulng::cppcode::CompoundStatement::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_ResetStart_A4A8B339B7FAE309A3CE325D400EDAE5CC32626A">soulng::util::CodeFormatter::ResetStart</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Start_51CBF7EBC6DA4EB3529B31BA51976E188320B007">soulng::util::CodeFormatter::Start</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_StartText_44B9ADE5AAB9DDDD10A951807BAA7AD804D789B6">soulng::util::CodeFormatter::StartText</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Print_167D78984474FE31E52F06F64E50CABAACCDE52D">soulng::cppcode::CompoundStatement::Print</a>
+            , <a href="./class_Handler_37EBA6A52016752592721942279CC4B9B9BB9C61.html#function_Print_F8401D0356F9057A184D40C71B823859FFB99795">soulng::cppcode::Handler::Print</a>
+            , <a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#function_Print_CD3A34D4405B5D9540614C481E78B000BE81EAFB">soulng::cppcode::TryStatement::Print</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Replace_BF79CC7AD8514D64BA3A73812FF185A1F51B9BF1">Replace Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::cppcode::CompoundStatement::Replace(<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>
+            * oldS, <a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>
+            * newS) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#175">175</a>
+             of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#87">87</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_Replace_27DC2AEE7FA63F8D0695D090B929C9A3C74CBDEE">soulng::cppcode::Statement::Replace</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">soulng::cppcode::CppObject::Own</a>
+            , <a href="./class_RangeForStatement_9D5F9477D7196D08EA52386794F75A086AF2FA74.html#function_Replace_294B9FDDF6568C82D4FA559CBD91196DDAD16974">soulng::cppcode::RangeForStatement::Replace</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Statements_DA40E73DBAE291E1B3FE924C17CF1C4550B4E365">Statements Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a>
+            *> soulng::cppcode::CompoundStatement::Statements() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#86">86</a>
+             of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">statements</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_cppcode_6244F147FECBD85E06C8CBDB12C393BE2D6F69D4.html">up</a>
+         | <a href="class_CastExpr_63E05C34F867196C1731C27DF561821391485992.html">prev</a>
+         | <a href="class_ConditionWithDeclarator_F15EB583611320C3552113D0204DE4016708D16B.html">next</a>
+    </body>
+</html>

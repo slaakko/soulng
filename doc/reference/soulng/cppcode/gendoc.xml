@@ -2,7 +2,11 @@
 <gendoc>
   <project name="cppcode">
     <vcxproject file="../../../../soulng/cppcode/cppcode.vcxproj"/>
+    <documentation file="docs.xml"/>
     <include path="../.."/>
+    <imports>
+      <import project="../util"/>
+    </imports>
   </project>
   <filter>
   </filter>

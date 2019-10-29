@@ -1,0 +1,283 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>StringLiteralNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_StatementSequenceNode_0AA0650E957BB86C07F016304980D95A7B5F6DCD.html">prev</a>
+         | <a href="class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html">next</a>
+        <hr/>
+        <h1>StringLiteralNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#98">98</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#constructor_StringLiteralNode_307F51F0270047732A259728FFCB5621441034B5">StringLiteralNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#constructor_StringLiteralNode_EF93B681CEE8CED80A1E1FC06D52CF17B7B40008">StringLiteralNode</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; encodingPrefix_, <span class="kw">const </span>std::u32string&amp; chars_, <span class="kw">const </span>std::u32string&amp; rep_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_Accept_79F225A858D34D8CCC52A9213C207ED14CD90E48">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_Chars_315BF8B9D2F517E9EC4C213BADB6B9B09EAAF2F1">Chars</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_EncodigPrefix_115F1410BC0BC7A8C8B8E271B19603B6A0EAA8C7">EncodigPrefix</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_Read_4874B546E196852821238E8A3128DFFDFD57D579">Read</a>(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>&amp; reader) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#function_Write_AA7E13813AFCD8E4A4DBF93DCFB1329B16D30338">Write</a>(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>&amp; writer) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_chars_40DF4F70749CF488DFFEB9AFE877C0454A8A9580">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">chars</td>
+            </tr>
+            <tr id="variable_encodingPrefix_FC94C0EEDABB0D661A166801801E1A06A89BAF4B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">encodingPrefix</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_StringLiteralNode_307F51F0270047732A259728FFCB5621441034B5">StringLiteralNode Constructor</h3>
+        <h4>
+            sngcpp::ast::StringLiteralNode::StringLiteralNode()</h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#140">140</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html">LiteralNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_stringLiteralNode_CD958AC1122F9D026A133F56586BE4A114E83F36">stringLiteralNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#101">101</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_StringLiteralNode_EF93B681CEE8CED80A1E1FC06D52CF17B7B40008">StringLiteralNode Constructor</h3>
+        <h4>
+            sngcpp::ast::StringLiteralNode::StringLiteralNode(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; encodingPrefix_, <span class="kw">const </span>
+            std::u32string&amp; chars_, <span class="kw">const </span>
+            std::u32string&amp; rep_)</h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#144">144</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;<a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html">LiteralNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_stringLiteralNode_CD958AC1122F9D026A133F56586BE4A114E83F36">stringLiteralNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">rep_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#variable_encodingPrefix_FC94C0EEDABB0D661A166801801E1A06A89BAF4B">encodingPrefix</a><span class="other">(</span><span class="identifier">encodingPrefix_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#variable_chars_40DF4F70749CF488DFFEB9AFE877C0454A8A9580">chars</a><span class="other">(</span><span class="identifier">chars_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#102">102</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_79F225A858D34D8CCC52A9213C207ED14CD90E48">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::StringLiteralNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#149">149</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_E7DDC34EE3036299C3D37084D98CB4523CDE34C8">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#103">103</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_E7DDC34EE3036299C3D37084D98CB4523CDE34C8">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Chars_315BF8B9D2F517E9EC4C213BADB6B9B09EAAF2F1">Chars Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::ast::StringLiteralNode::Chars() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#107">107</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">chars</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_EncodigPrefix_115F1410BC0BC7A8C8B8E271B19603B6A0EAA8C7">EncodigPrefix Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::ast::StringLiteralNode::EncodigPrefix() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#106">106</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">encodingPrefix</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_4874B546E196852821238E8A3128DFFDFD57D579">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::StringLiteralNode::Read(<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html">Reader</a>
+            &amp; reader) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#161">161</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LiteralNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#variable_encodingPrefix_FC94C0EEDABB0D661A166801801E1A06A89BAF4B">encodingPrefix</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#variable_chars_40DF4F70749CF488DFFEB9AFE877C0454A8A9580">chars</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#105">105</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Read_2615515C93184178E873D6CD819E879F5605D942">sngcpp::ast::LiteralNode::Read</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_AA7E13813AFCD8E4A4DBF93DCFB1329B16D30338">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::StringLiteralNode::Write(<a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html">Writer</a>
+            &amp; writer) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html#154">154</a>
+             of <a href="file/Literal.cpp_E1BB4D6B6F902EA652C6AFB4531852B6440B77C4.html">Literal.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LiteralNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#variable_encodingPrefix_FC94C0EEDABB0D661A166801801E1A06A89BAF4B">encodingPrefix</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3.html#variable_chars_40DF4F70749CF488DFFEB9AFE877C0454A8A9580">chars</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html#104">104</a>
+             of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Write_2665681733401DC7E0ED572D99634D44ADFF407B">sngcpp::ast::LiteralNode::Write</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_StatementSequenceNode_0AA0650E957BB86C07F016304980D95A7B5F6DCD.html">prev</a>
+         | <a href="class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html">next</a>
+    </body>
+</html>

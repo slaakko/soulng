@@ -38,6 +38,22 @@ void Lexer::operator++()
     {
         NextToken();
     }
+    else
+    {
+        line = current->line;
+    }
+}
+
+int64_t Lexer::GetPos() const
+{
+    int32_t p = current - tokens.begin();
+    return (int64_t(line) << 32) | int64_t(p);
+}
+
+void Lexer::SetPos(int64_t pos)
+{
+    current = tokens.begin() + int32_t(pos);
+    line = int32_t(pos >> 32);
 }
 
 void Lexer::NextToken()
@@ -111,7 +127,7 @@ void Lexer::NextToken()
     }
     token.id = INVALID_TOKEN;
     state = NextState(state, '\0');
-    int p = -1;
+    int64_t p = -1;
     if (token.id != INVALID_TOKEN && token.id != CONTINUE_TOKEN)
     {
         tokens.push_back(token);
@@ -147,8 +163,17 @@ int Lexer::GetKeywordToken(const Lexeme& lexeme) const
     }
 }
 
-Token Lexer::GetToken(int tokenIndex) const
+void Lexer::ConvertExternal(Span& span)
 {
+    Token startToken = GetToken(span.start);
+    span.start = startToken.match.begin - start;
+    Token endToken = GetToken(span.end);
+    span.end = endToken.match.end - start;
+}
+
+Token Lexer::GetToken(int64_t pos) const
+{
+    int32_t tokenIndex = int32_t(pos);
     if (tokenIndex >= 0 && tokenIndex < tokens.size())
     {
         return tokens[tokenIndex];
@@ -262,7 +287,7 @@ std::u32string Lexer::ErrorLines(const Span& span) const
     return lines;
 }
 
-void Lexer::ThrowExpectationFailure(int pos, const std::u32string& name)
+void Lexer::ThrowExpectationFailure(int64_t pos, const std::u32string& name)
 {
     Token token = GetToken(pos);
     throw std::runtime_error("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));

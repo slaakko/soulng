@@ -20,8 +20,11 @@ SNGCPP_AST_API std::u32string ToString(EnumKey enumKey);
 class SNGCPP_AST_API EnumTypeNode : public Node
 {
 public:
+    EnumTypeNode();
     EnumTypeNode(const Span& span_, EnumKey enumKey_, Node* enumName_, Node* enumBase_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     void AddEnumerator(const Span& span_, Node* enumerator_);
     EnumKey GetEnumKey() const { return enumKey; }
     Node* EnumName() { return enumName.get(); }
@@ -43,8 +46,11 @@ private:
 class SNGCPP_AST_API EnumeratorNode : public Node
 {
 public:
+    EnumeratorNode();
     EnumeratorNode(const Span& span_, const std::u32string& enumerator_, Node* value_, const std::u32string& valueStr_);
     void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const std::u32string& Enumerator() const { return enumerator; }
     Node* Value() { return value.get(); }
     const std::u32string& ValueStr() const { return valueStr; }
@@ -60,6 +66,7 @@ private:
 class SNGCPP_AST_API EnumeratorSequenceNode : public BinaryNode
 {
 public:
+    EnumeratorSequenceNode();
     EnumeratorSequenceNode(const Span& span_, Node* left_, Node* right_);
     void Accept(Visitor& visitor) override;
 };

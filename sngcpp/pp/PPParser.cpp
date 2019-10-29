@@ -18,7 +18,7 @@ void PPLineParser::Parse(PPLexer& lexer, sngcpp::pp::PP* pp)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::parser::Match match = PPLineParser::PPLine(lexer, pp);
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (lexer.Log())
@@ -59,35 +59,35 @@ soulng::parser::Match PPLineParser::PPLine(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int save = lexer.GetPos();
+                                int64_t save = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int save = lexer.GetPos();
+                                    int64_t save = lexer.GetPos();
                                     soulng::parser::Match match = PPLineParser::Define(lexer, pp);
                                     *parentMatch7 = match;
                                     if (!match.hit)
@@ -219,7 +219,7 @@ soulng::parser::Match PPLineParser::Define(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -265,7 +265,7 @@ soulng::parser::Match PPLineParser::Define(PPLexer& lexer, sngcpp::pp::PP* pp)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch7 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(false);
                             if (*lexer == ID)
                             {
@@ -295,7 +295,7 @@ soulng::parser::Match PPLineParser::Define(PPLexer& lexer, sngcpp::pp::PP* pp)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match = PPLineParser::PPToken(lexer, tokens);
                                 ppToken.reset(static_cast<int*>(match.value));
@@ -385,18 +385,18 @@ soulng::parser::Match PPLineParser::Include(PPLexer& lexer, sngcpp::pp::PP* pp)
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch4 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch5 = &match;
                 {
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch6 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch7 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(false);
                             if (*lexer == ANGLEHEADERNAME)
                             {
@@ -421,7 +421,7 @@ soulng::parser::Match PPLineParser::Include(PPLexer& lexer, sngcpp::pp::PP* pp)
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch9 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match(false);
                                     if (*lexer == QUOTEHEADERNAME)
                                     {
@@ -479,7 +479,7 @@ soulng::parser::Match PPLineParser::If(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -524,7 +524,7 @@ soulng::parser::Match PPLineParser::If(PPLexer& lexer, sngcpp::pp::PP* pp)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match = PPLineParser::PPToken(lexer, &exprTokens);
                                 ppToken.reset(static_cast<int*>(match.value));
@@ -577,7 +577,7 @@ soulng::parser::Match PPLineParser::Ifdef(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -620,7 +620,7 @@ soulng::parser::Match PPLineParser::Ifdef(PPLexer& lexer, sngcpp::pp::PP* pp)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch6 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == ID)
                         {
@@ -671,7 +671,7 @@ soulng::parser::Match PPLineParser::Ifndef(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -714,7 +714,7 @@ soulng::parser::Match PPLineParser::Ifndef(PPLexer& lexer, sngcpp::pp::PP* pp)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch6 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == ID)
                         {
@@ -766,7 +766,7 @@ soulng::parser::Match PPLineParser::Elif(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -811,7 +811,7 @@ soulng::parser::Match PPLineParser::Elif(PPLexer& lexer, sngcpp::pp::PP* pp)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match = PPLineParser::PPToken(lexer, &exprTokens);
                                 ppToken.reset(static_cast<int*>(match.value));
@@ -863,7 +863,7 @@ soulng::parser::Match PPLineParser::Else(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -925,7 +925,7 @@ soulng::parser::Match PPLineParser::Endif(PPLexer& lexer, sngcpp::pp::PP* pp)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1009,7 +1009,7 @@ soulng::parser::Match PPLineParser::Other(PPLexer& lexer, sngcpp::pp::PP* pp)
                 {
                     while (true)
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         {
                             soulng::parser::Match match = PPLineParser::PPToken(lexer, nullptr);
                             ppToken.reset(static_cast<int*>(match.value));
@@ -1053,7 +1053,7 @@ soulng::parser::Match PPLineParser::PPToken(PPLexer& lexer, std::vector<soulng::
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>LValueRefNode Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html">prev</a>
+         | <a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html">next</a>
+        <hr/>
+        <h1>LValueRefNode Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html#47">47</a>
+             of <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html">TypeExpr.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html#constructor_LValueRefNode_B8575565E836D07B8613657D5BEB463F78E15F9A">LValueRefNode</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html#constructor_LValueRefNode_43E00A79A8786DC41E71EB9729202E7CC6568A9B">LValueRefNode</a>(<span class="kw">const </span>Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>* subject_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LValueRefNode_6266655218B2306C1470B102A910ABAE01C973F7.html#function_Accept_B198E649A421DE36FAE6536C205A628C10348C63">Accept</a>(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_LValueRefNode_B8575565E836D07B8613657D5BEB463F78E15F9A">LValueRefNode Constructor</h3>
+        <h4>
+            sngcpp::ast::LValueRefNode::LValueRefNode()</h4>
+        <span>
+            Definition at line <a href="file/TypeExpr.cpp_327C3DAA36079EDA80BCE1EEC13A8BCD3CED421B.html#80">80</a>
+             of <a href="file/TypeExpr.cpp_327C3DAA36079EDA80BCE1EEC13A8BCD3CED421B.html">TypeExpr.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_lValueRefNode_9A1D168DA7B42346EC7584BEBEB8E986B873FCB1">lValueRefNode</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html#50">50</a>
+             of <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html">TypeExpr.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_LValueRefNode_43E00A79A8786DC41E71EB9729202E7CC6568A9B">LValueRefNode Constructor</h3>
+        <h4>
+            sngcpp::ast::LValueRefNode::LValueRefNode(<span class="kw">const </span>
+            Span&amp; span_, <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
+            * subject_)</h4>
+        <span>
+            Definition at line <a href="file/TypeExpr.cpp_327C3DAA36079EDA80BCE1EEC13A8BCD3CED421B.html#84">84</a>
+             of <a href="file/TypeExpr.cpp_327C3DAA36079EDA80BCE1EEC13A8BCD3CED421B.html">TypeExpr.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html">UnaryNode</a><span class="other">(</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">::</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html#enumerator_lValueRefNode_9A1D168DA7B42346EC7584BEBEB8E986B873FCB1">lValueRefNode</a><span class="other">,&nbsp;</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">subject_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html#51">51</a>
+             of <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html">TypeExpr.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_B198E649A421DE36FAE6536C205A628C10348C63">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::ast::LValueRefNode::Accept(<a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypeExpr.cpp_327C3DAA36079EDA80BCE1EEC13A8BCD3CED421B.html#88">88</a>
+             of <a href="file/TypeExpr.cpp_327C3DAA36079EDA80BCE1EEC13A8BCD3CED421B.html">TypeExpr.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_B5509149DE83C960E1B3D5843DC3AAD90E4A295E">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html#52">52</a>
+             of <a href="file/TypeExpr.hpp_A29A1832D4826CF2E4035EE3FDFC6209DB088EB2.html">TypeExpr.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_B5509149DE83C960E1B3D5843DC3AAD90E4A295E">sngcpp::ast::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_ast_EAFD5A35323C543EECC0866460F55CB1EB159D51.html">up</a>
+         | <a href="class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html">prev</a>
+         | <a href="class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html">next</a>
+    </body>
+</html>

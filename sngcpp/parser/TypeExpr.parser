@@ -63,18 +63,26 @@ parser api(SNGCPP_PARSER_API) TypeExprParser
         }
         ;
 
-    PrimaryTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var sngcpp::ast::ClassKey key, var Span s) : sngcpp::ast::Node*
+    PrimaryTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var sngcpp::ast::ClassKey key, var Span s, var std::unique_ptr<sngcpp::ast::Node> qualifiedIdNode) : sngcpp::ast::Node*
         ::= SimpleType:simpleType{ return simpleType; }
         |   (TYPENAME{ s = span; key = sngcpp::ast::ClassKey::typename_; } | ClassKey:classKey{ s = span; key = classKey; })? QualifiedIdNode(ctx):qid
         {
-            s.end = span.end;
-            if (key != sngcpp::ast::ClassKey::none)
+            qualifiedIdNode.reset(qid);
+            if (sngcpp::ast::IsConstructorName(qualifiedIdNode.get()))
             {
-                return new sngcpp::ast::ElaborateClassNameNode(s, key, qid);
+                pass = false;
             }
             else
             {
-                return qid;
+                s.end = span.end;
+                if (key != sngcpp::ast::ClassKey::none)
+                {
+                    return new sngcpp::ast::ElaborateClassNameNode(s, key, qualifiedIdNode.release());
+                }
+                else
+                {
+                    return qualifiedIdNode.release();
+                }
             }
         }
         ;

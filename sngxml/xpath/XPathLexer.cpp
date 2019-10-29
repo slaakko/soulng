@@ -1197,9 +1197,7 @@ int XPathLexer::GetTokenId(int statementIndex)
         case 1:
         {
             Retract();
-            int kw = GetKeywordToken(token.match);
-            if (kw == INVALID_TOKEN) return NAME;
-            else return kw;
+            return NAME;
             break;
         }
         case 2:

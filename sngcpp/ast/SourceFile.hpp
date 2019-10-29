@@ -14,29 +14,10 @@ namespace sngcpp { namespace ast {
 
 class SourceFileNode;
 
-class SNGCPP_AST_API IncludeDirectiveNode : public Node
-{
-public:
-    IncludeDirectiveNode(const Span& span_, const std::string& includeFilePath_);
-    const std::string& IncludeFilePath() const { return includeFilePath; }
-    void Accept(Visitor& visitor) override;
-    void SetSourceFileNode(SourceFileNode* sourceFileNode_) { sourceFileNode = sourceFileNode_; }
-    SourceFileNode* GetSourceFileNode() { return sourceFileNode; }
-private:
-    std::string includeFilePath;
-    SourceFileNode* sourceFileNode;
-};
-
-class SNGCPP_AST_API IncludeDirectiveSequenceNode : public BinaryNode
-{
-public:
-    IncludeDirectiveSequenceNode(const Span& span_, Node* left_, Node* right_);
-    void Accept(Visitor& visitor) override;
-};
-
 class SNGCPP_AST_API SourceFileNode : public Node
 {
 public:
+    SourceFileNode();
     SourceFileNode(const Span& span_, const std::string& sourceFilePath_, const std::string& relativeSourceFilePath_, const std::u32string& projectName_);
     const std::string& SourceFilePath() const { return sourceFilePath; }
     const std::string& RelativeSourceFilePath() { return relativeSourceFilePath; }
@@ -47,18 +28,20 @@ public:
     void SetSourceFileIndex(int sourceFileIndex_) { sourceFileIndex = sourceFileIndex_; }
     int SourceFileIndex() const { return sourceFileIndex; }
     void Accept(Visitor& visitor) override;
-    Node* IncludeDirectives() { return includeDirectives.get(); }
-    void AddIncludeDirective(IncludeDirectiveNode* includeDirective);
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     NamespaceNode* GlobalNs() { return globalNs.get(); }
     void AddUsingDirectiveOrDeclaration(Node* usingDirectivesAndDeclaration);
     const std::vector<Node*>& UsingDirectivesAndDeclarations() const { return usingDirectivesAndDeclarations; }
     bool Processed() const { return processed; }
     void SetProcessed() { processed = true; }
-    void ComputeLineStarts(const std::u32string& sourceFileContent);
+    void ComputeLineStarts();
     std::vector<int>* LineStarts() { return &lineStarts; }
     void SetContent(std::unique_ptr<std::u32string>&& content_) { content = std::move(content_); }
     void SetHeaderFilePaths(std::vector<std::string>&& headerFilePaths_) { headerFilePaths = std::move(headerFilePaths_); }
     const std::vector<std::string>& HeaderFilePaths() const { return headerFilePaths; }
+    void SetText(std::u32string&& text_) { text = std::move(text_); }
+    const std::u32string& Text() const { return text; }
 private:
     std::string sourceFilePath;
     std::string relativeSourceFilePath;
@@ -66,21 +49,24 @@ private:
     std::string htmlSourceFilePath;
     std::u32string id;
     int sourceFileIndex;
-    std::unique_ptr<Node> includeDirectives;
     std::unique_ptr<NamespaceNode> globalNs;
     std::vector<Node*> usingDirectivesAndDeclarations;
     bool processed;
     std::vector<int> lineStarts;
     std::unique_ptr<std::u32string> content;
     std::vector<std::string> headerFilePaths;
+    std::u32string text;
 };
 
 class SNGCPP_AST_API SourceFileSequenceNode : public BinaryNode
 {
 public:
+    SourceFileSequenceNode();
     SourceFileSequenceNode(const Span& span_, Node* left_, Node* right_);
     void Accept(Visitor& visitor) override;
 };
+
+SNGCPP_AST_API void ResolveSourceFiles(Node* ast, std::vector<SourceFileNode*>& sourceFiles);
 
 } } // namespace sngcpp::ast
 

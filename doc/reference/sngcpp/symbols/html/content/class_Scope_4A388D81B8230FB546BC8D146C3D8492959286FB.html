@@ -1,0 +1,244 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Scope Abstract Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html">prev</a>
+         | <a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html">next</a>
+        <hr/>
+        <h1>Scope Abstract Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#41">41</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#constructor_Scope_95B4CD9A3A3515FC21F50E040C5261BF1831A967">Scope</a>()</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#constructor_Scope_F00832B46E4DCC3DF5049CC58E1C30E7D40ADE57">Scope</a>(<a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#constructor_Scope_BE60224D97522AE171B588FE64C6E5BFE08B6FA4">Scope</a>(<span class="kw">const </span><a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_9FEF7AC3FB2A2524A9691A6E0E21BAB016D84292">Lookup</a>(Node* nameNode)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_C402F7B54A8F52FA84FD772ED61E2944743E99AD">Lookup</a>(Node* nameNode, <a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a> scopeLookup)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_DA0D91193EA58F1949F53A66ADAF2757B7B9AA61">Lookup</a>(<span class="kw">const </span>std::u32string&amp; name) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_1C64FDA40ED307A91510CA1E5E60202D995F09F3">Lookup</a>(<span class="kw">const </span>std::u32string&amp; name, <a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a> scopeLookup) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_853AAB899BEF2749C90D1F0C2CF6B18D10AF7BF6">Lookup</a>(<span class="kw">const </span>std::vector&lt;std::u32string>&amp; nameSequence, <a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a> scopeLoookup) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_operator_assign_4DCD8DF9655394F99F9835B7B3296B492163B492">operator=</a>(<a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>&amp;&amp;) <span class="kw">delete</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_operator_assign_C9E2F88CB4CBD1ADA88927B9A88B1185D04DEE95">operator=</a>(<span class="kw">const </span><a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>&amp;) <span class="kw">delete</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Scope_95B4CD9A3A3515FC21F50E040C5261BF1831A967">Scope Constructor</h3>
+        <h4>
+            sngcpp::symbols::Scope::Scope()</h4>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#42">42</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#44">44</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_Scope_F00832B46E4DCC3DF5049CC58E1C30E7D40ADE57">Scope Constructor</h3>
+        <h4>
+            sngcpp::symbols::Scope::Scope(<a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#46">46</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_Scope_BE60224D97522AE171B588FE64C6E5BFE08B6FA4">Scope Constructor</h3>
+        <h4>
+            sngcpp::symbols::Scope::Scope(<span class="kw">const </span>
+            <a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#45">45</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Lookup_9FEF7AC3FB2A2524A9691A6E0E21BAB016D84292">Lookup Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * sngcpp::symbols::Scope::Lookup(Node* nameNode)</h4>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#50">50</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Lookup</span><span class="other">(</span><span class="identifier">nameNode</span><span class="other">,&nbsp;</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a><span class="other">::</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html#enumerator_this__6D0485587DDBF5C60FDC994CFD9B6EFC8A90AA84">this_</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Lookup_C402F7B54A8F52FA84FD772ED61E2944743E99AD">Lookup Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * sngcpp::symbols::Scope::Lookup(Node* nameNode, <a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a>
+             scopeLookup)</h4>
+        <span>
+            Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#55">55</a>
+             of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_D9772B9BB63F7C3F3B8D13908F177232FFB68740">sngcpp::symbols::FileScope::Lookup</a>
+            , <a href="./class_NameResolver_73135F0BFE7B81BE8AE4269DF5001DA07D8A0BD6.html#function_NameSequence_F72AED494CD6CDF810D207B000C0CBDF6B71DBD4">sngcpp::symbols::NameResolver::NameSequence</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Lookup_DA0D91193EA58F1949F53A66ADAF2757B7B9AA61">Lookup Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * sngcpp::symbols::Scope::Lookup(<span class="kw">const </span>
+            std::u32string&amp; name) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#50">50</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_1339815AAFD5F12150741F581800960621901225">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_DD975BF80402FE0F7E71C1E1768BEF289CF0AC10">sngcpp::symbols::FileScope::Lookup</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Lookup_1C64FDA40ED307A91510CA1E5E60202D995F09F3">Lookup Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * sngcpp::symbols::Scope::Lookup(<span class="kw">const </span>
+            std::u32string&amp; name, <a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a>
+             scopeLookup) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#51">51</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_FD4F36816D53383AED9AE7DF8320FEC5A30A4FBF">sngcpp::symbols::FileScope::Lookup</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Lookup_853AAB899BEF2749C90D1F0C2CF6B18D10AF7BF6">Lookup Member Function</h3>
+        <h4>
+            <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            * sngcpp::symbols::Scope::Lookup(<span class="kw">const </span>
+            std::vector&lt;std::u32string>&amp; nameSequence, <a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a>
+             scopeLoookup) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#52">52</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_D9772B9BB63F7C3F3B8D13908F177232FFB68740">sngcpp::symbols::FileScope::Lookup</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_4DCD8DF9655394F99F9835B7B3296B492163B492">operator= Member Function</h3>
+        <h4>
+            <a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>
+            &amp; sngcpp::symbols::Scope::operator=(<a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>
+            &amp;&amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#48">48</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_operator_assign_C9E2F88CB4CBD1ADA88927B9A88B1185D04DEE95">operator= Member Function</h3>
+        <h4>
+            <a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>
+            &amp; sngcpp::symbols::Scope::operator=(<span class="kw">const </span>
+            <a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html">Scope</a>
+            &amp;) <span class="kw">delete</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#47">47</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html">prev</a>
+         | <a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html">next</a>
+    </body>
+</html>

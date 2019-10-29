@@ -1,0 +1,132 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/parser/ParsingContext.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">cppparser</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#constructor_ParsingContext_650B45CC5F58252599D45C0A0B4466E1F190EAE2">ParsingContext</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateId_F3948C7DF587EADB814D9F86ABF0E891A6E55560">parsingTemplateId</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBody_0828228DAC55B3A135B8CE02454B2AED89DF051D">inFunctionBody</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_sourceFileNode_BEFD0C074441137401849B01EFEB29C9B447499F">sourceFileNode</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalue_B7E9FB90A56967836D5BEAD43DC9E32F271B2C14">parsingLvalue</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArguments_4D3A5E22F6BAFD7AA34B3C00C1110C9AEE68EECE">parsingArguments</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_BeginParsingTemplateId_FA33FAC2F27D387309A0C0B890FA60C9EE59A996">BeginParsingTemplateId</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateIdStack_F4F4969C5E84199BC6797473182EE3787268731A">parsingTemplateIdStack</a><span class="other">.</span><span class="identifier">push</span><span class="other">(</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateId_F3948C7DF587EADB814D9F86ABF0E891A6E55560">parsingTemplateId</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateId_F3948C7DF587EADB814D9F86ABF0E891A6E55560">parsingTemplateId</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_EndParsingTemplateId_525525D42F5D7A6D1F95ACE0BCAAFF7E3A09CB1F">EndParsingTemplateId</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateId_F3948C7DF587EADB814D9F86ABF0E891A6E55560">parsingTemplateId</a><span class="other">&nbsp;=&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateIdStack_F4F4969C5E84199BC6797473182EE3787268731A">parsingTemplateIdStack</a><span class="other">.</span><span class="identifier">top</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingTemplateIdStack_F4F4969C5E84199BC6797473182EE3787268731A">parsingTemplateIdStack</a><span class="other">.</span><span class="identifier">pop</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_BeginFunctionBody_9B2F2E07BC7832077412940982708A61D4B8A95D">BeginFunctionBody</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBodyStack_338399F4C262CD2747AA31F11E552897613759BD">inFunctionBodyStack</a><span class="other">.</span><span class="identifier">push</span><span class="other">(</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBody_0828228DAC55B3A135B8CE02454B2AED89DF051D">inFunctionBody</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBody_0828228DAC55B3A135B8CE02454B2AED89DF051D">inFunctionBody</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_EndFunctionBody_407711234B4E03707E8A17DA1F159C579726A922">EndFunctionBody</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBody_0828228DAC55B3A135B8CE02454B2AED89DF051D">inFunctionBody</a><span class="other">&nbsp;=&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBodyStack_338399F4C262CD2747AA31F11E552897613759BD">inFunctionBodyStack</a><span class="other">.</span><span class="identifier">top</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_inFunctionBodyStack_338399F4C262CD2747AA31F11E552897613759BD">inFunctionBodyStack</a><span class="other">.</span><span class="identifier">pop</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_BeginParsingLvalue_C6DC252172D0ED2F8F71F620725A4AD4AB97664E">BeginParsingLvalue</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalueStack_909016E4F597FD3D7808AFFABE0496D42B4F7F97">parsingLvalueStack</a><span class="other">.</span><span class="identifier">push</span><span class="other">(</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalue_B7E9FB90A56967836D5BEAD43DC9E32F271B2C14">parsingLvalue</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalue_B7E9FB90A56967836D5BEAD43DC9E32F271B2C14">parsingLvalue</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_EndParsingLvalue_78470B8E3FE96E5C078FA0339317FEB0D3967088">EndParsingLvalue</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalue_B7E9FB90A56967836D5BEAD43DC9E32F271B2C14">parsingLvalue</a><span class="other">&nbsp;=&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalueStack_909016E4F597FD3D7808AFFABE0496D42B4F7F97">parsingLvalueStack</a><span class="other">.</span><span class="identifier">top</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingLvalueStack_909016E4F597FD3D7808AFFABE0496D42B4F7F97">parsingLvalueStack</a><span class="other">.</span><span class="identifier">pop</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_BeginParsingArguments_04132287DBE78902539CFC14D853D3DB470D217D">BeginParsingArguments</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArgumentsStack_458F5C1DE9AA299BF055E8BFB7F69E1D55D9F88F">parsingArgumentsStack</a><span class="other">.</span><span class="identifier">push</span><span class="other">(</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArguments_4D3A5E22F6BAFD7AA34B3C00C1110C9AEE68EECE">parsingArguments</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArguments_4D3A5E22F6BAFD7AA34B3C00C1110C9AEE68EECE">parsingArguments</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_EndParsingArguments_CC956774C8B9D0DE1FF0D94BB0A64240334577ED">EndParsingArguments</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArguments_4D3A5E22F6BAFD7AA34B3C00C1110C9AEE68EECE">parsingArguments</a><span class="other">&nbsp;=&nbsp;</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArgumentsStack_458F5C1DE9AA299BF055E8BFB7F69E1D55D9F88F">parsingArgumentsStack</a><span class="other">.</span><span class="identifier">top</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#variable_parsingArgumentsStack_458F5C1DE9AA299BF055E8BFB7F69E1D55D9F88F">parsingArgumentsStack</a><span class="other">.</span><span class="identifier">pop</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::cppparser</span></span>
+  <br/>
+ </body>
+</html>

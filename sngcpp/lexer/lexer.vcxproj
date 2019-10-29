@@ -93,13 +93,13 @@
       <PreprocessorDefinitions>_DEBUG;SNGCPP_LEXER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>../..;C:\Program Files\boost\include\boost-1_68</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;C:\Boost\include\boost-1_71</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Program Files\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -138,7 +138,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;SNGCPP_LEXER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\Program Files\boost\include\boost-1_68</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;C:\Boost\include\boost-1_71</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -146,13 +146,17 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Program Files\boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CppClassMap.cpp" />
     <ClCompile Include="CppKeywords.cpp" />
     <ClCompile Include="CppLexer.cpp" />
+    <ClCompile Include="CppTokenLexer.cpp" />
+    <ClCompile Include="CppTokenLexerClassMap.cpp" />
+    <ClCompile Include="CppTokenLexerKeywords.cpp" />
+    <ClCompile Include="CppTokenLexerTokens.cpp" />
     <ClCompile Include="CppTokens.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,10 +164,15 @@
     <ClInclude Include="CppKeywords.hpp" />
     <ClInclude Include="CppLexer.hpp" />
     <ClInclude Include="CppLexerApi.hpp" />
+    <ClInclude Include="CppTokenLexer.hpp" />
+    <ClInclude Include="CppTokenLexerClassMap.hpp" />
+    <ClInclude Include="CppTokenLexerKeywords.hpp" />
+    <ClInclude Include="CppTokenLexerTokens.hpp" />
     <ClInclude Include="CppTokens.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CppLexer.lexer" />
+    <None Include="CppTokenLexer.lexer" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

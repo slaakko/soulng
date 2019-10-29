@@ -240,7 +240,7 @@ private:
     std::u32string declarator;
 };
 
-class CPPCODE_API RangeForStatement : public Statement
+class CPPCODE_API RangeForStatement : public IterationStatement
 {
 public:
     RangeForStatement(ForRangeDeclaration* declaration_, CppObject* container_, Statement* statement_);

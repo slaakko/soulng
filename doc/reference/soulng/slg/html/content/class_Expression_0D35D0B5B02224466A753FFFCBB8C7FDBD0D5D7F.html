@@ -1,0 +1,185 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Expression Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">prev</a>
+         | <a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html">next</a>
+        <hr/>
+        <h1>Expression Class</h1>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#111">111</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#constructor_Expression_D6E33951CE00B275276E7EC3F772A56552094841">Expression</a>(<span class="kw">int</span> index_, <span class="kw">const </span>std::u32string&amp; id_, <span class="kw">const </span>std::u32string&amp; value_, <span class="kw">int</span> line_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC">Id</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2">Index</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Line_FDF049A9A03E0C5525C5F6BCFEEA330D3F0CECD6">Line</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#function_Value_E597C1DF6D896584AB66027A818C902CA6F6E7AF">Value</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_id_48A57865618AB49D6662CC8CB18C5C29BECDCD35">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+            <tr id="variable_index_ABC2FA2B193441A7F3E3E49B03F1E5BB96D55393">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">index</td>
+            </tr>
+            <tr id="variable_line_0C3245D7E0CDDC162A57BC1589A57E4ADA8BAC99">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">line</td>
+            </tr>
+            <tr id="variable_value_ECAABBA86BF72523B538208757316ACC8F90DEB7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">value</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Expression_D6E33951CE00B275276E7EC3F772A56552094841">Expression Constructor</h3>
+        <h4>
+            soulng::slg::Expression::Expression(<span class="kw">int</span>
+             index_, <span class="kw">const </span>
+            std::u32string&amp; id_, <span class="kw">const </span>
+            std::u32string&amp; value_, <span class="kw">int</span>
+             line_)</h4>
+        <span>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#381">381</a>
+             of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">381</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#variable_index_ABC2FA2B193441A7F3E3E49B03F1E5BB96D55393">index</a><span class="other">(</span><span class="identifier">index_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#variable_id_48A57865618AB49D6662CC8CB18C5C29BECDCD35">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#variable_value_ECAABBA86BF72523B538208757316ACC8F90DEB7">value</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.html#variable_line_0C3245D7E0CDDC162A57BC1589A57E4ADA8BAC99">line</a><span class="other">(</span><span class="identifier">line_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">382</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">383</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#114">114</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC">Id Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; soulng::slg::Expression::Id() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#116">116</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Add_4E0FE4C0BBF9423228D6B6B24BED6853B8AB606D">soulng::slg::Expressions::Add</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2">Index Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             soulng::slg::Expression::Index() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#115">115</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">index</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Add_4E0FE4C0BBF9423228D6B6B24BED6853B8AB606D">soulng::slg::Expressions::Add</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Line_FDF049A9A03E0C5525C5F6BCFEEA330D3F0CECD6">Line Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             soulng::slg::Expression::Line() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#118">118</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">line</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Value_E597C1DF6D896584AB66027A818C902CA6F6E7AF">Value Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; soulng::slg::Expression::Value() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#117">117</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">value</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html">up</a>
+         | <a href="class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">prev</a>
+         | <a href="class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html">next</a>
+    </body>
+</html>
