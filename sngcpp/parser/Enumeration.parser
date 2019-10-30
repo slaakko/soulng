@@ -73,10 +73,11 @@ parser api(SNGCPP_PARSER_API) EnumerationParser
         )?
         ;
 
-    EnumeratorDefinition(sngcpp::cppparser::ParsingContext* ctx, var Span s, var Span assignmentSpan, var std::u32string valueStr) : sngcpp::ast::EnumeratorNode*
-        ::= (Enumerator:enumerator{ s = span; } (ASSIGN{ assignmentSpan = span; } ConstantExpression(ctx):value{ valueStr = lexer.GetMatch(span); s.end = span.end; })?)
+    EnumeratorDefinition(sngcpp::cppparser::ParsingContext* ctx, var Span s, var Span assignmentSpan, var std::u32string valueStr, var std::unique_ptr<sngcpp::ast::Node> value) : sngcpp::ast::EnumeratorNode*
+        ::= (Enumerator:enumerator{ s = span; }
+            (   ASSIGN{ assignmentSpan = span; } ConstantExpression(ctx):expr{ value.reset(expr); value->SetFullSpan(); valueStr = lexer.GetMatch(value->GetSpan()); s.end = value->GetSpan().end; })?)
         {
-            return new sngcpp::ast::EnumeratorNode(s, enumerator, value, valueStr);
+            return new sngcpp::ast::EnumeratorNode(s, enumerator, value.release(), valueStr);
         }
         ;
 

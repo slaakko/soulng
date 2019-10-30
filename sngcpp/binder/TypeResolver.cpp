@@ -16,7 +16,7 @@ namespace sngcpp { namespace binder {
 
 using namespace soulng::unicode;
 
-class TypeResolver : public Visitor
+class TypeResolver : public sngcpp::ast::Visitor
 {
 public:
     TypeResolver(SymbolTable& symbolTable_, ContainerScope* containerScope_, BoundSourceFile& boundSourceFile_, TypeResolverFlags flags_);
@@ -36,8 +36,8 @@ public:
     void Visit(TemplateArgumentSequenceNode& templateArgumentSequenceNode) override;
     void Visit(IntegerLiteralNode& integerLiteralNode) override;
     void Visit(StringLiteralNode& stringLiteralNode) override;
-    TypeSymbol* GetType(bool noDerived);
-    TypeSymbol* GetType() { return GetType(false); }
+    sngcpp::symbols::TypeSymbol* GetType(bool noDerived);
+    sngcpp::symbols::TypeSymbol* GetType() { return GetType(false); }
     const std::vector<IdentifierNode*>& IdNodeSequence() { return idNodeSequence; }
 private:
     SymbolTable& symbolTable;
@@ -45,10 +45,10 @@ private:
     ContainerScope* currentContainerScope;
     BoundSourceFile& boundSourceFile;
     TypeResolverFlags flags;
-    TypeSymbol* type;
+    sngcpp::symbols::TypeSymbol* type;
     std::vector<Derivation> derivations;
     ClassGroupSymbol* classGroup;
-    std::vector<TypeSymbol*> templateArgumentTypes;
+    std::vector<sngcpp::symbols::TypeSymbol*> templateArgumentTypes;
     std::vector<Node*> templateArgumentNodes;
     std::vector<IdentifierNode*> idNodeSequence;
     Span span;
@@ -66,7 +66,7 @@ TypeResolver::TypeResolver(SymbolTable& symbolTable_, ContainerScope* containerS
 {
 }
 
-TypeSymbol* TypeResolver::GetType(bool noDerived)
+sngcpp::symbols::TypeSymbol* TypeResolver::GetType(bool noDerived)
 {
     if (!type)
     {
@@ -101,7 +101,7 @@ TypeSymbol* TypeResolver::GetType(bool noDerived)
     {
         if (!(derivations.empty() || derivations.size() == 1 && derivations.front() == Derivation::base))
         {
-            TypeSymbol* baseType = type;
+            sngcpp::symbols::TypeSymbol* baseType = type;
             type = symbolTable.MakeDerivedTypeSymbol(derivations, baseType);
         }
     }
@@ -250,7 +250,7 @@ void TypeResolver::Visit(TemplateIdNode& templateIdNode)
             }
         }
     }
-    TypeSymbol* primaryClassTemplate = nullptr;
+    sngcpp::symbols::TypeSymbol* primaryClassTemplate = nullptr;
     if (symbol)
     {
         ResolveSymbol(templateIdNode, symbol);
@@ -368,7 +368,7 @@ void TypeResolver::ResolveSymbol(Node& node, Symbol* symbol)
     else if (symbol->IsTypeSymbol())
     {
         symbolTable.MapNode(&node, symbol);
-        type = static_cast<TypeSymbol*>(symbol);
+        type = static_cast<sngcpp::symbols::TypeSymbol*>(symbol);
         currentContainerScope = type->GetContainerScope();
         parentResolved = true;
     }
@@ -387,16 +387,16 @@ void TypeResolver::ResolveSymbol(Node& node, Symbol* symbol)
     }
 }
 
-TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, Node* node)
+sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, Node* node)
 {
     return ResolveType(symbolTable, containerScope, boundSourceFile, TypeResolverFlags::none, node);
 }
 
-TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, TypeResolverFlags flags, Node* node)
+sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, TypeResolverFlags flags, Node* node)
 {
     TypeResolver typeResolver(symbolTable, containerScope, boundSourceFile, flags);
     node->Accept(typeResolver);
-    TypeSymbol* type = typeResolver.GetType();
+    sngcpp::symbols::TypeSymbol* type = typeResolver.GetType();
     if (type)
     {
         symbolTable.MapNode(node, type);

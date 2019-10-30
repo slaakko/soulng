@@ -700,15 +700,15 @@
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="72" id="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B" name="GetNodeType" returnType="enum_NodeType_5368029CED50AA3E105E71B9D211833D74A20068" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_8E160D01CE9FF6A318C0CD8B23223A524815758E"/>
-           <calledByFunction functionId="function_Select_BE5B424E5C69BF0D4BAFE677906AF73E220F68C2"/>
-           <calledByFunction functionId="function_Select_8616CCBA6FB2179E1970D73F30D5644BF5FB9F6D"/>
-           <calledByFunction functionId="function_Select_F74B631AB9C568FED956E6BF149F1EBD78B72C28"/>
-           <calledByFunction functionId="function_Select_73F5B20BA8C37A02238103A4DDE8DD09FB2798B8"/>
-           <calledByFunction functionId="function_Select_EC4CA8027ADE259301A1DB61EA3526D20BB6A614"/>
-           <calledByFunction functionId="function_Select_1018DDC29AEE35DD7F149733DB239023C93DF403"/>
-           <calledByFunction functionId="function_Select_C3E9F7F111AE128F8152E1DA2D0D7AA959A62731"/>
            <calledByFunction functionId="function_StringValue_7F07F0C7F395D384125ED5D931400A502E4ED6EA"/>
+           <calledByFunction functionId="function_Select_F74B631AB9C568FED956E6BF149F1EBD78B72C28"/>
+           <calledByFunction functionId="function_Select_C3E9F7F111AE128F8152E1DA2D0D7AA959A62731"/>
+           <calledByFunction functionId="function_Evaluate_8E160D01CE9FF6A318C0CD8B23223A524815758E"/>
+           <calledByFunction functionId="function_Select_8616CCBA6FB2179E1970D73F30D5644BF5FB9F6D"/>
+           <calledByFunction functionId="function_Select_EC4CA8027ADE259301A1DB61EA3526D20BB6A614"/>
+           <calledByFunction functionId="function_Select_BE5B424E5C69BF0D4BAFE677906AF73E220F68C2"/>
+           <calledByFunction functionId="function_Select_73F5B20BA8C37A02238103A4DDE8DD09FB2798B8"/>
+           <calledByFunction functionId="function_Select_1018DDC29AEE35DD7F149733DB239023C93DF403"/>
            <calledByFunction functionId="function_ToDom_5A76342BEF220D5FCCE1F54EAE21CD224E969734"/>
           </calledByFunctions>
          </function>
@@ -1287,7 +1287,7 @@
        <enumType access="public" baseType="int" definitionFile="Parser.hpp" definitionFileId="file/Parser.hpp_D75CA5817016D2F5D506CB9FE6F967B098174021.html" definitionLine="12" id="enum_Flags_4C8F907F7156BEC198ECD7DA5F2053B422F35F37" key="enum class" name="Flags" project="dom">
         <enumerators>
          <enumerator access="public" id="enumerator_none_C56B0EC88C370D08E5A3A17C2A815B20DF86BB29" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_debug_3C6579391DFE62A6C22B20628D1FF85C367BD885" name="debug" value="1"/>
+         <enumerator access="public" id="enumerator_debug_3C6579391DFE62A6C22B20628D1FF85C367BD885" name="debug" value="1 &lt;&lt; 0"/>
         </enumerators>
        </enumType>
        <enumType access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="18" id="enum_NodeType_5368029CED50AA3E105E71B9D211833D74A20068" key="enum class" name="NodeType" project="dom">
@@ -1689,7 +1689,7 @@
        <enumType access="public" baseType="int" definitionFile="XmlParserInterface.hpp" definitionFileId="file/XmlParserInterface.hpp_47D02B9906326AFCC62173BBFED274C1AA3C1C03.html" definitionLine="17" id="enum_Flags_F91598584093410819012531B66EFF8438D2EDD3" key="enum class" name="Flags" project="xml">
         <enumerators>
          <enumerator access="public" id="enumerator_none_D9090845DC123DAE8EF2F152836B8839B2B2D1CA" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_debug_F83D0663CD98B42ABE6D0EFBC4A56A6103B08B86" name="debug" value="1"/>
+         <enumerator access="public" id="enumerator_debug_F83D0663CD98B42ABE6D0EFBC4A56A6103B08B86" name="debug" value="1 &lt;&lt; 0"/>
         </enumerators>
        </enumType>
       </enumTypes>
@@ -1789,12 +1789,12 @@
            <parameter access="public" id="parameter_context_40F65149CB2B9C03F980A7A0112A7DD8B1F0D393" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="126" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="937" id="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -1802,9 +1802,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -1827,12 +1827,12 @@
            <parameter access="public" id="parameter_context_19DE108E1D4F984E34CB85C810B10A906B0CBBFD" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
            <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="70" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="103" id="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -1840,9 +1840,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -1897,70 +1897,70 @@
         <functions>
          <function access="public" definitionFile="XPathExpr.hpp" definitionFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" definitionLine="50" id="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258" name="Left" returnType="class_XPathExpr_ED77DE00ECE6F2DBBE584F6190A65F57E99E207E.ptr.class_XPathExpr_ED77DE00ECE6F2DBBE584F6190A65F57E99E207E" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
            <calledByFunction functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
-           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
-           <calledByFunction functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
-           <calledByFunction functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
-           <calledByFunction functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
            <calledByFunction functionId="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060"/>
+           <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+           <calledByFunction functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
+           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
+           <calledByFunction functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
            <calledByFunction functionId="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9"/>
-           <calledByFunction functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
            <calledByFunction functionId="function_Evaluate_F95E7FE20607E834E87A29C6CFE98F32CF5D2F71"/>
            <calledByFunction functionId="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6"/>
-           <calledByFunction functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
            <calledByFunction functionId="function_Evaluate_1F675B0C05BADB128C1DAA983B5AC605CD4F86FF"/>
            <calledByFunction functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
-           <calledByFunction functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
-           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
            <calledByFunction functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
            <calledByFunction functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
            <calledByFunction functionId="function_Evaluate_FBA9A48D9AC4F9E5BFE35BE8BBAFEB1BC464AB12"/>
+           <calledByFunction functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
            <calledByFunction functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
            <calledByFunction functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
-           <calledByFunction functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
-           <calledByFunction functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
            <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
-           <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-           <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
-           <calledByFunction functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
-           <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+           <calledByFunction functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
+           <calledByFunction functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
            <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
-           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+           <calledByFunction functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
+           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+           <calledByFunction functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
+           <calledByFunction functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
+           <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
+           <calledByFunction functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="XPathExpr.hpp" definitionFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" definitionLine="51" id="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771" name="Right" returnType="class_XPathExpr_ED77DE00ECE6F2DBBE584F6190A65F57E99E207E.ptr.class_XPathExpr_ED77DE00ECE6F2DBBE584F6190A65F57E99E207E" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
            <calledByFunction functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
-           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
-           <calledByFunction functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
-           <calledByFunction functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
-           <calledByFunction functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
            <calledByFunction functionId="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060"/>
+           <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+           <calledByFunction functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
+           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
+           <calledByFunction functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
            <calledByFunction functionId="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9"/>
-           <calledByFunction functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
            <calledByFunction functionId="function_Evaluate_F95E7FE20607E834E87A29C6CFE98F32CF5D2F71"/>
            <calledByFunction functionId="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6"/>
-           <calledByFunction functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
            <calledByFunction functionId="function_Evaluate_1F675B0C05BADB128C1DAA983B5AC605CD4F86FF"/>
            <calledByFunction functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
-           <calledByFunction functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
-           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
            <calledByFunction functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
            <calledByFunction functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
            <calledByFunction functionId="function_Evaluate_FBA9A48D9AC4F9E5BFE35BE8BBAFEB1BC464AB12"/>
+           <calledByFunction functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
            <calledByFunction functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
            <calledByFunction functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
-           <calledByFunction functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
-           <calledByFunction functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
            <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
-           <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-           <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
-           <calledByFunction functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
-           <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+           <calledByFunction functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
+           <calledByFunction functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
            <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
-           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+           <calledByFunction functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
+           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+           <calledByFunction functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
+           <calledByFunction functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
+           <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
+           <calledByFunction functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -1988,8 +1988,8 @@
          </function>
          <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="45" id="function_Value_9F9004ABE1F406540DE8D9360D1D45C02B97DD81" name="Value" returnType="bool" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
+           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
           </calledByFunctions>
          </function>
@@ -2012,10 +2012,10 @@
            <parameter access="public" id="parameter_arguments_1FBAB2B8C2CFEE901CCA9EA6D7ADD5D645F38D2F" name="arguments" type="type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203"/>
           </parameters>
           <calls>
-           <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
-           <call functionId="function_Value_9F9004ABE1F406540DE8D9360D1D45C02B97DD81"/>
            <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
+           <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
            <call functionId="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4"/>
+           <call functionId="function_Value_9F9004ABE1F406540DE8D9360D1D45C02B97DD81"/>
            <call functionId="function_Value_B45B94A993D8E2ADAE5C8D5F282F683F3F3587C7"/>
           </calls>
          </function>
@@ -2039,8 +2039,8 @@
            <parameter access="public" id="parameter_context_6BF741A6E3952E720EAF5AFE435E0B6B5F2648AF" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
@@ -2051,9 +2051,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2094,15 +2094,15 @@
           <calledByFunctions>
            <calledByFunction functionId="function_Evaluate_8E160D01CE9FF6A318C0CD8B23223A524815758E"/>
            <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
-           <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
            <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
+           <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="XPathContext.hpp" definitionFileId="file/XPathContext.hpp_12F28FA06561B57EAB3EB040D9D063F27DD806EE.html" definitionLine="18" id="function_Position_92881A1B001D975BD80DE516EAC81DB193F7072D" name="Position" returnType="int" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
-           <calledByFunction functionId="function_Evaluate_3070D3D2D24C5156F42F994EBE37BBF9B4B83A7B"/>
            <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
+           <calledByFunction functionId="function_Evaluate_3070D3D2D24C5156F42F994EBE37BBF9B4B83A7B"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="XPathContext.hpp" definitionFileId="file/XPathContext.hpp_12F28FA06561B57EAB3EB040D9D063F27DD806EE.html" definitionLine="19" id="function_Size_984850F8CF4A3AF4CDE70D67E70CFAF15B4DFA6B" name="Size" returnType="int" specifiers="const">
@@ -2194,12 +2194,12 @@
            <parameter access="public" id="parameter_context_AC35CFAD458949EDD4FA284FEC9FB5F520DD7FC4" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="150" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1045" id="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -2207,9 +2207,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2232,11 +2232,11 @@
            <parameter access="public" id="parameter_context_087E7AEE0EA2005172FC219F58AD75C663D26785" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
+           <call functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
-           <call functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="78" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="712" id="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -2244,9 +2244,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2282,21 +2282,21 @@
            <parameter access="public" id="parameter_context_7F6732E955DCAB637076F43C56051AD49A56AA3F" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
+           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+           <calledByFunction functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
            <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
+           <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
            <calledByFunction functionId="function_Evaluate_F95E7FE20607E834E87A29C6CFE98F32CF5D2F71"/>
-           <calledByFunction functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
            <calledByFunction functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
            <calledByFunction functionId="function_Evaluate_1F675B0C05BADB128C1DAA983B5AC605CD4F86FF"/>
-           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
-           <calledByFunction functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
-           <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
            <calledByFunction functionId="function_Evaluate_FBA9A48D9AC4F9E5BFE35BE8BBAFEB1BC464AB12"/>
+           <calledByFunction functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
            <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
            <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-           <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
            <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
-           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+           <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
            <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
            <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
           </calledByFunctions>
@@ -2308,55 +2308,55 @@
          </function>
          <function access="public" definitionFile="XPathExpr.hpp" definitionFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" definitionLine="34" id="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const pure virtual">
           <overrides>
+           <override functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
            <override functionId="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9"/>
            <override functionId="function_ToDom_A995D1FBAAE903C5CA3BCBFAA13BB3AFBE89ABE7"/>
-           <override functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
-           <override functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
-           <override functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <override functionId="function_ToDom_94739A86871CE78F383C1AD938D109D62D7E3C34"/>
+           <override functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
+           <override functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
            <override functionId="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060"/>
            <override functionId="function_ToDom_397DA9ABBB68A4F4E950D9BE53E71EA6861C5BC5"/>
            <override functionId="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6"/>
-           <override functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
-           <override functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
-           <override functionId="function_ToDom_3B7CADA26B55B8A74848F39E062A859BBA6D980C"/>
-           <override functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
-           <override functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
-           <override functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
-           <override functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
-           <override functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
-           <override functionId="function_ToDom_FAF71EFB68A192A502E96EB38DC33CB36BFE5051"/>
-           <override functionId="function_ToDom_5D050B6229F372FEC9EE1544E17446A88C8ACD4C"/>
-           <override functionId="function_ToDom_B16EB7FF80C3478896AFE87418BE415B6F584E9E"/>
-           <override functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
-           <override functionId="function_ToDom_E469B9C17F8F92A2EBD5A076B81A3F7F084EA285"/>
-           <override functionId="function_ToDom_6F9B2C024C674EAA16A1C343E56F67097C203772"/>
            <override functionId="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31"/>
-           <override functionId="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38"/>
-           <override functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
+           <override functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
+           <override functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
+           <override functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
+           <override functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
+           <override functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <override functionId="function_ToDom_FAF71EFB68A192A502E96EB38DC33CB36BFE5051"/>
+           <override functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
+           <override functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
            <override functionId="function_ToDom_345D1DA1BB6D798D290D1D23F8397C771C26AAF0"/>
+           <override functionId="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38"/>
+           <override functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
+           <override functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
            <override functionId="function_ToDom_AA0DFCD3C675745129BE97D7280B7E4A93DE5246"/>
+           <override functionId="function_ToDom_3B7CADA26B55B8A74848F39E062A859BBA6D980C"/>
+           <override functionId="function_ToDom_B16EB7FF80C3478896AFE87418BE415B6F584E9E"/>
+           <override functionId="function_ToDom_6F9B2C024C674EAA16A1C343E56F67097C203772"/>
            <override functionId="function_ToDom_E058C80EA61417605D49E0EEB209DD8667334B39"/>
            <override functionId="function_ToDom_FC8EBC9E2E9516F1BA9AB9EC68887177E699276D"/>
            <override functionId="function_ToDom_C76D630F76D2B158749920526DDAD8E0CAC926F7"/>
-           <override functionId="function_ToDom_94739A86871CE78F383C1AD938D109D62D7E3C34"/>
+           <override functionId="function_ToDom_5D050B6229F372FEC9EE1544E17446A88C8ACD4C"/>
+           <override functionId="function_ToDom_E469B9C17F8F92A2EBD5A076B81A3F7F084EA285"/>
           </overrides>
           <calledByFunctions>
-           <calledByFunction functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
-           <calledByFunction functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
-           <calledByFunction functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
-           <calledByFunction functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <calledByFunction functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
+           <calledByFunction functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
            <calledByFunction functionId="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060"/>
+           <calledByFunction functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
            <calledByFunction functionId="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9"/>
            <calledByFunction functionId="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6"/>
-           <calledByFunction functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
-           <calledByFunction functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
-           <calledByFunction functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
-           <calledByFunction functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
-           <calledByFunction functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
-           <calledByFunction functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
-           <calledByFunction functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
            <calledByFunction functionId="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31"/>
+           <calledByFunction functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
+           <calledByFunction functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
+           <calledByFunction functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
+           <calledByFunction functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
+           <calledByFunction functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+           <calledByFunction functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
+           <calledByFunction functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
            <calledByFunction functionId="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38"/>
+           <calledByFunction functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
            <calledByFunction functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
           </calledByFunctions>
          </function>
@@ -2391,12 +2391,12 @@
           </parameters>
           <calls>
            <call functionId="function_Operand_FEFEB56D3CE8B58BD58927D0DD973A0FF85FB44F"/>
-           <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
-           <call functionId="function_Position_92881A1B001D975BD80DE516EAC81DB193F7072D"/>
-           <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
+           <call functionId="function_Position_92881A1B001D975BD80DE516EAC81DB193F7072D"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="198" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1266" id="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -2438,21 +2438,21 @@
            <parameter access="public" id="parameter_arguments_33228EFD63A238DD26D1EB124B2632BC479CBCF5" name="arguments" type="type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
-           <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
            <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
-           <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
-           <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
            <calledByFunction functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
-           <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
-           <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
            <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
-           <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
+           <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
+           <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
+           <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
            <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
+           <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
+           <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
+           <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
            <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
            <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
+           <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
            <calledByFunction functionId="function_Evaluate_44D6D7C2B816DC2CB7EA422C587CB509665343D8"/>
+           <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="XPathFunction.hpp" definitionFileId="file/XPathFunction.hpp_9D22A92F5023B30F9EED03BC8BA8E8579DA632D2.html" definitionLine="24" id="function_MaxArity_4E9CDBDC50118A76FB0B92FED919FECDA8681191" name="MaxArity" returnType="int" specifiers="const">
@@ -2496,11 +2496,11 @@
           </parameters>
           <calls>
            <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_MinArity_8D708C2D4735242DDE513EF35B6233588192296B"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_MinArity_8D708C2D4735242DDE513EF35B6233588192296B"/>
            <call functionId="function_MaxArity_4E9CDBDC50118A76FB0B92FED919FECDA8681191"/>
-           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="330" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1662" id="function_ToDom_94739A86871CE78F383C1AD938D109D62D7E3C34" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -2534,16 +2534,16 @@
          <function access="public" declarationFile="XPathFunction.cpp" declarationFileId="file/XPathFunction.cpp_6D673D542F2A16CCD38F7D2B51590E997B38E41E.html" declarationLine="313" definitionFile="XPathFunction.cpp" definitionFileId="file/XPathFunction.cpp_6D673D542F2A16CCD38F7D2B51590E997B38E41E.html" definitionLine="326" id="function_Init_1088C20660530E51BBB909A6129E571BCC98E8B8" name="Init" returnType="void" specifiers="static"/>
          <function access="public" definitionFile="XPathFunction.cpp" definitionFileId="file/XPathFunction.cpp_6D673D542F2A16CCD38F7D2B51590E997B38E41E.html" definitionLine="315" id="function_Instance_457282CB26F6047E54B6DD3E87F5084EDFAD1639" name="Instance" returnType="class_XPathFunctionLibrary_5D5B95D08F82565A19543FDB47D2899677F6FD22.lvalueref.class_XPathFunctionLibrary_5D5B95D08F82565A19543FDB47D2899677F6FD22" specifiers="static">
           <calledByFunctions>
-           <calledByFunction functionId="function_XPathDebugParsing_E84C4CA61E2D260444D3F16B9ADA216623D87A9D"/>
-           <calledByFunction functionId="function_SetXPathDebugParsing_615473675ED4688802E9CBACB87A6C968599AB48"/>
            <calledByFunction functionId="function_SetXPathDebugQuery_8942C1988351BCDB5EE2BDC11766C054268CC855"/>
-           <calledByFunction functionId="function_SetXPathQueryDom_10E1403E6A3C0CA1069A2C2EE6F522D6E3F09B5E"/>
-           <calledByFunction functionId="function_XPathDebugQuery_238DC27FFD1BCA077A5A180DA54B042142C64B98"/>
-           <calledByFunction functionId="function_XPathQueryDuration_04B29FDDA9418EF6E3C626E067FF569BBF181C9A"/>
-           <calledByFunction functionId="function_GetXPathQueryDom_661882B0854DF64521B6F01B5C0065B4F9641224"/>
-           <calledByFunction functionId="function_SetXPathQueryDuration_A63F0D49DE4F8CC19F4187BDB2C329193DEA1311"/>
-           <calledByFunction functionId="function_SetXPathExecuteDuration_7FB19A6ADCE41955C23D50739A781ED441438FCE"/>
+           <calledByFunction functionId="function_XPathDebugParsing_E84C4CA61E2D260444D3F16B9ADA216623D87A9D"/>
            <calledByFunction functionId="function_XPathExecuteDuration_4805733F92100B4C0BEF8FF129CB49DADEEEEFFC"/>
+           <calledByFunction functionId="function_SetXPathDebugParsing_615473675ED4688802E9CBACB87A6C968599AB48"/>
+           <calledByFunction functionId="function_XPathDebugQuery_238DC27FFD1BCA077A5A180DA54B042142C64B98"/>
+           <calledByFunction functionId="function_SetXPathQueryDom_10E1403E6A3C0CA1069A2C2EE6F522D6E3F09B5E"/>
+           <calledByFunction functionId="function_XPathQueryDuration_04B29FDDA9418EF6E3C626E067FF569BBF181C9A"/>
+           <calledByFunction functionId="function_SetXPathQueryDuration_A63F0D49DE4F8CC19F4187BDB2C329193DEA1311"/>
+           <calledByFunction functionId="function_GetXPathQueryDom_661882B0854DF64521B6F01B5C0065B4F9641224"/>
+           <calledByFunction functionId="function_SetXPathExecuteDuration_7FB19A6ADCE41955C23D50739A781ED441438FCE"/>
            <calledByFunction functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
           </calledByFunctions>
          </function>
@@ -2572,8 +2572,8 @@
            <parameter access="public" id="parameter_context_36E969267C6C0B0774C1EEC307FA6CA033F0D358" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
            <call functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
@@ -2584,9 +2584,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2609,8 +2609,8 @@
            <parameter access="public" id="parameter_context_E7C3CAA19BFB8B27CFDF66CDF66272427547E96A" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
            <call functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
@@ -2621,9 +2621,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2665,8 +2665,8 @@
            <parameter access="public" id="parameter_context_A3B8E64C1A8EAE48E7CCA115E81AA25E1404BC37" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
            <call functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
@@ -2677,9 +2677,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2702,8 +2702,8 @@
            <parameter access="public" id="parameter_context_825D66B276EFBE6790E89050A205266DF4C37D70" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
            <call functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
@@ -2714,9 +2714,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2786,13 +2786,13 @@
            <parameter access="public" id="parameter_context_07DBDFA5431BEB61168A7E1922532A08DA33C2B0" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Position_92881A1B001D975BD80DE516EAC81DB193F7072D"/>
-           <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
            <call functionId="function_get_5A04CC3A3C20CFA961C755307DF94BE2DAC7DFA8"/>
+           <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
            <call functionId="function_Node_F0A1C633B0B2F2DF6016BB7C226AF2BA0FB440A5"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
            <call functionId="function_Walk_8ED5C00FAE77EDAEAEC73B611377121F14765E34"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+           <call functionId="function_Position_92881A1B001D975BD80DE516EAC81DB193F7072D"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
           </calls>
          </function>
@@ -2840,12 +2840,12 @@
            <parameter access="public" id="parameter_context_60A041AB155ADBD51DCFE35DD10B7C4E08FD8835" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="158" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1081" id="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -2853,9 +2853,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2878,12 +2878,12 @@
            <parameter access="public" id="parameter_context_21D86C51D6022149F5EA64B1B542A06A6E88E890" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="142" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1009" id="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -2891,9 +2891,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -2947,17 +2947,17 @@
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_Apply_92FEAA802C0A202B29715C86B83D05A8AA44BEEA"/>
-           <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
            <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
+           <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="34" id="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4" name="Length" returnType="int" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
-           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
            <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
+           <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
            <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
+           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_CC1E10F5B78FD0047F997A5EF1A2DFF022B91D00"/>
           </calledByFunctions>
          </function>
@@ -2967,8 +2967,8 @@
           </overriddenFunctions>
           <calls>
            <call functionId="function_CloneNode_F414193A038D649BDB7C3AA3D27A602B04C5DFE9"/>
-           <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
            <call functionId="function_Length_FB65F63A11365160C53C9DD908A6341C471FF0A9"/>
+           <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
            <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
           </calls>
          </function>
@@ -3026,11 +3026,11 @@
            <parameter access="public" id="parameter_context_3DD0563760AC28392DDC8D4B1948E136800197F9" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
+           <call functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
-           <call functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="86" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="736" id="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -3038,9 +3038,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -3066,8 +3066,8 @@
           <calledByFunctions>
            <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
            <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
-           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
+           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
           </calledByFunctions>
          </function>
@@ -3122,12 +3122,12 @@
            <parameter access="public" id="parameter_arguments_DD0A4926437902BB9DE589BE8F12650FA67CA26E" name="arguments" type="type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203"/>
           </parameters>
           <calls>
-           <call functionId="function_Node_F0A1C633B0B2F2DF6016BB7C226AF2BA0FB440A5"/>
-           <call functionId="function_Add_D5261F1803AF3F75F01BE8B5E7C2B7D34FB58724"/>
            <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
            <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
-           <call functionId="function_Value_B45B94A993D8E2ADAE5C8D5F282F683F3F3587C7"/>
+           <call functionId="function_Node_F0A1C633B0B2F2DF6016BB7C226AF2BA0FB440A5"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Add_D5261F1803AF3F75F01BE8B5E7C2B7D34FB58724"/>
+           <call functionId="function_Value_B45B94A993D8E2ADAE5C8D5F282F683F3F3587C7"/>
            <call functionId="function_Value_9F9004ABE1F406540DE8D9360D1D45C02B97DD81"/>
            <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
@@ -3152,19 +3152,19 @@
         <functions>
          <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="24" id="function_ToDom_3A657F0F11A5B5839670E8BFE03EB15A03CF9F5F" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const pure virtual">
           <overrides>
-           <override functionId="function_ToDom_FC5E71956D54C85CD351CB0F40E1A3CECAEEDF4B"/>
-           <override functionId="function_ToDom_9BA2314444FCF1AA036F4B8804755AA02BDFEC28"/>
            <override functionId="function_ToDom_5A76342BEF220D5FCCE1F54EAE21CD224E969734"/>
            <override functionId="function_ToDom_21BF1DDE7CBA42AAC3CFB83BD678CB130A996324"/>
+           <override functionId="function_ToDom_9BA2314444FCF1AA036F4B8804755AA02BDFEC28"/>
+           <override functionId="function_ToDom_FC5E71956D54C85CD351CB0F40E1A3CECAEEDF4B"/>
           </overrides>
          </function>
          <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="22" id="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3" name="Type" returnType="enum_XPathObjectType_0D36BD493107D2BD601D8AABBD16C3E85880B349" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
-           <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
            <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
+           <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
            <calledByFunction functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
            <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
+           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
           </calledByFunctions>
          </function>
@@ -3191,12 +3191,12 @@
            <parameter access="public" id="parameter_context_1E88292038BBB4246CE7A39CE85D5F659EBDDC1D" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
            <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="62" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="65" id="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -3204,9 +3204,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -3301,8 +3301,8 @@
            <parameter access="public" id="parameter_axis_9F36A0BB0864C3E8D7E4E43B78B186A1BF140954" name="axis" type="type_160BBFBC4DD8C077926D6EC6A7184E57212D85A3"/>
           </parameters>
           <calls>
-           <call functionId="function_Prefix_C6D6A7CFC95D0D215574C56061B24D8F1BC57D7E"/>
            <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
+           <call functionId="function_Prefix_C6D6A7CFC95D0D215574C56061B24D8F1BC57D7E"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="278" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1537" id="function_ToDom_FC8EBC9E2E9516F1BA9AB9EC68887177E699276D" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -3380,8 +3380,8 @@
          </function>
          <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="65" id="function_Value_B45B94A993D8E2ADAE5C8D5F282F683F3F3587C7" name="Value" returnType="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_7B894029EB283440857BC3FACF5766EFC4414AF1"/>
+           <calledByFunction functionId="function_Evaluate_9C6178C7E4113D2B9270329FAA10BBED875B8BCB"/>
            <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
           </calledByFunctions>
          </function>
@@ -3404,13 +3404,13 @@
            <parameter access="public" id="parameter_arguments_0204FB58C1119E456650E222A204FDFC1CF4F436" name="arguments" type="type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203"/>
           </parameters>
           <calls>
-           <call functionId="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4"/>
-           <call functionId="function_Add_D5261F1803AF3F75F01BE8B5E7C2B7D34FB58724"/>
-           <call functionId="function_Node_F0A1C633B0B2F2DF6016BB7C226AF2BA0FB440A5"/>
-           <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
-           <call functionId="function_StringValue_7F07F0C7F395D384125ED5D931400A502E4ED6EA"/>
            <call functionId="function_Value_5A929D5B1DB6388D02B79679FBE5676FFB39B88C"/>
+           <call functionId="function_StringValue_7F07F0C7F395D384125ED5D931400A502E4ED6EA"/>
+           <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
+           <call functionId="function_Node_F0A1C633B0B2F2DF6016BB7C226AF2BA0FB440A5"/>
+           <call functionId="function_Add_D5261F1803AF3F75F01BE8B5E7C2B7D34FB58724"/>
            <call functionId="function_Value_9F9004ABE1F406540DE8D9360D1D45C02B97DD81"/>
+           <call functionId="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4"/>
            <call functionId="function_Value_B45B94A993D8E2ADAE5C8D5F282F683F3F3587C7"/>
           </calls>
          </function>
@@ -3434,12 +3434,12 @@
            <parameter access="public" id="parameter_context_6581B57754AFED8303EE097D2A7FEC7B7F0AC0D8" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
-           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
-           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
+           <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+           <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="134" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="973" id="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -3447,9 +3447,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -3494,9 +3494,9 @@
          <function access="public" definitionFile="XPathExpr.hpp" definitionFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" definitionLine="41" id="function_Operand_FEFEB56D3CE8B58BD58927D0DD973A0FF85FB44F" name="Operand" returnType="class_XPathExpr_ED77DE00ECE6F2DBBE584F6190A65F57E99E207E.ptr.class_XPathExpr_ED77DE00ECE6F2DBBE584F6190A65F57E99E207E" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
-           <calledByFunction functionId="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31"/>
            <calledByFunction functionId="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38"/>
            <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
+           <calledByFunction functionId="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -3522,10 +3522,10 @@
           </parameters>
           <calls>
            <call functionId="function_Operand_FEFEB56D3CE8B58BD58927D0DD973A0FF85FB44F"/>
-           <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
-           <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
+           <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
           </calls>
          </function>
          <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="166" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1108" id="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38" name="ToDom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const override">
@@ -3557,8 +3557,8 @@
            <parameter access="public" id="parameter_context_DFCE4BF34DFF7EF4E7CE48D603B1A72F348DC099" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
           </parameters>
           <calls>
-           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
+           <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Evaluate_25F58D9EAE88B44EFC20826B76846B6145E8D3E0"/>
            <call functionId="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
@@ -3569,9 +3569,9 @@
            <overriddenFunction functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
            <call functionId="function_Left_FF7E28A263C242A3BD64B5FD6C1E8005005F2258"/>
            <call functionId="function_Right_5A8742CE5D6F4807BBA194FF889AFB9EB0DB9771"/>
+           <call functionId="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C"/>
           </calls>
          </function>
         </functions>
@@ -3609,8 +3609,8 @@
         </parameters>
         <calls>
          <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
-         <call functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
          <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+         <call functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
          <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
          <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
         </calls>
@@ -3629,8 +3629,8 @@
         </parameters>
         <calls>
          <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
-         <call functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
          <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
+         <call functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
          <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
          <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
         </calls>
@@ -3647,9 +3647,9 @@
          <parameter access="public" id="parameter_comparisonOp_E994D6B204CB072D2B1ED8227A884C3C856A1C31" name="comparisonOp" type="enum_Operator_06FF1C9C065B2BFAA3BEC0131478AB39D83BEE1A"/>
         </parameters>
         <calls>
+         <call functionId="function_StringValue_7F07F0C7F395D384125ED5D931400A502E4ED6EA"/>
          <call functionId="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3"/>
          <call functionId="function_Length_CF9CB2BD047AEE75DD259153F03E23DAFB8087E4"/>
-         <call functionId="function_StringValue_7F07F0C7F395D384125ED5D931400A502E4ED6EA"/>
          <call functionId="function_GetXPathLibraryFunction_981844B7A78AFD74A803DA03F6A7558D82C7D8B6"/>
          <call functionId="function_Evaluate_455F9EF49C37A4D460C34D085AE605CE22376A5E"/>
          <call functionId="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C"/>
@@ -3697,11 +3697,11 @@
          <parameter access="public" id="parameter_node_DEB43CA31245E04BF7D3737B6D99CCE3EEBCC40C" name="node" type="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720"/>
         </parameters>
         <calls>
-         <call functionId="function_SetXPathExecuteDuration_7FB19A6ADCE41955C23D50739A781ED441438FCE"/>
          <call functionId="function_XPathDebugParsing_E84C4CA61E2D260444D3F16B9ADA216623D87A9D"/>
          <call functionId="function_XPathDebugQuery_238DC27FFD1BCA077A5A180DA54B042142C64B98"/>
          <call functionId="function_SetXPathQueryDom_10E1403E6A3C0CA1069A2C2EE6F522D6E3F09B5E"/>
          <call functionId="function_SetXPathQueryDuration_A63F0D49DE4F8CC19F4187BDB2C329193DEA1311"/>
+         <call functionId="function_SetXPathExecuteDuration_7FB19A6ADCE41955C23D50739A781ED441438FCE"/>
         </calls>
        </function>
        <function access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="226" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="1409" id="function_GetAxis_26FEEBF36A9DD7A9A729B49A38C1F717CEB807CB" name="GetAxis" project="xpath" returnType="type_160BBFBC4DD8C077926D6EC6A7184E57212D85A3">
@@ -3721,21 +3721,21 @@
          <call functionId="function_GetFunction_08BFA7F960CF315444EF2294E1AD2036823432B3"/>
         </calls>
         <calledByFunctions>
-         <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
-         <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
          <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
-         <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
-         <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
          <calledByFunction functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
-         <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
-         <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-         <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
          <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
-         <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
+         <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
+         <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
+         <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
          <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
+         <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
+         <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
+         <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
          <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
          <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
+         <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
          <calledByFunction functionId="function_Evaluate_44D6D7C2B816DC2CB7EA422C587CB509665343D8"/>
+         <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="XPathDebug.hpp" declarationFileId="file/XPathDebug.hpp_6334B523AC00C422717B0809BA04D26299C791C7.html" declarationLine="19" definitionFile="XPathDebug.cpp" definitionFileId="file/XPathDebug.cpp_A2DA244C402159937C67CA5B6A887B1BD73589EF.html" definitionLine="82" id="function_GetXPathQueryDom_661882B0854DF64521B6F01B5C0065B4F9641224" name="GetXPathQueryDom" project="xpath" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720">
@@ -3837,8 +3837,8 @@
          <parameter access="public" id="parameter_node_FA7A749BCCB1A5B3E325E6C77E2277EB14FBE0B8" name="node" type="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720"/>
         </parameters>
         <calls>
-         <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
          <call functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
+         <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
          <call functionId="function_Data_2BBAFBD8DA8E9C9A02A5F67889300CC9DD5DB8CA"/>
         </calls>
         <calledByFunctions>
@@ -5914,9 +5914,9 @@
         <calledByFunctions>
          <calledByFunction functionId="function_GetAxis_6329A868F06304D29E36DC5DFFCEB4A747FCBA7C"/>
          <calledByFunction functionId="constructor_XPathNumberExpr_6DDEB1D37996A5794202F3747832A8D86BBE9891"/>
+         <calledByFunction functionId="function_ParseDQString_6F4FDDE1974B68B93E1002957CFE13CB39B40BB8"/>
          <calledByFunction functionId="function_Evaluate_44D6D7C2B816DC2CB7EA422C587CB509665343D8"/>
          <calledByFunction functionId="function_GetFunction_08BFA7F960CF315444EF2294E1AD2036823432B3"/>
-         <calledByFunction functionId="function_ParseDQString_6F4FDDE1974B68B93E1002957CFE13CB39B40BB8"/>
          <calledByFunction functionId="function_ParseSQString_EE3D3A32976D97CDEA826F08103D97F913042D87"/>
         </calledByFunctions>
        </function>
@@ -6381,46 +6381,46 @@
        <enumType access="public" baseType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="267" id="enum_GeneralCategoryId_8EC3BE7CDF87B638BF602E487D7B35CE3AD6192B" key="enum class" name="GeneralCategoryId" project="util">
         <enumerators>
          <enumerator access="public" id="enumerator_none_F224379BDC45664C64B6306B01E838B09325CDBB" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1"/>
-         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1"/>
-         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1"/>
-         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1"/>
-         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1"/>
-         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu"/>
-         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu"/>
-         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1"/>
-         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1"/>
-         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1"/>
-         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn"/>
-         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1"/>
-         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1"/>
-         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1"/>
-         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd"/>
-         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1"/>
-         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1"/>
-         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1"/>
-         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1"/>
-         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1"/>
-         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1"/>
-         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1"/>
-         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc"/>
-         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1"/>
-         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1"/>
-         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1"/>
-         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1"/>
-         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm"/>
-         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1"/>
-         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1"/>
-         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1"/>
-         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs"/>
-         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1"/>
-         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1"/>
-         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1"/>
-         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1"/>
-         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1"/>
-         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc"/>
-         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L"/>
-         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L"/>
+         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1 &lt;&lt; 0"/>
+         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1 &lt;&lt; 1"/>
+         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1 &lt;&lt; 2"/>
+         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1 &lt;&lt; 3"/>
+         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1 &lt;&lt; 4"/>
+         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu | Ll | Lt"/>
+         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu | Ll | Lt | Lm | Lo"/>
+         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1 &lt;&lt; 5"/>
+         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1 &lt;&lt; 6"/>
+         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1 &lt;&lt; 7"/>
+         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn | Mc | Me"/>
+         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1 &lt;&lt; 8"/>
+         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1 &lt;&lt; 9"/>
+         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1 &lt;&lt; 10"/>
+         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd | Nl | No"/>
+         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1 &lt;&lt; 11"/>
+         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1 &lt;&lt; 12"/>
+         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1 &lt;&lt; 13"/>
+         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1 &lt;&lt; 14"/>
+         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1 &lt;&lt; 15"/>
+         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1 &lt;&lt; 16"/>
+         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1 &lt;&lt; 17"/>
+         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc | Pd | Ps | Pe | Pi | Pf | Po"/>
+         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1 &lt;&lt; 18"/>
+         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1 &lt;&lt; 19"/>
+         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1 &lt;&lt; 20"/>
+         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1 &lt;&lt; 21"/>
+         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm | Sc | Sk | So"/>
+         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1 &lt;&lt; 22"/>
+         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1 &lt;&lt; 23"/>
+         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1 &lt;&lt; 24"/>
+         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs | Zl | Zp"/>
+         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1 &lt;&lt; 25"/>
+         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1 &lt;&lt; 26"/>
+         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1 &lt;&lt; 27"/>
+         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1 &lt;&lt; 28"/>
+         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1 &lt;&lt; 29"/>
+         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc | Cf | Cs | Co | Cn"/>
+         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L | M | N | P | S | Zs"/>
+         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L | N | P | S | Zs"/>
         </enumerators>
        </enumType>
        <enumType access="public" baseType="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="611" id="enum_NumericTypeId_E496DBA286BE4CA39E9D00D6780E457ABE29EE82" key="enum class" name="NumericTypeId" project="util">
@@ -9943,29 +9943,29 @@
    <functions>
     <function access="private" definitionFile="" definitionFileId="" definitionLine="12" id="function_get_066606F10BBBC0A6ED287DDE64F14FA5E2C8524C" name="get()" returnType="ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203">
      <calledByFunctions>
-      <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
-      <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
       <calledByFunction functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
-      <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
+      <calledByFunction functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
+      <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+      <calledByFunction functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
       <calledByFunction functionId="function_CompareNodeSets_18CC954A6BABBB8E0639CBECD07063A40C598B72"/>
       <calledByFunction functionId="function_Evaluate_F95E7FE20607E834E87A29C6CFE98F32CF5D2F71"/>
+      <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
+      <calledByFunction functionId="function_CompareEquality_48DCB1AFA217244055FE14EA83A6BA22F0E62C45"/>
       <calledByFunction functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
-      <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
-      <calledByFunction functionId="function_Compare_5BBB1528592CBB9003563A90AB2A706A84D0C73F"/>
       <calledByFunction functionId="function_Evaluate_1F675B0C05BADB128C1DAA983B5AC605CD4F86FF"/>
-      <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+      <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
       <calledByFunction functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
-      <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
       <calledByFunction functionId="function_Evaluate_FBA9A48D9AC4F9E5BFE35BE8BBAFEB1BC464AB12"/>
       <calledByFunction functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
       <calledByFunction functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
       <calledByFunction functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-      <calledByFunction functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
-      <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
-      <calledByFunction functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
-      <calledByFunction functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+      <calledByFunction functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+      <calledByFunction functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
+      <calledByFunction functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
       <calledByFunction functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
+      <calledByFunction functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
       <calledByFunction functionId="function_Evaluate_44D6D7C2B816DC2CB7EA422C587CB509665343D8"/>
+      <calledByFunction functionId="function_Evaluate_894F6B42C420917AFF60AD0FBBB1BEB49F867D64"/>
      </calledByFunctions>
     </function>
    </functions>

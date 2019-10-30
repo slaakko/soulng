@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <docs>
-  <doc id="soulng-projects">
-    <description>
-        Contains libraries and applications whose lexers and parsers are implemented using SoulNG.
-        They are ment to serve as SoulNG usage examples.
-    </description>
-  </doc>
   <doc id="soulng">
-    <description>Core libraries and tools</description>
+    <description>core libraries and tools</description>
   </doc>
   <doc id="sngxml">
     <description>XML processing libraries</description>
   </doc>
   <doc id="sngcpp">
-    <description>C++11 parser, preprocessor, AST and symbol table</description>
+    <description>C++ front-end</description>
+  </doc>
+  <doc id="gendoc-tool">
+    <description>C++ reverse engineering tool</description>
   </doc>
 </docs>

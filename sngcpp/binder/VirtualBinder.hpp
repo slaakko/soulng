@@ -11,9 +11,7 @@
 
 namespace sngcpp { namespace binder {
 
-using namespace sngcpp::symbols;
-
-SNGCPP_BINDER_API void ResolveOverrideSets(const std::unordered_set<ClassTypeSymbol*>& classes);
+SNGCPP_BINDER_API void ResolveOverrideSets(const std::unordered_set<sngcpp::symbols::ClassTypeSymbol*>& classes);
 
 } } // namespace sngcpp::binder
 

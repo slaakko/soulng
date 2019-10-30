@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>File Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_gendoc_8AE6F6D9949B9A5EF7FE505658C75E6AD1537DF2.html">up</a>
+         | prev | <a href="class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html">next</a>
+        <hr/>
+        <h1>File Class</h1>
+        <span>
+            Definition at line <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html#12">12</a>
+             of <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html">File.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#constructor_File_1D22DC5FEB0AB4599C7495C1A1AEAE7DFE804163">File</a>(<span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::string&amp; path_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_Included_D577B06E54F35B079E38DD07BA6C2B0EAAB1E316">Included</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_Name_8879132E4BE132E492A170A7B81F816D9DBE453B">Name</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_Path_10155E886BF8F2A5E988342CD17CBCA2E22F1387">Path</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_SetIncluded_B9A269301CB55A447D9CF2A8DD33E4162CBBE62E">SetIncluded</a>(<span class="kw">bool</span> included_)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_included_52DBBF271CA6123EE13F73EECF202F3B1691BA4E">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">included</td>
+            </tr>
+            <tr id="variable_name_7CC7633755F5FCF4331C0AC8C78E0B398262E78E">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">name</td>
+            </tr>
+            <tr id="variable_path_E640694D6D426902245AF8217C8B697C33EF334E">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">path</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_File_1D22DC5FEB0AB4599C7495C1A1AEAE7DFE804163">File Constructor</h3>
+        <h4>
+            gendoc::File::File(<span class="kw">const </span>
+            std::u32string&amp; name_, <span class="kw">const </span>
+            std::string&amp; path_)</h4>
+        <span>
+            Definition at line <a href="file/File.cpp_3CD867AF7AE5F960D55F2E1BD508F4EFF2211156.html#10">10</a>
+             of <a href="file/File.cpp_3CD867AF7AE5F960D55F2E1BD508F4EFF2211156.html">File.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#variable_name_7CC7633755F5FCF4331C0AC8C78E0B398262E78E">name</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#variable_path_E640694D6D426902245AF8217C8B697C33EF334E">path</a><span class="other">(</span><span class="identifier">path_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#variable_included_52DBBF271CA6123EE13F73EECF202F3B1691BA4E">included</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html#15">15</a>
+             of <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html">File.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Included_D577B06E54F35B079E38DD07BA6C2B0EAAB1E316">Included Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             gendoc::File::Included() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html#18">18</a>
+             of <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html">File.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">included</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_226B693D339C6BB0611FEC654B756F3D2185790A.html#function_BuildAst_3BF1E0A20D73D98FB0BE2E100937418C886AF9A6">gendoc::Project::BuildAst</a>
+            , <a href="./class_Project_226B693D339C6BB0611FEC654B756F3D2185790A.html#function_ReadFilePaths_8EC05B887837F9E4C7E288BFC99B968B57A0D465">gendoc::Project::ReadFilePaths</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Name_8879132E4BE132E492A170A7B81F816D9DBE453B">Name Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; gendoc::File::Name() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html#16">16</a>
+             of <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html">File.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">name</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#function_Apply_EEA0A13CC5FC102DC8AEC5EACEDE5DB157AB8390">gendoc::Filter::Apply</a>
+            , <a href="./class_Project_226B693D339C6BB0611FEC654B756F3D2185790A.html#function_BuildAst_3BF1E0A20D73D98FB0BE2E100937418C886AF9A6">gendoc::Project::BuildAst</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Path_10155E886BF8F2A5E988342CD17CBCA2E22F1387">Path Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; gendoc::File::Path() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html#17">17</a>
+             of <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html">File.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">path</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_226B693D339C6BB0611FEC654B756F3D2185790A.html#function_BuildAst_3BF1E0A20D73D98FB0BE2E100937418C886AF9A6">gendoc::Project::BuildAst</a>
+            , <a href="./class_Project_226B693D339C6BB0611FEC654B756F3D2185790A.html#function_ReadFilePaths_8EC05B887837F9E4C7E288BFC99B968B57A0D465">gendoc::Project::ReadFilePaths</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetIncluded_B9A269301CB55A447D9CF2A8DD33E4162CBBE62E">SetIncluded Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             gendoc::File::SetIncluded(<span class="kw">bool</span>
+             included_)</h4>
+        <span>
+            Definition at line <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html#19">19</a>
+             of <a href="file/File.hpp_16DE44D6A40B9CDE77C76BA051E243B0154835F0.html">File.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">included</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">included_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#function_Apply_EEA0A13CC5FC102DC8AEC5EACEDE5DB157AB8390">gendoc::Filter::Apply</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_gendoc_8AE6F6D9949B9A5EF7FE505658C75E6AD1537DF2.html">up</a>
+         | prev | <a href="class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html">next</a>
+    </body>
+</html>

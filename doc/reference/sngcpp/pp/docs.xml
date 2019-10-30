@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="pp">
+    <description>Contains a rudimentary C++ preprocessor.</description>
+    <body>
+       Note: all conforming preprocessing features are not implemented.
+       Lacks function macros and token combining for instance.
+    </body>
+  </doc>
+</docs>

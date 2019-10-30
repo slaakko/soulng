@@ -366,7 +366,8 @@ enum class DocFlags : uint8_t
 {
     none = 0,
     full = 1 << 0,
-    paragraph = 1 << 1
+    paragraph = 1 << 1,
+    moduleDoc = 1 << 2
 };
 
 inline DocFlags operator&(DocFlags left, DocFlags right)
@@ -407,6 +408,23 @@ bool IsHeaderElement(sngxml::dom::Node* node)
     return false;
 }
 
+sngxml::dom::Element* GetContainerElement(sngxml::dom::Element* element)
+{
+    if (element->Name() == U"class" || element->Name() == U"namespace" || element->Name() == U"enumType")
+    {
+        return element;
+    }
+    else if (element->Parent())
+    {
+        if (element->Parent()->GetNodeType() == sngxml::dom::NodeType::elementNode)
+        {
+            sngxml::dom::Element* parentElement = static_cast<sngxml::dom::Element*>(element->Parent());
+            return GetContainerElement(parentElement);
+        }
+    }
+    return element;
+}
+
 void GenerateDocContent(const std::u32string& projectName, sngxml::dom::Element* element, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml,
     sngxml::dom::Element* parentElement, const std::u32string& id, sngxml::dom::Document* contentXml, HtmlContentFilePathResolver* contentFilePathResolver, DocFlags flags)
 {
@@ -428,51 +446,46 @@ void GenerateDocContent(const std::u32string& projectName, sngxml::dom::Element*
             case sngxml::dom::NodeType::elementNode:
             {
                 sngxml::dom::Element* childElement = static_cast<sngxml::dom::Element*>(child);
-                if (childElement->Name() == U"ref")
+                if (childElement->Name() == U"link")
                 {
-                    sngxml::dom::Node* firstChild = childElement->FirstChild();
-                    if (firstChild)
+                    std::u32string refId = childElement->GetAttribute(U"ref");
+                    sngxml::dom::Element* refElement = contentXml->GetElementById(refId);
+                    if (refElement)
                     {
-                        if (firstChild->GetNodeType() == sngxml::dom::NodeType::textNode)
+                        std::u32string project = GetProject(refElement);
+                        if (!project.empty())
                         {
-                            sngxml::dom::Text* text = static_cast<sngxml::dom::Text*>(firstChild);
-                            std::u32string refId = text->Data();
-                            sngxml::dom::Element* refElement = contentXml->GetElementById(refId);
-                            if (refElement)
+                            std::string dirPath = ".";
+                            if ((flags & DocFlags::moduleDoc) != DocFlags::none)
                             {
-                                std::u32string project = GetProject(refElement);
-                                if (!project.empty())
+                                dirPath = "html/content";
+                            }
+                            sngxml::dom::Element* containerElement = GetContainerElement(refElement);
+                            std::u32string link = ToUtf32(contentFilePathResolver->ResolveContentFilePath(projectName, project, dirPath, containerElement->GetAttribute(U"id")));
+                            if (!link.empty())
+                            {
+                                if (refElement != containerElement)
                                 {
-                                    std::u32string link = ToUtf32(contentFilePathResolver->ResolveContentFilePath(projectName, project, ".", refId));
-                                    if (!link.empty())
-                                    {
-                                        std::unique_ptr<sngxml::dom::Element> a(new sngxml::dom::Element(U"a"));
-                                        a->SetAttribute(U"href", link);
-                                        parentElement->AppendChild(std::move(a));
-                                    }
-                                    else
-                                    {
-                                        std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": content file path for ref element '" + ToUtf8(refId) + "' not found" << std::endl;
-                                    }
+                                    link.append(1, '#').append(refId);
                                 }
-                                else
-                                {
-                                    std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": project for ref element '" + ToUtf8(refId) + "' not found" << std::endl;
-                                }
+                                std::unique_ptr<sngxml::dom::Element> a(new sngxml::dom::Element(U"a"));
+                                a->SetAttribute(U"href", link);
+                                a->AppendChild(childElement->FirstChild()->CloneNode(true));
+                                parentElement->AppendChild(std::move(a));
                             }
                             else
                             {
-                                std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": ref element '" + ToUtf8(refId) + "' not found" << std::endl;
+                                std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": content file path for link element '" + ToUtf8(refId) + "' not found" << std::endl;
                             }
                         }
                         else
                         {
-                            std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": ref element with no text content" << std::endl;
+                            std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": project for link element '" + ToUtf8(refId) + "' not found" << std::endl;
                         }
                     }
                     else
                     {
-                        std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": empty ref element" << std::endl;
+                        std::cerr << "warning: " << documentationXmlFileName << ":" << ToUtf8(id) + ": referenced element '" + ToUtf8(refId) + "' not found" << std::endl;
                     }
                 }
                 else
@@ -551,7 +564,8 @@ void GenerateDocumentation(const std::u32string& projectName, const std::string&
                 if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
                 {
                     sngxml::dom::Element* bodyElement = static_cast<sngxml::dom::Element*>(node);
-                    GenerateDocContent(projectName, bodyElement, documentationXmlFileName, documentationXml, parentElement, id, contentXml, contentFilePathResolver, DocFlags::paragraph);
+                    GenerateDocContent(projectName, bodyElement, documentationXmlFileName, documentationXml, parentElement, id, contentXml, contentFilePathResolver,
+                        flags | DocFlags::paragraph);
                 }
             }
         }
@@ -821,7 +835,7 @@ void GenerateClassSection(const std::u32string& projectName, sngxml::dom::Elemen
 
 void GenerateEnumSection(const std::u32string& projectName, sngxml::dom::Element* pageElement, sngxml::dom::Element* parentElement, sngxml::dom::Document* contentXml,
     const std::string& contentDir, const std::string& styleDirName, const std::string& styleFileName, const std::string& contentXmlFilePath, bool verbose, bool rebuild,
-    const std::u32string& topLink, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml);
+    const std::u32string& topLink, HtmlContentFilePathResolver* contentFilePathResolver, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml);
 
 void GenerateVariableSection(const std::u32string& projectName, const std::u32string& title, sngxml::dom::Element* pageElement, sngxml::dom::Element* parentElement, sngxml::dom::Document* contentXml,
     const std::string& contentDir, const std::string& styleDirName, const std::string& styleFileName,
@@ -1142,6 +1156,7 @@ void GenerateClassContent(const std::u32string& projectName, sngxml::dom::Elemen
     std::unique_ptr<sngxml::dom::Element> h1Element(new sngxml::dom::Element(U"h1"));
     h1Element->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(title)));
     bodyElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(h1Element.release()));
+    GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, bodyElement.get(), classId, contentXml, contentFilePathResolver, DocFlags::full | DocFlags::paragraph);
     if (classInheritanceDiagramGenerated)
     {
         bodyElement->SetAttribute(U"onload", U"drawClassInheritanceDiagram()");
@@ -1181,7 +1196,7 @@ void GenerateClassContent(const std::u32string& projectName, sngxml::dom::Elemen
     GenerateFunctionSection(projectName, U"Member Functions", bodyElement.get(), classElement, contentDir, styleDirName, styleFileName, contentXml, functionElements, contentFilePathResolver,
         documentationXmlFileName, documentationXml);
     GenerateEnumSection(projectName, bodyElement.get(), classElement, contentXml, contentDir, styleDirName, styleFileName, contentXmlFilePath, verbose, rebuild, topLink,
-        documentationXmlFileName, documentationXml);
+        contentFilePathResolver, documentationXmlFileName, documentationXml);
     GenerateTypedefSection(projectName, bodyElement.get(), classElement, contentXml, contentDir, styleDirName, styleFileName, contentFilePathResolver, topLink,
         documentationXmlFileName, documentationXml);
     GenerateVariableSection(projectName, U"Member Variables", bodyElement.get(), classElement, contentXml, contentDir, styleDirName, styleFileName, contentFilePathResolver, topLink,
@@ -1241,14 +1256,21 @@ void GenerateClassSection(const std::u32string& projectName, sngxml::dom::Elemen
             std::unique_ptr<sngxml::dom::Element> trElement(new sngxml::dom::Element(U"tr"));
             std::unique_ptr<sngxml::dom::Element> tdElement(new sngxml::dom::Element(U"td"));
             std::u32string classKey = classElement->GetAttribute(U"key");
+            std::u32string classId = classElement->GetAttribute(U"id");
             std::u32string className = classElement->GetAttribute(U"name");
             tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(classKey + U" ")));
             std::unique_ptr<sngxml::dom::Element> linkElement(new sngxml::dom::Element(U"a"));
-            std::u32string classLink = classElement->GetAttribute(U"id") + U".html";
+            std::u32string classLink = classId + U".html";
             linkElement->SetAttribute(U"href", classLink);
             linkElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(className)));
             tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(linkElement.release()));
             trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(tdElement.release()));
+            if (documentationXml && documentationXml->GetElementById(classId) != nullptr)
+            {
+                std::unique_ptr<sngxml::dom::Element> documentationTdElement(new sngxml::dom::Element(U"td"));
+                GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, documentationTdElement.get(), classId, contentXml, contentFilePathResolver, DocFlags::none);
+                trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(documentationTdElement.release()));
+            }
             classTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
             GenerateClassContent(projectName, classElement, contentXml, contentDir, styleDirName, styleFileName, topLink, parentLink, prevLink, nextLink, inlineCodeMap,
                 contentXmlFilePath, verbose, rebuild, contentFilePathResolver, documentationXmlFileName, documentationXml);
@@ -1262,7 +1284,8 @@ void GenerateClassSection(const std::u32string& projectName, sngxml::dom::Elemen
 }
 
 void GenerateEnumContent(const std::u32string& projectName, sngxml::dom::Element* enumTypeElement, sngxml::dom::Document* contentXml, const std::string& contentDir, const std::string& styleDirName, const std::string& styleFileName,
-    const std::u32string& topLink, const std::u32string& parentLink, const std::u32string& prevLink, std::u32string& nextLink, const std::string& contentXmlFilePath, bool verbose, bool rebuild)
+    const std::u32string& topLink, const std::u32string& parentLink, const std::u32string& prevLink, std::u32string& nextLink, const std::string& contentXmlFilePath, bool verbose, bool rebuild,
+    HtmlContentFilePathResolver* contentFilePathResolver, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml)
 {
     std::u32string enumTypeName = enumTypeElement->GetAttribute(U"name");
     std::u32string enumTypeId = enumTypeElement->GetAttribute(U"id");
@@ -1300,6 +1323,7 @@ void GenerateEnumContent(const std::u32string& projectName, sngxml::dom::Element
     std::unique_ptr<sngxml::dom::Element> h1Element(new sngxml::dom::Element(U"h1"));
     h1Element->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(title)));
     bodyElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(h1Element.release()));
+    GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, bodyElement.get(), enumTypeId, contentXml, contentFilePathResolver, DocFlags::full | DocFlags::paragraph);
     std::u32string definitionFileId = enumTypeElement->GetAttribute(U"definitionFileId");
     if (!definitionFileId.empty())
     {
@@ -1373,7 +1397,7 @@ void GenerateEnumContent(const std::u32string& projectName, sngxml::dom::Element
 
 void GenerateEnumSection(const std::u32string& projectName, sngxml::dom::Element* pageElement, sngxml::dom::Element* parentElement, sngxml::dom::Document* contentXml,
     const std::string& contentDir, const std::string& styleDirName, const std::string& styleFileName, const std::string& contentXmlFilePath, bool verbose, bool rebuild,
-    const std::u32string& topLink, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml)
+    const std::u32string& topLink, HtmlContentFilePathResolver* contentFilePathResolver, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml)
 {
     std::unique_ptr<sngxml::dom::Element> enumTableElement(new sngxml::dom::Element(U"table"));
     std::unique_ptr<sngxml::xpath::XPathObject> enumTypes = sngxml::xpath::Evaluate(U"enumTypes/enumType", parentElement);
@@ -1410,16 +1434,24 @@ void GenerateEnumSection(const std::u32string& projectName, sngxml::dom::Element
             std::unique_ptr<sngxml::dom::Element> trElement(new sngxml::dom::Element(U"tr"));
             std::unique_ptr<sngxml::dom::Element> tdElement(new sngxml::dom::Element(U"td"));
             std::u32string enumKey = enumTypeElement->GetAttribute(U"key");
+            std::u32string enumId = enumTypeElement->GetAttribute(U"id");
             std::u32string enumTypeName = enumTypeElement->GetAttribute(U"name");
             tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(enumKey + U" ")));
             std::unique_ptr<sngxml::dom::Element> linkElement(new sngxml::dom::Element(U"a"));
-            std::u32string enumTypeLink = enumTypeElement->GetAttribute(U"id") + U".html";
+            std::u32string enumTypeLink = enumId + U".html";
             linkElement->SetAttribute(U"href", enumTypeLink);
             linkElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(enumTypeName)));
             tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(linkElement.release()));
             trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(tdElement.release()));
+            if (documentationXml && documentationXml->GetElementById(enumId) != nullptr)
+            {
+                std::unique_ptr<sngxml::dom::Element> documentationTdElement(new sngxml::dom::Element(U"td"));
+                GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, documentationTdElement.get(), enumId, contentXml, contentFilePathResolver, DocFlags::none);
+                trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(documentationTdElement.release()));
+            }
             enumTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
-            GenerateEnumContent(projectName, enumTypeElement, contentXml, contentDir, styleDirName, styleFileName, topLink, parentLink, prevLink, nextLink, contentXmlFilePath, verbose, rebuild);
+            GenerateEnumContent(projectName, enumTypeElement, contentXml, contentDir, styleDirName, styleFileName, topLink, parentLink, prevLink, nextLink, contentXmlFilePath, verbose, rebuild,
+                contentFilePathResolver, documentationXmlFileName, documentationXml);
             prevLink = enumTypeLink;
         }
         if (!matchedEnums.empty())
@@ -1722,6 +1754,12 @@ void GenerateVariableSection(const std::u32string& projectName, const std::u32st
                 nameTdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(span.release()));
             }
             trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(nameTdElement.release()));
+            if (documentationXml && documentationXml->GetElementById(variableId) != nullptr)
+            {
+                std::unique_ptr<sngxml::dom::Element> documentationTdElement(new sngxml::dom::Element(U"td"));
+                GenerateDocumentation(projectName, documentationFileName, documentationXml, documentationTdElement.get(), variableId, contentXml, contentFilePathResolver, DocFlags::none);
+                trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(documentationTdElement.release()));
+            }
             variableTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
         }
         if (!matchedVariables.empty())
@@ -1776,6 +1814,12 @@ void GenerateTypedefSection(const std::u32string& projectName, sngxml::dom::Elem
             nameTdElement->SetAttribute(U"xml:space", U"preserve");
             nameTdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(typedefName)));
             trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(nameTdElement.release()));
+            if (documentationXml && documentationXml->GetElementById(typedefId) != nullptr)
+            {
+                std::unique_ptr<sngxml::dom::Element> documentationTdElement(new sngxml::dom::Element(U"td"));
+                GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, documentationTdElement.get(), typedefId, contentXml, contentFilePathResolver, DocFlags::none);
+                trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(documentationTdElement.release()));
+            }
             typedefTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
         }
         if (!matchedTypedefs.empty())
@@ -1819,9 +1863,10 @@ void GenerateConstructorSection(const std::u32string& projectName, sngxml::dom::
             tdElement->SetAttribute(U"class", U"constructorTableFirstCol");
             tdElement->SetAttribute(U"xml:space", U"preserve");
             std::u32string constuctorName = MakeConstructorName(constructorElement);
+            std::u32string constructorId = constructorElement->GetAttribute(U"id");
             std::unique_ptr<sngxml::dom::Element> linkElement(new sngxml::dom::Element(U"a"));
             std::u32string constructorLink = parentElement->GetAttribute(U"id");
-            constructorLink.append(U".html#").append(constructorElement->GetAttribute(U"id"));
+            constructorLink.append(U".html#").append(constructorId);
             linkElement->SetAttribute(U"href", constructorLink);
             linkElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(constuctorName)));
             tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(linkElement.release()));
@@ -1836,6 +1881,12 @@ void GenerateConstructorSection(const std::u32string& projectName, sngxml::dom::
                 tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(span.release()));
             }
             trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(tdElement.release()));
+            if (documentationXml && documentationXml->GetElementById(constructorId) != nullptr)
+            {
+                std::unique_ptr<sngxml::dom::Element> documentationTdElement(new sngxml::dom::Element(U"td"));
+                GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, documentationTdElement.get(), constructorId, contentXml, contentFilePathResolver, DocFlags::none);
+                trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(documentationTdElement.release()));
+            }
             constructorTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
         }
         if (!matchedConstructors.empty())
@@ -1895,9 +1946,10 @@ void GenerateFunctionSection(const std::u32string& projectName, const std::u32st
             tdElement->SetAttribute(U"class", U"functionTableSecondCol");
             tdElement->SetAttribute(U"xml:space", U"preserve");
             std::u32string functionName = MakeFunctionName(functionElement);
+            std::u32string functionId = functionElement->GetAttribute(U"id");
             std::unique_ptr<sngxml::dom::Element> linkElement(new sngxml::dom::Element(U"a"));
             std::u32string functionLink = parentElement->GetAttribute(U"id");
-            functionLink.append(U".html#").append(functionElement->GetAttribute(U"id"));
+            functionLink.append(U".html#").append(functionId);
             linkElement->SetAttribute(U"href", functionLink);
             linkElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(functionName)));
             tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(linkElement.release()));
@@ -1912,6 +1964,12 @@ void GenerateFunctionSection(const std::u32string& projectName, const std::u32st
                 tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(span.release()));
             }
             trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(tdElement.release()));
+            if (documentationXml && documentationXml->GetElementById(functionId) != nullptr)
+            {
+                std::unique_ptr<sngxml::dom::Element> documentationTdElement(new sngxml::dom::Element(U"td"));
+                GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, documentationTdElement.get(), functionId, contentXml, contentFilePathResolver, DocFlags::none);
+                trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(documentationTdElement.release()));
+            }
             functionTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
         }
         if (!functionElements.empty())
@@ -1941,8 +1999,9 @@ void GenerateFunctionDetailSection(const std::u32string& projectName, const std:
     for (int i = 0; i < n; ++i)
     {
         sngxml::dom::Element* functionElement = functionElements[i];
+        std::u32string functionId = functionElement->GetAttribute(U"id");
         std::unique_ptr<sngxml::dom::Element> h3Element(new sngxml::dom::Element(U"h3"));
-        h3Element->SetAttribute(U"id", functionElement->GetAttribute(U"id"));
+        h3Element->SetAttribute(U"id", functionId);
         std::u32string functionText = functionElement->GetAttribute(U"name");
         functionText.append(1, ' ').append(functionTitle);
         h3Element->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(functionText)));
@@ -1975,6 +2034,7 @@ void GenerateFunctionDetailSection(const std::u32string& projectName, const std:
             h4Element->AppendChild(std::unique_ptr<sngxml::dom::Node>(span.release()));
         }
         pageElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(h4Element.release()));
+        GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, pageElement, functionId, contentXml, contentFilePathResolver, DocFlags::full | DocFlags::paragraph);
         bool codeAdded = false;
         std::u32string definitionFileId = functionElement->GetAttribute(U"definitionFileId");
         if (!definitionFileId.empty())
@@ -2428,7 +2488,7 @@ void GenerateContent(const std::u32string& projectName, sngxml::dom::Document* c
                 GenerateFunctionSection(projectName, U"Functions", bodyElement.get(), nsElement, contentDir, styleDirName, styleFileName, contentXml, functionElements,
                     contentFilePathResolver, documentationXmlFileName, documentationXml);
                 GenerateEnumSection(projectName, bodyElement.get(), nsElement, contentXml, contentDir, styleDirName, styleFileName, contentXmlFilePath, verbose, rebuild, topLink,
-                    documentationXmlFileName, documentationXml);
+                    contentFilePathResolver, documentationXmlFileName, documentationXml);
                 GenerateTypedefSection(projectName, bodyElement.get(), nsElement, contentXml, contentDir, styleDirName, styleFileName, contentFilePathResolver, topLink,
                     documentationXmlFileName, documentationXml);
                 GenerateVariableSection(projectName, U"Variables", bodyElement.get(), nsElement, contentXml, contentDir, styleDirName, styleFileName, contentFilePathResolver, topLink,
@@ -2510,7 +2570,8 @@ void GenerateModuleHtml(const std::u32string& projectName, const std::u32string&
     h1Element->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(documentTitle)));
     bodyElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(h1Element.release()));
     GenerateNavigation(bodyElement.get(), Navigation::header, topLink, parentLink, prevLink, nextLink);
-    GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, bodyElement.get(), projectName, contentXml, contentFilePathResolver, DocFlags::full | DocFlags::paragraph);
+    GenerateDocumentation(projectName, documentationXmlFileName, documentationXml, bodyElement.get(), projectName, contentXml, contentFilePathResolver,
+        DocFlags::full | DocFlags::paragraph | DocFlags::moduleDoc);
     int n = childProjects.size();
     if (n > 0)
     {

@@ -1,1 +1,1 @@
-domexample: up-to-date
+domexample: built

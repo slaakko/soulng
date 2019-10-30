@@ -2600,12 +2600,12 @@
         <functions>
          <function access="public" definitionFile="Lexeme.hpp" definitionFileId="file/Lexeme.hpp_C25DD4800B16C91D983B2E32AE54903316398BA0.html" definitionLine="17" id="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715" name="ToString" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeExprStringValue_FE49E08E74FF0D3E2ABB43DF455CCD854ABFE911"/>
            <calledByFunction functionId="function_ParseHexChar_8067D60C88EA06F22E9565186588BD2B175C76C3"/>
-           <calledByFunction functionId="function_MakeStrValue_7E8A8C7F338B1AE23DE66DA8241D45F1B8C95CA8"/>
-           <calledByFunction functionId="function_MakeEscapeValue_6AA90C015D986237AC477CD9FA779826CFF3D447"/>
-           <calledByFunction functionId="function_MakePathValue_B015B1D71C2533C53DAAFE132B92634AF55CA5CA"/>
            <calledByFunction functionId="function_MakeActionIntValue_60C7C2E8E4F35106AC3A426512452A0169A4A0D0"/>
+           <calledByFunction functionId="function_MakeStrValue_7E8A8C7F338B1AE23DE66DA8241D45F1B8C95CA8"/>
+           <calledByFunction functionId="function_MakeExprStringValue_FE49E08E74FF0D3E2ABB43DF455CCD854ABFE911"/>
+           <calledByFunction functionId="function_MakePathValue_B015B1D71C2533C53DAAFE132B92634AF55CA5CA"/>
+           <calledByFunction functionId="function_MakeEscapeValue_6AA90C015D986237AC477CD9FA779826CFF3D447"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -3228,12 +3228,12 @@
            <parameter access="public" id="parameter_c_8AA6F2F4FA922EBCD87F9CAE23EBE19E6F8198D1" name="c" type="char32_t"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
-           <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
-           <calledByFunction functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
-           <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
-           <calledByFunction functionId="function_Clone_497453978358AA66DC9E314A74BAA269C092F15D"/>
            <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
+           <calledByFunction functionId="function_Clone_497453978358AA66DC9E314A74BAA269C092F15D"/>
+           <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
+           <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
+           <calledByFunction functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
+           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Symbol.hpp" declarationFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" declarationLine="112" definitionFile="Symbol.cpp" definitionFileId="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html" definitionLine="344" id="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B" name="AddSymbol" returnType="void">
@@ -3244,11 +3244,11 @@
            <call functionId="function_SetContained_DE6A33EEFC627F71C3E4B367291D43AA96332BAF"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
            <calledByFunction functionId="function_MakeAsciiIdStart_28A8F81BE04B63570B088629655B46F0BF111C4B"/>
            <calledByFunction functionId="function_MakeAsciiIdCont_5FBC5B193F5F93B7A330BAEEB9E5A3C27B96BFF2"/>
            <calledByFunction functionId="function_MakeUnicodeIdStart_CB81F87B7079042A2906488FD84BD6F23E7A9967"/>
            <calledByFunction functionId="function_MakeUnicodeIdCont_4B2F116B34A34BC83D8AC55836E1C36904EE97CD"/>
+           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
            <calledByFunction functionId="function_Clone_497453978358AA66DC9E314A74BAA269C092F15D"/>
            <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
           </calledByFunctions>
@@ -3256,9 +3256,9 @@
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="116" id="function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259" name="Chars" returnType="const.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.char32_t.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.char32_t" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Compile_73CFB542B0E6FBF3E8A6ECDA5A3AD51E00808B3E"/>
-           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
-           <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
            <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
+           <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
+           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Symbol.hpp" declarationFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" declarationLine="120" definitionFile="Symbol.cpp" definitionFileId="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html" definitionLine="311" id="function_Clone_497453978358AA66DC9E314A74BAA269C092F15D" name="Clone" returnType="class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.ptr.class_Class_E672D9D6F066B331679BA6817864D97FC79E685D">
@@ -3269,8 +3269,8 @@
          </function>
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="114" id="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012" name="Index" returnType="int" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
@@ -3286,11 +3286,11 @@
            <parameter access="public" id="parameter_lexerContext_525A1EDCC54B12949B12D14AB61BE1B867A9CC9E" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
           </parameters>
           <calls>
+           <call functionId="function_IsAny_1DD9B76B0670925302C82BBF5FA5C23DA640EDCC"/>
            <call functionId="function_IsChar_D9B3FC38D1E4162123E026C333D45FD468B7F94E"/>
            <call functionId="function_Chr_D8526C9CED0FC66C41AD4DA73B1B81D9C34A401A"/>
-           <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
-           <call functionId="function_IsAny_1DD9B76B0670925302C82BBF5FA5C23DA640EDCC"/>
            <call functionId="function_IsClass_154D9DAEDBFE9896C0452F0C0AD087A7D299A5BD"/>
+           <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
            <call functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
           </calls>
           <calledByFunctions>
@@ -3304,8 +3304,8 @@
           <calls>
            <call functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
            <call functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
-           <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
            <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
+           <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
            <call functionId="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B"/>
            <call functionId="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24"/>
           </calls>
@@ -3319,8 +3319,8 @@
           </parameters>
           <calls>
            <call functionId="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24"/>
-           <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
            <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
+           <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
            <call functionId="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B"/>
           </calls>
           <calledByFunctions>
@@ -3452,18 +3452,18 @@
            <parameter access="public" id="parameter_lexerContext_6A66855D1146D07C7DD80685150F80DD644D4574" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
           </parameters>
           <overrides>
-           <override functionId="function_FillContext_DACDD162974C3244955C54792E7E18D8303CBE7A"/>
            <override functionId="function_FillContext_9D5CC1C1AF0E3D5725AF5B3483FF14FF0C8F0F38"/>
-           <override functionId="function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A"/>
+           <override functionId="function_FillContext_DACDD162974C3244955C54792E7E18D8303CBE7A"/>
            <override functionId="function_FillContext_942B8048888DEF28117078334F7F0503190C99A8"/>
+           <override functionId="function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A"/>
           </overrides>
          </function>
          <function access="public" definitionFile="Model.hpp" definitionFileId="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html" definitionLine="41" id="function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE" name="Name" returnType="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Add_C9464005DA65900342F7C2D63CBB640D4030A824"/>
           </calledByFunctions>
          </function>
@@ -3474,10 +3474,10 @@
            <parameter access="public" id="parameter_lexerContext_5979EC8DAA829D65BD2695433B6842A4BE8197CB" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
           </parameters>
           <overrides>
-           <override functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
            <override functionId="function_Process_97AD6F66EE31DB59DE6A4A51B40A41E58B9E5145"/>
-           <override functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <override functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
            <override functionId="function_Process_13252863F833BD97883AFBE6298F25A2AF492AF6"/>
+           <override functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
           </overrides>
          </function>
         </functions>
@@ -3631,8 +3631,8 @@
            <parameter access="public" id="parameter_expression_5A55FD31BDAE859D0E888D105E9E690B4D981250" name="expression" type="class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F.ptr.class_Expression_0D35D0B5B02224466A753FFFCBB8C7FDBD0D5D7F"/>
           </parameters>
           <calls>
-           <call functionId="function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2"/>
            <call functionId="function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC"/>
+           <call functionId="function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2"/>
           </calls>
          </function>
          <function access="public" declarationFile="Model.hpp" declarationFileId="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html" declarationLine="132" definitionFile="Model.cpp" definitionFileId="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html" definitionLine="409" id="function_FillContext_942B8048888DEF28117078334F7F0503190C99A8" name="FillContext" returnType="void" specifiers="override">
@@ -3697,8 +3697,8 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Model.hpp" declarationFileId="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html" declarationLine="67" definitionFile="Model.cpp" definitionFileId="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html" definitionLine="73" id="function_Process_14708E14900AC23DDDD13D1CCC5C79D125456A2D" name="Process" returnType="void">
@@ -3765,16 +3765,16 @@
            <overriddenFunction functionId="function_Process_5B73D958C55323FABDD19047045BD23363561D3A"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213"/>
-           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
            <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
+           <call functionId="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213"/>
            <call functionId="function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE"/>
-           <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
-           <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
+           <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
            <call functionId="function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED"/>
            <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
-           <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
            <call functionId="function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475"/>
+           <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
+           <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
+           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
            <call functionId="function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C"/>
            <call functionId="function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C"/>
            <call functionId="function_GetPrefix_DF06272127B1D4A9AE1C58FD26B344981FDECC5C"/>
@@ -3875,28 +3875,28 @@
            <parameter access="public" id="parameter_lexerContext_FC5108AD67615F2C73D7008C4F3FDA0A0E75AE03" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
           </parameters>
           <calls>
-           <call functionId="function_States_BF40D7D6FAA894DD655D19CE155C61EDB4A6A0AD"/>
-           <call functionId="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213"/>
-           <call functionId="function_Code_D0ECE37BEFC26400E84795D971537AC57486CDF9"/>
-           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
            <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
+           <call functionId="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213"/>
            <call functionId="function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE"/>
-           <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
-           <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
+           <call functionId="function_GetKeywords_48D6AD2DB1D02B338B59173E4C5D6C5E93DA27FB"/>
+           <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
+           <call functionId="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012"/>
            <call functionId="function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED"/>
            <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
-           <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
+           <call functionId="function_Partition_0485D4E0D8B669ACCCBF31C50607CB79308107A0"/>
            <call functionId="function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475"/>
+           <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
+           <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
+           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
            <call functionId="function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C"/>
+           <call functionId="function_States_BF40D7D6FAA894DD655D19CE155C61EDB4A6A0AD"/>
            <call functionId="function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5"/>
            <call functionId="function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C"/>
            <call functionId="function_GetPrefix_DF06272127B1D4A9AE1C58FD26B344981FDECC5C"/>
-           <call functionId="function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461"/>
-           <call functionId="function_GetKeywords_48D6AD2DB1D02B338B59173E4C5D6C5E93DA27FB"/>
            <call functionId="function_GetClassMap_9B9D121F9D4803AF8D1FFD93E3147D0BBBFB4622"/>
-           <call functionId="function_Partition_0485D4E0D8B669ACCCBF31C50607CB79308107A0"/>
-           <call functionId="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012"/>
+           <call functionId="function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461"/>
            <call functionId="function_Id_DCDBF279DAF2083798025FCC616289B6BD41D2D4"/>
+           <call functionId="function_Code_D0ECE37BEFC26400E84795D971537AC57486CDF9"/>
            <call functionId="function_Get_4040AE26948F373AADA6D7C5C5B5B9EDEF9E7556"/>
            <call functionId="function_Statements_DA40E73DBAE291E1B3FE924C17CF1C4550B4E365"/>
           </calls>
@@ -3935,17 +3935,17 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="48" id="function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475" name="FileName" returnType="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Parse_6660FE1D5187382B5F49C88FA72C4370B4F631DC"/>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
+           <calledByFunction functionId="function_Parse_6660FE1D5187382B5F49C88FA72C4370B4F631DC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="50" id="function_GetClassMap_9B9D121F9D4803AF8D1FFD93E3147D0BBBFB4622" name="GetClassMap" returnType="class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253.ptr.class_ClassMap_C504C2430EFFB71A4A958D86EF18F4257B8C4253" specifiers="const">
@@ -3972,14 +3972,14 @@
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="52" id="function_GetPrefix_DF06272127B1D4A9AE1C58FD26B344981FDECC5C" name="GetPrefix" returnType="class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335.ptr.class_Prefix_335B7C3555D1AD273B4502BCC5AAC159FA114335" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="54" id="function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461" name="GetTokens" returnType="class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.ptr.class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159"/>
           </calledByFunctions>
          </function>
@@ -3987,8 +3987,8 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="40" id="function_MakeAny_495297D0F401C7BAA4623F7337A5D01DB30CE89D" name="MakeAny" returnType="class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.ptr.class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18"/>
@@ -3997,14 +3997,14 @@
            <call functionId="function_Chr_D8526C9CED0FC66C41AD4DA73B1B81D9C34A401A"/>
            <call functionId="function_Contained_A58E2537589F6186F1D64F468DA6C6458062A9F4"/>
            <call functionId="function_IsClass_154D9DAEDBFE9896C0452F0C0AD087A7D299A5BD"/>
+           <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
            <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-           <call functionId="function_IsChar_D9B3FC38D1E4162123E026C333D45FD468B7F94E"/>
            <call functionId="function_MakeCanonical_A36A7F554992792215E3BA559D7E215CBFCA26CB"/>
            <call functionId="function_IsAny_1DD9B76B0670925302C82BBF5FA5C23DA640EDCC"/>
-           <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
+           <call functionId="function_IsChar_D9B3FC38D1E4162123E026C333D45FD468B7F94E"/>
            <call functionId="function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259"/>
-           <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
            <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
+           <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159"/>
@@ -4034,17 +4034,17 @@
            <parameter access="public" id="parameter_verbose_0661C4B13BC0EAF96E95F85798EDF42683311716" name="verbose" type="bool"/>
           </parameters>
           <calls>
-           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
-           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
-           <call functionId="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012"/>
            <call functionId="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24"/>
-           <call functionId="function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE"/>
-           <call functionId="function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED"/>
-           <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
            <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
+           <call functionId="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012"/>
+           <call functionId="function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED"/>
+           <call functionId="function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE"/>
+           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
+           <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
            <call functionId="function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475"/>
-           <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
            <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
+           <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
+           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
            <call functionId="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213"/>
            <call functionId="function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C"/>
            <call functionId="function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C"/>
@@ -4060,14 +4060,14 @@
            <parameter access="public" id="parameter_debug_873669904CD00EE65AE5D880958CB7CAD02FE7B8" name="debug" type="bool"/>
           </parameters>
           <calls>
+           <call functionId="function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5"/>
+           <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
            <call functionId="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B"/>
-           <call functionId="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012"/>
            <call functionId="function_get_6DBCB8721B82B6DFC33CE228305D9EAA09C80BE9"/>
            <call functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
-           <call functionId="function_Print_BD25FCA80EA89CD6D7ED22B57E358112A08F81C5"/>
            <call functionId="function_SetIndex_A92C2E0638A74AF2F96A16F30BACCFCDBFBF8048"/>
-           <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
-           <call functionId="function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5"/>
+           <call functionId="function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012"/>
+           <call functionId="function_Print_BD25FCA80EA89CD6D7ED22B57E358112A08F81C5"/>
            <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
           </calls>
           <calledByFunctions>
@@ -4099,14 +4099,14 @@
            <parameter access="public" id="parameter_id_EB7C205E52CFBE6700CC7EB737DC62DD7C5C8AA7" name="id" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
           </parameters>
           <calls>
-           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
-           <call functionId="function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7"/>
-           <call functionId="function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC"/>
            <call functionId="function_MakeNfa_99B516BDC985A6B5993BE90870EAB843C6FD3AA7"/>
-           <call functionId="function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2"/>
-           <call functionId="function_Value_E597C1DF6D896584AB66027A818C902CA6F6E7AF"/>
+           <call functionId="function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7"/>
            <call functionId="function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94"/>
            <call functionId="function_Get_1BBE60F0BD8F636C40C4F4A6D4F84EC074FCE276"/>
+           <call functionId="function_Index_91BE88FB33C790F40323A613BCA9B69C4BB3E0F2"/>
+           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
+           <call functionId="function_Id_AA1A3F2BCF4142347D3F5062AAE37A43F838D0DC"/>
+           <call functionId="function_Value_E597C1DF6D896584AB66027A818C902CA6F6E7AF"/>
            <call functionId="function_Line_FDF049A9A03E0C5525C5F6BCFEEA330D3F0CECD6"/>
            <call functionId="function_Parse_AEB006204105E9B03EA4A167DD2D8B5AEFBD7BD1"/>
           </calls>
@@ -4120,9 +4120,9 @@
          </function>
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="43" id="function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7" name="MakeIdStart" returnType="class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.ptr.class_Class_E672D9D6F066B331679BA6817864D97FC79E685D">
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65"/>
            <calledByFunction functionId="function_MakeAsciiIdStart_28A8F81BE04B63570B088629655B46F0BF111C4B"/>
            <calledByFunction functionId="function_MakeUnicodeIdStart_CB81F87B7079042A2906488FD84BD6F23E7A9967"/>
+           <calledByFunction functionId="function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="LexerContext.hpp" declarationFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" declarationLine="36" definitionFile="LexerContext.cpp" definitionFileId="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html" definitionLine="59" id="function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7" name="MakeNfaState" returnType="class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.ptr.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED">
@@ -4140,13 +4140,13 @@
            <parameter access="public" id="parameter_end_D2FB435B78AAEFDB3822B13DBCE075C02EA29708" name="end" type="char32_t"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
            <calledByFunction functionId="function_MakeAsciiIdStart_28A8F81BE04B63570B088629655B46F0BF111C4B"/>
            <calledByFunction functionId="function_MakeAsciiIdCont_5FBC5B193F5F93B7A330BAEEB9E5A3C27B96BFF2"/>
            <calledByFunction functionId="function_MakeUnicodeIdStart_CB81F87B7079042A2906488FD84BD6F23E7A9967"/>
            <calledByFunction functionId="function_MakeUnicodeIdCont_4B2F116B34A34BC83D8AC55836E1C36904EE97CD"/>
-           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
+           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
            <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
+           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="LexerContext.hpp" definitionFileId="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html" definitionLine="37" id="function_NfaStates_BDEB4D1AADDA53EA67E7DF6C0E7F6B7CCD924D5D" name="NfaStates" returnType="const.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.ptr.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.ptr.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED" specifiers="const"/>
@@ -4283,13 +4283,13 @@
           </parameters>
           <calls>
            <call functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
-           <call functionId="function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461"/>
-           <call functionId="function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A"/>
-           <call functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
-           <call functionId="function_GetLexer_5187ABF0B3E6C917E3BE338F6AB5539D7F02A7EE"/>
-           <call functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
-           <call functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <call functionId="function_MakeDfa_0632796D8414395C0C109EE393D5FD9DBA74AF93"/>
+           <call functionId="function_GetTokens_CE98A12848E449BD7563363830CD1F8322783461"/>
+           <call functionId="function_GetLexer_5187ABF0B3E6C917E3BE338F6AB5539D7F02A7EE"/>
+           <call functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
+           <call functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+           <call functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
+           <call functionId="function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A"/>
           </calls>
          </function>
         </functions>
@@ -4360,9 +4360,9 @@
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html" definitionLine="54" id="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA" name="End" returnType="class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.ptr.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Process_4BC4D471C9F8BE94F5D68C298B565381682F8E3C"/>
+           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Pos_082CBFD9345958973A71C9D9E977F63D02674324"/>
            <calledByFunction functionId="function_Alt_3934CF5BE74801E1DBFCF062B87D77BBC072BAF4"/>
-           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Kleene_07FE7F77334A9069E6FAD5CF8798ECE70BC7080B"/>
            <calledByFunction functionId="function_Opt_FDDA076F2115F252A9563BC027236FC1FC7D4A38"/>
           </calledByFunctions>
@@ -4372,9 +4372,9 @@
            <parameter access="public" id="parameter_end__8722D2854BE4CBC7CCD6F3E5DF3E1CB4D1DA532F" name="end_" type="class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.ptr.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED"/>
           </parameters>
           <calledByFunctions>
+           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Pos_082CBFD9345958973A71C9D9E977F63D02674324"/>
            <calledByFunction functionId="function_Alt_3934CF5BE74801E1DBFCF062B87D77BBC072BAF4"/>
-           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Kleene_07FE7F77334A9069E6FAD5CF8798ECE70BC7080B"/>
           </calledByFunctions>
          </function>
@@ -4391,10 +4391,10 @@
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html" definitionLine="52" id="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C" name="Start" returnType="class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.ptr.class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED" specifiers="const">
           <calledByFunctions>
+           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Compile_73CFB542B0E6FBF3E8A6ECDA5A3AD51E00808B3E"/>
            <calledByFunction functionId="function_Pos_082CBFD9345958973A71C9D9E977F63D02674324"/>
            <calledByFunction functionId="function_Alt_3934CF5BE74801E1DBFCF062B87D77BBC072BAF4"/>
-           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Kleene_07FE7F77334A9069E6FAD5CF8798ECE70BC7080B"/>
            <calledByFunction functionId="function_Opt_FDDA076F2115F252A9563BC027236FC1FC7D4A38"/>
           </calledByFunctions>
@@ -4471,9 +4471,9 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_MakeNfa_99B516BDC985A6B5993BE90870EAB843C6FD3AA7"/>
+           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Pos_082CBFD9345958973A71C9D9E977F63D02674324"/>
            <calledByFunction functionId="function_Alt_3934CF5BE74801E1DBFCF062B87D77BBC072BAF4"/>
-           <calledByFunction functionId="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953"/>
            <calledByFunction functionId="function_Kleene_07FE7F77334A9069E6FAD5CF8798ECE70BC7080B"/>
           </calledByFunctions>
          </function>
@@ -4579,14 +4579,14 @@
          </function>
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="75" id="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24" name="End" returnType="char32_t" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_operator_and_231942C0CA0A6DBC345D0807D6414D85C7E04734"/>
            <calledByFunction functionId="function_operator_equal_EF21025E827B40E5254BE541A2BC64981F77B293"/>
-           <calledByFunction functionId="function_operator_complement_8883AD55582E914CEDE73A18478FB0C645242009"/>
-           <calledByFunction functionId="function_operator_less_36C2FD2FB39EFDA4FC8C7CB65702A06EFE9BC022"/>
-           <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
+           <calledByFunction functionId="function_operator_less_36C2FD2FB39EFDA4FC8C7CB65702A06EFE9BC022"/>
            <calledByFunction functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
+           <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+           <calledByFunction functionId="function_operator_and_231942C0CA0A6DBC345D0807D6414D85C7E04734"/>
            <calledByFunction functionId="function_operator_sub_4A3947DB45FABBB6CB65114FE6760700AF0CA97A"/>
+           <calledByFunction functionId="function_operator_complement_8883AD55582E914CEDE73A18478FB0C645242009"/>
            <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
            <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
            <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
@@ -4595,9 +4595,9 @@
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="73" id="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B" name="IsEmpty" returnType="bool" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
+           <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
            <calledByFunction functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
            <calledByFunction functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
-           <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
            <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
           </calledByFunctions>
          </function>
@@ -4625,17 +4625,17 @@
          </function>
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="74" id="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8" name="Start" returnType="char32_t" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_operator_and_231942C0CA0A6DBC345D0807D6414D85C7E04734"/>
-           <calledByFunction functionId="function_operator_equal_EF21025E827B40E5254BE541A2BC64981F77B293"/>
-           <calledByFunction functionId="function_operator_complement_8883AD55582E914CEDE73A18478FB0C645242009"/>
-           <calledByFunction functionId="function_operator_less_36C2FD2FB39EFDA4FC8C7CB65702A06EFE9BC022"/>
+           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
            <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
+           <calledByFunction functionId="function_operator_equal_EF21025E827B40E5254BE541A2BC64981F77B293"/>
            <calledByFunction functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
+           <calledByFunction functionId="function_operator_less_36C2FD2FB39EFDA4FC8C7CB65702A06EFE9BC022"/>
            <calledByFunction functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
+           <calledByFunction functionId="function_operator_and_231942C0CA0A6DBC345D0807D6414D85C7E04734"/>
            <calledByFunction functionId="function_operator_sub_4A3947DB45FABBB6CB65114FE6760700AF0CA97A"/>
+           <calledByFunction functionId="function_operator_complement_8883AD55582E914CEDE73A18478FB0C645242009"/>
            <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
            <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
-           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -4690,10 +4690,10 @@
            <parameter access="public" id="parameter_visitor_A8FAA35429487F8103D8400FB6DA2453E3C641D4" name="visitor" type="class_Visitor_E756CBD61FBCE4CCBE4C96F29F29589590EBAAE5.lvalueref.class_Visitor_E756CBD61FBCE4CCBE4C96F29F29589590EBAAE5"/>
           </parameters>
           <overrides>
-           <override functionId="function_Accept_0388147FADA85768D2E3973E60E5CBAA1BE31C65"/>
-           <override functionId="function_Accept_C5FEC781ED2DA01EE8C940EB897AD6C4ED36B885"/>
-           <override functionId="function_Accept_C0350A8C4224C2C12A1BE8D6142AC16FBD71F163"/>
            <override functionId="function_Accept_D44FE8070BF6119F05EF60C330D3E38B86A76643"/>
+           <override functionId="function_Accept_C5FEC781ED2DA01EE8C940EB897AD6C4ED36B885"/>
+           <override functionId="function_Accept_0388147FADA85768D2E3973E60E5CBAA1BE31C65"/>
+           <override functionId="function_Accept_C0350A8C4224C2C12A1BE8D6142AC16FBD71F163"/>
           </overrides>
          </function>
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="36" id="function_Contained_A58E2537589F6186F1D64F468DA6C6458062A9F4" name="Contained" returnType="bool" specifiers="const">
@@ -4738,12 +4738,12 @@
            <override functionId="function_IsRange_6C86D7FF02995D8CC868F3B407E82B7C4F45113F"/>
           </overrides>
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
+           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
            <calledByFunction functionId="function_MakeCanonicalClasses_40B58F5AA1755BFAA17454EC70CA00E16B45D3DA"/>
            <calledByFunction functionId="function_MakeCanonical_A36A7F554992792215E3BA559D7E215CBFCA26CB"/>
            <calledByFunction functionId="function_operator_equal_33DDBAB847041632531942121EC556DDE4E87AEC"/>
            <calledByFunction functionId="function_Intersect_34950884E7B7063A27A9FCBEF471A0DD8FDA96DF"/>
-           <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
+           <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="28" id="function_Match_274FF62C61D6CEEB44AF5F9E31EDEA8A1C0BE11B" name="Match" returnType="bool" specifiers="pure virtual">
@@ -4751,14 +4751,14 @@
            <parameter access="public" id="parameter_c_5D73B04F2D0367FC04AA8E01C7C639772AA9F196" name="c" type="char32_t"/>
           </parameters>
           <overrides>
+           <override functionId="function_Match_797A12C2F0CC5BC10E8D42C671E439B935DA9433"/>
            <override functionId="function_Match_55ABC5F54CCE51ABAD4C4AACC7DFE88097D3104F"/>
            <override functionId="function_Match_0B8A1AE67EC7A0FF6CE7244C99F5088562B546D4"/>
            <override functionId="function_Match_F4952B645FA39966A0ABE5D7B6246421ECB32408"/>
-           <override functionId="function_Match_797A12C2F0CC5BC10E8D42C671E439B935DA9433"/>
           </overrides>
           <calledByFunctions>
-           <calledByFunction functionId="function_Match_797A12C2F0CC5BC10E8D42C671E439B935DA9433"/>
            <calledByFunction functionId="function_Next_56B4C26B0ADDAA1988B18753BE043D4B3DC4499D"/>
+           <calledByFunction functionId="function_Match_797A12C2F0CC5BC10E8D42C671E439B935DA9433"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" definitionLine="35" id="function_Name_20A3FF7A6F0FF6B4170201076E2A5D6CE9B37579" name="Name" returnType="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" specifiers="const"/>
@@ -4773,11 +4773,11 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_MakeAsciiIdStart_28A8F81BE04B63570B088629655B46F0BF111C4B"/>
+           <calledByFunction functionId="constructor_Class_4076613FA714DAB20354D48EB5BDB98108C29EC0"/>
+           <calledByFunction functionId="constructor_Char_413CD20953AEE28787A5FF147BC6BE811250D579"/>
            <calledByFunction functionId="function_MakeAsciiIdCont_5FBC5B193F5F93B7A330BAEEB9E5A3C27B96BFF2"/>
            <calledByFunction functionId="function_MakeUnicodeIdStart_CB81F87B7079042A2906488FD84BD6F23E7A9967"/>
            <calledByFunction functionId="function_MakeUnicodeIdCont_4B2F116B34A34BC83D8AC55836E1C36904EE97CD"/>
-           <calledByFunction functionId="constructor_Char_413CD20953AEE28787A5FF147BC6BE811250D579"/>
-           <calledByFunction functionId="constructor_Class_4076613FA714DAB20354D48EB5BDB98108C29EC0"/>
            <calledByFunction functionId="constructor_Any_9C0D1C1CAD0DBC5F488823AF68CF39FD9DA0B26D"/>
            <calledByFunction functionId="constructor_Range_70CE7C0718816108B91847DF8C2EE89A3D2DA725"/>
            <calledByFunction functionId="function_SetIndex_A92C2E0638A74AF2F96A16F30BACCFCDBFBF8048"/>
@@ -4844,14 +4844,14 @@
           </overriddenFunctions>
           <calls>
            <call functionId="function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE"/>
-           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
-           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
-           <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
            <call functionId="function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961"/>
+           <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
+           <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
            <call functionId="function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED"/>
            <call functionId="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A"/>
-           <call functionId="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF"/>
            <call functionId="function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475"/>
+           <call functionId="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D"/>
+           <call functionId="function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6"/>
            <call functionId="function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C"/>
            <call functionId="function_Api_1EE4B450DFA5522A2A374477DAE281C800356213"/>
            <call functionId="function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C"/>
@@ -4927,14 +4927,14 @@
          <parameter access="public" id="parameter_right_1E6DB428F9E5891B002DA68AFCC0933C5D342FAF" name="right" type="const.class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.lvalueref.class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C"/>
         </parameters>
         <calls>
-         <call functionId="function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC"/>
          <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
-         <call functionId="function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7"/>
-         <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
-         <call functionId="function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733"/>
-         <call functionId="function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527"/>
          <call functionId="function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E"/>
          <call functionId="function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E"/>
+         <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
+         <call functionId="function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7"/>
+         <call functionId="function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733"/>
+         <call functionId="function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527"/>
+         <call functionId="function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC"/>
         </calls>
        </function>
        <function access="public" declarationFile="Nfa.hpp" declarationFileId="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html" declarationLine="62" definitionFile="Nfa.cpp" definitionFileId="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html" definitionLine="60" id="function_Cat_7E8B31490CD3D9B879DAF888F530FAF5A1E00953" name="Cat" project="slg" returnType="class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C">
@@ -4944,11 +4944,11 @@
         </parameters>
         <calls>
          <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
-         <call functionId="function_SetEdges_251B5A6CEEC7C0D58B519FDFB2063BB328F4DBE7"/>
+         <call functionId="function_Edges_B5FD873260F5B9540D26BD7D1BD95C347957A91E"/>
          <call functionId="function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733"/>
          <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
          <call functionId="function_SetStatementIndex_AB47AD7D9EBC74021637D2DBD7C6CA3764AACCAB"/>
-         <call functionId="function_Edges_B5FD873260F5B9540D26BD7D1BD95C347957A91E"/>
+         <call functionId="function_SetEdges_251B5A6CEEC7C0D58B519FDFB2063BB328F4DBE7"/>
          <call functionId="function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527"/>
         </calls>
        </function>
@@ -4962,15 +4962,15 @@
          <call functionId="function_MakeDfaState_91652CF9F851EF50A18D4985387775AD84CB4B17"/>
          <call functionId="function_EpsilonClosure_36351DE5600A05BEA30805738EECDE52DC80257A"/>
          <call functionId="function_Mark_6E2AB924BF846629140A0E964EF36F91B3608F31"/>
+         <call functionId="function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259"/>
          <call functionId="function_AddState_35252569CE26965F7A2DE8D8991CD499DF0E14F8"/>
          <call functionId="function_Partition_0485D4E0D8B669ACCCBF31C50607CB79308107A0"/>
-         <call functionId="function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259"/>
+         <call functionId="function_AddNext_33B2A07F249434996F849ABBDFDE74AEFAA452E4"/>
          <call functionId="function_NfaStates_3D399CD6E527400C08D8F5C95D23554AFA432552"/>
-         <call functionId="function_Finalize_E9DA72EFAEE723AA2B47822D2CD563A81A69BC05"/>
          <call functionId="function_Move_51A90FBDB85B648F24C4360CF424FBF771B93D05"/>
          <call functionId="function_EpsilonClosure_C7B53AFD3244EE18B25CD5C57F1B7E56199D48FD"/>
-         <call functionId="function_AddNext_33B2A07F249434996F849ABBDFDE74AEFAA452E4"/>
          <call functionId="function_IsMarked_573D3713AA65C1C3A3B4B186704876EA484A75DC"/>
+         <call functionId="function_Finalize_E9DA72EFAEE723AA2B47822D2CD563A81A69BC05"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_MakeDfa_0632796D8414395C0C109EE393D5FD9DBA74AF93"/>
@@ -5005,9 +5005,9 @@
          <parameter access="public" id="parameter_right_247299B17E853B8FFFB9D5990ED3692E2FAFAA6D" name="right" type="const.class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.lvalueref.class_Class_E672D9D6F066B331679BA6817864D97FC79E685D"/>
         </parameters>
         <calls>
+         <call functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
          <call functionId="function_Symbols_A5881EA6207BBC46BF9F4551D4D0EA8890C8E913"/>
          <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
-         <call functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
         </calls>
        </function>
        <function access="public" declarationFile="Symbol.hpp" declarationFileId="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html" declarationLine="94" definitionFile="Symbol.cpp" definitionFileId="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html" definitionLine="81" id="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D" name="Intersect" project="slg" returnType="bool">
@@ -5022,8 +5022,8 @@
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_operator_and_231942C0CA0A6DBC345D0807D6414D85C7E04734"/>
-         <calledByFunction functionId="function_Intersect_34950884E7B7063A27A9FCBEF471A0DD8FDA96DF"/>
          <calledByFunction functionId="function_MakeInverse_4A31928CDAAC103CE4E46DB27C2900D1BEBF47DC"/>
+         <calledByFunction functionId="function_Intersect_34950884E7B7063A27A9FCBEF471A0DD8FDA96DF"/>
          <calledByFunction functionId="function_MakeIntertersection_8B68A1D4121A4017CD3EC3EF6EC72E5876B80282"/>
          <calledByFunction functionId="function_MakeDifference_9FA9B2ED3C7FB8548E5A06E3CC7FC7F45BB8414F"/>
         </calledByFunctions>
@@ -5034,14 +5034,14 @@
          <parameter access="public" id="parameter_nfa_86A49BB506F641072BDFB879370559CCC60FC2AA" name="nfa" type="const.class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.lvalueref.class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C"/>
         </parameters>
         <calls>
-         <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
          <call functionId="function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7"/>
          <call functionId="function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733"/>
-         <call functionId="function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527"/>
+         <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
          <call functionId="function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E"/>
          <call functionId="function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E"/>
-         <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
+         <call functionId="function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527"/>
          <call functionId="function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC"/>
+         <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
         </calls>
        </function>
        <function access="public" declarationFile="Model.hpp" declarationFileId="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html" declarationLine="19" definitionFile="Model.cpp" definitionFileId="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html" definitionLine="18" id="function_LexerGeneratorVersionStr_983D8A37F992DF944B6CB9477367D4E16743AD5D" name="LexerGeneratorVersionStr" project="slg" returnType="const.char.ptr.char">
@@ -5049,8 +5049,8 @@
          <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
          <calledByFunction functionId="function_PrintUsage_66654A1CD909F0F324AC2591C7B8CB8F841B0B1A"/>
          <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-         <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
          <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+         <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="TokenValueParsers.hpp" declarationFileId="file/TokenValueParsers.hpp_5E48254F291EA426C486FA77865C66AA51CB610D.html" declarationLine="15" definitionFile="TokenValueParsers.cpp" definitionFileId="file/TokenValueParsers.cpp_4351DFD8427FF61A901FFF177E067F0545FFF636.html" definitionLine="210" id="function_MakeActionIntValue_60C7C2E8E4F35106AC3A426512452A0169A4A0D0" name="MakeActionIntValue" project="slg" returnType="int">
@@ -5068,11 +5068,11 @@
          <parameter access="public" id="parameter_lexerContext_C1A509891549883717ABAA79C7BEBDA9100D1CDC" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
         </parameters>
         <calls>
-         <call functionId="function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552"/>
          <call functionId="function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94"/>
+         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3"/>
          <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
+         <call functionId="function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_MakeAsciiIdentifierClasses_B5B29A7C740844FDB901BD25B8260C8F3BE6E227"/>
@@ -5084,9 +5084,9 @@
         </parameters>
         <calls>
          <call functionId="function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7"/>
+         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3"/>
          <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552"/>
         </calls>
         <calledByFunctions>
@@ -5112,15 +5112,15 @@
          <parameter access="public" id="parameter_lexerContext_08DB694AEF6013FA3A51DF2285C270187EC39C0B" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
         </parameters>
         <calls>
-         <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-         <call functionId="function_Symbols_A5881EA6207BBC46BF9F4551D4D0EA8890C8E913"/>
-         <call functionId="function_MakeClass_BBDE59CB51E6E5518D78B7874EAC97CA5E0917C6"/>
-         <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
          <call functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
-         <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
-         <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
-         <call functionId="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B"/>
+         <call functionId="function_Symbols_A5881EA6207BBC46BF9F4551D4D0EA8890C8E913"/>
+         <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
          <call functionId="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24"/>
+         <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
+         <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
+         <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
+         <call functionId="function_MakeClass_BBDE59CB51E6E5518D78B7874EAC97CA5E0917C6"/>
+         <call functionId="function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B"/>
          <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259"/>
          <call functionId="function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425"/>
@@ -5164,14 +5164,14 @@
          <parameter access="public" id="parameter_lexerContext_5F00D19DDD5A0748C6DD48E77BB4926212C15847" name="lexerContext" type="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.lvalueref.class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB"/>
         </parameters>
         <calls>
-         <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-         <call functionId="function_Symbols_A5881EA6207BBC46BF9F4551D4D0EA8890C8E913"/>
-         <call functionId="function_MakeClass_BBDE59CB51E6E5518D78B7874EAC97CA5E0917C6"/>
-         <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
          <call functionId="function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D"/>
-         <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
-         <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
+         <call functionId="function_Symbols_A5881EA6207BBC46BF9F4551D4D0EA8890C8E913"/>
+         <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
          <call functionId="function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24"/>
+         <call functionId="function_IsRange_7D519294EB0BECCA88B2C672FF0B92762C03F424"/>
+         <call functionId="function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A"/>
+         <call functionId="function_MakeClass_BBDE59CB51E6E5518D78B7874EAC97CA5E0917C6"/>
+         <call functionId="function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8"/>
          <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259"/>
         </calls>
@@ -5217,9 +5217,9 @@
         </parameters>
         <calls>
          <call functionId="function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94"/>
+         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3"/>
          <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_MakeUnicodeIdentifierClasses_80DDE8E81F1D7722A55E6552FD4173C256FC1130"/>
@@ -5231,9 +5231,9 @@
         </parameters>
         <calls>
          <call functionId="function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7"/>
+         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
          <call functionId="function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3"/>
          <call functionId="function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386"/>
-         <call functionId="function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_MakeUnicodeIdentifierClasses_80DDE8E81F1D7722A55E6552FD4173C256FC1130"/>
@@ -5271,8 +5271,8 @@
         <calls>
          <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
          <call functionId="function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E"/>
-         <call functionId="function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E"/>
          <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
+         <call functionId="function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E"/>
         </calls>
        </function>
        <function access="public" definitionFile="TokenValueParsers.cpp" definitionFileId="file/TokenValueParsers.cpp_4351DFD8427FF61A901FFF177E067F0545FFF636.html" definitionLine="43" id="function_ParseEscape_1D69C8CC4FFF411BF291BDAB34F6455BE821AF27" name="ParseEscape" project="slg" returnType="char32_t">
@@ -5312,12 +5312,12 @@
          <parameter access="public" id="parameter_nfa_CD259DBAA3E35C7A27A5C8A7356CF908113956B6" name="nfa" type="const.class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.lvalueref.class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C"/>
         </parameters>
         <calls>
-         <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
          <call functionId="function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7"/>
          <call functionId="function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733"/>
-         <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
-         <call functionId="function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC"/>
          <call functionId="function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527"/>
+         <call functionId="function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC"/>
+         <call functionId="function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C"/>
+         <call functionId="function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA"/>
          <call functionId="function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E"/>
          <call functionId="function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E"/>
         </calls>
@@ -6954,18 +6954,18 @@
          <parameter access="public" id="parameter_utf32Str_9CDD480E4C46659872553C63FF540EBCD8AD3B35" name="utf32Str" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calledByFunctions>
+         <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+         <calledByFunction functionId="function_MakeExprRefId_890BB695A4364BC937D3F1BB987F3E679CB04505"/>
+         <calledByFunction functionId="function_MakePathValue_B015B1D71C2533C53DAAFE132B92634AF55CA5CA"/>
          <calledByFunction functionId="function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65"/>
+         <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
+         <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
          <calledByFunction functionId="function_ParseHexChar_8067D60C88EA06F22E9565186588BD2B175C76C3"/>
          <calledByFunction functionId="function_Get_1BBE60F0BD8F636C40C4F4A6D4F84EC074FCE276"/>
-         <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
-         <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-         <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
-         <calledByFunction functionId="function_MakeExprRefId_890BB695A4364BC937D3F1BB987F3E679CB04505"/>
-         <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
          <calledByFunction functionId="function_Print_8BCEAF871326EDD2C3B83C4545357A317A5E2F8D"/>
+         <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
          <calledByFunction functionId="function_MakeStrValue_7E8A8C7F338B1AE23DE66DA8241D45F1B8C95CA8"/>
          <calledByFunction functionId="function_MakeExprStringValue_FE49E08E74FF0D3E2ABB43DF455CCD854ABFE911"/>
-         <calledByFunction functionId="function_MakePathValue_B015B1D71C2533C53DAAFE132B92634AF55CA5CA"/>
          <calledByFunction functionId="function_MakeActionIntValue_60C7C2E8E4F35106AC3A426512452A0169A4A0D0"/>
          <calledByFunction functionId="function_MakeEscapeValue_6AA90C015D986237AC477CD9FA779826CFF3D447"/>
         </calledByFunctions>
@@ -7431,46 +7431,46 @@
        <enumType access="public" baseType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="267" id="enum_GeneralCategoryId_8EC3BE7CDF87B638BF602E487D7B35CE3AD6192B" key="enum class" name="GeneralCategoryId" project="util">
         <enumerators>
          <enumerator access="public" id="enumerator_none_F224379BDC45664C64B6306B01E838B09325CDBB" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1"/>
-         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1"/>
-         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1"/>
-         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1"/>
-         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1"/>
-         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu"/>
-         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu"/>
-         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1"/>
-         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1"/>
-         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1"/>
-         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn"/>
-         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1"/>
-         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1"/>
-         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1"/>
-         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd"/>
-         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1"/>
-         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1"/>
-         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1"/>
-         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1"/>
-         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1"/>
-         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1"/>
-         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1"/>
-         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc"/>
-         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1"/>
-         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1"/>
-         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1"/>
-         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1"/>
-         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm"/>
-         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1"/>
-         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1"/>
-         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1"/>
-         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs"/>
-         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1"/>
-         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1"/>
-         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1"/>
-         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1"/>
-         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1"/>
-         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc"/>
-         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L"/>
-         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L"/>
+         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1 &lt;&lt; 0"/>
+         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1 &lt;&lt; 1"/>
+         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1 &lt;&lt; 2"/>
+         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1 &lt;&lt; 3"/>
+         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1 &lt;&lt; 4"/>
+         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu | Ll | Lt"/>
+         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu | Ll | Lt | Lm | Lo"/>
+         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1 &lt;&lt; 5"/>
+         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1 &lt;&lt; 6"/>
+         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1 &lt;&lt; 7"/>
+         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn | Mc | Me"/>
+         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1 &lt;&lt; 8"/>
+         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1 &lt;&lt; 9"/>
+         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1 &lt;&lt; 10"/>
+         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd | Nl | No"/>
+         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1 &lt;&lt; 11"/>
+         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1 &lt;&lt; 12"/>
+         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1 &lt;&lt; 13"/>
+         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1 &lt;&lt; 14"/>
+         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1 &lt;&lt; 15"/>
+         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1 &lt;&lt; 16"/>
+         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1 &lt;&lt; 17"/>
+         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc | Pd | Ps | Pe | Pi | Pf | Po"/>
+         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1 &lt;&lt; 18"/>
+         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1 &lt;&lt; 19"/>
+         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1 &lt;&lt; 20"/>
+         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1 &lt;&lt; 21"/>
+         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm | Sc | Sk | So"/>
+         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1 &lt;&lt; 22"/>
+         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1 &lt;&lt; 23"/>
+         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1 &lt;&lt; 24"/>
+         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs | Zl | Zp"/>
+         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1 &lt;&lt; 25"/>
+         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1 &lt;&lt; 26"/>
+         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1 &lt;&lt; 27"/>
+         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1 &lt;&lt; 28"/>
+         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1 &lt;&lt; 29"/>
+         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc | Cf | Cs | Co | Cn"/>
+         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L | M | N | P | S | Zs"/>
+         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L | N | P | S | Zs"/>
         </enumerators>
        </enumType>
        <enumType access="public" baseType="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="611" id="enum_NumericTypeId_E496DBA286BE4CA39E9D00D6780E457ABE29EE82" key="enum class" name="NumericTypeId" project="util">
@@ -7862,16 +7862,16 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_9F41BA7DEAC46FBA3804C52401D84653AF5EE18D.html" definitionLine="26" id="function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C" name="IncIndent" returnType="void">
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_9F41BA7DEAC46FBA3804C52401D84653AF5EE18D.html" definitionLine="18" id="function_Indent_2B655D0EA6DE64C46E84C8DF0E6AEF0E8220A199" name="Indent" returnType="int" specifiers="const"/>
@@ -7908,20 +7908,20 @@
            <parameter access="public" id="parameter_text_6F9649548FDE021772549D35833603B5310A9275" name="text" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_9F41BA7DEAC46FBA3804C52401D84653AF5EE18D.html" definitionLine="25" id="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF" name="WriteLine" returnType="void">
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="CodeFormatter.hpp" declarationFileId="file/CodeFormatter.hpp_9F41BA7DEAC46FBA3804C52401D84653AF5EE18D.html" declarationLine="23" definitionFile="CodeFormatter.cpp" definitionFileId="file/CodeFormatter.cpp_CCBE3374DFC0D332ACD37C9C8BEE7DBF09095BA8.html" definitionLine="106" id="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A" name="WriteLine" returnType="void">
@@ -7929,11 +7929,11 @@
            <parameter access="public" id="parameter_text_5480F46533B20B7E0756A8159CCD4E95B5326CF7" name="text" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
+           <calledByFunction functionId="function_MakeClassPartition_D93DBEDEB2528F057C5C979600A2D044B463F5D2"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -8462,8 +8462,8 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE"/>
            <calledByFunction functionId="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B"/>
-           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
            <calledByFunction functionId="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1"/>
+           <calledByFunction functionId="function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Path.hpp" declarationFileId="file/Path.hpp_72D806125AB0BBA27A7D674D13FE80273BCA7170.html" declarationLine="34" definitionFile="Path.cpp" definitionFileId="file/Path.cpp_A7C5BB32D325F4C8D685FD85593A314E3A257A84.html" definitionLine="288" id="function_GetDirectoryName_851015B1DE2A4159F6DAC0A7A2E2F1ACAC9FE5D6" name="GetDirectoryName" returnType="type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" specifiers="static">
@@ -9109,14 +9109,14 @@
      <parameter access="public" id="parameter_argv_413822D7799DAE6634377888D2DBD647A04A59DB" name="argv" type="const.char.ptr.ptr.char"/>
     </parameters>
     <calls>
-     <call functionId="function_GetDirectoryName_851015B1DE2A4159F6DAC0A7A2E2F1ACAC9FE5D6"/>
-     <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
-     <call functionId="function_StartsWith_83895CF9199BD1B9373C434A6CFA3BB91280AAD8"/>
-     <call functionId="function_PrintUsage_66654A1CD909F0F324AC2591C7B8CB8F841B0B1A"/>
      <call functionId="function_SetParser_D959177ED63906150206E98FB007DAB6BD984D52"/>
-     <call functionId="function_GetFullPath_376A6C8B9F758F2E3DCF6D591FF734857AEAC42B"/>
+     <call functionId="function_PrintUsage_66654A1CD909F0F324AC2591C7B8CB8F841B0B1A"/>
+     <call functionId="function_StartsWith_83895CF9199BD1B9373C434A6CFA3BB91280AAD8"/>
      <call functionId="function_ReadFile_46E764BD3339275077E483F53589919A56253025"/>
+     <call functionId="function_GetFullPath_376A6C8B9F758F2E3DCF6D591FF734857AEAC42B"/>
+     <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
      <call functionId="function_SetFileName_688922C3F1B94983D12FF13D75C090A7584B3ABB"/>
+     <call functionId="function_GetDirectoryName_851015B1DE2A4159F6DAC0A7A2E2F1ACAC9FE5D6"/>
     </calls>
    </function>
   </functions>

@@ -13,8 +13,6 @@
 
 namespace sngcpp { namespace binder {
 
-using namespace sngcpp::symbols;
-
 class SNGCPP_BINDER_API SourceFileResolver
 {
 public:
@@ -132,10 +130,10 @@ private:
     std::vector<std::unique_ptr<BoundSourceFile>> sourceFiles;
     BoundSourceFile* currentSourceFile;
     ClassTypeSymbol* currentClass;
-    FunctionSymbol* currentFunction;
+    sngcpp::symbols::FunctionSymbol* currentFunction;
     FunctionDeclarationSymbol* currentFunctionDeclaration;
     Specifier currentAccessSpecifier;
-    TypeSymbol* conversionFunctionType;
+    sngcpp::symbols::TypeSymbol* conversionFunctionType;
     std::u32string fileId;
     std::string fileName;
     std::unordered_set<ClassTypeSymbol*> classesHavingVirtualFunctions;

@@ -334,7 +334,7 @@ void ExpressionBinder::Visit(DotNode& dotNode)
     }
     if (s)
     {
-        TypeSymbol* type = s->GetType();
+        sngcpp::symbols::TypeSymbol* type = s->GetType();
         if (type)
         {
             containerScope = type->BaseType()->GetContainerScope();
@@ -356,7 +356,7 @@ void ExpressionBinder::Visit(ArrowNode& arrowNode)
     }
     if (s)
     {
-        TypeSymbol* type = s->GetType();
+        sngcpp::symbols::TypeSymbol* type = s->GetType();
         if (type)
         {
             containerScope = type->BaseType()->GetContainerScope();
@@ -443,7 +443,7 @@ void ExpressionBinder::Visit(NestedIdNode& nestedIdNode)
         else if (s->IsTypedefSymbol())
         {
             TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(s);
-            TypeSymbol* type = typedefSymbol->GetType();
+            sngcpp::symbols::TypeSymbol* type = typedefSymbol->GetType();
             containerScope = type->GetContainerScope();
         }
         else if (s->IsTypeSymbol())
@@ -509,7 +509,7 @@ std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, Contai
     std::vector<Symbol*> symbols = expressionBinder.GetSymbols();
     if (symbols.empty())
     {
-        TypeSymbol* type = ResolveType(symbolTable, containerScope, *boundSourceFile, TypeResolverFlags::noExternalTypes | TypeResolverFlags::nothrow, node);
+        sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *boundSourceFile, TypeResolverFlags::noExternalTypes | TypeResolverFlags::nothrow, node);
         if (type)
         {
             symbols.push_back(type);

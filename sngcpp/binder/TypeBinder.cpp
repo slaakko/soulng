@@ -114,7 +114,7 @@ void TypeBinder::Visit(SimpleDeclarationNode& simpleDeclarationNode)
     Symbol* symbol = symbolTable.GetSymbolNothrow(&simpleDeclarationNode);
     if (symbol && symbol->IsVariableSymbol())
     {
-        TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, simpleDeclarationNode.TypeExpr());
+        sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, simpleDeclarationNode.TypeExpr());
         VariableSymbol* variableSymbol = static_cast<VariableSymbol*>(symbol);
         variableSymbol->SetType(type);
     }
@@ -166,7 +166,7 @@ void TypeBinder::Visit(TypedefNode& typedefNode)
         {
             TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(symbol);
             typedefSymbol->SetAccess(currentAccessSpecifier);
-            TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, typedefNode.TypeExpr());
+            sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, typedefNode.TypeExpr());
             typedefSymbol->SetType(type);
         }
         else
@@ -187,7 +187,7 @@ void TypeBinder::Visit(EnumTypeNode& enumTypeNode)
         enumTypeSymbol->SetFileName(fileName);
         if (enumTypeNode.EnumBase())
         {
-            TypeSymbol* baseType = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, enumTypeNode.EnumBase());
+            sngcpp::symbols::TypeSymbol* baseType = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, enumTypeNode.EnumBase());
             enumTypeSymbol->SetBaseType(baseType);
         }
         ContainerScope* prevContainerScope = containerScope;
@@ -277,7 +277,7 @@ void TypeBinder::Visit(BaseClassSpecifierSequenceNode& baseClassSpecifierSequenc
 
 void TypeBinder::Visit(BaseClassSpecifierNode& baseClassSpecifierNode)
 {
-    TypeSymbol* baseClass = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, baseClassSpecifierNode.ClassName());
+    sngcpp::symbols::TypeSymbol* baseClass = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, baseClassSpecifierNode.ClassName());
     symbolTable.MapNode(&baseClassSpecifierNode, baseClass);
     currentClass->AddBaseClass(baseClass);
     if (baseClass->IsClassTypeSymbol())
@@ -286,7 +286,7 @@ void TypeBinder::Visit(BaseClassSpecifierNode& baseClassSpecifierNode)
         if (base->IsClassTemplateSpecializationSymbol())
         {
             ClassTemplateSpecializationSymbol* specialization = static_cast<ClassTemplateSpecializationSymbol*>(base);
-            TypeSymbol* primaryType = specialization->PrimaryClassTemplateSymbol();
+            sngcpp::symbols::TypeSymbol* primaryType = specialization->PrimaryClassTemplateSymbol();
             if (primaryType->IsClassTypeSymbol())
             {
                 base = static_cast<ClassTypeSymbol*>(primaryType);
@@ -325,7 +325,7 @@ void TypeBinder::Visit(MemberDeclarationNode& memberDeclarationNode)
     }
     if (memberDeclarationNode.TypeExpr())
     {
-        TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, memberDeclarationNode.TypeExpr());
+        sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, memberDeclarationNode.TypeExpr());
         Symbol* symbol = symbolTable.GetSymbolNothrow(&memberDeclarationNode);
         if (symbol && symbol->IsVariableSymbol())
         {
@@ -381,7 +381,7 @@ void TypeBinder::Visit(FunctionNode& functionNode)
         containerScope = currentFunction->GetContainerScope();
         if (functionNode.TypeExpr())
         {
-            TypeSymbol* returnType = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, functionNode.TypeExpr());
+            sngcpp::symbols::TypeSymbol* returnType = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, functionNode.TypeExpr());
             currentFunction->SetReturnType(returnType);
         }
         if (functionNode.Body())
@@ -519,8 +519,8 @@ void TypeBinder::Visit(ParameterNode& parameterNode)
     Symbol* symbol = symbolTable.GetSymbol(&parameterNode);
     if (symbol->IsParameterSymbol())
     {
-        ParameterSymbol* parameterSymbol = static_cast<ParameterSymbol*>(symbol);
-        TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, parameterNode.TypeExpr());
+        sngcpp::symbols::ParameterSymbol* parameterSymbol = static_cast<sngcpp::symbols::ParameterSymbol*>(symbol);
+        sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::noPseudoTypes, parameterNode.TypeExpr());
         parameterSymbol->SetType(type);
     }
     else
@@ -946,7 +946,7 @@ void TypeBinder::Visit(BracedInitializerListNode& bracedInitializerListNode)
 
 void TypeBinder::Visit(MemberInitializerNode& memberInitializerNode)
 {
-    TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::nothrow | TypeResolverFlags::noExternalTypes | TypeResolverFlags::noPseudoTypes,
+    sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::nothrow | TypeResolverFlags::noExternalTypes | TypeResolverFlags::noPseudoTypes,
         memberInitializerNode.Id());
     memberInitializerNode.Id()->Accept(*this);
     if (memberInitializerNode.Initializer())
@@ -963,7 +963,7 @@ void TypeBinder::Visit(MemberInitializerSequenceNode& memberInitializerSequenceN
 
 void TypeBinder::Visit(StringLiteralNode& stringLiteralNode)
 {
-    TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::nothrow | TypeResolverFlags::noExternalTypes | TypeResolverFlags::noPseudoTypes,
+    sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *currentSourceFile, TypeResolverFlags::nothrow | TypeResolverFlags::noExternalTypes | TypeResolverFlags::noPseudoTypes,
         &stringLiteralNode);
 }
 

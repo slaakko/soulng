@@ -11,8 +11,6 @@
 
 namespace sngcpp { namespace binder {
 
-using namespace sngcpp::symbols;
-
 class SNGCPP_BINDER_API StatementBinder : public sngcpp::ast::Visitor
 {
 public:

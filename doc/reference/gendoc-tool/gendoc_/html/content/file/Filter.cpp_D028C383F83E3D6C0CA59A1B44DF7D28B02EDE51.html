@@ -1,0 +1,114 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;gendoc/gendoc/Filter.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/rex/Match.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">gendoc</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html">Filter</a><span class="other">::</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#constructor_Filter_73B5E7E5F32B8E1CAA8D40BC0D6EB1D746344B18">Filter</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><a href="../../../../../soulng/rex/html/content/class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">Context</a><span class="other">&amp;</span>&nbsp;<span class="identifier">context_</span><span class="other">,&nbsp;</span><a href="../enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a>&nbsp;<span class="identifier">type_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">pattern_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_type_FC597AA00151CFC768993503B40CA7637837B625">type</a><span class="other">(</span><span class="identifier">type_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_pattern_9E7F986802425D9681F7D60D92C98C91901B723A">pattern</a><span class="other">(</span><span class="identifier">pattern_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_nfa_23BDEFD48D0311D884CBADFBF030899A63B172B7">nfa</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><a href="../../../../../soulng/rex/html/content/namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4">CompileFilePattern</a><span class="other">(</span><span class="identifier">context_</span><span class="other">,&nbsp;</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_pattern_9E7F986802425D9681F7D60D92C98C91901B723A">pattern</a><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html">Filter</a><span class="other">::</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#function_Apply_EEA0A13CC5FC102DC8AEC5EACEDE5DB157AB8390">Apply</a><span class="other">(</span><a href="../class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html">File</a><span class="other">&amp;</span>&nbsp;<span class="identifier">file</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">match</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><a href="../../../../../soulng/rex/html/content/namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_PatternMatch_8BA05B05BD0D98E4B0A3B6DC3E1CAB56BFB060D2">PatternMatch</a><span class="other">(</span><span class="identifier">file</span><span class="other">.</span><a href="../class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_Name_8879132E4BE132E492A170A7B81F816D9DBE453B">Name</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_nfa_23BDEFD48D0311D884CBADFBF030899A63B172B7">nfa</a><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">match</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">switch&nbsp;</span><span class="other">(</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_type_FC597AA00151CFC768993503B40CA7637837B625">type</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a><span class="other">::</span><a href="../enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html#enumerator_include_C6138E0D3E626A518B775A4B721C600F35278DEA">include</a><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">file</span><span class="other">.</span><a href="../class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_SetIncluded_B9A269301CB55A447D9CF2A8DD33E4162CBBE62E">SetIncluded</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">break</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">case</span>&nbsp;<a href="../enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a><span class="other">::</span><a href="../enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html#enumerator_exclude_E382530A9AB49BD45C7DA8676B47CA8E73BAC654">exclude</a><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">file</span><span class="other">.</span><a href="../class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_SetIncluded_B9A269301CB55A447D9CF2A8DD33E4162CBBE62E">SetIncluded</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">break</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html">FilterList</a><span class="other">::</span><a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#constructor_FilterList_2CFF4062AF5A8567AECACDF6E106FC401DB2F596">FilterList</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#variable_filters_A7648C933E63AF05138FF854EDDDCEE70E84FD36">filters</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html">FilterList</a><span class="other">::</span><a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#function_Add_1C0B3CD1FE33440D3CB498A29F6AF309A6E1F2B2">Add</a><span class="other">(</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html">Filter</a><span class="other">&amp;</span>&nbsp;<span class="identifier">filter</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#variable_filters_A7648C933E63AF05138FF854EDDDCEE70E84FD36">filters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">filter</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html">FilterList</a><span class="other">::</span><a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#function_Apply_EAD07963EB0C6BC2FC2E967086CC11063ABCB63F">Apply</a><span class="other">(</span><a href="../class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html">File</a><span class="other">&amp;</span>&nbsp;<span class="identifier">file</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html">Filter</a><span class="other">&amp;</span>&nbsp;<span class="identifier">filter</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#variable_filters_A7648C933E63AF05138FF854EDDDCEE70E84FD36">filters</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">filter</span><span class="other">.</span><a href="../class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#function_Apply_EEA0A13CC5FC102DC8AEC5EACEDE5DB157AB8390">Apply</a><span class="other">(</span><span class="identifier">file</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;gendoc</span></span>
+  <br/>
+ </body>
+</html>

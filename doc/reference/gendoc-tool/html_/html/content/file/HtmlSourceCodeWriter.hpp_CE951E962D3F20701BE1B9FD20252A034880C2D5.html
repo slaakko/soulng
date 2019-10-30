@@ -1,0 +1,150 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;GENDOC_HTML_SOURCE_CODE_WRITER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;GENDOC_HTML_SOURCE_CODE_WRITER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;gendoc/html/HtmlApi.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/SourceCodeWriter.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Node.hpp></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngxml/dom/Element.hpp></span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">gendoc</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">html</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">ast</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a><span class="other">&nbsp;:&nbsp;</span><span class="type">uint8_t</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">none</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">0</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">line</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1&nbsp;&lt;&lt;&nbsp;0</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">inlineLine</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">1&nbsp;&lt;&lt;&nbsp;1</span><span class="other">,&nbsp;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">both</span><span class="other">=</span>&nbsp;&nbsp;<span class="other">line&nbsp;|&nbsp;inlineLine</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="kw">inline</span>&nbsp;<a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="kw">operator</span><span class="other">|</span><span class="other">(</span><a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="identifier">left</span><span class="other">,&nbsp;</span><a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="identifier">right</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">&nbsp;|&nbsp;</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="kw">inline</span>&nbsp;<a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="kw">operator</span><span class="other">&amp;</span><span class="other">(</span><a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="identifier">left</span><span class="other">,&nbsp;</span><a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="identifier">right</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html">HtmlSourceCodeWriter</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">ast</span><span class="other">::</span><span class="type">SourceCodeWriter</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#constructor_HtmlSourceCodeWriter_88B834DA5C9110E6FE0E9D2A0E3C5F1B6ABA246C">HtmlSourceCodeWriter</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_SetLineElement_4028EF90994B0313509733C26496022CDA988419">SetLineElement</a><span class="other">(</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="../../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">*</span>&nbsp;<span class="identifier">lineElement_</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">lineElement</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">lineElement_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_SetInlineLineElement_51C6F8F0089CC0277E48A9B3997BD0EE8B304EB2">SetInlineLineElement</a><span class="other">(</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="../../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">*</span>&nbsp;<span class="identifier">inlineLineElement_</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">inlineLineElement</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">inlineLineElement_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_SetCurrentPos_A6E403E06D66ADE5AEF97F50832F792C04D12AF2">SetCurrentPos</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">currentPos_</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">currentPos</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">currentPos_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_SetInlineCurrentPos_7CD6B879F74871100630C9D72FBC53A9996E92C5">SetInlineCurrentPos</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">inlineCurrentPos_</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">inlineCurrentPos</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">inlineCurrentPos_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_MoveTo_6031CDFD6D8A5513709F87536FCEAFB10CA141B9">MoveTo</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteLineNumber_D552D577720FC5A1C3A37197806F06B6F87719F7">WriteLineNumber</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lineNumber</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteLineNumberKind_35C23441DB324A3F18B3762726E2C19F81909A0D">WriteLineNumberKind</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lineNumber</span><span class="other">,&nbsp;</span><a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="identifier">kind</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteLineComment_836BE9B68D6AF9CD0C6ABCF53A6CAC528AD2B6BE">WriteLineComment</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">comment</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteBlockComment_FF9D5AB0AF3364DC91782BD570938E08D60FD4C4">WriteBlockComment</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">comment</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteKeyword_530BC1219A755A56387A359A61A23798DCF74EE1">WriteKeyword</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">keyword</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteIdentifier_12F4C1771A893ED7387B99022CA67CB8A883081E">WriteIdentifier</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">identifier</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteLink_811AAC5B121BEDAE75CB77FA71ACED2F5F7B67D7">WriteLink</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">identifier</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">ref</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteInlineLink_0B74D0C3836EC00A8217FA35C7D6E454697B956C">WriteInlineLink</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">identifier</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">ref</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteType_3FD6CBE8271CF0EAD5FD0B2B210F9066C786ADC6">WriteType</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">type</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WritePP_7CDC1720153C8CB8798EE59031C54618077C0B48">WritePP</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">pp</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteChar_2BD4EE5A76FBBC329FE19A1D167AAE5052A4272E">WriteChar</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">chars</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteString_F6968D11482D04408FB6CBDD386894C582991FC5">WriteString</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">string</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteSpace_3B72FCBF07EE429C4606C1880FF78E94CC981406">WriteSpace</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">numSpaces</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteSpaces_A130AD990BE75A4F1AC51AF172E32745EB7F8C37">WriteSpaces</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">spaces</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteSpaceKind_0DA0D1F652EEF161DD0B8E23C2629E069450D535">WriteSpaceKind</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">numSpaces</span><span class="other">,&nbsp;</span><a href="../enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a>&nbsp;<span class="identifier">kind</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteNumber_8F877969C51940C6B7889AEF330268FF91DF1AA6">WriteNumber</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">number</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteOther_3B719F75E7DEDABE170CA93E31DA514FA4D223A2">WriteOther</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">other</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="../../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">*</span>&nbsp;<span class="identifier">lineElement</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="../../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">*</span>&nbsp;<span class="identifier">inlineLineElement</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">currentPos</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">inlineCurrentPos</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteToElement_EBF8E2635212553FE67E84E2D71DD70EF202AC89">WriteToElement</a><span class="other">(</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="../../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">*</span>&nbsp;<span class="identifier">element</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">text</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">67</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">68</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">69</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;gendoc::html</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">70</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;GENDOC_HTML_SOURCE_CODE_WRITER_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

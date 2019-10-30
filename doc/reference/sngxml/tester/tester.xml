@@ -1232,7 +1232,7 @@
        <enumType access="public" baseType="int" definitionFile="Parser.hpp" definitionFileId="file/Parser.hpp_D75CA5817016D2F5D506CB9FE6F967B098174021.html" definitionLine="12" id="enum_Flags_4C8F907F7156BEC198ECD7DA5F2053B422F35F37" key="enum class" name="Flags" project="dom">
         <enumerators>
          <enumerator access="public" id="enumerator_none_C56B0EC88C370D08E5A3A17C2A815B20DF86BB29" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_debug_3C6579391DFE62A6C22B20628D1FF85C367BD885" name="debug" value="1"/>
+         <enumerator access="public" id="enumerator_debug_3C6579391DFE62A6C22B20628D1FF85C367BD885" name="debug" value="1 &lt;&lt; 0"/>
         </enumerators>
        </enumType>
        <enumType access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="18" id="enum_NodeType_5368029CED50AA3E105E71B9D211833D74A20068" key="enum class" name="NodeType" project="dom">
@@ -1667,7 +1667,7 @@
        <enumType access="public" baseType="int" definitionFile="XmlParserInterface.hpp" definitionFileId="file/XmlParserInterface.hpp_47D02B9906326AFCC62173BBFED274C1AA3C1C03.html" definitionLine="17" id="enum_Flags_F91598584093410819012531B66EFF8438D2EDD3" key="enum class" name="Flags" project="xml">
         <enumerators>
          <enumerator access="public" id="enumerator_none_D9090845DC123DAE8EF2F152836B8839B2B2D1CA" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_debug_F83D0663CD98B42ABE6D0EFBC4A56A6103B08B86" name="debug" value="1"/>
+         <enumerator access="public" id="enumerator_debug_F83D0663CD98B42ABE6D0EFBC4A56A6103B08B86" name="debug" value="1 &lt;&lt; 0"/>
         </enumerators>
        </enumType>
       </enumTypes>
@@ -3105,13 +3105,13 @@
      <parameter access="public" id="parameter_argv_413822D7799DAE6634377888D2DBD647A04A59DB" name="argv" type="const.char.ptr.ptr.char"/>
     </parameters>
     <calls>
-     <call functionId="function_ParseXmlFile_EBBE6B337A1A35DA3D3B8F78466ABBD03E7CD07E"/>
      <call functionId="function_PrintUsage_66654A1CD909F0F324AC2591C7B8CB8F841B0B1A"/>
+     <call functionId="function_ParseXmlFile_EBBE6B337A1A35DA3D3B8F78466ABBD03E7CD07E"/>
      <call functionId="function_ReadDocument_68B115CF7670494066CCE4B804F85ACFE2A84D2C"/>
-     <call functionId="function_ReadDocument_C106751EB10C87029F643B3BA8C03999880EED71"/>
      <call functionId="function_SetXPathDebugParsing_615473675ED4688802E9CBACB87A6C968599AB48"/>
      <call functionId="function_Evaluate_BF0EF2AEED535B19B43A24B4D63C35C3FE795ECE"/>
      <call functionId="function_SetXPathDebugQuery_8942C1988351BCDB5EE2BDC11766C054268CC855"/>
+     <call functionId="function_ReadDocument_C106751EB10C87029F643B3BA8C03999880EED71"/>
      <call functionId="function_get_E23FD3C12DCCA8ADAA86CD9325A70E68BCEBA971"/>
      <call functionId="function_GetXPathQueryDom_661882B0854DF64521B6F01B5C0065B4F9641224"/>
     </calls>

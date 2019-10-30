@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="sngcpp">
+    <description>Contains a C++11 front-end used in the <a href="../gendoc-tool/gendoc-tool.html">gendoc</a> project.</description>
+  </doc>
+  <doc id="ast">
+    <description>syntax tree</description>
+  </doc>
+  <doc id="binder">
+    <description>classes for resolving types and binding AST nodes to symbols</description>
+  </doc>
+  <doc id="lexer">
+    <description>lexical analyzer</description>
+  </doc>
+  <doc id="parser">
+    <description>parser</description>
+  </doc>
+  <doc id="pp">
+    <description>preprocessor</description>
+  </doc>
+  <doc id="symbols">
+    <description>symbol table</description>
+  </doc>
+  <doc id="parsertester">
+    <description>parser tester</description>
+  </doc>
+  <doc id="pptester">
+    <description>preprocessor tester</description>
+  </doc>
+</docs>

@@ -2514,46 +2514,46 @@
        <enumType access="public" baseType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="267" id="enum_GeneralCategoryId_8EC3BE7CDF87B638BF602E487D7B35CE3AD6192B" key="enum class" name="GeneralCategoryId" project="util">
         <enumerators>
          <enumerator access="public" id="enumerator_none_F224379BDC45664C64B6306B01E838B09325CDBB" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1"/>
-         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1"/>
-         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1"/>
-         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1"/>
-         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1"/>
-         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu"/>
-         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu"/>
-         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1"/>
-         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1"/>
-         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1"/>
-         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn"/>
-         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1"/>
-         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1"/>
-         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1"/>
-         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd"/>
-         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1"/>
-         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1"/>
-         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1"/>
-         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1"/>
-         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1"/>
-         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1"/>
-         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1"/>
-         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc"/>
-         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1"/>
-         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1"/>
-         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1"/>
-         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1"/>
-         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm"/>
-         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1"/>
-         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1"/>
-         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1"/>
-         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs"/>
-         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1"/>
-         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1"/>
-         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1"/>
-         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1"/>
-         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1"/>
-         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc"/>
-         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L"/>
-         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L"/>
+         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1 &lt;&lt; 0"/>
+         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1 &lt;&lt; 1"/>
+         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1 &lt;&lt; 2"/>
+         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1 &lt;&lt; 3"/>
+         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1 &lt;&lt; 4"/>
+         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu | Ll | Lt"/>
+         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu | Ll | Lt | Lm | Lo"/>
+         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1 &lt;&lt; 5"/>
+         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1 &lt;&lt; 6"/>
+         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1 &lt;&lt; 7"/>
+         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn | Mc | Me"/>
+         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1 &lt;&lt; 8"/>
+         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1 &lt;&lt; 9"/>
+         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1 &lt;&lt; 10"/>
+         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd | Nl | No"/>
+         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1 &lt;&lt; 11"/>
+         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1 &lt;&lt; 12"/>
+         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1 &lt;&lt; 13"/>
+         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1 &lt;&lt; 14"/>
+         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1 &lt;&lt; 15"/>
+         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1 &lt;&lt; 16"/>
+         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1 &lt;&lt; 17"/>
+         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc | Pd | Ps | Pe | Pi | Pf | Po"/>
+         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1 &lt;&lt; 18"/>
+         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1 &lt;&lt; 19"/>
+         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1 &lt;&lt; 20"/>
+         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1 &lt;&lt; 21"/>
+         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm | Sc | Sk | So"/>
+         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1 &lt;&lt; 22"/>
+         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1 &lt;&lt; 23"/>
+         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1 &lt;&lt; 24"/>
+         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs | Zl | Zp"/>
+         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1 &lt;&lt; 25"/>
+         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1 &lt;&lt; 26"/>
+         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1 &lt;&lt; 27"/>
+         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1 &lt;&lt; 28"/>
+         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1 &lt;&lt; 29"/>
+         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc | Cf | Cs | Co | Cn"/>
+         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L | M | N | P | S | Zs"/>
+         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L | N | P | S | Zs"/>
         </enumerators>
        </enumType>
        <enumType access="public" baseType="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="611" id="enum_NumericTypeId_E496DBA286BE4CA39E9D00D6780E457ABE29EE82" key="enum class" name="NumericTypeId" project="util">

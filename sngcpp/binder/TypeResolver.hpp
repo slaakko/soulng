@@ -12,9 +12,6 @@
 
 namespace sngcpp { namespace binder {
 
-using namespace sngcpp::symbols;
-using namespace sngcpp::ast;
-
 enum class TypeResolverFlags : uint8_t
 {
     none = 0,
@@ -34,8 +31,8 @@ SNGCPP_BINDER_API inline TypeResolverFlags operator&(TypeResolverFlags left, Typ
     return TypeResolverFlags(uint8_t(left) & uint8_t(right));
 }
 
-SNGCPP_BINDER_API TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, Node* node);
-SNGCPP_BINDER_API TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, TypeResolverFlags flags, Node* node);
+SNGCPP_BINDER_API sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, Node* node);
+SNGCPP_BINDER_API sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, TypeResolverFlags flags, Node* node);
 
 } } // namespace sngcpp::binder
 

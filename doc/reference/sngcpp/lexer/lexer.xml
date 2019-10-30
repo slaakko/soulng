@@ -320,7 +320,7 @@
          </function>
         </functions>
        </class>
-       <class access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="89" id="class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE" key="class" name="BinaryNode" project="ast">
+       <class access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="92" id="class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE" key="class" name="BinaryNode" project="ast">
         <baseClasses>
          <baseClass baseClassId="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
         </baseClasses>
@@ -353,12 +353,12 @@
          <derivedClass derivedClassId="class_TemplateParameterSequenceNode_8469DB0072167FAE81179E69307BAC7A8E9F6796"/>
         </derivedClasses>
         <constructors>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="92" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="90" id="constructor_BinaryNode_9D757962A37082B119FB3C75E70855DCA5758E31" name="BinaryNode">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="95" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="107" id="constructor_BinaryNode_9D757962A37082B119FB3C75E70855DCA5758E31" name="BinaryNode">
           <parameters>
            <parameter access="public" id="parameter_nodeType__A07515896A5AF179932C866A5C1E5ADA8DB094F9" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
           </parameters>
          </constructor>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="93" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="94" id="constructor_BinaryNode_6D83F45108A8D47B8E7746695D26CE85C1F1D237" name="BinaryNode">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="96" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="111" id="constructor_BinaryNode_6D83F45108A8D47B8E7746695D26CE85C1F1D237" name="BinaryNode">
           <parameters>
            <parameter access="public" id="parameter_nodeType__8E90BE607B6404D2DF3707303946C26F8508C12C" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
            <parameter access="public" id="parameter_span__A9EBD1B4639B203FA8F98DB085D5E09A0165A323" name="span_" type="const.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29.lvalueref.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29"/>
@@ -368,14 +368,15 @@
          </constructor>
         </constructors>
         <functions>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="94" id="function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC" name="Left" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="97" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="105" id="function_Read_03AD4452AA36CE7AD10DC7D9D959550B072EB8DD" name="Read" returnType="void" specifiers="override">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="97" id="function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC" name="Left" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="100" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="122" id="function_Read_03AD4452AA36CE7AD10DC7D9D959550B072EB8DD" name="Read" returnType="void" specifiers="override">
           <parameters>
            <parameter access="public" id="parameter_reader_1F22585E5C13492A8700F1D4BB9F0FE94BD34D88" name="reader" type="class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.lvalueref.class_Reader_671755945A884501CE9E563E31BE5D6F104546AB"/>
           </parameters>
          </function>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="95" id="function_Right_A8F897827DF9F567982623DC3709211D622510D3" name="Right" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="96" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="98" id="function_Write_9F252F93CCB5F5C430641DA5A67E81687114B9DA" name="Write" returnType="void" specifiers="override">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="98" id="function_Right_A8F897827DF9F567982623DC3709211D622510D3" name="Right" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="101" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="129" id="function_SetFullSpan_9F73F88BD70E454E6CBF04B7E1BCDA277885CBBD" name="SetFullSpan" returnType="void" specifiers="override"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="99" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="115" id="function_Write_9F252F93CCB5F5C430641DA5A67E81687114B9DA" name="Write" returnType="void" specifiers="override">
           <parameters>
            <parameter access="public" id="parameter_writer_40B7D222C60D3B3BA37BC3E664819D817C09F538" name="writer" type="class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.lvalueref.class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575"/>
           </parameters>
@@ -776,7 +777,7 @@
          <variable access="private" id="variable_endBraceSpan_E741EAC833D3120716AD5D928FF1758B5313002B" name="endBraceSpan" type="type_080E88EFE900AEAE1B711B9BFCAE61F969382E29"/>
         </variables>
        </class>
-       <class access="public" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="26" id="class_ConcreteNodeCreator_50154E857B7AAA7001481ADF82A488D2BAA41833" key="class" name="ConcreteNodeCreator" project="ast">
+       <class access="public" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="27" id="class_ConcreteNodeCreator_50154E857B7AAA7001481ADF82A488D2BAA41833" key="class" name="ConcreteNodeCreator" project="ast">
         <templateParameters>
          <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
         </templateParameters>
@@ -784,7 +785,7 @@
          <baseClass baseClassId="class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA"/>
         </baseClasses>
         <functions>
-         <function access="public" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="29" id="function_Create_B8F38535DF8230CCF1A4335A2F7F0B0DF4AFE14E" name="Create" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89" specifiers="override"/>
+         <function access="public" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="30" id="function_Create_B8F38535DF8230CCF1A4335A2F7F0B0DF4AFE14E" name="Create" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89" specifiers="override"/>
         </functions>
        </class>
        <class access="public" definitionFile="Expression.hpp" definitionFileId="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html" definitionLine="54" id="class_ConditionalExpressionNode_1F8B641EFBDFC3607B4D79D9DD0761E37AD60427" key="class" name="ConditionalExpressionNode" project="ast">
@@ -2780,12 +2781,12 @@
          <derivedClass derivedClassId="class_WhileStatementNode_805401279A6B9274A85AF7DD47C22818EF7C71A4"/>
         </derivedClasses>
         <constructors>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="53" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="35" id="constructor_Node_CD6A0A30CA3380C0EFD3CAF2905985BED864C7B5" name="Node">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="53" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="36" id="constructor_Node_CD6A0A30CA3380C0EFD3CAF2905985BED864C7B5" name="Node">
           <parameters>
            <parameter access="public" id="parameter_nodeType__BD3E71879395AF3E56995C15E35DA2F320A7EB28" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
           </parameters>
          </constructor>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="54" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="39" id="constructor_Node_24A88FAF5AA7D620292CD354DBB52F942FEE752C" name="Node">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="54" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="40" id="constructor_Node_24A88FAF5AA7D620292CD354DBB52F942FEE752C" name="Node">
           <parameters>
            <parameter access="public" id="parameter_nodeType__8D1B02249343176DFFD267033C151BD562C60A6B" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
            <parameter access="public" id="parameter_span__4C3E38717CFB98F841C48A8CB931CFDBB6B02F23" name="span_" type="const.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29.lvalueref.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29"/>
@@ -2799,25 +2800,31 @@
           </parameters>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="55" id="function_GetNodeType_A52DBB2E52C752E053FDC8DE676175D137C82F96" name="GetNodeType" returnType="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886" specifiers="const"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="60" id="function_GetSpan_2837F114C2C6919F3166391AACC9DF445FC783F5" name="GetSpan" returnType="const.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29.lvalueref.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29" specifiers="const"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="66" id="function_IsConversionFunctionIdNode_01930BF77837DC0BDBF6E2AA56A33CCD1471ADBE" name="IsConversionFunctionIdNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="67" id="function_IsDtorIdNode_86008163E3851F03B446AFE3AE8559154D314F7A" name="IsDtorIdNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="62" id="function_IsFunctionDeclaratorNode_F70120F8DE6A17E04A936FBA08E1D37B4A1831BD" name="IsFunctionDeclaratorNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="64" id="function_IsIdentifierNode_82097ED4D31A80C6222A5D2E941BD62A04F5C36A" name="IsIdentifierNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="65" id="function_IsOperatorFunctionIdNode_213994636CBB3E709A3E77C188AB24277F3DD37D" name="IsOperatorFunctionIdNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="63" id="function_IsTemplateArgumentSequenceNode_BEC6B86041D327B304CEEAA4883132A16C95FC34" name="IsTemplateArgumentSequenceNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="68" id="function_IsTemplateIdNode_B126C894D78323A3178A98592EBA92C028815A8F" name="IsTemplateIdNode" returnType="bool" specifiers="const virtual"/>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="59" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="49" id="function_Read_7DF692E936A1763E5E7566E50FCF034E52341523" name="Read" returnType="void" specifiers="virtual">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="61" id="function_GetSpan_2837F114C2C6919F3166391AACC9DF445FC783F5" name="GetSpan" returnType="const.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29.lvalueref.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29" specifiers="const"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="68" id="function_IsConversionFunctionIdNode_01930BF77837DC0BDBF6E2AA56A33CCD1471ADBE" name="IsConversionFunctionIdNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="69" id="function_IsDtorIdNode_86008163E3851F03B446AFE3AE8559154D314F7A" name="IsDtorIdNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="64" id="function_IsFunctionDeclaratorNode_F70120F8DE6A17E04A936FBA08E1D37B4A1831BD" name="IsFunctionDeclaratorNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="66" id="function_IsIdentifierNode_82097ED4D31A80C6222A5D2E941BD62A04F5C36A" name="IsIdentifierNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="67" id="function_IsOperatorFunctionIdNode_213994636CBB3E709A3E77C188AB24277F3DD37D" name="IsOperatorFunctionIdNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="65" id="function_IsTemplateArgumentSequenceNode_BEC6B86041D327B304CEEAA4883132A16C95FC34" name="IsTemplateArgumentSequenceNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="70" id="function_IsTemplateIdNode_B126C894D78323A3178A98592EBA92C028815A8F" name="IsTemplateIdNode" returnType="bool" specifiers="const virtual"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="59" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="50" id="function_Read_7DF692E936A1763E5E7566E50FCF034E52341523" name="Read" returnType="void" specifiers="virtual">
           <parameters>
            <parameter access="public" id="parameter_reader_A910A754842B849B2C8B6EFEFA66395012024839" name="reader" type="class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.lvalueref.class_Reader_671755945A884501CE9E563E31BE5D6F104546AB"/>
           </parameters>
          </function>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="61" id="function_SetSpanEnd_F2E70B37D411455EB70190116378B69A4EABFB8B" name="SetSpanEnd" returnType="void">
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="60" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="55" id="function_SetFullSpan_712880D1C2D68A580CE504B4EB5B42C048628A72" name="SetFullSpan" returnType="void" specifiers="virtual"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="63" id="function_SetSpanEnd_F2E70B37D411455EB70190116378B69A4EABFB8B" name="SetSpanEnd" returnType="void">
           <parameters>
            <parameter access="public" id="parameter_spanEnd_7055EFBAB5126CAF50F6237589104A27A8525606" name="spanEnd" type="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217"/>
           </parameters>
          </function>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="58" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="43" id="function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831" name="Write" returnType="void" specifiers="virtual">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="62" id="function_SetSpanStart_7C4100E7CD051C107B4FF395DC8F0D083B2236C7" name="SetSpanStart" returnType="void">
+          <parameters>
+           <parameter access="public" id="parameter_spanStart_54DC29E1AEB9C371646774DC9AD66F7321F0BA71" name="spanStart" type="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217"/>
+          </parameters>
+         </function>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="58" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="44" id="function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831" name="Write" returnType="void" specifiers="virtual">
           <parameters>
            <parameter access="public" id="parameter_writer_977073A767C6F2407AC6F9CF9E4D748BE44E04F0" name="writer" type="class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.lvalueref.class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575"/>
           </parameters>
@@ -2836,35 +2843,35 @@
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="47" id="function_Create_FF04902BA3152551C92EE69EC112CC10047A4EA3" name="Create" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89" specifiers="pure virtual"/>
         </functions>
        </class>
-       <class access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="103" id="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" key="class" name="NodeFactory" project="ast">
+       <class access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="107" id="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" key="class" name="NodeFactory" project="ast">
         <constructors>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="106" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="129" id="constructor_NodeFactory_89BEDCDFD7CD3E4D4E38219D01F6EF7169C31214" name="NodeFactory"/>
-         <constructor access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="108" id="constructor_NodeFactory_76C9A3502CD332A4E464711B43A5C96EFE27FBE1" name="NodeFactory" specifiers="delete">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="110" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="157" id="constructor_NodeFactory_89BEDCDFD7CD3E4D4E38219D01F6EF7169C31214" name="NodeFactory"/>
+         <constructor access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="112" id="constructor_NodeFactory_76C9A3502CD332A4E464711B43A5C96EFE27FBE1" name="NodeFactory" specifiers="delete">
           <parameters>
            <parameter access="public" id="parameter__E4D4BD24AC91C0D49701D5EFD83E9EC01727AC10" name="" type="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.rvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
           </parameters>
          </constructor>
-         <constructor access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="107" id="constructor_NodeFactory_2A6BBD1D83FE075E5C7ABDE93EFA7AFAE1AF2AFC" name="NodeFactory" specifiers="delete">
+         <constructor access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="111" id="constructor_NodeFactory_2A6BBD1D83FE075E5C7ABDE93EFA7AFAE1AF2AFC" name="NodeFactory" specifiers="delete">
           <parameters>
            <parameter access="public" id="parameter__062527E56D696DD465582444797B7ECB9A48B61B" name="" type="const.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
           </parameters>
          </constructor>
         </constructors>
         <functions>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="114" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="254" id="function_CreateNode_EA9F4B002FE111B812E7718FDC825DADEFE2EC86" name="CreateNode" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89">
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="118" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="282" id="function_CreateNode_EA9F4B002FE111B812E7718FDC825DADEFE2EC86" name="CreateNode" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89">
           <parameters>
            <parameter access="public" id="parameter_nodeType_B98E69C70B89F08E01AFE6984DA32AD73F95DA05" name="nodeType" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
           </parameters>
          </function>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="112" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="119" id="function_Done_D8290196C7024F8A99B4C840B4C48C63283B230D" name="Done" returnType="void" specifiers="static"/>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="111" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="114" id="function_Init_A2C165CBD203717D881DC7FEE9363EE9AD298115" name="Init" returnType="void" specifiers="static"/>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="113" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="124" id="function_Instance_49611902B4C58C1750F451DD81CBCB0E79BA2439" name="Instance" returnType="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" specifiers="static"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="110" id="function_operator_assign_8186EBADEBF18B80F69585DD9D7302B2B13E34FE" name="operator=" returnType="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" specifiers="delete">
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="116" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="147" id="function_Done_D8290196C7024F8A99B4C840B4C48C63283B230D" name="Done" returnType="void" specifiers="static"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="115" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="142" id="function_Init_A2C165CBD203717D881DC7FEE9363EE9AD298115" name="Init" returnType="void" specifiers="static"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="117" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="152" id="function_Instance_49611902B4C58C1750F451DD81CBCB0E79BA2439" name="Instance" returnType="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" specifiers="static"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="114" id="function_operator_assign_8186EBADEBF18B80F69585DD9D7302B2B13E34FE" name="operator=" returnType="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" specifiers="delete">
           <parameters>
            <parameter access="public" id="parameter__9DB07126A43216769FE62B0D3D08826544AF861C" name="" type="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.rvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
           </parameters>
          </function>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="109" id="function_operator_assign_E54A633E4035F1CF5E0705F4A55361FFDC56AAD5" name="operator=" returnType="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" specifiers="delete">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="113" id="function_operator_assign_E54A633E4035F1CF5E0705F4A55361FFDC56AAD5" name="operator=" returnType="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" specifiers="delete">
           <parameters>
            <parameter access="public" id="parameter__7072C383D7085FB309603BD44FD88D4E7A57EF26" name="" type="const.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.lvalueref.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
           </parameters>
@@ -4340,7 +4347,7 @@
          <variable access="private" id="variable_op_D839B72AF6F87FF97C7F6B51674AD41B0DB0908F" name="op" type="enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558"/>
         </variables>
        </class>
-       <class access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="74" id="class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD" key="class" name="UnaryNode" project="ast">
+       <class access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="76" id="class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD" key="class" name="UnaryNode" project="ast">
         <baseClasses>
          <baseClass baseClassId="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
         </baseClasses>
@@ -4379,18 +4386,18 @@
          <derivedClass derivedClassId="class_VolatileNode_FF7BC932368393C334F366B0BD1BB2A9EB058085"/>
         </derivedClasses>
         <constructors>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="77" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="58" id="constructor_UnaryNode_15A66AD045341D612C4CC1725C661C6644238AD6" name="UnaryNode">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="79" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="63" id="constructor_UnaryNode_15A66AD045341D612C4CC1725C661C6644238AD6" name="UnaryNode">
           <parameters>
            <parameter access="public" id="parameter_nodeType__42E212FA0FE81D4A24B396C952DC20BFC29C2CBF" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
           </parameters>
          </constructor>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="78" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="62" id="constructor_UnaryNode_6992F9C9EDC389728119459F860B63D4D0781537" name="UnaryNode">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="80" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="67" id="constructor_UnaryNode_6992F9C9EDC389728119459F860B63D4D0781537" name="UnaryNode">
           <parameters>
            <parameter access="public" id="parameter_nodeType__7FDDD3367E30023D720605FD3F382032C325D6AD" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
            <parameter access="public" id="parameter_span__227FDB9D1296DBCC5FAEA65F37D81586463C7C46" name="span_" type="const.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29.lvalueref.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29"/>
           </parameters>
          </constructor>
-         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="79" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="66" id="constructor_UnaryNode_03BBF031BDEFE838F10B11EDB467ED9C58D57B88" name="UnaryNode">
+         <constructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="81" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="71" id="constructor_UnaryNode_03BBF031BDEFE838F10B11EDB467ED9C58D57B88" name="UnaryNode">
           <parameters>
            <parameter access="public" id="parameter_nodeType__2A2DC915CD142F7D10E0F27CD6DA9E1CF033FDCA" name="nodeType_" type="enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886"/>
            <parameter access="public" id="parameter_span__4A5F106588240B17F5611E75031FCAA202DD5B2F" name="span_" type="const.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29.lvalueref.type_080E88EFE900AEAE1B711B9BFCAE61F969382E29"/>
@@ -4399,19 +4406,20 @@
          </constructor>
         </constructors>
         <functions>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="82" id="function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6" name="Child" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="81" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="80" id="function_Read_CD96300DF5D61F69E8B0DEB4BFCCB174951E6104" name="Read" returnType="void" specifiers="override">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="85" id="function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6" name="Child" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="83" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="85" id="function_Read_CD96300DF5D61F69E8B0DEB4BFCCB174951E6104" name="Read" returnType="void" specifiers="override">
           <parameters>
            <parameter access="public" id="parameter_reader_97C5C1CE264E8DD34CB372225DA28EC550D66010" name="reader" type="class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.lvalueref.class_Reader_671755945A884501CE9E563E31BE5D6F104546AB"/>
           </parameters>
          </function>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="84" id="function_ReleaseChild_B093EB620798B30C78C4917B33C55C4DC8CC6384" name="ReleaseChild" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
-         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="83" id="function_SetChild_F478BD9221673118D95765E8E9BC4AAADDE33BD1" name="SetChild" returnType="void">
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="87" id="function_ReleaseChild_B093EB620798B30C78C4917B33C55C4DC8CC6384" name="ReleaseChild" returnType="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
+         <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" definitionLine="86" id="function_SetChild_F478BD9221673118D95765E8E9BC4AAADDE33BD1" name="SetChild" returnType="void">
           <parameters>
            <parameter access="public" id="parameter_child__C4278F2E6D5EE8E3548F530440EFD56F05CD9F73" name="child_" type="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
           </parameters>
          </function>
-         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="80" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="70" id="function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59" name="Write" returnType="void" specifiers="override">
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="84" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="95" id="function_SetFullSpan_C53D7D69BEC457E4458420D2F4309CB31CF3F006" name="SetFullSpan" returnType="void" specifiers="override"/>
+         <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="82" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="75" id="function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59" name="Write" returnType="void" specifiers="override">
           <parameters>
            <parameter access="public" id="parameter_writer_48A487C3B9A020B7634F58F20AE46DF79952E909" name="writer" type="class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.lvalueref.class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575"/>
           </parameters>
@@ -5266,8 +5274,8 @@
          <parameter access="public" id="parameter_declaratorNode_135CCCDC2A043672196808E3C81633ED0263B9AD" name="declaratorNode" type="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
         </parameters>
        </function>
-       <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="121" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="265" id="function_NodeDone_35AC8D5E2EEE66E7558F3A1E5647FB1DA8EB8CBA" name="NodeDone" project="ast" returnType="void"/>
-       <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="120" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="260" id="function_NodeInit_FAA52EFE3197C5E5A4A5BE84B3CC894FEAE06043" name="NodeInit" project="ast" returnType="void"/>
+       <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="125" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="293" id="function_NodeDone_35AC8D5E2EEE66E7558F3A1E5647FB1DA8EB8CBA" name="NodeDone" project="ast" returnType="void"/>
+       <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html" declarationLine="124" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html" definitionLine="288" id="function_NodeInit_FAA52EFE3197C5E5A4A5BE84B3CC894FEAE06043" name="NodeInit" project="ast" returnType="void"/>
        <function access="public" declarationFile="Expression.hpp" declarationFileId="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html" declarationLine="23" definitionFile="Expression.cpp" definitionFileId="file/Expression.cpp_2F6A6C9668B98FC9EEFCB06E2F4D6AA39DAA1AAF.html" definitionLine="13" id="function_OpStr_B651B8D81395A41CDC56F0C7FC1963DF4A187E8C" name="OpStr" project="ast" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89">
         <parameters>
          <parameter access="public" id="parameter_op_41663D3C6A778CAE94A75C181BACD57ACCD12B05" name="op" type="enum_Operator_422B71BE5F395C01AC00F63EB0494D466793D558"/>
@@ -5567,39 +5575,39 @@
        <enumType access="public" baseType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" definitionFile="Specifier.hpp" definitionFileId="file/Specifier.hpp_656E16E018ECB88FA61EE057D7A13B4AAE274D19.html" definitionLine="14" id="enum_Specifier_65D89228A0D22FDC7AA8B79EB9CEB1DB7EE4CA5D" key="enum class" name="Specifier" project="ast">
         <enumerators>
          <enumerator access="public" id="enumerator_none_4F0EA6C1DA068BEFE214B6EF4D2EADE8FF50CDEF" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_register__DC2A3DCDD4058988BBEE387ED1EFB45EB57B0807" name="register_" value="1"/>
-         <enumerator access="public" id="enumerator_static__9020B1332098967AE89F3EDDCE09C2ED9F039F1C" name="static_" value="1"/>
-         <enumerator access="public" id="enumerator_threadLocal_DBB11FD6A852EB1E5D1BD639CE5EB2841C7466CA" name="threadLocal" value="1"/>
-         <enumerator access="public" id="enumerator_extern__3620ED2C91458165E83BBC60D80702A9EDAB29EB" name="extern_" value="1"/>
-         <enumerator access="public" id="enumerator_mutable__9168BBB92A3AD89E6DC6236F2A1708791261C367" name="mutable_" value="1"/>
-         <enumerator access="public" id="enumerator_inline__243FD45ADDB569361FC35DDC76F944452B4FAB04" name="inline_" value="1"/>
-         <enumerator access="public" id="enumerator_virtual__72AC4FDBF120FA199558217B7730C76C8E9119F5" name="virtual_" value="1"/>
-         <enumerator access="public" id="enumerator_explicit__F98E90B6B6D604E29783A3977188521F96FA399B" name="explicit_" value="1"/>
-         <enumerator access="public" id="enumerator_override__7722CE142C816B20CCEBE7AA56F2F33215CD7E9A" name="override_" value="1"/>
-         <enumerator access="public" id="enumerator_pure__E067C3FAD0E87E3E0D97610FFED611588B16C93F" name="pure_" value="1"/>
-         <enumerator access="public" id="enumerator_final__0605BC6CFC4CDB00FC063CAC53134CEEA8BC2DC1" name="final_" value="1"/>
-         <enumerator access="public" id="enumerator_new__AC0E9A81B8E1BB72884CAB188C13A80D4735FB3E" name="new_" value="1"/>
-         <enumerator access="public" id="enumerator_default__364FAA9467D2D708D47556B0D1695771D4C59AD9" name="default_" value="1"/>
-         <enumerator access="public" id="enumerator_delete__90136AB7D5AE7D40C8543F13F34E9B9A437F8C79" name="delete_" value="1"/>
-         <enumerator access="public" id="enumerator_friend__79AF47B26C4178B0B66059EF826026D12656ECF0" name="friend_" value="1"/>
-         <enumerator access="public" id="enumerator_constExpr_B55AB3C70E6FE9ABF832954C4B79B491A3739F59" name="constExpr" value="1"/>
-         <enumerator access="public" id="enumerator_const__367548FE794D920F14741D8A57F96AC8611B9780" name="const_" value="1"/>
-         <enumerator access="public" id="enumerator_volatile__38A934F81FB46D78274CE409BD0AE7EE1D89A9E7" name="volatile_" value="1"/>
-         <enumerator access="public" id="enumerator_public__C4180BF817434B194CE2344BD4535D3A4BC8830E" name="public_" value="1"/>
-         <enumerator access="public" id="enumerator_protected__C6012630F6AD90CF0864F19CA141F44C233D1820" name="protected_" value="1"/>
-         <enumerator access="public" id="enumerator_private__94135C8518ED802F3782093C3F8F72B4325BDF6C" name="private_" value="1"/>
-         <enumerator access="public" id="enumerator_extension_D18A8F65C58D921488C5978D9E89EE1010194DC0" name="extension" value="1"/>
-         <enumerator access="public" id="enumerator_access_4A2312E055B19AF5011E68B3FAA27B699FFD681B" name="access" value="public_"/>
-         <enumerator access="public" id="enumerator_virtuality_65DF2463767AAF543B0E66B69340EFEA9055A386" name="virtuality" value="virtual_"/>
+         <enumerator access="public" id="enumerator_register__DC2A3DCDD4058988BBEE387ED1EFB45EB57B0807" name="register_" value="1 &lt;&lt; 0"/>
+         <enumerator access="public" id="enumerator_static__9020B1332098967AE89F3EDDCE09C2ED9F039F1C" name="static_" value="1 &lt;&lt; 1"/>
+         <enumerator access="public" id="enumerator_threadLocal_DBB11FD6A852EB1E5D1BD639CE5EB2841C7466CA" name="threadLocal" value="1 &lt;&lt; 2"/>
+         <enumerator access="public" id="enumerator_extern__3620ED2C91458165E83BBC60D80702A9EDAB29EB" name="extern_" value="1 &lt;&lt; 3"/>
+         <enumerator access="public" id="enumerator_mutable__9168BBB92A3AD89E6DC6236F2A1708791261C367" name="mutable_" value="1 &lt;&lt; 4"/>
+         <enumerator access="public" id="enumerator_inline__243FD45ADDB569361FC35DDC76F944452B4FAB04" name="inline_" value="1 &lt;&lt; 5"/>
+         <enumerator access="public" id="enumerator_virtual__72AC4FDBF120FA199558217B7730C76C8E9119F5" name="virtual_" value="1 &lt;&lt; 6"/>
+         <enumerator access="public" id="enumerator_explicit__F98E90B6B6D604E29783A3977188521F96FA399B" name="explicit_" value="1 &lt;&lt; 7"/>
+         <enumerator access="public" id="enumerator_override__7722CE142C816B20CCEBE7AA56F2F33215CD7E9A" name="override_" value="1 &lt;&lt; 8"/>
+         <enumerator access="public" id="enumerator_pure__E067C3FAD0E87E3E0D97610FFED611588B16C93F" name="pure_" value="1 &lt;&lt; 9"/>
+         <enumerator access="public" id="enumerator_final__0605BC6CFC4CDB00FC063CAC53134CEEA8BC2DC1" name="final_" value="1 &lt;&lt; 10"/>
+         <enumerator access="public" id="enumerator_new__AC0E9A81B8E1BB72884CAB188C13A80D4735FB3E" name="new_" value="1 &lt;&lt; 11"/>
+         <enumerator access="public" id="enumerator_default__364FAA9467D2D708D47556B0D1695771D4C59AD9" name="default_" value="1 &lt;&lt; 12"/>
+         <enumerator access="public" id="enumerator_delete__90136AB7D5AE7D40C8543F13F34E9B9A437F8C79" name="delete_" value="1 &lt;&lt; 13"/>
+         <enumerator access="public" id="enumerator_friend__79AF47B26C4178B0B66059EF826026D12656ECF0" name="friend_" value="1 &lt;&lt; 14"/>
+         <enumerator access="public" id="enumerator_constExpr_B55AB3C70E6FE9ABF832954C4B79B491A3739F59" name="constExpr" value="1 &lt;&lt; 15"/>
+         <enumerator access="public" id="enumerator_const__367548FE794D920F14741D8A57F96AC8611B9780" name="const_" value="1 &lt;&lt; 16"/>
+         <enumerator access="public" id="enumerator_volatile__38A934F81FB46D78274CE409BD0AE7EE1D89A9E7" name="volatile_" value="1 &lt;&lt; 17"/>
+         <enumerator access="public" id="enumerator_public__C4180BF817434B194CE2344BD4535D3A4BC8830E" name="public_" value="1 &lt;&lt; 18"/>
+         <enumerator access="public" id="enumerator_protected__C6012630F6AD90CF0864F19CA141F44C233D1820" name="protected_" value="1 &lt;&lt; 19"/>
+         <enumerator access="public" id="enumerator_private__94135C8518ED802F3782093C3F8F72B4325BDF6C" name="private_" value="1 &lt;&lt; 20"/>
+         <enumerator access="public" id="enumerator_extension_D18A8F65C58D921488C5978D9E89EE1010194DC0" name="extension" value="1 &lt;&lt; 21"/>
+         <enumerator access="public" id="enumerator_access_4A2312E055B19AF5011E68B3FAA27B699FFD681B" name="access" value="public_ | protected_ | private_"/>
+         <enumerator access="public" id="enumerator_virtuality_65DF2463767AAF543B0E66B69340EFEA9055A386" name="virtuality" value="virtual_ | override_ | pure_"/>
         </enumerators>
        </enumType>
        <enumType access="public" baseType="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" definitionFile="Literal.hpp" definitionFileId="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html" definitionLine="13" id="enum_Suffix_D3F23CA0FF6A0A0D72E54AFAC5C9DA90254D9FB1" key="enum class" name="Suffix" project="ast">
         <enumerators>
          <enumerator access="public" id="enumerator_none_D32FAD589F1916D7BC28326F0D7D9B40AE41D4CD" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_f_F3ED3A3863277F748EC53B425EE648ED15C59E32" name="f" value="1"/>
-         <enumerator access="public" id="enumerator_l_6E2EAD9E4E82FD2BB91EB5C946B8F68254064921" name="l" value="1"/>
-         <enumerator access="public" id="enumerator_ll_B7A6B0E73D7BA6448FDA96F767A973A5A739648E" name="ll" value="1"/>
-         <enumerator access="public" id="enumerator_u_DEEC798703E35E7B6F3DEC23C3AF4E38FE00688C" name="u" value="1"/>
+         <enumerator access="public" id="enumerator_f_F3ED3A3863277F748EC53B425EE648ED15C59E32" name="f" value="1 &lt;&lt; 0"/>
+         <enumerator access="public" id="enumerator_l_6E2EAD9E4E82FD2BB91EB5C946B8F68254064921" name="l" value="1 &lt;&lt; 1"/>
+         <enumerator access="public" id="enumerator_ll_B7A6B0E73D7BA6448FDA96F767A973A5A739648E" name="ll" value="1 &lt;&lt; 2"/>
+         <enumerator access="public" id="enumerator_u_DEEC798703E35E7B6F3DEC23C3AF4E38FE00688C" name="u" value="1 &lt;&lt; 3"/>
         </enumerators>
        </enumType>
       </enumTypes>
@@ -5619,12 +5627,12 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3" name="*">
+  <derivedType access="public" id="ptr.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="*">
+  <derivedType access="public" id="ptr.class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -5634,22 +5642,22 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
   <derivedType access="public" id="ptr.class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" name="*">
+  <derivedType access="public" id="ptr.class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA" name="*">
+  <derivedType access="public" id="ptr.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -6575,6 +6583,7 @@
    </derivations>
   </derivedType>
   <externalType access="public" id="type_099034B5F5E66B0961105AB0AFC6A9523A34FEE5" name="GetSha1MessageDigest"/>
+  <pseudoType access="public" id="pseudotype_GetSpan" name="GetSpan"/>
   <derivedType access="public" id="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.lvalueref.class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652" name="GotoStatementNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652"/>
@@ -6892,6 +6901,8 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_SetChild" name="SetChild"/>
+  <pseudoType access="public" id="pseudotype_SetSpanEnd" name="SetSpanEnd"/>
+  <pseudoType access="public" id="pseudotype_SetSpanStart" name="SetSpanStart"/>
   <derivedType access="public" id="class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.lvalueref.class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C" name="ShiftExpressionNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C"/>
@@ -7118,13 +7129,13 @@
    </derivations>
   </derivedType>
   <simpleType access="public" id="char32_t" name="char32_t"/>
-  <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
+  <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
+  <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
     <derivation kind="operator" str="&amp;"/>
@@ -7272,6 +7283,8 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <externalType access="public" id="type_9BE95AF885BD2C21CD2AADCB66FB6CBE70894CDF" name="std::max"/>
+  <externalType access="public" id="type_C048533C00192B90BE99CC043ECA0FC1440EF187" name="std::min"/>
   <externalType access="public" id="type_5F1A4EB764926ED7E38F1E97BD5ECE5F6EA5B676" name="std::move"/>
   <externalType access="public" id="type_E47E6702DFA636191C426F9BA14A342BEB6E75A3" name="std::runtime_error"/>
   <externalType access="public" id="type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="std::string"/>
@@ -7312,7 +7325,7 @@
     <templateArgument typeId="class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
    </templateArguments>
    <functions>
-    <function access="private" definitionFile="" definitionFileId="" definitionLine="86" id="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E" name="get()" returnType="ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="89" id="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E" name="get()" returnType="ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89"/>
    </functions>
   </specialization>
   <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA" name="std::unique_ptr&lt;NodeCreator>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
@@ -7320,7 +7333,7 @@
     <templateArgument typeId="class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA"/>
    </templateArguments>
    <functions>
-    <function access="private" definitionFile="" definitionFileId="" definitionLine="117" id="function_get_DEE72C2BCCC96CDE022725A634B4A7692E3A9730" name="get()" returnType="ptr.class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA"/>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="121" id="function_get_DEE72C2BCCC96CDE022725A634B4A7692E3A9730" name="get()" returnType="ptr.class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA"/>
    </functions>
   </specialization>
   <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3" name="std::unique_ptr&lt;NodeFactory>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
@@ -7328,7 +7341,7 @@
     <templateArgument typeId="class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
    </templateArguments>
    <functions>
-    <function access="private" definitionFile="" definitionFileId="" definitionLine="116" id="function_get_B96FA3D181DA13DC4A0546DCAACA04FE79FD438F" name="get()" returnType="ptr.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="120" id="function_get_B96FA3D181DA13DC4A0546DCAACA04FE79FD438F" name="get()" returnType="ptr.class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3"/>
    </functions>
   </specialization>
   <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Project_18030C9FDD5AC320B29A4DB89F58A61C8B9C7E27" name="std::unique_ptr&lt;Project>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">

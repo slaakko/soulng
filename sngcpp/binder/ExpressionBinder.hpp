@@ -12,9 +12,6 @@
 
 namespace sngcpp { namespace binder {
 
-using namespace sngcpp::ast;
-using namespace sngcpp::symbols;
-
 class StatementBinder;
 
 SNGCPP_BINDER_API std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile* boundSourceFile, FunctionSymbol* currentFunction,

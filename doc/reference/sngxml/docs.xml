@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <docs>
   <doc id="sngxml">
-    <description>Contains three XML processing libraries whose lexers and parsers are implemented using SoulNG.</description>
+    <description>Contains three XML processing libraries and a tester application.</description>
     <body></body>
   </doc>
   <doc id="xml">
     <description>XML parser</description>
   </doc>
   <doc id="dom">
-    <description>Library for representing XML documents in memory</description>
+    <description>Document Object Model library</description>
   </doc>
   <doc id="xpath">
     <description>XPATH query parser and execution engine</description>
   </doc>
   <doc id="tester">
-      <description>Tester application</description>
+      <description>tester application</description>
   </doc>
 </docs>

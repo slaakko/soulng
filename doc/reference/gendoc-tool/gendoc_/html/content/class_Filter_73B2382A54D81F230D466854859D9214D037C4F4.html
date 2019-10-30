@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Filter Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_gendoc_8AE6F6D9949B9A5EF7FE505658C75E6AD1537DF2.html">up</a>
+         | <a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html">prev</a>
+         | <a href="class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html">next</a>
+        <hr/>
+        <h1>Filter Class</h1>
+        <span>
+            Definition at line <a href="file/Filter.hpp_EF0A7D7FF2770D7497AD9305593A0D279F57FDD7.html#13">13</a>
+             of <a href="file/Filter.hpp_EF0A7D7FF2770D7497AD9305593A0D279F57FDD7.html">Filter.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#constructor_Filter_73B5E7E5F32B8E1CAA8D40BC0D6EB1D746344B18">Filter</a>(<a href="./../../../../soulng/rex/html/content/class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">Context</a>&amp; context_, <a href="./enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a> type_, <span class="kw">const </span>std::u32string&amp; pattern_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#function_Apply_EEA0A13CC5FC102DC8AEC5EACEDE5DB157AB8390">Apply</a>(<a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html">File</a>&amp; file)</td>
+            </tr>
+        </table>
+        <h2>Enumerations</h2>
+        <table>
+            <tr>
+                <td>
+                    enum <a href="enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a>
+                </td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_nfa_23BDEFD48D0311D884CBADFBF030899A63B172B7">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../../soulng/rex/html/content/class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nfa</td>
+            </tr>
+            <tr id="variable_pattern_9E7F986802425D9681F7D60D92C98C91901B723A">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">pattern</td>
+            </tr>
+            <tr id="variable_type_FC597AA00151CFC768993503B40CA7637837B625">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">type</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Filter_73B5E7E5F32B8E1CAA8D40BC0D6EB1D746344B18">Filter Constructor</h3>
+        <h4>
+            gendoc::Filter::Filter(<a href="./../../../../soulng/rex/html/content/class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">Context</a>
+            &amp; context_, <a href="./enum_Type_287BDE5900E44D433A2752C5FB5FEA44B90D939F.html">Type</a>
+             type_, <span class="kw">const </span>
+            std::u32string&amp; pattern_)</h4>
+        <span>
+            Definition at line <a href="file/Filter.cpp_D028C383F83E3D6C0CA59A1B44DF7D28B02EDE51.html#11">11</a>
+             of <a href="file/Filter.cpp_D028C383F83E3D6C0CA59A1B44DF7D28B02EDE51.html">Filter.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_type_FC597AA00151CFC768993503B40CA7637837B625">type</a><span class="other">(</span><span class="identifier">type_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_pattern_9E7F986802425D9681F7D60D92C98C91901B723A">pattern</a><span class="other">(</span><span class="identifier">pattern_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_nfa_23BDEFD48D0311D884CBADFBF030899A63B172B7">nfa</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><a href="./../../../../soulng/rex/html/content/namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4">CompileFilePattern</a><span class="other">(</span><span class="identifier">context_</span><span class="other">,&nbsp;</span><a href="./class_Filter_73B2382A54D81F230D466854859D9214D037C4F4.html#variable_pattern_9E7F986802425D9681F7D60D92C98C91901B723A">pattern</a><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Filter.hpp_EF0A7D7FF2770D7497AD9305593A0D279F57FDD7.html#17">17</a>
+             of <a href="file/Filter.hpp_EF0A7D7FF2770D7497AD9305593A0D279F57FDD7.html">Filter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Apply_EEA0A13CC5FC102DC8AEC5EACEDE5DB157AB8390">Apply Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             gendoc::Filter::Apply(<a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html">File</a>
+            &amp; file)</h4>
+        <span>
+            Definition at line <a href="file/Filter.cpp_D028C383F83E3D6C0CA59A1B44DF7D28B02EDE51.html#15">15</a>
+             of <a href="file/Filter.cpp_D028C383F83E3D6C0CA59A1B44DF7D28B02EDE51.html">Filter.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Filter.hpp_EF0A7D7FF2770D7497AD9305593A0D279F57FDD7.html#18">18</a>
+             of <a href="file/Filter.hpp_EF0A7D7FF2770D7497AD9305593A0D279F57FDD7.html">Filter.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_Name_8879132E4BE132E492A170A7B81F816D9DBE453B">gendoc::File::Name</a>
+            , <a href="./class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html#function_SetIncluded_B9A269301CB55A447D9CF2A8DD33E4162CBBE62E">gendoc::File::SetIncluded</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html#function_Apply_EAD07963EB0C6BC2FC2E967086CC11063ABCB63F">gendoc::FilterList::Apply</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_gendoc_8AE6F6D9949B9A5EF7FE505658C75E6AD1537DF2.html">up</a>
+         | <a href="class_File_BDC21734F2C71B724AB09E8D9710C2E0C039D390.html">prev</a>
+         | <a href="class_FilterList_C8ECBBA6CE05293AAC4A8F21257729E8ABD8DAB8.html">next</a>
+    </body>
+</html>

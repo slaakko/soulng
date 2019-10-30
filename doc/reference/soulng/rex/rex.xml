@@ -593,9 +593,9 @@
          <function access="public" definitionFile="Context.hpp" definitionFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" definitionLine="24" id="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED" name="MakeEpsilon" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4">
           <calledByFunctions>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="20" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="28" id="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021" name="MakeNfaState" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3">
@@ -635,11 +635,11 @@
         <functions>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="48" id="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88" name="End" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="49" id="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E" name="SetEnd" returnType="void">
@@ -647,8 +647,8 @@
            <parameter access="public" id="parameter_end__C62DB72C6BD67E703A65FE736558FABA32AEEDBA" name="end_" type="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
@@ -666,11 +666,11 @@
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="46" id="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1" name="Start" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Match_702E71A3715413D6F47C8F847383155C298FC89C"/>
-           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -714,9 +714,9 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="32" id="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8" name="Edges" returnType="const.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB" specifiers="const">
@@ -742,8 +742,8 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
-           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
@@ -814,10 +814,10 @@
            <parameter access="public" id="parameter_c_17EBE652AFE12ABC1CB29852E190AC8AF963A75C" name="c" type="char32_t"/>
           </parameters>
           <overrides>
-           <override functionId="function_Match_1AE8F7F6A34CA646D0EF5F7041B467CC3F1FC477"/>
-           <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
-           <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
            <override functionId="function_Match_966EB2B435288E763840A7BE98C0DD7AF7EFDB64"/>
+           <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
+           <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
+           <override functionId="function_Match_1AE8F7F6A34CA646D0EF5F7041B467CC3F1FC477"/>
           </overrides>
           <calledByFunctions>
            <calledByFunction functionId="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD"/>
@@ -835,13 +835,13 @@
         </parameters>
         <calls>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
         </calls>
        </function>
        <function access="public" declarationFile="Nfa.hpp" declarationFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" declarationLine="56" definitionFile="Nfa.cpp" definitionFileId="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html" definitionLine="60" id="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9" name="Cat" project="rex" returnType="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B">
@@ -851,11 +851,11 @@
         </parameters>
         <calls>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3"/>
+         <call functionId="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8"/>
          <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
-         <call functionId="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3"/>
         </calls>
        </function>
        <function access="public" declarationFile="Match.hpp" declarationFileId="file/Match.hpp_43709F9F744D799A6BE765167F7B8C757FAFD638.html" declarationLine="20" definitionFile="Match.cpp" definitionFileId="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html" definitionLine="47" id="function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4" name="CompileFilePattern" project="rex" returnType="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B">
@@ -897,8 +897,8 @@
          <call functionId="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD"/>
         </calls>
         <calledByFunctions>
-         <calledByFunction functionId="function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7"/>
          <calledByFunction functionId="function_Match_702E71A3715413D6F47C8F847383155C298FC89C"/>
+         <calledByFunction functionId="function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="Match.hpp" declarationFileId="file/Match.hpp_43709F9F744D799A6BE765167F7B8C757FAFD638.html" declarationLine="16" definitionFile="Match.cpp" definitionFileId="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html" definitionLine="29" id="function_FilePatternMatch_85F093E022AC279FCD29B058D51F9AFA89677C4D" name="FilePatternMatch" project="rex" returnType="bool">
@@ -917,14 +917,14 @@
          <parameter access="public" id="parameter_nfa_1F3151B422C327C1BF88C93C58DB640D022CF94E" name="nfa" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
-         <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
+         <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
         </calls>
        </function>
        <function access="public" declarationFile="TokenValueParsers.hpp" declarationFileId="file/TokenValueParsers.hpp_5FA14D99CC5A7DFF966E6DE7CFAD1165F1D43D19.html" declarationLine="13" definitionFile="TokenValueParsers.cpp" definitionFileId="file/TokenValueParsers.cpp_A1E18A060F39CBDEBA4FDA08688D3CD8E4479AE0.html" definitionLine="110" id="function_MakeEscapeValue_77A9FB5AA7F76CB50EC6C7CFF8B68367C5CAD7F9" name="MakeEscapeValue" project="rex" returnType="char32_t">
@@ -933,8 +933,8 @@
          <parameter access="public" id="parameter_token_CD627A6F88FD2F0F38701498CE107187BDDB33A7" name="token" type="const.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B.lvalueref.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B"/>
         </parameters>
         <calls>
-         <call functionId="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715"/>
          <call functionId="function_ParseEscape_5B5771204749D63B617C46DA48EA134B66D2DB9C"/>
+         <call functionId="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715"/>
          <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
         </calls>
        </function>
@@ -964,9 +964,9 @@
          <parameter access="public" id="parameter_s_C0EEFB90F4E544DF9D623E2E936172423DE1C266" name="s" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
+         <call functionId="function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7"/>
-         <call functionId="function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07"/>
          <call functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
          <call functionId="function_Accept_7284EF031E3F3625014927F389405AE12B78A9D2"/>
         </calls>
@@ -993,8 +993,8 @@
         </parameters>
         <calls>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
         </calls>
        </function>
@@ -1059,14 +1059,14 @@
          <parameter access="public" id="parameter_nfa_EB997CF012ECA6D36BCA162EF6F47932B923727A" name="nfa" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
         </calls>
        </function>
        <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html" definitionLine="55" id="function_operator_less_0E2F8D6E4D03D4CD71DB7C2727FAA9ACF7D265F2" name="operator&lt;" project="rex" returnType="bool" specifiers="inline">
@@ -3114,46 +3114,46 @@
        <enumType access="public" baseType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="267" id="enum_GeneralCategoryId_8EC3BE7CDF87B638BF602E487D7B35CE3AD6192B" key="enum class" name="GeneralCategoryId" project="util">
         <enumerators>
          <enumerator access="public" id="enumerator_none_F224379BDC45664C64B6306B01E838B09325CDBB" name="none" value="0"/>
-         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1"/>
-         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1"/>
-         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1"/>
-         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1"/>
-         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1"/>
-         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu"/>
-         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu"/>
-         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1"/>
-         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1"/>
-         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1"/>
-         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn"/>
-         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1"/>
-         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1"/>
-         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1"/>
-         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd"/>
-         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1"/>
-         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1"/>
-         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1"/>
-         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1"/>
-         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1"/>
-         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1"/>
-         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1"/>
-         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc"/>
-         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1"/>
-         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1"/>
-         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1"/>
-         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1"/>
-         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm"/>
-         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1"/>
-         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1"/>
-         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1"/>
-         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs"/>
-         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1"/>
-         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1"/>
-         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1"/>
-         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1"/>
-         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1"/>
-         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc"/>
-         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L"/>
-         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L"/>
+         <enumerator access="public" id="enumerator_Lu_CF111DA93ADBDB0F6FD1529B555F6D63F1C8CC34" name="Lu" value="1 &lt;&lt; 0"/>
+         <enumerator access="public" id="enumerator_Ll_74F828D1C3AF1381FDF897BFD55A380E4DE3D432" name="Ll" value="1 &lt;&lt; 1"/>
+         <enumerator access="public" id="enumerator_Lt_6F916C2EAA4891A54351BEF128031D15775EF611" name="Lt" value="1 &lt;&lt; 2"/>
+         <enumerator access="public" id="enumerator_Lm_190A6F09E2F447A3540127D7EFB479AB66A161E3" name="Lm" value="1 &lt;&lt; 3"/>
+         <enumerator access="public" id="enumerator_Lo_1D6565B71BD4F570381841992D75FACF334A5302" name="Lo" value="1 &lt;&lt; 4"/>
+         <enumerator access="public" id="enumerator_LC_90B51C5D2E4023B0006D847F7C831F0A2B1FC377" name="LC" value="Lu | Ll | Lt"/>
+         <enumerator access="public" id="enumerator_L_930464AFC44519BD8D431B6996E19ED0B1F57923" name="L" value="Lu | Ll | Lt | Lm | Lo"/>
+         <enumerator access="public" id="enumerator_Mn_67EDFCA773105619A8A6F79DD3863A49FC3137B6" name="Mn" value="1 &lt;&lt; 5"/>
+         <enumerator access="public" id="enumerator_Mc_CC550B8E518D6F8282EEA8C83128E9C192287427" name="Mc" value="1 &lt;&lt; 6"/>
+         <enumerator access="public" id="enumerator_Me_A6B5C6F04791699801839F80EAB251AD1CD949CC" name="Me" value="1 &lt;&lt; 7"/>
+         <enumerator access="public" id="enumerator_M_2F3FF163D3C179E0181D0C02CBAC32DBED6A4BFC" name="M" value="Mn | Mc | Me"/>
+         <enumerator access="public" id="enumerator_Nd_E3E1D98FDEAE2CA2661889E4D5A51E1F9C07B87C" name="Nd" value="1 &lt;&lt; 8"/>
+         <enumerator access="public" id="enumerator_Nl_E0D14A0A46421E7B7125C5625B82BD5B0E90FA1F" name="Nl" value="1 &lt;&lt; 9"/>
+         <enumerator access="public" id="enumerator_No_BF8B69808EDAC6FE4B707B1E74D280884BD78BDE" name="No" value="1 &lt;&lt; 10"/>
+         <enumerator access="public" id="enumerator_N_97885EC6908789F9C5C760902D3231F7C4EEB67C" name="N" value="Nd | Nl | No"/>
+         <enumerator access="public" id="enumerator_Pc_486647C24D082C7A61A3D3CE174D588FE14E3EFD" name="Pc" value="1 &lt;&lt; 11"/>
+         <enumerator access="public" id="enumerator_Pd_FF81D9E1AEFB4A5E1ED492C75DF7AA0092530F98" name="Pd" value="1 &lt;&lt; 12"/>
+         <enumerator access="public" id="enumerator_Ps_C839A2D25C51FA63A8FA462F20AE30F054F5CFE5" name="Ps" value="1 &lt;&lt; 13"/>
+         <enumerator access="public" id="enumerator_Pe_E17787736D920AA9A0337F893FEB7D09B2F45DC3" name="Pe" value="1 &lt;&lt; 14"/>
+         <enumerator access="public" id="enumerator_Pi_01292470A23038EBF1F04F075BA5ECF9B11EA2DA" name="Pi" value="1 &lt;&lt; 15"/>
+         <enumerator access="public" id="enumerator_Pf_B8FC18DE5ADB75B32D3BF34C33F25F0E2A044DB8" name="Pf" value="1 &lt;&lt; 16"/>
+         <enumerator access="public" id="enumerator_Po_B6C830CE3F5E64F3D170886D88E848AA0FB2B7C8" name="Po" value="1 &lt;&lt; 17"/>
+         <enumerator access="public" id="enumerator_P_A73C2C085280E71429A0E42D0AAE52E05666A985" name="P" value="Pc | Pd | Ps | Pe | Pi | Pf | Po"/>
+         <enumerator access="public" id="enumerator_Sm_703C80A0D0C4F299BC6B3B63CFDB8BC765F2C157" name="Sm" value="1 &lt;&lt; 18"/>
+         <enumerator access="public" id="enumerator_Sc_D3C0724478E175BF50EF4AA998A1CE25F1BEB62F" name="Sc" value="1 &lt;&lt; 19"/>
+         <enumerator access="public" id="enumerator_Sk_2B134477C2B4053C41EF2869D779AF9DA1E7F9AF" name="Sk" value="1 &lt;&lt; 20"/>
+         <enumerator access="public" id="enumerator_So_1D29093CE81925AAB9AB15328AC0F5B7885B03F1" name="So" value="1 &lt;&lt; 21"/>
+         <enumerator access="public" id="enumerator_S_304ACE07D48A188814F9E93841720EAD6D6A0816" name="S" value="Sm | Sc | Sk | So"/>
+         <enumerator access="public" id="enumerator_Zs_B1454BDFC43DEFA0E882261B92789F29BF1A0EDB" name="Zs" value="1 &lt;&lt; 22"/>
+         <enumerator access="public" id="enumerator_Zl_F98290A8E29C4D9CD30E97E4AB16009E090D2B31" name="Zl" value="1 &lt;&lt; 23"/>
+         <enumerator access="public" id="enumerator_Zp_772397EC3C58CD0A3BA4CF7327D6CE398F7A8C7D" name="Zp" value="1 &lt;&lt; 24"/>
+         <enumerator access="public" id="enumerator_Z_27E368BD338C04080E9A9DDA5A54E032055AEEBB" name="Z" value="Zs | Zl | Zp"/>
+         <enumerator access="public" id="enumerator_Cc_8EDF9E41DD9BAA2C90C2649D7B72948F9C159229" name="Cc" value="1 &lt;&lt; 25"/>
+         <enumerator access="public" id="enumerator_Cf_1FF7501B3143573A8DC3049CCDEEBF97C82CD541" name="Cf" value="1 &lt;&lt; 26"/>
+         <enumerator access="public" id="enumerator_Cs_3D89F4CD202F824060155E25341DE5EF016B8E26" name="Cs" value="1 &lt;&lt; 27"/>
+         <enumerator access="public" id="enumerator_Co_4F7D4EC32FDA27544659B6AA583C327F76971E48" name="Co" value="1 &lt;&lt; 28"/>
+         <enumerator access="public" id="enumerator_Cn_EF8E2E31DC5B3C28DA3E4E017BF8497D29222498" name="Cn" value="1 &lt;&lt; 29"/>
+         <enumerator access="public" id="enumerator_C_4C7763D4A1D959A1B721A2CAF383D3995AEE33BA" name="C" value="Cc | Cf | Cs | Co | Cn"/>
+         <enumerator access="public" id="enumerator_G_0EEC7F1A7F2A7698274056E443127476FB38BC01" name="G" value="L | M | N | P | S | Zs"/>
+         <enumerator access="public" id="enumerator_B_309A0E52A4F4B93542895DEFB84CD0950E12F9D9" name="B" value="L | N | P | S | Zs"/>
         </enumerators>
        </enumType>
        <enumType access="public" baseType="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" definitionLine="611" id="enum_NumericTypeId_E496DBA286BE4CA39E9D00D6780E457ABE29EE82" key="enum class" name="NumericTypeId" project="util">

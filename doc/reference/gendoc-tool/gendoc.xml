@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="gendoc-tool">
+    <documentation file="docs.xml"/>
+  </project>
+  <child project="gendoc_"/>
+  <child project="html_"/>
+</gendoc>

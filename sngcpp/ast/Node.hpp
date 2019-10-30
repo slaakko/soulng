@@ -57,7 +57,9 @@ public:
     virtual void Accept(Visitor& visitor) = 0;
     virtual void Write(Writer& writer);
     virtual void Read(Reader& reader);
+    virtual void SetFullSpan();
     const Span& GetSpan() const { return span; }
+    void SetSpanStart(int32_t spanStart) { span.start = spanStart; }
     void SetSpanEnd(int32_t spanEnd) { span.end = spanEnd;  }
     virtual bool IsFunctionDeclaratorNode() const { return false; }
     virtual bool IsTemplateArgumentSequenceNode() const { return false; }
@@ -79,6 +81,7 @@ public:
     UnaryNode(NodeType nodeType_, const Span& span_, Node* child_);
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
+    void SetFullSpan() override;
     Node* Child() { return child.get(); }
     void SetChild(Node* child_) { child.reset(child_); }
     Node* ReleaseChild() { return child.release(); }
@@ -95,6 +98,7 @@ public:
     Node* Right() { return right.get(); }
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
+    void SetFullSpan() override;
 private:
     std::unique_ptr<Node> left;
     std::unique_ptr<Node> right;

@@ -591,8 +591,8 @@ void HtmlSourceCodeGenerator::Visit(ClassNode& classNode)
     idSequence.clear();
     classNode.ClassName()->Accept(*this);
     WriteIdSequence(true, symbolTable.GetSymbolNothrow(&classNode));
-    writer.WriteSpace(1);
     WriteSpecifiers(classNode.ClassVirtSpecifiers());
+    writer.WriteSpace(1);
     if (classNode.BaseClasses())
     {
         firstBaseClass = true;
@@ -622,6 +622,7 @@ void HtmlSourceCodeGenerator::Visit(BaseClassSpecifierNode& baseClassSpecifierNo
     }
     MoveTo(baseClassSpecifierNode.GetSpan());
     WriteSpecifiers(baseClassSpecifierNode.BaseSpecifiers());
+    writer.WriteSpace(1);
     Symbol* symbol = symbolTable.GetSymbol(&baseClassSpecifierNode);
     if (symbol && symbol->IsTypeSymbol() && !symbol->IsClassTemplateSpecializationSymbol())
     {

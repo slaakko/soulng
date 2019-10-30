@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="gendoc_">
+    <vcxproject file="../../../../tools/gendoc/gendoc/gendoc.vcxproj"/>
+    <documentation file="docs.xml"/>
+    <include path="../..;../../.."/>
+    <imports>
+      <import project="../../soulng/util"/>
+      <import project="../../soulng/lexer"/>
+      <import project="../../soulng/parser"/>
+      <import project="../../soulng/rex"/>
+      <import project="../../sngxml/dom"/>
+      <import project="../../sngxml/xpath"/>
+      <import project="../../sngcpp/ast"/>
+      <import project="../../sngcpp/parser"/>
+      <import project="../../sngcpp/pp"/>
+      <import project="../../sngcpp/symbols"/>
+      <import project="../../sngcpp/binder"/>
+      <import project="../html_"/>
+    </imports>
+  </project>
+</gendoc>

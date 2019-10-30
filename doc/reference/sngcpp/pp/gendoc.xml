@@ -2,6 +2,7 @@
 <gendoc>
   <project name="pp">
     <vcxproject file="../../../../sngcpp/pp/pp.vcxproj"/>
+    <documentation file="docs.xml"/>
     <include path="../.."/>
     <imports>
       <import project="../ast"/>

@@ -871,8 +871,9 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
     Span s = Span();
     Span assignmentSpan = Span();
     std::u32string valueStr = std::u32string();
+    std::unique_ptr<sngcpp::ast::Node> value = std::unique_ptr<sngcpp::ast::Node>();
     std::unique_ptr<soulng::parser::Value<std::u32string>> enumerator;
-    std::unique_ptr<sngcpp::ast::Node> value;
+    std::unique_ptr<sngcpp::ast::Node> expr;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -941,13 +942,14 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
                                     soulng::parser::Match* parentMatch10 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
-                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match = ExpressionParser::ConstantExpression(lexer, ctx);
-                                        value.reset(static_cast<sngcpp::ast::Node*>(match.value));
+                                        expr.reset(static_cast<sngcpp::ast::Node*>(match.value));
                                         if (match.hit)
                                         {
-                                            valueStr = lexer.GetMatch(span);
-                                            s.end = span.end;
+                                            value.reset(expr.release());
+                                            value->SetFullSpan();
+                                            valueStr = lexer.GetMatch(value->GetSpan());
+                                            s.end = value->GetSpan().end;
                                         }
                                         *parentMatch10 = match;
                                     }

@@ -15,6 +15,7 @@
 #include <sngcpp/ast/TypeExpr.hpp>
 #include <sngcpp/ast/Writer.hpp>
 #include <sngcpp/ast/Reader.hpp>
+#include <algorithm>
 
 namespace sngcpp { namespace ast {
 
@@ -49,6 +50,10 @@ void Node::Write(Writer& writer)
 void Node::Read(Reader& reader)
 {
     reader.Read(span);
+}
+
+void Node::SetFullSpan()
+{
 }
 
 Node::~Node()
@@ -87,6 +92,18 @@ void UnaryNode::Read(Reader& reader)
     }
 }
 
+void UnaryNode::SetFullSpan()
+{
+    if (child)
+    {
+        const Span& thisSpan = GetSpan();
+        child->SetFullSpan();
+        const Span& childSpan = child->GetSpan();
+        SetSpanStart(std::min(thisSpan.start, childSpan.start));
+        SetSpanEnd(std::max(thisSpan.end, childSpan.end));
+    }
+}
+
 BinaryNode::BinaryNode(NodeType nodeType_) : Node(nodeType_)
 {
 }
@@ -107,6 +124,17 @@ void BinaryNode::Read(Reader& reader)
     Node::Read(reader);
     left.reset(reader.ReadNode());
     right.reset(reader.ReadNode());
+}
+
+void BinaryNode::SetFullSpan()
+{
+    const Span& thisSpan = GetSpan();
+    left->SetFullSpan();
+    right->SetFullSpan();
+    const Span& leftSpan = left->GetSpan();
+    const Span& rightSpan = right->GetSpan();
+    SetSpanStart(std::min(thisSpan.start, std::min(leftSpan.start, rightSpan.start)));
+    SetSpanEnd(std::max(thisSpan.end, std::max(leftSpan.end, rightSpan.end)));
 }
 
 std::unique_ptr<NodeFactory> NodeFactory::instance;

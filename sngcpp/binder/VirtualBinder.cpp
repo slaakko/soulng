@@ -8,7 +8,7 @@
 
 namespace sngcpp { namespace binder {
 
-bool Overrides(FunctionSymbol* derivedFun, FunctionSymbol* baseFun)
+bool Overrides(sngcpp::symbols::FunctionSymbol* derivedFun, sngcpp::symbols::FunctionSymbol* baseFun)
 {
     if (derivedFun == baseFun) return false;
     if (derivedFun->Arity() != baseFun->Arity()) return false;
@@ -16,23 +16,23 @@ bool Overrides(FunctionSymbol* derivedFun, FunctionSymbol* baseFun)
     int n = derivedFun->Arity();
     for (int i = 0; i < n; ++i)
     {
-        ParameterSymbol* derivedParam = derivedFun->Parameters()[i];
-        ParameterSymbol* baseParam = baseFun->Parameters()[i];
-        TypeSymbol* derivedType = derivedParam->GetType();
-        TypeSymbol* baseType = baseParam->GetType();
+        sngcpp::symbols::ParameterSymbol* derivedParam = derivedFun->Parameters()[i];
+        sngcpp::symbols::ParameterSymbol* baseParam = baseFun->Parameters()[i];
+        sngcpp::symbols::TypeSymbol* derivedType = derivedParam->GetType();
+        sngcpp::symbols::TypeSymbol* baseType = baseParam->GetType();
         if (derivedType->Id() != baseType->Id()) return false;
     }
     return true;
 }
 
-void ResolveOverrideSets(FunctionSymbol* derivedFun, ClassTypeSymbol* parentClass)
+void ResolveOverrideSets(sngcpp::symbols::FunctionSymbol* derivedFun, sngcpp::symbols::ClassTypeSymbol* parentClass)
 {
-    for (TypeSymbol* baseClassType : parentClass->BaseClasses())
+    for (sngcpp::symbols::TypeSymbol* baseClassType : parentClass->BaseClasses())
     {
         if (baseClassType->IsClassTypeSymbol())
         {
-            ClassTypeSymbol* baseClass = static_cast<ClassTypeSymbol*>(baseClassType);
-            for (FunctionSymbol* baseFun : baseClass->VirtualFunctions())
+            sngcpp::symbols::ClassTypeSymbol* baseClass = static_cast<sngcpp::symbols::ClassTypeSymbol*>(baseClassType);
+            for (sngcpp::symbols::FunctionSymbol* baseFun : baseClass->VirtualFunctions())
             {
                 if (Overrides(derivedFun, baseFun))
                 {
@@ -45,17 +45,17 @@ void ResolveOverrideSets(FunctionSymbol* derivedFun, ClassTypeSymbol* parentClas
     }
 }
 
-void CollectPureVirtualFunctions(ClassTypeSymbol* cls, std::unordered_set<FunctionSymbol*>& pureVirtualFunctions)
+void CollectPureVirtualFunctions(sngcpp::symbols::ClassTypeSymbol* cls, std::unordered_set<sngcpp::symbols::FunctionSymbol*>& pureVirtualFunctions)
 {
-    for (TypeSymbol* baseClassType : cls->BaseClasses())
+    for (sngcpp::symbols::TypeSymbol* baseClassType : cls->BaseClasses())
     {
         if (baseClassType->IsClassTypeSymbol())
         {
-            ClassTypeSymbol* baseClass = static_cast<ClassTypeSymbol*>(baseClassType);
+            sngcpp::symbols::ClassTypeSymbol* baseClass = static_cast<sngcpp::symbols::ClassTypeSymbol*>(baseClassType);
             CollectPureVirtualFunctions(baseClass, pureVirtualFunctions);
         }
     }
-    for (FunctionSymbol* virtualFun : cls->VirtualFunctions())
+    for (sngcpp::symbols::FunctionSymbol* virtualFun : cls->VirtualFunctions())
     {
         if (virtualFun->IsPureVirtual())
         {
@@ -64,20 +64,20 @@ void CollectPureVirtualFunctions(ClassTypeSymbol* cls, std::unordered_set<Functi
     }
 }
 
-void AddOverriddenPureVirtualFunctions(ClassTypeSymbol* cls, std::unordered_set<FunctionSymbol*>& pureVirtualFunctions,
-    std::unordered_set<FunctionSymbol*>& overriddenPureVirtuals)
+void AddOverriddenPureVirtualFunctions(sngcpp::symbols::ClassTypeSymbol* cls, std::unordered_set<sngcpp::symbols::FunctionSymbol*>& pureVirtualFunctions,
+    std::unordered_set<sngcpp::symbols::FunctionSymbol*>& overriddenPureVirtuals)
 {
-    for (TypeSymbol* baseClassType : cls->BaseClasses())
+    for (sngcpp::symbols::TypeSymbol* baseClassType : cls->BaseClasses())
     {
         if (baseClassType->IsClassTypeSymbol())
         {
-            ClassTypeSymbol* baseClass = static_cast<ClassTypeSymbol*>(baseClassType);
+            sngcpp::symbols::ClassTypeSymbol* baseClass = static_cast<sngcpp::symbols::ClassTypeSymbol*>(baseClassType);
             AddOverriddenPureVirtualFunctions(baseClass, pureVirtualFunctions, overriddenPureVirtuals);
         }
     }
-    for (FunctionSymbol* pureVirtualFunction : pureVirtualFunctions)
+    for (sngcpp::symbols::FunctionSymbol* pureVirtualFunction : pureVirtualFunctions)
     {
-        for (FunctionSymbol* virtualFun : cls->VirtualFunctions())
+        for (sngcpp::symbols::FunctionSymbol* virtualFun : cls->VirtualFunctions())
         {
             if (Overrides(virtualFun, pureVirtualFunction))
             {
@@ -87,13 +87,13 @@ void AddOverriddenPureVirtualFunctions(ClassTypeSymbol* cls, std::unordered_set<
     }
 }
 
-void ResolveOverrideSets(ClassTypeSymbol* cls)
+void ResolveOverrideSets(sngcpp::symbols::ClassTypeSymbol* cls)
 {
-    std::unordered_set<FunctionSymbol*> pureVirtualFunctions;
+    std::unordered_set<sngcpp::symbols::FunctionSymbol*> pureVirtualFunctions;
     CollectPureVirtualFunctions(cls, pureVirtualFunctions);
-    std::unordered_set<FunctionSymbol*> overriddenPureVirtuals;
+    std::unordered_set<sngcpp::symbols::FunctionSymbol*> overriddenPureVirtuals;
     AddOverriddenPureVirtualFunctions(cls, pureVirtualFunctions, overriddenPureVirtuals);
-    for (FunctionSymbol* overriddenPureVirtual : overriddenPureVirtuals)
+    for (sngcpp::symbols::FunctionSymbol* overriddenPureVirtual : overriddenPureVirtuals)
     {
         pureVirtualFunctions.erase(overriddenPureVirtual);
     }
@@ -101,15 +101,15 @@ void ResolveOverrideSets(ClassTypeSymbol* cls)
     {
         cls->SetAbstract();
     }
-    for (FunctionSymbol* derivedFun : cls->VirtualFunctions())
+    for (sngcpp::symbols::FunctionSymbol* derivedFun : cls->VirtualFunctions())
     {
         ResolveOverrideSets(derivedFun, cls);
     }
 }
 
-void ResolveOverrideSets(const std::unordered_set<ClassTypeSymbol*>& classes)
+void ResolveOverrideSets(const std::unordered_set<sngcpp::symbols::ClassTypeSymbol*>& classes)
 {
-    for (ClassTypeSymbol* cls : classes)
+    for (sngcpp::symbols::ClassTypeSymbol* cls : classes)
     {
         ResolveOverrideSets(cls);
     }
