@@ -12,36 +12,16 @@
     </imports>
   </project>
   <filter>
-    <file exclude="CppDeclarationParser.cpp"/>
-    <file exclude="CppDeclarationParser.hpp"/>
-    <file exclude="CppDeclaratorParser.cpp"/>
-    <file exclude="CppDeclaratorParser.hpp"/>
-    <file exclude="CppExpressionParser.cpp"/>
-    <file exclude="CppExpressionParser.hpp"/>
-    <file exclude="CppIdentifierParser.cpp"/>
-    <file exclude="CppIdentifierParser.hpp"/>
-    <file exclude="CppLiteralParser.cpp"/>
-    <file exclude="CppLiteralParser.hpp"/>
-    <file exclude="CppStatementParser.cpp"/>
-    <file exclude="CppStatementParser.hpp"/>
     <file exclude="ParserFileClassMap.cpp"/>
     <file exclude="ParserFileClassMap.hpp"/>
     <file exclude="ParserFileKeywords.cpp"/>
     <file exclude="ParserFileKeywords.hpp"/>
-    <file exclude="ParserFileLexer.cpp"/>
-    <file exclude="ParserFileLexer.hpp"/>
-    <file exclude="ParserFileParser.cpp"/>
-    <file exclude="ParserFileParser.hpp"/>
     <file exclude="ParserFileTokens.cpp"/>
     <file exclude="ParserFileTokens.hpp"/>
     <file exclude="ProjectFileClassMap.cpp"/>
     <file exclude="ProjectFileClassMap.hpp"/>
     <file exclude="ProjectFileKeywords.cpp"/>
     <file exclude="ProjectFileKeywords.hpp"/>
-    <file exclude="ProjectFileLexer.cpp"/>
-    <file exclude="ProjectFileLexer.hpp"/>
-    <file exclude="ProjectFileParser.cpp"/>
-    <file exclude="ProjectFileParser.hpp"/>
     <file exclude="ProjectFileTokens.cpp"/>
     <file exclude="ProjectFileTokens.hpp"/>
   </filter>

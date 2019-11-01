@@ -163,16 +163,44 @@
     <ClCompile Include="ClassInheritanceDiagramCode.cpp" />
     <ClCompile Include="Html.cpp" />
     <ClCompile Include="HtmlContentFilePathResolver.cpp" />
+    <ClCompile Include="HtmlLexerFileSourceGenerator.cpp" />
+    <ClCompile Include="HtmlParserFileSourceGenerator.cpp" />
     <ClCompile Include="HtmlSourceCodeGenerator.cpp" />
     <ClCompile Include="HtmlSourceCodeWriter.cpp" />
+    <ClCompile Include="LexerFileSourceLineParser.cpp" />
+    <ClCompile Include="LexerFileTokenLexer.cpp" />
+    <ClCompile Include="LexerFileTokenLexerClassMap.cpp" />
+    <ClCompile Include="LexerFileTokenLexerKeywords.cpp" />
+    <ClCompile Include="LexerFileTokenLexerTokens.cpp" />
+    <ClCompile Include="ParserFileSourceLineParser.cpp" />
+    <ClCompile Include="ParserFileTokenLexer.cpp" />
+    <ClCompile Include="ParserFileTokenLexerClassMap.cpp" />
+    <ClCompile Include="ParserFileTokenLexerKeywords.cpp" />
+    <ClCompile Include="ParserFileTokenLexerTokens.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassInheritanceDiagramCode.hpp" />
     <ClInclude Include="Html.hpp" />
     <ClInclude Include="HtmlApi.hpp" />
     <ClInclude Include="HtmlContentFilePathResolver.hpp" />
+    <ClInclude Include="HtmlLexerFileSourceGenerator.hpp" />
+    <ClInclude Include="HtmlParserFileSourceGenerator.hpp" />
     <ClInclude Include="HtmlSourceCodeGenerator.hpp" />
     <ClInclude Include="HtmlSourceCodeWriter.hpp" />
+    <ClInclude Include="LexerFileSourceLineParser.hpp" />
+    <ClInclude Include="LexerFileTokenLexer.hpp" />
+    <ClInclude Include="LexerFileTokenLexerClassMap.hpp" />
+    <ClInclude Include="LexerFileTokenLexerKeywords.hpp" />
+    <ClInclude Include="LexerFileTokenLexerTokens.hpp" />
+    <ClInclude Include="ParserFileSourceLineParser.hpp" />
+    <ClInclude Include="ParserFileTokenLexer.hpp" />
+    <ClInclude Include="ParserFileTokenLexerClassMap.hpp" />
+    <ClInclude Include="ParserFileTokenLexerKeywords.hpp" />
+    <ClInclude Include="ParserFileTokenLexerTokens.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LexerFileTokenLexer.lexer" />
+    <None Include="ParserFileTokenLexer.lexer" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

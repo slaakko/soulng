@@ -15,9 +15,5 @@
     <file exclude="RexClassMap.hpp"/>
     <file exclude="RexTokens.cpp"/>
     <file exclude="RexTokens.hpp"/>
-    <file exclude="RexLexer.cpp"/>
-    <file exclude="RexLexer.hpp"/>
-    <file exclude="RexParser.cpp"/>
-    <file exclude="RexParser.hpp"/>
   </filter>
 </gendoc>

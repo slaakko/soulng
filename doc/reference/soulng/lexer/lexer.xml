@@ -113,8 +113,8 @@
            <parameter access="public" id="parameter_span_B032342DA5291A31F8164B0D682781053E161BCC" name="span" type="const.struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E.lvalueref.struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E"/>
           </parameters>
           <calls>
-           <call functionId="function_LineStart_7BD61FDF1370E7F19B018C10AE7F7CB9FF3551D1"/>
            <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
+           <call functionId="function_LineStart_7BD61FDF1370E7F19B018C10AE7F7CB9FF3551D1"/>
            <call functionId="function_LineEnd_D74C48FFE61488E48E63969CD17867D26E141219"/>
            <call functionId="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715"/>
           </calls>
@@ -166,8 +166,8 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_ConvertExternal_FFF0428FC54D10DD2BC4FA0A11ECF834F745F2C2"/>
-           <calledByFunction functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
            <calledByFunction functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+           <calledByFunction functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
            <calledByFunction functionId="function_ErrorLines_C6642DB6C6A690F337E3534D515C17F97EEF1DAB"/>
           </calledByFunctions>
          </function>
@@ -514,8 +514,8 @@
           </parameters>
           <calls>
            <call functionId="function_XmlEscape_1A8F8A1187D9E4F338CF214BBA6ABEA18A80B743"/>
-           <call functionId="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F"/>
            <call functionId="function_Write_F0B27D531AED8146BF5373853D6167DA074C2D0A"/>
+           <call functionId="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_WriteTry_B80711752EAFDDBED0C35432E851C77C08E882E7"/>
@@ -618,9 +618,9 @@
         <calls>
          <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_WriteBeginRule_49F3D74183046120723AB8786DA205AC382FA6EF"/>
+         <call functionId="function_RestOfLine_E68513181DF2614F41AEF8D0A0BDFC4DE822F42F"/>
          <call functionId="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F"/>
          <call functionId="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A"/>
-         <call functionId="function_RestOfLine_E68513181DF2614F41AEF8D0A0BDFC4DE822F42F"/>
          <call functionId="function_WriteTry_973924D8D6563164311BF9CFE771360574793837"/>
         </calls>
        </function>
@@ -630,8 +630,8 @@
          <parameter access="public" id="parameter_ruleName_D7E678A5B08BB6B0EE4D49E11247A947552D3B6D" name="ruleName" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
-         <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
+         <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_WriteFail_F3D1D34D13F792CC6FC4626B72BF6D4D8E11B7D7"/>
          <call functionId="function_WriteEndRule_0D9A0399D7196DD9C1DD6359961B62AA25E6DDE3"/>
         </calls>
@@ -643,8 +643,8 @@
          <parameter access="public" id="parameter_ruleName_E42FE1BF495D1F5E2B4B1002483BB6CB7D9E31C1" name="ruleName" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
-         <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
+         <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
          <call functionId="function_WriteSuccess_40620A4F458BD6C33A7B1A67B1A8D9FDCC05CDB3"/>
          <call functionId="function_WriteEndRule_0D9A0399D7196DD9C1DD6359961B62AA25E6DDE3"/>

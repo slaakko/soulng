@@ -6,6 +6,8 @@
 #include <gendoc/html/Html.hpp>
 #include <gendoc/html/HtmlSourceCodeGenerator.hpp>
 #include <gendoc/html/HtmlSourceCodeWriter.hpp>
+#include <gendoc/html/HtmlLexerFileSourceGenerator.hpp>
+#include <gendoc/html/HtmlParserFileSourceGenerator.hpp>
 #include <gendoc/html/ClassInheritanceDiagramCode.hpp>
 #include <sngxml/dom/Document.hpp>
 #include <sngxml/dom/Element.hpp>
@@ -2703,9 +2705,22 @@ void GenerateHtmlCodeFiles(const std::u32string& projectName, const std::vector<
         std::vector<std::u32string> inputLines = GetLines(sourceFile->Text());
         int n = inputLines.size();
         int numDigits = Log10(n);
-        HtmlSourceCodeGenerator generator(projectName, inputLines, numDigits, styleDirName, styleFileName, symbolTable, inlineCodeLimit, inlineCodeMap, contentFilePathResolver);
-        sourceFile->Accept(generator);
-        generator.WriteDocument();
+        if (Path::GetExtension(sourceFile->SourceFilePath()) == ".lexer")
+        {
+            HtmlLexerFileSourceGenerator generator(projectName, inputLines, numDigits, styleDirName, styleFileName);
+            sourceFile->Accept(generator);
+        }
+        else if (Path::GetExtension(sourceFile->SourceFilePath()) == ".parser")
+        {
+            HtmlParserFileSourceGenerator generator(projectName, inputLines, numDigits, styleDirName, styleFileName);
+            sourceFile->Accept(generator);
+        }
+        else
+        {
+            HtmlSourceCodeGenerator generator(projectName, inputLines, numDigits, styleDirName, styleFileName, symbolTable, inlineCodeLimit, inlineCodeMap, contentFilePathResolver);
+            sourceFile->Accept(generator);
+            generator.WriteDocument();
+        }
         upToDate = false;
         if (verbose)
         {

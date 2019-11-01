@@ -5,6 +5,7 @@
     <documentation file="docs.xml"/>
     <include path="../.."/>
     <imports>
+      <import project="../../soulng/parser"/>
       <import project="../ast"/>
       <import project="../lexer"/>
       <import project="../parser"/>
@@ -17,16 +18,10 @@
     <file exclude="PPClassMap.hpp"/>
     <file exclude="PPKeywords.cpp"/>
     <file exclude="PPKeywords.hpp"/>
-    <file exclude="PPLexer.cpp"/>
-    <file exclude="PPLexer.hpp"/>
-    <file exclude="PPParser.cpp"/>
-    <file exclude="PPParser.hpp"/>
     <file exclude="PPTokens.cpp"/>
     <file exclude="PPTokens.hpp"/>
     <file exclude="TextClassMap.cpp"/>
     <file exclude="TextClassMap.hpp"/>
-    <file exclude="TextLexer.cpp"/>
-    <file exclude="TextLexer.hpp"/>
     <file exclude="TextTokens.cpp"/>
     <file exclude="TextTokens.hpp"/>
   </filter>

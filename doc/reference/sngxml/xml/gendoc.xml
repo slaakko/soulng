@@ -7,10 +7,7 @@
     <imports>
       <import project="../../soulng/util"/>
       <import project="../../soulng/lexer"/>
+      <import project="../../soulng/parser"/>
     </imports>
   </project>
-  <filter>
-    <file exclude="XmlParser.cpp"/>
-    <file exclude="XmlParser.hpp"/>
-  </filter>
 </gendoc>

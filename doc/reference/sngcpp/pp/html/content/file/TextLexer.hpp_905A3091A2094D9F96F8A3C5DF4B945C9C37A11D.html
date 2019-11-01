@@ -1,0 +1,46 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="pp">#ifndef&nbsp;TextLexer_HPP</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="pp">#define&nbsp;TextLexer_HPP</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;this&nbsp;file&nbsp;has&nbsp;been&nbsp;automatically&nbsp;generated&nbsp;from&nbsp;'D:/work/soulng-project/sngcpp/pp/TextLexer.lexer'&nbsp;using&nbsp;soulng&nbsp;lexer&nbsp;generator&nbsp;slg&nbsp;version&nbsp;1.2.0</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/pp/PP.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Lexer.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_TextLexer_78408CE770C817375F6E051967A0C3711C6D4635.html">TextLexer</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="type">Lexer</span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_TextLexer_78408CE770C817375F6E051967A0C3711C6D4635.html#constructor_TextLexer_24C9768AFFC78F7CAB9E519585671674F2B55166">TextLexer</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">content_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="kw">int</span>&nbsp;<span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_TextLexer_78408CE770C817375F6E051967A0C3711C6D4635.html#constructor_TextLexer_5B759FE725C617B8E6CA831A8E3D97453405759D">TextLexer</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="kw">char32_t</span><span class="other">*</span>&nbsp;<span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="kw">char32_t</span><span class="other">*</span>&nbsp;<span class="identifier">end_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="kw">int</span>&nbsp;<span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_TextLexer_78408CE770C817375F6E051967A0C3711C6D4635.html#function_NextState_50A423D6E6B0F56E0DE59D996955E62EC392043F">NextState</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">state</span><span class="other">,&nbsp;</span><span class="kw">char32_t</span>&nbsp;<span class="identifier">c</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">pp</span><span class="other">::</span><a href="../struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a><span class="other">*</span>&nbsp;<span class="identifier">pp</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_TextLexer_78408CE770C817375F6E051967A0C3711C6D4635.html#function_GetTokenId_BBFD2A8FAB5D4B6347A6A36B76C9F4A7F44AE266">GetTokenId</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="pp">#endif</span></span>
+  <br/>
+ </body>
+</html>

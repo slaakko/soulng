@@ -1,5 +1,8 @@
 <symbolTable>
  <namespace access="public" id="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709" name="">
+  <projects>
+   <project name="lexer"/>
+  </projects>
   <namespaces>
    <namespace access="public" id="namespace_sngcpp_9CB097B342D50856E701109AC85E92790C82B6DB" name="sngcpp">
     <projects>
@@ -5615,9 +5618,122 @@
     </namespaces>
    </namespace>
   </namespaces>
+  <classes>
+   <class access="public" definitionFile="CppLexer.hpp" definitionFileId="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html" definitionLine="9" id="class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C" key="class" name="CppLexer" project="lexer">
+    <baseClasses>
+     <baseClass baseClassId="type_75B3A28C791BF2C7E5C3BC60E0421BDF87014048"/>
+    </baseClasses>
+    <constructors>
+     <constructor access="public" declarationFile="CppLexer.hpp" declarationFileId="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html" declarationLine="13" definitionFile="CppLexer.cpp" definitionFileId="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html" definitionLine="19" id="constructor_CppLexer_56CA4BC0111E47C00F11B6432ABD7DDAE9F403DF" name="CppLexer">
+      <parameters>
+       <parameter access="public" id="parameter_start__19771DD4441B3C80049BF889FE058396D9AB1ED5" name="start_" type="const.char32_t.ptr.char32_t"/>
+       <parameter access="public" id="parameter_end__D955F812587049B476F0B26AACB8C92B77DD969A" name="end_" type="const.char32_t.ptr.char32_t"/>
+       <parameter access="public" id="parameter_fileName__8CCF84100C094017BAF8F8703A2ED54851BE20C6" name="fileName_" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+       <parameter access="public" id="parameter_fileIndex__F57C7F1B440B9B5F70E0D49A7B3471CBCA4C4E8D" name="fileIndex_" type="int"/>
+      </parameters>
+     </constructor>
+     <constructor access="public" declarationFile="CppLexer.hpp" declarationFileId="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html" declarationLine="12" definitionFile="CppLexer.cpp" definitionFileId="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html" definitionLine="13" id="constructor_CppLexer_21A1C1D8A265B70FB38AAC6C8B9042F497E67AAF" name="CppLexer">
+      <parameters>
+       <parameter access="public" id="parameter_content__9EC9802CE1068F663C1130A9E8D25F879CBCA972" name="content_" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+       <parameter access="public" id="parameter_fileName__8792E4C63850CC533C761925C56A2F57FDA24BDA" name="fileName_" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+       <parameter access="public" id="parameter_fileIndex__5B3B8D304B52472D12B23232577DC1B99ED45C32" name="fileIndex_" type="int"/>
+      </parameters>
+     </constructor>
+    </constructors>
+    <functions>
+     <function access="public" declarationFile="CppLexer.hpp" declarationFileId="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html" declarationLine="17" definitionFile="CppLexer.cpp" definitionFileId="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html" definitionLine="21544" id="function_GetTokenId_6567A08872743F77FB260A51B87C19D1A0D55D44" name="GetTokenId" returnType="int">
+      <parameters>
+       <parameter access="public" id="parameter_statementIndex_3FB770C80482B69C7C357AE1EB24390F5C24306E" name="statementIndex" type="int"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="CppLexer.hpp" declarationFileId="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html" declarationLine="14" definitionFile="CppLexer.cpp" definitionFileId="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html" definitionLine="25" id="function_NextState_F0C84F6CFFC98E2B0D48A2C2C8867FF1FAFA93EC" name="NextState" returnType="int" specifiers="override">
+      <parameters>
+       <parameter access="public" id="parameter_state_20E2063DDE94B0DD82350A0CA1154614AFBC34B2" name="state" type="int"/>
+       <parameter access="public" id="parameter_c_56E3EDDB878C7D92D05E2C082130D4C2D7A0D2AE" name="c" type="char32_t"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetTokenId_8994CBB934B3DAA0C1A56119C87AB9EC8A205B83"/>
+      </calls>
+     </function>
+    </functions>
+    <variables>
+     <variable access="public" id="variable_langleCount_588A92B81BC2E3D5605CEC2E145C6D70C264A515" name="langleCount" type="int"/>
+    </variables>
+   </class>
+   <class access="public" definitionFile="CppTokenLexer.hpp" definitionFileId="file/CppTokenLexer.hpp_514AFF5EE47B56C52CE1B065526C363960BD00A0.html" definitionLine="10" id="class_CppTokenLexer_B527CE5C796B81E85AC85B275FE5C096D2AAA6CB" key="class" name="CppTokenLexer" project="lexer">
+    <baseClasses>
+     <baseClass baseClassId="type_75B3A28C791BF2C7E5C3BC60E0421BDF87014048"/>
+    </baseClasses>
+    <constructors>
+     <constructor access="public" declarationFile="CppTokenLexer.hpp" declarationFileId="file/CppTokenLexer.hpp_514AFF5EE47B56C52CE1B065526C363960BD00A0.html" declarationLine="14" definitionFile="CppTokenLexer.cpp" definitionFileId="file/CppTokenLexer.cpp_7E36D0EBBCFEFA1D2D755D677849C5BA45636308.html" definitionLine="19" id="constructor_CppTokenLexer_DB6F489727B7954AC6123BA6BAC12C9B61FF1007" name="CppTokenLexer">
+      <parameters>
+       <parameter access="public" id="parameter_start__30C84CF0B4A6B204B1B9978633A22D6333119080" name="start_" type="const.char32_t.ptr.char32_t"/>
+       <parameter access="public" id="parameter_end__CFC6C88B1974AA50EBE9FC97434C6FE50C5CF6E2" name="end_" type="const.char32_t.ptr.char32_t"/>
+       <parameter access="public" id="parameter_fileName__16C35FE2AAEE4582C94905094B561311AD613206" name="fileName_" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+       <parameter access="public" id="parameter_fileIndex__30B4CEAA805A305C3D2E0209441CDA8F388A9A64" name="fileIndex_" type="int"/>
+      </parameters>
+     </constructor>
+     <constructor access="public" declarationFile="CppTokenLexer.hpp" declarationFileId="file/CppTokenLexer.hpp_514AFF5EE47B56C52CE1B065526C363960BD00A0.html" declarationLine="13" definitionFile="CppTokenLexer.cpp" definitionFileId="file/CppTokenLexer.cpp_7E36D0EBBCFEFA1D2D755D677849C5BA45636308.html" definitionLine="13" id="constructor_CppTokenLexer_5DEF9D33FC9872B803C718BC9E0354E1BEC5753D" name="CppTokenLexer">
+      <parameters>
+       <parameter access="public" id="parameter_content__89700CF54B552247C0AE1D82B25CCA48E85E3563" name="content_" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+       <parameter access="public" id="parameter_fileName__925E380548E3FEF0D2EEB7B7C5BE208DF79B48E0" name="fileName_" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+       <parameter access="public" id="parameter_fileIndex__ADD985B2777A6AE159DDE294AEBEF7878C81713C" name="fileIndex_" type="int"/>
+      </parameters>
+     </constructor>
+    </constructors>
+    <functions>
+     <function access="public" declarationFile="CppTokenLexer.hpp" declarationFileId="file/CppTokenLexer.hpp_514AFF5EE47B56C52CE1B065526C363960BD00A0.html" declarationLine="18" definitionFile="CppTokenLexer.cpp" definitionFileId="file/CppTokenLexer.cpp_7E36D0EBBCFEFA1D2D755D677849C5BA45636308.html" definitionLine="8625" id="function_GetTokenId_8994CBB934B3DAA0C1A56119C87AB9EC8A205B83" name="GetTokenId" returnType="int">
+      <parameters>
+       <parameter access="public" id="parameter_statementIndex_B4DBD91F96A06068898310B554654C93278F9244" name="statementIndex" type="int"/>
+      </parameters>
+      <calledByFunctions>
+       <calledByFunction functionId="function_NextState_F0C84F6CFFC98E2B0D48A2C2C8867FF1FAFA93EC"/>
+       <calledByFunction functionId="function_NextState_B87DFD9F088D277EE648544F87F897D32E9DE2B5"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="CppTokenLexer.hpp" declarationFileId="file/CppTokenLexer.hpp_514AFF5EE47B56C52CE1B065526C363960BD00A0.html" declarationLine="15" definitionFile="CppTokenLexer.cpp" definitionFileId="file/CppTokenLexer.cpp_7E36D0EBBCFEFA1D2D755D677849C5BA45636308.html" definitionLine="25" id="function_NextState_B87DFD9F088D277EE648544F87F897D32E9DE2B5" name="NextState" returnType="int" specifiers="override">
+      <parameters>
+       <parameter access="public" id="parameter_state_AF4974E6B690C8CC7ACFCBAE42A005D996AFAC88" name="state" type="int"/>
+       <parameter access="public" id="parameter_c_E95F1D78A586F0EA785CF080A9B34297A2A19BE8" name="c" type="char32_t"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetTokenId_8994CBB934B3DAA0C1A56119C87AB9EC8A205B83"/>
+      </calls>
+     </function>
+    </functions>
+    <variables>
+     <variable access="public" id="variable_writer_31E7A54CCC93F447C920E432AFA559E79F80CA26" name="writer" type="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.ptr.class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371"/>
+    </variables>
+   </class>
+  </classes>
  </namespace>
  <types>
+  <derivedType access="public" id="ptr.class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
   <derivedType access="public" id="ptr.class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -5633,31 +5749,6 @@
    </derivations>
   </derivedType>
   <derivedType access="public" id="ptr.class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_StringLiteralNode_E59FD9270159D449531083CDA21AEEF7DA5181B3" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -6425,6 +6516,10 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <externalType access="public" id="type_61E61D7ADE06F3D8707A881E12A2BA2C1D9FDC03" name="CppClassMap::GetClass"/>
+  <externalType access="public" id="type_FB334A3438F20CE1708E83E3DC5AAA96B3238F03" name="CppKeywords::GetKeywordMap"/>
+  <externalType access="public" id="type_1EBD7CCAEA10207D4959FEDEE0F897E19460462F" name="CppTokenLexerClassMap::GetClass"/>
+  <externalType access="public" id="type_5718CEE2E468EBE7C8C97C3C526A0339CD57D13F" name="CppTokenLexerKeywords::GetKeywordMap"/>
   <derivedType access="public" id="class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F.lvalueref.class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F" name="CtorInitializerNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_CtorInitializerNode_7445324D86539791E2D9816934E98F4E5D6E342F"/>
@@ -6582,8 +6677,10 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <externalType access="public" id="type_77FE59CAFB8E1452FABB04C50289BDEEE779C493" name="GetKeywordToken"/>
   <externalType access="public" id="type_099034B5F5E66B0961105AB0AFC6A9523A34FEE5" name="GetSha1MessageDigest"/>
   <pseudoType access="public" id="pseudotype_GetSpan" name="GetSpan"/>
+  <pseudoType access="public" id="pseudotype_GetTokenId" name="GetTokenId"/>
   <derivedType access="public" id="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652.lvalueref.class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652" name="GotoStatementNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_GotoStatementNode_EAE07B7FF6164B75BAD09B2E9949D33FEED91652"/>
@@ -6676,6 +6773,7 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <externalType access="public" id="type_25799598A4E8C42A83738D367F796323E13B7B18" name="Lexeme"/>
   <derivedType access="public" id="class_LinkageSpecificationNode_D8A925830B1217F15E8926C048493F535A59AAA5.lvalueref.class_LinkageSpecificationNode_D8A925830B1217F15E8926C048493F535A59AAA5" name="LinkageSpecificationNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_LinkageSpecificationNode_D8A925830B1217F15E8926C048493F535A59AAA5"/>
@@ -6894,6 +6992,7 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_ReleaseChild" name="ReleaseChild"/>
+  <externalType access="public" id="type_D76DE1FD497B77DFFBEE151D14072670CB8CBFA7" name="Retract"/>
   <derivedType access="public" id="class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.lvalueref.class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B" name="ReturnStatementNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B"/>
@@ -6901,6 +7000,7 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_SetChild" name="SetChild"/>
+  <externalType access="public" id="type_45C6315E472204BA5D3220D45F2A5674F6628F08" name="SetKeywordMap"/>
   <pseudoType access="public" id="pseudotype_SetSpanEnd" name="SetSpanEnd"/>
   <pseudoType access="public" id="pseudotype_SetSpanStart" name="SetSpanStart"/>
   <derivedType access="public" id="class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.lvalueref.class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C" name="ShiftExpressionNode&amp;">
@@ -6936,6 +7036,12 @@
   <derivedType access="public" id="class_Solution_F69044BD979C05F62375A80E7FDA8280F8CC4708.ptr.class_Solution_F69044BD979C05F62375A80E7FDA8280F8CC4708" name="Solution*">
    <derivations>
     <derivation kind="base" typeId="class_Solution_F69044BD979C05F62375A80E7FDA8280F8CC4708"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371.ptr.class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371" name="SourceCodeWriter*">
+   <derivations>
+    <derivation kind="base" typeId="class_SourceCodeWriter_A14DA5AF55E270D3DAB9D5A460C46E506F56E371"/>
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
@@ -7129,13 +7235,13 @@
    </derivations>
   </derivedType>
   <simpleType access="public" id="char32_t" name="char32_t"/>
-  <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
+  <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
+  <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
     <derivation kind="operator" str="&amp;"/>

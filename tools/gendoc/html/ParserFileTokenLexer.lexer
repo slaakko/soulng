@@ -1,0 +1,150 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+classmap ParserFileTokenLexerClassMap;
+
+prefix "gendoc/html";
+
+tokens ParserFileTokenLexerTokens
+{
+    (PARSER, "'parser'"), (API, "'api'"), (INCLUDE, "'include'"), (MAIN, "'main'"), (USELEXER, "'uselexer'"), (RULEINFO, "'ruleinfo'"), (EMPTY, "'empty'"), (VAR, "'var'"),
+    (CPPPREFIX, "cpp-prefix"), (HPPPREFIX, "hpp-prefix"), (FILEPATH, "file path"), (PRODUCES, "'::='"), (EXCLAMATION, "'!'"),
+    (AUTO, "'auto'"), (REGISTER, "'register'"), (STATIC, "'static'"), (EXTERN, "'extern'"), (MUTABLE, "'mutable'"),
+    (CHAR, "'char'"), (WCHART, "'wchar_t'"), (BOOL, "'bool'"), (SHORT, "'short'"), (INT, "'int'"), (LONG, "'long'"), (SIGNED, "'signed'"), (UNSIGNED, "'unsigned'"),
+    (FLOAT, "'float'"), (DOUBLE, "'double'"), (VOID, "'void'"),
+    (TYPEDEF, "'typedef'"), (CONST, "'const'"), (VOLATILE, "'volatile'"), (USING, "'using'"), (NAMESPACE, "'namespace'"), (THROW, "'throw'"), (SIZEOF, "'sizeof'"), (OPERATOR, "'operator'"),
+    (DYNAMICCAST, "'dynamic_cast'"), (STATICCAST, "'static_cast'"), (REINTERPRETCAST, "'reinterpret_cast'"), (CONSTCAST, "'const_cast'"), (TYPEID, "'typeid'"), (THIS, "'this'"),
+    (NEW, "'new'"), (DELETE, "'delete'"), (TRUE, "'true'"), (FALSE, "'false'"), (NULLPTR, "'nullptr'"),
+    (CASE, "'case'"), (DEFAULT, "'default'"), (IF, "'if'"), (ELSE, "'else'"), (SWITCH, "'switch'"), (WHILE, "'while'"), (DO, "'do'"), (FOR, "'for'"),
+    (BREAK, "'break'"), (CONTINUE, "'continue'"), (RETURN, "'return'"), (GOTO, "'goto'"), (TRY, "'try'"), (CATCH, "'catch'"),
+    (INTLIT, "integer literal"), (FLOATINGLIT, "floating literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"),
+    (DISJUNCTION, "'||'"), (AMPAMP, "'&&'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"),
+    (BITOR, "'|'"), (BITXOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"),
+    (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (REM, "'%'"), (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (CPL, "'~'"), (DOT, "'.'"), (ARROW, "'->'"), (QUEST, "'?'"),
+    (LPAREN, "'('"), (RPAREN, "')'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (LBRACKET, "'['"), (RBRACKET, "']'"), (LANGLE, "'<'"), (RANGLE, "'>'"), (ELLIPSIS, "'...'"),
+    (COLONCOLON, "'::'"), (COLON, "':'"), (SEMICOLON, "';'"), (HASH, "'#'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"),
+    (PLUSASSIGN, "'+='"), (MINUSASSIGN, "'-='"), (SHIFTLEFTASSIGN, "'<<='"), (SHIFTRIGHTASSIGN, "'>>='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"),
+    (WS, "white space"), (LINECOMMENT, "line comment"), (BLOCKCOMMENT, "block comment"), (KEYWORD, "keyword"), (ID, "identifier"), (NUMBER, "number"), (PP, "pp"), (OTHER, "other")
+}
+
+keywords ParserFileTokenLexerKeywords
+{
+    ("parser", PARSER), ("api", API), ("include", INCLUDE), ("main", MAIN), ("uselexer", USELEXER), ("ruleinfo", RULEINFO), ("empty", EMPTY), ("var", VAR),
+    ("auto", AUTO), ("register", REGISTER), ("static", STATIC), ("extern", EXTERN), ("mutable", MUTABLE),
+    ("char", CHAR), ("wchar_t", WCHART), ("bool", BOOL), ("short", SHORT), ("int", INT), ("long", LONG), ("signed", SIGNED), ("unsigned", UNSIGNED),
+    ("float", FLOAT), ("double", DOUBLE), ("void", VOID),
+    ("typedef", TYPEDEF), ("const", CONST), ("volatile", VOLATILE), ("using", USING), ("namespace", NAMESPACE), ("throw", THROW), ("sizeof", SIZEOF), ("operator", OPERATOR),
+    ("dynamic_cast", DYNAMICCAST), ("static_cast", STATICCAST), ("reinterpret_cast", REINTERPRETCAST), ("const_cast", CONSTCAST), ("typeid", TYPEID), ("this", THIS),
+    ("new", NEW), ("delete", DELETE), ("true", TRUE), ("false", FALSE), ("nullptr", NULLPTR),
+    ("case", CASE), ("default", DEFAULT), ("if", IF), ("else", ELSE), ("switch", SWITCH), ("while", WHILE), ("do", DO), ("for", FOR),
+    ("break", BREAK), ("continue", CONTINUE), ("return", RETURN), ("goto", GOTO), ("try", TRY), ("catch", CATCH)
+}
+
+expressions
+{
+    ws = "[\t ]+";
+    newline = "\r\n|\n|\r";
+    linecomment = "//[^\n\r]*{newline}";
+    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    comment = "{linecomment}|{blockcomment}";
+    separators = "({ws}|{comment})+";
+    id = "{idstart}{idcont}*";
+    decdigit="[0-9]";
+    octaldigit="[0-7]";
+    hexdigit="[0-9a-fA-F]";
+    hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    hex8 = "{hex4}{hex4}";
+    octalliteral = "0{octaldigit}*";
+    decimalliteral = "[1-9]{decdigit}*";
+    hexliteral = "(0x|0X){hexdigit}+";
+    unsignedsuffix = "u|U";
+    longlongsuffix = "ll|LL";
+    longsuffix = "l|L";
+    integersuffix = "{unsignedsuffix}({longlongsuffix}|{longsuffix})?";
+    integerliteral = "({octalliteral}|{decimalliteral}|{hexliteral}){integersuffix}?";
+    fraction = "{decdigit}*\.{decdigit}+|{decdigit}+\.";
+    sign = "\+|-";
+    exponent = "(e|E){sign}?{decdigit}+";
+    floatingsuffix="f|F|l|L";
+    floatingliteral = "({fraction}{exponent}?|{decdigit}+{exponent}){floatingsuffix}?";
+    escape = "\\((x|X){hexdigit}+|(d|D){decdigit}+|{octaldigit}+|u{hex4}|U{hex8}|(a|b|f|n|r|t|v|.))";
+    cchar = "[^'\\\n\r]|{escape}";
+    narrowcharliteral = "'{cchar}+'";
+    universalcharliteral = "(u|U)'{cchar}+'";
+    widecharliteral = "L'{cchar}+'";
+    charliteral = "{narrowcharliteral}|{universalcharliteral}|{widecharliteral}";
+    schar = "[^\"\\\n\r]|{escape}";
+    encodingprefix = "u8|u|U|L";
+    stringliteral = "{encodingprefix}?\"{schar}*\"";
+    filepath = "<[^\n>]*>";
+}
+
+lexer ParserFileTokenLexer
+{
+    "{ws}" { return WS; }
+    "{newline}" {}
+    "{linecomment}" { return LINECOMMENT; }
+    "{blockcomment}" { return BLOCKCOMMENT; }
+    "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return KEYWORD; }
+    "{charliteral}" { return CHARLIT; }
+    "{stringliteral}" { return STRINGLIT; }
+    "{floatingliteral}" { return NUMBER; }
+    "{integerliteral}" { return NUMBER; }
+    "{ws}*#[^\x0\r\n]*" { return PP; }
+    "<[^\n>]*>" { return FILEPATH; }
+    "\[cpp\]" { return PP; }
+    "\[hpp\]" { return PP; }
+    "::=" { return OTHER; }
+    "\|\|" { return OTHER; }
+    "&&" { return OTHER; }
+    "\.\*"{ return OTHER; }
+    "->\*"{ return OTHER; }
+    "\|" { return OTHER; }
+    "^" { return OTHER; }
+    "&" { return OTHER; }
+    "==" { return OTHER; }
+    "!=" { return OTHER; }
+    "<=" { return OTHER; }
+    ">=" { return OTHER; }
+    "<" { return OTHER; }
+    ">" { return OTHER; }
+    "<<"{ return OTHER; }
+    ">>" { return OTHER; }
+    "\+" { return OTHER; }
+    "-" { return OTHER; }
+    "\*" { return OTHER; }
+    "/" { return OTHER; }
+    "%" { return OTHER; }
+    "\+\+" { return OTHER; }
+    "--" { return OTHER; }
+    "!" { return OTHER; }
+    "\?" { return OTHER; }
+    "~" { return OTHER; }
+    "\." { return OTHER; }
+    "->" { return OTHER; }
+    "\[" { return OTHER; }
+    "\]" { return OTHER; }
+    "\(" { return OTHER; }
+    "\)" { return OTHER; }
+    "\{" { return OTHER; }
+    "\}" { return OTHER; }
+    "\.\.\." { return OTHER; }
+    "::" { return OTHER; }
+    ":" { return OTHER; }
+    ";" { return OTHER; }
+    "#" { return OTHER; }
+    "," { return OTHER; }
+    "=" { return OTHER; }
+    "\*=" { return OTHER; }
+    "/=" { return OTHER; }
+    "%=" { return OTHER; }
+    "\+=" { return OTHER; }
+    "-=" { return OTHER; }
+    "<<=" { return OTHER; }
+    ">>=" { return OTHER; }
+    "&=" { return OTHER; }
+    "^=" { return OTHER; }
+    "\|=" { return OTHER; }
+}

@@ -626,6 +626,32 @@ void Project::ReadFilePaths(bool verbose)
                                 }
                             }
                         }
+                        std::unique_ptr<sngxml::xpath::XPathObject> otherFilesResult = sngxml::xpath::Evaluate(U"/Project/ItemGroup/None", vcxprojectDoc.get());
+                        if (otherFilesResult)
+                        {
+                            if (otherFilesResult->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+                            {
+                                sngxml::xpath::XPathNodeSet* otherFileNodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(otherFilesResult.get());
+                                for (int i = 0; i < otherFileNodeSet->Length(); ++i)
+                                {
+                                    sngxml::dom::Node* otherFileNode = (*otherFileNodeSet)[i];
+                                    sngxml::dom::Element* otherFileElement = static_cast<sngxml::dom::Element*>(otherFileNode);
+                                    std::u32string otherFileName = otherFileElement->GetAttribute(U"Include");
+                                    if (!otherFileName.empty())
+                                    {
+                                        File otherFile(otherFileName, GetFullPath(Path::Combine(projectRoot, ToUtf8(otherFileName))));
+                                        if (Path::GetExtension(otherFile.Path()) == ".parser" || Path::GetExtension(otherFile.Path()) == ".lexer")
+                                        {
+                                            filters.Apply(otherFile);
+                                            if (otherFile.Included())
+                                            {
+                                                filePaths.push_back(otherFile);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -735,29 +761,42 @@ bool Project::BuildAst(bool verbose, bool rebuild)
     {
         if (file.Included())
         {
+            std::unique_ptr<sngcpp::ast::SourceFileNode> sourceFile;
+            std::unique_ptr<CppLexer> lexer;
             if (verbose)
             {
                 std::cout << ToUtf8(name) + "> " << file.Path() << std::endl;
             }
-            sngcpp::pp::PP pp(evaluationContext);
-            pp.root = projectRoot;
-            pp.includePath = Split(includePath, ';');
-            pp.projectHeaderFileSet = &headerFiles;
-            pp.Define(sngcpp::pp::ndebug);
-            if (verbose)
+            std::string ext = Path::GetExtension(file.Path());
+            if (ext == ".parser" || ext == ".lexer")
             {
-                pp.verbose = true;
+                std::unique_ptr<std::u32string> content(new std::u32string(ToUtf32(soulng::util::ReadFile(file.Path()))));
+                sourceFile.reset(new sngcpp::ast::SourceFileNode(soulng::lexer::Span(), file.Path(), ToUtf8(file.Name()), name));
+                sourceFile->SetSourceFileIndex(fileIndex);
+                sourceFile->SetText(std::move(*content));
             }
-            Preprocess(file.Path(), &pp);
-            std::unique_ptr<std::u32string> content(new std::u32string(std::move(pp.ctext)));
-            std::unique_ptr<CppLexer> lexer(new CppLexer(content->c_str(), content->c_str() + content->length(), file.Path(), fileIndex));
-            lexer->SetSeparatorChar('\n');
-            std::unique_ptr<sngcpp::ast::SourceFileNode> sourceFile(new sngcpp::ast::SourceFileNode(lexer->GetSpan(), file.Path(), ToUtf8(file.Name()), name));
-            sourceFile->SetSourceFileIndex(fileIndex);
-            SourceFileParser::Parse(*lexer, sourceFile.get());
-            sourceFile->SetHeaderFilePaths(std::move(pp.headerFilePaths));
-            sourceFile->SetText(std::move(*content));
-            sourceFile->ComputeLineStarts();
+            else
+            {
+                sngcpp::pp::PP pp(evaluationContext);
+                pp.root = projectRoot;
+                pp.includePath = Split(includePath, ';');
+                pp.projectHeaderFileSet = &headerFiles;
+                pp.Define(sngcpp::pp::ndebug);
+                if (verbose)
+                {
+                    pp.verbose = true;
+                }
+                Preprocess(file.Path(), &pp);
+                std::unique_ptr<std::u32string> content(new std::u32string(std::move(pp.ctext)));
+                lexer.reset(new CppLexer(content->c_str(), content->c_str() + content->length(), file.Path(), fileIndex));
+                lexer->SetSeparatorChar('\n');
+                sourceFile.reset(new sngcpp::ast::SourceFileNode(lexer->GetSpan(), file.Path(), ToUtf8(file.Name()), name));
+                sourceFile->SetSourceFileIndex(fileIndex);
+                SourceFileParser::Parse(*lexer, sourceFile.get());
+                sourceFile->SetHeaderFilePaths(std::move(pp.headerFilePaths));
+                sourceFile->SetText(std::move(*content));
+                sourceFile->ComputeLineStarts();
+            }
             if (ast)
             {
                 soulng::lexer::Span span = ast->GetSpan();

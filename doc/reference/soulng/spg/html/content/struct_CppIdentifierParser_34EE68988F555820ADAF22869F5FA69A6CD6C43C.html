@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>CppIdentifierParser Struct</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_CppExpressionParser_AF92B49F3EA58EA67375BB6B582FD46E7C796519.html">prev</a>
+         | <a href="struct_CppLiteralParser_3C8F78F4C68DDFD234339E14312A0C32BF068B3B.html">next</a>
+        <hr/>
+        <h1>CppIdentifierParser Struct</h1>
+        <span>
+            Definition at line <a href="file/CppIdentifierParser.hpp_99BF681DABAE56DB6F6547026E2027A4D1F34F94.html#11">11</a>
+             of <a href="file/CppIdentifierParser.hpp_99BF681DABAE56DB6F6547026E2027A4D1F34F94.html">CppIdentifierParser.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../parser/html/content/struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_CppIdentifierParser_34EE68988F555820ADAF22869F5FA69A6CD6C43C.html#function_CppIdentifier_120B1AB0D3FEE139F38FA2D1D7D8E154F90B4B85">CppIdentifier</a>(<a href="./class_ParserFileLexer_2EFD8F611963738B3BCF3870DE2CA8438E781D0A.html">ParserFileLexer</a>&amp; lexer) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../parser/html/content/struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_CppIdentifierParser_34EE68988F555820ADAF22869F5FA69A6CD6C43C.html#function_QualifiedCppId_7411920B981169818237D52433855A888BAA87C6">QualifiedCppId</a>(<a href="./class_ParserFileLexer_2EFD8F611963738B3BCF3870DE2CA8438E781D0A.html">ParserFileLexer</a>&amp; lexer) <span class="kw">static</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CppIdentifier_120B1AB0D3FEE139F38FA2D1D7D8E154F90B4B85">CppIdentifier Member Function</h3>
+        <h4>
+            <a href="./../../../parser/html/content/struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>
+             CppIdentifierParser::CppIdentifier(<a href="./class_ParserFileLexer_2EFD8F611963738B3BCF3870DE2CA8438E781D0A.html">ParserFileLexer</a>
+            &amp; lexer) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CppIdentifierParser.cpp_1E59BD7704A985E0C861914A35AE0553B7AAD425.html#12">12</a>
+             of <a href="file/CppIdentifierParser.cpp_1E59BD7704A985E0C861914A35AE0553B7AAD425.html">CppIdentifierParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CppIdentifierParser.hpp_99BF681DABAE56DB6F6547026E2027A4D1F34F94.html#13">13</a>
+             of <a href="file/CppIdentifierParser.hpp_99BF681DABAE56DB6F6547026E2027A4D1F34F94.html">CppIdentifierParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043">soulng::lexer::Lexer::GetMatch</a>
+            , <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2">soulng::lexer::Lexer::GetPos</a>
+            , <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297">soulng::lexer::Lexer::GetSpan</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_CppDeclarationParser_CF336473388C9F43E5279AA5146A514B11454A04.html#function_NamespaceAliasDefinition_43DA2AA42DEAA69EEDB4CFFF50578A25B03009A8">CppDeclarationParser::NamespaceAliasDefinition</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_QualifiedCppId_7411920B981169818237D52433855A888BAA87C6">QualifiedCppId Member Function</h3>
+        <h4>
+            <a href="./../../../parser/html/content/struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>
+             CppIdentifierParser::QualifiedCppId(<a href="./class_ParserFileLexer_2EFD8F611963738B3BCF3870DE2CA8438E781D0A.html">ParserFileLexer</a>
+            &amp; lexer) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CppIdentifierParser.cpp_1E59BD7704A985E0C861914A35AE0553B7AAD425.html#55">55</a>
+             of <a href="file/CppIdentifierParser.cpp_1E59BD7704A985E0C861914A35AE0553B7AAD425.html">CppIdentifierParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CppIdentifierParser.hpp_99BF681DABAE56DB6F6547026E2027A4D1F34F94.html#14">14</a>
+             of <a href="file/CppIdentifierParser.hpp_99BF681DABAE56DB6F6547026E2027A4D1F34F94.html">CppIdentifierParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043">soulng::lexer::Lexer::GetMatch</a>
+            , <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2">soulng::lexer::Lexer::GetPos</a>
+            , <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297">soulng::lexer::Lexer::GetSpan</a>
+            , <a href="./../../../lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7">soulng::lexer::Lexer::SetPos</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_CppDeclarationParser_CF336473388C9F43E5279AA5146A514B11454A04.html#function_NamespaceAliasDefinition_43DA2AA42DEAA69EEDB4CFFF50578A25B03009A8">CppDeclarationParser::NamespaceAliasDefinition</a>
+            , <a href="./struct_CppDeclarationParser_CF336473388C9F43E5279AA5146A514B11454A04.html#function_TypeName_EA8DD45014792960F4CE4C05E84FEC26F404B4BC">CppDeclarationParser::TypeName</a>
+            , <a href="./struct_CppDeclarationParser_CF336473388C9F43E5279AA5146A514B11454A04.html#function_UsingDeclaration_B3D0F8804E96042BDC3C3E6EE2D4BBE2161AAE13">CppDeclarationParser::UsingDeclaration</a>
+            , <a href="./struct_CppDeclarationParser_CF336473388C9F43E5279AA5146A514B11454A04.html#function_UsingDirective_BADAFD0C01B40DE3A84B9CB2FED6C1FB10A38E69">CppDeclarationParser::UsingDirective</a>
+            , <a href="./struct_CppExpressionParser_AF92B49F3EA58EA67375BB6B582FD46E7C796519.html#function_IdExpression_6A11ECBE4F53A1F818B0630EECC701D143819370">CppExpressionParser::IdExpression</a>
+            , <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_UsingNamespaceDeclaration_01282385DF69EB62406F347B94CE03AB2F8B1F00">ParserFileParser::UsingNamespaceDeclaration</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_CppExpressionParser_AF92B49F3EA58EA67375BB6B582FD46E7C796519.html">prev</a>
+         | <a href="struct_CppLiteralParser_3C8F78F4C68DDFD234339E14312A0C32BF068B3B.html">next</a>
+    </body>
+</html>

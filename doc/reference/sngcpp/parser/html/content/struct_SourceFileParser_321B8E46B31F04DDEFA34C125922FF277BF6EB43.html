@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SourceFileParser Struct</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_SimpleTypeParser_96662C1E27CD9975D3B6BDB48F744675D7B6EAC5.html">prev</a>
+         | <a href="struct_StatementParser_56918EFB3AB4FFC23ED92D2C0F247E4E175CBB60.html">next</a>
+        <hr/>
+        <h1>SourceFileParser Struct</h1>
+        <span>
+            Definition at line <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html#14">14</a>
+             of <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_Declarations_3F3F421EB9EA3B7F6C4A8F354AC0229BF485DE26">Declarations</a>(<a href="./../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a>&amp; lexer, <a href="./class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a>* ctx, <a href="./../../../ast/html/content/class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html">NamespaceNode</a>* ns) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_Parse_DE6CAAA83E131AEC1F9B3FD1EE1D811C62CBA5EC">Parse</a>(<a href="./../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a>&amp; lexer, <a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>* sourceFile) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_SourceFile_DA6FDD473F9EBA227F30B2AC1F7D7612713AF69B">SourceFile</a>(<a href="./../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a>&amp; lexer, <a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>* sourceFile) <span class="kw">static</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Declarations_3F3F421EB9EA3B7F6C4A8F354AC0229BF485DE26">Declarations Member Function</h3>
+        <h4>
+            <a href="./struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>
+             SourceFileParser::Declarations(<a href="./../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a>
+            &amp; lexer, <a href="./class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a>
+            * ctx, <a href="./../../../ast/html/content/class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html">NamespaceNode</a>
+            * ns) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_9D5E864DAD5EACD5AC9C393B8A9B3FCD3EC8CD40.html#97">97</a>
+             of <a href="file/SourceFile.cpp_9D5E864DAD5EACD5AC9C393B8A9B3FCD3EC8CD40.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html#18">18</a>
+             of <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_DeclarationParser_1A0549052FE78755B66EFF3F7BF9275AB72EAFF9.html#function_Declaration_18013103953FA41C4E2B89219D94BCA9FE7652CE">DeclarationParser::Declaration</a>
+            , <a href="./../../../ast/html/content/class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html#function_AddMember_BE4299EE05708B50362F61DABF29B3E3A0072118">sngcpp::ast::NamespaceNode::AddMember</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_DeclarationParser_1A0549052FE78755B66EFF3F7BF9275AB72EAFF9.html#function_NamedNamespaceDefinition_F45E051A77000DFF154C397E469D563AD9DFB089">DeclarationParser::NamedNamespaceDefinition</a>
+            , <a href="./struct_DeclarationParser_1A0549052FE78755B66EFF3F7BF9275AB72EAFF9.html#function_UnnamedNamespaceDefinition_6E6A6BC8349112FE7A8CCCFF3AA5BB9A66CF880D">DeclarationParser::UnnamedNamespaceDefinition</a>
+            , <a href="./struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_SourceFile_DA6FDD473F9EBA227F30B2AC1F7D7612713AF69B">SourceFileParser::SourceFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parse_DE6CAAA83E131AEC1F9B3FD1EE1D811C62CBA5EC">Parse Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             SourceFileParser::Parse(<a href="./../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a>
+            &amp; lexer, <a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>
+            * sourceFile) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_9D5E864DAD5EACD5AC9C393B8A9B3FCD3EC8CD40.html#12">12</a>
+             of <a href="file/SourceFile.cpp_9D5E864DAD5EACD5AC9C393B8A9B3FCD3EC8CD40.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html#16">16</a>
+             of <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_SourceFile_DA6FDD473F9EBA227F30B2AC1F7D7612713AF69B">SourceFileParser::SourceFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SourceFile_DA6FDD473F9EBA227F30B2AC1F7D7612713AF69B">SourceFile Member Function</h3>
+        <h4>
+            <a href="./struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>
+             SourceFileParser::SourceFile(<a href="./../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a>
+            &amp; lexer, <a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html">SourceFileNode</a>
+            * sourceFile) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_9D5E864DAD5EACD5AC9C393B8A9B3FCD3EC8CD40.html#49">49</a>
+             of <a href="file/SourceFile.cpp_9D5E864DAD5EACD5AC9C393B8A9B3FCD3EC8CD40.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html#17">17</a>
+             of <a href="file/SourceFile.hpp_507E1AD02A99012A6E2FDCCA5EF240697DCF3F9E.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_Declarations_3F3F421EB9EA3B7F6C4A8F354AC0229BF485DE26">SourceFileParser::Declarations</a>
+            , <a href="./../../../ast/html/content/class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html#function_GlobalNs_8C513C97261380FDD3979029D248C982CF6BFE8B">sngcpp::ast::SourceFileNode::GlobalNs</a>
+            , <a href="./class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html#function_SetSourceFileNode_4C08F76A4E77398820F29A26BBAAF18C90E2A4A5">sngcpp::cppparser::ParsingContext::SetSourceFileNode</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_SourceFileParser_321B8E46B31F04DDEFA34C125922FF277BF6EB43.html#function_Parse_DE6CAAA83E131AEC1F9B3FD1EE1D811C62CBA5EC">SourceFileParser::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_SimpleTypeParser_96662C1E27CD9975D3B6BDB48F744675D7B6EAC5.html">prev</a>
+         | <a href="struct_StatementParser_56918EFB3AB4FFC23ED92D2C0F247E4E175CBB60.html">next</a>
+    </body>
+</html>

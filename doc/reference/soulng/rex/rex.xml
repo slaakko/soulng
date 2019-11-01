@@ -2,6 +2,7 @@
  <namespace access="public" id="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709" name="">
   <projects>
    <project name="lexer"/>
+   <project name="rex"/>
   </projects>
   <namespaces>
    <namespace access="public" id="namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B" name="soulng">
@@ -77,6 +78,7 @@
        </class>
        <class access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="18" id="class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048" key="class" name="Lexer" project="lexer">
         <derivedClasses>
+         <derivedClass derivedClassId="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
          <derivedClass derivedClassId="class_TrivialLexer_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
         </derivedClasses>
         <constructors>
@@ -113,7 +115,12 @@
            <parameter access="public" id="parameter_token_E1BD5E1BA7EADD5804C40D77080C8978A168AD77" name="token" type="const.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B.lvalueref.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B"/>
           </parameters>
          </function>
-         <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="33" id="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42" name="FileName" returnType="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" specifiers="const"/>
+         <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="33" id="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42" name="FileName" returnType="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" specifiers="const">
+          <calledByFunctions>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+          </calledByFunctions>
+         </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="30" id="function_GetKeywordMap_5F0EDF8EEC093025D03C9123270C9759F10B79E0" name="GetKeywordMap" returnType="class_KeywordMap_7174C66E2F24FF22363CBD99878476E4ACAE0F68.ptr.class_KeywordMap_7174C66E2F24FF22363CBD99878476E4ACAE0F68"/>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="31" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="154" id="function_GetKeywordToken_9803AB3AB12177597A7ADB33E7159FC29236CB66" name="GetKeywordToken" returnType="int" specifiers="const">
           <parameters>
@@ -124,13 +131,38 @@
           <parameters>
            <parameter access="public" id="parameter_span_0BDE8987F56DCC7C39F56C46F963D442542711F0" name="span" type="const.struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E.lvalueref.struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+          </calledByFunctions>
          </function>
-         <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="26" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="47" id="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2" name="GetPos" returnType="type_F6311168933725D3149F768D180F96C9C216469F" specifiers="const"/>
-         <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="34" id="function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297" name="GetSpan" returnType="struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E" specifiers="const"/>
+         <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="26" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="47" id="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2" name="GetPos" returnType="type_F6311168933725D3149F768D180F96C9C216469F" specifiers="const">
+          <calledByFunctions>
+           <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
+           <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+           <calledByFunction functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
+           <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+           <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+          </calledByFunctions>
+         </function>
+         <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="34" id="function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297" name="GetSpan" returnType="struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E" specifiers="const">
+          <calledByFunctions>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+          </calledByFunctions>
+         </function>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="36" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="174" id="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A" name="GetToken" returnType="struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B" specifiers="const">
           <parameters>
            <parameter access="public" id="parameter_pos_E9C8A175047C881B317BDD20C1CC0428EBDB1C90" name="pos" type="type_F6311168933725D3149F768D180F96C9C216469F"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+          </calledByFunctions>
          </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="49" id="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139" name="Log" returnType="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873.ptr.class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873" specifiers="const"/>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="28" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="149" id="function_NextState_770F33FD64D82342B2028F01CB63DB92E6E8D009" name="NextState" returnType="int" specifiers="virtual">
@@ -138,6 +170,9 @@
            <parameter access="public" id="parameter_state_33779855F968CE586CA03637EA6547E1FC4CD259" name="state" type="int"/>
            <parameter access="public" id="parameter_c_B325E738BBD949684693BAE622709DADA6A58B3B" name="c" type="char32_t"/>
           </parameters>
+          <overrides>
+           <override functionId="function_NextState_4A2B77B081FBF5B1247DF0B65ED75A13141F0B3F"/>
+          </overrides>
          </function>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="68" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="59" id="function_NextToken_DADACED38728DF1DE24F6C24CCA3FA3F35611D93" name="NextToken" returnType="void"/>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="47" id="function_Pos_6CE6B49F9DA70C1A93DE45F15B99E8913DD1A36D" name="Pos" returnType="const.char32_t.ptr.char32_t" specifiers="const"/>
@@ -146,7 +181,11 @@
            <parameter access="public" id="parameter_maxLineLength_AB45D131337CDB7ED329D319E1B2987970EF0C80" name="maxLineLength" type="int"/>
           </parameters>
          </function>
-         <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="32" id="function_Retract_DEBB6C8BFF47ABA76B0034408E5FD4B1421A5F98" name="Retract" returnType="void"/>
+         <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="32" id="function_Retract_DEBB6C8BFF47ABA76B0034408E5FD4B1421A5F98" name="Retract" returnType="void">
+          <calledByFunctions>
+           <calledByFunction functionId="function_GetTokenId_926E40F9F5389F90BA20DD7A1361EBDB097FB20C"/>
+          </calledByFunctions>
+         </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="39" id="function_SetCountLines_C21D928AEF40B61FFF84B908920A7728F922877F" name="SetCountLines" returnType="void">
           <parameters>
            <parameter access="public" id="parameter_countLines__0355CB32A91864DF59DEB794101B7D2AB3231597" name="countLines_" type="bool"/>
@@ -171,6 +210,14 @@
           <parameters>
            <parameter access="public" id="parameter_pos_2273324CC91A8CC1DF7C32DD7769208A09542E01" name="pos" type="type_F6311168933725D3149F768D180F96C9C216469F"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+           <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+          </calledByFunctions>
          </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="51" id="function_SetSeparatorChar_21E2FF1904A06180AEF24F9402504A64CB96B039" name="SetSeparatorChar" returnType="void">
           <parameters>
@@ -188,6 +235,12 @@
            <parameter access="public" id="parameter_pos_C0D3DF9E61F0EC1B38CFAF6D48E15BD55119F0D3" name="pos" type="type_F6311168933725D3149F768D180F96C9C216469F"/>
            <parameter access="public" id="parameter_name_CC37E8052E3894D26204594F37B650C201D6A6C5" name="name" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
+           <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+          </calledByFunctions>
          </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="24" id="function_operator_mul_D41D7EF931A264733D61C2008602379A16F8D122" name="operator*" returnType="int" specifiers="const"/>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="25" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="31" id="function_operator_inc_1A3300E74F7216CB158486A35C21A5F1EA16594D" name="operator++" returnType="void"/>
@@ -562,6 +615,9 @@
           <parameters>
            <parameter access="public" id="parameter_symbol_DA4B814E226EFF224C78C093FB9C0F2A85625E5E" name="symbol" type="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+          </calledByFunctions>
          </function>
          <function access="public" declarationFile="Symbol.hpp" declarationFileId="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html" declarationLine="66" definitionFile="Symbol.cpp" definitionFileId="file/Symbol.cpp_2952EC5A257347FAB0B6C82A489B0F6BE884A4E2.html" definitionLine="41" id="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF" name="Match" returnType="bool" specifiers="override">
           <parameters>
@@ -571,7 +627,11 @@
            <overriddenFunction functionId="function_Match_1AE201DEDEF5F1D2AC6D097941F5C1E6325263C3"/>
           </overriddenFunctions>
          </function>
-         <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html" definitionLine="67" id="function_SetInverse_C045610C4FF1F70FDD5672D6F12AFAF4CB7ABE57" name="SetInverse" returnType="void"/>
+         <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html" definitionLine="67" id="function_SetInverse_C045610C4FF1F70FDD5672D6F12AFAF4CB7ABE57" name="SetInverse" returnType="void">
+          <calledByFunctions>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+          </calledByFunctions>
+         </function>
         </functions>
         <variables>
          <variable access="private" id="variable_inverse_DF9E764965F928B00B662E57368B36E84640DF6A" name="inverse" type="bool"/>
@@ -583,19 +643,31 @@
          <constructor access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="18" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="12" id="constructor_Context_DFEE6FE4EA61F3BAF75BFD63C6952766FE288BDC" name="Context"/>
         </constructors>
         <functions>
-         <function access="public" definitionFile="Context.hpp" definitionFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" definitionLine="23" id="function_MakeAny_343AB66EE153AC2E50C406CEEBA00CA740C7B756" name="MakeAny" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4"/>
+         <function access="public" definitionFile="Context.hpp" definitionFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" definitionLine="23" id="function_MakeAny_343AB66EE153AC2E50C406CEEBA00CA740C7B756" name="MakeAny" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4">
+          <calledByFunctions>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+          </calledByFunctions>
+         </function>
          <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="21" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="35" id="function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669" name="MakeChar" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4">
           <parameters>
            <parameter access="public" id="parameter_c_FCEE47E2FF2BB7A74BAD0B09700FF8F373C6F254" name="c" type="char32_t"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+          </calledByFunctions>
          </function>
-         <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="25" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="68" id="function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79" name="MakeClass" returnType="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.ptr.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463"/>
+         <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="25" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="68" id="function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79" name="MakeClass" returnType="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.ptr.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463">
+          <calledByFunctions>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+          </calledByFunctions>
+         </function>
          <function access="public" definitionFile="Context.hpp" definitionFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" definitionLine="24" id="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED" name="MakeEpsilon" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4">
           <calledByFunctions>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="20" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="28" id="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021" name="MakeNfaState" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3">
@@ -611,6 +683,9 @@
            <parameter access="public" id="parameter_start_70748F28149EA58D003880D3897E06A665B6BFBA" name="start" type="char32_t"/>
            <parameter access="public" id="parameter_end_2ACC65B30C9BCAD46B9F3B46B704A1A2608D1B43" name="end" type="char32_t"/>
           </parameters>
+          <calledByFunctions>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+          </calledByFunctions>
          </function>
         </functions>
         <variables>
@@ -635,11 +710,11 @@
         <functions>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="48" id="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88" name="End" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="49" id="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E" name="SetEnd" returnType="void">
@@ -647,8 +722,8 @@
            <parameter access="public" id="parameter_end__C62DB72C6BD67E703A65FE736558FABA32AEEDBA" name="end_" type="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
@@ -666,11 +741,11 @@
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="46" id="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1" name="Start" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Match_702E71A3715413D6F47C8F847383155C298FC89C"/>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -712,9 +787,9 @@
            <parameter access="public" id="parameter_edge_7AAD0670FA9A278796E29557DD73D4955E126238" name="edge" type="const.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.lvalueref.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB"/>
           </parameters>
           <calledByFunctions>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
@@ -742,8 +817,8 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
@@ -814,10 +889,10 @@
            <parameter access="public" id="parameter_c_17EBE652AFE12ABC1CB29852E190AC8AF963A75C" name="c" type="char32_t"/>
           </parameters>
           <overrides>
-           <override functionId="function_Match_966EB2B435288E763840A7BE98C0DD7AF7EFDB64"/>
-           <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
-           <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
            <override functionId="function_Match_1AE8F7F6A34CA646D0EF5F7041B467CC3F1FC477"/>
+           <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
+           <override functionId="function_Match_966EB2B435288E763840A7BE98C0DD7AF7EFDB64"/>
+           <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
           </overrides>
           <calledByFunctions>
            <calledByFunction functionId="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD"/>
@@ -834,15 +909,18 @@
          <parameter access="public" id="parameter_right_520768123F62A605D382E937481949E79CDD2850" name="right" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
         </calls>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+        </calledByFunctions>
        </function>
        <function access="public" declarationFile="Nfa.hpp" declarationFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" declarationLine="56" definitionFile="Nfa.cpp" definitionFileId="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html" definitionLine="60" id="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9" name="Cat" project="rex" returnType="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B">
         <parameters>
@@ -851,12 +929,15 @@
         </parameters>
         <calls>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
+         <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3"/>
          <call functionId="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8"/>
-         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
         </calls>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
+        </calledByFunctions>
        </function>
        <function access="public" declarationFile="Match.hpp" declarationFileId="file/Match.hpp_43709F9F744D799A6BE765167F7B8C757FAFD638.html" declarationLine="20" definitionFile="Match.cpp" definitionFileId="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html" definitionLine="47" id="function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4" name="CompileFilePattern" project="rex" returnType="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B">
         <parameters>
@@ -873,6 +954,9 @@
          <parameter access="public" id="parameter_context_CED4695270E5BA2BFC5DC60885C0688A773BBC29" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.lvalueref.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
          <parameter access="public" id="parameter_regularExpressionPattern_ABBC8EDEAAC3552D03F5429B73F0CAA98488111E" name="regularExpressionPattern" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
+        <calls>
+         <call functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
+        </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_PatternMatch_84362750029E4DDFD3455FBEA1B1582346BAE2F7"/>
          <calledByFunction functionId="function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4"/>
@@ -917,15 +1001,18 @@
          <parameter access="public" id="parameter_nfa_1F3151B422C327C1BF88C93C58DB640D022CF94E" name="nfa" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
          <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
-         <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
+         <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
+         <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
         </calls>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+        </calledByFunctions>
        </function>
        <function access="public" declarationFile="TokenValueParsers.hpp" declarationFileId="file/TokenValueParsers.hpp_5FA14D99CC5A7DFF966E6DE7CFAD1165F1D43D19.html" declarationLine="13" definitionFile="TokenValueParsers.cpp" definitionFileId="file/TokenValueParsers.cpp_A1E18A060F39CBDEBA4FDA08688D3CD8E4479AE0.html" definitionLine="110" id="function_MakeEscapeValue_77A9FB5AA7F76CB50EC6C7CFF8B68367C5CAD7F9" name="MakeEscapeValue" project="rex" returnType="char32_t">
         <parameters>
@@ -937,6 +1024,10 @@
          <call functionId="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715"/>
          <call functionId="function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB"/>
         </calls>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+         <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+        </calledByFunctions>
        </function>
        <function access="public" declarationFile="Nfa.hpp" declarationFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" declarationLine="55" definitionFile="Nfa.cpp" definitionFileId="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html" definitionLine="51" id="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA" name="MakeNfa" project="rex" returnType="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B">
         <parameters>
@@ -954,8 +1045,8 @@
          <parameter access="public" id="parameter_filePattern_2C56980BC4C2A968F7498E81AC2E762A0A4F3BD8" name="filePattern" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calledByFunctions>
-         <calledByFunction functionId="function_FilePatternMatch_85F093E022AC279FCD29B058D51F9AFA89677C4D"/>
          <calledByFunction functionId="function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4"/>
+         <calledByFunction functionId="function_FilePatternMatch_85F093E022AC279FCD29B058D51F9AFA89677C4D"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="Algorithm.hpp" declarationFileId="file/Algorithm.hpp_D90B6B6E6D20EC107F6748331A5A9953964A91C4.html" declarationLine="20" definitionFile="Algorithm.cpp" definitionFileId="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html" definitionLine="60" id="function_Match_702E71A3715413D6F47C8F847383155C298FC89C" name="Match" project="rex" returnType="bool">
@@ -964,11 +1055,11 @@
          <parameter access="public" id="parameter_s_C0EEFB90F4E544DF9D623E2E936172423DE1C266" name="s" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
-         <call functionId="function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7"/>
-         <call functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
+         <call functionId="function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07"/>
          <call functionId="function_Accept_7284EF031E3F3625014927F389405AE12B78A9D2"/>
+         <call functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_PatternMatch_8BA05B05BD0D98E4B0A3B6DC3E1CAB56BFB060D2"/>
@@ -994,9 +1085,12 @@
         <calls>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
         </calls>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+        </calledByFunctions>
        </function>
        <function access="public" definitionFile="TokenValueParsers.cpp" definitionFileId="file/TokenValueParsers.cpp_A1E18A060F39CBDEBA4FDA08688D3CD8E4479AE0.html" definitionLine="44" id="function_ParseEscape_5B5771204749D63B617C46DA48EA134B66D2DB9C" name="ParseEscape" project="rex" returnType="char32_t">
         <parameters>
@@ -1059,15 +1153,18 @@
          <parameter access="public" id="parameter_nfa_EB997CF012ECA6D36BCA162EF6F47932B923727A" name="nfa" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
          <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
+         <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
         </calls>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+        </calledByFunctions>
        </function>
        <function access="public" definitionFile="Symbol.hpp" definitionFileId="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html" definitionLine="55" id="function_operator_less_0E2F8D6E4D03D4CD71DB7C2727FAA9ACF7D265F2" name="operator&lt;" project="rex" returnType="bool" specifiers="inline">
         <parameters>
@@ -2633,6 +2730,11 @@
         <parameters>
          <parameter access="public" id="parameter_utf8Str_9B86F53184397987A1D3E3C7E25E0AEEDA3B917C" name="utf8Str" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
         </parameters>
+        <calledByFunctions>
+         <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
+         <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+         <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+        </calledByFunctions>
        </function>
        <function access="public" declarationFile="Unicode.hpp" declarationFileId="file/Unicode.hpp_2DDF56B5423B3FB38075918A5582A2CDE06EA177.html" declarationLine="43" definitionFile="Unicode.cpp" definitionFileId="file/Unicode.cpp_618F42EDFE680DFCBA17ED98FDE23D92D11DC58D.html" definitionLine="360" id="function_ToUtf32_0A354CEBD6ED12CEFA36E98A5A6AC5999EE955E3" name="ToUtf32" project="util" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89">
         <parameters>
@@ -4679,6 +4781,212 @@
    </namespace>
   </namespaces>
   <classes>
+   <class access="public" definitionFile="RexLexer.hpp" definitionFileId="file/RexLexer.hpp_3C082527A9C968D76123C5724CDC4EC1CBA9B88A.html" definitionLine="9" id="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F" key="class" name="RexLexer" project="rex">
+    <baseClasses>
+     <baseClass baseClassId="class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048"/>
+    </baseClasses>
+    <constructors>
+     <constructor access="public" declarationFile="RexLexer.hpp" declarationFileId="file/RexLexer.hpp_3C082527A9C968D76123C5724CDC4EC1CBA9B88A.html" declarationLine="13" definitionFile="RexLexer.cpp" definitionFileId="file/RexLexer.cpp_133D2EEE59956EE2B333BD1F840D0377A5C21C9E.html" definitionLine="16" id="constructor_RexLexer_AFF21C171F7386C5257615FE39C4657C86D6509F" name="RexLexer">
+      <parameters>
+       <parameter access="public" id="parameter_start__B5F8E455EA511CF8136B73AF75EEA50838779031" name="start_" type="const.char32_t.ptr.char32_t"/>
+       <parameter access="public" id="parameter_end__FA58534BD95234BAF41B567FFF094391A01E875B" name="end_" type="const.char32_t.ptr.char32_t"/>
+       <parameter access="public" id="parameter_fileName__1B67607122F08D9222D5F6ECA580FAED3D20C4E2" name="fileName_" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+       <parameter access="public" id="parameter_fileIndex__D1ADFB294EE71EB3DE727E5878824E9E253D2EA5" name="fileIndex_" type="int"/>
+      </parameters>
+     </constructor>
+     <constructor access="public" declarationFile="RexLexer.hpp" declarationFileId="file/RexLexer.hpp_3C082527A9C968D76123C5724CDC4EC1CBA9B88A.html" declarationLine="12" definitionFile="RexLexer.cpp" definitionFileId="file/RexLexer.cpp_133D2EEE59956EE2B333BD1F840D0377A5C21C9E.html" definitionLine="12" id="constructor_RexLexer_D9865EE78F09C4858AB09FEAACA510BDAB08732E" name="RexLexer">
+      <parameters>
+       <parameter access="public" id="parameter_content__B27C6FBE49DAFCDA6ADC221D1084FC7B894B718E" name="content_" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+       <parameter access="public" id="parameter_fileName__28D7D36E05138C0A6E440A62064528282F2A9E01" name="fileName_" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+       <parameter access="public" id="parameter_fileIndex__AE5D920045FFEF510E0D24372FE3D67D2C3E3F55" name="fileIndex_" type="int"/>
+      </parameters>
+     </constructor>
+    </constructors>
+    <functions>
+     <function access="public" declarationFile="RexLexer.hpp" declarationFileId="file/RexLexer.hpp_3C082527A9C968D76123C5724CDC4EC1CBA9B88A.html" declarationLine="16" definitionFile="RexLexer.cpp" definitionFileId="file/RexLexer.cpp_133D2EEE59956EE2B333BD1F840D0377A5C21C9E.html" definitionLine="3004" id="function_GetTokenId_926E40F9F5389F90BA20DD7A1361EBDB097FB20C" name="GetTokenId" returnType="int">
+      <parameters>
+       <parameter access="public" id="parameter_statementIndex_7A60AFDE58D28301E71C20068D776DEA2FD60518" name="statementIndex" type="int"/>
+      </parameters>
+      <calls>
+       <call functionId="function_Retract_DEBB6C8BFF47ABA76B0034408E5FD4B1421A5F98"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_NextState_4A2B77B081FBF5B1247DF0B65ED75A13141F0B3F"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexLexer.hpp" declarationFileId="file/RexLexer.hpp_3C082527A9C968D76123C5724CDC4EC1CBA9B88A.html" declarationLine="14" definitionFile="RexLexer.cpp" definitionFileId="file/RexLexer.cpp_133D2EEE59956EE2B333BD1F840D0377A5C21C9E.html" definitionLine="20" id="function_NextState_4A2B77B081FBF5B1247DF0B65ED75A13141F0B3F" name="NextState" returnType="int" specifiers="override">
+      <parameters>
+       <parameter access="public" id="parameter_state_D0ECD850E9D84C790B01E0A95DB8AF9D5FB03D0D" name="state" type="int"/>
+       <parameter access="public" id="parameter_c_C92E72D6BB1B97C9D91F79BAB21BF9C1237758AA" name="c" type="char32_t"/>
+      </parameters>
+      <overriddenFunctions>
+       <overriddenFunction functionId="function_NextState_770F33FD64D82342B2028F01CB63DB92E6E8D009"/>
+      </overriddenFunctions>
+      <calls>
+       <call functionId="function_GetTokenId_926E40F9F5389F90BA20DD7A1361EBDB097FB20C"/>
+      </calls>
+     </function>
+    </functions>
+   </class>
+   <class access="public" definitionFile="RexParser.hpp" definitionFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" definitionLine="13" id="struct_RexParser_920BA40BC6346732491B87D148CBD5E831C27DE9" key="struct" name="RexParser" project="rex">
+    <functions>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="17" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="91" id="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4" name="Alternative" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_B6A832E0ACEF22636B0C16AB7C4712BF9C778ACA" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_112A50706CAFA85AE4847AE382B825D22AD3EFC8" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+       <call functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
+       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
+       <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="18" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="230" id="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856" name="Catenation" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_80819DE00F41999308080CCEE611BECA73C1C1D0" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_52F4E0FDF212BBA25E9E03BDD39677AC4CD9BCF2" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="23" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="1134" id="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4" name="Char" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_0916C268387C79FC33534C2F4587443D475D1977" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
+       <call functionId="function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297"/>
+       <call functionId="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42"/>
+       <call functionId="function_MakeEscapeValue_77A9FB5AA7F76CB50EC6C7CFF8B68367C5CAD7F9"/>
+       <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="21" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="815" id="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909" name="Class" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_58EE265B4600AFE169AF97DB9AA4D2D05F26030C" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_40F04C36DF6D9B1A701E9EB67EB270428DF796D0" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79"/>
+       <call functionId="function_AddSymbol_24CA32D54221D9F85095A75402AED7CCA8EAB79F"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_SetInverse_C045610C4FF1F70FDD5672D6F12AFAF4CB7ABE57"/>
+       <call functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+       <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
+       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="15" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="13" id="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA" name="Parse" returnType="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_2618C27B0F9A48818F1EA1A7C8AEC1ADFA7697D3" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_B5B4E88DC119CAADD3F666C0FA02E8091C7DA369" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
+       <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
+       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_CompileRegularExpressionPattern_D94D23880380B40547C48D0D7FF768924D5CC13C"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="20" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="503" id="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259" name="Primary" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_52DC3DE1E31C44CF954A5300EC722708609D98F8" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_E6250D4A04ACB2492E33B8C81A8AD3B8BC149CBA" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+       <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
+       <call functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+       <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
+       <call functionId="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_MakeEscapeValue_77A9FB5AA7F76CB50EC6C7CFF8B68367C5CAD7F9"/>
+       <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
+       <call functionId="function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669"/>
+       <call functionId="function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297"/>
+       <call functionId="function_MakeAny_343AB66EE153AC2E50C406CEEBA00CA740C7B756"/>
+       <call functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="22" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="1010" id="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B" name="Range" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_CEE690450B0016CCABC8DE21E402DD472EC5AA04" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_F586A259A233F2F1E4E13000671891A71AAE87B8" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_MakeRange_C8B174D1BCDE425D9181331D3D8100C183918A10"/>
+       <call functionId="function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="16" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="52" id="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB" name="RegularExpression" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_474B952AB5582BDB5F24190D3EDDDE2F61F416E4" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_607E79FBD60F1BE9ADFA619CE5AB7D720E168B4C" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
+      </calledByFunctions>
+     </function>
+     <function access="public" declarationFile="RexParser.hpp" declarationFileId="file/RexParser.hpp_48C1469319A35DF6F2400D7DFECAC2B3B990AC9E.html" declarationLine="19" definitionFile="RexParser.cpp" definitionFileId="file/RexParser.cpp_ECD7BBC73B64DE383F0AA878C3BCBC60F736DCA3.html" definitionLine="336" id="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7" name="Repetition" returnType="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_2C71DC56DE4EC5170AFF962CD8598928E91E981F" name="lexer" type="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+       <parameter access="public" id="parameter_context_9E1B7E80B2E885147BC208F578CADE021E59DFDE" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+      </parameters>
+      <calls>
+       <call functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
+       <call functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+       <call functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+      </calls>
+      <calledByFunctions>
+       <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
+      </calledByFunctions>
+     </function>
+    </functions>
+   </class>
    <class access="public" definitionFile="TrivialLexer.hpp" definitionFileId="file/TrivialLexer.hpp_387CDFF5C8FCA6599596227992472542380E57FA.html" definitionLine="10" id="class_TrivialLexer_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098" key="class" name="TrivialLexer" project="lexer">
     <baseClasses>
      <baseClass baseClassId="class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048"/>
@@ -4715,21 +5023,26 @@
     <parameters>
      <parameter access="public" id="parameter_tokenId_91CB929909762F8E1DCEB3EF0634FE3D6E4BBBC1" name="tokenId" type="int"/>
     </parameters>
+    <calledByFunctions>
+     <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
+     <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+     <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+    </calledByFunctions>
    </function>
   </functions>
  </namespace>
  <types>
+  <derivedType access="public" id="ptr.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
   <derivedType access="public" id="ptr.class_NumericTypeTable_D5EE3A03A6A24A24CB827FF59395C8E7460FA3CC" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_AliasTypeTable_8D0E421B9703E34FB486A0A21E1BC13AF234C1DA" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_ScriptTable_CEACACA62B361EC2DD760E62A87A2C7BD5A15BE7" name="*">
+  <derivedType access="public" id="ptr.class_BidiPairedBracketTypeTable_B71E35F9847D8586E9ADFDE8654B5DA96D9FC3B7" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -4739,7 +5052,12 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_CharacterTable_0575B7998287EB1F6036A6BF7C3A7F4BFEDA72DE" name="*">
+  <derivedType access="public" id="ptr.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_AliasTypeTable_8D0E421B9703E34FB486A0A21E1BC13AF234C1DA" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -4749,7 +5067,7 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_BidiClassTable_B3DC29AB98A72EF630DBDCFC8D3B5521CC1A80D3" name="*">
+  <derivedType access="public" id="ptr.class_JsonValue_86C47A0347F1EFBF30D99D6A8B06C7D9311CBAA2" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -4759,12 +5077,7 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_JsonValue_86C47A0347F1EFBF30D99D6A8B06C7D9311CBAA2" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_BlockTable_CB456427929FAFDCC93BCA55E9B541D4DB84EFC8" name="*">
+  <derivedType access="public" id="ptr.class_CharacterTable_0575B7998287EB1F6036A6BF7C3A7F4BFEDA72DE" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -4774,7 +5087,27 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_BidiPairedBracketTypeTable_B71E35F9847D8586E9ADFDE8654B5DA96D9FC3B7" name="*">
+  <derivedType access="public" id="ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_ScriptTable_CEACACA62B361EC2DD760E62A87A2C7BD5A15BE7" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_BidiClassTable_B3DC29AB98A72EF630DBDCFC8D3B5521CC1A80D3" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_BlockTable_CB456427929FAFDCC93BCA55E9B541D4DB84EFC8" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -4796,6 +5129,8 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Alt" name="Alt"/>
+  <pseudoType access="public" id="pseudotype_Alternative" name="Alternative"/>
   <externalType access="public" id="type_4141ADD45A26459C4BD39909388482311F6FE29A" name="Assert"/>
   <derivedType access="public" id="class_BidiClassTable_B3DC29AB98A72EF630DBDCFC8D3B5521CC1A80D3.lvalueref.class_BidiClassTable_B3DC29AB98A72EF630DBDCFC8D3B5521CC1A80D3" name="BidiClassTable&amp;">
    <derivations>
@@ -4816,15 +5151,15 @@
    </derivations>
   </derivedType>
   <externalType access="public" id="type_8B1D78BF19D4BC9BA64A7B22DEA7AD04EBF9AA6A" name="BinaryReader"/>
-  <derivedType access="public" id="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045.lvalueref.class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045" name="BinaryReader&amp;">
-   <derivations>
-    <derivation kind="base" typeId="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045"/>
-    <derivation kind="operator" str="&amp;"/>
-   </derivations>
-  </derivedType>
   <derivedType access="public" id="type_8B1D78BF19D4BC9BA64A7B22DEA7AD04EBF9AA6A.lvalueref.type_8B1D78BF19D4BC9BA64A7B22DEA7AD04EBF9AA6A" name="BinaryReader&amp;">
    <derivations>
     <derivation kind="base" typeId="type_8B1D78BF19D4BC9BA64A7B22DEA7AD04EBF9AA6A"/>
+    <derivation kind="operator" str="&amp;"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045.lvalueref.class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045" name="BinaryReader&amp;">
+   <derivations>
+    <derivation kind="base" typeId="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045"/>
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
@@ -4849,6 +5184,9 @@
   </derivedType>
   <pseudoType access="public" id="pseudotype_BufferFull" name="BufferFull"/>
   <pseudoType access="public" id="pseudotype_BufferReset" name="BufferReset"/>
+  <pseudoType access="public" id="pseudotype_Cat" name="Cat"/>
+  <pseudoType access="public" id="pseudotype_Catenation" name="Catenation"/>
+  <pseudoType access="public" id="pseudotype_Char" name="Char"/>
   <pseudoType access="public" id="pseudotype_CharStr" name="CharStr"/>
   <derivedType access="public" id="class_CharacterInfo_7AEF2FB737E898CE0D5294568803BC8B6A89E723.lvalueref.class_CharacterInfo_7AEF2FB737E898CE0D5294568803BC8B6A89E723" name="CharacterInfo&amp;">
    <derivations>
@@ -4875,6 +5213,7 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_CheckEof" name="CheckEof"/>
+  <pseudoType access="public" id="pseudotype_Class" name="Class"/>
   <derivedType access="public" id="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.ptr.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463" name="Class*">
    <derivations>
     <derivation kind="base" typeId="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463"/>
@@ -4892,6 +5231,12 @@
    <derivations>
     <derivation kind="base" typeId="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
     <derivation kind="operator" str="&amp;"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4" name="Context*">
+   <derivations>
+    <derivation kind="base" typeId="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
+    <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_Done" name="Done"/>
@@ -4922,8 +5267,8 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <pseudoType access="public" id="pseudotype_FlushBuffer" name="FlushBuffer"/>
   <externalType access="public" id="type_F499E1D1D8B7F27417DE2D35D546C373957D07D5" name="FlushBuffer"/>
+  <pseudoType access="public" id="pseudotype_FlushBuffer" name="FlushBuffer"/>
   <pseudoType access="public" id="pseudotype_Format" name="Format"/>
   <derivedType access="public" id="class_GeneralCategoryTable_D968083D92BEC0455832F09EA15C5C8A49250690.lvalueref.class_GeneralCategoryTable_D968083D92BEC0455832F09EA15C5C8A49250690" name="GeneralCategoryTable&amp;">
    <derivations>
@@ -4938,6 +5283,8 @@
   <pseudoType access="public" id="pseudotype_GetGeneralCategory" name="GetGeneralCategory"/>
   <pseudoType access="public" id="pseudotype_GetPos" name="GetPos"/>
   <pseudoType access="public" id="pseudotype_GetToken" name="GetToken"/>
+  <pseudoType access="public" id="pseudotype_GetTokenId" name="GetTokenId"/>
+  <pseudoType access="public" id="pseudotype_GetTokenInfo" name="GetTokenInfo"/>
   <derivedType access="public" id="class_Handle_EFD168A40E19A7CFFEA0FDF6E7A8A5CE8A50B982.rvalueref.class_Handle_EFD168A40E19A7CFFEA0FDF6E7A8A5CE8A50B982" name="Handle&amp;&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Handle_EFD168A40E19A7CFFEA0FDF6E7A8A5CE8A50B982"/>
@@ -4974,6 +5321,7 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Kleene" name="Kleene"/>
   <pseudoType access="public" id="pseudotype_LeftRotate" name="LeftRotate"/>
   <derivedType access="public" id="class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.lvalueref.class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048" name="Lexer&amp;">
    <derivations>
@@ -4993,6 +5341,8 @@
   </derivedType>
   <pseudoType access="public" id="pseudotype_MakeCanonical" name="MakeCanonical"/>
   <pseudoType access="public" id="pseudotype_MakeCanonicalPropertyName" name="MakeCanonicalPropertyName"/>
+  <pseudoType access="public" id="pseudotype_MakeEscapeValue" name="MakeEscapeValue"/>
+  <externalType access="public" id="type_7CDBE0FF270360E50C70F0803AAD0797EFE2EB2B" name="MakeNfa"/>
   <pseudoType access="public" id="pseudotype_MakeRegularExpressionPatternFromFilePattern" name="MakeRegularExpressionPatternFromFilePattern"/>
   <derivedType access="public" id="class_MappedInputFileImpl_AB0CD6D9877EFC9E56C60D54D88396407832CEC6.ptr.class_MappedInputFileImpl_AB0CD6D9877EFC9E56C60D54D88396407832CEC6" name="MappedInputFileImpl*">
    <derivations>
@@ -5001,6 +5351,12 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_Match" name="Match"/>
+  <derivedType access="public" id="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.ptr.struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" name="Match*">
+   <derivations>
+    <derivation kind="base" typeId="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
   <pseudoType access="public" id="pseudotype_MaxLineLength" name="MaxLineLength"/>
   <pseudoType access="public" id="pseudotype_Minutes" name="Minutes"/>
   <pseudoType access="public" id="pseudotype_Move" name="Move"/>
@@ -5037,6 +5393,8 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Opt" name="Opt"/>
+  <pseudoType access="public" id="pseudotype_Parse" name="Parse"/>
   <pseudoType access="public" id="pseudotype_ParseEscape" name="ParseEscape"/>
   <pseudoType access="public" id="pseudotype_ParseHexChar" name="ParseHexChar"/>
   <derivedType access="public" id="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873.ptr.class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873" name="ParsingLog*">
@@ -5046,10 +5404,13 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_PatternMatch" name="PatternMatch"/>
+  <pseudoType access="public" id="pseudotype_Pos" name="Pos"/>
+  <pseudoType access="public" id="pseudotype_Primary" name="Primary"/>
   <pseudoType access="public" id="pseudotype_Process" name="Process"/>
   <pseudoType access="public" id="pseudotype_ProcessBlock" name="ProcessBlock"/>
   <pseudoType access="public" id="pseudotype_ProcessByte" name="ProcessByte"/>
   <pseudoType access="public" id="pseudotype_Random" name="Random"/>
+  <pseudoType access="public" id="pseudotype_Range" name="Range"/>
   <pseudoType access="public" id="pseudotype_ReadByte" name="ReadByte"/>
   <pseudoType access="public" id="pseudotype_ReadExtendedHeader" name="ReadExtendedHeader"/>
   <pseudoType access="public" id="pseudotype_ReadHeader" name="ReadHeader"/>
@@ -5060,9 +5421,17 @@
   <pseudoType access="public" id="pseudotype_ReadULong" name="ReadULong"/>
   <pseudoType access="public" id="pseudotype_ReadUShort" name="ReadUShort"/>
   <pseudoType access="public" id="pseudotype_ReadUtf8String" name="ReadUtf8String"/>
+  <pseudoType access="public" id="pseudotype_RegularExpression" name="RegularExpression"/>
+  <pseudoType access="public" id="pseudotype_Repetition" name="Repetition"/>
   <pseudoType access="public" id="pseudotype_Reset" name="Reset"/>
-  <externalType access="public" id="type_7117E584CDD14C6A60B096B9ADE5C6985AD1577F" name="RexLexer"/>
-  <externalType access="public" id="type_CE08CDA631F2717B4D02783BF8F1623FED8CCF6F" name="RexParser::Parse"/>
+  <pseudoType access="public" id="pseudotype_Retract" name="Retract"/>
+  <externalType access="public" id="type_6AFF2FEF8B99B0F6E002BEDAE2B3C23B22C23122" name="RexClassMap::GetClass"/>
+  <derivedType access="public" id="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.lvalueref.class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F" name="RexLexer&amp;">
+   <derivations>
+    <derivation kind="base" typeId="class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F"/>
+    <derivation kind="operator" str="&amp;"/>
+   </derivations>
+  </derivedType>
   <derivedType access="public" id="class_ScriptTable_CEACACA62B361EC2DD760E62A87A2C7BD5A15BE7.lvalueref.class_ScriptTable_CEACACA62B361EC2DD760E62A87A2C7BD5A15BE7" name="ScriptTable&amp;">
    <derivations>
     <derivation kind="base" typeId="class_ScriptTable_CEACACA62B361EC2DD760E62A87A2C7BD5A15BE7"/>
@@ -5102,6 +5471,28 @@
   <pseudoType access="public" id="pseudotype_UnicodeDone" name="UnicodeDone"/>
   <pseudoType access="public" id="pseudotype_UnicodeInit" name="UnicodeInit"/>
   <externalType access="public" id="type_1526A17EE7570E6235EB76A6FEF8CE4B6D9A3486" name="Unlock"/>
+  <specialization access="public" id="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B" name="Value&lt;Nfa>" primaryTypeId="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF">
+   <templateArguments>
+    <templateArgument typeId="class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
+   </templateArguments>
+  </specialization>
+  <derivedType access="public" id="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.ptr.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B" name="Value&lt;Nfa>*">
+   <derivations>
+    <derivation kind="base" typeId="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <specialization access="public" id="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t" name="Value&lt;char32_t>" primaryTypeId="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF">
+   <templateArguments>
+    <templateArgument typeId="char32_t"/>
+   </templateArguments>
+  </specialization>
+  <derivedType access="public" id="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t.ptr.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t" name="Value&lt;char32_t>*">
+   <derivations>
+    <derivation kind="base" typeId="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
   <pseudoType access="public" id="pseudotype_Write" name="Write"/>
   <pseudoType access="public" id="pseudotype_WriteElement" name="WriteElement"/>
   <pseudoType access="public" id="pseudotype_WriteHeader" name="WriteHeader"/>
@@ -5146,6 +5537,12 @@
    </derivations>
   </derivedType>
   <externalType access="public" id="type_DA38860CB875CB64092E402D80D9FE29C4865B18" name="close"/>
+  <derivedType access="public" id="const.lvalueref.type_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="const &amp;">
+   <derivations>
+    <derivation kind="specifier" str="const "/>
+    <derivation kind="operator" str="&amp;"/>
+   </derivations>
+  </derivedType>
   <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
@@ -5153,12 +5550,6 @@
    </derivations>
   </derivedType>
   <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
-   <derivations>
-    <derivation kind="specifier" str="const "/>
-    <derivation kind="operator" str="&amp;"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="const.lvalueref.type_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="const &amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
     <derivation kind="operator" str="&amp;"/>
@@ -5889,6 +6280,14 @@
     <function access="private" definitionFile="" definitionFileId="" definitionLine="1048" id="function_get_A6AFD2A393FBC60D229B8A962C18B512992E3ECB" name="get()" returnType="ptr.class_CharacterTable_0575B7998287EB1F6036A6BF7C3A7F4BFEDA72DE"/>
    </functions>
   </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463" name="std::unique_ptr&lt;Class>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="516" id="function_get_6DBCB8721B82B6DFC33CE228305D9EAA09C80BE9" name="get()" returnType="ptr.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463"/>
+   </functions>
+  </specialization>
   <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_ExtendedCharacterInfoPage_BDDE5EE8605957BE7B89A31906318742207FE635" name="std::unique_ptr&lt;ExtendedCharacterInfoPage>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
    <templateArguments>
     <templateArgument typeId="class_ExtendedCharacterInfoPage_BDDE5EE8605957BE7B89A31906318742207FE635"/>
@@ -5933,6 +6332,30 @@
    </templateArguments>
    <functions>
     <function access="private" definitionFile="" definitionFileId="" definitionLine="480" id="function_get_849BA2CF96A398F770D6174B54DB81A1E1AC6437" name="get()" returnType="ptr.class_ScriptTable_CEACACA62B361EC2DD760E62A87A2C7BD5A15BE7"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4" name="std::unique_ptr&lt;Symbol>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="827" id="function_get_F2436EF9C2D96434D92FFC486767BBB45EB6A300" name="get()" returnType="ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B" name="std::unique_ptr&lt;Value&lt;Nfa>>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="15" id="function_get_09F4463F0F122EF9F17B29AB8D23D58A9F483E60" name="get()" returnType="ptr.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t" name="std::unique_ptr&lt;Value&lt;char32_t>>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="1022" id="function_get_D65F399DB8A1A8A28FB682EB5113AC6F008A7DDF" name="get()" returnType="ptr.struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF.char32_t"/>
    </functions>
   </specialization>
   <externalType access="public" id="type_46523DC862DCC682175D823DF6BCAF64B8235759" name="std::unordered_map"/>

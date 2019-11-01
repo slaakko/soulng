@@ -4,36 +4,9 @@
     <vcxproject file="../../../../sngcpp/parser/parser.vcxproj"/>
     <include path="../.."/>
     <imports>
+      <import project="../../soulng/parser"/>
       <import project="../ast"/>
       <import project="../lexer"/>
     </imports>
   </project>
-  <filter>
-    <file exclude="Class.cpp"/>
-    <file exclude="Class.hpp"/>
-    <file exclude="Declaration.cpp"/>
-    <file exclude="Declaration.hpp"/>
-    <file exclude="Declarator.cpp"/>
-    <file exclude="Declarator.hpp"/>
-    <file exclude="Enumeration.cpp"/>
-    <file exclude="Enumeration.hpp"/>
-    <file exclude="Expression.cpp"/>
-    <file exclude="Expression.hpp"/>
-    <file exclude="Function.cpp"/>
-    <file exclude="Function.hpp"/>
-    <file exclude="Identifier.cpp"/>
-    <file exclude="Identifier.hpp"/>
-    <file exclude="Literal.cpp"/>
-    <file exclude="Literal.hpp"/>
-    <file exclude="SimpleType.cpp"/>
-    <file exclude="SimpleType.hpp"/>
-    <file exclude="SourceFile.cpp"/>
-    <file exclude="SourceFile.hpp"/>
-    <file exclude="Statement.cpp"/>
-    <file exclude="Statement.hpp"/>
-    <file exclude="Template.cpp"/>
-    <file exclude="Template.hpp"/>
-    <file exclude="TypeExpr.cpp"/>
-    <file exclude="TypeExpr.hpp"/>
-  </filter>
 </gendoc>

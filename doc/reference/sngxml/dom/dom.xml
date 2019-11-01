@@ -2,6 +2,7 @@
  <namespace access="public" id="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709" name="">
   <projects>
    <project name="lexer"/>
+   <project name="xml"/>
   </projects>
   <namespaces>
    <namespace access="public" id="namespace_sngxml_9C27F272E637BDDF82ACFC08D65B1C1F350F3395" name="sngxml">
@@ -156,8 +157,8 @@
            <parameter access="public" id="parameter_formatter_6AB635B4BB30E544BCFB6C19DDDBDBE70344B68F" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
+           <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
           </overriddenFunctions>
          </function>
          <function access="public" definitionFile="CharacterData.hpp" definitionFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" definitionLine="68" id="function_operator_assign_F0F7F6D6BD760E2A07B1A10508C77681ABDCAAB9" name="operator=" returnType="class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947.lvalueref.class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947" specifiers="delete">
@@ -220,8 +221,8 @@
           </parameters>
           <overrides>
            <override functionId="function_Write_90D30E4CE3FDD36D948E4FA66591BBF8A761BA50"/>
-           <override functionId="function_Write_A478BC95494F123C1A9011FCE1488B54D4F9190B"/>
            <override functionId="function_Write_BB6725D1FC065812D93AA5B7406FABEAD9B02EA3"/>
+           <override functionId="function_Write_A478BC95494F123C1A9011FCE1488B54D4F9190B"/>
           </overrides>
           <overriddenFunctions>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
@@ -292,8 +293,8 @@
            <parameter access="public" id="parameter_formatter_4AB2EDB9AEAEAD6C9AFE8444336043AD390B75FB" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
+           <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
           </overriddenFunctions>
          </function>
          <function access="public" definitionFile="CharacterData.hpp" definitionFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" definitionLine="82" id="function_operator_assign_BDEDFEE6D23B0C78B8D0B2704B4A379D07C97F18" name="operator=" returnType="class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2.lvalueref.class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2" specifiers="delete">
@@ -362,8 +363,8 @@
            <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
+           <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5"/>
           </calledByFunctions>
          </function>
@@ -404,10 +405,10 @@
          </function>
          <function access="public" declarationFile="Document.hpp" declarationFileId="file/Document.hpp_7C2892F16E470A2E9385E3CCD90A88FC18D66CA1.html" declarationLine="39" definitionFile="Document.cpp" definitionFileId="file/Document.cpp_E1B8544900E202F07CBC542792453002CAECC767.html" definitionLine="106" id="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C" name="InternalInvalidateIndex" returnType="void">
           <calledByFunctions>
-           <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
-           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Document.hpp" declarationFileId="file/Document.hpp_7C2892F16E470A2E9385E3CCD90A88FC18D66CA1.html" declarationLine="29" definitionFile="Document.cpp" definitionFileId="file/Document.cpp_E1B8544900E202F07CBC542792453002CAECC767.html" definitionLine="74" id="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE" name="RemoveChild" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="override">
@@ -418,9 +419,9 @@
            <overriddenFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
            <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
+           <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
           </calls>
          </function>
          <function access="public" declarationFile="Document.hpp" declarationFileId="file/Document.hpp_7C2892F16E470A2E9385E3CCD90A88FC18D66CA1.html" declarationLine="28" definitionFile="Document.cpp" definitionFileId="file/Document.cpp_E1B8544900E202F07CBC542792453002CAECC767.html" definitionLine="51" id="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5" name="ReplaceChild" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="override">
@@ -432,12 +433,12 @@
            <overriddenFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
            <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
-           <call functionId="function_CheckValidInsert_9CED55C5062662091A02FE25454BC176A2D6C184"/>
-           <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <call functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
+           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
+           <call functionId="function_CheckValidInsert_9CED55C5062662091A02FE25454BC176A2D6C184"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
+           <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
@@ -463,8 +464,8 @@
            <parameter access="public" id="parameter_formatter_BA1633CDC4909F9C03F1CE3A9BB4FE14B958D0ED" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
+           <overriddenFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
           </overriddenFunctions>
           <calls>
            <call functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
@@ -549,8 +550,8 @@
            <call functionId="function_AddTextContent_B59E23DFAB26EE582A15BD718604B5620C482C64"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_Comment_710ECC34D8A5528FAE1639DB86900A843F41F0FD"/>
            <calledByFunction functionId="function_PI_7B855D27D2746067D3969B2C93677C7C7E6FE294"/>
+           <calledByFunction functionId="function_Comment_710ECC34D8A5528FAE1639DB86900A843F41F0FD"/>
            <calledByFunction functionId="function_CDataSection_A2B0A754197848FC8C9FC382B9540E1F7DF9E8E4"/>
            <calledByFunction functionId="function_EndElement_AA7AFC693BF82F90EA876611044DF26956E85129"/>
           </calledByFunctions>
@@ -740,14 +741,14 @@
           </overriddenFunctions>
           <calls>
            <call functionId="function_BeginVisit_4B84C179DA82F13CE717476412C0D345194E0012"/>
-           <call functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
            <call functionId="function_EndVisit_28D26F45FE6874DAF364D2F60A66A567E1A449AD"/>
+           <call functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </calls>
           <calledByFunctions>
+           <calledByFunction functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
            <calledByFunction functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
            <calledByFunction functionId="function_GetElementById_F5289E3B651349375FFD05D24A56B319D8B6AB2B"/>
            <calledByFunction functionId="function_GetElementsByTagName_1EBA20BD20871E711E4AE6F80C7BB615A2E1548A"/>
-           <calledByFunction functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Element.hpp" declarationFileId="file/Element.hpp_FCA46E7039268103F232EADE9131F7B976759F62.html" declarationLine="44" definitionFile="Element.cpp" definitionFileId="file/Element.cpp_DED8227DED9440AC54AC49DC9FF86208981FA231.html" definitionLine="193" id="function_AddAttribute_9E979641AF025352754F9D3E3AA8A24818C512B7" name="AddAttribute" returnType="void">
@@ -797,9 +798,9 @@
          <function access="public" declarationFile="Element.hpp" declarationFileId="file/Element.hpp_FCA46E7039268103F232EADE9131F7B976759F62.html" declarationLine="53" definitionFile="Element.cpp" definitionFileId="file/Element.cpp_DED8227DED9440AC54AC49DC9FF86208981FA231.html" definitionLine="171" id="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9" name="HasMultilineContent" returnType="bool">
           <calls>
            <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
-           <call functionId="function_ValueContainsNewLine_2F7F0293065BAB703AB4412471FD080531FA8F81"/>
            <call functionId="function_LastChild_5A6A2812012F71EDFB029442CBE55AE9C6302952"/>
            <call functionId="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B"/>
+           <call functionId="function_ValueContainsNewLine_2F7F0293065BAB703AB4412471FD080531FA8F81"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
@@ -833,16 +834,16 @@
            <parameter access="public" id="parameter_formatter_87D6A1FD780792DEC20112C438FEB15BA9C6B56D" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
+           <overriddenFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
           </overriddenFunctions>
           <calls>
+           <call functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
            <call functionId="function_HasChildNodes_795855736C91915542FBB540334CAC4D4D385A68"/>
+           <call functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
            <call functionId="function_Name_81F9CA9802B7EFAEE8C6EDF3AACD4B79DF712552"/>
            <call functionId="function_WriteAttributes_E4B7FB1E7A63A30FC7640CDDD8CFCE0421EF300B"/>
            <call functionId="function_GetAttribute_A956ED87F164978FE7E78D3341F55C950336A9E2"/>
-           <call functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
-           <call functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
@@ -950,8 +951,8 @@
            <parameter access="public" id="parameter_formatter_2F6462EDC278A4E56DB46F753AF3BFE24A55DFA3" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
+           <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
           </overriddenFunctions>
          </function>
          <function access="public" definitionFile="CharacterData.hpp" definitionFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" definitionLine="54" id="function_operator_assign_29CBF27045E26C9E141F11680293BDA1C6ADB838" name="operator=" returnType="class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15.lvalueref.class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15" specifiers="delete">
@@ -997,14 +998,14 @@
            <parameter access="public" id="parameter_visitor_E8A1DE2ADCA731D5ACBB8F6A8AF065BBCB9CE99C" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
           </parameters>
           <overrides>
+           <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
+           <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
+           <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
+           <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
            <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
            <override functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
            <override functionId="function_Accept_7B5982FF4E2BC357565E1325691D54E88AA290E0"/>
-           <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
-           <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
-           <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
            <override functionId="function_Accept_C66FE321363A92AA5E3BB2AF178C73EFD9125ADF"/>
-           <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </overrides>
           <calledByFunctions>
            <calledByFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
@@ -1015,14 +1016,14 @@
            <parameter access="public" id="parameter_deep_3523217F39AF473B6D7E690447D87EB55271944B" name="deep" type="bool"/>
           </parameters>
           <overrides>
-           <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
            <override functionId="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81"/>
-           <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
-           <override functionId="function_CloneNode_155FFD3D1ED86F480AB38332995502E6A9C83E14"/>
-           <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
-           <override functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
-           <override functionId="function_CloneNode_F24A1550FCF607F3EA3CAD8DDA81F4C3554F3D52"/>
            <override functionId="function_CloneNode_DD7FEEFB61CC0054111172B9E7AD0C41EBBDE2DA"/>
+           <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
+           <override functionId="function_CloneNode_155FFD3D1ED86F480AB38332995502E6A9C83E14"/>
+           <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
+           <override functionId="function_CloneNode_F24A1550FCF607F3EA3CAD8DDA81F4C3554F3D52"/>
+           <override functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
+           <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
            <override functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
           </overrides>
           <calledByFunctions>
@@ -1086,47 +1087,47 @@
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="73" id="function_Name_81F9CA9802B7EFAEE8C6EDF3AACD4B79DF712552" name="Name" returnType="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
+           <calledByFunction functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
            <calledByFunction functionId="function_BeginVisit_D70B435864CFCB62CE5F1ABEE217FC6CF5B3F3A1"/>
            <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
-           <calledByFunction functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
            <calledByFunction functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="74" id="function_NamespaceUri_E1650ED429A31AA4EBF651385BF5DABB8B770D09" name="NamespaceUri" returnType="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const"/>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="97" id="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7" name="NextSibling" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
           <calledByFunctions>
+           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_ChildNodes_445BBCB3CD73C4BA434CCAFF63FD42EE17247A30"/>
-           <calledByFunction functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
-           <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
            <calledByFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
            <calledByFunction functionId="function_CloneChildrenTo_95A2AA9306F45ABA89361F1CDBE07AD1FDBC4191"/>
-           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <calledByFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+           <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
            <calledByFunction functionId="function_WalkChildren_C64075D19429547D59798CB54EAC4BB6B354D5B3"/>
+           <calledByFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+           <calledByFunction functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="99" id="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB" name="OwnerDocument" returnType="class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F.ptr.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
-           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="98" id="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9" name="Parent" returnType="class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6.ptr.class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
            <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="75" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="51" id="function_Prefix_C6D6A7CFC95D0D215574C56061B24D8F1BC57D7E" name="Prefix" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const"/>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="96" id="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8" name="PreviousSibling" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <calledByFunction functionId="function_WalkPreceding_F3F408EC3EB7C7614DF72F644D7FFB626849574D"/>
            <calledByFunction functionId="function_WalkPrecedingOrSelf_D016ED71A6C9A4E6C9E39178010D1D97537E7420"/>
+           <calledByFunction functionId="function_WalkPreceding_F3F408EC3EB7C7614DF72F644D7FFB626849574D"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="76" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="64" id="function_SetPrefix_7C6D12E44192D33360A8B57199A7E2EF9BF98306" name="SetPrefix" returnType="void">
@@ -1150,11 +1151,11 @@
           <calls>
            <call functionId="function_WalkChildren_EA2B1D0C2E4ADD6ED7FC725854C948BEC10D8FF7"/>
            <call functionId="function_WalkDescendant_F7E0CC80719788AFAACD43505DC06CE09293AA4C"/>
-           <call functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
-           <call functionId="function_WalkParent_EDE078B35EE5878947F67121FB634406949B2708"/>
            <call functionId="function_WalkFollowingSibling_496B59C9ADA926B45CD3A46F9215D2754A2B08F8"/>
-           <call functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
+           <call functionId="function_WalkParent_EDE078B35EE5878947F67121FB634406949B2708"/>
+           <call functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
            <call functionId="function_WalkAncestor_05038E75AAD3D4FABE8036E8DE7C6B4F3183FE9A"/>
+           <call functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
            <call functionId="function_WalkPrecedingSibling_08B20B71EA5695AF6D8BDEE66B078254A36669EA"/>
            <call functionId="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1"/>
            <call functionId="function_WalkPreceding_36A14A34ED11F1BBFCDF05A03628A29943BBAFEF"/>
@@ -1178,13 +1179,13 @@
            <parameter access="public" id="parameter_nodeOp_BF52D05454E0D997856135B6B6071F93C51755CC" name="nodeOp" type="class_NodeOp_596E9ED551CF14B0767F0C3D6A559A59B25FF06B.lvalueref.class_NodeOp_596E9ED551CF14B0767F0C3D6A559A59B25FF06B"/>
           </parameters>
           <calls>
-           <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
            <call functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
+           <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_Walk_8ED5C00FAE77EDAEAEC73B611377121F14765E34"/>
-           <calledByFunction functionId="function_WalkAncestor_05038E75AAD3D4FABE8036E8DE7C6B4F3183FE9A"/>
            <calledByFunction functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
+           <calledByFunction functionId="function_WalkAncestor_05038E75AAD3D4FABE8036E8DE7C6B4F3183FE9A"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="95" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="210" id="function_WalkAttribute_A28B6F3D995B12C2A77692A59B53038183605FB4" name="WalkAttribute" returnType="void" specifiers="virtual">
@@ -1231,9 +1232,9 @@
            <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
            <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
            <calledByFunction functionId="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1"/>
+           <calledByFunction functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="88" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="154" id="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1" name="WalkFollowing" returnType="void" specifiers="virtual">
@@ -1291,8 +1292,8 @@
            <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_WalkPreceding_F3F408EC3EB7C7614DF72F644D7FFB626849574D"/>
            <calledByFunction functionId="function_WalkPrecedingOrSelf_D016ED71A6C9A4E6C9E39178010D1D97537E7420"/>
+           <calledByFunction functionId="function_WalkPreceding_F3F408EC3EB7C7614DF72F644D7FFB626849574D"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="94" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="200" id="function_WalkPrecedingSibling_08B20B71EA5695AF6D8BDEE66B078254A36669EA" name="WalkPrecedingSibling" returnType="void">
@@ -1311,14 +1312,14 @@
            <parameter access="public" id="parameter_formatter_72DD9388BB0B42BA86F2927DCF0FA5E010B847CB" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overrides>
+           <override functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
            <override functionId="function_Write_90D30E4CE3FDD36D948E4FA66591BBF8A761BA50"/>
            <override functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
-           <override functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
+           <override functionId="function_Write_3FA1FCDCCD4FD9F2BF5800FC255624A5DC61C0C8"/>
            <override functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
            <override functionId="function_Write_A478BC95494F123C1A9011FCE1488B54D4F9190B"/>
            <override functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
            <override functionId="function_Write_BB6725D1FC065812D93AA5B7406FABEAD9B02EA3"/>
-           <override functionId="function_Write_3FA1FCDCCD4FD9F2BF5800FC255624A5DC61C0C8"/>
            <override functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
           </overrides>
           <calledByFunctions>
@@ -1380,15 +1381,15 @@
            <parameter access="public" id="parameter_node_C065478015507405F1C8097701C846035B39331C" name="node" type="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720"/>
           </parameters>
           <calledByFunctions>
+           <calledByFunction functionId="function_WalkPrecedingOrSelf_0FAA1E8D7FA586B9CD6B8A9CFDAD9BEB1A24F58C"/>
            <calledByFunction functionId="function_WalkAttribute_3B62A62E0917224E9A626125779D83C1DD6C9234"/>
            <calledByFunction functionId="function_Walk_8ED5C00FAE77EDAEAEC73B611377121F14765E34"/>
-           <calledByFunction functionId="function_WalkPrecedingSibling_08B20B71EA5695AF6D8BDEE66B078254A36669EA"/>
            <calledByFunction functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
            <calledByFunction functionId="function_WalkParent_EDE078B35EE5878947F67121FB634406949B2708"/>
-           <calledByFunction functionId="function_WalkFollowingSibling_496B59C9ADA926B45CD3A46F9215D2754A2B08F8"/>
            <calledByFunction functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
+           <calledByFunction functionId="function_WalkFollowingSibling_496B59C9ADA926B45CD3A46F9215D2754A2B08F8"/>
+           <calledByFunction functionId="function_WalkPrecedingSibling_08B20B71EA5695AF6D8BDEE66B078254A36669EA"/>
            <calledByFunction functionId="function_WalkChildren_C64075D19429547D59798CB54EAC4BB6B354D5B3"/>
-           <calledByFunction functionId="function_WalkPrecedingOrSelf_0FAA1E8D7FA586B9CD6B8A9CFDAD9BEB1A24F58C"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -1426,8 +1427,8 @@
            <parameter access="public" id="parameter_visitor_EAD0B993067F798C79BFEFDD3DAD70C0D3BFB9BB" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
           </parameters>
           <overrides>
-           <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
            <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
+           <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
           </overrides>
           <overriddenFunctions>
            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
@@ -1445,20 +1446,20 @@
            <override functionId="function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5"/>
           </overrides>
           <calls>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
-           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
            <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
            <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
-           <call functionId="function_InternalLinkAfter_730F127388017CA64454E3C56CAD36F61B1A1107"/>
+           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
+           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <call functionId="function_InternalLinkAfter_730F127388017CA64454E3C56CAD36F61B1A1107"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5"/>
            <calledByFunction functionId="function_CloneChildrenTo_95A2AA9306F45ABA89361F1CDBE07AD1FDBC4191"/>
-           <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
            <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="126" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="260" id="function_ChildNodes_445BBCB3CD73C4BA434CCAFF63FD42EE17247A30" name="ChildNodes" returnType="class_NodeList_239E876DF76977B5F80705FF92011F467DB98C0F" specifiers="const">
@@ -1478,14 +1479,14 @@
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
-           <calledByFunction functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
            <calledByFunction functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
+           <calledByFunction functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="129" id="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE" name="FirstChild" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
+           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
           </calledByFunctions>
          </function>
@@ -1506,19 +1507,19 @@
            <override functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
           </overrides>
           <calls>
+           <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
            <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
-           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
            <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
            <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
+           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
+           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <call functionId="function_InternalLinkBefore_8D2A6C844EDA4143CD84957AE349870906D615F4"/>
-           <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
           </calls>
           <calledByFunctions>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
            <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="130" id="function_LastChild_5A6A2812012F71EDFB029442CBE55AE9C6302952" name="LastChild" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
@@ -1534,17 +1535,17 @@
            <override functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
           </overrides>
           <calls>
+           <call functionId="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8"/>
            <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
-           <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
            <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
            <call functionId="function_InternalUnlink_BBAA30AC6FB3C116EEE72E2FCAA15F0866B62E68"/>
+           <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
            <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
-           <call functionId="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
-           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
+           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
            <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
@@ -1558,11 +1559,11 @@
            <override functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
           </overrides>
           <calls>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
            <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
-           <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
            <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
+           <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
+           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
           </calls>
          </function>
@@ -1574,8 +1575,8 @@
            <overriddenFunction functionId="function_WalkChildren_EA2B1D0C2E4ADD6ED7FC725854C948BEC10D8FF7"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
            <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
+           <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
           </calls>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="137" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="447" id="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082" name="WalkDescendant" returnType="void" specifiers="override">
@@ -1586,8 +1587,8 @@
            <overriddenFunction functionId="function_WalkDescendant_F7E0CC80719788AFAACD43505DC06CE09293AA4C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
            <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
+           <call functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
           </calls>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="138" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="457" id="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168" name="WalkDescendantOrSelf" returnType="void" specifiers="override">
@@ -1599,8 +1600,8 @@
           </overriddenFunctions>
           <calls>
            <call functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
-           <call functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
            <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
+           <call functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_Walk_8ED5C00FAE77EDAEAEC73B611377121F14765E34"/>
@@ -1627,9 +1628,9 @@
            <overriddenFunction functionId="function_WalkPrecedingOrSelf_0FAA1E8D7FA586B9CD6B8A9CFDAD9BEB1A24F58C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8"/>
            <call functionId="function_WalkPrecedingOrSelf_D016ED71A6C9A4E6C9E39178010D1D97537E7420"/>
            <call functionId="function_WalkPrecedingOrSelf_0FAA1E8D7FA586B9CD6B8A9CFDAD9BEB1A24F58C"/>
+           <call functionId="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_WalkPrecedingOrSelf_D016ED71A6C9A4E6C9E39178010D1D97537E7420"/>
@@ -1647,8 +1648,8 @@
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
            <call functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
+           <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
           </calls>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="124" id="function_operator_assign_93A6F49CBEA07D37F0CBC62AF63F14F5EE881AAB" name="operator=" returnType="class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6.lvalueref.class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6" specifiers="delete">
@@ -1942,8 +1943,8 @@
          <call functionId="function_GetDocument_1B82A0A2AC46B7168D84C97E2D73A784088BC209"/>
         </calls>
         <calledByFunctions>
-         <calledByFunction functionId="function_ParseDocument_0FB3AEF6ACE55261DFD00664B682D38C9617951A"/>
          <calledByFunction functionId="function_ReadDocument_68B115CF7670494066CCE4B804F85ACFE2A84D2C"/>
+         <calledByFunction functionId="function_ParseDocument_0FB3AEF6ACE55261DFD00664B682D38C9617951A"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="Parser.hpp" declarationFileId="file/Parser.hpp_D75CA5817016D2F5D506CB9FE6F967B098174021.html" declarationLine="34" definitionFile="Parser.cpp" definitionFileId="file/Parser.cpp_5D538B2C75627252A8CE1CA8CC59728986B8A1D9.html" definitionLine="206" id="function_ReadDocument_C106751EB10C87029F643B3BA8C03999880EED71" name="ReadDocument" project="dom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F">
@@ -2950,6 +2951,451 @@
      </function>
     </functions>
    </class>
+   <class access="public" definitionFile="XmlParser.hpp" definitionFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" definitionLine="12" id="struct_XmlParser_1C89AEAD603FA44D44FBE3D310288725A856C46F" key="struct" name="XmlParser" project="xml">
+    <functions>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="53" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="4686" id="function_AttDef_279B20A999268DA075C5AF86C5422DD3FC88B915" name="AttDef" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_F54C54EC8F7AD53167712ECC9E413BB9FA810588" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_9FADA6916979AE57ED46DF2B7A6E6B49D3566694" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="54" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="4785" id="function_AttType_89B371955A427234D05DB217CA146694A5CC5AA7" name="AttType" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1A5661A636102A4C2E2AB72F8D96C03ED04B4949" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="80" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8215" id="function_AttValue_B39F928C9524B2838262175DE977DA297404D1D2" name="AttValue" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_11FF8C939C0E0394F8D3166BDA4267ED990B41A1" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_EE2A33B15B0041EE6325335B26E2EDB7610D48B7" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="78" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7909" id="function_AttValueDQ_F753B208FFE21AD492CEA3A523D6C8147BC9D615" name="AttValueDQ" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_85D7AB7640CACC68AE50579B31117AD4BD39BC80" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_4439827F946335F51267CEA3F3C2511E82A8246A" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="79" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8062" id="function_AttValueSQ_13894E162A3C869FE93EE3F5D3347567C4238FD5" name="AttValueSQ" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_E2C50FC21BD909E64D2532A2CD29CBA5A9D6D2C9" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_227CF3191D7D9A59CF0BE39635D6D6DCF41D1C4C" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="52" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="4538" id="function_AttlistDecl_FB351E53A1F6F1873E13762B4D150D4F8EEBD0B3" name="AttlistDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_C24C00A27A01199D406808A802CB12A00275F1D8" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_01FA9B327980EA26EB24B373E878F6B53D1F0393" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="77" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7842" id="function_Attribute_286559C846AF574DAB649292B49AF616F1ECDABD" name="Attribute" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1839B0608831970733B64EF0C8DB6FDFCC160749" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_7F9B0ED101BA98BBFC729707A04F0E8008B07862" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="76" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7674" id="function_CDSect_D24D707572C03ED52073A7E6B1D04CFC61CF6404" name="CDSect" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_3CDB1BCF024608452BC094ECC56643BD7AA146A8" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_405FB30553DB75F815D7C8121F4565F230C7424F" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="48" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3460" id="function_CP_AFC326EA0D5857E62DFE2155739BC187DACBF747" name="CP" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1C85F5DEBDB1E18F4BE9094C9A9BCD9A3E22B1FB" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="16" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="306" id="function_Char_97DE44CDAFF1314D6E5AFB904CFDB3858BE344BA" name="Char" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_D6E63099F63FBE5320843ECAB15A737D249F278A" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="75" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7468" id="function_CharData_AB447EF65027128CF0C1593DDAA989F272F55A94" name="CharData" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_F16F828C1800D6472D6E80E94DB978F18A483C78" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_C6B6D7F3A2B3EA04B0371AC3C53F467D7398E9BD" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="74" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7418" id="function_CharDataChar_6B0B9269F57CD5E48F04BFEBA5B47AC90E7C7237" name="CharDataChar" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_203A52E802F30D58DC6E3DF5AC95A903CF6AE17C" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="84" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8610" id="function_CharRef_AA3605AC1409BC43455A690B4F46EEA71B59ED41" name="CharRef" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_5CDB4219CC2E82A1A100026E3FD413FF64D7156A" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_A5DD1C0B19060A6960FF22DCA9D8BBEAA027517F" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="47" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3334" id="function_Children_7B698D97E92AA5D1E867A57766EC34C2654C1A81" name="Children" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_D8B9B32AA1B16A75557A18FDB3BA88245031EC7F" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="49" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3605" id="function_Choice_5072AFFBA889F91203B6BF51E8A2ADCCA9CD13E9" name="Choice" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_731476C9EEB3A2122B1D611917558FD421210693" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="87" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8872" id="function_Comment_CDD8CA38DDEB4B276892F8D861D83A90BCDD1566" name="Comment" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_B005B60CDB52BBDD96BC037A5EB9E0B2B0246018" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_B3C32C2CA61EC681D33F40B618F7EEEE03573EA0" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="73" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7243" id="function_Content_70B733D6927B10C044F8ABC05B246932FCA7D3D7" name="Content" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_CAD1EB1261E2DBAA16E1AB4CB90BF341C7075788" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_72E7CB84EB4A219D71587055522A2F2ABC6F941C" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="46" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3237" id="function_ContentSpec_13E89435F636954D0D588FC8DFB8A6B369F9D48C" name="ContentSpec" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_C39271F558006927ED5969D81C557FB4CE5EC222" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="82" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8368" id="function_DecCodePoint_505DAF4CBF9037F080F59B52E37B2EB4634713A3" name="DecCodePoint" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_D2FA50AE8BA888F11C8885D440DE0080C8B9ED95" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="44" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3054" id="function_DeclSep_2F15750525E7DDE7E62EEEFA3F31708FC42FBBB4" name="DeclSep" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1FF2F7B7A6AB488CC81DF7267C6E807720C7667E" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_74CE4EC8D83E38D7CB39A86D9590DF30DF84591C" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="60" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5634" id="function_DefaultDecl_8A6C98AA61EE36F9FE70AA0256E1D58F181585D4" name="DefaultDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_B6131A108EB902E7AE570C6C2BD3A86B93256C01" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_A7A635B95AA26C5E5160EED8CDCD3C53D8A2CFC3" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="37" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1974" id="function_DocTypeDecl_6845684CC91C43D26D097D1800E9184AB3A7DA09" name="DocTypeDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_D3C2989C3DFAB2B772E641D38B949150E02417EF" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_43D381BF13933A8EA9A4EE344A3DAE13A78A23E8" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="15" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="190" id="function_Document_BF584D76FEEC36781A577DCFC7E20701895D16B8" name="Document" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_919E8704CC88E87FEB56CCE7A29A1E1679098E63" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_7D184CDC6E7B34EB2736AB777716840963C175F8" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="72" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="7133" id="function_ETag_BACAC474DDF1EA4C45E7512AADA6701E612F8F4B" name="ETag" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_D78279CBF7CFCD2170F9A5E7FF59B5A217EA90E4" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_A31CCCD024BAD7EDB9290F1F675C90253C1F7E28" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="71" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6888" id="function_Element_30B41714CD1A15EDF45BE05F182DCF3DEE30BB9C" name="Element" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_22817D351F84A0544C63F8AB1A13234D3BEF751A" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_07E7AA7C0EE9DB4C0E14FD6F71CE1AC1C43CF608" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="45" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3093" id="function_ElementDecl_FDAA7AEE01E4DFBDA3E4477550FD74D333D7572B" name="ElementDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1894BFE2797A85D74BCAAF9B6C934D62D5CCB48A" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_E15F6C8D3BCD57C89127AE4BDD9FD0D53EBD15BE" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="35" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1844" id="function_EncName_CE9BBAC3A7BBB050521ADC87CB3684275A4EB55E" name="EncName" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_E2A77FEA932EA51B09CEC3D35967B213EC588468" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_423909059DCCF9B0A1D137758856F6DE8E5CD76B" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="33" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1720" id="function_EncNameDQ_26AB781D2FF107A53EE590267081235F6FA847FA" name="EncNameDQ" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1A8E905E124B5D0C0F26566314B5DC6EFEF34518" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_5C548645500CC604AB406790471EA97F91F2C054" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="34" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1782" id="function_EncNameSQ_338BBD7B29C6D035082BF9B17BAF5F8A856A4AB2" name="EncNameSQ" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_CC911A6C2835D1764CB78DDF8B7EF8C4084B18B5" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_F1E8F34C4F82DFBEFD4339AB03009E57E53EAE0B" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="31" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1524" id="function_EncodingDecl_790568E8A0F1DE7BBA5A6F1A905FC6B07855AEFE" name="EncodingDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_195251125C624F50573925301690D7460B0A88FB" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_467E41CA7FC2F8F420AC4CF064233AFAD9519993" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="32" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1603" id="function_EncodingName_24C5143BAF1E6E8D193E541D9FE064061D249D00" name="EncodingName" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_10F21464E0370A3020ED8C723C5255E1D0FBEAD8" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_FC8B8217E6665292FA82C9B90C8FF48A359EB3E6" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="61" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5781" id="function_EntityDecl_54F58FC4E121D0A5157A01C7D6547DE4A536A59A" name="EntityDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_0970BA6FA7202F8C7F1F12A40D2FFF4CE47C07D8" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_8BF60711FA546416F1EDA67960BA8A6D37338358" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="64" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6143" id="function_EntityDef_F8885C6E9D5B04DFB364477F23B829A642012174" name="EntityDef" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_74B0E11AFB5E049A9E5139BC87EBE12D6E57F5A8" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_B474C89C5EE28881CA790128A8E156DBB33C4134" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="81" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8288" id="function_EntityRef_354F20534E5C31E22C2570CFB35C736199835189" name="EntityRef" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_0AA8F7615C525F9921BF1A17ACC03928F725B462" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_842AA2536092D892B22790D398860A14C7DEF320" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="66" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6254" id="function_EntityValue_099718B400973049E4FB73E0F7C830E751C86ADB" name="EntityValue" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_3422ABB57FE7813A93784D505D1920A3B8557E63" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_FCFA3D6CB213F624DB4626E37F369EFAEDC41144" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="57" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5083" id="function_EnumeratedType_06A075A9FA8274580A5E72B1E9733E9237B743DF" name="EnumeratedType" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_F6E44CF641C73A4BE03EC5EB51586A54CD7093D9" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="59" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5401" id="function_Enumeration_D0F13A2B8A987CC5B21DCDD35C79DB50326C4B53" name="Enumeration" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_6110F2633F6BDC2F9B81531E2A5477E2449DD75B" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="91" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="9460" id="function_Eq_5892AD03FE3AB9593EEE3E5BB42716C872D79F75" name="Eq" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_F6208ED9A8A5E3DD06619C9EAB1B351A0F2B909D" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="38" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="2237" id="function_ExternalID_8B4B3DE57B30854142F34846194B6C3161917B79" name="ExternalID" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_815861C1ED8AE73EF0FE36AEB58C8AD734A063A2" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="62" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5820" id="function_GEDecl_44C30C5717804D8F2ECD758FE0C04085EA5D5245" name="GEDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_735450F3A6FDBA64882B6B39F5335CEF5260C24A" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_78B268A17F9FDFF9DBF1808E4B2584B09DE92364" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="83" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8487" id="function_HexCodePoint_11AA9470250CD100D3D51D2E33B842E59CB3659D" name="HexCodePoint" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_0C491875364934AF4482797E72942E0662BC8335" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="42" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="2884" id="function_IntSubset_95D30DE01F594DB1E43F438648D38746FDE0AB27" name="IntSubset" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_14A85CDE5754151352C6B300EA81C87374FC7788" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_E5C127290DAFBAD703C3F392D87C86516193082D" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="43" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="2947" id="function_MarkupDecl_2AA707D26D03A8DF00EF9EF9708E045BD4E7D77F" name="MarkupDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4BE77F3B2FB529CE39DDD4C89AE210E83F56D133" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_C345EBF7FDD9D7AB050ECB07263FB1800635BF9E" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="86" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8816" id="function_Misc_8DF4A84CC90D004746E6800F1753D4B98A9BD9AE" name="Misc" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_2DFCEE56E071953A57ACE53AC1D8DAC13364985D" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_8889E6F389D70EBB51333FDDDC54E2B550D12702" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="51" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="4159" id="function_Mixed_6B283062A9F669FC6413A9B8118769CA63F0548C" name="Mixed" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_619DA8A96CF08763AD1A185D1856C884E49400BE" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="67" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6513" id="function_NDataDecl_B43EAED6A2A1389469EB22E72E7099BDCE992036" name="NDataDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_EB5739365CC3AC004F85392DDA45986E1A406A61" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="20" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="503" id="function_Name_8DB7360D470A0C18A772AF33EC905C127AF6B8C4" name="Name" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_163D152795BCDB23158E5DEC911C564756E2CC3C" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="19" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="455" id="function_NameChar_A4C8980980007B4560716844CDEA6F57C4B7ADD7" name="NameChar" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_EA290A63F7355E9488E42311E59073FF35EFDD20" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="18" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="424" id="function_NameStartChar_1BC1543AE3B46AC385C5181E2D91962890B4EEE2" name="NameStartChar" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_B1B67BCBCB92384B77F637BFF16A728F1AA9A62C" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="21" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="607" id="function_Names_A671B45E5F5EAFA83A2F50A3671464E0FC291D7F" name="Names" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_796966A121378EC9C7F2B353F3000DC17B56AD56" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="22" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="692" id="function_Nmtoken_66DFFD31B7EB03A3EDFED02B8F411E4E0372B338" name="Nmtoken" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_24E4C6158763781517F1103D647FF802BDC2B4DA" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="23" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="740" id="function_Nmtokens_12CED12F5E4C6FB1C9A3E583139720E863D700F1" name="Nmtokens" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4AD4E846242C257281C192EE06EB5E3B357C766B" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="69" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6658" id="function_NotationDecl_B17A15D219250DE6C84B00B7AE54BEE7D2D3ED5B" name="NotationDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_79F448ADC272AAFBF30A1FC6699C96D812C3BB9B" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_A854C988ED6351B3837C9EDEABBE006F777736DE" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="58" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5122" id="function_NotationType_DFBEDE1CEA6BC273BC314B3AB68B34157E2B7DF5" name="NotationType" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_689ED7D09C0AA4190DBC0BAD5A0A1D94BB37EBDA" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="63" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="5964" id="function_PEDecl_7F388A318ABCEBC2C09233C0F59033B2AE09B212" name="PEDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4CC7D70018D3C1005B0A3882D651C3C7100177B3" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_B80CE43051617FC442A6004C07E775EF7E1D3EE8" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="65" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6215" id="function_PEDef_73EB738BF7CB74548FD6A5B929BFEED14472E53B" name="PEDef" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_283C0B2EA82F8CFEE8EFDF315A8871E99A012235" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_CE794EC95AED0D302FC5891AAB81E7AA33F41970" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="68" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6594" id="function_PEReference_623661D4CC21380D14B2EFACFD5748CD5C13225E" name="PEReference" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_0C73B5C22809DA808FE6C9025094EF79E19C530B" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_1729CF42D9F2FEEA41E90F6347D66E36B2D7ECA8" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="88" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="9114" id="function_PI_FE45319D8D18BD2BFD13BC234900FA431DF8C5F6" name="PI" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_FCFDF775B32FFEF8708521E24E2E7721A4F1C17C" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_B687F6D52C0311F7FE4AD9C08B03F94542F3F954" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="89" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="9314" id="function_PITarget_CD96C502C2D901956A1FBDADAB8A44F32A9A18FF" name="PITarget" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_62C23E28B9A5BA1A092203B00A9AB28986F61891" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="14" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="153" id="function_Parse_0F8E8737515D0B6FE8C6809B08E0D5D9A4023664" name="Parse" returnType="void" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_41552E606AA001DDBAFFFE9ED6031A0E652FE088" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_3D16AF8CBDC6A1DCB045550BCA42A4FF69EFCFA9" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="24" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="821" id="function_Prolog_7E0CA570ABF1D0B6627ACE26C8488A65CC6DFFDF" name="Prolog" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_2CAF1CC693C20BD230E28BB23FCB944437A71ED7" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_A60B5A0B6200AE803EFE7BB16C8D4BF4CFB2BCFB" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="41" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="2801" id="function_PubidChar_D3C259B1A1CC85B600385744FB16B8F4871FE2B2" name="PubidChar" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_33AE7F7197E3E4BE4EF8A11CA3E81386B8E416C1" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="40" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="2601" id="function_PubidLiteral_8E481A31DB124E8F877E8DD70EE869D0A97E13C4" name="PubidLiteral" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_2B4345579E0895BF64228B0EA778543AE15CBFAC" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="70" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="6824" id="function_PublicID_7E2D6DB5149D0918F46C7373F740BFE04B118A99" name="PublicID" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_5D1509A18CC43A24EA335582805B55C09685BB0D" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="85" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="8777" id="function_Reference_0060A49659DD22FFB098298CCE2A4CB74CCC8576" name="Reference" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_3DE22DC2B1E9B5505D7D31504CC67E053A33C661" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_29903B86BCC227A0711799B20A7EDF76830B6BF2" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="17" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="358" id="function_S_234D91E5F2261013067E7D466CA1B8E22A27E200" name="S" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_51F0328E6A5093FF2DFA73B0A92DAA322A49C630" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="36" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1883" id="function_SDDecl_43E9803E27CADEA0656E0998A55697DE2F2B22BA" name="SDDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4D249FBACE11535BC6349484BF2F7E5EA6E04F52" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_10CBDADF81964DD6033D4A5E5CB4446655637E08" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="50" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="3926" id="function_Seq_F7AB72302CD231B3C4A92D18BFD90817EC08A9AA" name="Seq" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_055C9370EB1EE4A4299624D121B2312065357376" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="55" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="4841" id="function_StringType_87E087CC3A80F6AF9D6152BC185A647BC4346806" name="StringType" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_DF781A818AD567E18EF96EB6FC9EB5BB18577E4E" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="39" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="2400" id="function_SystemLiteral_1BA2EA7326D1FBDCF1C154F777BD7D34BEE0BEB0" name="SystemLiteral" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_F2C758278B027529E8CE6D218667C81A1E89C4C1" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="56" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="4875" id="function_TokenizedType_5DF8C6918D448428D00257DAE709FA9973875C5F" name="TokenizedType" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4493B96B106D0FE41DB65D86E2C6EB8E7634ECA9" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="26" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1117" id="function_VersionInfo_7E5AA881E47DDBDA6C9CF21848C1A15ECCB596A4" name="VersionInfo" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_6A1DFAD8FC4D9EBC5C72A3E7B21C590F19F25E26" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_376216D37238D3505BDA34FF4CC001B31EF174EE" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="27" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1196" id="function_VersionNum_03C7ADC98CC3A8E34BAFA04240C3E58007100B2D" name="VersionNum" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4205DA95C2769A3CE6BB559E31D4CC1BF2D45260" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_99256E17917BABB6E87996A3628A2BA53FD58574" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="28" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1361" id="function_VersionNumDQ_5154FEF35694DDE257700F2CC54DDB933726E037" name="VersionNumDQ" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_6A7340A8082A2ED483666F5C23DD2B4BE90253CA" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_05FE5C08CAEEC4A4CC4CC136D06EEF14C9664654" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="29" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1423" id="function_VersionNumSQ_55F6C593A868874333BC0086FFC8770A4F445135" name="VersionNumSQ" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_828577FF12DBAB9090AD931554C061FFB154F230" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_6EE0C79DCDCA4198BF5045C5FDD08B8B15756E86" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="30" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="1485" id="function_VersionNumber_4643242816EA887D91D3023DC918FE8B5888AAA9" name="VersionNumber" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_1AA682406CA9A6D621CB0C413F6A6E2427EF6306" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_931751EA3802AB8999EC0EB9506C5165BB5637BA" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="25" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="957" id="function_XMLDecl_3020C3646208BC23620DA063166F6F34D2619167" name="XMLDecl" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_0C88A1D5959903D5A7BB5384F5892726F8BFA19B" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+       <parameter access="public" id="parameter_processor_EF24C112D9E9B717065B7D9F62063CD5F543972C" name="processor" type="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="90" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="9381" id="function_Xml_551051CDA391EA6CDD4D5A1E05D331639A427D69" name="Xml" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_83DBDDDDA9F49B3F09045C61F4719FA7921E5BE8" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+     <function access="public" declarationFile="XmlParser.hpp" declarationFileId="file/XmlParser.hpp_C287F1AD168A2789634DB8D0028930B15706769E.html" declarationLine="92" definitionFile="XmlParser.cpp" definitionFileId="file/XmlParser.cpp_21D57DBAEC7D95D34AA5569AD5585F2180348901.html" definitionLine="9543" id="function_YesNo_753B1CA39BCECAA7AEC5BE0434E505C2BAE63A20" name="YesNo" returnType="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" specifiers="static">
+      <parameters>
+       <parameter access="public" id="parameter_lexer_4D25A833407E0FFD0EAD045C896ED932880C764A" name="lexer" type="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098"/>
+      </parameters>
+     </function>
+    </functions>
+   </class>
   </classes>
   <functions>
    <function access="public" declarationFile="TrivialLexer.hpp" declarationFileId="file/TrivialLexer.hpp_387CDFF5C8FCA6599596227992472542380E57FA.html" declarationLine="18" definitionFile="TrivialLexer.cpp" definitionFileId="file/TrivialLexer.cpp_C074E97B1908F923BC86F20402C5598CCD69825F.html" definitionLine="27" id="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B" name="GetTokenInfo" project="lexer" returnType="type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C">
@@ -2960,27 +3406,7 @@
   </functions>
  </namespace>
  <types>
-  <derivedType access="public" id="ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_Attr_C5780CFC114F1695522620B2AB5B0A6080F9E78E" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
   <derivedType access="public" id="ptr.class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947" name="*">
-   <derivations>
-    <derivation kind="operator" str="*"/>
-   </derivations>
-  </derivedType>
-  <derivedType access="public" id="ptr.class_ProcessingInstruction_90D2642368F0D3527A505630D9533AAB407C6F47" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -2995,7 +3421,7 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
-  <derivedType access="public" id="ptr.class_Entity_4B7E00004E8C11C9401E08B61CC00298B478A8FE" name="*">
+  <derivedType access="public" id="ptr.class_Attr_C5780CFC114F1695522620B2AB5B0A6080F9E78E" name="*">
    <derivations>
     <derivation kind="operator" str="*"/>
    </derivations>
@@ -3005,10 +3431,56 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <derivedType access="public" id="ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_Entity_4B7E00004E8C11C9401E08B61CC00298B478A8FE" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="ptr.class_ProcessingInstruction_90D2642368F0D3527A505630D9533AAB407C6F47" name="*">
+   <derivations>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
   <pseudoType access="public" id="pseudotype_Accept" name="Accept"/>
   <pseudoType access="public" id="pseudotype_AddTextContent" name="AddTextContent"/>
   <pseudoType access="public" id="pseudotype_AppendChild" name="AppendChild"/>
   <externalType access="public" id="type_4141ADD45A26459C4BD39909388482311F6FE29A" name="Assert"/>
+  <pseudoType access="public" id="pseudotype_AttDef" name="AttDef"/>
+  <pseudoType access="public" id="pseudotype_AttType" name="AttType"/>
+  <pseudoType access="public" id="pseudotype_AttValue" name="AttValue"/>
+  <pseudoType access="public" id="pseudotype_AttValueDQ" name="AttValueDQ"/>
+  <pseudoType access="public" id="pseudotype_AttValueSQ" name="AttValueSQ"/>
+  <pseudoType access="public" id="pseudotype_AttlistDecl" name="AttlistDecl"/>
   <derivedType access="public" id="class_Attr_C5780CFC114F1695522620B2AB5B0A6080F9E78E.lvalueref.class_Attr_C5780CFC114F1695522620B2AB5B0A6080F9E78E" name="Attr&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Attr_C5780CFC114F1695522620B2AB5B0A6080F9E78E"/>
@@ -3028,6 +3500,8 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_AttrValueEscape" name="AttrValueEscape"/>
+  <pseudoType access="public" id="pseudotype_Attribute" name="Attribute"/>
+  <pseudoType access="public" id="pseudotype_CDSect" name="CDSect"/>
   <derivedType access="public" id="class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947.lvalueref.class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947" name="CDataSection&amp;">
    <derivations>
     <derivation kind="base" typeId="class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947"/>
@@ -3046,6 +3520,11 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_CP" name="CP"/>
+  <pseudoType access="public" id="pseudotype_Char" name="Char"/>
+  <pseudoType access="public" id="pseudotype_CharData" name="CharData"/>
+  <pseudoType access="public" id="pseudotype_CharDataChar" name="CharDataChar"/>
+  <pseudoType access="public" id="pseudotype_CharRef" name="CharRef"/>
   <derivedType access="public" id="class_CharacterData_BC22408770848C675ACFF37C45A951E56A007205.lvalueref.class_CharacterData_BC22408770848C675ACFF37C45A951E56A007205" name="CharacterData&amp;">
    <derivations>
     <derivation kind="base" typeId="class_CharacterData_BC22408770848C675ACFF37C45A951E56A007205"/>
@@ -3059,6 +3538,8 @@
    </derivations>
   </derivedType>
   <pseudoType access="public" id="pseudotype_CheckValidInsert" name="CheckValidInsert"/>
+  <pseudoType access="public" id="pseudotype_Children" name="Children"/>
+  <pseudoType access="public" id="pseudotype_Choice" name="Choice"/>
   <pseudoType access="public" id="pseudotype_CloneChildrenTo" name="CloneChildrenTo"/>
   <externalType access="public" id="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317" name="CodeFormatter"/>
   <derivedType access="public" id="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317" name="CodeFormatter&amp;">
@@ -3067,6 +3548,7 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Comment" name="Comment"/>
   <derivedType access="public" id="class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2.lvalueref.class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2" name="Comment&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2"/>
@@ -3085,7 +3567,14 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Content" name="Content"/>
+  <pseudoType access="public" id="pseudotype_ContentSpec" name="ContentSpec"/>
   <pseudoType access="public" id="pseudotype_Data" name="Data"/>
+  <pseudoType access="public" id="pseudotype_DecCodePoint" name="DecCodePoint"/>
+  <pseudoType access="public" id="pseudotype_DeclSep" name="DeclSep"/>
+  <pseudoType access="public" id="pseudotype_DefaultDecl" name="DefaultDecl"/>
+  <pseudoType access="public" id="pseudotype_DocTypeDecl" name="DocTypeDecl"/>
+  <pseudoType access="public" id="pseudotype_Document" name="Document"/>
   <derivedType access="public" id="class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F.lvalueref.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F" name="Document&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F"/>
@@ -3129,6 +3618,8 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_ETag" name="ETag"/>
+  <pseudoType access="public" id="pseudotype_Element" name="Element"/>
   <derivedType access="public" id="class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.lvalueref.class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0" name="Element&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0"/>
@@ -3147,6 +3638,15 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_ElementDecl" name="ElementDecl"/>
+  <pseudoType access="public" id="pseudotype_EncName" name="EncName"/>
+  <pseudoType access="public" id="pseudotype_EncNameDQ" name="EncNameDQ"/>
+  <pseudoType access="public" id="pseudotype_EncNameSQ" name="EncNameSQ"/>
+  <pseudoType access="public" id="pseudotype_EncodingDecl" name="EncodingDecl"/>
+  <pseudoType access="public" id="pseudotype_EncodingName" name="EncodingName"/>
+  <pseudoType access="public" id="pseudotype_EntityDecl" name="EntityDecl"/>
+  <pseudoType access="public" id="pseudotype_EntityDef" name="EntityDef"/>
+  <pseudoType access="public" id="pseudotype_EntityRef" name="EntityRef"/>
   <derivedType access="public" id="class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15.lvalueref.class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15" name="EntityReference&amp;">
    <derivations>
     <derivation kind="base" typeId="class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15"/>
@@ -3165,17 +3665,26 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_EntityValue" name="EntityValue"/>
+  <pseudoType access="public" id="pseudotype_EnumeratedType" name="EnumeratedType"/>
+  <pseudoType access="public" id="pseudotype_Enumeration" name="Enumeration"/>
+  <pseudoType access="public" id="pseudotype_Eq" name="Eq"/>
   <pseudoType access="public" id="pseudotype_ErrorLines" name="ErrorLines"/>
+  <pseudoType access="public" id="pseudotype_ExternalID" name="ExternalID"/>
   <pseudoType access="public" id="pseudotype_FirstChild" name="FirstChild"/>
+  <pseudoType access="public" id="pseudotype_GEDecl" name="GEDecl"/>
   <pseudoType access="public" id="pseudotype_GetAttribute" name="GetAttribute"/>
   <pseudoType access="public" id="pseudotype_GetErrorColumn" name="GetErrorColumn"/>
   <pseudoType access="public" id="pseudotype_GetErrorLocationStr" name="GetErrorLocationStr"/>
   <pseudoType access="public" id="pseudotype_GetNamespaceUri" name="GetNamespaceUri"/>
   <pseudoType access="public" id="pseudotype_GetPos" name="GetPos"/>
   <pseudoType access="public" id="pseudotype_GetToken" name="GetToken"/>
+  <externalType access="public" id="type_95C8E326318875CB30873353B5F4C2DAECAA02D8" name="GetTokenInfo"/>
   <pseudoType access="public" id="pseudotype_HasChildNodes" name="HasChildNodes"/>
   <pseudoType access="public" id="pseudotype_HasMultilineContent" name="HasMultilineContent"/>
+  <pseudoType access="public" id="pseudotype_HexCodePoint" name="HexCodePoint"/>
   <pseudoType access="public" id="pseudotype_InsertBefore" name="InsertBefore"/>
+  <pseudoType access="public" id="pseudotype_IntSubset" name="IntSubset"/>
   <derivedType access="public" id="class_InternalEntity_965A51DC0AA2F0452EB5AA83BC6E0C8350563E39.ptr.class_InternalEntity_965A51DC0AA2F0452EB5AA83BC6E0C8350563E39" name="InternalEntity*">
    <derivations>
     <derivation kind="base" typeId="class_InternalEntity_965A51DC0AA2F0452EB5AA83BC6E0C8350563E39"/>
@@ -3198,10 +3707,17 @@
   <pseudoType access="public" id="pseudotype_LineEnd" name="LineEnd"/>
   <pseudoType access="public" id="pseudotype_LineStart" name="LineStart"/>
   <pseudoType access="public" id="pseudotype_MakeXmlAttrValue" name="MakeXmlAttrValue"/>
+  <pseudoType access="public" id="pseudotype_MarkupDecl" name="MarkupDecl"/>
   <pseudoType access="public" id="pseudotype_MaxLineLength" name="MaxLineLength"/>
+  <pseudoType access="public" id="pseudotype_Misc" name="Misc"/>
+  <pseudoType access="public" id="pseudotype_Mixed" name="Mixed"/>
+  <pseudoType access="public" id="pseudotype_NDataDecl" name="NDataDecl"/>
   <pseudoType access="public" id="pseudotype_Name" name="Name"/>
+  <pseudoType access="public" id="pseudotype_NameChar" name="NameChar"/>
+  <pseudoType access="public" id="pseudotype_NameStartChar" name="NameStartChar"/>
   <pseudoType access="public" id="pseudotype_NextState" name="NextState"/>
   <pseudoType access="public" id="pseudotype_NextToken" name="NextToken"/>
+  <pseudoType access="public" id="pseudotype_Nmtoken" name="Nmtoken"/>
   <derivedType access="public" id="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.lvalueref.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" name="Node&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720"/>
@@ -3232,7 +3748,14 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_NotationDecl" name="NotationDecl"/>
+  <pseudoType access="public" id="pseudotype_NotationType" name="NotationType"/>
   <pseudoType access="public" id="pseudotype_OwnerDocument" name="OwnerDocument"/>
+  <pseudoType access="public" id="pseudotype_PEDecl" name="PEDecl"/>
+  <pseudoType access="public" id="pseudotype_PEDef" name="PEDef"/>
+  <pseudoType access="public" id="pseudotype_PEReference" name="PEReference"/>
+  <pseudoType access="public" id="pseudotype_PI" name="PI"/>
+  <pseudoType access="public" id="pseudotype_PITarget" name="PITarget"/>
   <derivedType access="public" id="class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6.lvalueref.class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6" name="ParentNode&amp;">
    <derivations>
     <derivation kind="base" typeId="class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6"/>
@@ -3251,6 +3774,7 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Parse" name="Parse"/>
   <pseudoType access="public" id="pseudotype_ParseDocument" name="ParseDocument"/>
   <pseudoType access="public" id="pseudotype_ParseQualifiedName" name="ParseQualifiedName"/>
   <pseudoType access="public" id="pseudotype_ParseXmlContent" name="ParseXmlContent"/>
@@ -3280,11 +3804,20 @@
     <derivation kind="operator" str="*"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_Prolog" name="Prolog"/>
+  <pseudoType access="public" id="pseudotype_PubidChar" name="PubidChar"/>
+  <pseudoType access="public" id="pseudotype_PubidLiteral" name="PubidLiteral"/>
+  <pseudoType access="public" id="pseudotype_PublicID" name="PublicID"/>
   <pseudoType access="public" id="pseudotype_ReadDocument" name="ReadDocument"/>
   <externalType access="public" id="type_D7FD01A502310E8357802950D90A33AD1C88B094" name="ReadFile"/>
+  <pseudoType access="public" id="pseudotype_Reference" name="Reference"/>
   <pseudoType access="public" id="pseudotype_RemoveChild" name="RemoveChild"/>
   <pseudoType access="public" id="pseudotype_ReplaceChild" name="ReplaceChild"/>
+  <pseudoType access="public" id="pseudotype_S" name="S"/>
+  <pseudoType access="public" id="pseudotype_SDDecl" name="SDDecl"/>
+  <pseudoType access="public" id="pseudotype_Seq" name="Seq"/>
   <pseudoType access="public" id="pseudotype_SetPos" name="SetPos"/>
+  <externalType access="public" id="type_080E88EFE900AEAE1B711B9BFCAE61F969382E29" name="Span"/>
   <derivedType access="public" id="struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E.lvalueref.struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E" name="Span&amp;">
    <derivations>
     <derivation kind="base" typeId="struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E"/>
@@ -3293,6 +3826,8 @@
   </derivedType>
   <externalType access="public" id="type_FC8230B4119AD4B994DB2324D71F4E0AE7AD932C" name="Split"/>
   <pseudoType access="public" id="pseudotype_StrEnd" name="StrEnd"/>
+  <pseudoType access="public" id="pseudotype_StringType" name="StringType"/>
+  <pseudoType access="public" id="pseudotype_SystemLiteral" name="SystemLiteral"/>
   <pseudoType access="public" id="pseudotype_Text" name="Text"/>
   <derivedType access="public" id="class_Text_7C1786709E04312E4484006463832E9B0F8033B7.lvalueref.class_Text_7C1786709E04312E4484006463832E9B0F8033B7" name="Text&amp;">
    <derivations>
@@ -3314,6 +3849,8 @@
   </derivedType>
   <externalType access="public" id="type_5D72E1A333128BF4339CA05120E761E5891E80B1" name="ToUtf32"/>
   <externalType access="public" id="type_7DBEB5CC1350E4AB6BFE2A09DA12BDB320617089" name="ToUtf8"/>
+  <externalType access="public" id="type_A1141EB96836ED960AE0BE11B9889597388B5DF0" name="Token"/>
+  <pseudoType access="public" id="pseudotype_TokenizedType" name="TokenizedType"/>
   <externalType access="public" id="type_1B91B79CEA0F17F543B40228AC530ED771EA91FB" name="TrimAll"/>
   <externalType access="public" id="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098" name="TrivialLexer"/>
   <derivedType access="public" id="type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.lvalueref.type_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098" name="TrivialLexer&amp;">
@@ -3322,6 +3859,11 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <pseudoType access="public" id="pseudotype_VersionInfo" name="VersionInfo"/>
+  <pseudoType access="public" id="pseudotype_VersionNum" name="VersionNum"/>
+  <pseudoType access="public" id="pseudotype_VersionNumDQ" name="VersionNumDQ"/>
+  <pseudoType access="public" id="pseudotype_VersionNumSQ" name="VersionNumSQ"/>
+  <pseudoType access="public" id="pseudotype_VersionNumber" name="VersionNumber"/>
   <derivedType access="public" id="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0" name="Visitor&amp;">
    <derivations>
     <derivation kind="base" typeId="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
@@ -3343,6 +3885,8 @@
   <pseudoType access="public" id="pseudotype_Write" name="Write"/>
   <pseudoType access="public" id="pseudotype_WriteAttributes" name="WriteAttributes"/>
   <pseudoType access="public" id="pseudotype_WriteElement" name="WriteElement"/>
+  <pseudoType access="public" id="pseudotype_XMLDecl" name="XMLDecl"/>
+  <pseudoType access="public" id="pseudotype_Xml" name="Xml"/>
   <pseudoType access="public" id="pseudotype_XmlCharDataEscape" name="XmlCharDataEscape"/>
   <pseudoType access="public" id="pseudotype_XmlCharStr" name="XmlCharStr"/>
   <derivedType access="public" id="class_XmlContentHandler_8AE38CE227FB4990F18C13596AC35DB352C3B24D.ptr.class_XmlContentHandler_8AE38CE227FB4990F18C13596AC35DB352C3B24D" name="XmlContentHandler*">
@@ -3353,7 +3897,6 @@
   </derivedType>
   <pseudoType access="public" id="pseudotype_XmlEscape" name="XmlEscape"/>
   <pseudoType access="public" id="pseudotype_XmlHexEscape" name="XmlHexEscape"/>
-  <externalType access="public" id="type_525A3B33F0F837BD0A5243EDC2122374C4DCED48" name="XmlParser::Parse"/>
   <derivedType access="public" id="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.lvalueref.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28" name="XmlProcessor&amp;">
    <derivations>
     <derivation kind="base" typeId="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
@@ -3366,6 +3909,13 @@
     <derivation kind="operator" str="&amp;&amp;"/>
    </derivations>
   </derivedType>
+  <derivedType access="public" id="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28.ptr.class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28" name="XmlProcessor*">
+   <derivations>
+    <derivation kind="base" typeId="class_XmlProcessor_CBECB6FD47573E860FE6AFEAAE3992C8B53A9D28"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <pseudoType access="public" id="pseudotype_YesNo" name="YesNo"/>
   <simpleType access="public" id="auto" name="auto"/>
   <derivedType access="public" id="auto.lvalueref.auto" name="auto&amp;">
    <derivations>
@@ -3540,6 +4090,19 @@
     <derivation kind="operator" str="&amp;"/>
    </derivations>
   </derivedType>
+  <derivedType access="public" id="const.type_0D38C33D6060F43FC56212656D1ADC2E7480931B.type_0D38C33D6060F43FC56212656D1ADC2E7480931B" name="const soulng::parser::Range">
+   <derivations>
+    <derivation kind="specifier" str="const "/>
+    <derivation kind="base" typeId="type_0D38C33D6060F43FC56212656D1ADC2E7480931B"/>
+   </derivations>
+  </derivedType>
+  <derivedType access="public" id="const.type_0D38C33D6060F43FC56212656D1ADC2E7480931B.lvalueref.type_0D38C33D6060F43FC56212656D1ADC2E7480931B" name="const soulng::parser::Range&amp;">
+   <derivations>
+    <derivation kind="specifier" str="const "/>
+    <derivation kind="base" typeId="type_0D38C33D6060F43FC56212656D1ADC2E7480931B"/>
+    <derivation kind="operator" str="&amp;"/>
+   </derivations>
+  </derivedType>
   <derivedType access="public" id="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const std::string&amp;">
    <derivations>
     <derivation kind="specifier" str="const "/>
@@ -3581,6 +4144,59 @@
   <externalType access="public" id="type_30EE73A264B60937695144F1BD60852CA010DF7E" name="soulng::lexer::Span"/>
   <externalType access="public" id="type_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B" name="soulng::lexer::Token"/>
   <externalType access="public" id="type_5E0B9202EA88CB2A01B9FB8C47C69E2F9DC726EA" name="soulng::lexer::XmlParsingLog"/>
+  <externalType access="public" id="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" name="soulng::parser::Match"/>
+  <derivedType access="public" id="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.ptr.type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" name="soulng::parser::Match*">
+   <derivations>
+    <derivation kind="base" typeId="type_E6DC679134C28598DDF53DAE7AB3DD4870CCB328"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <externalType access="public" id="type_0D38C33D6060F43FC56212656D1ADC2E7480931B" name="soulng::parser::Range"/>
+  <externalType access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056" name="soulng::parser::Value"/>
+  <specialization access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool" name="soulng::parser::Value&lt;bool>" primaryTypeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056">
+   <templateArguments>
+    <templateArgument typeId="bool"/>
+   </templateArguments>
+  </specialization>
+  <derivedType access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool.ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool" name="soulng::parser::Value&lt;bool>*">
+   <derivations>
+    <derivation kind="base" typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <specialization access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t" name="soulng::parser::Value&lt;char32_t>" primaryTypeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056">
+   <templateArguments>
+    <templateArgument typeId="char32_t"/>
+   </templateArguments>
+  </specialization>
+  <derivedType access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t.ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t" name="soulng::parser::Value&lt;char32_t>*">
+   <derivations>
+    <derivation kind="base" typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <specialization access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="soulng::parser::Value&lt;std::u32string>" primaryTypeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056">
+   <templateArguments>
+    <templateArgument typeId="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+   </templateArguments>
+  </specialization>
+  <derivedType access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="soulng::parser::Value&lt;std::u32string>*">
+   <derivations>
+    <derivation kind="base" typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
+  <specialization access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7" name="soulng::parser::Value&lt;uint32_t>" primaryTypeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056">
+   <templateArguments>
+    <templateArgument typeId="type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+   </templateArguments>
+  </specialization>
+  <derivedType access="public" id="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7.ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7" name="soulng::parser::Value&lt;uint32_t>*">
+   <derivations>
+    <derivation kind="base" typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+    <derivation kind="operator" str="*"/>
+   </derivations>
+  </derivedType>
   <externalType access="public" id="type_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9" name="soulng::util::CodeFormatter"/>
   <derivedType access="public" id="type_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.lvalueref.type_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9" name="soulng::util::CodeFormatter&amp;">
    <derivations>
@@ -3709,12 +4325,12 @@
     <function access="private" definitionFile="" definitionFileId="" definitionLine="71" id="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E" name="get()" returnType="ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720">
      <calledByFunctions>
       <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
-      <calledByFunction functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
       <calledByFunction functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
-      <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
-      <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
       <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
+      <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
+      <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
       <calledByFunction functionId="function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5"/>
+      <calledByFunction functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
       <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
       <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
      </calledByFunctions>
@@ -3741,6 +4357,38 @@
    </templateArguments>
    <functions>
     <function access="private" definitionFile="" definitionFileId="" definitionLine="73" id="function_get_3CFCC365B43C5597A92B17683EA60EF98590BB2F" name="get()" returnType="ptr.class_Text_7C1786709E04312E4484006463832E9B0F8033B7"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool" name="std::unique_ptr&lt;soulng::parser::Value&lt;bool>>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="1894" id="function_get_E86CC68D01DC27CB0413FCCCF26E15C0FBFD8158" name="get()" returnType="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.bool"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t" name="std::unique_ptr&lt;soulng::parser::Value&lt;char32_t>>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="7480" id="function_get_F4F5399663CCD145A8BAAE2E80238C7F09CF17F5" name="get()" returnType="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.char32_t"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="std::unique_ptr&lt;soulng::parser::Value&lt;std::u32string>>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="618" id="function_get_6326AC2A570211A7BF75D2A794EB0119472F0CF8" name="get()" returnType="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+   </functions>
+  </specialization>
+  <specialization access="public" id="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7" name="std::unique_ptr&lt;soulng::parser::Value&lt;uint32_t>>" primaryTypeId="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1">
+   <templateArguments>
+    <templateArgument typeId="type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+   </templateArguments>
+   <functions>
+    <function access="private" definitionFile="" definitionFileId="" definitionLine="8621" id="function_get_F6D2AB4374376A6B6C8A8BDD9B45E480C1F85DD5" name="get()" returnType="ptr.type_025C20409A883E7BAD472128F74DC2CFC8FF4056.type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
    </functions>
   </specialization>
   <externalType access="public" id="type_46523DC862DCC682175D823DF6BCAF64B8235759" name="std::unordered_map"/>
@@ -3789,6 +4437,7 @@
     <templateArgument typeId="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
    </templateArguments>
   </specialization>
+  <externalType access="public" id="type_B48DE50013208F63284F12F10C3F8BAE719012C7" name="uint32_t"/>
   <simpleType access="public" id="unsigned.int" name="unsigned int"/>
   <simpleType access="public" id="void" name="void"/>
  </types>

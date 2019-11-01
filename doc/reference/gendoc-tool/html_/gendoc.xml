@@ -12,4 +12,18 @@
       <import project="../../sngxml/xpath"/>
     </imports>
   </project>
+  <filter>
+    <file exclude="LexerFileTokenLexerClassMap.cpp"/>
+    <file exclude="LexerFileTokenLexerClassMap.hpp"/>
+    <file exclude="LexerFileTokenLexerKeywords.cpp"/>
+    <file exclude="LexerFileTokenLexerKeywords.hpp"/>
+    <file exclude="LexerFileTokenLexerTokens.cpp"/>
+    <file exclude="LexerFileTokenLexerTokens.hpp"/>
+    <file exclude="ParserFileTokenLexerClassMap.cpp"/>
+    <file exclude="ParserFileTokenLexerClassMap.hpp"/>
+    <file exclude="ParserFileTokenLexerKeywords.cpp"/>
+    <file exclude="ParserFileTokenLexerKeywords.hpp"/>
+    <file exclude="ParserFileTokenLexerTokens.cpp"/>
+    <file exclude="ParserFileTokenLexerTokens.hpp"/>
+  </filter>
 </gendoc>

@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>CppLexer Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | prev | <a href="class_CppTokenLexer_B527CE5C796B81E85AC85B275FE5C096D2AAA6CB.html">next</a>
+        <hr/>
+        <h1>CppLexer Class</h1>
+        <span>
+            Definition at line <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html#9">9</a>
+             of <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html">CppLexer.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html#constructor_CppLexer_56CA4BC0111E47C00F11B6432ABD7DDAE9F403DF">CppLexer</a>(<span class="kw">const </span><span class="kw">char32_t</span>* start_, <span class="kw">const </span><span class="kw">char32_t</span>* end_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html#constructor_CppLexer_21A1C1D8A265B70FB38AAC6C8B9042F497E67AAF">CppLexer</a>(<span class="kw">const </span>std::u32string&amp; content_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html#function_GetTokenId_6567A08872743F77FB260A51B87C19D1A0D55D44">GetTokenId</a>(<span class="kw">int</span> statementIndex)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html#function_NextState_F0C84F6CFFC98E2B0D48A2C2C8867FF1FAFA93EC">NextState</a>(<span class="kw">int</span> state, <span class="kw">char32_t</span> c) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_langleCount_588A92B81BC2E3D5605CEC2E145C6D70C264A515">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">langleCount</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_CppLexer_56CA4BC0111E47C00F11B6432ABD7DDAE9F403DF">CppLexer Constructor</h3>
+        <h4>
+            CppLexer::CppLexer(<span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * start_, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * end_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html#19">19</a>
+             of <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html">CppLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;19</span>&nbsp;<span class="other">:</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="identifier">end_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;20</span>&nbsp;<a href="./class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html#variable_langleCount_588A92B81BC2E3D5605CEC2E145C6D70C264A515">langleCount</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;21</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">SetKeywordMap</span><span class="other">(</span><span class="identifier">CppKeywords</span><span class="other">::</span><span class="type">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;23</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html#13">13</a>
+             of <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html">CppLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_CppLexer_21A1C1D8A265B70FB38AAC6C8B9042F497E67AAF">CppLexer Constructor</h3>
+        <h4>
+            CppLexer::CppLexer(<span class="kw">const </span>
+            std::u32string&amp; content_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html#13">13</a>
+             of <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html">CppLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;13</span>&nbsp;<span class="other">:</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">content_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;14</span>&nbsp;<a href="./class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html#variable_langleCount_588A92B81BC2E3D5605CEC2E145C6D70C264A515">langleCount</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">SetKeywordMap</span><span class="other">(</span><span class="identifier">CppKeywords</span><span class="other">::</span><span class="type">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html#12">12</a>
+             of <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html">CppLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_GetTokenId_6567A08872743F77FB260A51B87C19D1A0D55D44">GetTokenId Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             CppLexer::GetTokenId(<span class="kw">int</span>
+             statementIndex)</h4>
+        <span>
+            Definition at line <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html#21544">21544</a>
+             of <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html">CppLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html#17">17</a>
+             of <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html">CppLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NextState_F0C84F6CFFC98E2B0D48A2C2C8867FF1FAFA93EC">NextState Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             CppLexer::NextState(<span class="kw">int</span>
+             state, <span class="kw">char32_t</span>
+             c) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html#25">25</a>
+             of <a href="file/CppLexer.cpp_87C9C74D7E1C773FD702614A05867E9540F99B58.html">CppLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html#14">14</a>
+             of <a href="file/CppLexer.hpp_3C82DD2AEEFDEBDCD55BA21D87C58FCFF8E186AB.html">CppLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CppTokenLexer_B527CE5C796B81E85AC85B275FE5C096D2AAA6CB.html#function_GetTokenId_8994CBB934B3DAA0C1A56119C87AB9EC8A205B83">CppTokenLexer::GetTokenId</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | prev | <a href="class_CppTokenLexer_B527CE5C796B81E85AC85B275FE5C096D2AAA6CB.html">next</a>
+    </body>
+</html>

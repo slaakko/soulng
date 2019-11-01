@@ -1,0 +1,50 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="pp">#ifndef&nbsp;LITERAL_HPP</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="pp">#define&nbsp;LITERAL_HPP</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/parser/ParserApi.hpp></span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/parser/TokenValueParsers.hpp></span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Literal.hpp></span></span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Token.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/parser/Match.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/parser/Value.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="comment">//&nbsp;this&nbsp;file&nbsp;has&nbsp;been&nbsp;automatically&nbsp;generated&nbsp;from&nbsp;'D:/work/soulng-project/sngcpp/parser/Literal.parser'&nbsp;using&nbsp;soulng&nbsp;parser&nbsp;generator&nbsp;spg&nbsp;version&nbsp;1.2.0</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">struct</span>&nbsp;<a href="../struct_LiteralParser_842620AB80A2638F5F5494A9985F097F67013C18.html">LiteralParser</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_LiteralParser_842620AB80A2638F5F5494A9985F097F67013C18.html#function_Literal_4877B38FE1BD2DA8FC5178E73712777730C93A4C">Literal</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_LiteralParser_842620AB80A2638F5F5494A9985F097F67013C18.html#function_StringLiteral_01F929917B200866953F23481641B011BB8EBE87">StringLiteral</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_LiteralParser_842620AB80A2638F5F5494A9985F097F67013C18.html#function_IntegerLiteral_6FAE464F18B183E12FD9A89BDCED2DC0C1D76459">IntegerLiteral</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;LITERAL_HPP</span></span>
+  <br/>
+ </body>
+</html>

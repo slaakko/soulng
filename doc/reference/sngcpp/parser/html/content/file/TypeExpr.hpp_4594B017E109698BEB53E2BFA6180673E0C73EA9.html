@@ -1,0 +1,56 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="pp">#ifndef&nbsp;TYPEEXPR_HPP</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="pp">#define&nbsp;TYPEEXPR_HPP</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/parser/ParserApi.hpp></span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/parser/ParsingContext.hpp></span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/TypeExpr.hpp></span></span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Token.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/parser/Match.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/parser/Value.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="comment">//&nbsp;this&nbsp;file&nbsp;has&nbsp;been&nbsp;automatically&nbsp;generated&nbsp;from&nbsp;'D:/work/soulng-project/sngcpp/parser/TypeExpr.parser'&nbsp;using&nbsp;soulng&nbsp;parser&nbsp;generator&nbsp;spg&nbsp;version&nbsp;1.2.0</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">struct</span>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html">TypeExprParser</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html#function_TypeExpr_C14C7BF72446E62A12A541823498E013CB3E3129">TypeExpr</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">,&nbsp;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">cppparser</span><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">*</span>&nbsp;<span class="identifier">ctx</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html#function_PrefixTypeExpr_B0EB8381F22BEB4745541F4820F0E3B504CF5A9E">PrefixTypeExpr</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">,&nbsp;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">cppparser</span><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">*</span>&nbsp;<span class="identifier">ctx</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html#function_CVSpecifierSequence_E4665AB51CDD77FA693186470DF6EBAEF625C31C">CVSpecifierSequence</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html#function_CVSpecifier_118D30093089EDC22C3872B7CDBA20BA11FD2A38">CVSpecifier</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html#function_PostfixTypeExpr_FD76B61BF20F7B08142BAAB8112B084211E06F5E">PostfixTypeExpr</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">,&nbsp;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">cppparser</span><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">*</span>&nbsp;<span class="identifier">ctx</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><a href="../struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328.html">Match</a>&nbsp;<a href="../struct_TypeExprParser_C9E5C62D6A8A4A5FF9679A1750C9AFCCA598FEE8.html#function_PrimaryTypeExpr_2C26F6C64366CC98C643B2701618E5A2945927EE">PrimaryTypeExpr</a><span class="other">(</span><a href="../../../../lexer/html/content/class_CppLexer_1AC6F5A47B947C4AAB4C0B17CB578359F3AC8A4C.html">CppLexer</a><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">,&nbsp;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">cppparser</span><span class="other">::</span><a href="../class_ParsingContext_5E2A284AF6CA011D2D1B3083117DF786B7B16C63.html">ParsingContext</a><span class="other">*</span>&nbsp;<span class="identifier">ctx</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;TYPEEXPR_HPP</span></span>
+  <br/>
+ </body>
+</html>

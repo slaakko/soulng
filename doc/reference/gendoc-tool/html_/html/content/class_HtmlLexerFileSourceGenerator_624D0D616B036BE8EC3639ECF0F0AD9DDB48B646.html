@@ -1,0 +1,225 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>HtmlLexerFileSourceGenerator Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_html_4F36BD1A075B7142FCFC0630D769FD092FDCA256.html">up</a>
+         | <a href="class_HtmlContentFilePathResolver_7DE8678260AB6EBC403AA083E58564241085C681.html">prev</a>
+         | <a href="class_HtmlParserFileSourceGenerator_3B3756874E78E2563CBAC75D05CFC3FFD300D5DF.html">next</a>
+        <hr/>
+        <h1>HtmlLexerFileSourceGenerator Class</h1>
+        <span>
+            Definition at line <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html#15">15</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html">HtmlLexerFileSourceGenerator.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#constructor_HtmlLexerFileSourceGenerator_41FFF91747498DE577E18FD8F7DF329BE7DF8CAB">HtmlLexerFileSourceGenerator</a>(<span class="kw">const </span>std::u32string&amp; projectName_, <span class="kw">const </span>std::vector&lt;std::u32string>&amp; inputLines_, <span class="kw">int</span> numDigits_, <span class="kw">const </span>std::string&amp; styleDirName_, <span class="kw">const </span>std::string&amp; styleFileName_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#function_CloseLine_715255273ED0B1158F4428540135DC35B5439B69">CloseLine</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#function_OpenLine_8719D3555B3D90644022F5F6F9A214EEE7C28197">OpenLine</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#function_Visit_9B4CE10BF28CD7AA219102990A2C14DE7ABD83BD">Visit</a>(SourceFileNode&amp; sourceFileNode) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_bodyElement_AD2020A3057DCE0EA845CA428807791F0D551ED4">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">bodyElement</td>
+            </tr>
+            <tr id="variable_currentSourceLineNumber_43EAB099CD613E4842854200DACBAB6FBD4A670B">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentSourceLineNumber</td>
+            </tr>
+            <tr id="variable_htmlElement_48636FFAFA36AF80FEBDEA94A14CCFB8C17C41CF">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">htmlElement</td>
+            </tr>
+            <tr id="variable_htmlSourceFileDocument_BD9290B6DB7B27D554781D47F98C1DD913F406A5">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../../sngxml/dom/html/content/class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F.html">Document</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">htmlSourceFileDocument</td>
+            </tr>
+            <tr id="variable_inputLines_38C3C58F2AC4F715C31C88DB0BCB31CADC887012">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::u32string>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">inputLines</td>
+            </tr>
+            <tr id="variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">lineElement</td>
+            </tr>
+            <tr id="variable_numDigits_1D13674F8298059A2CC1992234FF9763D8AB80B9">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">numDigits</td>
+            </tr>
+            <tr id="variable_projectName_72272B1E6C64B648475BE4185F3A260840C53366">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectName</td>
+            </tr>
+            <tr id="variable_styleFilePath_61C15BEA17B80C7A456CB49FAAF52DCDD73F0417">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">styleFilePath</td>
+            </tr>
+            <tr id="variable_writer_FF5C84C9ABBBB64B150040D0FB12C286BBD42E48">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html">HtmlSourceCodeWriter</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">writer</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_HtmlLexerFileSourceGenerator_41FFF91747498DE577E18FD8F7DF329BE7DF8CAB">HtmlLexerFileSourceGenerator Constructor</h3>
+        <h4>
+            gendoc::html::HtmlLexerFileSourceGenerator::HtmlLexerFileSourceGenerator(<span class="kw">const </span>
+            std::u32string&amp; projectName_, <span class="kw">const </span>
+            std::vector&lt;std::u32string>&amp; inputLines_, <span class="kw">int</span>
+             numDigits_, <span class="kw">const </span>
+            std::string&amp; styleDirName_, <span class="kw">const </span>
+            std::string&amp; styleFileName_)</h4>
+        <span>
+            Definition at line <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html#19">19</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html">HtmlLexerFileSourceGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_projectName_72272B1E6C64B648475BE4185F3A260840C53366">projectName</a><span class="other">(</span><span class="identifier">projectName_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_inputLines_38C3C58F2AC4F715C31C88DB0BCB31CADC887012">inputLines</a><span class="other">(</span><span class="identifier">inputLines_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_numDigits_1D13674F8298059A2CC1992234FF9763D8AB80B9">numDigits</a><span class="other">(</span><span class="identifier">numDigits_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_styleFilePath_61C15BEA17B80C7A456CB49FAAF52DCDD73F0417">styleFilePath</a><span class="other">(</span><span class="identifier">Path</span><span class="other">::</span><a href="./../../../../soulng/util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED">Combine</a><span class="other">(</span><span class="identifier">Path</span><span class="other">::</span><a href="./../../../../soulng/util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED">Combine</a><span class="other">(</span><span class="string">"../.."</span><span class="other">,&nbsp;</span><span class="identifier">styleDirName_</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">styleFileName_</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_htmlElement_48636FFAFA36AF80FEBDEA94A14CCFB8C17C41CF">htmlElement</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">(</span><span class="string">U"html"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html#18">18</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html">HtmlLexerFileSourceGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_CloseLine_715255273ED0B1158F4428540135DC35B5439B69">CloseLine Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             gendoc::html::HtmlLexerFileSourceGenerator::CloseLine()</h4>
+        <span>
+            Definition at line <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html#69">69</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html">HtmlLexerFileSourceGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">70</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_bodyElement_AD2020A3057DCE0EA845CA428807791F0D551ED4">bodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../../sngxml/dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a><span class="other">></span><span class="other">(</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">lineElement</a><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_bodyElement_AD2020A3057DCE0EA845CA428807791F0D551ED4">bodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../../sngxml/dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">(</span><span class="string">U"br"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">73</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">++</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_currentSourceLineNumber_43EAB099CD613E4842854200DACBAB6FBD4A670B">currentSourceLineNumber</a><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">74</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html#21">21</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html">HtmlLexerFileSourceGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_OpenLine_8719D3555B3D90644022F5F6F9A214EEE7C28197">OpenLine Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             gendoc::html::HtmlLexerFileSourceGenerator::OpenLine()</h4>
+        <span>
+            Definition at line <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html#57">57</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html">HtmlLexerFileSourceGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">lineElement</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../../sngxml/dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_writer_FF5C84C9ABBBB64B150040D0FB12C286BBD42E48">writer</a><span class="other">.</span><a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_SetLineElement_4028EF90994B0313509733C26496022CDA988419">SetLineElement</a><span class="other">(</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">lineElement</a><span class="other">.</span><a href="#function_get_34CDC93F03E1818C4A0CC4DA9E4D5EF456B22976">get</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">lineElement</a><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"code"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">lineElement</a><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"xml:space"</span><span class="other">,&nbsp;</span><span class="string">U"preserve"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_lineElement_0863A9843E15C4C6979FE1D3B284E0269CFB64E2">lineElement</a><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"id"</span><span class="other">,&nbsp;</span><span class="identifier">ToUtf32</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">to_string</span><span class="other">(</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_currentSourceLineNumber_43EAB099CD613E4842854200DACBAB6FBD4A670B">currentSourceLineNumber</a><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">lineNumberText</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./../../../../soulng/util/html/content/namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_FormatNumber_3DC326B6C563BDEE3BC82E8B7EA9633CC2D421BD">FormatNumber</a><span class="other">(</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_currentSourceLineNumber_43EAB099CD613E4842854200DACBAB6FBD4A670B">currentSourceLineNumber</a><span class="other">,&nbsp;</span><a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_numDigits_1D13674F8298059A2CC1992234FF9763D8AB80B9">numDigits</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_writer_FF5C84C9ABBBB64B150040D0FB12C286BBD42E48">writer</a><span class="other">.</span><a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteLineNumberKind_35C23441DB324A3F18B3762726E2C19F81909A0D">WriteLineNumberKind</a><span class="other">(</span><span class="identifier">lineNumberText</span><span class="other">,&nbsp;</span><a href="./enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a><span class="other">::</span><a href="./enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html#enumerator_line_0221E1362AB5A6CE43A598A8E030113891437E47">line</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_HtmlLexerFileSourceGenerator_624D0D616B036BE8EC3639ECF0F0AD9DDB48B646.html#variable_writer_FF5C84C9ABBBB64B150040D0FB12C286BBD42E48">writer</a><span class="other">.</span><a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteSpaceKind_0DA0D1F652EEF161DD0B8E23C2629E069450D535">WriteSpaceKind</a><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><a href="./enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html">WriteKind</a><span class="other">::</span><a href="./enum_WriteKind_C243269E4561563ED06068D4670665DD00231A8A.html#enumerator_line_0221E1362AB5A6CE43A598A8E030113891437E47">line</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">67</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html#20">20</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html">HtmlLexerFileSourceGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_SetLineElement_4028EF90994B0313509733C26496022CDA988419">gendoc::html::HtmlSourceCodeWriter::SetLineElement</a>
+            , <a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteLineNumberKind_35C23441DB324A3F18B3762726E2C19F81909A0D">gendoc::html::HtmlSourceCodeWriter::WriteLineNumberKind</a>
+            , <a href="./class_HtmlSourceCodeWriter_72333974ACE3EDC10BC5287CCAA93F6A8C7BBBA4.html#function_WriteSpaceKind_0DA0D1F652EEF161DD0B8E23C2629E069450D535">gendoc::html::HtmlSourceCodeWriter::WriteSpaceKind</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_9B4CE10BF28CD7AA219102990A2C14DE7ABD83BD">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             gendoc::html::HtmlLexerFileSourceGenerator::Visit(SourceFileNode&amp; sourceFileNode) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html#26">26</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.cpp_45819B52A06DEAA904EA8CBCCA43E96DF5DD1932.html">HtmlLexerFileSourceGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html#19">19</a>
+             of <a href="file/HtmlLexerFileSourceGenerator.hpp_FEBD1CAC8BFA109D949BFB36A5F2A21BBD853526.html">HtmlLexerFileSourceGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_HtmlSourceCodeGenerator_15C236E54C7F85FB8BF5952FE4467A7B1BC17EB0.html#function_CloseLine_9B2C89F1ABE70285800B36DA6D3EEEB54F20573D">gendoc::html::HtmlSourceCodeGenerator::CloseLine</a>
+            , <a href="./class_HtmlSourceCodeGenerator_15C236E54C7F85FB8BF5952FE4467A7B1BC17EB0.html#function_OpenLine_428E03829E62F37FC6C113D5E5BB4E7C32E93BA9">gendoc::html::HtmlSourceCodeGenerator::OpenLine</a>
+            , <a href="./../../../../sngxml/dom/html/content/class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F.html#function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5">sngxml::dom::Document::AppendChild</a>
+            , <a href="./../../../../sngxml/dom/html/content/class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F.html#function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B">sngxml::dom::Document::Write</a>
+            , <a href="./../../../../soulng/util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_SetIndentSize_1290CD0C114A3E88E38FC8A9646CA6FCBD23B55A">soulng::util::CodeFormatter::SetIndentSize</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_html_4F36BD1A075B7142FCFC0630D769FD092FDCA256.html">up</a>
+         | <a href="class_HtmlContentFilePathResolver_7DE8678260AB6EBC403AA083E58564241085C681.html">prev</a>
+         | <a href="class_HtmlParserFileSourceGenerator_3B3756874E78E2563CBAC75D05CFC3FFD300D5DF.html">next</a>
+    </body>
+</html>

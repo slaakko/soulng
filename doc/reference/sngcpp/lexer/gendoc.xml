@@ -12,10 +12,6 @@
     <file exclude="CppClassMap.hpp"/>
     <file exclude="CppKeywords.cpp"/>
     <file exclude="CppKeywords.hpp"/>
-    <file exclude="CppLexer.cpp"/>
-    <file exclude="CppLexer.hpp"/>
-    <file exclude="CppTokenLexer.cpp"/>
-    <file exclude="CppTokenLexer.hpp"/>
     <file exclude="CppTokenLexerClassMap.cpp"/>
     <file exclude="CppTokenLexerClassMap.hpp"/>
     <file exclude="CppTokenLexerKeywords.cpp"/>

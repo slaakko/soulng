@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>PPLexer Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | prev | <a href="struct_PPLineParser_B603FB3B9CCEBA1C5562AB46CFC113CEAA5B1DD7.html">next</a>
+        <hr/>
+        <h1>PPLexer Class</h1>
+        <span>
+            Definition at line <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html#9">9</a>
+             of <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html">PPLexer.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_PPLexer_232161E42AE622657FD5A6AA0253612BA69E4A42.html#constructor_PPLexer_B2B226E45CA52138217FBC90884B2DBD61AFD5C8">PPLexer</a>(<span class="kw">const </span><span class="kw">char32_t</span>* start_, <span class="kw">const </span><span class="kw">char32_t</span>* end_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_PPLexer_232161E42AE622657FD5A6AA0253612BA69E4A42.html#constructor_PPLexer_7F5D48AD30E9FE97448115D0FF97E11C9E1B8D6C">PPLexer</a>(<span class="kw">const </span>std::u32string&amp; content_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PPLexer_232161E42AE622657FD5A6AA0253612BA69E4A42.html#function_GetTokenId_CCD96F35E464A15202331B8D3E3B85A44CF39D67">GetTokenId</a>(<span class="kw">int</span> statementIndex)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PPLexer_232161E42AE622657FD5A6AA0253612BA69E4A42.html#function_NextState_4936D38EC811765A337E39BCC49A6EE438AD41BC">NextState</a>(<span class="kw">int</span> state, <span class="kw">char32_t</span> c) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_pp_790989704A09B97B2D7362747BE8C6D98B720B20">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./struct_PP_4C5EF6BC6C85F904C9A9D53E55C77EEB3558DC74.html">PP</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">pp</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_PPLexer_B2B226E45CA52138217FBC90884B2DBD61AFD5C8">PPLexer Constructor</h3>
+        <h4>
+            PPLexer::PPLexer(<span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * start_, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * end_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html#19">19</a>
+             of <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html">PPLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;19</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./../../../parser/html/content/namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B.html">soulng</a><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="identifier">end_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;20</span>&nbsp;<a href="./class_PPLexer_232161E42AE622657FD5A6AA0253612BA69E4A42.html#variable_pp_790989704A09B97B2D7362747BE8C6D98B720B20">pp</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;21</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">SetKeywordMap</span><span class="other">(</span><span class="identifier">PPKeywords</span><span class="other">::</span><span class="type">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;23</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html#13">13</a>
+             of <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html">PPLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_PPLexer_7F5D48AD30E9FE97448115D0FF97E11C9E1B8D6C">PPLexer Constructor</h3>
+        <h4>
+            PPLexer::PPLexer(<span class="kw">const </span>
+            std::u32string&amp; content_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html#13">13</a>
+             of <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html">PPLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;13</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./../../../parser/html/content/namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B.html">soulng</a><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">content_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;14</span>&nbsp;<a href="./class_PPLexer_232161E42AE622657FD5A6AA0253612BA69E4A42.html#variable_pp_790989704A09B97B2D7362747BE8C6D98B720B20">pp</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">SetKeywordMap</span><span class="other">(</span><span class="identifier">PPKeywords</span><span class="other">::</span><span class="type">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html#12">12</a>
+             of <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html">PPLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_GetTokenId_CCD96F35E464A15202331B8D3E3B85A44CF39D67">GetTokenId Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             PPLexer::GetTokenId(<span class="kw">int</span>
+             statementIndex)</h4>
+        <span>
+            Definition at line <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html#7853">7853</a>
+             of <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html">PPLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html#17">17</a>
+             of <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html">PPLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NextState_4936D38EC811765A337E39BCC49A6EE438AD41BC">NextState Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             PPLexer::NextState(<span class="kw">int</span>
+             state, <span class="kw">char32_t</span>
+             c) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html#25">25</a>
+             of <a href="file/PPLexer.cpp_4D01E9FFAA043775A0131D32808A8F9B21594A1C.html">PPLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html#14">14</a>
+             of <a href="file/PPLexer.hpp_9B667CABACBEDAAA118AAE8AF7B8BB6837879A6F.html">PPLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TextLexer_78408CE770C817375F6E051967A0C3711C6D4635.html#function_GetTokenId_BBFD2A8FAB5D4B6347A6A36B76C9F4A7F44AE266">TextLexer::GetTokenId</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | prev | <a href="struct_PPLineParser_B603FB3B9CCEBA1C5562AB46CFC113CEAA5B1DD7.html">next</a>
+    </body>
+</html>
