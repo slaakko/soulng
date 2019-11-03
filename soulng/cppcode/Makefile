@@ -1,6 +1,6 @@
 include ../Makefile.common
 
-OBJECTS = Declaration.o Expression.o InitDone.o Literal.o Object.o Operator.o Statement.o Type.o
+OBJECTS = CppCodeApi.o Declaration.o Expression.o InitDone.o Literal.o Object.o Operator.o Statement.o Type.o
 
 %o: %.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<

@@ -6,6 +6,7 @@
 #include <soulng/rex/Algorithm.hpp>
 #include <soulng/rex/Nfa.hpp>
 #include <soulng/rex/Symbol.hpp>
+#include <algorithm>
 
 namespace soulng { namespace rex {
 

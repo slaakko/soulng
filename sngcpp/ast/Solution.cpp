@@ -6,6 +6,10 @@
 #include <sngcpp/ast/Solution.hpp>
 #include <soulng/util/Path.hpp>
 #include <unordered_set>
+#ifndef _WIN32
+#undef major
+#undef minor
+#endif
 
 namespace sngcpp { namespace ast {
 

@@ -4,6 +4,7 @@
 // =================================
 
 #include <sngcpp/symbols/TypeSymbol.hpp>
+#include <limits>
 
 namespace sngcpp { namespace symbols {
 
