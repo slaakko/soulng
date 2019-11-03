@@ -5,8 +5,8 @@ all:
 	$(MAKE) -C binder
 	$(MAKE) -C lexer
 	$(MAKE) -C parser
-	$(MAKE) -C parsertester
 	$(MAKE) -C pp
+	$(MAKE) -C parsertester
 	$(MAKE) -C pptester
 	$(MAKE) -C symbols
 
@@ -15,8 +15,8 @@ clean:
 	$(MAKE) -C binder clean
 	$(MAKE) -C lexer clean
 	$(MAKE) -C parser clean
-	$(MAKE) -C parsertester clean
 	$(MAKE) -C pp clean
+	$(MAKE) -C parsertester clean
 	$(MAKE) -C pptester clean
 	$(MAKE) -C symbols clean
 
