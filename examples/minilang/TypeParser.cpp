@@ -4,7 +4,7 @@
 #include <minilang/MinilangTokens.hpp>
 #include <minilang/Tree.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/TypeParser.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/TypeParser.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -21,7 +21,7 @@ soulng::parser::Match TypeParser::Type(MinilangLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

@@ -13,7 +13,7 @@ namespace soulng { namespace unicode {
 
 std::string SoulNGVersionStr()
 {
-    return "1.2.0";
+    return "2.0.0";
 }
 
 UnicodeException::UnicodeException(const std::string& message_) : std::runtime_error(message_)

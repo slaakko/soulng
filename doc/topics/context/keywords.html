@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Context-sensitive keywords</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Context-sensitive keywords
+    </h1>
+
+    <p>
+        In some programming languages there are special identifiers that are recognized as keywords only in a specific context.
+        In other contexts they behave the same as ordinary identifiers.
+        For example in C# the identifiers <strong>get</strong> and <strong>set</strong> are are recognized as keywords
+        only inside a property implementation and they can be used as normal identifiers in other contexts.
+    </p>
+    
+    <p>
+        SoulNG has limited support for context-sensitive keywords.
+        The way it works in SoulNG is that the lexer does <em>not</em> convert identifiers to keywords in the identifier rule 
+        of the lexer as it is normally done but instead the conversion is done as late as in the parser.
+    </p>
+    
+    <h2>Example</h2>
+    
+    <p>
+        In an XPATH query expression the identifiers <strong>child</strong>, <strong>ancestor</strong>, <strong>namespace</strong>, etc.
+        can be used both as ordinary names of XML elements in a name test <em>and</em> axis specifier keywords in a step of a location path expression.
+    </p>
+    
+    <p>
+        Thus the names are not converted to keywords in the
+        <a href="../../reference/sngxml/xpath/html/content/file/XPathLexer.lexer_F85FAD3E06A1C893B7938541A33F4D1E1DEFEFA9.html#40">
+        name</a> rule of the XPATH lexer, but the conversion is done in the 
+        <a href="../../reference/sngxml/xpath/html/content/file/XPathParser.parser_E275E533C60C2E7273B740319A8C815008955CB4.html#234">
+        <em>AxisName</em></a> rule of the XPATH parser.
+    </p>
+    
+    <p>
+        A similar mechanism is used for keywords <strong>and</strong> and <strong>or</strong> in the 
+        <a href="../../reference/sngxml/xpath/html/content/file/XPathParser.parser_E275E533C60C2E7273B740319A8C815008955CB4.html#29">
+        <em>AndExpr</em></a> and 
+        <a href="../../reference/sngxml/xpath/html/content/file/XPathParser.parser_E275E533C60C2E7273B740319A8C815008955CB4.html#22">
+        <em>OrExpr</em></a> rules.
+    </p>
+</body>
+</html>

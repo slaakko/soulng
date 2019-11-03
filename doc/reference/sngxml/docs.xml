@@ -2,7 +2,6 @@
 <docs>
   <doc id="sngxml">
     <description>Contains three XML processing libraries and a tester application.</description>
-    <body></body>
   </doc>
   <doc id="xml">
     <description>XML parser</description>

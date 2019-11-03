@@ -20,6 +20,7 @@ std::u32string MakeRegularExpressionPatternFromFilePattern(const std::u32string&
         {
             case '.': pattern.append(U"\\."); break;
             case '*': pattern.append(U".*"); break;
+            case '?': pattern.append(U"."); break;
             default: pattern.append(1, c); break;
         }
     }

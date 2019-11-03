@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Gendoc tutorial</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Gendoc tutorial</h1>
+
+    <h2>Introduction</h2>
+
+    <p>
+        Gendoc is a reverse engineering tool that can be used for generating HTML content from the source code of a Visual Studio C++ project.
+        It may also be used for generating reference documentation without touching the source code files.
+    </p>
+    
+    <p>
+        The way it works is that user creates an <strong>gendoc.xml</strong> file that contains a reference to a <em>.vcxproj</em> file of a
+        Visual Studio C++ project in some directory. The tool reads the project file, parses the C++ source and header files contained in the project
+        and generates an <em>.ast</em> file that contains a binary representation of an abstract syntax trees of the sources.
+        User can import in the <strong>gendoc.xml</strong> other project's AST's that are then read by the tool.
+        Then the tool builds a hierarchial symbol table from the AST's, uses it to resolve the types of entities and 
+        then exports the symbol table with the type information as an XML file.
+        Finally the tool uses the symbol table, the generated XML file and the AST's to build hyperlinked HTML source code files and 
+        HTML interface documents with class inheritance diagrams.
+    </p>
+    
+    <p>
+        User can specify in the <strong>gendoc.xml</strong> an additional XML file that contains identifier strings of symbols with documentation. 
+        The tool inserts the documentation at proper places in the generated HTML content by using the identifier string of a symbol as a key.
+    </p>
+    
+    <h2>Contents of the gendoc.xml file</h2>
+
+    <h3>Single project</h3>
+
+    <pre>
+    &lt;!-- doc/reference/soulng/util/gendoc.xml -->
+    
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;gendoc>
+      &lt;project name="util"> &lt;!-- The name of the project is <strong>util</strong>. -->
+        &lt;vcxproject file="../../../../soulng/util/util.vcxproj"/> &lt;!-- The <strong>file</strong> attribute of the <strong>vcxproject</strong> element contains a relative or absolute path to a Visual Studio project file. -->
+        &lt;documentation file="docs.xml"/> &lt;!-- The <strong>file</strong> attribute of the optional <strong>documentation</strong> element contains the name of the additional XML file that contains documentation with symbol ID's. -->
+        &lt;include path="../.."/> &lt;!-- The <strong>path</strong> attribute of the <strong>include</strong> element contains project's INCLUDE path with directory paths separated by semicolons. -->
+      &lt;/project>
+      &lt;filter>
+        &lt;file exclude="problematic.hpp"/>     &lt;!-- In the <strong>file</strong> child elements of the <strong>filter</strong> element user can specify file patterns to <strong>exclude</strong> or <strong>include</strong>. Wild cards * and ? are OK. -->
+        &lt;file include="some/additional.cpp"/> &lt;!-- If a file is first included and then excluded, it is excluded by the tool. If a file is first excluded and then included, it is included by the tool. -->
+      &lt;/filter>
+    &lt;/gendoc>
+    </pre>
+    
+    <h3>Importing another project</h3>
+    
+    <pre>
+    &lt;!-- doc/reference/soulng/cppcode/gendoc.xml -->
+    
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;gendoc>
+      &lt;project name="cppcode">
+        &lt;vcxproject file="../../../../soulng/cppcode/cppcode.vcxproj"/>
+        &lt;documentation file="docs.xml"/>
+        &lt;include path="../.."/>
+        &lt;imports>
+          &lt;import project="../util"/> &lt;!-- In the <strong>project</strong> attribute of the <strong>import</strong> element, user can specify a relative or absolute path to a directory that contains a <strong>gendoc.xml</strong> file of a another project. -->
+        &lt;/imports>
+      &lt;/project>
+    &lt;/gendoc>
+    </pre>
+    
+    <h3>Container project</h3>
+    
+    <pre>
+    &lt;!-- doc/reference/soulng/gendoc.xml -->
+    
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;gendoc>
+      &lt;project name="soulng">
+        &lt;documentation file="docs.xml"/>
+      &lt;/project>
+      &lt;child project="util"/> &lt;!-- In the <strong>project</strong> attribute of a <strong>child</strong> element, user can specify a relative or absolute path to a child project directory that contains a <strong>gendoc.xml</strong>. -->
+      &lt;child project="cppcode"/>
+      &lt;child project="lexer"/>
+      &lt;child project="parser"/>
+      &lt;child project="rex"/>
+      &lt;child project="slg"/>
+      &lt;child project="spg"/>
+    &lt;/gendoc>
+    </pre>
+
+    <h2>Launching gendoc</h2>
+    
+    <p>
+        When the current directory contains a <strong>gendoc.xml</strong> to be processed, 
+        the gendoc tool can be launched without any parameters or 
+        with the <strong>--verbose</strong> or <strong>-v</strong> option for verbose output:
+    </p>
+    
+    <pre>
+        D:\work\soulng-project\doc\reference\soulng\util>gendoc -v
+    </pre>
+   
+    <p>
+        If the <strong>-v</strong> option is not used, the tool operates silently if no error is encountered.
+    </p>
+    
+    <p>
+        The <strong>--clean</strong> or <strong>-l</strong> option clears generated content.
+    </p>
+    
+    <p>
+        The <strong>--rebuild</strong> or <strong>-r</strong> option rebuilds everything.
+        Without it the tool performs incremental operation and generates content only for modified files.
+        The tool is not perfect, though. You may have to use the -r option to generate up-to-date content to be absolutely sure.
+    </p>
+    
+    <p>
+        The <strong>--ast</strong> or <strong>-a</strong> option generates just AST's.
+    </p>
+    
+    <p>
+        The <strong>--content</strong> or <strong>-c</strong> option generates contents when the AST's are already built.
+    </p>
+    
+    <p>
+        For a container project, the tool launches a child process for each child project with the <strong>-a</strong> option to build the AST's.
+        The AST's can be built in parallel.
+        When the AST's are ready, the tool launces a child process for each child project with the <strong>-c</strong> option to build the content.
+        The content can be built in parallel when the AST's are ready.
+    </p>
+    
+    <p>
+        The tool can be also launched with a path to a <strong>gendoc.xml</strong> to be processed:
+    </p>
+
+     <pre>
+        gendoc -v path/to/gendoc.xml
+    </pre>
+
+    <h2>Contents of the documentation XML file</h2>
+    
+    <h3>Writing descriptions</h3>
+    
+    <pre>
+    &lt;!-- doc/reference/soulng/util/docs.xml -->
+    
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;docs>
+      &lt;doc id="util"> &lt;!-- ID of a project is the same as its name. -->
+        &lt;description>
+          Contains generic utilities and a Unicode library.
+          Unicode algorithms e.g. bidirectional algorithms are not implementated so the Unicode library is of limited use.
+        &lt;/description>
+      &lt;/doc>
+      &lt;doc id="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9"> &lt;!-- ID of a class or function can be obtained from the address line of the internet browser. -->
+        &lt;description>Writes indented text to a stream.&lt;/description>
+      &lt;/doc>
+    &lt;/docs>
+    </pre>
+    
+    <p>
+        Obtaining the ID of an entity:
+        <ul>
+        <li>First generate documentation for the project containing the entity by launching gendoc.</li>
+        <li>Then use the internet browser to open the generated HTML.</li>
+        <li>Click the link for the class or function in question in the browser.</li>
+        <li>The ID of the class or function is the contained in the URL:</li>
+        </ul>
+    </p>
+    <p>
+        For example:
+        If the URL is <em>file:///D:/work/soulng-project/doc/reference/soulng/util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html</em>,
+        the ID is <strong>class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9</strong>.
+        That is: the ID is the URL without a container part and without the .html suffix.
+    </p>
+
+    <h3>Writing more verbose HTML content</h3>
+
+    <p>
+        Besides a <strong>description</strong> element, a documentation element for a class or function can contain a <strong>body</strong> element
+        that is inserted in the body of the page for the documented entity.
+    </p>
+
+    <pre>
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;docs>
+        &lt;doc id="xml">
+            &lt;description>Contains a non-validating XML 1.0 parser and SAX-like parsing API.&lt;/description>
+            &lt;body>
+                &lt;h2>Examples&lt;/h2>
+                &lt;ul>
+                    &lt;li>&lt;a href="../../../examples/sngxml/xml/html/content/file/XmlExample.cpp_32E5A55B015CB9ED5835EF1084B01A2A07349199.html">Parsing an XML file with a custom content handler.&lt;/a>&lt;/li>
+                &lt;/ul>
+            &lt;/body>
+        &lt;/doc>
+    &lt;/docs>
+    </pre>
+
+    <p>
+        The <strong>body</strong> element can contain HTML elements. Headers and links for instance.
+    </p>
+
+</body>
+</html>

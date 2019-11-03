@@ -4,6 +4,12 @@
     <description>
         Contains a C++ reverse engineering and HTML reference documentation generator tool.
     </description>
+    <body>
+        <h2>Tutorial</h2>
+        <ul>
+            <li><a href="../../tutorial/gendoc/gendoc.html">Gendoc tutorial</a></li>
+        </ul>
+    </body>
   </doc>
   <doc id="gendoc_">
     <description>main application</description>

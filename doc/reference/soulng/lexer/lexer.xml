@@ -115,8 +115,8 @@
           <calls>
            <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
            <call functionId="function_LineStart_7BD61FDF1370E7F19B018C10AE7F7CB9FF3551D1"/>
-           <call functionId="function_LineEnd_D74C48FFE61488E48E63969CD17867D26E141219"/>
            <call functionId="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715"/>
+           <call functionId="function_LineEnd_D74C48FFE61488E48E63969CD17867D26E141219"/>
           </calls>
          </function>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="42" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="243" id="function_ErrorLines_201D8A80E53D607847E07EE21437348A06B23768" name="ErrorLines" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
@@ -125,8 +125,8 @@
           </parameters>
           <calls>
            <call functionId="function_LineStart_7BD61FDF1370E7F19B018C10AE7F7CB9FF3551D1"/>
-           <call functionId="function_LineEnd_D74C48FFE61488E48E63969CD17867D26E141219"/>
            <call functionId="function_ToString_F49629C77F19494FEBA8CB7B2001A8139486F715"/>
+           <call functionId="function_LineEnd_D74C48FFE61488E48E63969CD17867D26E141219"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
@@ -166,16 +166,16 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_ConvertExternal_FFF0428FC54D10DD2BC4FA0A11ECF834F745F2C2"/>
-           <calledByFunction functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
            <calledByFunction functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
            <calledByFunction functionId="function_ErrorLines_C6642DB6C6A690F337E3534D515C17F97EEF1DAB"/>
+           <calledByFunction functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="49" id="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139" name="Log" returnType="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873.ptr.class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_WriteBeginRuleToLog_18DCD724C661D9A41B88A8D8178C8FCC1A5993E6"/>
-           <calledByFunction functionId="function_WriteSuccessToLog_69F2DB4909749CE655F7A4D49F2514BD4F738482"/>
            <calledByFunction functionId="function_WriteFailureToLog_A439D4F4F96F5DC8B4E0DB5F4623BBF05994942C"/>
+           <calledByFunction functionId="function_WriteSuccessToLog_69F2DB4909749CE655F7A4D49F2514BD4F738482"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="28" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="149" id="function_NextState_770F33FD64D82342B2028F01CB63DB92E6E8D009" name="NextState" returnType="int" specifiers="virtual">
@@ -306,8 +306,8 @@
            <override functionId="function_DecIndent_7025D0F4A50FA97321C33A6869CBE3D9D8B86B6C"/>
           </overrides>
           <calledByFunctions>
-           <calledByFunction functionId="function_WriteSuccessToLog_69F2DB4909749CE655F7A4D49F2514BD4F738482"/>
            <calledByFunction functionId="function_WriteFailureToLog_A439D4F4F96F5DC8B4E0DB5F4623BBF05994942C"/>
+           <calledByFunction functionId="function_WriteSuccessToLog_69F2DB4909749CE655F7A4D49F2514BD4F738482"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="20" id="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A" name="IncIndent" returnType="void" specifiers="pure virtual">
@@ -320,8 +320,8 @@
          </function>
          <function access="public" declarationFile="ParsingLog.hpp" declarationFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" declarationLine="27" definitionFile="ParsingLog.cpp" definitionFileId="file/ParsingLog.cpp_2D1969B5BC9083272EBF0513002F95231C3B0CBB.html" definitionLine="22" id="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F" name="MaxLineLength" returnType="int" specifiers="const virtual">
           <calledByFunctions>
-           <calledByFunction functionId="function_WriteBeginRuleToLog_18DCD724C661D9A41B88A8D8178C8FCC1A5993E6"/>
            <calledByFunction functionId="function_WriteElement_45F8B404E15CAEE616B42301263EDB7C77773342"/>
+           <calledByFunction functionId="function_WriteBeginRuleToLog_18DCD724C661D9A41B88A8D8178C8FCC1A5993E6"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="22" id="function_WriteBeginRule_49F3D74183046120723AB8786DA205AC382FA6EF" name="WriteBeginRule" returnType="void" specifiers="pure virtual">
@@ -343,8 +343,8 @@
            <override functionId="function_WriteEndRule_B990E33044A40D872D70CE84010F4C8DE66D8E3B"/>
           </overrides>
           <calledByFunctions>
-           <calledByFunction functionId="function_WriteSuccessToLog_69F2DB4909749CE655F7A4D49F2514BD4F738482"/>
            <calledByFunction functionId="function_WriteFailureToLog_A439D4F4F96F5DC8B4E0DB5F4623BBF05994942C"/>
+           <calledByFunction functionId="function_WriteSuccessToLog_69F2DB4909749CE655F7A4D49F2514BD4F738482"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="26" id="function_WriteFail_F3D1D34D13F792CC6FC4626B72BF6D4D8E11B7D7" name="WriteFail" returnType="void" specifiers="pure virtual">
@@ -514,8 +514,8 @@
           </parameters>
           <calls>
            <call functionId="function_XmlEscape_1A8F8A1187D9E4F338CF214BBA6ABEA18A80B743"/>
-           <call functionId="function_Write_F0B27D531AED8146BF5373853D6167DA074C2D0A"/>
            <call functionId="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F"/>
+           <call functionId="function_Write_F0B27D531AED8146BF5373853D6167DA074C2D0A"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_WriteTry_B80711752EAFDDBED0C35432E851C77C08E882E7"/>
@@ -577,8 +577,8 @@
         </parameters>
         <calledByFunctions>
          <calledByFunction functionId="function_ErrorLines_201D8A80E53D607847E07EE21437348A06B23768"/>
-         <calledByFunction functionId="function_ErrorLines_C6642DB6C6A690F337E3534D515C17F97EEF1DAB"/>
          <calledByFunction functionId="function_RestOfLine_E68513181DF2614F41AEF8D0A0BDFC4DE822F42F"/>
+         <calledByFunction functionId="function_ErrorLines_C6642DB6C6A690F337E3534D515C17F97EEF1DAB"/>
         </calledByFunctions>
        </function>
        <function access="public" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="221" id="function_LineStart_7BD61FDF1370E7F19B018C10AE7F7CB9FF3551D1" name="LineStart" project="lexer" returnType="const.char32_t.ptr.char32_t">
@@ -616,12 +616,12 @@
          <parameter access="public" id="parameter_ruleName_993790C8706E57B6DC8DF680FD173344CC6F9BF3" name="ruleName" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
+         <call functionId="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A"/>
          <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_WriteBeginRule_49F3D74183046120723AB8786DA205AC382FA6EF"/>
-         <call functionId="function_RestOfLine_E68513181DF2614F41AEF8D0A0BDFC4DE822F42F"/>
-         <call functionId="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F"/>
-         <call functionId="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A"/>
          <call functionId="function_WriteTry_973924D8D6563164311BF9CFE771360574793837"/>
+         <call functionId="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F"/>
+         <call functionId="function_RestOfLine_E68513181DF2614F41AEF8D0A0BDFC4DE822F42F"/>
         </calls>
        </function>
        <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="73" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="322" id="function_WriteFailureToLog_A439D4F4F96F5DC8B4E0DB5F4623BBF05994942C" name="WriteFailureToLog" project="lexer" returnType="void">
@@ -630,9 +630,9 @@
          <parameter access="public" id="parameter_ruleName_D7E678A5B08BB6B0EE4D49E11247A947552D3B6D" name="ruleName" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
-         <call functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
          <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_WriteFail_F3D1D34D13F792CC6FC4626B72BF6D4D8E11B7D7"/>
+         <call functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
          <call functionId="function_WriteEndRule_0D9A0399D7196DD9C1DD6359961B62AA25E6DDE3"/>
         </calls>
        </function>
@@ -643,9 +643,9 @@
          <parameter access="public" id="parameter_ruleName_E42FE1BF495D1F5E2B4B1002483BB6CB7D9E31C1" name="ruleName" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calls>
-         <call functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
-         <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
          <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
+         <call functionId="function_Log_EFF8ACE14391F7D71AF9AE415EEEB5F355541139"/>
+         <call functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
          <call functionId="function_WriteSuccess_40620A4F458BD6C33A7B1A67B1A8D9FDCC05CDB3"/>
          <call functionId="function_WriteEndRule_0D9A0399D7196DD9C1DD6359961B62AA25E6DDE3"/>
         </calls>

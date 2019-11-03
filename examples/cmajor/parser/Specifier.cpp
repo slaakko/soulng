@@ -3,7 +3,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Specifier.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Specifier.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace CmajorTokens;
@@ -24,7 +24,7 @@ soulng::parser::Match SpecifierParser::Specifiers(CmajorLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -33,7 +33,7 @@ soulng::parser::Match SpecifierParser::Specifiers(CmajorLexer& lexer)
             {
                 while (true)
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     {
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch3 = &match;
@@ -41,7 +41,7 @@ soulng::parser::Match SpecifierParser::Specifiers(CmajorLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch4 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = SpecifierParser::Specifier(lexer);
                                 specifier.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
                                 if (match.hit)
@@ -99,7 +99,7 @@ soulng::parser::Match SpecifierParser::Specifier(CmajorLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

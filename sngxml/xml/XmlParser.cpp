@@ -3,7 +3,7 @@
 #include <soulng/lexer/TrivialLexer.hpp>
 #include <soulng/parser/Range.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xml/XmlParser.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xml/XmlParser.parser' using soulng parser generator spg version 2.0.0
 
 static const soulng::parser::Range s0[] = {{9, 9}, {10, 10}, {13, 13}, {32, 55295}, {57344, 65533}, {65536, 1114111}};
 

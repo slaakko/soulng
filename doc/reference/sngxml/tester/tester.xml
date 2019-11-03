@@ -3787,13 +3787,13 @@
     </parameters>
     <calls>
      <call functionId="function_PrintUsage_66654A1CD909F0F324AC2591C7B8CB8F841B0B1A"/>
+     <call functionId="function_Evaluate_BF0EF2AEED535B19B43A24B4D63C35C3FE795ECE"/>
+     <call functionId="function_get_E23FD3C12DCCA8ADAA86CD9325A70E68BCEBA971"/>
      <call functionId="function_ParseXmlFile_EBBE6B337A1A35DA3D3B8F78466ABBD03E7CD07E"/>
      <call functionId="function_ReadDocument_68B115CF7670494066CCE4B804F85ACFE2A84D2C"/>
      <call functionId="function_SetXPathDebugParsing_615473675ED4688802E9CBACB87A6C968599AB48"/>
-     <call functionId="function_Evaluate_BF0EF2AEED535B19B43A24B4D63C35C3FE795ECE"/>
      <call functionId="function_SetXPathDebugQuery_8942C1988351BCDB5EE2BDC11766C054268CC855"/>
      <call functionId="function_ReadDocument_C106751EB10C87029F643B3BA8C03999880EED71"/>
-     <call functionId="function_get_E23FD3C12DCCA8ADAA86CD9325A70E68BCEBA971"/>
      <call functionId="function_GetXPathQueryDom_661882B0854DF64521B6F01B5C0065B4F9641224"/>
     </calls>
    </function>

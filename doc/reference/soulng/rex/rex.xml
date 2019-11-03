@@ -140,12 +140,12 @@
           <calledByFunctions>
            <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
            <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
-           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
-           <calledByFunction functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
            <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
-           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
-           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
            <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
            <calledByFunction functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
           </calledByFunctions>
          </function>
@@ -211,12 +211,12 @@
            <parameter access="public" id="parameter_pos_2273324CC91A8CC1DF7C32DD7769208A09542E01" name="pos" type="type_F6311168933725D3149F768D180F96C9C216469F"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
            <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
-           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
-           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
            <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
+           <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
            <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="51" id="function_SetSeparatorChar_21E2FF1904A06180AEF24F9402504A64CB96B039" name="SetSeparatorChar" returnType="void">
@@ -236,8 +236,8 @@
            <parameter access="public" id="parameter_name_CC37E8052E3894D26204594F37B650C201D6A6C5" name="name" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
            <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+           <calledByFunction functionId="function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA"/>
            <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
            <calledByFunction functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
           </calledByFunctions>
@@ -653,8 +653,8 @@
            <parameter access="public" id="parameter_c_FCEE47E2FF2BB7A74BAD0B09700FF8F373C6F254" name="c" type="char32_t"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
            <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
+           <calledByFunction functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="25" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="68" id="function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79" name="MakeClass" returnType="class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463.ptr.class_Class_1958DB268A3A3D2F9AF2353E0F5AB9557B752463">
@@ -664,18 +664,18 @@
          </function>
          <function access="public" definitionFile="Context.hpp" definitionFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" definitionLine="24" id="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED" name="MakeEpsilon" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4">
           <calledByFunctions>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="20" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="28" id="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021" name="MakeNfaState" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3">
           <calledByFunctions>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
+           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
-           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Context.hpp" declarationFileId="file/Context.hpp_D2A3D11A1DE7B17CDD91B7E187F71B6A4E1689A6.html" declarationLine="22" definitionFile="Context.cpp" definitionFileId="file/Context.cpp_35EBFE62B17F1253E5ABB23D65F1C9D55E7CAC5B.html" definitionLine="51" id="function_MakeRange_C8B174D1BCDE425D9181331D3D8100C183918A10" name="MakeRange" returnType="class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.ptr.class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4">
@@ -711,10 +711,10 @@
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="48" id="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88" name="End" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="49" id="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E" name="SetEnd" returnType="void">
@@ -723,9 +723,9 @@
           </parameters>
           <calledByFunctions>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
-           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="47" id="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1" name="SetStart" returnType="void">
@@ -733,19 +733,19 @@
            <parameter access="public" id="parameter_start__AE3047535C37F600B6EB6816B8B00A610CB97AE0" name="start_" type="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3"/>
           </parameters>
           <calledByFunctions>
+           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
-           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="46" id="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1" name="Start" returnType="class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.ptr.class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_Match_702E71A3715413D6F47C8F847383155C298FC89C"/>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
           </calledByFunctions>
          </function>
         </functions>
@@ -787,11 +787,11 @@
            <parameter access="public" id="parameter_edge_7AAD0670FA9A278796E29557DD73D4955E126238" name="edge" type="const.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.lvalueref.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
-           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
            <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
+           <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
+           <calledByFunction functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+           <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="32" id="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8" name="Edges" returnType="const.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.lvalueref.type_B96923E27FC77D813C83CEAE5561392C3DA28BBC.class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB" specifiers="const">
@@ -807,8 +807,8 @@
            <call functionId="function_Match_1AE201DEDEF5F1D2AC6D097941F5C1E6325263C3"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
            <calledByFunction functionId="function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07"/>
+           <calledByFunction functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Nfa.hpp" definitionFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" definitionLine="31" id="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE" name="SetAccept" returnType="void">
@@ -818,9 +818,9 @@
           <calledByFunctions>
            <calledByFunction functionId="function_MakeNfa_C5EA8C117B0329D68233E6D0628AE2EEE8047EEA"/>
            <calledByFunction functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
            <calledByFunction functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
            <calledByFunction functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
-           <calledByFunction functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Nfa.hpp" declarationFileId="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html" declarationLine="33" definitionFile="Nfa.cpp" definitionFileId="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html" definitionLine="19" id="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3" name="SetEdges" returnType="void">
@@ -890,9 +890,9 @@
           </parameters>
           <overrides>
            <override functionId="function_Match_1AE8F7F6A34CA646D0EF5F7041B467CC3F1FC477"/>
-           <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
-           <override functionId="function_Match_966EB2B435288E763840A7BE98C0DD7AF7EFDB64"/>
            <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
+           <override functionId="function_Match_966EB2B435288E763840A7BE98C0DD7AF7EFDB64"/>
+           <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
           </overrides>
           <calledByFunctions>
            <calledByFunction functionId="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD"/>
@@ -909,14 +909,14 @@
          <parameter access="public" id="parameter_right_520768123F62A605D382E937481949E79CDD2850" name="right" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
          <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
-         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
+         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
+         <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
@@ -930,10 +930,10 @@
         <calls>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
          <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3"/>
+         <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
          <call functionId="function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8"/>
+         <call functionId="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
@@ -981,8 +981,8 @@
          <call functionId="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD"/>
         </calls>
         <calledByFunctions>
-         <calledByFunction functionId="function_Match_702E71A3715413D6F47C8F847383155C298FC89C"/>
          <calledByFunction functionId="function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7"/>
+         <calledByFunction functionId="function_Match_702E71A3715413D6F47C8F847383155C298FC89C"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="Match.hpp" declarationFileId="file/Match.hpp_43709F9F744D799A6BE765167F7B8C757FAFD638.html" declarationLine="16" definitionFile="Match.cpp" definitionFileId="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html" definitionLine="29" id="function_FilePatternMatch_85F093E022AC279FCD29B058D51F9AFA89677C4D" name="FilePatternMatch" project="rex" returnType="bool">
@@ -1001,12 +1001,12 @@
          <parameter access="public" id="parameter_nfa_1F3151B422C327C1BF88C93C58DB640D022CF94E" name="nfa" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
-         <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
-         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
+         <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
+         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
+         <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
         </calls>
@@ -1045,8 +1045,8 @@
          <parameter access="public" id="parameter_filePattern_2C56980BC4C2A968F7498E81AC2E762A0A4F3BD8" name="filePattern" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
         </parameters>
         <calledByFunctions>
-         <calledByFunction functionId="function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4"/>
          <calledByFunction functionId="function_FilePatternMatch_85F093E022AC279FCD29B058D51F9AFA89677C4D"/>
+         <calledByFunction functionId="function_CompileFilePattern_4FAA199A7512C08AA5DF3E085455E1AEC8C73EF4"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="Algorithm.hpp" declarationFileId="file/Algorithm.hpp_D90B6B6E6D20EC107F6748331A5A9953964A91C4.html" declarationLine="20" definitionFile="Algorithm.cpp" definitionFileId="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html" definitionLine="60" id="function_Match_702E71A3715413D6F47C8F847383155C298FC89C" name="Match" project="rex" returnType="bool">
@@ -1057,9 +1057,9 @@
         <calls>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
          <call functionId="function_EpsilonClosure_86668B204990F3C3C9254AD57482F5F782FCE5A7"/>
+         <call functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
          <call functionId="function_Move_1E1C2D862F9DACEB87524C816E4F320D5A197B07"/>
          <call functionId="function_Accept_7284EF031E3F3625014927F389405AE12B78A9D2"/>
-         <call functionId="function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_PatternMatch_8BA05B05BD0D98E4B0A3B6DC3E1CAB56BFB060D2"/>
@@ -1084,9 +1084,9 @@
         </parameters>
         <calls>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
+         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
          <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
-         <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
         </calls>
         <calledByFunctions>
          <calledByFunction functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
@@ -1153,13 +1153,13 @@
          <parameter access="public" id="parameter_nfa_EB997CF012ECA6D36BCA162EF6F47932B923727A" name="nfa" type="const.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.lvalueref.class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B"/>
         </parameters>
         <calls>
-         <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
-         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
-         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
          <call functionId="function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E"/>
+         <call functionId="function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021"/>
+         <call functionId="function_SetStart_E8BCA669F6196D5C35889D70D874541EC68868F1"/>
+         <call functionId="function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE"/>
          <call functionId="function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1"/>
-         <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
          <call functionId="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87"/>
+         <call functionId="function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED"/>
          <call functionId="function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88"/>
         </calls>
         <calledByFunctions>
@@ -4836,11 +4836,11 @@
        <parameter access="public" id="parameter_context_112A50706CAFA85AE4847AE382B825D22AD3EFC8" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
       </parameters>
       <calls>
-       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
-       <call functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
-       <call functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
        <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>
+       <call functionId="function_Alt_6D7CAC9C63021033B8CD7A53675E2F2CF8FAAFFD"/>
       </calls>
       <calledByFunctions>
        <calledByFunction functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
@@ -4855,8 +4855,8 @@
       <calls>
        <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_Repetition_1A51110DA8C86D323B088EA2F24AE70D2255E6C7"/>
-       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
        <call functionId="function_Cat_BEF9B7B6FE17061478A5621D2C2D192BCBEBFEC9"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
       </calls>
       <calledByFunctions>
        <calledByFunction functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
@@ -4868,8 +4868,8 @@
       </parameters>
       <calls>
        <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
-       <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
        <call functionId="function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297"/>
+       <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
        <call functionId="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42"/>
        <call functionId="function_MakeEscapeValue_77A9FB5AA7F76CB50EC6C7CFF8B68367C5CAD7F9"/>
        <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
@@ -4884,15 +4884,15 @@
        <parameter access="public" id="parameter_context_40F04C36DF6D9B1A701E9EB67EB270428DF796D0" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
       </parameters>
       <calls>
-       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
+       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
+       <call functionId="function_AddSymbol_24CA32D54221D9F85095A75402AED7CCA8EAB79F"/>
+       <call functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
        <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_MakeClass_979BCEE31115C008B3CD5465064DE96E5D7F6D79"/>
-       <call functionId="function_AddSymbol_24CA32D54221D9F85095A75402AED7CCA8EAB79F"/>
-       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
        <call functionId="function_SetInverse_C045610C4FF1F70FDD5672D6F12AFAF4CB7ABE57"/>
-       <call functionId="function_Range_8D218CF8DB8AA096BAB23F7AB912E9A627EA2D2B"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
        <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
-       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
       </calls>
       <calledByFunctions>
        <calledByFunction functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
@@ -4904,11 +4904,11 @@
        <parameter access="public" id="parameter_context_B5B4E88DC119CAADD3F666C0FA02E8091C7DA369" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
       </parameters>
       <calls>
-       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
+       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
        <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_RegularExpression_3541B13CD08522A32BEEC597BBEF15E2C8233DDB"/>
+       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
        <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
-       <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
       </calls>
       <calledByFunctions>
        <calledByFunction functionId="function_CompileRegularExpressionPattern_D94D23880380B40547C48D0D7FF768924D5CC13C"/>
@@ -4920,18 +4920,18 @@
        <parameter access="public" id="parameter_context_E6250D4A04ACB2492E33B8C81A8AD3B8BC149CBA" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
       </parameters>
       <calls>
-       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
-       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_ThrowExpectationFailure_1C25D0EABF291136999F0D7FF6FE790C664A88C6"/>
-       <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
-       <call functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
-       <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
-       <call functionId="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42"/>
+       <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_Alternative_2766F12A637594712E54757595F3A1EAAE77EEA4"/>
+       <call functionId="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B"/>
+       <call functionId="function_ToUtf32_24D8CD7AC461144571B90F8DEB7B7D5E2140287F"/>
+       <call functionId="function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A"/>
+       <call functionId="function_FileName_9A84BA31BA0AE50F859ECE725F788DD363948F42"/>
        <call functionId="function_MakeEscapeValue_77A9FB5AA7F76CB50EC6C7CFF8B68367C5CAD7F9"/>
-       <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
        <call functionId="function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669"/>
        <call functionId="function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297"/>
+       <call functionId="function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043"/>
        <call functionId="function_MakeAny_343AB66EE153AC2E50C406CEEBA00CA740C7B756"/>
        <call functionId="function_Class_AD5DE58FED7D868B9477758A8F5944C60B181909"/>
       </calls>
@@ -4945,10 +4945,10 @@
        <parameter access="public" id="parameter_context_F586A259A233F2F1E4E13000671891A71AAE87B8" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
       </parameters>
       <calls>
-       <call functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
        <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
-       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_Char_4F18553DA25AC3EC565B3CE3691A197848F376F4"/>
        <call functionId="function_MakeRange_C8B174D1BCDE425D9181331D3D8100C183918A10"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
        <call functionId="function_MakeChar_4D1D7222DC0B2B12717796AE342B317CF611E669"/>
       </calls>
       <calledByFunctions>
@@ -4974,12 +4974,12 @@
        <parameter access="public" id="parameter_context_9E1B7E80B2E885147BC208F578CADE021E59DFDE" name="context" type="class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.ptr.class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4"/>
       </parameters>
       <calls>
-       <call functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
        <call functionId="function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2"/>
        <call functionId="function_Primary_995236A7E2C43739D4255AD43C91013E15A10259"/>
-       <call functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
-       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
        <call functionId="function_Opt_DF489D6029A0C2A4C25E3A661834AA5F696E8176"/>
+       <call functionId="function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7"/>
+       <call functionId="function_Kleene_8F8F02C1BD9F54DE9733DA50611999638BBD5E15"/>
+       <call functionId="function_Pos_22A8DD2D459A28CC1D08AF5F10A68D033C3CF023"/>
       </calls>
       <calledByFunctions>
        <calledByFunction functionId="function_Catenation_2CA6BA24C725D4154ABC250E487EADDDB55EC856"/>

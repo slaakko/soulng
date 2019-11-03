@@ -14,20 +14,32 @@
     <p>
         The interface of the lexical analyzer has two main operations: if a variable or parameter named <em>lexer</em> is of the type of the generated lexical analyzer (or reference to it),
         then the expression <strong>*lexer</strong> returns the identifier of the current token, and the expression <strong>++lexer</strong> advances the lexer to the next token.
-        In addition the lexer has a member variable <strong>token</strong> that contains the matched <em>lexeme</em>, a pair of pointers to the beginning and end of the matching characters.
+        In addition the lexer has a member variable <strong>token</strong> that contains the matched 
+        <a href="../../reference/soulng/lexer/html/content/struct_Lexeme_4763116A7D2A379D2014BB53AC948DBADE24BFD0.html"><em>lexeme</em></a>, 
+        a pair of pointers to the beginning and end of the matching characters.
     </p>
 
     <p>
         As it moves forward in the stream of tokens, the lexer will save the scanned non-separator tokens.
-        They will have indeces starting from zero. The <em>GetPos()</em> member function of the lexer will return the position,
-        or index, of the current token, and the <em>SetPos()</em> member function will set the lexer to the given position in the token stream,
+        They will have indeces starting from zero. The 
+        <a href="../../reference/soulng/lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetPos_06C90E9BDA9638F8B2CD5120CF514D8BCA9E63B2">GetPos()</a>
+        member function of the lexer will return the position,
+        or index, of the current token and the current line number, 
+        and the 
+        <a href="../../reference/soulng/lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_SetPos_3E6B26B89CC47C5A207DB24921377C366FC102F7">SetPos()</a>
+        member function will set the lexer to the given position in the token stream,
         so that the <strong>*lexer</strong> operation will return the identifier of the token in that position. In this way the parser can backtrack to a previous position and rescan
-        tokens from that position onward again. The <em>GetToken()</em> member function of the lexer will return a token in the given position.
+        tokens from that position onward again. The 
+        <a href="../../reference/soulng/lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetToken_9FD459CBDBEBD96D5B13844F1DAEAD53F0E2081A">GetToken()</a> member function of the lexer will return a token in the given position.
     </p>
 
     <p>
-        A <em>span</em> is a range of token indeces. The <em>GetSpan()</em> member function of the lexer will return a span that has the current token index as its start and end index.
-        By setting start and/or end indeces of a span, and then calling the <em>GetMatch()</em> member function of the lexer with that span,
+        A <a href="../../reference/soulng/lexer/html/content/struct_Span_30EE73A264B60937695144F1BD60852CA010DF7E.html"><em>span</em></a>
+        contains a range of token indeces. The 
+        <a href="../../reference/soulng/lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetSpan_BD168DF44A33E24BDB23F478213425E48CB78297">GetSpan()</a> 
+        member function of the lexer will return a span that has the current token index as its start and end index.
+        By setting start and/or end indeces of a span, and then calling the 
+        <a href="../../reference/soulng/lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_GetMatch_C1A8D2117360711D3A3C63CBE770B83C85302043">GetMatch()</a> member function of the lexer with that span,
         the lexer will return a string that contains all matching characters including separators for that span of tokens.
     </p>
 </body>

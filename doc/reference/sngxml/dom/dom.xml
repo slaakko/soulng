@@ -157,8 +157,8 @@
            <parameter access="public" id="parameter_formatter_6AB635B4BB30E544BCFB6C19DDDBDBE70344B68F" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
            <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
+           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
           </overriddenFunctions>
          </function>
          <function access="public" definitionFile="CharacterData.hpp" definitionFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" definitionLine="68" id="function_operator_assign_F0F7F6D6BD760E2A07B1A10508C77681ABDCAAB9" name="operator=" returnType="class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947.lvalueref.class_CDataSection_F20EDE3C2C662788F82D44DA7C7E7A0434AF8947" specifiers="delete">
@@ -220,9 +220,9 @@
            <parameter access="public" id="parameter_formatter_F33B718EE733DE1666FCF09DFB7956D4D89A5573" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overrides>
-           <override functionId="function_Write_90D30E4CE3FDD36D948E4FA66591BBF8A761BA50"/>
-           <override functionId="function_Write_BB6725D1FC065812D93AA5B7406FABEAD9B02EA3"/>
            <override functionId="function_Write_A478BC95494F123C1A9011FCE1488B54D4F9190B"/>
+           <override functionId="function_Write_BB6725D1FC065812D93AA5B7406FABEAD9B02EA3"/>
+           <override functionId="function_Write_90D30E4CE3FDD36D948E4FA66591BBF8A761BA50"/>
           </overrides>
           <overriddenFunctions>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
@@ -293,8 +293,8 @@
            <parameter access="public" id="parameter_formatter_4AB2EDB9AEAEAD6C9AFE8444336043AD390B75FB" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
            <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
+           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
           </overriddenFunctions>
          </function>
          <function access="public" definitionFile="CharacterData.hpp" definitionFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" definitionLine="82" id="function_operator_assign_BDEDFEE6D23B0C78B8D0B2704B4A379D07C97F18" name="operator=" returnType="class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2.lvalueref.class_Comment_2965FD61E4F991CAFE1C35E4D796B72D5C6414E2" specifiers="delete">
@@ -405,8 +405,8 @@
          </function>
          <function access="public" declarationFile="Document.hpp" declarationFileId="file/Document.hpp_7C2892F16E470A2E9385E3CCD90A88FC18D66CA1.html" declarationLine="39" definitionFile="Document.cpp" definitionFileId="file/Document.cpp_E1B8544900E202F07CBC542792453002CAECC767.html" definitionLine="106" id="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C" name="InternalInvalidateIndex" returnType="void">
           <calledByFunctions>
-           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
@@ -434,11 +434,11 @@
           </overriddenFunctions>
           <calls>
            <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
-           <call functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
            <call functionId="function_CheckValidInsert_9CED55C5062662091A02FE25454BC176A2D6C184"/>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
+           <call functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
@@ -464,8 +464,8 @@
            <parameter access="public" id="parameter_formatter_BA1633CDC4909F9C03F1CE3A9BB4FE14B958D0ED" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
            <overriddenFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
+           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
           </overriddenFunctions>
           <calls>
            <call functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
@@ -550,8 +550,8 @@
            <call functionId="function_AddTextContent_B59E23DFAB26EE582A15BD718604B5620C482C64"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_PI_7B855D27D2746067D3969B2C93677C7C7E6FE294"/>
            <calledByFunction functionId="function_Comment_710ECC34D8A5528FAE1639DB86900A843F41F0FD"/>
+           <calledByFunction functionId="function_PI_7B855D27D2746067D3969B2C93677C7C7E6FE294"/>
            <calledByFunction functionId="function_CDataSection_A2B0A754197848FC8C9FC382B9540E1F7DF9E8E4"/>
            <calledByFunction functionId="function_EndElement_AA7AFC693BF82F90EA876611044DF26956E85129"/>
           </calledByFunctions>
@@ -561,8 +561,8 @@
            <parameter access="public" id="parameter_addSpace_088734C7D37BE02EEC3C9E9F8C5B4734DD9BDCE5" name="addSpace" type="bool"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_AddTextContent_735804133AB3DD1DD8AA01B16F9FA31C8506F32E"/>
            <calledByFunction functionId="function_StartElement_CFE72147052E334FE29460545F88DBB9AF066AE1"/>
+           <calledByFunction functionId="function_AddTextContent_735804133AB3DD1DD8AA01B16F9FA31C8506F32E"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Parser.cpp" declarationFileId="file/Parser.cpp_5D538B2C75627252A8CE1CA8CC59728986B8A1D9.html" declarationLine="35" definitionFile="Parser.cpp" definitionFileId="file/Parser.cpp_5D538B2C75627252A8CE1CA8CC59728986B8A1D9.html" definitionLine="138" id="function_CDataSection_A2B0A754197848FC8C9FC382B9540E1F7DF9E8E4" name="CDataSection" returnType="void" specifiers="override">
@@ -662,9 +662,9 @@
            <overriddenFunction functionId="function_StartElement_622DFFD8C91FDCE563A59A752533464D402D9DBD"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_QualifiedName_A2F2F4F7F9292AB3115050EE5E2B0C6BDDD85D76"/>
-           <call functionId="function_AddTextContent_B59E23DFAB26EE582A15BD718604B5620C482C64"/>
            <call functionId="function_Value_29816DDF1B1B5BA34CCA186F874BDE755591252A"/>
+           <call functionId="function_AddTextContent_B59E23DFAB26EE582A15BD718604B5620C482C64"/>
+           <call functionId="function_QualifiedName_A2F2F4F7F9292AB3115050EE5E2B0C6BDDD85D76"/>
           </calls>
          </function>
          <function access="public" declarationFile="Parser.cpp" declarationFileId="file/Parser.cpp_5D538B2C75627252A8CE1CA8CC59728986B8A1D9.html" declarationLine="32" definitionFile="Parser.cpp" definitionFileId="file/Parser.cpp_5D538B2C75627252A8CE1CA8CC59728986B8A1D9.html" definitionLine="105" id="function_Text_E2D5A391AE0A7B7F1FCE2CA321F7B64A8C209019" name="Text" returnType="void" specifiers="override">
@@ -740,15 +740,15 @@
            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
           </overriddenFunctions>
           <calls>
+           <call functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
            <call functionId="function_BeginVisit_4B84C179DA82F13CE717476412C0D345194E0012"/>
            <call functionId="function_EndVisit_28D26F45FE6874DAF364D2F60A66A567E1A449AD"/>
-           <call functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
+           <calledByFunction functionId="function_GetElementsByTagName_1EBA20BD20871E711E4AE6F80C7BB615A2E1548A"/>
            <calledByFunction functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
            <calledByFunction functionId="function_GetElementById_F5289E3B651349375FFD05D24A56B319D8B6AB2B"/>
-           <calledByFunction functionId="function_GetElementsByTagName_1EBA20BD20871E711E4AE6F80C7BB615A2E1548A"/>
+           <calledByFunction functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Element.hpp" declarationFileId="file/Element.hpp_FCA46E7039268103F232EADE9131F7B976759F62.html" declarationLine="44" definitionFile="Element.cpp" definitionFileId="file/Element.cpp_DED8227DED9440AC54AC49DC9FF86208981FA231.html" definitionLine="193" id="function_AddAttribute_9E979641AF025352754F9D3E3AA8A24818C512B7" name="AddAttribute" returnType="void">
@@ -764,9 +764,9 @@
            <overriddenFunction functionId="function_CloneNode_F414193A038D649BDB7C3AA3D27A602B04C5DFE9"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_Name_81F9CA9802B7EFAEE8C6EDF3AACD4B79DF712552"/>
-           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
            <call functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
+           <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
+           <call functionId="function_Name_81F9CA9802B7EFAEE8C6EDF3AACD4B79DF712552"/>
            <call functionId="function_CloneChildrenTo_95A2AA9306F45ABA89361F1CDBE07AD1FDBC4191"/>
           </calls>
           <calledByFunctions>
@@ -834,20 +834,20 @@
            <parameter access="public" id="parameter_formatter_87D6A1FD780792DEC20112C438FEB15BA9C6B56D" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
            <overriddenFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
+           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
            <call functionId="function_HasChildNodes_795855736C91915542FBB540334CAC4D4D385A68"/>
-           <call functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
+           <call functionId="function_GetAttribute_A956ED87F164978FE7E78D3341F55C950336A9E2"/>
            <call functionId="function_Name_81F9CA9802B7EFAEE8C6EDF3AACD4B79DF712552"/>
            <call functionId="function_WriteAttributes_E4B7FB1E7A63A30FC7640CDDD8CFCE0421EF300B"/>
-           <call functionId="function_GetAttribute_A956ED87F164978FE7E78D3341F55C950336A9E2"/>
+           <call functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
+           <call functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
            <calledByFunction functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
+           <calledByFunction functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Element.hpp" declarationFileId="file/Element.hpp_FCA46E7039268103F232EADE9131F7B976759F62.html" declarationLine="52" definitionFile="Element.cpp" definitionFileId="file/Element.cpp_DED8227DED9440AC54AC49DC9FF86208981FA231.html" definitionLine="162" id="function_WriteAttributes_E4B7FB1E7A63A30FC7640CDDD8CFCE0421EF300B" name="WriteAttributes" returnType="void">
@@ -951,8 +951,8 @@
            <parameter access="public" id="parameter_formatter_2F6462EDC278A4E56DB46F753AF3BFE24A55DFA3" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overriddenFunctions>
-           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
            <overriddenFunction functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
+           <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
           </overriddenFunctions>
          </function>
          <function access="public" definitionFile="CharacterData.hpp" definitionFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" definitionLine="54" id="function_operator_assign_29CBF27045E26C9E141F11680293BDA1C6ADB838" name="operator=" returnType="class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15.lvalueref.class_EntityReference_53A792C2421787F33BAE538348BD25470CA5BC15" specifiers="delete">
@@ -998,14 +998,14 @@
            <parameter access="public" id="parameter_visitor_E8A1DE2ADCA731D5ACBB8F6A8AF065BBCB9CE99C" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
           </parameters>
           <overrides>
-           <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
-           <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
-           <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
-           <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
-           <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
-           <override functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
            <override functionId="function_Accept_7B5982FF4E2BC357565E1325691D54E88AA290E0"/>
+           <override functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
            <override functionId="function_Accept_C66FE321363A92AA5E3BB2AF178C73EFD9125ADF"/>
+           <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
+           <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
+           <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
+           <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
+           <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </overrides>
           <calledByFunctions>
            <calledByFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
@@ -1016,14 +1016,14 @@
            <parameter access="public" id="parameter_deep_3523217F39AF473B6D7E690447D87EB55271944B" name="deep" type="bool"/>
           </parameters>
           <overrides>
-           <override functionId="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81"/>
+           <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
            <override functionId="function_CloneNode_DD7FEEFB61CC0054111172B9E7AD0C41EBBDE2DA"/>
-           <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
+           <override functionId="function_CloneNode_F24A1550FCF607F3EA3CAD8DDA81F4C3554F3D52"/>
+           <override functionId="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81"/>
            <override functionId="function_CloneNode_155FFD3D1ED86F480AB38332995502E6A9C83E14"/>
            <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
-           <override functionId="function_CloneNode_F24A1550FCF607F3EA3CAD8DDA81F4C3554F3D52"/>
+           <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
            <override functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
-           <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
            <override functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
           </overrides>
           <calledByFunctions>
@@ -1032,9 +1032,9 @@
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="72" id="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B" name="GetNodeType" returnType="enum_NodeType_5368029CED50AA3E105E71B9D211833D74A20068" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
            <calledByFunction functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
            <calledByFunction functionId="function_CheckValidInsert_9CED55C5062662091A02FE25454BC176A2D6C184"/>
+           <calledByFunction functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="79" id="function_HasAttributes_89B34D0B58687AA2749AED04C494974424F5BB70" name="HasAttributes" returnType="bool" specifiers="const virtual">
@@ -1087,39 +1087,39 @@
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="73" id="function_Name_81F9CA9802B7EFAEE8C6EDF3AACD4B79DF712552" name="Name" returnType="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
           <calledByFunctions>
            <calledByFunction functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
-           <calledByFunction functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
-           <calledByFunction functionId="function_BeginVisit_D70B435864CFCB62CE5F1ABEE217FC6CF5B3F3A1"/>
            <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
+           <calledByFunction functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
            <calledByFunction functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
+           <calledByFunction functionId="function_BeginVisit_D70B435864CFCB62CE5F1ABEE217FC6CF5B3F3A1"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="74" id="function_NamespaceUri_E1650ED429A31AA4EBF651385BF5DABB8B770D09" name="NamespaceUri" returnType="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const"/>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="97" id="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7" name="NextSibling" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_ChildNodes_445BBCB3CD73C4BA434CCAFF63FD42EE17247A30"/>
            <calledByFunction functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
            <calledByFunction functionId="function_CloneChildrenTo_95A2AA9306F45ABA89361F1CDBE07AD1FDBC4191"/>
-           <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
-           <calledByFunction functionId="function_WalkChildren_C64075D19429547D59798CB54EAC4BB6B354D5B3"/>
-           <calledByFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+           <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
+           <calledByFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+           <calledByFunction functionId="function_WalkChildren_C64075D19429547D59798CB54EAC4BB6B354D5B3"/>
+           <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="99" id="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB" name="OwnerDocument" returnType="class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F.ptr.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="98" id="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9" name="Parent" returnType="class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6.ptr.class_ParentNode_32EEAAD4A81494D922390069F0D2A62E62F636E6" specifiers="const">
           <calledByFunctions>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
            <calledByFunction functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="75" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="51" id="function_Prefix_C6D6A7CFC95D0D215574C56061B24D8F1BC57D7E" name="Prefix" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const"/>
@@ -1152,9 +1152,9 @@
            <call functionId="function_WalkChildren_EA2B1D0C2E4ADD6ED7FC725854C948BEC10D8FF7"/>
            <call functionId="function_WalkDescendant_F7E0CC80719788AFAACD43505DC06CE09293AA4C"/>
            <call functionId="function_WalkFollowingSibling_496B59C9ADA926B45CD3A46F9215D2754A2B08F8"/>
-           <call functionId="function_WalkParent_EDE078B35EE5878947F67121FB634406949B2708"/>
            <call functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
            <call functionId="function_WalkAncestor_05038E75AAD3D4FABE8036E8DE7C6B4F3183FE9A"/>
+           <call functionId="function_WalkParent_EDE078B35EE5878947F67121FB634406949B2708"/>
            <call functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
            <call functionId="function_WalkPrecedingSibling_08B20B71EA5695AF6D8BDEE66B078254A36669EA"/>
            <call functionId="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1"/>
@@ -1179,13 +1179,13 @@
            <parameter access="public" id="parameter_nodeOp_BF52D05454E0D997856135B6B6071F93C51755CC" name="nodeOp" type="class_NodeOp_596E9ED551CF14B0767F0C3D6A559A59B25FF06B.lvalueref.class_NodeOp_596E9ED551CF14B0767F0C3D6A559A59B25FF06B"/>
           </parameters>
           <calls>
-           <call functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
            <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
+           <call functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
           </calls>
           <calledByFunctions>
+           <calledByFunction functionId="function_WalkAncestor_05038E75AAD3D4FABE8036E8DE7C6B4F3183FE9A"/>
            <calledByFunction functionId="function_Walk_8ED5C00FAE77EDAEAEC73B611377121F14765E34"/>
            <calledByFunction functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
-           <calledByFunction functionId="function_WalkAncestor_05038E75AAD3D4FABE8036E8DE7C6B4F3183FE9A"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="95" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="210" id="function_WalkAttribute_A28B6F3D995B12C2A77692A59B53038183605FB4" name="WalkAttribute" returnType="void" specifiers="virtual">
@@ -1232,9 +1232,9 @@
            <call functionId="function_Apply_9FBCD492E6659C7C1323E262C37110E494622363"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
-           <calledByFunction functionId="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1"/>
            <calledByFunction functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
+           <calledByFunction functionId="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1"/>
+           <calledByFunction functionId="function_WalkDescendant_0EA620F98AF5A4028F3329EC60ECBBCC1A997082"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="88" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="154" id="function_WalkFollowing_61C0C68799C10ED84C121B465EF591E7557531D1" name="WalkFollowing" returnType="void" specifiers="virtual">
@@ -1312,14 +1312,14 @@
            <parameter access="public" id="parameter_formatter_72DD9388BB0B42BA86F2927DCF0FA5E010B847CB" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overrides>
-           <override functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
-           <override functionId="function_Write_90D30E4CE3FDD36D948E4FA66591BBF8A761BA50"/>
-           <override functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
-           <override functionId="function_Write_3FA1FCDCCD4FD9F2BF5800FC255624A5DC61C0C8"/>
            <override functionId="function_Write_FAC1C8D3D5BCC237694CC3A3DFF7DA17048CDB90"/>
            <override functionId="function_Write_A478BC95494F123C1A9011FCE1488B54D4F9190B"/>
-           <override functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
+           <override functionId="function_Write_D6B53105F27107EDE9F5CD1B4FE58FFF75012152"/>
            <override functionId="function_Write_BB6725D1FC065812D93AA5B7406FABEAD9B02EA3"/>
+           <override functionId="function_Write_3FA1FCDCCD4FD9F2BF5800FC255624A5DC61C0C8"/>
+           <override functionId="function_Write_90D30E4CE3FDD36D948E4FA66591BBF8A761BA50"/>
+           <override functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
+           <override functionId="function_Write_4432FDED2A070DCF199A13C7732A505F27110CDB"/>
            <override functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
           </overrides>
           <calledByFunctions>
@@ -1381,12 +1381,12 @@
            <parameter access="public" id="parameter_node_C065478015507405F1C8097701C846035B39331C" name="node" type="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720"/>
           </parameters>
           <calledByFunctions>
-           <calledByFunction functionId="function_WalkPrecedingOrSelf_0FAA1E8D7FA586B9CD6B8A9CFDAD9BEB1A24F58C"/>
+           <calledByFunction functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
            <calledByFunction functionId="function_WalkAttribute_3B62A62E0917224E9A626125779D83C1DD6C9234"/>
            <calledByFunction functionId="function_Walk_8ED5C00FAE77EDAEAEC73B611377121F14765E34"/>
-           <calledByFunction functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
            <calledByFunction functionId="function_WalkParent_EDE078B35EE5878947F67121FB634406949B2708"/>
-           <calledByFunction functionId="function_WalkAncestorOrSelf_3DFE255D945F98A4A6F0E1936114BDD3AB1581BE"/>
+           <calledByFunction functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
+           <calledByFunction functionId="function_WalkPrecedingOrSelf_0FAA1E8D7FA586B9CD6B8A9CFDAD9BEB1A24F58C"/>
            <calledByFunction functionId="function_WalkFollowingSibling_496B59C9ADA926B45CD3A46F9215D2754A2B08F8"/>
            <calledByFunction functionId="function_WalkPrecedingSibling_08B20B71EA5695AF6D8BDEE66B078254A36669EA"/>
            <calledByFunction functionId="function_WalkChildren_C64075D19429547D59798CB54EAC4BB6B354D5B3"/>
@@ -1427,8 +1427,8 @@
            <parameter access="public" id="parameter_visitor_EAD0B993067F798C79BFEFDD3DAD70C0D3BFB9BB" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
           </parameters>
           <overrides>
-           <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
            <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
+           <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
           </overrides>
           <overriddenFunctions>
            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
@@ -1447,19 +1447,19 @@
           </overrides>
           <calls>
            <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
-           <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
            <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
            <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <call functionId="function_InternalLinkAfter_730F127388017CA64454E3C56CAD36F61B1A1107"/>
+           <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
+           <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
           </calls>
           <calledByFunctions>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5"/>
            <calledByFunction functionId="function_CloneChildrenTo_95A2AA9306F45ABA89361F1CDBE07AD1FDBC4191"/>
-           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="126" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="260" id="function_ChildNodes_445BBCB3CD73C4BA434CCAFF63FD42EE17247A30" name="ChildNodes" returnType="class_NodeList_239E876DF76977B5F80705FF92011F467DB98C0F" specifiers="const">
@@ -1478,15 +1478,15 @@
            <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
            <calledByFunction functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
            <calledByFunction functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
+           <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="129" id="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE" name="FirstChild" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
           <calledByFunctions>
-           <calledByFunction functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
            <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <calledByFunction functionId="function_HasMultilineContent_D286C70BC5BB5DDC0AA32945FBA73818C5DB10D9"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
           </calledByFunctions>
          </function>
@@ -1507,19 +1507,19 @@
            <override functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
           </overrides>
           <calls>
-           <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
            <call functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
+           <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
            <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
-           <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
+           <call functionId="function_InternalLinkBefore_8D2A6C844EDA4143CD84957AE349870906D615F4"/>
            <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
            <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
-           <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_InternalLinkBefore_8D2A6C844EDA4143CD84957AE349870906D615F4"/>
+           <call functionId="function_FirstChild_444EAF27F2B3B8F25942EA5E4E407C37205DB3FE"/>
           </calls>
           <calledByFunctions>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
            <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
           </calledByFunctions>
          </function>
          <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="130" id="function_LastChild_5A6A2812012F71EDFB029442CBE55AE9C6302952" name="LastChild" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const">
@@ -1535,19 +1535,19 @@
            <override functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
           </overrides>
           <calls>
-           <call functionId="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8"/>
-           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
-           <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
-           <call functionId="function_InternalUnlink_BBAA30AC6FB3C116EEE72E2FCAA15F0866B62E68"/>
-           <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
            <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
+           <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
+           <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
+           <call functionId="function_InternalUnlink_BBAA30AC6FB3C116EEE72E2FCAA15F0866B62E68"/>
+           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
+           <call functionId="function_PreviousSibling_BFBEF46EC4447ED762466BAEA6E0A12D2146CBB8"/>
           </calls>
           <calledByFunctions>
+           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
            <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
            <calledByFunction functionId="function_RemoveChild_08E0D0FE00800BB111CFE24D8D0FDE1B5F54BBBE"/>
-           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
            <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
-           <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
+           <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
           </calledByFunctions>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="132" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="365" id="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A" name="ReplaceChild" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="virtual">
@@ -1559,12 +1559,12 @@
            <override functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
           </overrides>
           <calls>
-           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
            <call functionId="function_Parent_395912FF506E3DF4B1F18A17B9AC7149038BC3C9"/>
+           <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
            <call functionId="function_OwnerDocument_3081754C2E4F4B0C4D16A8CCA924F1D4F2CA65BB"/>
+           <call functionId="function_InternalInvalidateIndex_B74FD174137644A43B49B2F6DB4CCEF5976F4A2C"/>
            <call functionId="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E"/>
            <call functionId="function_RemoveChild_A8275FA5343CB8CC218B3CB17029409246CF08B8"/>
-           <call functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
           </calls>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="136" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="437" id="function_WalkChildren_C64075D19429547D59798CB54EAC4BB6B354D5B3" name="WalkChildren" returnType="void" specifiers="override">
@@ -1587,8 +1587,8 @@
            <overriddenFunction functionId="function_WalkDescendant_F7E0CC80719788AFAACD43505DC06CE09293AA4C"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
            <call functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
+           <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
           </calls>
          </function>
          <function access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="138" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="457" id="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168" name="WalkDescendantOrSelf" returnType="void" specifiers="override">
@@ -1599,8 +1599,8 @@
            <overriddenFunction functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
           </overriddenFunctions>
           <calls>
-           <call functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
            <call functionId="function_NextSibling_C86E6F6A2F65E192F50F9AE763142B193F2E97A7"/>
+           <call functionId="function_WalkDescendantOrSelf_A49DF74B6C8B6E02DDB4BB6E7D745FF7B3710168"/>
            <call functionId="function_WalkDescendantOrSelf_885D32F56B74B251C4F47E77D20B0EF52AC50D6E"/>
           </calls>
           <calledByFunctions>
@@ -1641,8 +1641,8 @@
            <parameter access="public" id="parameter_formatter_215B39E98C62AAEE5B3EB7BA47541F0F33A2B46D" name="formatter" type="type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317.lvalueref.type_B5EC6630BA6C9CF54A20690E35F0512C96C1B317"/>
           </parameters>
           <overrides>
-           <override functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
            <override functionId="function_Write_97FCFF7AC97050DB8A7BAA0C4D2CC3422574E45A"/>
+           <override functionId="function_Write_02E093389B33FC1D57B6A0165A320E3D29DCC85B"/>
           </overrides>
           <overriddenFunctions>
            <overriddenFunction functionId="function_Write_D786F5D0B5BF8F801AD6C48640001AD7CCA27C91"/>
@@ -1943,8 +1943,8 @@
          <call functionId="function_GetDocument_1B82A0A2AC46B7168D84C97E2D73A784088BC209"/>
         </calls>
         <calledByFunctions>
-         <calledByFunction functionId="function_ReadDocument_68B115CF7670494066CCE4B804F85ACFE2A84D2C"/>
          <calledByFunction functionId="function_ParseDocument_0FB3AEF6ACE55261DFD00664B682D38C9617951A"/>
+         <calledByFunction functionId="function_ReadDocument_68B115CF7670494066CCE4B804F85ACFE2A84D2C"/>
         </calledByFunctions>
        </function>
        <function access="public" declarationFile="Parser.hpp" declarationFileId="file/Parser.hpp_D75CA5817016D2F5D506CB9FE6F967B098174021.html" declarationLine="34" definitionFile="Parser.cpp" definitionFileId="file/Parser.cpp_5D538B2C75627252A8CE1CA8CC59728986B8A1D9.html" definitionLine="206" id="function_ReadDocument_C106751EB10C87029F643B3BA8C03999880EED71" name="ReadDocument" project="dom" returnType="type_453218F5D5BE6B81D5ED263381A7C01652DBABD1.class_Document_9CEA9DAB3595565B8E56A6B7B91E605E7C0C524F">
@@ -4324,13 +4324,13 @@
    <functions>
     <function access="private" definitionFile="" definitionFileId="" definitionLine="71" id="function_get_438640B6B59F3EA287BACDF301EF8935B8F49B3E" name="get()" returnType="ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720">
      <calledByFunctions>
-      <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
-      <calledByFunction functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
-      <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
-      <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
-      <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
       <calledByFunction functionId="function_AppendChild_748B60C7046CB30EE79448285EE7B6C4F72EF8C5"/>
+      <calledByFunction functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
+      <calledByFunction functionId="function_InsertBefore_B2377915BE6A7F3152FF085E69F3DA7F442B41C3"/>
+      <calledByFunction functionId="function_ReplaceChild_5E782CEF9A5C0579BFC2F6D4E5E7CA6C10B2C09A"/>
+      <calledByFunction functionId="function_ReplaceChild_17BFDA3A637663177E337C114F2F035093BFF4A5"/>
       <calledByFunction functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
+      <calledByFunction functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
       <calledByFunction functionId="function_InsertBefore_B42E92C1C07ECF2498C8D91DDB89458E98ABC472"/>
       <calledByFunction functionId="function_AppendChild_499AA3E3CEFC5C9EC0D7FE1E749D16018B80B838"/>
      </calledByFunctions>

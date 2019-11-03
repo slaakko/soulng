@@ -3,7 +3,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/BasicType.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/BasicType.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -21,7 +21,7 @@ soulng::parser::Match BasicTypeParser::BasicType(CmajorLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

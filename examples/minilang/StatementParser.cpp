@@ -7,7 +7,7 @@
 #include <minilang/MinilangTokens.hpp>
 #include <minilang/Tree.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/StatementParser.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/StatementParser.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -32,27 +32,27 @@ soulng::parser::Match StatementParser::Statement(MinilangLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = StatementParser::IfStatement(lexer);
                             ifS.reset(static_cast<minilang::Node*>(match.value));
                             if (match.hit)
@@ -76,7 +76,7 @@ soulng::parser::Match StatementParser::Statement(MinilangLexer& lexer)
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = StatementParser::WhileStatement(lexer);
                                     whileS.reset(static_cast<minilang::Node*>(match.value));
                                     if (match.hit)
@@ -105,7 +105,7 @@ soulng::parser::Match StatementParser::Statement(MinilangLexer& lexer)
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = StatementParser::ReturnStatement(lexer);
                                 returnS.reset(static_cast<minilang::Node*>(match.value));
                                 if (match.hit)
@@ -134,7 +134,7 @@ soulng::parser::Match StatementParser::Statement(MinilangLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = StatementParser::ConstructionStatement(lexer);
                             constructionS.reset(static_cast<minilang::Node*>(match.value));
                             if (match.hit)
@@ -163,7 +163,7 @@ soulng::parser::Match StatementParser::Statement(MinilangLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch13 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = StatementParser::AssignmentStatement(lexer);
                         assignmentS.reset(static_cast<minilang::Node*>(match.value));
                         if (match.hit)
@@ -192,7 +192,7 @@ soulng::parser::Match StatementParser::Statement(MinilangLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch15 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = StatementParser::CompoundStatement(lexer);
                     compoundS.reset(static_cast<minilang::CompoundStatementNode*>(match.value));
                     if (match.hit)
@@ -238,7 +238,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -273,7 +273,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                                     soulng::parser::Match match(true);
                                     soulng::parser::Match* parentMatch8 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match(false);
                                         if (*lexer == LPAREN)
                                         {
@@ -303,7 +303,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                                 soulng::parser::Match match(true);
                                 soulng::parser::Match* parentMatch10 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = ExpressionParser::Expression(lexer);
                                     condition.reset(static_cast<minilang::Node*>(match.value));
                                     if (match.hit)
@@ -329,7 +329,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch12 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == RPAREN)
                                 {
@@ -359,7 +359,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch14 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = StatementParser::Statement(lexer);
                             thenS.reset(static_cast<minilang::Node*>(match.value));
                             if (match.hit)
@@ -383,7 +383,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                 soulng::parser::Match* parentMatch15 = &match;
                 {
                     soulng::parser::Match match(true);
-                    int save = lexer.GetPos();
+                    int64_t save = lexer.GetPos();
                     soulng::parser::Match* parentMatch16 = &match;
                     {
                         soulng::parser::Match match(false);
@@ -408,7 +408,7 @@ soulng::parser::Match StatementParser::IfStatement(MinilangLexer& lexer)
                                     soulng::parser::Match match(true);
                                     soulng::parser::Match* parentMatch20 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = StatementParser::Statement(lexer);
                                         elseS.reset(static_cast<minilang::Node*>(match.value));
                                         if (match.hit)
@@ -478,7 +478,7 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -510,7 +510,7 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
                                 soulng::parser::Match match(true);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match(false);
                                     if (*lexer == LPAREN)
                                     {
@@ -540,7 +540,7 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = ExpressionParser::Expression(lexer);
                                 condition.reset(static_cast<minilang::Node*>(match.value));
                                 if (match.hit)
@@ -566,7 +566,7 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(false);
                             if (*lexer == RPAREN)
                             {
@@ -596,7 +596,7 @@ soulng::parser::Match StatementParser::WhileStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch13 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = StatementParser::Statement(lexer);
                         statement.reset(static_cast<minilang::Node*>(match.value));
                         if (match.hit)
@@ -650,7 +650,7 @@ soulng::parser::Match StatementParser::ReturnStatement(MinilangLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -674,7 +674,7 @@ soulng::parser::Match StatementParser::ReturnStatement(MinilangLexer& lexer)
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         soulng::parser::Match match(true);
-                        int save = lexer.GetPos();
+                        int64_t save = lexer.GetPos();
                         soulng::parser::Match* parentMatch5 = &match;
                         {
                             soulng::parser::Match match = ExpressionParser::Expression(lexer);
@@ -702,7 +702,7 @@ soulng::parser::Match StatementParser::ReturnStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch7 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -762,7 +762,7 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -790,7 +790,7 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
                                 soulng::parser::Match match(true);
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
-                                    int pos = lexer.GetPos();
+                                    int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                                     variableName.reset(static_cast<minilang::IdentifierNode*>(match.value));
                                     if (match.hit)
@@ -816,7 +816,7 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == ASSIGN)
                                 {
@@ -846,7 +846,7 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = ExpressionParser::Expression(lexer);
                             value.reset(static_cast<minilang::Node*>(match.value));
                             if (match.hit)
@@ -872,7 +872,7 @@ soulng::parser::Match StatementParser::ConstructionStatement(MinilangLexer& lexe
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch13 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -931,7 +931,7 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -956,7 +956,7 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == ASSIGN)
                                 {
@@ -986,7 +986,7 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch8 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = ExpressionParser::Expression(lexer);
                             value.reset(static_cast<minilang::Node*>(match.value));
                             if (match.hit)
@@ -1012,7 +1012,7 @@ soulng::parser::Match StatementParser::AssignmentStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch10 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -1071,7 +1071,7 @@ soulng::parser::Match StatementParser::CompoundStatement(MinilangLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -1084,7 +1084,7 @@ soulng::parser::Match StatementParser::CompoundStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == LBRACE)
                         {
@@ -1109,7 +1109,7 @@ soulng::parser::Match StatementParser::CompoundStatement(MinilangLexer& lexer)
                         {
                             while (true)
                             {
-                                int save = lexer.GetPos();
+                                int64_t save = lexer.GetPos();
                                 {
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch7 = &match;
@@ -1117,7 +1117,7 @@ soulng::parser::Match StatementParser::CompoundStatement(MinilangLexer& lexer)
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch8 = &match;
                                         {
-                                            int pos = lexer.GetPos();
+                                            int64_t pos = lexer.GetPos();
                                             soulng::parser::Match match = StatementParser::Statement(lexer);
                                             statement.reset(static_cast<minilang::Node*>(match.value));
                                             if (match.hit)
@@ -1154,7 +1154,7 @@ soulng::parser::Match StatementParser::CompoundStatement(MinilangLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch10 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == RBRACE)
                         {

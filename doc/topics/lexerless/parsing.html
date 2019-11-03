@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Lexerless parsing</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>
+        Lexerless parsing
+    </h1>
+
+    <p>
+        For some syntaxes it might be easier to relinquish using traditional lexer completely
+        than trying to construct a lexer using SoulNG lexer generator.
+        When the lexer should be able to return some token in some context and another token in
+        a different context for the same lexeme, the SoulNG lexer generator might not be 
+        able to construct a working lexer.
+    </p>
+    
+    <p>
+        In this case it is an option to use a 
+        <a href="../../reference/soulng/lexer/html/content/class_TrivialLexer_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.html">trivial lexer</a>.
+        Instead of returning token identifiers to the parser, a trivial lexer returns just Unicode characters.
+        Then the parser can contain character and string literals that would normally be recognized by the lexer 
+        in the form of <a href="../../topics/syntax/parser.html#rule.lexerless-expression"><em>lexerless</em></a> expressions.
+        
+    </p>
+    
+    <p>
+        As an example of a lexerless parser, take a look at the 
+        <a href="../../reference/sngxml/xml/html/content/file/XmlParser.parser_12A847894E9771D06F48F10B93986EF91D2D5BE6.html">XML parser</a>.
+        You can recognize a lexerless parser by the <strong>uselexer</strong> <em>TrivialLexer</em>; statement.
+    </p>
+</body>
+</html>

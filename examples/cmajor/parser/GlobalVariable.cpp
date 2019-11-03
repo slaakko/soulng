@@ -7,7 +7,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/GlobalVariable.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/GlobalVariable.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -44,7 +44,7 @@ soulng::parser::Match GlobalVariableParser::GlobalVariable(CmajorLexer& lexer, P
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match = SpecifierParser::Specifiers(lexer);
                         specifiers.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
@@ -88,7 +88,7 @@ soulng::parser::Match GlobalVariableParser::GlobalVariable(CmajorLexer& lexer, P
             soulng::parser::Match* parentMatch7 = &match;
             {
                 soulng::parser::Match match(true);
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match* parentMatch8 = &match;
                 {
                     soulng::parser::Match match(false);
@@ -141,7 +141,7 @@ soulng::parser::Match GlobalVariableParser::GlobalVariable(CmajorLexer& lexer, P
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch13 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)

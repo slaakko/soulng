@@ -3,7 +3,7 @@
 #include <cmajor/lexer/ContainerFileLexer.hpp>
 #include <cmajor/lexer/ContainerFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/ProjectFile.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/ProjectFile.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -20,7 +20,7 @@ std::unique_ptr<cmajor::ast::Project> ProjectFileParser::Parse(ContainerFileLexe
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::parser::Match match = ProjectFileParser::ProjectFile(lexer, config, backend);
     value.reset(static_cast<cmajor::ast::Project*>(match.value));
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
@@ -65,7 +65,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ContainerFileLexer& lexer, 
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -94,7 +94,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ContainerFileLexer& lexer, 
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = ProjectFileParser::QualifiedId(lexer);
                                 name.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                                 if (match.hit)
@@ -120,11 +120,11 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ContainerFileLexer& lexer, 
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch8 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match(false);
                                 if (*lexer == SEMICOLON)
                                 {
@@ -162,7 +162,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ContainerFileLexer& lexer, 
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch12 = &match;
@@ -170,7 +170,7 @@ soulng::parser::Match ProjectFileParser::ProjectFile(ContainerFileLexer& lexer, 
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch13 = &match;
                                     {
-                                        int pos = lexer.GetPos();
+                                        int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = ProjectFileParser::Declaration(lexer);
                                         declaration.reset(static_cast<ProjectDeclaration*>(match.value));
                                         if (match.hit)
@@ -235,7 +235,7 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ContainerFileLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int pos = lexer.GetPos();
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
@@ -245,7 +245,7 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ContainerFileLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == ID)
@@ -271,7 +271,7 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ContainerFileLexer& lexer)
                     {
                         while (true)
                         {
-                            int save = lexer.GetPos();
+                            int64_t save = lexer.GetPos();
                             {
                                 soulng::parser::Match match(false);
                                 soulng::parser::Match* parentMatch6 = &match;
@@ -295,7 +295,7 @@ soulng::parser::Match ProjectFileParser::QualifiedId(ContainerFileLexer& lexer)
                                             soulng::parser::Match match(false);
                                             soulng::parser::Match* parentMatch9 = &match;
                                             {
-                                                int pos = lexer.GetPos();
+                                                int64_t pos = lexer.GetPos();
                                                 soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match(false);
                                                 if (*lexer == ID)
@@ -372,19 +372,19 @@ soulng::parser::Match ProjectFileParser::Declaration(ContainerFileLexer& lexer)
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int save = lexer.GetPos();
+        int64_t save = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int save = lexer.GetPos();
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
             {
-                int save = lexer.GetPos();
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = ProjectFileParser::ReferenceDeclaration(lexer);
                     referenceDeclaration.reset(static_cast<ProjectDeclaration*>(match.value));
                     if (match.hit)
@@ -408,7 +408,7 @@ soulng::parser::Match ProjectFileParser::Declaration(ContainerFileLexer& lexer)
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = ProjectFileParser::SourceFileDeclaration(lexer);
                             sourceFileDeclaration.reset(static_cast<ProjectDeclaration*>(match.value));
                             if (match.hit)
@@ -437,7 +437,7 @@ soulng::parser::Match ProjectFileParser::Declaration(ContainerFileLexer& lexer)
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch7 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = ProjectFileParser::TextFileDeclaration(lexer);
                         textFileDeclaration.reset(static_cast<ProjectDeclaration*>(match.value));
                         if (match.hit)
@@ -466,7 +466,7 @@ soulng::parser::Match ProjectFileParser::Declaration(ContainerFileLexer& lexer)
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch9 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = ProjectFileParser::TargetDeclaration(lexer);
                     targetDeclaration.reset(static_cast<ProjectDeclaration*>(match.value));
                     if (match.hit)
@@ -529,11 +529,11 @@ soulng::parser::Match ProjectFileParser::ReferenceDeclaration(ContainerFileLexer
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == FILEPATH)
                         {
@@ -569,11 +569,11 @@ soulng::parser::Match ProjectFileParser::ReferenceDeclaration(ContainerFileLexer
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch6 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -648,11 +648,11 @@ soulng::parser::Match ProjectFileParser::SourceFileDeclaration(ContainerFileLexe
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == FILEPATH)
                         {
@@ -688,11 +688,11 @@ soulng::parser::Match ProjectFileParser::SourceFileDeclaration(ContainerFileLexe
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch6 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -767,11 +767,11 @@ soulng::parser::Match ProjectFileParser::TextFileDeclaration(ContainerFileLexer&
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == FILEPATH)
                         {
@@ -807,11 +807,11 @@ soulng::parser::Match ProjectFileParser::TextFileDeclaration(ContainerFileLexer&
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch6 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -889,7 +889,7 @@ soulng::parser::Match ProjectFileParser::TargetDeclaration(ContainerFileLexer& l
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int pos = lexer.GetPos();
+                        int64_t pos = lexer.GetPos();
                         soulng::parser::Match match(false);
                         if (*lexer == ASSIGN)
                         {
@@ -919,7 +919,7 @@ soulng::parser::Match ProjectFileParser::TargetDeclaration(ContainerFileLexer& l
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch6 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = ProjectFileParser::Target(lexer);
                     target.reset(static_cast<soulng::parser::Value<cmajor::ast::Target>*>(match.value));
                     if (match.hit)
@@ -945,11 +945,11 @@ soulng::parser::Match ProjectFileParser::TargetDeclaration(ContainerFileLexer& l
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch8 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch9 = &match;
                 {
-                    int pos = lexer.GetPos();
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -1002,7 +1002,7 @@ soulng::parser::Match ProjectFileParser::Target(ContainerFileLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
-    int pos = lexer.GetPos();
+    int64_t pos = lexer.GetPos();
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

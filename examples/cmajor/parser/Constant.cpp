@@ -7,7 +7,7 @@
 #include <cmajor/lexer/CmajorLexer.hpp>
 #include <cmajor/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Constant.parser' using soulng parser generator spg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/parser/Constant.parser' using soulng parser generator spg version 2.0.0
 
 using namespace soulng::unicode;
 using namespace cmajor::ast;
@@ -50,7 +50,7 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match = SpecifierParser::Specifiers(lexer);
                                 specifiers.reset(static_cast<soulng::parser::Value<cmajor::ast::Specifiers>*>(match.value));
@@ -87,7 +87,7 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch9 = &match;
                             {
-                                int pos = lexer.GetPos();
+                                int64_t pos = lexer.GetPos();
                                 soulng::parser::Match match = TypeExprParser::TypeExpr(lexer, ctx);
                                 type.reset(static_cast<Node*>(match.value));
                                 if (match.hit)
@@ -113,7 +113,7 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int pos = lexer.GetPos();
+                            int64_t pos = lexer.GetPos();
                             soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                             id.reset(static_cast<IdentifierNode*>(match.value));
                             if (match.hit)
@@ -169,7 +169,7 @@ soulng::parser::Match ConstantParser::Constant(CmajorLexer& lexer, ParsingContex
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch15 = &match;
             {
-                int pos = lexer.GetPos();
+                int64_t pos = lexer.GetPos();
                 soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == SEMICOLON)

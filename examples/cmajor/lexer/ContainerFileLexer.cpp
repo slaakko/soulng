@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/ContainerFileLexer.lexer' using soulng lexer generator slg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/ContainerFileLexer.lexer' using soulng lexer generator slg version 2.0.0
 
 #include <cmajor/lexer/ContainerFileLexer.hpp>
 #include <cmajor/lexer/ContainerFileKeywords.hpp>
@@ -11,6 +11,12 @@ using namespace soulng::lexer;
 using namespace ContainerFileTokens;
 
 ContainerFileLexer::ContainerFileLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(content_, fileName_, fileIndex_),
+    filePath()
+{
+    SetKeywordMap(ContainerFileKeywords::GetKeywordMap());
+}
+
+ContainerFileLexer::ContainerFileLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_),
     filePath()
 {
     SetKeywordMap(ContainerFileKeywords::GetKeywordMap());

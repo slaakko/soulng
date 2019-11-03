@@ -1,7 +1,7 @@
 #ifndef CmajorLexer_HPP
 #define CmajorLexer_HPP
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/CmajorLexer.lexer' using soulng lexer generator slg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/cmajor/lexer/CmajorLexer.lexer' using soulng lexer generator slg version 2.0.0
 
 #include <cmajor/lexer/TokenValueParsers.hpp>
 #include <cmajor/lexer/CmajorLexerApi.hpp>
@@ -11,6 +11,7 @@ class CMAJOR_LEXER_API CmajorLexer : public soulng::lexer::Lexer
 {
 public:
     CmajorLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_);
+    CmajorLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);
     int NextState(int state, char32_t c) override;
     double floatingLit;
     bool floatingLitFloat;

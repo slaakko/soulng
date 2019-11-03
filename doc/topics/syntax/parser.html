@@ -511,7 +511,7 @@
     </p>
 
     <p>
-        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, a <em>token expression</em>, or a <em>scannerless expression</em>:
+        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, a <em>token expression</em>, or a <em>lexerless expression</em>:
     </p>
 
     <table class="grammar">
@@ -521,7 +521,7 @@
             <td class="rcontent">
                 <span class="rule"><a href="#rule.empty-expression">empty&#8209;expression</a></span> |
                 <span class="rule"><a href="#rule.token-expression">token&#8209;expression</a></span> |
-                <span class="rule"><a href="#rule.scannerless-expression">scannerless&#8209;expression</a></span>
+                <span class="rule"><a href="#rule.lexerless-expression">lexerless&#8209;expression</a></span>
             </td>
         </tr>
         <tr>
@@ -546,7 +546,7 @@
             </td>
         </tr>
         <tr>
-            <td class="rule" id="rule.scannerless-expression">scannerless&#8209;expression</td>
+            <td class="rule" id="rule.lexerless-expression">lexerless&#8209;expression</td>
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="common.html#rule.character-literal">character&#8209;literal</a></span> |
@@ -570,11 +570,13 @@
         Otherwise the generated parser will backtrack.
     </p>
 
-    <h5>Scannerless expressions</h5>
+    <h5>Lexerless expressions</h5>
 
     <p>
-        To support scannerless parsing, a parsing expression can be a character or string literal.
-        In this case the lexer, that is assumed to be a trivial lexer, produces lexical tokens that are in fact Unicode characters.
+        To support lexerless parsing, a parsing expression can be a character or string literal.
+        In this case the lexer, that is assumed to be a 
+        <a href="../../reference/soulng/lexer/html/content/class_TrivialLexer_B17F9A78188DD0AA5ADA45FFAB5AB3826EA2E098.html">trivial lexer</a>, 
+        produces lexical tokens that are in fact Unicode characters.
         There are three cases:
         <ul>
             <li>

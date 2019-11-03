@@ -14,8 +14,12 @@
     </h1>
 
     <p>
-        A <em>SoulNG</em> parser may be debugged by calling the <em>SetLog</em> member function of the lexer before parsing starts.
-        The <em>SetLog</em> member function takes a pointer to an object of a class derived from the <em>soulng::lexer::ParsingLog</em> class.
+        A <em>SoulNG</em> parser may be debugged by calling the 
+        <a href="../../reference/soulng/lexer/html/content/class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048.html#function_SetLog_7F4515F905822DDFAF7A6F1A6F6E48159B382C32">
+        SetLog</a> member function of the lexer before parsing starts.
+        The <em>SetLog</em> member function takes a pointer to an object of a class derived from the 
+        <a href="../../reference/soulng/lexer/html/content/class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873.html">soulng::lexer::ParsingLog</a>
+        class.
         We now extend the <em>TestMinilangParser</em> function with parser debugging support:
     </p>
 
@@ -37,7 +41,8 @@
     </pre>
 
     <p>
-        We have constructed a variable of type <em>soulng::lexer::XmlParsingLog</em> that
+        We have constructed a variable of type 
+        <a href="../../reference/soulng/lexer/html/content/class_XmlParsingLog_5E0B9202EA88CB2A01B9FB8C47C69E2F9DC726EA.html">soulng::lexer::XmlParsingLog</a> that
         is derived from the <em>soulng::lexer::ParsingLog</em> class.
         It prints a parsing log to the given stream in XML.
     </p>

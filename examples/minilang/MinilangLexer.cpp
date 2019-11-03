@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/Minilang.lexer' using soulng lexer generator slg version 1.2.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/Minilang.lexer' using soulng lexer generator slg version 2.0.0
 
 #include "MinilangLexer.hpp"
 #include "MinilangKeywords.hpp"
@@ -11,6 +11,11 @@ using namespace soulng::lexer;
 using namespace MinilangTokens;
 
 MinilangLexer::MinilangLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(content_, fileName_, fileIndex_)
+{
+    SetKeywordMap(MinilangKeywords::GetKeywordMap());
+}
+
+MinilangLexer::MinilangLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) : soulng::lexer::Lexer(start_, end_, fileName_, fileIndex_)
 {
     SetKeywordMap(MinilangKeywords::GetKeywordMap());
 }
