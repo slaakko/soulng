@@ -11,7 +11,7 @@
 
 namespace sngcm { namespace writer {
 
-class SNGCM_WRITER_API SourceWriter : sngcm::ast::Visitor
+class SNGCM_WRITER_API SourceWriter : public sngcm::ast::Visitor
 {
 public:
     SourceWriter(soulng::util::CodeFormatter& formatter_);

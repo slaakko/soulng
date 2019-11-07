@@ -1,17 +1,21 @@
 #include <sngcm/ast/InitDone.hpp>
 #include <sngcm/ast/Identifier.hpp>
+#include <sngcm/writer/SourceWriter.hpp>
 #include <sngcm/lexer/CmajorLexer.hpp>
 #include <sngcm/lexer/ContainerFileLexer.hpp>
 #include <sngcm/parser/CompileUnit.hpp>
 #include <sngcm/parser/ProjectFile.hpp>
+#include <soulng/util/CodeFormatter.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/InitDone.hpp>
+#include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <stdexcept>
 #include <iostream>
+#include <fstream>
 #include <string>
 
 struct InitDone
@@ -30,7 +34,12 @@ struct InitDone
 
 void PrintUsage()
 {
-    std::cout << "usage: sngcmtester (file.cmp | file.cm)" << std::endl;
+    std::cout << "usage: sngcmtester [options] (file.cmp | file.cm)" << std::endl;
+    std::cout << "options:" << std::endl;
+    std::cout << "--help | -h:" << std::endl;
+    std::cout << "  Print help and exit." << std::endl;
+    std::cout << "--out | -o:" << std::endl;
+    std::cout << "  Write source to .out.cm file." << std::endl;
 }
 
 int main(int argc, const char** argv)
@@ -44,6 +53,7 @@ int main(int argc, const char** argv)
             return 1;
         }
         std::vector<std::string> args;
+        bool out = false;
         for (int i = 1; i < argc; ++i)
         {
             std::string arg = argv[i];
@@ -53,6 +63,10 @@ int main(int argc, const char** argv)
                 {
                     PrintUsage();
                     return 1;
+                }
+                else if (arg == "--out")
+                {
+                    out = true;
                 }
                 else
                 {
@@ -68,6 +82,10 @@ int main(int argc, const char** argv)
                     {
                         PrintUsage();
                         return 1;
+                    }
+                    else if (o == 'o')
+                    {
+                        out = true;
                     }
                     else
                     {
@@ -90,6 +108,15 @@ int main(int argc, const char** argv)
                 CmajorLexer lexer(content, fileName, i);
                 ParsingContext ctx;
                 std::unique_ptr<sngcm::ast::CompileUnitNode> compileUnit = CompileUnitParser::Parse(lexer, &ctx);
+                if (out)
+                {
+                    std::string outFilePath = soulng::util::Path::ChangeExtension(fileName, ".out.cm");
+                    std::ofstream outFile(outFilePath);
+                    soulng::util::CodeFormatter formatter(outFile);
+                    sngcm::writer::SourceWriter writer(formatter);
+                    compileUnit->Accept(writer);
+                    std::cout << "==> " << outFilePath << std::endl;
+                }
             }
             else if (soulng::util::EndsWith(fileName, ".cmp"))
             {
@@ -105,6 +132,15 @@ int main(int argc, const char** argv)
                     CmajorLexer lexer(content, sourceFilePath, index);
                     ParsingContext ctx;
                     std::unique_ptr<sngcm::ast::CompileUnitNode> compileUnit = CompileUnitParser::Parse(lexer, &ctx);
+                    if (out)
+                    {
+                        std::string outFilePath = soulng::util::Path::ChangeExtension(sourceFilePath, ".out.cm");
+                        std::ofstream outFile(outFilePath);
+                        soulng::util::CodeFormatter formatter(outFile);
+                        sngcm::writer::SourceWriter writer(formatter);
+                        compileUnit->Accept(writer);
+                        std::cout << "==> " << outFilePath << std::endl;
+                    }
                 }
             }
         }

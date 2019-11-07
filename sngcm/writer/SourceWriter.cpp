@@ -98,7 +98,7 @@ void SourceWriter::Visit(sngcm::ast::WCharNode& wcharNode)
 
 void SourceWriter::Visit(sngcm::ast::UCharNode& ucharNode)
 {
-    formatter.Write("uwchar");
+    formatter.Write("uchar");
 }
 
 void SourceWriter::Visit(sngcm::ast::VoidNode& voidNode)
@@ -125,7 +125,7 @@ void SourceWriter::Visit(sngcm::ast::SByteLiteralNode& sbyteLiteralNode)
 
 void SourceWriter::Visit(sngcm::ast::ByteLiteralNode& byteLiteralNode)
 {
-    formatter.Write("u" + std::to_string(byteLiteralNode.Value()));
+    formatter.Write(std::to_string(byteLiteralNode.Value()) + "u");
 }
 
 void SourceWriter::Visit(sngcm::ast::ShortLiteralNode& shortLiteralNode)
@@ -135,7 +135,7 @@ void SourceWriter::Visit(sngcm::ast::ShortLiteralNode& shortLiteralNode)
 
 void SourceWriter::Visit(sngcm::ast::UShortLiteralNode& ushortLiteralNode)
 {
-    formatter.Write("u" + std::to_string(ushortLiteralNode.Value()));
+    formatter.Write(std::to_string(ushortLiteralNode.Value()) + "u");
 }
 
 void SourceWriter::Visit(sngcm::ast::IntLiteralNode& intLiteralNode)
@@ -145,7 +145,7 @@ void SourceWriter::Visit(sngcm::ast::IntLiteralNode& intLiteralNode)
 
 void SourceWriter::Visit(sngcm::ast::UIntLiteralNode& uintLiteralNode)
 {
-    formatter.Write("u" + std::to_string(uintLiteralNode.Value()));
+    formatter.Write(std::to_string(uintLiteralNode.Value()) + "u");
 }
 
 void SourceWriter::Visit(sngcm::ast::LongLiteralNode& longLiteralNode)
@@ -155,7 +155,7 @@ void SourceWriter::Visit(sngcm::ast::LongLiteralNode& longLiteralNode)
 
 void SourceWriter::Visit(sngcm::ast::ULongLiteralNode& ulongLiteralNode)
 {
-    formatter.Write("u" + std::to_string(ulongLiteralNode.Value()));
+    formatter.Write(std::to_string(ulongLiteralNode.Value()) + "u");
 }
 
 void SourceWriter::Visit(sngcm::ast::FloatLiteralNode& floatLiteralNode)
@@ -420,6 +420,7 @@ void SourceWriter::Visit(sngcm::ast::ClassNode& classNode)
     int nb = classNode.BaseClassOrInterfaces().Count();
     if (nb > 0)
     {
+        formatter.Write(" : ");
         for (int i = 0; i < nb; ++i)
         {
             if (i > 0)
@@ -735,7 +736,7 @@ void SourceWriter::Visit(sngcm::ast::MemberVariableNode& memberVariableNode)
     memberVariableNode.TypeExpr()->Accept(*this);
     formatter.Write(" ");
     memberVariableNode.Id()->Accept(*this);
-    formatter.Write(";");
+    formatter.WriteLine(";");
 }
 
 void SourceWriter::Visit(sngcm::ast::InterfaceNode& interfaceNode)
@@ -786,7 +787,7 @@ void SourceWriter::Visit(sngcm::ast::DelegateNode& delegateNode)
         }
         delegateNode.Parameters()[i]->Accept(*this);
     }
-    formatter.Write(");");
+    formatter.WriteLine(");");
 }
 
 void SourceWriter::Visit(sngcm::ast::ClassDelegateNode& classDelegateNode)
@@ -810,7 +811,7 @@ void SourceWriter::Visit(sngcm::ast::ClassDelegateNode& classDelegateNode)
         }
         classDelegateNode.Parameters()[i]->Accept(*this);
     }
-    formatter.Write(");");
+    formatter.WriteLine(");");
 }
 
 void SourceWriter::Visit(sngcm::ast::ParenthesizedConstraintNode& parenthesizedConstraintNode)
@@ -909,6 +910,7 @@ void SourceWriter::Visit(sngcm::ast::MemberFunctionConstraintNode& memberFunctio
     memberFunctionConstraintNode.TypeParamId()->Accept(*this);
     formatter.Write(".");
     formatter.Write(soulng::unicode::ToUtf8(memberFunctionConstraintNode.GroupId()));
+    formatter.Write("(");
     int np = memberFunctionConstraintNode.Parameters().Count();
     for (int i = 0; i < np; ++i)
     {
@@ -926,6 +928,7 @@ void SourceWriter::Visit(sngcm::ast::FunctionConstraintNode& functionConstraintN
     functionConstraintNode.ReturnTypeExpr()->Accept(*this);
     formatter.Write(" ");
     formatter.Write(soulng::unicode::ToUtf8(functionConstraintNode.GroupId()));
+    formatter.Write("(");
     int np = functionConstraintNode.Parameters().Count();
     for (int i = 0; i < np; ++i)
     {
@@ -1098,11 +1101,11 @@ void SourceWriter::Visit(sngcm::ast::IfStatementNode& ifStatementNode)
     {
         if (ifStatementNode.ElseS()->GetNodeType() == sngcm::ast::NodeType::compoundStatementNode)
         {
-            formatter.WriteLine(" else");
+            formatter.WriteLine("else");
         }
         else
         {
-            formatter.Write(" else ");
+            formatter.Write("else ");
         }
         ifStatementNode.ElseS()->Accept(*this);
     }
@@ -1145,6 +1148,7 @@ void SourceWriter::Visit(sngcm::ast::ForStatementNode& forStatementNode)
     formatter.Write("for (");
     omitNewLine = true;
     forStatementNode.InitS()->Accept(*this);
+    formatter.Write(" ");
     omitNewLine = false;
     if (forStatementNode.Condition())
     {
@@ -1297,7 +1301,7 @@ void SourceWriter::Visit(sngcm::ast::SwitchStatementNode& switchStatementNode)
 {
     formatter.Write("switch (");
     switchStatementNode.Condition()->Accept(*this);
-    formatter.Write(")");
+    formatter.WriteLine(")");
     formatter.WriteLine("{");
     formatter.IncIndent();
     int n = switchStatementNode.Cases().Count();
@@ -1321,6 +1325,10 @@ void SourceWriter::Visit(sngcm::ast::CaseStatementNode& caseStatementNode)
     int ns = caseStatementNode.Statements().Count();
     for (int i = 0; i < ns; ++i)
     {
+        if (i == 0 && caseStatementNode.Statements()[i]->GetNodeType() == sngcm::ast::NodeType::compoundStatementNode)
+        {
+            formatter.WriteLine();
+        }
         caseStatementNode.Statements()[i]->Accept(*this);
     }
 }
@@ -1331,6 +1339,10 @@ void SourceWriter::Visit(sngcm::ast::DefaultStatementNode& defaultStatementNode)
     int ns = defaultStatementNode.Statements().Count();
     for (int i = 0; i < ns; ++i)
     {
+        if (i == 0 && defaultStatementNode.Statements()[i]->GetNodeType() == sngcm::ast::NodeType::compoundStatementNode)
+        {
+            formatter.WriteLine();
+        }
         defaultStatementNode.Statements()[i]->Accept(*this);
     }
 }
@@ -1517,6 +1529,7 @@ void SourceWriter::Visit(sngcm::ast::EnumTypeNode& enumTypeNode)
         }
         enumTypeNode.Constants()[i]->Accept(*this);
     }
+    formatter.WriteLine();
     formatter.DecIndent();
     formatter.WriteLine("}");
 }

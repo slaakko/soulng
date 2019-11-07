@@ -180,9 +180,8 @@ parser api(SNGCM_PARSER_API) StatementParser
         ;
 
     CaseStatement(ParsingContext* ctx, var std::unique_ptr<CaseStatementNode> caseS, var Span s, var Span caseSpan) : CaseStatementNode*
-        ::= (((empty{ caseS.reset(new CaseStatementNode(span)); s = span; }
-            CASE{ caseSpan = span; } Expression(ctx):caseExpr{ caseS->AddCaseSpan(caseSpan); caseS->AddCaseExpr(caseExpr); }
-            COLON!)+){ s.end = span.end; caseS->SetSpan(s); }
+        ::= empty{ caseS.reset(new CaseStatementNode(span)); s = span; }
+            (((CASE{ caseSpan = span; } Expression(ctx):caseExpr{ caseS->AddCaseSpan(caseSpan); caseS->AddCaseExpr(caseExpr); } COLON!)+){ s.end = span.end; caseS->SetSpan(s); }
             (Statement(ctx):stmt{ caseS->AddStatement(stmt); })*
         )
         {

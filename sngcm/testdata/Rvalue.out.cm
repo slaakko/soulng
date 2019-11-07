@@ -1,0 +1,7 @@
+namespace System
+{
+    public inline nothrow T&& Rvalue<T>(T&& x)
+    {
+        return cast<T&&>(x);
+    }
+} // namespace System
