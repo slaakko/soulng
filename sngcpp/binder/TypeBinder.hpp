@@ -109,7 +109,6 @@ public:
     void Visit(PostfixDecNode& postfixDecNode) override;
     void Visit(CppCastExpressionNode& cppCastExpressionNode) override;
     void Visit(TypeIdExpressionNode& typeIdExpressionNode) override;
-    void Visit(TypeExprNode& typeExprNode) override;
     void Visit(TypeParameterNode& typeParameterNode) override;
     void Visit(TemplateParameterSequenceNode& templateParameterSequenceNode) override;
     void Visit(TemplateArgumentSequenceNode& templateArgumentSequenceNode) override;

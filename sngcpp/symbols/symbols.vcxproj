@@ -163,7 +163,6 @@
     <ClInclude Include="LambdaExpressionSymbol.hpp" />
     <ClInclude Include="NamespaceSymbol.hpp" />
     <ClInclude Include="ParameterSymbol.hpp" />
-    <ClInclude Include="PseudoTypeSymbol.hpp" />
     <ClInclude Include="RuleSymbol.hpp" />
     <ClInclude Include="Scope.hpp" />
     <ClInclude Include="SimpleTypeSymbol.hpp" />
@@ -190,7 +189,6 @@
     <ClCompile Include="LambdaExpressionSymbol.cpp" />
     <ClCompile Include="NamespaceSymbol.cpp" />
     <ClCompile Include="ParameterSymbol.cpp" />
-    <ClCompile Include="PseudoTypeSymbol.cpp" />
     <ClCompile Include="RuleSymbol.cpp" />
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="SimpleTypeSymbol.cpp" />

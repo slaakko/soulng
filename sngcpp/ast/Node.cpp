@@ -33,11 +33,11 @@ public:
     }
 };
 
-Node::Node(NodeType nodeType_) : nodeType(nodeType_)
+Node::Node(NodeType nodeType_) : nodeType(nodeType_), parent(nullptr)
 {
 }
 
-Node::Node(NodeType nodeType_, const Span& span_) : nodeType(nodeType_), span(span_)
+Node::Node(NodeType nodeType_, const Span& span_) : nodeType(nodeType_), span(span_), parent(nullptr)
 {
 }
 
@@ -70,6 +70,10 @@ UnaryNode::UnaryNode(NodeType nodeType_, const Span& span_) : Node(nodeType_, sp
 
 UnaryNode::UnaryNode(NodeType nodeType_, const Span& span_, Node* child_) : Node(nodeType_, span_), child(child_)
 {
+    if (child)
+    {
+        child->SetParent(this);
+    }
 }
 
 void UnaryNode::Write(Writer& writer)
@@ -89,6 +93,7 @@ void UnaryNode::Read(Reader& reader)
     if (hasChild)
     {
         child.reset(reader.ReadNode());
+        child->SetParent(this);
     }
 }
 
@@ -110,6 +115,8 @@ BinaryNode::BinaryNode(NodeType nodeType_) : Node(nodeType_)
 
 BinaryNode::BinaryNode(NodeType nodeType_, const Span& span_, Node* left_, Node* right_) : Node(nodeType_, span_), left(left_), right(right_)
 {
+    left->SetParent(this);
+    right->SetParent(this);
 }
 
 void BinaryNode::Write(Writer& writer)
@@ -123,7 +130,9 @@ void BinaryNode::Read(Reader& reader)
 {
     Node::Read(reader);
     left.reset(reader.ReadNode());
+    left->SetParent(this);
     right.reset(reader.ReadNode());
+    right->SetParent(this);
 }
 
 void BinaryNode::SetFullSpan()
@@ -276,7 +285,6 @@ NodeFactory::NodeFactory()
     creators[static_cast<int>(NodeType::pointerNode)] = std::unique_ptr<NodeCreator>(new ConcreteNodeCreator<PointerNode>());
     creators[static_cast<int>(NodeType::rValueRefNode)] = std::unique_ptr<NodeCreator>(new ConcreteNodeCreator<RValueRefNode>());
     creators[static_cast<int>(NodeType::lValueRefNode)] = std::unique_ptr<NodeCreator>(new ConcreteNodeCreator<LValueRefNode>());
-    creators[static_cast<int>(NodeType::typeExprNode)] = std::unique_ptr<NodeCreator>(new ConcreteNodeCreator<TypeExprNode>());
 }
 
 Node* NodeFactory::CreateNode(NodeType nodeType)

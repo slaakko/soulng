@@ -43,7 +43,6 @@ public:
     void Visit(IdentifierNode& identifierNode) override;
     void Visit(TemplateIdNode& templateIdNode) override;
     void Visit(TemplateArgumentNode& templateArgumentNode) override;
-    void Visit(TypeExprNode& typerExprNode) override;
     void Visit(OperatorFunctionIdNode& operatorFunctionIdNode) override;
     void Visit(ConversionFunctionIdNode& conversionFunctionIdNode) override;
     void Visit(NestedIdNode& nestedIdNode) override;
@@ -105,6 +104,7 @@ public:
     void Visit(LambdaExpressionNode& lambdaExpressionNode) override;
     void Visit(CaptureSequenceNode& captureSequenceNode) override;
     void Visit(IdentifierCaptureNode& identifierCaptureNode) override;
+    void SetCpp2CmMode() { cpp2cmMode = true; }
 private:
     SymbolTable& symbolTable;
     std::u32string projectName;
@@ -117,6 +117,7 @@ private:
     bool wasArrayDeclaration;
     bool skip;
     bool processingTemplateArguments;
+    bool cpp2cmMode;
     Specifier specifiers;
 };
 

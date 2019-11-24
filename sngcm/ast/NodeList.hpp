@@ -7,6 +7,8 @@
 #define SNGCM_AST_NODE_LIST_INCLUDED
 #include <sngcm/ast/AstWriter.hpp>
 #include <sngcm/ast/AstReader.hpp>
+#include <vector>
+#include <memory>
 
 namespace sngcm { namespace ast {
 
@@ -30,9 +32,33 @@ public:
     {
         return nodes[index].release();
     }
+    void Insert(int index, T* node)
+    {
+        nodes.insert(nodes.begin() + index, std::unique_ptr<T>(node));
+    }
     void Clear()
     {
         nodes.clear();
+    }
+    void RemoveEmpty()
+    {
+        int p = 0;
+        int n = static_cast<int>(nodes.size());
+        for (int i = 0; i < n; ++i)
+        {
+            if (nodes[i])
+            {
+                if (p != i)
+                {
+                    nodes[p].reset(nodes[i].release());
+                }
+                ++p;
+            }
+        }
+        if (p != n)
+        {
+            nodes.erase(nodes.begin() + p, nodes.end());
+        }
     }
     void SetParent(Node* parent)
     {
@@ -45,7 +71,7 @@ public:
     {
         uint32_t n = static_cast<uint32_t>(nodes.size());
         writer.GetBinaryWriter().WriteULEB128UInt(n);
-        for (uint32_t i = 0; i < n; ++i)
+        for (uint32_t i = 0u; i < n; ++i)
         {
             writer.Write(nodes[i].get());
         }
@@ -53,12 +79,12 @@ public:
     void Read(AstReader& reader)
     {
         uint32_t n = reader.GetBinaryReader().ReadULEB128UInt();
-        for (uint32_t i = 0; i < n; ++i)
+        for (uint32_t i = 0u; i < n; ++i)
         {
             Node* node = reader.ReadNode();
-            T* asTNode = dynamic_cast<T*>(node);
-            Assert(asTNode, "wrong node type");
-            nodes.push_back(std::unique_ptr<T>(asTNode));
+            T* asTPtrNode = dynamic_cast<T*>(node);
+            Assert(asTPtrNode, "wrong node type");
+            nodes.push_back(std::unique_ptr<T>(asTPtrNode));
         }
     }
     std::vector<std::unique_ptr<T>>& Nodes() { return nodes; }

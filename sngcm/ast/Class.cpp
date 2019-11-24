@@ -128,6 +128,85 @@ void ClassNode::AddMember(Node* member)
     members.Add(member);
 }
 
+void ClassNode::ArrangeMembers()
+{
+    std::unique_ptr<Node> staticConstructor;
+    NodeList<Node> constructors;
+    std::unique_ptr<Node> destructor;
+    NodeList<Node> virtualMembers;
+    NodeList<Node> protectedMembers;
+    NodeList<Node> privateMembers;
+    int n = members.Count();
+    for (int i = 0; i < n; ++i)
+    {
+        Node* member = members[i];
+        if (member->GetNodeType() == NodeType::staticConstructorNode)
+        {
+            staticConstructor.reset(members.Release(i));
+        }
+        else if (member->GetNodeType() == NodeType::constructorNode)
+        {
+            constructors.Add(members.Release(i));
+        }
+        else if (member->GetNodeType() == NodeType::destructorNode)
+        {
+            destructor.reset(members.Release(i));
+        }
+        else
+        {
+            Specifiers specifiers = member->GetSpecifiers();
+            if ((specifiers & (Specifiers::abstract_ | Specifiers::override_ | Specifiers::virtual_)) != Specifiers::none)
+            {
+                virtualMembers.Add(members.Release(i));
+            }
+            else if ((specifiers & Specifiers::protected_) != Specifiers::none)
+            {
+                protectedMembers.Add(members.Release(i));
+            }
+            else if ((specifiers & Specifiers::private_) != Specifiers::none)
+            {
+                privateMembers.Add(members.Release(i));
+            }
+        }
+    }
+    members.RemoveEmpty();
+    int index = 0;
+    if (staticConstructor)
+    {
+        members.Insert(index, staticConstructor.release());
+        ++index;
+    }
+    int nc = constructors.Count();
+    if (nc > 0)
+    {
+        for (int i = 0; i < nc; ++i)
+        {
+            members.Insert(index, constructors.Release(i));
+            ++index;
+        }
+    }
+    if (destructor)
+    {
+        members.Insert(index, destructor.release());
+        ++index;
+    }
+    if (virtualMembers.Count() > 0 || protectedMembers.Count() > 0 || privateMembers.Count() > 0)
+    {
+        for (int i = 0; i < virtualMembers.Count(); ++i)
+        {
+            members.Add(virtualMembers.Release(i));
+        }
+        for (int i = 0; i < protectedMembers.Count(); ++i)
+        {
+            members.Add(protectedMembers.Release(i));
+        }
+        for (int i = 0; i < privateMembers.Count(); ++i)
+        {
+            members.Add(privateMembers.Release(i));
+        }
+    }
+}
+
 InitializerNode::InitializerNode(NodeType nodeType_, const Span& span_) : Node(nodeType_, span_)
 {
 }
@@ -246,6 +325,7 @@ Node* StaticConstructorNode::Clone(CloneContext& cloneContext) const
     {
         clone->AddInitializer(static_cast<InitializerNode*>(initializers[i]->Clone(cloneContext)));
     }
+    clone->classId.reset(static_cast<IdentifierNode*>(classId->Clone(cloneContext)));
     CloneContent(clone, cloneContext);
     return clone;
 }
@@ -290,6 +370,7 @@ Node* ConstructorNode::Clone(CloneContext& cloneContext) const
     {
         clone->AddInitializer(static_cast<InitializerNode*>(initializers[i]->Clone(cloneContext)));
     }
+    clone->classId.reset(static_cast<IdentifierNode*>(classId->Clone(cloneContext)));
     CloneContent(clone, cloneContext);
     return clone;
 }
@@ -329,6 +410,7 @@ DestructorNode::DestructorNode(const Span& span_, Specifiers specifiers_, Attrib
 Node* DestructorNode::Clone(CloneContext& cloneContext) const
 {
     DestructorNode* clone = new DestructorNode(GetSpan(), GetSpecifiers(), nullptr);
+    clone->classId.reset(static_cast<IdentifierNode*>(classId->Clone(cloneContext)));
     CloneContent(clone, cloneContext);
     return clone;
 }

@@ -164,6 +164,12 @@ int DerivedTypeSymbol::MatchValue(TypeSymbol* argumentType)
     return 0;
 }
 
+bool DerivedTypeSymbol::IsReferenceTypeSymbol() const
+{
+    return std::find(derivations.cbegin(), derivations.cend(), Derivation::lvalueRef) != derivations.cend() ||
+        std::find(derivations.cbegin(), derivations.cend(), Derivation::rvalueRef) != derivations.cend();
+}
+
 std::unique_ptr<sngxml::dom::Element> DerivedTypeSymbol::CreateElement()
 {
     std::unique_ptr<sngxml::dom::Element> typeElement(new sngxml::dom::Element(U"derivedType"));

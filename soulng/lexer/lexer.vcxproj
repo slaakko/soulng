@@ -150,7 +150,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Comment.cpp" />
     <ClCompile Include="ParsingLog.cpp" />
     <ClCompile Include="TrivialLexer.cpp" />
     <ClCompile Include="Keyword.cpp" />
@@ -158,11 +157,9 @@
     <ClCompile Include="Lexer.cpp" />
     <ClCompile Include="Span.cpp" />
     <ClCompile Include="Token.cpp" />
-    <ClCompile Include="Value.cpp" />
     <ClCompile Include="XmlParsingLog.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Comment.hpp" />
     <ClInclude Include="ParsingLog.hpp" />
     <ClInclude Include="TrivialLexer.hpp" />
     <ClInclude Include="Keyword.hpp" />
@@ -171,7 +168,6 @@
     <ClInclude Include="LexerApi.hpp" />
     <ClInclude Include="Span.hpp" />
     <ClInclude Include="Token.hpp" />
-    <ClInclude Include="Value.hpp" />
     <ClInclude Include="XmlParsingLog.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

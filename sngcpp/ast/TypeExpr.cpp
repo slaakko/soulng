@@ -90,35 +90,4 @@ void LValueRefNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-TypeExprNode::TypeExprNode() : UnaryNode(NodeType::typeExprNode)
-{
-}
-
-TypeExprNode::TypeExprNode(const Span& span_, Node* typeExpr_) : UnaryNode(NodeType::typeExprNode, span_, typeExpr_)
-{
-}
-
-void TypeExprNode::Accept(Visitor& visitor)
-{
-    visitor.Visit(*this);
-}
-
-bool IsConstructorName(Node* node)
-{
-    if (node->GetNodeType() == NodeType::nestedIdNode)
-    {
-        NestedIdNode* nestedIdNode = static_cast<NestedIdNode*>(node);
-        if (nestedIdNode->Left()->GetNodeType() == NodeType::identifierNode && nestedIdNode->Right()->GetNodeType() == NodeType::identifierNode)
-        {
-            IdentifierNode* left = static_cast<IdentifierNode*>(nestedIdNode->Left());
-            IdentifierNode* right = static_cast<IdentifierNode*>(nestedIdNode->Right());
-            if (left->Identifier() == right->Identifier())
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
 } } // namespace sngcpp::ast

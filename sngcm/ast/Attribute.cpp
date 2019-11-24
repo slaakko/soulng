@@ -45,7 +45,7 @@ Attributes::Attributes()
 
 Attribute* Attributes::GetAttribute(const std::u32string& name) const
 {
-    auto it = attributeMap.find(name);
+    std::map<std::u32string, Attribute*>::const_iterator it = attributeMap.find(name);
     if (it != attributeMap.cend())
     {
         return it->second;
@@ -92,7 +92,7 @@ void Attributes::Accept(Visitor& visitor)
 
 void Attributes::Write(AstWriter& writer)
 {
-    writer.GetBinaryWriter().WriteULEB128UInt(attributes.size());
+    writer.GetBinaryWriter().WriteULEB128UInt(static_cast<uint32_t>(attributes.size()));
     for (const std::unique_ptr<Attribute>& attribute : attributes)
     {
         attribute->Write(writer);
@@ -102,7 +102,7 @@ void Attributes::Write(AstWriter& writer)
 void Attributes::Read(AstReader& reader)
 {
     uint32_t n = reader.GetBinaryReader().ReadULEB128UInt();
-    for (uint32_t i = 0; i < n; ++i)
+    for (uint32_t i = 0u; i < n; ++i)
     {
         Attribute* attribute = new Attribute();
         attribute->Read(reader);

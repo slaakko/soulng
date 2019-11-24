@@ -1278,9 +1278,4 @@ void Evaluator::Visit(LValueRefNode& lValueRefNode)
     ThrowCannotEvaluateStatically(fileName, line);
 }
 
-void Evaluator::Visit(TypeExprNode& typerExprNode)
-{
-    ThrowCannotEvaluateStatically(fileName, line);
-}
-
 } } // namespace sngcpp::pp

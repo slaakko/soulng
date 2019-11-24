@@ -46,14 +46,14 @@ void Lexer::operator++()
 
 int64_t Lexer::GetPos() const
 {
-    int32_t p = current - tokens.begin();
-    return (int64_t(line) << 32) | int64_t(p);
+    int32_t p = static_cast<int32_t>(current - tokens.begin());
+    return (static_cast<int64_t>(line) << 32) | static_cast<int64_t>(p);
 }
 
 void Lexer::SetPos(int64_t pos)
 {
-    current = tokens.begin() + int32_t(pos);
-    line = int32_t(pos >> 32);
+    current = tokens.begin() + static_cast<int32_t>(pos);
+    line = static_cast<int32_t>(pos >> 32);
 }
 
 void Lexer::NextToken()
@@ -166,14 +166,14 @@ int Lexer::GetKeywordToken(const Lexeme& lexeme) const
 void Lexer::ConvertExternal(Span& span)
 {
     Token startToken = GetToken(span.start);
-    span.start = startToken.match.begin - start;
+    span.start = static_cast<int>(startToken.match.begin - start);
     Token endToken = GetToken(span.end);
-    span.end = endToken.match.end - start;
+    span.end = static_cast<int>(endToken.match.end - start);
 }
 
 Token Lexer::GetToken(int64_t pos) const
 {
-    int32_t tokenIndex = int32_t(pos);
+    int32_t tokenIndex = static_cast<int32_t>(pos);
     if (tokenIndex >= 0 && tokenIndex < tokens.size())
     {
         return tokens[tokenIndex];

@@ -24,6 +24,7 @@
 #include <sngcm/ast/Interface.hpp>
 #include <sngcm/ast/Concept.hpp>
 #include <sngcm/ast/GlobalVariable.hpp>
+#include <sngcm/ast/Comment.hpp>
 
 namespace sngcm { namespace ast {
 
@@ -53,7 +54,8 @@ const char* nodeTypeStr[] =
     "addNode", "subNode", "mulNode", "divNode", "remNode", "notNode", "unaryPlusNode", "unaryMinusNode", "prefixIncrementNode", "prefixDecrementNode", "complementNode", "derefNode", "addrOfNode",
     "isNode", "asNode", "indexingNode", "invokeNode", "postfixIncrementNode", "postfixDecrementNode", "sizeOfNode", "typeNameNode", "typeIdNode", "castNode", "constructNode", "newNode", "thisNode", "baseNode",
     "conditionalCompilationDisjunctionNode", "conditionalCompilationConjunctionNode", "conditionalCompilationNotNode", "conditionalCompilationPrimaryNode", "conditionalCompilationPartNode", 
-    "conditionalCompilationStatementNode", "uuidLiteralNode", "cursorIdNode", "parenthesizedExpressionNode", "globalVariableNode", "parenthesizedCondCompExpressionNode", "labeledStatementNode,"
+    "conditionalCompilationStatementNode", "uuidLiteralNode", "cursorIdNode", "parenthesizedExpressionNode", "globalVariableNode", "parenthesizedCondCompExpressionNode", "labeledStatementNode",
+    "commentNode",
     "maxNode"
 };
 
@@ -72,10 +74,6 @@ Node::~Node()
 
 void Node::SetParent(Node* parent_)
 {
-    if (parent != nullptr)
-    {
-        int x = 0;
-    }
     parent = parent_;
 }
 
@@ -134,6 +132,10 @@ void BinaryNode::Read(AstReader& reader)
     right->SetParent(this);
 }
 
+NodeCreator::NodeCreator()
+{
+}
+
 NodeCreator::~NodeCreator()
 {
 }
@@ -142,6 +144,9 @@ template<typename T>
 class ConcreteNodeCreator : public NodeCreator
 {
 public:
+    ConcreteNodeCreator() : NodeCreator() {}
+    ConcreteNodeCreator(const ConcreteNodeCreator&) = delete;
+    ConcreteNodeCreator& operator=(const ConcreteNodeCreator&) = delete;
     Node* CreateNode(const Span& span) override
     {
         return new T(span);
@@ -347,6 +352,7 @@ NodeFactory::NodeFactory()
     Register(NodeType::cursorIdNode, new ConcreteNodeCreator<CursorIdNode>());
     Register(NodeType::parenthesizedExpressionNode, new ConcreteNodeCreator<ParenthesizedExpressionNode>());
     Register(NodeType::globalVariableNode, new ConcreteNodeCreator<GlobalVariableNode>());
+    Register(NodeType::commentNode, new ConcreteNodeCreator<CommentNode>());
 }
 
 void NodeFactory::Register(NodeType nodeType, NodeCreator* creator)

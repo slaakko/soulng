@@ -7,6 +7,7 @@
 #include <sngcm/ast/Identifier.hpp>
 #include <sngcm/ast/Visitor.hpp>
 #include <sngcm/ast/Namespace.hpp>
+#include <sngcm/ast/Class.hpp>
 #include <soulng/util/Sha1.hpp>
 #include <algorithm>
 
@@ -98,6 +99,44 @@ void CombineNamespaces(CompileUnitNode& cu)
 {
     NamespaceCombinder combiner;
     cu.Accept(combiner);
+}
+
+class ClassMemberArranger : public Visitor
+{
+public:
+    void Visit(CompileUnitNode& compileUnitNode) override;
+    void Visit(NamespaceNode& namespaceNode) override;
+    void Visit(ClassNode& classNode) override;
+};
+
+void ClassMemberArranger::Visit(CompileUnitNode& compileUnitNode)
+{
+    compileUnitNode.GlobalNs()->Accept(*this);
+}
+
+void ClassMemberArranger::Visit(NamespaceNode& namespaceNode)
+{
+    int n = namespaceNode.Members().Count();
+    for (int i = 0; i < n; ++i)
+    {
+        namespaceNode.Members()[i]->Accept(*this);
+    }
+}
+
+void ClassMemberArranger::Visit(ClassNode& classNode)
+{
+    int n = classNode.Members().Count();
+    for (int i = 0; i < n; ++i)
+    {
+        classNode.Members()[i]->Accept(*this);
+    }
+    classNode.ArrangeMembers();
+}
+
+void ArrangeClassMembers(CompileUnitNode& cu)
+{
+    ClassMemberArranger arranger;
+    cu.Accept(arranger);
 }
 
 } } // namespace sngcm::ast

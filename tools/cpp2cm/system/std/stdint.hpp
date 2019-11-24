@@ -1,0 +1,9 @@
+typedef type int8_t;
+typedef type uint8_t;
+typedef type int16_t;
+typedef type uint16_t;
+typedef type int32_t;
+typedef type uint32_t;
+typedef type int64_t;
+typedef type uint64_t;
+typedef type size_t;

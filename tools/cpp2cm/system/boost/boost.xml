@@ -1,0 +1,8 @@
+<project name="boost">
+  <imports>
+    <import project="../std/std.xml"/>
+  </imports>
+  <source file="filesystem.hpp"/>
+  <source file="uuid.hpp"/>
+  <include path="."/>
+</project>

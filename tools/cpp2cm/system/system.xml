@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cpp2cm>
+  <projects>
+    <project file="std/std.xml"/>
+    <project file="boost/boost.xml"/>
+    <project file="soulng.util/soulng.util.xml"/>
+  </projects>
+</cpp2cm>

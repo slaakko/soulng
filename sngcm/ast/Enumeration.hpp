@@ -25,7 +25,7 @@ public:
     void Read(AstReader& reader) override;
     void AddConstant(EnumConstantNode* constant);
     EnumConstantNode* GetLastConstant() const;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     IdentifierNode* Id() const { return id.get(); }
     void SetUnderlyingType(Node* underlyingType_);
     Node* GetUnderlyingType() const { return underlyingType.get(); }

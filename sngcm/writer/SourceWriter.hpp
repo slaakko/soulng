@@ -188,6 +188,7 @@ public:
     void Visit(sngcm::ast::GlobalVariableNode& globalVariableNode) override;
     void Visit(sngcm::ast::Attribute& attribute) override;
     void Visit(sngcm::ast::Attributes& attributes) override;
+    void Visit(sngcm::ast::CommentNode& comment) override;
     void WriteWarning(const std::string& message);
 private:
     soulng::util::CodeFormatter& formatter;

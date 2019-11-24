@@ -14,7 +14,7 @@ class SNGCM_AST_API ConstraintNode : public Node
 {
 public:
     ConstraintNode(NodeType nodeType_, const Span& span_);
-    bool IsConstraintNode() const override { return true; }
+    bool NodeIsConstraintNode() const override { return true; }
     virtual bool IsHeaderConstraint() const { return false; }
 };
 
@@ -334,9 +334,9 @@ public:
     ConceptIdNode* Refinement() { return refinement.get(); }
     void AddConstraint(ConstraintNode* constraint);
     const NodeList<ConstraintNode>& Constraints() const { return constraints; }
-    void AddAxiom(AxiomNode* axiom);
+    void AddAxiom(AxiomNode* axiom_);
     const NodeList<AxiomNode>& Axioms() const { return axioms; }
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     void SetBeginBraceSpan(const Span& beginBraceSpan_) { beginBraceSpan = beginBraceSpan_; }
     const Span& BeginBraceSpan() const { return beginBraceSpan; }
     void SetEndBraceSpan(const Span& endBraceSpan_) { endBraceSpan = endBraceSpan_; }

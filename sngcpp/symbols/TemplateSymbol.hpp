@@ -15,6 +15,8 @@ public:
     TemplateParameterSymbol(const Span& span_, const std::u32string& name_);
     std::u32string KindStr() override { return U"templateParameter"; }
     std::unique_ptr<sngxml::dom::Element> CreateElement() override;
+    bool IsTemplateParameterSymbol() const override { return true; }
+    int MatchValue(TypeSymbol* argumentType) override;
 };
 
 } } // namespace sngcpp::symbol

@@ -13,7 +13,7 @@ namespace gendoc {
 class Filter
 {
 public:
-    enum Type { include, exclude };
+    enum class Type { include, exclude };
     Filter(soulng::rex::Context& context_, Type type_, const std::u32string& pattern_);
     void Apply(File& file);
 private:

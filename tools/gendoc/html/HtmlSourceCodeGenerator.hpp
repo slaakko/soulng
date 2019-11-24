@@ -25,7 +25,7 @@ public:
     std::u32string MakeInlineSymbolRef(Symbol* symbol);
     void WriteId(IdentifierNode* id, Symbol* symbol, bool writeType);
     void WriteIdSequence(bool writeType, Symbol* terminalSymbol);
-    void WriteType(TypeSymbol* type, const std::vector<IdentifierNode*>& idNodeSequence, TypeExprNode* typeExprNode);
+    void WriteType(TypeSymbol* type, const std::vector<IdentifierNode*>& idNodeSequence, TemplateIdNode* templateIdNode);
     void WriteDocument();
     void MoveTo(const Span& span);
     void OpenLine();
@@ -124,7 +124,6 @@ public:
     void Visit(IdDeclaratorNode& idDeclaratorNode) override;
     void Visit(ParameterNode& parameterNode) override;
     void Visit(ParameterSequenceNode& parameterSequenceNode) override;
-    void Visit(TypeExprNode& typeExprNode) override;
     void Visit(SimpleTypeNode& simpleTypeNode) override;
     void Visit(TypeParameterNode& typeParameterNode) override;
     void Visit(TemplateParameterSequenceNode& templateParameterSequenceNode) override;

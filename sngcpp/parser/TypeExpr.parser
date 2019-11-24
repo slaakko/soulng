@@ -24,7 +24,7 @@ parser api(SNGCPP_PARSER_API) TypeExprParser
     using IdentifierParser.QualifiedIdNode;
 
     TypeExpr(sngcpp::cppparser::ParsingContext* ctx) : sngcpp::ast::Node* 
-        ::= PrefixTypeExpr(ctx):prefixTypeExpr{ return new sngcpp::ast::TypeExprNode(span, prefixTypeExpr); }
+        ::= PrefixTypeExpr(ctx):prefixTypeExpr{ return prefixTypeExpr; }
         ;
 
     PrefixTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
@@ -63,26 +63,18 @@ parser api(SNGCPP_PARSER_API) TypeExprParser
         }
         ;
 
-    PrimaryTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var sngcpp::ast::ClassKey key, var Span s, var std::unique_ptr<sngcpp::ast::Node> qualifiedIdNode) : sngcpp::ast::Node*
+    PrimaryTypeExpr(sngcpp::cppparser::ParsingContext* ctx, var sngcpp::ast::ClassKey key, var Span s) : sngcpp::ast::Node*
         ::= SimpleType:simpleType{ return simpleType; }
-        |   (TYPENAME{ s = span; key = sngcpp::ast::ClassKey::typename_; } | ClassKey:classKey{ s = span; key = classKey; })? QualifiedIdNode(ctx):qid
+        |   (TYPENAME{ s = span; key = sngcpp::ast::ClassKey::typename_; } | ClassKey:classKey{ s = span; key = classKey; })? QualifiedIdNode(ctx):qualifiedId
         {
-            qualifiedIdNode.reset(qid);
-            if (sngcpp::ast::IsConstructorName(qualifiedIdNode.get()))
+            s.end = span.end;
+            if (key != sngcpp::ast::ClassKey::none)
             {
-                pass = false;
+                return new sngcpp::ast::ElaborateClassNameNode(s, key, qualifiedId);
             }
             else
             {
-                s.end = span.end;
-                if (key != sngcpp::ast::ClassKey::none)
-                {
-                    return new sngcpp::ast::ElaborateClassNameNode(s, key, qualifiedIdNode.release());
-                }
-                else
-                {
-                    return qualifiedIdNode.release();
-                }
+                return qualifiedId;
             }
         }
         ;

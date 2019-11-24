@@ -1,0 +1,968 @@
+<symbolTable>
+    <namespace access="public" id="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709" name="">
+        <namespaces>
+            <namespace access="public" id="namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B" name="soulng">
+                <projects>
+                    <project name="soulng.util"/>
+                </projects>
+                <namespaces>
+                    <namespace access="public" id="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B" name="util">
+                        <projects>
+                            <project name="soulng.util"/>
+                        </projects>
+                        <classes>
+                            <class access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="3" id="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045" key="class" name="BinaryReader" project="soulng.util" target="System.IO.BinaryReader">
+                                <constructors>
+                                    <constructor access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="6" id="constructor_BinaryReader_7F608C4B0626F344A0F012922434BEBBC5D9E81F" name="BinaryReader" target="BinaryReader">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__956CD859FBB7539D9C442B5E1A6DB2C4DD4949E8" name="" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </constructor>
+                                    <constructor access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="6" id="constructor_BinaryReader_EB55E5557F5F37A15A9821456A3D099AE659A285" name="BinaryReader">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__956CD859FBB7539D9C442B5E1A6DB2C4DD4949E8" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </constructor>
+                                </constructors>
+                                <functions>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="7" id="function_ReadBool_B7C79A05473F3A9F898406C8ADA32D82A532C530" name="ReadBool" returnType="bool" target="ReadBool"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="8" id="function_ReadByte_40AD82D1152B6D927FB4E28FC66201D3DC730429" name="ReadByte" returnType="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" target="ReadByte"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="18" id="function_ReadChar_6F67BFACA260A04FD6B4B9A28F50931839983C2A" name="ReadChar" returnType="char" target="ReadChar"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="17" id="function_ReadDouble_7A7D6DF5C1BFB2AEF25B94CBDD5F1C0CA78D98CA" name="ReadDouble" returnType="double" target="ReadDouble"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="16" id="function_ReadFloat_C6DDB2F02E9D17ED75CDDF4B8C0C7B4108A22787" name="ReadFloat" returnType="float" target="ReadFloat"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="13" id="function_ReadInt_23EA54457C8067B9307866124A1D5DE6A4D1AE13" name="ReadInt" returnType="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217" target="ReadInt"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="15" id="function_ReadLong_B13E69AC9EA0C6301C9C946EFF2088C99E0C20F4" name="ReadLong" returnType="type_F6311168933725D3149F768D180F96C9C216469F" target="ReadLong"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="9" id="function_ReadSByte_02B80AB96AF9E0C74DF571EB26A1E554F8FBF38C" name="ReadSByte" returnType="type_FB861BCE0ED1D239AE09CAC8C3FBCCEF93EDC62F" target="ReadSByte"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="26" id="function_ReadSLEB128Int_6A426187ADFBED74166C47CED3E57DE163A2361F" name="ReadSLEB128Int" returnType="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217" target="ReadSLEB128Int"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="27" id="function_ReadSLEB128Long_BDFED89AFEF4469C834E12888A771E1BDB346EEC" name="ReadSLEB128Long" returnType="type_F6311168933725D3149F768D180F96C9C216469F" target="ReadSLEB128Long"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="11" id="function_ReadShort_21024579FA5FA20215E03D6CDB79A0AB22146B0C" name="ReadShort" returnType="type_19BAA746E8062B67575EDA40A9423A65C520FF96" target="ReadShort"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="20" id="function_ReadUChar_15379C0395F7CBE9BB7EBBB71C06E4A0B65C6A87" name="ReadUChar" returnType="char32_t" target="ReadUChar"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="12" id="function_ReadUInt_C879DD64A566DD48F242E1EE7EDA280CA5DE2C3A" name="ReadUInt" returnType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" target="ReadUInt"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="24" id="function_ReadULEB128UInt_B5BB9EC972C9E9771CD007678C73CC33B5DF26E5" name="ReadULEB128UInt" returnType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" target="ReadULEB128UInt"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="25" id="function_ReadULEB128ULong_8BFB34993BB9D960301C2F825ADC67D6A27EFFBC" name="ReadULEB128ULong" returnType="type_1423D427C67F6AEECA49996C099A7B405AB7ACAE" target="ReadULEB128ULong"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="14" id="function_ReadULong_48249DB3BEFC8A2C310F60F6E1F6DCB757AA4CF0" name="ReadULong" returnType="type_1423D427C67F6AEECA49996C099A7B405AB7ACAE" target="ReadULong"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="10" id="function_ReadUShort_5AC3F8C7A5FBCC2827F8CAE1E7B6860B451A5640" name="ReadUShort" returnType="type_4E85F56CDBEA16DEC9093329BB2449C429830E5C" target="ReadUShort"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="22" id="function_ReadUtf16String_CF2C0E9A18298670FE01D72237DCE224D9356C19" name="ReadUtf16String" returnType="type_0A243A2402C2FF939A6C8589908700CA277FCBCC" target="ReadWString"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="23" id="function_ReadUtf32String_3B2A7EDE0B437661B7861B881062A2BB5ADD8193" name="ReadUtf32String" returnType="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" target="ReadUString"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="21" id="function_ReadUtf8String_011671288CB47263D61AB63A20FDC55199A61BEE" name="ReadUtf8String" returnType="type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" target="ReadString"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="28" id="function_ReadUuid_5544F1F7D9F65FCF4CAB2DFA4FC2DC95622E83AE" name="ReadUuid" returnType="void" target="ReadUuid">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__88E9AF2D20CABB000FA6E62C73C8A2E1D4A8D6AA" name="" type="type_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.type_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="19" id="function_ReadWChar_7C11708A35F67F3359804D1A8ED931F1DAB0EED4" name="ReadWChar" returnType="char16_t" target="ReadWChar"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="30" id="function_Skip_F89FA4FE3244A338B8A3071DE8E0319D3031F273" name="Skip" returnType="void" target="Skip">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__3C3DCB8DFF6D05D4A91F32555BBAC31B4D93C2B6" name="" type="type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="29" id="function_Pos_1ED53EE61AF1EBBAA7D95217DA07021599ED72F1" name="Pos" returnType="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7" specifiers="const"/>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="28" id="function_ReadUuid_003DF1BA1711CC0BD15E6E5DCF130875E8F30B04" name="ReadUuid" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__88E9AF2D20CABB000FA6E62C73C8A2E1D4A8D6AA" name="" type="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="30" id="function_Skip_6BA2728A5831544D0B59ACD896509AE8A5CC1A98" name="Skip" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__3C3DCB8DFF6D05D4A91F32555BBAC31B4D93C2B6" name="" type="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                </functions>
+                            </class>
+                            <class access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="3" id="class_BinaryWriter_0D40DDC5D57867D529F25148B10988402235B9CF" key="class" name="BinaryWriter" project="soulng.util" target="System.IO.BinaryWriter">
+                                <functions>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="28" id="function_Pos_ABB0239FC7B1C95688959500A4947455B809D55B" name="Pos" returnType="type_B48DE50013208F63284F12F10C3F8BAE719012C7" specifiers="const" target="Pos"/>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="29" id="function_Seek_577B6163676BF6C7E1679B909B39A6528005A4FB" name="Seek" returnType="void" target="Seek">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__00C84E9E06C07588BB4DE7C660203B28DF32ADBE" name="" type="type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="6" id="function_Write_A421110005C38E5AC3996B2459870673634605B5" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__B1BD9F4D9B74E6AB3215AF26E1C71382E2588B43" name="" type="bool"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="17" id="function_Write_E96BAC0CD88C5070475A962EAF127C97CC88B97D" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__A5E8BC9063671773D121D5DAFF46E5B4658EF609" name="" type="char"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="18" id="function_Write_AFC59CB85B5DFD2DA030073BACF2F4F213B65775" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__CD9693A1BA250CBEB22C18B50DDB5A5E7803CD82" name="" type="char16_t"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="19" id="function_Write_95209D5701F64DA7402A3D7B1D2A0F1D3987BECE" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__4537B2F09E2155CC8228E78F01A3DEAC67CAE6ED" name="" type="char32_t"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="27" id="function_Write_3E297EF11047E0C69B1F2573EE01C2915FB992C2" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__3CD1973A4A46A7A15D5DE51B346E8B6DEE135903" name="" type="const.type_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.type_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="20" id="function_Write_E9D7D6E5673E11EEBF075BA76631A8B9752E5098" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__5F609ADF70926C648F3C188E13E5FD64D0299292" name="" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="21" id="function_Write_7342D94D2133C73F2E08CB37B1A554E531631B9D" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__63D6206ABF5FF99F36F9BFE03AB3079AC4E16CAE" name="" type="const.type_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.type_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="22" id="function_Write_A7316B717FAE4D7238B2AE6D8EC125765712CDC8" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__F77ECAD9BC856713C8752E006E6CAA18FAA40425" name="" type="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="16" id="function_Write_5C03FB4ABCB9507EFDCA39B63CB78AE2D0703299" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__2479BFEFF05F252B85ACCECE470BABCF79E53261" name="" type="double"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="15" id="function_Write_9F2215F4C32693805B51652EC367F7D0CECB4000" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__65C0A59435F7A0AE0C5EBD8B67F3561CA8ACF47F" name="" type="float"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="10" id="function_Write_B9570996838EDC301DBA988F4DA333F2F1C6C5C9" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__8C42874CF413B7A1D1C66626EB011A4A611372EB" name="" type="type_19BAA746E8062B67575EDA40A9423A65C520FF96"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="12" id="function_Write_49E900F8FCBEE026FB051B768287EF8640B06FED" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__E94E209A9FE1D7C90F63ED902877B17A1FCD209F" name="" type="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="14" id="function_Write_CD46C207F55CB3B98D0B446C1CF03E0F9A87D8E0" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__824146494F378A98E57F3B5C3F94D57B1DBD4343" name="" type="type_F6311168933725D3149F768D180F96C9C216469F"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="8" id="function_Write_8308390EFB4A764BF9949E5E1843AD95A64D23F0" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__3B338D7C3F0F1BCFD7773486BB6207E70F3F8F55" name="" type="type_FB861BCE0ED1D239AE09CAC8C3FBCCEF93EDC62F"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="9" id="function_Write_267DC9901F08FE366C232CD1305D138C8E90B168" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__A11D778EEA8158A64772854B59B21161A2E0D225" name="" type="type_4E85F56CDBEA16DEC9093329BB2449C429830E5C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="11" id="function_Write_C04278BCBD92BF580E8101ECF8024313536D5B7F" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__D3433A0A5567581020B0F4463DE47FB58C8984E0" name="" type="type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="13" id="function_Write_46B20BD660CE2FB20A00D98F57775C1A33B1D3F0" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__F48E7ABC4B687747CAD11148E6CFF8F58DD93F0A" name="" type="type_1423D427C67F6AEECA49996C099A7B405AB7ACAE"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="7" id="function_Write_CE74CABA0C3FC4DD0B8EB305FFB5E426D31D5E40" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__2F19D2C8D5CBD28F8F3BF02D6765BA5D63C839CB" name="" type="type_124420692E282C70BEA5A0D74FE0B667BDA750F6"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="25" id="function_WriteSLEB128Int_12D6DC2A2EB27D1808BDE08823029BF150B84588" name="WriteSLEB128Int" returnType="void" target="WriteSLEB128Int">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__DB6FEFDC3A2EAF1B216DFC30ECDAB433393247F2" name="" type="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="26" id="function_WriteSLEB128Long_9F23B5A5651BCFF88DAB5139EC18B6F3B3F70944" name="WriteSLEB128Long" returnType="void" target="WriteSLEB128Long">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__535640474AB10CA98865F1C3F4D82E7D6508EFFD" name="" type="type_F6311168933725D3149F768D180F96C9C216469F"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="23" id="function_WriteULEB128UInt_A283EA8B3EC2F9FA2F257EE15A8A2F3EE7DC1AFF" name="WriteULEB128UInt" returnType="void" target="WriteULEB128UInt">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__85160869984AC11EE89E518CAE0307B8021DFDE0" name="" type="type_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="24" id="function_WriteULEB128ULong_3BAD24E03087424AA06C6C08CF62307672A254B8" name="WriteULEB128ULong" returnType="void" target="WriteULEB128ULong">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__AA5A7339D1CAD119FF0795AB18499663897AD42D" name="" type="type_1423D427C67F6AEECA49996C099A7B405AB7ACAE"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="29" id="function_Seek_EE588EFC074A95192764E6C1141FCDF78A295C53" name="Seek" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__00C84E9E06C07588BB4DE7C660203B28DF32ADBE" name="" type="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="20" id="function_Write_DC12888BF3D3D6F6BAAEC0BB7144B7153ADF341E" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__5F609ADF70926C648F3C188E13E5FD64D0299292" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="21" id="function_Write_632277593D76F9446F1121D581F7226F0A039885" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__63D6206ABF5FF99F36F9BFE03AB3079AC4E16CAE" name="" type="const.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="22" id="function_Write_A6768AD4D73B0158F961C32A3C78DE43DEAF45E4" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__F77ECAD9BC856713C8752E006E6CAA18FAA40425" name="" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="27" id="function_Write_EEF05EDAA73FBE079D60DFCD3DDF63AAE434B698" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__3CD1973A4A46A7A15D5DE51B346E8B6DEE135903" name="" type="const.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="10" id="function_Write_88FDD980A1EB4F579BEEAD77A76E561C8DCA9527" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__8C42874CF413B7A1D1C66626EB011A4A611372EB" name="" type="typedef_int16_t_19BAA746E8062B67575EDA40A9423A65C520FF96"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="12" id="function_Write_53F2A1996957789B4E96260B361C52C2B99313D7" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__E94E209A9FE1D7C90F63ED902877B17A1FCD209F" name="" type="typedef_int32_t_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="14" id="function_Write_B70DCBD7173249148A829D5C4221E5BC216874F5" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__824146494F378A98E57F3B5C3F94D57B1DBD4343" name="" type="typedef_int64_t_F6311168933725D3149F768D180F96C9C216469F"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="8" id="function_Write_5371BC28EC09A6707591D22BE5BCE1A037338027" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__3B338D7C3F0F1BCFD7773486BB6207E70F3F8F55" name="" type="typedef_int8_t_FB861BCE0ED1D239AE09CAC8C3FBCCEF93EDC62F"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="9" id="function_Write_9291374D75B69D387A44633601385FD796A091C3" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__A11D778EEA8158A64772854B59B21161A2E0D225" name="" type="typedef_uint16_t_4E85F56CDBEA16DEC9093329BB2449C429830E5C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="11" id="function_Write_2D3C3080F8519F32672E6864DF43569EF1ADE96A" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__D3433A0A5567581020B0F4463DE47FB58C8984E0" name="" type="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="13" id="function_Write_06D2C06A6AE1A85D62D8E02C6483710762A017EF" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__F48E7ABC4B687747CAD11148E6CFF8F58DD93F0A" name="" type="typedef_uint64_t_1423D427C67F6AEECA49996C099A7B405AB7ACAE"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="7" id="function_Write_6081D6BD9D1570E7E463493A5A53C3F12350095E" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__2F19D2C8D5CBD28F8F3BF02D6765BA5D63C839CB" name="" type="typedef_uint8_t_124420692E282C70BEA5A0D74FE0B667BDA750F6"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="25" id="function_WriteSLEB128Int_5E55C63D150D7133A0312B49977A6F9824D0E5FF" name="WriteSLEB128Int" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__DB6FEFDC3A2EAF1B216DFC30ECDAB433393247F2" name="" type="typedef_int32_t_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="26" id="function_WriteSLEB128Long_541580B2F0B611DC82552654498A2D763B066DB2" name="WriteSLEB128Long" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__535640474AB10CA98865F1C3F4D82E7D6508EFFD" name="" type="typedef_int64_t_F6311168933725D3149F768D180F96C9C216469F"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="23" id="function_WriteULEB128UInt_C3C6A1D2BEF7BC7CF7D22CEF060514A29CD60AC0" name="WriteULEB128UInt" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__85160869984AC11EE89E518CAE0307B8021DFDE0" name="" type="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="24" id="function_WriteULEB128ULong_A6B70225ED079D8B602B6D8862D2D7D5F53198F7" name="WriteULEB128ULong" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__AA5A7339D1CAD119FF0795AB18499663897AD42D" name="" type="typedef_uint64_t_1423D427C67F6AEECA49996C099A7B405AB7ACAE"/>
+                                        </parameters>
+                                    </function>
+                                </functions>
+                            </class>
+                            <class access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="3" id="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9" key="class" name="CodeFormatter" project="soulng.util" target="System.Text.CodeFormatter">
+                                <functions>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="9" id="function_CurrentIndent_46F6B5EAC7981A614CC1FADD9CA49FDFB0D6EA9C" name="CurrentIndent" returnType="int" specifiers="const" target="CurrentIndent"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="15" id="function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C" name="DecIndent" returnType="void" target="DecIndent"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="14" id="function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C" name="IncIndent" returnType="void" target="IncIndent"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="6" id="function_Indent_2B655D0EA6DE64C46E84C8DF0E6AEF0E8220A199" name="Indent" returnType="int" specifiers="const" target="Indent"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="7" id="function_IndentSize_ED47F219036DB22CB42C4C54693114A0CCC4777C" name="IndentSize" returnType="int" specifiers="const" target="IndentSize"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="16" id="function_Line_9E96BEE8FE790726770129898DA0A0EE455FC3D8" name="Line" returnType="int" specifiers="const" target="Line"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="12" id="function_NewLine_4D430D57785C3324783579A7B73E2247A62B91AC" name="NewLine" returnType="void" target="NewLine"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="23" id="function_PreserveSpace_2BF97EC746181A2921C61A0F593345F7BE9B0D33" name="PreserveSpace" returnType="bool" specifiers="const" target="PreserveSpace"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="20" id="function_ResetStart_A4A8B339B7FAE309A3CE325D400EDAE5CC32626A" name="ResetStart" returnType="void" target="ResetStart"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="8" id="function_SetIndentSize_1290CD0C114A3E88E38FC8A9646CA6FCBD23B55A" name="SetIndentSize" returnType="void" target="SetIndentSize">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__13E6B8EE421461E1D97E2511E15AD1CAB5F423DD" name="" type="int"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="17" id="function_SetLine_D1915412C136E4E6D0DBAE10F6DA009C25D0BF7D" name="SetLine" returnType="void" target="SetLine">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__336F7967B4C126B69D1757846EF0CD84E44BF299" name="" type="int"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="24" id="function_SetPreserveSpace_93294F310C370692C17657646D94A54EC95FDEED" name="SetPreserveSpace" returnType="void" target="SetPreserveSpace">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__0739D9FAB2ADE68331754AB34B6FC86C932D6FD5" name="" type="bool"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="19" id="function_SetStart_3BCFCC64788F1C41BC114B7CD842699FADFDAABD" name="SetStart" returnType="void" target="SetStart"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="21" id="function_SetStartText_2C79D245594C178F73CFEECC73C109D98E21C85C" name="SetStartText" returnType="void" target="SetStartText">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__9EAE7C96B009B159DDCB8AC87631689833B883A3" name="" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="18" id="function_Start_51CBF7EBC6DA4EB3529B31BA51976E188320B007" name="Start" returnType="bool" specifiers="const" target="Start"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="22" id="function_StartText_44B9ADE5AAB9DDDD10A951807BAA7AD804D789B6" name="StartText" returnType="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" specifiers="const" target="StartText"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="10" id="function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5" name="Write" returnType="void" target="Write">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__91A3E613E06B26DC2CDA718BB0DD1A540B09F564" name="" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="13" id="function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF" name="WriteLine" returnType="void" target="WriteLine"/>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="11" id="function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A" name="WriteLine" returnType="void" target="WriteLine">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__D2D1447035E19CE3B6E08F627D09CB55FCF7C73A" name="" type="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="21" id="function_SetStartText_31F60B20C95D6FEFDC08EBEE43FDB9B2879A855A" name="SetStartText" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__9EAE7C96B009B159DDCB8AC87631689833B883A3" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="10" id="function_Write_4727CE8E84A86A95E1F4A9CCD6B75BB8C33A5BF1" name="Write" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__91A3E613E06B26DC2CDA718BB0DD1A540B09F564" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                    <function access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="11" id="function_WriteLine_0C2260DA048827198F6CA193B3F39C50C27AA35B" name="WriteLine" returnType="void">
+                                        <parameters>
+                                            <parameter access="public" id="parameter__D2D1447035E19CE3B6E08F627D09CB55FCF7C73A" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                        </parameters>
+                                    </function>
+                                </functions>
+                            </class>
+                        </classes>
+                        <functions>
+                            <function access="public" definitionFile="TextUtils.hpp" definitionFileId="file/TextUtils.hpp_55739E999E76D7A22F942A9515563DFB42184073.html" definitionLine="3" id="function_CharStr_9101223396EC6D36EB243443565AAF452C930A87" name="CharStr" project="soulng.util" target="System.CharStr">
+                                <parameters>
+                                    <parameter access="public" id="parameter_c_C58930F672841A805FD396187B54905A85B0149E" name="c" type="char"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="TextUtils.hpp" definitionFileId="file/TextUtils.hpp_55739E999E76D7A22F942A9515563DFB42184073.html" definitionLine="4" id="function_CharStr_F56650EA2D34A7CC175BE59676B5993C306F2C1A" name="CharStr" project="soulng.util" target="System.CharStr">
+                                <parameters>
+                                    <parameter access="public" id="parameter_c_97C7D6A0DCF95CEC609A5A74A64B0678B4F3EBAA" name="c" type="char16_t"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="TextUtils.hpp" definitionFileId="file/TextUtils.hpp_55739E999E76D7A22F942A9515563DFB42184073.html" definitionLine="5" id="function_CharStr_3DFCEE18E4C52B92F8E91031BDD99144A1D9CCF4" name="CharStr" project="soulng.util" target="System.CharStr">
+                                <parameters>
+                                    <parameter access="public" id="parameter_c_A3B445B72363FA36133B91A88FE70D8649477B89" name="c" type="char32_t"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="TextUtils.hpp" definitionFileId="file/TextUtils.hpp_55739E999E76D7A22F942A9515563DFB42184073.html" definitionLine="6" id="function_StringStr_5127806ADF31199C147FBDEED913B84BCBCCFCA3" name="StringStr" project="soulng.util" target="System.StringStr">
+                                <parameters>
+                                    <parameter access="public" id="parameter__468E580D61384A6C2EC28160C098370660CA2092" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="Sha1.hpp" definitionFileId="file/Sha1.hpp_660D68A132170DFE3E83C3C181FFF3A4289B33BF.html" definitionLine="3" id="function_GetSha1MessageDigest_6082909FBA0613D039A4F488E2807B1EE5F58827" name="GetSha1MessageDigest" project="soulng.util" target="System.Security.GetSha1MessageDigest">
+                                <parameters>
+                                    <parameter access="public" id="parameter__ADD4F4EEBF094B0A71B5CE35A236831FE11A9F37" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                                </parameters>
+                            </function>
+                        </functions>
+                    </namespace>
+                </namespaces>
+                <namespace access="public" id="namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE" name="unicode">
+                    <functions>
+                        <function access="public" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_FDF25206CB960F3D14BD856A2407FDA63F75A22A.html" definitionLine="6" id="function_ToUtf16_870746E8000F2340E839192E50F16861248FE51D" name="ToUtf16" project="soulng.util" target="System.ToUtf16">
+                            <parameters>
+                                <parameter access="public" id="parameter__93998D0F1CB8B8FCACEB35232B256AC97134077E" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                            </parameters>
+                        </function>
+                        <function access="public" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_FDF25206CB960F3D14BD856A2407FDA63F75A22A.html" definitionLine="5" id="function_ToUtf16_4F6A1D7DE5E471564DDA6079A71FCE9AEF85EC68" name="ToUtf16" project="soulng.util" target="System.ToUtf16">
+                            <parameters>
+                                <parameter access="public" id="parameter__9EEC8E1525BE0D5E9E6BF91B012DA9B86E420054" name="" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                            </parameters>
+                        </function>
+                        <function access="public" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_FDF25206CB960F3D14BD856A2407FDA63F75A22A.html" definitionLine="3" id="function_ToUtf32_861AE9A7F3DAB47C026660BC7836C301340512B3" name="ToUtf32" project="soulng.util" target="System.ToUtf32">
+                            <parameters>
+                                <parameter access="public" id="parameter__39FED24CC9AD338FE9FBD6528924180F59033D80" name="" type="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                            </parameters>
+                        </function>
+                        <function access="public" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_FDF25206CB960F3D14BD856A2407FDA63F75A22A.html" definitionLine="4" id="function_ToUtf32_372A169178AE61C82C58B5D953F4DDE4DD602D8E" name="ToUtf32" project="soulng.util" target="System.ToUtf32">
+                            <parameters>
+                                <parameter access="public" id="parameter__2E7465FD1D09075AB3E1F101FA40DFF80FE8CA0F" name="" type="const.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                            </parameters>
+                        </function>
+                        <function access="public" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_FDF25206CB960F3D14BD856A2407FDA63F75A22A.html" definitionLine="8" id="function_ToUtf8_394C013B1EA5914283024619F9321F6A3F3E2293" name="ToUtf8" project="soulng.util" target="System.ToUtf8">
+                            <parameters>
+                                <parameter access="public" id="parameter__AA49C5B81EBCF5DE0F97B1D42A3E27D99458B78E" name="" type="const.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                            </parameters>
+                        </function>
+                        <function access="public" definitionFile="Unicode.hpp" definitionFileId="file/Unicode.hpp_FDF25206CB960F3D14BD856A2407FDA63F75A22A.html" definitionLine="7" id="function_ToUtf8_24F3FB1971ADD5082DC4E773B1F4C4EF3EAE422A" name="ToUtf8" project="soulng.util" target="System.ToUtf8">
+                            <parameters>
+                                <parameter access="public" id="parameter__551CE2CDFBC5FD2C8B494D123D9CB4D879336BD6" name="" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                            </parameters>
+                        </function>
+                    </functions>
+                </namespace>
+            </namespace>
+        </namespaces>
+        <typedefs>
+            <typedef access="public" id="typedef_int16_t_19BAA746E8062B67575EDA40A9423A65C520FF96" name="int16_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_int32_t_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217" name="int32_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_int64_t_F6311168933725D3149F768D180F96C9C216469F" name="int64_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_int8_t_FB861BCE0ED1D239AE09CAC8C3FBCCEF93EDC62F" name="int8_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_size_t_1470D06EDB2DD960D7AB186213477F79DF7BB92D" name="size_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint16_t_4E85F56CDBEA16DEC9093329BB2449C429830E5C" name="uint16_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7" name="uint32_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint64_t_1423D427C67F6AEECA49996C099A7B405AB7ACAE" name="uint64_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint8_t_124420692E282C70BEA5A0D74FE0B667BDA750F6" name="uint8_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+        </typedefs>
+        <namespace access="public" id="namespace_std_55EC981F0A6054D4AD0C3FEC7F32B1086F7D24F4" name="std">
+            <class access="public" definitionFile="map.hpp" definitionFileId="file/map.hpp_967DAE3E3B0BF77B2EE871097E714AB070115BE8.html" definitionLine="4" id="class_map_80D39818B4A04DD6095AFD5B8F7CEA02FC5FCC1D" key="class" name="map" project="std">
+                <typedefs>
+                    <typedef access="public" id="typedef_const_iterator_DBFC58EBBCEE0A82288E78EE6772AA2854FEB393" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    <typedef access="public" id="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                </typedefs>
+            </class>
+            <class access="public" definitionFile="set.hpp" definitionFileId="file/set.hpp_EAB9C22B483A5D0CFC64481D7A33F00D7F3D931C.html" definitionLine="4" id="class_set_DC8DD1ACCC4F17E9E11EC650AB964C2E3465BC85" key="class" name="set" project="std">
+                <typedefs>
+                    <typedef access="public" id="typedef_const_iterator_A8146A736B4E8BF9D3237C825ECDD5D13014B2C6" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    <typedef access="public" id="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                </typedefs>
+            </class>
+            <class access="public" definitionFile="unordered_map.hpp" definitionFileId="file/unordered_map.hpp_91C251E027AEAFDE833EA2AE0851560FD396D05F.html" definitionLine="4" id="class_unordered_map_5B4FD30E2342C3DAAF75D9F7A68D5C7AB700B284" key="class" name="unordered_map" project="std">
+                <typedefs>
+                    <typedef access="public" id="typedef_const_iterator_EECC7AA84B62E7D579F8FD38E5EE735D0CA159D3" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    <typedef access="public" id="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                </typedefs>
+            </class>
+            <class access="public" definitionFile="unordered_set.hpp" definitionFileId="file/unordered_set.hpp_3AD5A4048CD139AEA903999DEBFA49AEE23113EE.html" definitionLine="4" id="class_unordered_set_17C03B4E07A3386D6F5857C90AD61B397F23413C" key="class" name="unordered_set" project="std">
+                <typedefs>
+                    <typedef access="public" id="typedef_const_iterator_7BE94867BECFBC3ECB83D1E090E76518866E9A12" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    <typedef access="public" id="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                </typedefs>
+            </class>
+            <classes>
+                <class access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="3" id="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" key="class" name="ostream" project="std">
+                    <constructors>
+                        <constructor access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="6" id="constructor_ostream_25787085BAD77F065B7E927196454201AA44DB5B" name="ostream" specifiers="delete">
+                            <parameters>
+                                <parameter access="public" id="parameter__CA438951A2DE3F4CB4C448598AFA49EFD300FC42" name="" type="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                            </parameters>
+                        </constructor>
+                    </constructors>
+                    <functions>
+                        <function access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="7" id="function_operator_assign_C7719458AABDB0E685AF281C172EB4CECDC80A78" name="operator=" returnType="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" specifiers="delete">
+                            <parameters>
+                                <parameter access="public" id="parameter__FF8EA0691ADAC8B5803C347CA419C81B5F80EF5C" name="" type="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                            </parameters>
+                        </function>
+                    </functions>
+                </class>
+                <class access="public" definitionFile="stringstream.hpp" definitionFileId="file/stringstream.hpp_F100D5C3596B3538A88D9D6485345526B657F26F.html" definitionLine="4" id="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428" key="class" name="basic_stringstream" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_CharT_3ACF3421C1E804EAD2DF3EA2DC2B861317BFF57F" name="CharT" type="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                    </typedefs>
+                </class>
+                <class access="public" definitionFile="string.hpp" definitionFileId="file/string.hpp_31D357C945C511ABE44402CC45D242CF0670F08C.html" definitionLine="4" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4" key="class" name="basic_string" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="CharT"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+                <class access="public" definitionFile="stringstream.hpp" definitionFileId="file/stringstream.hpp_F100D5C3596B3538A88D9D6485345526B657F26F.html" definitionLine="4" id="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428" key="class" name="basic_stringstream" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                    </templateParameters>
+                </class>
+                <class access="public" definitionFile="map.hpp" definitionFileId="file/map.hpp_967DAE3E3B0BF77B2EE871097E714AB070115BE8.html" definitionLine="4" id="class_map_80D39818B4A04DD6095AFD5B8F7CEA02FC5FCC1D" key="class" name="map" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        <templateParameter access="public" id="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_DBFC58EBBCEE0A82288E78EE6772AA2854FEB393" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+                <class access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="3" id="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" key="class" name="ostream" project="std">
+                    <constructors>
+                        <constructor access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="6" id="constructor_ostream_25787085BAD77F065B7E927196454201AA44DB5B" name="ostream" specifiers="delete">
+                            <parameters>
+                                <parameter access="public" id="parameter__CA438951A2DE3F4CB4C448598AFA49EFD300FC42" name="" type="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                            </parameters>
+                        </constructor>
+                    </constructors>
+                    <functions>
+                        <function access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="7" id="function_operator_assign_C7719458AABDB0E685AF281C172EB4CECDC80A78" name="operator=" returnType="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" specifiers="delete">
+                            <parameters>
+                                <parameter access="public" id="parameter__FF8EA0691ADAC8B5803C347CA419C81B5F80EF5C" name="" type="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                            </parameters>
+                        </function>
+                    </functions>
+                </class>
+                <class access="public" definitionFile="exception.hpp" definitionFileId="file/exception.hpp_9ED584274D66A2ADF346238E3977914F5671954B.html" definitionLine="3" id="class_runtime_error_E47E6702DFA636191C426F9BA14A342BEB6E75A3" key="class" name="runtime_error" project="std"/>
+                <class access="public" definitionFile="set.hpp" definitionFileId="file/set.hpp_EAB9C22B483A5D0CFC64481D7A33F00D7F3D931C.html" definitionLine="4" id="class_set_DC8DD1ACCC4F17E9E11EC650AB964C2E3465BC85" key="class" name="set" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_A8146A736B4E8BF9D3237C825ECDD5D13014B2C6" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+                <class access="public" definitionFile="unique_ptr.hpp" definitionFileId="file/unique_ptr.hpp_484DCEDE12A8E47E298533819289CD473F265228.html" definitionLine="4" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA" key="class" name="unique_ptr" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                    </templateParameters>
+                </class>
+                <class access="public" definitionFile="unordered_map.hpp" definitionFileId="file/unordered_map.hpp_91C251E027AEAFDE833EA2AE0851560FD396D05F.html" definitionLine="4" id="class_unordered_map_5B4FD30E2342C3DAAF75D9F7A68D5C7AB700B284" key="class" name="unordered_map" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        <templateParameter access="public" id="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_EECC7AA84B62E7D579F8FD38E5EE735D0CA159D3" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+                <class access="public" definitionFile="unordered_set.hpp" definitionFileId="file/unordered_set.hpp_3AD5A4048CD139AEA903999DEBFA49AEE23113EE.html" definitionLine="4" id="class_unordered_set_17C03B4E07A3386D6F5857C90AD61B397F23413C" key="class" name="unordered_set" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_7BE94867BECFBC3ECB83D1E090E76518866E9A12" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+                <class access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="4" id="class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC" key="class" name="vector" project="std">
+                    <templateParameters>
+                        <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                    </templateParameters>
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_627A48632213CE5CB8257035EC37851C75544BE4" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_A5CB8116875EBD90E1FD4D1AD3D707791675F1B1" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+            </classes>
+            <typedefs>
+                <typedef access="public" id="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="string" project="std" type="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char"/>
+                <typedef access="public" id="typedef_stringstream_C9483960BF5827BC9B43CDF7A2A8456C35145A5C" name="stringstream" project="std" type="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428.char"/>
+                <typedef access="public" id="typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="u16string" project="std" type="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char16_t"/>
+                <typedef access="public" id="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="u32string" project="std" type="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char32_t"/>
+            </typedefs>
+        </namespace>
+        <namespace access="public" id="namespace_boost_F7D80DF03888D61BFF47C0572A940544077034E0" name="boost">
+            <namespace access="public" id="namespace_uuids_A5476B4884F8A1C8120652B39C884CA0FBD5C13A" name="uuids">
+                <class access="public" definitionFile="uuid.hpp" definitionFileId="file/uuid.hpp_5B7C774DCEF9415F1A6C544D2AA98B3945B26A8D.html" definitionLine="3" id="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" key="class" name="uuid" project="boost">
+                    <typedefs>
+                        <typedef access="public" id="typedef_const_iterator_580E282981064032E147E2734521B079CFBCE22B" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        <typedef access="public" id="typedef_iterator_6B32429A433EA7F675795AE76AC56E6AAE08CCAE" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                    </typedefs>
+                </class>
+                <classes>
+                    <class access="public" definitionFile="uuid.hpp" definitionFileId="file/uuid.hpp_5B7C774DCEF9415F1A6C544D2AA98B3945B26A8D.html" definitionLine="3" id="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" key="class" name="uuid" project="boost">
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_580E282981064032E147E2734521B079CFBCE22B" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_6B32429A433EA7F675795AE76AC56E6AAE08CCAE" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                </classes>
+            </namespace>
+        </namespace>
+    </namespace>
+    <types>
+        <derivedType access="public" id="const.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const std::string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.type_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="const std::u16string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const std::u32string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_19BAA746E8062B67575EDA40A9423A65C520FF96" name="int16_t"/>
+        <externalType access="public" id="type_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217" name="int32_t"/>
+        <externalType access="public" id="type_F6311168933725D3149F768D180F96C9C216469F" name="int64_t"/>
+        <externalType access="public" id="type_FB861BCE0ED1D239AE09CAC8C3FBCCEF93EDC62F" name="int8_t"/>
+        <externalType access="public" id="type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="std::string"/>
+        <externalType access="public" id="type_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="std::u16string"/>
+        <externalType access="public" id="type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="std::u32string"/>
+        <externalType access="public" id="type_4E85F56CDBEA16DEC9093329BB2449C429830E5C" name="uint16_t"/>
+        <externalType access="public" id="type_B48DE50013208F63284F12F10C3F8BAE719012C7" name="uint32_t"/>
+        <externalType access="public" id="type_1423D427C67F6AEECA49996C099A7B405AB7ACAE" name="uint64_t"/>
+        <externalType access="public" id="type_124420692E282C70BEA5A0D74FE0B667BDA750F6" name="uint8_t"/>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.typedef_CharT_3ACF3421C1E804EAD2DF3EA2DC2B861317BFF57F" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="typedef_CharT_3ACF3421C1E804EAD2DF3EA2DC2B861317BFF57F"/>
+            </templateArguments>
+        </specialization>
+        <derivedType access="public" id="const.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.typedef_CharT_3ACF3421C1E804EAD2DF3EA2DC2B861317BFF57F.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.typedef_CharT_3ACF3421C1E804EAD2DF3EA2DC2B861317BFF57F" name="const basic_string&lt;CharT>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.typedef_CharT_3ACF3421C1E804EAD2DF3EA2DC2B861317BFF57F"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_DB66637E4BD602383B9A36E093D02AD744D50D19" name="CharT"/>
+        <derivedType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.ptr.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T*">
+            <derivations>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="type_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_064E757DF5B9853554D9EE24C8AF9F59461645E0" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_const_iterator_064E757DF5B9853554D9EE24C8AF9F59461645E0" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_const_iterator_064E757DF5B9853554D9EE24C8AF9F59461645E0" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_const_iterator_064E757DF5B9853554D9EE24C8AF9F59461645E0" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_B80693D3D978E8D909F9FF25AB98D7AAE6BCA535" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+                <typedef access="private" id="typedef_iterator_B80693D3D978E8D909F9FF25AB98D7AAE6BCA535" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+                <typedef access="private" id="typedef_iterator_B80693D3D978E8D909F9FF25AB98D7AAE6BCA535" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+                <typedef access="private" id="typedef_iterator_B80693D3D978E8D909F9FF25AB98D7AAE6BCA535" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <derivedType access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_DB66637E4BD602383B9A36E093D02AD744D50D19.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="basic_string&lt;T>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_5B1BC119B30D89B3BDAFC46B187EBF35ED70122A" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_const_iterator_5B1BC119B30D89B3BDAFC46B187EBF35ED70122A" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_9420BAF9E58A3C46FE6BC1C3537304BB61B2BB25" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+                <typedef access="private" id="typedef_iterator_9420BAF9E58A3C46FE6BC1C3537304BB61B2BB25" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <derivedType access="public" id="const.type_DB66637E4BD602383B9A36E093D02AD744D50D19.ptr.type_DB66637E4BD602383B9A36E093D02AD744D50D19" name="const CharT*">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const basic_string&lt;T>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_20166CC53D5425725047EED891B696D5A1EAFD10.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_20166CC53D5425725047EED891B696D5A1EAFD10.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_20166CC53D5425725047EED891B696D5A1EAFD10.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <templateArgument typeId="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>" primaryTypeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA">
+            <templateArguments>
+                <templateArgument typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+            </templateArguments>
+        </specialization>
+        <derivedType access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.rvalueref.class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>&amp;&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_D5F301E5DE63528577FD78658857D8D95BF45D10" name="boost::uuids::uuid"/>
+        <derivedType access="public" id="type_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.type_D5F301E5DE63528577FD78658857D8D95BF45D10" name="boost::uuids::uuid&amp;">
+            <derivations>
+                <derivation kind="base" typeId="type_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.type_D5F301E5DE63528577FD78658857D8D95BF45D10" name="const boost::uuids::uuid&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_E69F20E9F683920D3FB4329ABD951E878B1F9372" name="F"/>
+        <externalType access="public" id="type_CA73AB65568CD125C2D27A22BBD9E863C10B675D" name="I"/>
+        <externalType access="public" id="type_0632B96942BE1C01FC5A90A52576584D55D7C47E" name="I1"/>
+        <externalType access="public" id="type_A6EE55FA4B41E1F3EE3D0D4E71FC8DD82BCDDEA2" name="I2"/>
+        <externalType access="public" id="type_08A914CDE05039694EF0194D9EE79FF9A79DDE33" name="O"/>
+        <externalType access="public" id="type_1E5C03C4CA5DBC17C5A6129FF8DBE16F01A71EBD" name="Op"/>
+        <externalType access="public" id="type_511993D3C99719E38A6779073019DACD7178DDB9" name="P"/>
+        <externalType access="public" id="type_06576556D1AD802F247CAD11AE748BE47B70CD9C" name="R"/>
+        <externalType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+        <derivedType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
+            <derivations>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
+            <derivations>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.rvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;&amp;">
+            <derivations>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.ptr.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T*">
+            <derivations>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_064E757DF5B9853554D9EE24C8AF9F59461645E0" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_B80693D3D978E8D909F9FF25AB98D7AAE6BCA535" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <derivedType access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="basic_string&lt;T>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_5B1BC119B30D89B3BDAFC46B187EBF35ED70122A" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_9420BAF9E58A3C46FE6BC1C3537304BB61B2BB25" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char16_t" name="basic_string&lt;char16_t>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="char16_t"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_6B093B538123066B302BB6DFA4C25E494FAD05F7" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_B179DC71CB38FC5786EBBD4B4A3E9B920980A42D" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char32_t" name="basic_string&lt;char32_t>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="char32_t"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_FC080AF29624AB2067D4D969E5BE85B06CD83FA1" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_083F6305E4245604CDD807C058A54B7833584740" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char" name="basic_string&lt;char>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="char"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_0294E367D499B9FD410574547D51D0AE1473364A" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_D626F99E3289925DFBECAC8EE25AD9D39194D760" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428.char" name="basic_stringstream&lt;char>" primaryTypeId="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428">
+            <templateArguments>
+                <templateArgument typeId="char"/>
+            </templateArguments>
+        </specialization>
+        <simpleType access="public" id="bool" name="bool"/>
+        <simpleType access="public" id="char" name="char"/>
+        <simpleType access="public" id="char16_t" name="char16_t"/>
+        <simpleType access="public" id="char32_t" name="char32_t"/>
+        <derivedType access="public" id="const.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.ptr.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="const CharT*">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="const basic_string&lt;CharT>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const basic_string&lt;T>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.char.ptr.char" name="const char*">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="char"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" name="const ostream&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="const u16string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const u32string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" name="const uuid&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <simpleType access="public" id="double" name="double"/>
+        <simpleType access="public" id="float" name="float"/>
+        <simpleType access="public" id="int" name="int"/>
+        <derivedType access="public" id="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" name="ostream&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10" name="pair"/>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <templateArgument typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <derivedType access="public" id="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="string&amp;">
+            <derivations>
+                <derivation kind="base" typeId="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9" name="type"/>
+        <specialization access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>" primaryTypeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+            </templateArguments>
+        </specialization>
+        <derivedType access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.rvalueref.class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>&amp;&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" name="uuid&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <simpleType access="public" id="void" name="void"/>
+    </types>
+</symbolTable>

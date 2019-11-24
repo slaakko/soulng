@@ -29,7 +29,7 @@ class ConditionalCompilationPartNode;
 
 inline int32_t MakeFileIndex(int16_t moduleId, int16_t fileId)
 {
-    return static_cast<int32_t>(moduleId << 16) | fileId;
+    return (static_cast<int32_t>(moduleId) << 16) | fileId;
 }
 
 inline int16_t GetModuleId(int32_t fileIndex)

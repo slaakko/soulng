@@ -17,7 +17,7 @@ IdentifierNode::IdentifierNode(const Span& span_) : Node(NodeType::identifierNod
 {
 }
 
-IdentifierNode::IdentifierNode(const Span& span_, NodeType nodeType_) : Node(NodeType::cursorIdNode, span_), identifier()
+IdentifierNode::IdentifierNode(const Span& span_, NodeType nodeType_) : Node(nodeType_, span_), identifier()
 {
 }
 
@@ -25,7 +25,7 @@ IdentifierNode::IdentifierNode(const Span& span_, const std::u32string& identifi
 {
 }
 
-IdentifierNode::IdentifierNode(const Span& span_, NodeType nodeType_, const std::u32string& identifier_) : Node(NodeType::cursorIdNode, span_), identifier(identifier_)
+IdentifierNode::IdentifierNode(const Span& span_, NodeType nodeType_, const std::u32string& identifier_) : Node(nodeType_, span_), identifier(identifier_)
 {
     std::u32string result;
     for (char32_t c : identifier)

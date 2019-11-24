@@ -72,6 +72,8 @@ public:
     virtual bool IsClassTypeSymbol() const { return false; }
     virtual bool IsClassTemplateSpecializationSymbol() const { return false; }
     virtual bool IsConstructorSymbol() const { return false; }
+    virtual bool IsDestructorSymbol() const { return false; }
+    virtual bool IsCallableSymbol() const { return false; }
     virtual bool IsFunctionSymbol() const { return false; }
     virtual bool IsFunctionDeclarationSymbol() const { return false; }
     virtual bool IsConstructorDeclarationSymbol() const { return false; }
@@ -86,7 +88,6 @@ public:
     virtual bool IsDeclarationBlockSymbol() const { return false; }
     virtual bool IsGrammarSymbol() const { return false; }
     virtual bool IsRuleSymbol() const { return false; }
-    virtual bool IsPseudoTypeSymbol() const { return false; }
     void SetProjectName(const std::u32string& projectName_);
     const std::u32string& ProjectName() const { return projectName; }
 private:

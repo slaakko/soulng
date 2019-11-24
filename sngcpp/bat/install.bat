@@ -27,3 +27,5 @@ xcopy /Y /D ..\x64\Debug\sngcpppptesterd.exe ..\bin
 xcopy /Y /D ..\x64\Release\sngcpppptester.exe ..\bin
 xcopy /Y /D ..\x64\Debug\sngcppparsertesterd.exe ..\bin
 xcopy /Y /D ..\x64\Release\sngcppparsertester.exe ..\bin
+xcopy /Y /D ..\lib\*.* ..\..\lib
+xcopy /Y /D ..\bin\*.* ..\..\bin

@@ -52,16 +52,6 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
-class SNGCPP_AST_API TypeExprNode : public UnaryNode
-{
-public:
-    TypeExprNode();
-    TypeExprNode(const Span& span_, Node* typeExpr_);
-    void Accept(Visitor& visitor) override;
-};
-
-SNGCPP_AST_API bool IsConstructorName(Node* node);
-
 } } // namespace sngcpp::ast
 
 #endif // SNGCPP_AST_TYPE_EXPR_INCLUDED

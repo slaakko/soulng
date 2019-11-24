@@ -33,7 +33,7 @@ public:
     void AddTemplateParameter(TemplateParameterNode* templateParameter) override;
     void AddParameter(ParameterNode* parameter) override;
     void SwitchToBody();
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     const Node* ReturnTypeExpr() const { return returnTypeExpr.get(); }
     Node* ReturnTypeExpr() { return returnTypeExpr.get(); }
     const std::u32string& GroupId() const { return groupId; }

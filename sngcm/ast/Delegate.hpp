@@ -21,7 +21,7 @@ public:
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
     void AddParameter(ParameterNode* parameter) override;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     Node* ReturnTypeExpr() const { return returnTypeExpr.get(); }
     IdentifierNode* Id() const { return id.get(); }
     const NodeList<ParameterNode>& Parameters() const { return parameters; }
@@ -42,7 +42,7 @@ public:
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
     void AddParameter(ParameterNode* parameter) override;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     Node* ReturnTypeExpr() const { return returnTypeExpr.get(); }
     IdentifierNode* Id() const { return id.get(); }
     const NodeList<ParameterNode>& Parameters() const { return parameters; }

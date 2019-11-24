@@ -21,6 +21,7 @@
 #include <sngcm/ast/TypeExpr.hpp>
 #include <sngcm/ast/Expression.hpp>
 #include <sngcm/ast/GlobalVariable.hpp>
+#include <sngcm/ast/Comment.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <iostream>
@@ -1309,6 +1310,10 @@ void SourceWriter::Visit(sngcm::ast::SwitchStatementNode& switchStatementNode)
     {
         switchStatementNode.Cases()[i]->Accept(*this);
     }
+    if (switchStatementNode.Default())
+    {
+        switchStatementNode.Default()->Accept(*this);
+    }
     formatter.DecIndent();
     formatter.WriteLine("}");
 }
@@ -1973,6 +1978,12 @@ void SourceWriter::Visit(sngcm::ast::Attributes& attributes)
         attributes.GetAttributes()[i]->Accept(*this);
     }
     formatter.Write("]");
+}
+
+void SourceWriter::Visit(sngcm::ast::CommentNode& comment)
+{
+    formatter.WriteLine("// " + soulng::unicode::ToUtf8(comment.Comment()));
+    formatter.WriteLine();
 }
 
 void SourceWriter::WriteWarning(const std::string& message)

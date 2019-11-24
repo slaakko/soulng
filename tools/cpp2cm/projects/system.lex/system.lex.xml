@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="system.lex" type="library" targetName="System.Lex">
+  <imports>
+    <import name="std"/>
+    <import name="boost"/>
+    <import name="soulng.util"/>
+  </imports>
+  <vcxproject file="../../../../soulng/lexer/lexer.vcxproj"/>
+  <include path="../.."/>
+  <target dir="System.Lex"/>
+  <install dir="D:\work\cmajorm\cmajor\system\System.Lex"/>
+  <references>
+    <reference project="../System.Base/System.Base.cmp" kind="install"/>
+  </references>
+  <map file="map.xml"/>
+  <patches>
+    <patch file="system.lex.patches"/>
+  </patches>
+</project>

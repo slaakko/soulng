@@ -159,6 +159,7 @@ void DomDocumentHandler::StartElement(const std::u32string& namespaceUri, const 
         attrs[attr.QualifiedName()] = std::unique_ptr<Attr>(new Attr(attr.QualifiedName(), attr.Value()));
     }
     currentElement.reset(new Element(qualifiedName, std::move(attrs)));
+    currentElement->InternalSetOwnerDocument(document.get());
     if (!namespaceUri.empty())
     {
         currentElement->InternalSetNamespaceUri(namespaceUri);

@@ -7,7 +7,7 @@
 #include <sngcpp/binder/StatementBinder.hpp>
 #include <sngcpp/binder/TypeResolver.hpp>
 #include <sngcpp/symbols/TypedefSymbol.hpp>
-#include <sngcpp/symbols/PseudoTypeSymbol.hpp>
+#include <sngcpp/symbols/ClassTemplateSpecializationSymbol.hpp>
 #include <sngcpp/ast/TypeExpr.hpp>
 #include <sngcpp/ast/Visitor.hpp>
 
@@ -16,7 +16,8 @@ namespace sngcpp { namespace binder {
 class ExpressionBinder : public sngcpp::ast::Visitor
 {
 public:
-    ExpressionBinder(SymbolTable& symbolTable_, ContainerScope* containerScope_, BoundSourceFile* boundSourceFile_, FunctionSymbol* currentFunction_, StatementBinder* statementBinder_);
+    ExpressionBinder(SymbolTable& symbolTable_, ContainerScope* containerScope_, const std::vector<ContainerScope*>& prevContainerScopes_,
+        BoundSourceFile* boundSourceFile_, FunctionSymbol* currentFunction_, StatementBinder* statementBinder_);
     std::vector<Symbol*> GetSymbols() { return std::move(symbols); }
     void Visit(InitDeclaratorNode& initDeclaratorNode) override;
     void Visit(CtorInitializerNode& ctorInitializerNode) override;
@@ -56,199 +57,208 @@ public:
     void Visit(CppCastExpressionNode& cppCastExpressionNode) override;
     void Visit(TypeIdExpressionNode& typeIdExpressionNode) override;
     void Visit(ThisNode& thisNode) override;
+    void Visit(ParenthesizedExprNode& parenthesizedExprNode) override;
     void Visit(LambdaExpressionNode& lambdaExpressionNode) override;
     void Visit(CaptureSequenceNode& captureSequenceNode) override;
     void Visit(IdentifierCaptureNode& identifierCaptureNode) override;
     void Visit(NestedIdNode& nestedIdNode) override;
     void Visit(IdentifierNode& identifierNode) override;
-    void Visit(TypeExprNode& typeExprNode) override;
+    void Visit(TemplateIdNode& templateIdNode) override;
+    void Visit(ConstNode& constNode) override;
+    void Visit(VolatileNode& volatileNode) override;
+    void Visit(PointerNode& pointerNode) override;
+    void Visit(RValueRefNode& rValueRefNode) override;
+    void Visit(LValueRefNode& lValueRefNode) override;
 private:
     StatementBinder* statementBinder;
     SymbolTable& symbolTable;
     ContainerScope* containerScope;
+    std::vector<ContainerScope*> prevContainerScopes;
     BoundSourceFile* boundSourceFile;
     FunctionSymbol* currentFunction;
     std::vector<Symbol*> symbols;
 };
 
-ExpressionBinder::ExpressionBinder(SymbolTable& symbolTable_, ContainerScope* containerScope_, BoundSourceFile* boundSourceFile_, FunctionSymbol* currentFunction_, StatementBinder* statementBinder_) :
-    statementBinder(statementBinder_), symbolTable(symbolTable_), containerScope(containerScope_), boundSourceFile(boundSourceFile_), currentFunction(currentFunction_), symbols()
+ExpressionBinder::ExpressionBinder(SymbolTable& symbolTable_, ContainerScope* containerScope_, const std::vector<ContainerScope*>& prevContainerScopes_, BoundSourceFile* boundSourceFile_,
+    FunctionSymbol* currentFunction_, StatementBinder* statementBinder_) :
+    statementBinder(statementBinder_), symbolTable(symbolTable_), containerScope(containerScope_), prevContainerScopes(prevContainerScopes_), boundSourceFile(boundSourceFile_),
+    currentFunction(currentFunction_), symbols()
 {
 }
 
 void ExpressionBinder::Visit(InitDeclaratorNode& initDeclaratorNode)
 {
-    BindExpression(initDeclaratorNode.Declarator(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(initDeclaratorNode.Initializer(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(initDeclaratorNode.Declarator(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(initDeclaratorNode.Initializer(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(CtorInitializerNode& ctorInitializerNode)
 {
-    BindExpression(ctorInitializerNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(ctorInitializerNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(MemberInitializerNode& memberInitializerNode)
 {
-    BindExpression(memberInitializerNode.Id(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(memberInitializerNode.Initializer(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(memberInitializerNode.Id(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(memberInitializerNode.Initializer(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(MemberInitializerSequenceNode& memberInitializerSequenceNode)
 {
-    BindExpression(memberInitializerSequenceNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(memberInitializerSequenceNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(memberInitializerSequenceNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(memberInitializerSequenceNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(AssignmentInitializerNode& assignmentInitializerNode)
 {
-    symbols = std::move(BindExpression(assignmentInitializerNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+    symbols = std::move(BindExpression(assignmentInitializerNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
 }
 
 void ExpressionBinder::Visit(ExpressionListInitializerNode& expressionListInitializerNode)
 {
     if (expressionListInitializerNode.Child())
     {
-        symbols = std::move(BindExpression(expressionListInitializerNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(expressionListInitializerNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
 }
 
 void ExpressionBinder::Visit(ExpressionInitializerNode& expressionInitializerNode)
 {
-    symbols = std::move(BindExpression(expressionInitializerNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+    symbols = std::move(BindExpression(expressionInitializerNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
 }
 
 void ExpressionBinder::Visit(BracedInitializerListNode& bracedInitializerListNode)
 {
     if (bracedInitializerListNode.Child())
     {
-        symbols = std::move(BindExpression(bracedInitializerListNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(bracedInitializerListNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
 }
 
 void ExpressionBinder::Visit(ExpressionSequenceNode& expressionSequenceNode)
 {
-    std::vector<Symbol*> leftSymbols = BindExpression(expressionSequenceNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    std::vector<Symbol*> leftSymbols = BindExpression(expressionSequenceNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     symbols.insert(symbols.end(), leftSymbols.begin(), leftSymbols.end());
-    std::vector<Symbol*> rightSymbols = BindExpression(expressionSequenceNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    std::vector<Symbol*> rightSymbols = BindExpression(expressionSequenceNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     symbols.insert(symbols.end(), rightSymbols.begin(), rightSymbols.end());
 }
 
 void ExpressionBinder::Visit(SimpleDeclarationNode& simpleDeclarationNode)
 {
-    BindExpression(simpleDeclarationNode.TypeExpr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(simpleDeclarationNode.TypeExpr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     if (simpleDeclarationNode.Declarator())
     {
-        symbols = std::move(BindExpression(simpleDeclarationNode.Declarator(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(simpleDeclarationNode.Declarator(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
 }
 
 void ExpressionBinder::Visit(IdDeclaratorNode& idDeclaratorNode)
 {
-    symbols = std::move(BindExpression(idDeclaratorNode.IdNode(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+    symbols = std::move(BindExpression(idDeclaratorNode.IdNode(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
 }
 
 void ExpressionBinder::Visit(CommaExpressionNode& commaExpressionNode)
 {
-    BindExpression(commaExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(commaExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(commaExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(commaExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(AssignmentExpressionNode& assignmentExpressionNode)
 {
-    BindExpression(assignmentExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(assignmentExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(assignmentExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(assignmentExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(ConditionalExpressionNode& conditionalExpressionNode)
 {
-    BindExpression(conditionalExpressionNode.Condition(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(conditionalExpressionNode.ThenExpr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(conditionalExpressionNode.ElseExpr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(conditionalExpressionNode.Condition(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(conditionalExpressionNode.ThenExpr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(conditionalExpressionNode.ElseExpr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(ThrowExpressionNode& throwExpressionNode)
 {
     if (throwExpressionNode.Child())
     {
-        BindExpression(throwExpressionNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+        BindExpression(throwExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     }
 }
 
 void ExpressionBinder::Visit(LogicalOrExpressionNode& logicalOrExpressionNode)
 {
-    BindExpression(logicalOrExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(logicalOrExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(logicalOrExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(logicalOrExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(LogicalAndExpressionNode& logicalAndExpressionNode)
 {
-    BindExpression(logicalAndExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(logicalAndExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(logicalAndExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(logicalAndExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(InclusiveOrExpressionNode& inclusiveOrExpressionNode)
 {
-    BindExpression(inclusiveOrExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(inclusiveOrExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(inclusiveOrExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(inclusiveOrExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(ExclusiveOrExpressionNode& exclusiveOrExpressionNode)
 {
-    BindExpression(exclusiveOrExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(exclusiveOrExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(exclusiveOrExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(exclusiveOrExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(AndExpressionNode& andExpressionNode)
 {
-    BindExpression(andExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(andExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(andExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(andExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(EqualityExpressionNode& equalityExpressionNode)
 {
-    BindExpression(equalityExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(equalityExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(equalityExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(equalityExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(RelationalExpressionNode& relationalExpressionNode)
 {
-    BindExpression(relationalExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(relationalExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(relationalExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(relationalExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(ShiftExpressionNode& shiftExpressionNode)
 {
-    BindExpression(shiftExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(shiftExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(shiftExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(shiftExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(AdditiveExpressionNode& additiveExpressionNode)
 {
-    BindExpression(additiveExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(additiveExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(additiveExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(additiveExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(MultiplicativeExpressionNode& multiplicativeExpressionNode)
 {
-    BindExpression(multiplicativeExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(multiplicativeExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(multiplicativeExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(multiplicativeExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(PMExpressionNode& pmExpressionNode)
 {
-    BindExpression(pmExpressionNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(pmExpressionNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(pmExpressionNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(pmExpressionNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(CastExpressionNode& castExpressionNode)
 {
-    BindExpression(castExpressionNode.TypeExpr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(castExpressionNode.Expr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(castExpressionNode.TypeExpr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(castExpressionNode.Expr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(UnaryExpressionNode& unaryExpressionNode)
 {
-    std::vector<Symbol*> subjectSymbols = BindExpression(unaryExpressionNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    std::vector<Symbol*> subjectSymbols = BindExpression(unaryExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     Symbol* subject = nullptr;
     if (!subjectSymbols.empty())
     {
@@ -271,25 +281,25 @@ void ExpressionBinder::Visit(NewExpressionNode& newExpressionNode)
 {
     if (newExpressionNode.Placement())
     {
-        BindExpression(newExpressionNode.Placement(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+        BindExpression(newExpressionNode.Placement(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     }
-    BindExpression(newExpressionNode.TypeExpr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(newExpressionNode.TypeExpr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     if (newExpressionNode.Initializer())
     {
-        BindExpression(newExpressionNode.Initializer(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+        BindExpression(newExpressionNode.Initializer(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     }
 }
 
 void ExpressionBinder::Visit(SubscriptExpressionNode& subscriptExpressionNode)
 {
-    BindExpression(subscriptExpressionNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(subscriptExpressionNode.Index(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(subscriptExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(subscriptExpressionNode.Index(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(InvokeExpressionNode& invokeExpressionNode)
 {
     FunctionGroupSymbol* functionGroup = nullptr;
-    std::vector<Symbol*> subjectSymbols = BindExpression(invokeExpressionNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    std::vector<Symbol*> subjectSymbols = BindExpression(invokeExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     if (!subjectSymbols.empty())
     {
         Symbol* subject = subjectSymbols.front();
@@ -299,34 +309,55 @@ void ExpressionBinder::Visit(InvokeExpressionNode& invokeExpressionNode)
             {
                 functionGroup = static_cast<FunctionGroupSymbol*>(subject);
             }
-            else if (subject->IsPseudoTypeSymbol())
+            else if (subject->IsTypeSymbol())
             {
-                PseudoTypeSymbol* pseudoTypeSymbol = static_cast<PseudoTypeSymbol*>(subject);
-                functionGroup = pseudoTypeSymbol->GetFunctionGroup();
+                TypeSymbol* type = static_cast<TypeSymbol*>(subject);
+                if (type->IsTypedefSymbol())
+                {
+                    TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(type);
+                    type = typedefSymbol->GetType();
+                }
+                if (type && type->IsClassTemplateSpecializationSymbol())
+                {
+                    ClassTemplateSpecializationSymbol* specialization = static_cast<ClassTemplateSpecializationSymbol*>(type);
+                    type = specialization->PrimaryClassTemplateSymbol();
+                }
+                if (type && type->IsClassTypeSymbol())
+                {
+                    ClassTypeSymbol* classType = static_cast<ClassTypeSymbol*>(type);
+                    Symbol* symbol = classType->GetContainerScope()->Lookup(U"constructor");
+                    if (symbol && symbol->IsFunctionGroupSymbol())
+                    {
+                        functionGroup = static_cast<FunctionGroupSymbol*>(symbol);
+                    }
+                }
             }
         }
     }
     std::vector<Symbol*> argumentSymbols;
     if (invokeExpressionNode.Arguments())
     {
-        argumentSymbols = std::move(BindExpression(invokeExpressionNode.Arguments(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        argumentSymbols = std::move(BindExpression(invokeExpressionNode.Arguments(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
     if (functionGroup)
     {
-        FunctionSymbol* functionSymbol = functionGroup->ResolveOverload(argumentSymbols);
+        CallableSymbol* functionSymbol = functionGroup->ResolveOverload(argumentSymbols);
         if (functionSymbol)
         {
             symbolTable.MapNode(&invokeExpressionNode, functionSymbol);
             symbols.push_back(functionSymbol);
-            currentFunction->AddToCalls(functionSymbol);
-            functionSymbol->AddToCalledBy(currentFunction);
+            if (symbolTable.InGendocMode() && functionSymbol->IsFunctionSymbol())
+            {
+                currentFunction->AddToCalls(static_cast<FunctionSymbol*>(functionSymbol));
+                static_cast<FunctionSymbol*>(functionSymbol)->AddToCalledBy(currentFunction);
+            }
         }
     }
 }
 
 void ExpressionBinder::Visit(DotNode& dotNode)
 {
-    std::vector<Symbol*> leftSymbols = BindExpression(dotNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    std::vector<Symbol*> leftSymbols = BindExpression(dotNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     Symbol* s = nullptr;
     if (!leftSymbols.empty())
     {
@@ -337,18 +368,36 @@ void ExpressionBinder::Visit(DotNode& dotNode)
         sngcpp::symbols::TypeSymbol* type = s->GetType();
         if (type)
         {
-            containerScope = type->BaseType()->GetContainerScope();
+            if (type->IsReferenceTypeSymbol())
+            {
+                type = type->BaseType();
+            }
+            if (type->IsTypedefSymbol())
+            {
+                TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(type);
+                type = typedefSymbol->GetType();
+            }
+            if (type)
+            {
+                if (std::find(prevContainerScopes.begin(), prevContainerScopes.end(), containerScope) == prevContainerScopes.end()) prevContainerScopes.push_back(containerScope);
+                if (type->IsClassTemplateSpecializationSymbol())
+                {
+                    ClassTemplateSpecializationSymbol* specialization = static_cast<ClassTemplateSpecializationSymbol*>(type);
+                    type = specialization->PrimaryClassTemplateSymbol();
+                }
+                containerScope = type->BaseType()->GetContainerScope();
+            }
         }
     }
     if (containerScope)
     {
-        symbols = std::move(BindExpression(dotNode.Id(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(dotNode.Id(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
 }
 
 void ExpressionBinder::Visit(ArrowNode& arrowNode)
 {
-    std::vector<Symbol*> leftSymbols = BindExpression(arrowNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    std::vector<Symbol*> leftSymbols = BindExpression(arrowNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     Symbol* s = nullptr;
     if (!leftSymbols.empty())
     {
@@ -359,34 +408,45 @@ void ExpressionBinder::Visit(ArrowNode& arrowNode)
         sngcpp::symbols::TypeSymbol* type = s->GetType();
         if (type)
         {
+            if (type->IsTypedefSymbol())
+            {
+                TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(type);
+                type = typedefSymbol->GetType();
+            }
+            if (std::find(prevContainerScopes.begin(), prevContainerScopes.end(), containerScope) == prevContainerScopes.end()) prevContainerScopes.push_back(containerScope);
+            if (type->IsClassTemplateSpecializationSymbol())
+            {
+                ClassTemplateSpecializationSymbol* specialization = static_cast<ClassTemplateSpecializationSymbol*>(type);
+                type = specialization->PrimaryClassTemplateSymbol();
+            }
             containerScope = type->BaseType()->GetContainerScope();
         }
     }
     if (containerScope)
     {
-        symbols = std::move(BindExpression(arrowNode.Id(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(arrowNode.Id(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
 }
 
 void ExpressionBinder::Visit(PostfixIncNode& postfixIncNode)
 {
-    BindExpression(postfixIncNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(postfixIncNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(PostfixDecNode& postfixDecNode)
 {
-    BindExpression(postfixDecNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(postfixDecNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(CppCastExpressionNode& cppCastExpressionNode)
 {
-    BindExpression(cppCastExpressionNode.TypeExpr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(cppCastExpressionNode.Expr(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(cppCastExpressionNode.TypeExpr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(cppCastExpressionNode.Expr(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(TypeIdExpressionNode& typeIdExpressionNode)
 {
-    BindExpression(typeIdExpressionNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(typeIdExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(ThisNode& thisNode)
@@ -398,24 +458,29 @@ void ExpressionBinder::Visit(ThisNode& thisNode)
     }
 }
 
+void ExpressionBinder::Visit(ParenthesizedExprNode& parenthesizedExprNode)
+{
+    BindExpression(parenthesizedExprNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
 void ExpressionBinder::Visit(LambdaExpressionNode& lambdaExpressionNode)
 {
     if (lambdaExpressionNode.Captures())
     {
-        BindExpression(lambdaExpressionNode.Captures(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+        BindExpression(lambdaExpressionNode.Captures(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     }
     lambdaExpressionNode.Body()->Accept(*statementBinder);
 }
 
 void ExpressionBinder::Visit(CaptureSequenceNode& captureSequenceNode)
 {
-    BindExpression(captureSequenceNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
-    BindExpression(captureSequenceNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(captureSequenceNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(captureSequenceNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(IdentifierCaptureNode& identifierCaptureNode)
 {
-    BindExpression(identifierCaptureNode.Child(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(identifierCaptureNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
 void ExpressionBinder::Visit(NestedIdNode& nestedIdNode)
@@ -423,7 +488,7 @@ void ExpressionBinder::Visit(NestedIdNode& nestedIdNode)
     std::vector<Symbol*> symbols;
     if (nestedIdNode.Left())
     {
-        symbols = std::move(BindExpression(nestedIdNode.Left(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(nestedIdNode.Left(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
     else
     {
@@ -438,16 +503,19 @@ void ExpressionBinder::Visit(NestedIdNode& nestedIdNode)
     {
         if (s->IsNamespaceSymbol())
         {
+            if (std::find(prevContainerScopes.begin(), prevContainerScopes.end(), containerScope) == prevContainerScopes.end()) prevContainerScopes.push_back(containerScope);
             containerScope = s->GetContainerScope();
         }
         else if (s->IsTypedefSymbol())
         {
             TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(s);
             sngcpp::symbols::TypeSymbol* type = typedefSymbol->GetType();
+            if (std::find(prevContainerScopes.begin(), prevContainerScopes.end(), containerScope) == prevContainerScopes.end()) prevContainerScopes.push_back(containerScope);
             containerScope = type->GetContainerScope();
         }
         else if (s->IsTypeSymbol())
         {
+            if (std::find(prevContainerScopes.begin(), prevContainerScopes.end(), containerScope) == prevContainerScopes.end()) prevContainerScopes.push_back(containerScope);
             containerScope = s->GetContainerScope();
         }
         else if (s->IsClassGroupSymbol())
@@ -456,13 +524,14 @@ void ExpressionBinder::Visit(NestedIdNode& nestedIdNode)
             ClassTypeSymbol* cls = group->GetClass(0);
             if (cls)
             {
+                if (std::find(prevContainerScopes.begin(), prevContainerScopes.end(), containerScope) == prevContainerScopes.end()) prevContainerScopes.push_back(containerScope);
                 containerScope = cls->GetContainerScope();
             }
         }
     }
     if (containerScope)
     {
-        symbols = std::move(BindExpression(nestedIdNode.Right(), symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder));
+        symbols = std::move(BindExpression(nestedIdNode.Right(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder));
     }
     else
     {
@@ -484,6 +553,17 @@ void ExpressionBinder::Visit(IdentifierNode& identifierNode)
                 break;
             }
         }
+        if (!symbol)
+        {
+            for (ContainerScope* prevContainerScope : prevContainerScopes)
+            {
+                symbol = prevContainerScope->Lookup(identifierNode.Identifier(), ScopeLookup::this_and_bases_and_parent);
+                if (symbol)
+                {
+                    break;
+                }
+            }
+        }
     }
     if (symbol)
     {
@@ -492,24 +572,57 @@ void ExpressionBinder::Visit(IdentifierNode& identifierNode)
     }
 }
 
-void ExpressionBinder::Visit(TypeExprNode& typeExprNode)
+void ExpressionBinder::Visit(TemplateIdNode& templateIdNode)
 {
-    Symbol* symbol = symbolTable.GetSymbolNothrow(&typeExprNode);
-    if (symbol)
+    ClassTypeSymbol* currentClassType = nullptr;
+    if (currentFunction && currentFunction->Parent() && currentFunction->Parent()->IsClassTypeSymbol())
     {
-        symbols.push_back(symbol);
+        currentClassType = static_cast<ClassTypeSymbol*>(currentFunction->Parent());
     }
+    TypeSymbol* type = ResolveType(symbolTable, containerScope, prevContainerScopes, *boundSourceFile, TypeResolverFlags::none, currentClassType, &templateIdNode);
+    symbols.push_back(type);
 }
 
-std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile* boundSourceFile, FunctionSymbol* currentFunction,
-    StatementBinder* statementBinder)
+void ExpressionBinder::Visit(ConstNode& constNode)
 {
-    ExpressionBinder expressionBinder(symbolTable, containerScope, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(constNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+void ExpressionBinder::Visit(VolatileNode& volatileNode)
+{
+    BindExpression(volatileNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+void ExpressionBinder::Visit(PointerNode& pointerNode)
+{
+    BindExpression(pointerNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+void ExpressionBinder::Visit(RValueRefNode& rValueRefNode)
+{
+    BindExpression(rValueRefNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+void ExpressionBinder::Visit(LValueRefNode& lValueRefNode)
+{
+    BindExpression(lValueRefNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile* boundSourceFile,
+    FunctionSymbol* currentFunction, StatementBinder* statementBinder)
+{
+    ExpressionBinder expressionBinder(symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
     node->Accept(expressionBinder);
     std::vector<Symbol*> symbols = expressionBinder.GetSymbols();
     if (symbols.empty())
     {
-        sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, *boundSourceFile, TypeResolverFlags::noExternalTypes | TypeResolverFlags::nothrow, node);
+        ClassTypeSymbol* currentClassType = nullptr;
+        if (currentFunction && currentFunction->Parent() && currentFunction->Parent()->IsClassTypeSymbol())
+        {
+            currentClassType = static_cast<ClassTypeSymbol*>(currentFunction->Parent());
+        }
+        sngcpp::symbols::TypeSymbol* type = ResolveType(symbolTable, containerScope, prevContainerScopes, *boundSourceFile, TypeResolverFlags::noExternalTypes | TypeResolverFlags::nothrow,
+            currentClassType, node);
         if (type)
         {
             symbols.push_back(type);

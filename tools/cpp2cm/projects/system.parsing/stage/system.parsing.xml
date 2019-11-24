@@ -1,0 +1,461 @@
+<symbolTable>
+    <namespace access="public" id="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709" name="">
+        <projects>
+            <project name="std"/>
+        </projects>
+        <namespaces>
+            <namespace access="public" id="namespace_boost_F7D80DF03888D61BFF47C0572A940544077034E0" name="boost">
+                <projects>
+                    <project name="boost"/>
+                </projects>
+                <namespaces>
+                    <namespace access="public" id="namespace_filesystem_AB606A3D5940048C722C6BAD1758B8297FA2F94C" name="filesystem">
+                        <projects>
+                            <project name="boost"/>
+                        </projects>
+                    </namespace>
+                    <namespace access="public" id="namespace_uuids_A5476B4884F8A1C8120652B39C884CA0FBD5C13A" name="uuids">
+                        <projects>
+                            <project name="boost"/>
+                        </projects>
+                        <classes>
+                            <class access="public" definitionFile="uuid.hpp" definitionFileId="file/uuid.hpp_5B7C774DCEF9415F1A6C544D2AA98B3945B26A8D.html" definitionLine="3" id="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" key="class" name="uuid" project="boost">
+                                <typedefs>
+                                    <typedef access="public" id="typedef_const_iterator_580E282981064032E147E2734521B079CFBCE22B" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                                    <typedef access="public" id="typedef_iterator_6B32429A433EA7F675795AE76AC56E6AAE08CCAE" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                                </typedefs>
+                            </class>
+                        </classes>
+                    </namespace>
+                </namespaces>
+            </namespace>
+            <namespace access="public" id="namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B" name="soulng">
+                <projects>
+                    <project name="soulng.util"/>
+                    <project name="system.parsing"/>
+                </projects>
+                <namespaces>
+                    <namespace access="public" id="namespace_parser_571E65E5F7D5617B3568A9D2B053BFC2BF4CF37E" name="parser">
+                        <projects>
+                            <project name="system.parsing"/>
+                        </projects>
+                        <classes>
+                            <class access="public" definitionFile="Match.hpp" definitionFileId="file/Match.hpp_E2481FDF621AD1D1E7FCEF6B0EFB158EDAC7F8BA.html" definitionLine="12" id="struct_Match_E6DC679134C28598DDF53DAE7AB3DD4870CCB328" key="struct" name="Match" project="system.parsing">
+                                <constructors>
+                                    <constructor access="public" definitionFile="Match.hpp" definitionFileId="file/Match.hpp_E2481FDF621AD1D1E7FCEF6B0EFB158EDAC7F8BA.html" definitionLine="14" id="constructor_Match_D4774D8D99E47685215792DC22AEB673421A0B58" name="Match">
+                                        <parameters>
+                                            <parameter access="public" id="parameter_hit__57EBD5251F3808366B6839186047B49520178308" name="hit_" type="bool"/>
+                                        </parameters>
+                                    </constructor>
+                                    <constructor access="public" definitionFile="Match.hpp" definitionFileId="file/Match.hpp_E2481FDF621AD1D1E7FCEF6B0EFB158EDAC7F8BA.html" definitionLine="15" id="constructor_Match_7A2E49ED87EFE276FCD048570302B1A1D0A1E27F" name="Match">
+                                        <parameters>
+                                            <parameter access="public" id="parameter_hit__49354A53B91C4E1A4BDA0531F438CD5DA2106BDD" name="hit_" type="bool"/>
+                                            <parameter access="public" id="parameter_value__9A1D77D935F8A5799B9A018069427CB39E438FFD" name="value_" type="void.ptr.void"/>
+                                        </parameters>
+                                    </constructor>
+                                </constructors>
+                                <variables>
+                                    <variable access="public" id="variable_hit_8485410D5B2156DF12E4557CF69885F7F9DB02A8" name="hit" type="bool"/>
+                                    <variable access="public" id="variable_value_8FE0F1F7880494B8899979EB974FD4092F66C71B" name="value" type="void.ptr.void"/>
+                                </variables>
+                            </class>
+                            <class access="public" definitionFile="Range.hpp" definitionFileId="file/Range.hpp_118289B5DBD88B079BE286102B409295A4BB3BDC.html" definitionLine="12" id="struct_Range_0D38C33D6060F43FC56212656D1ADC2E7480931B" key="struct" name="Range" project="system.parsing">
+                                <variables>
+                                    <variable access="public" id="variable_first_0A04E35F663B2FCA3D8E01909139AFB0ECDC0309" name="first" type="int"/>
+                                    <variable access="public" id="variable_last_BE5F250DBF149015F14D06333ED4BC36DDF667EF" name="last" type="int"/>
+                                </variables>
+                            </class>
+                            <class access="public" definitionFile="Value.hpp" definitionFileId="file/Value.hpp_E775F049B92CAB1BDC4510EF0FF9465DD4B66C2B.html" definitionLine="13" id="struct_Value_5132958A1B05D9EE564E5518C442FB9CE6FED4CF" key="struct" name="Value" project="system.parsing">
+                                <templateParameters>
+                                    <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                                </templateParameters>
+                                <constructors>
+                                    <constructor access="public" definitionFile="Value.hpp" definitionFileId="file/Value.hpp_E775F049B92CAB1BDC4510EF0FF9465DD4B66C2B.html" definitionLine="15" id="constructor_Value_354CEBC744B18DDFFC958BAB2A63E52AFA7EA214" name="Value">
+                                        <parameters>
+                                            <parameter access="public" id="parameter_value__6ABE90077AE9B79A8E1AABB593AEFBBE6388D543" name="value_" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                                        </parameters>
+                                    </constructor>
+                                </constructors>
+                                <variables>
+                                    <variable access="public" id="variable_value_6C215B7D2E901A15E213F201E069E3301CBE94D5" name="value" type="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                                </variables>
+                            </class>
+                        </classes>
+                    </namespace>
+                    <namespace access="public" id="namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE" name="unicode">
+                        <projects>
+                            <project name="soulng.util"/>
+                        </projects>
+                    </namespace>
+                    <namespace access="public" id="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B" name="util">
+                        <projects>
+                            <project name="soulng.util"/>
+                        </projects>
+                        <classes>
+                            <class access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="3" id="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045" key="class" name="BinaryReader" project="soulng.util"/>
+                            <class access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="3" id="class_BinaryWriter_0D40DDC5D57867D529F25148B10988402235B9CF" key="class" name="BinaryWriter" project="soulng.util"/>
+                            <class access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="3" id="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9" key="class" name="CodeFormatter" project="soulng.util"/>
+                        </classes>
+                    </namespace>
+                </namespaces>
+            </namespace>
+            <namespace access="public" id="namespace_std_55EC981F0A6054D4AD0C3FEC7F32B1086F7D24F4" name="std">
+                <projects>
+                    <project name="std"/>
+                </projects>
+                <classes>
+                    <class access="public" definitionFile="string.hpp" definitionFileId="file/string.hpp_31D357C945C511ABE44402CC45D242CF0670F08C.html" definitionLine="4" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4" key="class" name="basic_string" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="CharT"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                    <class access="public" definitionFile="stringstream.hpp" definitionFileId="file/stringstream.hpp_F100D5C3596B3538A88D9D6485345526B657F26F.html" definitionLine="4" id="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428" key="class" name="basic_stringstream" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                    </class>
+                    <class access="public" definitionFile="map.hpp" definitionFileId="file/map.hpp_967DAE3E3B0BF77B2EE871097E714AB070115BE8.html" definitionLine="4" id="class_map_80D39818B4A04DD6095AFD5B8F7CEA02FC5FCC1D" key="class" name="map" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                            <templateParameter access="public" id="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_DBFC58EBBCEE0A82288E78EE6772AA2854FEB393" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                    <class access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="3" id="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" key="class" name="ostream" project="std">
+                        <constructors>
+                            <constructor access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="6" id="constructor_ostream_25787085BAD77F065B7E927196454201AA44DB5B" name="ostream" specifiers="delete">
+                                <parameters>
+                                    <parameter access="public" id="parameter__CA438951A2DE3F4CB4C448598AFA49EFD300FC42" name="" type="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                                </parameters>
+                            </constructor>
+                        </constructors>
+                        <functions>
+                            <function access="public" definitionFile="ostream.hpp" definitionFileId="file/ostream.hpp_59F29ADBBAD249461F37811AA68F01DCBE35247A.html" definitionLine="7" id="function_operator_assign_C7719458AABDB0E685AF281C172EB4CECDC80A78" name="operator=" returnType="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" specifiers="delete">
+                                <parameters>
+                                    <parameter access="public" id="parameter__FF8EA0691ADAC8B5803C347CA419C81B5F80EF5C" name="" type="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                                </parameters>
+                            </function>
+                        </functions>
+                    </class>
+                    <class access="public" definitionFile="exception.hpp" definitionFileId="file/exception.hpp_9ED584274D66A2ADF346238E3977914F5671954B.html" definitionLine="3" id="class_runtime_error_E47E6702DFA636191C426F9BA14A342BEB6E75A3" key="class" name="runtime_error" project="std"/>
+                    <class access="public" definitionFile="set.hpp" definitionFileId="file/set.hpp_EAB9C22B483A5D0CFC64481D7A33F00D7F3D931C.html" definitionLine="4" id="class_set_DC8DD1ACCC4F17E9E11EC650AB964C2E3465BC85" key="class" name="set" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_A8146A736B4E8BF9D3237C825ECDD5D13014B2C6" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                    <class access="public" definitionFile="unique_ptr.hpp" definitionFileId="file/unique_ptr.hpp_484DCEDE12A8E47E298533819289CD473F265228.html" definitionLine="4" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA" key="class" name="unique_ptr" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                    </class>
+                    <class access="public" definitionFile="unordered_map.hpp" definitionFileId="file/unordered_map.hpp_91C251E027AEAFDE833EA2AE0851560FD396D05F.html" definitionLine="4" id="class_unordered_map_5B4FD30E2342C3DAAF75D9F7A68D5C7AB700B284" key="class" name="unordered_map" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                            <templateParameter access="public" id="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_EECC7AA84B62E7D579F8FD38E5EE735D0CA159D3" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                    <class access="public" definitionFile="unordered_set.hpp" definitionFileId="file/unordered_set.hpp_3AD5A4048CD139AEA903999DEBFA49AEE23113EE.html" definitionLine="4" id="class_unordered_set_17C03B4E07A3386D6F5857C90AD61B397F23413C" key="class" name="unordered_set" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_7BE94867BECFBC3ECB83D1E090E76518866E9A12" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                    <class access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="4" id="class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC" key="class" name="vector" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_627A48632213CE5CB8257035EC37851C75544BE4" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_A5CB8116875EBD90E1FD4D1AD3D707791675F1B1" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                </classes>
+                <typedefs>
+                    <typedef access="public" id="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="string" project="std" type="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char"/>
+                    <typedef access="public" id="typedef_stringstream_C9483960BF5827BC9B43CDF7A2A8456C35145A5C" name="stringstream" project="std" type="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428.char"/>
+                    <typedef access="public" id="typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="u16string" project="std" type="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char16_t"/>
+                    <typedef access="public" id="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="u32string" project="std" type="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char32_t"/>
+                </typedefs>
+            </namespace>
+        </namespaces>
+        <typedefs>
+            <typedef access="public" id="typedef_int16_t_19BAA746E8062B67575EDA40A9423A65C520FF96" name="int16_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_int32_t_8FCDCEFEB8F1BBAB3F3FF2567ECAD9BE78779217" name="int32_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_int64_t_F6311168933725D3149F768D180F96C9C216469F" name="int64_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_int8_t_FB861BCE0ED1D239AE09CAC8C3FBCCEF93EDC62F" name="int8_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_size_t_1470D06EDB2DD960D7AB186213477F79DF7BB92D" name="size_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint16_t_4E85F56CDBEA16DEC9093329BB2449C429830E5C" name="uint16_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint32_t_B48DE50013208F63284F12F10C3F8BAE719012C7" name="uint32_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint64_t_1423D427C67F6AEECA49996C099A7B405AB7ACAE" name="uint64_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            <typedef access="public" id="typedef_uint8_t_124420692E282C70BEA5A0D74FE0B667BDA750F6" name="uint8_t" project="std" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+        </typedefs>
+    </namespace>
+    <types>
+        <externalType access="public" id="type_E69F20E9F683920D3FB4329ABD951E878B1F9372" name="F"/>
+        <externalType access="public" id="type_CA73AB65568CD125C2D27A22BBD9E863C10B675D" name="I"/>
+        <externalType access="public" id="type_0632B96942BE1C01FC5A90A52576584D55D7C47E" name="I1"/>
+        <externalType access="public" id="type_A6EE55FA4B41E1F3EE3D0D4E71FC8DD82BCDDEA2" name="I2"/>
+        <externalType access="public" id="type_08A914CDE05039694EF0194D9EE79FF9A79DDE33" name="O"/>
+        <externalType access="public" id="type_1E5C03C4CA5DBC17C5A6129FF8DBE16F01A71EBD" name="Op"/>
+        <externalType access="public" id="type_511993D3C99719E38A6779073019DACD7178DDB9" name="P"/>
+        <externalType access="public" id="type_06576556D1AD802F247CAD11AE748BE47B70CD9C" name="R"/>
+        <externalType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+        <derivedType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
+            <derivations>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
+            <derivations>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.rvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;&amp;">
+            <derivations>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.ptr.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T*">
+            <derivations>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_064E757DF5B9853554D9EE24C8AF9F59461645E0" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_B80693D3D978E8D909F9FF25AB98D7AAE6BCA535" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <derivedType access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="basic_string&lt;T>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_5B1BC119B30D89B3BDAFC46B187EBF35ED70122A" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_9420BAF9E58A3C46FE6BC1C3537304BB61B2BB25" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char16_t" name="basic_string&lt;char16_t>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="char16_t"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_6B093B538123066B302BB6DFA4C25E494FAD05F7" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_B179DC71CB38FC5786EBBD4B4A3E9B920980A42D" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char32_t" name="basic_string&lt;char32_t>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="char32_t"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_FC080AF29624AB2067D4D969E5BE85B06CD83FA1" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_083F6305E4245604CDD807C058A54B7833584740" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.char" name="basic_string&lt;char>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
+            <templateArguments>
+                <templateArgument typeId="char"/>
+            </templateArguments>
+            <typedefs>
+                <typedef access="private" id="typedef_const_iterator_0294E367D499B9FD410574547D51D0AE1473364A" name="const_iterator" primaryId="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0" type="typedef_const_iterator_C5E62ADB348DE06B26EB56171417E803DC400FC0"/>
+                <typedef access="private" id="typedef_iterator_D626F99E3289925DFBECAC8EE25AD9D39194D760" name="iterator" primaryId="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5" type="typedef_iterator_E245C05E397CBD2122C60750EA204F6CD99780B5"/>
+            </typedefs>
+        </specialization>
+        <specialization access="public" id="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428.char" name="basic_stringstream&lt;char>" primaryTypeId="class_basic_stringstream_221CAECA8CADA9410934948F5BA172B30B88A428">
+            <templateArguments>
+                <templateArgument typeId="char"/>
+            </templateArguments>
+        </specialization>
+        <simpleType access="public" id="bool" name="bool"/>
+        <simpleType access="public" id="char" name="char"/>
+        <simpleType access="public" id="char16_t" name="char16_t"/>
+        <simpleType access="public" id="char32_t" name="char32_t"/>
+        <derivedType access="public" id="const.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.ptr.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="const CharT*">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="const basic_string&lt;CharT>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const basic_string&lt;T>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.char.ptr.char" name="const char*">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="char"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" name="const ostream&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C.lvalueref.typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC.lvalueref.typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC" name="const u16string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="typedef_u16string_0A243A2402C2FF939A6C8589908700CA277FCBCC"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const u32string&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" name="const uuid&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <simpleType access="public" id="double" name="double"/>
+        <simpleType access="public" id="float" name="float"/>
+        <simpleType access="public" id="int" name="int"/>
+        <derivedType access="public" id="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374.lvalueref.class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374" name="ostream&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_ostream_86B5246AB16CEDECAC95865875E6A047BC36F374"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <externalType access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10" name="pair"/>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <templateArgument typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <externalType access="public" id="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9" name="type"/>
+        <specialization access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>" primaryTypeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+            </templateArguments>
+        </specialization>
+        <derivedType access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.rvalueref.class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="unique_ptr&lt;T>&amp;&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10.lvalueref.class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10" name="uuid&amp;">
+            <derivations>
+                <derivation kind="base" typeId="class_uuid_D5F301E5DE63528577FD78658857D8D95BF45D10"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <simpleType access="public" id="void" name="void"/>
+        <derivedType access="public" id="void.ptr.void" name="void*">
+            <derivations>
+                <derivation kind="base" typeId="void"/>
+                <derivation kind="operator" str="*"/>
+            </derivations>
+        </derivedType>
+    </types>
+</symbolTable>

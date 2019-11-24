@@ -20,7 +20,8 @@ public:
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
     void AddTemplateParameter(TemplateParameterNode* templateParameter) override;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
+    void SetSpecifiers(Specifiers specifiers_) { specifiers = specifiers_; }
     IdentifierNode* Id() const { return id.get(); }
     void AddBaseClassOrInterface(Node* baseClassOrInterface);
     const WhereConstraintNode* WhereConstraint() const { return constraint.get(); }
@@ -39,6 +40,7 @@ public:
     const Span& BeginBraceSpan() const { return beginBraceSpan; }
     void SetEndBraceSpan(const Span& endBraceSpan_) { endBraceSpan = endBraceSpan_; }
     const Span& EndBraceSpan() const { return endBraceSpan; }
+    void ArrangeMembers();
 private:
     Specifiers specifiers;
     Span specifierSpan;
@@ -176,7 +178,7 @@ public:
     void Accept(Visitor& visitor) override;
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     Node* TypeExpr() const { return typeExpr.get(); }
     IdentifierNode* Id() const { return id.get(); }
     Attributes* GetAttributes() const { return attributes.get(); }

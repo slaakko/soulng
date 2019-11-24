@@ -15,7 +15,21 @@ std::unique_ptr<sngxml::dom::Element> TypedefSymbol::CreateElement()
 {
     std::unique_ptr<sngxml::dom::Element> typeElement(new sngxml::dom::Element(U"typedef"));
     typeElement->SetAttribute(U"type", type->Id());
+    if (!primaryId.empty())
+    {
+        typeElement->SetAttribute(U"primaryId", primaryId);
+    }
     return typeElement;
+}
+
+int TypedefSymbol::MatchValue(TypeSymbol* argumentType)
+{
+    return type->MatchValue(argumentType);
+}
+
+void TypedefSymbol::SetPrimaryId(const std::u32string& primaryId_)
+{
+    primaryId = primaryId_;
 }
 
 } } // namespace sngcpp::symbols

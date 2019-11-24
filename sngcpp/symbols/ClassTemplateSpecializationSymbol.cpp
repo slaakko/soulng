@@ -39,9 +39,8 @@ std::u32string MakeClassTemplateSpecializationName(TypeSymbol* primaryClassTempl
 }
 
 ClassTemplateSpecializationSymbol::ClassTemplateSpecializationSymbol(const Span& span_, const std::u32string& name_, TypeSymbol* primaryClassTemplateSymbol_,
-    TemplateIdNode* templateIdNode_, const std::vector<TypeSymbol*>& templateArgumentSymbols_, const std::vector<Node*>& templateArgumentNodes_, const std::u32string& id_) :
-    ClassTypeSymbol(span_, name_, primaryClassTemplateSymbol_->GetClassKey()), primaryClassTemplateSymbol(primaryClassTemplateSymbol_), templateIdNode(templateIdNode_),
-    templateArgumentSymbols(templateArgumentSymbols_), templateArgumentNodes(templateArgumentNodes_), id(id_)
+    const std::vector<TypeSymbol*>& templateArgumentSymbols_, const std::u32string& id_) :
+    ClassTypeSymbol(span_, name_, primaryClassTemplateSymbol_->GetClassKey()), primaryClassTemplateSymbol(primaryClassTemplateSymbol_), templateArgumentSymbols(templateArgumentSymbols_), id(id_)
 {
 }
 

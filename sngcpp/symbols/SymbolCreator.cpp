@@ -17,7 +17,7 @@ namespace sngcpp { namespace symbols {
 
 SymbolCreator::SymbolCreator(SymbolTable& symbolTable_, const std::u32string& projectName_) :
     symbolTable(symbolTable_), projectName(projectName_), functionBodyFollowsOrIsPureDeletedOrDefault(false), nameSequenceCount(0), wasFunctionDeclaration(false), wasArrayDeclaration(false),
-    specifiers(Specifier::none), skip(false), processingTemplateArguments(false)
+    specifiers(Specifier::none), skip(false), processingTemplateArguments(false), cpp2cmMode(false)
 {
 }
 
@@ -124,7 +124,7 @@ void SymbolCreator::Visit(MemberDeclarationNode& memberDeclarationNode)
             functionBodyFollowsOrIsPureDeletedOrDefault = true;
         }
         memberDeclarationNode.Declarator()->Accept(*this);
-        if (wasPureDeletedOrDefault)
+        if (wasPureDeletedOrDefault || cpp2cmMode)
         {
             symbolTable.EndFunction(projectName);
             symbolTable.EndNameSequence(nameSequenceCount);
@@ -191,10 +191,6 @@ void SymbolCreator::Visit(IdentifierNode& identifierNode)
     {
         nameSequence.push_back(std::make_pair(identifierNode.Identifier(), 0));
         groupName = identifierNode.Identifier();
-        if (groupName == U"ParseXmlContent")
-        {
-            int x = 0;
-        }
     }
 }
 
@@ -217,14 +213,6 @@ void SymbolCreator::Visit(TemplateIdNode& templateIdNode)
 void SymbolCreator::Visit(TemplateArgumentNode& templateArgumentNode)
 {
     templateArgumentNode.Arg()->Accept(*this);
-}
-
-void SymbolCreator::Visit(TypeExprNode& typerExprNode)
-{
-    if (processingTemplateArguments && typerExprNode.Child())
-    {
-        typerExprNode.Child()->Accept(*this);
-    }
 }
 
 void SymbolCreator::Visit(OperatorFunctionIdNode& operatorFunctionIdNode)
@@ -275,6 +263,11 @@ void SymbolCreator::Visit(SimpleDeclarationNode& simpleDeclarationNode)
         hasDeclarator = false;
         nameSequence.clear();
     }
+    if (wasFunctionDeclaration && cpp2cmMode)
+    {
+        symbolTable.EndFunction(projectName);
+        symbolTable.EndNameSequence(nameSequenceCount);
+    }
     if (!wasFunctionDeclaration && !wasArrayDeclaration)
     {
         int n = symbolTable.BeginNameSequence(nameSequence);
@@ -299,12 +292,12 @@ void SymbolCreator::Visit(FunctionDeclaratorNode& functionDeclaratorNode)
 {
     wasFunctionDeclaration = true;
     skip = false;
-    if (functionBodyFollowsOrIsPureDeletedOrDefault)
+    if (functionBodyFollowsOrIsPureDeletedOrDefault || cpp2cmMode)
     {
         functionDeclaratorNode.Declarator()->Accept(*this);
         if (!nameSequence.empty())
         {
-            if (groupName != U"destructor" && !skip)
+            if (!skip)
             {
                 specifiers = specifiers | functionDeclaratorNode.CVSpecifiers();
                 nameSequenceCount = symbolTable.BeginNameSequence(nameSequence);
@@ -324,7 +317,7 @@ void SymbolCreator::Visit(FunctionDeclaratorNode& functionDeclaratorNode)
         {
             specifiers = specifiers | functionDeclaratorNode.CVSpecifiers();
             int n = symbolTable.BeginNameSequence(nameSequence);
-            symbolTable.BeginFunctionDeclaration(&functionDeclaratorNode, groupName, nameSequence.back().first, specifiers);
+            symbolTable.BeginFunctionDeclaration(&functionDeclaratorNode, groupName, nameSequence.back().first, templateParameters, specifiers, projectName);
             templateParameters.clear();
             if (functionDeclaratorNode.Parameters())
             {
@@ -358,7 +351,7 @@ void SymbolCreator::Visit(FunctionNode& functionNode)
         wasDefaultOrDeleted = true;
     }
     functionNode.Declarator()->Accept(*this);
-    if (functionNode.Body() && groupName != U"destructor")
+    if (functionNode.Body())
     {
         functionNode.Body()->Accept(*this);
         symbolTable.EndFunction(projectName);
@@ -385,7 +378,7 @@ void SymbolCreator::Visit(SpecialMemberFunctionNode& specialMemberFunctionNode)
         wasDefaultOrDeleted = true;
     }
     specialMemberFunctionNode.Declarator()->Accept(*this);
-    if (specialMemberFunctionNode.FunctionBody() && groupName != U"destructor")
+    if (specialMemberFunctionNode.FunctionBody())
     {
         specialMemberFunctionNode.FunctionBody()->Accept(*this);
         symbolTable.EndFunction(projectName);

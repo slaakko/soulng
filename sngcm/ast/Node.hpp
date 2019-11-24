@@ -8,6 +8,7 @@
 #include <sngcm/ast/AstApi.hpp>
 #include <soulng/lexer/Span.hpp>
 #include <sngcm/ast/Clone.hpp>
+#include <sngcm/ast/Specifier.hpp>
 #include <soulng/util/Error.hpp>
 #include <memory>
 #include <stdint.h>
@@ -47,7 +48,7 @@ enum class NodeType : uint8_t
     addNode, subNode, mulNode, divNode, remNode, notNode, unaryPlusNode, unaryMinusNode, prefixIncrementNode, prefixDecrementNode, complementNode, derefNode, addrOfNode,
     isNode, asNode, indexingNode, invokeNode, postfixIncrementNode, postfixDecrementNode, sizeOfNode, typeNameNode, typeIdNode, castNode, constructNode, newNode, thisNode, baseNode,
     conditionalCompilationDisjunctionNode, conditionalCompilationConjunctionNode, conditionalCompilationNotNode, conditionalCompilationPrimaryNode, conditionalCompilationPartNode, conditionalCompilationStatementNode,
-    uuidLiteralNode, cursorIdNode, parenthesizedExpressionNode, globalVariableNode, parenthesizedCondCompExpressionNode, labeledStatementNode,
+    uuidLiteralNode, cursorIdNode, parenthesizedExpressionNode, globalVariableNode, parenthesizedCondCompExpressionNode, labeledStatementNode, commentNode,
     maxNode
 };
 
@@ -71,11 +72,12 @@ public:
     virtual void AddTemplateParameter(TemplateParameterNode* templateParameter) { Assert(false, "AddTemplateParameter not overridden"); }
     virtual bool IsUnsignedTypeNode() const { return false; }
     virtual bool IsStatementNode() const { return false; }
-    virtual bool IsConstraintNode() const { return false; }
+    virtual bool NodeIsConstraintNode() const { return false; }
     virtual bool IsConceptNode() const { return false; }
     virtual bool IsFunctionNode() const { return false; }
     virtual bool IsIntrinsicConceptNode() const { return false; }
     virtual bool IsConditionalCompilationExpressionNode() const { return false; }
+    virtual Specifiers GetSpecifiers() const { return Specifiers::none; }
     const Span& GetSpan() const { return span; }
     void SetSpan(const Span& span_) { span = span_; }
     void SetSpanEnd(int end) { span.end = end; }
@@ -117,16 +119,21 @@ private:
     std::unique_ptr<Node> right;
 };
 
-class NodeCreator
+class SNGCM_AST_API NodeCreator
 {
 public:
+    NodeCreator();
+    NodeCreator(const NodeCreator&) = delete;
+    NodeCreator& operator=(const NodeCreator&) = delete;
     virtual ~NodeCreator();
     virtual Node* CreateNode(const Span& span) = 0;
 };
 
-class NodeFactory
+class SNGCM_AST_API NodeFactory
 {
 public:
+    NodeFactory(const NodeFactory&) = delete;
+    NodeFactory& operator=(const NodeFactory&) = delete;
     static NodeFactory& Instance() { Assert(instance, "node factory not initialized"); return *instance; }
     static void Init();
     static void Done();
@@ -138,8 +145,8 @@ private:
     NodeFactory();
 };
 
-void NodeInit();
-void NodeDone();
+SNGCM_AST_API void NodeInit();
+SNGCM_AST_API void NodeDone();
 
 } } // namespace sngcm::ast
 

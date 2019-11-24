@@ -24,28 +24,29 @@ std::u32string XmlCharStr(char32_t c)
 {
     switch (c)
     {
-    case '&': return U"&amp;";
-    case '<': return U"&lt;";
-    case '>': return U"&gt;";
-    case '\a': return U"\\a";
-    case '\b': return U"\\b";
-    case '\f': return U"\\f";
-    case '\n': return U"\\n";
-    case '\r': return U"\\r";
-    case '\t': return U"\\t";
-    case '\v': return U"\\v";
-    default:
-    {
-        if (((int)c >= 32 && (int)c <= 126))
+        case '&': return U"&amp;";
+        case '<': return U"&lt;";
+        case '>': return U"&gt;";
+        case '\a': return U"\\a";
+        case '\b': return U"\\b";
+        case '\f': return U"\\f";
+        case '\n': return U"\\n";
+        case '\r': return U"\\r";
+        case '\t': return U"\\t";
+        case '\v': return U"\\v";
+        default:
         {
-            return std::u32string(1, c);
-        }
-        else
-        {
-            return XmlHexEscape(c);
+            if (((int)c >= 32 && (int)c <= 126))
+            {
+                return std::u32string(1, c);
+            }
+            else
+            {
+                return XmlHexEscape(c);
+            }
         }
     }
-    }
+    return std::u32string();
 }
 
 std::u32string XmlEscape(const std::u32string& s)
@@ -108,8 +109,8 @@ void XmlParsingLog::WriteFail()
 void XmlParsingLog::WriteElement(const std::u32string& elementName, const std::u32string& elementContent)
 {
     std::u32string converted = XmlEscape(elementContent);
-    int convertedLength = int(converted.length());
-    int lineLength = 2 * int(elementName.length()) + 5 + convertedLength;
+    int convertedLength = static_cast<int>(converted.length());
+    int lineLength = 2 * static_cast<int>(elementName.length()) + 5 + convertedLength;
     std::u32string s = converted;
     if (lineLength > MaxLineLength())
     {

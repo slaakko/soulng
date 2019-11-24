@@ -1,0 +1,16 @@
+<project name="std">
+  <source file="algorithm.hpp"/>
+  <source file="exception.hpp"/>
+  <source file="map.hpp"/>
+  <source file="move.hpp"/>
+  <source file="set.hpp"/>
+  <source file="stdint.hpp"/>
+  <source file="string.hpp"/>
+  <source file="stringstream.hpp"/>
+  <source file="ostream.hpp"/>
+  <source file="unique_ptr.hpp"/>
+  <source file="unordered_map.hpp"/>
+  <source file="unordered_set.hpp"/>
+  <source file="vector.hpp"/>
+  <include path="."/>
+</project>

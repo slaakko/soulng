@@ -18,7 +18,7 @@ public:
     void Accept(Visitor& visitor) override;
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     IdentifierNode* Id() const { return id.get(); }
     const NodeList<Node>& Members() const { return members; }
     void AddMember(Node* member);

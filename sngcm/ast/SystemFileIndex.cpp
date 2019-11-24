@@ -38,7 +38,7 @@ uint32_t SystemFileIndex::RegisterSystemSourceFile(const std::string& systemSour
     }
     else
     {
-        throw std::runtime_error("SNGCM_ROOT path prefix '" + cmajorRootDir + "' differs from prefix of system source file path '" + sfp + "'");
+        throw std::runtime_error("CMAJOR_ROOT path prefix '" + cmajorRootDir + "' differs from prefix of system source file path '" + sfp + "'");
     }
     systemFileMap[fileIndex] = sfp;
     return fileIndex;

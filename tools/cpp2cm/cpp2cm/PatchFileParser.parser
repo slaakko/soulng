@@ -1,0 +1,58 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <cpp2cm/cpp2cm/Patch.hpp>
+[cpp]#include <soulng/lexer/TrivialLexer.hpp>
+[cpp]#include <soulng/parser/Range.hpp>
+
+using namespace soulng::lexer;
+
+parser PatchFileParser
+{
+    uselexer TrivialLexer;
+    main;
+
+    PatchFile(var std::unique_ptr<cpp2cm::PatchFile> patchFile) : cpp2cm::PatchFile*
+        ::= (empty{ patchFile.reset(new cpp2cm::PatchFile(lexer.FileName())); } (PatchLine:patch{ patchFile->AddPatch(patch); })+ Newline:nl2*){ return patchFile.release(); }
+        ;
+
+    PatchLine(var std::unique_ptr<cpp2cm::Patch> patch) : cpp2cm::Patch*
+        ::= (FileName:filename ':' LineNumber:lineNumber ':' Patch:p{ patch.reset(p); } Newline:nl){ patch->SetFileName(filename); patch->SetLineNumber(lineNumber); return patch.release(); }
+        ;
+
+    FileName(var Span s) : std::u32string
+        ::= ("[^:\r\n]"{ s = span; } ("[^:\r\n]"{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    LineNumber(var Span s) : std::u32string
+        ::= ("[0-9]"{ s = span; } ("[0-9]"{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    Patch : cpp2cm::Patch*
+        ::= Insert:ins{ return ins; }
+        |   Delete:del{ return del; }
+        |   Modify:mod{ return mod; }
+        ;
+
+    Insert : cpp2cm::Patch*
+        ::= ('I' '/' Text:text '/'){ return new cpp2cm::InsertPatch(text); }
+        ;
+
+    Delete : cpp2cm::Patch*
+        ::= ('D'){ return new cpp2cm::DeletePatch(); }
+        ;
+
+    Modify : cpp2cm::Patch*
+        ::= ('M' '/' Text:oldText '/' Text:newText '/'){ return new cpp2cm::ModifyPatch(oldText, newText); }
+        ;
+
+    Text(var Span s) : std::u32string
+        ::= ("[^/\r\n]"{ s = span; } ("[^/\r\n]"{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    Newline
+        ::= "\r\n" | '\n' | '\r'
+        ;
+}

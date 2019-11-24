@@ -17,8 +17,12 @@ public:
     StatementBinder(SymbolTable& symbolTable_, const std::unordered_map<SourceFileNode*, BoundSourceFile*>& sourceFileMap_);
     void Visit(SourceFileNode& sourceFileNode) override;
     void Visit(SourceFileSequenceNode& sourceFileSequenceNode) override;
+    void Visit(SimpleDeclarationNode& simpleDeclarationNode) override;
     void Visit(NamespaceNode& namespaceNode) override;
+    void Visit(MemberAccessDeclarationNode& memberAccessDeclarationNode) override;
+    void Visit(MemberDeclarationNode& memberDeclarationNode) override;
     void Visit(DeclarationSequenceNode& declarationSequenceNode) override;
+    void Visit(TemplateDeclarationNode& templateDeclarationNode) override;
     void Visit(ClassNode& classNode) override;
     void Visit(FunctionNode& functionNode) override;
     void Visit(SpecialMemberFunctionNode& specialMemberFunctionNode) override;

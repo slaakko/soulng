@@ -5,7 +5,8 @@
 
 #include <sngcpp/binder/TypeResolver.hpp>
 #include <sngcpp/symbols/DerivedTypeSymbol.hpp>
-#include <sngcpp/symbols/PseudoTypeSymbol.hpp>
+#include <sngcpp/symbols/TypedefSymbol.hpp>
+#include <sngcpp/symbols/ClassTemplateSpecializationSymbol.hpp>
 #include <sngcpp/ast/Visitor.hpp>
 #include <sngcpp/ast/TypeExpr.hpp>
 #include <sngcpp/ast/Expression.hpp>
@@ -19,7 +20,8 @@ using namespace soulng::unicode;
 class TypeResolver : public sngcpp::ast::Visitor
 {
 public:
-    TypeResolver(SymbolTable& symbolTable_, ContainerScope* containerScope_, BoundSourceFile& boundSourceFile_, TypeResolverFlags flags_);
+    TypeResolver(SymbolTable& symbolTable_, ContainerScope* containerScope_, const std::vector<ContainerScope*>& prevContainerScopes_, BoundSourceFile& boundSourceFile_,
+        ClassTypeSymbol* currentClass_, TypeResolverFlags flags_);
     void Visit(ForwardClassDeclarationNode& forwardClassDeclarationNode) override;
     void Visit(ElaborateClassNameNode& elaborateClassNameNode) override;
     void Visit(SimpleTypeNode& simpleTypeNode) override;
@@ -28,7 +30,6 @@ public:
     void Visit(PointerNode& pointerNode) override;
     void Visit(RValueRefNode& rValueRefNode) override;
     void Visit(LValueRefNode& lValueRefNode) override;
-    void Visit(TypeExprNode& typeExprNode) override;
     void Visit(IdentifierNode& identifierNode) override;
     void Visit(NestedIdNode& nestedIdNode) override;
     void Visit(TemplateIdNode& templateIdNode) override;
@@ -42,6 +43,7 @@ public:
 private:
     SymbolTable& symbolTable;
     ContainerScope* containerScope;
+    std::vector<ContainerScope*> prevContainerScopes;
     ContainerScope* currentContainerScope;
     BoundSourceFile& boundSourceFile;
     TypeResolverFlags flags;
@@ -53,16 +55,17 @@ private:
     std::vector<IdentifierNode*> idNodeSequence;
     Span span;
     ClassKey classKey;
+    ClassTypeSymbol* currentClass;
     bool parentResolved;
-    TypeExprNode* typeExpressionNode;
     void AddBaseDerivation();
     void ResolveSymbol(Node& node, Symbol* symbol);
     void MakeExternalType();
 };
 
-TypeResolver::TypeResolver(SymbolTable& symbolTable_, ContainerScope* containerScope_, BoundSourceFile& boundSourceFile_, TypeResolverFlags flags_) :
-    symbolTable(symbolTable_), containerScope(containerScope_), currentContainerScope(containerScope), boundSourceFile(boundSourceFile_), flags(flags_),
-    type(nullptr), classGroup(nullptr), classKey(ClassKey::none), parentResolved(true), typeExpressionNode(nullptr)
+TypeResolver::TypeResolver(SymbolTable& symbolTable_, ContainerScope* containerScope_, const std::vector<ContainerScope*>& prevContainerScopes_, BoundSourceFile& boundSourceFile_,
+    ClassTypeSymbol* currentClass_, TypeResolverFlags flags_) :
+    symbolTable(symbolTable_), containerScope(containerScope_), prevContainerScopes(prevContainerScopes_), currentContainerScope(containerScope), boundSourceFile(boundSourceFile_),
+    currentClass(currentClass_), flags(flags_), type(nullptr), classGroup(nullptr), classKey(ClassKey::none), parentResolved(true)
 {
 }
 
@@ -175,12 +178,6 @@ void TypeResolver::Visit(LValueRefNode& lValueRefNode)
     derivations.push_back(Derivation::lvalueRef);
 }
 
-void TypeResolver::Visit(TypeExprNode& typeExprNode)
-{
-    typeExpressionNode = &typeExprNode;
-    typeExprNode.Child()->Accept(*this);
-}
-
 void TypeResolver::Visit(IdentifierNode& identifierNode)
 {
     span = identifierNode.GetSpan();
@@ -204,8 +201,25 @@ void TypeResolver::Visit(IdentifierNode& identifierNode)
         {
             if (classGroup)
             {
-                ClassTypeSymbol* classTypeSymbol = classGroup->GetClass(0);
-                symbol = classTypeSymbol->GetContainerScope()->Lookup(identifierNode.Identifier(), ScopeLookup::this_and_bases_and_parent);
+                for (const auto& classTypeSymbol : classGroup->Classes())
+                {
+                    if (classTypeSymbol)
+                    {
+                        symbol = classTypeSymbol->GetContainerScope()->Lookup(identifierNode.Identifier(), ScopeLookup::this_and_bases_and_parent);
+                        if (symbol) break;
+                    }
+                }
+            }
+        }
+        if (!symbol)
+        {
+            for (ContainerScope* prevContainerScope : prevContainerScopes)
+            {
+                symbol = prevContainerScope->Lookup(identifierNode.Identifier(), ScopeLookup::this_and_bases_and_parent);
+                if (symbol)
+                {
+                    break;
+                }
             }
         }
     }
@@ -213,6 +227,10 @@ void TypeResolver::Visit(IdentifierNode& identifierNode)
     {
         ResolveSymbol(identifierNode, symbol);
         idNodeSequence.push_back(&identifierNode);
+        if (!symbolTable.GetSymbolNothrow(&identifierNode))
+        {
+            symbolTable.MapNode(&identifierNode, symbol);
+        }
     }
     else
     {
@@ -274,7 +292,6 @@ void TypeResolver::Visit(TemplateIdNode& templateIdNode)
         idNodeSequence.push_back(templateIdNode.Id());
         primaryClassTemplate = GetType(true);
     }
-    symbolTable.MapNode(&templateIdNode, primaryClassTemplate);
     symbolTable.MapIdNodeSequence(&templateIdNode, idNodeSequence);
     if (templateIdNode.TemplateArguments())
     {
@@ -282,13 +299,31 @@ void TypeResolver::Visit(TemplateIdNode& templateIdNode)
     }
     if (primaryClassTemplate)
     {
-        type = symbolTable.MakeClassTemplateSpecializationSymbol(span, primaryClassTemplate, &templateIdNode, templateArgumentTypes, templateArgumentNodes, typeExpressionNode);
+        type = symbolTable.MakeClassTemplateSpecializationSymbol(span, primaryClassTemplate, templateArgumentTypes);
+        for (const auto& member : primaryClassTemplate->Members())
+        {
+            if (member->IsTypedefSymbol())
+            {
+                TypedefSymbol* typedef_ = static_cast<TypedefSymbol*>(member.get());
+                if (type->GetContainerScope()->Lookup(typedef_->Name()) == nullptr)
+                {
+                    TypedefSymbol* clonedTypedef = new TypedefSymbol(soulng::lexer::Span(), typedef_->Name());
+                    clonedTypedef->SetProjectName(typedef_->ProjectName());
+                    clonedTypedef->SetType(typedef_);
+                    clonedTypedef->SetPrimaryId(member->Id());
+                    type->AddMember(std::unique_ptr<Symbol>(clonedTypedef));
+                }
+            }
+        }
+        symbolTable.MapNode(&templateIdNode, type);
+        symbolTable.MapTemplateIdToTemplateArgumentNodes(&templateIdNode, templateArgumentNodes);
+        currentContainerScope = type->GetContainerScope();
     }
 }
 
 void TypeResolver::Visit(TemplateArgumentNode& templateArgumentNode)
 {
-    templateArgumentTypes.push_back(ResolveType(symbolTable, containerScope, boundSourceFile, TypeResolverFlags::noPseudoTypes, templateArgumentNode.Arg()));
+    templateArgumentTypes.push_back(ResolveType(symbolTable, containerScope, prevContainerScopes, boundSourceFile, TypeResolverFlags::none, currentClass, templateArgumentNode.Arg()));
     templateArgumentNodes.push_back(templateArgumentNode.Arg());
 }
 
@@ -363,23 +398,32 @@ void TypeResolver::ResolveSymbol(Node& node, Symbol* symbol)
     else if (symbol->IsClassGroupSymbol())
     {
         classGroup = static_cast<ClassGroupSymbol*>(symbol);
+        if (currentClass && currentClass->Name() == classGroup->Name())
+        {
+            type = currentClass;
+            currentContainerScope = type->GetContainerScope();
+        }
         parentResolved = true;
     }
     else if (symbol->IsTypeSymbol())
     {
         symbolTable.MapNode(&node, symbol);
         type = static_cast<sngcpp::symbols::TypeSymbol*>(symbol);
-        currentContainerScope = type->GetContainerScope();
-        parentResolved = true;
-    }
-    else if (symbol->IsFunctionGroupSymbol() && (flags & TypeResolverFlags::noPseudoTypes) == TypeResolverFlags::none)
-    {
-        symbolTable.MapNode(&node, symbol);
-        type = symbolTable.MakePseudoTypeSymbol(node.GetSpan(), symbol->Name());
-        PseudoTypeSymbol* pseudoType = static_cast<PseudoTypeSymbol*>(type);
-        FunctionGroupSymbol* functionGroup = static_cast<FunctionGroupSymbol*>(symbol);
-        pseudoType->SetFunctionGroup(functionGroup);
-        parentResolved = false;
+        sngcpp::symbols::TypeSymbol* resolvedType = type;
+        if (resolvedType->IsTypedefSymbol())
+        {
+            sngcpp::symbols::TypedefSymbol* typedefSymbol = static_cast<sngcpp::symbols::TypedefSymbol*>(resolvedType);
+            resolvedType = typedefSymbol->GetType();
+        }
+        if (resolvedType)
+        {
+            currentContainerScope = resolvedType->GetContainerScope();
+            parentResolved = true;
+        }
+        else
+        {
+            parentResolved = false;
+        }
     }
     else
     {
@@ -387,14 +431,16 @@ void TypeResolver::ResolveSymbol(Node& node, Symbol* symbol)
     }
 }
 
-sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, Node* node)
+sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile& boundSourceFile,
+    ClassTypeSymbol* currentClassType, Node* node)
 {
-    return ResolveType(symbolTable, containerScope, boundSourceFile, TypeResolverFlags::none, node);
+    return ResolveType(symbolTable, containerScope, prevContainerScopes, boundSourceFile, TypeResolverFlags::none, currentClassType, node);
 }
 
-sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, TypeResolverFlags flags, Node* node)
+sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile& boundSourceFile,
+    TypeResolverFlags flags, ClassTypeSymbol* currentClassType, Node* node)
 {
-    TypeResolver typeResolver(symbolTable, containerScope, boundSourceFile, flags);
+    TypeResolver typeResolver(symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentClassType, flags);
     node->Accept(typeResolver);
     sngcpp::symbols::TypeSymbol* type = typeResolver.GetType();
     if (type)

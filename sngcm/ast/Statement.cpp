@@ -859,9 +859,9 @@ void CaseStatementNode::Write(AstWriter& writer)
     StatementNode::Write(writer);
     caseExprs.Write(writer);
     statements.Write(writer);
-    uint32_t n = caseSpans.size();
+    uint32_t n = static_cast<uint32_t>(caseSpans.size());
     writer.GetBinaryWriter().WriteULEB128UInt(n);
-    for (uint32_t i = 0; i < n; ++i)
+    for (uint32_t i = 0u; i < n; ++i)
     {
         writer.Write(caseSpans[i]);
     }
@@ -875,7 +875,7 @@ void CaseStatementNode::Read(AstReader& reader)
     statements.Read(reader);
     statements.SetParent(this);
     uint32_t n = reader.GetBinaryReader().ReadULEB128UInt();
-    for (uint32_t i = 0; i < n; ++i)
+    for (uint32_t i = 0u; i < n; ++i)
     {
         caseSpans.push_back(reader.ReadSpan());
     }

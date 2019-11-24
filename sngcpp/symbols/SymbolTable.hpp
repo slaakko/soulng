@@ -56,7 +56,8 @@ public:
     void BeginFunction(FunctionDeclaratorNode* functionDeclaratorNode, const std::u32string& groupName, const std::u32string& functionName,
         std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, Specifier specifiers, const std::u32string& projectName);
     void EndFunction(const std::u32string& projectName);
-    void BeginFunctionDeclaration(FunctionDeclaratorNode* functionDeclaratorNode, const std::u32string& groupName, const std::u32string& functionName, Specifier specifiers);
+    void BeginFunctionDeclaration(FunctionDeclaratorNode* functionDeclaratorNode, const std::u32string& groupName, const std::u32string& functionName,
+        std::vector<std::unique_ptr<TypeSymbol>>& templateParameters, Specifier specifiers, const std::u32string& projectName);
     void EndFunctionDeclaration();
     void AddParameter(ParameterNode* parameterNode, const std::u32string& parameterName);
     void BeginDeclarationBlock(Node* blockNode);
@@ -65,34 +66,43 @@ public:
     void AddVariable(Node* node, const std::u32string& variableName, const std::u32string& projectName);
     void MapNode(Node* node, Symbol* symbol);
     void MapIdNodeSequence(Node* node, const std::vector<IdentifierNode*>& idNodeSequence);
+    void MapTemplateIdToTemplateArgumentNodes(TemplateIdNode* templateIdNode, const std::vector<Node*>& templateArgumentNodes);
     Symbol* GetSymbolNothrow(Node* node);
     Symbol* GetSymbol(Node* node);
     const std::vector<IdentifierNode*>& GetIdNodeSequence(Node* node);
+    const std::vector<Node*>& GetTemplateArgumentNodes(TemplateIdNode* templateIdNode);
     NamespaceSymbol* GlobalNs() { return &globalNs; }
     ContainerScope* GetContainerScope();
+    TypeSymbol* GetBoolType();
+    TypeSymbol* GetLongType();
+    TypeSymbol* GetDoubleType();
+    TypeSymbol* GetIntType();
+    TypeSymbol* GetUIntType();
+    TypeSymbol* GetCharType();
+    TypeSymbol* GetChar16Type();
+    TypeSymbol* GetChar32Type();
+    TypeSymbol* GetVoidType();
     TypeSymbol* MakeSimpleTypeSymbol(SimpleTypeNode& simpleTypeNode);
     TypeSymbol* MakeElaborateClassTypeSymbol(ClassKey classKey, TypeSymbol* classType);
     TypeSymbol* MakeDerivedTypeSymbol(std::vector<Derivation>& derivations, TypeSymbol* baseType);
     TypeSymbol* MakeExternalTypeSymbol(const Span& span, const std::u32string& name, ClassKey classKey);
     TypeSymbol* MakeClassGroupTypeSymbol(ClassGroupSymbol* classGroup);
-    TypeSymbol* MakeClassTemplateSpecializationSymbol(const Span& span, TypeSymbol* primaryClassTemplate, TemplateIdNode* templateIdNode,
-        const std::vector<TypeSymbol*>& templateArguments, const std::vector<Node*>& templateArgumentNodes, TypeExprNode* typeExprNode);
+    TypeSymbol* MakeClassTemplateSpecializationSymbol(const Span& span, TypeSymbol* primaryClassTemplate, const std::vector<TypeSymbol*>& templateArguments);
     TypeSymbol* MakeIntegerLiteralTypeSymbol(const Span& span, const std::u32string& valueName);
-    TypeSymbol* MakePseudoTypeSymbol(const Span& span, const std::u32string& name);
-    TemplateIdNode* GetTemplateIdNodeForTypeExprNode(TypeExprNode* typeExprNode) const;
-    Node* GetTemplateArgumentNodeForTypeExprNode(TypeExprNode* typeExprNode) const;
+    void SetGendocMode() { gendocMode = true; }
+    bool InGendocMode() const { return gendocMode; }
 private:
     NamespaceSymbol globalNs;
     ContainerSymbol* container;
     std::stack<ContainerSymbol*> containerStack;
     std::unordered_map<Node*, Symbol*> nodeSymbolMap;
     std::unordered_map<Node*, std::vector<IdentifierNode*>> idNodeSequenceMap;
+    std::unordered_map<TemplateIdNode*, std::vector<Node*>> templateIdTemplateArgumentNodeMap;
     int blockNumber;
     std::unordered_map<std::u32string, TypeSymbol*> idTypeMap;
-    std::unordered_map<TypeExprNode*, TemplateIdNode*> templateIdNodeMap;
-    std::unordered_map<TypeExprNode*, Node*> templateIdTemplateArgumentNodeMap;
     std::vector<std::unique_ptr<TypeSymbol>> types;
     std::vector<std::unique_ptr<Node>> ownedNodes;
+    bool gendocMode;
 };
 
 } } // namespace sngcpp::symbols

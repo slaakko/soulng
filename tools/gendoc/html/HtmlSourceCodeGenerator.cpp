@@ -246,7 +246,7 @@ void HtmlSourceCodeGenerator::WriteIdSequence(bool writeType, Symbol* terminalSy
     }
 }
 
-void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<IdentifierNode*>& idNodeSequence, TypeExprNode* typeExprNode)
+void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<IdentifierNode*>& idNodeSequence, TemplateIdNode* templateIdNode)
 {
     int n = idNodeSequence.size();
     if (type->IsExternalTypeSymbol())
@@ -328,7 +328,7 @@ void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<Iden
             case Derivation::base:
             {
                 TypeSymbol* baseType = derivedTypeSymbol->BaseType();
-                WriteType(baseType, idNodeSequence, typeExprNode);
+                WriteType(baseType, idNodeSequence, templateIdNode);
                 break;
             }
             }
@@ -338,18 +338,10 @@ void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<Iden
     {
         ClassTemplateSpecializationSymbol* classTemplateSpecializationSymbol = static_cast<ClassTemplateSpecializationSymbol*>(type);
         TypeSymbol* primaryType = classTemplateSpecializationSymbol->PrimaryClassTemplateSymbol();
-        TemplateIdNode* templateIdNode = classTemplateSpecializationSymbol->GetTemplateIdNode();
-        if (typeExprNode)
-        {
-            TemplateIdNode* tinode = symbolTable.GetTemplateIdNodeForTypeExprNode(typeExprNode);
-            if (tinode)
-            {
-                templateIdNode = tinode;
-            }
-        }
-        WriteType(primaryType, symbolTable.GetIdNodeSequence(templateIdNode), typeExprNode);
+        WriteType(primaryType, symbolTable.GetIdNodeSequence(templateIdNode), templateIdNode);
         writer.WriteOther(U"<");
         int n = classTemplateSpecializationSymbol->TemplateArgumentSymbols().size();
+        std::vector<Node*> templateArgumentNodes = symbolTable.GetTemplateArgumentNodes(templateIdNode);
         for (int i = 0; i < n; ++i)
         {
             if (i > 0)
@@ -357,13 +349,8 @@ void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<Iden
                 writer.WriteOther(U", ");
             }
             TypeSymbol* templateArgumentSymbol = classTemplateSpecializationSymbol->TemplateArgumentSymbols()[i];
-            Node* templateArgumentNode = classTemplateSpecializationSymbol->TemplateArgumentNodes()[i];
-            Node* tanode = symbolTable.GetTemplateArgumentNodeForTypeExprNode(typeExprNode);
-            if (tanode)
-            {
-                templateArgumentNode = tanode;
-            }
-            WriteType(templateArgumentSymbol, symbolTable.GetIdNodeSequence(templateArgumentNode), typeExprNode);
+            Node* templateArgumentNode = templateArgumentNodes[i];
+            WriteType(templateArgumentSymbol, symbolTable.GetIdNodeSequence(templateArgumentNode), templateIdNode);
         }
         writer.WriteOther(U">");
     }
@@ -372,7 +359,7 @@ void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<Iden
         ElaborateClassTypeSymbol* elaborateClassTypeSymbol = static_cast<ElaborateClassTypeSymbol*>(type);
         writer.WriteKeyword(ToString(elaborateClassTypeSymbol->GetClassKey()));
         writer.WriteSpace(1);
-        WriteType(elaborateClassTypeSymbol->GetClassType(), idNodeSequence, typeExprNode);
+        WriteType(elaborateClassTypeSymbol->GetClassType(), idNodeSequence, templateIdNode);
     }
     else
     {
@@ -1336,26 +1323,6 @@ void HtmlSourceCodeGenerator::Visit(ParameterSequenceNode& parameterSequenceNode
     parameterSequenceNode.Right()->Accept(*this);
 }
 
-void HtmlSourceCodeGenerator::Visit(TypeExprNode& typeExprNode)
-{
-    MoveTo(typeExprNode.GetSpan());
-    Symbol* symbol = symbolTable.GetSymbol(&typeExprNode);
-    if (symbol->IsPseudoTypeSymbol())
-    {
-        typeExprNode.Child()->Accept(*this);
-    }
-    else if (symbol->IsTypeSymbol())
-    {
-        TypeSymbol* typeSymbol = static_cast<TypeSymbol*>(symbol);
-        std::vector<IdentifierNode*> idNodeSequence = symbolTable.GetIdNodeSequence(&typeExprNode);
-        WriteType(typeSymbol, idNodeSequence, &typeExprNode);
-    }
-    else
-    {
-        throw std::runtime_error("type symbol expected");
-    }
-}
-
 void HtmlSourceCodeGenerator::Visit(SimpleTypeNode& simpleTypeNode)
 {
     MoveTo(simpleTypeNode.GetSpan());
@@ -1428,6 +1395,13 @@ void HtmlSourceCodeGenerator::Visit(TemplateArgumentSequenceNode& templateArgume
 void HtmlSourceCodeGenerator::Visit(TemplateIdNode& templateIdNode)
 {
     MoveTo(templateIdNode.GetSpan());
+    Symbol* symbol = symbolTable.GetSymbolNothrow(&templateIdNode);
+    if (symbol && symbol->IsClassTemplateSpecializationSymbol())
+    {
+        ClassTemplateSpecializationSymbol* specialization = static_cast<ClassTemplateSpecializationSymbol*>(symbol);
+        WriteType(specialization, symbolTable.GetIdNodeSequence(&templateIdNode), &templateIdNode);
+        return;
+    }
     templateIdNode.Id()->Accept(*this);
     WriteIdSequence(true, symbolTable.GetSymbolNothrow(&templateIdNode));
     writer.WriteOther(U"<");

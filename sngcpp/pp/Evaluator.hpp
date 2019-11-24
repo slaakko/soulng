@@ -232,7 +232,6 @@ public:
     void Visit(PointerNode& pointerNode) override;
     void Visit(RValueRefNode& rValueRefNode) override;
     void Visit(LValueRefNode& lValueRefNode) override;
-    void Visit(TypeExprNode& typerExprNode) override;
 private:
     std::string fileName;
     int line;

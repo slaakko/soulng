@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="system.parsing" type="library" targetName="System.Parsing">
+  <imports>
+    <import name="std"/>
+    <import name="boost"/>
+    <import name="soulng.util"/>
+  </imports>
+  <vcxproject file="../../../../soulng/parser/parser.vcxproj"/>
+  <include path="../.."/>
+  <target dir="System.Parsing"/>
+  <install dir="D:\work\cmajorm\cmajor\system\System.Parsing"/>
+  <references>
+    <reference project="../System.Base/System.Base.cmp" kind="install"/>
+  </references>
+  <map file="map.xml"/>
+  <patches>
+    <!-- <patch file="system.parsing.patches"/> -->
+  </patches>
+  <filter>
+  </filter>
+</project>

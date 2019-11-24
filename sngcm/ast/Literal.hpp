@@ -333,7 +333,7 @@ public:
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
     std::string ToString() const override { return "uuid"; }
-    const boost::uuids::uuid& Uuid() const { return uuid; }
+    const boost::uuids::uuid& GetUuid() const { return uuid; }
 private:
     boost::uuids::uuid uuid;
 };

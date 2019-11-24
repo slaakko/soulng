@@ -60,7 +60,9 @@ int ClassTypeSymbol::MatchValue(TypeSymbol* argumentType)
 
 void ClassTypeSymbol::AddTemplateParameter(std::unique_ptr<TypeSymbol>&& templateParameter)
 {
-    templateParameters.push_back(std::move(templateParameter));
+    std::unique_ptr<TypeSymbol> templateParam = std::move(templateParameter);
+    GetContainerScope()->Install(templateParam.get());
+    templateParameters.push_back(std::move(templateParam));
 }
 
 ContainerSymbol* ClassTypeSymbol::GetBase(int i) const

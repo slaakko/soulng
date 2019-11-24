@@ -26,6 +26,7 @@ class SNGCPP_SYMBOLS_API ContainerSymbol : public Symbol
 public:
     ContainerSymbol(const Span& span_, const std::u32string& name_);
     virtual void AddMember(std::unique_ptr<Symbol>&& member);
+    const std::vector<std::unique_ptr<Symbol>>& Members() const { return members; }
     ContainerScope* GetContainerScope() override { return &containerScope; }
     bool IsContainerSymbol() const override { return true; }
     virtual int NumBases() const { return 0; }

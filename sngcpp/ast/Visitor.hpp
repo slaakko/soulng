@@ -128,7 +128,6 @@ class VolatileNode;
 class PointerNode;
 class RValueRefNode;
 class LValueRefNode;
-class TypeExprNode;
 
 class SNGCPP_AST_API Visitor
 {
@@ -253,7 +252,6 @@ public:
     virtual void Visit(PointerNode& pointerNode) {}
     virtual void Visit(RValueRefNode& rValueRefNode) {}
     virtual void Visit(LValueRefNode& lValueRefNode) {}
-    virtual void Visit(TypeExprNode& typerExprNode) {}
 };
 
 } } // namespace sngcpp::ast

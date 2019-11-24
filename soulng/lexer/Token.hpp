@@ -6,7 +6,6 @@
 #ifndef SOULNG_LEXER_TOKEN_INCLUDED
 #define SOULNG_LEXER_TOKEN_INCLUDED
 #include <soulng/lexer/Lexeme.hpp>
-#include <soulng/lexer/Value.hpp>
 #include <string>
 
 namespace soulng { namespace lexer {

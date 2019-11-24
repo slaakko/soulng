@@ -31,7 +31,7 @@ public:
     int GetKeywordToken(const Lexeme& lexeme) const;
     void Retract() { token.match.end = pos; }
     const std::string& FileName() const { return fileName; }
-    Span GetSpan() const { return Span(fileIndex, line, int32_t(GetPos())); }
+    Span GetSpan() const { return Span(fileIndex, line, static_cast<int32_t>(GetPos())); }
     void ConvertExternal(Span& span);
     Token GetToken(int64_t pos) const;
     void SetTokens(const std::vector<Token>& tokens_);

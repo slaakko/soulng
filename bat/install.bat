@@ -42,9 +42,13 @@ xcopy /Y /D ..\sngxml\x64\Debug\sngxmltesterd.exe ..\bin
 xcopy /Y /D ..\sngxml\x64\Release\sngxmltester.exe ..\bin
 xcopy /Y /D ..\sngcpp\bin\*.* ..\bin
 xcopy /Y /D ..\sngcpp\lib\*.* ..\lib
+xcopy /Y /D ..\sngcm\bin\*.* ..\bin
+xcopy /Y /D ..\sngcm\lib\*.* ..\lib
 xcopy /Y /D ..\tools\gendoc\x64\Debug\gendochtmld.lib ..\lib
 xcopy /Y /D ..\tools\gendoc\x64\Debug\gendochtmld.dll ..\bin
 xcopy /Y /D ..\tools\gendoc\x64\Release\gendochtml.lib ..\lib
 xcopy /Y /D ..\tools\gendoc\x64\Release\gendochtml.dll ..\bin
 xcopy /Y /D ..\tools\gendoc\x64\Debug\gendocd.exe ..\bin
 xcopy /Y /D ..\tools\gendoc\x64\Release\gendoc.exe ..\bin
+xcopy /Y /D ..\tools\cpp2cm\x64\Debug\cpp2cmd.exe ..\bin
+xcopy /Y /D ..\tools\cpp2cm\x64\Release\cpp2cm.exe ..\bin

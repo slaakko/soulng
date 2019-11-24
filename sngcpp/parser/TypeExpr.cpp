@@ -28,7 +28,6 @@ soulng::parser::Match TypeExprParser::TypeExpr(CppLexer& lexer, sngcpp::cppparse
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::Span span = lexer.GetSpan();
         soulng::parser::Match match = TypeExprParser::PrefixTypeExpr(lexer, ctx);
         prefixTypeExpr.reset(static_cast<sngcpp::ast::Node*>(match.value));
         if (match.hit)
@@ -37,7 +36,7 @@ soulng::parser::Match TypeExprParser::TypeExpr(CppLexer& lexer, sngcpp::cppparse
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeExpr"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new sngcpp::ast::TypeExprNode(span, prefixTypeExpr.release()));
+                return soulng::parser::Match(true, prefixTypeExpr.release());
             }
         }
         *parentMatch0 = match;
@@ -449,10 +448,9 @@ soulng::parser::Match TypeExprParser::PrimaryTypeExpr(CppLexer& lexer, sngcpp::c
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     sngcpp::ast::ClassKey key = sngcpp::ast::ClassKey();
     Span s = Span();
-    std::unique_ptr<sngcpp::ast::Node> qualifiedIdNode = std::unique_ptr<sngcpp::ast::Node>();
     std::unique_ptr<sngcpp::ast::SimpleTypeNode> simpleType;
     std::unique_ptr<soulng::parser::Value<sngcpp::ast::ClassKey>> classKey;
-    std::unique_ptr<sngcpp::ast::Node> qid;
+    std::unique_ptr<sngcpp::ast::Node> qualifiedId;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -562,42 +560,29 @@ soulng::parser::Match TypeExprParser::PrimaryTypeExpr(CppLexer& lexer, sngcpp::c
                         {
                             int64_t pos = lexer.GetPos();
                             soulng::lexer::Span span = lexer.GetSpan();
-                            bool pass = true;
                             soulng::parser::Match match = IdentifierParser::QualifiedIdNode(lexer, ctx);
-                            qid.reset(static_cast<sngcpp::ast::Node*>(match.value));
+                            qualifiedId.reset(static_cast<sngcpp::ast::Node*>(match.value));
                             if (match.hit)
                             {
-                                qualifiedIdNode.reset(qid.release());
-                                if (sngcpp::ast::IsConstructorName(qualifiedIdNode.get()))
+                                s.end = span.end;
+                                if (key != sngcpp::ast::ClassKey::none)
                                 {
-                                    pass = false;
+                                    {
+                                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryTypeExpr"));
+                                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                        return soulng::parser::Match(true, new sngcpp::ast::ElaborateClassNameNode(s, key, qualifiedId.release()));
+                                    }
                                 }
                                 else
                                 {
-                                    s.end = span.end;
-                                    if (key != sngcpp::ast::ClassKey::none)
                                     {
-                                        {
-                                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryTypeExpr"));
-                                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                            return soulng::parser::Match(true, new sngcpp::ast::ElaborateClassNameNode(s, key, qualifiedIdNode.release()));
-                                        }
-                                    }
-                                    else
-                                    {
-                                        {
-                                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryTypeExpr"));
-                                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                            return soulng::parser::Match(true, qualifiedIdNode.release());
-                                        }
+                                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PrimaryTypeExpr"));
+                                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                        return soulng::parser::Match(true, qualifiedId.release());
                                     }
                                 }
-                            }
-                            if (match.hit && !pass)
-                            {
-                                match = soulng::parser::Match(false);
                             }
                             *parentMatch11 = match;
                         }

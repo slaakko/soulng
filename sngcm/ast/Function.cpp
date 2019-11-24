@@ -191,7 +191,7 @@ void FunctionNode::Read(AstReader& reader)
     templateParameters.SetParent(this);
     parameters.Read(reader);
     parameters.SetParent(this);
-    bool hasConstraint = reader.GetBinaryReader().ReadBool();;
+    bool hasConstraint = reader.GetBinaryReader().ReadBool();
     if (hasConstraint)
     {
         whereConstraint.reset(reader.ReadWhereConstraintNode());

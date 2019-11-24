@@ -14,8 +14,8 @@ namespace sngcpp { namespace binder {
 
 class StatementBinder;
 
-SNGCPP_BINDER_API std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile* boundSourceFile, FunctionSymbol* currentFunction,
-    StatementBinder* statementBinder);
+SNGCPP_BINDER_API std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes,
+    BoundSourceFile* boundSourceFile, FunctionSymbol* currentFunction, StatementBinder* statementBinder);
 
 } } // namespace sngcpp::binder
 

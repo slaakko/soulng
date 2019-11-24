@@ -161,16 +161,16 @@ parser api(SNGCM_PARSER_API) ConceptParser
             LANGLE (TypeExpr(ctx):typeExpr{ constraint->AddTypeExpr(typeExpr); } % COMMA) RANGLE!{ constraint->SetSpanEnd(span.end); return constraint.release(); }
         ;
 
-    Axiom(ParsingContext* ctx, sngcm::ast::ConceptNode* concept, var std::unique_ptr<AxiomNode> axiom, var Span axiomSpan, var Span beginBraceSpan, var Span endBraceSpan)
+    Axiom(ParsingContext* ctx, sngcm::ast::ConceptNode* concept, var std::unique_ptr<AxiomNode> axiomNode, var Span axiomSpan, var Span beginBraceSpan, var Span endBraceSpan)
         ::=
-        (   AXIOM{ axiomSpan = span; } Identifier:id? empty{ axiom.reset(new AxiomNode(axiomSpan, id)); }
-            ParameterList(ctx, axiom.get()):paramList?
-            LBRACE!{ beginBraceSpan = span; } AxiomBody(ctx, axiom.get()):axiomBody! RBRACE!{ endBraceSpan = span; }
+        (   AXIOM{ axiomSpan = span; } Identifier:id? empty{ axiomNode.reset(new AxiomNode(axiomSpan, id)); }
+            ParameterList(ctx, axiomNode.get()):paramList?
+            LBRACE!{ beginBraceSpan = span; } AxiomBody(ctx, axiomNode.get()):axiomBody! RBRACE!{ endBraceSpan = span; }
         )
         {
-            axiom->SetBeginBraceSpan(beginBraceSpan);
-            axiom->SetEndBraceSpan(endBraceSpan);
-            concept->AddAxiom(axiom.release());
+            axiomNode->SetBeginBraceSpan(beginBraceSpan);
+            axiomNode->SetEndBraceSpan(endBraceSpan);
+            concept->AddAxiom(axiomNode.release());
         }
         ;
 

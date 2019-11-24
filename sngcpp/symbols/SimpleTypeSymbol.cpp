@@ -7,7 +7,7 @@
 
 namespace sngcpp { namespace symbols {
 
-SimpleTypeSymbol::SimpleTypeSymbol(const Span& span_, const std::u32string& name_, const std::u32string& id_) : TypeSymbol(span_, name_), id(id_)
+SimpleTypeSymbol::SimpleTypeSymbol(const Span& span_, const std::u32string& name_, const std::u32string& id_, SimpleTypeSpecifierFlags flags_) : TypeSymbol(span_, name_), id(id_), flags(flags_)
 {
 }
 

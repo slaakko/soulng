@@ -1,0 +1,31 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <cpp2cm/cpp2cm/Args.hpp>
+[cpp]#include <soulng/lexer/TrivialLexer.hpp>
+[cpp]#include <soulng/parser/Range.hpp>
+
+using namespace soulng::lexer;
+
+parser ArgsParser
+{
+    uselexer TrivialLexer;
+    main;
+
+    Args(std::vector<int>* args)
+        ::= '(' (Arg:arg{ args->push_back(arg); }  % ',') ')'
+        ;
+
+    Arg(var Span s) : int
+        ::= S:s? ("[0-9]"{ s = span; }  ("[0-9]"{ s.end = span.end; })* S:s?)
+        {
+            return ParseInt(lexer.GetMatch(s));
+        }
+        ;
+
+    S
+        ::= "[ \t]"+
+        ;
+}

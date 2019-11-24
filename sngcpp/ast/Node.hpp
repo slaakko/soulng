@@ -34,7 +34,7 @@ enum class NodeType
     caseStatementNode, defaultStatementNode, expressionStatementNode, compoundStatementNode, statementSequenceNode, ifStatementNode, switchStatementNode, whileStatementNode,
     doStatementNode, rangeForStatementNode, forStatementNode, breakStatementNode, continueStatementNode, returnStatementNode, gotoStatementNode, declarationStatementNode,
     tryStatementNode, handlerNode, handlerSequenceNode, catchAllNode, typeParameterNode, templateParameterSequenceNode, templateDeclarationNode, templateArgumentSequenceNode,
-    templateIdNode, templateArgumentNode, explicitInstantiationNode, explicitSpecializationNode, constNode, volatileNode, pointerNode, rValueRefNode, lValueRefNode, typeExprNode,
+    templateIdNode, templateArgumentNode, explicitInstantiationNode, explicitSpecializationNode, constNode, volatileNode, pointerNode, rValueRefNode, lValueRefNode, 
     max
 };
 
@@ -68,9 +68,12 @@ public:
     virtual bool IsConversionFunctionIdNode() const { return false; }
     virtual bool IsDtorIdNode() const { return false; }
     virtual bool IsTemplateIdNode() const { return false; }
+    Node* Parent() { return parent; }
+    void SetParent(Node* parent_) { parent = parent_; }
 private:
     NodeType nodeType;
     Span span;
+    Node* parent;
 };
 
 class SNGCPP_AST_API UnaryNode : public Node

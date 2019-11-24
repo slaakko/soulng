@@ -104,7 +104,7 @@ void CodeGeneratorVisitor::Visit(CharSetParser& parser)
 {
     if (parser.Set().Inverse())
     {
-        formatter->WriteLine("soulng::parser::Match match(true);");
+        formatter->WriteLine("soulng::parser::Match match(lexer.Pos() != lexer.End());");
         formatter->WriteLine("for (const soulng::parser::Range& range : " + parser.ArrayName() + ")");
         formatter->WriteLine("{");
         formatter->IncIndent();

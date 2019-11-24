@@ -7,15 +7,54 @@
 #include <sngcpp/symbols/ParameterSymbol.hpp>
 #include <sngcpp/symbols/TemplateSymbol.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <soulng/util/Sha1.hpp>
 #include <algorithm>
 
 namespace sngcpp { namespace symbols {
 
 using namespace soulng::unicode;
 
-FunctionDeclarationSymbol::FunctionDeclarationSymbol(const Span& span_, const std::u32string& groupName_, const std::u32string& name_, Specifier specifiers_) :
-    ContainerSymbol(span_, name_), groupName(groupName_), specifiers(specifiers_), functionGroup(nullptr), returnType(nullptr), functionDefinition(nullptr)
+CallableSymbol::CallableSymbol(const Span& span_, const std::u32string& name_) : ContainerSymbol(span_, name_)
 {
+}
+
+FunctionDeclarationSymbol::FunctionDeclarationSymbol(const Span& span_, const std::u32string& groupName_, const std::u32string& name_, Specifier specifiers_) :
+    CallableSymbol(span_, name_), groupName(groupName_), specifiers(specifiers_), functionGroup(nullptr), returnType(nullptr), functionDefinition(nullptr)
+{
+}
+
+void FunctionDeclarationSymbol::AddTemplateParameter(std::unique_ptr<TypeSymbol>&& templateParameter)
+{
+    templateParameters.push_back(std::move(templateParameter));
+}
+
+std::u32string FunctionDeclarationSymbol::IdStr()
+{
+    std::u32string idStr = FullName();
+    for (const std::unique_ptr<TypeSymbol>& templateParameter : templateParameters)
+    {
+        idStr.append(1, '_').append(templateParameter->Name());
+    }
+    for (ParameterSymbol* parameter : parameters)
+    {
+        idStr.append(1, '.').append(parameter->GetType()->Id());
+    }
+    if ((specifiers & Specifier::const_) != Specifier::none)
+    {
+        idStr.append(U".const");
+    }
+    if ((specifiers & Specifier::constExpr) != Specifier::none)
+    {
+        idStr.append(U".constExpr");
+    }
+    return idStr;
+}
+
+std::u32string FunctionDeclarationSymbol::FunctionId()
+{
+    std::u32string functionId = FunctionKind();
+    functionId.append(1, '_').append(SimpleName()).append(1, '_').append(ToUtf32(GetSha1MessageDigest(ToUtf8(IdStr()))));
+    return functionId;
 }
 
 std::unique_ptr<sngxml::dom::Element> FunctionDeclarationSymbol::CreateElement()
@@ -51,7 +90,7 @@ std::unique_ptr<sngxml::dom::Element> ConstructorDeclarationSymbol::CreateElemen
 }
 
 FunctionSymbol::FunctionSymbol(const Span& span_, const std::u32string& groupName_, const std::u32string& name_, Specifier specifiers_) :
-    ContainerSymbol(span_, name_), index(0), groupName(groupName_), returnType(nullptr), specifiers(specifiers_), functionGroup(nullptr),
+    CallableSymbol(span_, name_), index(0), groupName(groupName_), returnType(nullptr), specifiers(specifiers_), functionGroup(nullptr),
     declarationSpan()
 {
 }
@@ -269,6 +308,32 @@ std::unique_ptr<sngxml::dom::Element> ConstructorSymbol::CreateElement()
     return constructorElement;
 }
 
+DestructorSymbol::DestructorSymbol(const Span& span_, const std::u32string& name_, Specifier specifiers_) : FunctionSymbol(span_, U"destructor", name_, specifiers_)
+{
+}
+
+std::unique_ptr<sngxml::dom::Element> DestructorSymbol::CreateElement()
+{
+    std::unique_ptr<sngxml::dom::Element> destructorElement(new sngxml::dom::Element(U"destructor"));
+    if (Specifiers() != Specifier::none)
+    {
+        destructorElement->SetAttribute(U"specifiers", SpecifierStr(Specifiers()));
+    }
+    if (GetSpan().Valid())
+    {
+        destructorElement->SetAttribute(U"definitionFile", ToUtf32(FileName()));
+        destructorElement->SetAttribute(U"definitionLine", ToUtf32(std::to_string(GetSpan().line)));
+        destructorElement->SetAttribute(U"definitionFileId", FileId());
+    }
+    if (DeclarationSpan().Valid())
+    {
+        destructorElement->SetAttribute(U"declarationFile", ToUtf32(DeclarationFileName()));
+        destructorElement->SetAttribute(U"declarationLine", ToUtf32(std::to_string(DeclarationSpan().line)));
+        destructorElement->SetAttribute(U"declarationFileId", DeclarationFileId());
+    }
+    return destructorElement;
+}
+
 FunctionGroupSymbol::FunctionGroupSymbol(const Span& span_, const std::u32string& name_) : Symbol(span_, name_)
 {
 }
@@ -342,7 +407,7 @@ struct FunctionMatch
 
 struct BetterFunctionMatch
 {
-    bool operator()(const std::pair<FunctionSymbol*, FunctionMatch>& left, const std::pair<FunctionSymbol*, FunctionMatch>& right) const
+    bool operator()(const std::pair<CallableSymbol*, FunctionMatch>& left, const std::pair<CallableSymbol*, FunctionMatch>& right) const
     {
         int arity = left.second.matchValues.size();
         if (arity != right.second.matchValues.size())
@@ -385,15 +450,25 @@ struct BetterFunctionMatch
     }
 };
 
-FunctionSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>& argumentSymbols)
+CallableSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>& argumentSymbols)
 {
     int arity = argumentSymbols.size();
-    std::vector<FunctionSymbol*> viableFunctions;
+    std::vector<CallableSymbol*> viableFunctions;
     for (const std::unique_ptr<FunctionSymbol>& function : functions)
     {
         if (function->Arity() == arity)
         {
             viableFunctions.push_back(function.get());
+        }
+    }
+    if (viableFunctions.empty())
+    {
+        for (const std::unique_ptr<FunctionDeclarationSymbol>& functionDeclaration : functionDeclarations)
+        {
+            if (functionDeclaration->Arity() == arity)
+            {
+                viableFunctions.push_back(functionDeclaration.get());
+            }
         }
     }
     if (viableFunctions.empty())
@@ -406,11 +481,11 @@ FunctionSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>&
     }
     else
     {
-        std::vector<std::pair<FunctionSymbol*, FunctionMatch>> functionMatches;
+        std::vector<std::pair<CallableSymbol*, FunctionMatch>> functionMatches;
         int n = viableFunctions.size();
         for (int i = 0; i < n; ++i)
         {
-            FunctionSymbol* viableFunction = viableFunctions[i];
+            CallableSymbol* viableFunction = viableFunctions[i];
             FunctionMatch functionMatch;
             for (int i = 0; i < arity; ++i)
             {
@@ -430,7 +505,7 @@ FunctionSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>&
         std::sort(functionMatches.begin(), functionMatches.end(), BetterFunctionMatch());
         if (BetterFunctionMatch()(functionMatches[0], functionMatches[1]))
         {
-            FunctionSymbol* bestMatch = functionMatches[0].first;
+            CallableSymbol* bestMatch = functionMatches[0].first;
             return bestMatch;
         }
         return nullptr;

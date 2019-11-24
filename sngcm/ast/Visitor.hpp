@@ -189,6 +189,7 @@ class ParenthesizedExpressionNode;
 class GlobalVariableNode;
 class Attribute;
 class Attributes;
+class CommentNode;
 
 class SNGCM_AST_API Visitor
 {
@@ -375,6 +376,8 @@ public:
 
     virtual void Visit(Attribute& attribute) {}
     virtual void Visit(Attributes& attributes) {}
+
+    virtual void Visit(CommentNode& commentNode) {}
 };
 
 } } // namespace sngcm::ast

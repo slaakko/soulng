@@ -22,7 +22,7 @@ public:
     void Accept(Visitor& visitor) override;
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
-    Specifiers GetSpecifiers() const { return specifiers; }
+    Specifiers GetSpecifiers() const override { return specifiers; }
     const Node* TypeExpr() const { return typeExpr.get(); }
     Node* TypeExpr() { return typeExpr.get(); }
     const IdentifierNode* Id() const { return id.get(); }

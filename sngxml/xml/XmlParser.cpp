@@ -2444,7 +2444,7 @@ soulng::parser::Match XmlParser::SystemLiteral(TrivialLexer& lexer)
                                 {
                                     int64_t save = lexer.GetPos();
                                     {
-                                        soulng::parser::Match match(true);
+                                        soulng::parser::Match match(lexer.Pos() != lexer.End());
                                         for (const soulng::parser::Range& range : s15)
                                         {
                                             if (*lexer >= range.first && *lexer <= range.last)
@@ -2533,7 +2533,7 @@ soulng::parser::Match XmlParser::SystemLiteral(TrivialLexer& lexer)
                                         {
                                             int64_t save = lexer.GetPos();
                                             {
-                                                soulng::parser::Match match(true);
+                                                soulng::parser::Match match(lexer.Pos() != lexer.End());
                                                 for (const soulng::parser::Range& range : s16)
                                                 {
                                                     if (*lexer >= range.first && *lexer <= range.last)
@@ -6303,7 +6303,7 @@ soulng::parser::Match XmlParser::EntityValue(TrivialLexer& lexer, sngxml::xml::X
                                         soulng::parser::Match* parentMatch7 = &match;
                                         {
                                             int64_t save = lexer.GetPos();
-                                            soulng::parser::Match match(true);
+                                            soulng::parser::Match match(lexer.Pos() != lexer.End());
                                             for (const soulng::parser::Range& range : s41)
                                             {
                                                 if (*lexer >= range.first && *lexer <= range.last)
@@ -6421,7 +6421,7 @@ soulng::parser::Match XmlParser::EntityValue(TrivialLexer& lexer, sngxml::xml::X
                                                 soulng::parser::Match* parentMatch18 = &match;
                                                 {
                                                     int64_t save = lexer.GetPos();
-                                                    soulng::parser::Match match(true);
+                                                    soulng::parser::Match match(lexer.Pos() != lexer.End());
                                                     for (const soulng::parser::Range& range : s42)
                                                     {
                                                         if (*lexer >= range.first && *lexer <= range.last)
@@ -7430,7 +7430,7 @@ soulng::parser::Match XmlParser::CharDataChar(TrivialLexer& lexer)
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(true);
+        soulng::parser::Match match(lexer.Pos() != lexer.End());
         for (const soulng::parser::Range& range : s48)
         {
             if (*lexer >= range.first && *lexer <= range.last)
@@ -7551,7 +7551,7 @@ soulng::parser::Match XmlParser::CharData(TrivialLexer& lexer, sngxml::xml::XmlP
                                     {
                                         int64_t save = lexer.GetPos();
                                         {
-                                            soulng::parser::Match match(true);
+                                            soulng::parser::Match match(lexer.Pos() != lexer.End());
                                             for (const soulng::parser::Range& range : s49)
                                             {
                                                 if (*lexer >= range.first && *lexer <= range.last)
@@ -7614,7 +7614,7 @@ soulng::parser::Match XmlParser::CharData(TrivialLexer& lexer, sngxml::xml::XmlP
                                     {
                                         int64_t save = lexer.GetPos();
                                         {
-                                            soulng::parser::Match match(true);
+                                            soulng::parser::Match match(lexer.Pos() != lexer.End());
                                             for (const soulng::parser::Range& range : s51)
                                             {
                                                 if (*lexer >= range.first && *lexer <= range.last)
@@ -7965,7 +7965,7 @@ soulng::parser::Match XmlParser::AttValueDQ(TrivialLexer& lexer, sngxml::xml::Xm
                                     {
                                         int64_t pos = lexer.GetPos();
                                         soulng::lexer::Span span = lexer.GetSpan();
-                                        soulng::parser::Match match(true);
+                                        soulng::parser::Match match(lexer.Pos() != lexer.End());
                                         for (const soulng::parser::Range& range : s55)
                                         {
                                             if (*lexer >= range.first && *lexer <= range.last)
@@ -8118,7 +8118,7 @@ soulng::parser::Match XmlParser::AttValueSQ(TrivialLexer& lexer, sngxml::xml::Xm
                                     {
                                         int64_t pos = lexer.GetPos();
                                         soulng::lexer::Span span = lexer.GetSpan();
-                                        soulng::parser::Match match(true);
+                                        soulng::parser::Match match(lexer.Pos() != lexer.End());
                                         for (const soulng::parser::Range& range : s56)
                                         {
                                             if (*lexer >= range.first && *lexer <= range.last)

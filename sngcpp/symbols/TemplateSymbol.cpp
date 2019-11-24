@@ -17,4 +17,9 @@ std::unique_ptr<sngxml::dom::Element> TemplateParameterSymbol::CreateElement()
     return templateParameter;
 }
 
+int TemplateParameterSymbol::MatchValue(TypeSymbol* argumentType)
+{
+    return std::numeric_limits<int>::max() - 1;
+}
+
 } } // namespace sngcpp::symbols

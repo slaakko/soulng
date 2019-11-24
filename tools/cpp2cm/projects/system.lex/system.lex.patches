@@ -1,0 +1,2 @@
+XmlParsingLog.cm:77:M/s << "&#x" << NOT_CONVERTED << cast<uint>(c) << ";";/s << "&#x" << ToHexString(cast<uint>(c)) << ";";/
+Lexer.cm:157:M/soulng::lexer::Lexer::NextToken/System.Lex.Lexer.NextToken/

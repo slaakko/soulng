@@ -100,7 +100,10 @@ EnumConstantNode::EnumConstantNode(const Span& span_) : Node(NodeType::enumConst
 EnumConstantNode::EnumConstantNode(const Span& span_, IdentifierNode* id_, Node* value_) : Node(NodeType::enumConstantNode, span_), id(id_), value(value_), hasValue(false)
 {
     id->SetParent(this);
-    value->SetParent(this);
+    if (value)
+    {
+        value->SetParent(this);
+    }
 }
 
 Node* EnumConstantNode::Clone(CloneContext& cloneContext) const
@@ -152,7 +155,7 @@ Node* MakeNextEnumConstantValue(const Span& span, EnumTypeNode* enumType)
             {
                 if (enumType->GetUnderlyingType()->IsUnsignedTypeNode())
                 {
-                    return new AddNode(span, clonedValue, new ByteLiteralNode(span, 1));
+                    return new AddNode(span, clonedValue, new ByteLiteralNode(span, 1u));
                 }
             }
             return new AddNode(span, clonedValue, new SByteLiteralNode(span, 1));
@@ -168,7 +171,7 @@ Node* MakeNextEnumConstantValue(const Span& span, EnumTypeNode* enumType)
         {
             if (enumType->GetUnderlyingType()->IsUnsignedTypeNode())
             {
-                return new ByteLiteralNode(span, 0);
+                return new ByteLiteralNode(span, 0u);
             }
         }
         return new SByteLiteralNode(span, 0);

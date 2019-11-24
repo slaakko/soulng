@@ -897,10 +897,10 @@ void ConceptNode::AddConstraint(ConstraintNode* constraint)
     constraints.Add(constraint);
 }
 
-void ConceptNode::AddAxiom(AxiomNode* axiom)
+void ConceptNode::AddAxiom(AxiomNode* axiom_)
 {
-    axiom->SetParent(this);
-    axioms.Add(axiom);
+    axiom_->SetParent(this);
+    axioms.Add(axiom_);
 }
 
 IntrinsicConstraintNode::IntrinsicConstraintNode(NodeType nodeType_) : ConstraintNode(nodeType_, Span())

@@ -3020,7 +3020,7 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Axiom"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    std::unique_ptr<AxiomNode> axiom = std::unique_ptr<AxiomNode>();
+    std::unique_ptr<AxiomNode> axiomNode = std::unique_ptr<AxiomNode>();
     Span axiomSpan = Span();
     Span beginBraceSpan = Span();
     Span endBraceSpan = Span();
@@ -3107,7 +3107,7 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                                         soulng::parser::Match match(true);
                                         if (match.hit)
                                         {
-                                            axiom.reset(new AxiomNode(axiomSpan, id.release()));
+                                            axiomNode.reset(new AxiomNode(axiomSpan, id.release()));
                                         }
                                         *parentMatch12 = match;
                                     }
@@ -3126,7 +3126,7 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                                 int64_t save = lexer.GetPos();
                                 soulng::parser::Match* parentMatch14 = &match;
                                 {
-                                    soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, axiom.get());
+                                    soulng::parser::Match match = ParameterParser::ParameterList(lexer, ctx, axiomNode.get());
                                     if (match.hit)
                                     {
                                         *parentMatch14 = match;
@@ -3192,7 +3192,7 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
                         soulng::parser::Match* parentMatch19 = &match;
                         {
                             int64_t pos = lexer.GetPos();
-                            soulng::parser::Match match = ConceptParser::AxiomBody(lexer, ctx, axiom.get());
+                            soulng::parser::Match match = ConceptParser::AxiomBody(lexer, ctx, axiomNode.get());
                             if (match.hit)
                             {
                                 *parentMatch19 = match;
@@ -3251,9 +3251,9 @@ soulng::parser::Match ConceptParser::Axiom(CmajorLexer& lexer, ParsingContext* c
         }
         if (match.hit)
         {
-            axiom->SetBeginBraceSpan(beginBraceSpan);
-            axiom->SetEndBraceSpan(endBraceSpan);
-            concept->AddAxiom(axiom.release());
+            axiomNode->SetBeginBraceSpan(beginBraceSpan);
+            axiomNode->SetEndBraceSpan(endBraceSpan);
+            concept->AddAxiom(axiomNode.release());
         }
         *parentMatch0 = match;
     }

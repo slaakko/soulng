@@ -11,7 +11,7 @@
 
 namespace sngcm { namespace ast {
 
-enum class Specifiers : uint32_t
+enum class Specifiers : int32_t
 {
     none = 0,
     public_ = 1 << 0,
@@ -39,17 +39,17 @@ enum class Specifiers : uint32_t
 
 inline Specifiers operator|(Specifiers left, Specifiers right)
 {
-    return Specifiers(uint32_t(left) | uint32_t(right));
+    return static_cast<Specifiers>(static_cast<int32_t>(left) | static_cast<int32_t>(right));
 }
 
 inline Specifiers operator&(Specifiers left, Specifiers right)
 {
-    return Specifiers(uint32_t(left) & uint32_t(right));
+    return static_cast<Specifiers>(static_cast<int32_t>(left) & static_cast<int32_t>(right));
 }
 
 inline Specifiers operator~(Specifiers operand)
 {
-    return Specifiers(~uint32_t(operand));
+    return static_cast<Specifiers>(~static_cast<int32_t>(operand));
 }
 
 SNGCM_AST_API bool StaticConstructorSpecifiers(Specifiers specifiers);

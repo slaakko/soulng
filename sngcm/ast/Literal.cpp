@@ -183,7 +183,7 @@ std::string SByteLiteralNode::ToString() const
     return std::to_string(value);
 }
 
-ByteLiteralNode::ByteLiteralNode(const Span& span_) : LiteralNode(NodeType::byteLiteralNode, span_), value(0)
+ByteLiteralNode::ByteLiteralNode(const Span& span_) : LiteralNode(NodeType::byteLiteralNode, span_), value(0u)
 {
 }
 
@@ -253,7 +253,7 @@ std::string ShortLiteralNode::ToString() const
     return std::to_string(value);
 }
 
-UShortLiteralNode::UShortLiteralNode(const Span& span_) : LiteralNode(NodeType::ushortLiteralNode, span_), value(0)
+UShortLiteralNode::UShortLiteralNode(const Span& span_) : LiteralNode(NodeType::ushortLiteralNode, span_), value(0u)
 {
 }
 
@@ -323,7 +323,7 @@ std::string IntLiteralNode::ToString() const
     return std::to_string(value);
 }
 
-UIntLiteralNode::UIntLiteralNode(const Span& span_) : LiteralNode(NodeType::uintLiteralNode, span_), value(0)
+UIntLiteralNode::UIntLiteralNode(const Span& span_) : LiteralNode(NodeType::uintLiteralNode, span_), value(0u)
 {
 }
 
@@ -393,7 +393,7 @@ std::string LongLiteralNode::ToString() const
     return std::to_string(value);
 }
 
-ULongLiteralNode::ULongLiteralNode(const Span& span_) : LiteralNode(NodeType::ulongLiteralNode, span_), value(0)
+ULongLiteralNode::ULongLiteralNode(const Span& span_) : LiteralNode(NodeType::ulongLiteralNode, span_), value(0u)
 {
 }
 

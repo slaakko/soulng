@@ -18,7 +18,6 @@ enum class TypeResolverFlags : uint8_t
     resolveClassGroup = 1 << 0,
     nothrow = 1 << 1,
     noExternalTypes = 1 << 2,
-    noPseudoTypes = 1 << 3
 };
 
 SNGCPP_BINDER_API inline TypeResolverFlags operator|(TypeResolverFlags left, TypeResolverFlags right)
@@ -31,8 +30,10 @@ SNGCPP_BINDER_API inline TypeResolverFlags operator&(TypeResolverFlags left, Typ
     return TypeResolverFlags(uint8_t(left) & uint8_t(right));
 }
 
-SNGCPP_BINDER_API sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, Node* node);
-SNGCPP_BINDER_API sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, BoundSourceFile& boundSourceFile, TypeResolverFlags flags, Node* node);
+SNGCPP_BINDER_API sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes,
+    BoundSourceFile& boundSourceFile, ClassTypeSymbol* currentClassType, Node* node);
+SNGCPP_BINDER_API sngcpp::symbols::TypeSymbol* ResolveType(SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes,
+    BoundSourceFile& boundSourceFile, TypeResolverFlags flags, ClassTypeSymbol* currentClassType, Node* node);
 
 } } // namespace sngcpp::binder
 

@@ -861,6 +861,7 @@ void Project::ImportAsts(bool verbose)
 void Project::BuildSymbolTable()
 {
     if (!ast) return;
+    symbolTable.SetGendocMode();
     sngcpp::ast::ResolveSourceFiles(ast.get(), sourceFiles);
     for (auto& sourceFile : sourceFiles)
     {

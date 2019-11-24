@@ -1,0 +1,13 @@
+<project name="soulng.util">
+  <imports>
+    <import project="../std/std.xml"/>
+    <import project="../boost/boost.xml"/>
+  </imports>
+  <source file="BinaryReader.hpp"/>
+  <source file="BinaryWriter.hpp"/>
+  <source file="CodeFormatter.hpp"/>
+  <source file="Sha1.hpp"/>
+  <source file="TextUtils.hpp"/>
+  <source file="Unicode.hpp"/>
+  <include path="../.."/>
+</project>
