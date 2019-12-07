@@ -18,7 +18,7 @@
 #include <sngcpp/ast/Writer.hpp>
 #include <sngcm/lexer/CmajorLexer.hpp>
 #include <sngcm/parser/CompileUnit.hpp>
-#include <sngcm/writer/SourceWriter.hpp>
+#include <sngcm/ast/SourceWriter.hpp>
 #include <sngcm/ast/Merge.hpp>
 #include <sngxml/dom/Parser.hpp>
 #include <sngxml/dom/Element.hpp>
@@ -66,6 +66,7 @@ void Project::Process(bool verbose, ProcessType processType)
     ReadFilter();
     ReadVCXProjectFilePath();
     ReadSources();
+    ReadMergeDirFiles();
     ReadIncludePath();
     ReadTargetDir();
     ReadInstallDir();
@@ -97,7 +98,7 @@ void Project::ReadVCXProjectFilePath()
                     std::u32string fileAttr = vcxprojectElement->GetAttribute(U"file");
                     if (!fileAttr.empty())
                     {
-                        vcxprojectFilePath = GetFullPath(Path::Combine(projectRootDir, ToUtf8(fileAttr)));
+                        vcxprojectFilePath = GetFullPath(Path::Combine(projectRootDir, Path::MakeCanonical(ToUtf8(fileAttr))));
                         vcxprojectRootDir = Path::GetDirectoryName(vcxprojectFilePath);
                     }
                 }
@@ -524,6 +525,7 @@ void Project::BuildAst()
 
 void Project::WriteAst()
 {
+    if (!ast) return;
     std::vector<soulng::lexer::Lexer*> lx;
     for (const auto& lexer : lexers)
     {
@@ -644,6 +646,7 @@ void Project::ReadSystemProjects()
 
 void Project::BuildSymbolTable()
 {
+    if (!ast) return;
     sngcpp::ast::ResolveSourceFiles(ast.get(), sourceFiles);
     for (auto& sourceFile : sourceFiles)
     {
@@ -757,6 +760,12 @@ void Project::Convert(ProcessType processType)
             std::string sourceFilePath = GetFullPath(Path::Combine(mergeDir, ToUtf8(sourceFile->Name())));
             if (boost::filesystem::exists(sourceFilePath))
             {
+                auto it = mergeFileMap.find(sourceFile->Name());
+                if (it != mergeFileMap.cend())
+                {
+                    File* mergeFile = it->second;
+                    mergeFile->SetIncluded(true);
+                }
                 std::string sourceContent = ReadFile(sourceFilePath);
                 CmajorLexer sourceLexer(ToUtf32(sourceContent), sourceFilePath, 0);
                 ParsingContext sourceCtx;
@@ -770,11 +779,36 @@ void Project::Convert(ProcessType processType)
                 sngcm::ast::ArrangeClassMembers(*targetCu);
                 std::ofstream targetFile(targetFilePath);
                 CodeFormatter formatter(targetFile);
-                sngcm::writer::SourceWriter sourceWriter(formatter);
+                sngcm::ast::SourceWriter sourceWriter(formatter);
                 targetCu->Accept(sourceWriter);
                 if (verbose)
                 {
                     std::cout << "==> " << targetFilePath << " <- " << sourceFilePath << std::endl;
+                }
+            }
+        }
+        for (const auto& mergeFile : mergeDirFiles)
+        {
+            if (!mergeFile->Included())
+            {
+                std::string sourceFilePath = mergeFile->Path();
+                if (boost::filesystem::exists(sourceFilePath))
+                {
+                    std::string sourceContent = ReadFile(sourceFilePath);
+                    CmajorLexer sourceLexer(ToUtf32(sourceContent), sourceFilePath, 0);
+                    ParsingContext sourceCtx;
+                    std::unique_ptr<sngcm::ast::CompileUnitNode> cu = CompileUnitParser::Parse(sourceLexer, &sourceCtx);
+                    File* target = new File(mergeFile->Name(), GetFullPath(Path::Combine(targetDir, Path::GetFileName(mergeFile->Path()))));
+                    std::string targetFilePath = target->Path();
+                    std::ofstream targetFile(targetFilePath);
+                    CodeFormatter formatter(targetFile);
+                    sngcm::ast::SourceWriter sourceWriter(formatter);
+                    cu->Accept(sourceWriter);
+                    extraFiles.push_back(std::unique_ptr<File>(target));
+                    if (verbose)
+                    {
+                        std::cout << "==> " << targetFilePath << " <- " << sourceFilePath << std::endl;
+                    }
                 }
             }
         }
@@ -796,6 +830,19 @@ void Project::Convert(ProcessType processType)
             if (verbose)
             {
                 std::cout << sourceFile->Path() << " -> " << targetFilePath << std::endl;
+            }
+        }
+        for (const auto& extraFile : extraFiles)
+        {
+            std::string targetFilePath = Path::Combine(dir, ToUtf8(extraFile->Name()));
+            if (boost::filesystem::exists(targetFilePath))
+            {
+                boost::filesystem::remove(targetFilePath);
+            }
+            boost::filesystem::copy_file(extraFile->Path(), targetFilePath);
+            if (verbose)
+            {
+                std::cout << extraFile->Path() << " -> " << targetFilePath << std::endl;
             }
         }
     }
@@ -829,9 +876,19 @@ void Project::Convert(ProcessType processType)
             formatter.WriteLine("reference <" + ToUtf8(reference) + ">;");
         }
     }
+    std::vector<std::u32string> sourceFileNames;
     for (const auto& sourceFile : sourceFiles.Get())
     {
-        formatter.WriteLine("source <" + ToUtf8(sourceFile->Name()) + ">;");
+        sourceFileNames.push_back(sourceFile->Name());
+    }
+    for (const auto& extraFile : extraFiles)
+    {
+        sourceFileNames.push_back(extraFile->Name());
+    }
+    std::sort(sourceFileNames.begin(), sourceFileNames.end());
+    for (const auto& sourceFileName : sourceFileNames)
+    {
+        formatter.WriteLine("source <" + ToUtf8(sourceFileName) + ">;");
     }
     if (verbose)
     {
@@ -868,6 +925,28 @@ void Project::ReadPatchFiles()
                 }
             }
         }
+    }
+}
+
+void Project::ReadMergeDirFiles()
+{
+    if (!boost::filesystem::exists(mergeDir)) return;
+    boost::filesystem::directory_iterator it = boost::filesystem::directory_iterator(mergeDir);
+    while (it != boost::filesystem::directory_iterator())
+    {
+        const boost::filesystem::directory_entry& entry = *it;
+        if (entry.status().type() == boost::filesystem::file_type::regular_file)
+        {
+            std::string filePath = entry.path().generic_string();
+            if (Path::GetExtension(filePath) == ".cm")
+            {
+                File* file = new File(ToUtf32(Path::GetFileName(filePath)), GetFullPath(filePath));
+                file->SetIncluded(false);
+                mergeDirFiles.push_back(std::unique_ptr<File>(file));
+                mergeFileMap[file->Name()] = file;
+            }
+        }
+        ++it;
     }
 }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="scmlg" type="program" targetName="scmlg">
+  <imports>
+    <import name="std"/>
+    <import name="boost"/>
+    <import name="soulng.util"/>
+    <import project="../../system.lex/system.lex.xml"/>
+    <import project="../../system.parsing/system.parsing.xml"/>
+    <import project="../../system.cmajor.ast/system.cmajor.ast.xml"/>
+  </imports>
+  <vcxproject file="D:\work\soulngcm\soulngcm\sngcmlg\sngcmlg.vcxproj"/>
+  <include path="../.."/>
+  <target dir="scmlg"/>
+  <install dir="D:\work\cmajorm\cmajor\projects\tools\soulcm\scmlg"/>
+  <map file="map.xml"/>
+  <patches>
+    <patch file="scmlg.patches"/>
+  </patches>
+  <filter>
+    <file exclude="*"/>
+    <file include="Algorithm.hpp"/>
+    <file include="Algorithm.cpp"/>
+    <file include="Dfa.hpp"/>
+    <file include="Dfa.cpp"/>
+    <file include="IdentifierClass.hpp"/>
+    <file include="IdentifierClass.cpp"/>
+    <file include="LexerContext.hpp"/>
+    <file include="LexerContext.cpp"/>
+    <file include="Main.cpp"/>
+    <file include="Model.hpp"/>
+    <file include="Model.cpp"/>
+    <file include="Nfa.hpp"/>
+    <file include="Nfa.cpp"/>
+    <file include="Operator.hpp"/>
+    <file include="ParsingContext.hpp"/>
+    <file include="ParsingContext.cpp"/>
+    <file include="RegularExpressionParser.hpp"/>
+    <file include="RegularExpressionParser.cpp"/>
+    <file include="Symbol.hpp"/>
+    <file include="Symbol.cpp"/>
+    <file include="TokenValueParsers.hpp"/>
+    <file include="TokenValueParsers.cpp"/>
+    <file include="Visitor.hpp"/>
+    <file include="Visitor.cpp"/>
+    <class exclude="Initializer"/>
+  </filter>
+</project>

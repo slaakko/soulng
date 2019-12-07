@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{4A2F2486-6FE7-4683-9CDF-B53FCA442547}</ProjectGuid>
+    <ProjectGuid>{24EE7D84-4323-4696-951C-60551988F5FB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>cpp2cm</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -152,21 +152,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Args.hpp" />
-    <ClInclude Include="ArgsParser.hpp" />
-    <ClInclude Include="Context.hpp" />
-    <ClInclude Include="Converter.hpp" />
-    <ClInclude Include="File.hpp" />
-    <ClInclude Include="Filter.hpp" />
-    <ClInclude Include="Map.hpp" />
-    <ClInclude Include="Merge.hpp" />
-    <ClInclude Include="Patch.hpp" />
-    <ClInclude Include="PatchFileParser.hpp" />
-    <ClInclude Include="Project.hpp" />
-    <ClInclude Include="SourceFile.hpp" />
-    <ClInclude Include="System.hpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Args.cpp" />
     <ClCompile Include="ArgsParser.cpp" />
     <ClCompile Include="Context.cpp" />
@@ -181,6 +166,21 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="SourceFile.cpp" />
     <ClCompile Include="System.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Args.hpp" />
+    <ClInclude Include="ArgsParser.hpp" />
+    <ClInclude Include="Context.hpp" />
+    <ClInclude Include="Converter.hpp" />
+    <ClInclude Include="File.hpp" />
+    <ClInclude Include="Filter.hpp" />
+    <ClInclude Include="Map.hpp" />
+    <ClInclude Include="Merge.hpp" />
+    <ClInclude Include="Patch.hpp" />
+    <ClInclude Include="PatchFileParser.hpp" />
+    <ClInclude Include="Project.hpp" />
+    <ClInclude Include="SourceFile.hpp" />
+    <ClInclude Include="System.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ArgsParser.parser" />

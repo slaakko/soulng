@@ -124,7 +124,7 @@ void SymbolCreator::Visit(MemberDeclarationNode& memberDeclarationNode)
             functionBodyFollowsOrIsPureDeletedOrDefault = true;
         }
         memberDeclarationNode.Declarator()->Accept(*this);
-        if (wasPureDeletedOrDefault || cpp2cmMode)
+        if (wasPureDeletedOrDefault || wasFunctionDeclaration && cpp2cmMode)
         {
             symbolTable.EndFunction(projectName);
             symbolTable.EndNameSequence(nameSequenceCount);

@@ -1,6 +1,6 @@
 #include <sngcm/ast/InitDone.hpp>
 #include <sngcm/ast/Identifier.hpp>
-#include <sngcm/writer/SourceWriter.hpp>
+#include <sngcm/ast/SourceWriter.hpp>
 #include <sngcm/lexer/CmajorLexer.hpp>
 #include <sngcm/lexer/ContainerFileLexer.hpp>
 #include <sngcm/parser/CompileUnit.hpp>
@@ -113,7 +113,7 @@ int main(int argc, const char** argv)
                     std::string outFilePath = soulng::util::Path::ChangeExtension(fileName, ".out.cm");
                     std::ofstream outFile(outFilePath);
                     soulng::util::CodeFormatter formatter(outFile);
-                    sngcm::writer::SourceWriter writer(formatter);
+                    sngcm::ast::SourceWriter writer(formatter);
                     compileUnit->Accept(writer);
                     std::cout << "==> " << outFilePath << std::endl;
                 }
@@ -137,7 +137,7 @@ int main(int argc, const char** argv)
                         std::string outFilePath = soulng::util::Path::ChangeExtension(sourceFilePath, ".out.cm");
                         std::ofstream outFile(outFilePath);
                         soulng::util::CodeFormatter formatter(outFile);
-                        sngcm::writer::SourceWriter writer(formatter);
+                        sngcm::ast::SourceWriter writer(formatter);
                         compileUnit->Accept(writer);
                         std::cout << "==> " << outFilePath << std::endl;
                     }

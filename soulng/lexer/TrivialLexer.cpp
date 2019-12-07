@@ -24,7 +24,13 @@ int TrivialLexer::NextState(int state, char32_t c)
     return -1;
 }
 
-std::string GetTokenInfo(int tokenId)
+
+std::string GetTrivialTokenInfo(int tokenId)
 {
+    if (tokenId == soulng::lexer::END_TOKEN)
+    {
+        return "end of file";
+    }
     return std::to_string(tokenId);
 }
+

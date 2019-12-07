@@ -6967,7 +6967,7 @@ soulng::parser::Match StatementParser::ConditionalCompilationPrimary(CmajorLexer
                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ConditionalCompilationPrimary"));
                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                    return soulng::parser::Match(true, new ParenthesizeConditionalCompilationExpressionNode(span, expr.release()));
+                                    return soulng::parser::Match(true, new ParenthesizedConditionalCompilationExpressionNode(span, expr.release()));
                                 }
                             }
                             *parentMatch7 = match;

@@ -27,6 +27,7 @@ public:
     virtual bool IsExternalTypeSymbol() const { return false; }
     virtual bool IsReferenceTypeSymbol() const { return false; }
     virtual bool IsTemplateParameterSymbol() const { return false; }
+    virtual bool HasConstDerivation() const { return false; }
     virtual ClassKey GetClassKey() const { return ClassKey::class_; }
     std::u32string KindStr() override { return U"type"; }
     std::unique_ptr<sngxml::dom::Element> CreateElement() override;

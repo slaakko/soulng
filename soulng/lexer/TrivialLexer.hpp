@@ -15,6 +15,6 @@ public:
     int NextState(int state, char32_t c) override;
 };
 
-SOULNG_LEXER_API std::string GetTokenInfo(int tokenId);
+SOULNG_LEXER_API std::string GetTrivialTokenInfo(int tokenId);
 
 #endif // SOULNG_LEXER_TRIVIAL_LEXER_INCLUDED

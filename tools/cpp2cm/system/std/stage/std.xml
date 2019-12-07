@@ -196,6 +196,11 @@
                                     <parameter access="public" id="parameter__19D0EFA86466AD52FD417A93315C9D5A24AF6EDD" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
                                 </parameters>
                             </function>
+                            <function access="public" definitionFile="map.hpp" definitionFileId="file/map.hpp_967DAE3E3B0BF77B2EE871097E714AB070115BE8.html" definitionLine="16" id="function_insert_A0D7C28772CF840096093DEAFED3D6B4ECC30068" name="insert" returnType="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool">
+                                <parameters>
+                                    <parameter access="public" id="parameter__60FE06E1F840FFAB1B2B865CCA6C109AB96F4D51" name="" type="const.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                                </parameters>
+                            </function>
                         </functions>
                         <typedefs>
                             <typedef access="public" id="typedef_const_iterator_DBFC58EBBCEE0A82288E78EE6772AA2854FEB393" name="const_iterator" target="ConstIterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
@@ -273,6 +278,11 @@
                                 </parameters>
                             </function>
                             <function access="public" definitionFile="unordered_map.hpp" definitionFileId="file/unordered_map.hpp_91C251E027AEAFDE833EA2AE0851560FD396D05F.html" definitionLine="14" id="function_size_04B9BD14039605F9871FF2B6C36565875A9E5BEC" name="size" returnType="int" specifiers="const" target="Count"/>
+                            <function access="public" definitionFile="unordered_map.hpp" definitionFileId="file/unordered_map.hpp_91C251E027AEAFDE833EA2AE0851560FD396D05F.html" definitionLine="16" id="function_insert_B21AD9D8E52F8EC3DB18B8FF70A7A08F9204E8C1" name="insert" returnType="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool">
+                                <parameters>
+                                    <parameter access="public" id="parameter__AC52718A078068FEC5230978DA0C244B5CC83317" name="" type="const.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                                </parameters>
+                            </function>
                         </functions>
                         <typedefs>
                             <typedef access="public" id="typedef_const_iterator_EECC7AA84B62E7D579F8FD38E5EE735D0CA159D3" name="const_iterator" target="ConstIterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
@@ -367,6 +377,74 @@
                         <functions>
                             <function access="public" definitionFile="exception.hpp" definitionFileId="file/exception.hpp_9ED584274D66A2ADF346238E3977914F5671954B.html" definitionLine="8" id="function_what_A8AD5616880C14B13295EA50D7EDD44FCBC72234" name="what" returnType="const.char.ptr.char" specifiers="const" target="Message"/>
                         </functions>
+                    </class>
+                    <class access="public" definitionFile="stack.hpp" definitionFileId="file/stack.hpp_CBFFADE5906A83A4B107578BF63B2D5E817EC7FC.html" definitionLine="4" id="class_stack_9CB244C3F46D198DCFA44626486BFB2C1FB940FB" key="class" name="stack" project="std" target="System.Collections.Stack">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                        <functions>
+                            <function access="public" definitionFile="stack.hpp" definitionFileId="file/stack.hpp_CBFFADE5906A83A4B107578BF63B2D5E817EC7FC.html" definitionLine="9" id="function_pop_150316FB12D0C1588627FED6B6475666E4FCF04B" name="pop" returnType="void" target="Pop"/>
+                            <function access="public" definitionFile="stack.hpp" definitionFileId="file/stack.hpp_CBFFADE5906A83A4B107578BF63B2D5E817EC7FC.html" definitionLine="8" id="function_push_5BDC3C48C9EB5150E117A2C76BDCFF98D3925666" name="push" returnType="void" target="Push">
+                                <parameters>
+                                    <parameter access="public" id="parameter__E160CA86CCDCC0544C0509971922A955FF4BF842" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="stack.hpp" definitionFileId="file/stack.hpp_CBFFADE5906A83A4B107578BF63B2D5E817EC7FC.html" definitionLine="7" id="function_top_41745E38EBD774D3A91965C07F7378E608A4DB07" name="top" returnType="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" target="Top"/>
+                        </functions>
+                    </class>
+                    <class access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="4" id="class_list_F3CB00BB4675319888AD0993594BD5000A4C13C8" key="class" name="list" project="std" target="System.Collections.LinkedList">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                        <functions>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="14" id="function_back_5365789219787B9B721506B8210754E5018EAF83" name="back" returnType="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" specifiers="const" target="Back"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="9" id="function_begin_7ED7E8438B2E8D5E1F28EB1DB10B8C26B2F4D60C" name="begin" returnType="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4" target="Begin"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="11" id="function_cbegin_3C18FA69045002C05F17A4519CE673D599B3290B" name="cbegin" returnType="typedef_const_iterator_BB0125D4D3A1AC59C3632C7C7E9D22AAAD2DD5A6" specifiers="const" target="CBegin"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="12" id="function_cend_026779C16589EA5F006E71D769D7BCC2EF1ECE86" name="cend" returnType="typedef_const_iterator_BB0125D4D3A1AC59C3632C7C7E9D22AAAD2DD5A6" specifiers="const" target="CEnd"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="17" id="function_empty_6B196D5A8533EF26B89FE575674F20F6C05DC2CD" name="empty" returnType="bool" specifiers="const" target="IsEmpty"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="10" id="function_end_54FC7ADB35695916B56122A97DF84F4157483953" name="end" returnType="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4" target="End"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="13" id="function_front_BA4AFB220A478587EAF046FDCC94A9DAB8F16AF1" name="front" returnType="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" specifiers="const" target="Front"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="16" id="function_pop_back_C45872B54798320E85F9C69186DD33626A34F795" name="pop_back" returnType="void" target="RemoveLast"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="15" id="function_push_back_296090A729EE3206D4A03F74E767C9D169128242" name="push_back" returnType="void" target="Add">
+                                <parameters>
+                                    <parameter access="public" id="parameter__F0E99858D86DBBD64059C9578810F2BC8F5ADEAD" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="18" id="function_clear_DB168C641D9CC1EFEA8A99867D11AD79B956F646" name="clear" returnType="void" target="Clear"/>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="20" id="function_erase_9FA2AD2700B7A0064E44F346EFBBB7E60AE65462" name="erase" returnType="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4" target="Remove">
+                                <parameters>
+                                    <parameter access="public" id="parameter__15EB76C6E1255308719C26FA3BB51C12BA2E82FA" name="" type="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4"/>
+                                </parameters>
+                            </function>
+                            <function access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="19" id="function_insert_F59DC26EAFEAF0A91E0C8542F77B1E2C2AF426D3" name="insert" returnType="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4" target="Insert">
+                                <parameters>
+                                    <parameter access="public" id="parameter__3DB1166F95B5F362F7C3267CB0186871316617BF" name="" type="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4"/>
+                                    <parameter access="public" id="parameter__3DB1166F95B5F362F7C3267CB0186871316617BF" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                                </parameters>
+                            </function>
+                        </functions>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_BB0125D4D3A1AC59C3632C7C7E9D22AAAD2DD5A6" name="const_iterator" target="ConstIterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4" name="iterator" target="Iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
+                    </class>
+                    <class access="public" definitionFile="pair.hpp" definitionFileId="file/pair.hpp_635488B6CC7A436232B708170FEED1C0D02E011A.html" definitionLine="4" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF" key="class" name="pair" project="std" target="System.Pair">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                            <templateParameter access="public" id="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+                        </templateParameters>
+                        <constructors>
+                            <constructor access="public" definitionFile="pair.hpp" definitionFileId="file/pair.hpp_635488B6CC7A436232B708170FEED1C0D02E011A.html" definitionLine="7" id="constructor_pair_16CE0CE6CB0C59D2DB3F99F336AA1B3DB3CD7272" name="pair" target="@constructor">
+                                <parameters>
+                                    <parameter access="public" id="parameter__999CDEB5CEE9CB2BB25FC8901F04FB7E02AF0A8D" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                                    <parameter access="public" id="parameter__999CDEB5CEE9CB2BB25FC8901F04FB7E02AF0A8D" name="" type="const.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                                </parameters>
+                            </constructor>
+                        </constructors>
+                        <variables>
+                            <variable access="public" id="variable_first_A96CCCC10FE15B9139D7CBEAD9EE4FBA3B305279" name="first" target="first" type="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                            <variable access="public" id="variable_second_FEE83E1EF41C5D5CAC06328A9A232D230EC46453" name="second" target="second" type="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                        </variables>
                     </class>
                 </classes>
                 <typedefs>
@@ -966,6 +1044,43 @@
                 <derivation kind="operator" str="&amp;&amp;"/>
             </derivations>
         </derivedType>
+        <derivedType access="public" id="const.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <templateArgument typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
         <derivedType access="public" id="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19.ptr.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="CharT*">
             <derivations>
                 <derivation kind="base" typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
@@ -1078,6 +1193,13 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
+        <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
         <derivedType access="public" id="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
@@ -1085,10 +1207,10 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+        <derivedType access="public" id="const.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
-                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="base" typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -1120,10 +1242,10 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
+        <derivedType access="public" id="const.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
-                <derivation kind="base" typeId="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="base" typeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -1149,33 +1271,33 @@
                 <templateArgument typeId="type_CA73AB65568CD125C2D27A22BBD9E863C10B675D"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
                 <templateArgument typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
-                <templateArgument typeId="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635"/>
+                <templateArgument typeId="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
-            <templateArguments>
-                <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
-                <templateArgument typeId="bool"/>
-            </templateArguments>
-        </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
-                <templateArgument typeId="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143"/>
+                <templateArgument typeId="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>

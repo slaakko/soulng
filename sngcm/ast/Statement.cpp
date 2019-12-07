@@ -1312,33 +1312,33 @@ void ConditionalCompilationPrimaryNode::Read(AstReader& reader)
     symbol = reader.GetBinaryReader().ReadUtf32String();
 }
 
-ParenthesizeConditionalCompilationExpressionNode::ParenthesizeConditionalCompilationExpressionNode(const Span& span_) :
+ParenthesizedConditionalCompilationExpressionNode::ParenthesizedConditionalCompilationExpressionNode(const Span& span_) :
     ConditionalCompilationExpressionNode(NodeType::parenthesizedCondCompExpressionNode, span_)
 {
 }
 
-ParenthesizeConditionalCompilationExpressionNode::ParenthesizeConditionalCompilationExpressionNode(const Span& span_, ConditionalCompilationExpressionNode* expr_) :
+ParenthesizedConditionalCompilationExpressionNode::ParenthesizedConditionalCompilationExpressionNode(const Span& span_, ConditionalCompilationExpressionNode* expr_) :
     ConditionalCompilationExpressionNode(NodeType::parenthesizedCondCompExpressionNode, span_), expr(expr_)
 {
 }
 
-Node* ParenthesizeConditionalCompilationExpressionNode::Clone(CloneContext& cloneContext) const
+Node* ParenthesizedConditionalCompilationExpressionNode::Clone(CloneContext& cloneContext) const
 {
-    return new ParenthesizeConditionalCompilationExpressionNode(GetSpan(), static_cast<ConditionalCompilationExpressionNode*>(expr->Clone(cloneContext)));
+    return new ParenthesizedConditionalCompilationExpressionNode(GetSpan(), static_cast<ConditionalCompilationExpressionNode*>(expr->Clone(cloneContext)));
 }
 
-void ParenthesizeConditionalCompilationExpressionNode::Accept(Visitor& visitor)
+void ParenthesizedConditionalCompilationExpressionNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-void ParenthesizeConditionalCompilationExpressionNode::Write(AstWriter& writer)
+void ParenthesizedConditionalCompilationExpressionNode::Write(AstWriter& writer)
 {
     ConditionalCompilationExpressionNode::Write(writer);
     writer.Write(expr.get());
 }
 
-void ParenthesizeConditionalCompilationExpressionNode::Read(AstReader& reader)
+void ParenthesizedConditionalCompilationExpressionNode::Read(AstReader& reader)
 {
     ConditionalCompilationExpressionNode::Read(reader);
     expr.reset(reader.ReadConditionalCompilationExpressionNode());
@@ -1520,6 +1520,21 @@ void ConditionalCompilationStatementNode::Read(AstReader& reader)
         elsePart->SetParent(this);
     }
     endifSpan = reader.ReadSpan();
+}
+
+void ConditionalCompilationStatementNode::SetIfPart(ConditionalCompilationPartNode* ifPart_)
+{
+    ifPart.reset(ifPart_);
+}
+
+void ConditionalCompilationStatementNode::AddElifPart(ConditionalCompilationPartNode* elifPart)
+{
+    elifParts.Add(elifPart);
+}
+
+void ConditionalCompilationStatementNode::SetElsePart(ConditionalCompilationPartNode* elsePart_)
+{
+    elsePart.reset(elsePart_);
 }
 
 } } // namespace sngcm::ast

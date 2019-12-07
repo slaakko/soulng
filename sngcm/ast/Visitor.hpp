@@ -125,7 +125,7 @@ class ConditionalCompilationDisjunctionNode;
 class ConditionalCompilationConjunctionNode;
 class ConditionalCompilationNotNode;
 class ConditionalCompilationPrimaryNode;
-class ParenthesizeConditionalCompilationExpressionNode;
+class ParenthesizedConditionalCompilationExpressionNode;
 class ConditionalCompilationStatementNode;
 
 class ConstantNode;
@@ -311,7 +311,7 @@ public:
     virtual void Visit(ConditionalCompilationConjunctionNode& conditionalCompilationConjunctionNode) {}
     virtual void Visit(ConditionalCompilationNotNode& conditionalCompilationNotNode) {}
     virtual void Visit(ConditionalCompilationPrimaryNode& conditionalCompilationPrimaryNode) {}
-    virtual void Visit(ParenthesizeConditionalCompilationExpressionNode& parenthesizeCondCompExprNode) {}
+    virtual void Visit(ParenthesizedConditionalCompilationExpressionNode& parenthesizeCondCompExprNode) {}
     virtual void Visit(ConditionalCompilationStatementNode& conditionalCompilationStatementNode) {}
 
     virtual void Visit(TypedefNode& typedefNode) {}

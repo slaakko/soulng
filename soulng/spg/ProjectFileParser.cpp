@@ -32,13 +32,13 @@ std::unique_ptr<soulng::spg::ProjectFile> ProjectFileParser::Parse(ProjectFileLe
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return value;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetEndTokenInfo()));
         }
     }
     else

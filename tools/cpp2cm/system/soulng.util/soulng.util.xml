@@ -6,6 +6,7 @@
   <source file="BinaryReader.hpp"/>
   <source file="BinaryWriter.hpp"/>
   <source file="CodeFormatter.hpp"/>
+  <source file="Path.hpp"/>
   <source file="Sha1.hpp"/>
   <source file="TextUtils.hpp"/>
   <source file="Unicode.hpp"/>

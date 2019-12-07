@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Text;
 
@@ -39,7 +40,7 @@ namespace System.Lex
         }
         public void Write(const ustring& s)
         {
-            formatter.WriteLine(System.ToUtf8(s));
+            formatter.WriteLine(ToUtf8(s));
         }
         public override void IncIndent()
         {

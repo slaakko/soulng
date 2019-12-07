@@ -508,6 +508,7 @@ sngcm::ast::IdentifierNode* Map::MapMemberSymbol(sngcpp::symbols::Symbol* member
             if (!target.empty())
             {
                 args = element->GetAttribute(U"args");
+                target = RemoveNamespace(target);
                 return new sngcm::ast::IdentifierNode(soulng::lexer::Span(), target);
             }
         }
@@ -521,6 +522,7 @@ sngcm::ast::IdentifierNode* Map::MapMemberSymbol(sngcpp::symbols::Symbol* member
             if (!target.empty())
             {
                 args = element->GetAttribute(U"args");
+                target = RemoveNamespace(target);
                 return new sngcm::ast::IdentifierNode(soulng::lexer::Span(), target);
             }
         }
@@ -542,6 +544,7 @@ sngcm::ast::IdentifierNode* Map::MapFunctionSymbol(sngcpp::symbols::CallableSymb
             if (!target.empty())
             {
                 args = element->GetAttribute(U"args");
+                target = RemoveNamespace(target);
                 return new sngcm::ast::IdentifierNode(soulng::lexer::Span(), target);
             }
         }
@@ -555,6 +558,7 @@ sngcm::ast::IdentifierNode* Map::MapFunctionSymbol(sngcpp::symbols::CallableSymb
             if (!target.empty())
             {
                 args = element->GetAttribute(U"args");
+                target = RemoveNamespace(target);
                 return new sngcm::ast::IdentifierNode(soulng::lexer::Span(), target);
             }
         }

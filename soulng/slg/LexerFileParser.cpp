@@ -34,13 +34,13 @@ std::unique_ptr<soulng::slg::LexerFile> LexerFileParser::Parse(LexerFileLexer& l
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return value;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetEndTokenInfo()));
         }
     }
     else

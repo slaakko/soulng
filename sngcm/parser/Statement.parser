@@ -335,7 +335,7 @@ parser api(SNGCM_PARSER_API) StatementParser
 
     ConditionalCompilationPrimary(var std::u32string symbol) : ConditionalCompilationExpressionNode*
         ::= ID{ symbol = lexer.GetMatch(span); return new ConditionalCompilationPrimaryNode(span, symbol); }
-        |   LPAREN ConditionalCompilationExpression:expr RPAREN!{ return new ParenthesizeConditionalCompilationExpressionNode(span, expr); }
+        |   LPAREN ConditionalCompilationExpression:expr RPAREN!{ return new ParenthesizedConditionalCompilationExpressionNode(span, expr); }
         ;
 
     ruleinfo

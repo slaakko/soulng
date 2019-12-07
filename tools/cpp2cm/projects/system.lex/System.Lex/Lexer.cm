@@ -154,7 +154,7 @@ namespace System.Lex
                         }
                         else
                         {
-                            throw Exception("System.Lex.Lexer.NextToken(): error: invalid character \'" + ToUtf8(ustring(c, 1)) + "\' in file \'" + fileName + "\' at line " + System.ToString(line));
+                            throw Exception("System.Lex.Lexer.NextToken(): error: invalid character \'" + ToUtf8(ustring(c, 1)) + "\' in file \'" + fileName + "\' at line " + ToString(line));
                         }
                     }
                     else
@@ -180,7 +180,7 @@ namespace System.Lex
                 current = tokens.End() - 1;
                 p = GetPos();
             }
-            Token endToken(END);
+            Token endToken(END_TOKEN);
             endToken.match.begin = end;
             endToken.match.end = end;
             tokens.Add(endToken);
@@ -229,13 +229,13 @@ namespace System.Lex
             }
             else
             {
-                tokens.Add(Token(END, Lexeme(end, end), 1));
+                tokens.Add(Token(END_TOKEN, Lexeme(end, end), 1));
             }
             for (const Token& token : tokens_)
             {
                 tokens.Add(token);
             }
-            tokens.Add(Token(END, Lexeme(end, end), 1));
+            tokens.Add(Token(END_TOKEN, Lexeme(end, end), 1));
             current = tokens.Begin();
         }
         public ustring GetMatch(const Span& span) const
@@ -301,7 +301,7 @@ namespace System.Lex
         public void ThrowExpectationFailure(long pos, const ustring& name)
         {
             Token token = GetToken(pos);
-            throw Exception("parsing error in \'" + fileName + ":" + System.ToString(token.line) + "\': " + System.ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));
+            throw Exception("parsing error in \'" + fileName + ":" + ToString(token.line) + "\': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));
         }
         public ustring RestOfLine(int maxLineLength)
         {

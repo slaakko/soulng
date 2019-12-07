@@ -625,11 +625,11 @@ private:
     std::u32string symbol;
 };
 
-class SNGCM_AST_API ParenthesizeConditionalCompilationExpressionNode : public ConditionalCompilationExpressionNode
+class SNGCM_AST_API ParenthesizedConditionalCompilationExpressionNode : public ConditionalCompilationExpressionNode
 {
 public:
-    ParenthesizeConditionalCompilationExpressionNode(const Span& span_);
-    ParenthesizeConditionalCompilationExpressionNode(const Span& span_, ConditionalCompilationExpressionNode* expr_);
+    ParenthesizedConditionalCompilationExpressionNode(const Span& span_);
+    ParenthesizedConditionalCompilationExpressionNode(const Span& span_, ConditionalCompilationExpressionNode* expr_);
     Node* Clone(CloneContext& cloneContext) const override;
     void Accept(Visitor& visitor) override;
     void Write(AstWriter& writer) override;
@@ -686,6 +686,9 @@ public:
     void SetElifKeywordSpan(const Span& span);
     void SetEndIfSpan(const Span& endifSpan_) { endifSpan = endifSpan_; }
     const Span& EndIfSpan() const { return endifSpan; }
+    void SetIfPart(ConditionalCompilationPartNode* ifPart_);
+    void AddElifPart(ConditionalCompilationPartNode* elifPart);
+    void SetElsePart(ConditionalCompilationPartNode* elsePart_);
 private:
     std::unique_ptr<ConditionalCompilationPartNode> ifPart;
     NodeList<ConditionalCompilationPartNode> elifParts;

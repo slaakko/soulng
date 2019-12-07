@@ -228,7 +228,7 @@ void DifferenceParser::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-ListParser::ListParser(Parser* left_, Parser* right_) : UnaryParser(U"list", new SequenceParser(left_, new KleeneParser(new SequenceParser(right_, left_->Clone()))))
+ListParser::ListParser(Parser* left_, Parser* right_) : UnaryParser(U"list", new SequenceParser(left_, new KleeneParser(new SequenceParser(right_, left_->Clone())))), left(left_), right(right_)
 {
 }
 

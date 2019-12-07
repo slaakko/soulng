@@ -16,6 +16,10 @@ StatementBinder::StatementBinder(SymbolTable& symbolTable_, const std::unordered
 
 void StatementBinder::Visit(SourceFileNode& sourceFileNode)
 {
+    if (sourceFileNode.SourceFilePath().find("LexerContext.cpp") != std::string::npos)
+    {
+        int x = 0;
+    }
     auto it = sourceFileMap.find(&sourceFileNode);
     if (it != sourceFileMap.cend())
     {
@@ -107,7 +111,7 @@ void StatementBinder::Visit(FunctionNode& functionNode)
         {
             FunctionSymbol* prevFunction = currentFunction;
             currentFunction = static_cast<FunctionSymbol*>(symbol);
-            if (currentFunction->GroupName() == U"GetKeywordToken")
+            if (currentFunction->GroupName() == U"MakeCanonicalClasses")
             {
                 int x = 0;
             }

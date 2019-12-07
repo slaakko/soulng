@@ -186,6 +186,7 @@
     <ClInclude Include="Project.hpp" />
     <ClInclude Include="Solution.hpp" />
     <ClInclude Include="SourceToken.hpp" />
+    <ClInclude Include="SourceWriter.hpp" />
     <ClInclude Include="Specifier.hpp" />
     <ClInclude Include="Statement.hpp" />
     <ClInclude Include="SystemFileIndex.hpp" />
@@ -222,6 +223,7 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="Solution.cpp" />
     <ClCompile Include="SourceToken.cpp" />
+    <ClCompile Include="SourceWriter.cpp" />
     <ClCompile Include="Specifier.cpp" />
     <ClCompile Include="Statement.cpp" />
     <ClCompile Include="SystemFileIndex.cpp" />

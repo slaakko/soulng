@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map>
+  <namespace source="slg" target="soulcm.scmlg"/>
+  <namespace source="sngcm" target="System"/>
+  <namespace source="ast" target="Cmajor.Ast"/>
+  <namespace source="soulng" target="System"/>
+  <namespace source="lexer" target="Lex"/>
+</map>

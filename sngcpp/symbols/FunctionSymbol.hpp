@@ -21,6 +21,7 @@ public:
     virtual const std::vector<ParameterSymbol*>& Parameters() const = 0;
     virtual TypeSymbol* ReturnType() = 0;
     virtual int Arity() const = 0;
+    virtual bool IsConst() const { return false; }
     virtual const std::u32string& GroupName() const = 0;
     virtual FunctionGroupSymbol* FunctionGroup() = 0;
     virtual std::u32string FunctionKind() = 0;
@@ -36,6 +37,7 @@ public:
     void AddMember(std::unique_ptr<Symbol>&& member) override;
     void AddSpecifiers(Specifier specifiers_);
     Specifier Specifiers() const { return specifiers; }
+    bool IsConst() const override { return (specifiers & Specifier::const_) != Specifier::none; }
     bool IsInstallSymbol() const override { return false; }
     std::u32string KindStr() override { return U"function_declaration"; }
     std::u32string FunctionKind() override { return U"function"; }
@@ -104,6 +106,7 @@ public:
     void SetIndex(int index_) { index = index_; }
     void AddSpecifiers(Specifier specifiers_);
     Specifier Specifiers() const { return specifiers; }
+    bool IsConst() const override { return (specifiers & Specifier::const_) != Specifier::none; }
     int Arity() const override { return parameters.size(); }
     FunctionGroupSymbol* FunctionGroup() override { return functionGroup; }
     void SetFunctionGroup(FunctionGroupSymbol* functionGroup_) { functionGroup = functionGroup_; }
@@ -177,7 +180,7 @@ public:
     void AddFunction(std::unique_ptr<FunctionSymbol>&& function);
     void AddFunctionDeclaration(std::unique_ptr<FunctionDeclarationSymbol>&& functionDeclaration);
     FunctionDeclarationSymbol* GetFunctionDeclaration(const std::vector<ParameterSymbol*>& parameters, Specifier specifiers);
-    CallableSymbol* ResolveOverload(const std::vector<Symbol*>& argumentSymbols);
+    CallableSymbol* ResolveOverload(const std::vector<Symbol*>& argumentSymbols, bool subjectIsConst);
     std::u32string KindStr() override { return U"function_group"; }
     std::unique_ptr<sngxml::dom::Element> CreateElement() override;
     const std::vector<std::unique_ptr<FunctionSymbol>>& Functions() const { return functions; }

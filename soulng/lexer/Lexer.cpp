@@ -134,7 +134,7 @@ void Lexer::NextToken()
         current = tokens.end() - 1;
         p = GetPos();
     }
-    Token endToken(END);
+    Token endToken(END_TOKEN);
     endToken.match.begin = end;
     endToken.match.end = end;
     tokens.push_back(endToken);
@@ -192,13 +192,13 @@ void Lexer::SetTokens(const std::vector<Token>& tokens_)
     }
     else
     {
-        tokens.push_back(Token(END, Lexeme(end, end), 1));
+        tokens.push_back(Token(END_TOKEN, Lexeme(end, end), 1));
     }
     for (const Token& token : tokens_)
     {
         tokens.push_back(token);
     }
-    tokens.push_back(Token(END, Lexeme(end, end), 1));
+    tokens.push_back(Token(END_TOKEN, Lexeme(end, end), 1));
     current = tokens.begin();
 }
 

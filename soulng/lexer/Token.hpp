@@ -12,7 +12,7 @@ namespace soulng { namespace lexer {
 
 const int CONTINUE_TOKEN = -2;
 const int INVALID_TOKEN = -1;
-const int END = 0;
+const int END_TOKEN = 0;
 
 struct SOULNG_LEXER_API Token
 {
@@ -25,6 +25,8 @@ struct SOULNG_LEXER_API Token
 };
 
 SOULNG_LEXER_API bool NoWhiteSpaceBetweenTokens(const Token& first, const Token& second);
+
+SOULNG_LEXER_API std::string GetEndTokenInfo();
 
 } } // namespace soulng::lexer
 

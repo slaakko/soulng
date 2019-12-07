@@ -17,6 +17,9 @@ class StatementBinder;
 SNGCPP_BINDER_API std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes,
     BoundSourceFile* boundSourceFile, FunctionSymbol* currentFunction, StatementBinder* statementBinder);
 
+SNGCPP_BINDER_API std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes,
+    BoundSourceFile* boundSourceFile, FunctionSymbol* currentFunction, StatementBinder* statementBinder, bool& subjectIsConst);
+
 } } // namespace sngcpp::binder
 
 #endif // SNGCPP_BINDER_EXPRESSION_BINDER_INCLUDED

@@ -407,6 +407,9 @@ struct FunctionMatch
 
 struct BetterFunctionMatch
 {
+    BetterFunctionMatch(bool subjectIsConst_) : subjectIsConst(subjectIsConst_)
+    {
+    }
     bool operator()(const std::pair<CallableSymbol*, FunctionMatch>& left, const std::pair<CallableSymbol*, FunctionMatch>& right) const
     {
         int arity = left.second.matchValues.size();
@@ -445,12 +448,29 @@ struct BetterFunctionMatch
                 int rightMatchValue = right.second.matchValues[i];
                 // todo?
             }
+            if (left.first->IsConst() && !right.first->IsConst() && subjectIsConst)
+            {
+                return true;
+            }
+            else if (left.first->IsConst() && !right.first->IsConst() && !subjectIsConst)
+            {
+                return false;
+            }
+            else if (right.first->IsConst() && !left.first->IsConst() && subjectIsConst)
+            {
+                return false;
+            }
+            else if (right.first->IsConst() && !left.first->IsConst() && !subjectIsConst)
+            {
+                return true;
+            }
         }
         return false;
     }
+    bool subjectIsConst;
 };
 
-CallableSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>& argumentSymbols)
+CallableSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>& argumentSymbols, bool subjectIsConst)
 {
     int arity = argumentSymbols.size();
     std::vector<CallableSymbol*> viableFunctions;
@@ -502,8 +522,8 @@ CallableSymbol* FunctionGroupSymbol::ResolveOverload(const std::vector<Symbol*>&
             }
             functionMatches.push_back(std::make_pair(viableFunction, functionMatch));
         }
-        std::sort(functionMatches.begin(), functionMatches.end(), BetterFunctionMatch());
-        if (BetterFunctionMatch()(functionMatches[0], functionMatches[1]))
+        std::sort(functionMatches.begin(), functionMatches.end(), BetterFunctionMatch(subjectIsConst));
+        if (BetterFunctionMatch(subjectIsConst)(functionMatches[0], functionMatches[1]))
         {
             CallableSymbol* bestMatch = functionMatches[0].first;
             return bestMatch;

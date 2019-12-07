@@ -917,7 +917,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("if (match.hit)");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                formatter->WriteLine("if (*lexer == soulng::lexer::END)");
+                formatter->WriteLine("if (*lexer == soulng::lexer::END_TOKEN)");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
 				if (startRule->ReturnType())
@@ -940,7 +940,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("else");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));");
+                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetEndTokenInfo()));");
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->DecIndent();

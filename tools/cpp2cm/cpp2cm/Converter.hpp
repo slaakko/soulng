@@ -24,12 +24,17 @@ const char* Cpp2CmVersion();
 class Converter : public sngcpp::ast::Visitor
 {
 public:
+    enum class StatementContainer
+    {
+        statements, latestCase, latestDefault
+    };
     Converter(bool verbose_, const std::string& targetDir_, sngcpp::symbols::SymbolTable& symbolTable_, Map& map_,
         const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_);
     void Write();
     SourceFiles& GetSourceFiles() { return sourceFiles; }
     void InsertNamespaceImports(sngcm::ast::CompileUnitNode* cu);
     void AddToContainer(int line, sngcm::ast::Node* node);
+    void AddStatement(int line, sngcm::ast::StatementNode* statement);
     void WriteWarning(int line, const std::string& message);
     void ConvertIdExpr(sngcpp::ast::Node* idExprNode);
     void ConvertExpression(sngcpp::ast::Node* exprNode);
@@ -168,13 +173,17 @@ private:
     sngcm::ast::Node* currentContainerNode;
     std::unordered_map<std::string, sngcm::ast::CompileUnitNode*> compileUnitMap;
     std::unordered_map<sngcm::ast::CompileUnitNode*, Context> contextMap;
+    std::unordered_map<sngcpp::symbols::ClassTypeSymbol*, sngcm::ast::ClassNode*> classMap;
     Map& map;
     std::vector<sngcpp::symbols::Symbol*> mappedSymbolSequence;
     std::unique_ptr<sngcm::ast::Node> node;
     std::vector<std::unique_ptr<sngcm::ast::ParameterNode>> parameterNodes;
+    StatementContainer statementContainer;
     std::vector<std::unique_ptr<sngcm::ast::StatementNode>> statementNodes;
+    sngcm::ast::CaseStatementNode* parentCaseStatementNode;
     std::vector<std::unique_ptr<sngcm::ast::CaseStatementNode>> caseStatementNodes;
     std::unique_ptr<sngcm::ast::DefaultStatementNode> defaultStatement;
+    std::vector<std::unique_ptr<sngcm::ast::CatchNode>> catchNodes;
     std::vector<std::unique_ptr<sngcm::ast::TemplateParameterNode>> templateParameterNodes;
     sngcm::ast::NodeList<sngcm::ast::Node> nodes;
     bool addToNodes;
@@ -188,8 +197,11 @@ private:
     bool inFunctionBody;
     bool assignmentStatement;
     bool rangeFor;
+    bool catchDecl;
     std::unique_ptr<sngcm::ast::Node> rangeForType;
     std::unique_ptr<sngcm::ast::IdentifierNode> rangeForId;
+    std::unique_ptr<sngcm::ast::Node> catchType;
+    std::unique_ptr<sngcm::ast::IdentifierNode> catchId;
     sngcpp::symbols::CallableSymbol* calledFunction;
     std::u32string args;
     SourceFiles sourceFiles;

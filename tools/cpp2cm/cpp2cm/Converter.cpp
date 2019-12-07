@@ -11,7 +11,7 @@
 #include <sngcpp/symbols/ParameterSymbol.hpp>
 #include <sngcpp/symbols/VariableSymbol.hpp>
 #include <sngcpp/symbols/ClassTemplateSpecializationSymbol.hpp>
-#include <sngcm/writer/SourceWriter.hpp>
+#include <sngcm/ast/SourceWriter.hpp>
 #include <sngcm/ast/CompileUnit.hpp>
 #include <sngcm/ast/Identifier.hpp>
 #include <sngcm/ast/Function.hpp>
@@ -180,7 +180,8 @@ Converter::Converter(bool verbose_, const std::string& targetDir_, sngcpp::symbo
     const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_) :
     verbose(verbose_), targetDir(targetDir_), symbolTable(symbolTable_), currentCompileUnit(nullptr), currentNamespace(nullptr), currentContext(nullptr), currentContainerNode(nullptr), map(map_),
     addToNodes(false), type(nullptr), currentClassType(nullptr), currentEnumType(nullptr), assignment(false), empty(false), inFunctionBody(false),
-    assignmentStatement(false), rangeFor(false), calledFunction(nullptr), excludedClasses(excludedClasses_), excludedFunctions(excludedFunctions_)
+    assignmentStatement(false), rangeFor(false), catchDecl(false), statementContainer(StatementContainer::statements),
+    calledFunction(nullptr), excludedClasses(excludedClasses_), excludedFunctions(excludedFunctions_), parentCaseStatementNode(nullptr)
 {
 }
 
@@ -193,7 +194,7 @@ void Converter::Write()
         InsertNamespaceImports(cu.get());
         std::ofstream sourceFile(cu->FilePath());
         soulng::util::CodeFormatter formatter(sourceFile);
-        sngcm::writer::SourceWriter writer(formatter);
+        sngcm::ast::SourceWriter writer(formatter);
         cu->Accept(writer);
         std::u32string fileName = ToUtf32(Path::GetFileName(cu->FilePath()));
         sourceFiles.Add(new SourceFile(fileName, cu->FilePath()));
@@ -232,6 +233,44 @@ void Converter::AddToContainer(int line, sngcm::ast::Node* node)
             WriteWarning(line, ": converter.AddToContainer: namespace or class container expected");
             delete node;
             return;
+        }
+    }
+}
+
+void Converter::AddStatement(int line, sngcm::ast::StatementNode* statement)
+{
+    switch (statementContainer)
+    {
+        case StatementContainer::statements:
+        {
+            statementNodes.push_back(std::unique_ptr< sngcm::ast::StatementNode>(statement));
+            break;
+        }
+        case StatementContainer::latestCase:
+        {
+            if (caseStatementNodes.empty())
+            {
+                WriteWarning(line, "no case active");
+                statementNodes.push_back(std::unique_ptr< sngcm::ast::StatementNode>(statement));
+            }
+            else
+            {
+                caseStatementNodes.back()->AddStatement(statement);
+            }
+            break;
+        }
+        case StatementContainer::latestDefault:
+        {
+            if (!defaultStatement)
+            {
+                WriteWarning(line, "no default active");
+                statementNodes.push_back(std::unique_ptr< sngcm::ast::StatementNode>(statement));
+            }
+            else
+            {
+                defaultStatement->AddStatement(statement);
+            }
+            break;
         }
     }
 }
@@ -753,6 +792,7 @@ void Converter::Visit(sngcpp::ast::ClassNode& classNode)
                 }
                 cls.reset(new sngcm::ast::ClassNode(soulng::lexer::Span(), MapSpecifiers(classNode.ClassVirtSpecifiers()) | MapAccess(classTypeSymbol->Access()),
                     new sngcm::ast::IdentifierNode(soulng::lexer::Span(), classTypeSymbol->Name()), nullptr));
+                classMap[classTypeSymbol] = cls.get();
                 if (classTypeSymbol->IsAbstract())
                 {
                     cls->SetSpecifiers(cls->GetSpecifiers() | sngcm::ast::Specifiers::abstract_);
@@ -912,11 +952,26 @@ void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunct
     }
     if (symbol)
     {
-        auto it = currentContext->containerMap.find(symbol->Parent());
-        if (it != currentContext->containerMap.cend())
+        bool found = false;
+        if (symbol->Parent()->IsClassTypeSymbol())
         {
-            memberFunctionContainer = it->second;
-            currentContainerNode = memberFunctionContainer;
+            sngcpp::symbols::ClassTypeSymbol* cls = static_cast<sngcpp::symbols::ClassTypeSymbol*>(symbol->Parent());
+            auto cit = classMap.find(cls);
+            if (cit != classMap.end())
+            {
+                memberFunctionContainer = cit->second;
+                currentContainerNode = memberFunctionContainer;
+                found = true;
+            }
+        }
+        if (!found)
+        {
+            auto it = currentContext->containerMap.find(symbol->Parent());
+            if (it != currentContext->containerMap.cend())
+            {
+                memberFunctionContainer = it->second;
+                currentContainerNode = memberFunctionContainer;
+            }
         }
         if (symbol->IsConstructorSymbol())
         {
@@ -1125,7 +1180,10 @@ void Converter::Visit(sngcpp::ast::SimpleDeclarationNode& simpleDeclarationNode)
         std::unique_ptr<sngcm::ast::Node> typeNode = std::move(node);
         sngcpp::symbols::TypeSymbol* typeSymbol = type;
         nodes.Clear();
-        simpleDeclarationNode.Declarator()->Accept(*this);
+        if (simpleDeclarationNode.Declarator())
+        {
+            simpleDeclarationNode.Declarator()->Accept(*this);
+        }
         if (!declarator && !mappedSymbolSequence.empty())
         {
             sngcpp::symbols::Symbol* symbol = mappedSymbolSequence.back();
@@ -1134,6 +1192,12 @@ void Converter::Visit(sngcpp::ast::SimpleDeclarationNode& simpleDeclarationNode)
                 declarator.reset(new sngcm::ast::IdentifierNode(soulng::lexer::Span(), symbol->Name()));
                 empty = true;
             }
+        }
+        if (catchDecl)
+        {
+            catchType.reset(typeNode.release());
+            catchId.reset(static_cast<sngcm::ast::IdentifierNode*>(declarator.release()));
+            converted = true;
         }
         if (typeNode && declarator && declarator->GetNodeType() == sngcm::ast::NodeType::identifierNode)
         {
@@ -1180,7 +1244,7 @@ void Converter::Visit(sngcpp::ast::SimpleDeclarationNode& simpleDeclarationNode)
                             }
                         }
                     }
-                    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(constructionStatement));
+                    AddStatement(simpleDeclarationNode.GetSpan().line, constructionStatement);
                     converted = true;
                 }
             }
@@ -1189,7 +1253,7 @@ void Converter::Visit(sngcpp::ast::SimpleDeclarationNode& simpleDeclarationNode)
         {
             sngcm::ast::ConstructionStatementNode* constructionStatement = new sngcm::ast::ConstructionStatementNode(soulng::lexer::Span(), typeNode.release(),
                 new sngcm::ast::IdentifierNode(soulng::lexer::Span(), U"NOT_CONVERTED"));
-            statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(constructionStatement));
+            AddStatement(simpleDeclarationNode.GetSpan().line, constructionStatement);
             converted = true;
         }
     }
@@ -1446,7 +1510,7 @@ void Converter::Visit(sngcpp::ast::AssignmentExpressionNode& assignmentExpressio
         }
     }
     sngcm::ast::AssignmentStatementNode* stmt = new sngcm::ast::AssignmentStatementNode(soulng::lexer::Span(), target.release(), source.release());
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(stmt));
+    AddStatement(assignmentExpressionNode.GetSpan().line, stmt);
     node.reset(new sngcm::ast::EmptyStatementNode(soulng::lexer::Span()));
     assignmentStatement = true;
     type = nullptr;
@@ -1468,7 +1532,7 @@ void Converter::Visit(sngcpp::ast::ThrowExpressionNode& throwExpressionNode)
         ConvertExpression(throwExpressionNode.Child());
         exception.reset(node.release());
     }
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::ThrowStatementNode(soulng::lexer::Span(), exception.release())));
+    AddStatement(throwExpressionNode.GetSpan().line, new sngcm::ast::ThrowStatementNode(soulng::lexer::Span(), exception.release()));
     node.reset(new sngcm::ast::EmptyStatementNode(soulng::lexer::Span()));
     type = nullptr;
 }
@@ -1786,7 +1850,7 @@ void Converter::Visit(sngcpp::ast::DeleteExpressionNode& deleteExpressionNode)
     {
         ConvertExpression(deleteExpressionNode.Child());
         std::unique_ptr<sngcm::ast::Node> ptr = std::move(node);
-        statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::DeleteStatementNode(soulng::lexer::Span(), ptr.release())));
+        AddStatement(deleteExpressionNode.GetSpan().line, new sngcm::ast::DeleteStatementNode(soulng::lexer::Span(), ptr.release()));
         node.reset(new sngcm::ast::EmptyStatementNode(soulng::lexer::Span()));
     }
     type = nullptr;
@@ -1819,6 +1883,7 @@ void Converter::Visit(sngcpp::ast::InvokeExpressionNode& invokeExpressionNode)
     if (symbol && symbol->IsCallableSymbol())
     {
         calledFunction = static_cast<sngcpp::symbols::CallableSymbol*>(symbol);
+        primaryCalledFunction = calledFunction;
     }
     bool prevAddToNodes = addToNodes;
     addToNodes = false;
@@ -2156,10 +2221,6 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
     sngcm::ast::Node* prevContainer = currentContainerNode;
     sngcm::ast::Node* functionContainer = prevContainer;
     sngcpp::symbols::Symbol* symbol = symbolTable.GetSymbolNothrow(&functionNode);
-    if (symbol->Name() == U"ErrorLines")
-    {
-        int x = 0;
-    }
     if (excludedFunctions.find(symbol->FullName()) != excludedFunctions.cend())
     {
         if (verbose)
@@ -2195,11 +2256,26 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
             WriteWarning(functionNode.GetSpan().line, "function name not mapped");
             return;
         }
-        auto it = currentContext->containerMap.find(symbol->Parent());
-        if (it != currentContext->containerMap.cend())
+        bool found = false;
+        if (symbol->Parent()->IsClassTypeSymbol())
         {
-            functionContainer = it->second;
-            currentContainerNode = functionContainer;
+            sngcpp::symbols::ClassTypeSymbol* classType = static_cast<sngcpp::symbols::ClassTypeSymbol*>(symbol->Parent());
+            auto cit = classMap.find(classType);
+            if (cit != classMap.cend())
+            {
+                functionContainer = cit->second;
+                currentContainerNode = functionContainer;
+                found = true;
+            }
+        }
+        if (!found)
+        {
+            auto it = currentContext->containerMap.find(symbol->Parent());
+            if (it != currentContext->containerMap.cend())
+            {
+                functionContainer = it->second;
+                currentContainerNode = functionContainer;
+            }
         }
         if (symbol->IsFunctionSymbol())
         {
@@ -2371,30 +2447,46 @@ void Converter::Visit(sngcpp::ast::SimpleTypeNode& simpleTypeNode)
 
 void Converter::Visit(sngcpp::ast::LabeledStatementNode& labeledStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     labeledStatementNode.Child()->Accept(*this);
     sngcm::ast::StatementNode* stmt = statementNodes.back().release();
     statementNodes.pop_back();
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::LabeledStatementNode(soulng::lexer::Span(), stmt)));
+    statementContainer = prevContainer;
+    AddStatement(labeledStatementNode.GetSpan().line, new sngcm::ast::LabeledStatementNode(soulng::lexer::Span(), stmt));
 }
 
 void Converter::Visit(sngcpp::ast::CaseStatementNode& caseStatementNode)
 {
+    statementContainer = StatementContainer::statements;
+    std::unique_ptr<sngcm::ast::CaseStatementNode> caseStmt(new sngcm::ast::CaseStatementNode(soulng::lexer::Span()));
     ConvertExpression(caseStatementNode.CaseExpr());
     std::unique_ptr<sngcm::ast::Node> caseExprNode = std::move(node);
-    int start = statementNodes.size();
-    caseStatementNode.Child()->Accept(*this);
-    sngcm::ast::CaseStatementNode* caseStmt = new sngcm::ast::CaseStatementNode(soulng::lexer::Span());
-    caseStmt->AddCaseExpr(caseExprNode.release());
-    for (int i = start; i < statementNodes.size(); ++i)
+    if (parentCaseStatementNode != nullptr)
     {
-        caseStmt->AddStatement(statementNodes[i].release());
+        parentCaseStatementNode->AddCaseExpr(caseExprNode.release());
+        caseStatementNode.Child()->Accept(*this);
     }
-    statementNodes.erase(statementNodes.begin() + start, statementNodes.end());
-    caseStatementNodes.push_back(std::unique_ptr<sngcm::ast::CaseStatementNode>(caseStmt));
+    else
+    {
+        caseStmt->AddCaseExpr(caseExprNode.release());
+        parentCaseStatementNode = caseStmt.get();
+        int start = statementNodes.size();
+        caseStatementNode.Child()->Accept(*this);
+        for (int i = start; i < statementNodes.size(); ++i)
+        {
+            caseStmt->AddStatement(statementNodes[i].release());
+        }
+        statementNodes.erase(statementNodes.begin() + start, statementNodes.end());
+        parentCaseStatementNode = nullptr;
+        caseStatementNodes.push_back(std::move(caseStmt));
+    }
+    statementContainer = StatementContainer::latestCase;
 }
 
 void Converter::Visit(sngcpp::ast::DefaultStatementNode& defaultStatementNode)
 {
+    statementContainer = StatementContainer::statements;
     int start = statementNodes.size();
     defaultStatementNode.Child()->Accept(*this);
     sngcm::ast::DefaultStatementNode* defaultStmt = new sngcm::ast::DefaultStatementNode(soulng::lexer::Span());
@@ -2404,6 +2496,7 @@ void Converter::Visit(sngcpp::ast::DefaultStatementNode& defaultStatementNode)
     }
     statementNodes.erase(statementNodes.begin() + start, statementNodes.end());
     defaultStatement.reset(defaultStmt);
+    statementContainer = StatementContainer::latestDefault;
 }
 
 void Converter::Visit(sngcpp::ast::ExpressionStatementNode& expressionStatementNode)
@@ -2422,18 +2515,20 @@ void Converter::Visit(sngcpp::ast::ExpressionStatementNode& expressionStatementN
     {
         if (!exprNode->IsStatementNode())
         {
-            statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::ExpressionStatementNode(soulng::lexer::Span(), exprNode.release())));
+            AddStatement(expressionStatementNode.GetSpan().line, new sngcm::ast::ExpressionStatementNode(soulng::lexer::Span(), exprNode.release()));
         }
     }
     else if (!assignmentStatement)
     {
-        statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::EmptyStatementNode(soulng::lexer::Span())));
+        AddStatement(expressionStatementNode.GetSpan().line, new sngcm::ast::EmptyStatementNode(soulng::lexer::Span()));
     }
     assignmentStatement = prevAssignmentStatement;
 }
 
 void Converter::Visit(sngcpp::ast::CompoundStatementNode& compoundStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     std::unique_ptr<sngcm::ast::CompoundStatementNode> compoundStmt(new sngcm::ast::CompoundStatementNode(soulng::lexer::Span()));
     if (compoundStatementNode.Child())
     {
@@ -2446,7 +2541,8 @@ void Converter::Visit(sngcpp::ast::CompoundStatementNode& compoundStatementNode)
         }
         statementNodes = std::move(prevStatementNodes);
     }
-    statementNodes.push_back(std::move(compoundStmt));
+    statementContainer = prevContainer;
+    AddStatement(compoundStatementNode.GetSpan().line, compoundStmt.release());
 }
 
 void Converter::Visit(sngcpp::ast::StatementSequenceNode& statementSequenceNode)
@@ -2457,6 +2553,8 @@ void Converter::Visit(sngcpp::ast::StatementSequenceNode& statementSequenceNode)
 
 void Converter::Visit(sngcpp::ast::IfStatementNode& ifStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     ConvertBooleanExpression(ifStatementNode.Condition());
     std::unique_ptr<sngcm::ast::Node> conditionNode = std::move(node);
     ifStatementNode.ThenS()->Accept(*this);
@@ -2469,16 +2567,22 @@ void Converter::Visit(sngcpp::ast::IfStatementNode& ifStatementNode)
         elseS = statementNodes.back().release();
         statementNodes.pop_back();
     }
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::IfStatementNode(soulng::lexer::Span(), conditionNode.release(), thenS, elseS)));
+    statementContainer = prevContainer;
+    AddStatement(ifStatementNode.GetSpan().line, new sngcm::ast::IfStatementNode(soulng::lexer::Span(), conditionNode.release(), thenS, elseS));
 }
 
 void Converter::Visit(sngcpp::ast::SwitchStatementNode& switchStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     ConvertExpression(switchStatementNode.Condition());
     std::unique_ptr<sngcm::ast::Node> conditionNode = std::move(node);
     std::vector<std::unique_ptr<sngcm::ast::CaseStatementNode>> prevCaseStatementNodes = std::move(caseStatementNodes);
     std::unique_ptr<sngcm::ast::DefaultStatementNode> prevDefaultStatementNode = std::move(defaultStatement);
+    sngcm::ast::CaseStatementNode* prevCaseStatementNode = parentCaseStatementNode;
+    parentCaseStatementNode = nullptr;
     switchStatementNode.Statement()->Accept(*this);
+    parentCaseStatementNode = prevCaseStatementNode;
     sngcm::ast::StatementNode* stmt = statementNodes.back().release();
     statementNodes.pop_back();
     sngcm::ast::SwitchStatementNode* switchStatement = new sngcm::ast::SwitchStatementNode(soulng::lexer::Span(), conditionNode.release());
@@ -2494,31 +2598,40 @@ void Converter::Visit(sngcpp::ast::SwitchStatementNode& switchStatementNode)
     defaultStatement.reset();
     caseStatementNodes = std::move(prevCaseStatementNodes);
     defaultStatement = std::move(prevDefaultStatementNode);
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(switchStatement));
+    statementContainer = prevContainer;
+    AddStatement(switchStatementNode.GetSpan().line, switchStatement);
 }
 
 void Converter::Visit(sngcpp::ast::WhileStatementNode& whileStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     ConvertBooleanExpression(whileStatementNode.Condition());
     std::unique_ptr<sngcm::ast::Node> conditionNode = std::move(node);
     whileStatementNode.Statement()->Accept(*this);
     sngcm::ast::StatementNode* stmt = statementNodes.back().release();
     statementNodes.pop_back();
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::WhileStatementNode(soulng::lexer::Span(), conditionNode.release(), stmt)));
+    statementContainer = prevContainer;
+    AddStatement(whileStatementNode.GetSpan().line, new sngcm::ast::WhileStatementNode(soulng::lexer::Span(), conditionNode.release(), stmt));
 }
 
 void Converter::Visit(sngcpp::ast::DoStatementNode& doStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     doStatementNode.Statement()->Accept(*this);
     sngcm::ast::StatementNode* stmt = statementNodes.back().release();
     statementNodes.pop_back();
     ConvertBooleanExpression(doStatementNode.Condition());
     std::unique_ptr<sngcm::ast::Node> conditionNode = std::move(node);
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::DoStatementNode(soulng::lexer::Span(), stmt, conditionNode.release())));
+    statementContainer = prevContainer;
+    AddStatement(doStatementNode.GetSpan().line, new sngcm::ast::DoStatementNode(soulng::lexer::Span(), stmt, conditionNode.release()));
 }
 
 void Converter::Visit(sngcpp::ast::RangeForStatementNode& rangeForStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     bool prevRangeFor = rangeFor;
     rangeFor = true;
     rangeForStatementNode.ForRangeDeclaration()->Accept(*this);
@@ -2535,17 +2648,19 @@ void Converter::Visit(sngcpp::ast::RangeForStatementNode& rangeForStatementNode)
         idNode.reset(static_cast<sngcm::ast::IdentifierNode*>(node.release()));
     }
     ConvertExpression(rangeForStatementNode.ForRangeInitializer());
+    rangeFor = prevRangeFor;
     std::unique_ptr<sngcm::ast::Node> container = std::move(node);
     rangeForStatementNode.Statement()->Accept(*this);
     std::unique_ptr<sngcm::ast::StatementNode> action = std::move(statementNodes.back());
     statementNodes.pop_back();
-    sngcm::ast::RangeForStatementNode* rangeForStatement = new sngcm::ast::RangeForStatementNode(soulng::lexer::Span(), typeNode.release(), idNode.release(), container.release(), action.release());
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(rangeForStatement));
-    rangeFor = prevRangeFor;
+    statementContainer = prevContainer;
+    AddStatement(rangeForStatementNode.GetSpan().line, new sngcm::ast::RangeForStatementNode(soulng::lexer::Span(), typeNode.release(), idNode.release(), container.release(), action.release()));
 }
 
 void Converter::Visit(sngcpp::ast::ForStatementNode& forStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     forStatementNode.InitS()->Accept(*this);
     std::unique_ptr<sngcm::ast::StatementNode> initS(statementNodes.back().release());
     statementNodes.pop_back();
@@ -2569,18 +2684,18 @@ void Converter::Visit(sngcpp::ast::ForStatementNode& forStatementNode)
     forStatementNode.ActionS()->Accept(*this);
     std::unique_ptr<sngcm::ast::StatementNode> actionS(statementNodes.back().release());
     statementNodes.pop_back();
-    std::unique_ptr<sngcm::ast::StatementNode> forStatement(new sngcm::ast::ForStatementNode(soulng::lexer::Span(), initS.release(), cond.release(), loopS.release(), actionS.release()));
-    statementNodes.push_back(std::move(forStatement));
+    statementContainer = prevContainer;
+    AddStatement(forStatementNode.GetSpan().line, new sngcm::ast::ForStatementNode(soulng::lexer::Span(), initS.release(), cond.release(), loopS.release(), actionS.release()));
 }
 
 void Converter::Visit(sngcpp::ast::BreakStatementNode& breakStatementNode)
 {
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::BreakStatementNode(soulng::lexer::Span())));
+    AddStatement(breakStatementNode.GetSpan().line, new sngcm::ast::BreakStatementNode(soulng::lexer::Span()));
 }
 
 void Converter::Visit(sngcpp::ast::ContinueStatementNode& continueStatementNode)
 {
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::ContinueStatementNode(soulng::lexer::Span())));
+    AddStatement(continueStatementNode.GetSpan().line, new sngcm::ast::ContinueStatementNode(soulng::lexer::Span()));
 }
 
 void Converter::Visit(sngcpp::ast::ReturnStatementNode& returnStatementNode)
@@ -2591,40 +2706,55 @@ void Converter::Visit(sngcpp::ast::ReturnStatementNode& returnStatementNode)
         ConvertExpression(returnStatementNode.ReturnExpr());
         returnExprNode = std::move(node);
     }
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::ReturnStatementNode(soulng::lexer::Span(), returnExprNode.release())));
+    AddStatement(returnStatementNode.GetSpan().line, new sngcm::ast::ReturnStatementNode(soulng::lexer::Span(), returnExprNode.release()));
 }
 
 void Converter::Visit(sngcpp::ast::GotoStatementNode& gotoStatementNode)
 {
-    statementNodes.push_back(std::unique_ptr<sngcm::ast::StatementNode>(new sngcm::ast::GotoStatementNode(soulng::lexer::Span(), gotoStatementNode.Target())));
+    AddStatement(gotoStatementNode.GetSpan().line, new sngcm::ast::GotoStatementNode(soulng::lexer::Span(), gotoStatementNode.Target()));
 }
 
 void Converter::Visit(sngcpp::ast::DeclarationStatementNode& declarationStatementNode)
 {
     declarationStatementNode.Child()->Accept(*this);
-    if (declarationStatementNode.Child()->GetNodeType() != sngcpp::ast::NodeType::simpleDeclarationNode)
-    {
-        int x = 0;
-    }
 }
 
 void Converter::Visit(sngcpp::ast::TryStatementNode& tryStatementNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
     tryStatementNode.TryBlock()->Accept(*this);
     sngcm::ast::CompoundStatementNode* tryBlock = static_cast<sngcm::ast::CompoundStatementNode*>(statementNodes.back().release());
     statementNodes.pop_back();
+    catchNodes.clear();
     tryStatementNode.Handlers()->Accept(*this);
-    NotConverted(tryStatementNode.GetSpan().line, "try statement not converted");
+    std::unique_ptr<sngcm::ast::TryStatementNode> tryStatement(new sngcm::ast::TryStatementNode(soulng::lexer::Span(), tryBlock));
+    for (std::unique_ptr<sngcm::ast::CatchNode>& catchNode : catchNodes)
+    {
+        tryStatement->AddCatch(catchNode.release());
+    }
+    statementContainer = prevContainer;
+    AddStatement(tryStatementNode.GetSpan().line, tryStatement.release());
 }
 
 void Converter::Visit(sngcpp::ast::HandlerNode& handlerNode)
 {
+    StatementContainer prevContainer = statementContainer;
+    statementContainer = StatementContainer::statements;
+    std::unique_ptr<sngcm::ast::Node> typeExpr;
+    std::unique_ptr<sngcm::ast::IdentifierNode> id;
+    bool prevCatchDecl = catchDecl;
+    catchDecl = true;
+    handlerNode.ExceptionDeclaration()->Accept(*this);
+    typeExpr = std::move(catchType);
+    id = std::move(catchId);
+    catchDecl = prevCatchDecl;
     handlerNode.CatchBlock()->Accept(*this);
     sngcm::ast::CompoundStatementNode* catchBlock = static_cast<sngcm::ast::CompoundStatementNode*>(statementNodes.back().release());
     statementNodes.pop_back();
-    NotConverted(handlerNode.GetSpan().line, "handler not converted");
-    // todo
-    int x = 0;
+    std::unique_ptr<sngcm::ast::CatchNode> catchNode(new sngcm::ast::CatchNode(soulng::lexer::Span(), typeExpr.release(), id.release(), catchBlock));
+    catchNodes.push_back(std::move(catchNode));
+    statementContainer = prevContainer;
 }
 
 void Converter::Visit(sngcpp::ast::HandlerSequenceNode& handlerSequenceNode)

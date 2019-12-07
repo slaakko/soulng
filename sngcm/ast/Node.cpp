@@ -346,7 +346,7 @@ NodeFactory::NodeFactory()
     Register(NodeType::conditionalCompilationNotNode, new ConcreteNodeCreator<ConditionalCompilationNotNode>());
     Register(NodeType::conditionalCompilationPrimaryNode, new ConcreteNodeCreator<ConditionalCompilationPrimaryNode>());
     Register(NodeType::conditionalCompilationPartNode, new ConcreteNodeCreator<ConditionalCompilationPartNode>());
-    Register(NodeType::parenthesizedCondCompExpressionNode, new ConcreteNodeCreator<ParenthesizeConditionalCompilationExpressionNode>());
+    Register(NodeType::parenthesizedCondCompExpressionNode, new ConcreteNodeCreator<ParenthesizedConditionalCompilationExpressionNode>());
     Register(NodeType::conditionalCompilationStatementNode, new ConcreteNodeCreator<ConditionalCompilationStatementNode>());
     Register(NodeType::uuidLiteralNode, new ConcreteNodeCreator<UuidLiteralNode>());
     Register(NodeType::cursorIdNode, new ConcreteNodeCreator<CursorIdNode>());

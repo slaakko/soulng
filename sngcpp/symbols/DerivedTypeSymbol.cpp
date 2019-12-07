@@ -170,6 +170,11 @@ bool DerivedTypeSymbol::IsReferenceTypeSymbol() const
         std::find(derivations.cbegin(), derivations.cend(), Derivation::rvalueRef) != derivations.cend();
 }
 
+bool DerivedTypeSymbol::HasConstDerivation() const
+{
+    return std::find(derivations.cbegin(), derivations.cend(), Derivation::const_) != derivations.cend();
+}
+
 std::unique_ptr<sngxml::dom::Element> DerivedTypeSymbol::CreateElement()
 {
     std::unique_ptr<sngxml::dom::Element> typeElement(new sngxml::dom::Element(U"derivedType"));

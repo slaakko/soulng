@@ -13,4 +13,9 @@ bool NoWhiteSpaceBetweenTokens(const Token& first, const Token& second)
     return false;
 }
 
+SOULNG_LEXER_API std::string GetEndTokenInfo()
+{
+    return "end of file";
+}
+
 } } // namespace soulng::lexer

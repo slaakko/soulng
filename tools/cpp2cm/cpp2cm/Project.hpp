@@ -53,6 +53,7 @@ public:
     void SetSystem() { system = true; }
     sngcpp::ast::SourceFileNode* GetSourceFile(const std::string& sourceFilePath) const override;
     void ReadPatchFiles();
+    void ReadMergeDirFiles();
 private:
     std::string systemXmlFilePath;
     std::string systemRootDir;
@@ -91,6 +92,9 @@ private:
     std::vector<std::unique_ptr<PatchFile>> patchFiles;
     std::set<std::u32string> excludedFunctions;
     std::set<std::u32string> excludedClasses;
+    std::vector<std::unique_ptr<File>> mergeDirFiles;
+    std::map<std::u32string, File*> mergeFileMap;
+    std::vector<std::unique_ptr<File>> extraFiles;
 };
 
 } // namespace cpp2cm

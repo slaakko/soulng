@@ -1,9 +1,12 @@
 <project name="std">
   <source file="algorithm.hpp"/>
   <source file="exception.hpp"/>
+  <source file="list.hpp"/>
   <source file="map.hpp"/>
   <source file="move.hpp"/>
+  <source file="pair.hpp"/>
   <source file="set.hpp"/>
+  <source file="stack.hpp"/>
   <source file="stdint.hpp"/>
   <source file="string.hpp"/>
   <source file="stringstream.hpp"/>

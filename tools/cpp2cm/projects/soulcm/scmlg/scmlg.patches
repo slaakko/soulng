@@ -1,0 +1,100 @@
+Algorithm.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Algorithm.cm:12:M/List<NfaState*> NOT_CONVERTED();/List<NfaState*> stack;/
+Algorithm.cm:94:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Dfa.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Dfa.cm:99:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+IdentifierClass.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+IdentifierClass.cm:855:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+LexerContext.cm:10:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+LexerContext.cm:353:M/splitClass->Ranges().push_back(intersection);/splitClass->Ranges().Add(intersection);/
+LexerContext.cm:380:M/if (!splitClass->Ranges().empty())/if (!splitClass->Ranges().IsEmpty())/
+LexerContext.cm:413:M/CodeFormatter formatter(NOT_CONVERTED);/CodeFormatter formatter(Console.Out());/
+LexerContext.cm:450:M/Specifiers.private_/System.Cmajor.Ast.Specifiers.private_/
+LexerContext.cm:458:M/Specifiers.public_/System.Cmajor.Ast.Specifiers.public_/
+LexerContext.cm:458:M/Specifiers.static_/System.Cmajor.Ast.Specifiers.static_/
+LexerContext.cm:459:M/Specifiers.public_/System.Cmajor.Ast.Specifiers.public_/
+LexerContext.cm:459:M/Specifiers.static_/System.Cmajor.Ast.Specifiers.static_/
+LexerContext.cm:477:M/NOT_CONVERTED classMapFile(classMapSourceFileName);/System.IO.StreamWriter classMapFile(System.IO.File.CreateText(classMapSourceFileName));/
+LexerContext.cm:483:M/NOT_CONVERTED << "==> " << classMapSourceFileName << NOT_CONVERTED;/Console.Out() << "==> " << classMapSourceFileName << endl();/
+LexerContext.cm:517:M/if (left->Ranges().size() < right->Ranges().size()) return false;/if (left->Ranges().Count() < right->Ranges().Count()) return false;/
+LexerContext.cm:518:M/if (left->Ranges().size() > right->Ranges().size()) return false;/if (left->Ranges().Count() > right->Ranges().Count()) return false;/
+LexerContext.cm:535:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Model.cm:10:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Model.cm:5:I/using System.Cmajor.Ast;/
+Model.cm:247:M/NOT_CONVERTED tokenFile(tokenFilePath);/System.IO.StreamWriter tokenFile(System.IO.File.CreateText(tokenFilePath));/
+Model.cm:253:M/NOT_CONVERTED << "==> " << tokenFilePath << NOT_CONVERTED;/Console.Out() << "==> " << tokenFilePath << endl();/
+Model.cm:368:M/NOT_CONVERTED keywordFile(keywordFilePath);/System.IO.StreamWriter keywordFile(System.IO.File.CreateText(keywordFilePath));/
+Model.cm:374:M/NOT_CONVERTED << "==> " << keywordFilePath << NOT_CONVERTED;/Console.Out() << "==> " << keywordFilePath << endl();/
+Model.cm:423:M/return expressions[index].get();/return expressions[index].Get();/
+Model.cm:709:M/m[next->Id()].insert(cls->Index());/m[next->Id()].Insert(cls->Index());/
+Model.cm:799:M/NOT_CONVERTED lexerFile(lexerFilePath);/System.IO.StreamWriter lexerFile(System.IO.File.CreateText(lexerFilePath));/
+Model.cm:805:M/NOT_CONVERTED << "==> " << lexerFilePath << NOT_CONVERTED;/Console.Out() << "==> " << lexerFilePath << endl();/
+Model.cm:866:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Nfa.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Nfa.cm:190:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+RegularExpressionParser.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+RegularExpressionParser.cm:16:M/NOT_CONVERTED lexer(expression, lexerContext->FileName(), 0);/RegExLexer lexer(expression, lexerContext->FileName(), 0);/
+RegularExpressionParser.cm:17:M/return Parse(lexer, lexerContext);/return RegExParser.Parse(lexer, lexerContext);/
+RegularExpressionParser.cm:19:M/catch (const NOT_CONVERTED&)/catch (const Exception& ex)/
+RegularExpressionParser.cm:21:M/throw Exception("error parsing regular expression at " + lexerContext->FileName() + ":" + ToString(line) + ": " + ex.what());/throw Exception("error parsing regular expression at " + lexerContext->FileName() + ":" + ToString(line) + ": " + ex.Message());/
+RegularExpressionParser.cm:26:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Symbol.cm:9:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Symbol.cm:245:M/List<Range>.Iterator e = NOT_CONVERTED(rangeVec.Begin(), rangeVec.End());/rangeVec.Resize(Unique(rangeVec.Begin(), rangeVec.End()) - rangeVec.Begin());/
+Symbol.cm:246:D
+Symbol.cm:284:M/List<Range>.Iterator e = NOT_CONVERTED(combinedRanges.Begin(), combinedRanges.End());/combinedRanges.Resize(Unique(combinedRanges.Begin(), combinedRanges.End()) - combinedRanges.Begin());/
+Symbol.cm:285:D
+Symbol.cm:568:M/List<Range>.Iterator e = NOT_CONVERTED(intersection.Begin(), intersection.End());/intersection.Resize(Unique(intersection.Begin(), intersection.End()) - intersection.Begin());/
+Symbol.cm:569:D
+Symbol.cm:495:M/public class RangeEndLess/public class RangeEndLess : Rel<Range>/
+Symbol.cm:663:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+TokenValueParsers.cm:9:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+TokenValueParsers.cm:46:M/if (p != NOT_CONVERTED&&(*p == 'x' || *p == 'X'))/if (p != e && (*p == 'x' || *p == 'X'))/
+TokenValueParsers.cm:49:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/while (p != e && ((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/
+TokenValueParsers.cm:54:M/else if (p != NOT_CONVERTED&&(*p == 'd' || *p == 'D'))/else if (p != e && (*p == 'd' || *p == 'D'))/
+TokenValueParsers.cm:63:M/else if (p != NOT_CONVERTED&&(*p >= '0' && *p <= '7'))/else if (p != e && (*p >= '0' && *p <= '7'))/
+TokenValueParsers.cm:281:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || *p == '.' || *p == 'e' || *p == 'E' || *p == '-' || *p == '+'))/while (p != e && ((*p >= '0' && *p <= '9') || *p == '.' || *p == 'e' || *p == 'E' || *p == '-' || *p == '+'))/
+TokenValueParsers.cm:286:M/if (p != NOT_CONVERTED&&(*p == 'f' || *p == 'F'))/if (p != e && (*p == 'f' || *p == 'F'))/
+TokenValueParsers.cm:295:I/        if (floatingLitFloat) floatingLit = ParseFloat(str); else floatingLit = ParseDouble(str);/
+TokenValueParsers.cm:295:D
+TokenValueParsers.cm:296:D
+TokenValueParsers.cm:297:D
+TokenValueParsers.cm:298:D
+TokenValueParsers.cm:299:D
+TokenValueParsers.cm:300:D
+TokenValueParsers.cm:301:D
+TokenValueParsers.cm:312:M/if (p != NOT_CONVERTED&&(*p == 'x' || *p == 'X'))/if (p != e && (*p == 'x' || *p == 'X'))/
+TokenValueParsers.cm:315:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/while (p != e && ((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/
+TokenValueParsers.cm:359:M/if (p != NOT_CONVERTED&&(*p == 'u' || *p == 'U'))/if (p != e && (*p == 'u' || *p == 'U'))/
+TokenValueParsers.cm:516:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Visitor.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Visitor.cm:25:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
+Main.cm:9:M/NOT_CONVERTED << "Soul NG Lexer Generator version " << LexerGeneratorVersionStr() << NOT_CONVERTED;/Console.Out() << "Soul Cmajor Lexer Generator version " << soulcm.scmlg.LexerGeneratorVersionStr() << endl();/
+Main.cm:10:M/NOT_CONVERTED << "Usage: slg [options] <file.lexer>" << NOT_CONVERTED;/Console.Out() << "Usage: slg [options] <file.lexer>" << endl();/
+Main.cm:11:M/NOT_CONVERTED << "Options:" << NOT_CONVERTED;/Console.Out() << "Options:" << endl();/
+Main.cm:12:M/NOT_CONVERTED << "--help | -h" << NOT_CONVERTED;/Console.Out() << "--help | -h" << endl();/
+Main.cm:13:M/NOT_CONVERTED << "  Print help and exit." << NOT_CONVERTED;/Console.Out() << "  Print help and exit." << endl();/
+Main.cm:14:M/NOT_CONVERTED << "--verbose | -v" << NOT_CONVERTED;/Console.Out() << "--verbose | -v" << endl();/
+Main.cm:15:M/NOT_CONVERTED << "  Be verbose." << NOT_CONVERTED;/Console.Out() << "  Be verbose." << endl();/
+Main.cm:16:M/NOT_CONVERTED << "--debug | -d" << NOT_CONVERTED;/Console.Out() << "--debug | -d" << endl();/
+Main.cm:17:M/NOT_CONVERTED << "  Print character class partition to stdout" << NOT_CONVERTED;/Console.Out() << "  Print character class partition to stdout" << endl();/
+Main.cm:18:M/NOT_CONVERTED << "--use-ascii-identifier-classes | -a" << NOT_CONVERTED;/Console.Out() << "--use-ascii-identifier-classes | -a" << endl();/
+Main.cm:19:M/NOT_CONVERTED << "  Use ASCII identifier classes." << NOT_CONVERTED;/Console.Out() << "  Use ASCII identifier classes." << endl();/
+Main.cm:20:M/NOT_CONVERTED << "  By default uses Unicode identifier classes." << NOT_CONVERTED;/Console.Out() << "  By default uses Unicode identifier classes." << endl();/
+Main.cm:21:M/NOT_CONVERTED << "--no-identifier-classes | -n" << NOT_CONVERTED;/Console.Out() << "--no-identifier-classes | -n" << endl();/
+Main.cm:22:M/NOT_CONVERTED << "  No predefined identifier classes" << NOT_CONVERTED;/Console.Out() << "  No predefined identifier classes" << endl();/
+Main.cm:26:D
+Main.cm:31:M/System.soulcm.scmlg.IdentifierClassKind identifierClassKind = IdentifierClassKind.unicode;/soulcm.scmlg.IdentifierClassKind identifierClassKind = soulcm.scmlg.IdentifierClassKind.unicode;/
+Main.cm:36:M/if (NOT_CONVERTED(arg, "--"))/if (arg.StartsWith("--"))/
+Main.cm:53:M/identifierClassKind = IdentifierClassKind.ascii;/identifierClassKind = soulcm.scmlg.IdentifierClassKind.ascii;/
+Main.cm:57:M/identifierClassKind = IdentifierClassKind.none;/identifierClassKind = soulcm.scmlg.IdentifierClassKind.none;/
+Main.cm:64:M/else if (NOT_CONVERTED(arg, "-"))/else if (arg.StartsWith("-"))/
+Main.cm:88:M/identifierClassKind = IdentifierClassKind.ascii;/identifierClassKind = soulcm.scmlg.IdentifierClassKind.ascii;/
+Main.cm:92:M/identifierClassKind = IdentifierClassKind.none;/identifierClassKind = soulcm.scmlg.IdentifierClassKind.none;/
+Main.cm:112:M/NOT_CONVERTED << "> " << fileName << NOT_CONVERTED;/Console.Out() << "> " << fileName << endl();/
+Main.cm:114:M/string s = NOT_CONVERTED(fileName);/string s = File.ReadAllText(fileName);/
+Main.cm:116:M/NOT_CONVERTED lexer(content, fileName, 0);/LexerFileLexer lexer(content, fileName, 0);/
+Main.cm:118:M/UniquePtr<System.soulcm.scmlg.LexerFile> lexerFile = NOT_CONVERTED(lexer, &ctx);/UniquePtr<soulcm.scmlg.LexerFile> lexerFile = LexerFileParser.Parse(lexer, &ctx);/
+Main.cm:119:M/System.soulcm.scmlg.LexerContext lexerContext(identifierClassKind);/soulcm.scmlg.LexerContext lexerContext(identifierClassKind);/
+Main.cm:121:M/System.soulcm.scmlg.RegularExpressionParser regularExpressionParser;/soulcm.scmlg.RegularExpressionParser regularExpressionParser;/
+Main.cm:126:M/catch (const NOT_CONVERTED&)/catch (const Exception& ex)/
+Main.cm:128:M/NOT_CONVERTED << ex.what() << NOT_CONVERTED;/Console.Error() << ex.Message() << endl();/

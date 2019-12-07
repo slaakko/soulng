@@ -157,6 +157,9 @@
                                             <parameter access="public" id="parameter_state_33779855F968CE586CA03637EA6547E1FC4CD259" name="state" type="int"/>
                                             <parameter access="public" id="parameter_c_B325E738BBD949684693BAE622709DADA6A58B3B" name="c" type="char32_t"/>
                                         </parameters>
+                                        <overrides>
+                                            <override functionId="function_NextState_3E3613612B297C77483EAD7D2BFBB6B029D23767"/>
+                                        </overrides>
                                     </function>
                                     <function access="public" declarationFile="Lexer.hpp" declarationFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" declarationLine="68" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="59" id="function_NextToken_DADACED38728DF1DE24F6C24CCA3FA3F35611D93" name="NextToken" returnType="void"/>
                                     <function access="public" definitionFile="Lexer.hpp" definitionFileId="file/Lexer.hpp_7F135EED4F8642F46DFF31D8D18A9A977C9E169B.html" definitionLine="47" id="function_Pos_6CE6B49F9DA70C1A93DE45F15B99E8913DD1A36D" name="Pos" returnType="const.char32_t.ptr.char32_t" specifiers="const"/>
@@ -230,7 +233,7 @@
                                     <variable access="private" id="variable_tokens_AB4DE95EDF29828F83D9A2A9F47A531256A76412" name="tokens" type="class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B"/>
                                 </variables>
                             </class>
-                            <class access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="14" id="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873" key="class" name="ParsingLog" project="system.lex">
+                            <class abstract="true" access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="14" id="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873" key="class" name="ParsingLog" project="system.lex">
                                 <derivedClasses>
                                     <derivedClass derivedClassId="class_XmlParsingLog_5E0B9202EA88CB2A01B9FB8C47C69E2F9DC726EA"/>
                                 </derivedClasses>
@@ -243,29 +246,53 @@
                                     </constructor>
                                 </constructors>
                                 <functions>
-                                    <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="21" id="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4" name="DecIndent" returnType="void" specifiers="pure virtual"/>
-                                    <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="20" id="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A" name="IncIndent" returnType="void" specifiers="pure virtual"/>
+                                    <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="21" id="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4" name="DecIndent" returnType="void" specifiers="pure virtual">
+                                        <overrides>
+                                            <override functionId="function_DecIndent_7025D0F4A50FA97321C33A6869CBE3D9D8B86B6C"/>
+                                        </overrides>
+                                    </function>
+                                    <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="20" id="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A" name="IncIndent" returnType="void" specifiers="pure virtual">
+                                        <overrides>
+                                            <override functionId="function_IncIndent_5EF04D2514CD10846041F779CB407FA6CADAE01B"/>
+                                        </overrides>
+                                    </function>
                                     <function access="public" declarationFile="ParsingLog.hpp" declarationFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" declarationLine="27" definitionFile="ParsingLog.cpp" definitionFileId="file/ParsingLog.cpp_2D1969B5BC9083272EBF0513002F95231C3B0CBB.html" definitionLine="22" id="function_MaxLineLength_0713DA1D4452BA00E41A0426BB658A26220B813F" name="MaxLineLength" returnType="int" specifiers="const virtual"/>
                                     <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="22" id="function_WriteBeginRule_37050DA44406AC5C30E0D2D737B59680BE8CD944" name="WriteBeginRule" returnType="void" specifiers="pure virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_ruleName_7C13C2A88F79585FD2B025743BB53FB0005BCBA0" name="ruleName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overrides>
+                                            <override functionId="function_WriteBeginRule_A2ED009C1710C6E3E3C3896F1AA48FE86CE1E615"/>
+                                        </overrides>
                                     </function>
                                     <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="23" id="function_WriteEndRule_C030CB1FF4C4AEB31DD4BC35EBA8F857CD81DD08" name="WriteEndRule" returnType="void" specifiers="pure virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_ruleName_4A9A1526A468784FF8D6DFEC1BDFB38CECE4D564" name="ruleName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overrides>
+                                            <override functionId="function_WriteEndRule_5DE6828EFA1FDF36FACFAC8A2C399BDE8EFF0060"/>
+                                        </overrides>
                                     </function>
-                                    <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="26" id="function_WriteFail_F3D1D34D13F792CC6FC4626B72BF6D4D8E11B7D7" name="WriteFail" returnType="void" specifiers="pure virtual"/>
+                                    <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="26" id="function_WriteFail_F3D1D34D13F792CC6FC4626B72BF6D4D8E11B7D7" name="WriteFail" returnType="void" specifiers="pure virtual">
+                                        <overrides>
+                                            <override functionId="function_WriteFail_7C0CDC36BC7D0A34C7D96BF024CA24C90E1F5E96"/>
+                                        </overrides>
+                                    </function>
                                     <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="25" id="function_WriteSuccess_DBE9BE41D67377CFC891A52060AE3A5E0CF0DEC1" name="WriteSuccess" returnType="void" specifiers="pure virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_match_F0924134423A2E1028A9A45D7518CE99914B017E" name="match" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overrides>
+                                            <override functionId="function_WriteSuccess_9D2F7F7D9F376F9E76ADA709370E23E18CF841D7"/>
+                                        </overrides>
                                     </function>
                                     <function access="public" definitionFile="ParsingLog.hpp" definitionFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" definitionLine="24" id="function_WriteTry_622A412C1D0FF6354F69C664EC30E3CDABBF5B23" name="WriteTry" returnType="void" specifiers="pure virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_s_6866A0C056874E5B78F2BCBA0A5AAEFC7DF66BEF" name="s" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overrides>
+                                            <override functionId="function_WriteTry_D639A0C6D788222E6A0AAA4B31CFCB19093A2B18"/>
+                                        </overrides>
                                     </function>
                                     <destructor access="public" declarationFile="ParsingLog.hpp" declarationFileId="file/ParsingLog.hpp_FA6D5D060DB125342906CC681E703833F77C45D6.html" declarationLine="19" definitionFile="ParsingLog.cpp" definitionFileId="file/ParsingLog.cpp_2D1969B5BC9083272EBF0513002F95231C3B0CBB.html" definitionLine="18" id="destructor_destructor_7EF605D823690E47D6C4CB06B8CA4A0E06FB3CA1" name="destructor" specifiers="virtual"/>
                                 </functions>
@@ -342,9 +369,17 @@
                                     </constructor>
                                 </constructors>
                                 <functions>
-                                    <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="18" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="79" id="function_DecIndent_7025D0F4A50FA97321C33A6869CBE3D9D8B86B6C" name="DecIndent" returnType="void" specifiers="override"/>
+                                    <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="18" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="79" id="function_DecIndent_7025D0F4A50FA97321C33A6869CBE3D9D8B86B6C" name="DecIndent" returnType="void" specifiers="override">
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_DecIndent_CE7E7E013E18A2C56971222C17C2FAD657AC62B4"/>
+                                        </overriddenFunctions>
+                                    </function>
                                     <function access="public" definitionFile="XmlParsingLog.hpp" definitionFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" definitionLine="26" id="function_Formatter_317F772ADC9195483ED8012ED8E2B9B28A59272E" name="Formatter" returnType="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.lvalueref.class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9"/>
-                                    <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="17" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="74" id="function_IncIndent_5EF04D2514CD10846041F779CB407FA6CADAE01B" name="IncIndent" returnType="void" specifiers="override"/>
+                                    <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="17" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="74" id="function_IncIndent_5EF04D2514CD10846041F779CB407FA6CADAE01B" name="IncIndent" returnType="void" specifiers="override">
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_IncIndent_28F8A17825F3BA9DC443D903D283DAC47044189A"/>
+                                        </overriddenFunctions>
+                                    </function>
                                     <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="25" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="123" id="function_Write_7FC9A8C85AB229B26C56D35B0DAE56BECBD4EE0B" name="Write" returnType="void">
                                         <parameters>
                                             <parameter access="public" id="parameter_s_857F6EC9FE94184E3DC5CE3B8F53FC47AF509717" name="s" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -354,6 +389,9 @@
                                         <parameters>
                                             <parameter access="public" id="parameter_ruleName_2CBF3F39C6AAF391A7E271F22348BB21ECCE4B0A" name="ruleName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_WriteBeginRule_37050DA44406AC5C30E0D2D737B59680BE8CD944"/>
+                                        </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="24" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="109" id="function_WriteElement_73A1A6083A620796C573146E47CBB4E23CCF4287" name="WriteElement" returnType="void">
                                         <parameters>
@@ -365,17 +403,30 @@
                                         <parameters>
                                             <parameter access="public" id="parameter_ruleName_6B7ED2A1EDA01CD5A3130E1B455CBAF55DD969BC" name="ruleName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_WriteEndRule_C030CB1FF4C4AEB31DD4BC35EBA8F857CD81DD08"/>
+                                        </overriddenFunctions>
                                     </function>
-                                    <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="23" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="104" id="function_WriteFail_7C0CDC36BC7D0A34C7D96BF024CA24C90E1F5E96" name="WriteFail" returnType="void" specifiers="override"/>
+                                    <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="23" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="104" id="function_WriteFail_7C0CDC36BC7D0A34C7D96BF024CA24C90E1F5E96" name="WriteFail" returnType="void" specifiers="override">
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_WriteFail_F3D1D34D13F792CC6FC4626B72BF6D4D8E11B7D7"/>
+                                        </overriddenFunctions>
+                                    </function>
                                     <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="22" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="99" id="function_WriteSuccess_9D2F7F7D9F376F9E76ADA709370E23E18CF841D7" name="WriteSuccess" returnType="void" specifiers="override">
                                         <parameters>
                                             <parameter access="public" id="parameter_match_7440C900F3ACAC916E1BC4C15439EEF41AE7461E" name="match" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_WriteSuccess_DBE9BE41D67377CFC891A52060AE3A5E0CF0DEC1"/>
+                                        </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="XmlParsingLog.hpp" declarationFileId="file/XmlParsingLog.hpp_454FEFBCA43428FCCB5E9B30E97374A817CD0ED4.html" declarationLine="21" definitionFile="XmlParsingLog.cpp" definitionFileId="file/XmlParsingLog.cpp_E7E6EF54D67273AFC649E5101FB961FC2C8116F2.html" definitionLine="94" id="function_WriteTry_D639A0C6D788222E6A0AAA4B31CFCB19093A2B18" name="WriteTry" returnType="void" specifiers="override">
                                         <parameters>
                                             <parameter access="public" id="parameter_s_286AA56DB0F983C65D5133FD57DCC804CB363F57" name="s" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
+                                        <overriddenFunctions>
+                                            <overriddenFunction functionId="function_WriteTry_622A412C1D0FF6354F69C664EC30E3CDABBF5B23"/>
+                                        </overriddenFunctions>
                                     </function>
                                 </functions>
                                 <variables>
@@ -384,6 +435,7 @@
                             </class>
                         </classes>
                         <functions>
+                            <function access="public" declarationFile="Token.hpp" declarationFileId="file/Token.hpp_0F42C84272EDA0A28DA37E4B7632E5F17BC038F2.html" declarationLine="29" definitionFile="Token.cpp" definitionFileId="file/Token.cpp_D02852FDADF09A9AB44B2A723A9F6875870D163E.html" definitionLine="16" id="function_GetEndTokenInfo_D860084FB81865DE439E12CDDF18F7E2AEC9D671" name="GetEndTokenInfo" project="system.lex" returnType="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C"/>
                             <function access="public" definitionFile="Lexer.cpp" definitionFileId="file/Lexer.cpp_B33EC6D6781914D118B5324C4F9CABC12E3E4A93.html" definitionLine="234" id="function_LineEnd_D74C48FFE61488E48E63969CD17867D26E141219" name="LineEnd" project="system.lex" returnType="const.char32_t.ptr.char32_t">
                                 <parameters>
                                     <parameter access="public" id="parameter_end_D295E5F4CF99DE5BC0CDAC7645F37429CDD46294" name="end" type="const.char32_t.ptr.char32_t"/>
@@ -456,7 +508,7 @@
                         </functions>
                         <variables>
                             <variable access="public" id="variable_CONTINUE_TOKEN_1DEF57BA37A6B0060E3356C5F595AD165059CF9F" name="CONTINUE_TOKEN" project="system.lex" type="const.int.int"/>
-                            <variable access="public" id="variable_END_12CBF0C7593E6FB6D4878AB958E690D5E8AC120B" name="END" project="system.lex" type="const.int.int"/>
+                            <variable access="public" id="variable_END_TOKEN_2DF6C0D2044C7E8979980D4EFC44F638C4496043" name="END_TOKEN" project="system.lex" type="const.int.int"/>
                             <variable access="public" id="variable_INVALID_TOKEN_FF6D6DEDC723F83D209788B76800DCFFF247EA50" name="INVALID_TOKEN" project="system.lex" type="const.int.int"/>
                         </variables>
                     </namespace>
@@ -473,6 +525,7 @@
                             <class access="public" definitionFile="BinaryReader.hpp" definitionFileId="file/BinaryReader.hpp_E67315FC64F3610059BF42E701001D91D402108C.html" definitionLine="3" id="class_BinaryReader_A09089526873F7BFDE3CAFC3BAE5A3A652113045" key="class" name="BinaryReader" project="soulng.util"/>
                             <class access="public" definitionFile="BinaryWriter.hpp" definitionFileId="file/BinaryWriter.hpp_009478FB1F0BF01527C36AD5F1A33A71C137598C.html" definitionLine="3" id="class_BinaryWriter_0D40DDC5D57867D529F25148B10988402235B9CF" key="class" name="BinaryWriter" project="soulng.util"/>
                             <class access="public" definitionFile="CodeFormatter.hpp" definitionFileId="file/CodeFormatter.hpp_79BF669CE8A7E6B2DA171FD31C9519B17BE43964.html" definitionLine="3" id="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9" key="class" name="CodeFormatter" project="soulng.util"/>
+                            <class access="public" definitionFile="Path.hpp" definitionFileId="file/Path.hpp_05998C7829A049E300214B2DA8CE88DA892D1E52.html" definitionLine="5" id="class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F" key="class" name="Path" project="soulng.util"/>
                         </classes>
                     </namespace>
                 </namespaces>
@@ -495,6 +548,15 @@
                         <templateParameters>
                             <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
                         </templateParameters>
+                    </class>
+                    <class access="public" definitionFile="list.hpp" definitionFileId="file/list.hpp_BC849A2C1D24ED8292F27E8DD82091A76D6DA28A.html" definitionLine="4" id="class_list_F3CB00BB4675319888AD0993594BD5000A4C13C8" key="class" name="list" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
+                        <typedefs>
+                            <typedef access="public" id="typedef_const_iterator_BB0125D4D3A1AC59C3632C7C7E9D22AAAD2DD5A6" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                            <typedef access="public" id="typedef_iterator_C7462BEC6DF71ABF89C373722EB032F2B6D1D1E4" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                        </typedefs>
                     </class>
                     <class access="public" definitionFile="map.hpp" definitionFileId="file/map.hpp_967DAE3E3B0BF77B2EE871097E714AB070115BE8.html" definitionLine="4" id="class_map_80D39818B4A04DD6095AFD5B8F7CEA02FC5FCC1D" key="class" name="map" project="std">
                         <templateParameters>
@@ -522,6 +584,16 @@
                             </function>
                         </functions>
                     </class>
+                    <class access="public" definitionFile="pair.hpp" definitionFileId="file/pair.hpp_635488B6CC7A436232B708170FEED1C0D02E011A.html" definitionLine="4" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF" key="class" name="pair" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                            <templateParameter access="public" id="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
+                        </templateParameters>
+                        <variables>
+                            <variable access="public" id="variable_first_A96CCCC10FE15B9139D7CBEAD9EE4FBA3B305279" name="first" type="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                            <variable access="public" id="variable_second_FEE83E1EF41C5D5CAC06328A9A232D230EC46453" name="second" type="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                        </variables>
+                    </class>
                     <class access="public" definitionFile="exception.hpp" definitionFileId="file/exception.hpp_9ED584274D66A2ADF346238E3977914F5671954B.html" definitionLine="3" id="class_runtime_error_E47E6702DFA636191C426F9BA14A342BEB6E75A3" key="class" name="runtime_error" project="std"/>
                     <class access="public" definitionFile="set.hpp" definitionFileId="file/set.hpp_EAB9C22B483A5D0CFC64481D7A33F00D7F3D931C.html" definitionLine="4" id="class_set_DC8DD1ACCC4F17E9E11EC650AB964C2E3465BC85" key="class" name="set" project="std">
                         <templateParameters>
@@ -531,6 +603,11 @@
                             <typedef access="public" id="typedef_const_iterator_A8146A736B4E8BF9D3237C825ECDD5D13014B2C6" name="const_iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
                             <typedef access="public" id="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635" name="iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
                         </typedefs>
+                    </class>
+                    <class access="public" definitionFile="stack.hpp" definitionFileId="file/stack.hpp_CBFFADE5906A83A4B107578BF63B2D5E817EC7FC.html" definitionLine="4" id="class_stack_9CB244C3F46D198DCFA44626486BFB2C1FB940FB" key="class" name="stack" project="std">
+                        <templateParameters>
+                            <templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+                        </templateParameters>
                     </class>
                     <class access="public" definitionFile="unique_ptr.hpp" definitionFileId="file/unique_ptr.hpp_484DCEDE12A8E47E298533819289CD473F265228.html" definitionLine="4" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA" key="class" name="unique_ptr" project="std">
                         <templateParameters>
@@ -602,14 +679,17 @@
                             <parameter access="public" id="parameter_state_05E5EDF0E0C03A8063D426DCAC1812498EABC202" name="state" type="int"/>
                             <parameter access="public" id="parameter_c_D8AB387AD13AA9543AD8BEDEB7903C15637F2B43" name="c" type="char32_t"/>
                         </parameters>
+                        <overriddenFunctions>
+                            <overriddenFunction functionId="function_NextState_770F33FD64D82342B2028F01CB63DB92E6E8D009"/>
+                        </overriddenFunctions>
                     </function>
                 </functions>
             </class>
         </classes>
         <functions>
-            <function access="public" declarationFile="TrivialLexer.hpp" declarationFileId="file/TrivialLexer.hpp_387CDFF5C8FCA6599596227992472542380E57FA.html" declarationLine="18" definitionFile="TrivialLexer.cpp" definitionFileId="file/TrivialLexer.cpp_C074E97B1908F923BC86F20402C5598CCD69825F.html" definitionLine="27" id="function_GetTokenInfo_774E89089EBF4412EE838416F88BF906A325B89B" name="GetTokenInfo" project="system.lex" returnType="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C">
+            <function access="public" declarationFile="TrivialLexer.hpp" declarationFileId="file/TrivialLexer.hpp_387CDFF5C8FCA6599596227992472542380E57FA.html" declarationLine="18" definitionFile="TrivialLexer.cpp" definitionFileId="file/TrivialLexer.cpp_C074E97B1908F923BC86F20402C5598CCD69825F.html" definitionLine="28" id="function_GetTrivialTokenInfo_A2BA304C672CE5F7CD3B368127D7A53DF4548991" name="GetTrivialTokenInfo" project="system.lex" returnType="typedef_string_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C">
                 <parameters>
-                    <parameter access="public" id="parameter_tokenId_91CB929909762F8E1DCEB3EF0634FE3D6E4BBBC1" name="tokenId" type="int"/>
+                    <parameter access="public" id="parameter_tokenId_507393190174A97823CA1D6C3FA372C295DFBB97" name="tokenId" type="int"/>
                 </parameters>
             </function>
         </functions>
@@ -767,13 +847,13 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
+        <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.lvalueref.type_0E49687DADCC5D9280600F55FA5D93A7E207BB89" name="const &amp;">
+        <derivedType access="public" id="const.lvalueref.type_56DB87BCCA26307DFDA41583F3B1A3AB14A3830C" name="const &amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
                 <derivation kind="operator" str="&amp;"/>
@@ -807,13 +887,6 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
-            <derivations>
-                <derivation kind="specifier" str="const "/>
-                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
@@ -821,10 +894,24 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
+        <derivedType access="public" id="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
         <derivedType access="public" id="const.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B.lvalueref.struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B" name="const Token&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
                 <derivation kind="base" typeId="struct_Token_364C47BDC35CAD9326A2AF130B5B3D3CBF447F3B"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -869,10 +956,10 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
+        <derivedType access="public" id="const.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const pair&lt;T, U>&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
-                <derivation kind="base" typeId="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="base" typeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -930,32 +1017,31 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10" name="pair"/>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="pair&lt;T, U>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
                 <templateArgument typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_675EE47F39D8DF21AC51A93BBF08CA972E05B635"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="type_20166CC53D5425725047EED891B696D5A1EAFD10.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="type_20166CC53D5425725047EED891B696D5A1EAFD10">
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_9EC97072643015DF72F29AA54FED08F30AB07143"/>
                 <templateArgument typeId="bool"/>

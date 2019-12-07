@@ -17,7 +17,7 @@ class ExpressionBinder : public sngcpp::ast::Visitor
 {
 public:
     ExpressionBinder(SymbolTable& symbolTable_, ContainerScope* containerScope_, const std::vector<ContainerScope*>& prevContainerScopes_,
-        BoundSourceFile* boundSourceFile_, FunctionSymbol* currentFunction_, StatementBinder* statementBinder_);
+        BoundSourceFile* boundSourceFile_, FunctionSymbol* currentFunction_, StatementBinder* statementBinder_, bool& subjectIsConst_);
     std::vector<Symbol*> GetSymbols() { return std::move(symbols); }
     void Visit(InitDeclaratorNode& initDeclaratorNode) override;
     void Visit(CtorInitializerNode& ctorInitializerNode) override;
@@ -69,6 +69,7 @@ public:
     void Visit(PointerNode& pointerNode) override;
     void Visit(RValueRefNode& rValueRefNode) override;
     void Visit(LValueRefNode& lValueRefNode) override;
+    void Visit(DeleteExpressionNode& deleteExpressionNode) override;
 private:
     StatementBinder* statementBinder;
     SymbolTable& symbolTable;
@@ -77,12 +78,13 @@ private:
     BoundSourceFile* boundSourceFile;
     FunctionSymbol* currentFunction;
     std::vector<Symbol*> symbols;
+    bool& subjectIsConst;
 };
 
 ExpressionBinder::ExpressionBinder(SymbolTable& symbolTable_, ContainerScope* containerScope_, const std::vector<ContainerScope*>& prevContainerScopes_, BoundSourceFile* boundSourceFile_,
-    FunctionSymbol* currentFunction_, StatementBinder* statementBinder_) :
+    FunctionSymbol* currentFunction_, StatementBinder* statementBinder_, bool& subjectIsConst_) :
     statementBinder(statementBinder_), symbolTable(symbolTable_), containerScope(containerScope_), prevContainerScopes(prevContainerScopes_), boundSourceFile(boundSourceFile_),
-    currentFunction(currentFunction_), symbols()
+    currentFunction(currentFunction_), symbols(), subjectIsConst(subjectIsConst_)
 {
 }
 
@@ -299,7 +301,9 @@ void ExpressionBinder::Visit(SubscriptExpressionNode& subscriptExpressionNode)
 void ExpressionBinder::Visit(InvokeExpressionNode& invokeExpressionNode)
 {
     FunctionGroupSymbol* functionGroup = nullptr;
-    std::vector<Symbol*> subjectSymbols = BindExpression(invokeExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    bool subjectIsConst = false;
+    std::vector<Symbol*> subjectSymbols = BindExpression(invokeExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder,
+        subjectIsConst);
     if (!subjectSymbols.empty())
     {
         Symbol* subject = subjectSymbols.front();
@@ -341,7 +345,7 @@ void ExpressionBinder::Visit(InvokeExpressionNode& invokeExpressionNode)
     }
     if (functionGroup)
     {
-        CallableSymbol* functionSymbol = functionGroup->ResolveOverload(argumentSymbols);
+        CallableSymbol* functionSymbol = functionGroup->ResolveOverload(argumentSymbols, invokeExpressionNode.Child()->GetNodeType() == NodeType::arrowNode && subjectIsConst);
         if (functionSymbol)
         {
             symbolTable.MapNode(&invokeExpressionNode, functionSymbol);
@@ -408,6 +412,14 @@ void ExpressionBinder::Visit(ArrowNode& arrowNode)
         sngcpp::symbols::TypeSymbol* type = s->GetType();
         if (type)
         {
+            if (type->HasConstDerivation())
+            {
+                subjectIsConst = true;
+            }
+            else
+            {
+                subjectIsConst = false;
+            }
             if (type->IsTypedefSymbol())
             {
                 TypedefSymbol* typedefSymbol = static_cast<TypedefSymbol*>(type);
@@ -608,10 +620,15 @@ void ExpressionBinder::Visit(LValueRefNode& lValueRefNode)
     BindExpression(lValueRefNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
 }
 
-std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile* boundSourceFile,
-    FunctionSymbol* currentFunction, StatementBinder* statementBinder)
+void ExpressionBinder::Visit(DeleteExpressionNode& deleteExpressionNode)
 {
-    ExpressionBinder expressionBinder(symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+    BindExpression(deleteExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile* boundSourceFile,
+    FunctionSymbol* currentFunction, StatementBinder* statementBinder, bool& subjectIsConst)
+{
+    ExpressionBinder expressionBinder(symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder, subjectIsConst);
     node->Accept(expressionBinder);
     std::vector<Symbol*> symbols = expressionBinder.GetSymbols();
     if (symbols.empty())
@@ -633,6 +650,13 @@ std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, Contai
         }
     }
     return symbols;
+}
+
+std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile* boundSourceFile,
+    FunctionSymbol* currentFunction, StatementBinder* statementBinder)
+{
+    bool subjectIsConst = false;
+    return BindExpression(node, symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder, subjectIsConst);
 }
 
 } } // namespace sngcppp::binder
