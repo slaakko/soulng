@@ -4,7 +4,7 @@
 #include <sngxml/xpath/XPathTokens.hpp>
 #include <sngxml/xpath/XPathTokenValueParsers.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace XPathTokens;
@@ -32,13 +32,13 @@ std::unique_ptr<sngxml::xpath::XPathExpr> XPathParser::Parse(XPathLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return value;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else

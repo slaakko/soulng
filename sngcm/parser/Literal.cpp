@@ -4,7 +4,7 @@
 #include <sngcm/lexer/CmajorLexer.hpp>
 #include <sngcm/lexer/CmajorTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcm/parser/Literal.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngcm/parser/Literal.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace sngcm::ast;

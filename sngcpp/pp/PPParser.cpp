@@ -3,7 +3,7 @@
 #include <sngcpp/pp/PPLexer.hpp>
 #include <sngcpp/pp/PPTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/pp/PPParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/pp/PPParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace PPTokens;
@@ -29,13 +29,13 @@ void PPLineParser::Parse(PPLexer& lexer, sngcpp::pp::PP* pp)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else

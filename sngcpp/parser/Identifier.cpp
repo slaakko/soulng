@@ -4,7 +4,7 @@
 #include <sngcpp/lexer/CppLexer.hpp>
 #include <sngcpp/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/parser/Identifier.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/parser/Identifier.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace CppTokens;

@@ -4,7 +4,7 @@
 #include <soulng/rex/RexTokens.hpp>
 #include <soulng/rex/TokenValueParsers.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/rex/RexParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/rex/RexParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -39,7 +39,7 @@ soulng::rex::Nfa RexParser::Parse(RexLexer& lexer, soulng::rex::Context* context
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else

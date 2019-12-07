@@ -5,7 +5,7 @@
 #include <soulng/slg/LexerFileLexer.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/LexerFileParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/soulng/slg/LexerFileParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -40,7 +40,7 @@ std::unique_ptr<soulng::slg::LexerFile> LexerFileParser::Parse(LexerFileLexer& l
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else

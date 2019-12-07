@@ -23,7 +23,7 @@ using namespace soulng::util;
 
 std::string ParserGeneratorVersionStr()
 {
-    return "2.0.0";
+    return "3.0.0";
 }
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_) :
@@ -940,7 +940,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("else");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetEndTokenInfo()));");
+                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->DecIndent();

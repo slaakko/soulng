@@ -11,7 +11,7 @@
 #include <sngcm/parser/Parameter.hpp>
 #include <sngcm/parser/Statement.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcm/parser/Function.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngcm/parser/Function.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace sngcm::ast;

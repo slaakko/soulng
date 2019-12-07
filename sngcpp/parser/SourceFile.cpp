@@ -3,7 +3,7 @@
 #include <sngcpp/lexer/CppLexer.hpp>
 #include <sngcpp/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/parser/SourceFile.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/parser/SourceFile.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace CppTokens;
@@ -30,13 +30,13 @@ void SourceFileParser::Parse(CppLexer& lexer, sngcpp::ast::SourceFileNode* sourc
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else

@@ -1,7 +1,7 @@
 #ifndef CppTokenLexer_HPP
 #define CppTokenLexer_HPP
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/lexer/CppTokenLexer.lexer' using soulng lexer generator slg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/lexer/CppTokenLexer.lexer' using soulng lexer generator slg version 3.0.0
 
 #include <sngcpp/lexer/CppLexerApi.hpp>
 #include <sngcpp/ast/SourceCodeWriter.hpp>

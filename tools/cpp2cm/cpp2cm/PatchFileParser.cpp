@@ -3,7 +3,7 @@
 #include <soulng/lexer/TrivialLexer.hpp>
 #include <soulng/parser/Range.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/cpp2cm/PatchFileParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/cpp2cm/PatchFileParser.parser' using soulng parser generator spg version 3.0.0
 
 static const soulng::parser::Range s0[] = {{58, 58}, {13, 13}, {10, 10}};
 
@@ -45,13 +45,13 @@ std::unique_ptr<cpp2cm::PatchFile> PatchFileParser::Parse(TrivialLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return value;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
