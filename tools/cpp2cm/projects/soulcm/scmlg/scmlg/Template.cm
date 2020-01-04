@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Lex;
 using System.Parsing;
-using System.Cmajor.Ast;
+using Cm.Ast;
 using LexerFileTokens;
 
 public static class TemplateParser
@@ -275,6 +275,10 @@ public static class TemplateParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match TemplateParameter(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -380,6 +384,10 @@ public static class TemplateParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match TemplateParameterList(LexerFileLexer& lexer, ParsingContext* ctx, Node* owner)
@@ -509,7 +517,7 @@ public static class TemplateParser
                 Match match(true);
                 Match* parentMatch12 = &match;
                 {
-                    long pos = lexer.GetPos();
+                    System.Lex.Span span = lexer.GetSpan();
                     Match match(false);
                     if (*lexer == RANGLE)
                     {
@@ -522,7 +530,7 @@ public static class TemplateParser
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, GetTokenName(RANGLE));
+                        lexer.ThrowExpectationFailure(span, GetTokenName(RANGLE));
                     }
                 }
                 *parentMatch11 = match;
@@ -542,6 +550,10 @@ public static class TemplateParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

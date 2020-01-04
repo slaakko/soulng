@@ -1,0 +1,39 @@
+using System;
+using System.IO;
+using System.Text;
+using System.Dom;
+using System.XPath;
+
+int main()
+{
+    try
+    {
+        UniquePtr<Document> doc = ReadDocument("D:/work/soulng-project/tools/cpp2cm/projects/system.xpath/map.xml");
+        UniquePtr<XPathObject> result = Evaluate(u"/map/namespace", doc.Get());
+        if (result.Get() != null)
+        {
+            if (result.Get() is XPathNodeSet*)
+            {
+                XPathNodeSet* nodeSet = cast<XPathNodeSet*>(result.Get());
+                int n = nodeSet->Length();
+                for (int i = 0; i < n; ++i)
+                {
+                    Node* node = (*nodeSet)[i];
+                    if (node is Element*)
+                    {
+                        Element* element = cast<Element*>(node);
+                        ustring source = element->GetAttribute(u"source");
+                        ustring target = element->GetAttribute(u"target");
+                        Console.Out() << element->Name() << " : source=" << source << " target=" << target << endl();
+                    }
+                }
+            }
+        }
+    }
+    catch (const Exception& ex)
+    {
+        Console.Error() << ex.ToString() << endl();
+        return 1;
+    }
+    return 0;
+}

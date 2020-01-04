@@ -1,0 +1,56 @@
+CharacterData.cm:39:M/return data.find('\n') != NOT_CONVERTED;/return data.Find('\n') != -1;/
+Document.cm:103:D
+Document.cm:151:D
+Element.cm:201:M/private Map<ustring, UniquePtr<Attr>> attributeMap;/private Map<ustring, Attr*> attributeMap;/
+Element.cm:64:M/for (NOT_CONVERTED& p : attributeMap)/for (Pair<ustring, Attr*>& p : attributeMap)/
+Element.cm:66:M/UniquePtr<Attr>& attr = p.second;/Attr* attr = p.second;/
+Element.cm:52:M/public Element(const ustring& name_, Map<ustring, UniquePtr<Attr>>&& attributeMap_)/public Element(const ustring& name_, Map<ustring, Attr*>&& attributeMap_)/
+Element.cm:56:I/        public ~Element()/
+Element.cm:56:I/        {/
+Element.cm:56:I/            for (Pair<ustring, Attr*>& p : attributeMap)/
+Element.cm:56:I/            {/
+Element.cm:56:I/                delete p.second;/
+Element.cm:56:I/            }/
+Element.cm:56:I/        }/
+Element.cm:83:M/NOT_CONVERTED it = attributeMap.CFind(attrName);/Map<ustring, Attr*>.ConstIterator it = attributeMap.CFind(attrName);/
+Element.cm:92:M/attributeMap[attr->Name()] = Rvalue(attr);/attributeMap[attr->Name()] = attr.Release();/
+Element.cm:96:M/attributeMap[attrName] = UniquePtr<Attr>(new Attr(attrName, attrValue));/attributeMap[attrName] = new Attr(attrName, attrValue);/
+Element.cm:92:I/            RemoveAttribute(attr->Name());/
+Element.cm:96:I/            RemoveAttribute(attrName);/
+Element.cm:100:I/            Map<ustring, Attr*>.Iterator it = attributeMap.Find(attrName);/
+Element.cm:100:I/            if (it != attributeMap.End())/
+Element.cm:100:I/            {/
+Element.cm:100:I/               delete it->second;/
+Element.cm:100:I/            }/
+Element.cm:113:M/Map<ustring, UniquePtr<Attr>> clonedAttributeMap;/Map<ustring, Attr*> clonedAttributeMap;/
+Element.cm:114:M/for (const NOT_CONVERTED& p : attributeMap)/for (const Pair<ustring, Attr*>& p : attributeMap)/
+Element.cm:118:M/clonedAttributeMap[p.first] = UniquePtr<Attr>(cast<Attr*>(clonedAttrNode.Release()));/clonedAttributeMap[p.first] = cast<Attr*>(clonedAttrNode.Release());/
+Element.cm:189:M/for (const NOT_CONVERTED& p : attributeMap)/for (const Pair<ustring, Attr*>& p : attributeMap)/
+Element.cm:191:M/Attr* attr = p.second.get();/Attr* attr = p.second;/
+Element.cm:229:M/if (attributeValue.find('\"') == NOT_CONVERTED)/if (attributeValue.Find('\"') == -1)/
+Element.cm:235:M/else if (attributeValue.find('\'') == NOT_CONVERTED)/else if (attributeValue.Find('\'') == -1)/
+Node.cm:111:M/NOT_CONVERTED colonPos = name.find(':');/long colonPos = name.Find(':');/
+Node.cm:112:M/if (colonPos != NOT_CONVERTED)/if (colonPos != -1)/
+Node.cm:123:M/NOT_CONVERTED colonPos = name.find(':');/long colonPos = name.Find(':');/
+Node.cm:126:M/if (colonPos != NOT_CONVERTED)/if (colonPos != -1)/
+Node.cm:133:M/if (colonPos != NOT_CONVERTED)/if (colonPos != -1)/
+Node.cm:152:M/NOT_CONVERTED colonPos = name.find(':');/long colonPos = name.Find(':');/
+Node.cm:153:M/if (colonPos != NOT_CONVERTED)/if (colonPos != -1)/
+Node.cm:580:M/return nodes.Count();/return cast<int>(nodes.Count());/
+Parser.cm:44:M/ustring text = NOT_CONVERTED(textContent);/ustring text = TrimAll(textContent);/
+Parser.cm:51:M/UniquePtr<Text> textNode(new Text(text));/UniquePtr<Node> textNode(new System.Dom.Text(text));/
+Parser.cm:82:M/UniquePtr<Comment> commentNode(new Comment(comment));/UniquePtr<Node> commentNode(new Comment(comment));/
+Parser.cm:95:M/UniquePtr<ProcessingInstruction> processingInstructionNode(new ProcessingInstruction(target, data));/UniquePtr<Node> processingInstructionNode(new ProcessingInstruction(target, data));/
+Parser.cm:108:M/UniquePtr<CDataSection> cdataSection(new CDataSection(data));/UniquePtr<Node> cdataSection(new CDataSection(data));/
+Parser.cm:122:M/Map<ustring, UniquePtr<Attr>> attrs;/Map<ustring, Attr*> attrs;/
+Parser.cm:125:M/attrs[attr.QualifiedName()] = UniquePtr<Attr>(new Attr(attr.QualifiedName(), attr.Value()));/attrs[attr.QualifiedName()] = new Attr(attr.QualifiedName(), attr.Value());/
+Parser.cm:141:M/parentElement->AppendChild(Rvalue(currentElement));/parentElement->AppendChild(UniquePtr<Node>(currentElement.Release()));/
+Parser.cm:146:M/document->AppendChild(Rvalue(currentElement));/document->AppendChild(UniquePtr<Node>(currentElement.Release()));/
+Parser.cm:164:M/System.Xml.Flags xmlFlags = Flags.none;/System.Xml.Flags xmlFlags = System.Xml.Flags.none;/
+Parser.cm:167:M/xmlFlags = xmlFlags | Flags.debug;/xmlFlags = xmlFlags | System.Xml.Flags.debug;/
+Parser.cm:169:M/ParseXmlContent(content, systemId, &domDocumentHandler, xmlFlags);/System.Xml.ParseXmlContent(content, systemId, &domDocumentHandler, xmlFlags);/
+Parser.cm:178:M/ustring content = ToUtf32(NOT_CONVERTED(fileName));/ustring content = ToUtf32(System.IO.File.ReadAllText(fileName));/
+Parser.cm:75:M/public override void Text(const ustring& text)/public override void HandleText(const ustring& text)/
+Parser.cm:79:M/public override void Comment(const ustring& comment)/public override void HandleComment(const ustring& comment)/
+Parser.cm:92:M/public override void PI(const ustring& target, const ustring& data)/public override void HandlePI(const ustring& target, const ustring& data)/
+Parser.cm:105:M/public override void CDataSection(const ustring& data)/public override void HandleCDataSection(const ustring& data)/

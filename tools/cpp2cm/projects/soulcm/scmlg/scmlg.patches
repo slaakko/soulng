@@ -9,18 +9,18 @@ LexerContext.cm:10:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
 LexerContext.cm:353:M/splitClass->Ranges().push_back(intersection);/splitClass->Ranges().Add(intersection);/
 LexerContext.cm:380:M/if (!splitClass->Ranges().empty())/if (!splitClass->Ranges().IsEmpty())/
 LexerContext.cm:413:M/CodeFormatter formatter(NOT_CONVERTED);/CodeFormatter formatter(Console.Out());/
-LexerContext.cm:450:M/Specifiers.private_/System.Cmajor.Ast.Specifiers.private_/
-LexerContext.cm:458:M/Specifiers.public_/System.Cmajor.Ast.Specifiers.public_/
-LexerContext.cm:458:M/Specifiers.static_/System.Cmajor.Ast.Specifiers.static_/
-LexerContext.cm:459:M/Specifiers.public_/System.Cmajor.Ast.Specifiers.public_/
-LexerContext.cm:459:M/Specifiers.static_/System.Cmajor.Ast.Specifiers.static_/
+LexerContext.cm:450:M/Specifiers.private_/Cm.Ast.Specifiers.private_/
+LexerContext.cm:458:M/Specifiers.public_/Cm.Ast.Specifiers.public_/
+LexerContext.cm:458:M/Specifiers.static_/Cm.Ast.Specifiers.static_/
+LexerContext.cm:459:M/Specifiers.public_/Cm.Ast.Specifiers.public_/
+LexerContext.cm:459:M/Specifiers.static_/Cm.Ast.Specifiers.static_/
 LexerContext.cm:477:M/NOT_CONVERTED classMapFile(classMapSourceFileName);/System.IO.StreamWriter classMapFile(System.IO.File.CreateText(classMapSourceFileName));/
 LexerContext.cm:483:M/NOT_CONVERTED << "==> " << classMapSourceFileName << NOT_CONVERTED;/Console.Out() << "==> " << classMapSourceFileName << endl();/
 LexerContext.cm:517:M/if (left->Ranges().size() < right->Ranges().size()) return false;/if (left->Ranges().Count() < right->Ranges().Count()) return false;/
 LexerContext.cm:518:M/if (left->Ranges().size() > right->Ranges().size()) return false;/if (left->Ranges().Count() > right->Ranges().Count()) return false;/
 LexerContext.cm:535:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
 Model.cm:10:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
-Model.cm:5:I/using System.Cmajor.Ast;/
+Model.cm:5:I/using Cm.Ast;/
 Model.cm:247:M/NOT_CONVERTED tokenFile(tokenFilePath);/System.IO.StreamWriter tokenFile(System.IO.File.CreateText(tokenFilePath));/
 Model.cm:253:M/NOT_CONVERTED << "==> " << tokenFilePath << NOT_CONVERTED;/Console.Out() << "==> " << tokenFilePath << endl();/
 Model.cm:368:M/NOT_CONVERTED keywordFile(keywordFilePath);/System.IO.StreamWriter keywordFile(System.IO.File.CreateText(keywordFilePath));/
@@ -68,8 +68,8 @@ TokenValueParsers.cm:359:M/if (p != NOT_CONVERTED&&(*p == 'u' || *p == 'U'))/if 
 TokenValueParsers.cm:516:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
 Visitor.cm:8:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
 Visitor.cm:25:M/namespace System.soulcm.scmlg/namespace soulcm.scmlg/
-Main.cm:9:M/NOT_CONVERTED << "Soul NG Lexer Generator version " << LexerGeneratorVersionStr() << NOT_CONVERTED;/Console.Out() << "Soul Cmajor Lexer Generator version " << soulcm.scmlg.LexerGeneratorVersionStr() << endl();/
-Main.cm:10:M/NOT_CONVERTED << "Usage: slg [options] <file.lexer>" << NOT_CONVERTED;/Console.Out() << "Usage: slg [options] <file.lexer>" << endl();/
+Main.cm:9:M/NOT_CONVERTED << "Soul NG Lexer Generator version " << LexerGeneratorVersionStr() << NOT_CONVERTED;/Console.Out() << "Soul CM Lexer Generator version " << soulcm.scmlg.LexerGeneratorVersionStr() << endl();/
+Main.cm:10:M/NOT_CONVERTED << "Usage: soulngcm_slg [options] <file.lexer>" << NOT_CONVERTED;/Console.Out() << "Usage: scmlg [options] <file.lexer>" << endl();/
 Main.cm:11:M/NOT_CONVERTED << "Options:" << NOT_CONVERTED;/Console.Out() << "Options:" << endl();/
 Main.cm:12:M/NOT_CONVERTED << "--help | -h" << NOT_CONVERTED;/Console.Out() << "--help | -h" << endl();/
 Main.cm:13:M/NOT_CONVERTED << "  Print help and exit." << NOT_CONVERTED;/Console.Out() << "  Print help and exit." << endl();/

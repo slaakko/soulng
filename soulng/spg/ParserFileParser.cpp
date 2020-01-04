@@ -25,7 +25,7 @@ std::unique_ptr<soulng::spg::ParserFile> ParserFileParser::Parse(ParserFileLexer
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = ParserFileParser::ParserFile(lexer);
     value.reset(static_cast<soulng::spg::ParserFile*>(match.value));
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
@@ -43,12 +43,12 @@ std::unique_ptr<soulng::spg::ParserFile> ParserFileParser::Parse(ParserFileLexer
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"ParserFile");
+        lexer.ThrowExpectationFailure(span, U"ParserFile");
     }
     return value;
 }
@@ -137,6 +137,10 @@ soulng::parser::Match ParserFileParser::ParserFile(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParserFile"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -229,6 +233,10 @@ soulng::parser::Match ParserFileParser::Declaration(ParserFileLexer& lexer, soul
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Declaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -415,6 +423,10 @@ soulng::parser::Match ParserFileParser::IncludeDeclaration(ParserFileLexer& lexe
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IncludeDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -468,6 +480,10 @@ soulng::parser::Match ParserFileParser::IncludePrefix(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IncludePrefix"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -555,7 +571,7 @@ soulng::parser::Match ParserFileParser::UsingNamespaceDeclaration(ParserFileLexe
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch8 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -568,7 +584,7 @@ soulng::parser::Match ParserFileParser::UsingNamespaceDeclaration(ParserFileLexe
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(SEMICOLON)));
                     }
                 }
                 if (match.hit)
@@ -594,6 +610,10 @@ soulng::parser::Match ParserFileParser::UsingNamespaceDeclaration(ParserFileLexe
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("UsingNamespaceDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -689,7 +709,7 @@ soulng::parser::Match ParserFileParser::ParserDeclaration(ParserFileLexer& lexer
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch11 = &match;
                             {
-                                int64_t pos = lexer.GetPos();
+                                soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match(false);
                                 if (*lexer == LBRACE)
                                 {
@@ -702,7 +722,7 @@ soulng::parser::Match ParserFileParser::ParserDeclaration(ParserFileLexer& lexer
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
+                                    lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(LBRACE)));
                                 }
                             }
                             *parentMatch10 = match;
@@ -750,7 +770,7 @@ soulng::parser::Match ParserFileParser::ParserDeclaration(ParserFileLexer& lexer
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch15 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == RBRACE)
                         {
@@ -763,7 +783,7 @@ soulng::parser::Match ParserFileParser::ParserDeclaration(ParserFileLexer& lexer
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RBRACE)));
                         }
                     }
                     *parentMatch14 = match;
@@ -790,6 +810,10 @@ soulng::parser::Match ParserFileParser::ParserDeclaration(ParserFileLexer& lexer
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParserDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -856,7 +880,7 @@ soulng::parser::Match ParserFileParser::Api(ParserFileLexer& lexer)
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch7 = &match;
                         {
-                            int64_t pos = lexer.GetPos();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(false);
                             if (*lexer == ID)
                             {
@@ -869,7 +893,7 @@ soulng::parser::Match ParserFileParser::Api(ParserFileLexer& lexer)
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ID)));
+                                lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(ID)));
                             }
                         }
                         if (match.hit)
@@ -896,7 +920,7 @@ soulng::parser::Match ParserFileParser::Api(ParserFileLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch10 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -909,7 +933,7 @@ soulng::parser::Match ParserFileParser::Api(ParserFileLexer& lexer)
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                         }
                     }
                     if (match.hit)
@@ -962,6 +986,10 @@ soulng::parser::Match ParserFileParser::Api(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Api"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1052,6 +1080,10 @@ soulng::parser::Match ParserFileParser::Statement(ParserFileLexer& lexer, soulng
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Statement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1089,7 +1121,7 @@ soulng::parser::Match ParserFileParser::MainStatement(ParserFileLexer& lexer, so
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -1102,7 +1134,7 @@ soulng::parser::Match ParserFileParser::MainStatement(ParserFileLexer& lexer, so
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(SEMICOLON)));
                     }
                 }
                 if (match.hit)
@@ -1122,6 +1154,10 @@ soulng::parser::Match ParserFileParser::MainStatement(ParserFileLexer& lexer, so
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MainStatement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1159,7 +1195,7 @@ soulng::parser::Match ParserFileParser::UsingStatement(ParserFileLexer& lexer, s
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = ParserFileParser::UsingQualifiedId(lexer);
                     parserId.reset(static_cast<soulng::parser::Value<std::u32string>*>(match.value));
                     if (match.hit)
@@ -1168,7 +1204,7 @@ soulng::parser::Match ParserFileParser::UsingStatement(ParserFileLexer& lexer, s
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, U"UsingQualifiedId");
+                        lexer.ThrowExpectationFailure(span, U"UsingQualifiedId");
                     }
                 }
                 *parentMatch2 = match;
@@ -1189,7 +1225,7 @@ soulng::parser::Match ParserFileParser::UsingStatement(ParserFileLexer& lexer, s
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch6 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -1202,7 +1238,7 @@ soulng::parser::Match ParserFileParser::UsingStatement(ParserFileLexer& lexer, s
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(SEMICOLON)));
                     }
                 }
                 if (match.hit)
@@ -1222,6 +1258,10 @@ soulng::parser::Match ParserFileParser::UsingStatement(ParserFileLexer& lexer, s
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("UsingStatement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1356,6 +1396,10 @@ soulng::parser::Match ParserFileParser::UsingQualifiedId(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("UsingQualifiedId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1398,7 +1442,7 @@ soulng::parser::Match ParserFileParser::LexerStatement(ParserFileLexer& lexer, s
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == ID)
                         {
@@ -1411,7 +1455,7 @@ soulng::parser::Match ParserFileParser::LexerStatement(ParserFileLexer& lexer, s
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ID)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(ID)));
                         }
                     }
                     if (match.hit)
@@ -1438,7 +1482,7 @@ soulng::parser::Match ParserFileParser::LexerStatement(ParserFileLexer& lexer, s
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch7 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -1451,7 +1495,7 @@ soulng::parser::Match ParserFileParser::LexerStatement(ParserFileLexer& lexer, s
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(SEMICOLON)));
                     }
                 }
                 if (match.hit)
@@ -1471,6 +1515,10 @@ soulng::parser::Match ParserFileParser::LexerStatement(ParserFileLexer& lexer, s
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("LexerStatement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1510,7 +1558,7 @@ soulng::parser::Match ParserFileParser::RuleInfoStatement(ParserFileLexer& lexer
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == LBRACE)
                         {
@@ -1523,7 +1571,7 @@ soulng::parser::Match ParserFileParser::RuleInfoStatement(ParserFileLexer& lexer
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LBRACE)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(LBRACE)));
                         }
                     }
                     *parentMatch3 = match;
@@ -1624,7 +1672,7 @@ soulng::parser::Match ParserFileParser::RuleInfoStatement(ParserFileLexer& lexer
             soulng::parser::Match match(true);
             soulng::parser::Match* parentMatch14 = &match;
             {
-                int64_t pos = lexer.GetPos();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == RBRACE)
                 {
@@ -1637,7 +1685,7 @@ soulng::parser::Match ParserFileParser::RuleInfoStatement(ParserFileLexer& lexer
                 }
                 else
                 {
-                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
+                    lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RBRACE)));
                 }
             }
             *parentMatch13 = match;
@@ -1651,6 +1699,10 @@ soulng::parser::Match ParserFileParser::RuleInfoStatement(ParserFileLexer& lexer
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RuleInfoStatement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1700,7 +1752,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                             soulng::parser::Match match(true);
                             soulng::parser::Match* parentMatch6 = &match;
                             {
-                                int64_t pos = lexer.GetPos();
+                                soulng::lexer::Span span = lexer.GetSpan();
                                 soulng::parser::Match match(false);
                                 if (*lexer == ID)
                                 {
@@ -1713,7 +1765,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ID)));
+                                    lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(ID)));
                                 }
                             }
                             if (match.hit)
@@ -1736,7 +1788,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch8 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == COMMA)
                         {
@@ -1749,7 +1801,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(COMMA)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(COMMA)));
                         }
                     }
                     *parentMatch7 = match;
@@ -1770,7 +1822,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch11 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == STRINGLIT)
                         {
@@ -1783,7 +1835,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(STRINGLIT)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(STRINGLIT)));
                         }
                     }
                     if (match.hit)
@@ -1810,7 +1862,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch14 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == RPAREN)
                     {
@@ -1823,7 +1875,7 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                     }
                 }
                 if (match.hit)
@@ -1843,6 +1895,10 @@ soulng::parser::Match ParserFileParser::RuleInfo(ParserFileLexer& lexer, soulng:
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RuleInfo"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1970,7 +2026,7 @@ soulng::parser::Match ParserFileParser::RuleStatement(ParserFileLexer& lexer, so
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch12 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match = ParserFileParser::RuleBody(lexer);
                     definition.reset(static_cast<soulng::spg::Parser*>(match.value));
                     if (match.hit)
@@ -1979,7 +2035,7 @@ soulng::parser::Match ParserFileParser::RuleStatement(ParserFileLexer& lexer, so
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, U"RuleBody");
+                        lexer.ThrowExpectationFailure(span, U"RuleBody");
                     }
                 }
                 *parentMatch11 = match;
@@ -2000,7 +2056,7 @@ soulng::parser::Match ParserFileParser::RuleStatement(ParserFileLexer& lexer, so
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch15 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == SEMICOLON)
                     {
@@ -2013,7 +2069,7 @@ soulng::parser::Match ParserFileParser::RuleStatement(ParserFileLexer& lexer, so
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(SEMICOLON)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(SEMICOLON)));
                     }
                 }
                 if (match.hit)
@@ -2035,6 +2091,10 @@ soulng::parser::Match ParserFileParser::RuleStatement(ParserFileLexer& lexer, so
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RuleStatement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2178,7 +2238,7 @@ soulng::parser::Match ParserFileParser::ParametersAndVariables(ParserFileLexer& 
             soulng::parser::Match match(true);
             soulng::parser::Match* parentMatch13 = &match;
             {
-                int64_t pos = lexer.GetPos();
+                soulng::lexer::Span span = lexer.GetSpan();
                 soulng::parser::Match match(false);
                 if (*lexer == RPAREN)
                 {
@@ -2191,7 +2251,7 @@ soulng::parser::Match ParserFileParser::ParametersAndVariables(ParserFileLexer& 
                 }
                 else
                 {
-                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                    lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                 }
             }
             *parentMatch12 = match;
@@ -2205,6 +2265,10 @@ soulng::parser::Match ParserFileParser::ParametersAndVariables(ParserFileLexer& 
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParametersAndVariables"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2332,6 +2396,10 @@ soulng::parser::Match ParserFileParser::ParamOrVariable(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParamOrVariable"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2391,6 +2459,10 @@ soulng::parser::Match ParserFileParser::ReturnType(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ReturnType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2430,6 +2502,10 @@ soulng::parser::Match ParserFileParser::RuleBody(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RuleBody"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2509,7 +2585,7 @@ soulng::parser::Match ParserFileParser::Alternative(ParserFileLexer& lexer)
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = ParserFileParser::Sequence(lexer);
                                                     right.reset(static_cast<soulng::spg::Parser*>(match.value));
                                                     if (match.hit)
@@ -2518,7 +2594,7 @@ soulng::parser::Match ParserFileParser::Alternative(ParserFileLexer& lexer)
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"Sequence");
+                                                        lexer.ThrowExpectationFailure(span, U"Sequence");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -2569,6 +2645,10 @@ soulng::parser::Match ParserFileParser::Alternative(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Alternative"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2675,6 +2755,10 @@ soulng::parser::Match ParserFileParser::Sequence(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Sequence"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2754,7 +2838,7 @@ soulng::parser::Match ParserFileParser::Difference(ParserFileLexer& lexer)
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = ParserFileParser::List(lexer);
                                                     right.reset(static_cast<soulng::spg::Parser*>(match.value));
                                                     if (match.hit)
@@ -2763,7 +2847,7 @@ soulng::parser::Match ParserFileParser::Difference(ParserFileLexer& lexer)
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"List");
+                                                        lexer.ThrowExpectationFailure(span, U"List");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -2814,6 +2898,10 @@ soulng::parser::Match ParserFileParser::Difference(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Difference"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2890,7 +2978,7 @@ soulng::parser::Match ParserFileParser::List(ParserFileLexer& lexer)
                                         soulng::parser::Match match(true);
                                         soulng::parser::Match* parentMatch10 = &match;
                                         {
-                                            int64_t pos = lexer.GetPos();
+                                            soulng::lexer::Span span = lexer.GetSpan();
                                             soulng::parser::Match match = ParserFileParser::Postfix(lexer);
                                             right.reset(static_cast<soulng::spg::Parser*>(match.value));
                                             if (match.hit)
@@ -2899,7 +2987,7 @@ soulng::parser::Match ParserFileParser::List(ParserFileLexer& lexer)
                                             }
                                             else
                                             {
-                                                lexer.ThrowExpectationFailure(pos, U"Postfix");
+                                                lexer.ThrowExpectationFailure(span, U"Postfix");
                                             }
                                         }
                                         if (match.hit)
@@ -2947,6 +3035,10 @@ soulng::parser::Match ParserFileParser::List(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("List"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3114,6 +3206,10 @@ soulng::parser::Match ParserFileParser::Postfix(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Postfix"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3390,6 +3486,10 @@ soulng::parser::Match ParserFileParser::Primary(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Primary"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3548,7 +3648,7 @@ soulng::parser::Match ParserFileParser::RuleCall(ParserFileLexer& lexer)
                 soulng::parser::Match match(true);
                 soulng::parser::Match* parentMatch15 = &match;
                 {
-                    int64_t pos = lexer.GetPos();
+                    soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
                     if (*lexer == ID)
                     {
@@ -3561,7 +3661,7 @@ soulng::parser::Match ParserFileParser::RuleCall(ParserFileLexer& lexer)
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(ID)));
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(ID)));
                     }
                 }
                 if (match.hit)
@@ -3589,6 +3689,10 @@ soulng::parser::Match ParserFileParser::RuleCall(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RuleCall"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3632,6 +3736,10 @@ soulng::parser::Match ParserFileParser::Nonterminal(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Nonterminal"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3724,6 +3832,10 @@ soulng::parser::Match ParserFileParser::Primitive(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Primitive"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3781,7 +3893,7 @@ soulng::parser::Match ParserFileParser::Grouping(ParserFileLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch6 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -3794,7 +3906,7 @@ soulng::parser::Match ParserFileParser::Grouping(ParserFileLexer& lexer)
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                         }
                     }
                     *parentMatch5 = match;
@@ -3821,5 +3933,9 @@ soulng::parser::Match ParserFileParser::Grouping(ParserFileLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Grouping"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

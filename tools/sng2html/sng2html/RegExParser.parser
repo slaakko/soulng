@@ -1,0 +1,108 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sng2html/sng2html/RegEx.hpp> 
+[hpp]#include <sng2html/sng2html/LexerContext.hpp>
+[hpp]#include <sng2html/sng2html/TokenValueParsers.hpp>
+[cpp]#include <sng2html/sng2html/RegExLexer.hpp>
+[cpp]#include <sng2html/sng2html/RegExTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace RegExTokens;
+
+parser RegExParser
+{
+    uselexer RegExLexer;
+
+    main;
+
+    RegularExpression(sng2html::sng2html::LexerContext* lexerContext) : sng2html::sng2html::RegExpression*
+        ::= Alternative(lexerContext):alternative{ return alternative; }
+        ;
+
+    Alternative(sng2html::sng2html::LexerContext* lexerContext, var std::unique_ptr<sng2html::sng2html::RegExpression> value) : sng2html::sng2html::RegExpression*
+        ::= (Catenation(lexerContext):left{ value.reset(left); } (ALT Catenation(lexerContext):right!{ value.reset(new sng2html::sng2html::Alt(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    Catenation(sng2html::sng2html::LexerContext* lexerContext, var std::unique_ptr<sng2html::sng2html::RegExpression> value) : sng2html::sng2html::RegExpression*
+        ::= (Repetition(lexerContext):left{ value.reset(left); } (Repetition(lexerContext):right{ value.reset(new sng2html::sng2html::Cat(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    Repetition(sng2html::sng2html::LexerContext* lexerContext, var std::unique_ptr<sng2html::sng2html::RegExpression> value) : sng2html::sng2html::RegExpression*
+        ::=
+        (   Primary(lexerContext):left{ value.reset(left); }
+            (   STAR{ value.reset(new sng2html::sng2html::Kleene(value.release())); }
+            |   PLUS{ value.reset(new sng2html::sng2html::Pos(value.release())); }
+            |   QUEST{ value.reset(new sng2html::sng2html::Opt(value.release())); }
+            )?
+        )
+        {
+            return value.release();
+        }
+        ;
+
+    Primary(sng2html::sng2html::LexerContext* lexerContext, var std::unique_ptr<sng2html::sng2html::RegExpression> value) : sng2html::sng2html::RegExpression*
+        ::=
+        (   LPAREN Alternative(lexerContext):alt!{ value.reset(new sng2html::sng2html::ParenExpr(alt)); } RPAREN!
+        |   ESCAPE{ value.reset(new sng2html::sng2html::SymbolExpr(lexerContext->MakeChar(sng2html::sng2html::MakeEscapeValue(lexer.FileName(), lexer.GetToken(pos))))); }
+        |   INVERSE{ value.reset(new sng2html::sng2html::SymbolExpr(lexerContext->MakeChar('^'))); }
+        |   MINUS{ value.reset(new sng2html::sng2html::SymbolExpr(lexerContext->MakeChar('-'))); }
+        |   CHAR{ std::u32string match = lexer.GetMatch(span); value.reset(new sng2html::sng2html::SymbolExpr(lexerContext->MakeChar(match.front()))); }
+        |   DOT{ value.reset(new sng2html::sng2html::SymbolExpr(lexerContext->MakeAny())); }
+        |   Class(lexerContext):cls{ value.reset(new sng2html::sng2html::SymbolExpr(cls)); }
+        |   ExpressionReference:ref{ value.reset(new sng2html::sng2html::RefExpr(ref)); }
+        )
+        {
+            return value.release();
+        }
+        ;
+
+    Class(sng2html::sng2html::LexerContext* lexerContext, var sng2html::sng2html::Class* cls) : sng2html::sng2html::Class*
+        ::= (LBRACKET{ cls = lexerContext->MakeClass(); } ((INVERSE{ cls->SetInverse(); })? (Range(lexerContext):r{ cls->AddSymbol(r); })*) RBRACKET!)
+        {
+            return cls;
+        }
+        ;
+
+    Range(sng2html::sng2html::LexerContext* lexerContext, var sng2html::sng2html::Symbol* symbol) : sng2html::sng2html::Symbol*
+        ::= (Char:s (MINUS Char:e{ symbol = lexerContext->MakeRange(s, e); } | empty{ symbol = lexerContext->MakeChar(s); }))
+        {
+            return symbol;
+        }
+        ;
+
+    Char : char32_t
+        ::= LPAREN{ return '('; }
+        |   RPAREN{ return ')'; }
+        |   LBRACKET{ return '['; }
+        |   LBRACE{ return '{'; }
+        |   RBRACE{ return '}'; }
+        |   ALT{ return '|'; }
+        |   STAR{ return '*'; }
+        |   PLUS{ return '+'; }
+        |   QUEST{ return '?'; }
+        |   DOT{ return '.'; }
+        |   ESCAPE{ return sng2html::sng2html::MakeEscapeValue(lexer.FileName(), lexer.GetToken(pos)); }
+        |   INVERSE{ return '^'; }
+        |   MINUS{ return '-'; }
+        |   CHAR{ std::u32string match = lexer.GetMatch(span); return match.front(); }
+        ;
+
+    ExpressionReference(var Span s) : std::u32string
+        ::= LBRACE{ s = span; } CHAR+ RBRACE{ s.end = span.end; return sng2html::sng2html::MakeExprRefId(lexer.FileName(), lexer.GetMatch(s), lexer.GetToken(pos).line); }
+        ;
+
+    ruleinfo
+    {
+        (RegularExpression, "regular expression"), (Alternative, "alternative"), (Catenation, "catenation"), (Repetition, "repetition"), (Primary, "primary expression"),
+        (Class, "regular class definition"), (Range, "range"), (Char, "character"), (ExpressionReference, "regular expression reference")
+    }
+}

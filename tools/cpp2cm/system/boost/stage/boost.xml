@@ -254,7 +254,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
         <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
             <templateArguments>
                 <templateArgument typeId="type_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
@@ -402,6 +401,7 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
+        <externalType access="public" id="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
         <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
             <templateArguments>
                 <templateArgument typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
@@ -483,6 +483,13 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
+        <derivedType access="public" id="const.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
         <derivedType access="public" id="const.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
@@ -557,15 +564,15 @@
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
-            <templateArguments>
-                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
-                <templateArgument typeId="bool"/>
-            </templateArguments>
-        </specialization>
         <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>

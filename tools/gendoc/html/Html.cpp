@@ -63,6 +63,20 @@ void GenerateStyleSheet(const std::string& styleDir, std::string& styleDirName, 
     formatter.WriteLine("margin: 20px;");
     formatter.DecIndent();
     formatter.WriteLine("}");
+    formatter.WriteLine(".indent");
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    formatter.WriteLine("margin: 20px;");
+    formatter.WriteLine("max-width: 800px;");
+    formatter.DecIndent();
+    formatter.WriteLine("}");
+    formatter.WriteLine(".description");
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    formatter.WriteLine("margin: 20px;");
+    formatter.WriteLine("max-width: 800px;");
+    formatter.DecIndent();
+    formatter.WriteLine("}");
     formatter.WriteLine("h1, h2, h3, h4, h5, h6");
     formatter.WriteLine("{");
     formatter.IncIndent();
@@ -156,21 +170,24 @@ void GenerateStyleSheet(const std::string& styleDir, std::string& styleDirName, 
     formatter.WriteLine("{");
     formatter.IncIndent();
     formatter.WriteLine("font-family: Consolas;");
-    formatter.WriteLine("color: #a31515;");
+    formatter.WriteLine("color: #0000cc;");
+    formatter.WriteLine("font-weight: bold");
     formatter.DecIndent();
     formatter.WriteLine("}");
     formatter.WriteLine(".ruleString");
     formatter.WriteLine("{");
     formatter.IncIndent();
     formatter.WriteLine("font-family: Consolas;");
-    formatter.WriteLine("color: #a31515;");
+    formatter.WriteLine("color: #0000cc;");
+    formatter.WriteLine("font-weight: bold");
     formatter.DecIndent();
     formatter.WriteLine("}");
     formatter.WriteLine(".ruleCharSet");
     formatter.WriteLine("{");
     formatter.IncIndent();
     formatter.WriteLine("font-family: Consolas;");
-    formatter.WriteLine("color: #a31515;");
+    formatter.WriteLine("color: #0000cc;");
+    formatter.WriteLine("font-weight: bold");
     formatter.DecIndent();
     formatter.WriteLine("}");
     formatter.WriteLine(".ruleKeyword");
@@ -189,13 +206,20 @@ void GenerateStyleSheet(const std::string& styleDir, std::string& styleDirName, 
     formatter.WriteLine(".ruleOp");
     formatter.WriteLine("{");
     formatter.IncIndent();
-    formatter.WriteLine("padding-left: 2pt;");
-    formatter.WriteLine("padding-right: 2pt;");
+    formatter.WriteLine("padding-left: 0pt;");
+    formatter.WriteLine("padding-right: 0pt;");
     formatter.WriteLine("font-family: serif;");
     formatter.WriteLine("color: black;");
     formatter.DecIndent();
     formatter.WriteLine("}");
     formatter.WriteLine(".ruleLink");
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    formatter.WriteLine("font-family: serif;");
+    formatter.WriteLine("font-style: italic;");
+    formatter.DecIndent();
+    formatter.WriteLine("}");
+    formatter.WriteLine(".lexerRule");
     formatter.WriteLine("{");
     formatter.IncIndent();
     formatter.WriteLine("font-family: serif;");
@@ -241,6 +265,12 @@ void GenerateStyleSheet(const std::string& styleDir, std::string& styleDirName, 
     formatter.WriteLine("color: #a31515;");
     formatter.DecIndent();
     formatter.WriteLine("}");
+    formatter.WriteLine(".char");
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    formatter.WriteLine("color: #a31515;");
+    formatter.DecIndent();
+    formatter.WriteLine("}");
     formatter.WriteLine(".comment");
     formatter.WriteLine("{");
     formatter.IncIndent();
@@ -248,6 +278,12 @@ void GenerateStyleSheet(const std::string& styleDir, std::string& styleDirName, 
     formatter.DecIndent();
     formatter.WriteLine("}");
     formatter.WriteLine(".identifier");
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    formatter.WriteLine("color: black;");
+    formatter.DecIndent();
+    formatter.WriteLine("}");
+    formatter.WriteLine(".number");
     formatter.WriteLine("{");
     formatter.IncIndent();
     formatter.WriteLine("color: black;");
@@ -774,6 +810,27 @@ void GenerateModuleNamespaceSection(const std::u32string& mainProjectName, sngxm
             GenerateNamespaceSection(mainProjectName, globalNsElement, pageElement, contentXml, moduleName, false, contentFilePathResolver, documentationXmlFileName, documentationXml);
         }
     }
+}
+
+void GenerateModuleGrammarSection(sngxml::dom::Element* pageElement, const std::vector<gendoc::html::Grammar>& grammars)
+{
+    if (grammars.empty()) return;
+    std::unique_ptr<sngxml::dom::Element> h2Element(new sngxml::dom::Element(U"h2"));
+    h2Element->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(U"Grammars")));
+    pageElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(h2Element.release()));
+    std::unique_ptr<sngxml::dom::Element> grammarTableElement(new sngxml::dom::Element(U"table"));
+    for (const auto& grammar : grammars)
+    {
+        std::unique_ptr<sngxml::dom::Element> trElement(new sngxml::dom::Element(U"tr"));
+        std::unique_ptr<sngxml::dom::Element> tdElement(new sngxml::dom::Element(U"td"));
+        std::unique_ptr<sngxml::dom::Element> linkElement(new sngxml::dom::Element(U"a"));
+        linkElement->SetAttribute(U"href", grammar.fileName);
+        linkElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Text(grammar.title)));
+        tdElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(linkElement.release()));
+        trElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(tdElement.release()));
+        grammarTableElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(trElement.release()));
+    }
+    pageElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(grammarTableElement.release()));
 }
 
 struct ByRelativeFilePath
@@ -2517,7 +2574,8 @@ void GenerateModuleHtml(const std::u32string& projectName, const std::u32string&
     const std::vector<std::u32string>& childProjects, const std::vector<std::u32string>& childProjectNames,
     sngxml::dom::Document* contentXml, const std::string& contentDir, const std::string& styleDirName,
     const std::string& styleFileName, const std::vector<sngcpp::ast::SourceFileNode*>& sourceFiles, const std::string& contentXmlFilePath, bool verbose, bool rebuild, bool& upToDate,
-    HtmlContentFilePathResolver* contentFilePathResolver, const std::u32string& topLink, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml)
+    HtmlContentFilePathResolver* contentFilePathResolver, const std::u32string& topLink, const std::string& documentationXmlFileName, sngxml::dom::Document* documentationXml,
+    const std::vector<Grammar>& grammars)
 {
     upToDate = true;
     std::string moduleFilePath = GetFullPath(Path::Combine(Path::Combine(contentDir, "../.."), ToUtf8(projectName) + ".html"));
@@ -2612,6 +2670,7 @@ void GenerateModuleHtml(const std::u32string& projectName, const std::u32string&
     if (contentXml)
     {
         GenerateModuleNamespaceSection(projectName, bodyElement.get(), contentXml, projectName, contentFilePathResolver, documentationXmlFileName, documentationXml);
+        GenerateModuleGrammarSection(bodyElement.get(), grammars);
         GenerateModuleFileSection(sourceFiles, bodyElement.get(), projectName);
     }
     bodyElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Element(U"br")));

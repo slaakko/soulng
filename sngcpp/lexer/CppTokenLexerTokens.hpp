@@ -152,12 +152,13 @@ namespace CppTokenLexerTokens
     const int WS = 140;
     const int LINECOMMENT = 141;
     const int BLOCKCOMMENT = 142;
-    const int KEYWORD = 143;
-    const int ID = 144;
-    const int NUMBER = 145;
-    const int PP = 146;
-    const int OTHER = 147;
-    const int MAX = 148;
+    const int BLOCKCOMMENTLINE = 143;
+    const int KEYWORD = 144;
+    const int ID = 145;
+    const int NUMBER = 146;
+    const int PP = 147;
+    const int OTHER = 148;
+    const int MAX = 149;
 
     SNGCPP_LEXER_API void InitTokenIdMap();
     SNGCPP_LEXER_API int GetTokenId(const std::u32string& tokenName);

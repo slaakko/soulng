@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Lex;
 using System.Parsing;
-using System.Cmajor.Ast;
+using Cm.Ast;
 using LexerFileTokens;
 
 public static class IdentifierParser
@@ -53,6 +53,10 @@ public static class IdentifierParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match QualifiedId(LexerFileLexer& lexer)
@@ -198,6 +202,10 @@ public static class IdentifierParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

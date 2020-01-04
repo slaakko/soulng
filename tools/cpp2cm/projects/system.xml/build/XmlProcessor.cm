@@ -1,0 +1,303 @@
+using System;
+using System.Collections;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xml/XmlProcessor.hpp' using cpp2cm version 1.0.0
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xml/XmlProcessor.cpp' using cpp2cm version 1.0.0
+
+namespace System.Xml
+{
+    public class XmlProcessingException : Exception
+    {
+        public XmlProcessingException(const string& message_) :
+            base(message_)
+        {
+        }
+    }
+    public class Entity
+    {
+        public virtual ~Entity()
+        {
+        }
+        public virtual bool IsInternalEntity() const
+        {
+            return false;
+        }
+    }
+    public class InternalEntity : Entity
+    {
+        public InternalEntity(const ustring& value_) :
+            value(value_)
+        {
+        }
+        public const ustring& Value() const
+        {
+            return value;
+        }
+        public override bool IsInternalEntity() const
+        {
+            return true;
+        }
+        private ustring value;
+    }
+    public class XmlProcessor
+    {
+        public suppress XmlProcessor(const XmlProcessor& );
+        public suppress XmlProcessor(XmlProcessor&& );
+        public XmlProcessor(TrivialLexer& lexer_, XmlContentHandler* contentHandler_) :
+            lexer(lexer_), contentHandler(contentHandler_), attValue()
+        {
+            InternalEntity* quot = new InternalEntity(u"\"");
+            entityMap[u"quot"] = quot;
+            InternalEntity* amp = new InternalEntity(u"&");
+            entityMap[u"amp"] = amp;
+            InternalEntity* apos = new InternalEntity(u"\'");
+            entityMap[u"apos"] = apos;
+            InternalEntity* lt = new InternalEntity(u"<");
+            entityMap[u"lt"] = lt;
+            InternalEntity* gt = new InternalEntity(u">");
+            entityMap[u"gt"] = gt;
+            entities.Add(UniquePtr<Entity>(quot));
+            entities.Add(UniquePtr<Entity>(amp));
+            entities.Add(UniquePtr<Entity>(apos));
+            entities.Add(UniquePtr<Entity>(lt));
+            entities.Add(UniquePtr<Entity>(gt));
+        }
+        public suppress XmlProcessor& operator=(const XmlProcessor& );
+        public suppress XmlProcessor&& operator=(XmlProcessor&& );
+        public const ustring& AttValue() const
+        {
+            return attValue;
+        }
+        public ustring& AttValue()
+        {
+            return attValue;
+        }
+        public TrivialLexer& Lexer() const
+        {
+            return lexer;
+        }
+        public void StartDocument()
+        {
+            contentHandler->StartDocument();
+        }
+        public void EndDocument()
+        {
+            contentHandler->EndDocument();
+        }
+        public void Text(const ustring& text)
+        {
+            contentHandler->HandleText(text);
+        }
+        public void Comment(const ustring& text)
+        {
+            contentHandler->HandleComment(text);
+        }
+        public void PI(const ustring& target, const ustring& data)
+        {
+            contentHandler->HandlePI(target, data);
+        }
+        public void CDataSection(const ustring& cdata)
+        {
+            contentHandler->HandleCDataSection(cdata);
+        }
+        public void Version(const ustring& version)
+        {
+            contentHandler->Version(version);
+        }
+        public void Standalone(bool standalone)
+        {
+            contentHandler->Standalone(standalone);
+        }
+        public void Encoding(const ustring& encoding)
+        {
+            contentHandler->Encoding(encoding);
+        }
+        public void BeginStartTag(const ustring& tagName)
+        {
+            tagStack.Push(currentTagName);
+            currentTagName = tagName;
+            namespaceUriStack.Push(currentNamespaceUri);
+            namespacePrefixStack.Push(currentNamespacePrefix);
+            attributes.Clear();
+        }
+        public void EndStartTag(const System.Lex.Span& span, const string& systemId)
+        {
+            ustring localName;
+            ustring prefix;
+            ParseQualifiedName(currentTagName, localName, prefix, span, systemId);
+            if (prefix == u"xmlns")
+            {
+                throw XmlProcessingException(GetErrorLocationStr(systemId, span) + ": \'xmlns\' prefix cannot be declared for an element");
+            }
+            contentHandler->StartElement(GetNamespaceUri(prefix, span, systemId), localName, currentTagName, attributes);
+        }
+        public void EndTag(const ustring& tagName, const System.Lex.Span& span, const string& systemId)
+        {
+            if (tagStack.IsEmpty())
+            {
+                throw XmlProcessingException(GetErrorLocationStr(systemId, span) + ": end tag \'" + ToUtf8(tagName) + "\' has no corresponding start tag");
+            }
+            if (tagName != currentTagName)
+            {
+                throw XmlProcessingException(GetErrorLocationStr(systemId, span) + ": end tag \'" + ToUtf8(tagName) + "\' does not match start tag \'" + ToUtf8(currentTagName) + "\'");
+            }
+            ustring localName;
+            ustring prefix;
+            ParseQualifiedName(currentTagName, localName, prefix, span, systemId);
+            if (prefix == u"xmlns")
+            {
+                throw XmlProcessingException(GetErrorLocationStr(systemId, span) + ": \'xmlns\' prefix cannot be declared for an element");
+            }
+            contentHandler->EndElement(GetNamespaceUri(prefix, span, systemId), localName, currentTagName);
+            if (namespaceUriStack.IsEmpty())
+            {
+                throw Exception("namespace URI stack is empty");
+            }
+            currentNamespaceUri = namespaceUriStack.Top();
+            namespaceUriStack.Pop();
+            namespacePrefixMap.Remove(currentNamespacePrefix);
+            if (namespacePrefixStack.IsEmpty())
+            {
+                throw Exception("namespace prefix stack is empty");
+            }
+            currentNamespacePrefix = namespacePrefixStack.Top();
+            namespacePrefixStack.Pop();
+            namespacePrefixMap[currentNamespacePrefix] = currentNamespaceUri;
+            currentTagName = tagStack.Top();
+            tagStack.Pop();
+        }
+        public void AddAttribute(const ustring& attName, const ustring& attValue, const System.Lex.Span& span, const string& systemId)
+        {
+            ustring localName;
+            ustring prefix;
+            ParseQualifiedName(attName, localName, prefix, span, systemId);
+            if (prefix == u"xmlns")
+            {
+                currentNamespacePrefix = localName;
+                currentNamespaceUri = attValue;
+                namespacePrefixMap[currentNamespacePrefix] = currentNamespaceUri;
+            }
+            else if (localName == u"xmlns")
+            {
+                currentNamespacePrefix.Clear();
+                currentNamespaceUri = attValue;
+            }
+            else
+            {
+                attributes.Add(Attribute(GetNamespaceUri(prefix, span, systemId), localName, attName, attValue));
+            }
+        }
+        public void EntityRef(const ustring& entityName, const System.Lex.Span& span, const string& systemId)
+        {
+            HashMap<ustring, Entity*>.ConstIterator it = entityMap.CFind(entityName);
+            if (it != entityMap.CEnd())
+            {
+                Entity* entity = it->second;
+                if (entity->IsInternalEntity())
+                {
+                    InternalEntity* internalEntity = cast<InternalEntity*>(entity);
+                    const ustring& entityValue = internalEntity->Value();
+                    if (!attValueStack.IsEmpty())
+                    {
+                        attValue.Append(entityValue);
+                    }
+                    else
+                    {
+                        Text(entityValue);
+                    }
+                }
+                else
+                {
+                    contentHandler->SkippedEntity(entityName);
+                }
+            }
+            else
+            {
+                contentHandler->SkippedEntity(entityName);
+            }
+        }
+        public void BeginAttributeValue()
+        {
+            attValueStack.Push(attValue);
+            attValue.Clear();
+        }
+        public void EndAttributeValue()
+        {
+            if (attValueStack.IsEmpty())
+            {
+                throw Exception("attribute value stack is empty");
+            }
+            attValue = attValueStack.Top();
+            attValueStack.Pop();
+        }
+        public ustring GetNamespaceUri(const ustring& namespacePrefix, const System.Lex.Span& span, const string& systemId)
+        {
+            if (namespacePrefix.IsEmpty())
+            {
+                return currentNamespaceUri;
+            }
+            HashMap<ustring, ustring>.ConstIterator it = namespacePrefixMap.CFind(namespacePrefix);
+            if (it != namespacePrefixMap.CEnd())
+            {
+                return it->second;
+            }
+            else
+            {
+                throw XmlProcessingException(GetErrorLocationStr(systemId, span) + ": namespace prefix \'" + ToUtf8(namespacePrefix) + "\' not bound to any namespace URI");
+            }
+        }
+        public void ParseQualifiedName(const ustring& qualifiedName, ustring& localName, ustring& prefix, const System.Lex.Span& span, const string& systemId)
+        {
+            List<ustring> parts = qualifiedName.Split(':');
+            if (parts.Count() > 2)
+            {
+                throw XmlProcessingException(GetErrorLocationStr(systemId, span) + ": qualified name \'" + ToUtf8(qualifiedName) + "\' has more than one \':\' character");
+            }
+            else if (parts.Count() == 2)
+            {
+                prefix = parts[0];
+                localName = parts[1];
+            }
+            else
+            {
+                prefix.Clear();
+                localName = qualifiedName;
+            }
+        }
+        public int GetErrorColumn(int index) const
+        {
+            int errorColumn = 0;
+            while (index > 0 && lexer.Start()[index] != '\n' && lexer.Start()[index] != '\r')
+            {
+                ++errorColumn;
+                --index;
+            }
+            if (errorColumn == 0)
+            {
+                errorColumn = 1;
+            }
+            return errorColumn;
+        }
+        public string GetErrorLocationStr(const string& systemId, const System.Lex.Span& span) const
+        {
+            System.Lex.Token token = lexer.GetToken(span.start);
+            int errorColumn = GetErrorColumn(cast<int>(token.match.begin - lexer.Start()));
+            return "error in \'" + systemId + "\' at line " + ToString(span.line) + " column " + ToString(errorColumn);
+        }
+        private TrivialLexer& lexer;
+        private XmlContentHandler* contentHandler;
+        private Stack<ustring> tagStack;
+        private ustring currentTagName;
+        private Stack<ustring> attValueStack;
+        private ustring attValue;
+        private Stack<ustring> namespaceUriStack;
+        private ustring currentNamespaceUri;
+        private Stack<ustring> namespacePrefixStack;
+        private ustring currentNamespacePrefix;
+        private HashMap<ustring, ustring> namespacePrefixMap;
+        private Attributes attributes;
+        private HashMap<ustring, Entity*> entityMap;
+        private List<UniquePtr<Entity>> entities;
+    }
+} // namespace System.Xml

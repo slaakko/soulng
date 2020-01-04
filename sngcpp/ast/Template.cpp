@@ -102,7 +102,7 @@ void TemplateArgumentSequenceNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-TemplateIdNode::TemplateIdNode() : Node(NodeType::templateIdNode)
+TemplateIdNode::TemplateIdNode() : Node(NodeType::templateIdNode), arity(0)
 {
 }
 
@@ -120,7 +120,12 @@ void TemplateIdNode::Write(Writer& writer)
 {
     Node::Write(writer);
     id->Write(writer);
-    templateArguments->Write(writer);
+    bool hasTemplateArguments = templateArguments != nullptr;
+    writer.GetBinaryWriter().Write(hasTemplateArguments);
+    if (hasTemplateArguments)
+    {
+        templateArguments->Write(writer);
+    }
     writer.GetBinaryWriter().Write(int32_t(arity));
 }
 
@@ -128,7 +133,11 @@ void TemplateIdNode::Read(Reader& reader)
 {
     Node::Read(reader);
     id.reset(reader.ReadIdentifierNode());
-    templateArguments.reset(reader.ReadNode());
+    bool hasTemplateArguments = reader.GetBinaryReader().ReadBool();
+    if (hasTemplateArguments)
+    {
+        templateArguments.reset(reader.ReadNode());
+    }
     arity = reader.GetBinaryReader().ReadInt();
 }
 

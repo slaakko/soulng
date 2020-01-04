@@ -41,7 +41,8 @@ public:
     std::u32string GetMatch(const Span& span) const;
     std::u32string ErrorLines(const Token& token) const;
     std::u32string ErrorLines(const Span& span) const;
-    void ThrowExpectationFailure(int64_t pos, const std::u32string& name);
+    void GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) const;
+    void ThrowExpectationFailure(const Span& span, const std::u32string& name);
     const char32_t* Start() const { return start; }
     const char32_t* End() const { return end; }
     const char32_t* Pos() const { return pos; }
@@ -68,6 +69,8 @@ private:
     void NextToken();
 };
 
+SOULNG_LEXER_API std::u32string GetErrorLines(const char32_t* start, const char32_t* end, const Span& externalSpan);
+SOULNG_LEXER_API void GetColumns(const char32_t* start, const char32_t* end, const Span& externalSpan, int32_t& startCol, int32_t& endCol);
 SOULNG_LEXER_API void WriteBeginRuleToLog(Lexer& lexer, const std::u32string& ruleName);
 SOULNG_LEXER_API void WriteSuccessToLog(Lexer& lexer, const Span& matchSpan, const std::u32string& ruleName);
 SOULNG_LEXER_API void WriteFailureToLog(Lexer& lexer, const std::u32string& ruleName);

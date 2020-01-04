@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Lex;
 using System.Parsing;
-using System.Cmajor.Ast;
+using Cm.Ast;
 using LexerFileTokens;
 
 public static class LiteralParser
@@ -83,6 +83,10 @@ public static class LiteralParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match SimpleLiteral(LexerFileLexer& lexer)
@@ -210,6 +214,10 @@ public static class LiteralParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ComplexLiteral(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -288,6 +296,10 @@ public static class LiteralParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ArrayLiteral(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -447,7 +459,7 @@ public static class LiteralParser
                     Match match(true);
                     Match* parentMatch15 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RBRACKET)
                         {
@@ -460,7 +472,7 @@ public static class LiteralParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACKET));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
                         }
                     }
                     if (match.hit)
@@ -492,6 +504,10 @@ public static class LiteralParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match StructuredLiteral(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -651,7 +667,7 @@ public static class LiteralParser
                     Match match(true);
                     Match* parentMatch15 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RBRACE)
                         {
@@ -664,7 +680,7 @@ public static class LiteralParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                         }
                     }
                     if (match.hit)
@@ -696,6 +712,10 @@ public static class LiteralParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <PropertyGroup Label="Globals">
+  <CustomProjectExtensionsPath>$(LocalAppData)\CustomProjectSystems\Cmajor\</CustomProjectExtensionsPath>
+  <ProjectGuid>5964d243-d7d4-47d6-8177-3c5ac4a462dc</ProjectGuid>
+ </PropertyGroup>
+ <PropertyGroup>
+  <TargetType>library</TargetType>
+ </PropertyGroup>
+ <ItemGroup>
+  <CmCompile Include="XmlApi.cm"/>
+  <CmCompile Include="XmlContentHandler.cm"/>
+  <CmCompile Include="XmlParser.cm"/>
+  <CmCompile Include="XmlParserInterface.cm"/>
+  <CmCompile Include="XmlProcessor.cm"/>
+ </ItemGroup>
+ <ItemGroup>
+  <None Include="XmlParser.parser"/>
+  <None Include="XmlParser.spg"/>
+ </ItemGroup>
+ <ItemGroup/>
+ <Import Project="$(CustomProjectExtensionsPath)Cmajor.props"/>
+ <Import Project="$(CustomProjectExtensionsPath)Cmajor.targets"/>
+</Project>

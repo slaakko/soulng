@@ -1,0 +1,100 @@
+using System;
+using System.Text;
+using System.Xml;
+
+class ContentHandler : XmlContentHandler
+{
+    public ContentHandler() : formatter(Console.Out())
+    {
+    }
+    public override void StartDocument() 
+    {
+        formatter.WriteLine("*** start document ***");
+    }
+    public override void EndDocument() 
+    {
+        formatter.WriteLine("*** end document ***");
+    }
+    public override void Version(const ustring& xmlVersion) 
+    {
+        formatter.WriteLine("version: " + ToUtf8(xmlVersion));
+    }
+    public override void Standalone(bool standalone) 
+    {
+        string sd = "true";
+        if (!standalone)
+        {
+            sd = "false";
+        }
+        formatter.WriteLine("standalone: " + sd);
+    }
+    public override void Encoding(const ustring& encoding)
+    {
+        formatter.WriteLine("encoding: " + ToUtf8(encoding));
+    }
+    public override void Text(const ustring& text)
+    {
+        formatter.WriteLine("text: " + ToUtf8(text));
+    }
+    public override void Comment(const ustring& comment) 
+    {
+        formatter.WriteLine("comment: " + ToUtf8(comment));
+    }
+    public override void PI(const ustring& target, const ustring& data) 
+    {
+        formatter.WriteLine("PI: " + ToUtf8(target) + ": " + ToUtf8(data));
+    }
+    public override void CDataSection(const ustring& cdata) 
+    {
+        formatter.WriteLine("CDATA: " + ToUtf8(cdata));
+    }
+    public override void StartElement(const ustring& namespaceUri, const ustring& localName, const ustring& qualifiedName, const Attributes& attributes) 
+    {
+        formatter.WriteLine("start element:");
+        formatter.IncIndent();
+        formatter.WriteLine("ns: " + ToUtf8(namespaceUri));
+        formatter.WriteLine("local name: " + ToUtf8(localName));
+        formatter.WriteLine("qualified name: " + ToUtf8(qualifiedName));
+        formatter.WriteLine("attributes:");
+        formatter.IncIndent();
+        for (const Attribute& attr : attributes)
+        {
+            formatter.WriteLine("ns: " + ToUtf8(attr.NamespaceUri()));
+            formatter.WriteLine("local name: " + ToUtf8(attr.LocalName()));
+            formatter.WriteLine("qualified name: " + ToUtf8(attr.QualifiedName()));
+            formatter.WriteLine("value: " + ToUtf8(attr.Value()));
+            formatter.WriteLine("---");
+        }
+        formatter.DecIndent();
+        formatter.DecIndent();
+    }
+    public override void EndElement(const ustring& namespaceUri, const ustring& localName, const ustring& qualifiedName) 
+    {
+        formatter.WriteLine("end element:");
+        formatter.IncIndent();
+        formatter.WriteLine("ns: " + ToUtf8(namespaceUri));
+        formatter.WriteLine("local name: " + ToUtf8(localName));
+        formatter.WriteLine("qualified name: " + ToUtf8(qualifiedName));
+        formatter.DecIndent();
+    }
+    public override void SkippedEntity(const ustring& entityName)
+    {
+        formatter.WriteLine("skipped entity:" + ToUtf8(entityName));
+    }
+    private CodeFormatter formatter;
+}
+
+int main()
+{
+    try
+    {
+        XmlContentHandler contentHandler;
+        ParseXmlFile("D:/work/cmajorm/cmajor/doc/compiler/reference/binder/binder.xml", &contentHandler);
+    }
+    catch (const Exception& ex)
+    {
+        Console.Error() << ex.Message() << endl();
+        return 1;
+    }
+    return 0;
+}

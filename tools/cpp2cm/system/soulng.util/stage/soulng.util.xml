@@ -719,7 +719,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
         <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.type_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
             <templateArguments>
                 <templateArgument typeId="type_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
@@ -881,6 +880,7 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
+        <externalType access="public" id="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="U"/>
         <specialization access="public" id="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4.templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19" name="basic_string&lt;CharT>" primaryTypeId="class_basic_string_3B2E40E4CDB9EBADD16219502EDCBCCE6B2D74A4">
             <templateArguments>
                 <templateArgument typeId="templateParameter_CharT_DB66637E4BD602383B9A36E093D02AD744D50D19"/>
@@ -959,6 +959,13 @@
             <derivations>
                 <derivation kind="specifier" str="const "/>
                 <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>

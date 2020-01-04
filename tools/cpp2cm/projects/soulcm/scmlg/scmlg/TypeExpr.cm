@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Lex;
 using System.Parsing;
-using System.Cmajor.Ast;
+using Cm.Ast;
 using LexerFileTokens;
 
 public static class TypeExprParser
@@ -49,6 +49,10 @@ public static class TypeExprParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match PrefixTypeExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -161,6 +165,10 @@ public static class TypeExprParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match PostfixTypeExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -259,7 +267,7 @@ public static class TypeExprParser
                                                                     Match match(true);
                                                                     Match* parentMatch14 = &match;
                                                                     {
-                                                                        long pos = lexer.GetPos();
+                                                                        System.Lex.Span span = lexer.GetSpan();
                                                                         Match match(false);
                                                                         if (*lexer == ID)
                                                                         {
@@ -272,7 +280,7 @@ public static class TypeExprParser
                                                                         }
                                                                         else
                                                                         {
-                                                                            lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                                                            lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                                                                         }
                                                                     }
                                                                     if (match.hit)
@@ -436,7 +444,7 @@ public static class TypeExprParser
                                                                 Match match(true);
                                                                 Match* parentMatch28 = &match;
                                                                 {
-                                                                    long pos = lexer.GetPos();
+                                                                    System.Lex.Span span = lexer.GetSpan();
                                                                     Match match(false);
                                                                     if (*lexer == RBRACKET)
                                                                     {
@@ -449,7 +457,7 @@ public static class TypeExprParser
                                                                     }
                                                                     else
                                                                     {
-                                                                        lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACKET));
+                                                                        lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
                                                                     }
                                                                 }
                                                                 if (match.hit)
@@ -512,6 +520,10 @@ public static class TypeExprParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match PrimaryTypeExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -628,6 +640,10 @@ public static class TypeExprParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

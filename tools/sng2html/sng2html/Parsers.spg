@@ -1,0 +1,17 @@
+project Parsers;
+source <LexerDeclarationParser.parser>;
+source <LexerDeclaratorParser.parser>;
+source <LexerExpressionParser.parser>;
+source <LexerIdentifierParser.parser>;
+source <LexerLiteralParser.parser>;
+source <LexerStatementParser.parser>;
+source <LexerFileParser.parser>;
+source <ParserDeclarationParser.parser>;
+source <ParserDeclaratorParser.parser>;
+source <ParserExpressionParser.parser>;
+source <ParserIdentifierParser.parser>;
+source <ParserLiteralParser.parser>;
+source <ParserStatementParser.parser>;
+source <ProjectFileParser.parser>;
+source <ParserFileParser.parser>;
+source <RegExParser.parser>;

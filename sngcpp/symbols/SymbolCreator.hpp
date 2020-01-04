@@ -29,6 +29,7 @@ public:
     void Visit(SourceFileSequenceNode& sourceFileSequenceNode) override;
     void Visit(NamespaceNode& namespaceNode) override;
     void Visit(DeclarationSequenceNode& declarationSequenceNode) override;
+    void Visit(LinkageSpecificationNode& linkageSpecificationNode) override;
     void Visit(TypedefNode& typedefNode) override;
     void Visit(TypeParameterNode& typeParameterNode) override;
     void Visit(TemplateParameterSequenceNode& templateParameterSequenceNode) override;

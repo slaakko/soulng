@@ -141,6 +141,8 @@ public:
     DestructorNode(const Span& span_, Specifiers specifiers_, Attributes* attributes_);
     Node* Clone(CloneContext& cloneContext) const override;
     void Accept(Visitor& visitor) override;
+    void Write(AstWriter& writer) override;
+    void Read(AstReader& reader) override;
     void SetClassId(IdentifierNode* classId_) { classId.reset(classId_); }
     IdentifierNode* ClassId() { return classId.get(); }
 private:

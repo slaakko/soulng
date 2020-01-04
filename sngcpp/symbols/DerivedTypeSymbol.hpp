@@ -27,7 +27,8 @@ public:
     int MatchValue(TypeSymbol* argumentType) override;
     TypeSymbol* BaseType() override { return baseType; }
     bool IsDerivedTypeSymbol() const override { return true; }
-    bool IsReferenceTypeSymbol() const;
+    bool IsReferenceTypeSymbol() const override;
+    bool IsPointerTypeSymbol() const override;
     bool HasConstDerivation() const;
     std::unique_ptr<sngxml::dom::Element> CreateElement() override;
     std::u32string Id() override { return id; }

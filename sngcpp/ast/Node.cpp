@@ -115,28 +115,41 @@ BinaryNode::BinaryNode(NodeType nodeType_) : Node(nodeType_)
 
 BinaryNode::BinaryNode(NodeType nodeType_, const Span& span_, Node* left_, Node* right_) : Node(nodeType_, span_), left(left_), right(right_)
 {
-    left->SetParent(this);
+    if (left)
+    {
+        left->SetParent(this);
+    }
     right->SetParent(this);
 }
 
 void BinaryNode::Write(Writer& writer)
 {
     Node::Write(writer);
-    left->Write(writer);
+    bool hasLeft = left != nullptr;
+    writer.GetBinaryWriter().Write(hasLeft);
+    if (hasLeft)
+    {
+        left->Write(writer);
+    }
     right->Write(writer);
 }
 
 void BinaryNode::Read(Reader& reader)
 {
     Node::Read(reader);
-    left.reset(reader.ReadNode());
-    left->SetParent(this);
+    bool hasLeft = reader.GetBinaryReader().ReadBool();
+    if (hasLeft)
+    {
+        left.reset(reader.ReadNode());
+        left->SetParent(this);
+    }
     right.reset(reader.ReadNode());
     right->SetParent(this);
 }
 
 void BinaryNode::SetFullSpan()
 {
+    if (!left) return;
     const Span& thisSpan = GetSpan();
     left->SetFullSpan();
     right->SetFullSpan();

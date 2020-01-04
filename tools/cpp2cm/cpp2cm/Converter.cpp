@@ -177,11 +177,12 @@ std::vector<sngcpp::symbols::SimpleTypeSpecifier> GetSimpleTypeSpecifiers(sngcm:
 };
 
 Converter::Converter(bool verbose_, const std::string& targetDir_, sngcpp::symbols::SymbolTable& symbolTable_, Map& map_,
-    const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_) :
+    const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_, NothrowList& nothrowList_) :
     verbose(verbose_), targetDir(targetDir_), symbolTable(symbolTable_), currentCompileUnit(nullptr), currentNamespace(nullptr), currentContext(nullptr), currentContainerNode(nullptr), map(map_),
     addToNodes(false), type(nullptr), currentClassType(nullptr), currentEnumType(nullptr), assignment(false), empty(false), inFunctionBody(false),
     assignmentStatement(false), rangeFor(false), catchDecl(false), statementContainer(StatementContainer::statements),
-    calledFunction(nullptr), excludedClasses(excludedClasses_), excludedFunctions(excludedFunctions_), parentCaseStatementNode(nullptr)
+    calledFunction(nullptr), excludedClasses(excludedClasses_), excludedFunctions(excludedFunctions_), parentCaseStatementNode(nullptr),
+    nothrowList(nothrowList_), nothrowFileItem(Item::Type::file, U"", false), nothrowClassItem(Item::Type::class_, U"", false), nothrowFunctionItem(Item::Type::function, U"", false)
 {
 }
 
@@ -773,6 +774,19 @@ void Converter::Visit(sngcpp::ast::ClassNode& classNode)
         if (symbol->IsClassTypeSymbol())
         {
             sngcpp::symbols::ClassTypeSymbol* classTypeSymbol = static_cast<sngcpp::symbols::ClassTypeSymbol*>(symbol);
+            nothrowClassItem = Item(Item::Type::class_, classTypeSymbol->Name(), nothrowFileItem.include);
+            nothrowList.ApplyTo(nothrowClassItem);
+            if (nothrowList.Verbose())
+            {
+                if (nothrowClassItem.include)
+                {
+                    std::cout << "info: " << ToUtf8(classTypeSymbol->Name()) << ": nothrow=true" << std::endl;
+                }
+                else
+                {
+                    std::cout << "info: " << ToUtf8(classTypeSymbol->Name()) << ": nothrow=false" << std::endl;
+                }
+            }
             if (excludedClasses.find(classTypeSymbol->FullName()) != excludedClasses.cend())
             {
                 if (verbose)
@@ -935,6 +949,7 @@ void Converter::Visit(sngcpp::ast::MemberDeclarationNode& memberDeclarationNode)
 
 void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunctionNode)
 {
+    Item prevClassItem = nothrowClassItem;
     sngcpp::symbols::ClassTypeSymbol* prevClassType = currentClassType;
     sngcm::ast::Node* prevContainer = currentContainerNode;
     sngcm::ast::Node* memberFunctionContainer = prevContainer;
@@ -956,6 +971,20 @@ void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunct
         if (symbol->Parent()->IsClassTypeSymbol())
         {
             sngcpp::symbols::ClassTypeSymbol* cls = static_cast<sngcpp::symbols::ClassTypeSymbol*>(symbol->Parent());
+            nothrowClassItem = Item(Item::Type::class_, cls->Name(), nothrowFileItem.include);
+            nothrowList.ApplyTo(nothrowClassItem);
+            if (nothrowList.Verbose())
+            {
+                if (nothrowClassItem.include)
+                {
+                    std::cout << "info: " << ToUtf8(cls->Name()) << ": nothrow=true" << std::endl;
+                }
+                else
+                {
+                    std::cout << "info: " << ToUtf8(cls->Name()) << ": nothrow=false" << std::endl;
+                }
+            }
+            nothrowFunctionItem = Item(Item::Type::function, symbol->Name(), nothrowClassItem.include);
             auto cit = classMap.find(cls);
             if (cit != classMap.end())
             {
@@ -966,6 +995,7 @@ void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunct
         }
         if (!found)
         {
+            nothrowFunctionItem = Item(Item::Type::function, symbol->Name(), false);
             auto it = currentContext->containerMap.find(symbol->Parent());
             if (it != currentContext->containerMap.cend())
             {
@@ -977,12 +1007,18 @@ void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunct
         {
             sngcpp::symbols::ConstructorSymbol* constructorSymbol = static_cast<sngcpp::symbols::ConstructorSymbol*>(symbol);
             memberFunctionSpecifiers = memberFunctionSpecifiers | MapSpecifiers(constructorSymbol->Specifiers()) | MapAccess(symbol->Access());
+            nothrowList.ApplyTo(nothrowFunctionItem);
+            if (nothrowFunctionItem.include)
+            {
+                memberFunctionSpecifiers = memberFunctionSpecifiers | sngcm::ast::Specifiers::nothrow_;
+            }
             node.reset(new sngcm::ast::ConstructorNode(soulng::lexer::Span(), memberFunctionSpecifiers, nullptr));
         }
         else if (symbol->IsDestructorSymbol())
         {
             sngcpp::symbols::DestructorSymbol* destructorSymbol = static_cast<sngcpp::symbols::DestructorSymbol*>(symbol);
             memberFunctionSpecifiers = memberFunctionSpecifiers | MapSpecifiers(destructorSymbol->Specifiers()) | MapAccess(symbol->Access());
+            nothrowList.ApplyTo(nothrowFunctionItem);
             node.reset(new sngcm::ast::DestructorNode(soulng::lexer::Span(), memberFunctionSpecifiers, nullptr));
         }
         else
@@ -991,6 +1027,17 @@ void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunct
             currentClassType = prevClassType;
             WriteWarning(specialMemberFunctionNode.GetSpan().line, "constructor/destructor not created");
             return;
+        }
+        if (nothrowList.Verbose())
+        {
+            if (nothrowFunctionItem.include)
+            {
+                std::cout << "info: " << ToUtf8(symbol->Name()) << ": nothrow=true" << std::endl;
+            }
+            else
+            {
+                std::cout << "info: " << ToUtf8(symbol->Name()) << ": nothrow=false" << std::endl;
+            }
         }
         std::unique_ptr<sngcm::ast::FunctionNode> functionNode(static_cast<sngcm::ast::FunctionNode*>(node.release()));
         sngcm::ast::ConstructorNode* constructorNode = nullptr;
@@ -1042,6 +1089,7 @@ void Converter::Visit(sngcpp::ast::SpecialMemberFunctionNode& specialMemberFunct
     }
     currentContainerNode = prevContainer;
     currentClassType = prevClassType;
+    nothrowClassItem = prevClassItem;
 }
 
 void Converter::Visit(sngcpp::ast::CtorInitializerNode& ctorInitializerNode)
@@ -1093,6 +1141,19 @@ void Converter::Visit(sngcpp::ast::SourceFileNode& sourceFileNode)
 {
     std::string sourceFileName = Path::GetFileNameWithoutExtension(sourceFileNode.SourceFilePath());
     currentSourceFileName = Path::GetFileName(sourceFileNode.SourceFilePath());
+    nothrowFileItem = Item(Item::Type::file, ToUtf32(currentSourceFileName), false);
+    nothrowList.ApplyTo(nothrowFileItem);
+    if (nothrowList.Verbose())
+    {
+        if (nothrowFileItem.include)
+        {
+            std::cout << "info: " << currentSourceFileName << ": nothrow=true" << std::endl;
+        }
+        else
+        {
+            std::cout << "info: " << currentSourceFileName << ": nothrow=false" << std::endl;
+        }
+    }
     sourceFileName.append(".cm");
     auto it = compileUnitMap.find(sourceFileName);
     if (it == compileUnitMap.cend())
@@ -2217,6 +2278,7 @@ void Converter::Visit(sngcpp::ast::ParameterSequenceNode& parameterSequenceNode)
 
 void Converter::Visit(sngcpp::ast::FunctionNode& functionNode) 
 {
+    Item prevClassItem = nothrowClassItem;
     sngcpp::symbols::ClassTypeSymbol* prevClassType = currentClassType;
     sngcm::ast::Node* prevContainer = currentContainerNode;
     sngcm::ast::Node* functionContainer = prevContainer;
@@ -2260,6 +2322,20 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
         if (symbol->Parent()->IsClassTypeSymbol())
         {
             sngcpp::symbols::ClassTypeSymbol* classType = static_cast<sngcpp::symbols::ClassTypeSymbol*>(symbol->Parent());
+            nothrowClassItem = Item(Item::Type::class_, classType->Name(), nothrowFileItem.include);
+            nothrowList.ApplyTo(nothrowClassItem);
+            if (nothrowList.Verbose())
+            {
+                if (nothrowClassItem.include)
+                {
+                    std::cout << "info: " << ToUtf8(classType->Name()) << ": nothrow=true" << std::endl;
+                }
+                else
+                {
+                    std::cout << "info: " << ToUtf8(classType->Name()) << ": nothrow=false" << std::endl;
+                }
+            }
+            nothrowFunctionItem = Item(Item::Type::function, symbol->Name(), nothrowClassItem.include);
             auto cit = classMap.find(classType);
             if (cit != classMap.cend())
             {
@@ -2267,6 +2343,10 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
                 currentContainerNode = functionContainer;
                 found = true;
             }
+        }
+        else
+        {
+            nothrowFunctionItem = Item(Item::Type::function, symbol->Name(), nothrowFileItem.include);
         }
         if (!found)
         {
@@ -2279,6 +2359,18 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
         }
         if (symbol->IsFunctionSymbol())
         {
+            nothrowList.ApplyTo(nothrowFunctionItem);
+            if (nothrowList.Verbose())
+            {
+                if (nothrowFunctionItem.include)
+                {
+                    std::cout << "info: " << ToUtf8(symbol->Name()) << ": nothrow=true" << std::endl;
+                }
+                else
+                {
+                    std::cout << "info: " << ToUtf8(symbol->Name()) << ": nothrow=false" << std::endl;
+                }
+            }
             sngcpp::symbols::FunctionSymbol* functionSymbol = static_cast<sngcpp::symbols::FunctionSymbol*>(symbol);
             bool memberFunction = functionSymbol->Parent()->IsClassTypeSymbol();
             if (!currentClassType && memberFunction)
@@ -2287,6 +2379,10 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
             }
             functionSpecifiers = functionSpecifiers | MapSpecifiers(functionSymbol->Specifiers());
             functionSpecifiers = functionSpecifiers | MapAccess(symbol->Access());
+            if (nothrowFunctionItem.include)
+            {
+                functionSpecifiers = functionSpecifiers | sngcm::ast::Specifiers::nothrow_;
+            }
             if (!memberFunction)
             {
                 node.reset(new sngcm::ast::FunctionNode(soulng::lexer::Span(), functionSpecifiers, typeNode.release(), symbol->Name(), nullptr));
@@ -2329,6 +2425,7 @@ void Converter::Visit(sngcpp::ast::FunctionNode& functionNode)
     }
     currentContainerNode = prevContainer;
     currentClassType = prevClassType;
+    nothrowClassItem = prevClassItem;
 }
 
 void Converter::Visit(sngcpp::ast::FloatingLiteralNode& floatingLiteralNode)

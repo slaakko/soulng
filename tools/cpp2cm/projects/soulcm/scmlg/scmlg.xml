@@ -6,8 +6,12 @@
     <import name="soulng.util"/>
     <import project="../../system.lex/system.lex.xml"/>
     <import project="../../system.parsing/system.parsing.xml"/>
-    <import project="../../system.cmajor.ast/system.cmajor.ast.xml"/>
+    <import project="../../cm.ast/cm.ast.xml"/>
   </imports>
+  <references>
+    <reference project="../../../cm.ast/cm.ast/Cm.Ast.cmp" kind="stage"/>
+    <reference project="../../../cm/ast/Cm.Ast.cmp" kind="install"/>
+  </references>
   <vcxproject file="D:\work\soulngcm\soulngcm\sngcmlg\sngcmlg.vcxproj"/>
   <include path="../.."/>
   <target dir="scmlg"/>
@@ -44,4 +48,18 @@
     <file include="Visitor.cpp"/>
     <class exclude="Initializer"/>
   </filter>
+  <text>
+    <file name="LexerFileLexer.lexer"/>
+    <file name="RegExLexer.lexer"/>
+    <file name="BasicType.parser"/>
+    <file name="Expression.parser"/>
+    <file name="Identifier.parser"/>
+    <file name="LexerFileParser.parser"/>
+    <file name="Literal.parser"/>
+    <file name="Parsers.spg"/>
+    <file name="RegExParser.parser"/>
+    <file name="Statement.parser"/>
+    <file name="Template.parser"/>
+    <file name="TypeExpr.parser"/>
+  </text>
 </project>

@@ -18,9 +18,18 @@ enum class BackEnd
     llvm, cmsx
 };
 
+class SNGCM_AST_API ModuleVersionTagVerifier
+{
+public:
+    virtual void VerifyModuleVersionTag(const std::string& moduleFilePath) = 0;
+};
+
+SNGCM_AST_API void SetModuleVersionTagVerifier(ModuleVersionTagVerifier* verifier);
+
 SNGCM_AST_API std::string CmajorRootDir();
 SNGCM_AST_API std::string CmajorSystemLibDir(const std::string& config, BackEnd backend);
 SNGCM_AST_API std::string CmajorSystemModuleFilePath(const std::string& config, BackEnd backend);
+SNGCM_AST_API std::string CmajorSystemWindowsModuleFilePath(const std::string& config);
 SNGCM_AST_API void SetOutDir(const std::string& outDir_);
 SNGCM_AST_API const std::string& OutDir();
 
@@ -70,7 +79,7 @@ private:
 
 enum class Target
 {
-    program, library, unitTest
+    program, winapp, library, winlib, unitTest
 };
 
 class SNGCM_AST_API TargetDeclaration : public ProjectDeclaration

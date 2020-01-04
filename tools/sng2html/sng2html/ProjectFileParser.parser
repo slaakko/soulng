@@ -1,0 +1,37 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sng2html/sng2html/ProjectFile.hpp>
+[hpp]#include <memory>
+[cpp]#include <sng2html/sng2html/ProjectFileLexer.hpp>
+[cpp]#include <sng2html/sng2html/ProjectFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace ProjectFileTokens;
+
+parser ProjectFileParser
+{
+    uselexer ProjectFileLexer;
+    main;
+
+    ProjectFile(var std::unique_ptr<sng2html::sng2html::ProjectFile> projectFile) : sng2html::sng2html::ProjectFile*
+        ::= PROJECT QualifiedId:projectName! SEMICOLON!{ projectFile.reset(new sng2html::sng2html::ProjectFile(lexer.FileName(), projectName)); } ProjectFileContent(projectFile.get()):content
+        {
+            return projectFile.release();
+        }
+        ;
+
+    ProjectFileContent(sng2html::sng2html::ProjectFile* projectFile)
+        ::= SourceFile(projectFile):sourceFile*
+        ;
+
+    QualifiedId(var Span s) : std::u32string
+        ::= (ID{ s = span; } (DOT ID{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    SourceFile(sng2html::sng2html::ProjectFile* projectFile)
+        ::= SOURCE FILEPATH!{ projectFile->AddSourceFile(lexer.filePath); } SEMICOLON!
+        ;
+}

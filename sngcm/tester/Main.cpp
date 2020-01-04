@@ -1,10 +1,10 @@
 #include <sngcm/ast/InitDone.hpp>
 #include <sngcm/ast/Identifier.hpp>
 #include <sngcm/ast/SourceWriter.hpp>
-#include <sngcm/lexer/CmajorLexer.hpp>
-#include <sngcm/lexer/ContainerFileLexer.hpp>
-#include <sngcm/parser/CompileUnit.hpp>
-#include <sngcm/parser/ProjectFile.hpp>
+#include <sngcm/cmlexer/CmajorLexer.hpp>
+#include <sngcm/cmlexer/ContainerFileLexer.hpp>
+#include <sngcm/cmparser/CompileUnit.hpp>
+#include <sngcm/cmparser/ProjectFile.hpp>
 #include <soulng/util/CodeFormatter.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Path.hpp>

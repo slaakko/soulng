@@ -48,6 +48,11 @@ void SymbolCreator::Visit(DeclarationSequenceNode& declarationSequenceNode)
     declarationSequenceNode.Right()->Accept(*this);
 }
 
+void SymbolCreator::Visit(LinkageSpecificationNode& linkageSpecificationNode)
+{
+    linkageSpecificationNode.Declarations()->Accept(*this);
+}
+
 void SymbolCreator::Visit(TypedefNode& typedefNode)
 {
     nameSequence.clear();

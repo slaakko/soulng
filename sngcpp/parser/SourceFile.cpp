@@ -19,7 +19,7 @@ void SourceFileParser::Parse(CppLexer& lexer, sngcpp::ast::SourceFileNode* sourc
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = SourceFileParser::SourceFile(lexer, sourceFile);
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (lexer.Log())
@@ -36,12 +36,12 @@ void SourceFileParser::Parse(CppLexer& lexer, sngcpp::ast::SourceFileNode* sourc
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"SourceFile");
+        lexer.ThrowExpectationFailure(span, U"SourceFile");
     }
     return;
 }
@@ -91,6 +91,10 @@ soulng::parser::Match SourceFileParser::SourceFile(CppLexer& lexer, sngcpp::ast:
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SourceFile"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -150,5 +154,9 @@ soulng::parser::Match SourceFileParser::Declarations(CppLexer& lexer, sngcpp::cp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Declarations"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

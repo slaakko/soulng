@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathContext.hpp' using cpp2cm version 1.0.0
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathContext.cpp' using cpp2cm version 1.0.0
+
+namespace System.XPath
+{
+    public class XPathContext
+    {
+        public XPathContext(System.Dom.Node* node_, int position_, int size_) :
+            node(node_), position(position_), size(size_)
+        {
+        }
+        public System.Dom.Node* Node() const
+        {
+            return node;
+        }
+        public int Position() const
+        {
+            return position;
+        }
+        public int Size() const
+        {
+            return size;
+        }
+        private System.Dom.Node* node;
+        private int position;
+        private int size;
+    }
+} // namespace System.XPath

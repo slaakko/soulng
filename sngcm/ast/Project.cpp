@@ -14,6 +14,13 @@ namespace sngcm { namespace ast {
 using namespace soulng::util;
 using namespace soulng::unicode;
 
+ModuleVersionTagVerifier* moduleVersionTagVerifier = nullptr;
+
+void SetModuleVersionTagVerifier(ModuleVersionTagVerifier* verifier)
+{
+    moduleVersionTagVerifier = verifier;
+}
+
 std::string CmajorRootDir()
 {
     char* e = getenv("CMAJOR_ROOT");
@@ -66,6 +73,13 @@ std::string CmajorSystemModuleFilePath(const std::string& config, BackEnd backen
 {
     boost::filesystem::path smfp(CmajorSystemLibDir(config, backend));
     smfp /= "System.cmm";
+    return GetFullPath(smfp.generic_string());
+}
+
+std::string CmajorSystemWindowsModuleFilePath(const std::string& config)
+{
+    boost::filesystem::path smfp(CmajorSystemLibDir(config, BackEnd::llvm));
+    smfp /= "System.Windows.cmm";
     return GetFullPath(smfp.generic_string());
 }
 

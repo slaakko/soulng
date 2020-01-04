@@ -1,0 +1,237 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sng2html/sng2html/ParserFile.hpp>
+[cpp]#include <sng2html/sng2html/ParserIdentifierParser.hpp>
+[cpp]#include <sng2html/sng2html/ParserDeclaratorParser.hpp>
+[cpp]#include <sng2html/sng2html/ParserExpressionParser.hpp>
+[cpp]#include <sng2html/sng2html/ParserStatementParser.hpp>
+[cpp]#include <sng2html/sng2html/TokenValueParsers.hpp>
+[cpp]#include <sng2html/sng2html/ParserFileLexer.hpp>
+[cpp]#include <sng2html/sng2html/ParserFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace ParserFileTokens;
+
+parser ParserFileParser
+{
+    uselexer ParserFileLexer;
+    main;
+
+    using ParserIdentifierParser.QualifiedCppId;
+    using ParserDeclaratorParser.TypeId;
+    using ParserDeclaratorParser.Declarator;
+    using ParserExpressionParser.ExpressionList;
+    using ParserStatementParser.CompoundStatement;
+
+    ParserFile(var std::unique_ptr<sng2html::sng2html::ParserFile> parserFile) : sng2html::sng2html::ParserFile*
+        ::= (empty{ parserFile.reset(new sng2html::sng2html::ParserFile(lexer.FileName())); } Declaration(parserFile.get()):declaration*)
+        {
+            return parserFile.release();
+        }
+        ;
+
+    Declaration(sng2html::sng2html::ParserFile* parserFile)
+        ::= IncludeDeclaration:includeDeclaration{ parserFile->AddInclude(includeDeclaration); }
+        |   UsingNamespaceDeclaration:usingNamespaceDeclaration{ parserFile->AddUsingNamespace(usingNamespaceDeclaration); }
+        |   ParserDeclaration:parserDeclaration{ parserFile->AddParser(parserDeclaration); }
+        ;
+
+    IncludeDeclaration(var bool prefix, var Span s) : sng2html::sng2html::Include*
+        ::= empty{ lexer.parsingIncludeDeclaration = true; }
+            ((IncludePrefix:includePrefix{ prefix = includePrefix; })? HASH{ s = span; } INCLUDE FILEPATH{ s.end = span.end; })
+        {
+            lexer.parsingIncludeDeclaration = false;
+            return new sng2html::sng2html::Include(prefix, lexer.GetMatch(s));
+        }
+        /
+        {
+            lexer.parsingIncludeDeclaration = false;
+        }
+        ;
+
+    IncludePrefix : bool
+        ::= CPPPREFIX{ return false; }
+        |   HPPPREFIX{ return true; }
+        ;
+
+    UsingNamespaceDeclaration(var Span s) : std::u32string
+        ::= USING{ s = span; } NAMESPACE QualifiedCppId:ns SEMICOLON!{ s.end = span.end; return lexer.GetMatch(s); }
+        ;
+
+    ParserDeclaration(var std::unique_ptr<sng2html::sng2html::GrammarParser> grammarParser) : sng2html::sng2html::GrammarParser*
+        ::= (PARSER Api:parserApi ID{ grammarParser.reset(new sng2html::sng2html::GrammarParser(lexer.GetMatch(span), parserApi)); } LBRACE! Statement(grammarParser.get()):statement* RBRACE!)
+        {
+            return grammarParser.release();
+        }
+        ;
+
+    Api(var std::u32string id) : std::u32string
+        ::= API LPAREN ID!{ id = lexer.GetMatch(span); } RPAREN!{ return id; }
+        |   empty{ return std::u32string(); }
+        ;
+
+    Statement(sng2html::sng2html::GrammarParser* grammarParser)
+        ::= MainStatement(grammarParser):mainStatement
+        |   UsingStatement(grammarParser):usingStatement
+        |   LexerStatement(grammarParser):lexerStatement
+        |   RuleInfoStatement(grammarParser):ruleInfoStatement
+        |   RuleStatement(grammarParser):ruleStatement
+        ;
+
+    MainStatement(sng2html::sng2html::GrammarParser* grammarParser)
+        ::= MAIN SEMICOLON!{ grammarParser->SetMain(); }
+        ;
+
+    UsingStatement(sng2html::sng2html::GrammarParser* grammarParser)
+        ::= USING UsingQualifiedId:parserId! SEMICOLON!{ grammarParser->AddUsing(parserId); }
+        ;
+
+    UsingQualifiedId(var Span s) : std::u32string
+        ::= (ID{ s = span; } (DOT ID{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    LexerStatement(sng2html::sng2html::GrammarParser* grammarParser, var std::u32string lexerName)
+        ::= USELEXER ID!{ lexerName = lexer.GetMatch(span); } SEMICOLON!{ grammarParser->SetLexer(lexerName); }
+        ;
+
+    RuleInfoStatement(sng2html::sng2html::GrammarParser* grammarParser)
+        ::= RULEINFO LBRACE! (RuleInfo(grammarParser):ruleInfo % COMMA)? RBRACE!
+        ;
+
+    RuleInfo(sng2html::sng2html::GrammarParser* grammarParser, var std::u32string ruleName, var std::u32string ruleInfo)
+        ::= LPAREN ID!{ ruleName = lexer.GetMatch(span); } COMMA! STRINGLIT!{ ruleInfo = sng2html::sng2html::ParseStringLiteral(lexer.FileName(), lexer.GetToken(pos)); } RPAREN!
+        {
+            grammarParser->AddRuleInfo(ruleName, ruleInfo);
+        }
+        ;
+
+    RuleStatement(sng2html::sng2html::GrammarParser* grammarParser, var std::unique_ptr<sng2html::sng2html::RuleParser> rule)
+        ::= ID{ rule.reset(new sng2html::sng2html::RuleParser(lexer.GetMatch(span))); } ParametersAndVariables(rule.get()):paramsAndVars? ReturnType:returnType? PRODUCES RuleBody:definition! SEMICOLON!
+        {
+            rule->SetDefinition(definition);
+            rule->SetReturnType(returnType);
+            grammarParser->AddRule(rule.release());
+        }
+        ;
+
+    ParametersAndVariables(sng2html::sng2html::RuleParser* rule)
+        ::= LPAREN (ParamOrVariable:paramOrVariable{ rule->AddParamOrVariable(paramOrVariable); } % COMMA)? RPAREN!
+        ;
+
+    ParamOrVariable : sng2html::sng2html::Parameter*
+        ::= VAR TypeId:varType Declarator:varName{ return new sng2html::sng2html::Variable(varType, varName); }
+        |   TypeId:paramType Declarator:paramName{ return new sng2html::sng2html::Parameter(paramType, paramName); }
+        ;
+
+    ReturnType : soulng::cppcode::TypeId*
+        ::= COLON TypeId:type{ return type; }
+        ;
+
+    RuleBody : sng2html::sng2html::Parser*
+        ::= Alternative:alt{ return alt; }
+        ;
+
+    Alternative(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
+        ::= (Sequence:left{ value.reset(left); } (BITOR Sequence:right!{ value.reset(new sng2html::sng2html::AlternativeParser(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    Sequence(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
+        ::= (Difference:left{ value.reset(left); } (Difference:right{ value.reset(new sng2html::sng2html::SequenceParser(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    Difference(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
+        ::= (List:left{ value.reset(left); } (MINUS List:right!{ value.reset(new sng2html::sng2html::DifferenceParser(value.release(), right)); })*)
+        {
+            return value.release();
+        }
+        ;
+
+    List(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
+        ::= (Postfix:left{ value.reset(left); } (REM Postfix:right!{ value.reset(new sng2html::sng2html::ListParser(value.release(), right)); })?)
+        {
+            return value.release();
+        }
+        ;
+
+    Postfix(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
+        ::=
+        (   Primary:primary{ value.reset(primary); }
+            (   STAR{ value.reset(new sng2html::sng2html::KleeneParser(value.release())); }
+            |   PLUS{ value.reset(new sng2html::sng2html::PositiveParser(value.release())); }
+            |   QUEST{ value.reset(new sng2html::sng2html::OptionalParser(value.release())); }
+            )?    
+        )
+        {
+            return value.release();
+        }
+        ;
+
+    Primary(var std::unique_ptr<sng2html::sng2html::Parser> value) : sng2html::sng2html::Parser*
+        ::=
+        (
+            (   RuleCall:ruleCall{ value.reset(ruleCall); }
+            |   Primitive:primitive{ value.reset(primitive); }
+            |   Grouping:grouping{ value.reset(grouping); }
+            )
+            (
+                EXCLAMATION{ value.reset(new sng2html::sng2html::ExpectationParser(value.release())); }
+            )?
+            (   
+                (
+                    (CompoundStatement:successCode
+                    (DIV CompoundStatement:failureCode)?){ value.reset(new sng2html::sng2html::ActionParser(successCode, failureCode, value.release())); }
+                )
+            )?
+        )
+        {
+            return value.release();
+        }
+        ;
+
+    RuleCall(var std::u32string ruleName, var std::unique_ptr<soulng::cppcode::ExpressionList> exprList, var int nonterminalPos) : sng2html::sng2html::Parser*
+        ::= Nonterminal:nt{ ruleName = nt; nonterminalPos = pos; }
+            (LPAREN{ pass = soulng::lexer::NoWhiteSpaceBetweenTokens(lexer.GetToken(nonterminalPos), lexer.GetToken(pos)); exprList.reset(new soulng::cppcode::ExpressionList()); }
+            ExpressionList(exprList.get()):args RPAREN)? COLON ID!
+        {
+            std::u32string name = lexer.GetMatch(span);
+            sng2html::sng2html::NonterminalParser* nonterminalParser = new sng2html::sng2html::NonterminalParser(name, ruleName);
+            nonterminalParser->SetArguments(exprList.get());
+            return nonterminalParser;
+        }
+        ;
+
+    Nonterminal : std::u32string
+        ::= ID{ return lexer.GetMatch(span); }
+        ;
+
+    Primitive : sng2html::sng2html::Parser*
+        ::= EMPTY{ return new sng2html::sng2html::EmptyParser(); }
+        |   ID{ return new sng2html::sng2html::TokenParser(lexer.GetMatch(span)); }
+        |   CHARLIT{ return new sng2html::sng2html::CharParser(sng2html::sng2html::ParseCharLiteral(lexer.FileName(), lexer.GetToken(pos))); }
+        |   STRINGLIT
+        {
+            std::u32string strLit = sng2html::sng2html::ParseStringLiteral(lexer.FileName(), lexer.GetToken(pos));
+            if (strLit.length() > 0 && strLit[0] == '[' && strLit[strLit.length() - 1] == ']')
+            {
+                return new sng2html::sng2html::CharSetParser(sng2html::sng2html::ParseCharSet(lexer.FileName(), lexer.GetToken(pos), strLit));
+            }
+            else
+            {
+                return new sng2html::sng2html::StringParser(strLit);
+            }
+        }
+        ;
+
+    Grouping : sng2html::sng2html::Parser*
+        ::= (LPAREN Alternative:alt RPAREN!){ return new sng2html::sng2html::GroupingParser(alt); }
+        ;
+}

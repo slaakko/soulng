@@ -1,0 +1,28 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[cpp]#include <sng2html/sng2html/LexerFileLexer.hpp>
+[cpp]#include <sng2html/sng2html/LexerFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace LexerFileTokens;
+
+parser LexerIdentifierParser
+{
+    uselexer LexerFileLexer;
+
+    CppIdentifier : std::u32string
+        ::= ID{ return lexer.GetMatch(span); }
+        ;
+
+    QualifiedCppId(var Span s) : std::u32string
+        ::= (empty{ s = span; } COLONCOLON? ID{ s.end = span.end; } (COLONCOLON ID{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    ruleinfo
+    {
+        (CppIdentifier, "C++ identifier"), (QualifiedCppId, "Qualified C++ identifier")
+    }
+}

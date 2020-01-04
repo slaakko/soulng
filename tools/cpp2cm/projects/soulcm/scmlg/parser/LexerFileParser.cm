@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Lex;
 using System.Parsing;
-using System.Cmajor.Ast;
+using Cm.Ast;
 using LexerFileTokens;
 
 // this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/soulcm/scmlg/parser/LexerFileParser.parser' using soulcm parser generator scmpg version 3.0.0
@@ -20,6 +20,7 @@ public static class LexerFileParser
             }
         #endif
         ++lexer;
+        System.Lex.Span span = lexer.GetSpan();
         Match match = LexerFile(lexer, parsingContext);
         value.Reset(cast<soulcm.scmlg.LexerFile*>(match.value));
         #if (DEBUG)
@@ -37,12 +38,12 @@ public static class LexerFileParser
             }
             else
             {
-                lexer.ThrowExpectationFailure(lexer.GetPos(), GetEndTokenInfo());
+                lexer.ThrowExpectationFailure(lexer.GetSpan(), GetEndTokenInfo());
             }
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), u"lexer file");
+            lexer.ThrowExpectationFailure(span, u"lexer file");
         }
         return value;
     }
@@ -153,6 +154,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Declaration(LexerFileLexer& lexer, ParsingContext* parsingContext)
@@ -367,6 +372,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ClassMap(LexerFileLexer& lexer)
@@ -408,7 +417,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch4 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == ID)
                             {
@@ -421,7 +430,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                             }
                         }
                         if (match.hit)
@@ -448,7 +457,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch7 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -461,7 +470,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(SEMICOLON));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(SEMICOLON));
                         }
                     }
                     if (match.hit)
@@ -492,6 +501,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Usings(LexerFileLexer& lexer)
@@ -560,6 +573,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match UsingDirectives(LexerFileLexer& lexer, soulcm.scmlg.Usings* usings)
@@ -613,6 +630,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match UsingDirective(LexerFileLexer& lexer, soulcm.scmlg.Usings* usings)
@@ -681,6 +702,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match UsingAliasDirective(LexerFileLexer& lexer)
@@ -766,7 +791,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch8 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match = IdentifierParser.QualifiedId(lexer);
                         qid.Reset(cast<IdentifierNode*>(match.value));
                         if (match.hit)
@@ -775,7 +800,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, u"identifier");
+                            lexer.ThrowExpectationFailure(span, u"identifier");
                         }
                     }
                     *parentMatch7 = match;
@@ -797,7 +822,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch11 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -810,7 +835,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(SEMICOLON));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(SEMICOLON));
                         }
                     }
                     if (match.hit)
@@ -842,6 +867,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match UsingNamespaceDirective(LexerFileLexer& lexer)
@@ -890,7 +919,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch4 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match = IdentifierParser.QualifiedId(lexer);
                         ns.Reset(cast<IdentifierNode*>(match.value));
                         if (match.hit)
@@ -899,7 +928,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, u"identifier");
+                            lexer.ThrowExpectationFailure(span, u"identifier");
                         }
                     }
                     *parentMatch3 = match;
@@ -921,7 +950,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch7 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -934,7 +963,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(SEMICOLON));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(SEMICOLON));
                         }
                     }
                     if (match.hit)
@@ -966,6 +995,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Tokens(LexerFileLexer& lexer)
@@ -1015,7 +1048,7 @@ public static class LexerFileParser
                                 Match match(true);
                                 Match* parentMatch6 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == ID)
                                     {
@@ -1028,7 +1061,7 @@ public static class LexerFileParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                                     }
                                 }
                                 if (match.hit)
@@ -1055,7 +1088,7 @@ public static class LexerFileParser
                             Match match(true);
                             Match* parentMatch9 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match(false);
                                 if (*lexer == LBRACE)
                                 {
@@ -1068,7 +1101,7 @@ public static class LexerFileParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, GetTokenName(LBRACE));
+                                    lexer.ThrowExpectationFailure(span, GetTokenName(LBRACE));
                                 }
                             }
                             if (match.hit)
@@ -1201,7 +1234,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch22 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RBRACE)
                         {
@@ -1214,7 +1247,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                         }
                     }
                     if (match.hit)
@@ -1245,6 +1278,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Token(LexerFileLexer& lexer)
@@ -1293,7 +1330,7 @@ public static class LexerFileParser
                                 Match match(true);
                                 Match* parentMatch6 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == ID)
                                     {
@@ -1306,7 +1343,7 @@ public static class LexerFileParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                                     }
                                 }
                                 if (match.hit)
@@ -1329,7 +1366,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch8 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == COMMA)
                             {
@@ -1342,7 +1379,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(COMMA));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(COMMA));
                             }
                         }
                         *parentMatch7 = match;
@@ -1363,7 +1400,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch11 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == STRINGLIT)
                             {
@@ -1376,7 +1413,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(STRINGLIT));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(STRINGLIT));
                             }
                         }
                         if (match.hit)
@@ -1403,7 +1440,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch14 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -1416,7 +1453,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                         }
                     }
                     if (match.hit)
@@ -1447,6 +1484,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Keywords(LexerFileLexer& lexer)
@@ -1496,7 +1537,7 @@ public static class LexerFileParser
                                 Match match(true);
                                 Match* parentMatch6 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == ID)
                                     {
@@ -1509,7 +1550,7 @@ public static class LexerFileParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                                     }
                                 }
                                 if (match.hit)
@@ -1536,7 +1577,7 @@ public static class LexerFileParser
                             Match match(true);
                             Match* parentMatch9 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match(false);
                                 if (*lexer == LBRACE)
                                 {
@@ -1549,7 +1590,7 @@ public static class LexerFileParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, GetTokenName(LBRACE));
+                                    lexer.ThrowExpectationFailure(span, GetTokenName(LBRACE));
                                 }
                             }
                             if (match.hit)
@@ -1682,7 +1723,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch22 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RBRACE)
                         {
@@ -1695,7 +1736,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                         }
                     }
                     if (match.hit)
@@ -1726,6 +1767,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Keyword(LexerFileLexer& lexer)
@@ -1773,7 +1818,7 @@ public static class LexerFileParser
                                 Match match(true);
                                 Match* parentMatch6 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == STRINGLIT)
                                     {
@@ -1786,7 +1831,7 @@ public static class LexerFileParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(STRINGLIT));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(STRINGLIT));
                                     }
                                 }
                                 if (match.hit)
@@ -1809,7 +1854,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch8 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == COMMA)
                             {
@@ -1822,7 +1867,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(COMMA));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(COMMA));
                             }
                         }
                         *parentMatch7 = match;
@@ -1844,7 +1889,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch11 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == ID)
                             {
@@ -1857,7 +1902,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                             }
                         }
                         if (match.hit)
@@ -1884,7 +1929,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch14 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -1897,7 +1942,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                         }
                     }
                     if (match.hit)
@@ -1928,6 +1973,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Expressions(LexerFileLexer& lexer)
@@ -1980,7 +2029,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch5 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == LBRACE)
                             {
@@ -1993,7 +2042,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(LBRACE));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(LBRACE));
                             }
                         }
                         *parentMatch4 = match;
@@ -2062,7 +2111,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch12 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RBRACE)
                         {
@@ -2075,7 +2124,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                         }
                     }
                     if (match.hit)
@@ -2106,6 +2155,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Expression(LexerFileLexer& lexer, int index)
@@ -2179,7 +2232,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch7 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match = LexerFileParser.ExprString(lexer);
                             exprValue.Reset(cast<Value<ustring>*>(match.value));
                             if (match.hit)
@@ -2188,7 +2241,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, u"regular expression string");
+                                lexer.ThrowExpectationFailure(span, u"regular expression string");
                             }
                         }
                         if (match.hit)
@@ -2215,7 +2268,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch10 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == SEMICOLON)
                         {
@@ -2228,7 +2281,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(SEMICOLON));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(SEMICOLON));
                         }
                     }
                     if (match.hit)
@@ -2259,6 +2312,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ExprString(LexerFileLexer& lexer)
@@ -2306,6 +2363,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Lexer(LexerFileLexer& lexer, ParsingContext* parsingContext)
@@ -2354,7 +2415,7 @@ public static class LexerFileParser
                                 Match match(true);
                                 Match* parentMatch6 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == ID)
                                     {
@@ -2367,7 +2428,7 @@ public static class LexerFileParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(ID));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(ID));
                                     }
                                 }
                                 if (match.hit)
@@ -2394,7 +2455,7 @@ public static class LexerFileParser
                             Match match(true);
                             Match* parentMatch9 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match(false);
                                 if (*lexer == LBRACE)
                                 {
@@ -2407,7 +2468,7 @@ public static class LexerFileParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, GetTokenName(LBRACE));
+                                    lexer.ThrowExpectationFailure(span, GetTokenName(LBRACE));
                                 }
                             }
                             if (match.hit)
@@ -2470,7 +2531,7 @@ public static class LexerFileParser
                     Match match(true);
                     Match* parentMatch15 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RBRACE)
                         {
@@ -2483,7 +2544,7 @@ public static class LexerFileParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                         }
                     }
                     if (match.hit)
@@ -2514,6 +2575,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match LexerClause(LexerFileLexer& lexer, soulcm.scmlg.Lexer* currentLexer, ParsingContext* parsingContext)
@@ -2587,7 +2652,7 @@ public static class LexerFileParser
                                 Match match(true);
                                 Match* parentMatch9 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match = StatementParser.CompoundStatement(lexer, parsingContext);
                                     stmt.Reset(cast<CompoundStatementNode*>(match.value));
                                     if (match.hit)
@@ -2596,7 +2661,7 @@ public static class LexerFileParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, u"compound statement");
+                                        lexer.ThrowExpectationFailure(span, u"compound statement");
                                     }
                                 }
                                 *parentMatch8 = match;
@@ -2650,6 +2715,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Variables(LexerFileLexer& lexer, soulcm.scmlg.Lexer* currentLexer, ParsingContext* parsingContext)
@@ -2689,7 +2758,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch4 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == LBRACE)
                             {
@@ -2702,7 +2771,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(LBRACE));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(LBRACE));
                             }
                         }
                         *parentMatch3 = match;
@@ -2766,7 +2835,7 @@ public static class LexerFileParser
                 Match match(true);
                 Match* parentMatch10 = &match;
                 {
-                    long pos = lexer.GetPos();
+                    System.Lex.Span span = lexer.GetSpan();
                     Match match(false);
                     if (*lexer == RBRACE)
                     {
@@ -2779,7 +2848,7 @@ public static class LexerFileParser
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                        lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                     }
                 }
                 *parentMatch9 = match;
@@ -2799,6 +2868,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Variable(LexerFileLexer& lexer, ParsingContext* parsingContext)
@@ -2895,6 +2968,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Actions(LexerFileLexer& lexer, soulcm.scmlg.Lexer* currentLexer, ParsingContext* parsingContext)
@@ -2935,7 +3012,7 @@ public static class LexerFileParser
                         Match match(true);
                         Match* parentMatch4 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == LBRACE)
                             {
@@ -2948,7 +3025,7 @@ public static class LexerFileParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(LBRACE));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(LBRACE));
                             }
                         }
                         *parentMatch3 = match;
@@ -3029,7 +3106,7 @@ public static class LexerFileParser
                                                     Match match(true);
                                                     Match* parentMatch15 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = StatementParser.CompoundStatement(lexer, parsingContext);
                                                         stmt.Reset(cast<CompoundStatementNode*>(match.value));
                                                         if (match.hit)
@@ -3038,7 +3115,7 @@ public static class LexerFileParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"compound statement");
+                                                            lexer.ThrowExpectationFailure(span, u"compound statement");
                                                         }
                                                     }
                                                     *parentMatch14 = match;
@@ -3081,7 +3158,7 @@ public static class LexerFileParser
                 Match match(true);
                 Match* parentMatch17 = &match;
                 {
-                    long pos = lexer.GetPos();
+                    System.Lex.Span span = lexer.GetSpan();
                     Match match(false);
                     if (*lexer == RBRACE)
                     {
@@ -3094,7 +3171,7 @@ public static class LexerFileParser
                     }
                     else
                     {
-                        lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACE));
+                        lexer.ThrowExpectationFailure(span, GetTokenName(RBRACE));
                     }
                 }
                 *parentMatch16 = match;
@@ -3114,6 +3191,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Action(LexerFileLexer& lexer)
@@ -3164,7 +3245,7 @@ public static class LexerFileParser
                                     Match match(true);
                                     Match* parentMatch7 = &match;
                                     {
-                                        long pos = lexer.GetPos();
+                                        System.Lex.Span span = lexer.GetSpan();
                                         Match match(false);
                                         if (*lexer == LPAREN)
                                         {
@@ -3177,7 +3258,7 @@ public static class LexerFileParser
                                         }
                                         else
                                         {
-                                            lexer.ThrowExpectationFailure(pos, GetTokenName(LPAREN));
+                                            lexer.ThrowExpectationFailure(span, GetTokenName(LPAREN));
                                         }
                                     }
                                     *parentMatch6 = match;
@@ -3198,7 +3279,7 @@ public static class LexerFileParser
                                     Match match(true);
                                     Match* parentMatch10 = &match;
                                     {
-                                        long pos = lexer.GetPos();
+                                        System.Lex.Span span = lexer.GetSpan();
                                         Match match(false);
                                         if (*lexer == INTLIT)
                                         {
@@ -3211,7 +3292,7 @@ public static class LexerFileParser
                                         }
                                         else
                                         {
-                                            lexer.ThrowExpectationFailure(pos, GetTokenName(INTLIT));
+                                            lexer.ThrowExpectationFailure(span, GetTokenName(INTLIT));
                                         }
                                     }
                                     if (match.hit)
@@ -3234,7 +3315,7 @@ public static class LexerFileParser
                             Match match(true);
                             Match* parentMatch12 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match(false);
                                 if (*lexer == RPAREN)
                                 {
@@ -3247,7 +3328,7 @@ public static class LexerFileParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                    lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                                 }
                             }
                             *parentMatch11 = match;
@@ -3308,6 +3389,10 @@ public static class LexerFileParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

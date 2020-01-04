@@ -29,7 +29,12 @@ void SimpleDeclarationNode::Write(Writer& writer)
     Node::Write(writer);
     writer.Write(specifiers);
     typeExpr->Write(writer);
-    declarator->Write(writer);
+    bool hasDeclarator = declarator != nullptr;
+    writer.GetBinaryWriter().Write(hasDeclarator);
+    if (hasDeclarator)
+    {
+        declarator->Write(writer);
+    }
 }
 
 void SimpleDeclarationNode::Read(Reader& reader)
@@ -37,7 +42,11 @@ void SimpleDeclarationNode::Read(Reader& reader)
     Node::Read(reader);
     specifiers = reader.ReadSpecifiers();
     typeExpr.reset(reader.ReadNode());
-    declarator.reset(reader.ReadNode());
+    bool hasDeclarator = reader.GetBinaryReader().ReadBool();
+    if (hasDeclarator)
+    {
+        declarator.reset(reader.ReadNode());
+    }
 }
 
 AliasDeclarationNode::AliasDeclarationNode() : Node(NodeType::aliasDeclarationNode)

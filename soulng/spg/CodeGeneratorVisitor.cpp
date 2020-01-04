@@ -264,7 +264,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
     formatter->WriteLine("soulng::parser::Match* parentMatch" + std::to_string(parentMatchNumber++) + " = &match;");
     formatter->WriteLine("{");
     formatter->IncIndent();
-    formatter->WriteLine("int64_t pos = lexer.GetPos();");
+    formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
     parser.Child()->Accept(*this);
     formatter->WriteLine("if (match.hit)");
     formatter->WriteLine("{");
@@ -284,17 +284,17 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
         {
             ruleInfo = rule->Name();
         }
-        formatter->WriteLine("lexer.ThrowExpectationFailure(pos, U\"" + ToUtf8(ruleInfo) + "\");");
+        formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
     }
     else if (parser.Child()->IsToken())
     {
         std::u32string tokenName = static_cast<TokenParser*>(parser.Child())->TokenName();
-        formatter->WriteLine("lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(" + ToUtf8(tokenName) + ")));");
+        formatter->WriteLine("lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(" + ToUtf8(tokenName) + ")));");
     }
     else
     {
         std::u32string parserName = parser.Child()->Name();
-        formatter->WriteLine("lexer.ThrowExpectationFailure(pos, U\"" + ToUtf8(parserName) + "\");");
+        formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(parserName) + "\");");
     }
     formatter->DecIndent();
     formatter->WriteLine("}");
@@ -724,6 +724,12 @@ void CodeGeneratorVisitor::Visit(RuleParser& parser)
             formatter->WriteLine("}");
             formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
         }
+        formatter->WriteLine("if (!match.hit)");
+        formatter->WriteLine("{");
+        formatter->IncIndent();
+        formatter->WriteLine("match.value = nullptr;");
+        formatter->DecIndent();
+        formatter->WriteLine("}");
         formatter->WriteLine("return match;");
         formatter->DecIndent();
         formatter->WriteLine("}");
@@ -875,7 +881,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                     formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
                 }
                 formatter->WriteLine("++lexer;");
-                formatter->WriteLine("int64_t pos = lexer.GetPos();");
+                formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
                 std::string ruleName = ToUtf8(rule->Parent()->Name()) + "::" + ToUtf8(rule->Name());
                 formatter->Write("soulng::parser::Match match = " + ruleName + "(lexer");
                 for (const auto& param : startRule->Parameters())
@@ -940,7 +946,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("else");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
+                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->DecIndent();
@@ -953,7 +959,7 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 {
                     ruleInfo = rule->Name();
                 }
-                formatter->WriteLine("lexer.ThrowExpectationFailure(pos, U\"" + ToUtf8(ruleInfo) + "\");");
+                formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
                 formatter->DecIndent();
                 formatter->WriteLine("}");
 				if (startRule->ReturnType())

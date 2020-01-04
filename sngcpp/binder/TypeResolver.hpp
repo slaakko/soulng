@@ -18,6 +18,7 @@ enum class TypeResolverFlags : uint8_t
     resolveClassGroup = 1 << 0,
     nothrow = 1 << 1,
     noExternalTypes = 1 << 2,
+    notSelf = 1 << 3
 };
 
 SNGCPP_BINDER_API inline TypeResolverFlags operator|(TypeResolverFlags left, TypeResolverFlags right)

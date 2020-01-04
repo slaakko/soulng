@@ -1,0 +1,95 @@
+CharSet.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CharSet.cm:35:M/namespace System.soulcm.scmpg/}namespace soulcm.scmpg/
+Parser.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+Parser.cm:645:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeEmittingVisitor.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeEmittingVisitor.cm:955:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeEvaluationVisitor.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeEvaluationVisitor.cm:479:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+NonterminalInfo.cm:3:I/using Cm.Ast;/
+NonterminalInfo.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+NonterminalInfo.cm:487:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeUtils.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeUtils.cm:29:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeUtils.cm:3:I/using Cm.Ast;/
+ParserFile.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+ParserFile.cm:61:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+Domain.cm:8:M/System.soulcm.scmpg/soulcm.scmpg/
+Domain.cm:48:M/System.soulcm.scmpg/soulcm.scmpg/
+LinkerVisitor.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+LinkerVisitor.cm:89:M/List<ustring> components = NOT_CONVERTED(u, '.');/List<ustring> components = u.Split('.');/
+LinkerVisitor.cm:133:M/private Stage.scmpg.soulcm.System stage;/private Stage stage;/
+LinkerVisitor.cm:137:M/System.soulcm.scmpg/soulcm.scmpg/
+ArrayGeneratorVisitor.cm:3:I/using Cm.Ast;/
+ArrayGeneratorVisitor.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+ArrayGeneratorVisitor.cm:118:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+ProjectFile.cm:9:M/System.soulcm.scmpg/soulcm.scmpg/
+ProjectFile.cm:34:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+TokenValueParsers.cm:9:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+TokenValueParsers.cm:46:M/if (p != NOT_CONVERTED&&(*p == 'x' || *p == 'X'))/if (p != e && (*p == 'x' || *p == 'X'))/
+TokenValueParsers.cm:49:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/while (p != e && ((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/
+TokenValueParsers.cm:54:M/else if (p != NOT_CONVERTED&&(*p == 'd' || *p == 'D'))/else if (p != e && (*p == 'd' || *p == 'D'))/
+TokenValueParsers.cm:63:M/else if (p != NOT_CONVERTED&&(*p >= '0' && *p <= '7'))/else if (p != e && (*p >= '0' && *p <= '7'))/
+TokenValueParsers.cm:123:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || *p == '.' || *p == 'e' || *p == 'E' || *p == '-' || *p == '+'))/while (p != e && ((*p >= '0' && *p <= '9') || *p == '.' || *p == 'e' || *p == 'E' || *p == '-' || *p == '+'))/
+TokenValueParsers.cm:128:M/if (p != NOT_CONVERTED&&(*p == 'f' || *p == 'F'))/if (p != e && (*p == 'f' || *p == 'F'))/
+TokenValueParsers.cm:154:M/if (p != NOT_CONVERTED&&(*p == 'x' || *p == 'X'))/if (p != e && (*p == 'x' || *p == 'X'))/
+TokenValueParsers.cm:157:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/while (p != e && ((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/
+TokenValueParsers.cm:201:M/if (p != NOT_CONVERTED&&(*p == 'u' || *p == 'U'))/if (p != e && (*p == 'u' || *p == 'U'))/
+TokenValueParsers.cm:137:I/        if (floatingLitFloat) floatingLit = ParseFloat(str); else floatingLit = ParseDouble(str);/
+TokenValueParsers.cm:507:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+TokenValueParsers.cm:137:D
+TokenValueParsers.cm:138:D
+TokenValueParsers.cm:139:D
+TokenValueParsers.cm:140:D
+TokenValueParsers.cm:141:D
+TokenValueParsers.cm:142:D
+TokenValueParsers.cm:143:D
+TokenValueParsers.cm:18:M/switch (*p)/switch (cast<uchar>(*p))/
+TokenValueParsers.cm:93:M/switch (*p)/switch (cast<uchar>(*p))/
+TokenValueParsers.cm:159:M/switch (*p)/switch (cast<uchar>(*p))/
+CodeGeneratorVisitor.cm:5:I/using Cm.Ast;/
+CodeGeneratorVisitor.cm:679:D
+CodeGeneratorVisitor.cm:760:D
+CodeGeneratorVisitor.cm:843:M/NOT_CONVERTED << "warning: \'uselexer\' statement missing from \'" << ToUtf8(parser.Name()) << "\' parser." << NOT_CONVERTED;/Console.Out() << "warning: \'uselexer\' statement missing from \'" << ToUtf8(parser.Name()) << "\' parser." << endl();/
+CodeGeneratorVisitor.cm:1048:M/NOT_CONVERTED << "> " << parserFile.FileName() << NOT_CONVERTED;/Console.Out() << "> " << parserFile.FileName() << endl();/
+CodeGeneratorVisitor.cm:1077:M/NOT_CONVERTED << "==> " << cmajorFilePath << NOT_CONVERTED;/Console.Out() << "==> " << cmajorFilePath << endl();/
+CodeGeneratorVisitor.cm:827:M/NOT_CONVERTED << "warning: unique pointer value of nonterminal \'" + ToUtf8(info.name) + "\' used " + ToString(info.strongCount) + " times in semantic actions of rule \'" + ToUtf8(parser.Name()) + "\' of parser \'" + ToUtf8(parser.Parent()->Name()) << "\'" << NOT_CONVERTED;/Console.Out() << "warning: unique pointer value of nonterminal \'" + ToUtf8(info.name) + "\' used " + ToString(info.strongCount) + " times in semantic actions of rule \'" + ToUtf8(parser.Name()) + "\' of parser \'" + ToUtf8(parser.Parent()->Name()) << "\'" << endl();/
+CodeGeneratorVisitor.cm:832:M/NOT_CONVERTED << "warning: rule \'" + ToUtf8(parser.Name()) + "\' of parser \'" + ToUtf8(parser.Parent()->Name()) << "\' returns value, but no semantic action has a return statement." << NOT_CONVERTED;/Console.Out() << "warning: rule \'" + ToUtf8(parser.Name()) + "\' of parser \'" + ToUtf8(parser.Parent()->Name()) << "\' returns value, but no semantic action has a return statement." << endl();/
+CodeGeneratorVisitor.cm:1071:M/NOT_CONVERTED cmajorFile(cmajorFilePath);/StreamWriter cmajorFile(File.CreateText(cmajorFilePath));/
+Visitor.cm:8:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+Visitor.cm:76:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeGeneratorVisitor.cm:10:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeGeneratorVisitor.cm:1110:M/namespace System.soulcm.scmpg/namespace soulcm.scmpg/
+CodeGeneratorVisitor.cm:387:M/Stage.scmpg.soulcm.System prevStage = stage;/Stage prevStage = stage;/
+CodeGeneratorVisitor.cm:1094:M/private Stage.scmpg.soulcm.System stage;/private Stage stage;/
+CodeGeneratorVisitor.cm:975:M/if (startRule->ReturnType())/if (startRule->ReturnType() != null)/
+CodeGeneratorVisitor.cm:1016:M/if (startRule->ReturnType())/if (startRule->ReturnType() != null)/
+Parser.cm:59:M/public class UnaryParser : Parser/public abstract class UnaryParser : Parser/
+Parser.cm:72:M/public class BinaryParser : Parser/public abstract class BinaryParser : Parser/
+Main.cm:9:M/NOT_CONVERTED << "Soul NG Parser Generator version " << ParserGeneratorVersionStr() << NOT_CONVERTED;/Console.Out() << "Soul CM Parser Generator version " << soulcm.scmpg.ParserGeneratorVersionStr() << endl();/
+Main.cm:10:M/NOT_CONVERTED << "Usage: soulngcm_spg [options] <file.spg>" << NOT_CONVERTED;/Console.Out() << "Usage: scmpg [options] <file.spg>" << endl();/
+Main.cm:11:M/NOT_CONVERTED << "Options:" << NOT_CONVERTED;/Console.Out() << "Options:" << endl();/
+Main.cm:12:M/NOT_CONVERTED << "--help | -h" << NOT_CONVERTED;/Console.Out() << "--help | -h" << endl();/
+Main.cm:13:M/NOT_CONVERTED << "  Print help and exit." << NOT_CONVERTED;/Console.Out() << "  Print help and exit." << endl();/
+Main.cm:14:M/NOT_CONVERTED << "--verbose | -v" << NOT_CONVERTED;/Console.Out() << "--verbose | -v" << endl();/
+Main.cm:15:M/NOT_CONVERTED << "  Be verbose." << NOT_CONVERTED;/Console.Out() << "  Be verbose." << endl();/
+Main.cm:16:M/NOT_CONVERTED << "--no-parser-debug-support | -n" << NOT_CONVERTED;/Console.Out() << "--no-parser-debug-support | -n" << endl();/
+Main.cm:17:M/NOT_CONVERTED << "  Do not generate parser debug support code to the generated parsers." << NOT_CONVERTED;/Console.Out() << "  Do not generate parser debug support code to the generated parsers." << endl();/
+Main.cm:21:D
+Main.cm:30:M/if (NOT_CONVERTED(arg, "--"))/if (arg.StartsWith("--"))/
+Main.cm:50:M/else if (NOT_CONVERTED(arg, "-"))/else if (arg.StartsWith("-"))/
+Main.cm:98:M/NOT_CONVERTED << "> " << projectFilePath << NOT_CONVERTED;/Console.Out() << "> " << projectFilePath << endl();/
+Main.cm:100:M/string s = NOT_CONVERTED(projectFilePath);/string s = System.IO.ReadFile(projectFilePath);/
+Main.cm:102:M/NOT_CONVERTED lexer(content, projectFilePath, 0);/ProjectFileLexer lexer(content, projectFilePath, 0);/
+Main.cm:103:M/UniquePtr<System.soulcm.scmpg.ProjectFile> projectFile = NOT_CONVERTED(lexer);/UniquePtr<soulcm.scmpg.ProjectFile> projectFile = ProjectFileParser.Parse(lexer);/
+Main.cm:105:M/List<UniquePtr<System.soulcm.scmpg.ParserFile>> parserFiles;/List<UniquePtr<soulcm.scmpg.ParserFile>> parserFiles;/
+Main.cm:109:M/string s = NOT_CONVERTED(sourceFilePath);/string s = System.IO.ReadFile(sourceFilePath);/
+Main.cm:111:M/NOT_CONVERTED lexer(content, sourceFilePath, index);/ParserFileLexer lexer(content, sourceFilePath, index);/
+Main.cm:113:M/UniquePtr<System.soulcm.scmpg.ParserFile> parserFile = NOT_CONVERTED(lexer, &parsingContext);/UniquePtr<soulcm.scmpg.ParserFile> parserFile = ParserFileParser.Parse(lexer, &parsingContext);/
+Main.cm:117:M/System.soulcm.scmpg.Domain domain;/soulcm.scmpg.Domain domain;/
+Main.cm:118:M/for (const NOT_CONVERTED& parserFile : parserFiles)/for (const UniquePtr<soulcm.scmpg.ParserFile>& parserFile : parserFiles)/
+Main.cm:120:M/domain.AddParserFile(parserFile.get());/domain.AddParserFile(parserFile.Get());/
+Main.cm:122:M/System.soulcm.scmpg.LinkerVisitor linkerVisitor;/soulcm.scmpg.LinkerVisitor linkerVisitor;/
+Main.cm:124:M/System.soulcm.scmpg.CodeGeneratorVisitor codeGeneratorVisitor(verbose, noParserDebugSupport);/soulcm.scmpg.CodeGeneratorVisitor codeGeneratorVisitor(verbose, noParserDebugSupport);/
+Main.cm:127:M/catch (const NOT_CONVERTED&)/catch (const Exception& ex)/
+Main.cm:129:M/NOT_CONVERTED << ex.what() << NOT_CONVERTED;/Console.Error() << ex.Message() << endl();/

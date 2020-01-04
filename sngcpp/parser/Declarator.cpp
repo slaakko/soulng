@@ -117,6 +117,10 @@ soulng::parser::Match DeclaratorParser::InitDeclarator(CppLexer& lexer, sngcpp::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("InitDeclarator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -551,7 +555,7 @@ soulng::parser::Match DeclaratorParser::Declarator(CppLexer& lexer, sngcpp::cppp
                                                                 soulng::parser::Match match(true);
                                                                 soulng::parser::Match* parentMatch48 = &match;
                                                                 {
-                                                                    int64_t pos = lexer.GetPos();
+                                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                                     soulng::parser::Match match(false);
                                                                     if (*lexer == RBRACKET)
                                                                     {
@@ -564,7 +568,7 @@ soulng::parser::Match DeclaratorParser::Declarator(CppLexer& lexer, sngcpp::cppp
                                                                     }
                                                                     else
                                                                     {
-                                                                        lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACKET)));
+                                                                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RBRACKET)));
                                                                     }
                                                                 }
                                                                 if (match.hit)
@@ -623,6 +627,10 @@ soulng::parser::Match DeclaratorParser::Declarator(CppLexer& lexer, sngcpp::cppp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Declarator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -817,6 +825,10 @@ soulng::parser::Match DeclaratorParser::Initializer(CppLexer& lexer, sngcpp::cpp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Initializer"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -924,6 +936,10 @@ soulng::parser::Match DeclaratorParser::BraceOrEqualInitializer(CppLexer& lexer,
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("BraceOrEqualInitializer"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1123,6 +1139,10 @@ soulng::parser::Match DeclaratorParser::BracedInitializerList(CppLexer& lexer, s
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("BracedInitializerList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1197,6 +1217,10 @@ soulng::parser::Match DeclaratorParser::InitializerClause(CppLexer& lexer, sngcp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("InitializerClause"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1328,5 +1352,9 @@ soulng::parser::Match DeclaratorParser::InitializerList(CppLexer& lexer, sngcpp:
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("InitializerList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

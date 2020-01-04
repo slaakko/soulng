@@ -10,8 +10,11 @@
 #include <sngcpp/symbols/ClassTemplateSpecializationSymbol.hpp>
 #include <sngcpp/ast/TypeExpr.hpp>
 #include <sngcpp/ast/Visitor.hpp>
+#include <soulng/util/Unicode.hpp>
 
 namespace sngcpp { namespace binder {
+
+using namespace soulng::unicode;
 
 class ExpressionBinder : public sngcpp::ast::Visitor
 {
@@ -63,6 +66,7 @@ public:
     void Visit(IdentifierCaptureNode& identifierCaptureNode) override;
     void Visit(NestedIdNode& nestedIdNode) override;
     void Visit(IdentifierNode& identifierNode) override;
+    void Visit(DtorIdNode& dtorIdNode) override;
     void Visit(TemplateIdNode& templateIdNode) override;
     void Visit(ConstNode& constNode) override;
     void Visit(VolatileNode& volatileNode) override;
@@ -70,6 +74,8 @@ public:
     void Visit(RValueRefNode& rValueRefNode) override;
     void Visit(LValueRefNode& lValueRefNode) override;
     void Visit(DeleteExpressionNode& deleteExpressionNode) override;
+    void Visit(IntegerLiteralNode& integerLiteralNode) override;
+    void Visit(StringLiteralNode& stringLiteralNode) override;
 private:
     StatementBinder* statementBinder;
     SymbolTable& symbolTable;
@@ -584,6 +590,19 @@ void ExpressionBinder::Visit(IdentifierNode& identifierNode)
     }
 }
 
+void ExpressionBinder::Visit(DtorIdNode& dtorIdNode)
+{
+    ClassTypeSymbol* currentClassType = nullptr;
+    if (currentFunction && currentFunction->Parent() && currentFunction->Parent()->IsClassTypeSymbol())
+    {
+        currentClassType = static_cast<ClassTypeSymbol*>(currentFunction->Parent());
+    }
+    if (currentClassType)
+    {
+        symbolTable.MapNode(&dtorIdNode, currentClassType);
+    }
+}
+
 void ExpressionBinder::Visit(TemplateIdNode& templateIdNode)
 {
     ClassTypeSymbol* currentClassType = nullptr;
@@ -623,6 +642,48 @@ void ExpressionBinder::Visit(LValueRefNode& lValueRefNode)
 void ExpressionBinder::Visit(DeleteExpressionNode& deleteExpressionNode)
 {
     BindExpression(deleteExpressionNode.Child(), symbolTable, containerScope, prevContainerScopes, boundSourceFile, currentFunction, statementBinder);
+}
+
+void ExpressionBinder::Visit(IntegerLiteralNode& integerLiteralNode)
+{
+    TypeSymbol* type = symbolTable.GetIntType();
+    symbols.push_back(type);
+}
+
+void ExpressionBinder::Visit(StringLiteralNode& stringLiteralNode)
+{
+    if (stringLiteralNode.EncodigPrefix().empty() || stringLiteralNode.EncodigPrefix() == U"u8")
+    {
+        std::vector<sngcpp::symbols::Derivation> derivations;
+        derivations.push_back(sngcpp::symbols::Derivation::const_);
+        derivations.push_back(sngcpp::symbols::Derivation::lvalueRef);
+        TypeSymbol* type = symbolTable.MakeDerivedTypeSymbol(derivations, symbolTable.MakeExternalTypeSymbol(stringLiteralNode.GetSpan(), U"std::string", sngcpp::ast::ClassKey::none));
+        symbols.push_back(type);
+    }
+    else if (stringLiteralNode.EncodigPrefix() == U"u")
+    {
+        std::vector<sngcpp::symbols::Derivation> derivations;
+        derivations.push_back(sngcpp::symbols::Derivation::const_);
+        derivations.push_back(sngcpp::symbols::Derivation::lvalueRef);
+        TypeSymbol* type = symbolTable.MakeDerivedTypeSymbol(derivations, symbolTable.MakeExternalTypeSymbol(stringLiteralNode.GetSpan(), U"std::u16string", sngcpp::ast::ClassKey::none));
+        symbols.push_back(type);
+    }
+    else if (stringLiteralNode.EncodigPrefix() == U"U")
+    {
+        std::vector<sngcpp::symbols::Derivation> derivations;
+        derivations.push_back(sngcpp::symbols::Derivation::const_);
+        derivations.push_back(sngcpp::symbols::Derivation::lvalueRef);
+        TypeSymbol* type = symbolTable.MakeDerivedTypeSymbol(derivations, symbolTable.MakeExternalTypeSymbol(stringLiteralNode.GetSpan(), U"std::u32string", sngcpp::ast::ClassKey::none));
+        symbols.push_back(type);
+    }
+    else if (stringLiteralNode.EncodigPrefix() == U"L")
+    {
+        std::vector<sngcpp::symbols::Derivation> derivations;
+        derivations.push_back(sngcpp::symbols::Derivation::const_);
+        derivations.push_back(sngcpp::symbols::Derivation::lvalueRef);
+        TypeSymbol* type = symbolTable.MakeDerivedTypeSymbol(derivations, symbolTable.MakeExternalTypeSymbol(stringLiteralNode.GetSpan(), U"std::wstring", sngcpp::ast::ClassKey::none));
+        symbols.push_back(type);
+    }
 }
 
 std::vector<Symbol*> BindExpression(Node* node, SymbolTable& symbolTable, ContainerScope* containerScope, const std::vector<ContainerScope*>& prevContainerScopes, BoundSourceFile* boundSourceFile,

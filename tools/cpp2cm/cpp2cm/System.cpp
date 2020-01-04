@@ -38,7 +38,7 @@ void ProcessSystemXml(const std::string& systemXmlFilePath, bool verbose)
                     if (!fileAttr.empty())
                     {
                         std::string projectXmlFilePath = GetFullPath(Path::Combine(systemRootDir, ToUtf8(fileAttr)));
-                        Project project(systemXmlFilePath, projectXmlFilePath);
+                        Project project(systemXmlFilePath, projectXmlFilePath, false);
                         project.SetSystem();
                         project.Process(verbose, ProcessType::stage);
                     }

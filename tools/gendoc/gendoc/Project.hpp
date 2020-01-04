@@ -7,6 +7,7 @@
 #define GENDOC_GENDOC_PROJECT_INCLUDED
 #include <gendoc/gendoc/File.hpp>
 #include <gendoc/gendoc/Filter.hpp>
+#include <gendoc/html/Grammar.hpp>
 #include <gendoc/html/HtmlContentFilePathResolver.hpp>
 #include <sngcpp/pp/File.hpp>
 #include <sngcpp/ast/SourceFile.hpp>
@@ -61,6 +62,7 @@ public:
     void MakeDirectories();
     void GenerateStyleSheet();
     void GenerateHtmlCodeFiles(bool verbose, bool rebuild);
+    void ReadGrammarXmlFiles(bool verbose);
     void GenerateHtmlContent(bool verbose, bool rebuild);
     void ReadDocumentationXml(bool verbose, bool& rebuild);
     std::string ResolveContentFilePath(const std::u32string& currentProjectName, const std::u32string& projectName, const std::string& relativeContentDirPath,
@@ -111,6 +113,9 @@ private:
     std::map<std::u32string, Import*> importMap;
     std::string documentationXmlFileName;
     std::unique_ptr<sngxml::dom::Document> documentationXml;
+    std::string grammarsXmlFilePath;
+    std::unique_ptr<sngxml::dom::Document> grammarsXmlDoc;
+    std::vector<gendoc::html::Grammar> grammars;
 };
 
 } // namespace gendoc

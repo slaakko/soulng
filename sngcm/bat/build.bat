@@ -1,4 +1,5 @@
 @echo off
-slg -v ..\lexer\CmajorLexer.lexer
-slg -v ..\lexer\ContainerFileLexer.lexer
-spg -v ..\parser\CmajorParsers.spg
+slg -v ..\cmlexer\CmajorLexer.lexer
+slg -v ..\cmlexer\ContainerFileLexer.lexer
+slg -v ..\cmlexer\TokenLexer.lexer
+spg -v ..\cmparser\CmajorParsers.spg

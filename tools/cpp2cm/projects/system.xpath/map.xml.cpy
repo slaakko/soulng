@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map>
+    <namespace source="soulng" target="System"/>
+    <namespace source="lexer" target="Lex"/>
+    <namespace source="sngxml" target="System"/>
+    <namespace source="xml" target="Xml"/>
+    <namespace source="dom" target="Dom"/>
+    <namespace source="xpath" target="XPath"/>
+</map>

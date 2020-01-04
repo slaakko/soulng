@@ -1,8 +1,0 @@
-using System;
-
-void main()
-{
-    char* q;
-    const char*& p = q;
-    ++p;
-}

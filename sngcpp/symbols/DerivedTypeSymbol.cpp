@@ -150,6 +150,10 @@ int DerivedTypeSymbol::MatchValue(TypeSymbol* argumentType)
     }
     if (argumentType != nullptr)
     {
+        if (IsPointerTypeSymbol() && !argumentType->IsPointerTypeSymbol())
+        {
+            return 0;
+        }
         int baseMatchValue = baseType->MatchValue(argumentType->BaseType());
         if (baseMatchValue == std::numeric_limits<int>::max())
         {
@@ -168,6 +172,11 @@ bool DerivedTypeSymbol::IsReferenceTypeSymbol() const
 {
     return std::find(derivations.cbegin(), derivations.cend(), Derivation::lvalueRef) != derivations.cend() ||
         std::find(derivations.cbegin(), derivations.cend(), Derivation::rvalueRef) != derivations.cend();
+}
+
+bool DerivedTypeSymbol::IsPointerTypeSymbol() const
+{
+    return std::find(derivations.cbegin(), derivations.cend(), Derivation::ptr) != derivations.cend();
 }
 
 bool DerivedTypeSymbol::HasConstDerivation() const

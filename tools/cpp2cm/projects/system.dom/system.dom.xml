@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="system.dom" type="library" targetName="System.Dom">
+  <imports>
+    <import name="std"/>
+    <import name="boost"/>
+    <import name="soulng.util"/>
+    <import project="../system.lex/system.lex.xml"/>
+    <import project="../system.parsing/system.parsing.xml"/>
+    <import project="../system.xml/system.xml.xml"/>
+  </imports>
+  <vcxproject file="../../../../sngxml/dom/dom.vcxproj"/>
+  <include path="../.."/>
+  <target dir="build"/>
+  <references>
+    <reference project="../System.Xml/System.Xml.cmp" kind="install"/>
+  </references>
+  <install dir="D:\work\cmajorm\cmajor\system\System.Dom"/>
+  <map file="map.xml"/>
+  <patches>
+    <patch file="system.dom.patches"/>
+  </patches>
+  <filter>
+    <file exclude="*"/>
+    <file include="DomApi.hpp"/>
+    <file include="DomApi.cpp"/>
+    <file include="Node.hpp"/>
+    <file include="Node.cpp"/>
+    <file include="Document.hpp"/>
+    <file include="Document.cpp"/>
+    <file include="DocumentFragment.hpp"/>
+    <file include="DocumentFragment.cpp"/>
+    <file include="Element.hpp"/>
+    <file include="Element.cpp"/>
+    <file include="Exception.hpp"/>
+    <file include="Exception.cpp"/>
+    <file include="CharacterData.hpp"/>
+    <file include="CharacterData.cpp"/>
+    <file include="Parser.hpp"/>
+    <file include="Parser.cpp"/>
+  </filter>
+</project>

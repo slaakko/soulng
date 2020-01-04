@@ -1276,15 +1276,15 @@ std::unique_ptr<dom::Node> XPathFilterExpr::ToDom() const
 class NodeSelectionOp : public sngxml::dom::NodeOp
 {
 public:
-    NodeSelectionOp(XPathNodeTestExpr* nodeTest_, XPathNodeSet& nodeSet_, Axis axis_);
+    NodeSelectionOp(XPathNodeTestExpr* nodeTest_, XPathNodeSet& nodeSet_, sngxml::dom::Axis axis_);
     void Apply(sngxml::dom::Node* node) override;
 private:
     XPathNodeTestExpr* nodeTest;
     XPathNodeSet& nodeSet;
-    Axis axis;
+    sngxml::dom::Axis axis;
 };
 
-NodeSelectionOp::NodeSelectionOp(XPathNodeTestExpr* nodeTest_, XPathNodeSet& nodeSet_, Axis axis_) : nodeTest(nodeTest_), nodeSet(nodeSet_), axis(axis_)
+NodeSelectionOp::NodeSelectionOp(XPathNodeTestExpr* nodeTest_, XPathNodeSet& nodeSet_, sngxml::dom::Axis axis_) : nodeTest(nodeTest_), nodeSet(nodeSet_), axis(axis_)
 {
 }
 
@@ -1296,7 +1296,7 @@ void NodeSelectionOp::Apply(sngxml::dom::Node* node)
     }
 }
 
-XPathLocationStepExpr::XPathLocationStepExpr(Axis axis_, XPathNodeTestExpr* nodeTest_) : axis(axis_), nodeTest(nodeTest_)
+XPathLocationStepExpr::XPathLocationStepExpr(sngxml::dom::Axis axis_, XPathNodeTestExpr* nodeTest_) : axis(axis_), nodeTest(nodeTest_)
 {
 }
 
@@ -1369,31 +1369,31 @@ class AxisMap
 {
 public:
     AxisMap();
-    Axis GetAxis(const std::u32string& axis) const;
+    sngxml::dom::Axis GetAxis(const std::u32string& axis) const;
 private:
-    std::map<std::u32string, Axis> axisMap;
+    std::map<std::u32string, sngxml::dom::Axis> axisMap;
 };
 
 AxisMap::AxisMap()
 {
-    axisMap[U"ancestor"] = Axis::ancestor;
-    axisMap[U"ancestor-or-self"] = Axis::ancestorOrSelf;
-    axisMap[U"attribute"] = Axis::attribute;
-    axisMap[U"child"] = Axis::child;
-    axisMap[U"descendant"] = Axis::descendant;
-    axisMap[U"descendant-or-self"] = Axis::descendantOrSelf;
-    axisMap[U"following"] = Axis::following;
-    axisMap[U"following-sibling"] = Axis::followingSibling;
-    axisMap[U"namespace"] = Axis::ns;
-    axisMap[U"parent"] = Axis::parent;
-    axisMap[U"preceding"] = Axis::preceding;
-    axisMap[U"preceding-sibling"] = Axis::precedingSibling;
-    axisMap[U"self"] = Axis::self;
+    axisMap[U"ancestor"] = sngxml::dom::Axis::ancestor;
+    axisMap[U"ancestor-or-self"] = sngxml::dom::Axis::ancestorOrSelf;
+    axisMap[U"attribute"] = sngxml::dom::Axis::attribute;
+    axisMap[U"child"] = sngxml::dom::Axis::child;
+    axisMap[U"descendant"] = sngxml::dom::Axis::descendant;
+    axisMap[U"descendant-or-self"] = sngxml::dom::Axis::descendantOrSelf;
+    axisMap[U"following"] = sngxml::dom::Axis::following;
+    axisMap[U"following-sibling"] = sngxml::dom::Axis::followingSibling;
+    axisMap[U"namespace"] = sngxml::dom::Axis::ns;
+    axisMap[U"parent"] = sngxml::dom::Axis::parent;
+    axisMap[U"preceding"] = sngxml::dom::Axis::preceding;
+    axisMap[U"preceding-sibling"] = sngxml::dom::Axis::precedingSibling;
+    axisMap[U"self"] = sngxml::dom::Axis::self;
 }
 
-Axis AxisMap::GetAxis(const std::u32string& axis) const
+sngxml::dom::Axis AxisMap::GetAxis(const std::u32string& axis) const
 {
-    auto it = axisMap.find(axis);
+    std::map<std::u32string, sngxml::dom::Axis>::const_iterator it = axisMap.find(axis);
     if (it != axisMap.cend())
     {
         return it->second;
@@ -1406,7 +1406,7 @@ Axis AxisMap::GetAxis(const std::u32string& axis) const
 
 AxisMap axisMap;
 
-Axis GetAxis(const std::u32string& axisName)
+sngxml::dom::Axis GetAxis(const std::u32string& axisName)
 {
     return axisMap.GetAxis(axisName);
 }
@@ -1415,7 +1415,7 @@ XPathPILiteralTest::XPathPILiteralTest(XPathExpr* literal_) : literal(literal_)
 {
 }
 
-bool XPathPILiteralTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathPILiteralTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
     if (node->GetNodeType() == sngxml::dom::NodeType::processingInstructionNode)
     {
@@ -1435,7 +1435,7 @@ std::unique_ptr<dom::Node> XPathPILiteralTest::ToDom() const
     return std::unique_ptr<dom::Node>(element.release());
 }
 
-bool XPathCommentNodeTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathCommentNodeTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
     return node->GetNodeType() == sngxml::dom::NodeType::commentNode;
 }
@@ -1446,7 +1446,7 @@ std::unique_ptr<dom::Node> XPathCommentNodeTest::ToDom() const
     return std::unique_ptr<dom::Node>(element.release());
 }
 
-bool XPathTextNodeTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathTextNodeTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
     return node->GetNodeType() == sngxml::dom::NodeType::textNode;
 }
@@ -1457,7 +1457,7 @@ std::unique_ptr<dom::Node> XPathTextNodeTest::ToDom() const
     return std::unique_ptr<dom::Node>(element.release());
 }
 
-bool XPathPINodeTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathPINodeTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
     return node->GetNodeType() == sngxml::dom::NodeType::processingInstructionNode;
 }
@@ -1468,13 +1468,13 @@ std::unique_ptr<dom::Node> XPathPINodeTest::ToDom() const
     return std::unique_ptr<dom::Node>(element.release());
 }
 
-bool XPathPrincipalNodeTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathPrincipalNodeTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
-    if (axis == Axis::attribute)
+    if (axis == sngxml::dom::Axis::attribute)
     {
         return node->GetNodeType() == sngxml::dom::NodeType::attributeNode;
     }
-    else if (axis == Axis::ns)
+    else if (axis == sngxml::dom::Axis::ns)
     {
         return false; // todo
     }
@@ -1490,7 +1490,7 @@ std::unique_ptr<dom::Node> XPathPrincipalNodeTest::ToDom() const
     return std::unique_ptr<dom::Node>(element.release());
 }
 
-bool XPathAnyNodeTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathAnyNodeTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
     return true;
 }
@@ -1505,9 +1505,9 @@ XPathPrefixTest::XPathPrefixTest(const std::u32string& name_) : name(name_)
 {
 }
 
-bool XPathPrefixTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathPrefixTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
-    if (axis == Axis::attribute)
+    if (axis == sngxml::dom::Axis::attribute)
     {
         if (node->GetNodeType() == sngxml::dom::NodeType::attributeNode)
         {
@@ -1518,7 +1518,7 @@ bool XPathPrefixTest::Select(sngxml::dom::Node* node, Axis axis) const
             }
         }
     }
-    else if (axis == Axis::ns)
+    else if (axis == sngxml::dom::Axis::ns)
     {
         // todo
         return false;
@@ -1545,9 +1545,9 @@ XPathNameTest::XPathNameTest(const std::u32string& name_) : name(name_)
 {
 }
 
-bool XPathNameTest::Select(sngxml::dom::Node* node, Axis axis) const
+bool XPathNameTest::Select(sngxml::dom::Node* node, sngxml::dom::Axis axis) const
 {
-    if (axis == Axis::attribute)
+    if (axis == sngxml::dom::Axis::attribute)
     {
         if (node->GetNodeType() == sngxml::dom::NodeType::attributeNode)
         {
@@ -1558,7 +1558,7 @@ bool XPathNameTest::Select(sngxml::dom::Node* node, Axis axis) const
             }
         }
     }
-    else if (axis != Axis::ns)
+    else if (axis != sngxml::dom::Axis::ns)
     {
         if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
         {

@@ -66,6 +66,7 @@ public:
     virtual void Accept(Visitor& visitor) = 0;
     virtual void Write(AstWriter& writer);
     virtual void Read(AstReader& reader);
+    virtual void SetFullSpan();
     virtual std::string ToString() const { return std::string(); }
     virtual void AddArgument(Node* argument) { Assert(false, "AddArgument not overridden");  }
     virtual void AddParameter(ParameterNode* parameter) { Assert(false, "AddParameter not overridden"); }
@@ -80,6 +81,7 @@ public:
     virtual Specifiers GetSpecifiers() const { return Specifiers::none; }
     const Span& GetSpan() const { return span; }
     void SetSpan(const Span& span_) { span = span_; }
+    void SetSpanStart(int32_t spanStart) { span.start = spanStart; }
     void SetSpanEnd(int end) { span.end = end; }
     const Node* Parent() const { return parent; }
     Node* Parent() { return parent; }
@@ -97,6 +99,7 @@ public:
     UnaryNode(NodeType nodeType, const Span& span_, Node* subject_);
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
+    void SetFullSpan() override;
     const Node* Subject() const { return subject.get(); }
     Node* Subject() { return subject.get(); }
 private:
@@ -110,6 +113,7 @@ public:
     BinaryNode(NodeType nodeType, const Span& span_, Node* left_, Node* right_);
     void Write(AstWriter& writer) override;
     void Read(AstReader& reader) override;
+    void SetFullSpan() override;
     const Node* Left() const { return left.get(); }
     Node* Left() { return left.get(); }
     const Node* Right() const { return right.get(); }

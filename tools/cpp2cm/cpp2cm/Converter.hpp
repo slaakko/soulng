@@ -6,6 +6,7 @@
 #ifndef CPP2CM_CPP2CM_CONVERTER_INCLUDED
 #define CPP2CM_CPP2CM_CONVERTER_INCLUDED
 #include <cpp2cm/cpp2cm/Context.hpp>
+#include <cpp2cm/cpp2cm/NothrowList.hpp>
 #include <cpp2cm/cpp2cm/Map.hpp>
 #include <cpp2cm/cpp2cm/SourceFile.hpp>
 #include <sngcpp/ast/Visitor.hpp>
@@ -29,7 +30,7 @@ public:
         statements, latestCase, latestDefault
     };
     Converter(bool verbose_, const std::string& targetDir_, sngcpp::symbols::SymbolTable& symbolTable_, Map& map_,
-        const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_);
+        const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_, NothrowList& nothrowList_);
     void Write();
     SourceFiles& GetSourceFiles() { return sourceFiles; }
     void InsertNamespaceImports(sngcm::ast::CompileUnitNode* cu);
@@ -207,6 +208,10 @@ private:
     SourceFiles sourceFiles;
     const std::set<std::u32string>& excludedClasses;
     const std::set<std::u32string>& excludedFunctions;
+    NothrowList& nothrowList;
+    Item nothrowFileItem;
+    Item nothrowClassItem;
+    Item nothrowFunctionItem;
 };
 
 } // namespace cpp2cm

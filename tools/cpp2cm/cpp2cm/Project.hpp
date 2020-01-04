@@ -7,6 +7,7 @@
 #define CPP2CM_CPP2CM_PROJECT_INCLUDED
 #include <cpp2cm/cpp2cm/File.hpp>
 #include <cpp2cm/cpp2cm/Filter.hpp>
+#include <cpp2cm/cpp2cm/NothrowList.hpp>
 #include <cpp2cm/cpp2cm/Map.hpp>
 #include <cpp2cm/cpp2cm/Patch.hpp>
 #include <sngxml/dom/Document.hpp>
@@ -27,15 +28,17 @@ enum class ProcessType
 class Project : public sngcpp::binder::SourceFileResolver
 {
 public:
-    Project(const std::string& systemXmlFilePath_, const std::string& xmlFilePath_);
+    Project(const std::string& systemXmlFilePath_, const std::string& xmlFilePath_, bool nothrowStatus_);
     void Process(bool verbose, ProcessType processType);
     void ReadVCXProjectFilePath();
     void ReadSources();
     void ReadVCSources();
+    void ReadTextFiles();
     void ReadIncludePath();
     void ReadTargetDir();
     void ReadInstallDir();
     void ReadFilter();
+    void ReadNothrowList();
     void ReadMap();
     void ReadReferences();
     void MapNamespaces(sngxml::dom::Document* mapDoc);
@@ -95,6 +98,8 @@ private:
     std::vector<std::unique_ptr<File>> mergeDirFiles;
     std::map<std::u32string, File*> mergeFileMap;
     std::vector<std::unique_ptr<File>> extraFiles;
+    std::vector<std::u32string> textFiles;
+    NothrowList nothrowList;
 };
 
 } // namespace cpp2cm

@@ -43,7 +43,7 @@ void ParseFloatingLiteral(const std::string& fileName, const soulng::lexer::Toke
     }
     if (p != e)
     {
-        std::string s = ToUtf8(std::u32string(p, e));
+        std::string s = ToUtf8(std::u32string(token.match.begin, p));
         std::stringstream sstream;
         sstream.str(s);
         sstream >> value;

@@ -1,0 +1,141 @@
+using System;
+using System.Collections;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xml/XmlContentHandler.hpp' using cpp2cm version 1.0.0
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xml/XmlContentHandler.cpp' using cpp2cm version 1.0.0
+
+namespace System.Xml
+{
+    public class Attribute
+    {
+        public Attribute(const ustring& namespaceUri_, const ustring& localName_, const ustring& qualifiedName_, const ustring& value_) :
+            namespaceUri(namespaceUri_), localName(localName_), qualifiedName(qualifiedName_), value(value_)
+        {
+        }
+        public const ustring& NamespaceUri() const
+        {
+            return namespaceUri;
+        }
+        public const ustring& LocalName() const
+        {
+            return localName;
+        }
+        public const ustring& QualifiedName() const
+        {
+            return qualifiedName;
+        }
+        public const ustring& Value() const
+        {
+            return value;
+        }
+        private ustring namespaceUri;
+        private ustring localName;
+        private ustring qualifiedName;
+        private ustring value;
+    }
+    public class Attributes
+    {
+        public typedef List<Attribute>.Iterator Iterator;
+        public typedef List<Attribute>.ConstIterator ConstIterator;
+        public List<Attribute>.Iterator Begin()
+        {
+            return attributes.Begin();
+        }
+        public List<Attribute>.Iterator End()
+        {
+            return attributes.End();
+        }
+        public List<Attribute>.ConstIterator Begin() const
+        {
+            return attributes.CBegin();
+        }
+        public List<Attribute>.ConstIterator End() const
+        {
+            return attributes.CEnd();
+        }
+        public List<Attribute>.ConstIterator CBegin() const
+        {
+            return attributes.CBegin();
+        }
+        public List<Attribute>.ConstIterator CEnd() const
+        {
+            return attributes.CEnd();
+        }
+        public void Add(const Attribute& attribute)
+        {
+            attributes.Add(attribute);
+        }
+        public void Clear()
+        {
+            attributes.Clear();
+        }
+        public const ustring* GetAttributeValue(const ustring& namespaceUri, const ustring& localName) const
+        {
+            for (const Attribute& attribute : attributes)
+            {
+                if (attribute.NamespaceUri() == namespaceUri && attribute.LocalName() == localName)
+                {
+                    const ustring& value = attribute.Value();
+                    return &value;
+                }
+            }
+            return null;
+        }
+        public const ustring* GetAttributeValue(const ustring& qualifiedName) const
+        {
+            for (const Attribute& attribute : attributes)
+            {
+                if (attribute.QualifiedName() == qualifiedName)
+                {
+                    const ustring& value = attribute.Value();
+                    return &value;
+                }
+            }
+            return null;
+        }
+        private List<Attribute> attributes;
+    }
+    public class XmlContentHandler
+    {
+        public virtual ~XmlContentHandler()
+        {
+        }
+        public virtual void StartDocument()
+        {
+        }
+        public virtual void EndDocument()
+        {
+        }
+        public virtual void Version(const ustring& xmlVersion)
+        {
+        }
+        public virtual void Standalone(bool standalone)
+        {
+        }
+        public virtual void Encoding(const ustring& encoding)
+        {
+        }
+        public virtual void HandleText(const ustring& text)
+        {
+        }
+        public virtual void HandleComment(const ustring& comment)
+        {
+        }
+        public virtual void HandlePI(const ustring& target, const ustring& data)
+        {
+        }
+        public virtual void HandleCDataSection(const ustring& cdata)
+        {
+        }
+        public virtual void StartElement(const ustring& namespaceUri, const ustring& localName, const ustring& qualifiedName, const Attributes& attributes)
+        {
+        }
+        public virtual void EndElement(const ustring& namespaceUri, const ustring& localName, const ustring& qualifiedName)
+        {
+        }
+        public virtual void SkippedEntity(const ustring& entityName)
+        {
+        }
+    }
+} // namespace System.Xml

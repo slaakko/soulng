@@ -35,7 +35,7 @@ private:
 
 std::unique_ptr<XPathDebugInfo> XPathDebugInfo::instance;
 
-XPathDebugInfo::XPathDebugInfo() : debugParsing(false), debugQuery(false)
+XPathDebugInfo::XPathDebugInfo() : debugParsing(false), debugQuery(false), queryDuration(0), executeDuration(0)
 {
 }
 

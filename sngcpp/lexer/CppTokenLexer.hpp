@@ -13,6 +13,7 @@ public:
     CppTokenLexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_);
     CppTokenLexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_);
     int NextState(int state, char32_t c) override;
+    bool inBlockComment;
     sngcpp::ast::SourceCodeWriter* writer;
 private:
     int GetTokenId(int statementIndex);

@@ -323,6 +323,10 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("FunctionDefinition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -392,6 +396,10 @@ soulng::parser::Match FunctionParser::FunctionBody(CppLexer& lexer, sngcpp::cppp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("FunctionBody"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -587,6 +595,10 @@ soulng::parser::Match FunctionParser::ParameterList(CppLexer& lexer, sngcpp::cpp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParameterList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -689,5 +701,9 @@ soulng::parser::Match FunctionParser::ParameterDeclaration(CppLexer& lexer, sngc
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParameterDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

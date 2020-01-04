@@ -22,6 +22,7 @@ public:
     void Visit(MemberAccessDeclarationNode& memberAccessDeclarationNode) override;
     void Visit(MemberDeclarationNode& memberDeclarationNode) override;
     void Visit(DeclarationSequenceNode& declarationSequenceNode) override;
+    void Visit(LinkageSpecificationNode& linkageSpecificationNode) override;
     void Visit(TemplateDeclarationNode& templateDeclarationNode) override;
     void Visit(ClassNode& classNode) override;
     void Visit(FunctionNode& functionNode) override;

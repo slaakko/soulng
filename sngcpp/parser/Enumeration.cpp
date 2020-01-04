@@ -68,6 +68,10 @@ soulng::parser::Match EnumerationParser::EnumDeclaration(CppLexer& lexer, sngcpp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -169,7 +173,7 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch11 = &match;
                         {
-                            int64_t pos = lexer.GetPos();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(false);
                             if (*lexer == RBRACE)
                             {
@@ -182,7 +186,7 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACE)));
+                                lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RBRACE)));
                             }
                         }
                         if (match.hit)
@@ -217,6 +221,10 @@ soulng::parser::Match EnumerationParser::EnumSpecifier(CppLexer& lexer, sngcpp::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -347,6 +355,10 @@ soulng::parser::Match EnumerationParser::EnumHead(CppLexer& lexer, sngcpp::cpppa
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumHead"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -472,6 +484,10 @@ soulng::parser::Match EnumerationParser::OpaqueEnumDeclaration(CppLexer& lexer, 
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("OpaqueEnumDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -628,6 +644,10 @@ soulng::parser::Match EnumerationParser::EnumKey(CppLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumKey"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -667,6 +687,10 @@ soulng::parser::Match EnumerationParser::EnumName(CppLexer& lexer, sngcpp::cpppa
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -726,6 +750,10 @@ soulng::parser::Match EnumerationParser::EnumBase(CppLexer& lexer, sngcpp::cpppa
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumBase"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -854,6 +882,10 @@ soulng::parser::Match EnumerationParser::Enumerators(CppLexer& lexer, sngcpp::cp
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Enumerators"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -992,6 +1024,10 @@ soulng::parser::Match EnumerationParser::EnumeratorDefinition(CppLexer& lexer, s
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumeratorDefinition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1031,5 +1067,9 @@ soulng::parser::Match EnumerationParser::Enumerator(CppLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Enumerator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

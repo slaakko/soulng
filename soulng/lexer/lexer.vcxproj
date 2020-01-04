@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ParsingException.cpp" />
     <ClCompile Include="ParsingLog.cpp" />
     <ClCompile Include="TrivialLexer.cpp" />
     <ClCompile Include="Keyword.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="XmlParsingLog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ParsingException.hpp" />
     <ClInclude Include="ParsingLog.hpp" />
     <ClInclude Include="TrivialLexer.hpp" />
     <ClInclude Include="Keyword.hpp" />

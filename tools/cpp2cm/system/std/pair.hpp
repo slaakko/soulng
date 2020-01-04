@@ -8,4 +8,7 @@ namespace std
         T first;
         U second;
     };
+    
+    template<class T, class U>
+    pair<T, U> make_pair(const T&, const U&);
 }

@@ -19,6 +19,7 @@ public static class RegExParser
             }
         #endif
         ++lexer;
+        System.Lex.Span span = lexer.GetSpan();
         Match match = RegularExpression(lexer, lexerContext);
         value.Reset(cast<Value<soulcm.scmlg.Nfa>*>(match.value));
         #if (DEBUG)
@@ -36,12 +37,12 @@ public static class RegExParser
             }
             else
             {
-                lexer.ThrowExpectationFailure(lexer.GetPos(), GetEndTokenInfo());
+                lexer.ThrowExpectationFailure(lexer.GetSpan(), GetEndTokenInfo());
             }
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), u"regular expression");
+            lexer.ThrowExpectationFailure(span, u"regular expression");
         }
         return value->value;
     }
@@ -87,6 +88,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Alternative(RegExLexer& lexer, soulcm.scmlg.LexerContext* lexerContext)
@@ -165,7 +170,7 @@ public static class RegExParser
                                                     Match match(true);
                                                     Match* parentMatch10 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = RegExParser.Catenation(lexer, lexerContext);
                                                         right.Reset(cast<Value<soulcm.scmlg.Nfa>*>(match.value));
                                                         if (match.hit)
@@ -174,7 +179,7 @@ public static class RegExParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"catenation");
+                                                            lexer.ThrowExpectationFailure(span, u"catenation");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -231,6 +236,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Catenation(RegExLexer& lexer, soulcm.scmlg.LexerContext* lexerContext)
@@ -342,6 +351,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Repetition(RegExLexer& lexer, soulcm.scmlg.LexerContext* lexerContext)
@@ -514,6 +527,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Primary(RegExLexer& lexer, soulcm.scmlg.LexerContext* lexerContext)
@@ -592,7 +609,7 @@ public static class RegExParser
                                                             Match match(true);
                                                             Match* parentMatch13 = &match;
                                                             {
-                                                                long pos = lexer.GetPos();
+                                                                System.Lex.Span span = lexer.GetSpan();
                                                                 Match match = RegExParser.Alternative(lexer, lexerContext);
                                                                 alt.Reset(cast<Value<soulcm.scmlg.Nfa>*>(match.value));
                                                                 if (match.hit)
@@ -601,7 +618,7 @@ public static class RegExParser
                                                                 }
                                                                 else
                                                                 {
-                                                                    lexer.ThrowExpectationFailure(pos, u"alternative");
+                                                                    lexer.ThrowExpectationFailure(span, u"alternative");
                                                                 }
                                                             }
                                                             if (match.hit)
@@ -624,7 +641,7 @@ public static class RegExParser
                                                     Match match(true);
                                                     Match* parentMatch15 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match(false);
                                                         if (*lexer == RPAREN)
                                                         {
@@ -637,7 +654,7 @@ public static class RegExParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                                            lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                                                         }
                                                     }
                                                     *parentMatch14 = match;
@@ -860,6 +877,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Class(RegExLexer& lexer, soulcm.scmlg.LexerContext* lexerContext)
@@ -1014,7 +1035,7 @@ public static class RegExParser
                         Match match(true);
                         Match* parentMatch16 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == RBRACKET)
                             {
@@ -1027,7 +1048,7 @@ public static class RegExParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACKET));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
                             }
                         }
                         *parentMatch15 = match;
@@ -1060,6 +1081,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Range(RegExLexer& lexer, soulcm.scmlg.LexerContext* lexerContext)
@@ -1189,6 +1214,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Char(RegExLexer& lexer)
@@ -1376,6 +1405,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ExpressionReference(RegExLexer& lexer)
@@ -1508,6 +1541,10 @@ public static class RegExParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

@@ -4,6 +4,7 @@
 // =================================
 
 #include <soulng/lexer/Lexer.hpp>
+#include <soulng/lexer/ParsingException.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <string>
 #include <algorithm>
@@ -240,6 +241,57 @@ const char32_t* LineEnd(const char32_t* end, const char32_t* p)
     return p;
 }
 
+std::u32string GetErrorLines(const char32_t* start, const char32_t* end, const Span& externalSpan)
+{
+    const char32_t* startPos = start + externalSpan.start;
+    if (startPos < start || startPos >= end)
+    {
+        return std::u32string();
+    }
+    const char32_t* lineStart = LineStart(start, startPos);
+    int cols = static_cast<int>(startPos - lineStart);
+    if (cols < 0)
+    {
+        cols = 0;
+    }
+    const char32_t* lineEnd = LineEnd(end, startPos);
+    if (lineEnd < lineStart)
+    {
+        lineEnd = lineStart;
+    }
+    int lineLength = static_cast<int>(lineEnd - lineStart);
+    std::u32string lines(lineStart, lineEnd);
+    int spanCols = std::max(static_cast<int>(1), std::min(externalSpan.end - externalSpan.start, lineLength - cols));
+    lines.append(1, '\n').append(std::u32string(cols, ' ')).append(spanCols, '^');
+    return lines;
+}
+
+void GetColumns(const char32_t* start, const char32_t* end, const Span& externalSpan, int32_t& startCol, int32_t& endCol)
+{
+    startCol = 0;
+    endCol = 0;
+    const char32_t* startPos = start + externalSpan.start;
+    if (startPos < start || startPos >= end)
+    {
+        return;
+    }
+    const char32_t* lineStart = LineStart(start, startPos);
+    int cols = static_cast<int>(startPos - lineStart);
+    if (cols < 0)
+    {
+        cols = 0;
+    }
+    startCol = cols + 1;
+    const char32_t* lineEnd = LineEnd(end, startPos);
+    if (lineEnd < lineStart)
+    {
+        lineEnd = lineStart;
+    }
+    int lineLength = static_cast<int>(lineEnd - lineStart);
+    int spanCols = std::max(static_cast<int>(1), std::min(externalSpan.end - externalSpan.start, lineLength - cols));
+    endCol = startCol + spanCols;
+}
+
 std::u32string Lexer::ErrorLines(const Token& token) const
 {
     std::u32string lines;
@@ -287,10 +339,35 @@ std::u32string Lexer::ErrorLines(const Span& span) const
     return lines;
 }
 
-void Lexer::ThrowExpectationFailure(int64_t pos, const std::u32string& name)
+void Lexer::GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) const
 {
-    Token token = GetToken(pos);
-    throw std::runtime_error("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(token)));
+    Token startToken = GetToken(span.start);
+    Token endToken = startToken;
+    const char32_t* lineStart = LineStart(start, startToken.match.begin);
+    if (span.end != span.start)
+    {
+        endToken = GetToken(span.end);
+    }
+    int cols = static_cast<int>(startToken.match.begin - lineStart);
+    if (cols < 0)
+    {
+        cols = 0;
+    }
+    startCol = cols + 1;
+    const char32_t* lineEnd = LineEnd(end, endToken.match.end);
+    if (lineEnd < lineStart)
+    {
+        lineEnd = lineStart;
+    }
+    int lineLength = static_cast<int>(lineEnd - lineStart);
+    int spanCols = std::max(static_cast<int>(1), std::min(span.end - span.start, lineLength - cols));
+    endCol = startCol + spanCols;
+}
+
+void Lexer::ThrowExpectationFailure(const Span& span, const std::u32string& name)
+{
+    Token token = GetToken(span.start);
+    throw ParsingException("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
 }
 
 std::u32string Lexer::RestOfLine(int maxLineLength)

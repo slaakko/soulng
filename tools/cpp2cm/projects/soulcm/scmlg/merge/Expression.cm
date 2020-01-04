@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Lex;
 using System.Parsing;
-using System.Cmajor.Ast;
+using Cm.Ast;
 using LexerFileTokens;
 
 // this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/soulcm/scmlg/parser/Expression.parser' using soulcm parser generator scmpg version 3.0.0
@@ -51,6 +51,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Equivalence(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -148,7 +152,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch11 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Implication(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -157,7 +161,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"implication expression");
+                                                            lexer.ThrowExpectationFailure(span, u"implication expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -215,6 +219,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Implication(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -309,7 +317,7 @@ public static class ExpressionParser
                                             Match match(true);
                                             Match* parentMatch11 = &match;
                                             {
-                                                long pos = lexer.GetPos();
+                                                System.Lex.Span span = lexer.GetSpan();
                                                 Match match = ExpressionParser.Implication(lexer, ctx);
                                                 right.Reset(cast<Node*>(match.value));
                                                 if (match.hit)
@@ -318,7 +326,7 @@ public static class ExpressionParser
                                                 }
                                                 else
                                                 {
-                                                    lexer.ThrowExpectationFailure(pos, u"implication expression");
+                                                    lexer.ThrowExpectationFailure(span, u"implication expression");
                                                 }
                                             }
                                             if (match.hit)
@@ -373,6 +381,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Disjunction(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -470,7 +482,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch11 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Conjunction(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -479,7 +491,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"conjunctive expression");
+                                                            lexer.ThrowExpectationFailure(span, u"conjunctive expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -537,6 +549,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Conjunction(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -634,7 +650,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch11 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.BitOr(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -643,7 +659,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"bitwise or expression ");
+                                                            lexer.ThrowExpectationFailure(span, u"bitwise or expression ");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -701,6 +717,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match BitOr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -798,7 +818,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch11 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.BitXor(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -807,7 +827,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"bitwise exclusive or expression");
+                                                            lexer.ThrowExpectationFailure(span, u"bitwise exclusive or expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -865,6 +885,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match BitXor(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -962,7 +986,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch11 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.BitAnd(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -971,7 +995,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"bitwise and expression");
+                                                            lexer.ThrowExpectationFailure(span, u"bitwise and expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -1029,6 +1053,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match BitAnd(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -1126,7 +1154,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch11 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Equality(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -1135,7 +1163,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"equality expression");
+                                                            lexer.ThrowExpectationFailure(span, u"equality expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -1193,6 +1221,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Equality(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -1335,7 +1367,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch15 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Relational(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -1344,7 +1376,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"relational expression");
+                                                            lexer.ThrowExpectationFailure(span, u"relational expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -1409,6 +1441,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Relational(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -1872,6 +1908,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Shift(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -2039,7 +2079,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch18 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Additive(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -2048,7 +2088,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"additive expression");
+                                                            lexer.ThrowExpectationFailure(span, u"additive expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -2118,6 +2158,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Additive(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -2260,7 +2304,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch15 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Multiplicative(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -2269,7 +2313,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"multiplicative expression");
+                                                            lexer.ThrowExpectationFailure(span, u"multiplicative expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -2334,6 +2378,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Multiplicative(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -2514,7 +2562,7 @@ public static class ExpressionParser
                                                     Match match(true);
                                                     Match* parentMatch18 = &match;
                                                     {
-                                                        long pos = lexer.GetPos();
+                                                        System.Lex.Span span = lexer.GetSpan();
                                                         Match match = ExpressionParser.Prefix(lexer, ctx);
                                                         right.Reset(cast<Node*>(match.value));
                                                         if (match.hit)
@@ -2523,7 +2571,7 @@ public static class ExpressionParser
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, u"prefix expression");
+                                                            lexer.ThrowExpectationFailure(span, u"prefix expression");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -2591,6 +2639,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Prefix(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -3062,6 +3114,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Postfix(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -3351,7 +3407,7 @@ public static class ExpressionParser
                                                                     Match match(true);
                                                                     Match* parentMatch31 = &match;
                                                                     {
-                                                                        long pos = lexer.GetPos();
+                                                                        System.Lex.Span span = lexer.GetSpan();
                                                                         Match match(false);
                                                                         if (*lexer == RBRACKET)
                                                                         {
@@ -3364,7 +3420,7 @@ public static class ExpressionParser
                                                                         }
                                                                         else
                                                                         {
-                                                                            lexer.ThrowExpectationFailure(pos, GetTokenName(RBRACKET));
+                                                                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
                                                                         }
                                                                     }
                                                                     if (match.hit)
@@ -3439,7 +3495,7 @@ public static class ExpressionParser
                                                                 Match match(true);
                                                                 Match* parentMatch39 = &match;
                                                                 {
-                                                                    long pos = lexer.GetPos();
+                                                                    System.Lex.Span span = lexer.GetSpan();
                                                                     Match match(false);
                                                                     if (*lexer == RPAREN)
                                                                     {
@@ -3452,7 +3508,7 @@ public static class ExpressionParser
                                                                     }
                                                                     else
                                                                     {
-                                                                        lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                                                        lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                                                                     }
                                                                 }
                                                                 if (match.hit)
@@ -3514,6 +3570,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match Primary(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -4042,6 +4102,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match SizeOfExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -4101,7 +4165,7 @@ public static class ExpressionParser
                                 Match match(true);
                                 Match* parentMatch7 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == LPAREN)
                                     {
@@ -4114,7 +4178,7 @@ public static class ExpressionParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(LPAREN));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(LPAREN));
                                     }
                                 }
                                 *parentMatch6 = match;
@@ -4131,7 +4195,7 @@ public static class ExpressionParser
                             Match match(true);
                             Match* parentMatch9 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match = ExpressionParser.Expression(lexer, ctx);
                                 expr.Reset(cast<Node*>(match.value));
                                 if (match.hit)
@@ -4140,7 +4204,7 @@ public static class ExpressionParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, u"expression");
+                                    lexer.ThrowExpectationFailure(span, u"expression");
                                 }
                             }
                             *parentMatch8 = match;
@@ -4157,7 +4221,7 @@ public static class ExpressionParser
                         Match match(true);
                         Match* parentMatch11 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == RPAREN)
                             {
@@ -4170,7 +4234,7 @@ public static class ExpressionParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                             }
                         }
                         *parentMatch10 = match;
@@ -4204,6 +4268,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match TypeNameExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -4263,7 +4331,7 @@ public static class ExpressionParser
                                 Match match(true);
                                 Match* parentMatch7 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == LPAREN)
                                     {
@@ -4276,7 +4344,7 @@ public static class ExpressionParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(LPAREN));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(LPAREN));
                                     }
                                 }
                                 *parentMatch6 = match;
@@ -4293,7 +4361,7 @@ public static class ExpressionParser
                             Match match(true);
                             Match* parentMatch9 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match = ExpressionParser.Expression(lexer, ctx);
                                 expr.Reset(cast<Node*>(match.value));
                                 if (match.hit)
@@ -4302,7 +4370,7 @@ public static class ExpressionParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, u"expression");
+                                    lexer.ThrowExpectationFailure(span, u"expression");
                                 }
                             }
                             *parentMatch8 = match;
@@ -4319,7 +4387,7 @@ public static class ExpressionParser
                         Match match(true);
                         Match* parentMatch11 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == RPAREN)
                             {
@@ -4332,7 +4400,7 @@ public static class ExpressionParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                             }
                         }
                         *parentMatch10 = match;
@@ -4366,6 +4434,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match TypeIdExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -4425,7 +4497,7 @@ public static class ExpressionParser
                                 Match match(true);
                                 Match* parentMatch7 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == LPAREN)
                                     {
@@ -4438,7 +4510,7 @@ public static class ExpressionParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(LPAREN));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(LPAREN));
                                     }
                                 }
                                 *parentMatch6 = match;
@@ -4455,7 +4527,7 @@ public static class ExpressionParser
                             Match match(true);
                             Match* parentMatch9 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match = ExpressionParser.Expression(lexer, ctx);
                                 expr.Reset(cast<Node*>(match.value));
                                 if (match.hit)
@@ -4464,7 +4536,7 @@ public static class ExpressionParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, u"expression");
+                                    lexer.ThrowExpectationFailure(span, u"expression");
                                 }
                             }
                             *parentMatch8 = match;
@@ -4481,7 +4553,7 @@ public static class ExpressionParser
                         Match match(true);
                         Match* parentMatch11 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == RPAREN)
                             {
@@ -4494,7 +4566,7 @@ public static class ExpressionParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                             }
                         }
                         *parentMatch10 = match;
@@ -4528,6 +4600,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match CastExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -4597,7 +4673,7 @@ public static class ExpressionParser
                                             Match match(true);
                                             Match* parentMatch10 = &match;
                                             {
-                                                long pos = lexer.GetPos();
+                                                System.Lex.Span span = lexer.GetSpan();
                                                 Match match(false);
                                                 if (*lexer == LANGLE)
                                                 {
@@ -4610,7 +4686,7 @@ public static class ExpressionParser
                                                 }
                                                 else
                                                 {
-                                                    lexer.ThrowExpectationFailure(pos, GetTokenName(LANGLE));
+                                                    lexer.ThrowExpectationFailure(span, GetTokenName(LANGLE));
                                                 }
                                             }
                                             *parentMatch9 = match;
@@ -4627,7 +4703,7 @@ public static class ExpressionParser
                                         Match match(true);
                                         Match* parentMatch12 = &match;
                                         {
-                                            long pos = lexer.GetPos();
+                                            System.Lex.Span span = lexer.GetSpan();
                                             Match match = TypeExprParser.TypeExpr(lexer, ctx);
                                             typeExpr.Reset(cast<Node*>(match.value));
                                             if (match.hit)
@@ -4636,7 +4712,7 @@ public static class ExpressionParser
                                             }
                                             else
                                             {
-                                                lexer.ThrowExpectationFailure(pos, u"type expression");
+                                                lexer.ThrowExpectationFailure(span, u"type expression");
                                             }
                                         }
                                         *parentMatch11 = match;
@@ -4653,7 +4729,7 @@ public static class ExpressionParser
                                     Match match(true);
                                     Match* parentMatch14 = &match;
                                     {
-                                        long pos = lexer.GetPos();
+                                        System.Lex.Span span = lexer.GetSpan();
                                         Match match(false);
                                         if (*lexer == RANGLE)
                                         {
@@ -4666,7 +4742,7 @@ public static class ExpressionParser
                                         }
                                         else
                                         {
-                                            lexer.ThrowExpectationFailure(pos, GetTokenName(RANGLE));
+                                            lexer.ThrowExpectationFailure(span, GetTokenName(RANGLE));
                                         }
                                     }
                                     *parentMatch13 = match;
@@ -4683,7 +4759,7 @@ public static class ExpressionParser
                                 Match match(true);
                                 Match* parentMatch16 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match(false);
                                     if (*lexer == LPAREN)
                                     {
@@ -4696,7 +4772,7 @@ public static class ExpressionParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, GetTokenName(LPAREN));
+                                        lexer.ThrowExpectationFailure(span, GetTokenName(LPAREN));
                                     }
                                 }
                                 *parentMatch15 = match;
@@ -4713,7 +4789,7 @@ public static class ExpressionParser
                             Match match(true);
                             Match* parentMatch18 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match = ExpressionParser.Expression(lexer, ctx);
                                 expr.Reset(cast<Node*>(match.value));
                                 if (match.hit)
@@ -4722,7 +4798,7 @@ public static class ExpressionParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, u"expression");
+                                    lexer.ThrowExpectationFailure(span, u"expression");
                                 }
                             }
                             *parentMatch17 = match;
@@ -4739,7 +4815,7 @@ public static class ExpressionParser
                         Match match(true);
                         Match* parentMatch20 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == RPAREN)
                             {
@@ -4752,7 +4828,7 @@ public static class ExpressionParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                             }
                         }
                         *parentMatch19 = match;
@@ -4786,6 +4862,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ConstructExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -4854,7 +4934,7 @@ public static class ExpressionParser
                                             Match match(true);
                                             Match* parentMatch10 = &match;
                                             {
-                                                long pos = lexer.GetPos();
+                                                System.Lex.Span span = lexer.GetSpan();
                                                 Match match(false);
                                                 if (*lexer == LANGLE)
                                                 {
@@ -4867,7 +4947,7 @@ public static class ExpressionParser
                                                 }
                                                 else
                                                 {
-                                                    lexer.ThrowExpectationFailure(pos, GetTokenName(LANGLE));
+                                                    lexer.ThrowExpectationFailure(span, GetTokenName(LANGLE));
                                                 }
                                             }
                                             *parentMatch9 = match;
@@ -4884,7 +4964,7 @@ public static class ExpressionParser
                                         Match match(true);
                                         Match* parentMatch12 = &match;
                                         {
-                                            long pos = lexer.GetPos();
+                                            System.Lex.Span span = lexer.GetSpan();
                                             Match match = TypeExprParser.TypeExpr(lexer, ctx);
                                             typeExpr.Reset(cast<Node*>(match.value));
                                             if (match.hit)
@@ -4893,7 +4973,7 @@ public static class ExpressionParser
                                             }
                                             else
                                             {
-                                                lexer.ThrowExpectationFailure(pos, u"type expression");
+                                                lexer.ThrowExpectationFailure(span, u"type expression");
                                             }
                                         }
                                         *parentMatch11 = match;
@@ -4910,7 +4990,7 @@ public static class ExpressionParser
                                     Match match(true);
                                     Match* parentMatch14 = &match;
                                     {
-                                        long pos = lexer.GetPos();
+                                        System.Lex.Span span = lexer.GetSpan();
                                         Match match(false);
                                         if (*lexer == RANGLE)
                                         {
@@ -4923,7 +5003,7 @@ public static class ExpressionParser
                                         }
                                         else
                                         {
-                                            lexer.ThrowExpectationFailure(pos, GetTokenName(RANGLE));
+                                            lexer.ThrowExpectationFailure(span, GetTokenName(RANGLE));
                                         }
                                     }
                                     *parentMatch13 = match;
@@ -4948,7 +5028,7 @@ public static class ExpressionParser
                         Match match(true);
                         Match* parentMatch16 = &match;
                         {
-                            long pos = lexer.GetPos();
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
                             if (*lexer == LPAREN)
                             {
@@ -4961,7 +5041,7 @@ public static class ExpressionParser
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, GetTokenName(LPAREN));
+                                lexer.ThrowExpectationFailure(span, GetTokenName(LPAREN));
                             }
                         }
                         *parentMatch15 = match;
@@ -4978,7 +5058,7 @@ public static class ExpressionParser
                     Match match(true);
                     Match* parentMatch18 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match = ExpressionParser.ExpressionList(lexer, ctx, expr.Get());
                         if (match.hit)
                         {
@@ -4986,7 +5066,7 @@ public static class ExpressionParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, u"expression list");
+                            lexer.ThrowExpectationFailure(span, u"expression list");
                         }
                     }
                     *parentMatch17 = match;
@@ -5008,7 +5088,7 @@ public static class ExpressionParser
                     Match match(true);
                     Match* parentMatch21 = &match;
                     {
-                        long pos = lexer.GetPos();
+                        System.Lex.Span span = lexer.GetSpan();
                         Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -5021,7 +5101,7 @@ public static class ExpressionParser
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                            lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                         }
                     }
                     if (match.hit)
@@ -5053,6 +5133,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match NewExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -5114,7 +5198,7 @@ public static class ExpressionParser
                                 Match match(true);
                                 Match* parentMatch7 = &match;
                                 {
-                                    long pos = lexer.GetPos();
+                                    System.Lex.Span span = lexer.GetSpan();
                                     Match match = TypeExprParser.TypeExpr(lexer, ctx);
                                     typeExpr.Reset(cast<Node*>(match.value));
                                     if (match.hit)
@@ -5123,7 +5207,7 @@ public static class ExpressionParser
                                     }
                                     else
                                     {
-                                        lexer.ThrowExpectationFailure(pos, u"type expression");
+                                        lexer.ThrowExpectationFailure(span, u"type expression");
                                     }
                                 }
                                 if (match.hit)
@@ -5244,6 +5328,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ArgumentList(LexerFileLexer& lexer, ParsingContext* ctx, Node* node)
@@ -5289,6 +5377,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match ExpressionList(LexerFileLexer& lexer, ParsingContext* ctx, Node* node)
@@ -5447,6 +5539,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
     public static Match InvokeExpr(LexerFileLexer& lexer, ParsingContext* ctx)
@@ -5574,7 +5670,7 @@ public static class ExpressionParser
                                                                 Match match(true);
                                                                 Match* parentMatch17 = &match;
                                                                 {
-                                                                    long pos = lexer.GetPos();
+                                                                    System.Lex.Span span = lexer.GetSpan();
                                                                     Match match = IdentifierParser.Identifier(lexer);
                                                                     dotMemberId.Reset(cast<IdentifierNode*>(match.value));
                                                                     if (match.hit)
@@ -5583,7 +5679,7 @@ public static class ExpressionParser
                                                                     }
                                                                     else
                                                                     {
-                                                                        lexer.ThrowExpectationFailure(pos, u"identifier");
+                                                                        lexer.ThrowExpectationFailure(span, u"identifier");
                                                                     }
                                                                 }
                                                                 if (match.hit)
@@ -5669,7 +5765,7 @@ public static class ExpressionParser
                             Match match(true);
                             Match* parentMatch23 = &match;
                             {
-                                long pos = lexer.GetPos();
+                                System.Lex.Span span = lexer.GetSpan();
                                 Match match(false);
                                 if (*lexer == RPAREN)
                                 {
@@ -5682,7 +5778,7 @@ public static class ExpressionParser
                                 }
                                 else
                                 {
-                                    lexer.ThrowExpectationFailure(pos, GetTokenName(RPAREN));
+                                    lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                                 }
                             }
                             if (match.hit)
@@ -5721,6 +5817,10 @@ public static class ExpressionParser
                 }
             }
         #endif
+        if (!match.hit)
+        {
+            match.value = null;
+        }
         return match;
     }
 }

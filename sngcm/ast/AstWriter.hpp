@@ -9,6 +9,7 @@
 #include <sngcm/ast/Specifier.hpp>
 #include <soulng/util/BinaryWriter.hpp>
 #include <soulng/lexer/Span.hpp>
+#include <soulng/lexer/Lexer.hpp>
 
 namespace sngcm { namespace ast {
 
@@ -24,8 +25,10 @@ public:
     void Write(Node* node);
     void Write(Specifiers specifiers);
     void Write(const Span& span);
+    void SetLexers(std::vector<soulng::lexer::Lexer*>* lexers_);
 private:
     BinaryWriter binaryWriter;
+    std::vector<soulng::lexer::Lexer*>* lexers;
 };
 
 } } // namespace sngcm::ast

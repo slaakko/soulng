@@ -21,7 +21,7 @@ soulng::rex::Nfa RexParser::Parse(RexLexer& lexer, soulng::rex::Context* context
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = RexParser::RegularExpression(lexer, context);
     value.reset(static_cast<soulng::parser::Value<soulng::rex::Nfa>*>(match.value));
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
@@ -39,12 +39,12 @@ soulng::rex::Nfa RexParser::Parse(RexLexer& lexer, soulng::rex::Context* context
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"RegularExpression");
+        lexer.ThrowExpectationFailure(span, U"RegularExpression");
     }
     return value->value;
 }
@@ -85,6 +85,10 @@ soulng::parser::Match RexParser::RegularExpression(RexLexer& lexer, soulng::rex:
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RegularExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -164,7 +168,7 @@ soulng::parser::Match RexParser::Alternative(RexLexer& lexer, soulng::rex::Conte
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = RexParser::Catenation(lexer, context);
                                                     right.reset(static_cast<soulng::parser::Value<soulng::rex::Nfa>*>(match.value));
                                                     if (match.hit)
@@ -173,7 +177,7 @@ soulng::parser::Match RexParser::Alternative(RexLexer& lexer, soulng::rex::Conte
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"Catenation");
+                                                        lexer.ThrowExpectationFailure(span, U"Catenation");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -224,6 +228,10 @@ soulng::parser::Match RexParser::Alternative(RexLexer& lexer, soulng::rex::Conte
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Alternative"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -330,6 +338,10 @@ soulng::parser::Match RexParser::Catenation(RexLexer& lexer, soulng::rex::Contex
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Catenation"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -497,6 +509,10 @@ soulng::parser::Match RexParser::Repetition(RexLexer& lexer, soulng::rex::Contex
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Repetition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -571,7 +587,7 @@ soulng::parser::Match RexParser::Primary(RexLexer& lexer, soulng::rex::Context* 
                                                     soulng::parser::Match match(true);
                                                     soulng::parser::Match* parentMatch12 = &match;
                                                     {
-                                                        int64_t pos = lexer.GetPos();
+                                                        soulng::lexer::Span span = lexer.GetSpan();
                                                         soulng::parser::Match match = RexParser::Alternative(lexer, context);
                                                         alt.reset(static_cast<soulng::parser::Value<soulng::rex::Nfa>*>(match.value));
                                                         if (match.hit)
@@ -580,7 +596,7 @@ soulng::parser::Match RexParser::Primary(RexLexer& lexer, soulng::rex::Context* 
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(pos, U"Alternative");
+                                                            lexer.ThrowExpectationFailure(span, U"Alternative");
                                                         }
                                                     }
                                                     if (match.hit)
@@ -603,7 +619,7 @@ soulng::parser::Match RexParser::Primary(RexLexer& lexer, soulng::rex::Context* 
                                             soulng::parser::Match match(true);
                                             soulng::parser::Match* parentMatch14 = &match;
                                             {
-                                                int64_t pos = lexer.GetPos();
+                                                soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match(false);
                                                 if (*lexer == RPAREN)
                                                 {
@@ -616,7 +632,7 @@ soulng::parser::Match RexParser::Primary(RexLexer& lexer, soulng::rex::Context* 
                                                 }
                                                 else
                                                 {
-                                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                                                    lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                                                 }
                                             }
                                             *parentMatch13 = match;
@@ -809,6 +825,10 @@ soulng::parser::Match RexParser::Primary(RexLexer& lexer, soulng::rex::Context* 
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Primary"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -964,7 +984,7 @@ soulng::parser::Match RexParser::Class(RexLexer& lexer, soulng::rex::Context* co
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch16 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match(false);
                         if (*lexer == RBRACKET)
                         {
@@ -977,7 +997,7 @@ soulng::parser::Match RexParser::Class(RexLexer& lexer, soulng::rex::Context* co
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RBRACKET)));
+                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RBRACKET)));
                         }
                     }
                     *parentMatch15 = match;
@@ -1004,6 +1024,10 @@ soulng::parser::Match RexParser::Class(RexLexer& lexer, soulng::rex::Context* co
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Class"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1128,6 +1152,10 @@ soulng::parser::Match RexParser::Range(RexLexer& lexer, soulng::rex::Context* co
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Range"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1312,5 +1340,9 @@ soulng::parser::Match RexParser::Char(RexLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Char"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

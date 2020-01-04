@@ -21,6 +21,8 @@ struct SOULNG_LEXER_API Span
     int end;
 };
 
+SOULNG_LEXER_API bool operator==(const Span& left, const Span& right);
+
 } } // namespace soulng::lexer
 
 #endif // SOULNG_LEXER_SPAN_INCLUDED

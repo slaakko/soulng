@@ -1,0 +1,611 @@
+using System;
+using System.Collections;
+using System.Text;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/dom/Node.hpp' using cpp2cm version 1.0.0
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/dom/Node.cpp' using cpp2cm version 1.0.0
+
+namespace System.Dom
+{
+    public enum NodeType
+    {
+        attributeNode, documentFragmentNode, documentNode, elementNode, entityNode, entityReferenceNode, notationNode, processingInstructionNode, textNode, cdataSectionNode, commentNode
+    }
+    public class Visitor
+    {
+        public virtual void BeginVisit(Document* document)
+        {
+        }
+        public virtual void EndVisit(Document* document)
+        {
+        }
+        public virtual void BeginVisit(Element* element)
+        {
+        }
+        public virtual void EndVisit(Element* element)
+        {
+        }
+        public virtual void Visit(Text* text)
+        {
+        }
+        public virtual void Visit(CDataSection* cdataSection)
+        {
+        }
+        public virtual void Visit(Comment* comment)
+        {
+        }
+        public virtual void Visit(EntityReference* entityReference)
+        {
+        }
+        public virtual void Visit(ProcessingInstruction* processingInstruction)
+        {
+        }
+    }
+    public class NodeOp
+    {
+        public virtual ~NodeOp()
+        {
+        }
+        public virtual void Apply(Node* node)
+        {
+        }
+    }
+    public enum Axis
+    {
+        child, descendant, parent, ancestor, followingSibling, precedingSibling, following, preceding, attribute, ns, self, descendantOrSelf, ancestorOrSelf
+    }
+    public abstract class Node
+    {
+        public suppress Node(const Node& );
+        public suppress Node(Node&& );
+        public Node(NodeType nodeType_, const ustring& name_) :
+            nodeType(nodeType_), name(name_), parent(null), previousSibling(null), nextSibling(null), ownerDocument(null)
+        {
+        }
+        public virtual ~Node()
+        {
+        }
+        public suppress Node& operator=(const Node& );
+        public suppress Node& operator=(Node&& );
+        public NodeType GetNodeType() const
+        {
+            return nodeType;
+        }
+        public const ustring& Name() const
+        {
+            return name;
+        }
+        public const ustring& NamespaceUri() const
+        {
+            return namespaceUri;
+        }
+        public Node* PreviousSibling() const
+        {
+            return previousSibling;
+        }
+        public Node* NextSibling() const
+        {
+            return nextSibling;
+        }
+        public ParentNode* Parent() const
+        {
+            return parent;
+        }
+        public Document* OwnerDocument() const
+        {
+            return ownerDocument;
+        }
+        public void InternalSetParent(ParentNode* parent_)
+        {
+            parent = parent_;
+        }
+        public void InternalSetOwnerDocument(Document* ownerDocument_)
+        {
+            ownerDocument = ownerDocument_;
+        }
+        public ustring Prefix() const
+        {
+            if (nodeType == NodeType.elementNode || nodeType == NodeType.attributeNode)
+            {
+                long colonPos = name.Find(':');
+                if (colonPos != -1)
+                {
+                    return name.Substring(0, colonPos);
+                }
+            }
+            return ustring();
+        }
+        public void SetPrefix(const ustring& prefix)
+        {
+            if (nodeType == NodeType.elementNode || nodeType == NodeType.attributeNode)
+            {
+                long colonPos = name.Find(':');
+                if (prefix.IsEmpty())
+                {
+                    if (colonPos != -1)
+                    {
+                        name = name.Substring(colonPos + 1);
+                    }
+                }
+                else
+                {
+                    if (colonPos != -1)
+                    {
+                        name = prefix + u":" + name.Substring(colonPos + 1);
+                    }
+                    else
+                    {
+                        name = prefix + u":" + name;
+                    }
+                }
+            }
+            else
+            {
+                throw DomException("cannot set prefix for this node type");
+            }
+        }
+        public ustring LocalName() const
+        {
+            if (nodeType == NodeType.elementNode || nodeType == NodeType.attributeNode)
+            {
+                long colonPos = name.Find(':');
+                if (colonPos != -1)
+                {
+                    return name.Substring(colonPos + 1);
+                }
+                else
+                {
+                    return name;
+                }
+            }
+            else
+            {
+                return ustring();
+            }
+        }
+        public void Walk(NodeOp& nodeOp, Axis axis)
+        {
+            switch (axis)
+            {
+                case Axis.child: WalkChildren(nodeOp);
+                break;
+                case Axis.descendant: WalkDescendant(nodeOp);
+                break;
+                case Axis.descendantOrSelf: WalkDescendantOrSelf(nodeOp);
+                break;
+                case Axis.parent: WalkParent(nodeOp);
+                break;
+                case Axis.ancestor: WalkAncestor(nodeOp);
+                break;
+                case Axis.ancestorOrSelf: WalkAncestorOrSelf(nodeOp);
+                break;
+                case Axis.followingSibling: WalkFollowingSibling(nodeOp);
+                break;
+                case Axis.precedingSibling: WalkPrecedingSibling(nodeOp);
+                break;
+                case Axis.following: WalkFollowing(nodeOp);
+                break;
+                case Axis.preceding: WalkPreceding(nodeOp);
+                break;
+                case Axis.attribute: WalkAttribute(nodeOp);
+                break;
+                case Axis.self: nodeOp.Apply(this);
+                break;
+            }
+        }
+        public void WalkParent(NodeOp& nodeOp)
+        {
+            if ((parent != null))
+            {
+                nodeOp.Apply(parent);
+            }
+        }
+        public void WalkAncestor(NodeOp& nodeOp)
+        {
+            if ((parent != null))
+            {
+                parent->WalkAncestorOrSelf(nodeOp);
+            }
+        }
+        public void WalkAncestorOrSelf(NodeOp& nodeOp)
+        {
+            nodeOp.Apply(this);
+            if ((parent != null))
+            {
+                parent->WalkAncestorOrSelf(nodeOp);
+            }
+        }
+        public void WalkFollowingSibling(NodeOp& nodeOp)
+        {
+            Node* ns = nextSibling;
+            if ((ns != null))
+            {
+                nodeOp.Apply(ns);
+                ns = ns->nextSibling;
+            }
+        }
+        public void WalkPrecedingSibling(NodeOp& nodeOp)
+        {
+            Node* ps = previousSibling;
+            if ((ps != null))
+            {
+                nodeOp.Apply(ps);
+                ps = ps->previousSibling;
+            }
+        }
+        public void InternalLinkBefore(Node* newNode)
+        {
+            newNode->previousSibling = previousSibling;
+            newNode->nextSibling = this;
+            previousSibling = newNode;
+        }
+        public void InternalLinkAfter(Node* newNode)
+        {
+            newNode->previousSibling = this;
+            newNode->nextSibling = nextSibling;
+            nextSibling = newNode;
+        }
+        public void InternalUnlink()
+        {
+            if ((previousSibling != null))
+            {
+                previousSibling->nextSibling = nextSibling;
+            }
+            if ((nextSibling != null))
+            {
+                nextSibling->previousSibling = previousSibling;
+            }
+        }
+        public void InternalSetNamespaceUri(const ustring& namespaceUri_)
+        {
+            namespaceUri = namespaceUri_;
+        }
+        public abstract UniquePtr<Node> CloneNode(bool deep);
+        public virtual bool HasChildNodes() const
+        {
+            return false;
+        }
+        public virtual bool HasAttributes() const
+        {
+            return false;
+        }
+        public abstract void Write(CodeFormatter& formatter);
+        public virtual bool ValueContainsNewLine() const
+        {
+            return false;
+        }
+        public virtual void Accept(Visitor& visitor)
+        {
+        }
+        public virtual void WalkChildren(NodeOp& nodeOp)
+        {
+        }
+        public virtual void WalkDescendant(NodeOp& nodeOp)
+        {
+        }
+        public virtual void WalkDescendantOrSelf(NodeOp& nodeOp)
+        {
+            nodeOp.Apply(this);
+        }
+        public virtual void WalkFollowing(NodeOp& nodeOp)
+        {
+            Node* ns = nextSibling;
+            if ((ns != null))
+            {
+                ns->WalkDescendantOrSelf(nodeOp);
+                ns = ns->nextSibling;
+            }
+        }
+        public virtual void WalkPreceding(NodeOp& nodeOp)
+        {
+        }
+        public virtual void WalkPrecedingOrSelf(NodeOp& nodeOp)
+        {
+            nodeOp.Apply(this);
+        }
+        public virtual void WalkAttribute(NodeOp& nodeOp)
+        {
+        }
+        private NodeType nodeType;
+        private ustring name;
+        private ustring namespaceUri;
+        private ParentNode* parent;
+        private Node* previousSibling;
+        private Node* nextSibling;
+        private Document* ownerDocument;
+    }
+    public abstract class ParentNode : Node
+    {
+        public suppress ParentNode(const Node& );
+        public suppress ParentNode(ParentNode&& );
+        public ParentNode(NodeType nodeType_, const ustring& name_) :
+            base(nodeType_, name_), firstChild(null), lastChild(null)
+        {
+        }
+        public override ~ParentNode()
+        {
+            Node* child = firstChild;
+            while (child != null)
+            {
+                Node* toDel = child;
+                child = child->NextSibling();
+                delete toDel;
+            }
+        }
+        public suppress ParentNode& operator=(const Node& );
+        public suppress ParentNode& operator=(ParentNode&& );
+        public Node* FirstChild() const
+        {
+            return firstChild;
+        }
+        public Node* LastChild() const
+        {
+            return lastChild;
+        }
+        public NodeList ChildNodes() const
+        {
+            NodeList result;
+            Node* child = firstChild;
+            while (child != null)
+            {
+                result.InternalAddNode(child);
+                child = child->NextSibling();
+            }
+            return result;
+        }
+        public void CloneChildrenTo(ParentNode* clone) const
+        {
+            Node* child = firstChild;
+            while (child != null)
+            {
+                clone->AppendChild(child->CloneNode(true));
+                child = child->NextSibling();
+            }
+        }
+        public override bool HasChildNodes() const
+        {
+            return firstChild != null;
+        }
+        public override void Write(CodeFormatter& formatter)
+        {
+            Node* child = firstChild;
+            while (child != null)
+            {
+                child->Write(formatter);
+                child = child->NextSibling();
+            }
+        }
+        public virtual Node* InsertBefore(UniquePtr<Node>&& newChild, Node* refChild)
+        {
+            if (refChild == null)
+            {
+                return AppendChild(Rvalue(newChild));
+            }
+            else
+            {
+                if ((OwnerDocument() != null))
+                {
+                    OwnerDocument()->InternalInvalidateIndex();
+                }
+                if (newChild->GetNodeType() == NodeType.documentFragmentNode)
+                {
+                    DocumentFragment* documentFragment = cast<DocumentFragment*>(newChild.Get());
+                    Node* docFragChild = documentFragment->FirstChild();
+                    Node* nodeInserted = null;
+                    while (docFragChild != null)
+                    {
+                        UniquePtr<Node> docFragChildRemoved = documentFragment->RemoveChild(docFragChild);
+                        nodeInserted = InsertBefore(Rvalue(docFragChildRemoved), refChild);
+                        docFragChild = documentFragment->FirstChild();
+                    }
+                    return nodeInserted;
+                }
+                else
+                {
+                    if ((newChild->Parent() != null))
+                    {
+                        newChild.Reset(newChild->Parent()->RemoveChild(newChild.Get()).Release());
+                    }
+                    if (firstChild == refChild)
+                    {
+                        firstChild = newChild.Get();
+                    }
+                    newChild->InternalSetParent(this);
+                    newChild->InternalSetOwnerDocument(OwnerDocument());
+                    Node* nodeInserted = newChild.Get();
+                    refChild->InternalLinkBefore(newChild.Release());
+                    return nodeInserted;
+                }
+            }
+        }
+        public virtual UniquePtr<Node> RemoveChild(Node* oldChild)
+        {
+            if (!(oldChild != null))
+            {
+                throw DomException("could not remove node: given old child is null");
+            }
+            if (oldChild->Parent() != this)
+            {
+                throw DomException("could not remove node: given old child is not child of this node");
+            }
+            if ((OwnerDocument() != null))
+            {
+                OwnerDocument()->InternalInvalidateIndex();
+            }
+            oldChild->InternalUnlink();
+            if (oldChild == firstChild)
+            {
+                firstChild = oldChild->NextSibling();
+            }
+            if (oldChild == lastChild)
+            {
+                lastChild = oldChild->PreviousSibling();
+            }
+            UniquePtr<Node> removedNode = UniquePtr<Node>(oldChild);
+            removedNode->InternalSetOwnerDocument(null);
+            removedNode->InternalSetParent(null);
+            return removedNode;
+        }
+        public virtual UniquePtr<Node> ReplaceChild(UniquePtr<Node>&& newChild, Node* oldChild)
+        {
+            if (!(oldChild != null))
+            {
+                throw DomException("could not replace node: given old child is null");
+            }
+            if (oldChild->Parent() != this)
+            {
+                throw DomException("could not replace node: given old child is not child of this node");
+            }
+            if ((OwnerDocument() != null))
+            {
+                OwnerDocument()->InternalInvalidateIndex();
+            }
+            if ((newChild->Parent() != null))
+            {
+                newChild.Reset(newChild->Parent()->RemoveChild(newChild.Get()).Release());
+            }
+            InsertBefore(Rvalue(newChild), oldChild);
+            return RemoveChild(oldChild);
+        }
+        public virtual Node* AppendChild(UniquePtr<Node>&& newChild)
+        {
+            if ((OwnerDocument() != null))
+            {
+                OwnerDocument()->InternalInvalidateIndex();
+            }
+            if ((newChild->Parent() != null))
+            {
+                newChild.Reset(newChild->Parent()->RemoveChild(newChild.Get()).Release());
+            }
+            if (newChild->GetNodeType() == NodeType.documentFragmentNode)
+            {
+                DocumentFragment* documentFragment = cast<DocumentFragment*>(newChild.Get());
+                Node* docFragChild = documentFragment->FirstChild();
+                Node* nodeInserted = null;
+                while (docFragChild != null)
+                {
+                    UniquePtr<Node> docFragChildRemoved = documentFragment->RemoveChild(docFragChild);
+                    nodeInserted = AppendChild(Rvalue(docFragChildRemoved));
+                    docFragChild = documentFragment->FirstChild();
+                }
+                return nodeInserted;
+            }
+            else
+            {
+                if ((lastChild != null))
+                {
+                    lastChild->InternalLinkAfter(newChild.Get());
+                }
+                if (!(firstChild != null))
+                {
+                    firstChild = newChild.Get();
+                }
+                newChild->InternalSetOwnerDocument(OwnerDocument());
+                newChild->InternalSetParent(this);
+                lastChild = newChild.Release();
+                return lastChild;
+            }
+        }
+        public override void Accept(Visitor& visitor)
+        {
+            Node* child = firstChild;
+            while (child != null)
+            {
+                child->Accept(visitor);
+                child = child->NextSibling();
+            }
+        }
+        public override void WalkChildren(NodeOp& nodeOp)
+        {
+            Node* child = firstChild;
+            while (child != null)
+            {
+                nodeOp.Apply(child);
+                child = child->NextSibling();
+            }
+        }
+        public override void WalkDescendant(NodeOp& nodeOp)
+        {
+            Node* child = firstChild;
+            while (child != null)
+            {
+                child->WalkDescendantOrSelf(nodeOp);
+                child = child->NextSibling();
+            }
+        }
+        public override void WalkDescendantOrSelf(NodeOp& nodeOp)
+        {
+            base->WalkDescendantOrSelf(nodeOp);
+            Node* child = firstChild;
+            while (child != null)
+            {
+                child->WalkDescendantOrSelf(nodeOp);
+                child = child->NextSibling();
+            }
+        }
+        public override void WalkPrecedingOrSelf(NodeOp& nodeOp)
+        {
+            base->WalkPrecedingOrSelf(nodeOp);
+            Node* child = lastChild;
+            while (child != null)
+            {
+                child->WalkPrecedingOrSelf(nodeOp);
+                child = child->PreviousSibling();
+            }
+        }
+        public override void WalkPreceding(NodeOp& nodeOp)
+        {
+            Node* preceding = PreviousSibling();
+            if ((preceding != null))
+            {
+                preceding->WalkPrecedingOrSelf(nodeOp);
+            }
+        }
+        private Node* firstChild;
+        private Node* lastChild;
+    }
+    public class NodeList
+    {
+        public Node* Item(int index) const
+        {
+            return nodes[index];
+        }
+        public Node* operator[](int index) const
+        {
+            return nodes[index];
+        }
+        public int Length() const
+        {
+            return cast<int>(nodes.Count());
+        }
+        public void InternalAddNode(Node* node)
+        {
+            if (Find(nodes.Begin(), nodes.End(), node) == nodes.End())
+            {
+                nodes.Add(node);
+            }
+        }
+        private List<Node*> nodes;
+    }
+    public ustring AxisName(Axis axis)
+    {
+        switch (axis)
+        {
+            case Axis.child: return u"child";
+            case Axis.descendant: return u"descendant";
+            case Axis.parent: return u"parent";
+            case Axis.ancestor: return u"ancestor";
+            case Axis.followingSibling: return u"followingSibling";
+            case Axis.precedingSibling: return u"precedingSibling";
+            case Axis.following: return u"following";
+            case Axis.preceding: return u"preceding";
+            case Axis.attribute: return u"attribute";
+            case Axis.ns: return u"namespace";
+            case Axis.self: return u"self";
+            case Axis.descendantOrSelf: return u"descendantOrSelf";
+            case Axis.ancestorOrSelf: return u"ancestorOrSelf";
+        }
+        return ustring();
+    }
+} // namespace System.Dom

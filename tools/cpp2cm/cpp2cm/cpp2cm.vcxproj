@@ -161,6 +161,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Merge.cpp" />
+    <ClCompile Include="NothrowList.cpp" />
     <ClCompile Include="Patch.cpp" />
     <ClCompile Include="PatchFileParser.cpp" />
     <ClCompile Include="Project.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Filter.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Merge.hpp" />
+    <ClInclude Include="NothrowList.hpp" />
     <ClInclude Include="Patch.hpp" />
     <ClInclude Include="PatchFileParser.hpp" />
     <ClInclude Include="Project.hpp" />

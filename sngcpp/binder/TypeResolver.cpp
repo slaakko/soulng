@@ -398,7 +398,7 @@ void TypeResolver::ResolveSymbol(Node& node, Symbol* symbol)
     else if (symbol->IsClassGroupSymbol())
     {
         classGroup = static_cast<ClassGroupSymbol*>(symbol);
-        if (currentClass && currentClass->Name() == classGroup->Name())
+        if ((flags & TypeResolverFlags::notSelf) == TypeResolverFlags::none && currentClass && currentClass->Name() == classGroup->Name())
         {
             type = currentClass;
             currentContainerScope = type->GetContainerScope();

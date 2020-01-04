@@ -339,6 +339,7 @@ void StaticConstructorNode::Write(AstWriter& writer)
 {
     FunctionNode::Write(writer);
     initializers.Write(writer);
+    classId->Write(writer);
 }
 
 void StaticConstructorNode::Read(AstReader& reader)
@@ -346,6 +347,7 @@ void StaticConstructorNode::Read(AstReader& reader)
     FunctionNode::Read(reader);
     initializers.Read(reader);
     initializers.SetParent(this);
+    classId.reset(reader.ReadIdentifierNode());
 }
 
 void StaticConstructorNode::AddInitializer(InitializerNode* initializer)
@@ -384,6 +386,7 @@ void ConstructorNode::Write(AstWriter& writer)
 {
     FunctionNode::Write(writer);
     initializers.Write(writer);
+    classId->Write(writer);
 }
 
 void ConstructorNode::Read(AstReader& reader)
@@ -391,6 +394,7 @@ void ConstructorNode::Read(AstReader& reader)
     FunctionNode::Read(reader);
     initializers.Read(reader);
     initializers.SetParent(this);
+    classId.reset(reader.ReadIdentifierNode());
 }
 
 void ConstructorNode::AddInitializer(InitializerNode* initializer)
@@ -418,6 +422,18 @@ Node* DestructorNode::Clone(CloneContext& cloneContext) const
 void DestructorNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
+}
+
+void DestructorNode::Write(AstWriter& writer)
+{
+    FunctionNode::Write(writer);
+    classId->Write(writer);
+}
+
+void DestructorNode::Read(AstReader& reader)
+{
+    FunctionNode::Read(reader);
+    classId.reset(reader.ReadIdentifierNode());
 }
 
 MemberFunctionNode::MemberFunctionNode(const Span& span_) : FunctionNode(NodeType::memberFunctionNode, span_)

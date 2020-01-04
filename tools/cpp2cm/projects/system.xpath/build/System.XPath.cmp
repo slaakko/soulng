@@ -1,0 +1,18 @@
+project System.XPath;
+target=library;
+source <XPathApi.cm>;
+source <XPathClassMap.cm>;
+source <XPathContext.cm>;
+source <XPathDebug.cm>;
+source <XPathEvaluate.cm>;
+source <XPathExpr.cm>;
+source <XPathFunction.cm>;
+source <XPathKeywords.cm>;
+source <XPathLexer.cm>;
+text <XPathLexer.lexer>;
+source <XPathObject.cm>;
+source <XPathParser.cm>;
+text <XPathParser.parser>;
+text <XPathParser.spg>;
+source <XPathTokenValueParsers.cm>;
+source <XPathTokens.cm>;

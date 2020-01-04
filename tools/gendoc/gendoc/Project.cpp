@@ -23,6 +23,7 @@
 #include <soulng/util/System.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <soulng/util/Util.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/process.hpp>
 #include <iostream>
@@ -308,6 +309,7 @@ void Project::GenerateContent(bool verbose, bool rebuild, bool endMessage)
             upToDate = false;
         }
         GenerateHtmlCodeFiles(verbose, rebuild);
+        ReadGrammarXmlFiles(verbose);
         GenerateHtmlContent(verbose, rebuild);
         if (endMessage)
         {
@@ -724,7 +726,7 @@ void Project::ReadIncludePath()
                     {
                         if (includePath.empty())
                         {
-                            includePath = GetFullPath(Path::Combine(projectRoot, ToUtf8(pathAttribute)));
+                            includePath = Path::MakeCanonical(ToUtf8(pathAttribute));
                         }
                         else
                         {
@@ -1001,6 +1003,61 @@ void Project::GenerateHtmlCodeFiles(bool verbose, bool rebuild)
     }
 }
 
+void Project::ReadGrammarXmlFiles(bool verbose)
+{
+    std::unique_ptr<sngxml::xpath::XPathObject> result = sngxml::xpath::Evaluate(U"/gendoc/project/grammars", doc.get());
+    if (result)
+    {
+        if (result->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+        {
+            sngxml::xpath::XPathNodeSet* nodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(result.get());
+            int n = nodeSet->Length();
+            for (int i = 0; i < n; ++i)
+            {
+                sngxml::dom::Node* node = (*nodeSet)[i];
+                if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
+                {
+                    sngxml::dom::Element* element = static_cast<sngxml::dom::Element*>(node);
+                    std::u32string grammarsFileAttribute = element->GetAttribute(U"file");
+                    if (!grammarsFileAttribute.empty())
+                    {
+                        grammarsXmlFilePath = GetFullPath(Path::Combine(rootDir, Path::MakeCanonical(ToUtf8(grammarsFileAttribute))));
+                        grammarsXmlDoc = sngxml::dom::ReadDocument(grammarsXmlFilePath);
+                        std::unique_ptr<sngxml::xpath::XPathObject> result = sngxml::xpath::Evaluate(U"/project/grammar", grammarsXmlDoc.get());
+                        if (result)
+                        {
+                            if (result->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+                            {
+                                sngxml::xpath::XPathNodeSet* nodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(result.get());
+                                int n = nodeSet->Length();
+                                for (int i = 0; i < n; ++i)
+                                {
+                                    sngxml::dom::Node* node = (*nodeSet)[i];
+                                    if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
+                                    {
+                                        sngxml::dom::Element* element = static_cast<sngxml::dom::Element*>(node);
+                                        std::u32string grammarFileAttribute = element->GetAttribute(U"file");
+                                        if (!grammarFileAttribute.empty())
+                                        {
+                                            std::u32string grammarHtmlFileName = ToUtf32(Path::Combine("html/content",
+                                                Path::GetFileNameWithoutExtension(Path::MakeCanonical(ToUtf8(grammarFileAttribute))) + ".html"));
+                                            std::string grammarXmlFilePath = GetFullPath(Path::Combine(rootDir, Path::MakeCanonical(ToUtf8(grammarFileAttribute))));
+                                            std::unique_ptr<sngxml::dom::Document> grammarXmlDoc = sngxml::dom::ReadDocument(grammarXmlFilePath);
+                                            std::u32string grammarTitle = grammarXmlDoc->DocumentElement()->GetAttribute(U"title");
+                                            gendoc::html::Grammar grammar(grammarHtmlFileName, grammarTitle);
+                                            grammars.push_back(std::move(grammar));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 void Project::ReadDocumentationXml(bool verbose, bool& rebuild)
 {
     std::unique_ptr<sngxml::xpath::XPathObject> result = sngxml::xpath::Evaluate(U"/gendoc/project/documentation", doc.get());
@@ -1019,7 +1076,7 @@ void Project::ReadDocumentationXml(bool verbose, bool& rebuild)
                     std::u32string documentationFileAttribute = element->GetAttribute(U"file");
                     if (!documentationFileAttribute.empty())
                     {
-                        documentationXmlFileName = GetFullPath(Path::Combine(rootDir, ToUtf8(documentationFileAttribute)));
+                        documentationXmlFileName = GetFullPath(Path::Combine(rootDir, Path::MakeCanonical(ToUtf8(documentationFileAttribute))));
                         if (boost::filesystem::exists(documentationXmlFileName))
                         {
                             documentationXml = sngxml::dom::ReadDocument(documentationXmlFileName);
@@ -1076,7 +1133,7 @@ void Project::GenerateHtmlContent(bool verbose, bool rebuild)
         }
     }
     gendoc::html::GenerateModuleHtml(name, parentName, prevProject, nextProject, childProjects, childNames, contentXml.get(), contentDir, styleDirName, styleFileName, sourceFiles,
-        contentXmlFilePath, verbose, rebuild, moduleFileUpToDate, this, topLink, documentationXmlFileName, documentationXml.get());
+        contentXmlFilePath, verbose, rebuild, moduleFileUpToDate, this, topLink, documentationXmlFileName, documentationXml.get(), grammars);
     if (!moduleFileUpToDate)
     {
         upToDate = false;

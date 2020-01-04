@@ -24,7 +24,7 @@ void ArgsParser::Parse(TrivialLexer& lexer, std::vector<int>* args)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = ArgsParser::Args(lexer, args);
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (lexer.Log())
@@ -41,12 +41,12 @@ void ArgsParser::Parse(TrivialLexer& lexer, std::vector<int>* args)
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"Args");
+        lexer.ThrowExpectationFailure(span, U"Args");
     }
     return;
 }
@@ -192,6 +192,10 @@ soulng::parser::Match ArgsParser::Args(TrivialLexer& lexer, std::vector<int>* ar
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Args"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -370,6 +374,10 @@ soulng::parser::Match ArgsParser::Arg(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Arg"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -436,5 +444,9 @@ soulng::parser::Match ArgsParser::S(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("S"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

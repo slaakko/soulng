@@ -38,6 +38,7 @@ public:
     void Visit(UsingDeclarationNode& usingDeclarationNode) override;
     void Visit(NamespaceNode& namespaceNode) override;
     void Visit(DeclarationSequenceNode& declarationSequenceNode) override;
+    void Visit(LinkageSpecificationNode& linkageSpecificationNode) override;
     void Visit(TypedefNode& typedefNode) override;
     void Visit(EnumTypeNode& enumTypeNode) override;
     void Visit(EnumeratorNode& enumeratorNode) override;
@@ -62,6 +63,7 @@ public:
     void Visit(LambdaExpressionNode& lambdaExpressionNode) override;
     void Visit(NestedIdNode& nestedIdNode) override;
     void Visit(IdentifierNode& identifierNode) override;
+    void Visit(DtorIdNode& dtorIdNode) override;
     void Visit(LabeledStatementNode& labeledStatementNode) override;
     void Visit(CaseStatementNode& caseStatementNode) override;
     void Visit(DefaultStatementNode& defaultStatementNode) override;

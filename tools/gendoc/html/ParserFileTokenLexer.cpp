@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/gendoc/html/ParserFileTokenLexer.lexer' using soulng lexer generator slg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/tools/gendoc/html/ParserFileTokenLexer.lexer' using soulng lexer generator slg version 3.0.0
 
 #include <gendoc/html/ParserFileTokenLexer.hpp>
 #include <gendoc/html/ParserFileTokenLexerKeywords.hpp>

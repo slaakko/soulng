@@ -18,7 +18,7 @@ void PPLineParser::Parse(PPLexer& lexer, sngcpp::pp::PP* pp)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = PPLineParser::PPLine(lexer, pp);
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (lexer.Log())
@@ -35,12 +35,12 @@ void PPLineParser::Parse(PPLexer& lexer, sngcpp::pp::PP* pp)
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"PPLine");
+        lexer.ThrowExpectationFailure(span, U"PPLine");
     }
     return;
 }
@@ -200,6 +200,10 @@ soulng::parser::Match PPLineParser::PPLine(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PPLine"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -330,6 +334,10 @@ soulng::parser::Match PPLineParser::Define(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Define"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -460,6 +468,10 @@ soulng::parser::Match PPLineParser::Include(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Include"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -559,6 +571,10 @@ soulng::parser::Match PPLineParser::If(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("If"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -653,6 +669,10 @@ soulng::parser::Match PPLineParser::Ifdef(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Ifdef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -747,6 +767,10 @@ soulng::parser::Match PPLineParser::Ifndef(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Ifndef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -846,6 +870,10 @@ soulng::parser::Match PPLineParser::Elif(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Elif"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -908,6 +936,10 @@ soulng::parser::Match PPLineParser::Else(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Else"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -970,6 +1002,10 @@ soulng::parser::Match PPLineParser::Endif(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Endif"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1038,6 +1074,10 @@ soulng::parser::Match PPLineParser::Other(PPLexer& lexer, sngcpp::pp::PP* pp)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Other"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1849,5 +1889,9 @@ soulng::parser::Match PPLineParser::PPToken(PPLexer& lexer, std::vector<soulng::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PPToken"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

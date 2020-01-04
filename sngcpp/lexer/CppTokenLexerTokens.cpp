@@ -22,6 +22,7 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"ASSIGN"] = 92;
         tokenIdMap[U"AUTO"] = 4;
         tokenIdMap[U"BLOCKCOMMENT"] = 142;
+        tokenIdMap[U"BLOCKCOMMENTLINE"] = 143;
         tokenIdMap[U"BOOL"] = 5;
         tokenIdMap[U"BREAK"] = 6;
         tokenIdMap[U"CASE"] = 7;
@@ -71,12 +72,12 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"FRIEND"] = 38;
         tokenIdMap[U"GEQ"] = 113;
         tokenIdMap[U"GOTO"] = 39;
-        tokenIdMap[U"ID"] = 144;
+        tokenIdMap[U"ID"] = 145;
         tokenIdMap[U"IF"] = 40;
         tokenIdMap[U"INLINE"] = 41;
         tokenIdMap[U"INT"] = 42;
         tokenIdMap[U"INTLIT"] = 87;
-        tokenIdMap[U"KEYWORD"] = 143;
+        tokenIdMap[U"KEYWORD"] = 144;
         tokenIdMap[U"LANGLE"] = 115;
         tokenIdMap[U"LBRACE"] = 134;
         tokenIdMap[U"LBRACKET"] = 132;
@@ -84,7 +85,7 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"LINECOMMENT"] = 141;
         tokenIdMap[U"LONG"] = 43;
         tokenIdMap[U"LPAREN"] = 126;
-        tokenIdMap[U"MAX"] = 148;
+        tokenIdMap[U"MAX"] = 149;
         tokenIdMap[U"MINUS"] = 120;
         tokenIdMap[U"MINUSMINUS"] = 129;
         tokenIdMap[U"MOD"] = 123;
@@ -95,16 +96,16 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"NEW"] = 46;
         tokenIdMap[U"NOEXCEPT"] = 47;
         tokenIdMap[U"NULLPTR"] = 48;
-        tokenIdMap[U"NUMBER"] = 145;
+        tokenIdMap[U"NUMBER"] = 146;
         tokenIdMap[U"OPERATOR"] = 49;
         tokenIdMap[U"OR"] = 107;
         tokenIdMap[U"ORASSIGN"] = 102;
         tokenIdMap[U"OROR"] = 105;
-        tokenIdMap[U"OTHER"] = 147;
+        tokenIdMap[U"OTHER"] = 148;
         tokenIdMap[U"OVERRIDE"] = 82;
         tokenIdMap[U"PLUS"] = 119;
         tokenIdMap[U"PLUSPLUS"] = 128;
-        tokenIdMap[U"PP"] = 146;
+        tokenIdMap[U"PP"] = 147;
         tokenIdMap[U"PRIVATE"] = 50;
         tokenIdMap[U"PROTECTED"] = 51;
         tokenIdMap[U"PUBLIC"] = 52;
@@ -318,6 +319,7 @@ namespace CppTokenLexerTokens
         "WS",
         "LINECOMMENT",
         "BLOCKCOMMENT",
+        "BLOCKCOMMENTLINE",
         "KEYWORD",
         "ID",
         "NUMBER",
@@ -476,6 +478,7 @@ namespace CppTokenLexerTokens
         "white space",
         "line comment",
         "block comment",
+        "block comment line",
         "keyword",
         "identifier",
         "number",

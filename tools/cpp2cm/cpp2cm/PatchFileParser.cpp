@@ -33,7 +33,7 @@ std::unique_ptr<cpp2cm::PatchFile> PatchFileParser::Parse(TrivialLexer& lexer)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = PatchFileParser::PatchFile(lexer);
     value.reset(static_cast<cpp2cm::PatchFile*>(match.value));
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
@@ -51,12 +51,12 @@ std::unique_ptr<cpp2cm::PatchFile> PatchFileParser::Parse(TrivialLexer& lexer)
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"PatchFile");
+        lexer.ThrowExpectationFailure(span, U"PatchFile");
     }
     return value;
 }
@@ -219,6 +219,10 @@ soulng::parser::Match PatchFileParser::PatchFile(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PatchFile"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -365,6 +369,10 @@ soulng::parser::Match PatchFileParser::PatchLine(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PatchLine"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -493,6 +501,10 @@ soulng::parser::Match PatchFileParser::FileName(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("FileName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -615,6 +627,10 @@ soulng::parser::Match PatchFileParser::LineNumber(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("LineNumber"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -722,6 +738,10 @@ soulng::parser::Match PatchFileParser::Patch(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Patch"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -826,6 +846,10 @@ soulng::parser::Match PatchFileParser::Insert(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Insert"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -873,6 +897,10 @@ soulng::parser::Match PatchFileParser::Delete(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Delete"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1014,6 +1042,10 @@ soulng::parser::Match PatchFileParser::Modify(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Modify"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1142,6 +1174,10 @@ soulng::parser::Match PatchFileParser::Text(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Text"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1220,5 +1256,9 @@ soulng::parser::Match PatchFileParser::Newline(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Newline"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

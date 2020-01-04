@@ -1,0 +1,92 @@
+XPathDebug.cm:40:M/public void SetQueryDuration(NOT_CONVERTED duration)/public void SetQueryDuration(Duration duration)/
+XPathDebug.cm:44:M/public NOT_CONVERTED GetQueryDuration() const/public Duration GetQueryDuration() const/
+XPathDebug.cm:48:M/public void SetExecuteDuration(NOT_CONVERTED duration)/public void SetExecuteDuration(Duration duration)/
+XPathDebug.cm:52:M/public NOT_CONVERTED GetExecuteDuration() const/public Duration GetExecuteDuration() const/
+XPathDebug.cm:12:M/public XPathDebugInfo()/private XPathDebugInfo()/
+XPathDebug.cm:12:I/        static XPathDebugInfo() : instance(new XPathDebugInfo())/
+XPathDebug.cm:12:I/        {/
+XPathDebug.cm:12:I/        }/
+XPathDebug.cm:57:D
+XPathDebug.cm:58:D
+XPathDebug.cm:59:D
+XPathDebug.cm:60:D
+XPathDebug.cm:61:D
+XPathDebug.cm:62:D
+XPathDebug.cm:63:D
+XPathDebug.cm:64:D
+XPathDebug.cm:72:M/private NOT_CONVERTED queryDuration;/private Duration queryDuration;/
+XPathDebug.cm:73:M/private NOT_CONVERTED executeDuration;/private Duration executeDuration;/
+XPathDebug.cm:99:M/public void SetXPathQueryDuration(NOT_CONVERTED duration)/public void SetXPathQueryDuration(Duration duration)/
+XPathDebug.cm:103:M/public NOT_CONVERTED XPathQueryDuration()/public Duration XPathQueryDuration()/
+XPathDebug.cm:107:M/public void SetXPathExecuteDuration(NOT_CONVERTED duration)/public void SetXPathExecuteDuration(Duration duration)/
+XPathDebug.cm:111:M/public NOT_CONVERTED XPathExecuteDuration()/public Duration XPathExecuteDuration()/
+XPathDebug.cm:115:D
+XPathDebug.cm:116:D
+XPathDebug.cm:117:D
+XPathDebug.cm:118:D
+XPathDebug.cm:119:D
+XPathDebug.cm:120:D
+XPathDebug.cm:121:D
+XPathDebug.cm:122:D
+XPathFunction.cm:10:I/    using NodeType = System.Dom.NodeType;/
+XPathFunction.cm:154:M/double result = NOT_CONVERTED<double>(ToUtf8(NOT_CONVERTED(string->Value())));/double result = ParseDouble(ToUtf8(Trim(string->Value())));/
+XPathFunction.cm:178:M/double result = NOT_CONVERTED<double>(ToUtf8(NOT_CONVERTED(string->Value())));/double result = ParseDouble(ToUtf8(Trim(string->Value())));/
+XPathFunction.cm:182:M/sngxml::xpath::number/System.XPath.number()/
+XPathFunction.cm:205:M/sngxml::xpath::string()/System.XPath.string()/
+XPathFunction.cm:245:M/sngxml::xpath::string/System.XPath.string/
+XPathFunction.cm:274:M/sngxml::xpath::position/System.XPath.position/
+XPathFunction.cm:289:M/sngxml::xpath::count/System.XPath.count/
+XPathFunction.cm:305:M/public XPathFunctionLibrary()/private XPathFunctionLibrary()/
+XPathFunction.cm:305:I/        static XPathFunctionLibrary() : instance(new XPathFunctionLibrary())/
+XPathFunction.cm:305:I/        {/
+XPathFunction.cm:305:I/        }/
+XPathFunction.cm:323:D
+XPathFunction.cm:324:D
+XPathFunction.cm:325:D
+XPathFunction.cm:326:D
+XPathFunction.cm:327:D
+XPathFunction.cm:328:D
+XPathFunction.cm:329:D
+XPathFunction.cm:330:D
+XPathFunction.cm:350:D
+XPathFunction.cm:351:D
+XPathFunction.cm:352:D
+XPathFunction.cm:353:D
+XPathFunction.cm:354:D
+XPathFunction.cm:355:D
+XPathFunction.cm:356:D
+XPathFunction.cm:357:D
+XPathExpr.cm:11:I/    using Axis = System.Dom.Axis;/
+XPathExpr.cm:11:I/    using NodeType = System.Dom.NodeType;/
+XPathExpr.cm:37:M/public class XPathUnaryExpr : XPathExpr/public abstract class XPathUnaryExpr : XPathExpr/
+XPathExpr.cm:49:M/public class XPathBinaryExpr : XPathExpr/public abstract class XPathBinaryExpr : XPathExpr/
+XPathExpr.cm:711:M/ustring axisName = NOT_CONVERTED(axis);/ustring axisName =  System.Dom.AxisName(axis);/
+XPathExpr.cm:948:M/OutputStringStream strm;/value = ParseDouble(ToUtf8(value_));/
+XPathExpr.cm:949:D
+XPathExpr.cm:950:D
+XPathExpr.cm:1268:M/if (leftBool < rightBool)/if (cast<int>(leftBool) < cast<int>(rightBool))/
+XPathExpr.cm:1277:M/if (leftBool > rightBool)/if (cast<int>(leftBool) > cast<int>(rightBool))/
+XPathExpr.cm:1286:M/if (leftBool <= rightBool)/if (cast<int>(leftBool) <= cast<int>(rightBool))/
+XPathExpr.cm:1295:M/if (leftBool >= rightBool)/if (cast<int>(leftBool) >= cast<int>(rightBool))/
+XPathExpr.cm:1486:M/if (leftBool < rightBool)/if (cast<int>(leftBool) < cast<int>(rightBool))/
+XPathExpr.cm:1495:M/if (leftBool > rightBool)/if (cast<int>(leftBool) > cast<int>(rightBool))/
+XPathExpr.cm:1504:M/if (leftBool <= rightBool)/if (cast<int>(leftBool) <= cast<int>(rightBool))/
+XPathExpr.cm:1513:M/if (leftBool >= rightBool)/if (cast<int>(leftBool) >= cast<int>(rightBool))/
+XPathExpr.cm:1706:I/        static AxisMap() : instance(new AxisMap())/
+XPathExpr.cm:1706:I/        {/
+XPathExpr.cm:1706:I/        }/
+XPathExpr.cm:1706:I/        public static AxisMap& Instance()/
+XPathExpr.cm:1706:I/        {/
+XPathExpr.cm:1706:I/            return *instance;/
+XPathExpr.cm:1706:I/        }/
+XPathExpr.cm:1734:I/        private static UniquePtr<AxisMap> instance;/
+XPathExpr.cm:1738:M/return axisMap.GetAxis(axisName);/return AxisMap.Instance().GetAxis(axisName);/
+XPathEvaluate.cm:12:M/System.Lex.XmlParsingLog debugLog(NOT_CONVERTED);/System.Lex.XmlParsingLog debugLog(Console.Out());/
+XPathEvaluate.cm:13:M/NOT_CONVERTED<NOT_CONVERTED> startQuery = NOT_CONVERTED();/TimePoint startQuery = Now();/
+XPathEvaluate.cm:14:M/NOT_CONVERTED xpathLexer(xpathExpression, "", 0);/XPathLexer xpathLexer(xpathExpression, "", 0);/
+XPathEvaluate.cm:19:M/UniquePtr<XPathExpr> xpathExpr(NOT_CONVERTED(xpathLexer));/UniquePtr<XPathExpr> xpathExpr(XPathParser.Parse(xpathLexer));/
+XPathEvaluate.cm:20:M/NOT_CONVERTED<NOT_CONVERTED> endQuery = NOT_CONVERTED();/TimePoint endQuery = Now();/
+XPathEvaluate.cm:25:M/SetXPathQueryDuration(NOT_CONVERTED(endQuery - startQuery));/SetXPathQueryDuration(endQuery - startQuery);/
+XPathEvaluate.cm:27:M/NOT_CONVERTED<NOT_CONVERTED> startEvaluate = NOT_CONVERTED();/TimePoint startEvaluate = Now();/
+XPathEvaluate.cm:30:M/NOT_CONVERTED<NOT_CONVERTED> endEvaluate = NOT_CONVERTED();/TimePoint endEvaluate = Now();/
+XPathObject.cm:10:I/    using NodeType = System.Dom.NodeType;/

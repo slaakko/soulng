@@ -25,6 +25,7 @@
 #include <sngcm/ast/Concept.hpp>
 #include <sngcm/ast/GlobalVariable.hpp>
 #include <sngcm/ast/Comment.hpp>
+#include <algorithm>
 
 namespace sngcm { namespace ast {
 
@@ -85,6 +86,10 @@ void Node::Read(AstReader& reader)
 {
 }
 
+void Node::SetFullSpan()
+{
+}
+
 UnaryNode::UnaryNode(NodeType nodeType_, const Span& span_) : Node(nodeType_, span_), subject()
 {
 }
@@ -104,6 +109,18 @@ void UnaryNode::Read(AstReader& reader)
     Node::Read(reader);
     subject.reset(reader.ReadNode());
     subject->SetParent(this);
+}
+
+void UnaryNode::SetFullSpan()
+{
+    if (subject)
+    {
+        const Span& thisSpan = GetSpan();
+        subject->SetFullSpan();
+        const Span& childSpan = subject->GetSpan();
+        SetSpanStart(std::min(thisSpan.start, childSpan.start));
+        SetSpanEnd(std::max(thisSpan.end, childSpan.end));
+    }
 }
 
 BinaryNode::BinaryNode(NodeType nodeType, const Span& span_) : Node(nodeType, span_), left(), right()
@@ -130,6 +147,17 @@ void BinaryNode::Read(AstReader& reader)
     left->SetParent(this);
     right.reset(reader.ReadNode());
     right->SetParent(this);
+}
+
+void BinaryNode::SetFullSpan()
+{
+    const Span& thisSpan = GetSpan();
+    left->SetFullSpan();
+    right->SetFullSpan();
+    const Span& leftSpan = left->GetSpan();
+    const Span& rightSpan = right->GetSpan();
+    SetSpanStart(std::min(thisSpan.start, std::min(leftSpan.start, rightSpan.start)));
+    SetSpanEnd(std::max(thisSpan.end, std::max(leftSpan.end, rightSpan.end)));
 }
 
 NodeCreator::NodeCreator()

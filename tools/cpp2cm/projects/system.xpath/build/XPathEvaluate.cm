@@ -1,0 +1,41 @@
+using System;
+using System.Collections;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathEvaluate.hpp' using cpp2cm version 1.0.0
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathEvaluate.cpp' using cpp2cm version 1.0.0
+
+namespace System.XPath
+{
+    public UniquePtr<XPathObject> Evaluate(const ustring& xpathExpression, System.Dom.Node* node)
+    {
+        System.Lex.XmlParsingLog debugLog(Console.Out());
+        TimePoint startQuery = Now();
+        XPathLexer xpathLexer(xpathExpression, "", 0);
+        if (XPathDebugParsing())
+        {
+            xpathLexer.SetLog(&debugLog);
+        }
+        UniquePtr<XPathExpr> xpathExpr(XPathParser.Parse(xpathLexer));
+        TimePoint endQuery = Now();
+        if (XPathDebugQuery())
+        {
+            UniquePtr<System.Dom.Node> queryDom = xpathExpr->ToDom();
+            SetXPathQueryDom(Rvalue(queryDom));
+            SetXPathQueryDuration(endQuery - startQuery);
+        }
+        TimePoint startEvaluate = Now();
+        XPathContext context(node, 1, 1);
+        UniquePtr<XPathObject> result = xpathExpr->Evaluate(context);
+        TimePoint endEvaluate = Now();
+        if (XPathDebugQuery())
+        {
+            SetXPathExecuteDuration(endEvaluate - startEvaluate);
+        }
+        return result;
+    }
+    public UniquePtr<XPathObject> Evaluate(const ustring& xpathExpression, System.Dom.Document* document)
+    {
+        return Evaluate(xpathExpression, cast<System.Dom.Node*>(document));
+    }
+} // namespace System.XPath

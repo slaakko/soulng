@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="system.xml" type="library" targetName="System.Xml">
+  <imports>
+    <import name="std"/>
+    <import name="boost"/>
+    <import name="soulng.util"/>
+    <import project="../system.lex/system.lex.xml"/>
+    <import project="../system.parsing/system.parsing.xml"/>
+  </imports>
+  <vcxproject file="../../../../sngxml/xml/xml.vcxproj"/>
+  <include path="../.."/>
+  <target dir="build"/>
+  <references>
+    <reference project="../System.Base/System.Base.cmp" kind="install"/>
+    <reference project="../System.Lex/System.Lex.cmp" kind="install"/>
+    <reference project="../System.Parsing/System.Parsing.cmp" kind="install"/>
+  </references>
+  <install dir="D:\work\cmajorm\cmajor\system\System.Xml"/>
+  <map file="map.xml"/>
+  <patches>
+    <patch file="system.xml.patches"/>
+  </patches>
+  <filter>
+    <file exclude="*"/>
+    <file include="XmlApi.hpp"/>
+    <file include="XmlApi.cpp"/>
+    <file include="XmlContentHandler.hpp"/>
+    <file include="XmlContentHandler.cpp"/>
+    <file include="XmlParserInterface.hpp"/>
+    <file include="XmlParserInterface.cpp"/>
+    <file include="XmlProcessor.hpp"/>
+    <file include="XmlProcessor.cpp"/>
+  </filter>
+  <text>
+    <file name="XmlParser.parser"/>
+    <file name="XmlParser.spg"/>
+  </text>
+</project>

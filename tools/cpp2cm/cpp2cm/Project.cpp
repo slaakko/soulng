@@ -16,8 +16,8 @@
 #include <sngcpp/binder/VirtualBinder.hpp>
 #include <sngcpp/ast/Reader.hpp>
 #include <sngcpp/ast/Writer.hpp>
-#include <sngcm/lexer/CmajorLexer.hpp>
-#include <sngcm/parser/CompileUnit.hpp>
+#include <sngcm/cmlexer/CmajorLexer.hpp>
+#include <sngcm/cmparser/CompileUnit.hpp>
 #include <sngcm/ast/SourceWriter.hpp>
 #include <sngcm/ast/Merge.hpp>
 #include <sngxml/dom/Parser.hpp>
@@ -35,9 +35,10 @@ namespace cpp2cm {
 using namespace soulng::util;
 using namespace soulng::unicode;
 
-Project::Project(const std::string& systemXmlFilePath_, const std::string& xmlFilePath_) :
+Project::Project(const std::string& systemXmlFilePath_, const std::string& xmlFilePath_, bool nothrowStatus_) :
     systemXmlFilePath(systemXmlFilePath_), systemRootDir(Path::GetDirectoryName(systemXmlFilePath)),
-    xmlFilePath(xmlFilePath_), projectRootDir(GetFullPath(Path::GetDirectoryName(xmlFilePath))), doc(sngxml::dom::ReadDocument(xmlFilePath)), verbose(false), system(false)
+    xmlFilePath(xmlFilePath_), projectRootDir(GetFullPath(Path::GetDirectoryName(xmlFilePath))), doc(sngxml::dom::ReadDocument(xmlFilePath)), verbose(false), system(false),
+    nothrowList(nothrowStatus_)
 {
     sngxml::dom::Element* projectElement = doc->DocumentElement();
     name = projectElement->GetAttribute(U"name");
@@ -64,8 +65,10 @@ void Project::Process(bool verbose, ProcessType processType)
 {
     this->verbose = verbose;
     ReadFilter();
+    ReadNothrowList();
     ReadVCXProjectFilePath();
     ReadSources();
+    ReadTextFiles();
     ReadMergeDirFiles();
     ReadIncludePath();
     ReadTargetDir();
@@ -200,6 +203,32 @@ void Project::ReadVCSources()
                         {
                             files.push_back(cppFile);
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Project::ReadTextFiles()
+{
+    std::unique_ptr<sngxml::xpath::XPathObject> result = sngxml::xpath::Evaluate(U"/project/text/file", doc.get());
+    if (result)
+    {
+        if (result->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+        {
+            sngxml::xpath::XPathNodeSet* nodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(result.get());
+            int n = nodeSet->Length();
+            for (int i = 0; i < n; ++i)
+            {
+                sngxml::dom::Node* node = (*nodeSet)[i];
+                if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
+                {
+                    sngxml::dom::Element* textFileElement = static_cast<sngxml::dom::Element*>(node);
+                    std::u32string nameAttribute = textFileElement->GetAttribute(U"name");
+                    if (!nameAttribute.empty())
+                    {
+                        textFiles.push_back(nameAttribute);
                     }
                 }
             }
@@ -365,6 +394,67 @@ void Project::ReadFilter()
                     if (!excludeAttr.empty())
                     {
                         excludedClasses.insert(excludeAttr);
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Project::ReadNothrowList()
+{
+    std::unique_ptr<sngxml::xpath::XPathObject> result = sngxml::xpath::Evaluate(U"/project/nothrow/item", doc.get());
+    if (result)
+    {
+        if (result->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+        {
+            sngxml::xpath::XPathNodeSet* nodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(result.get());
+            for (int i = 0; i < nodeSet->Length(); ++i)
+            {
+                sngxml::dom::Node* node = (*nodeSet)[i];
+                if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
+                {
+                    sngxml::dom::Element* element = static_cast<sngxml::dom::Element*>(node);
+                    std::u32string typeText = element->GetAttribute(U"type");
+                    Item::Type type = Item::Type::none;
+                    if (typeText.empty())
+                    {
+                        throw std::runtime_error("nothrow item type not specified");
+                    }
+                    if (typeText == U"file")
+                    {
+                        type = Item::Type::file;
+                    }
+                    else if (typeText == U"class")
+                    {
+                        type = Item::Type::class_;
+                    }
+                    else if (typeText == U"function")
+                    {
+                        type = Item::Type::function;
+                    }
+                    else
+                    {
+                        throw std::runtime_error("unknonwn nothrow item type '" + ToUtf8(typeText) + "'");
+                    }
+                    std::u32string excludePattern = element->GetAttribute(U"exclude");
+                    if (!excludePattern.empty())
+                    {
+                        NothrowPattern pattern(context, NothrowPattern::Kind::exclude, type, excludePattern);
+                        nothrowList.AddPattern(pattern);
+                    }
+                    else
+                    {
+                        std::u32string includePattern = element->GetAttribute(U"include");
+                        if (!includePattern.empty())
+                        {
+                            NothrowPattern pattern(context, NothrowPattern::Kind::include, type, includePattern);
+                            nothrowList.AddPattern(pattern);
+                        }
+                        else
+                        {
+                            throw std::runtime_error("nothrow pattern kind not specified");
+                        }
                     }
                 }
             }
@@ -589,7 +679,7 @@ void Project::Import()
                         if (!projectAttr.empty())
                         {
                             std::string projectXmlFilePath = GetFullPath(Path::Combine(projectRootDir, ToUtf8(projectAttr)));
-                            std::unique_ptr<Project> project(new Project(systemXmlFilePath, projectXmlFilePath));
+                            std::unique_ptr<Project> project(new Project(systemXmlFilePath, projectXmlFilePath, nothrowList.Verbose()));
                             if (verbose)
                             {
                                 project->verbose = true;
@@ -630,7 +720,7 @@ void Project::ReadSystemProjects()
                     if (!fileAttr.empty())
                     {
                         std::string projectXmlFilePath = GetFullPath(Path::Combine(systemRootDir, ToUtf8(fileAttr)));
-                        std::unique_ptr<Project> project(new Project(systemXmlFilePath, projectXmlFilePath));
+                        std::unique_ptr<Project> project(new Project(systemXmlFilePath, projectXmlFilePath, nothrowList.Verbose()));
                         if (verbose)
                         {
                             project->verbose = true;
@@ -718,7 +808,7 @@ void Project::Convert(ProcessType processType)
     }
     boost::filesystem::create_directories(dir);
     map.SetCurrentProjectName(name);
-    Converter converter(verbose, targetDir, symbolTable, map, excludedClasses, excludedFunctions);
+    Converter converter(verbose, targetDir, symbolTable, map, excludedClasses, excludedFunctions, nothrowList);
     map.SetSymbolTable(&symbolTable);
     for (Project* importProject : imports)
     {
@@ -885,10 +975,21 @@ void Project::Convert(ProcessType processType)
     {
         sourceFileNames.push_back(extraFile->Name());
     }
+    for (const auto& textFile : textFiles)
+    {
+        sourceFileNames.push_back(textFile);
+    }
     std::sort(sourceFileNames.begin(), sourceFileNames.end());
     for (const auto& sourceFileName : sourceFileNames)
     {
-        formatter.WriteLine("source <" + ToUtf8(sourceFileName) + ">;");
+        if (Path::GetExtension(ToUtf8(sourceFileName)) == ".cm")
+        {
+            formatter.WriteLine("source <" + ToUtf8(sourceFileName) + ">;");
+        }
+        else
+        {
+            formatter.WriteLine("text <" + ToUtf8(sourceFileName) + ">;");
+        }
     }
     if (verbose)
     {
@@ -918,9 +1019,12 @@ void Project::ReadPatchFiles()
                         std::string patchFilePath = GetFullPath(Path::Combine(projectRootDir, ToUtf8(file)));
                         std::string content = ReadFile(patchFilePath);
                         std::u32string text = ToUtf32(content);
-                        TrivialLexer lexer(text, patchFilePath, index++);
-                        std::unique_ptr<cpp2cm::PatchFile> patchFile = PatchFileParser::Parse(lexer);
-                        patchFiles.push_back(std::move(patchFile));
+                        if (!text.empty())
+                        {
+                            TrivialLexer lexer(text, patchFilePath, index++);
+                            std::unique_ptr<cpp2cm::PatchFile> patchFile = PatchFileParser::Parse(lexer);
+                            patchFiles.push_back(std::move(patchFile));
+                        }
                     }
                 }
             }

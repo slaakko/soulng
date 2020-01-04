@@ -161,6 +161,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ClassInheritanceDiagramCode.cpp" />
+    <ClCompile Include="Grammar.cpp" />
     <ClCompile Include="Html.cpp" />
     <ClCompile Include="HtmlContentFilePathResolver.cpp" />
     <ClCompile Include="HtmlLexerFileSourceGenerator.cpp" />
@@ -180,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClassInheritanceDiagramCode.hpp" />
+    <ClInclude Include="Grammar.hpp" />
     <ClInclude Include="Html.hpp" />
     <ClInclude Include="HtmlApi.hpp" />
     <ClInclude Include="HtmlContentFilePathResolver.hpp" />

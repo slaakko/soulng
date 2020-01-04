@@ -8,7 +8,7 @@
 
 namespace sngcm { namespace ast {
 
-AstWriter::AstWriter(const std::string& fileName_) : binaryWriter(fileName_)
+AstWriter::AstWriter(const std::string& fileName_) : binaryWriter(fileName_), lexers(nullptr)
 {
 }
 
@@ -32,12 +32,23 @@ void AstWriter::Write(const Span& span)
     }
     else
     {
+        Span s = span;
+        if (span.fileIndex >= 0 && span.fileIndex < lexers->size())
+        {
+            soulng::lexer::Lexer* lexer = (*lexers)[span.fileIndex];
+            lexer->ConvertExternal(s);
+        }
         binaryWriter.Write(true);
-        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(span.fileIndex));
-        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(span.line));
-        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(span.start));
-        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(span.end));
+        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(s.fileIndex));
+        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(s.line));
+        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(s.start));
+        binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(s.end));
     }
+}
+
+void AstWriter::SetLexers(std::vector<soulng::lexer::Lexer*>* lexers_)
+{
+    lexers = lexers_;
 }
 
 } } // namespace sngcm::ast

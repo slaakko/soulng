@@ -29,7 +29,8 @@ tokens CppTokenLexerTokens
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
     (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
-    (WS, "white space"), (LINECOMMENT, "line comment"), (BLOCKCOMMENT, "block comment"), (KEYWORD, "keyword"), (ID, "identifier"), (NUMBER, "number"), (PP, "pp"), (OTHER, "other"),
+    (WS, "white space"), (LINECOMMENT, "line comment"), (BLOCKCOMMENT, "block comment"), (BLOCKCOMMENTLINE, "block comment line"),
+    (KEYWORD, "keyword"), (ID, "identifier"), (NUMBER, "number"), (PP, "pp"), (OTHER, "other"),
     (MAX, "max")
 }
 
@@ -57,7 +58,8 @@ expressions
     ws = "[\t ]+";
     newline = "\r\n|\n|\r";
     linecomment = "//[^\n\r]*{newline}";
-    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    blockcomment = "/\*([^*\n\r]|\*[^/\n\r])*(\*/|{newline})";
+    blockcommentline = "([^*\n\r]|\*[^/\n\r])*(\*/|{newline})";
     id = "{idstart}{idcont}*";
     digit = "[0-9]";
     nondigit = "[a-zA-Z_]";
@@ -85,6 +87,7 @@ lexer api(SNGCPP_LEXER_API) CppTokenLexer
     "{newline}" { }
     "{linecomment}" { return LINECOMMENT; }
     "{blockcomment}" { return BLOCKCOMMENT; }
+    "{blockcommentline}" $(1) { return BLOCKCOMMENTLINE; }
     "{id}" { if (GetKeywordToken(token.match) != INVALID_TOKEN) return KEYWORD; else return ID; }
     "{characterliteral}" { return CHARLIT; }
     "{stringliteral}" { return STRINGLIT; }
@@ -141,8 +144,14 @@ lexer api(SNGCPP_LEXER_API) CppTokenLexer
     "\{" { return OTHER; }
     "\}" { return OTHER; }
 
+    actions
+    {
+        $(1)={ if (!inBlockComment) return INVALID_TOKEN; }
+    }
+
     variables
     {
+        bool inBlockComment;
         sngcpp::ast::SourceCodeWriter* writer;
     }
 }

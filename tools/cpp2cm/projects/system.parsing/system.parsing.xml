@@ -14,7 +14,7 @@
   </references>
   <map file="map.xml"/>
   <patches>
-    <!-- <patch file="system.parsing.patches"/> -->
+    <patch file="system.parsing.patches"/>
   </patches>
   <filter>
   </filter>

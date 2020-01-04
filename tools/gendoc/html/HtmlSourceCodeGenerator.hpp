@@ -142,6 +142,11 @@ public:
     void Visit(RefCaptureNode& refCaptureNode) override;
     void Visit(ThisCaptureNode& thisCaptureNode) override;
     void Visit(IdentifierCaptureNode& identifierCaptureNode) override;
+    void Visit(ConstNode& constNode) override;
+    void Visit(VolatileNode& volatileNode) override;
+    void Visit(PointerNode& pointerNode) override;
+    void Visit(RValueRefNode& rValueRefNode) override;
+    void Visit(LValueRefNode& lValueRefNode) override;
 private:
     std::u32string projectName;
     SymbolTable& symbolTable;
@@ -175,6 +180,7 @@ private:
     int inlineCodeLimit;
     int inlineCodeOffset;
     bool skip;
+    bool inBlockComment;
     std::unordered_map<std::u32string, std::unique_ptr<sngxml::dom::Element>>& inlineCodeMap;
     HtmlContentFilePathResolver* contentFilePathResolver;
 };

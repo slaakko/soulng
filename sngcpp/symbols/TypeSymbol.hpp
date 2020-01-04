@@ -26,6 +26,7 @@ public:
     virtual bool IsDerivedTypeSymbol() const { return false; }
     virtual bool IsExternalTypeSymbol() const { return false; }
     virtual bool IsReferenceTypeSymbol() const { return false; }
+    virtual bool IsPointerTypeSymbol() const { return false; }
     virtual bool IsTemplateParameterSymbol() const { return false; }
     virtual bool HasConstDerivation() const { return false; }
     virtual ClassKey GetClassKey() const { return ClassKey::class_; }

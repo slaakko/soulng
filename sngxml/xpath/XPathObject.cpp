@@ -95,7 +95,12 @@ XPathBoolean::XPathBoolean(bool value_) : XPathObject(XPathObjectType::boolean),
 std::unique_ptr<dom::Node> XPathBoolean::ToDom() const
 {
     std::unique_ptr<dom::Element> result(new dom::Element(U"boolean"));
-    result->SetAttribute(U"value", value ? U"true" : U"false");
+    std::u32string val = U"true";
+    if (!value)
+    {
+        val = U"false";
+    }
+    result->SetAttribute(U"value", val);
     return std::unique_ptr<dom::Node>(result.release());
 }
 

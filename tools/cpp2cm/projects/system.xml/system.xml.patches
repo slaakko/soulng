@@ -1,0 +1,46 @@
+XmlContentHandler.cm:39:I/        public typedef List<Attribute>.Iterator Iterator;/
+XmlContentHandler.cm:39:I/        public typedef List<Attribute>.ConstIterator ConstIterator;/
+XmlContentHandler.cm:39:M/public NOT_CONVERTED begin()/public List<Attribute>.Iterator Begin()/
+XmlContentHandler.cm:43:M/public NOT_CONVERTED end()/public List<Attribute>.Iterator End()/
+XmlContentHandler.cm:47:M/public NOT_CONVERTED begin() const/public List<Attribute>.ConstIterator Begin() const/
+XmlContentHandler.cm:51:M/public NOT_CONVERTED end() const/public List<Attribute>.ConstIterator End() const/
+XmlContentHandler.cm:55:M/public NOT_CONVERTED cbegin() const/public List<Attribute>.ConstIterator CBegin() const/
+XmlContentHandler.cm:59:M/public NOT_CONVERTED cend() const/public List<Attribute>.ConstIterator CEnd() const/
+XmlContentHandler.cm:117:M/public virtual void Text(const ustring& text)/public virtual void HandleText(const ustring& text)/
+XmlContentHandler.cm:120:M/public virtual void Comment(const ustring& comment)/public virtual void HandleComment(const ustring& comment)/
+XmlContentHandler.cm:123:M/public virtual void PI(const ustring& target, const ustring& data)/public virtual void HandlePI(const ustring& target, const ustring& data)/
+XmlContentHandler.cm:126:M/public virtual void CDataSection(const ustring& cdata)/public virtual void HandleCDataSection(const ustring& cdata)/
+XmlParserInterface.cm:49:M/System.Lex.XmlParsingLog debugLog(NOT_CONVERTED);/System.Lex.XmlParsingLog debugLog(Console.Error());/
+XmlParserInterface.cm:56:M/NOT_CONVERTED(xmlLexer, &xmlProcessor);/XmlParser.Parse(xmlLexer, &xmlProcessor);/
+XmlParserInterface.cm:32:M/string xmlContent = NOT_CONVERTED(xmlFileName);/string xmlContent = System.IO.File.ReadAllText(xmlFileName);/
+XmlProcessor.cm:242:M/List<ustring> parts = NOT_CONVERTED(qualifiedName, ':');/List<ustring> parts = qualifiedName.Split(':');/
+XmlProcessor.cm:290:M/private HashMap<ustring, UniquePtr<Entity>> entityMap;/private HashMap<ustring, Entity*> entityMap;/
+XmlProcessor.cm:291:I/        private List<UniquePtr<Entity>> entities;/
+XmlProcessor.cm:50:I/            InternalEntity* quot = new InternalEntity(u"\"");/
+XmlProcessor.cm:50:M/entityMap[u"quot"] = UniquePtr<Entity>(new InternalEntity(u"\""));/entityMap[u"quot"] = quot;/
+XmlProcessor.cm:51:I/            InternalEntity* amp = new InternalEntity(u"&");/
+XmlProcessor.cm:51:M/entityMap[u"amp"] = UniquePtr<Entity>(new InternalEntity(u"&"));/entityMap[u"amp"] = amp;/
+XmlProcessor.cm:52:I/            InternalEntity* apos = new InternalEntity(u"\'");/
+XmlProcessor.cm:52:M/entityMap[u"apos"] = UniquePtr<Entity>(new InternalEntity(u"\'"));/entityMap[u"apos"] = apos;/
+XmlProcessor.cm:53:I/            InternalEntity* lt = new InternalEntity(u"<");/
+XmlProcessor.cm:53:M/entityMap[u"lt"] = UniquePtr<Entity>(new InternalEntity(u"<"));/entityMap[u"lt"] = lt;/
+XmlProcessor.cm:54:I/            InternalEntity* gt = new InternalEntity(u">");/
+XmlProcessor.cm:54:M/entityMap[u"gt"] = UniquePtr<Entity>(new InternalEntity(u">"));/entityMap[u"gt"] = gt;/
+XmlProcessor.cm:55:I/            entities.Add(UniquePtr<Entity>(quot));/
+XmlProcessor.cm:55:I/            entities.Add(UniquePtr<Entity>(amp));/
+XmlProcessor.cm:55:I/            entities.Add(UniquePtr<Entity>(apos));/
+XmlProcessor.cm:55:I/            entities.Add(UniquePtr<Entity>(lt));/
+XmlProcessor.cm:55:I/            entities.Add(UniquePtr<Entity>(gt));/
+XmlProcessor.cm:80:M/contentHandler->Text(text);/contentHandler->HandleText(text);/
+XmlProcessor.cm:84:M/contentHandler->Comment(text);/contentHandler->HandleComment(text);/
+XmlProcessor.cm:88:M/contentHandler->PI(target, data);/contentHandler->HandlePI(target, data);/
+XmlProcessor.cm:92:M/contentHandler->CDataSection(cdata);/contentHandler->HandleCDataSection(cdata);/
+XmlProcessor.cm:183:M/HashMap<ustring, UniquePtr<Entity>>.ConstIterator it = entityMap.CFind(entityName);/HashMap<ustring, Entity*>.ConstIterator it = entityMap.CFind(entityName);/
+XmlProcessor.cm:186:M/const UniquePtr<Entity>& entity = it->second;/Entity* entity = it->second;/
+XmlProcessor.cm:189:M/InternalEntity* internalEntity = cast<InternalEntity*>(entity.Get());/InternalEntity* internalEntity = cast<InternalEntity*>(entity);/
+XmlProcessor.cm:127:M/if (tagStack.empty())/if (tagStack.IsEmpty())/
+XmlProcessor.cm:143:M/if (namespaceUriStack.empty())/if (namespaceUriStack.IsEmpty())/
+XmlProcessor.cm:150:M/if (namespacePrefixStack.empty())/if (namespacePrefixStack.IsEmpty())/
+XmlProcessor.cm:191:M/if (!attValueStack.empty())/if (!attValueStack.IsEmpty())/
+XmlProcessor.cm:217:M/if (attValueStack.empty())/if (attValueStack.IsEmpty())/
+XmlProcessor.cm:275:M/int errorColumn = GetErrorColumn(token.match.begin - lexer.Start());/int errorColumn = GetErrorColumn(cast<int>(token.match.begin - lexer.Start()));/

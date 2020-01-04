@@ -8,6 +8,7 @@ namespace std
         typedef type const_iterator;
         basic_string(int, CharT);
         basic_string(const CharT*);
+        basic_string(const CharT* begin, const CharT* end);
         const_iterator begin() const;
         const_iterator end() const;
         const  CharT* data() const;

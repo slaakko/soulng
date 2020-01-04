@@ -34,6 +34,8 @@ void PrintHelp()
     std::cout << "  Install to installation directory defined in the PROJECT.xml." << std::endl;
     std::cout << "--system | -s" << std::endl;
     std::cout << "  Build system XML's." << std::endl;
+    std::cout << "--nothrow-info | -n" << std::endl;
+    std::cout << "  Print nothrow status for each file, class and function." << std::endl;
 }
 
 std::string SystemDirectoryPath()
@@ -80,6 +82,7 @@ int main(int argc, const char** argv)
         bool system = false;
         cpp2cm::ProcessType processType = cpp2cm::ProcessType::stage;
         std::string projectXmlFilePath;
+        bool nothrowStatus = false;
         for (int i = 1; i < argc; ++i)
         {
             std::string arg = argv[i];
@@ -101,6 +104,10 @@ int main(int argc, const char** argv)
                 else if (arg == "--install")
                 {
                     processType = cpp2cm::ProcessType::install;
+                }
+                else if (arg == "--nothrow-info")
+                {
+                    nothrowStatus = true;
                 }
                 else
                 {
@@ -129,6 +136,10 @@ int main(int argc, const char** argv)
                     {
                         processType = cpp2cm::ProcessType::install;
                     }
+                    else if (o == 'n')
+                    {
+                        nothrowStatus = true;
+                    }
                     else
                     {
                         throw std::runtime_error("unknown option '-" + std::string(1, o) + "'");
@@ -147,7 +158,7 @@ int main(int argc, const char** argv)
         }
         else
         {
-            cpp2cm::Project project(systemXmlFilePath, projectXmlFilePath);
+            cpp2cm::Project project(systemXmlFilePath, projectXmlFilePath, nothrowStatus);
             project.Process(verbose, processType);
         }
     }

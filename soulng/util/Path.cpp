@@ -116,10 +116,26 @@ InvalidPathException::InvalidPathException(const std::string& message_): std::ru
 
 std::string Path::MakeCanonical(const std::string& path)
 {
+    bool startsWithDriveLetter = false;
+#ifdef _WIN32
+    if (path.length() >= 2 && std::isalpha(path[0]) && path[1] == ':')
+    {
+        startsWithDriveLetter = true;
+    }
+#endif
     std::string result;
     char prev = ' ';
+    bool first = true;
     for (char c : path)
     {
+        if (first)
+        {
+            first = false;
+            if (startsWithDriveLetter)
+            {
+                c = std::toupper(static_cast<unsigned char>(c));
+            }
+        }
         if (c == '\\')
         {
             c = '/';

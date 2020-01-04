@@ -49,6 +49,10 @@ soulng::parser::Match IdentifierParser::Identifier(CppLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Identifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -123,6 +127,10 @@ soulng::parser::Match IdentifierParser::IdNode(CppLexer& lexer, sngcpp::cppparse
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IdNode"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -270,6 +278,10 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NestedNameSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -469,5 +481,9 @@ soulng::parser::Match IdentifierParser::QualifiedIdNode(CppLexer& lexer, sngcpp:
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("QualifiedIdNode"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

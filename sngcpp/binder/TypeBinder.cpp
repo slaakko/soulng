@@ -159,6 +159,11 @@ void TypeBinder::Visit(DeclarationSequenceNode& declarationSequenceNode)
     declarationSequenceNode.Right()->Accept(*this);
 }
 
+void TypeBinder::Visit(LinkageSpecificationNode& linkageSpecificationNode)
+{
+    linkageSpecificationNode.Declarations()->Accept(*this);
+}
+
 void TypeBinder::Visit(TypedefNode& typedefNode)
 {
     Symbol* symbol = symbolTable.GetSymbolNothrow(&typedefNode);
@@ -249,6 +254,7 @@ void TypeBinder::Visit(ClassNode& classNode)
     if (symbol->IsClassTypeSymbol())
     {
         ClassTypeSymbol* classTypeSymbol = static_cast<ClassTypeSymbol*>(symbol);
+        symbolTable.MapNode(classNode.ClassName(), classTypeSymbol);
         classTypeSymbol->SetAccess(currentAccessSpecifier);
         classTypeSymbol->SetFileId(fileId);
         classTypeSymbol->SetFileName(fileName);
@@ -281,7 +287,7 @@ void TypeBinder::Visit(BaseClassSpecifierSequenceNode& baseClassSpecifierSequenc
 
 void TypeBinder::Visit(BaseClassSpecifierNode& baseClassSpecifierNode)
 {
-    sngcpp::symbols::TypeSymbol* baseClass = ResolveType(symbolTable, containerScope, std::vector<ContainerScope*>(), *currentSourceFile, TypeResolverFlags::none, currentClass,
+    sngcpp::symbols::TypeSymbol* baseClass = ResolveType(symbolTable, containerScope, std::vector<ContainerScope*>(), *currentSourceFile, TypeResolverFlags::notSelf, currentClass,
         baseClassSpecifierNode.ClassName());
     symbolTable.MapNode(&baseClassSpecifierNode, baseClass);
     currentClass->AddBaseClass(baseClass);
@@ -576,6 +582,11 @@ void TypeBinder::Visit(NestedIdNode& nestedIdNode)
 void TypeBinder::Visit(IdentifierNode& identifierNode)
 {
     idSequence.push_back(&identifierNode);
+}
+
+void TypeBinder::Visit(DtorIdNode& dtorIdNode)
+{
+    idSequence.push_back(&dtorIdNode);
 }
 
 void TypeBinder::Visit(LabeledStatementNode& labeledStatementNode)

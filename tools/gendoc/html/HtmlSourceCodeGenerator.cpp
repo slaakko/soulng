@@ -33,7 +33,7 @@ HtmlSourceCodeGenerator::HtmlSourceCodeGenerator(const std::u32string& projectNa
     lineStarts(nullptr), firstBaseClass(false), firstParam(false), firstTemplateParameter(false), firstTemplateArgument(false),
     firstMemberInitializer(false), firstInitializer(false), firstEnumerator(false), rangeForDeclaration(false), blockLevel(0),
     currentAccess(Specifier::private_), inlineCodeLimit(inlineCodeLimit_), inlineCodeOffset(0), inlineCodeMap(inlineCodeMap_), skip(false),
-    contentFilePathResolver(contentFilePathResolver_)
+    inBlockComment(false), contentFilePathResolver(contentFilePathResolver_)
 {
     htmlElement.reset(new sngxml::dom::Element(U"html"));
 }
@@ -50,6 +50,10 @@ void HtmlSourceCodeGenerator::WriteDocument()
 
 void HtmlSourceCodeGenerator::Visit(SourceFileNode& sourceFileNode)
 {
+    if (sourceFileNode.SourceFilePath().find("Json.hpp") != std::string::npos)
+    {
+        int x = 0;
+    }
     lineStarts = sourceFileNode.LineStarts();
     htmlFilePath = sourceFileNode.HtmlSourceFilePath();
     std::unique_ptr<sngxml::dom::Element> headElement(new sngxml::dom::Element(U"head"));
@@ -170,6 +174,10 @@ std::u32string HtmlSourceCodeGenerator::MakeInlineSymbolRef(Symbol* symbol)
 
 void HtmlSourceCodeGenerator::WriteId(IdentifierNode* id, Symbol* symbol, bool writeType)
 {
+    if (id->Identifier() == U"ReadBool")
+    {
+        int x = 0;
+    }
     MoveTo(id->GetSpan());
     if (symbol)
     {
@@ -350,7 +358,7 @@ void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<Iden
             }
             TypeSymbol* templateArgumentSymbol = classTemplateSpecializationSymbol->TemplateArgumentSymbols()[i];
             Node* templateArgumentNode = templateArgumentNodes[i];
-            WriteType(templateArgumentSymbol, symbolTable.GetIdNodeSequence(templateArgumentNode), templateIdNode);
+            templateArgumentNode->Accept(*this);
         }
         writer.WriteOther(U">");
     }
@@ -377,6 +385,10 @@ void HtmlSourceCodeGenerator::WriteType(TypeSymbol* type, const std::vector<Iden
 void HtmlSourceCodeGenerator::MoveTo(const Span& span)
 {
     int lineNumber = span.line;
+    if (lineNumber == 77)
+    {
+        int x = 0;
+    }
     while (lineNumber > currentSourceLineNumber)
     {
         if (!lineElement)
@@ -451,7 +463,7 @@ void HtmlSourceCodeGenerator::UseInputLine()
 {
     const std::u32string& line = inputLines[currentSourceLineNumber - 1];
     OpenLine();
-    ParseSourceLine(line, writer);
+    ParseSourceLine(line, writer, inBlockComment);
     CloseLine();
 }
 
@@ -554,9 +566,7 @@ void HtmlSourceCodeGenerator::Visit(ForwardClassDeclarationNode& forwardClassDec
     MoveTo(forwardClassDeclarationNode.GetSpan());
     writer.WriteKeyword(ToString(forwardClassDeclarationNode.GetClassKey()));
     writer.WriteSpace(1);
-    idSequence.clear();
     forwardClassDeclarationNode.ClassName()->Accept(*this);
-    WriteIdSequence(true, symbolTable.GetSymbolNothrow(forwardClassDeclarationNode.ClassName()));
     writer.WriteOther(U";");
 }
 
@@ -565,9 +575,7 @@ void HtmlSourceCodeGenerator::Visit(ElaborateClassNameNode& elaborateClassNameNo
     MoveTo(elaborateClassNameNode.GetSpan());
     writer.WriteKeyword(ToString(elaborateClassNameNode.GetClassKey()));
     writer.WriteSpace(1);
-    idSequence.clear();
     elaborateClassNameNode.ClassName()->Accept(*this);
-    WriteIdSequence(true, symbolTable.GetSymbolNothrow(&elaborateClassNameNode));
 }
 
 void HtmlSourceCodeGenerator::Visit(ClassNode& classNode)
@@ -575,9 +583,7 @@ void HtmlSourceCodeGenerator::Visit(ClassNode& classNode)
     MoveTo(classNode.GetSpan());
     writer.WriteKeyword(ToString(classNode.GetClassKey()));
     writer.WriteSpace(1);
-    idSequence.clear();
     classNode.ClassName()->Accept(*this);
-    WriteIdSequence(true, symbolTable.GetSymbolNothrow(&classNode));
     WriteSpecifiers(classNode.ClassVirtSpecifiers());
     writer.WriteSpace(1);
     if (classNode.BaseClasses())
@@ -619,9 +625,7 @@ void HtmlSourceCodeGenerator::Visit(BaseClassSpecifierNode& baseClassSpecifierNo
     }
     else
     {
-        idSequence.clear();
         baseClassSpecifierNode.ClassName()->Accept(*this);
-        WriteIdSequence(true, symbolTable.GetSymbolNothrow(&baseClassSpecifierNode));
     }
 }
 
@@ -840,9 +844,7 @@ void HtmlSourceCodeGenerator::Visit(CaseStatementNode& caseStatementNode)
 {
     MoveTo(caseStatementNode.GetSpan());
     writer.WriteKeyword(U"case");
-    idSequence.clear();
     caseStatementNode.CaseExpr()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(&caseStatementNode));
     writer.WriteOther(U":");
     caseStatementNode.Child()->Accept(*this);
 }
@@ -860,10 +862,8 @@ void HtmlSourceCodeGenerator::Visit(ExpressionStatementNode& expressionStatement
     MoveTo(expressionStatementNode.GetSpan());
     if (expressionStatementNode.Child())
     {
-        idSequence.clear();
         firstInitializer = true;
         expressionStatementNode.Child()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(&expressionStatementNode));
     }
     writer.WriteOther(U";");
 }
@@ -908,9 +908,7 @@ void HtmlSourceCodeGenerator::Visit(IfStatementNode& ifStatementNode)
     MoveTo(ifStatementNode.GetSpan());
     writer.WriteKeyword(U"if ");
     writer.WriteOther(U"(");
-    idSequence.clear();
     ifStatementNode.Condition()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(ifStatementNode.Condition()));
     writer.WriteOther(U")");
     ifStatementNode.ThenS()->Accept(*this);
     if (ifStatementNode.ElseS())
@@ -926,9 +924,7 @@ void HtmlSourceCodeGenerator::Visit(SwitchStatementNode& switchStatementNode)
     MoveTo(switchStatementNode.GetSpan());
     writer.WriteKeyword(U"switch ");
     writer.WriteOther(U"(");
-    idSequence.clear();
     switchStatementNode.Condition()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(switchStatementNode.Condition()));
     writer.WriteOther(U")");
     switchStatementNode.Statement()->Accept(*this);
 }
@@ -938,9 +934,7 @@ void HtmlSourceCodeGenerator::Visit(WhileStatementNode& whileStatementNode)
     MoveTo(whileStatementNode.GetSpan());
     writer.WriteKeyword(U"while ");
     writer.WriteOther(U"(");
-    idSequence.clear();
     whileStatementNode.Condition()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(whileStatementNode.Condition()));
     writer.WriteOther(U")");
     whileStatementNode.Statement()->Accept(*this);
 }
@@ -954,9 +948,7 @@ void HtmlSourceCodeGenerator::Visit(DoStatementNode& doStatementNode)
     writer.WriteKeyword(U"while");
     writer.WriteSpace(1);
     writer.WriteOther(U"(");
-    idSequence.clear();
     doStatementNode.Condition()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(doStatementNode.Condition()));
     writer.WriteOther(U");");
 }
 
@@ -970,9 +962,7 @@ void HtmlSourceCodeGenerator::Visit(RangeForStatementNode& rangeForStatementNode
     rangeForStatementNode.ForRangeDeclaration()->Accept(*this);
     rangeForDeclaration = prevRangeForDeclaration;
     writer.WriteOther(U" : ");
-    idSequence.clear();
     rangeForStatementNode.ForRangeInitializer()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(rangeForStatementNode.ForRangeInitializer()));
     writer.WriteOther(U")");
     rangeForStatementNode.Statement()->Accept(*this);
 }
@@ -992,16 +982,12 @@ void HtmlSourceCodeGenerator::Visit(ForStatementNode& forStatementNode)
     }
     if (forStatementNode.Condition())
     {
-        idSequence.clear();
         forStatementNode.Condition()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(forStatementNode.Condition()));
     }
     writer.WriteOther(U";");
     if (forStatementNode.LoopExpr())
     {
-        idSequence.clear();
         forStatementNode.LoopExpr()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(forStatementNode.LoopExpr()));
     }
     writer.WriteOther(U")");
     forStatementNode.ActionS()->Accept(*this);
@@ -1027,9 +1013,7 @@ void HtmlSourceCodeGenerator::Visit(ReturnStatementNode& returnStatementNode)
     writer.WriteKeyword(U"return");
     if (returnStatementNode.ReturnExpr())
     {
-        idSequence.clear();
         returnStatementNode.ReturnExpr()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(returnStatementNode.ReturnExpr()));
     }
     writer.WriteOther(U";");
 }
@@ -1110,9 +1094,7 @@ void HtmlSourceCodeGenerator::Visit(ExpressionInitializerNode& expressionInitial
         writer.WriteOther(U", ");
     }
     MoveTo(expressionInitializerNode.GetSpan());
-    idSequence.clear();
     expressionInitializerNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(expressionInitializerNode.Child()));
 }
 
 void HtmlSourceCodeGenerator::Visit(EnumTypeNode& enumTypeNode)
@@ -1121,9 +1103,7 @@ void HtmlSourceCodeGenerator::Visit(EnumTypeNode& enumTypeNode)
     EnumKey enumKey = enumTypeNode.GetEnumKey();
     writer.WriteKeyword(ToString(enumKey));
     writer.WriteSpace(1);
-    idSequence.clear();
     enumTypeNode.EnumName()->Accept(*this);
-    WriteIdSequence(true, symbolTable.GetSymbolNothrow(&enumTypeNode));
     if (enumTypeNode.EnumBase())
     {
         writer.WriteOther(U" : ");
@@ -1172,10 +1152,8 @@ void HtmlSourceCodeGenerator::Visit(AssignmentInitializerNode& assignmentInitial
 {
     MoveTo(assignmentInitializerNode.GetSpan());
     writer.WriteOther(U"=");
-    idSequence.clear();
     firstInitializer = true;
     assignmentInitializerNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(assignmentInitializerNode.Child()));
 }
 
 void HtmlSourceCodeGenerator::Visit(BracedInitializerListNode& bracedInitializerListNode)
@@ -1209,13 +1187,16 @@ void HtmlSourceCodeGenerator::Visit(MemberInitializerNode& memberInitializerNode
     {
         TypeSymbol* type = static_cast<TypeSymbol*>(symbol);
         std::vector<IdentifierNode*> idNodeSequence = symbolTable.GetIdNodeSequence(memberInitializerNode.Id());
-        WriteType(type, idNodeSequence, nullptr);
+        TemplateIdNode* templateIdNode = nullptr;
+        if (memberInitializerNode.Id()->IsTemplateIdNode())
+        {
+            templateIdNode = static_cast<TemplateIdNode*>(memberInitializerNode.Id());
+        }
+        WriteType(type, idNodeSequence, templateIdNode);
     }
     else
     {
-        idSequence.clear();
         memberInitializerNode.Id()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(memberInitializerNode.Id()));
     }
     memberInitializerNode.Initializer()->Accept(*this);
 }
@@ -1261,9 +1242,7 @@ void HtmlSourceCodeGenerator::Visit(MemberFunctionPtrIdNode& memberFunctionPtrId
 {
     MoveTo(memberFunctionPtrIdNode.GetSpan());
     writer.WriteOther(U"(");
-    idSequence.clear();
     memberFunctionPtrIdNode.ClassNameNode()->Accept(*this);
-    WriteIdSequence(true, symbolTable.GetSymbolNothrow(memberFunctionPtrIdNode.ClassNameNode()));
     writer.WriteOther(U"::*");
     writer.WriteIdentifier(memberFunctionPtrIdNode.Id());
     writer.WriteOther(U")");
@@ -1277,9 +1256,7 @@ void HtmlSourceCodeGenerator::Visit(ArrayDeclaratorNode& arrayDeclaratorNode)
     writer.WriteOther(U"[");
     if (arrayDeclaratorNode.Size())
     {
-        idSequence.clear();
         arrayDeclaratorNode.Size()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(arrayDeclaratorNode.Size()));
     }
     writer.WriteOther(U"]");
 }
@@ -1294,9 +1271,7 @@ void HtmlSourceCodeGenerator::Visit(InitDeclaratorNode& initDeclaratorNode)
 void HtmlSourceCodeGenerator::Visit(IdDeclaratorNode& idDeclaratorNode)
 {
     MoveTo(idDeclaratorNode.GetSpan());
-    idSequence.clear();
     idDeclaratorNode.IdNode()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(idDeclaratorNode.IdNode()));
 }
 
 void HtmlSourceCodeGenerator::Visit(ParameterNode& parameterNode)
@@ -1359,9 +1334,7 @@ void HtmlSourceCodeGenerator::Visit(TypeParameterNode& typeParameterNode)
     if (typeParameterNode.DefaultTemplateParameter())
     {
         writer.WriteOther(U" = ");
-        idSequence.clear();
         typeParameterNode.DefaultTemplateParameter()->Accept(*this);
-        WriteIdSequence(true, symbolTable.GetSymbolNothrow(typeParameterNode.DefaultTemplateParameter()));
     }
 }
 
@@ -1403,7 +1376,6 @@ void HtmlSourceCodeGenerator::Visit(TemplateIdNode& templateIdNode)
         return;
     }
     templateIdNode.Id()->Accept(*this);
-    WriteIdSequence(true, symbolTable.GetSymbolNothrow(&templateIdNode));
     writer.WriteOther(U"<");
     if (templateIdNode.TemplateArguments())
     {
@@ -1429,7 +1401,9 @@ void HtmlSourceCodeGenerator::Visit(TemplateArgumentNode& templateArgumentNode)
 
 void HtmlSourceCodeGenerator::Visit(IdentifierNode& identifierNode)
 {
-    idSequence.push_back(std::make_pair(&identifierNode, symbolTable.GetSymbolNothrow(&identifierNode)));
+    Symbol* symbol = symbolTable.GetSymbolNothrow(&identifierNode);
+    bool isType = symbol && symbol->IsTypeSymbol();
+    WriteId(&identifierNode, symbol, isType);
 }
 
 void HtmlSourceCodeGenerator::Visit(NestedIdNode& nestedIdNode)
@@ -1437,33 +1411,30 @@ void HtmlSourceCodeGenerator::Visit(NestedIdNode& nestedIdNode)
     if (nestedIdNode.Left())
     {
         nestedIdNode.Left()->Accept(*this);
-        if (nestedIdNode.Left()->IsTemplateIdNode())
-        {
-            writer.WriteOther(U"::");
-        }
+        writer.WriteOther(U"::");
     }
     else
     {
-        idSequence.push_back(std::make_pair(nullptr, nullptr));
+        writer.WriteOther(U"::");
     }
     nestedIdNode.Right()->Accept(*this);
 }
 
 void HtmlSourceCodeGenerator::Visit(OperatorFunctionIdNode& operatorFunctionIdNode)
 {
-    idSequence.push_back(std::make_pair(&operatorFunctionIdNode, symbolTable.GetSymbolNothrow(&operatorFunctionIdNode)));
+    WriteId(&operatorFunctionIdNode, symbolTable.GetSymbolNothrow(&operatorFunctionIdNode), false);
+    //idSequence.push_back(std::make_pair(&operatorFunctionIdNode, symbolTable.GetSymbolNothrow(&operatorFunctionIdNode)));
 }
 
 void HtmlSourceCodeGenerator::Visit(ConversionFunctionIdNode& conversionFunctionIdNode)
 {
-    idSequence.push_back(std::make_pair(&conversionFunctionIdNode, symbolTable.GetSymbolNothrow(&conversionFunctionIdNode)));
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(&conversionFunctionIdNode));
+    WriteId(&conversionFunctionIdNode, symbolTable.GetSymbolNothrow(&conversionFunctionIdNode), false);
     conversionFunctionIdNode.TypeExpr()->Accept(*this);
 }
 
 void HtmlSourceCodeGenerator::Visit(DtorIdNode& dtorIdNode)
 {
-    idSequence.push_back(std::make_pair(&dtorIdNode, symbolTable.GetSymbolNothrow(&dtorIdNode)));
+    WriteId(&dtorIdNode, symbolTable.GetSymbolNothrow(&dtorIdNode), false);
 }
 
 void HtmlSourceCodeGenerator::Visit(ExpressionSequenceNode& expressionSequenceNode)
@@ -1475,42 +1446,28 @@ void HtmlSourceCodeGenerator::Visit(ExpressionSequenceNode& expressionSequenceNo
 void HtmlSourceCodeGenerator::Visit(CommaExpressionNode& commaExpressionNode)
 {
     MoveTo(commaExpressionNode.GetSpan());
-    idSequence.clear();
     commaExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(commaExpressionNode.Left()));
     writer.WriteOther(U", ");
-    idSequence.clear();
     commaExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(commaExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(AssignmentExpressionNode& assignmentExpressionNode)
 {
     MoveTo(assignmentExpressionNode.GetSpan());
-    idSequence.clear();
     assignmentExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(assignmentExpressionNode.Left()));
     writer.WriteOther(OpStr(assignmentExpressionNode.Op()));
-    idSequence.clear();
     firstInitializer = true;
     assignmentExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(assignmentExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(ConditionalExpressionNode& conditionalExpressionNode)
 {
     MoveTo(conditionalExpressionNode.GetSpan());
-    idSequence.clear();
     conditionalExpressionNode.Condition()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(conditionalExpressionNode.Condition()));
     writer.WriteOther(U" ? ");
-    idSequence.clear();
     conditionalExpressionNode.ThenExpr()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(conditionalExpressionNode.ThenExpr()));
     writer.WriteOther(U" : ");
-    idSequence.clear();
     conditionalExpressionNode.ElseExpr()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(conditionalExpressionNode.ElseExpr()));
 }
 
 void HtmlSourceCodeGenerator::Visit(ThrowExpressionNode& throwExpressionNode)
@@ -1519,142 +1476,96 @@ void HtmlSourceCodeGenerator::Visit(ThrowExpressionNode& throwExpressionNode)
     writer.WriteKeyword(U"throw ");
     if (throwExpressionNode.Child())
     {
-        idSequence.clear();
         throwExpressionNode.Child()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(throwExpressionNode.Child()));
     }
 }
 
 void HtmlSourceCodeGenerator::Visit(LogicalOrExpressionNode& logicalOrExpressionNode)
 {
     MoveTo(logicalOrExpressionNode.GetSpan());
-    idSequence.clear();
     logicalOrExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(logicalOrExpressionNode.Left()));
     writer.WriteOther(U" || ");
-    idSequence.clear();
     logicalOrExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(logicalOrExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(LogicalAndExpressionNode& logicalAndExpressionNode)
 {
     MoveTo(logicalAndExpressionNode.GetSpan());
-    idSequence.clear();
     logicalAndExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(logicalAndExpressionNode.Left()));
     writer.WriteOther(U" && ");
-    idSequence.clear();
     logicalAndExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(logicalAndExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(InclusiveOrExpressionNode& inclusiveOrExpressionNode)
 {
     MoveTo(inclusiveOrExpressionNode.GetSpan());
-    idSequence.clear();
     inclusiveOrExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(inclusiveOrExpressionNode.Left()));
     writer.WriteOther(U" | ");
-    idSequence.clear();
     inclusiveOrExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(inclusiveOrExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(ExclusiveOrExpressionNode& exclusiveOrExpressionNode)
 {
     MoveTo(exclusiveOrExpressionNode.GetSpan());
-    idSequence.clear();
     exclusiveOrExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(exclusiveOrExpressionNode.Left()));
     writer.WriteOther(U" ^ ");
-    idSequence.clear();
     exclusiveOrExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(exclusiveOrExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(AndExpressionNode& andExpressionNode)
 {
     MoveTo(andExpressionNode.GetSpan());
-    idSequence.clear();
     andExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(andExpressionNode.Left()));
     writer.WriteOther(U" & ");
-    idSequence.clear();
     andExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(andExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(EqualityExpressionNode& equalityExpressionNode)
 {
     MoveTo(equalityExpressionNode.GetSpan());
-    idSequence.clear();
     equalityExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(equalityExpressionNode.Left()));
     writer.WriteOther(OpStr(equalityExpressionNode.Op()));
-    idSequence.clear();
     equalityExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(equalityExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(RelationalExpressionNode& relationalExpressionNode)
 {
     MoveTo(relationalExpressionNode.GetSpan());
-    idSequence.clear();
     relationalExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(relationalExpressionNode.Left()));
     writer.WriteOther(OpStr(relationalExpressionNode.Op()));
-    idSequence.clear();
     relationalExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(relationalExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(ShiftExpressionNode& shiftExpressionNode)
 {
     MoveTo(shiftExpressionNode.GetSpan());
-    idSequence.clear();
     shiftExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(shiftExpressionNode.Left()));
     writer.WriteOther(OpStr(shiftExpressionNode.Op()));
-    idSequence.clear();
     shiftExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(shiftExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(AdditiveExpressionNode& additiveExpressionNode)
 {
     MoveTo(additiveExpressionNode.GetSpan());
-    idSequence.clear();
     additiveExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(additiveExpressionNode.Left()));
     writer.WriteOther(OpStr(additiveExpressionNode.Op()));
-    idSequence.clear();
     additiveExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(additiveExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(MultiplicativeExpressionNode& multiplicativeExpressionNode)
 {
     MoveTo(multiplicativeExpressionNode.GetSpan());
-    idSequence.clear();
     multiplicativeExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(multiplicativeExpressionNode.Left()));
     writer.WriteOther(OpStr(multiplicativeExpressionNode.Op()));
-    idSequence.clear();
     multiplicativeExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(multiplicativeExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(PMExpressionNode& pmExpressionNode)
 {
     MoveTo(pmExpressionNode.GetSpan());
-    idSequence.clear();
     pmExpressionNode.Left()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(pmExpressionNode.Left()));
     writer.WriteOther(OpStr(pmExpressionNode.Op()));
-    idSequence.clear();
     pmExpressionNode.Right()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(pmExpressionNode.Right()));
 }
 
 void HtmlSourceCodeGenerator::Visit(CastExpressionNode& castExpressionNode)
@@ -1663,18 +1574,14 @@ void HtmlSourceCodeGenerator::Visit(CastExpressionNode& castExpressionNode)
     writer.WriteOther(U"(");
     castExpressionNode.TypeExpr()->Accept(*this);
     writer.WriteOther(U")");
-    idSequence.clear();
     castExpressionNode.Expr()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(castExpressionNode.Expr()));
 }
 
 void HtmlSourceCodeGenerator::Visit(UnaryExpressionNode& unaryExpressionNode)
 {
     MoveTo(unaryExpressionNode.GetSpan());
     writer.WriteOther(OpStr(unaryExpressionNode.Op()));
-    idSequence.clear();
     unaryExpressionNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(unaryExpressionNode.Child()));
 }
 
 void HtmlSourceCodeGenerator::Visit(NewExpressionNode& newExpressionNode)
@@ -1693,9 +1600,7 @@ void HtmlSourceCodeGenerator::Visit(NewExpressionNode& newExpressionNode)
     if (newExpressionNode.Initializer())
     {
         firstInitializer = true;
-        idSequence.clear();
         newExpressionNode.Initializer()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(newExpressionNode.Initializer()));
     }
     writer.WriteOther(U")");
 }
@@ -1709,40 +1614,30 @@ void HtmlSourceCodeGenerator::Visit(DeleteExpressionNode& deleteExpressionNode)
         writer.WriteOther(U"[]");
     }
     writer.WriteSpace(1);
-    idSequence.clear();
     deleteExpressionNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(deleteExpressionNode.Child()));
 }
 
 void HtmlSourceCodeGenerator::Visit(SubscriptExpressionNode& subscriptExpressionNode)
 {
     MoveTo(subscriptExpressionNode.GetSpan());
-    idSequence.clear();
     subscriptExpressionNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(subscriptExpressionNode.Child()));
     writer.WriteOther(U"[");
-    idSequence.clear();
     subscriptExpressionNode.Index()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(subscriptExpressionNode.Index()));
     writer.WriteOther(U"]");
 }
 
 void HtmlSourceCodeGenerator::Visit(InvokeExpressionNode& invokeExpressionNode)
 {
     MoveTo(invokeExpressionNode.GetSpan());
-    idSequence.clear();
     Symbol* prevInvokeSymbol = invokeSymbol;
     invokeSymbol = symbolTable.GetSymbolNothrow(&invokeExpressionNode);
     invokeExpressionNode.Child()->Accept(*this);
-    WriteIdSequence(false, invokeSymbol);
     invokeSymbol = prevInvokeSymbol;
     writer.WriteOther(U"(");
     if (invokeExpressionNode.Arguments())
     {
         firstInitializer = true;
-        idSequence.clear();
         invokeExpressionNode.Arguments()->Accept(*this);
-        WriteIdSequence(false, symbolTable.GetSymbolNothrow(invokeExpressionNode.Arguments()));
     }
     writer.WriteOther(U")");
 }
@@ -1750,42 +1645,30 @@ void HtmlSourceCodeGenerator::Visit(InvokeExpressionNode& invokeExpressionNode)
 void HtmlSourceCodeGenerator::Visit(DotNode& dotNode)
 {
     MoveTo(dotNode.GetSpan());
-    idSequence.clear();
     dotNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(dotNode.Child()));
     writer.WriteOther(U".");
-    idSequence.clear();
     dotNode.Id()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(dotNode.Id()));
 }
 
 void HtmlSourceCodeGenerator::Visit(ArrowNode& arrowNode)
 {
     MoveTo(arrowNode.GetSpan());
-    idSequence.clear();
     arrowNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(arrowNode.Child()));
     writer.WriteOther(U"->");
-    idSequence.clear();
     arrowNode.Id()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(arrowNode.Id()));
 }
 
 void HtmlSourceCodeGenerator::Visit(PostfixIncNode& postfixIncNode)
 {
     MoveTo(postfixIncNode.GetSpan());
-    idSequence.clear();
     postfixIncNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(postfixIncNode.Child()));
     writer.WriteOther(U"++");
 }
 
 void HtmlSourceCodeGenerator::Visit(PostfixDecNode& postfixDecNode)
 {
     MoveTo(postfixDecNode.GetSpan());
-    idSequence.clear();
     postfixDecNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(postfixDecNode.Child()));
     writer.WriteOther(U"--");
 }
 
@@ -1797,10 +1680,8 @@ void HtmlSourceCodeGenerator::Visit(CppCastExpressionNode& cppCastExpressionNode
     cppCastExpressionNode.TypeExpr()->Accept(*this);
     writer.WriteOther(U">");
     writer.WriteOther(U"(");
-    idSequence.clear();
     firstInitializer = true;
     cppCastExpressionNode.Expr()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(cppCastExpressionNode.Expr()));
     writer.WriteOther(U")");
 }
 
@@ -1809,9 +1690,7 @@ void HtmlSourceCodeGenerator::Visit(TypeIdExpressionNode& typeIdExpressionNode)
     MoveTo(typeIdExpressionNode.GetSpan());
     writer.WriteKeyword(U"typeid");
     writer.WriteOther(U" (");
-    idSequence.clear();
     typeIdExpressionNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(typeIdExpressionNode.Child()));
     writer.WriteOther(U")");
 }
 
@@ -1825,9 +1704,7 @@ void HtmlSourceCodeGenerator::Visit(ParenthesizedExprNode& parenthesizedExprNode
 {
     MoveTo(parenthesizedExprNode.GetSpan());
     writer.WriteOther(U"(");
-    idSequence.clear();
     parenthesizedExprNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(parenthesizedExprNode.Child()));
     writer.WriteOther(U")");
 }
 
@@ -1877,9 +1754,42 @@ void HtmlSourceCodeGenerator::Visit(ThisCaptureNode& thisCaptureNode)
 void HtmlSourceCodeGenerator::Visit(IdentifierCaptureNode& identifierCaptureNode)
 {
     MoveTo(identifierCaptureNode.GetSpan());
-    idSequence.clear();
     identifierCaptureNode.Child()->Accept(*this);
-    WriteIdSequence(false, symbolTable.GetSymbolNothrow(identifierCaptureNode.Child()));
+}
+
+void HtmlSourceCodeGenerator::Visit(ConstNode& constNode)
+{
+    MoveTo(constNode.GetSpan());
+    writer.WriteKeyword(U"const");
+    constNode.Child()->Accept(*this);
+}
+
+void HtmlSourceCodeGenerator::Visit(VolatileNode& volatileNode)
+{
+    MoveTo(volatileNode.GetSpan());
+    writer.WriteKeyword(U"volatile");
+    volatileNode.Child()->Accept(*this);
+}
+
+void HtmlSourceCodeGenerator::Visit(PointerNode& pointerNode)
+{
+    MoveTo(pointerNode.GetSpan());
+    pointerNode.Child()->Accept(*this);
+    writer.WriteOther(U"*");
+}
+
+void HtmlSourceCodeGenerator::Visit(RValueRefNode& rValueRefNode)
+{
+    MoveTo(rValueRefNode.GetSpan());
+    rValueRefNode.Child()->Accept(*this);
+    writer.WriteOther(U"&&");
+}
+
+void HtmlSourceCodeGenerator::Visit(LValueRefNode& lValueRefNode)
+{
+    MoveTo(lValueRefNode.GetSpan());
+    lValueRefNode.Child()->Accept(*this);
+    writer.WriteOther(U"&");
 }
 
 } } // namespace gendoc::html

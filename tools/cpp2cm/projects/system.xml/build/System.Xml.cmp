@@ -1,0 +1,9 @@
+project System.Xml;
+target=library;
+source <XmlApi.cm>;
+source <XmlContentHandler.cm>;
+source <XmlParser.cm>;
+text <XmlParser.parser>;
+text <XmlParser.spg>;
+source <XmlParserInterface.cm>;
+source <XmlProcessor.cm>;

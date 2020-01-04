@@ -160,7 +160,7 @@ void XmlParser::Parse(TrivialLexer& lexer, sngxml::xml::XmlProcessor* processor)
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = XmlParser::Document(lexer, processor);
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (lexer.Log())
@@ -177,12 +177,12 @@ void XmlParser::Parse(TrivialLexer& lexer, sngxml::xml::XmlProcessor* processor)
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"Document");
+        lexer.ThrowExpectationFailure(span, U"Document");
     }
     return;
 }
@@ -300,6 +300,10 @@ soulng::parser::Match XmlParser::Document(TrivialLexer& lexer, sngxml::xml::XmlP
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Document"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -352,6 +356,10 @@ soulng::parser::Match XmlParser::Char(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Char"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -418,6 +426,10 @@ soulng::parser::Match XmlParser::S(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("S"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -449,6 +461,10 @@ soulng::parser::Match XmlParser::NameStartChar(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NameStartChar"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -497,6 +513,10 @@ soulng::parser::Match XmlParser::NameChar(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NameChar"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -601,6 +621,10 @@ soulng::parser::Match XmlParser::Name(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Name"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -686,6 +710,10 @@ soulng::parser::Match XmlParser::Names(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Names"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -734,6 +762,10 @@ soulng::parser::Match XmlParser::Nmtoken(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Nmtoken"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -815,6 +847,10 @@ soulng::parser::Match XmlParser::Nmtokens(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Nmtokens"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -951,6 +987,10 @@ soulng::parser::Match XmlParser::Prolog(TrivialLexer& lexer, sngxml::xml::XmlPro
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Prolog"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1111,6 +1151,10 @@ soulng::parser::Match XmlParser::XMLDecl(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("XMLDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1190,6 +1234,10 @@ soulng::parser::Match XmlParser::VersionInfo(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("VersionInfo"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1355,6 +1403,10 @@ soulng::parser::Match XmlParser::VersionNum(TrivialLexer& lexer, sngxml::xml::Xm
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("VersionNum"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1417,6 +1469,10 @@ soulng::parser::Match XmlParser::VersionNumDQ(TrivialLexer& lexer, sngxml::xml::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("VersionNumDQ"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1479,6 +1535,10 @@ soulng::parser::Match XmlParser::VersionNumSQ(TrivialLexer& lexer, sngxml::xml::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("VersionNumSQ"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1518,6 +1578,10 @@ soulng::parser::Match XmlParser::VersionNumber(TrivialLexer& lexer, sngxml::xml:
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("VersionNumber"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1597,6 +1661,10 @@ soulng::parser::Match XmlParser::EncodingDecl(TrivialLexer& lexer, sngxml::xml::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EncodingDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1714,6 +1782,10 @@ soulng::parser::Match XmlParser::EncodingName(TrivialLexer& lexer, sngxml::xml::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EncodingName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1776,6 +1848,10 @@ soulng::parser::Match XmlParser::EncNameDQ(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EncNameDQ"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1838,6 +1914,10 @@ soulng::parser::Match XmlParser::EncNameSQ(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EncNameSQ"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1877,6 +1957,10 @@ soulng::parser::Match XmlParser::EncName(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EncName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1968,6 +2052,10 @@ soulng::parser::Match XmlParser::SDDecl(TrivialLexer& lexer, sngxml::xml::XmlPro
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SDDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2231,6 +2319,10 @@ soulng::parser::Match XmlParser::DocTypeDecl(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("DocTypeDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2394,6 +2486,10 @@ soulng::parser::Match XmlParser::ExternalID(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ExternalID"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2595,6 +2691,10 @@ soulng::parser::Match XmlParser::SystemLiteral(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SystemLiteral"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2795,6 +2895,10 @@ soulng::parser::Match XmlParser::PubidLiteral(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PubidLiteral"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2878,6 +2982,10 @@ soulng::parser::Match XmlParser::PubidChar(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PubidChar"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -2941,6 +3049,10 @@ soulng::parser::Match XmlParser::IntSubset(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IntSubset"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3048,6 +3160,10 @@ soulng::parser::Match XmlParser::MarkupDecl(TrivialLexer& lexer, sngxml::xml::Xm
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MarkupDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3087,6 +3203,10 @@ soulng::parser::Match XmlParser::DeclSep(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("DeclSep"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3231,6 +3351,10 @@ soulng::parser::Match XmlParser::ElementDecl(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ElementDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3328,6 +3452,10 @@ soulng::parser::Match XmlParser::ContentSpec(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ContentSpec"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3454,6 +3582,10 @@ soulng::parser::Match XmlParser::Children(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Children"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3599,6 +3731,10 @@ soulng::parser::Match XmlParser::CP(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("CP"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -3920,6 +4056,10 @@ soulng::parser::Match XmlParser::Choice(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Choice"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -4153,6 +4293,10 @@ soulng::parser::Match XmlParser::Seq(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Seq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -4532,6 +4676,10 @@ soulng::parser::Match XmlParser::Mixed(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Mixed"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -4680,6 +4828,10 @@ soulng::parser::Match XmlParser::AttlistDecl(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AttlistDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -4779,6 +4931,10 @@ soulng::parser::Match XmlParser::AttDef(TrivialLexer& lexer, sngxml::xml::XmlPro
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AttDef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -4835,6 +4991,10 @@ soulng::parser::Match XmlParser::AttType(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AttType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -4869,6 +5029,10 @@ soulng::parser::Match XmlParser::StringType(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("StringType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5077,6 +5241,10 @@ soulng::parser::Match XmlParser::TokenizedType(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("TokenizedType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5116,6 +5284,10 @@ soulng::parser::Match XmlParser::EnumeratedType(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnumeratedType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5395,6 +5567,10 @@ soulng::parser::Match XmlParser::NotationType(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NotationType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5628,6 +5804,10 @@ soulng::parser::Match XmlParser::Enumeration(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Enumeration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5775,6 +5955,10 @@ soulng::parser::Match XmlParser::DefaultDecl(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("DefaultDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5814,6 +5998,10 @@ soulng::parser::Match XmlParser::EntityDecl(TrivialLexer& lexer, sngxml::xml::Xm
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EntityDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -5958,6 +6146,10 @@ soulng::parser::Match XmlParser::GEDecl(TrivialLexer& lexer, sngxml::xml::XmlPro
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("GEDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6137,6 +6329,10 @@ soulng::parser::Match XmlParser::PEDecl(TrivialLexer& lexer, sngxml::xml::XmlPro
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PEDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6209,6 +6405,10 @@ soulng::parser::Match XmlParser::EntityDef(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EntityDef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6248,6 +6448,10 @@ soulng::parser::Match XmlParser::PEDef(TrivialLexer& lexer, sngxml::xml::XmlProc
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PEDef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6507,6 +6711,10 @@ soulng::parser::Match XmlParser::EntityValue(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EntityValue"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6588,6 +6796,10 @@ soulng::parser::Match XmlParser::NDataDecl(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NDataDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6652,6 +6864,10 @@ soulng::parser::Match XmlParser::PEReference(TrivialLexer& lexer, sngxml::xml::X
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PEReference"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6818,6 +7034,10 @@ soulng::parser::Match XmlParser::NotationDecl(TrivialLexer& lexer, sngxml::xml::
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NotationDecl"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -6882,6 +7102,10 @@ soulng::parser::Match XmlParser::PublicID(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PublicID"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7127,6 +7351,10 @@ soulng::parser::Match XmlParser::Element(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Element"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7237,6 +7465,10 @@ soulng::parser::Match XmlParser::ETag(TrivialLexer& lexer, sngxml::xml::XmlProce
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ETag"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7412,6 +7644,10 @@ soulng::parser::Match XmlParser::Content(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Content"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7462,6 +7698,10 @@ soulng::parser::Match XmlParser::CharDataChar(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("CharDataChar"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7668,6 +7908,10 @@ soulng::parser::Match XmlParser::CharData(TrivialLexer& lexer, sngxml::xml::XmlP
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("CharData"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7836,6 +8080,10 @@ soulng::parser::Match XmlParser::CDSect(TrivialLexer& lexer, sngxml::xml::XmlPro
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("CDSect"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -7903,6 +8151,10 @@ soulng::parser::Match XmlParser::Attribute(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Attribute"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8056,6 +8308,10 @@ soulng::parser::Match XmlParser::AttValueDQ(TrivialLexer& lexer, sngxml::xml::Xm
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AttValueDQ"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8209,6 +8465,10 @@ soulng::parser::Match XmlParser::AttValueSQ(TrivialLexer& lexer, sngxml::xml::Xm
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AttValueSQ"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8282,6 +8542,10 @@ soulng::parser::Match XmlParser::AttValue(TrivialLexer& lexer, sngxml::xml::XmlP
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AttValue"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8362,6 +8626,10 @@ soulng::parser::Match XmlParser::EntityRef(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EntityRef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8481,6 +8749,10 @@ soulng::parser::Match XmlParser::DecCodePoint(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("DecCodePoint"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8604,6 +8876,10 @@ soulng::parser::Match XmlParser::HexCodePoint(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("HexCodePoint"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8771,6 +9047,10 @@ soulng::parser::Match XmlParser::CharRef(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("CharRef"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8810,6 +9090,10 @@ soulng::parser::Match XmlParser::Reference(TrivialLexer& lexer, sngxml::xml::Xml
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Reference"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -8866,6 +9150,10 @@ soulng::parser::Match XmlParser::Misc(TrivialLexer& lexer, sngxml::xml::XmlProce
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Misc"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -9108,6 +9396,10 @@ soulng::parser::Match XmlParser::Comment(TrivialLexer& lexer, sngxml::xml::XmlPr
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Comment"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -9308,6 +9600,10 @@ soulng::parser::Match XmlParser::PI(TrivialLexer& lexer, sngxml::xml::XmlProcess
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PI"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -9375,6 +9671,10 @@ soulng::parser::Match XmlParser::PITarget(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PITarget"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -9454,6 +9754,10 @@ soulng::parser::Match XmlParser::Xml(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Xml"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -9537,6 +9841,10 @@ soulng::parser::Match XmlParser::Eq(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Eq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -9630,5 +9938,9 @@ soulng::parser::Match XmlParser::YesNo(TrivialLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("YesNo"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

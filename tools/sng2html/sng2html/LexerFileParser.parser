@@ -1,0 +1,149 @@
+// =================================
+// Copyright (c) 2019 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sng2html/sng2html/LexerFile.hpp>
+[cpp]#include <sng2html/sng2html/TokenValueParsers.hpp>
+[cpp]#include <sng2html/sng2html/LexerDeclaratorParser.hpp>
+[cpp]#include <sng2html/sng2html/LexerStatementParser.hpp>
+[cpp]#include <sng2html/sng2html/LexerFileLexer.hpp>
+[cpp]#include <sng2html/sng2html/LexerFileTokens.hpp>
+
+using namespace soulng::lexer;
+using namespace LexerFileTokens;
+
+parser LexerFileParser
+{
+    uselexer LexerFileLexer;
+
+    using LexerDeclaratorParser.TypeId;
+    using LexerStatementParser.CompoundStatement;
+
+    main;
+
+    LexerFile(var std::unique_ptr<sng2html::sng2html::LexerFile> lexerFile) : sng2html::sng2html::LexerFile*
+        ::= empty{ lexerFile.reset(new sng2html::sng2html::LexerFile()); }
+        (
+            (Declaration:declaration{ lexerFile->Add(declaration); })*
+        )
+        {
+            return lexerFile.release();
+        }
+        ;
+
+    Declaration : sng2html::sng2html::Declaration*
+        ::= ClassMap:classMapDeclaration{ return classMapDeclaration; }
+        |   Prefix:prefixDeclaration{ return prefixDeclaration; }
+        |   Include:includeDeclaration{ return includeDeclaration; }
+        |   Tokens:tokensDeclaration{ return tokensDeclaration; }
+        |   Keywords:keywordsDeclaration{ return keywordsDeclaration; }
+        |   Expressions:expressionsDeclaration{ return expressionsDeclaration; }
+        |   Lexer:lexerDeclaration{ return lexerDeclaration; }
+        ;
+
+    ClassMap(var std::u32string classMapName) : sng2html::sng2html::ClassMap*
+        ::= CLASSMAP ID!{ classMapName = lexer.GetMatch(span); } SEMICOLON!{ return new sng2html::sng2html::ClassMap(classMapName); }
+        ;
+
+    Prefix : sng2html::sng2html::Prefix*
+        ::= PREFIX STRINGLIT! SEMICOLON!{ return new sng2html::sng2html::Prefix(U""); }
+        ;
+
+    Include : sng2html::sng2html::IncludeDeclaration*
+        ::= HASH INCLUDE FILEPATH!{ return new sng2html::sng2html::IncludeDeclaration(U""); }
+        ;
+
+    Tokens(var std::u32string tokensDeclarationName, var std::unique_ptr<sng2html::sng2html::Tokens> tokens) : sng2html::sng2html::Tokens*
+        ::= TOKENS ID!{ tokensDeclarationName = lexer.GetMatch(span); } LBRACE!{ tokens.reset(new sng2html::sng2html::Tokens(tokensDeclarationName)); }
+            (Token:token{ tokens->Add(token); } % COMMA)? RBRACE!
+        {
+            return tokens.release();
+        }
+        ;
+
+    Token(var std::u32string tokenName, var std::u32string tokenInfo) : sng2html::sng2html::Token
+        ::= LPAREN ID!{ tokenName = lexer.GetMatch(span); } COMMA! STRINGLIT!{ tokenInfo = sng2html::sng2html::MakeStrValue(lexer.FileName(), lexer.GetToken(pos)); } RPAREN!
+        {
+            return sng2html::sng2html::Token(tokenName, ToUtf8(tokenInfo));
+        }
+        ;
+
+    Keywords(var std::u32string keywordsDeclarationName, var std::unique_ptr<sng2html::sng2html::Keywords> keywords) : sng2html::sng2html::Keywords*
+        ::= KEYWORDS ID!{ keywordsDeclarationName = lexer.GetMatch(span); } LBRACE!{ keywords.reset(new sng2html::sng2html::Keywords(keywordsDeclarationName)); }
+            (Keyword:keyword{ keywords->Add(keyword); } % COMMA)? RBRACE!
+        {
+            return keywords.release();
+        }
+        ;
+
+    Keyword(var std::u32string kw, var std::u32string tokenName) : sng2html::sng2html::Keyword*
+        ::= LPAREN STRINGLIT!{ kw = sng2html::sng2html::MakeStrValue(lexer.FileName(), lexer.GetToken(pos)); } COMMA! ID!{ tokenName = lexer.GetMatch(span); } RPAREN!
+        {
+            return new sng2html::sng2html::Keyword(kw, tokenName);
+        }
+        ;
+
+    Expressions(var int index, var std::unique_ptr<sng2html::sng2html::Expressions> expressions) : sng2html::sng2html::Expressions*
+        ::= EXPRESSIONS{ index = 0; expressions.reset(new sng2html::sng2html::Expressions()); } LBRACE!
+            (Expression(index):expr{ expressions->Add(expr); index = index + 1; })* RBRACE!
+        {
+            return expressions.release();
+        }
+        ;
+
+    Expression(int index, var std::u32string exprName, var int line) : sng2html::sng2html::Expression*
+        ::= ID{ exprName = lexer.GetMatch(span); } ASSIGN ExprString:exprValue!{ line = lexer.GetToken(pos).line; } SEMICOLON!
+        {
+            return new sng2html::sng2html::Expression(index, exprName, exprValue, line);
+        }
+        ;
+
+    ExprString : std::u32string
+        ::= STRINGLIT{ return sng2html::sng2html::MakeExprStringValue(lexer.FileName(), lexer.GetToken(pos)); }
+        ;
+
+    Lexer(var std::u32string lexerDeclarationName, var std::unique_ptr<sng2html::sng2html::Lexer> currentLexer) : sng2html::sng2html::Lexer*
+        ::= LEXER Api:lexerApi ID!{ lexerDeclarationName = lexer.GetMatch(span); } LBRACE!{ currentLexer.reset(new sng2html::sng2html::Lexer(lexerApi, lexerDeclarationName)); }
+            (LexerClause(currentLexer.get()):lexerClause)* RBRACE!
+        {
+            return currentLexer.release();
+        }
+        ;
+
+    Api(var std::u32string id) : std::u32string
+        ::= API LPAREN ID!{ id = lexer.GetMatch(span); } RPAREN!{ return id; }
+        |   empty{ return std::u32string(); }
+        ;
+
+    LexerClause(sng2html::sng2html::Lexer* currentLexer, var int line)
+        ::= (ExprString:expr{ line = lexer.GetToken(pos).line; } Action:action CompoundStatement:stmt!){ currentLexer->AddStatement(new sng2html::sng2html::LexerStatement(expr, stmt, action, line)); }
+        |   Variables(currentLexer):variables
+        |   Actions(currentLexer):actions
+        ;
+
+    Variables(sng2html::sng2html::Lexer* currentLexer)
+        ::= VARIABLES LBRACE! (Variable:variable{ currentLexer->AddVariable(variable); })* RBRACE!
+        ;
+
+    Variable(var std::u32string name) : sng2html::sng2html::LexerVariable*
+        ::= TypeId:type ID{ name = lexer.GetMatch(span); } SEMICOLON{ return new sng2html::sng2html::LexerVariable(type, name); }
+        ;
+
+    Actions(sng2html::sng2html::Lexer* currentLexer)
+        ::= ACTIONS LBRACE! ((Action:action{ pass = action != -1; } ASSIGN CompoundStatement:stmt!){ currentLexer->AddAction(new sng2html::sng2html::Action(action, stmt)); })* RBRACE!
+        ;
+
+    Action(var int actionId) : int
+        ::= (DOLLAR LPAREN! INTLIT!{ actionId = sng2html::sng2html::MakeActionIntValue(lexer.FileName(), lexer.GetToken(pos)); } RPAREN!){ return actionId; }
+        |   empty{ return -1; }
+        ;
+
+    ruleinfo
+    {
+        (LexerFile, "lexer file"), (Declaration, "lexer file declaration"), (ClassMap, "class map declaration"), (Prefix, "prefix declaration"), (Include, "include declaration"),
+        (Tokens, "tokens declaration"), (Token, "token declaration"), (Keywords, "keywords declaration"), (Keyword, "keyword declaration"), (Expressions, "regular expressions declaration"),
+        (Expression, "regular expression declaration"), (ExprString, "regular expression string"), (Lexer, "lexer declaration"), (Api, "API declaration"), (LexerClause, "lexer clause"),
+        (Variables, "variables"), (Variable, "variable"), (Actions, "actions"), (Action, "action identifier")
+    }
+}

@@ -16,7 +16,7 @@ StatementBinder::StatementBinder(SymbolTable& symbolTable_, const std::unordered
 
 void StatementBinder::Visit(SourceFileNode& sourceFileNode)
 {
-    if (sourceFileNode.SourceFilePath().find("LexerContext.cpp") != std::string::npos)
+    if (sourceFileNode.SourceFilePath().find("Lexer.cpp") != std::string::npos)
     {
         int x = 0;
     }
@@ -75,6 +75,11 @@ void StatementBinder::Visit(DeclarationSequenceNode& declarationSequenceNode)
 {
     declarationSequenceNode.Left()->Accept(*this);
     declarationSequenceNode.Right()->Accept(*this);
+}
+
+void StatementBinder::Visit(LinkageSpecificationNode& linkageSpecificationNode)
+{
+    linkageSpecificationNode.Declarations()->Accept(*this);
 }
 
 void StatementBinder::Visit(TemplateDeclarationNode& templateDeclarationNode)
