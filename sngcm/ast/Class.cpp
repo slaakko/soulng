@@ -339,7 +339,7 @@ void StaticConstructorNode::Write(AstWriter& writer)
 {
     FunctionNode::Write(writer);
     initializers.Write(writer);
-    classId->Write(writer);
+    writer.Write(classId.get());
 }
 
 void StaticConstructorNode::Read(AstReader& reader)
@@ -386,7 +386,7 @@ void ConstructorNode::Write(AstWriter& writer)
 {
     FunctionNode::Write(writer);
     initializers.Write(writer);
-    classId->Write(writer);
+    writer.Write(classId.get());
 }
 
 void ConstructorNode::Read(AstReader& reader)
@@ -427,7 +427,7 @@ void DestructorNode::Accept(Visitor& visitor)
 void DestructorNode::Write(AstWriter& writer)
 {
     FunctionNode::Write(writer);
-    classId->Write(writer);
+    writer.Write(classId.get());
 }
 
 void DestructorNode::Read(AstReader& reader)
@@ -486,7 +486,7 @@ void ConversionFunctionNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-MemberVariableNode::MemberVariableNode(const Span& span_) : Node(NodeType::memberVariableNode, span_)
+MemberVariableNode::MemberVariableNode(const Span& span_) : Node(NodeType::memberVariableNode, span_), specifiers()
 {
 }
 
