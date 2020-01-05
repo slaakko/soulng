@@ -5,7 +5,7 @@
 #include <minilang/Tree.hpp>
 #include <minilang/TokenValueParser.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/LiteralParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/LiteralParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -80,6 +80,10 @@ soulng::parser::Match LiteralParser::Literal(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Literal"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -133,6 +137,10 @@ soulng::parser::Match LiteralParser::BooleanLiteral(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("BooleanLiteral"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -175,5 +183,9 @@ soulng::parser::Match LiteralParser::IntegerLiteral(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("IntegerLiteral"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

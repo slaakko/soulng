@@ -1,0 +1,7 @@
+TokenValueParsers.cm:42:M/if (p != NOT_CONVERTED&&(*p == 'x' || *p == 'X'))/if (p != e && (*p == 'x' || *p == 'X'))/
+TokenValueParsers.cm:45:M/while (p != NOT_CONVERTED&&((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/while (p != e && ((*p >= '0' && *p <= '9') || (*p >= 'a' && *p <= 'f') || (*p >= 'A' && *p <= 'F')))/
+TokenValueParsers.cm:50:M/else if (p != NOT_CONVERTED&&(*p == 'd' || *p == 'D'))/else if (p != e && (*p == 'd' || *p == 'D'))/
+TokenValueParsers.cm:59:M/else if (p != NOT_CONVERTED&&(*p >= '0' && *p <= '7'))/else if (p != e && (*p >= '0' && *p <= '7'))/
+Algorithm.cm:12:M/List<NfaState*> NOT_CONVERTED();/List<NfaState*> stack;/
+Match.cm:41:M/NOT_CONVERTED lexer(regularExpressionPattern, "", 0);/RexLexer lexer(regularExpressionPattern, "", 0);/
+Match.cm:42:M/return NOT_CONVERTED(lexer, &context);/return RexParser.Parse(lexer, &context);/

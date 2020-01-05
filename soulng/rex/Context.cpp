@@ -1,5 +1,5 @@
 // =================================
-// Copyright (c) 2019 Seppo Laakko
+// Copyright (c) 2020 Seppo Laakko
 // Distributed under the MIT license
 // =================================
 
@@ -34,7 +34,7 @@ NfaState* Context::MakeNfaState()
 
 Symbol* Context::MakeChar(char32_t c)
 {
-    auto it = charSymbols.find(c);
+    std::map<char32_t, Symbol*>::const_iterator it = charSymbols.find(c);
     if (it != charSymbols.cend())
     {
         return it->second;
@@ -51,7 +51,7 @@ Symbol* Context::MakeChar(char32_t c)
 Symbol* Context::MakeRange(char32_t start, char32_t end)
 {
     Range range(start, end);
-    auto it = rangeSymbols.find(range);
+    std::map<Range, Symbol*>::const_iterator it = rangeSymbols.find(range);
     if (it != rangeSymbols.cend())
     {
         return it->second;

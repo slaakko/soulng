@@ -4,7 +4,7 @@
 #include <minilang/MinilangTokens.hpp>
 #include <minilang/Tree.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/IdentifierParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/IdentifierParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -49,5 +49,9 @@ soulng::parser::Match IdentifierParser::Identifier(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Identifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

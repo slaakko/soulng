@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map>
+  <namespace source="soulng" target="System"/>
+  <namespace source="lexer" target="Lex"/>
+  <namespace source="parser" target="Parsing"/>
+  <namespace source="rex" target="RegularExpressions"/>
+</map>

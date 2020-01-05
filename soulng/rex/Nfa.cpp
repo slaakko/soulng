@@ -1,5 +1,5 @@
 // =================================
-// Copyright (c) 2019 Seppo Laakko
+// Copyright (c) 2020 Seppo Laakko
 // Distributed under the MIT license
 // =================================
 
@@ -29,7 +29,7 @@ void NfaState::AddEdge(const NfaEdge& edge)
 std::vector<NfaState*> NfaState::Next(char32_t c) const
 {
     std::vector<NfaState*> next;
-    for (const auto& edge : edges)
+    for (const NfaEdge& edge : edges)
     {
         Symbol* symbol = edge.GetSymbol();
         if (symbol->Match(c))

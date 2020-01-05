@@ -4,7 +4,7 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/SourceFileParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/SourceFileParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -20,7 +20,7 @@ std::unique_ptr<minilang::SourceFileNode> SourceFileParser::Parse(MinilangLexer&
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     ++lexer;
-    int64_t pos = lexer.GetPos();
+    soulng::lexer::Span span = lexer.GetSpan();
     soulng::parser::Match match = SourceFileParser::SourceFile(lexer);
     value.reset(static_cast<minilang::SourceFileNode*>(match.value));
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
@@ -32,18 +32,18 @@ std::unique_ptr<minilang::SourceFileNode> SourceFileParser::Parse(MinilangLexer&
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (match.hit)
     {
-        if (*lexer == soulng::lexer::END)
+        if (*lexer == soulng::lexer::END_TOKEN)
         {
             return value;
         }
         else
         {
-            lexer.ThrowExpectationFailure(lexer.GetPos(), ToUtf32(GetTokenInfo(soulng::lexer::END)));
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
         }
     }
     else
     {
-        lexer.ThrowExpectationFailure(pos, U"SourceFile");
+        lexer.ThrowExpectationFailure(span, U"SourceFile");
     }
     return value;
 }
@@ -149,5 +149,9 @@ soulng::parser::Match SourceFileParser::SourceFile(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("SourceFile"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

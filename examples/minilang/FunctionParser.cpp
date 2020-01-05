@@ -6,7 +6,7 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/FunctionParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/FunctionParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -60,7 +60,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                                     soulng::parser::Match match(true);
                                     soulng::parser::Match* parentMatch8 = &match;
                                     {
-                                        int64_t pos = lexer.GetPos();
+                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match = IdentifierParser::Identifier(lexer);
                                         functionName.reset(static_cast<minilang::IdentifierNode*>(match.value));
                                         if (match.hit)
@@ -69,7 +69,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                                         }
                                         else
                                         {
-                                            lexer.ThrowExpectationFailure(pos, U"Identifier");
+                                            lexer.ThrowExpectationFailure(span, U"Identifier");
                                         }
                                     }
                                     *parentMatch7 = match;
@@ -90,7 +90,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                                     soulng::parser::Match match(true);
                                     soulng::parser::Match* parentMatch11 = &match;
                                     {
-                                        int64_t pos = lexer.GetPos();
+                                        soulng::lexer::Span span = lexer.GetSpan();
                                         soulng::parser::Match match(false);
                                         if (*lexer == LPAREN)
                                         {
@@ -103,7 +103,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                                         }
                                         else
                                         {
-                                            lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(LPAREN)));
+                                            lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(LPAREN)));
                                         }
                                     }
                                     if (match.hit)
@@ -151,7 +151,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch15 = &match;
                         {
-                            int64_t pos = lexer.GetPos();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match(false);
                             if (*lexer == RPAREN)
                             {
@@ -164,7 +164,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                                lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                             }
                         }
                         *parentMatch14 = match;
@@ -185,7 +185,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                         soulng::parser::Match match(true);
                         soulng::parser::Match* parentMatch18 = &match;
                         {
-                            int64_t pos = lexer.GetPos();
+                            soulng::lexer::Span span = lexer.GetSpan();
                             soulng::parser::Match match = StatementParser::CompoundStatement(lexer);
                             functionBody.reset(static_cast<minilang::CompoundStatementNode*>(match.value));
                             if (match.hit)
@@ -194,7 +194,7 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
                             }
                             else
                             {
-                                lexer.ThrowExpectationFailure(pos, U"CompoundStatement");
+                                lexer.ThrowExpectationFailure(span, U"CompoundStatement");
                             }
                         }
                         if (match.hit)
@@ -227,6 +227,10 @@ soulng::parser::Match FunctionParser::Function(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Function"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -298,7 +302,7 @@ soulng::parser::Match FunctionParser::ParameterList(MinilangLexer& lexer, minila
                                         soulng::parser::Match match(true);
                                         soulng::parser::Match* parentMatch8 = &match;
                                         {
-                                            int64_t pos = lexer.GetPos();
+                                            soulng::lexer::Span span = lexer.GetSpan();
                                             soulng::parser::Match match = FunctionParser::Parameter(lexer);
                                             right.reset(static_cast<minilang::ParameterNode*>(match.value));
                                             if (match.hit)
@@ -307,7 +311,7 @@ soulng::parser::Match FunctionParser::ParameterList(MinilangLexer& lexer, minila
                                             }
                                             else
                                             {
-                                                lexer.ThrowExpectationFailure(pos, U"Parameter");
+                                                lexer.ThrowExpectationFailure(span, U"Parameter");
                                             }
                                         }
                                         if (match.hit)
@@ -345,6 +349,10 @@ soulng::parser::Match FunctionParser::ParameterList(MinilangLexer& lexer, minila
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ParameterList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -401,5 +409,9 @@ soulng::parser::Match FunctionParser::Parameter(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Parameter"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

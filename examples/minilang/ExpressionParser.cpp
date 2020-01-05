@@ -5,7 +5,7 @@
 #include <minilang/MinilangLexer.hpp>
 #include <minilang/MinilangTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/ExpressionParser.parser' using soulng parser generator spg version 2.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/examples/minilang/ExpressionParser.parser' using soulng parser generator spg version 3.0.0
 
 using namespace soulng::unicode;
 using namespace MinilangTokens;
@@ -46,6 +46,10 @@ soulng::parser::Match ExpressionParser::Expression(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Expression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -193,6 +197,10 @@ soulng::parser::Match ExpressionParser::PrimaryExpression(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PrimaryExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -305,7 +313,7 @@ soulng::parser::Match ExpressionParser::PostfixExpression(MinilangLexer& lexer)
                                             soulng::parser::Match match(true);
                                             soulng::parser::Match* parentMatch13 = &match;
                                             {
-                                                int64_t pos = lexer.GetPos();
+                                                soulng::lexer::Span span = lexer.GetSpan();
                                                 soulng::parser::Match match(false);
                                                 if (*lexer == RPAREN)
                                                 {
@@ -318,7 +326,7 @@ soulng::parser::Match ExpressionParser::PostfixExpression(MinilangLexer& lexer)
                                                 }
                                                 else
                                                 {
-                                                    lexer.ThrowExpectationFailure(pos, ToUtf32(GetTokenInfo(RPAREN)));
+                                                    lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(RPAREN)));
                                                 }
                                             }
                                             *parentMatch12 = match;
@@ -363,6 +371,10 @@ soulng::parser::Match ExpressionParser::PostfixExpression(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PostfixExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -434,7 +446,7 @@ soulng::parser::Match ExpressionParser::ExpressionList(MinilangLexer& lexer, min
                                         soulng::parser::Match match(true);
                                         soulng::parser::Match* parentMatch8 = &match;
                                         {
-                                            int64_t pos = lexer.GetPos();
+                                            soulng::lexer::Span span = lexer.GetSpan();
                                             soulng::parser::Match match = ExpressionParser::Expression(lexer);
                                             right.reset(static_cast<minilang::Node*>(match.value));
                                             if (match.hit)
@@ -443,7 +455,7 @@ soulng::parser::Match ExpressionParser::ExpressionList(MinilangLexer& lexer, min
                                             }
                                             else
                                             {
-                                                lexer.ThrowExpectationFailure(pos, U"Expression");
+                                                lexer.ThrowExpectationFailure(span, U"Expression");
                                             }
                                         }
                                         if (match.hit)
@@ -481,6 +493,10 @@ soulng::parser::Match ExpressionParser::ExpressionList(MinilangLexer& lexer, min
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("ExpressionList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -521,7 +537,7 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
                     soulng::parser::Match match(true);
                     soulng::parser::Match* parentMatch4 = &match;
                     {
-                        int64_t pos = lexer.GetPos();
+                        soulng::lexer::Span span = lexer.GetSpan();
                         soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
                         unaryExpr.reset(static_cast<minilang::Node*>(match.value));
                         if (match.hit)
@@ -530,7 +546,7 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
                         }
                         else
                         {
-                            lexer.ThrowExpectationFailure(pos, U"UnaryExpression");
+                            lexer.ThrowExpectationFailure(span, U"UnaryExpression");
                         }
                     }
                     if (match.hit)
@@ -584,6 +600,10 @@ soulng::parser::Match ExpressionParser::UnaryExpression(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("UnaryExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -650,6 +670,10 @@ soulng::parser::Match ExpressionParser::UnaryOperator(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("UnaryOperator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -726,7 +750,7 @@ soulng::parser::Match ExpressionParser::MultiplicativeExpression(MinilangLexer& 
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = ExpressionParser::UnaryExpression(lexer);
                                                     right.reset(static_cast<minilang::Node*>(match.value));
                                                     if (match.hit)
@@ -735,7 +759,7 @@ soulng::parser::Match ExpressionParser::MultiplicativeExpression(MinilangLexer& 
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"UnaryExpression");
+                                                        lexer.ThrowExpectationFailure(span, U"UnaryExpression");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -786,6 +810,10 @@ soulng::parser::Match ExpressionParser::MultiplicativeExpression(MinilangLexer& 
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MultiplicativeExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -852,6 +880,10 @@ soulng::parser::Match ExpressionParser::MultiplicativeOperator(MinilangLexer& le
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MultiplicativeOperator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -928,7 +960,7 @@ soulng::parser::Match ExpressionParser::AdditiveExpression(MinilangLexer& lexer)
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = ExpressionParser::MultiplicativeExpression(lexer);
                                                     right.reset(static_cast<minilang::Node*>(match.value));
                                                     if (match.hit)
@@ -937,7 +969,7 @@ soulng::parser::Match ExpressionParser::AdditiveExpression(MinilangLexer& lexer)
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"MultiplicativeExpression");
+                                                        lexer.ThrowExpectationFailure(span, U"MultiplicativeExpression");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -988,6 +1020,10 @@ soulng::parser::Match ExpressionParser::AdditiveExpression(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AdditiveExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1041,6 +1077,10 @@ soulng::parser::Match ExpressionParser::AdditiveOperator(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("AdditiveOperator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1117,7 +1157,7 @@ soulng::parser::Match ExpressionParser::RelationalExpression(MinilangLexer& lexe
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = ExpressionParser::AdditiveExpression(lexer);
                                                     right.reset(static_cast<minilang::Node*>(match.value));
                                                     if (match.hit)
@@ -1126,7 +1166,7 @@ soulng::parser::Match ExpressionParser::RelationalExpression(MinilangLexer& lexe
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"AdditiveExpression");
+                                                        lexer.ThrowExpectationFailure(span, U"AdditiveExpression");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -1177,6 +1217,10 @@ soulng::parser::Match ExpressionParser::RelationalExpression(MinilangLexer& lexe
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RelationalExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1256,6 +1300,10 @@ soulng::parser::Match ExpressionParser::RelationalOperator(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("RelationalOperator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1332,7 +1380,7 @@ soulng::parser::Match ExpressionParser::EqualityExpression(MinilangLexer& lexer)
                                                 soulng::parser::Match match(true);
                                                 soulng::parser::Match* parentMatch10 = &match;
                                                 {
-                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::lexer::Span span = lexer.GetSpan();
                                                     soulng::parser::Match match = ExpressionParser::RelationalExpression(lexer);
                                                     right.reset(static_cast<minilang::Node*>(match.value));
                                                     if (match.hit)
@@ -1341,7 +1389,7 @@ soulng::parser::Match ExpressionParser::EqualityExpression(MinilangLexer& lexer)
                                                     }
                                                     else
                                                     {
-                                                        lexer.ThrowExpectationFailure(pos, U"RelationalExpression");
+                                                        lexer.ThrowExpectationFailure(span, U"RelationalExpression");
                                                     }
                                                 }
                                                 if (match.hit)
@@ -1392,6 +1440,10 @@ soulng::parser::Match ExpressionParser::EqualityExpression(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EqualityExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }
 
@@ -1445,5 +1497,9 @@ soulng::parser::Match ExpressionParser::EqualityOperator(MinilangLexer& lexer)
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EqualityOperator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
     return match;
 }

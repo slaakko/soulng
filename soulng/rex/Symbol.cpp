@@ -1,5 +1,5 @@
 // =================================
-// Copyright (c) 2019 Seppo Laakko
+// Copyright (c) 2020 Seppo Laakko
 // Distributed under the MIT license
 // =================================
 
@@ -41,7 +41,7 @@ Class::Class() : inverse(false)
 bool Class::Match(char32_t c)
 {
     bool match = false;
-    for (const auto& symbol : symbols)
+    for (Symbol* symbol : symbols)
     {
         if (symbol->Match(c))
         {
