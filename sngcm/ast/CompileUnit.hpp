@@ -34,6 +34,7 @@ private:
 
 SNGCM_AST_API void CombineNamespaces(CompileUnitNode& cu);
 SNGCM_AST_API void ArrangeClassMembers(CompileUnitNode& cu);
+SNGCM_AST_API void AddNamespaceImportsForUnnamedNamespaces(CompileUnitNode& cu);
 
 } } // namespace sngcm::ast
 

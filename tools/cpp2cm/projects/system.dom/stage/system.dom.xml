@@ -233,8 +233,8 @@
                                         </parameters>
                                         <overrides>
                                             <override functionId="function_Write_FB66F13F4BE633BC6192F252E7D1D665F07EBD52"/>
-                                            <override functionId="function_Write_9098EEDF25654B43E08F5642B1721DB4039ECB32"/>
                                             <override functionId="function_Write_D2A6C5D25D466C18F66912CA88697A808C557F29"/>
+                                            <override functionId="function_Write_9098EEDF25654B43E08F5642B1721DB4039ECB32"/>
                                         </overrides>
                                         <overriddenFunctions>
                                             <overriddenFunction functionId="function_Write_BEF58101F906ABBF2996B7F567F964CCCC24193E"/>
@@ -338,8 +338,8 @@
                                             <parameter access="public" id="parameter_visitor_7D40CD214F65A01752BCA65D1B9CF9607A37BA15" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
                                             <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
+                                            <overriddenFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
                                         </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="Document.hpp" declarationFileId="file/Document.hpp_7C2892F16E470A2E9385E3CCD90A88FC18D66CA1.html" declarationLine="29" definitionFile="Document.cpp" definitionFileId="file/Document.cpp_E1B8544900E202F07CBC542792453002CAECC767.html" definitionLine="91" id="function_AppendChild_7F624DEADC6A738AAED29677ABDD1CC6CDB18F66" name="AppendChild" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="override">
@@ -646,8 +646,8 @@
                                             <parameter access="public" id="parameter_visitor_5FAF108702B9128D9205A7805AF286A22544323C" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
                                             <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
+                                            <overriddenFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
                                         </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="Element.hpp" declarationFileId="file/Element.hpp_FCA46E7039268103F232EADE9131F7B976759F62.html" declarationLine="44" definitionFile="Element.cpp" definitionFileId="file/Element.cpp_DED8227DED9440AC54AC49DC9FF86208981FA231.html" definitionLine="193" id="function_AddAttribute_641AB4CBE72B1FA03937872253BBD3F98E01897E" name="AddAttribute" returnType="void">
@@ -847,13 +847,13 @@
                                         </parameters>
                                         <overrides>
                                             <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
-                                            <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
-                                            <override functionId="function_Accept_C66FE321363A92AA5E3BB2AF178C73EFD9125ADF"/>
                                             <override functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
-                                            <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
                                             <override functionId="function_Accept_7B5982FF4E2BC357565E1325691D54E88AA290E0"/>
                                             <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
                                             <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
+                                            <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
+                                            <override functionId="function_Accept_C66FE321363A92AA5E3BB2AF178C73EFD9125ADF"/>
+                                            <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="71" id="function_CloneNode_F414193A038D649BDB7C3AA3D27A602B04C5DFE9" name="CloneNode" returnType="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="pure virtual">
@@ -861,15 +861,15 @@
                                             <parameter access="public" id="parameter_deep_3523217F39AF473B6D7E690447D87EB55271944B" name="deep" type="bool"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
-                                            <override functionId="function_CloneNode_DD7FEEFB61CC0054111172B9E7AD0C41EBBDE2DA"/>
-                                            <override functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
-                                            <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
-                                            <override functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
                                             <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
-                                            <override functionId="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81"/>
+                                            <override functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
                                             <override functionId="function_CloneNode_F24A1550FCF607F3EA3CAD8DDA81F4C3554F3D52"/>
+                                            <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
+                                            <override functionId="function_CloneNode_DD7FEEFB61CC0054111172B9E7AD0C41EBBDE2DA"/>
+                                            <override functionId="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81"/>
                                             <override functionId="function_CloneNode_155FFD3D1ED86F480AB38332995502E6A9C83E14"/>
+                                            <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
+                                            <override functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="72" id="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B" name="GetNodeType" returnType="enum_NodeType_5368029CED50AA3E105E71B9D211833D74A20068" specifiers="const"/>
@@ -1016,15 +1016,15 @@
                                             <parameter access="public" id="parameter_formatter_72DD9388BB0B42BA86F2927DCF0FA5E010B847CB" name="formatter" type="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.lvalueref.class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9"/>
                                         </parameters>
                                         <overrides>
+                                            <override functionId="function_Write_7CB7928CCFD9B98C437F1CD39744C83F0B06BA78"/>
                                             <override functionId="function_Write_EE4A6E6FCB61F8CD884EB11888DC545ECF1E1530"/>
                                             <override functionId="function_Write_FB66F13F4BE633BC6192F252E7D1D665F07EBD52"/>
-                                            <override functionId="function_Write_9098EEDF25654B43E08F5642B1721DB4039ECB32"/>
-                                            <override functionId="function_Write_0567D0042E0722FDE72C42EEC7E87D41EE3BAF79"/>
-                                            <override functionId="function_Write_C143313BB555B2EF86665BA8CBE33C3708591B15"/>
-                                            <override functionId="function_Write_7CB7928CCFD9B98C437F1CD39744C83F0B06BA78"/>
                                             <override functionId="function_Write_D2A6C5D25D466C18F66912CA88697A808C557F29"/>
+                                            <override functionId="function_Write_C143313BB555B2EF86665BA8CBE33C3708591B15"/>
+                                            <override functionId="function_Write_9098EEDF25654B43E08F5642B1721DB4039ECB32"/>
                                             <override functionId="function_Write_DE877A9285C61B42D888FB44A0667A8661C90C9D"/>
                                             <override functionId="function_Write_09E18D48AF3DC5F5D80496A00FD5723F97D5B2B3"/>
+                                            <override functionId="function_Write_0567D0042E0722FDE72C42EEC7E87D41EE3BAF79"/>
                                         </overrides>
                                     </function>
                                     <destructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="66" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="47" id="destructor_destructor_CCA7A69D41029554B53DCB917FFEE294811B165E" name="destructor" specifiers="virtual"/>
@@ -1115,8 +1115,8 @@
                                             <parameter access="public" id="parameter_visitor_EAD0B993067F798C79BFEFDD3DAD70C0D3BFB9BB" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
                                             <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
+                                            <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
                                         </overrides>
                                         <overriddenFunctions>
                                             <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
@@ -1214,8 +1214,8 @@
                                             <parameter access="public" id="parameter_formatter_215B39E98C62AAEE5B3EB7BA47541F0F33A2B46D" name="formatter" type="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.lvalueref.class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Write_0567D0042E0722FDE72C42EEC7E87D41EE3BAF79"/>
                                             <override functionId="function_Write_C143313BB555B2EF86665BA8CBE33C3708591B15"/>
+                                            <override functionId="function_Write_0567D0042E0722FDE72C42EEC7E87D41EE3BAF79"/>
                                         </overrides>
                                         <overriddenFunctions>
                                             <overriddenFunction functionId="function_Write_BEF58101F906ABBF2996B7F567F964CCCC24193E"/>
@@ -1392,8 +1392,8 @@
                                             <parameter access="public" id="parameter_element_0ACCD55F854FD569200C6213FFAD3713C08D7F00" name="element" type="class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.ptr.class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_BeginVisit_A9953BA3D938BF104E900B5F6DA2723B81A1AA03"/>
                                             <override functionId="function_BeginVisit_D70B435864CFCB62CE5F1ABEE217FC6CF5B3F3A1"/>
+                                            <override functionId="function_BeginVisit_A9953BA3D938BF104E900B5F6DA2723B81A1AA03"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="38" id="function_EndVisit_5C8B9706303D24E036D913EA464C4C0ECC75057B" name="EndVisit" returnType="void" specifiers="virtual">
