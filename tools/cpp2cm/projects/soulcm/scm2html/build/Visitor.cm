@@ -1,0 +1,132 @@
+using System;
+using System.Collections;
+
+namespace sng2html
+{
+    public class Visitor
+    {
+        public virtual ~Visitor()
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parser)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED parserFile)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED domain)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED lexerFile)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED symbol)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED symbol)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED symbol)
+        {
+        }
+        public virtual void Visit(NOT_CONVERTED symbol)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.Alt& alt)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.Cat& cat)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.Kleene& kleene)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.Pos& pos)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.Opt& opt)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.ParenExpr& parenExpr)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.SymbolExpr& symbolExpr)
+        {
+        }
+        public virtual void Visit(sng2html.sng2html.RefExpr& refExpr)
+        {
+        }
+    }
+} // namespace sng2html
+using System;
+using System.Collections;
+
+namespace soulcm.scm2html
+{
+    public class Visitor
+    {
+        public virtual void Visit(Char& c)
+        {
+        }
+        public virtual void Visit(Any& a)
+        {
+        }
+        public virtual void Visit(Range& r)
+        {
+        }
+        public virtual void Visit(Class& c)
+        {
+        }
+    }
+} // namespace soulcm.scm2html

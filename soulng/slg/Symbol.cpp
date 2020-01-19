@@ -41,6 +41,18 @@ void Char::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+void Char::Print(CodeFormatter& formatter)
+{
+    if (chr == eps)
+    {
+        formatter.Write("EPS");
+    }
+    else
+    {
+        formatter.Write(ToUtf8(CharStr(chr)));
+    }
+}
+
 Any::Any()
 {
     SetName("(*)");
@@ -54,6 +66,11 @@ bool Any::Match(char32_t c)
 void Any::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
+}
+
+void Any::Print(CodeFormatter& formatter)
+{
+    formatter.Write(".");
 }
 
 Range::Range(char32_t start_, char32_t end_) : start(start_), end(end_)
@@ -354,12 +371,28 @@ void Class::AddChar(char32_t c)
 
 void Class::Print(CodeFormatter& formatter)
 {
-    formatter.Write("{");
-    for (auto& range : ranges)
+    if (ranges.empty())
     {
-        range.Print(formatter);
+        formatter.Write("[");
+        if (inverse)
+        {
+            formatter.Write("^");
+        }
+        for (Symbol* symbol : symbols)
+        {
+            symbol->Print(formatter);
+        }
+        formatter.Write("]");
     }
-    formatter.Write("}");
+    else
+    {
+        formatter.Write("{");
+        for (auto& range : ranges)
+        {
+            range.Print(formatter);
+        }
+        formatter.Write("}");
+    }
 }
 
 bool operator==(const Class& left, const Class& right)

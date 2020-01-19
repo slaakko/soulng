@@ -1,0 +1,83 @@
+// =================================
+// Copyright (c) 2020 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+using RegExTokens;
+
+parser LexRegExParser
+{
+    uselexer RegExLexer;
+
+    main;
+
+    RegularExpression(soulcm.scm2html.LexerContext* lexerContext) 
+        ::= Alternative(lexerContext):alternative
+        ;
+
+    Alternative(soulcm.scm2html.LexerContext* lexerContext) 
+        ::= (Catenation(lexerContext):left (ALT Catenation(lexerContext):right!)*)
+        ;
+
+    Catenation(soulcm.scm2html.LexerContext* lexerContext) 
+        ::= (Repetition(lexerContext):left (Repetition(lexerContext):right)*)
+        ;
+
+    Repetition(soulcm.scm2html.LexerContext* lexerContext) 
+        ::=
+        (   Primary(lexerContext):left
+            (   STAR
+            |   PLUS
+            |   QUEST
+            )?
+        )
+        ;
+
+    Primary(soulcm.scm2html.LexerContext* lexerContext) 
+        ::=
+        (   LPAREN Alternative(lexerContext):alt! RPAREN!
+        |   ESCAPE
+        |   INVERSE
+        |   MINUS
+        |   CHAR
+        |   DOT
+        |   Class(lexerContext):cls
+        |   ExpressionReference:ref
+        )
+        ;
+
+    Class(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Class* cls) 
+        ::= (LBRACKET{ cls = lexerContext->MakeClass(); } ((INVERSE{ cls->SetInverse(); })? (Range(lexerContext):r)*) RBRACKET!)
+        ;
+
+    Range(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Symbol* symbol) 
+        ::= (Char:s (MINUS Char:e{ symbol = lexerContext->MakeRange(s, e); } | empty{ symbol = lexerContext->MakeChar(s); }))
+        ;
+
+    Char : uchar
+        ::= LPAREN{ return '('; }
+        |   RPAREN{ return ')'; }
+        |   LBRACKET{ return '['; }
+        |   LBRACE{ return '{'; }
+        |   RBRACE{ return '}'; }
+        |   ALT{ return '|'; }
+        |   STAR{ return '*'; }
+        |   PLUS{ return '+'; }
+        |   QUEST{ return '?'; }
+        |   DOT{ return '.'; }
+        |   ESCAPE{ return soulcm.scm2html.MakeEscapeValue(lexer.FileName(), lexer.GetToken(pos)); }
+        |   INVERSE{ return '^'; }
+        |   MINUS{ return '-'; }
+        |   CHAR{ ustring match = lexer.GetMatch(span); return match[0]; }
+        ;
+
+    ExpressionReference(var Span s) : ustring
+        ::= LBRACE{ s = span; } CHAR+ RBRACE{ s.end = span.end; return soulcm.scm2html.MakeExprRefId(lexer.FileName(), lexer.GetMatch(s), lexer.GetToken(pos).line); }
+        ;
+
+    ruleinfo
+    {
+        (RegularExpression, "regular expression"), (Alternative, "alternative"), (Catenation, "catenation"), (Repetition, "repetition"), (Primary, "primary expression"),
+        (Class, "regular class definition"), (Range, "range"), (Char, "character"), (ExpressionReference, "regular expression reference")
+    }
+}

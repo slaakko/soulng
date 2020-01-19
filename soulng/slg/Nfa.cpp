@@ -12,6 +12,12 @@ NfaEdge::NfaEdge(Symbol* symbol_, NfaState* next_) : symbol(symbol_), next(next_
 {
 }
 
+void NfaEdge::Print(CodeFormatter& formatter)
+{
+    symbol->Print(formatter);
+    formatter.WriteLine(" -> " + std::to_string(next->Id()));
+}
+
 NfaState::NfaState(int id_, int statementIndex_) : id(id_), statementIndex(statementIndex_),  accept(false)
 {
 }
@@ -19,11 +25,21 @@ NfaState::NfaState(int id_, int statementIndex_) : id(id_), statementIndex(state
 void NfaState::SetEdges(const std::vector<NfaEdge>& edges_)
 {
     edges = edges_;
+    for (NfaEdge& edge : edges)
+    {
+        edge.Next()->AddPrev(this);
+    }
 }
 
 void NfaState::AddEdge(const NfaEdge& edge)
 {
     edges.push_back(edge);
+    edge.Next()->AddPrev(this);
+}
+
+void NfaState::AddPrev(NfaState* prev_)
+{
+    prev.insert(prev_);
 }
 
 std::vector<NfaState*> NfaState::Next(char32_t c) const
@@ -38,6 +54,34 @@ std::vector<NfaState*> NfaState::Next(char32_t c) const
         }
     }
     return next;
+}
+
+void NfaState::Print(CodeFormatter& formatter)
+{
+    std::string str = std::to_string(id);
+    if (statementIndex != -1)
+    {
+        str.append(" : STATEMENT=").append(std::to_string(statementIndex));
+    }
+    if (accept)
+    {
+        str.append(" : ACCEPT");
+    }
+    if (!prev.empty())
+    {
+        str.append(" : prev:");
+        for (NfaState* p : prev)
+        {
+            str.append(" ").append(std::to_string(p->Id()));
+        }
+    }
+    formatter.WriteLine(str);
+    formatter.IncIndent();
+    for (NfaEdge& edge : edges)
+    {
+        edge.Print(formatter);
+    }
+    formatter.DecIndent();
 }
 
 Nfa::Nfa() : start(nullptr), end(nullptr)

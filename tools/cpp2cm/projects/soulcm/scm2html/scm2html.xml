@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="scm2html" type="program" targetName="scm2html">
+  <imports>
+    <import name="std"/>
+    <import name="boost"/>
+    <import name="soulng.util"/>
+    <import project="../../system.lex/system.lex.xml"/>
+    <import project="../../system.parsing/system.parsing.xml"/>
+    <import project="../../cm.ast/cm.ast.xml"/>
+  </imports>
+  <references>
+    <reference project="../../../cm.ast/cm.ast/Cm.Ast.cmp" kind="stage"/>
+    <reference project="../../../cm/ast/Cm.Ast.cmp" kind="install"/>
+  </references>
+  <vcxproject file="..\..\..\..\sng2html\sng2html\sng2html.vcxproj"/>
+  <include path="../.."/>
+  <target dir="build"/>
+  <install dir="D:\work\cmajorm\cmajor\projects\tools\soulcm\scm2html"/>
+  <map file="map.xml"/>
+  <patches>
+    <patch file="scm2html.patches"/>
+  </patches>
+  <filter>
+    <file exclude="*"/>
+    <file include="CharSet.hpp"/>
+    <file include="CharSet.cpp"/>
+    <file include="RegEx.hpp"/>
+    <file include="RegEx.cpp"/>
+    <file include="Visitor.hpp"/>
+    <file include="Visitor.cpp"/>
+  </filter>
+  <text>
+  </text>
+</project>

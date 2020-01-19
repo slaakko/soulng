@@ -804,10 +804,10 @@
                                             <parameter access="public" id="parameter_c_17EBE652AFE12ABC1CB29852E190AC8AF963A75C" name="c" type="char32_t"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
-                                            <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
-                                            <override functionId="function_Match_1AE8F7F6A34CA646D0EF5F7041B467CC3F1FC477"/>
                                             <override functionId="function_Match_966EB2B435288E763840A7BE98C0DD7AF7EFDB64"/>
+                                            <override functionId="function_Match_09B47C922FA2035502AC03D1F3B5375CF96DBECE"/>
+                                            <override functionId="function_Match_23F38ADF65C25FF2E7574178356BA3F9BC7157FF"/>
+                                            <override functionId="function_Match_1AE8F7F6A34CA646D0EF5F7041B467CC3F1FC477"/>
                                         </overrides>
                                     </function>
                                     <destructor access="public" declarationFile="Symbol.hpp" declarationFileId="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html" declarationLine="18" definitionFile="Symbol.cpp" definitionFileId="file/Symbol.cpp_2952EC5A257347FAB0B6C82A489B0F6BE884A4E2.html" definitionLine="10" id="destructor_destructor_6476B15E311EFA7E9D2F1272110D728FA499C168" name="destructor" specifiers="virtual"/>

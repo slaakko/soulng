@@ -1,0 +1,65 @@
+using System;
+using System.Collections;
+using System.IO;
+using System.Dom;
+using System.XPath;
+
+namespace soulcm.scm2html
+{
+    public class Project
+    {
+        public Project(const string& scm2htmlFilePath_) :
+            scm2HtmlFilePath(scm2htmlFilePath_), rootDir(Path.GetDirectoryName(GetFullPath(scm2HtmlFilePath)))
+        {
+        }
+        public void Process(bool verbose)
+        {
+            this->verbose = verbose;
+            if (verbose)
+            {
+                Console.Out() << "> " << scm2HtmlFilePath << endl();
+            }
+            scm2htmlDoc = ReadDocument(scm2HtmlFilePath);
+            ReadLexerFiles();
+        }
+        public void ReadLexerFiles()
+        {
+            UniquePtr<XPathObject> result = Evaluate(u"/project/lexer", scm2htmlDoc.Get());
+            if (!result.IsNull())
+            {
+                if (result.Get() is XPathNodeSet*)
+                {
+                    XPathNodeSet* nodeSet = cast<XPathNodeSet*>(result.Get());
+                    int n = nodeSet->Length();
+                    for (int i = 0; i < n; ++i)
+                    {
+                        Node* node = (*nodeSet)[i];
+                        if (node is Element*)
+                        {
+                            Element* element = cast<Element*>(node);
+                            ustring fileAttr = element->GetAttribute(u"file");
+                            if (!fileAttr.IsEmpty())
+                            {
+                                string lexerFilePath = GetFullPath(Path.Combine(rootDir, Path.MakeCanonical(ToUtf8(fileAttr))));
+                                if (verbose)
+                                {
+                                    Console.Out() << "> " << lexerFilePath << endl();
+                                    LexerFileLexer lexer(ToUtf32(File.ReadAllText(lexerFilePath)), lexerFilePath, index++);
+                                    ParsingContext parsingContext;
+                                    UniquePtr<LexerFile> lexerFile = LexLexerFileParser.Parse(lexer, &parsingContext);
+                                    lexerFiles.Add(Rvalue(lexerFile));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private string scm2HtmlFilePath;
+        private string rootDir;
+        private UniquePtr<Document> scm2htmlDoc;
+        private List<UniquePtr<LexerFile>> lexerFiles;
+        private bool verbose;
+        private int index;
+    }
+} // namespace soulcm.scm2html

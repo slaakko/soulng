@@ -1,6 +1,6 @@
 using System;
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/system.regularexpressios/lexer/RexLexer.lexer' using soulcm lexer generator scmlg version 3.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/system.regularexpressions/lexer/RexLexer.lexer' using soulcm lexer generator scmlg version 3.0.0
 
 namespace RexTokens
 {

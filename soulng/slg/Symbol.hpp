@@ -27,6 +27,7 @@ public:
     virtual ~Symbol();
     virtual bool Match(char32_t c) = 0;
     virtual void Accept(Visitor& visitor) = 0;
+    virtual void Print(CodeFormatter& formatter) = 0;
     virtual bool IsClass() const { return false; }
     virtual bool IsChar() const { return false; }
     virtual bool IsAny() const { return false; }
@@ -49,6 +50,7 @@ public:
     bool IsChar() const override { return true; }
     bool Match(char32_t c) override;
     void Accept(Visitor& visitor) override;
+    void Print(CodeFormatter& formatter) override;
     char32_t Chr() const { return chr; }
 private:
     char32_t chr;
@@ -60,6 +62,7 @@ public:
     Any();
     bool Match(char32_t c) override;
     void Accept(Visitor& visitor) override;
+    void Print(CodeFormatter& formatter) override;
     bool IsAny() const override { return true; }
 };
 
@@ -69,11 +72,11 @@ public:
     Range(char32_t start_, char32_t end_);
     bool Match(char32_t c) override;
     void Accept(Visitor& visitor) override;
+    void Print(CodeFormatter& formatter) override;
     bool IsRange() const override { return true; }
     bool IsEmpty() const { return start > end; }
     char32_t Start() const { return start; }
     char32_t End() const { return end; }
-    void Print(CodeFormatter& formatter);
 private:
     char32_t start;
     char32_t end;
@@ -105,6 +108,7 @@ public:
     Class(int index_);
     bool Match(char32_t c) override;
     void Accept(Visitor& visitor) override;
+    void Print(CodeFormatter& formatter) override;
     bool IsClass() const override { return true; }
     bool Inverse() const { return inverse; }
     void SetInverse() { inverse = true; }
@@ -121,7 +125,6 @@ public:
     bool IsEmpty() const { return symbols.empty(); }
     const std::list<Range>& Ranges() const { return ranges; }
     std::list<Range>& Ranges() { return ranges; }
-    void Print(CodeFormatter& formatter);
 private:
     int index;
     bool inverse;

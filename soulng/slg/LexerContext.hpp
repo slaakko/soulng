@@ -69,6 +69,7 @@ public:
     void AddInclude(Include* include);
     void SetApi(const std::u32string& api_) { api = api_; }
     const std::u32string& Api() const { return api; }
+    void Print(CodeFormatter& formatter);
 private:
     std::vector<Include*> includes;
     int nextNfaStateId;

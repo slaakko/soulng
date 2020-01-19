@@ -4,6 +4,7 @@
 // =================================
 
 #include <soulng/util/Log.hpp>
+#include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <iostream>
 #include <mutex>
@@ -54,7 +55,7 @@ void LogMessage(int logStreamId, const std::string& message)
         }
         else
         {
-            std::cout << logStreamId << ">" << message << std::endl;
+            std::cout << Format(std::to_string(logStreamId), 2, FormatWidth::min, FormatJustify::right, '0') << ">" << message << std::endl;
         }
     }
     else if (logMode == LogMode::queue)
@@ -65,7 +66,7 @@ void LogMessage(int logStreamId, const std::string& message)
         }
         else
         {
-            log.push_back(std::to_string(logStreamId) + ">" + message);
+            log.push_back(Format(std::to_string(logStreamId), 2, FormatWidth::min, FormatJustify::right, '0') + ">" + message);
         }
         messageEnqueuedOrEndLog.notify_one();
     }

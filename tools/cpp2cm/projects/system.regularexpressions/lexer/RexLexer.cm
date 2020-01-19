@@ -2,17 +2,19 @@ using System;
 using System.Lex;
 using RexTokens;
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/system.regularexpressios/lexer/RexLexer.lexer' using soulcm lexer generator scmlg version 3.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/system.regularexpressions/lexer/RexLexer.lexer' using soulcm lexer generator scmlg version 3.0.0
 
 public class RexLexer : System.Lex.Lexer
 {
     public RexLexer(const ustring& content_, const string& fileName_, int fileIndex_) :
         base(content_, fileName_, fileIndex_)
     {
+        RexClassMap.Init();
     }
     public RexLexer(const uchar* start_, const uchar* end_, const string& fileName_, int fileIndex_) :
         base(start_, end_, fileName_, fileIndex_)
     {
+        RexClassMap.Init();
     }
     public override int NextState(int state, uchar c)
     {

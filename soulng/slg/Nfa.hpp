@@ -19,6 +19,7 @@ public:
     NfaEdge(Symbol* symbol_, NfaState* next_);
     Symbol* GetSymbol() const { return symbol; }
     NfaState* Next() const { return next; }
+    void Print(CodeFormatter& formatter);
 private:
     Symbol* symbol;
     NfaState* next;
@@ -36,12 +37,15 @@ public:
     const std::vector<NfaEdge>& Edges() const { return edges; }
     void SetEdges(const std::vector<NfaEdge>& edges_);
     void AddEdge(const NfaEdge& edge);
+    void AddPrev(NfaState* prev_);
     std::vector<NfaState*> Next(char32_t c) const;
+    void Print(CodeFormatter& formatter);
 private:
     int id;
     int statementIndex;
     bool accept;
     std::vector<NfaEdge> edges;
+    std::set<NfaState*> prev;
 };
 
 class Nfa

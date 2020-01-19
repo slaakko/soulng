@@ -23,7 +23,6 @@ xcopy /Y /D ..\soulng\x64\Debug\sngrexd.lib ..\lib
 xcopy /Y /D ..\soulng\x64\Debug\sngrexd.dll ..\bin
 xcopy /Y /D ..\soulng\x64\Release\sngrex.lib ..\lib
 xcopy /Y /D ..\soulng\x64\Release\sngrex.dll ..\bin
-xcopy /Y /D ..\examples\cmajor\bin\*.* ..\bin
 xcopy /Y /D ..\examples\minilang\x64\Debug\minilangd.exe ..\bin
 xcopy /Y /D ..\examples\minilang\x64\Release\minilang.exe ..\bin
 xcopy /Y /D ..\sngxml\x64\Debug\sngxmlxmld.lib ..\lib

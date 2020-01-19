@@ -23,6 +23,7 @@ public:
     const std::vector<NfaState*>& NfaStates() const { return nfaStates; }
     void AddNext(DfaState* next);
     DfaState* Next(int i) const;
+    void Print(LexerContext& context, CodeFormatter& formatter);
 private:
     int id;
     std::vector<NfaState*> nfaStates;
@@ -38,6 +39,7 @@ public:
     void AddState(DfaState* state);
     const std::vector<DfaState*>& States() const { return states; }
     void Finalize();
+    void Print(LexerContext& lexerContext, CodeFormatter& formatter);
 private:
     std::vector<DfaState*> states;
 };

@@ -26,7 +26,7 @@ void PrintUsage()
     std::cout << "--verbose | -v" << std::endl;
     std::cout << "  Be verbose." << std::endl;
     std::cout << "--debug | -d" << std::endl;
-    std::cout << "  Print character class partition to stdout" << std::endl;
+    std::cout << "  Print character class partition and NFAs to stdout" << std::endl;
     std::cout << "--use-ascii-identifier-classes | -a" << std::endl;
     std::cout << "  Use ASCII identifier classes." << std::endl;
     std::cout << "  By default uses Unicode identifier classes." << std::endl;

@@ -6,10 +6,10 @@ XmlContentHandler.cm:47:M/public NOT_CONVERTED begin() const/public List<Attribu
 XmlContentHandler.cm:51:M/public NOT_CONVERTED end() const/public List<Attribute>.ConstIterator End() const/
 XmlContentHandler.cm:55:M/public NOT_CONVERTED cbegin() const/public List<Attribute>.ConstIterator CBegin() const/
 XmlContentHandler.cm:59:M/public NOT_CONVERTED cend() const/public List<Attribute>.ConstIterator CEnd() const/
-XmlContentHandler.cm:117:M/public virtual void Text(const ustring& text)/public virtual void HandleText(const ustring& text)/
-XmlContentHandler.cm:120:M/public virtual void Comment(const ustring& comment)/public virtual void HandleComment(const ustring& comment)/
-XmlContentHandler.cm:123:M/public virtual void PI(const ustring& target, const ustring& data)/public virtual void HandlePI(const ustring& target, const ustring& data)/
-XmlContentHandler.cm:126:M/public virtual void CDataSection(const ustring& cdata)/public virtual void HandleCDataSection(const ustring& cdata)/
+XmlContentHandler.cm:121:M/public virtual void Text(const ustring& text)/public virtual void HandleText(const ustring& text)/
+XmlContentHandler.cm:124:M/public virtual void Comment(const ustring& comment)/public virtual void HandleComment(const ustring& comment)/
+XmlContentHandler.cm:127:M/public virtual void PI(const ustring& target, const ustring& data)/public virtual void HandlePI(const ustring& target, const ustring& data)/
+XmlContentHandler.cm:130:M/public virtual void CDataSection(const ustring& cdata)/public virtual void HandleCDataSection(const ustring& cdata)/
 XmlParserInterface.cm:49:M/System.Lex.XmlParsingLog debugLog(NOT_CONVERTED);/System.Lex.XmlParsingLog debugLog(Console.Error());/
 XmlParserInterface.cm:56:M/NOT_CONVERTED(xmlLexer, &xmlProcessor);/XmlParser.Parse(xmlLexer, &xmlProcessor);/
 XmlParserInterface.cm:32:M/string xmlContent = NOT_CONVERTED(xmlFileName);/string xmlContent = System.IO.File.ReadAllText(xmlFileName);/

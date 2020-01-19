@@ -4,7 +4,7 @@ using System.Lex;
 using System.Parsing;
 using RexTokens;
 
-// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/system.regularexpressios/parser/RexParser.parser' using soulcm parser generator scmpg version 3.0.0
+// this file has been automatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/system.regularexpressions/parser/RexParser.parser' using soulcm parser generator scmpg version 3.0.0
 
 public static class RexParser
 {

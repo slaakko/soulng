@@ -37,7 +37,7 @@ public:
     Declaration(const std::u32string& name_);
     virtual ~Declaration();
     virtual void FillContext(LexerContext& lexerContext) = 0;
-    virtual void Process(const std::string& root, bool verbose, LexerContext& lexerContext) = 0;
+    virtual void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext) = 0;
     const std::u32string& Name() const { return name; }
 private:
     std::u32string name;
@@ -48,7 +48,7 @@ class ClassMap : public Declaration
 public:
     ClassMap(const std::u32string& name_);
     void FillContext(LexerContext& lexerContext);
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext);
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext);
 };
 
 class Prefix : public Declaration
@@ -56,7 +56,7 @@ class Prefix : public Declaration
 public:
     Prefix(const std::u32string& prefix_);
     void FillContext(LexerContext& lexerContext);
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext);
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext);
 };
 
 class Include : public Declaration
@@ -64,7 +64,7 @@ class Include : public Declaration
 public:
     Include(const std::u32string& header_);
     void FillContext(LexerContext& lexerContext);
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext);
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext);
     const std::u32string& Header() const { return header; }
 private:
     std::u32string header;
@@ -84,7 +84,7 @@ public:
     Tokens(const std::u32string& name_);
     void Add(const Token& token);
     void FillContext(LexerContext& lexerContext) override;
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext) override;
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext) override;
 private:
     std::vector<Token> tokens;
 };
@@ -103,7 +103,7 @@ public:
     Keywords(const std::u32string& name_);
     void Add(Keyword* keyword);
     void FillContext(LexerContext& lexerContext) override;
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext) override;
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext) override;
 private:
     std::vector<std::unique_ptr<Keyword>> keywords;
 };
@@ -130,7 +130,7 @@ public:
     void Add(Expression* expression);
     Expression* Get(const std::u32string& id) const;
     void FillContext(LexerContext& lexerContext) override;
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext) override;
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext) override;
 private:
     std::vector<std::unique_ptr<Expression>> expressions;
     std::map<std::u32string, int> exprMap;
@@ -151,7 +151,7 @@ class LexerStatement
 {
 public:
     LexerStatement(const std::u32string& expr_, soulng::cppcode::CompoundStatement* stmt_, int action_, int line_);
-    void Process(LexerContext& lexerContext);
+    void Process(LexerContext& lexerContext, bool debug);
     void SetIndex(int index_) { index = index_; }
     int Index() const { return index; }
     const Nfa& GetNfa() const { return nfa; }
@@ -185,7 +185,7 @@ class Actions : public Declaration
 public:
     Actions();
     void FillContext(LexerContext& lexerContext);
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext);
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext);
     void Add(Action* action);
     Action* Get(int id) const;
 private:
@@ -201,10 +201,11 @@ public:
     void AddVariable(Variable* variable);
     void AddAction(Action* action);
     void FillContext(LexerContext& lexerContext) override;
-    void Process(const std::string& root, bool verbose, LexerContext& lexerContext) override;
-    void MakeMasterNfa(LexerContext& lexerContext);
+    void Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext) override;
+    void MakeMasterNfa(LexerContext& lexerContext, bool debug);
     void MakeDfa(LexerContext& lexerContext);
     void WriteAutomaton(const std::string& root, bool verbose, LexerContext& lexerContext);
+    Dfa& GetDfa() { return dfa; }
 private:
     std::u32string api;
     std::vector<std::unique_ptr<LexerStatement>> statements;

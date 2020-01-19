@@ -151,8 +151,8 @@
                                             <parameter access="public" id="parameter_visitor_A5F1B59265A5AF1ED0A63C994DDED359CCF2DB72" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
                                             <overriddenFunction functionId="function_Accept_7B5982FF4E2BC357565E1325691D54E88AA290E0"/>
+                                            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
                                         </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="CharacterData.hpp" declarationFileId="file/CharacterData.hpp_A7399EB434599D8609AAE540E720604C07C8D9E7.html" declarationLine="70" definitionFile="CharacterData.cpp" definitionFileId="file/CharacterData.cpp_9A70737AF13E0E345676B07AC36B527FBC4EF34E.html" definitionLine="112" id="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81" name="CloneNode" returnType="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="override">
@@ -232,8 +232,8 @@
                                             <parameter access="public" id="parameter_formatter_F33B718EE733DE1666FCF09DFB7956D4D89A5573" name="formatter" type="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.lvalueref.class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Write_FB66F13F4BE633BC6192F252E7D1D665F07EBD52"/>
                                             <override functionId="function_Write_D2A6C5D25D466C18F66912CA88697A808C557F29"/>
+                                            <override functionId="function_Write_FB66F13F4BE633BC6192F252E7D1D665F07EBD52"/>
                                             <override functionId="function_Write_9098EEDF25654B43E08F5642B1721DB4039ECB32"/>
                                         </overrides>
                                         <overriddenFunctions>
@@ -338,8 +338,8 @@
                                             <parameter access="public" id="parameter_visitor_7D40CD214F65A01752BCA65D1B9CF9607A37BA15" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
                                             <overriddenFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+                                            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
                                         </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="Document.hpp" declarationFileId="file/Document.hpp_7C2892F16E470A2E9385E3CCD90A88FC18D66CA1.html" declarationLine="29" definitionFile="Document.cpp" definitionFileId="file/Document.cpp_E1B8544900E202F07CBC542792453002CAECC767.html" definitionLine="91" id="function_AppendChild_7F624DEADC6A738AAED29677ABDD1CC6CDB18F66" name="AppendChild" returnType="class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.ptr.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="override">
@@ -646,8 +646,8 @@
                                             <parameter access="public" id="parameter_visitor_5FAF108702B9128D9205A7805AF286A22544323C" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
                                             <overriddenFunction functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+                                            <overriddenFunction functionId="function_Accept_5FFACA754EE19B8885561B74C02CEE593F5C1F3A"/>
                                         </overriddenFunctions>
                                     </function>
                                     <function access="public" declarationFile="Element.hpp" declarationFileId="file/Element.hpp_FCA46E7039268103F232EADE9131F7B976759F62.html" declarationLine="44" definitionFile="Element.cpp" definitionFileId="file/Element.cpp_DED8227DED9440AC54AC49DC9FF86208981FA231.html" definitionLine="193" id="function_AddAttribute_641AB4CBE72B1FA03937872253BBD3F98E01897E" name="AddAttribute" returnType="void">
@@ -846,13 +846,13 @@
                                             <parameter access="public" id="parameter_visitor_E8A1DE2ADCA731D5ACBB8F6A8AF065BBCB9CE99C" name="visitor" type="class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0.lvalueref.class_Visitor_549B96ACB368AD0D5131C27F98981FCD740BCCE0"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
                                             <override functionId="function_Accept_A29AB7894B1BD52AF5AFEA16E9AB7C1E016525B9"/>
+                                            <override functionId="function_Accept_0FFE9C4307B41AE8BF7BDFE12B39AB4E3184B7AE"/>
                                             <override functionId="function_Accept_7B5982FF4E2BC357565E1325691D54E88AA290E0"/>
-                                            <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
-                                            <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
                                             <override functionId="function_Accept_62F1F7C834EAAB118D5388C82D7E36D81CD9CB7D"/>
+                                            <override functionId="function_Accept_6C37446100B311CE48CEB93DA63159617FD5E53D"/>
                                             <override functionId="function_Accept_C66FE321363A92AA5E3BB2AF178C73EFD9125ADF"/>
+                                            <override functionId="function_Accept_8D88BF2624C1B842D83424ED3DDB9046D6462142"/>
                                             <override functionId="function_Accept_C24BE355BA1C5832ED4E1FC2C5596B2BEE2EC1DD"/>
                                         </overrides>
                                     </function>
@@ -861,15 +861,15 @@
                                             <parameter access="public" id="parameter_deep_3523217F39AF473B6D7E690447D87EB55271944B" name="deep" type="bool"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
+                                            <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
                                             <override functionId="function_CloneNode_9359F171CC7E04DA2310CF7EFB64FF650D682877"/>
                                             <override functionId="function_CloneNode_F24A1550FCF607F3EA3CAD8DDA81F4C3554F3D52"/>
-                                            <override functionId="function_CloneNode_9BFDCAC98C5C66FC918193176FEE15E73A3188A8"/>
                                             <override functionId="function_CloneNode_DD7FEEFB61CC0054111172B9E7AD0C41EBBDE2DA"/>
+                                            <override functionId="function_CloneNode_562C63C4AFF2D621EC04144A5FD658CA79BCAECC"/>
                                             <override functionId="function_CloneNode_D62ED09AE688F10DC6C36DECEF29E2B51699DA81"/>
+                                            <override functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
                                             <override functionId="function_CloneNode_155FFD3D1ED86F480AB38332995502E6A9C83E14"/>
                                             <override functionId="function_CloneNode_485A0B1435A29EF79EAA3756FB234C2BC05F3020"/>
-                                            <override functionId="function_CloneNode_FC5D4DC6041EBB243B41B7CFC47D5A176220B8A9"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="72" id="function_GetNodeType_00803098666098874171D3B0C89D61BCFED2E82B" name="GetNodeType" returnType="enum_NodeType_5368029CED50AA3E105E71B9D211833D74A20068" specifiers="const"/>
@@ -1016,15 +1016,15 @@
                                             <parameter access="public" id="parameter_formatter_72DD9388BB0B42BA86F2927DCF0FA5E010B847CB" name="formatter" type="class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.lvalueref.class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Write_7CB7928CCFD9B98C437F1CD39744C83F0B06BA78"/>
                                             <override functionId="function_Write_EE4A6E6FCB61F8CD884EB11888DC545ECF1E1530"/>
+                                            <override functionId="function_Write_C143313BB555B2EF86665BA8CBE33C3708591B15"/>
+                                            <override functionId="function_Write_7CB7928CCFD9B98C437F1CD39744C83F0B06BA78"/>
+                                            <override functionId="function_Write_DE877A9285C61B42D888FB44A0667A8661C90C9D"/>
                                             <override functionId="function_Write_FB66F13F4BE633BC6192F252E7D1D665F07EBD52"/>
                                             <override functionId="function_Write_D2A6C5D25D466C18F66912CA88697A808C557F29"/>
-                                            <override functionId="function_Write_C143313BB555B2EF86665BA8CBE33C3708591B15"/>
                                             <override functionId="function_Write_9098EEDF25654B43E08F5642B1721DB4039ECB32"/>
-                                            <override functionId="function_Write_DE877A9285C61B42D888FB44A0667A8661C90C9D"/>
-                                            <override functionId="function_Write_09E18D48AF3DC5F5D80496A00FD5723F97D5B2B3"/>
                                             <override functionId="function_Write_0567D0042E0722FDE72C42EEC7E87D41EE3BAF79"/>
+                                            <override functionId="function_Write_09E18D48AF3DC5F5D80496A00FD5723F97D5B2B3"/>
                                         </overrides>
                                     </function>
                                     <destructor access="public" declarationFile="Node.hpp" declarationFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" declarationLine="66" definitionFile="Node.cpp" definitionFileId="file/Node.cpp_1CDADA92F494BEBB9FE4E9739BA5625059BE53B6.html" definitionLine="47" id="destructor_destructor_CCA7A69D41029554B53DCB917FFEE294811B165E" name="destructor" specifiers="virtual"/>
@@ -1392,8 +1392,8 @@
                                             <parameter access="public" id="parameter_element_0ACCD55F854FD569200C6213FFAD3713C08D7F00" name="element" type="class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.ptr.class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_BeginVisit_D70B435864CFCB62CE5F1ABEE217FC6CF5B3F3A1"/>
                                             <override functionId="function_BeginVisit_A9953BA3D938BF104E900B5F6DA2723B81A1AA03"/>
+                                            <override functionId="function_BeginVisit_D70B435864CFCB62CE5F1ABEE217FC6CF5B3F3A1"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="Node.hpp" definitionFileId="file/Node.hpp_425A32856942D5969D6464FF9C2F2257195DD950.html" definitionLine="38" id="function_EndVisit_5C8B9706303D24E036D913EA464C4C0ECC75057B" name="EndVisit" returnType="void" specifiers="virtual">
@@ -1576,12 +1576,13 @@
                                         </parameters>
                                     </function>
                                     <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="41" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="20" id="function_Clear_65572C89EBD864F90C14998D9639C78C61D0AAB1" name="Clear" returnType="void"/>
-                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="43" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="38" id="function_GetAttributeValue_7071181530489097A98BC1F6DCF1B4D48495D55D" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="42" id="function_Count_D290F44A2E1373A6467441574A96E620BF9325F7" name="Count" returnType="typedef_size_t_1470D06EDB2DD960D7AB186213477F79DF7BB92D" specifiers="const"/>
+                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="44" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="38" id="function_GetAttributeValue_7071181530489097A98BC1F6DCF1B4D48495D55D" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
                                         <parameters>
                                             <parameter access="public" id="parameter_qualifiedName_28822469F3C0F3609B8D526FE17819DB44BC989E" name="qualifiedName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="42" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="25" id="function_GetAttributeValue_B87AA457A15933348BB0E1B4657584755393B47C" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
+                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="43" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="25" id="function_GetAttributeValue_B87AA457A15933348BB0E1B4657584755393B47C" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
                                         <parameters>
                                             <parameter access="public" id="parameter_namespaceUri_6F41162FEF229D45E0C1FDD7BBE4489F3AC8C155" name="namespaceUri" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_localName_AC1FC6A9C811D9CE032D8CFFA472A64025A5D49C" name="localName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -1630,12 +1631,12 @@
                                     <variable access="private" id="variable_value_1C71E6FFD8D4332750AA148207B90BF14389A8D9" name="value" type="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                 </variables>
                             </class>
-                            <class access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="48" id="class_XmlContentHandler_8AE38CE227FB4990F18C13596AC35DB352C3B24D" key="class" name="XmlContentHandler" project="system.xml">
+                            <class access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="49" id="class_XmlContentHandler_8AE38CE227FB4990F18C13596AC35DB352C3B24D" key="class" name="XmlContentHandler" project="system.xml">
                                 <derivedClasses>
                                     <derivedClass derivedClassId="class_DomDocumentHandler_7C2AF71693FA6CEE15727951BF3ED7B4FE6C834D"/>
                                 </derivedClasses>
                                 <functions>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="60" id="function_CDataSection_D93145F1724056ED840738B05CAC3C9917C39DB5" name="CDataSection" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="61" id="function_CDataSection_D93145F1724056ED840738B05CAC3C9917C39DB5" name="CDataSection" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_cdata_D30194ED0014DFACD6CA3EDC239073571498FDE8" name="cdata" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
@@ -1643,7 +1644,7 @@
                                             <override functionId="function_CDataSection_9A2BE845DBBADEDB11DDEB32A6D2E8549BD5461F"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="58" id="function_Comment_A256787E5F491A14F5F301843312E7EC4896079F" name="Comment" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="59" id="function_Comment_A256787E5F491A14F5F301843312E7EC4896079F" name="Comment" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_comment_2115094406FADF70136FE2384078044E4888B098" name="comment" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
@@ -1651,7 +1652,7 @@
                                             <override functionId="function_Comment_7AD4F3C571B087DF9AFCA8DC0CB7EB4B3A4D5E03"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="56" id="function_Encoding_0AF1DEA3EEA15A6DF14717086C040460F8FBADD4" name="Encoding" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="57" id="function_Encoding_0AF1DEA3EEA15A6DF14717086C040460F8FBADD4" name="Encoding" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_encoding_0D4DE5C814811A9F3BEB5280318AEE0B4185BA3F" name="encoding" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
@@ -1659,12 +1660,12 @@
                                             <override functionId="function_Encoding_7F2338E26A38E64E5307B7BF36C54307813D60D5"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="53" id="function_EndDocument_32F5E572A657A0A9976A9CDDC4BB602568BC28A9" name="EndDocument" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="54" id="function_EndDocument_32F5E572A657A0A9976A9CDDC4BB602568BC28A9" name="EndDocument" returnType="void" specifiers="virtual">
                                         <overrides>
                                             <override functionId="function_EndDocument_72A45B9F22BA46BFFBB17B4324597AA8D7B63FC1"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="62" id="function_EndElement_50553E94954CDBABCE4051B34A5AB4C1449898CF" name="EndElement" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="63" id="function_EndElement_50553E94954CDBABCE4051B34A5AB4C1449898CF" name="EndElement" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_namespaceUri_C027EBC930FF2608E86657AAD0CE6A5191F6EA78" name="namespaceUri" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_localName_52EDB9B08C9871AADAF14AB9F4019782237139FE" name="localName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -1674,7 +1675,7 @@
                                             <override functionId="function_EndElement_FC6E45097248A4BF9EE0DD33450146ABC57AC0EE"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="59" id="function_PI_A9A7014DA25F3758D538CE23E4FE2257C207854C" name="PI" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="60" id="function_PI_A9A7014DA25F3758D538CE23E4FE2257C207854C" name="PI" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_target_100B4560C76B7784E6A0FCA8E5F0BFC645243C36" name="target" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_data_CE562256800B9B38974065D0C7723C05A63294F2" name="data" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -1683,7 +1684,7 @@
                                             <override functionId="function_PI_B592041373957B1BD0386524662D4678FEEC1853"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="63" id="function_SkippedEntity_824481ED3528FE0DD36DE52120626D23529D2B15" name="SkippedEntity" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="64" id="function_SkippedEntity_824481ED3528FE0DD36DE52120626D23529D2B15" name="SkippedEntity" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_entityName_179B6571AE40909C05C4D6FE4500703D5511D26B" name="entityName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
@@ -1691,7 +1692,7 @@
                                             <override functionId="function_SkippedEntity_4686D3CCCC28CA0C5B18841DD6E43A07182484EC"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="55" id="function_Standalone_94C144A2E15D8E43354000CD2C04558364F11110" name="Standalone" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="56" id="function_Standalone_94C144A2E15D8E43354000CD2C04558364F11110" name="Standalone" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_standalone_E147B7E70CE9B75963603D2F4E9D5866837DC5E3" name="standalone" type="bool"/>
                                         </parameters>
@@ -1699,12 +1700,12 @@
                                             <override functionId="function_Standalone_53161E9F57509BBE5DD29ACFEADE3E8A0B267CBC"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="52" id="function_StartDocument_532B622CBB61F2F52C4C56EB8760FC9553E582E7" name="StartDocument" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="53" id="function_StartDocument_532B622CBB61F2F52C4C56EB8760FC9553E582E7" name="StartDocument" returnType="void" specifiers="virtual">
                                         <overrides>
                                             <override functionId="function_StartDocument_2EDB5162DE071F67C80AAB407FDC3B8C4B3DA64D"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="61" id="function_StartElement_9770588D1EC86CEE32FBA602F9F5E3018CC88904" name="StartElement" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="62" id="function_StartElement_9770588D1EC86CEE32FBA602F9F5E3018CC88904" name="StartElement" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_namespaceUri_D7CED5B3BEF791FB2BB5A30D2526415B3472ED4E" name="namespaceUri" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_localName_CF1C55AD930CCCC9CA5E0357BCB5E981A919564D" name="localName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -1715,7 +1716,7 @@
                                             <override functionId="function_StartElement_BEFEA983E4E1A68F8DD3DB06AB154D11BB8CE971"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="57" id="function_Text_52298F4917676807F0AA65D7B996F8B094036159" name="Text" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="58" id="function_Text_52298F4917676807F0AA65D7B996F8B094036159" name="Text" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_text_B8F503E2AE39825A424AC0BEB3F3A88F95164075" name="text" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
@@ -1723,7 +1724,7 @@
                                             <override functionId="function_Text_0902B6EC05C1ACF73459FBC2B2917BE322073816"/>
                                         </overrides>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="54" id="function_Version_BF09A4688B9E8DC1FC6D6F885C6CC3A6B2E5D177" name="Version" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="55" id="function_Version_BF09A4688B9E8DC1FC6D6F885C6CC3A6B2E5D177" name="Version" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_xmlVersion_4E24346D83F0B72846F275E62A356C5E9D367B5F" name="xmlVersion" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
@@ -1731,7 +1732,7 @@
                                             <override functionId="function_Version_38CAC927E815762BA151745D59E4E0E0EB3397C0"/>
                                         </overrides>
                                     </function>
-                                    <destructor access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="51" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="51" id="destructor_destructor_81F9BAF690F6218583FD4688E627D93E2FF7A988" name="destructor" specifiers="virtual"/>
+                                    <destructor access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="52" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="51" id="destructor_destructor_81F9BAF690F6218583FD4688E627D93E2FF7A988" name="destructor" specifiers="virtual"/>
                                 </functions>
                             </class>
                             <class access="public" definitionFile="XmlProcessor.hpp" definitionFileId="file/XmlProcessor.hpp_034B2E03E205A3D0D41D18EA95976E3BFEE3532D.html" definitionLine="18" id="class_XmlProcessingException_9DB93FDE1A82F8701583CCE9EEF2E3D3851ACD2F" key="class" name="XmlProcessingException" project="system.xml">

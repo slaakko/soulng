@@ -1,0 +1,5576 @@
+> D:/work/soulng-project/sngcm/cmlexer/CmajorLexer.lexer
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorTokens.hpp
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorTokens.cpp
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorKeywords.hpp
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorKeywords.cpp
+partition:
+0 : {\"-\"}
+1 : {\\-\\}
+2 : {\'-\'}
+3 : {\n-\n}
+4 : {\r-\r}
+5 : {/-/}
+6 : {*-*}
+7 : {G-TV-WY-Z_-_g-mo-qs-sy-z\xaa-\xaa\xb5-\xb5\xba-\xba\xc0-\xd6\xd8-\xf6\xf8-\x2c1\x2c6-\x2d1\x2e0-\x2e4\x2ec-\x2ec\x2ee-\x2ee\x370-\x374\x376-\x377\x37a-\x37d\x37f-\x37f\x386-\x386\x388-\x38a\x38c-\x38c\x38e-\x3a1\x3a3-\x3f5\x3f7-\x481\x48a-\x52f\x531-\x556\x559-\x559\x560-\x588\x5d0-\x5ea\x5ef-\x5f2\x620-\x64a\x66e-\x66f\x671-\x6d3\x6d5-\x6d5\x6e5-\x6e6\x6ee-\x6ef\x6fa-\x6fc\x6ff-\x6ff\x710-\x710\x712-\x72f\x74d-\x7a5\x7b1-\x7b1\x7ca-\x7ea\x7f4-\x7f5\x7fa-\x7fa\x800-\x815\x81a-\x81a\x824-\x824\x828-\x828\x840-\x858\x860-\x86a\x8a0-\x8b4\x8b6-\x8bd\x904-\x939\x93d-\x93d\x950-\x950\x958-\x961\x971-\x980\x985-\x98c\x98f-\x990\x993-\x9a8\x9aa-\x9b0\x9b2-\x9b2\x9b6-\x9b9\x9bd-\x9bd\x9ce-\x9ce\x9dc-\x9dd\x9df-\x9e1\x9f0-\x9f1\x9fc-\x9fc\xa05-\xa0a\xa0f-\xa10\xa13-\xa28\xa2a-\xa30\xa32-\xa33\xa35-\xa36\xa38-\xa39\xa59-\xa5c\xa5e-\xa5e\xa72-\xa74\xa85-\xa8d\xa8f-\xa91\xa93-\xaa8\xaaa-\xab0\xab2-\xab3\xab5-\xab9\xabd-\xabd\xad0-\xad0\xae0-\xae1\xaf9-\xaf9\xb05-\xb0c\xb0f-\xb10\xb13-\xb28\xb2a-\xb30\xb32-\xb33\xb35-\xb39\xb3d-\xb3d\xb5c-\xb5d\xb5f-\xb61\xb71-\xb71\xb83-\xb83\xb85-\xb8a\xb8e-\xb90\xb92-\xb95\xb99-\xb9a\xb9c-\xb9c\xb9e-\xb9f\xba3-\xba4\xba8-\xbaa\xbae-\xbb9\xbd0-\xbd0\xc05-\xc0c\xc0e-\xc10\xc12-\xc28\xc2a-\xc39\xc3d-\xc3d\xc58-\xc5a\xc60-\xc61\xc80-\xc80\xc85-\xc8c\xc8e-\xc90\xc92-\xca8\xcaa-\xcb3\xcb5-\xcb9\xcbd-\xcbd\xcde-\xcde\xce0-\xce1\xcf1-\xcf2\xd05-\xd0c\xd0e-\xd10\xd12-\xd3a\xd3d-\xd3d\xd4e-\xd4e\xd54-\xd56\xd5f-\xd61\xd7a-\xd7f\xd85-\xd96\xd9a-\xdb1\xdb3-\xdbb\xdbd-\xdbd\xdc0-\xdc6\xe01-\xe30\xe32-\xe33\xe40-\xe46\xe81-\xe82\xe84-\xe84\xe86-\xe8a\xe8c-\xea3\xea5-\xea5\xea7-\xeb0\xeb2-\xeb3\xebd-\xebd\xec0-\xec4\xec6-\xec6\xedc-\xedf\xf00-\xf00\xf40-\xf47\xf49-\xf6c\xf88-\xf8c\x1000-\x102a\x103f-\x103f\x1050-\x1055\x105a-\x105d\x1061-\x1061\x1065-\x1066\x106e-\x1070\x1075-\x1081\x108e-\x108e\x10a0-\x10c5\x10c7-\x10c7\x10cd-\x10cd\x10d0-\x10fa\x10fc-\x1248\x124a-\x124d\x1250-\x1256\x1258-\x1258\x125a-\x125d\x1260-\x1288\x128a-\x128d\x1290-\x12b0\x12b2-\x12b5\x12b8-\x12be\x12c0-\x12c0\x12c2-\x12c5\x12c8-\x12d6\x12d8-\x1310\x1312-\x1315\x1318-\x135a\x1380-\x138f\x13a0-\x13f5\x13f8-\x13fd\x1401-\x166c\x166f-\x167f\x1681-\x169a\x16a0-\x16ea\x16ee-\x16f8\x1700-\x170c\x170e-\x1711\x1720-\x1731\x1740-\x1751\x1760-\x176c\x176e-\x1770\x1780-\x17b3\x17d7-\x17d7\x17dc-\x17dc\x1820-\x1878\x1880-\x18a8\x18aa-\x18aa\x18b0-\x18f5\x1900-\x191e\x1950-\x196d\x1970-\x1974\x1980-\x19ab\x19b0-\x19c9\x1a00-\x1a16\x1a20-\x1a54\x1aa7-\x1aa7\x1b05-\x1b33\x1b45-\x1b4b\x1b83-\x1ba0\x1bae-\x1baf\x1bba-\x1be5\x1c00-\x1c23\x1c4d-\x1c4f\x1c5a-\x1c7d\x1c80-\x1c88\x1c90-\x1cba\x1cbd-\x1cbf\x1ce9-\x1cec\x1cee-\x1cf3\x1cf5-\x1cf6\x1cfa-\x1cfa\x1d00-\x1dbf\x1e00-\x1f15\x1f18-\x1f1d\x1f20-\x1f45\x1f48-\x1f4d\x1f50-\x1f57\x1f59-\x1f59\x1f5b-\x1f5b\x1f5d-\x1f5d\x1f5f-\x1f7d\x1f80-\x1fb4\x1fb6-\x1fbc\x1fbe-\x1fbe\x1fc2-\x1fc4\x1fc6-\x1fcc\x1fd0-\x1fd3\x1fd6-\x1fdb\x1fe0-\x1fec\x1ff2-\x1ff4\x1ff6-\x1ffc\x2071-\x2071\x207f-\x207f\x2090-\x209c\x2102-\x2102\x2107-\x2107\x210a-\x2113\x2115-\x2115\x2118-\x211d\x2124-\x2124\x2126-\x2126\x2128-\x2128\x212a-\x2139\x213c-\x213f\x2145-\x2149\x214e-\x214e\x2160-\x2188\x2c00-\x2c2e\x2c30-\x2c5e\x2c60-\x2ce4\x2ceb-\x2cee\x2cf2-\x2cf3\x2d00-\x2d25\x2d27-\x2d27\x2d2d-\x2d2d\x2d30-\x2d67\x2d6f-\x2d6f\x2d80-\x2d96\x2da0-\x2da6\x2da8-\x2dae\x2db0-\x2db6\x2db8-\x2dbe\x2dc0-\x2dc6\x2dc8-\x2dce\x2dd0-\x2dd6\x2dd8-\x2dde\x3005-\x3007\x3021-\x3029\x3031-\x3035\x3038-\x303c\x3041-\x3096\x309b-\x309f\x30a1-\x30fa\x30fc-\x30ff\x3105-\x312f\x3131-\x318e\x31a0-\x31ba\x31f0-\x31ff\x3400-\x4db5\x4e00-\x9fef\xa000-\xa48c\xa4d0-\xa4fd\xa500-\xa60c\xa610-\xa61f\xa62a-\xa62b\xa640-\xa66e\xa67f-\xa69d\xa6a0-\xa6ef\xa717-\xa71f\xa722-\xa788\xa78b-\xa7bf\xa7c2-\xa7c6\xa7f7-\xa801\xa803-\xa805\xa807-\xa80a\xa80c-\xa822\xa840-\xa873\xa882-\xa8b3\xa8f2-\xa8f7\xa8fb-\xa8fb\xa8fd-\xa8fe\xa90a-\xa925\xa930-\xa946\xa960-\xa97c\xa984-\xa9b2\xa9cf-\xa9cf\xa9e0-\xa9e4\xa9e6-\xa9ef\xa9fa-\xa9fe\xaa00-\xaa28\xaa40-\xaa42\xaa44-\xaa4b\xaa60-\xaa76\xaa7a-\xaa7a\xaa7e-\xaaaf\xaab1-\xaab1\xaab5-\xaab6\xaab9-\xaabd\xaac0-\xaac0\xaac2-\xaac2\xaadb-\xaadd\xaae0-\xaaea\xaaf2-\xaaf4\xab01-\xab06\xab09-\xab0e\xab11-\xab16\xab20-\xab26\xab28-\xab2e\xab30-\xab5a\xab5c-\xab67\xab70-\xabe2\xac00-\xd7a3\xd7b0-\xd7c6\xd7cb-\xd7fb\xf900-\xfa6d\xfa70-\xfad9\xfb00-\xfb06\xfb13-\xfb17\xfb1d-\xfb1d\xfb1f-\xfb28\xfb2a-\xfb36\xfb38-\xfb3c\xfb3e-\xfb3e\xfb40-\xfb41\xfb43-\xfb44\xfb46-\xfbb1\xfbd3-\xfd3d\xfd50-\xfd8f\xfd92-\xfdc7\xfdf0-\xfdfb\xfe70-\xfe74\xfe76-\xfefc\xff21-\xff3a\xff41-\xff5a\xff66-\xffbe\xffc2-\xffc7\xffca-\xffcf\xffd2-\xffd7\xffda-\xffdc}
+8 : {\xb7-\xb7\x300-\x36f\x387-\x387\x483-\x487\x591-\x5bd\x5bf-\x5bf\x5c1-\x5c2\x5c4-\x5c5\x5c7-\x5c7\x610-\x61a\x64b-\x669\x670-\x670\x6d6-\x6dc\x6df-\x6e4\x6e7-\x6e8\x6ea-\x6ed\x6f0-\x6f9\x711-\x711\x730-\x74a\x7a6-\x7b0\x7c0-\x7c9\x7eb-\x7f3\x7fd-\x7fd\x816-\x819\x81b-\x823\x825-\x827\x829-\x82d\x859-\x85b\x8d3-\x8e1\x8e3-\x903\x93a-\x93c\x93e-\x94f\x951-\x957\x962-\x963\x966-\x96f\x981-\x983\x9bc-\x9bc\x9be-\x9c4\x9c7-\x9c8\x9cb-\x9cd\x9d7-\x9d7\x9e2-\x9e3\x9e6-\x9ef\x9fe-\x9fe\xa01-\xa03\xa3c-\xa3c\xa3e-\xa42\xa47-\xa48\xa4b-\xa4d\xa51-\xa51\xa66-\xa71\xa75-\xa75\xa81-\xa83\xabc-\xabc\xabe-\xac5\xac7-\xac9\xacb-\xacd\xae2-\xae3\xae6-\xaef\xafa-\xaff\xb01-\xb03\xb3c-\xb3c\xb3e-\xb44\xb47-\xb48\xb4b-\xb4d\xb56-\xb57\xb62-\xb63\xb66-\xb6f\xb82-\xb82\xbbe-\xbc2\xbc6-\xbc8\xbca-\xbcd\xbd7-\xbd7\xbe6-\xbef\xc00-\xc04\xc3e-\xc44\xc46-\xc48\xc4a-\xc4d\xc55-\xc56\xc62-\xc63\xc66-\xc6f\xc81-\xc83\xcbc-\xcbc\xcbe-\xcc4\xcc6-\xcc8\xcca-\xccd\xcd5-\xcd6\xce2-\xce3\xce6-\xcef\xd00-\xd03\xd3b-\xd3c\xd3e-\xd44\xd46-\xd48\xd4a-\xd4d\xd57-\xd57\xd62-\xd63\xd66-\xd6f\xd82-\xd83\xdca-\xdca\xdcf-\xdd4\xdd6-\xdd6\xdd8-\xddf\xde6-\xdef\xdf2-\xdf3\xe31-\xe31\xe34-\xe3a\xe47-\xe4e\xe50-\xe59\xeb1-\xeb1\xeb4-\xebc\xec8-\xecd\xed0-\xed9\xf18-\xf19\xf20-\xf29\xf35-\xf35\xf37-\xf37\xf39-\xf39\xf3e-\xf3f\xf71-\xf84\xf86-\xf87\xf8d-\xf97\xf99-\xfbc\xfc6-\xfc6\x102b-\x103e\x1040-\x1049\x1056-\x1059\x105e-\x1060\x1062-\x1064\x1067-\x106d\x1071-\x1074\x1082-\x108d\x108f-\x109d\x135d-\x135f\x1369-\x1371\x1712-\x1714\x1732-\x1734\x1752-\x1753\x1772-\x1773\x17b4-\x17d3\x17dd-\x17dd\x17e0-\x17e9\x180b-\x180d\x1810-\x1819\x18a9-\x18a9\x1920-\x192b\x1930-\x193b\x1946-\x194f\x19d0-\x19da\x1a17-\x1a1b\x1a55-\x1a5e\x1a60-\x1a7c\x1a7f-\x1a89\x1a90-\x1a99\x1ab0-\x1abd\x1b00-\x1b04\x1b34-\x1b44\x1b50-\x1b59\x1b6b-\x1b73\x1b80-\x1b82\x1ba1-\x1bad\x1bb0-\x1bb9\x1be6-\x1bf3\x1c24-\x1c37\x1c40-\x1c49\x1c50-\x1c59\x1cd0-\x1cd2\x1cd4-\x1ce8\x1ced-\x1ced\x1cf4-\x1cf4\x1cf7-\x1cf9\x1dc0-\x1df9\x1dfb-\x1dff\x203f-\x2040\x2054-\x2054\x20d0-\x20dc\x20e1-\x20e1\x20e5-\x20f0\x2cef-\x2cf1\x2d7f-\x2d7f\x2de0-\x2dff\x302a-\x302f\x3099-\x309a\xa620-\xa629\xa66f-\xa66f\xa674-\xa67d\xa69e-\xa69f\xa6f0-\xa6f1\xa802-\xa802\xa806-\xa806\xa80b-\xa80b\xa823-\xa827\xa880-\xa881\xa8b4-\xa8c5\xa8d0-\xa8d9\xa8e0-\xa8f1\xa8ff-\xa909\xa926-\xa92d\xa947-\xa953\xa980-\xa983\xa9b3-\xa9c0\xa9d0-\xa9d9\xa9e5-\xa9e5\xa9f0-\xa9f9\xaa29-\xaa36\xaa43-\xaa43\xaa4c-\xaa4d\xaa50-\xaa59\xaa7b-\xaa7d\xaab0-\xaab0\xaab2-\xaab4\xaab7-\xaab8\xaabe-\xaabf\xaac1-\xaac1\xaaeb-\xaaef\xaaf5-\xaaf6\xabe3-\xabea\xabec-\xabed\xabf0-\xabf9\xfb1e-\xfb1e\xfe00-\xfe0f\xfe20-\xfe2f\xfe33-\xfe34\xfe4d-\xfe4f\xff10-\xff19\xff3f-\xff3f}
+9 : {\t-\t}
+10 : { - }
+11 : {\x1-\b\v-\f\xe-\x1f$-$?-?`-`\x7f-\xa9\xab-\xb4\xb6-\xb6\xb8-\xb9\xbb-\xbf\xd7-\xd7\xf7-\xf7\x2c2-\x2c5\x2d2-\x2df\x2e5-\x2eb\x2ed-\x2ed\x2ef-\x2ff\x375-\x375\x378-\x379\x37e-\x37e\x380-\x385\x38b-\x38b\x38d-\x38d\x3a2-\x3a2\x3f6-\x3f6\x482-\x482\x488-\x489\x530-\x530\x557-\x558\x55a-\x55f\x589-\x590\x5be-\x5be\x5c0-\x5c0\x5c3-\x5c3\x5c6-\x5c6\x5c8-\x5cf\x5eb-\x5ee\x5f3-\x60f\x61b-\x61f\x66a-\x66d\x6d4-\x6d4\x6dd-\x6de\x6e9-\x6e9\x6fd-\x6fe\x700-\x70f\x74b-\x74c\x7b2-\x7bf\x7f6-\x7f9\x7fb-\x7fc\x7fe-\x7ff\x82e-\x83f\x85c-\x85f\x86b-\x89f\x8b5-\x8b5\x8be-\x8d2\x8e2-\x8e2\x964-\x965\x970-\x970\x984-\x984\x98d-\x98e\x991-\x992\x9a9-\x9a9\x9b1-\x9b1\x9b3-\x9b5\x9ba-\x9bb\x9c5-\x9c6\x9c9-\x9ca\x9cf-\x9d6\x9d8-\x9db\x9de-\x9de\x9e4-\x9e5\x9f2-\x9fb\x9fd-\x9fd\x9ff-\xa00\xa04-\xa04\xa0b-\xa0e\xa11-\xa12\xa29-\xa29\xa31-\xa31\xa34-\xa34\xa37-\xa37\xa3a-\xa3b\xa3d-\xa3d\xa43-\xa46\xa49-\xa4a\xa4e-\xa50\xa52-\xa58\xa5d-\xa5d\xa5f-\xa65\xa76-\xa80\xa84-\xa84\xa8e-\xa8e\xa92-\xa92\xaa9-\xaa9\xab1-\xab1\xab4-\xab4\xaba-\xabb\xac6-\xac6\xaca-\xaca\xace-\xacf\xad1-\xadf\xae4-\xae5\xaf0-\xaf8\xb00-\xb00\xb04-\xb04\xb0d-\xb0e\xb11-\xb12\xb29-\xb29\xb31-\xb31\xb34-\xb34\xb3a-\xb3b\xb45-\xb46\xb49-\xb4a\xb4e-\xb55\xb58-\xb5b\xb5e-\xb5e\xb64-\xb65\xb70-\xb70\xb72-\xb81\xb84-\xb84\xb8b-\xb8d\xb91-\xb91\xb96-\xb98\xb9b-\xb9b\xb9d-\xb9d\xba0-\xba2\xba5-\xba7\xbab-\xbad\xbba-\xbbd\xbc3-\xbc5\xbc9-\xbc9\xbce-\xbcf\xbd1-\xbd6\xbd8-\xbe5\xbf0-\xbff\xc0d-\xc0d\xc11-\xc11\xc29-\xc29\xc3a-\xc3c\xc45-\xc45\xc49-\xc49\xc4e-\xc54\xc57-\xc57\xc5b-\xc5f\xc64-\xc65\xc70-\xc7f\xc84-\xc84\xc8d-\xc8d\xc91-\xc91\xca9-\xca9\xcb4-\xcb4\xcba-\xcbb\xcc5-\xcc5\xcc9-\xcc9\xcce-\xcd4\xcd7-\xcdd\xcdf-\xcdf\xce4-\xce5\xcf0-\xcf0\xcf3-\xcff\xd04-\xd04\xd0d-\xd0d\xd11-\xd11\xd45-\xd45\xd49-\xd49\xd4f-\xd53\xd58-\xd5e\xd64-\xd65\xd70-\xd79\xd80-\xd81\xd84-\xd84\xd97-\xd99\xdb2-\xdb2\xdbc-\xdbc\xdbe-\xdbf\xdc7-\xdc9\xdcb-\xdce\xdd5-\xdd5\xdd7-\xdd7\xde0-\xde5\xdf0-\xdf1\xdf4-\xe00\xe3b-\xe3f\xe4f-\xe4f\xe5a-\xe80\xe83-\xe83\xe85-\xe85\xe8b-\xe8b\xea4-\xea4\xea6-\xea6\xebe-\xebf\xec5-\xec5\xec7-\xec7\xece-\xecf\xeda-\xedb\xee0-\xeff\xf01-\xf17\xf1a-\xf1f\xf2a-\xf34\xf36-\xf36\xf38-\xf38\xf3a-\xf3d\xf48-\xf48\xf6d-\xf70\xf85-\xf85\xf98-\xf98\xfbd-\xfc5\xfc7-\xfff\x104a-\x104f\x109e-\x109f\x10c6-\x10c6\x10c8-\x10cc\x10ce-\x10cf\x10fb-\x10fb\x1249-\x1249\x124e-\x124f\x1257-\x1257\x1259-\x1259\x125e-\x125f\x1289-\x1289\x128e-\x128f\x12b1-\x12b1\x12b6-\x12b7\x12bf-\x12bf\x12c1-\x12c1\x12c6-\x12c7\x12d7-\x12d7\x1311-\x1311\x1316-\x1317\x135b-\x135c\x1360-\x1368\x1372-\x137f\x1390-\x139f\x13f6-\x13f7\x13fe-\x1400\x166d-\x166e\x1680-\x1680\x169b-\x169f\x16eb-\x16ed\x16f9-\x16ff\x170d-\x170d\x1715-\x171f\x1735-\x173f\x1754-\x175f\x176d-\x176d\x1771-\x1771\x1774-\x177f\x17d4-\x17d6\x17d8-\x17db\x17de-\x17df\x17ea-\x180a\x180e-\x180f\x181a-\x181f\x1879-\x187f\x18ab-\x18af\x18f6-\x18ff\x191f-\x191f\x192c-\x192f\x193c-\x1945\x196e-\x196f\x1975-\x197f\x19ac-\x19af\x19ca-\x19cf\x19db-\x19ff\x1a1c-\x1a1f\x1a5f-\x1a5f\x1a7d-\x1a7e\x1a8a-\x1a8f\x1a9a-\x1aa6\x1aa8-\x1aaf\x1abe-\x1aff\x1b4c-\x1b4f\x1b5a-\x1b6a\x1b74-\x1b7f\x1bf4-\x1bff\x1c38-\x1c3f\x1c4a-\x1c4c\x1c7e-\x1c7f\x1c89-\x1c8f\x1cbb-\x1cbc\x1cc0-\x1ccf\x1cd3-\x1cd3\x1cfb-\x1cff\x1dfa-\x1dfa\x1f16-\x1f17\x1f1e-\x1f1f\x1f46-\x1f47\x1f4e-\x1f4f\x1f58-\x1f58\x1f5a-\x1f5a\x1f5c-\x1f5c\x1f5e-\x1f5e\x1f7e-\x1f7f\x1fb5-\x1fb5\x1fbd-\x1fbd\x1fbf-\x1fc1\x1fc5-\x1fc5\x1fcd-\x1fcf\x1fd4-\x1fd5\x1fdc-\x1fdf\x1fed-\x1ff1\x1ff5-\x1ff5\x1ffd-\x203e\x2041-\x2053\x2055-\x2070\x2072-\x207e\x2080-\x208f\x209d-\x20cf\x20dd-\x20e0\x20e2-\x20e4\x20f1-\x2101\x2103-\x2106\x2108-\x2109\x2114-\x2114\x2116-\x2117\x211e-\x2123\x2125-\x2125\x2127-\x2127\x2129-\x2129\x213a-\x213b\x2140-\x2144\x214a-\x214d\x214f-\x215f\x2189-\x2bff\x2c2f-\x2c2f\x2c5f-\x2c5f\x2ce5-\x2cea\x2cf4-\x2cff\x2d26-\x2d26\x2d28-\x2d2c\x2d2e-\x2d2f\x2d68-\x2d6e\x2d70-\x2d7e\x2d97-\x2d9f\x2da7-\x2da7\x2daf-\x2daf\x2db7-\x2db7\x2dbf-\x2dbf\x2dc7-\x2dc7\x2dcf-\x2dcf\x2dd7-\x2dd7\x2ddf-\x2ddf\x2e00-\x3004\x3008-\x3020\x3030-\x3030\x3036-\x3037\x303d-\x3040\x3097-\x3098\x30a0-\x30a0\x30fb-\x30fb\x3100-\x3104\x3130-\x3130\x318f-\x319f\x31bb-\x31ef\x3200-\x33ff\x4db6-\x4dff\x9ff0-\x9fff\xa48d-\xa4cf\xa4fe-\xa4ff\xa60d-\xa60f\xa62c-\xa63f\xa670-\xa673\xa67e-\xa67e\xa6f2-\xa716\xa720-\xa721\xa789-\xa78a\xa7c0-\xa7c1\xa7c7-\xa7f6\xa828-\xa83f\xa874-\xa87f\xa8c6-\xa8cf\xa8da-\xa8df\xa8f8-\xa8fa\xa8fc-\xa8fc\xa92e-\xa92f\xa954-\xa95f\xa97d-\xa97f\xa9c1-\xa9ce\xa9da-\xa9df\xa9ff-\xa9ff\xaa37-\xaa3f\xaa4e-\xaa4f\xaa5a-\xaa5f\xaa77-\xaa79\xaac3-\xaada\xaade-\xaadf\xaaf0-\xaaf1\xaaf7-\xab00\xab07-\xab08\xab0f-\xab10\xab17-\xab1f\xab27-\xab27\xab2f-\xab2f\xab5b-\xab5b\xab68-\xab6f\xabeb-\xabeb\xabee-\xabef\xabfa-\xabff\xd7a4-\xd7af\xd7c7-\xd7ca\xd7fc-\xf8ff\xfa6e-\xfa6f\xfada-\xfaff\xfb07-\xfb12\xfb18-\xfb1c\xfb29-\xfb29\xfb37-\xfb37\xfb3d-\xfb3d\xfb3f-\xfb3f\xfb42-\xfb42\xfb45-\xfb45\xfbb2-\xfbd2\xfd3e-\xfd4f\xfd90-\xfd91\xfdc8-\xfdef\xfdfc-\xfdff\xfe10-\xfe1f\xfe30-\xfe32\xfe35-\xfe4c\xfe50-\xfe6f\xfe75-\xfe75\xfefd-\xff0f\xff1a-\xff20\xff3b-\xff3e\xff40-\xff40\xff5b-\xff65\xffbf-\xffc1\xffc8-\xffc9\xffd0-\xffd1\xffd8-\xffd9\xffdd-\x10ffff}
+12 : {x-x}
+13 : {X-X}
+14 : {u-u}
+15 : {U-U}
+16 : {.-.}
+17 : {+-+}
+18 : {---}
+19 : {w-w}
+20 : {n-n}
+21 : {r-r}
+22 : {t-t}
+23 : {v-v}
+24 : {@-@}
+25 : {A-Cc-c}
+26 : {e-e}
+27 : {E-E}
+28 : {f-f}
+29 : {F-F}
+30 : {d-d}
+31 : {D-D}
+32 : {a-a}
+33 : {b-b}
+34 : {8-9}
+35 : {0-0}
+36 : {1-7}
+37 : {<-<}
+38 : {=-=}
+39 : {>->}
+40 : {|-|}
+41 : {&-&}
+42 : {^-^}
+43 : {!-!}
+44 : {%-%}
+45 : {~-~}
+46 : {[-[}
+47 : {]-]}
+48 : {(-(}
+49 : {)-)}
+50 : {{-{}
+51 : {}-}}
+52 : {,-,}
+53 : {:-:}
+54 : {;-;}
+55 : {#-#}
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorClassMap.hpp
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorClassMap.cpp
+MASTER NFA: 524
+NFAs:
+0 : prev: 42
+    [\n\r\t ] -> 1
+1 : prev: 0
+    EPS -> 43
+2 : prev: 40
+    / -> 3
+3 : prev: 2
+    / -> 5
+4
+    / -> 5
+5 : prev: 4 3
+    EPS -> 9
+    EPS -> 6
+6 : prev: 7 8 5
+    [^\n\r] -> 7
+7 : prev: 6
+    EPS -> 9
+    EPS -> 6
+8
+    EPS -> 9
+    EPS -> 6
+9 : prev: 7 8 5
+    EPS -> 16
+    EPS -> 18
+10 : prev: 16
+    \r -> 11
+11 : prev: 10
+    \n -> 13
+12
+    \n -> 13
+13 : prev: 11 12
+    EPS -> 17
+14 : prev: 16
+    \n -> 15
+15 : prev: 14
+    EPS -> 17
+16 : prev: 20 9
+    EPS -> 10
+    EPS -> 14
+17 : prev: 13 15
+    EPS -> 21
+18 : prev: 20 9
+    \r -> 19
+19 : prev: 18
+    EPS -> 21
+20
+    EPS -> 16
+    EPS -> 18
+21 : prev: 17 19
+    EPS -> 41
+22 : prev: 40
+    / -> 23
+23 : prev: 22
+    * -> 25
+24
+    * -> 25
+25 : prev: 23 24
+    EPS -> 35
+    EPS -> 32
+26 : prev: 32
+    [^*] -> 27
+27 : prev: 26
+    EPS -> 33
+28 : prev: 32
+    * -> 29
+29 : prev: 28
+    [^/] -> 31
+30
+    [^/] -> 31
+31 : prev: 29 30
+    EPS -> 33
+32 : prev: 33 25 34
+    EPS -> 26
+    EPS -> 28
+33 : prev: 31 27
+    EPS -> 35
+    EPS -> 32
+34
+    EPS -> 35
+    EPS -> 32
+35 : prev: 33 25 34
+    * -> 37
+36
+    * -> 37
+37 : prev: 35 36
+    / -> 39
+38
+    / -> 39
+39 : prev: 37 38
+    EPS -> 41
+40 : prev: 42
+    EPS -> 2
+    EPS -> 22
+41 : prev: 21 39
+    EPS -> 43
+42 : prev: 43 44
+    EPS -> 0
+    EPS -> 40
+43 : prev: 1 41
+    EPS -> 45
+    EPS -> 42
+44 : prev: 524
+    EPS -> 42
+45 : STATEMENT=0 : ACCEPT : prev: 43
+46 : prev: 524
+    [A-Z_-_a-z\xaa-\xaa\xb5-\xb5\xba-\xba\xc0-\xd6\xd8-\xf6\xf8-\x2c1\x2c6-\x2d1\x2e0-\x2e4\x2ec-\x2ec\x2ee-\x2ee\x370-\x374\x376-\x377\x37a-\x37d\x37f-\x37f\x386-\x386\x388-\x38a\x38c-\x38c\x38e-\x3a1\x3a3-\x3f5\x3f7-\x481\x48a-\x52f\x531-\x556\x559-\x559\x560-\x588\x5d0-\x5ea\x5ef-\x5f2\x620-\x64a\x66e-\x66f\x671-\x6d3\x6d5-\x6d5\x6e5-\x6e6\x6ee-\x6ef\x6fa-\x6fc\x6ff-\x6ff\x710-\x710\x712-\x72f\x74d-\x7a5\x7b1-\x7b1\x7ca-\x7ea\x7f4-\x7f5\x7fa-\x7fa\x800-\x815\x81a-\x81a\x824-\x824\x828-\x828\x840-\x858\x860-\x86a\x8a0-\x8b4\x8b6-\x8bd\x904-\x939\x93d-\x93d\x950-\x950\x958-\x961\x971-\x980\x985-\x98c\x98f-\x990\x993-\x9a8\x9aa-\x9b0\x9b2-\x9b2\x9b6-\x9b9\x9bd-\x9bd\x9ce-\x9ce\x9dc-\x9dd\x9df-\x9e1\x9f0-\x9f1\x9fc-\x9fc\xa05-\xa0a\xa0f-\xa10\xa13-\xa28\xa2a-\xa30\xa32-\xa33\xa35-\xa36\xa38-\xa39\xa59-\xa5c\xa5e-\xa5e\xa72-\xa74\xa85-\xa8d\xa8f-\xa91\xa93-\xaa8\xaaa-\xab0\xab2-\xab3\xab5-\xab9\xabd-\xabd\xad0-\xad0\xae0-\xae1\xaf9-\xaf9\xb05-\xb0c\xb0f-\xb10\xb13-\xb28\xb2a-\xb30\xb32-\xb33\xb35-\xb39\xb3d-\xb3d\xb5c-\xb5d\xb5f-\xb61\xb71-\xb71\xb83-\xb83\xb85-\xb8a\xb8e-\xb90\xb92-\xb95\xb99-\xb9a\xb9c-\xb9c\xb9e-\xb9f\xba3-\xba4\xba8-\xbaa\xbae-\xbb9\xbd0-\xbd0\xc05-\xc0c\xc0e-\xc10\xc12-\xc28\xc2a-\xc39\xc3d-\xc3d\xc58-\xc5a\xc60-\xc61\xc80-\xc80\xc85-\xc8c\xc8e-\xc90\xc92-\xca8\xcaa-\xcb3\xcb5-\xcb9\xcbd-\xcbd\xcde-\xcde\xce0-\xce1\xcf1-\xcf2\xd05-\xd0c\xd0e-\xd10\xd12-\xd3a\xd3d-\xd3d\xd4e-\xd4e\xd54-\xd56\xd5f-\xd61\xd7a-\xd7f\xd85-\xd96\xd9a-\xdb1\xdb3-\xdbb\xdbd-\xdbd\xdc0-\xdc6\xe01-\xe30\xe32-\xe33\xe40-\xe46\xe81-\xe82\xe84-\xe84\xe86-\xe8a\xe8c-\xea3\xea5-\xea5\xea7-\xeb0\xeb2-\xeb3\xebd-\xebd\xec0-\xec4\xec6-\xec6\xedc-\xedf\xf00-\xf00\xf40-\xf47\xf49-\xf6c\xf88-\xf8c\x1000-\x102a\x103f-\x103f\x1050-\x1055\x105a-\x105d\x1061-\x1061\x1065-\x1066\x106e-\x1070\x1075-\x1081\x108e-\x108e\x10a0-\x10c5\x10c7-\x10c7\x10cd-\x10cd\x10d0-\x10fa\x10fc-\x1248\x124a-\x124d\x1250-\x1256\x1258-\x1258\x125a-\x125d\x1260-\x1288\x128a-\x128d\x1290-\x12b0\x12b2-\x12b5\x12b8-\x12be\x12c0-\x12c0\x12c2-\x12c5\x12c8-\x12d6\x12d8-\x1310\x1312-\x1315\x1318-\x135a\x1380-\x138f\x13a0-\x13f5\x13f8-\x13fd\x1401-\x166c\x166f-\x167f\x1681-\x169a\x16a0-\x16ea\x16ee-\x16f8\x1700-\x170c\x170e-\x1711\x1720-\x1731\x1740-\x1751\x1760-\x176c\x176e-\x1770\x1780-\x17b3\x17d7-\x17d7\x17dc-\x17dc\x1820-\x1878\x1880-\x18a8\x18aa-\x18aa\x18b0-\x18f5\x1900-\x191e\x1950-\x196d\x1970-\x1974\x1980-\x19ab\x19b0-\x19c9\x1a00-\x1a16\x1a20-\x1a54\x1aa7-\x1aa7\x1b05-\x1b33\x1b45-\x1b4b\x1b83-\x1ba0\x1bae-\x1baf\x1bba-\x1be5\x1c00-\x1c23\x1c4d-\x1c4f\x1c5a-\x1c7d\x1c80-\x1c88\x1c90-\x1cba\x1cbd-\x1cbf\x1ce9-\x1cec\x1cee-\x1cf3\x1cf5-\x1cf6\x1cfa-\x1cfa\x1d00-\x1dbf\x1e00-\x1f15\x1f18-\x1f1d\x1f20-\x1f45\x1f48-\x1f4d\x1f50-\x1f57\x1f59-\x1f59\x1f5b-\x1f5b\x1f5d-\x1f5d\x1f5f-\x1f7d\x1f80-\x1fb4\x1fb6-\x1fbc\x1fbe-\x1fbe\x1fc2-\x1fc4\x1fc6-\x1fcc\x1fd0-\x1fd3\x1fd6-\x1fdb\x1fe0-\x1fec\x1ff2-\x1ff4\x1ff6-\x1ffc\x2071-\x2071\x207f-\x207f\x2090-\x209c\x2102-\x2102\x2107-\x2107\x210a-\x2113\x2115-\x2115\x2118-\x211d\x2124-\x2124\x2126-\x2126\x2128-\x2128\x212a-\x2139\x213c-\x213f\x2145-\x2149\x214e-\x214e\x2160-\x2188\x2c00-\x2c2e\x2c30-\x2c5e\x2c60-\x2ce4\x2ceb-\x2cee\x2cf2-\x2cf3\x2d00-\x2d25\x2d27-\x2d27\x2d2d-\x2d2d\x2d30-\x2d67\x2d6f-\x2d6f\x2d80-\x2d96\x2da0-\x2da6\x2da8-\x2dae\x2db0-\x2db6\x2db8-\x2dbe\x2dc0-\x2dc6\x2dc8-\x2dce\x2dd0-\x2dd6\x2dd8-\x2dde\x3005-\x3007\x3021-\x3029\x3031-\x3035\x3038-\x303c\x3041-\x3096\x309b-\x309f\x30a1-\x30fa\x30fc-\x30ff\x3105-\x312f\x3131-\x318e\x31a0-\x31ba\x31f0-\x31ff\x3400-\x4db5\x4e00-\x9fef\xa000-\xa48c\xa4d0-\xa4fd\xa500-\xa60c\xa610-\xa61f\xa62a-\xa62b\xa640-\xa66e\xa67f-\xa69d\xa6a0-\xa6ef\xa717-\xa71f\xa722-\xa788\xa78b-\xa7bf\xa7c2-\xa7c6\xa7f7-\xa801\xa803-\xa805\xa807-\xa80a\xa80c-\xa822\xa840-\xa873\xa882-\xa8b3\xa8f2-\xa8f7\xa8fb-\xa8fb\xa8fd-\xa8fe\xa90a-\xa925\xa930-\xa946\xa960-\xa97c\xa984-\xa9b2\xa9cf-\xa9cf\xa9e0-\xa9e4\xa9e6-\xa9ef\xa9fa-\xa9fe\xaa00-\xaa28\xaa40-\xaa42\xaa44-\xaa4b\xaa60-\xaa76\xaa7a-\xaa7a\xaa7e-\xaaaf\xaab1-\xaab1\xaab5-\xaab6\xaab9-\xaabd\xaac0-\xaac0\xaac2-\xaac2\xaadb-\xaadd\xaae0-\xaaea\xaaf2-\xaaf4\xab01-\xab06\xab09-\xab0e\xab11-\xab16\xab20-\xab26\xab28-\xab2e\xab30-\xab5a\xab5c-\xab67\xab70-\xabe2\xac00-\xd7a3\xd7b0-\xd7c6\xd7cb-\xd7fb\xf900-\xfa6d\xfa70-\xfad9\xfb00-\xfb06\xfb13-\xfb17\xfb1d-\xfb1d\xfb1f-\xfb28\xfb2a-\xfb36\xfb38-\xfb3c\xfb3e-\xfb3e\xfb40-\xfb41\xfb43-\xfb44\xfb46-\xfbb1\xfbd3-\xfd3d\xfd50-\xfd8f\xfd92-\xfdc7\xfdf0-\xfdfb\xfe70-\xfe74\xfe76-\xfefc\xff21-\xff3a\xff41-\xff5a\xff66-\xffbe\xffc2-\xffc7\xffca-\xffcf\xffd2-\xffd7\xffda-\xffdc] -> 47
+47 : prev: 46
+    EPS -> 51
+    EPS -> 48
+48 : prev: 49 50 47
+    [0-9A-Z_-_a-z\xaa-\xaa\xb5-\xb5\xb7-\xb7\xba-\xba\xc0-\xd6\xd8-\xf6\xf8-\x2c1\x2c6-\x2d1\x2e0-\x2e4\x2ec-\x2ec\x2ee-\x2ee\x300-\x374\x376-\x377\x37a-\x37d\x37f-\x37f\x386-\x38a\x38c-\x38c\x38e-\x3a1\x3a3-\x3f5\x3f7-\x481\x483-\x487\x48a-\x52f\x531-\x556\x559-\x559\x560-\x588\x591-\x5bd\x5bf-\x5bf\x5c1-\x5c2\x5c4-\x5c5\x5c7-\x5c7\x5d0-\x5ea\x5ef-\x5f2\x610-\x61a\x620-\x669\x66e-\x6d3\x6d5-\x6dc\x6df-\x6e8\x6ea-\x6fc\x6ff-\x6ff\x710-\x74a\x74d-\x7b1\x7c0-\x7f5\x7fa-\x7fa\x7fd-\x7fd\x800-\x82d\x840-\x85b\x860-\x86a\x8a0-\x8b4\x8b6-\x8bd\x8d3-\x8e1\x8e3-\x963\x966-\x96f\x971-\x983\x985-\x98c\x98f-\x990\x993-\x9a8\x9aa-\x9b0\x9b2-\x9b2\x9b6-\x9b9\x9bc-\x9c4\x9c7-\x9c8\x9cb-\x9ce\x9d7-\x9d7\x9dc-\x9dd\x9df-\x9e3\x9e6-\x9f1\x9fc-\x9fc\x9fe-\x9fe\xa01-\xa03\xa05-\xa0a\xa0f-\xa10\xa13-\xa28\xa2a-\xa30\xa32-\xa33\xa35-\xa36\xa38-\xa39\xa3c-\xa3c\xa3e-\xa42\xa47-\xa48\xa4b-\xa4d\xa51-\xa51\xa59-\xa5c\xa5e-\xa5e\xa66-\xa75\xa81-\xa83\xa85-\xa8d\xa8f-\xa91\xa93-\xaa8\xaaa-\xab0\xab2-\xab3\xab5-\xab9\xabc-\xac5\xac7-\xac9\xacb-\xacd\xad0-\xad0\xae0-\xae3\xae6-\xaef\xaf9-\xaff\xb01-\xb03\xb05-\xb0c\xb0f-\xb10\xb13-\xb28\xb2a-\xb30\xb32-\xb33\xb35-\xb39\xb3c-\xb44\xb47-\xb48\xb4b-\xb4d\xb56-\xb57\xb5c-\xb5d\xb5f-\xb63\xb66-\xb6f\xb71-\xb71\xb82-\xb83\xb85-\xb8a\xb8e-\xb90\xb92-\xb95\xb99-\xb9a\xb9c-\xb9c\xb9e-\xb9f\xba3-\xba4\xba8-\xbaa\xbae-\xbb9\xbbe-\xbc2\xbc6-\xbc8\xbca-\xbcd\xbd0-\xbd0\xbd7-\xbd7\xbe6-\xbef\xc00-\xc0c\xc0e-\xc10\xc12-\xc28\xc2a-\xc39\xc3d-\xc44\xc46-\xc48\xc4a-\xc4d\xc55-\xc56\xc58-\xc5a\xc60-\xc63\xc66-\xc6f\xc80-\xc83\xc85-\xc8c\xc8e-\xc90\xc92-\xca8\xcaa-\xcb3\xcb5-\xcb9\xcbc-\xcc4\xcc6-\xcc8\xcca-\xccd\xcd5-\xcd6\xcde-\xcde\xce0-\xce3\xce6-\xcef\xcf1-\xcf2\xd00-\xd03\xd05-\xd0c\xd0e-\xd10\xd12-\xd44\xd46-\xd48\xd4a-\xd4e\xd54-\xd57\xd5f-\xd63\xd66-\xd6f\xd7a-\xd7f\xd82-\xd83\xd85-\xd96\xd9a-\xdb1\xdb3-\xdbb\xdbd-\xdbd\xdc0-\xdc6\xdca-\xdca\xdcf-\xdd4\xdd6-\xdd6\xdd8-\xddf\xde6-\xdef\xdf2-\xdf3\xe01-\xe3a\xe40-\xe4e\xe50-\xe59\xe81-\xe82\xe84-\xe84\xe86-\xe8a\xe8c-\xea3\xea5-\xea5\xea7-\xebd\xec0-\xec4\xec6-\xec6\xec8-\xecd\xed0-\xed9\xedc-\xedf\xf00-\xf00\xf18-\xf19\xf20-\xf29\xf35-\xf35\xf37-\xf37\xf39-\xf39\xf3e-\xf47\xf49-\xf6c\xf71-\xf84\xf86-\xf97\xf99-\xfbc\xfc6-\xfc6\x1000-\x1049\x1050-\x109d\x10a0-\x10c5\x10c7-\x10c7\x10cd-\x10cd\x10d0-\x10fa\x10fc-\x1248\x124a-\x124d\x1250-\x1256\x1258-\x1258\x125a-\x125d\x1260-\x1288\x128a-\x128d\x1290-\x12b0\x12b2-\x12b5\x12b8-\x12be\x12c0-\x12c0\x12c2-\x12c5\x12c8-\x12d6\x12d8-\x1310\x1312-\x1315\x1318-\x135a\x135d-\x135f\x1369-\x1371\x1380-\x138f\x13a0-\x13f5\x13f8-\x13fd\x1401-\x166c\x166f-\x167f\x1681-\x169a\x16a0-\x16ea\x16ee-\x16f8\x1700-\x170c\x170e-\x1714\x1720-\x1734\x1740-\x1753\x1760-\x176c\x176e-\x1770\x1772-\x1773\x1780-\x17d3\x17d7-\x17d7\x17dc-\x17dd\x17e0-\x17e9\x180b-\x180d\x1810-\x1819\x1820-\x1878\x1880-\x18aa\x18b0-\x18f5\x1900-\x191e\x1920-\x192b\x1930-\x193b\x1946-\x196d\x1970-\x1974\x1980-\x19ab\x19b0-\x19c9\x19d0-\x19da\x1a00-\x1a1b\x1a20-\x1a5e\x1a60-\x1a7c\x1a7f-\x1a89\x1a90-\x1a99\x1aa7-\x1aa7\x1ab0-\x1abd\x1b00-\x1b4b\x1b50-\x1b59\x1b6b-\x1b73\x1b80-\x1bf3\x1c00-\x1c37\x1c40-\x1c49\x1c4d-\x1c7d\x1c80-\x1c88\x1c90-\x1cba\x1cbd-\x1cbf\x1cd0-\x1cd2\x1cd4-\x1cfa\x1d00-\x1df9\x1dfb-\x1f15\x1f18-\x1f1d\x1f20-\x1f45\x1f48-\x1f4d\x1f50-\x1f57\x1f59-\x1f59\x1f5b-\x1f5b\x1f5d-\x1f5d\x1f5f-\x1f7d\x1f80-\x1fb4\x1fb6-\x1fbc\x1fbe-\x1fbe\x1fc2-\x1fc4\x1fc6-\x1fcc\x1fd0-\x1fd3\x1fd6-\x1fdb\x1fe0-\x1fec\x1ff2-\x1ff4\x1ff6-\x1ffc\x203f-\x2040\x2054-\x2054\x2071-\x2071\x207f-\x207f\x2090-\x209c\x20d0-\x20dc\x20e1-\x20e1\x20e5-\x20f0\x2102-\x2102\x2107-\x2107\x210a-\x2113\x2115-\x2115\x2118-\x211d\x2124-\x2124\x2126-\x2126\x2128-\x2128\x212a-\x2139\x213c-\x213f\x2145-\x2149\x214e-\x214e\x2160-\x2188\x2c00-\x2c2e\x2c30-\x2c5e\x2c60-\x2ce4\x2ceb-\x2cf3\x2d00-\x2d25\x2d27-\x2d27\x2d2d-\x2d2d\x2d30-\x2d67\x2d6f-\x2d6f\x2d7f-\x2d96\x2da0-\x2da6\x2da8-\x2dae\x2db0-\x2db6\x2db8-\x2dbe\x2dc0-\x2dc6\x2dc8-\x2dce\x2dd0-\x2dd6\x2dd8-\x2dde\x2de0-\x2dff\x3005-\x3007\x3021-\x302f\x3031-\x3035\x3038-\x303c\x3041-\x3096\x3099-\x309f\x30a1-\x30fa\x30fc-\x30ff\x3105-\x312f\x3131-\x318e\x31a0-\x31ba\x31f0-\x31ff\x3400-\x4db5\x4e00-\x9fef\xa000-\xa48c\xa4d0-\xa4fd\xa500-\xa60c\xa610-\xa62b\xa640-\xa66f\xa674-\xa67d\xa67f-\xa6f1\xa717-\xa71f\xa722-\xa788\xa78b-\xa7bf\xa7c2-\xa7c6\xa7f7-\xa827\xa840-\xa873\xa880-\xa8c5\xa8d0-\xa8d9\xa8e0-\xa8f7\xa8fb-\xa8fb\xa8fd-\xa92d\xa930-\xa953\xa960-\xa97c\xa980-\xa9c0\xa9cf-\xa9d9\xa9e0-\xa9fe\xaa00-\xaa36\xaa40-\xaa4d\xaa50-\xaa59\xaa60-\xaa76\xaa7a-\xaac2\xaadb-\xaadd\xaae0-\xaaef\xaaf2-\xaaf6\xab01-\xab06\xab09-\xab0e\xab11-\xab16\xab20-\xab26\xab28-\xab2e\xab30-\xab5a\xab5c-\xab67\xab70-\xabea\xabec-\xabed\xabf0-\xabf9\xac00-\xd7a3\xd7b0-\xd7c6\xd7cb-\xd7fb\xf900-\xfa6d\xfa70-\xfad9\xfb00-\xfb06\xfb13-\xfb17\xfb1d-\xfb28\xfb2a-\xfb36\xfb38-\xfb3c\xfb3e-\xfb3e\xfb40-\xfb41\xfb43-\xfb44\xfb46-\xfbb1\xfbd3-\xfd3d\xfd50-\xfd8f\xfd92-\xfdc7\xfdf0-\xfdfb\xfe00-\xfe0f\xfe20-\xfe2f\xfe33-\xfe34\xfe4d-\xfe4f\xfe70-\xfe74\xfe76-\xfefc\xff10-\xff19\xff21-\xff3a\xff3f-\xff3f\xff41-\xff5a\xff66-\xffbe\xffc2-\xffc7\xffca-\xffcf\xffd2-\xffd7\xffda-\xffdc] -> 49
+49 : prev: 48
+    EPS -> 51
+    EPS -> 48
+50
+    EPS -> 51
+    EPS -> 48
+51 : STATEMENT=1 : ACCEPT : prev: 49 50 47
+52 : prev: 64
+    0 -> 53
+53 : prev: 52
+    EPS -> 54
+    EPS -> 57
+54 : prev: 53 55 56
+    [0-7] -> 55
+55 : prev: 54
+    EPS -> 57
+    EPS -> 54
+56
+    EPS -> 54
+    EPS -> 57
+57 : prev: 53 55 56
+    EPS -> 65
+58 : prev: 64
+    [1-9] -> 59
+59 : prev: 58
+    EPS -> 60
+    EPS -> 63
+60 : prev: 62 61 59
+    [0-9] -> 61
+61 : prev: 60
+    EPS -> 63
+    EPS -> 60
+62
+    EPS -> 60
+    EPS -> 63
+63 : prev: 62 61 59
+    EPS -> 65
+64 : prev: 78
+    EPS -> 52
+    EPS -> 58
+65 : prev: 57 63
+    EPS -> 79
+66 : prev: 78
+    0 -> 67
+67 : prev: 66
+    EPS -> 68
+    EPS -> 70
+68 : prev: 67 72
+    x -> 69
+69 : prev: 68
+    EPS -> 73
+70 : prev: 67 72
+    X -> 71
+71 : prev: 70
+    EPS -> 73
+72
+    EPS -> 68
+    EPS -> 70
+73 : prev: 71 69
+    EPS -> 74
+74 : prev: 73 75 76
+    [0-9a-fA-F] -> 75
+75 : prev: 74
+    EPS -> 77
+    EPS -> 74
+76
+    EPS -> 74
+77 : prev: 75
+    EPS -> 79
+78 : prev: 524
+    EPS -> 64
+    EPS -> 66
+79 : prev: 77 65
+    EPS -> 80
+    EPS -> 82
+    EPS -> 85
+80 : prev: 79 84
+    u -> 81
+81 : prev: 80
+    EPS -> 85
+82 : prev: 79 84
+    U -> 83
+83 : prev: 82
+    EPS -> 85
+84
+    EPS -> 80
+    EPS -> 82
+    EPS -> 85
+85 : STATEMENT=2 : ACCEPT : prev: 79 81 83 84
+86 : prev: 87 88
+    [0-9] -> 87
+87 : prev: 86
+    EPS -> 89
+    EPS -> 86
+88 : prev: 102
+    EPS -> 86
+    EPS -> 89
+89 : prev: 87 88
+    . -> 91
+90
+    . -> 91
+91 : prev: 90 89
+    EPS -> 92
+92 : prev: 93 91 94
+    [0-9] -> 93
+93 : prev: 92
+    EPS -> 95
+    EPS -> 92
+94
+    EPS -> 92
+95 : prev: 93
+    EPS -> 103
+96 : prev: 98 97
+    [0-9] -> 97
+97 : prev: 96
+    EPS -> 99
+    EPS -> 96
+98 : prev: 102
+    EPS -> 96
+99 : prev: 97
+    . -> 101
+100
+    . -> 101
+101 : prev: 100 99
+    EPS -> 103
+102 : prev: 140
+    EPS -> 88
+    EPS -> 98
+103 : prev: 101 95
+    EPS -> 104
+    EPS -> 106
+    EPS -> 119
+104 : prev: 103 108
+    e -> 105
+105 : prev: 104
+    EPS -> 109
+106 : prev: 103 108
+    E -> 107
+107 : prev: 106
+    EPS -> 109
+108
+    EPS -> 104
+    EPS -> 106
+    EPS -> 119
+109 : prev: 107 105
+    EPS -> 110
+    EPS -> 112
+    EPS -> 115
+110 : prev: 114 109
+    + -> 111
+111 : prev: 110
+    EPS -> 115
+112 : prev: 114 109
+    - -> 113
+113 : prev: 112
+    EPS -> 115
+114
+    EPS -> 110
+    EPS -> 112
+    EPS -> 115
+115 : prev: 114 109 113 111
+    EPS -> 116
+116 : prev: 115 118 117
+    [0-9] -> 117
+117 : prev: 116
+    EPS -> 119
+    EPS -> 116
+118
+    EPS -> 116
+119 : prev: 103 108 117
+    EPS -> 141
+120 : prev: 122 121
+    [0-9] -> 121
+121 : prev: 120
+    EPS -> 123
+    EPS -> 120
+122 : prev: 140
+    EPS -> 120
+123 : prev: 121
+    EPS -> 124
+    EPS -> 126
+124 : prev: 123 128
+    e -> 125
+125 : prev: 124
+    EPS -> 129
+126 : prev: 123 128
+    E -> 127
+127 : prev: 126
+    EPS -> 129
+128
+    EPS -> 124
+    EPS -> 126
+129 : prev: 127 125
+    EPS -> 130
+    EPS -> 132
+    EPS -> 135
+130 : prev: 129 134
+    + -> 131
+131 : prev: 130
+    EPS -> 135
+132 : prev: 129 134
+    - -> 133
+133 : prev: 132
+    EPS -> 135
+134
+    EPS -> 130
+    EPS -> 132
+    EPS -> 135
+135 : prev: 131 133 129 134
+    EPS -> 136
+136 : prev: 135 138 137
+    [0-9] -> 137
+137 : prev: 136
+    EPS -> 139
+    EPS -> 136
+138
+    EPS -> 136
+139 : prev: 137
+    EPS -> 141
+140 : prev: 524
+    EPS -> 102
+    EPS -> 122
+141 : prev: 119 139
+    EPS -> 142
+    EPS -> 144
+    EPS -> 147
+142 : prev: 146 141
+    f -> 143
+143 : prev: 142
+    EPS -> 147
+144 : prev: 146 141
+    F -> 145
+145 : prev: 144
+    EPS -> 147
+146
+    EPS -> 142
+    EPS -> 144
+    EPS -> 147
+147 : STATEMENT=3 : ACCEPT : prev: 146 145 141 143
+148 : prev: 152
+    w -> 149
+149 : prev: 148
+    EPS -> 153
+150 : prev: 152
+    u -> 151
+151 : prev: 150
+    EPS -> 153
+152 : prev: 524
+    EPS -> 148
+    EPS -> 150
+    EPS -> 153
+153 : prev: 149 151 152
+    \' -> 155
+154
+    \' -> 155
+155 : prev: 154 153
+    EPS -> 158
+    EPS -> 270
+156 : prev: 158 157
+    [^\\\r\n\'] -> 157
+157 : prev: 156
+    EPS -> 159
+    EPS -> 156
+158 : prev: 155 272
+    EPS -> 156
+159 : prev: 157
+    EPS -> 273
+160 : prev: 258
+    \\ -> 161
+161 : prev: 160
+    EPS -> 220
+    EPS -> 250
+162 : prev: 166
+    x -> 163
+163 : prev: 162
+    EPS -> 167
+164 : prev: 166
+    X -> 165
+165 : prev: 164
+    EPS -> 167
+166 : prev: 182
+    EPS -> 162
+    EPS -> 164
+167 : prev: 163 165
+    EPS -> 168
+168 : prev: 167 170 169
+    [0-9a-fA-F] -> 169
+169 : prev: 168
+    EPS -> 171
+    EPS -> 168
+170
+    EPS -> 168
+171 : prev: 169
+    EPS -> 183
+172 : prev: 176
+    d -> 173
+173 : prev: 172
+    EPS -> 177
+174 : prev: 176
+    D -> 175
+175 : prev: 174
+    EPS -> 177
+176 : prev: 182
+    EPS -> 172
+    EPS -> 174
+177 : prev: 173 175
+    EPS -> 178
+178 : prev: 177 179 180
+    [0-9] -> 179
+179 : prev: 178
+    EPS -> 181
+    EPS -> 178
+180
+    EPS -> 178
+181 : prev: 179
+    EPS -> 183
+182 : prev: 188
+    EPS -> 166
+    EPS -> 176
+183 : prev: 181 171
+    EPS -> 189
+184 : prev: 186 185
+    [0-7] -> 185
+185 : prev: 184
+    EPS -> 187
+    EPS -> 184
+186 : prev: 188
+    EPS -> 184
+187 : prev: 185
+    EPS -> 189
+188 : prev: 200
+    EPS -> 182
+    EPS -> 186
+189 : prev: 187 183
+    EPS -> 201
+190 : prev: 200
+    u -> 191
+191 : prev: 190
+    [0-9a-fA-F] -> 193
+192
+    [0-9a-fA-F] -> 193
+193 : prev: 191 192
+    [0-9a-fA-F] -> 195
+194
+    [0-9a-fA-F] -> 195
+195 : prev: 194 193
+    [0-9a-fA-F] -> 197
+196
+    [0-9a-fA-F] -> 197
+197 : prev: 196 195
+    [0-9a-fA-F] -> 199
+198
+    [0-9a-fA-F] -> 199
+199 : prev: 197 198
+    EPS -> 201
+200 : prev: 220
+    EPS -> 188
+    EPS -> 190
+201 : prev: 189 199
+    EPS -> 221
+202 : prev: 220
+    U -> 203
+203 : prev: 202
+    [0-9a-fA-F] -> 205
+204
+    [0-9a-fA-F] -> 205
+205 : prev: 203 204
+    [0-9a-fA-F] -> 207
+206
+    [0-9a-fA-F] -> 207
+207 : prev: 205 206
+    [0-9a-fA-F] -> 209
+208
+    [0-9a-fA-F] -> 209
+209 : prev: 208 207
+    [0-9a-fA-F] -> 211
+210
+    [0-9a-fA-F] -> 211
+211 : prev: 210 209
+    [0-9a-fA-F] -> 213
+212
+    [0-9a-fA-F] -> 213
+213 : prev: 211 212
+    [0-9a-fA-F] -> 215
+214
+    [0-9a-fA-F] -> 215
+215 : prev: 214 213
+    [0-9a-fA-F] -> 217
+216
+    [0-9a-fA-F] -> 217
+217 : prev: 215 216
+    [0-9a-fA-F] -> 219
+218
+    [0-9a-fA-F] -> 219
+219 : prev: 218 217
+    EPS -> 221
+220 : prev: 161 252
+    EPS -> 200
+    EPS -> 202
+221 : prev: 201 219
+    EPS -> 253
+222 : prev: 226
+    a -> 223
+223 : prev: 222
+    EPS -> 227
+224 : prev: 226
+    b -> 225
+225 : prev: 224
+    EPS -> 227
+226 : prev: 230
+    EPS -> 222
+    EPS -> 224
+227 : prev: 223 225
+    EPS -> 231
+228 : prev: 230
+    f -> 229
+229 : prev: 228
+    EPS -> 231
+230 : prev: 234
+    EPS -> 226
+    EPS -> 228
+231 : prev: 229 227
+    EPS -> 235
+232 : prev: 234
+    n -> 233
+233 : prev: 232
+    EPS -> 235
+234 : prev: 238
+    EPS -> 230
+    EPS -> 232
+235 : prev: 233 231
+    EPS -> 239
+236 : prev: 238
+    r -> 237
+237 : prev: 236
+    EPS -> 239
+238 : prev: 242
+    EPS -> 234
+    EPS -> 236
+239 : prev: 235 237
+    EPS -> 243
+240 : prev: 242
+    t -> 241
+241 : prev: 240
+    EPS -> 243
+242 : prev: 246
+    EPS -> 238
+    EPS -> 240
+243 : prev: 239 241
+    EPS -> 247
+244 : prev: 246
+    v -> 245
+245 : prev: 244
+    EPS -> 247
+246 : prev: 250
+    EPS -> 242
+    EPS -> 244
+247 : prev: 243 245
+    EPS -> 251
+248 : prev: 250
+    [^\\\"\'] -> 249
+249 : prev: 248
+    EPS -> 251
+250 : prev: 161 252
+    EPS -> 246
+    EPS -> 248
+251 : prev: 249 247
+    EPS -> 253
+252
+    EPS -> 220
+    EPS -> 250
+253 : prev: 251 221
+    EPS -> 259
+254 : prev: 258
+    \\ -> 255
+255 : prev: 254
+    \\ -> 257
+256
+    \\ -> 257
+257 : prev: 256 255
+    EPS -> 259
+258 : prev: 264
+    EPS -> 160
+    EPS -> 254
+259 : prev: 253 257
+    EPS -> 265
+260 : prev: 264
+    \\ -> 261
+261 : prev: 260
+    \" -> 263
+262
+    \" -> 263
+263 : prev: 262 261
+    EPS -> 265
+264 : prev: 270
+    EPS -> 258
+    EPS -> 260
+265 : prev: 259 263
+    EPS -> 271
+266 : prev: 270
+    \\ -> 267
+267 : prev: 266
+    \' -> 269
+268
+    \' -> 269
+269 : prev: 267 268
+    EPS -> 271
+270 : prev: 155 272
+    EPS -> 264
+    EPS -> 266
+271 : prev: 265 269
+    EPS -> 273
+272
+    EPS -> 158
+    EPS -> 270
+273 : prev: 159 271
+    \' -> 275
+274
+    \' -> 275
+275 : STATEMENT=4 : ACCEPT : prev: 274 273
+276 : prev: 280
+    w -> 277
+277 : prev: 276
+    EPS -> 281
+278 : prev: 280
+    u -> 279
+279 : prev: 278
+    EPS -> 281
+280 : prev: 420
+    EPS -> 276
+    EPS -> 278
+    EPS -> 281
+281 : prev: 280 279 277
+    @ -> 283
+282
+    @ -> 283
+283 : prev: 282 281
+    \" -> 285
+284
+    \" -> 285
+285 : prev: 284 283
+    EPS -> 289
+    EPS -> 286
+286 : prev: 288 287 285
+    [^\"] -> 287
+287 : prev: 286
+    EPS -> 289
+    EPS -> 286
+288
+    EPS -> 289
+    EPS -> 286
+289 : prev: 288 287 285
+    \" -> 291
+290
+    \" -> 291
+291 : prev: 289 290
+    EPS -> 421
+292 : prev: 296
+    w -> 293
+293 : prev: 292
+    EPS -> 297
+294 : prev: 296
+    u -> 295
+295 : prev: 294
+    EPS -> 297
+296 : prev: 420
+    EPS -> 292
+    EPS -> 294
+    EPS -> 297
+297 : prev: 295 296 293
+    \" -> 299
+298
+    \" -> 299
+299 : prev: 298 297
+    EPS -> 417
+    EPS -> 414
+300 : prev: 414
+    [^\\\r\n\"] -> 301
+301 : prev: 300
+    EPS -> 415
+302 : prev: 400
+    \\ -> 303
+303 : prev: 302
+    EPS -> 362
+    EPS -> 392
+304 : prev: 308
+    x -> 305
+305 : prev: 304
+    EPS -> 309
+306 : prev: 308
+    X -> 307
+307 : prev: 306
+    EPS -> 309
+308 : prev: 324
+    EPS -> 304
+    EPS -> 306
+309 : prev: 305 307
+    EPS -> 310
+310 : prev: 309 312 311
+    [0-9a-fA-F] -> 311
+311 : prev: 310
+    EPS -> 313
+    EPS -> 310
+312
+    EPS -> 310
+313 : prev: 311
+    EPS -> 325
+314 : prev: 318
+    d -> 315
+315 : prev: 314
+    EPS -> 319
+316 : prev: 318
+    D -> 317
+317 : prev: 316
+    EPS -> 319
+318 : prev: 324
+    EPS -> 314
+    EPS -> 316
+319 : prev: 315 317
+    EPS -> 320
+320 : prev: 319 321 322
+    [0-9] -> 321
+321 : prev: 320
+    EPS -> 323
+    EPS -> 320
+322
+    EPS -> 320
+323 : prev: 321
+    EPS -> 325
+324 : prev: 330
+    EPS -> 308
+    EPS -> 318
+325 : prev: 313 323
+    EPS -> 331
+326 : prev: 328 327
+    [0-7] -> 327
+327 : prev: 326
+    EPS -> 329
+    EPS -> 326
+328 : prev: 330
+    EPS -> 326
+329 : prev: 327
+    EPS -> 331
+330 : prev: 342
+    EPS -> 324
+    EPS -> 328
+331 : prev: 329 325
+    EPS -> 343
+332 : prev: 342
+    u -> 333
+333 : prev: 332
+    [0-9a-fA-F] -> 335
+334
+    [0-9a-fA-F] -> 335
+335 : prev: 334 333
+    [0-9a-fA-F] -> 337
+336
+    [0-9a-fA-F] -> 337
+337 : prev: 335 336
+    [0-9a-fA-F] -> 339
+338
+    [0-9a-fA-F] -> 339
+339 : prev: 337 338
+    [0-9a-fA-F] -> 341
+340
+    [0-9a-fA-F] -> 341
+341 : prev: 339 340
+    EPS -> 343
+342 : prev: 362
+    EPS -> 330
+    EPS -> 332
+343 : prev: 331 341
+    EPS -> 363
+344 : prev: 362
+    U -> 345
+345 : prev: 344
+    [0-9a-fA-F] -> 347
+346
+    [0-9a-fA-F] -> 347
+347 : prev: 346 345
+    [0-9a-fA-F] -> 349
+348
+    [0-9a-fA-F] -> 349
+349 : prev: 347 348
+    [0-9a-fA-F] -> 351
+350
+    [0-9a-fA-F] -> 351
+351 : prev: 349 350
+    [0-9a-fA-F] -> 353
+352
+    [0-9a-fA-F] -> 353
+353 : prev: 352 351
+    [0-9a-fA-F] -> 355
+354
+    [0-9a-fA-F] -> 355
+355 : prev: 353 354
+    [0-9a-fA-F] -> 357
+356
+    [0-9a-fA-F] -> 357
+357 : prev: 356 355
+    [0-9a-fA-F] -> 359
+358
+    [0-9a-fA-F] -> 359
+359 : prev: 357 358
+    [0-9a-fA-F] -> 361
+360
+    [0-9a-fA-F] -> 361
+361 : prev: 359 360
+    EPS -> 363
+362 : prev: 303 394
+    EPS -> 342
+    EPS -> 344
+363 : prev: 343 361
+    EPS -> 395
+364 : prev: 368
+    a -> 365
+365 : prev: 364
+    EPS -> 369
+366 : prev: 368
+    b -> 367
+367 : prev: 366
+    EPS -> 369
+368 : prev: 372
+    EPS -> 364
+    EPS -> 366
+369 : prev: 365 367
+    EPS -> 373
+370 : prev: 372
+    f -> 371
+371 : prev: 370
+    EPS -> 373
+372 : prev: 376
+    EPS -> 368
+    EPS -> 370
+373 : prev: 369 371
+    EPS -> 377
+374 : prev: 376
+    n -> 375
+375 : prev: 374
+    EPS -> 377
+376 : prev: 380
+    EPS -> 372
+    EPS -> 374
+377 : prev: 373 375
+    EPS -> 381
+378 : prev: 380
+    r -> 379
+379 : prev: 378
+    EPS -> 381
+380 : prev: 384
+    EPS -> 376
+    EPS -> 378
+381 : prev: 377 379
+    EPS -> 385
+382 : prev: 384
+    t -> 383
+383 : prev: 382
+    EPS -> 385
+384 : prev: 388
+    EPS -> 380
+    EPS -> 382
+385 : prev: 383 381
+    EPS -> 389
+386 : prev: 388
+    v -> 387
+387 : prev: 386
+    EPS -> 389
+388 : prev: 392
+    EPS -> 384
+    EPS -> 386
+389 : prev: 385 387
+    EPS -> 393
+390 : prev: 392
+    [^\\\"\'] -> 391
+391 : prev: 390
+    EPS -> 393
+392 : prev: 303 394
+    EPS -> 388
+    EPS -> 390
+393 : prev: 391 389
+    EPS -> 395
+394
+    EPS -> 362
+    EPS -> 392
+395 : prev: 363 393
+    EPS -> 401
+396 : prev: 400
+    \\ -> 397
+397 : prev: 396
+    \\ -> 399
+398
+    \\ -> 399
+399 : prev: 398 397
+    EPS -> 401
+400 : prev: 406
+    EPS -> 302
+    EPS -> 396
+401 : prev: 399 395
+    EPS -> 407
+402 : prev: 406
+    \\ -> 403
+403 : prev: 402
+    \" -> 405
+404
+    \" -> 405
+405 : prev: 404 403
+    EPS -> 407
+406 : prev: 412
+    EPS -> 400
+    EPS -> 402
+407 : prev: 405 401
+    EPS -> 413
+408 : prev: 412
+    \\ -> 409
+409 : prev: 408
+    \' -> 411
+410
+    \' -> 411
+411 : prev: 409 410
+    EPS -> 413
+412 : prev: 414
+    EPS -> 406
+    EPS -> 408
+413 : prev: 411 407
+    EPS -> 415
+414 : prev: 299 415 416
+    EPS -> 300
+    EPS -> 412
+415 : prev: 301 413
+    EPS -> 417
+    EPS -> 414
+416
+    EPS -> 417
+    EPS -> 414
+417 : prev: 299 415 416
+    \" -> 419
+418
+    \" -> 419
+419 : prev: 418 417
+    EPS -> 421
+420 : prev: 524
+    EPS -> 280
+    EPS -> 296
+421 : STATEMENT=5 : ACCEPT : prev: 291 419
+422 : prev: 524
+    < -> 423
+423 : prev: 422
+    = -> 425
+424
+    = -> 425
+425 : prev: 424 423
+    > -> 427
+426
+    > -> 427
+427 : STATEMENT=6 : ACCEPT : prev: 426 425
+428 : prev: 524
+    = -> 429
+429 : prev: 428
+    > -> 431
+430
+    > -> 431
+431 : STATEMENT=7 : ACCEPT : prev: 429 430
+432 : prev: 524
+    | -> 433
+433 : prev: 432
+    | -> 435
+434
+    | -> 435
+435 : STATEMENT=8 : ACCEPT : prev: 434 433
+436 : prev: 524
+    & -> 437
+437 : prev: 436
+    & -> 439
+438
+    & -> 439
+439 : STATEMENT=9 : ACCEPT : prev: 437 438
+440 : prev: 524
+    | -> 441
+441 : STATEMENT=10 : ACCEPT : prev: 440
+442 : prev: 524
+    ^ -> 443
+443 : STATEMENT=11 : ACCEPT : prev: 442
+444 : prev: 524
+    & -> 445
+445 : STATEMENT=12 : ACCEPT : prev: 444
+446 : prev: 524
+    = -> 447
+447 : prev: 446
+    = -> 449
+448
+    = -> 449
+449 : STATEMENT=13 : ACCEPT : prev: 448 447
+450 : prev: 524
+    ! -> 451
+451 : prev: 450
+    = -> 453
+452
+    = -> 453
+453 : STATEMENT=14 : ACCEPT : prev: 452 451
+454 : prev: 524
+    < -> 455
+455 : prev: 454
+    = -> 457
+456
+    = -> 457
+457 : STATEMENT=15 : ACCEPT : prev: 456 455
+458 : prev: 524
+    > -> 459
+459 : prev: 458
+    = -> 461
+460
+    = -> 461
+461 : STATEMENT=16 : ACCEPT : prev: 459 460
+462 : prev: 524
+    < -> 463
+463 : STATEMENT=17 : ACCEPT : prev: 462
+464 : prev: 524
+    > -> 465
+465 : STATEMENT=18 : ACCEPT : prev: 464
+466 : prev: 524
+    < -> 467
+467 : prev: 466
+    < -> 469
+468
+    < -> 469
+469 : STATEMENT=19 : ACCEPT : prev: 467 468
+470 : prev: 524
+    > -> 471
+471 : prev: 470
+    > -> 473
+472
+    > -> 473
+473 : STATEMENT=20 : ACCEPT : prev: 471 472
+474 : prev: 524
+    + -> 475
+475 : STATEMENT=21 : ACCEPT : prev: 474
+476 : prev: 524
+    - -> 477
+477 : STATEMENT=22 : ACCEPT : prev: 476
+478 : prev: 524
+    * -> 479
+479 : STATEMENT=23 : ACCEPT : prev: 478
+480 : prev: 524
+    / -> 481
+481 : STATEMENT=24 : ACCEPT : prev: 480
+482 : prev: 524
+    % -> 483
+483 : STATEMENT=25 : ACCEPT : prev: 482
+484 : prev: 524
+    + -> 485
+485 : prev: 484
+    + -> 487
+486
+    + -> 487
+487 : STATEMENT=26 : ACCEPT : prev: 485 486
+488 : prev: 524
+    - -> 489
+489 : prev: 488
+    - -> 491
+490
+    - -> 491
+491 : STATEMENT=27 : ACCEPT : prev: 489 490
+492 : prev: 524
+    ! -> 493
+493 : STATEMENT=28 : ACCEPT : prev: 492
+494 : prev: 524
+    ~ -> 495
+495 : STATEMENT=29 : ACCEPT : prev: 494
+496 : prev: 524
+    . -> 497
+497 : STATEMENT=30 : ACCEPT : prev: 496
+498 : prev: 524
+    - -> 499
+499 : prev: 498
+    > -> 501
+500
+    > -> 501
+501 : STATEMENT=31 : ACCEPT : prev: 500 499
+502 : prev: 524
+    [ -> 503
+503 : STATEMENT=32 : ACCEPT : prev: 502
+504 : prev: 524
+    ] -> 505
+505 : STATEMENT=33 : ACCEPT : prev: 504
+506 : prev: 524
+    ( -> 507
+507 : STATEMENT=34 : ACCEPT : prev: 506
+508 : prev: 524
+    ) -> 509
+509 : STATEMENT=35 : ACCEPT : prev: 508
+510 : prev: 524
+    { -> 511
+511 : STATEMENT=36 : ACCEPT : prev: 510
+512 : prev: 524
+    } -> 513
+513 : STATEMENT=37 : ACCEPT : prev: 512
+514 : prev: 524
+    , -> 515
+515 : STATEMENT=38 : ACCEPT : prev: 514
+516 : prev: 524
+    = -> 517
+517 : STATEMENT=39 : ACCEPT : prev: 516
+518 : prev: 524
+    : -> 519
+519 : STATEMENT=40 : ACCEPT : prev: 518
+520 : prev: 524
+    ; -> 521
+521 : STATEMENT=41 : ACCEPT : prev: 520
+522 : prev: 524
+    # -> 523
+523 : STATEMENT=42 : ACCEPT : prev: 522
+524
+    EPS -> 44
+    EPS -> 46
+    EPS -> 78
+    EPS -> 140
+    EPS -> 152
+    EPS -> 420
+    EPS -> 422
+    EPS -> 428
+    EPS -> 432
+    EPS -> 436
+    EPS -> 440
+    EPS -> 442
+    EPS -> 444
+    EPS -> 446
+    EPS -> 450
+    EPS -> 454
+    EPS -> 458
+    EPS -> 462
+    EPS -> 464
+    EPS -> 466
+    EPS -> 470
+    EPS -> 474
+    EPS -> 476
+    EPS -> 478
+    EPS -> 480
+    EPS -> 482
+    EPS -> 484
+    EPS -> 488
+    EPS -> 492
+    EPS -> 494
+    EPS -> 496
+    EPS -> 498
+    EPS -> 502
+    EPS -> 504
+    EPS -> 506
+    EPS -> 508
+    EPS -> 510
+    EPS -> 512
+    EPS -> 514
+    EPS -> 516
+    EPS -> 518
+    EPS -> 520
+    EPS -> 522
+
+DFA:
+0[0, 46, 42, 22, 44, 52, 58, 40, 2, 96, 98, 102, 78, 64, 66, 86, 88, 89, 140, 120, 122, 148, 153, 150, 152, 280, 276, 278, 296, 297, 292, 294, 281, 422, 420, 428, 466, 464, 474, 476, 478, 480, 442, 482, 458, 470, 484, 432, 436, 444, 454, 446, 440, 450, 462, 506, 510, 524, 496, 520, 504, 488, 492, 516, 518, 512, 494, 508, 498, 514, 502, 522]
+    0{\"-\"} -> 1
+    2{\'-\'} -> 2
+    3{\n-\n} -> 3
+    4{\r-\r} -> 3
+    5{/-/} -> 4
+    6{*-*} -> 5
+    7 -> 6
+    9{\t-\t} -> 3
+    10{ - } -> 3
+    12{x-x} -> 6
+    13{X-X} -> 6
+    14{u-u} -> 7
+    15{U-U} -> 6
+    16{.-.} -> 8
+    17{+-+} -> 9
+    18{---} -> 10
+    19{w-w} -> 11
+    20{n-n} -> 6
+    21{r-r} -> 6
+    22{t-t} -> 6
+    23{v-v} -> 6
+    24{@-@} -> 12
+    25 -> 6
+    26{e-e} -> 6
+    27{E-E} -> 6
+    28{f-f} -> 6
+    29{F-F} -> 6
+    30{d-d} -> 6
+    31{D-D} -> 6
+    32{a-a} -> 6
+    33{b-b} -> 6
+    34{8-9} -> 13
+    35{0-0} -> 14
+    36{1-7} -> 13
+    37{<-<} -> 15
+    38{=-=} -> 16
+    39{>->} -> 17
+    40{|-|} -> 18
+    41{&-&} -> 19
+    42{^-^} -> 20
+    43{!-!} -> 21
+    44{%-%} -> 22
+    45{~-~} -> 23
+    46{[-[} -> 24
+    47{]-]} -> 25
+    48{(-(} -> 26
+    49{)-)} -> 27
+    50{{-{} -> 28
+    51{}-}} -> 29
+    52{,-,} -> 30
+    53{:-:} -> 31
+    54{;-;} -> 32
+    55{#-#} -> 33
+33[523] : ACCEPT : STATEMENT=42
+32[521] : ACCEPT : STATEMENT=41
+31[519] : ACCEPT : STATEMENT=40
+30[515] : ACCEPT : STATEMENT=38
+29[513] : ACCEPT : STATEMENT=37
+28[511] : ACCEPT : STATEMENT=36
+27[509] : ACCEPT : STATEMENT=35
+26[507] : ACCEPT : STATEMENT=34
+25[505] : ACCEPT : STATEMENT=33
+24[503] : ACCEPT : STATEMENT=32
+23[495] : ACCEPT : STATEMENT=29
+22[483] : ACCEPT : STATEMENT=25
+21[451, 493] : ACCEPT : STATEMENT=28
+    38{=-=} -> 34
+34[453] : ACCEPT : STATEMENT=14
+20[443] : ACCEPT : STATEMENT=11
+19[445, 437] : ACCEPT : STATEMENT=12
+    41{&-&} -> 35
+35[439] : ACCEPT : STATEMENT=9
+18[441, 433] : ACCEPT : STATEMENT=10
+    40{|-|} -> 36
+36[435] : ACCEPT : STATEMENT=8
+17[459, 471, 465] : ACCEPT : STATEMENT=18
+    38{=-=} -> 37
+    39{>->} -> 38
+38[473] : ACCEPT : STATEMENT=20
+37[461] : ACCEPT : STATEMENT=16
+16[429, 447, 517] : ACCEPT : STATEMENT=39
+    38{=-=} -> 39
+    39{>->} -> 40
+40[431] : ACCEPT : STATEMENT=7
+39[449] : ACCEPT : STATEMENT=13
+15[423, 467, 455, 463] : ACCEPT : STATEMENT=17
+    37{<-<} -> 41
+    38{=-=} -> 42
+42[425, 457] : ACCEPT : STATEMENT=15
+    39{>->} -> 43
+43[427] : ACCEPT : STATEMENT=6
+41[469] : ACCEPT : STATEMENT=19
+14[53, 54, 57, 80, 96, 99, 79, 82, 68, 67, 70, 85, 87, 86, 89, 65, 97, 123, 120, 126, 124, 121] : ACCEPT : STATEMENT=2
+    12{x-x} -> 44
+    13{X-X} -> 45
+    14{u-u} -> 46
+    15{U-U} -> 47
+    16{.-.} -> 48
+    26{e-e} -> 49
+    27{E-E} -> 50
+    34{8-9} -> 51
+    35{0-0} -> 52
+    36{1-7} -> 52
+52[54, 55, 57, 80, 96, 99, 79, 82, 85, 87, 86, 89, 65, 97, 123, 120, 126, 124, 121] : ACCEPT : STATEMENT=2
+    14{u-u} -> 46
+    15{U-U} -> 47
+    16{.-.} -> 48
+    26{e-e} -> 49
+    27{E-E} -> 50
+    34{8-9} -> 51
+    35{0-0} -> 52
+    36{1-7} -> 52
+51[96, 99, 87, 86, 89, 97, 123, 120, 126, 124, 121]
+    16{.-.} -> 48
+    26{e-e} -> 49
+    27{E-E} -> 50
+    34{8-9} -> 51
+    35{0-0} -> 51
+    36{1-7} -> 51
+50[127, 130, 136, 135, 129, 132]
+    17{+-+} -> 53
+    18{---} -> 54
+    34{8-9} -> 55
+    35{0-0} -> 55
+    36{1-7} -> 55
+55[142, 136, 139, 147, 141, 137, 144] : ACCEPT : STATEMENT=3
+    28{f-f} -> 56
+    29{F-F} -> 57
+    34{8-9} -> 55
+    35{0-0} -> 55
+    36{1-7} -> 55
+57[145, 147] : ACCEPT : STATEMENT=3
+56[147, 143] : ACCEPT : STATEMENT=3
+54[133, 136, 135]
+    34{8-9} -> 55
+    35{0-0} -> 55
+    36{1-7} -> 55
+53[131, 136, 135]
+    34{8-9} -> 55
+    35{0-0} -> 55
+    36{1-7} -> 55
+49[130, 136, 135, 125, 129, 132]
+    17{+-+} -> 53
+    18{---} -> 54
+    34{8-9} -> 55
+    35{0-0} -> 55
+    36{1-7} -> 55
+48[101, 103, 91, 104, 92, 142, 119, 106, 147, 141, 144] : ACCEPT : STATEMENT=3
+    26{e-e} -> 58
+    27{E-E} -> 59
+    28{f-f} -> 56
+    29{F-F} -> 57
+    34{8-9} -> 60
+    35{0-0} -> 60
+    36{1-7} -> 60
+60[93, 103, 104, 92, 95, 142, 119, 106, 147, 141, 144] : ACCEPT : STATEMENT=3
+    26{e-e} -> 58
+    27{E-E} -> 59
+    28{f-f} -> 56
+    29{F-F} -> 57
+    34{8-9} -> 60
+    35{0-0} -> 60
+    36{1-7} -> 60
+59[116, 115, 107, 109, 110, 112]
+    17{+-+} -> 61
+    18{---} -> 62
+    34{8-9} -> 63
+    35{0-0} -> 63
+    36{1-7} -> 63
+63[116, 142, 119, 147, 141, 117, 144] : ACCEPT : STATEMENT=3
+    28{f-f} -> 56
+    29{F-F} -> 57
+    34{8-9} -> 63
+    35{0-0} -> 63
+    36{1-7} -> 63
+62[116, 115, 113]
+    34{8-9} -> 63
+    35{0-0} -> 63
+    36{1-7} -> 63
+61[116, 115, 111]
+    34{8-9} -> 63
+    35{0-0} -> 63
+    36{1-7} -> 63
+58[116, 115, 105, 109, 110, 112]
+    17{+-+} -> 61
+    18{---} -> 62
+    34{8-9} -> 63
+    35{0-0} -> 63
+    36{1-7} -> 63
+47[83, 85] : ACCEPT : STATEMENT=2
+46[81, 85] : ACCEPT : STATEMENT=2
+45[71, 73, 74]
+    25 -> 64
+    26{e-e} -> 64
+    27{E-E} -> 64
+    28{f-f} -> 64
+    29{F-F} -> 64
+    30{d-d} -> 64
+    31{D-D} -> 64
+    32{a-a} -> 64
+    33{b-b} -> 64
+    34{8-9} -> 64
+    35{0-0} -> 64
+    36{1-7} -> 64
+64[80, 79, 82, 77, 74, 75, 85] : ACCEPT : STATEMENT=2
+    14{u-u} -> 46
+    15{U-U} -> 47
+    25 -> 64
+    26{e-e} -> 64
+    27{E-E} -> 64
+    28{f-f} -> 64
+    29{F-F} -> 64
+    30{d-d} -> 64
+    31{D-D} -> 64
+    32{a-a} -> 64
+    33{b-b} -> 64
+    34{8-9} -> 64
+    35{0-0} -> 64
+    36{1-7} -> 64
+44[73, 74, 69]
+    25 -> 64
+    26{e-e} -> 64
+    27{E-E} -> 64
+    28{f-f} -> 64
+    29{F-F} -> 64
+    30{d-d} -> 64
+    31{D-D} -> 64
+    32{a-a} -> 64
+    33{b-b} -> 64
+    34{8-9} -> 64
+    35{0-0} -> 64
+    36{1-7} -> 64
+13[80, 96, 99, 79, 82, 60, 85, 87, 86, 59, 63, 89, 65, 97, 123, 120, 126, 124, 121] : ACCEPT : STATEMENT=2
+    14{u-u} -> 46
+    15{U-U} -> 47
+    16{.-.} -> 48
+    26{e-e} -> 49
+    27{E-E} -> 50
+    34{8-9} -> 65
+    35{0-0} -> 65
+    36{1-7} -> 65
+65[80, 96, 99, 79, 82, 60, 61, 85, 87, 86, 63, 89, 65, 97, 123, 120, 126, 124, 121] : ACCEPT : STATEMENT=2
+    14{u-u} -> 46
+    15{U-U} -> 47
+    16{.-.} -> 48
+    26{e-e} -> 49
+    27{E-E} -> 50
+    34{8-9} -> 65
+    35{0-0} -> 65
+    36{1-7} -> 65
+12[283]
+    0{\"-\"} -> 66
+66[289, 286, 287, 285]
+    0{\"-\"} -> 67
+    1{\\-\\} -> 68
+    2{\'-\'} -> 68
+    3{\n-\n} -> 68
+    4{\r-\r} -> 68
+    5{/-/} -> 68
+    6{*-*} -> 68
+    7 -> 68
+    8 -> 68
+    9{\t-\t} -> 68
+    10{ - } -> 68
+    11 -> 68
+    12{x-x} -> 68
+    13{X-X} -> 68
+    14{u-u} -> 68
+    15{U-U} -> 68
+    16{.-.} -> 68
+    17{+-+} -> 68
+    18{---} -> 68
+    19{w-w} -> 68
+    20{n-n} -> 68
+    21{r-r} -> 68
+    22{t-t} -> 68
+    23{v-v} -> 68
+    24{@-@} -> 68
+    25 -> 68
+    26{e-e} -> 68
+    27{E-E} -> 68
+    28{f-f} -> 68
+    29{F-F} -> 68
+    30{d-d} -> 68
+    31{D-D} -> 68
+    32{a-a} -> 68
+    33{b-b} -> 68
+    34{8-9} -> 68
+    35{0-0} -> 68
+    36{1-7} -> 68
+    37{<-<} -> 68
+    38{=-=} -> 68
+    39{>->} -> 68
+    40{|-|} -> 68
+    41{&-&} -> 68
+    42{^-^} -> 68
+    43{!-!} -> 68
+    44{%-%} -> 68
+    45{~-~} -> 68
+    46{[-[} -> 68
+    47{]-]} -> 68
+    48{(-(} -> 68
+    49{)-)} -> 68
+    50{{-{} -> 68
+    51{}-}} -> 68
+    52{,-,} -> 68
+    53{:-:} -> 68
+    54{;-;} -> 68
+    55{#-#} -> 68
+68[289, 286, 287]
+    0{\"-\"} -> 67
+    1{\\-\\} -> 68
+    2{\'-\'} -> 68
+    3{\n-\n} -> 68
+    4{\r-\r} -> 68
+    5{/-/} -> 68
+    6{*-*} -> 68
+    7 -> 68
+    8 -> 68
+    9{\t-\t} -> 68
+    10{ - } -> 68
+    11 -> 68
+    12{x-x} -> 68
+    13{X-X} -> 68
+    14{u-u} -> 68
+    15{U-U} -> 68
+    16{.-.} -> 68
+    17{+-+} -> 68
+    18{---} -> 68
+    19{w-w} -> 68
+    20{n-n} -> 68
+    21{r-r} -> 68
+    22{t-t} -> 68
+    23{v-v} -> 68
+    24{@-@} -> 68
+    25 -> 68
+    26{e-e} -> 68
+    27{E-E} -> 68
+    28{f-f} -> 68
+    29{F-F} -> 68
+    30{d-d} -> 68
+    31{D-D} -> 68
+    32{a-a} -> 68
+    33{b-b} -> 68
+    34{8-9} -> 68
+    35{0-0} -> 68
+    36{1-7} -> 68
+    37{<-<} -> 68
+    38{=-=} -> 68
+    39{>->} -> 68
+    40{|-|} -> 68
+    41{&-&} -> 68
+    42{^-^} -> 68
+    43{!-!} -> 68
+    44{%-%} -> 68
+    45{~-~} -> 68
+    46{[-[} -> 68
+    47{]-]} -> 68
+    48{(-(} -> 68
+    49{)-)} -> 68
+    50{{-{} -> 68
+    51{}-}} -> 68
+    52{,-,} -> 68
+    53{:-:} -> 68
+    54{;-;} -> 68
+    55{#-#} -> 68
+67[291, 421] : ACCEPT : STATEMENT=5
+11[48, 51, 47, 149, 153, 297, 277, 293, 281] : ACCEPT : STATEMENT=1
+    0{\"-\"} -> 1
+    2{\'-\'} -> 2
+    7 -> 69
+    8 -> 69
+    12{x-x} -> 69
+    13{X-X} -> 69
+    14{u-u} -> 69
+    15{U-U} -> 69
+    19{w-w} -> 69
+    20{n-n} -> 69
+    21{r-r} -> 69
+    22{t-t} -> 69
+    23{v-v} -> 69
+    24{@-@} -> 12
+    25 -> 69
+    26{e-e} -> 69
+    27{E-E} -> 69
+    28{f-f} -> 69
+    29{F-F} -> 69
+    30{d-d} -> 69
+    31{D-D} -> 69
+    32{a-a} -> 69
+    33{b-b} -> 69
+    34{8-9} -> 69
+    35{0-0} -> 69
+    36{1-7} -> 69
+69[48, 49, 51] : ACCEPT : STATEMENT=1
+    7 -> 69
+    8 -> 69
+    12{x-x} -> 69
+    13{X-X} -> 69
+    14{u-u} -> 69
+    15{U-U} -> 69
+    19{w-w} -> 69
+    20{n-n} -> 69
+    21{r-r} -> 69
+    22{t-t} -> 69
+    23{v-v} -> 69
+    25 -> 69
+    26{e-e} -> 69
+    27{E-E} -> 69
+    28{f-f} -> 69
+    29{F-F} -> 69
+    30{d-d} -> 69
+    31{D-D} -> 69
+    32{a-a} -> 69
+    33{b-b} -> 69
+    34{8-9} -> 69
+    35{0-0} -> 69
+    36{1-7} -> 69
+10[477, 489, 499] : ACCEPT : STATEMENT=22
+    18{---} -> 70
+    39{>->} -> 71
+71[501] : ACCEPT : STATEMENT=31
+70[491] : ACCEPT : STATEMENT=27
+9[475, 485] : ACCEPT : STATEMENT=21
+    17{+-+} -> 72
+72[487] : ACCEPT : STATEMENT=26
+8[91, 92, 497] : ACCEPT : STATEMENT=30
+    34{8-9} -> 60
+    35{0-0} -> 60
+    36{1-7} -> 60
+7[48, 51, 47, 151, 153, 279, 295, 297, 281] : ACCEPT : STATEMENT=1
+    0{\"-\"} -> 1
+    2{\'-\'} -> 2
+    7 -> 69
+    8 -> 69
+    12{x-x} -> 69
+    13{X-X} -> 69
+    14{u-u} -> 69
+    15{U-U} -> 69
+    19{w-w} -> 69
+    20{n-n} -> 69
+    21{r-r} -> 69
+    22{t-t} -> 69
+    23{v-v} -> 69
+    24{@-@} -> 12
+    25 -> 69
+    26{e-e} -> 69
+    27{E-E} -> 69
+    28{f-f} -> 69
+    29{F-F} -> 69
+    30{d-d} -> 69
+    31{D-D} -> 69
+    32{a-a} -> 69
+    33{b-b} -> 69
+    34{8-9} -> 69
+    35{0-0} -> 69
+    36{1-7} -> 69
+6[48, 51, 47] : ACCEPT : STATEMENT=1
+    7 -> 69
+    8 -> 69
+    12{x-x} -> 69
+    13{X-X} -> 69
+    14{u-u} -> 69
+    15{U-U} -> 69
+    19{w-w} -> 69
+    20{n-n} -> 69
+    21{r-r} -> 69
+    22{t-t} -> 69
+    23{v-v} -> 69
+    25 -> 69
+    26{e-e} -> 69
+    27{E-E} -> 69
+    28{f-f} -> 69
+    29{F-F} -> 69
+    30{d-d} -> 69
+    31{D-D} -> 69
+    32{a-a} -> 69
+    33{b-b} -> 69
+    34{8-9} -> 69
+    35{0-0} -> 69
+    36{1-7} -> 69
+5[479] : ACCEPT : STATEMENT=23
+4[23, 3, 481] : ACCEPT : STATEMENT=24
+    5{/-/} -> 73
+    6{*-*} -> 74
+74[35, 33, 26, 32, 25, 27, 28]
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 75
+    4{\r-\r} -> 75
+    5{/-/} -> 75
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 75
+    10{ - } -> 75
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+76[31, 29, 37, 35, 33, 26, 32, 27, 28]
+    0{\"-\"} -> 77
+    1{\\-\\} -> 77
+    2{\'-\'} -> 77
+    3{\n-\n} -> 77
+    4{\r-\r} -> 77
+    5{/-/} -> 78
+    6{*-*} -> 76
+    7 -> 77
+    8 -> 77
+    9{\t-\t} -> 77
+    10{ - } -> 77
+    11 -> 77
+    12{x-x} -> 77
+    13{X-X} -> 77
+    14{u-u} -> 77
+    15{U-U} -> 77
+    16{.-.} -> 77
+    17{+-+} -> 77
+    18{---} -> 77
+    19{w-w} -> 77
+    20{n-n} -> 77
+    21{r-r} -> 77
+    22{t-t} -> 77
+    23{v-v} -> 77
+    24{@-@} -> 77
+    25 -> 77
+    26{e-e} -> 77
+    27{E-E} -> 77
+    28{f-f} -> 77
+    29{F-F} -> 77
+    30{d-d} -> 77
+    31{D-D} -> 77
+    32{a-a} -> 77
+    33{b-b} -> 77
+    34{8-9} -> 77
+    35{0-0} -> 77
+    36{1-7} -> 77
+    37{<-<} -> 77
+    38{=-=} -> 77
+    39{>->} -> 77
+    40{|-|} -> 77
+    41{&-&} -> 77
+    42{^-^} -> 77
+    43{!-!} -> 77
+    44{%-%} -> 77
+    45{~-~} -> 77
+    46{[-[} -> 77
+    47{]-]} -> 77
+    48{(-(} -> 77
+    49{)-)} -> 77
+    50{{-{} -> 77
+    51{}-}} -> 77
+    52{,-,} -> 77
+    53{:-:} -> 77
+    54{;-;} -> 77
+    55{#-#} -> 77
+78[0, 41, 39, 35, 45, 33, 43, 26, 42, 22, 32, 40, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 79
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+80[23, 35, 33, 26, 32, 27, 28, 3]
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 75
+    4{\r-\r} -> 75
+    5{/-/} -> 81
+    6{*-*} -> 82
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 75
+    10{ - } -> 75
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+82[31, 29, 37, 35, 33, 26, 32, 25, 27, 28]
+    0{\"-\"} -> 77
+    1{\\-\\} -> 77
+    2{\'-\'} -> 77
+    3{\n-\n} -> 77
+    4{\r-\r} -> 77
+    5{/-/} -> 78
+    6{*-*} -> 76
+    7 -> 77
+    8 -> 77
+    9{\t-\t} -> 77
+    10{ - } -> 77
+    11 -> 77
+    12{x-x} -> 77
+    13{X-X} -> 77
+    14{u-u} -> 77
+    15{U-U} -> 77
+    16{.-.} -> 77
+    17{+-+} -> 77
+    18{---} -> 77
+    19{w-w} -> 77
+    20{n-n} -> 77
+    21{r-r} -> 77
+    22{t-t} -> 77
+    23{v-v} -> 77
+    24{@-@} -> 77
+    25 -> 77
+    26{e-e} -> 77
+    27{E-E} -> 77
+    28{f-f} -> 77
+    29{F-F} -> 77
+    30{d-d} -> 77
+    31{D-D} -> 77
+    32{a-a} -> 77
+    33{b-b} -> 77
+    34{8-9} -> 77
+    35{0-0} -> 77
+    36{1-7} -> 77
+    37{<-<} -> 77
+    38{=-=} -> 77
+    39{>->} -> 77
+    40{|-|} -> 77
+    41{&-&} -> 77
+    42{^-^} -> 77
+    43{!-!} -> 77
+    44{%-%} -> 77
+    45{~-~} -> 77
+    46{[-[} -> 77
+    47{]-]} -> 77
+    48{(-(} -> 77
+    49{)-)} -> 77
+    50{{-{} -> 77
+    51{}-}} -> 77
+    52{,-,} -> 77
+    53{:-:} -> 77
+    54{;-;} -> 77
+    55{#-#} -> 77
+81[7, 6, 10, 18, 35, 33, 5, 16, 26, 9, 14, 32, 27, 28]
+    0{\"-\"} -> 83
+    1{\\-\\} -> 83
+    2{\'-\'} -> 83
+    3{\n-\n} -> 84
+    4{\r-\r} -> 85
+    5{/-/} -> 83
+    6{*-*} -> 86
+    7 -> 83
+    8 -> 83
+    9{\t-\t} -> 83
+    10{ - } -> 83
+    11 -> 83
+    12{x-x} -> 83
+    13{X-X} -> 83
+    14{u-u} -> 83
+    15{U-U} -> 83
+    16{.-.} -> 83
+    17{+-+} -> 83
+    18{---} -> 83
+    19{w-w} -> 83
+    20{n-n} -> 83
+    21{r-r} -> 83
+    22{t-t} -> 83
+    23{v-v} -> 83
+    24{@-@} -> 83
+    25 -> 83
+    26{e-e} -> 83
+    27{E-E} -> 83
+    28{f-f} -> 83
+    29{F-F} -> 83
+    30{d-d} -> 83
+    31{D-D} -> 83
+    32{a-a} -> 83
+    33{b-b} -> 83
+    34{8-9} -> 83
+    35{0-0} -> 83
+    36{1-7} -> 83
+    37{<-<} -> 83
+    38{=-=} -> 83
+    39{>->} -> 83
+    40{|-|} -> 83
+    41{&-&} -> 83
+    42{^-^} -> 83
+    43{!-!} -> 83
+    44{%-%} -> 83
+    45{~-~} -> 83
+    46{[-[} -> 83
+    47{]-]} -> 83
+    48{(-(} -> 83
+    49{)-)} -> 83
+    50{{-{} -> 83
+    51{}-}} -> 83
+    52{,-,} -> 83
+    53{:-:} -> 83
+    54{;-;} -> 83
+    55{#-#} -> 83
+86[31, 7, 29, 6, 37, 10, 18, 35, 33, 16, 26, 9, 14, 32, 27, 28]
+    0{\"-\"} -> 87
+    1{\\-\\} -> 87
+    2{\'-\'} -> 87
+    3{\n-\n} -> 88
+    4{\r-\r} -> 89
+    5{/-/} -> 90
+    6{*-*} -> 86
+    7 -> 87
+    8 -> 87
+    9{\t-\t} -> 87
+    10{ - } -> 87
+    11 -> 87
+    12{x-x} -> 87
+    13{X-X} -> 87
+    14{u-u} -> 87
+    15{U-U} -> 87
+    16{.-.} -> 87
+    17{+-+} -> 87
+    18{---} -> 87
+    19{w-w} -> 87
+    20{n-n} -> 87
+    21{r-r} -> 87
+    22{t-t} -> 87
+    23{v-v} -> 87
+    24{@-@} -> 87
+    25 -> 87
+    26{e-e} -> 87
+    27{E-E} -> 87
+    28{f-f} -> 87
+    29{F-F} -> 87
+    30{d-d} -> 87
+    31{D-D} -> 87
+    32{a-a} -> 87
+    33{b-b} -> 87
+    34{8-9} -> 87
+    35{0-0} -> 87
+    36{1-7} -> 87
+    37{<-<} -> 87
+    38{=-=} -> 87
+    39{>->} -> 87
+    40{|-|} -> 87
+    41{&-&} -> 87
+    42{^-^} -> 87
+    43{!-!} -> 87
+    44{%-%} -> 87
+    45{~-~} -> 87
+    46{[-[} -> 87
+    47{]-]} -> 87
+    48{(-(} -> 87
+    49{)-)} -> 87
+    50{{-{} -> 87
+    51{}-}} -> 87
+    52{,-,} -> 87
+    53{:-:} -> 87
+    54{;-;} -> 87
+    55{#-#} -> 87
+90[0, 7, 6, 41, 10, 18, 39, 35, 45, 33, 43, 16, 26, 9, 42, 22, 14, 32, 40, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 83
+    1{\\-\\} -> 83
+    2{\'-\'} -> 83
+    3{\n-\n} -> 91
+    4{\r-\r} -> 92
+    5{/-/} -> 93
+    6{*-*} -> 86
+    7 -> 83
+    8 -> 83
+    9{\t-\t} -> 94
+    10{ - } -> 94
+    11 -> 83
+    12{x-x} -> 83
+    13{X-X} -> 83
+    14{u-u} -> 83
+    15{U-U} -> 83
+    16{.-.} -> 83
+    17{+-+} -> 83
+    18{---} -> 83
+    19{w-w} -> 83
+    20{n-n} -> 83
+    21{r-r} -> 83
+    22{t-t} -> 83
+    23{v-v} -> 83
+    24{@-@} -> 83
+    25 -> 83
+    26{e-e} -> 83
+    27{E-E} -> 83
+    28{f-f} -> 83
+    29{F-F} -> 83
+    30{d-d} -> 83
+    31{D-D} -> 83
+    32{a-a} -> 83
+    33{b-b} -> 83
+    34{8-9} -> 83
+    35{0-0} -> 83
+    36{1-7} -> 83
+    37{<-<} -> 83
+    38{=-=} -> 83
+    39{>->} -> 83
+    40{|-|} -> 83
+    41{&-&} -> 83
+    42{^-^} -> 83
+    43{!-!} -> 83
+    44{%-%} -> 83
+    45{~-~} -> 83
+    46{[-[} -> 83
+    47{]-]} -> 83
+    48{(-(} -> 83
+    49{)-)} -> 83
+    50{{-{} -> 83
+    51{}-}} -> 83
+    52{,-,} -> 83
+    53{:-:} -> 83
+    54{;-;} -> 83
+    55{#-#} -> 83
+94[0, 1, 7, 6, 10, 18, 35, 45, 33, 43, 16, 26, 9, 42, 22, 14, 32, 40, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 83
+    1{\\-\\} -> 83
+    2{\'-\'} -> 83
+    3{\n-\n} -> 91
+    4{\r-\r} -> 92
+    5{/-/} -> 93
+    6{*-*} -> 86
+    7 -> 83
+    8 -> 83
+    9{\t-\t} -> 94
+    10{ - } -> 94
+    11 -> 83
+    12{x-x} -> 83
+    13{X-X} -> 83
+    14{u-u} -> 83
+    15{U-U} -> 83
+    16{.-.} -> 83
+    17{+-+} -> 83
+    18{---} -> 83
+    19{w-w} -> 83
+    20{n-n} -> 83
+    21{r-r} -> 83
+    22{t-t} -> 83
+    23{v-v} -> 83
+    24{@-@} -> 83
+    25 -> 83
+    26{e-e} -> 83
+    27{E-E} -> 83
+    28{f-f} -> 83
+    29{F-F} -> 83
+    30{d-d} -> 83
+    31{D-D} -> 83
+    32{a-a} -> 83
+    33{b-b} -> 83
+    34{8-9} -> 83
+    35{0-0} -> 83
+    36{1-7} -> 83
+    37{<-<} -> 83
+    38{=-=} -> 83
+    39{>->} -> 83
+    40{|-|} -> 83
+    41{&-&} -> 83
+    42{^-^} -> 83
+    43{!-!} -> 83
+    44{%-%} -> 83
+    45{~-~} -> 83
+    46{[-[} -> 83
+    47{]-]} -> 83
+    48{(-(} -> 83
+    49{)-)} -> 83
+    50{{-{} -> 83
+    51{}-}} -> 83
+    52{,-,} -> 83
+    53{:-:} -> 83
+    54{;-;} -> 83
+    55{#-#} -> 83
+93[23, 7, 6, 10, 18, 35, 33, 16, 26, 9, 14, 32, 27, 28, 3]
+    0{\"-\"} -> 83
+    1{\\-\\} -> 83
+    2{\'-\'} -> 83
+    3{\n-\n} -> 84
+    4{\r-\r} -> 85
+    5{/-/} -> 81
+    6{*-*} -> 95
+    7 -> 83
+    8 -> 83
+    9{\t-\t} -> 83
+    10{ - } -> 83
+    11 -> 83
+    12{x-x} -> 83
+    13{X-X} -> 83
+    14{u-u} -> 83
+    15{U-U} -> 83
+    16{.-.} -> 83
+    17{+-+} -> 83
+    18{---} -> 83
+    19{w-w} -> 83
+    20{n-n} -> 83
+    21{r-r} -> 83
+    22{t-t} -> 83
+    23{v-v} -> 83
+    24{@-@} -> 83
+    25 -> 83
+    26{e-e} -> 83
+    27{E-E} -> 83
+    28{f-f} -> 83
+    29{F-F} -> 83
+    30{d-d} -> 83
+    31{D-D} -> 83
+    32{a-a} -> 83
+    33{b-b} -> 83
+    34{8-9} -> 83
+    35{0-0} -> 83
+    36{1-7} -> 83
+    37{<-<} -> 83
+    38{=-=} -> 83
+    39{>->} -> 83
+    40{|-|} -> 83
+    41{&-&} -> 83
+    42{^-^} -> 83
+    43{!-!} -> 83
+    44{%-%} -> 83
+    45{~-~} -> 83
+    46{[-[} -> 83
+    47{]-]} -> 83
+    48{(-(} -> 83
+    49{)-)} -> 83
+    50{{-{} -> 83
+    51{}-}} -> 83
+    52{,-,} -> 83
+    53{:-:} -> 83
+    54{;-;} -> 83
+    55{#-#} -> 83
+95[31, 7, 29, 6, 37, 10, 18, 35, 33, 16, 26, 9, 14, 32, 25, 27, 28]
+    0{\"-\"} -> 87
+    1{\\-\\} -> 87
+    2{\'-\'} -> 87
+    3{\n-\n} -> 88
+    4{\r-\r} -> 89
+    5{/-/} -> 90
+    6{*-*} -> 86
+    7 -> 87
+    8 -> 87
+    9{\t-\t} -> 87
+    10{ - } -> 87
+    11 -> 87
+    12{x-x} -> 87
+    13{X-X} -> 87
+    14{u-u} -> 87
+    15{U-U} -> 87
+    16{.-.} -> 87
+    17{+-+} -> 87
+    18{---} -> 87
+    19{w-w} -> 87
+    20{n-n} -> 87
+    21{r-r} -> 87
+    22{t-t} -> 87
+    23{v-v} -> 87
+    24{@-@} -> 87
+    25 -> 87
+    26{e-e} -> 87
+    27{E-E} -> 87
+    28{f-f} -> 87
+    29{F-F} -> 87
+    30{d-d} -> 87
+    31{D-D} -> 87
+    32{a-a} -> 87
+    33{b-b} -> 87
+    34{8-9} -> 87
+    35{0-0} -> 87
+    36{1-7} -> 87
+    37{<-<} -> 87
+    38{=-=} -> 87
+    39{>->} -> 87
+    40{|-|} -> 87
+    41{&-&} -> 87
+    42{^-^} -> 87
+    43{!-!} -> 87
+    44{%-%} -> 87
+    45{~-~} -> 87
+    46{[-[} -> 87
+    47{]-]} -> 87
+    48{(-(} -> 87
+    49{)-)} -> 87
+    50{{-{} -> 87
+    51{}-}} -> 87
+    52{,-,} -> 87
+    53{:-:} -> 87
+    54{;-;} -> 87
+    55{#-#} -> 87
+92[0, 1, 11, 21, 41, 35, 45, 33, 43, 26, 42, 22, 32, 40, 19, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 96
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+96[0, 1, 17, 21, 41, 35, 45, 33, 43, 13, 26, 42, 22, 32, 40, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 79
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+91[0, 1, 17, 21, 41, 35, 45, 33, 43, 26, 42, 22, 32, 40, 2, 15, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 79
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+89[0, 31, 11, 21, 41, 35, 45, 33, 43, 26, 42, 22, 32, 40, 19, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 96
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+88[0, 17, 31, 21, 41, 35, 45, 33, 43, 26, 42, 22, 32, 40, 2, 15, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 79
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+87[31, 7, 6, 10, 18, 35, 33, 16, 26, 9, 14, 32, 27, 28]
+    0{\"-\"} -> 83
+    1{\\-\\} -> 83
+    2{\'-\'} -> 83
+    3{\n-\n} -> 84
+    4{\r-\r} -> 85
+    5{/-/} -> 83
+    6{*-*} -> 86
+    7 -> 83
+    8 -> 83
+    9{\t-\t} -> 83
+    10{ - } -> 83
+    11 -> 83
+    12{x-x} -> 83
+    13{X-X} -> 83
+    14{u-u} -> 83
+    15{U-U} -> 83
+    16{.-.} -> 83
+    17{+-+} -> 83
+    18{---} -> 83
+    19{w-w} -> 83
+    20{n-n} -> 83
+    21{r-r} -> 83
+    22{t-t} -> 83
+    23{v-v} -> 83
+    24{@-@} -> 83
+    25 -> 83
+    26{e-e} -> 83
+    27{E-E} -> 83
+    28{f-f} -> 83
+    29{F-F} -> 83
+    30{d-d} -> 83
+    31{D-D} -> 83
+    32{a-a} -> 83
+    33{b-b} -> 83
+    34{8-9} -> 83
+    35{0-0} -> 83
+    36{1-7} -> 83
+    37{<-<} -> 83
+    38{=-=} -> 83
+    39{>->} -> 83
+    40{|-|} -> 83
+    41{&-&} -> 83
+    42{^-^} -> 83
+    43{!-!} -> 83
+    44{%-%} -> 83
+    45{~-~} -> 83
+    46{[-[} -> 83
+    47{]-]} -> 83
+    48{(-(} -> 83
+    49{)-)} -> 83
+    50{{-{} -> 83
+    51{}-}} -> 83
+    52{,-,} -> 83
+    53{:-:} -> 83
+    54{;-;} -> 83
+    55{#-#} -> 83
+85[0, 11, 21, 41, 35, 45, 33, 43, 26, 42, 22, 32, 40, 19, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 96
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+84[0, 17, 21, 41, 35, 45, 33, 43, 26, 42, 22, 32, 40, 2, 15, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 79
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+83[7, 6, 10, 18, 35, 33, 16, 26, 9, 14, 32, 27, 28]
+    0{\"-\"} -> 83
+    1{\\-\\} -> 83
+    2{\'-\'} -> 83
+    3{\n-\n} -> 84
+    4{\r-\r} -> 85
+    5{/-/} -> 83
+    6{*-*} -> 86
+    7 -> 83
+    8 -> 83
+    9{\t-\t} -> 83
+    10{ - } -> 83
+    11 -> 83
+    12{x-x} -> 83
+    13{X-X} -> 83
+    14{u-u} -> 83
+    15{U-U} -> 83
+    16{.-.} -> 83
+    17{+-+} -> 83
+    18{---} -> 83
+    19{w-w} -> 83
+    20{n-n} -> 83
+    21{r-r} -> 83
+    22{t-t} -> 83
+    23{v-v} -> 83
+    24{@-@} -> 83
+    25 -> 83
+    26{e-e} -> 83
+    27{E-E} -> 83
+    28{f-f} -> 83
+    29{F-F} -> 83
+    30{d-d} -> 83
+    31{D-D} -> 83
+    32{a-a} -> 83
+    33{b-b} -> 83
+    34{8-9} -> 83
+    35{0-0} -> 83
+    36{1-7} -> 83
+    37{<-<} -> 83
+    38{=-=} -> 83
+    39{>->} -> 83
+    40{|-|} -> 83
+    41{&-&} -> 83
+    42{^-^} -> 83
+    43{!-!} -> 83
+    44{%-%} -> 83
+    45{~-~} -> 83
+    46{[-[} -> 83
+    47{]-]} -> 83
+    48{(-(} -> 83
+    49{)-)} -> 83
+    50{{-{} -> 83
+    51{}-}} -> 83
+    52{,-,} -> 83
+    53{:-:} -> 83
+    54{;-;} -> 83
+    55{#-#} -> 83
+79[0, 1, 35, 45, 33, 43, 26, 42, 22, 32, 40, 2, 27, 28] : ACCEPT : STATEMENT=0
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 79
+    4{\r-\r} -> 79
+    5{/-/} -> 80
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 79
+    10{ - } -> 79
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+77[31, 35, 33, 26, 32, 27, 28]
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 75
+    4{\r-\r} -> 75
+    5{/-/} -> 75
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 75
+    10{ - } -> 75
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+75[35, 33, 26, 32, 27, 28]
+    0{\"-\"} -> 75
+    1{\\-\\} -> 75
+    2{\'-\'} -> 75
+    3{\n-\n} -> 75
+    4{\r-\r} -> 75
+    5{/-/} -> 75
+    6{*-*} -> 76
+    7 -> 75
+    8 -> 75
+    9{\t-\t} -> 75
+    10{ - } -> 75
+    11 -> 75
+    12{x-x} -> 75
+    13{X-X} -> 75
+    14{u-u} -> 75
+    15{U-U} -> 75
+    16{.-.} -> 75
+    17{+-+} -> 75
+    18{---} -> 75
+    19{w-w} -> 75
+    20{n-n} -> 75
+    21{r-r} -> 75
+    22{t-t} -> 75
+    23{v-v} -> 75
+    24{@-@} -> 75
+    25 -> 75
+    26{e-e} -> 75
+    27{E-E} -> 75
+    28{f-f} -> 75
+    29{F-F} -> 75
+    30{d-d} -> 75
+    31{D-D} -> 75
+    32{a-a} -> 75
+    33{b-b} -> 75
+    34{8-9} -> 75
+    35{0-0} -> 75
+    36{1-7} -> 75
+    37{<-<} -> 75
+    38{=-=} -> 75
+    39{>->} -> 75
+    40{|-|} -> 75
+    41{&-&} -> 75
+    42{^-^} -> 75
+    43{!-!} -> 75
+    44{%-%} -> 75
+    45{~-~} -> 75
+    46{[-[} -> 75
+    47{]-]} -> 75
+    48{(-(} -> 75
+    49{)-)} -> 75
+    50{{-{} -> 75
+    51{}-}} -> 75
+    52{,-,} -> 75
+    53{:-:} -> 75
+    54{;-;} -> 75
+    55{#-#} -> 75
+73[7, 6, 10, 18, 5, 16, 9, 14]
+    0{\"-\"} -> 97
+    1{\\-\\} -> 97
+    2{\'-\'} -> 97
+    3{\n-\n} -> 98
+    4{\r-\r} -> 99
+    5{/-/} -> 97
+    6{*-*} -> 97
+    7 -> 97
+    8 -> 97
+    9{\t-\t} -> 97
+    10{ - } -> 97
+    11 -> 97
+    12{x-x} -> 97
+    13{X-X} -> 97
+    14{u-u} -> 97
+    15{U-U} -> 97
+    16{.-.} -> 97
+    17{+-+} -> 97
+    18{---} -> 97
+    19{w-w} -> 97
+    20{n-n} -> 97
+    21{r-r} -> 97
+    22{t-t} -> 97
+    23{v-v} -> 97
+    24{@-@} -> 97
+    25 -> 97
+    26{e-e} -> 97
+    27{E-E} -> 97
+    28{f-f} -> 97
+    29{F-F} -> 97
+    30{d-d} -> 97
+    31{D-D} -> 97
+    32{a-a} -> 97
+    33{b-b} -> 97
+    34{8-9} -> 97
+    35{0-0} -> 97
+    36{1-7} -> 97
+    37{<-<} -> 97
+    38{=-=} -> 97
+    39{>->} -> 97
+    40{|-|} -> 97
+    41{&-&} -> 97
+    42{^-^} -> 97
+    43{!-!} -> 97
+    44{%-%} -> 97
+    45{~-~} -> 97
+    46{[-[} -> 97
+    47{]-]} -> 97
+    48{(-(} -> 97
+    49{)-)} -> 97
+    50{{-{} -> 97
+    51{}-}} -> 97
+    52{,-,} -> 97
+    53{:-:} -> 97
+    54{;-;} -> 97
+    55{#-#} -> 97
+99[0, 11, 21, 41, 45, 43, 42, 22, 40, 19, 2] : ACCEPT : STATEMENT=0
+    3{\n-\n} -> 100
+    4{\r-\r} -> 3
+    5{/-/} -> 101
+    9{\t-\t} -> 3
+    10{ - } -> 3
+101[23, 3]
+    5{/-/} -> 73
+    6{*-*} -> 74
+100[0, 1, 17, 21, 41, 45, 43, 13, 42, 22, 40, 2] : ACCEPT : STATEMENT=0
+    3{\n-\n} -> 3
+    4{\r-\r} -> 3
+    5{/-/} -> 101
+    9{\t-\t} -> 3
+    10{ - } -> 3
+98[0, 17, 21, 41, 45, 43, 42, 22, 40, 2, 15] : ACCEPT : STATEMENT=0
+    3{\n-\n} -> 3
+    4{\r-\r} -> 3
+    5{/-/} -> 101
+    9{\t-\t} -> 3
+    10{ - } -> 3
+97[7, 6, 10, 18, 16, 9, 14]
+    0{\"-\"} -> 97
+    1{\\-\\} -> 97
+    2{\'-\'} -> 97
+    3{\n-\n} -> 98
+    4{\r-\r} -> 99
+    5{/-/} -> 97
+    6{*-*} -> 97
+    7 -> 97
+    8 -> 97
+    9{\t-\t} -> 97
+    10{ - } -> 97
+    11 -> 97
+    12{x-x} -> 97
+    13{X-X} -> 97
+    14{u-u} -> 97
+    15{U-U} -> 97
+    16{.-.} -> 97
+    17{+-+} -> 97
+    18{---} -> 97
+    19{w-w} -> 97
+    20{n-n} -> 97
+    21{r-r} -> 97
+    22{t-t} -> 97
+    23{v-v} -> 97
+    24{@-@} -> 97
+    25 -> 97
+    26{e-e} -> 97
+    27{E-E} -> 97
+    28{f-f} -> 97
+    29{F-F} -> 97
+    30{d-d} -> 97
+    31{D-D} -> 97
+    32{a-a} -> 97
+    33{b-b} -> 97
+    34{8-9} -> 97
+    35{0-0} -> 97
+    36{1-7} -> 97
+    37{<-<} -> 97
+    38{=-=} -> 97
+    39{>->} -> 97
+    40{|-|} -> 97
+    41{&-&} -> 97
+    42{^-^} -> 97
+    43{!-!} -> 97
+    44{%-%} -> 97
+    45{~-~} -> 97
+    46{[-[} -> 97
+    47{]-]} -> 97
+    48{(-(} -> 97
+    49{)-)} -> 97
+    50{{-{} -> 97
+    51{}-}} -> 97
+    52{,-,} -> 97
+    53{:-:} -> 97
+    54{;-;} -> 97
+    55{#-#} -> 97
+3[0, 1, 45, 43, 42, 22, 40, 2] : ACCEPT : STATEMENT=0
+    3{\n-\n} -> 3
+    4{\r-\r} -> 3
+    5{/-/} -> 101
+    9{\t-\t} -> 3
+    10{ - } -> 3
+2[155, 158, 157, 159, 156, 160, 254, 260, 266, 264, 258, 273, 270]
+    0{\"-\"} -> 102
+    1{\\-\\} -> 103
+    2{\'-\'} -> 104
+    5{/-/} -> 102
+    6{*-*} -> 102
+    7 -> 102
+    8 -> 102
+    9{\t-\t} -> 102
+    10{ - } -> 102
+    11 -> 102
+    12{x-x} -> 102
+    13{X-X} -> 102
+    14{u-u} -> 102
+    15{U-U} -> 102
+    16{.-.} -> 102
+    17{+-+} -> 102
+    18{---} -> 102
+    19{w-w} -> 102
+    20{n-n} -> 102
+    21{r-r} -> 102
+    22{t-t} -> 102
+    23{v-v} -> 102
+    24{@-@} -> 102
+    25 -> 102
+    26{e-e} -> 102
+    27{E-E} -> 102
+    28{f-f} -> 102
+    29{F-F} -> 102
+    30{d-d} -> 102
+    31{D-D} -> 102
+    32{a-a} -> 102
+    33{b-b} -> 102
+    34{8-9} -> 102
+    35{0-0} -> 102
+    36{1-7} -> 102
+    37{<-<} -> 102
+    38{=-=} -> 102
+    39{>->} -> 102
+    40{|-|} -> 102
+    41{&-&} -> 102
+    42{^-^} -> 102
+    43{!-!} -> 102
+    44{%-%} -> 102
+    45{~-~} -> 102
+    46{[-[} -> 102
+    47{]-]} -> 102
+    48{(-(} -> 102
+    49{)-)} -> 102
+    50{{-{} -> 102
+    51{}-}} -> 102
+    52{,-,} -> 102
+    53{:-:} -> 102
+    54{;-;} -> 102
+    55{#-#} -> 102
+104[275] : ACCEPT : STATEMENT=4
+103[188, 190, 200, 186, 166, 161, 202, 251, 172, 164, 184, 176, 182, 162, 174, 240, 244, 246, 248, 249, 250, 220, 238, 224, 234, 236, 228, 222, 230, 232, 242, 226, 259, 265, 267, 261, 253, 255, 273, 271]
+    0{\"-\"} -> 105
+    1{\\-\\} -> 106
+    2{\'-\'} -> 107
+    3{\n-\n} -> 108
+    4{\r-\r} -> 108
+    5{/-/} -> 108
+    6{*-*} -> 108
+    7 -> 108
+    8 -> 108
+    9{\t-\t} -> 108
+    10{ - } -> 108
+    11 -> 108
+    12{x-x} -> 109
+    13{X-X} -> 110
+    14{u-u} -> 111
+    15{U-U} -> 112
+    16{.-.} -> 108
+    17{+-+} -> 108
+    18{---} -> 108
+    19{w-w} -> 108
+    20{n-n} -> 113
+    21{r-r} -> 114
+    22{t-t} -> 115
+    23{v-v} -> 116
+    24{@-@} -> 108
+    25 -> 108
+    26{e-e} -> 108
+    27{E-E} -> 108
+    28{f-f} -> 117
+    29{F-F} -> 108
+    30{d-d} -> 118
+    31{D-D} -> 119
+    32{a-a} -> 120
+    33{b-b} -> 121
+    34{8-9} -> 108
+    35{0-0} -> 122
+    36{1-7} -> 122
+    37{<-<} -> 108
+    38{=-=} -> 108
+    39{>->} -> 108
+    40{|-|} -> 108
+    41{&-&} -> 108
+    42{^-^} -> 108
+    43{!-!} -> 108
+    44{%-%} -> 108
+    45{~-~} -> 108
+    46{[-[} -> 108
+    47{]-]} -> 108
+    48{(-(} -> 108
+    49{)-)} -> 108
+    50{{-{} -> 108
+    51{}-}} -> 108
+    52{,-,} -> 108
+    53{:-:} -> 108
+    54{;-;} -> 108
+    55{#-#} -> 108
+122[189, 201, 187, 251, 184, 185, 249, 221, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    35{0-0} -> 123
+    36{1-7} -> 123
+123[189, 201, 187, 184, 185, 221, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    35{0-0} -> 123
+    36{1-7} -> 123
+121[251, 249, 225, 243, 235, 239, 231, 227, 247, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+120[251, 249, 223, 243, 235, 239, 231, 227, 247, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+119[177, 251, 175, 178, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    34{8-9} -> 124
+    35{0-0} -> 124
+    36{1-7} -> 124
+124[189, 201, 179, 178, 181, 183, 221, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    34{8-9} -> 124
+    35{0-0} -> 124
+    36{1-7} -> 124
+118[177, 251, 173, 178, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    34{8-9} -> 124
+    35{0-0} -> 124
+    36{1-7} -> 124
+117[251, 249, 243, 229, 235, 239, 231, 247, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+116[251, 249, 245, 247, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+115[251, 249, 243, 247, 241, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+114[251, 249, 243, 239, 247, 237, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+113[251, 249, 233, 243, 235, 239, 247, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+112[203, 251, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    25 -> 125
+    26{e-e} -> 125
+    27{E-E} -> 125
+    28{f-f} -> 125
+    29{F-F} -> 125
+    30{d-d} -> 125
+    31{D-D} -> 125
+    32{a-a} -> 125
+    33{b-b} -> 125
+    34{8-9} -> 125
+    35{0-0} -> 125
+    36{1-7} -> 125
+125[205]
+    25 -> 126
+    26{e-e} -> 126
+    27{E-E} -> 126
+    28{f-f} -> 126
+    29{F-F} -> 126
+    30{d-d} -> 126
+    31{D-D} -> 126
+    32{a-a} -> 126
+    33{b-b} -> 126
+    34{8-9} -> 126
+    35{0-0} -> 126
+    36{1-7} -> 126
+126[207]
+    25 -> 127
+    26{e-e} -> 127
+    27{E-E} -> 127
+    28{f-f} -> 127
+    29{F-F} -> 127
+    30{d-d} -> 127
+    31{D-D} -> 127
+    32{a-a} -> 127
+    33{b-b} -> 127
+    34{8-9} -> 127
+    35{0-0} -> 127
+    36{1-7} -> 127
+127[209]
+    25 -> 128
+    26{e-e} -> 128
+    27{E-E} -> 128
+    28{f-f} -> 128
+    29{F-F} -> 128
+    30{d-d} -> 128
+    31{D-D} -> 128
+    32{a-a} -> 128
+    33{b-b} -> 128
+    34{8-9} -> 128
+    35{0-0} -> 128
+    36{1-7} -> 128
+128[211]
+    25 -> 129
+    26{e-e} -> 129
+    27{E-E} -> 129
+    28{f-f} -> 129
+    29{F-F} -> 129
+    30{d-d} -> 129
+    31{D-D} -> 129
+    32{a-a} -> 129
+    33{b-b} -> 129
+    34{8-9} -> 129
+    35{0-0} -> 129
+    36{1-7} -> 129
+129[213]
+    25 -> 130
+    26{e-e} -> 130
+    27{E-E} -> 130
+    28{f-f} -> 130
+    29{F-F} -> 130
+    30{d-d} -> 130
+    31{D-D} -> 130
+    32{a-a} -> 130
+    33{b-b} -> 130
+    34{8-9} -> 130
+    35{0-0} -> 130
+    36{1-7} -> 130
+130[215]
+    25 -> 131
+    26{e-e} -> 131
+    27{E-E} -> 131
+    28{f-f} -> 131
+    29{F-F} -> 131
+    30{d-d} -> 131
+    31{D-D} -> 131
+    32{a-a} -> 131
+    33{b-b} -> 131
+    34{8-9} -> 131
+    35{0-0} -> 131
+    36{1-7} -> 131
+131[217]
+    25 -> 132
+    26{e-e} -> 132
+    27{E-E} -> 132
+    28{f-f} -> 132
+    29{F-F} -> 132
+    30{d-d} -> 132
+    31{D-D} -> 132
+    32{a-a} -> 132
+    33{b-b} -> 132
+    34{8-9} -> 132
+    35{0-0} -> 132
+    36{1-7} -> 132
+132[219, 221, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+111[191, 251, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    25 -> 133
+    26{e-e} -> 133
+    27{E-E} -> 133
+    28{f-f} -> 133
+    29{F-F} -> 133
+    30{d-d} -> 133
+    31{D-D} -> 133
+    32{a-a} -> 133
+    33{b-b} -> 133
+    34{8-9} -> 133
+    35{0-0} -> 133
+    36{1-7} -> 133
+133[193]
+    25 -> 134
+    26{e-e} -> 134
+    27{E-E} -> 134
+    28{f-f} -> 134
+    29{F-F} -> 134
+    30{d-d} -> 134
+    31{D-D} -> 134
+    32{a-a} -> 134
+    33{b-b} -> 134
+    34{8-9} -> 134
+    35{0-0} -> 134
+    36{1-7} -> 134
+134[195]
+    25 -> 135
+    26{e-e} -> 135
+    27{E-E} -> 135
+    28{f-f} -> 135
+    29{F-F} -> 135
+    30{d-d} -> 135
+    31{D-D} -> 135
+    32{a-a} -> 135
+    33{b-b} -> 135
+    34{8-9} -> 135
+    35{0-0} -> 135
+    36{1-7} -> 135
+135[197]
+    25 -> 136
+    26{e-e} -> 136
+    27{E-E} -> 136
+    28{f-f} -> 136
+    29{F-F} -> 136
+    30{d-d} -> 136
+    31{D-D} -> 136
+    32{a-a} -> 136
+    33{b-b} -> 136
+    34{8-9} -> 136
+    35{0-0} -> 136
+    36{1-7} -> 136
+136[201, 199, 221, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+110[167, 251, 168, 165, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    25 -> 137
+    26{e-e} -> 137
+    27{E-E} -> 137
+    28{f-f} -> 137
+    29{F-F} -> 137
+    30{d-d} -> 137
+    31{D-D} -> 137
+    32{a-a} -> 137
+    33{b-b} -> 137
+    34{8-9} -> 137
+    35{0-0} -> 137
+    36{1-7} -> 137
+137[189, 201, 169, 168, 171, 183, 221, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    25 -> 137
+    26{e-e} -> 137
+    27{E-E} -> 137
+    28{f-f} -> 137
+    29{F-F} -> 137
+    30{d-d} -> 137
+    31{D-D} -> 137
+    32{a-a} -> 137
+    33{b-b} -> 137
+    34{8-9} -> 137
+    35{0-0} -> 137
+    36{1-7} -> 137
+109[167, 251, 163, 168, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+    25 -> 137
+    26{e-e} -> 137
+    27{E-E} -> 137
+    28{f-f} -> 137
+    29{F-F} -> 137
+    30{d-d} -> 137
+    31{D-D} -> 137
+    32{a-a} -> 137
+    33{b-b} -> 137
+    34{8-9} -> 137
+    35{0-0} -> 137
+    36{1-7} -> 137
+108[251, 249, 259, 265, 253, 273, 271]
+    2{\'-\'} -> 104
+107[275, 273, 269, 271] : ACCEPT : STATEMENT=4
+    2{\'-\'} -> 104
+106[259, 265, 257, 273, 271]
+    2{\'-\'} -> 104
+105[265, 273, 263, 271]
+    2{\'-\'} -> 104
+102[157, 159, 156, 273]
+    0{\"-\"} -> 102
+    2{\'-\'} -> 104
+    5{/-/} -> 102
+    6{*-*} -> 102
+    7 -> 102
+    8 -> 102
+    9{\t-\t} -> 102
+    10{ - } -> 102
+    11 -> 102
+    12{x-x} -> 102
+    13{X-X} -> 102
+    14{u-u} -> 102
+    15{U-U} -> 102
+    16{.-.} -> 102
+    17{+-+} -> 102
+    18{---} -> 102
+    19{w-w} -> 102
+    20{n-n} -> 102
+    21{r-r} -> 102
+    22{t-t} -> 102
+    23{v-v} -> 102
+    24{@-@} -> 102
+    25 -> 102
+    26{e-e} -> 102
+    27{E-E} -> 102
+    28{f-f} -> 102
+    29{F-F} -> 102
+    30{d-d} -> 102
+    31{D-D} -> 102
+    32{a-a} -> 102
+    33{b-b} -> 102
+    34{8-9} -> 102
+    35{0-0} -> 102
+    36{1-7} -> 102
+    37{<-<} -> 102
+    38{=-=} -> 102
+    39{>->} -> 102
+    40{|-|} -> 102
+    41{&-&} -> 102
+    42{^-^} -> 102
+    43{!-!} -> 102
+    44{%-%} -> 102
+    45{~-~} -> 102
+    46{[-[} -> 102
+    47{]-]} -> 102
+    48{(-(} -> 102
+    49{)-)} -> 102
+    50{{-{} -> 102
+    51{}-}} -> 102
+    52{,-,} -> 102
+    53{:-:} -> 102
+    54{;-;} -> 102
+    55{#-#} -> 102
+1[302, 300, 299, 301, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+140[302, 300, 301, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+139[302, 308, 300, 301, 303, 306, 304, 344, 366, 326, 314, 332, 316, 364, 368, 328, 372, 330, 318, 324, 362, 370, 342, 396, 408, 382, 393, 415, 402, 407, 391, 376, 384, 392, 403, 412, 395, 378, 413, 386, 417, 388, 406, 374, 380, 409, 397, 390, 400, 401, 414]
+    0{\"-\"} -> 141
+    1{\\-\\} -> 142
+    2{\'-\'} -> 143
+    3{\n-\n} -> 144
+    4{\r-\r} -> 144
+    5{/-/} -> 144
+    6{*-*} -> 144
+    7 -> 144
+    8 -> 144
+    9{\t-\t} -> 144
+    10{ - } -> 144
+    11 -> 144
+    12{x-x} -> 145
+    13{X-X} -> 146
+    14{u-u} -> 147
+    15{U-U} -> 148
+    16{.-.} -> 144
+    17{+-+} -> 144
+    18{---} -> 144
+    19{w-w} -> 144
+    20{n-n} -> 149
+    21{r-r} -> 150
+    22{t-t} -> 151
+    23{v-v} -> 152
+    24{@-@} -> 144
+    25 -> 144
+    26{e-e} -> 144
+    27{E-E} -> 144
+    28{f-f} -> 153
+    29{F-F} -> 144
+    30{d-d} -> 154
+    31{D-D} -> 155
+    32{a-a} -> 156
+    33{b-b} -> 157
+    34{8-9} -> 144
+    35{0-0} -> 158
+    36{1-7} -> 158
+    37{<-<} -> 144
+    38{=-=} -> 144
+    39{>->} -> 144
+    40{|-|} -> 144
+    41{&-&} -> 144
+    42{^-^} -> 144
+    43{!-!} -> 144
+    44{%-%} -> 144
+    45{~-~} -> 144
+    46{[-[} -> 144
+    47{]-]} -> 144
+    48{(-(} -> 144
+    49{)-)} -> 144
+    50{{-{} -> 144
+    51{}-}} -> 144
+    52{,-,} -> 144
+    53{:-:} -> 144
+    54{;-;} -> 144
+    55{#-#} -> 144
+158[302, 300, 301, 343, 363, 326, 329, 331, 327, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 159
+    36{1-7} -> 159
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+159[302, 300, 301, 343, 363, 326, 329, 331, 327, 396, 408, 415, 402, 407, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 159
+    36{1-7} -> 159
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+157[302, 300, 301, 367, 369, 373, 396, 408, 393, 415, 402, 407, 377, 391, 385, 389, 412, 395, 413, 417, 406, 381, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+156[302, 300, 301, 365, 369, 373, 396, 408, 393, 415, 402, 407, 377, 391, 385, 389, 412, 395, 413, 417, 406, 381, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+155[302, 300, 301, 319, 317, 320, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 160
+    35{0-0} -> 160
+    36{1-7} -> 160
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+160[302, 300, 301, 343, 363, 321, 325, 331, 323, 320, 396, 408, 415, 402, 407, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 160
+    35{0-0} -> 160
+    36{1-7} -> 160
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+154[302, 300, 301, 315, 319, 320, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 160
+    35{0-0} -> 160
+    36{1-7} -> 160
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+153[302, 300, 301, 373, 371, 396, 408, 393, 415, 402, 407, 377, 391, 385, 389, 412, 395, 413, 417, 406, 381, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+152[302, 300, 301, 396, 408, 393, 415, 402, 407, 391, 389, 412, 395, 413, 417, 406, 387, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+151[302, 300, 301, 396, 408, 393, 415, 402, 407, 391, 385, 389, 383, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+150[302, 300, 301, 396, 408, 393, 415, 402, 407, 391, 385, 389, 379, 412, 395, 413, 417, 406, 381, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+149[302, 300, 301, 396, 408, 393, 415, 402, 407, 377, 391, 385, 389, 412, 395, 413, 417, 406, 381, 400, 401, 375, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+148[302, 300, 301, 345, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 161
+    26{e-e} -> 161
+    27{E-E} -> 161
+    28{f-f} -> 161
+    29{F-F} -> 161
+    30{d-d} -> 161
+    31{D-D} -> 161
+    32{a-a} -> 161
+    33{b-b} -> 161
+    34{8-9} -> 161
+    35{0-0} -> 161
+    36{1-7} -> 161
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+161[302, 300, 301, 347, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 162
+    26{e-e} -> 162
+    27{E-E} -> 162
+    28{f-f} -> 162
+    29{F-F} -> 162
+    30{d-d} -> 162
+    31{D-D} -> 162
+    32{a-a} -> 162
+    33{b-b} -> 162
+    34{8-9} -> 162
+    35{0-0} -> 162
+    36{1-7} -> 162
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+162[302, 300, 301, 349, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 163
+    26{e-e} -> 163
+    27{E-E} -> 163
+    28{f-f} -> 163
+    29{F-F} -> 163
+    30{d-d} -> 163
+    31{D-D} -> 163
+    32{a-a} -> 163
+    33{b-b} -> 163
+    34{8-9} -> 163
+    35{0-0} -> 163
+    36{1-7} -> 163
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+163[302, 300, 301, 351, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 164
+    26{e-e} -> 164
+    27{E-E} -> 164
+    28{f-f} -> 164
+    29{F-F} -> 164
+    30{d-d} -> 164
+    31{D-D} -> 164
+    32{a-a} -> 164
+    33{b-b} -> 164
+    34{8-9} -> 164
+    35{0-0} -> 164
+    36{1-7} -> 164
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+164[302, 300, 301, 353, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 165
+    26{e-e} -> 165
+    27{E-E} -> 165
+    28{f-f} -> 165
+    29{F-F} -> 165
+    30{d-d} -> 165
+    31{D-D} -> 165
+    32{a-a} -> 165
+    33{b-b} -> 165
+    34{8-9} -> 165
+    35{0-0} -> 165
+    36{1-7} -> 165
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+165[302, 300, 301, 355, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 166
+    26{e-e} -> 166
+    27{E-E} -> 166
+    28{f-f} -> 166
+    29{F-F} -> 166
+    30{d-d} -> 166
+    31{D-D} -> 166
+    32{a-a} -> 166
+    33{b-b} -> 166
+    34{8-9} -> 166
+    35{0-0} -> 166
+    36{1-7} -> 166
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+166[302, 300, 301, 357, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 167
+    26{e-e} -> 167
+    27{E-E} -> 167
+    28{f-f} -> 167
+    29{F-F} -> 167
+    30{d-d} -> 167
+    31{D-D} -> 167
+    32{a-a} -> 167
+    33{b-b} -> 167
+    34{8-9} -> 167
+    35{0-0} -> 167
+    36{1-7} -> 167
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+167[302, 300, 301, 359, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 168
+    26{e-e} -> 168
+    27{E-E} -> 168
+    28{f-f} -> 168
+    29{F-F} -> 168
+    30{d-d} -> 168
+    31{D-D} -> 168
+    32{a-a} -> 168
+    33{b-b} -> 168
+    34{8-9} -> 168
+    35{0-0} -> 168
+    36{1-7} -> 168
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+168[302, 300, 301, 363, 361, 396, 408, 415, 402, 407, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+147[302, 300, 301, 333, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 169
+    26{e-e} -> 169
+    27{E-E} -> 169
+    28{f-f} -> 169
+    29{F-F} -> 169
+    30{d-d} -> 169
+    31{D-D} -> 169
+    32{a-a} -> 169
+    33{b-b} -> 169
+    34{8-9} -> 169
+    35{0-0} -> 169
+    36{1-7} -> 169
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+169[302, 300, 301, 335, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 170
+    26{e-e} -> 170
+    27{E-E} -> 170
+    28{f-f} -> 170
+    29{F-F} -> 170
+    30{d-d} -> 170
+    31{D-D} -> 170
+    32{a-a} -> 170
+    33{b-b} -> 170
+    34{8-9} -> 170
+    35{0-0} -> 170
+    36{1-7} -> 170
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+170[302, 300, 301, 337, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 171
+    26{e-e} -> 171
+    27{E-E} -> 171
+    28{f-f} -> 171
+    29{F-F} -> 171
+    30{d-d} -> 171
+    31{D-D} -> 171
+    32{a-a} -> 171
+    33{b-b} -> 171
+    34{8-9} -> 171
+    35{0-0} -> 171
+    36{1-7} -> 171
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+171[302, 300, 301, 339, 396, 408, 415, 402, 412, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 172
+    26{e-e} -> 172
+    27{E-E} -> 172
+    28{f-f} -> 172
+    29{F-F} -> 172
+    30{d-d} -> 172
+    31{D-D} -> 172
+    32{a-a} -> 172
+    33{b-b} -> 172
+    34{8-9} -> 172
+    35{0-0} -> 172
+    36{1-7} -> 172
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+172[302, 300, 301, 343, 363, 341, 396, 408, 415, 402, 407, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+146[302, 309, 300, 301, 307, 310, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 173
+    26{e-e} -> 173
+    27{E-E} -> 173
+    28{f-f} -> 173
+    29{F-F} -> 173
+    30{d-d} -> 173
+    31{D-D} -> 173
+    32{a-a} -> 173
+    33{b-b} -> 173
+    34{8-9} -> 173
+    35{0-0} -> 173
+    36{1-7} -> 173
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+173[302, 300, 301, 310, 343, 363, 313, 325, 311, 331, 396, 408, 415, 402, 407, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 173
+    26{e-e} -> 173
+    27{E-E} -> 173
+    28{f-f} -> 173
+    29{F-F} -> 173
+    30{d-d} -> 173
+    31{D-D} -> 173
+    32{a-a} -> 173
+    33{b-b} -> 173
+    34{8-9} -> 173
+    35{0-0} -> 173
+    36{1-7} -> 173
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+145[302, 309, 300, 301, 305, 310, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 173
+    26{e-e} -> 173
+    27{E-E} -> 173
+    28{f-f} -> 173
+    29{F-F} -> 173
+    30{d-d} -> 173
+    31{D-D} -> 173
+    32{a-a} -> 173
+    33{b-b} -> 173
+    34{8-9} -> 173
+    35{0-0} -> 173
+    36{1-7} -> 173
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+144[302, 300, 301, 396, 408, 393, 415, 402, 407, 391, 412, 395, 413, 417, 406, 400, 401, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+143[302, 300, 301, 396, 408, 411, 415, 402, 412, 413, 417, 406, 400, 414]
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+142[302, 308, 300, 301, 303, 306, 304, 344, 366, 326, 314, 332, 316, 364, 368, 328, 372, 330, 318, 324, 362, 370, 342, 396, 408, 382, 393, 415, 402, 407, 391, 399, 376, 384, 392, 403, 412, 395, 378, 413, 386, 417, 388, 406, 374, 380, 409, 397, 390, 400, 401, 414]
+    0{\"-\"} -> 141
+    1{\\-\\} -> 142
+    2{\'-\'} -> 143
+    3{\n-\n} -> 144
+    4{\r-\r} -> 144
+    5{/-/} -> 144
+    6{*-*} -> 144
+    7 -> 144
+    8 -> 144
+    9{\t-\t} -> 144
+    10{ - } -> 144
+    11 -> 144
+    12{x-x} -> 145
+    13{X-X} -> 146
+    14{u-u} -> 147
+    15{U-U} -> 148
+    16{.-.} -> 144
+    17{+-+} -> 144
+    18{---} -> 144
+    19{w-w} -> 144
+    20{n-n} -> 149
+    21{r-r} -> 150
+    22{t-t} -> 151
+    23{v-v} -> 152
+    24{@-@} -> 144
+    25 -> 144
+    26{e-e} -> 144
+    27{E-E} -> 144
+    28{f-f} -> 153
+    29{F-F} -> 144
+    30{d-d} -> 154
+    31{D-D} -> 155
+    32{a-a} -> 156
+    33{b-b} -> 157
+    34{8-9} -> 144
+    35{0-0} -> 158
+    36{1-7} -> 158
+    37{<-<} -> 144
+    38{=-=} -> 144
+    39{>->} -> 144
+    40{|-|} -> 144
+    41{&-&} -> 144
+    42{^-^} -> 144
+    43{!-!} -> 144
+    44{%-%} -> 144
+    45{~-~} -> 144
+    46{[-[} -> 144
+    47{]-]} -> 144
+    48{(-(} -> 144
+    49{)-)} -> 144
+    50{{-{} -> 144
+    51{}-}} -> 144
+    52{,-,} -> 144
+    53{:-:} -> 144
+    54{;-;} -> 144
+    55{#-#} -> 144
+141[302, 300, 301, 396, 408, 421, 415, 402, 407, 405, 412, 419, 413, 417, 406, 400, 414] : ACCEPT : STATEMENT=5
+    0{\"-\"} -> 138
+    1{\\-\\} -> 139
+    2{\'-\'} -> 140
+    5{/-/} -> 140
+    6{*-*} -> 140
+    7 -> 140
+    8 -> 140
+    9{\t-\t} -> 140
+    10{ - } -> 140
+    11 -> 140
+    12{x-x} -> 140
+    13{X-X} -> 140
+    14{u-u} -> 140
+    15{U-U} -> 140
+    16{.-.} -> 140
+    17{+-+} -> 140
+    18{---} -> 140
+    19{w-w} -> 140
+    20{n-n} -> 140
+    21{r-r} -> 140
+    22{t-t} -> 140
+    23{v-v} -> 140
+    24{@-@} -> 140
+    25 -> 140
+    26{e-e} -> 140
+    27{E-E} -> 140
+    28{f-f} -> 140
+    29{F-F} -> 140
+    30{d-d} -> 140
+    31{D-D} -> 140
+    32{a-a} -> 140
+    33{b-b} -> 140
+    34{8-9} -> 140
+    35{0-0} -> 140
+    36{1-7} -> 140
+    37{<-<} -> 140
+    38{=-=} -> 140
+    39{>->} -> 140
+    40{|-|} -> 140
+    41{&-&} -> 140
+    42{^-^} -> 140
+    43{!-!} -> 140
+    44{%-%} -> 140
+    45{~-~} -> 140
+    46{[-[} -> 140
+    47{]-]} -> 140
+    48{(-(} -> 140
+    49{)-)} -> 140
+    50{{-{} -> 140
+    51{}-}} -> 140
+    52{,-,} -> 140
+    53{:-:} -> 140
+    54{;-;} -> 140
+    55{#-#} -> 140
+138[421, 419] : ACCEPT : STATEMENT=5
+
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorLexer.hpp
+==> D:/work/soulng-project/sngcm/cmlexer/CmajorLexer.cpp

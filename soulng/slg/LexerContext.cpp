@@ -526,4 +526,16 @@ void LexerContext::AddInclude(Include* include)
     includes.push_back(include);
 }
 
+void LexerContext::Print(CodeFormatter& formatter)
+{
+    formatter.WriteLine("NFAs:");
+    int n = nfaStates.size();
+    for (int i = 0; i < n; ++i)
+    {
+        NfaState* state = nfaStates[i];
+        state->Print(formatter);
+    }
+    formatter.WriteLine();
+}
+
 } } // namespace soulng::slg

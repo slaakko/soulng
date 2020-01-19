@@ -1317,12 +1317,13 @@
                                         </parameters>
                                     </function>
                                     <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="41" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="20" id="function_Clear_65572C89EBD864F90C14998D9639C78C61D0AAB1" name="Clear" returnType="void"/>
-                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="43" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="38" id="function_GetAttributeValue_7071181530489097A98BC1F6DCF1B4D48495D55D" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="42" id="function_Count_D290F44A2E1373A6467441574A96E620BF9325F7" name="Count" returnType="typedef_size_t_1470D06EDB2DD960D7AB186213477F79DF7BB92D" specifiers="const"/>
+                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="44" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="38" id="function_GetAttributeValue_7071181530489097A98BC1F6DCF1B4D48495D55D" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
                                         <parameters>
                                             <parameter access="public" id="parameter_qualifiedName_28822469F3C0F3609B8D526FE17819DB44BC989E" name="qualifiedName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="42" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="25" id="function_GetAttributeValue_B87AA457A15933348BB0E1B4657584755393B47C" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
+                                    <function access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="43" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="25" id="function_GetAttributeValue_B87AA457A15933348BB0E1B4657584755393B47C" name="GetAttributeValue" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.ptr.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const">
                                         <parameters>
                                             <parameter access="public" id="parameter_namespaceUri_6F41162FEF229D45E0C1FDD7BBE4489F3AC8C155" name="namespaceUri" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_localName_AC1FC6A9C811D9CE032D8CFFA472A64025A5D49C" name="localName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -1371,52 +1372,52 @@
                                     <variable access="private" id="variable_value_1C71E6FFD8D4332750AA148207B90BF14389A8D9" name="value" type="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                 </variables>
                             </class>
-                            <class access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="48" id="class_XmlContentHandler_8AE38CE227FB4990F18C13596AC35DB352C3B24D" key="class" name="XmlContentHandler" project="system.xml">
+                            <class access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="49" id="class_XmlContentHandler_8AE38CE227FB4990F18C13596AC35DB352C3B24D" key="class" name="XmlContentHandler" project="system.xml">
                                 <derivedClasses>
                                     <derivedClass derivedClassId="class_DomDocumentHandler_7C2AF71693FA6CEE15727951BF3ED7B4FE6C834D"/>
                                 </derivedClasses>
                                 <functions>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="60" id="function_CDataSection_D93145F1724056ED840738B05CAC3C9917C39DB5" name="CDataSection" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="61" id="function_CDataSection_D93145F1724056ED840738B05CAC3C9917C39DB5" name="CDataSection" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_cdata_D30194ED0014DFACD6CA3EDC239073571498FDE8" name="cdata" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="58" id="function_Comment_A256787E5F491A14F5F301843312E7EC4896079F" name="Comment" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="59" id="function_Comment_A256787E5F491A14F5F301843312E7EC4896079F" name="Comment" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_comment_2115094406FADF70136FE2384078044E4888B098" name="comment" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="56" id="function_Encoding_0AF1DEA3EEA15A6DF14717086C040460F8FBADD4" name="Encoding" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="57" id="function_Encoding_0AF1DEA3EEA15A6DF14717086C040460F8FBADD4" name="Encoding" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_encoding_0D4DE5C814811A9F3BEB5280318AEE0B4185BA3F" name="encoding" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="53" id="function_EndDocument_32F5E572A657A0A9976A9CDDC4BB602568BC28A9" name="EndDocument" returnType="void" specifiers="virtual"/>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="62" id="function_EndElement_50553E94954CDBABCE4051B34A5AB4C1449898CF" name="EndElement" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="54" id="function_EndDocument_32F5E572A657A0A9976A9CDDC4BB602568BC28A9" name="EndDocument" returnType="void" specifiers="virtual"/>
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="63" id="function_EndElement_50553E94954CDBABCE4051B34A5AB4C1449898CF" name="EndElement" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_namespaceUri_C027EBC930FF2608E86657AAD0CE6A5191F6EA78" name="namespaceUri" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_localName_52EDB9B08C9871AADAF14AB9F4019782237139FE" name="localName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_qualifiedName_0ED48DF91D3CCFAE66CD7891578BBF07ACBE81E8" name="qualifiedName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="59" id="function_PI_A9A7014DA25F3758D538CE23E4FE2257C207854C" name="PI" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="60" id="function_PI_A9A7014DA25F3758D538CE23E4FE2257C207854C" name="PI" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_target_100B4560C76B7784E6A0FCA8E5F0BFC645243C36" name="target" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_data_CE562256800B9B38974065D0C7723C05A63294F2" name="data" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="63" id="function_SkippedEntity_824481ED3528FE0DD36DE52120626D23529D2B15" name="SkippedEntity" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="64" id="function_SkippedEntity_824481ED3528FE0DD36DE52120626D23529D2B15" name="SkippedEntity" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_entityName_179B6571AE40909C05C4D6FE4500703D5511D26B" name="entityName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="55" id="function_Standalone_94C144A2E15D8E43354000CD2C04558364F11110" name="Standalone" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="56" id="function_Standalone_94C144A2E15D8E43354000CD2C04558364F11110" name="Standalone" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_standalone_E147B7E70CE9B75963603D2F4E9D5866837DC5E3" name="standalone" type="bool"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="52" id="function_StartDocument_532B622CBB61F2F52C4C56EB8760FC9553E582E7" name="StartDocument" returnType="void" specifiers="virtual"/>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="61" id="function_StartElement_9770588D1EC86CEE32FBA602F9F5E3018CC88904" name="StartElement" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="53" id="function_StartDocument_532B622CBB61F2F52C4C56EB8760FC9553E582E7" name="StartDocument" returnType="void" specifiers="virtual"/>
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="62" id="function_StartElement_9770588D1EC86CEE32FBA602F9F5E3018CC88904" name="StartElement" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_namespaceUri_D7CED5B3BEF791FB2BB5A30D2526415B3472ED4E" name="namespaceUri" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                             <parameter access="public" id="parameter_localName_CF1C55AD930CCCC9CA5E0357BCB5E981A919564D" name="localName" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
@@ -1424,17 +1425,17 @@
                                             <parameter access="public" id="parameter_attributes_C8F873E253D9408C937AA95E4F846653147539A4" name="attributes" type="const.class_Attributes_E40919F9A86F794C3739C14E6AF1CFE8F70ACDDB.lvalueref.class_Attributes_E40919F9A86F794C3739C14E6AF1CFE8F70ACDDB"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="57" id="function_Text_52298F4917676807F0AA65D7B996F8B094036159" name="Text" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="58" id="function_Text_52298F4917676807F0AA65D7B996F8B094036159" name="Text" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_text_B8F503E2AE39825A424AC0BEB3F3A88F95164075" name="text" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="54" id="function_Version_BF09A4688B9E8DC1FC6D6F885C6CC3A6B2E5D177" name="Version" returnType="void" specifiers="virtual">
+                                    <function access="public" definitionFile="XmlContentHandler.hpp" definitionFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" definitionLine="55" id="function_Version_BF09A4688B9E8DC1FC6D6F885C6CC3A6B2E5D177" name="Version" returnType="void" specifiers="virtual">
                                         <parameters>
                                             <parameter access="public" id="parameter_xmlVersion_4E24346D83F0B72846F275E62A356C5E9D367B5F" name="xmlVersion" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
                                         </parameters>
                                     </function>
-                                    <destructor access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="51" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="51" id="destructor_destructor_81F9BAF690F6218583FD4688E627D93E2FF7A988" name="destructor" specifiers="virtual"/>
+                                    <destructor access="public" declarationFile="XmlContentHandler.hpp" declarationFileId="file/XmlContentHandler.hpp_9F8085A01A8904BF1E903FE2286D333D24ECF4A3.html" declarationLine="52" definitionFile="XmlContentHandler.cpp" definitionFileId="file/XmlContentHandler.cpp_D11C94DEFA418D5EA07CF135455B9F7B4986771D.html" definitionLine="51" id="destructor_destructor_81F9BAF690F6218583FD4688E627D93E2FF7A988" name="destructor" specifiers="virtual"/>
                                 </functions>
                             </class>
                             <class access="public" definitionFile="XmlProcessor.hpp" definitionFileId="file/XmlProcessor.hpp_034B2E03E205A3D0D41D18EA95976E3BFEE3532D.html" definitionLine="18" id="class_XmlProcessingException_9DB93FDE1A82F8701583CCE9EEF2E3D3851ACD2F" key="class" name="XmlProcessingException" project="system.xml">
@@ -2111,27 +2112,27 @@
                                             <parameter access="public" id="parameter_context_7F6732E955DCAB637076F43C56051AD49A56AA3F" name="context" type="class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22.lvalueref.class_XPathContext_F8537A88F33D0B9925318608AEE016B328437F22"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Evaluate_F95E7FE20607E834E87A29C6CFE98F32CF5D2F71"/>
-                                            <override functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
-                                            <override functionId="function_Evaluate_8E160D01CE9FF6A318C0CD8B23223A524815758E"/>
-                                            <override functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
-                                            <override functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
-                                            <override functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
-                                            <override functionId="function_Evaluate_4D05EC6A2A0CF61FF9C6A73117A39668708E5D23"/>
-                                            <override functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
-                                            <override functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
                                             <override functionId="function_Evaluate_1F675B0C05BADB128C1DAA983B5AC605CD4F86FF"/>
-                                            <override functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
-                                            <override functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
-                                            <override functionId="function_Evaluate_FBA9A48D9AC4F9E5BFE35BE8BBAFEB1BC464AB12"/>
                                             <override functionId="function_Evaluate_AD775EB635E86A006480EC6B565D1D277E997FAC"/>
+                                            <override functionId="function_Evaluate_4D05EC6A2A0CF61FF9C6A73117A39668708E5D23"/>
+                                            <override functionId="function_Evaluate_9FC7846DFF8030F03995327D28F2B1A6C5B64A71"/>
+                                            <override functionId="function_Evaluate_FD6E1988606180B3973F32E27AD33B2DAB8DE7ED"/>
+                                            <override functionId="function_Evaluate_45DDEE8FE0ECF546DDDD8117C676E49CB66A2562"/>
+                                            <override functionId="function_Evaluate_C992B80FD4D716064E33ECCB4B3F6D37618C5338"/>
+                                            <override functionId="function_Evaluate_F95E7FE20607E834E87A29C6CFE98F32CF5D2F71"/>
+                                            <override functionId="function_Evaluate_FBA9A48D9AC4F9E5BFE35BE8BBAFEB1BC464AB12"/>
+                                            <override functionId="function_Evaluate_900FB11491D5777981EE225B29C02960D270DF5C"/>
                                             <override functionId="function_Evaluate_7CA515DF5F49744584D5F9EC802C7D6FBFF3707A"/>
-                                            <override functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
-                                            <override functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
                                             <override functionId="function_Evaluate_F58A18610CDB20EAC5E8398E3194CFEF173FB40B"/>
-                                            <override functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+                                            <override functionId="function_Evaluate_670B879E1D9099AC8461422AD083CB243684A12C"/>
                                             <override functionId="function_Evaluate_44D6D7C2B816DC2CB7EA422C587CB509665343D8"/>
+                                            <override functionId="function_Evaluate_C19C1494EAB0B7CFF7398EED1D2AB2B4E20E353E"/>
+                                            <override functionId="function_Evaluate_4B3AE96C6248976DD4E76D1CCA9F5C4235A94500"/>
+                                            <override functionId="function_Evaluate_5A4DE34C5DD9AA806032DEB52F764442FCA2D142"/>
+                                            <override functionId="function_Evaluate_B98B3EEDD7C53AD011B32FC8D9005E8E17DB77A4"/>
+                                            <override functionId="function_Evaluate_F0E7D5546A11A93B2D286A97C06D8E7E12CA31A9"/>
                                             <override functionId="function_Evaluate_29A433EE94039ACF2F517CC30E1664FB9FAC0763"/>
+                                            <override functionId="function_Evaluate_8E160D01CE9FF6A318C0CD8B23223A524815758E"/>
                                             <override functionId="function_Evaluate_B3B61236206920AE6ED86F4983556CB91A67145F"/>
                                         </overrides>
                                     </function>
@@ -2142,37 +2143,37 @@
                                     </function>
                                     <function access="public" definitionFile="XPathExpr.hpp" definitionFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" definitionLine="32" id="function_ToDom_8492540BB9AFE9B48E1CAA1FF9C850F48F530F7C" name="ToDom" returnType="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const pure virtual">
                                         <overrides>
-                                            <override functionId="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6"/>
-                                            <override functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
-                                            <override functionId="function_ToDom_AA0DFCD3C675745129BE97D7280B7E4A93DE5246"/>
-                                            <override functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
-                                            <override functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
-                                            <override functionId="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9"/>
-                                            <override functionId="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060"/>
-                                            <override functionId="function_ToDom_397DA9ABBB68A4F4E950D9BE53E71EA6861C5BC5"/>
-                                            <override functionId="function_ToDom_3B7CADA26B55B8A74848F39E062A859BBA6D980C"/>
+                                            <override functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
                                             <override functionId="function_ToDom_A6052B0C96AC6BDCE1569516E316F850C2905701"/>
+                                            <override functionId="function_ToDom_FC8EBC9E2E9516F1BA9AB9EC68887177E699276D"/>
                                             <override functionId="function_ToDom_FAF71EFB68A192A502E96EB38DC33CB36BFE5051"/>
                                             <override functionId="function_ToDom_B8A14C28A893C2A59E96932A886AAD4E1D815441"/>
-                                            <override functionId="function_ToDom_E2B300C997EC7788104652DF951D43AFB1994A7F"/>
-                                            <override functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
-                                            <override functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
-                                            <override functionId="function_ToDom_A995D1FBAAE903C5CA3BCBFAA13BB3AFBE89ABE7"/>
-                                            <override functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
-                                            <override functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
-                                            <override functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
-                                            <override functionId="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38"/>
-                                            <override functionId="function_ToDom_94739A86871CE78F383C1AD938D109D62D7E3C34"/>
-                                            <override functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
-                                            <override functionId="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31"/>
-                                            <override functionId="function_ToDom_345D1DA1BB6D798D290D1D23F8397C771C26AAF0"/>
-                                            <override functionId="function_ToDom_B16EB7FF80C3478896AFE87418BE415B6F584E9E"/>
                                             <override functionId="function_ToDom_C76D630F76D2B158749920526DDAD8E0CAC926F7"/>
-                                            <override functionId="function_ToDom_6F9B2C024C674EAA16A1C343E56F67097C203772"/>
-                                            <override functionId="function_ToDom_E058C80EA61417605D49E0EEB209DD8667334B39"/>
-                                            <override functionId="function_ToDom_5D050B6229F372FEC9EE1544E17446A88C8ACD4C"/>
-                                            <override functionId="function_ToDom_FC8EBC9E2E9516F1BA9AB9EC68887177E699276D"/>
+                                            <override functionId="function_ToDom_397DA9ABBB68A4F4E950D9BE53E71EA6861C5BC5"/>
+                                            <override functionId="function_ToDom_4A11DE114884C6995A10149CD66E3B580FA56060"/>
+                                            <override functionId="function_ToDom_95828622A1946387CCBEE322C705DC3DEFD7C6C9"/>
+                                            <override functionId="function_ToDom_2F2400E7906537AD0DFA0539E9B2795B306E2BF6"/>
+                                            <override functionId="function_ToDom_92D78702313455AAF55BFA4958B13090A8119A7B"/>
+                                            <override functionId="function_ToDom_A995D1FBAAE903C5CA3BCBFAA13BB3AFBE89ABE7"/>
+                                            <override functionId="function_ToDom_08CBAEBC2A64ACAB9E7D44BA18DCABF5FB245CE6"/>
+                                            <override functionId="function_ToDom_ADF36825E27B784E9B90245009E211D0A0582F43"/>
+                                            <override functionId="function_ToDom_1BA4523DDA8FFAE52CBFEC906029070852B20F38"/>
+                                            <override functionId="function_ToDom_4F2F183D5E975155382BC641AF26ECBE4C2BED2B"/>
+                                            <override functionId="function_ToDom_A38E7625678E31FC284DF3D129515EB687BC7498"/>
+                                            <override functionId="function_ToDom_37A65D8930B7644157798822E7057ED99C6571EC"/>
                                             <override functionId="function_ToDom_E469B9C17F8F92A2EBD5A076B81A3F7F084EA285"/>
+                                            <override functionId="function_ToDom_2B33A424B20C76C32634ECEA2C265069D8E106A3"/>
+                                            <override functionId="function_ToDom_6F9B2C024C674EAA16A1C343E56F67097C203772"/>
+                                            <override functionId="function_ToDom_5D050B6229F372FEC9EE1544E17446A88C8ACD4C"/>
+                                            <override functionId="function_ToDom_ADA0463805240F7A57A5EB0ED6002B92F546C6D6"/>
+                                            <override functionId="function_ToDom_F09496E2D189E532AC744D77D9A6065774652505"/>
+                                            <override functionId="function_ToDom_345D1DA1BB6D798D290D1D23F8397C771C26AAF0"/>
+                                            <override functionId="function_ToDom_AA0DFCD3C675745129BE97D7280B7E4A93DE5246"/>
+                                            <override functionId="function_ToDom_3B7CADA26B55B8A74848F39E062A859BBA6D980C"/>
+                                            <override functionId="function_ToDom_6D6FC2637E4AB4C360DB6D6F3FF2EBB655536A31"/>
+                                            <override functionId="function_ToDom_B16EB7FF80C3478896AFE87418BE415B6F584E9E"/>
+                                            <override functionId="function_ToDom_E058C80EA61417605D49E0EEB209DD8667334B39"/>
+                                            <override functionId="function_ToDom_94739A86871CE78F383C1AD938D109D62D7E3C34"/>
                                         </overrides>
                                     </function>
                                     <destructor access="public" declarationFile="XPathExpr.hpp" declarationFileId="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html" declarationLine="29" definitionFile="XPathExpr.cpp" definitionFileId="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html" definitionLine="23" id="destructor_destructor_B454674C3B1496F19F41151FD5447BFA8CF749B6" name="destructor" specifiers="virtual"/>
@@ -2244,12 +2245,12 @@
                                             <parameter access="public" id="parameter_arguments_33228EFD63A238DD26D1EB124B2632BC479CBCF5" name="arguments" type="class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.lvalueref.class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203.ptr.class_XPathObject_E5E0D9A54B0114EDADA4422120F5489270F4E203"/>
                                         </parameters>
                                         <overrides>
-                                            <override functionId="function_Evaluate_9C25016CFC8B9C9039B5046FFE221704EAD69159"/>
-                                            <override functionId="function_Evaluate_4976D98FE9A6A2855B3977373F6564749DABDDC4"/>
-                                            <override functionId="function_Evaluate_309585D4CA360F151120F3DD9C11EDD9FE1CBF1A"/>
                                             <override functionId="function_Evaluate_91FA9769BDF0980750062BCCC7D4281C1BDBF76B"/>
-                                            <override functionId="function_Evaluate_7F10FA8945A9CD48A271B59E0115A5767574A952"/>
+                                            <override functionId="function_Evaluate_309585D4CA360F151120F3DD9C11EDD9FE1CBF1A"/>
+                                            <override functionId="function_Evaluate_4976D98FE9A6A2855B3977373F6564749DABDDC4"/>
+                                            <override functionId="function_Evaluate_9C25016CFC8B9C9039B5046FFE221704EAD69159"/>
                                             <override functionId="function_Evaluate_967A14A822D8E76247FF042229B5457D4F2C40F0"/>
+                                            <override functionId="function_Evaluate_7F10FA8945A9CD48A271B59E0115A5767574A952"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="XPathFunction.hpp" definitionFileId="file/XPathFunction.hpp_9D22A92F5023B30F9EED03BC8BA8E8579DA632D2.html" definitionLine="24" id="function_MaxArity_4E9CDBDC50118A76FB0B92FED919FECDA8681191" name="MaxArity" returnType="int" specifiers="const"/>
@@ -2680,12 +2681,12 @@
                                             <parameter access="public" id="parameter_axis_6041B2CC8C1AC8879EB08C6E9FA2184036908A7A" name="axis" type="enum_Axis_9FE5833BBE1A5117E1FAECEB93689BFA574678E2"/>
                                         </parameters>
                                         <overrides>
+                                            <override functionId="function_Select_0463A89A293777ABF4FCF56FA07B1F38FDE58C7F"/>
+                                            <override functionId="function_Select_A9DB3B35E4141E20585B60F687CA0E6E62B86C18"/>
+                                            <override functionId="function_Select_E309513EF467915BBF8A0047458297744298F32A"/>
                                             <override functionId="function_Select_3248ACBE9BB6ACBE9212BABEE515C2CEBA88FCBE"/>
                                             <override functionId="function_Select_9A3B9BB7BF24535E43B41B10A499E5401D9B3765"/>
-                                            <override functionId="function_Select_0463A89A293777ABF4FCF56FA07B1F38FDE58C7F"/>
                                             <override functionId="function_Select_6E7D2928AB666E764DB4E40856CA477DAF5E4F01"/>
-                                            <override functionId="function_Select_E309513EF467915BBF8A0047458297744298F32A"/>
-                                            <override functionId="function_Select_A9DB3B35E4141E20585B60F687CA0E6E62B86C18"/>
                                             <override functionId="function_Select_DAF5ADA3C0BF52EE52BA8CDA34F4513A7627CE8F"/>
                                             <override functionId="function_Select_D466AB9AAA85E8A1AF4B9470709A55E8D7D75FBD"/>
                                         </overrides>
@@ -2814,10 +2815,10 @@
                                 <functions>
                                     <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="24" id="function_ToDom_3A657F0F11A5B5839670E8BFE03EB15A03CF9F5F" name="ToDom" returnType="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720" specifiers="const pure virtual">
                                         <overrides>
-                                            <override functionId="function_ToDom_5A76342BEF220D5FCCE1F54EAE21CD224E969734"/>
-                                            <override functionId="function_ToDom_21BF1DDE7CBA42AAC3CFB83BD678CB130A996324"/>
                                             <override functionId="function_ToDom_FC5E71956D54C85CD351CB0F40E1A3CECAEEDF4B"/>
                                             <override functionId="function_ToDom_9BA2314444FCF1AA036F4B8804755AA02BDFEC28"/>
+                                            <override functionId="function_ToDom_21BF1DDE7CBA42AAC3CFB83BD678CB130A996324"/>
+                                            <override functionId="function_ToDom_5A76342BEF220D5FCCE1F54EAE21CD224E969734"/>
                                         </overrides>
                                     </function>
                                     <function access="public" definitionFile="XPathObject.hpp" definitionFileId="file/XPathObject.hpp_4CFBD4CDBDD71827739CB42F5BA448552E5EF84A.html" definitionLine="22" id="function_Type_44A175C2C50203E0BD25C7A1A2032616B25D47C3" name="Type" returnType="enum_XPathObjectType_0D36BD493107D2BD601D8AABBD16C3E85880B349" specifiers="const"/>

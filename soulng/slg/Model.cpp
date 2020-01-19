@@ -44,7 +44,7 @@ void ClassMap::FillContext(LexerContext& lexerContext)
     lexerContext.SetClassMap(this);
 }
 
-void ClassMap::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void ClassMap::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
 }
 
@@ -57,7 +57,7 @@ void Prefix::FillContext(LexerContext& lexerContext)
     lexerContext.SetPrefix(this);
 }
 
-void Prefix::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Prefix::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
 }
 
@@ -70,7 +70,7 @@ void Include::FillContext(LexerContext& lexerContext)
     lexerContext.AddInclude(this);
 }
 
-void Include::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Include::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
 }
 
@@ -96,7 +96,7 @@ void Tokens::FillContext(LexerContext& lexerContext)
     lexerContext.SetTokens(this);
 }
 
-void Tokens::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Tokens::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
     std::string tokenFileName = ToUtf8(Name()) + ".hpp";
     std::ofstream tokenFile(Path::Combine(root, tokenFileName));
@@ -278,7 +278,7 @@ void Keywords::FillContext(LexerContext& lexerContext)
     lexerContext.SetKeywords(this);
 }
 
-void Keywords::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Keywords::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
     std::string api;
     if (!lexerContext.Api().empty())
@@ -411,7 +411,7 @@ void Expressions::FillContext(LexerContext& lexerContext)
     lexerContext.SetExpressions(this);
 }
 
-void Expressions::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Expressions::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
 }
 
@@ -424,7 +424,7 @@ LexerStatement::LexerStatement(const std::u32string& expr_, soulng::cppcode::Com
 {
 }
 
-void LexerStatement::Process(LexerContext& lexerContext)
+void LexerStatement::Process(LexerContext& lexerContext, bool debug)
 {
     nfa = lexerContext.GetParser()->Parse(expr, &lexerContext, line);
     nfa.End()->SetStatementIndex(index);
@@ -456,21 +456,26 @@ void Lexer::FillContext(LexerContext& lexerContext)
     lexerContext.SetLexer(this);
 }
 
-void Lexer::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Lexer::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
     for (const auto& statement : statements)
     {
-        statement->Process(lexerContext);
+        statement->Process(lexerContext, debug);
     }
 }
 
-void Lexer::MakeMasterNfa(LexerContext& lexerContext)
+void Lexer::MakeMasterNfa(LexerContext& lexerContext, bool debug)
 {
     NfaState* start = lexerContext.MakeNfaState();
     masterNfa.SetStart(start);
     for (const auto& statement : statements)
     {
         start->AddEdge(NfaEdge(lexerContext.MakeEpsilon(), statement->GetNfa().Start()));
+    }
+    if (debug)
+    {
+        CodeFormatter formatter(std::cout);
+        formatter.WriteLine("MASTER NFA: " + std::to_string(masterNfa.Start()->Id()));
     }
 }
 
@@ -777,7 +782,7 @@ void Actions::FillContext(LexerContext& lexerContext)
 {
 }
 
-void Actions::Process(const std::string& root, bool verbose, LexerContext& lexerContext)
+void Actions::Process(const std::string& root, bool verbose, bool debug, LexerContext& lexerContext)
 {
 }
 
@@ -822,13 +827,23 @@ void LexerFile::Process(const std::string& root, bool verbose, bool debug, Lexer
     }
     for (const auto& d : declarations)
     {
-        d->Process(root, verbose, lexerContext);
+        d->Process(root, verbose, debug, lexerContext);
     }
     lexerContext.MakeCanonicalClasses();
     lexerContext.MakeClassPartition(debug);
     lexerContext.MakeClassMap(root, verbose);
-    lexerContext.GetLexer()->MakeMasterNfa(lexerContext);
+    lexerContext.GetLexer()->MakeMasterNfa(lexerContext, debug);
+    if (debug)
+    {
+        CodeFormatter formatter(std::cout);
+        lexerContext.Print(formatter);
+    }
     lexerContext.GetLexer()->MakeDfa(lexerContext);
+    if (debug)
+    {
+        CodeFormatter formatter(std::cout);
+        lexerContext.GetLexer()->GetDfa().Print(lexerContext, formatter);
+    }
     lexerContext.GetLexer()->WriteAutomaton(root, verbose, lexerContext);
 }
 
