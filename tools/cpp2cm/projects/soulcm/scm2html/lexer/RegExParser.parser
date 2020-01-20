@@ -11,47 +11,65 @@ parser LexRegExParser
 
     main;
 
-    RegularExpression(soulcm.scm2html.LexerContext* lexerContext) 
-        ::= Alternative(lexerContext):alternative
+    RegularExpression(soulcm.scm2html.LexerContext* lexerContext) : soulcm.scm2html.RegExpression*
+        ::= Alternative(lexerContext):alternative{ return alternative; }
         ;
 
-    Alternative(soulcm.scm2html.LexerContext* lexerContext) 
-        ::= (Catenation(lexerContext):left (ALT Catenation(lexerContext):right!)*)
+    Alternative(soulcm.scm2html.LexerContext* lexerContext, var UniquePtr<soulcm.scm2html.RegExpression> value) : soulcm.scm2html.RegExpression*
+        ::= ((Catenation(lexerContext):left{ value.Reset(left); } (ALT Catenation(lexerContext):right!{ value.Reset(new soulcm.scm2html.Alt(value.Release(), right)); })*))
+        {
+            return value.Release();
+        }
         ;
 
-    Catenation(soulcm.scm2html.LexerContext* lexerContext) 
-        ::= (Repetition(lexerContext):left (Repetition(lexerContext):right)*)
+    Catenation(soulcm.scm2html.LexerContext* lexerContext, var UniquePtr<soulcm.scm2html.RegExpression> value) : soulcm.scm2html.RegExpression*
+        ::= ((Repetition(lexerContext):left{ value.Reset(left); } (Repetition(lexerContext):right{ value.Reset(new soulcm.scm2html.Cat(value.Release(), right)); })*))
+        {
+            return value.Release();
+        }
         ;
 
-    Repetition(soulcm.scm2html.LexerContext* lexerContext) 
+    Repetition(soulcm.scm2html.LexerContext* lexerContext, var UniquePtr<soulcm.scm2html.RegExpression> value) : soulcm.scm2html.RegExpression*
         ::=
-        (   Primary(lexerContext):left
-            (   STAR
-            |   PLUS
-            |   QUEST
+        (   Primary(lexerContext):left{ value.Reset(left); }
+            (   STAR{ value.Reset(new soulcm.scm2html.Kleene(value.Release())); }
+            |   PLUS{ value.Reset(new soulcm.scm2html.Pos(value.Release())); }
+            |   QUEST{ value.Reset(new soulcm.scm2html.Opt(value.Release())); }
             )?
         )
+        {
+            return value.Release();
+        }
         ;
 
-    Primary(soulcm.scm2html.LexerContext* lexerContext) 
+    Primary(soulcm.scm2html.LexerContext* lexerContext, var UniquePtr<soulcm.scm2html.RegExpression> value) : soulcm.scm2html.RegExpression*
         ::=
-        (   LPAREN Alternative(lexerContext):alt! RPAREN!
-        |   ESCAPE
-        |   INVERSE
-        |   MINUS
-        |   CHAR
-        |   DOT
-        |   Class(lexerContext):cls
-        |   ExpressionReference:ref
+        (   LPAREN Alternative(lexerContext):alt!{ value.Reset(new soulcm.scm2html.ParenExpr(alt)); } RPAREN!
+        |   ESCAPE{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(soulcm.scm2html.MakeEscapeValue(lexer.FileName(), lexer.GetToken(pos))))); }
+        |   INVERSE{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar('^'))); }
+        |   MINUS{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar('-'))); }
+        |   CHAR{ ustring match = lexerGetMatch(span); value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(match[0]))); }
+        |   DOT{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeAny())); }
+        |   Class(lexerContext):cls{ value.Reset(new soulcm.scm2html.SymbolExpr(cls)); }
+        |   ExpressionReference:ref{ value.Reset(new soulcm.scm2html.RefExpr(ref)); }
         )
+        {
+            return value.Release();
+        }
         ;
 
-    Class(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Class* cls) 
+    Class(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Class* cls) : soulcm.scm2html.Class*
         ::= (LBRACKET{ cls = lexerContext->MakeClass(); } ((INVERSE{ cls->SetInverse(); })? (Range(lexerContext):r)*) RBRACKET!)
+        {
+            return cls;
+        }
         ;
 
-    Range(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Symbol* symbol) 
+    Range(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Symbol* symbol) : soulcm.scm2html.Symbol*
         ::= (Char:s (MINUS Char:e{ symbol = lexerContext->MakeRange(s, e); } | empty{ symbol = lexerContext->MakeChar(s); }))
+        {
+            return symbol;
+        }
         ;
 
     Char : uchar

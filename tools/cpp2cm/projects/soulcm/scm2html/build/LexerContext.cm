@@ -9,6 +9,7 @@ namespace soulcm.scm2html
     {
         none, unicode, ascii
     }
+
     public class LexerContext
     {
         public LexerContext(IdentifierClassKind identifierClassKind) :
@@ -113,6 +114,7 @@ namespace soulcm.scm2html
         private Lexer* lexer;
         private Expression* currentExpression;
     }
+
     public class ClassLess
     {
         public bool operator()(const Class* left, const Class* right) const
@@ -128,6 +130,7 @@ namespace soulcm.scm2html
             return false;
         }
     }
+
     public class ClassesEqual
     {
         public bool operator()(const Class* left, const Class* right) const

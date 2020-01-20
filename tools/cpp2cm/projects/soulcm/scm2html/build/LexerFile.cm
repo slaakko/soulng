@@ -18,6 +18,7 @@ namespace soulcm.scm2html
         }
         private ustring name;
     }
+
     public class ClassMap : Declaration
     {
         public ClassMap(const ustring& name_) :
@@ -25,6 +26,7 @@ namespace soulcm.scm2html
         {
         }
     }
+
     public class Usings : Declaration
     {
         public Usings() :
@@ -41,6 +43,7 @@ namespace soulcm.scm2html
         }
         private List<UniquePtr<Cm.Ast.Node>> usingNodes;
     }
+
     public class Token
     {
         public Token() :
@@ -54,6 +57,7 @@ namespace soulcm.scm2html
         public ustring name;
         public string info;
     }
+
     public class Tokens : Declaration
     {
         public Tokens(const ustring& name_) :
@@ -66,6 +70,7 @@ namespace soulcm.scm2html
         }
         private List<Token> tokens;
     }
+
     public class Keyword
     {
         public Keyword(const ustring& kw_, const ustring& token_) :
@@ -75,6 +80,7 @@ namespace soulcm.scm2html
         public ustring kw;
         public ustring token;
     }
+
     public class Keywords : Declaration
     {
         public Keywords(const ustring& name_) :
@@ -87,6 +93,7 @@ namespace soulcm.scm2html
         }
         private List<UniquePtr<Keyword>> keywords;
     }
+
     public class Expression
     {
         public Expression(int index_, const ustring& id_, const ustring& value_, int line_) :
@@ -114,6 +121,7 @@ namespace soulcm.scm2html
         private ustring value;
         private int line;
     }
+
     public class Expressions : Declaration
     {
         public Expressions() :
@@ -141,6 +149,7 @@ namespace soulcm.scm2html
         private List<UniquePtr<Expression>> expressions;
         private Map<ustring, int> exprMap;
     }
+
     public class Variable
     {
         public Variable(Cm.Ast.Node* type_, const ustring& name_) :
@@ -158,6 +167,7 @@ namespace soulcm.scm2html
         private UniquePtr<Cm.Ast.Node> type;
         private ustring name;
     }
+
     public class LexerStatement
     {
         public LexerStatement(const ustring& expr_, Cm.Ast.CompoundStatementNode* stmt_, int action_, int line_) :
@@ -195,6 +205,7 @@ namespace soulcm.scm2html
         private int action;
         private int line;
     }
+
     public class Action
     {
         public Action(int id_, Cm.Ast.CompoundStatementNode* stmt_) :
@@ -212,6 +223,7 @@ namespace soulcm.scm2html
         private int id;
         private UniquePtr<Cm.Ast.CompoundStatementNode> stmt;
     }
+
     public class Actions : Declaration
     {
         public Actions() :
@@ -238,6 +250,7 @@ namespace soulcm.scm2html
         private List<UniquePtr<Action>> actions;
         private Map<int, Action*> actionMap;
     }
+
     public class Lexer : Declaration
     {
         public Lexer(const ustring& api_, const ustring& name_) :
@@ -262,6 +275,7 @@ namespace soulcm.scm2html
         private List<UniquePtr<Variable>> variables;
         private Actions actions;
     }
+
     public class LexerFile
     {
         public void Add(Declaration* declaration)

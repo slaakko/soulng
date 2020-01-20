@@ -5,8 +5,11 @@ using System.IO;
 namespace soulcm.scm2html
 {
     public const int noPrefix = 0;
+
     public const int utf16Prefix = 1;
+
     public const int utf32Prefix = 2;
+
     public void ParseHexChar(const string& fileName, uchar& value, const uchar*& p, const uchar* e, const System.Lex.Token& token)
     {
         if (p != e)
@@ -36,6 +39,7 @@ namespace soulcm.scm2html
             throw Exception("hex character expected at " + fileName + ":" + ToString(token.line) + ": " + ToUtf8(token.match.ToString()));
         }
     }
+
     public uchar ParseEscape(const string& fileName, const uchar*& p, const uchar* e, const System.Lex.Token& token)
     {
         uchar value = '\0';
@@ -109,6 +113,7 @@ namespace soulcm.scm2html
         }
         return value;
     }
+
     public ustring MakeStrValue(const string& fileName, const System.Lex.Token& token)
     {
         ustring strValue;
@@ -141,6 +146,7 @@ namespace soulcm.scm2html
         }
         return strValue;
     }
+
     public ustring MakeExprStringValue(const string& fileName, const System.Lex.Token& token)
     {
         ustring strValue;
@@ -183,6 +189,7 @@ namespace soulcm.scm2html
         }
         return strValue;
     }
+
     public ustring MakePathValue(const string& fileName, const System.Lex.Token& token)
     {
         ustring pathValue;
@@ -207,6 +214,7 @@ namespace soulcm.scm2html
         }
         return pathValue;
     }
+
     public int MakeActionIntValue(const string& fileName, const System.Lex.Token& token)
     {
         int actionIntValue = 0;
@@ -227,6 +235,7 @@ namespace soulcm.scm2html
         }
         return actionIntValue;
     }
+
     public ustring MakeExprRefId(const string& fileName, const ustring& match, int line)
     {
         ustring exprRefId;
@@ -251,6 +260,7 @@ namespace soulcm.scm2html
         }
         return exprRefId;
     }
+
     public uchar MakeEscapeValue(const string& fileName, const System.Lex.Token& token)
     {
         uchar escapeValue = '\0';
@@ -267,6 +277,7 @@ namespace soulcm.scm2html
         }
         return escapeValue;
     }
+
     public void ParseFloatingLiteral(const string& fileName, const System.Lex.Token& token, double& floatingLit, bool& floatingLitFloat)
     {
         floatingLit = 0.000000;
@@ -291,6 +302,7 @@ namespace soulcm.scm2html
         if (floatingLitFloat) floatingLit = ParseFloat(str);
         else floatingLit = ParseDouble(str);
     }
+
     public void ParseIntegerLiteral(const string& fileName, const System.Lex.Token& token, ulong& intLit, bool& intLitUnsigned)
     {
         intLit = 0u;
@@ -357,6 +369,7 @@ namespace soulcm.scm2html
             throw Exception("invalid integer literal at " + fileName + ":" + ToString(token.line) + ": " + ToUtf8(ustring(token.match.begin, token.match.end)));
         }
     }
+
     public void ParseCharacterLiteral(const string& fileName, const System.Lex.Token& token, uchar& charLit, int& charLitPrefix)
     {
         charLit = '\0';
@@ -410,6 +423,7 @@ namespace soulcm.scm2html
             throw Exception("invalid character literal at " + fileName + ":" + ToString(token.line) + ": " + ToUtf8(ustring(token.match.begin, token.match.end)));
         }
     }
+
     public void ParseStringLiteral(const string& fileName, const System.Lex.Token& token, ustring& stringLit, int& stringLitPrefix)
     {
         stringLit.Clear();
@@ -480,6 +494,7 @@ namespace soulcm.scm2html
             }
         }
     }
+
     public string MakeFilePath(const System.Lex.Lexeme& lexeme)
     {
         ustring s;

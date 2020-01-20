@@ -7,6 +7,7 @@ string Version()
 {
     return "3.0.0";
 }
+
 void PrintHelp()
 {
     Console.Out() << "SoulCM HTML grammar generator version " << Version() << endl();
@@ -17,6 +18,7 @@ void PrintHelp()
     Console.Out() << "--verbose | -v" << endl();
     Console.Out() << "  Be verbose." << endl();
 }
+
 int main(int argc, const char** argv)
 {
     try

@@ -112,6 +112,7 @@ namespace sng2html
 using System;
 using System.Collections;
 
+
 namespace soulcm.scm2html
 {
     public class Visitor
@@ -126,6 +127,30 @@ namespace soulcm.scm2html
         {
         }
         public virtual void Visit(Class& c)
+        {
+        }
+        public virtual void Visit(Alt& alt)
+        {
+        }
+        public virtual void Visit(Cat& cat)
+        {
+        }
+        public virtual void Visit(Kleene& kleene)
+        {
+        }
+        public virtual void Visit(Pos& pos)
+        {
+        }
+        public virtual void Visit(Opt& opt)
+        {
+        }
+        public virtual void Visit(ParenExpr& parenExpr)
+        {
+        }
+        public virtual void Visit(SymbolExpr& symbolExpr)
+        {
+        }
+        public virtual void Visit(RefExpr& refExpr)
         {
         }
     }

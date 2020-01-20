@@ -5,6 +5,7 @@ using System.Text;
 namespace soulcm.scm2html
 {
     public const uchar eps = '\0';
+
     public abstract class Symbol
     {
         public Symbol() :
@@ -56,6 +57,7 @@ namespace soulcm.scm2html
         private bool contained;
         private bool dontSetContained;
     }
+
     public class Char : Symbol
     {
         public Char(uchar chr_) :
@@ -81,6 +83,7 @@ namespace soulcm.scm2html
         }
         private uchar chr;
     }
+
     public class Any : Symbol
     {
         public Any()
@@ -100,6 +103,7 @@ namespace soulcm.scm2html
             visitor.Visit(*this);
         }
     }
+
     public class Range : Symbol
     {
         public Range(uchar start_, uchar end_) :
@@ -140,16 +144,19 @@ namespace soulcm.scm2html
         private uchar start;
         private uchar end;
     }
+
     public inline bool operator==(const Range& left, const Range& right)
     {
         return left.Start() == right.Start() && left.End() == right.End();
     }
+
     public inline bool operator<(const Range& left, const Range& right)
     {
         if (left.Start() < right.Start()) return true;
         if (left.Start() > right.Start()) return false;
         return left.End() < right.End();
     }
+
     public class Class : Symbol
     {
         public Class(int index_) :
@@ -398,6 +405,7 @@ namespace soulcm.scm2html
         private List<uchar> chars;
         private LinkedList<Range> ranges;
     }
+
     public bool Intersect(const Range& left, const Range& right)
     {
         if (left.IsEmpty() || right.IsEmpty()) return false;
@@ -410,6 +418,7 @@ namespace soulcm.scm2html
             return left.Start() >= right.Start() && left.Start() <= right.End();
         }
     }
+
     public Range operator&(const Range& left, const Range& right)
     {
         if (Intersect(left, right))
@@ -419,6 +428,7 @@ namespace soulcm.scm2html
         }
         return Range(cast<uchar>(1), cast<uchar>(0));
     }
+
     public List<Range> operator-(const Range& left, const Range& right)
     {
         List<Range> ranges;
@@ -449,6 +459,7 @@ namespace soulcm.scm2html
         }
         return ranges;
     }
+
     public List<Range> operator~(const Range& that)
     {
         List<Range> result;
@@ -462,6 +473,7 @@ namespace soulcm.scm2html
         }
         return result;
     }
+
     public bool operator==(const Class& left, const Class& right)
     {
         if (left.Symbols().Count() != right.Symbols().Count()) return false;
@@ -486,6 +498,7 @@ namespace soulcm.scm2html
         }
         return true;
     }
+
     public class RangeEndLess : Rel<Range>
     {
         public bool operator()(const Range& left, const Range& right) const
@@ -495,6 +508,7 @@ namespace soulcm.scm2html
             return left.Start() < right.Start();
         }
     }
+
     public bool Intersect(const Class& left, const Class& right)
     {
         for (Symbol* leftSymbol : left.Symbols())
@@ -517,6 +531,7 @@ namespace soulcm.scm2html
         }
         return false;
     }
+
     public Class* MakeIntertersection(const Class& left, const Class& right, LexerContext& lexerContext)
     {
         List<Range> leftRanges;
@@ -571,6 +586,7 @@ namespace soulcm.scm2html
         }
         return cls;
     }
+
     public Class* MakeDifference(const Class& left, const Class& right, LexerContext& lexerContext)
     {
         List<Range> leftRanges;

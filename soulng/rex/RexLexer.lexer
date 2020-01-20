@@ -25,7 +25,7 @@ expressions
     hexdigits="{hexdigit}+";
     hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
     hex8 = "{hex4}{hex4}";
-    escape = "\\((x|X){hexdigits}|(d|D){decdigits}|{octaldigits}|u{hex4}|U{hex8}|[abfnrtv\"'\\])";
+    escape = "\\((x|X){hexdigit}+|(d|D){decdigit}+|{octaldigit}+|u{hex4}|U{hex8}|(a|b|f|n|r|t|v|.))";
 }
 
 lexer api(SOULNG_REX_API) RexLexer

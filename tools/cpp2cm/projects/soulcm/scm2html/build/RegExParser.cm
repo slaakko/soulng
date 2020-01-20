@@ -6,8 +6,9 @@ using RegExTokens;
 
 public static class LexRegExParser
 {
-    public static void Parse(RegExLexer& lexer, soulcm.scm2html.LexerContext* lexerContext)
+    public static UniquePtr<soulcm.scm2html.RegExpression> Parse(RegExLexer& lexer, soulcm.scm2html.LexerContext* lexerContext)
     {
+        UniquePtr<soulcm.scm2html.RegExpression> value;
         #if (DEBUG)
             if (lexer.Log() != null)
             {
@@ -18,11 +19,19 @@ public static class LexRegExParser
         ++lexer;
         System.Lex.Span span = lexer.GetSpan();
         Match match = RegularExpression(lexer, lexerContext);
+        value.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+        #if (DEBUG)
+            if (lexer.Log() != null)
+            {
+                lexer.Log()->DecIndent();
+                lexer.Log()->WriteEndRule(u"parse");
+            }
+        #endif
         if (match.hit)
         {
             if (*lexer == System.Lex.END_TOKEN)
             {
-                return;
+                return value;
             }
             else
             {
@@ -33,7 +42,7 @@ public static class LexRegExParser
         {
             lexer.ThrowExpectationFailure(span, u"regular expression");
         }
-        return;
+        return value;
     }
     public static Match RegularExpression(RegExLexer& lexer, soulcm.scm2html.LexerContext* lexerContext)
     {
@@ -46,7 +55,24 @@ public static class LexRegExParser
                 System.Lex.WriteBeginRuleToLog(lexer, u"RegularExpression");
             }
         #endif
-        Match match = LexRegExParser.Alternative(lexer, lexerContext);
+        UniquePtr<soulcm.scm2html.RegExpression> alternative;
+        Match match(false);
+        Match* parentMatch0 = &match;
+        {
+            long pos = lexer.GetPos();
+            Match match = LexRegExParser.Alternative(lexer, lexerContext);
+            alternative.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+            if (match.hit)
+            {
+                {
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"RegularExpression");
+                    #endif
+                    return Match(true, alternative.Release());
+                }
+            }
+            *parentMatch0 = match;
+        }
         #if (DEBUG)
             if (writeToLog)
             {
@@ -77,81 +103,126 @@ public static class LexRegExParser
                 System.Lex.WriteBeginRuleToLog(lexer, u"Alternative");
             }
         #endif
+        UniquePtr<soulcm.scm2html.RegExpression> value;
+        UniquePtr<soulcm.scm2html.RegExpression> left;
+        UniquePtr<soulcm.scm2html.RegExpression> right;
         Match match(false);
         Match* parentMatch0 = &match;
         {
+            long pos = lexer.GetPos();
             Match match(false);
             Match* parentMatch1 = &match;
-            {
-                Match match = LexRegExParser.Catenation(lexer, lexerContext);
-                *parentMatch1 = match;
-            }
-            if (match.hit)
             {
                 Match match(false);
                 Match* parentMatch2 = &match;
                 {
-                    Match match(true);
+                    Match match(false);
                     Match* parentMatch3 = &match;
                     {
-                        while (true)
+                        Match match(false);
+                        Match* parentMatch4 = &match;
                         {
-                            long save = lexer.GetPos();
+                            long pos = lexer.GetPos();
+                            Match match = LexRegExParser.Catenation(lexer, lexerContext);
+                            left.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+                            if (match.hit)
                             {
-                                Match match(false);
-                                Match* parentMatch4 = &match;
+                                value.Reset(left.Release());
+                            }
+                            *parentMatch4 = match;
+                        }
+                        *parentMatch3 = match;
+                    }
+                    if (match.hit)
+                    {
+                        Match match(false);
+                        Match* parentMatch5 = &match;
+                        {
+                            Match match(true);
+                            Match* parentMatch6 = &match;
+                            {
+                                while (true)
                                 {
-                                    Match match(false);
-                                    Match* parentMatch5 = &match;
+                                    long save = lexer.GetPos();
                                     {
                                         Match match(false);
-                                        if (*lexer == ALT)
+                                        Match* parentMatch7 = &match;
                                         {
-                                            ++lexer;
-                                            match.hit = true;
-                                        }
-                                        *parentMatch5 = match;
-                                    }
-                                    if (match.hit)
-                                    {
-                                        Match match(false);
-                                        Match* parentMatch6 = &match;
-                                        {
-                                            Match match(true);
-                                            Match* parentMatch7 = &match;
+                                            Match match(false);
+                                            Match* parentMatch8 = &match;
                                             {
-                                                System.Lex.Span span = lexer.GetSpan();
-                                                Match match = LexRegExParser.Catenation(lexer, lexerContext);
-                                                if (match.hit)
+                                                Match match(false);
+                                                if (*lexer == ALT)
                                                 {
-                                                    *parentMatch7 = match;
+                                                    ++lexer;
+                                                    match.hit = true;
                                                 }
-                                                else
-                                                {
-                                                    lexer.ThrowExpectationFailure(span, u"catenation");
-                                                }
+                                                *parentMatch8 = match;
                                             }
+                                            if (match.hit)
+                                            {
+                                                Match match(false);
+                                                Match* parentMatch9 = &match;
+                                                {
+                                                    Match match(false);
+                                                    Match* parentMatch10 = &match;
+                                                    {
+                                                        long pos = lexer.GetPos();
+                                                        Match match(true);
+                                                        Match* parentMatch11 = &match;
+                                                        {
+                                                            System.Lex.Span span = lexer.GetSpan();
+                                                            Match match = LexRegExParser.Catenation(lexer, lexerContext);
+                                                            right.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+                                                            if (match.hit)
+                                                            {
+                                                                *parentMatch11 = match;
+                                                            }
+                                                            else
+                                                            {
+                                                                lexer.ThrowExpectationFailure(span, u"catenation");
+                                                            }
+                                                        }
+                                                        if (match.hit)
+                                                        {
+                                                            value.Reset(new soulcm.scm2html.Alt(value.Release(), right.Release()));
+                                                        }
+                                                        *parentMatch10 = match;
+                                                    }
+                                                    *parentMatch9 = match;
+                                                }
+                                                *parentMatch8 = match;
+                                            }
+                                            *parentMatch7 = match;
+                                        }
+                                        if (match.hit)
+                                        {
                                             *parentMatch6 = match;
                                         }
-                                        *parentMatch5 = match;
+                                        else
+                                        {
+                                            lexer.SetPos(save);
+                                            break;
+                                        }
                                     }
-                                    *parentMatch4 = match;
-                                }
-                                if (match.hit)
-                                {
-                                    *parentMatch3 = match;
-                                }
-                                else
-                                {
-                                    lexer.SetPos(save);
-                                    break;
                                 }
                             }
+                            *parentMatch5 = match;
                         }
+                        *parentMatch3 = match;
                     }
                     *parentMatch2 = match;
                 }
                 *parentMatch1 = match;
+            }
+            if (match.hit)
+            {
+                {
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Alternative");
+                    #endif
+                    return Match(true, value.Release());
+                }
             }
             *parentMatch0 = match;
         }
@@ -185,48 +256,93 @@ public static class LexRegExParser
                 System.Lex.WriteBeginRuleToLog(lexer, u"Catenation");
             }
         #endif
+        UniquePtr<soulcm.scm2html.RegExpression> value;
+        UniquePtr<soulcm.scm2html.RegExpression> left;
+        UniquePtr<soulcm.scm2html.RegExpression> right;
         Match match(false);
         Match* parentMatch0 = &match;
         {
+            long pos = lexer.GetPos();
             Match match(false);
             Match* parentMatch1 = &match;
-            {
-                Match match = LexRegExParser.Repetition(lexer, lexerContext);
-                *parentMatch1 = match;
-            }
-            if (match.hit)
             {
                 Match match(false);
                 Match* parentMatch2 = &match;
                 {
-                    Match match(true);
+                    Match match(false);
                     Match* parentMatch3 = &match;
                     {
-                        while (true)
+                        Match match(false);
+                        Match* parentMatch4 = &match;
                         {
-                            long save = lexer.GetPos();
+                            long pos = lexer.GetPos();
+                            Match match = LexRegExParser.Repetition(lexer, lexerContext);
+                            left.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+                            if (match.hit)
                             {
-                                Match match(false);
-                                Match* parentMatch4 = &match;
+                                value.Reset(left.Release());
+                            }
+                            *parentMatch4 = match;
+                        }
+                        *parentMatch3 = match;
+                    }
+                    if (match.hit)
+                    {
+                        Match match(false);
+                        Match* parentMatch5 = &match;
+                        {
+                            Match match(true);
+                            Match* parentMatch6 = &match;
+                            {
+                                while (true)
                                 {
-                                    Match match = LexRegExParser.Repetition(lexer, lexerContext);
-                                    *parentMatch4 = match;
-                                }
-                                if (match.hit)
-                                {
-                                    *parentMatch3 = match;
-                                }
-                                else
-                                {
-                                    lexer.SetPos(save);
-                                    break;
+                                    long save = lexer.GetPos();
+                                    {
+                                        Match match(false);
+                                        Match* parentMatch7 = &match;
+                                        {
+                                            Match match(false);
+                                            Match* parentMatch8 = &match;
+                                            {
+                                                long pos = lexer.GetPos();
+                                                Match match = LexRegExParser.Repetition(lexer, lexerContext);
+                                                right.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+                                                if (match.hit)
+                                                {
+                                                    value.Reset(new soulcm.scm2html.Cat(value.Release(), right.Release()));
+                                                }
+                                                *parentMatch8 = match;
+                                            }
+                                            *parentMatch7 = match;
+                                        }
+                                        if (match.hit)
+                                        {
+                                            *parentMatch6 = match;
+                                        }
+                                        else
+                                        {
+                                            lexer.SetPos(save);
+                                            break;
+                                        }
+                                    }
                                 }
                             }
+                            *parentMatch5 = match;
                         }
+                        *parentMatch3 = match;
                     }
                     *parentMatch2 = match;
                 }
                 *parentMatch1 = match;
+            }
+            if (match.hit)
+            {
+                {
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Catenation");
+                    #endif
+                    return Match(true, value.Release());
+                }
             }
             *parentMatch0 = match;
         }
@@ -260,91 +376,149 @@ public static class LexRegExParser
                 System.Lex.WriteBeginRuleToLog(lexer, u"Repetition");
             }
         #endif
+        UniquePtr<soulcm.scm2html.RegExpression> value;
+        UniquePtr<soulcm.scm2html.RegExpression> left;
         Match match(false);
         Match* parentMatch0 = &match;
         {
+            long pos = lexer.GetPos();
             Match match(false);
             Match* parentMatch1 = &match;
-            {
-                Match match = LexRegExParser.Primary(lexer, lexerContext);
-                *parentMatch1 = match;
-            }
-            if (match.hit)
             {
                 Match match(false);
                 Match* parentMatch2 = &match;
                 {
-                    Match match(true);
-                    long save = lexer.GetPos();
+                    Match match(false);
                     Match* parentMatch3 = &match;
                     {
-                        Match match(false);
-                        Match* parentMatch4 = &match;
+                        long pos = lexer.GetPos();
+                        Match match = LexRegExParser.Primary(lexer, lexerContext);
+                        left.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+                        if (match.hit)
+                        {
+                            value.Reset(left.Release());
+                        }
+                        *parentMatch3 = match;
+                    }
+                    *parentMatch2 = match;
+                }
+                if (match.hit)
+                {
+                    Match match(false);
+                    Match* parentMatch4 = &match;
+                    {
+                        Match match(true);
+                        long save = lexer.GetPos();
+                        Match* parentMatch5 = &match;
                         {
                             Match match(false);
-                            Match* parentMatch5 = &match;
+                            Match* parentMatch6 = &match;
                             {
-                                long save = lexer.GetPos();
                                 Match match(false);
-                                Match* parentMatch6 = &match;
+                                Match* parentMatch7 = &match;
                                 {
                                     long save = lexer.GetPos();
                                     Match match(false);
-                                    if (*lexer == STAR)
+                                    Match* parentMatch8 = &match;
                                     {
-                                        ++lexer;
-                                        match.hit = true;
-                                    }
-                                    *parentMatch6 = match;
-                                    if (!match.hit)
-                                    {
+                                        long save = lexer.GetPos();
                                         Match match(false);
-                                        Match* parentMatch7 = &match;
-                                        lexer.SetPos(save);
+                                        Match* parentMatch9 = &match;
                                         {
+                                            long pos = lexer.GetPos();
                                             Match match(false);
-                                            if (*lexer == PLUS)
+                                            if (*lexer == STAR)
                                             {
                                                 ++lexer;
                                                 match.hit = true;
                                             }
-                                            *parentMatch7 = match;
-                                        }
-                                        *parentMatch6 = match;
-                                    }
-                                }
-                                *parentMatch5 = match;
-                                if (!match.hit)
-                                {
-                                    Match match(false);
-                                    Match* parentMatch8 = &match;
-                                    lexer.SetPos(save);
-                                    {
-                                        Match match(false);
-                                        if (*lexer == QUEST)
-                                        {
-                                            ++lexer;
-                                            match.hit = true;
+                                            if (match.hit)
+                                            {
+                                                value.Reset(new soulcm.scm2html.Kleene(value.Release()));
+                                            }
+                                            *parentMatch9 = match;
                                         }
                                         *parentMatch8 = match;
+                                        if (!match.hit)
+                                        {
+                                            Match match(false);
+                                            Match* parentMatch10 = &match;
+                                            lexer.SetPos(save);
+                                            {
+                                                Match match(false);
+                                                Match* parentMatch11 = &match;
+                                                {
+                                                    long pos = lexer.GetPos();
+                                                    Match match(false);
+                                                    if (*lexer == PLUS)
+                                                    {
+                                                        ++lexer;
+                                                        match.hit = true;
+                                                    }
+                                                    if (match.hit)
+                                                    {
+                                                        value.Reset(new soulcm.scm2html.Pos(value.Release()));
+                                                    }
+                                                    *parentMatch11 = match;
+                                                }
+                                                *parentMatch10 = match;
+                                            }
+                                            *parentMatch8 = match;
+                                        }
                                     }
-                                    *parentMatch5 = match;
+                                    *parentMatch7 = match;
+                                    if (!match.hit)
+                                    {
+                                        Match match(false);
+                                        Match* parentMatch12 = &match;
+                                        lexer.SetPos(save);
+                                        {
+                                            Match match(false);
+                                            Match* parentMatch13 = &match;
+                                            {
+                                                long pos = lexer.GetPos();
+                                                Match match(false);
+                                                if (*lexer == QUEST)
+                                                {
+                                                    ++lexer;
+                                                    match.hit = true;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    value.Reset(new soulcm.scm2html.Opt(value.Release()));
+                                                }
+                                                *parentMatch13 = match;
+                                            }
+                                            *parentMatch12 = match;
+                                        }
+                                        *parentMatch7 = match;
+                                    }
                                 }
+                                *parentMatch6 = match;
                             }
-                            *parentMatch4 = match;
+                            if (match.hit)
+                            {
+                                *parentMatch5 = match;
+                            }
+                            else
+                            {
+                                lexer.SetPos(save);
+                            }
                         }
-                        if (match.hit)
-                        {
-                            *parentMatch3 = match;
-                        }
-                        else
-                        {
-                            lexer.SetPos(save);
-                        }
+                        *parentMatch4 = match;
                     }
                     *parentMatch2 = match;
                 }
                 *parentMatch1 = match;
+            }
+            if (match.hit)
+            {
+                {
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Repetition");
+                    #endif
+                    return Match(true, value.Release());
+                }
             }
             *parentMatch0 = match;
         }
@@ -378,14 +552,17 @@ public static class LexRegExParser
                 System.Lex.WriteBeginRuleToLog(lexer, u"Primary");
             }
         #endif
+        UniquePtr<soulcm.scm2html.RegExpression> value;
+        UniquePtr<soulcm.scm2html.RegExpression> alt;
+        UniquePtr<soulcm.scm2html.Class> cls;
         UniquePtr<Value<ustring>> ref;
         Match match(false);
         Match* parentMatch0 = &match;
         {
+            long pos = lexer.GetPos();
             Match match(false);
             Match* parentMatch1 = &match;
             {
-                long save = lexer.GetPos();
                 Match match(false);
                 Match* parentMatch2 = &match;
                 {
@@ -413,84 +590,137 @@ public static class LexRegExParser
                                         Match match(false);
                                         Match* parentMatch8 = &match;
                                         {
+                                            long save = lexer.GetPos();
                                             Match match(false);
                                             Match* parentMatch9 = &match;
                                             {
                                                 Match match(false);
-                                                if (*lexer == LPAREN)
+                                                Match* parentMatch10 = &match;
                                                 {
-                                                    ++lexer;
-                                                    match.hit = true;
+                                                    Match match(false);
+                                                    if (*lexer == LPAREN)
+                                                    {
+                                                        ++lexer;
+                                                        match.hit = true;
+                                                    }
+                                                    *parentMatch10 = match;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    Match match(false);
+                                                    Match* parentMatch11 = &match;
+                                                    {
+                                                        Match match(false);
+                                                        Match* parentMatch12 = &match;
+                                                        {
+                                                            long pos = lexer.GetPos();
+                                                            Match match(true);
+                                                            Match* parentMatch13 = &match;
+                                                            {
+                                                                System.Lex.Span span = lexer.GetSpan();
+                                                                Match match = LexRegExParser.Alternative(lexer, lexerContext);
+                                                                alt.Reset(cast<soulcm.scm2html.RegExpression*>(match.value));
+                                                                if (match.hit)
+                                                                {
+                                                                    *parentMatch13 = match;
+                                                                }
+                                                                else
+                                                                {
+                                                                    lexer.ThrowExpectationFailure(span, u"alternative");
+                                                                }
+                                                            }
+                                                            if (match.hit)
+                                                            {
+                                                                value.Reset(new soulcm.scm2html.ParenExpr(alt.Release()));
+                                                            }
+                                                            *parentMatch12 = match;
+                                                        }
+                                                        *parentMatch11 = match;
+                                                    }
+                                                    *parentMatch10 = match;
                                                 }
                                                 *parentMatch9 = match;
                                             }
                                             if (match.hit)
                                             {
                                                 Match match(false);
-                                                Match* parentMatch10 = &match;
+                                                Match* parentMatch14 = &match;
                                                 {
                                                     Match match(true);
-                                                    Match* parentMatch11 = &match;
+                                                    Match* parentMatch15 = &match;
                                                     {
                                                         System.Lex.Span span = lexer.GetSpan();
-                                                        Match match = LexRegExParser.Alternative(lexer, lexerContext);
+                                                        Match match(false);
+                                                        if (*lexer == RPAREN)
+                                                        {
+                                                            ++lexer;
+                                                            match.hit = true;
+                                                        }
                                                         if (match.hit)
                                                         {
-                                                            *parentMatch11 = match;
+                                                            *parentMatch15 = match;
                                                         }
                                                         else
                                                         {
-                                                            lexer.ThrowExpectationFailure(span, u"alternative");
+                                                            lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
                                                         }
                                                     }
-                                                    *parentMatch10 = match;
+                                                    *parentMatch14 = match;
                                                 }
                                                 *parentMatch9 = match;
                                             }
                                             *parentMatch8 = match;
+                                            if (!match.hit)
+                                            {
+                                                Match match(false);
+                                                Match* parentMatch16 = &match;
+                                                lexer.SetPos(save);
+                                                {
+                                                    Match match(false);
+                                                    Match* parentMatch17 = &match;
+                                                    {
+                                                        long pos = lexer.GetPos();
+                                                        Match match(false);
+                                                        if (*lexer == ESCAPE)
+                                                        {
+                                                            ++lexer;
+                                                            match.hit = true;
+                                                        }
+                                                        if (match.hit)
+                                                        {
+                                                            value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(soulcm.scm2html.MakeEscapeValue(lexer.FileName(), lexer.GetToken(pos)))));
+                                                        }
+                                                        *parentMatch17 = match;
+                                                    }
+                                                    *parentMatch16 = match;
+                                                }
+                                                *parentMatch8 = match;
+                                            }
                                         }
-                                        if (match.hit)
+                                        *parentMatch7 = match;
+                                        if (!match.hit)
                                         {
                                             Match match(false);
-                                            Match* parentMatch12 = &match;
+                                            Match* parentMatch18 = &match;
+                                            lexer.SetPos(save);
                                             {
-                                                Match match(true);
-                                                Match* parentMatch13 = &match;
+                                                Match match(false);
+                                                Match* parentMatch19 = &match;
                                                 {
-                                                    System.Lex.Span span = lexer.GetSpan();
+                                                    long pos = lexer.GetPos();
                                                     Match match(false);
-                                                    if (*lexer == RPAREN)
+                                                    if (*lexer == INVERSE)
                                                     {
                                                         ++lexer;
                                                         match.hit = true;
                                                     }
                                                     if (match.hit)
                                                     {
-                                                        *parentMatch13 = match;
+                                                        value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar('^')));
                                                     }
-                                                    else
-                                                    {
-                                                        lexer.ThrowExpectationFailure(span, GetTokenName(RPAREN));
-                                                    }
+                                                    *parentMatch19 = match;
                                                 }
-                                                *parentMatch12 = match;
-                                            }
-                                            *parentMatch8 = match;
-                                        }
-                                        *parentMatch7 = match;
-                                        if (!match.hit)
-                                        {
-                                            Match match(false);
-                                            Match* parentMatch14 = &match;
-                                            lexer.SetPos(save);
-                                            {
-                                                Match match(false);
-                                                if (*lexer == ESCAPE)
-                                                {
-                                                    ++lexer;
-                                                    match.hit = true;
-                                                }
-                                                *parentMatch14 = match;
+                                                *parentMatch18 = match;
                                             }
                                             *parentMatch7 = match;
                                         }
@@ -499,16 +729,26 @@ public static class LexRegExParser
                                     if (!match.hit)
                                     {
                                         Match match(false);
-                                        Match* parentMatch15 = &match;
+                                        Match* parentMatch20 = &match;
                                         lexer.SetPos(save);
                                         {
                                             Match match(false);
-                                            if (*lexer == INVERSE)
+                                            Match* parentMatch21 = &match;
                                             {
-                                                ++lexer;
-                                                match.hit = true;
+                                                long pos = lexer.GetPos();
+                                                Match match(false);
+                                                if (*lexer == MINUS)
+                                                {
+                                                    ++lexer;
+                                                    match.hit = true;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar('-')));
+                                                }
+                                                *parentMatch21 = match;
                                             }
-                                            *parentMatch15 = match;
+                                            *parentMatch20 = match;
                                         }
                                         *parentMatch6 = match;
                                     }
@@ -517,16 +757,28 @@ public static class LexRegExParser
                                 if (!match.hit)
                                 {
                                     Match match(false);
-                                    Match* parentMatch16 = &match;
+                                    Match* parentMatch22 = &match;
                                     lexer.SetPos(save);
                                     {
                                         Match match(false);
-                                        if (*lexer == MINUS)
+                                        Match* parentMatch23 = &match;
                                         {
-                                            ++lexer;
-                                            match.hit = true;
+                                            long pos = lexer.GetPos();
+                                            Span span = lexer.GetSpan();
+                                            Match match(false);
+                                            if (*lexer == CHAR)
+                                            {
+                                                ++lexer;
+                                                match.hit = true;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                ustring match = lexerGetMatch(span);
+                                                value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(match[0])));
+                                            }
+                                            *parentMatch23 = match;
                                         }
-                                        *parentMatch16 = match;
+                                        *parentMatch22 = match;
                                     }
                                     *parentMatch5 = match;
                                 }
@@ -535,16 +787,26 @@ public static class LexRegExParser
                             if (!match.hit)
                             {
                                 Match match(false);
-                                Match* parentMatch17 = &match;
+                                Match* parentMatch24 = &match;
                                 lexer.SetPos(save);
                                 {
                                     Match match(false);
-                                    if (*lexer == CHAR)
+                                    Match* parentMatch25 = &match;
                                     {
-                                        ++lexer;
-                                        match.hit = true;
+                                        long pos = lexer.GetPos();
+                                        Match match(false);
+                                        if (*lexer == DOT)
+                                        {
+                                            ++lexer;
+                                            match.hit = true;
+                                        }
+                                        if (match.hit)
+                                        {
+                                            value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeAny()));
+                                        }
+                                        *parentMatch25 = match;
                                     }
-                                    *parentMatch17 = match;
+                                    *parentMatch24 = match;
                                 }
                                 *parentMatch4 = match;
                             }
@@ -553,16 +815,22 @@ public static class LexRegExParser
                         if (!match.hit)
                         {
                             Match match(false);
-                            Match* parentMatch18 = &match;
+                            Match* parentMatch26 = &match;
                             lexer.SetPos(save);
                             {
                                 Match match(false);
-                                if (*lexer == DOT)
+                                Match* parentMatch27 = &match;
                                 {
-                                    ++lexer;
-                                    match.hit = true;
+                                    long pos = lexer.GetPos();
+                                    Match match = LexRegExParser.Class(lexer, lexerContext);
+                                    cls.Reset(cast<soulcm.scm2html.Class*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        value.Reset(new soulcm.scm2html.SymbolExpr(cls.Release()));
+                                    }
+                                    *parentMatch27 = match;
                                 }
-                                *parentMatch18 = match;
+                                *parentMatch26 = match;
                             }
                             *parentMatch3 = match;
                         }
@@ -571,27 +839,35 @@ public static class LexRegExParser
                     if (!match.hit)
                     {
                         Match match(false);
-                        Match* parentMatch19 = &match;
+                        Match* parentMatch28 = &match;
                         lexer.SetPos(save);
                         {
-                            Match match = LexRegExParser.Class(lexer, lexerContext);
-                            *parentMatch19 = match;
+                            Match match(false);
+                            Match* parentMatch29 = &match;
+                            {
+                                long pos = lexer.GetPos();
+                                Match match = LexRegExParser.ExpressionReference(lexer);
+                                ref.Reset(cast<Value<ustring>*>(match.value));
+                                if (match.hit)
+                                {
+                                    value.Reset(new soulcm.scm2html.RefExpr(ref->value));
+                                }
+                                *parentMatch29 = match;
+                            }
+                            *parentMatch28 = match;
                         }
                         *parentMatch2 = match;
                     }
                 }
                 *parentMatch1 = match;
-                if (!match.hit)
+            }
+            if (match.hit)
+            {
                 {
-                    Match match(false);
-                    Match* parentMatch20 = &match;
-                    lexer.SetPos(save);
-                    {
-                        Match match = LexRegExParser.ExpressionReference(lexer);
-                        ref.Reset(cast<Value<ustring>*>(match.value));
-                        *parentMatch20 = match;
-                    }
-                    *parentMatch1 = match;
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Primary");
+                    #endif
+                    return Match(true, value.Release());
                 }
             }
             *parentMatch0 = match;
@@ -627,9 +903,11 @@ public static class LexRegExParser
             }
         #endif
         soulcm.scm2html.Class* cls;
+        UniquePtr<soulcm.scm2html.Symbol> r;
         Match match(false);
         Match* parentMatch0 = &match;
         {
+            long pos = lexer.GetPos();
             Match match(false);
             Match* parentMatch1 = &match;
             {
@@ -639,16 +917,109 @@ public static class LexRegExParser
                     Match match(false);
                     Match* parentMatch3 = &match;
                     {
-                        long pos = lexer.GetPos();
                         Match match(false);
-                        if (*lexer == LBRACKET)
+                        Match* parentMatch4 = &match;
                         {
-                            ++lexer;
-                            match.hit = true;
+                            long pos = lexer.GetPos();
+                            Match match(false);
+                            if (*lexer == LBRACKET)
+                            {
+                                ++lexer;
+                                match.hit = true;
+                            }
+                            if (match.hit)
+                            {
+                                cls = lexerContext->MakeClass();
+                            }
+                            *parentMatch4 = match;
                         }
-                        if (match.hit)
+                        *parentMatch3 = match;
+                    }
+                    if (match.hit)
+                    {
+                        Match match(false);
+                        Match* parentMatch5 = &match;
                         {
-                            cls = lexerContext->MakeClass();
+                            Match match(false);
+                            Match* parentMatch6 = &match;
+                            {
+                                Match match(false);
+                                Match* parentMatch7 = &match;
+                                {
+                                    Match match(true);
+                                    long save = lexer.GetPos();
+                                    Match* parentMatch8 = &match;
+                                    {
+                                        Match match(false);
+                                        Match* parentMatch9 = &match;
+                                        {
+                                            Match match(false);
+                                            Match* parentMatch10 = &match;
+                                            {
+                                                long pos = lexer.GetPos();
+                                                Match match(false);
+                                                if (*lexer == INVERSE)
+                                                {
+                                                    ++lexer;
+                                                    match.hit = true;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    cls->SetInverse();
+                                                }
+                                                *parentMatch10 = match;
+                                            }
+                                            *parentMatch9 = match;
+                                        }
+                                        if (match.hit)
+                                        {
+                                            *parentMatch8 = match;
+                                        }
+                                        else
+                                        {
+                                            lexer.SetPos(save);
+                                        }
+                                    }
+                                    *parentMatch7 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    Match match(false);
+                                    Match* parentMatch11 = &match;
+                                    {
+                                        Match match(true);
+                                        Match* parentMatch12 = &match;
+                                        {
+                                            while (true)
+                                            {
+                                                long save = lexer.GetPos();
+                                                {
+                                                    Match match(false);
+                                                    Match* parentMatch13 = &match;
+                                                    {
+                                                        Match match = LexRegExParser.Range(lexer, lexerContext);
+                                                        r.Reset(cast<soulcm.scm2html.Symbol*>(match.value));
+                                                        *parentMatch13 = match;
+                                                    }
+                                                    if (match.hit)
+                                                    {
+                                                        *parentMatch12 = match;
+                                                    }
+                                                    else
+                                                    {
+                                                        lexer.SetPos(save);
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        *parentMatch11 = match;
+                                    }
+                                    *parentMatch7 = match;
+                                }
+                                *parentMatch6 = match;
+                            }
+                            *parentMatch5 = match;
                         }
                         *parentMatch3 = match;
                     }
@@ -657,87 +1028,28 @@ public static class LexRegExParser
                 if (match.hit)
                 {
                     Match match(false);
-                    Match* parentMatch4 = &match;
+                    Match* parentMatch14 = &match;
                     {
-                        Match match(false);
-                        Match* parentMatch5 = &match;
+                        Match match(true);
+                        Match* parentMatch15 = &match;
                         {
+                            System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
-                            Match* parentMatch6 = &match;
+                            if (*lexer == RBRACKET)
                             {
-                                Match match(true);
-                                long save = lexer.GetPos();
-                                Match* parentMatch7 = &match;
-                                {
-                                    Match match(false);
-                                    Match* parentMatch8 = &match;
-                                    {
-                                        Match match(false);
-                                        Match* parentMatch9 = &match;
-                                        {
-                                            long pos = lexer.GetPos();
-                                            Match match(false);
-                                            if (*lexer == INVERSE)
-                                            {
-                                                ++lexer;
-                                                match.hit = true;
-                                            }
-                                            if (match.hit)
-                                            {
-                                                cls->SetInverse();
-                                            }
-                                            *parentMatch9 = match;
-                                        }
-                                        *parentMatch8 = match;
-                                    }
-                                    if (match.hit)
-                                    {
-                                        *parentMatch7 = match;
-                                    }
-                                    else
-                                    {
-                                        lexer.SetPos(save);
-                                    }
-                                }
-                                *parentMatch6 = match;
+                                ++lexer;
+                                match.hit = true;
                             }
                             if (match.hit)
                             {
-                                Match match(false);
-                                Match* parentMatch10 = &match;
-                                {
-                                    Match match(true);
-                                    Match* parentMatch11 = &match;
-                                    {
-                                        while (true)
-                                        {
-                                            long save = lexer.GetPos();
-                                            {
-                                                Match match(false);
-                                                Match* parentMatch12 = &match;
-                                                {
-                                                    Match match = LexRegExParser.Range(lexer, lexerContext);
-                                                    *parentMatch12 = match;
-                                                }
-                                                if (match.hit)
-                                                {
-                                                    *parentMatch11 = match;
-                                                }
-                                                else
-                                                {
-                                                    lexer.SetPos(save);
-                                                    break;
-                                                }
-                                            }
-                                        }
-                                    }
-                                    *parentMatch10 = match;
-                                }
-                                *parentMatch6 = match;
+                                *parentMatch15 = match;
                             }
-                            *parentMatch5 = match;
+                            else
+                            {
+                                lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
+                            }
                         }
-                        *parentMatch4 = match;
+                        *parentMatch14 = match;
                     }
                     *parentMatch2 = match;
                 }
@@ -745,31 +1057,12 @@ public static class LexRegExParser
             }
             if (match.hit)
             {
-                Match match(false);
-                Match* parentMatch13 = &match;
                 {
-                    Match match(true);
-                    Match* parentMatch14 = &match;
-                    {
-                        System.Lex.Span span = lexer.GetSpan();
-                        Match match(false);
-                        if (*lexer == RBRACKET)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        if (match.hit)
-                        {
-                            *parentMatch14 = match;
-                        }
-                        else
-                        {
-                            lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
-                        }
-                    }
-                    *parentMatch13 = match;
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Class");
+                    #endif
+                    return Match(true, cls);
                 }
-                *parentMatch1 = match;
             }
             *parentMatch0 = match;
         }
@@ -809,17 +1102,18 @@ public static class LexRegExParser
         Match match(false);
         Match* parentMatch0 = &match;
         {
+            long pos = lexer.GetPos();
             Match match(false);
             Match* parentMatch1 = &match;
             {
-                Match match = LexRegExParser.Char(lexer);
-                s.Reset(cast<Value<uchar>*>(match.value));
-                *parentMatch1 = match;
-            }
-            if (match.hit)
-            {
                 Match match(false);
                 Match* parentMatch2 = &match;
+                {
+                    Match match = LexRegExParser.Char(lexer);
+                    s.Reset(cast<Value<uchar>*>(match.value));
+                    *parentMatch2 = match;
+                }
+                if (match.hit)
                 {
                     Match match(false);
                     Match* parentMatch3 = &match;
@@ -827,67 +1121,81 @@ public static class LexRegExParser
                         Match match(false);
                         Match* parentMatch4 = &match;
                         {
-                            long save = lexer.GetPos();
                             Match match(false);
                             Match* parentMatch5 = &match;
                             {
-                                Match match(false);
-                                if (*lexer == MINUS)
-                                {
-                                    ++lexer;
-                                    match.hit = true;
-                                }
-                                *parentMatch5 = match;
-                            }
-                            if (match.hit)
-                            {
+                                long save = lexer.GetPos();
                                 Match match(false);
                                 Match* parentMatch6 = &match;
                                 {
                                     Match match(false);
+                                    if (*lexer == MINUS)
+                                    {
+                                        ++lexer;
+                                        match.hit = true;
+                                    }
+                                    *parentMatch6 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    Match match(false);
                                     Match* parentMatch7 = &match;
                                     {
-                                        long pos = lexer.GetPos();
-                                        Match match = LexRegExParser.Char(lexer);
-                                        e.Reset(cast<Value<uchar>*>(match.value));
-                                        if (match.hit)
+                                        Match match(false);
+                                        Match* parentMatch8 = &match;
                                         {
-                                            symbol = lexerContext->MakeRange(s->value, e->value);
+                                            long pos = lexer.GetPos();
+                                            Match match = LexRegExParser.Char(lexer);
+                                            e.Reset(cast<Value<uchar>*>(match.value));
+                                            if (match.hit)
+                                            {
+                                                symbol = lexerContext->MakeRange(s->value, e->value);
+                                            }
+                                            *parentMatch8 = match;
                                         }
                                         *parentMatch7 = match;
                                     }
                                     *parentMatch6 = match;
                                 }
                                 *parentMatch5 = match;
-                            }
-                            *parentMatch4 = match;
-                            if (!match.hit)
-                            {
-                                Match match(false);
-                                Match* parentMatch8 = &match;
-                                lexer.SetPos(save);
+                                if (!match.hit)
                                 {
                                     Match match(false);
                                     Match* parentMatch9 = &match;
+                                    lexer.SetPos(save);
                                     {
-                                        long pos = lexer.GetPos();
-                                        Match match(true);
-                                        if (match.hit)
+                                        Match match(false);
+                                        Match* parentMatch10 = &match;
                                         {
-                                            symbol = lexerContext->MakeChar(s->value);
+                                            long pos = lexer.GetPos();
+                                            Match match(true);
+                                            if (match.hit)
+                                            {
+                                                symbol = lexerContext->MakeChar(s->value);
+                                            }
+                                            *parentMatch10 = match;
                                         }
                                         *parentMatch9 = match;
                                     }
-                                    *parentMatch8 = match;
+                                    *parentMatch5 = match;
                                 }
-                                *parentMatch4 = match;
                             }
+                            *parentMatch4 = match;
                         }
                         *parentMatch3 = match;
                     }
                     *parentMatch2 = match;
                 }
                 *parentMatch1 = match;
+            }
+            if (match.hit)
+            {
+                {
+                    #if (DEBUG)
+                        if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Range");
+                    #endif
+                    return Match(true, symbol);
+                }
             }
             *parentMatch0 = match;
         }
