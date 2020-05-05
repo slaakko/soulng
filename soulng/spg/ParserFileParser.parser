@@ -215,6 +215,7 @@ parser ParserFileParser
 
     Primitive : soulng::spg::Parser*
         ::= EMPTY{ return new soulng::spg::EmptyParser(); }
+        |   ANY{ return new soulng::spg::AnyParser(); }
         |   ID{ return new soulng::spg::TokenParser(lexer.GetMatch(span)); }
         |   CHARLIT{ return new soulng::spg::CharParser(soulng::spg::ParseCharLiteral(lexer.FileName(), lexer.GetToken(pos))); }
         |   STRINGLIT

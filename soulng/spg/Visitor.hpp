@@ -9,6 +9,7 @@
 namespace soulng { namespace spg {
 
 class EmptyParser;
+class AnyParser;
 class TokenParser;
 class CharParser;
 class StringParser;
@@ -34,6 +35,7 @@ class Visitor
 public:
     virtual ~Visitor();
     virtual void Visit(EmptyParser& parser) {}
+    virtual void Visit(AnyParser& parser) {}
     virtual void Visit(TokenParser& parser) {}
     virtual void Visit(CharParser& parser) {}
     virtual void Visit(StringParser& parser) {}

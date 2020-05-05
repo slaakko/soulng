@@ -48,7 +48,7 @@ parser LexRegExParser
         |   ESCAPE{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(soulcm.scm2html.MakeEscapeValue(lexer.FileName(), lexer.GetToken(pos))))); }
         |   INVERSE{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar('^'))); }
         |   MINUS{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar('-'))); }
-        |   CHAR{ ustring match = lexerGetMatch(span); value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(match[0]))); }
+        |   CHAR{ ustring match = lexer.GetMatch(span); value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(match[0]))); }
         |   DOT{ value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeAny())); }
         |   Class(lexerContext):cls{ value.Reset(new soulcm.scm2html.SymbolExpr(cls)); }
         |   ExpressionReference:ref{ value.Reset(new soulcm.scm2html.RefExpr(ref)); }
@@ -59,7 +59,7 @@ parser LexRegExParser
         ;
 
     Class(soulcm.scm2html.LexerContext* lexerContext, var soulcm.scm2html.Class* cls) : soulcm.scm2html.Class*
-        ::= (LBRACKET{ cls = lexerContext->MakeClass(); } ((INVERSE{ cls->SetInverse(); })? (Range(lexerContext):r)*) RBRACKET!)
+        ::= (LBRACKET{ cls = lexerContext->MakeClass(); } ((INVERSE{ cls->SetInverse(); })? (Range(lexerContext):r{ cls->AddSymbol(r); })*) RBRACKET!)
         {
             return cls;
         }

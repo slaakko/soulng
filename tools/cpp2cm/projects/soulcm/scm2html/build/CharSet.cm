@@ -5,7 +5,7 @@ using System.Collections;
 
 // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/sng2html/sng2html/CharSet.cpp' using cpp2cm version 1.0.0
 
-namespace sng2html
+namespace soulcm.scm2html
 {
     public class CharSet
     {
@@ -32,4 +32,4 @@ namespace sng2html
         private bool inverse;
         private List<System.Parsing.Range> ranges;
     }
-} // namespace sng2html
+} // namespace soulcm.scm2html

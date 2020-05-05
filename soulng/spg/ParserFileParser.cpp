@@ -3772,6 +3772,19 @@ soulng::parser::Match ParserFileParser::Primitive(ParserFileLexer& lexer)
             }
             break;
         }
+        case ANY:
+        {
+            ++lexer;
+            {
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Primitive"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new soulng::spg::AnyParser);
+                }
+            }
+            break;
+        }
         case ID:
         {
             ++lexer;

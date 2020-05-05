@@ -1,122 +1,73 @@
 using System;
 using System.Collections;
 
-namespace sng2html
-{
-    public class Visitor
-    {
-        public virtual ~Visitor()
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parser)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED parserFile)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED domain)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED lexerFile)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED symbol)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED symbol)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED symbol)
-        {
-        }
-        public virtual void Visit(NOT_CONVERTED symbol)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.Alt& alt)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.Cat& cat)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.Kleene& kleene)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.Pos& pos)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.Opt& opt)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.ParenExpr& parenExpr)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.SymbolExpr& symbolExpr)
-        {
-        }
-        public virtual void Visit(sng2html.sng2html.RefExpr& refExpr)
-        {
-        }
-    }
-} // namespace sng2html
-using System;
-using System.Collections;
-
-
 namespace soulcm.scm2html
 {
     public class Visitor
     {
+        public virtual void Visit(EmptyParser& parser)
+        {
+        }
+        public virtual void Visit(TokenParser& parser)
+        {
+        }
+        public virtual void Visit(CharParser& parser)
+        {
+        }
+        public virtual void Visit(StringParser& parser)
+        {
+        }
+        public virtual void Visit(CharSetParser& parser)
+        {
+        }
+        public virtual void Visit(OptionalParser& parser)
+        {
+        }
+        public virtual void Visit(KleeneParser& parser)
+        {
+        }
+        public virtual void Visit(PositiveParser& parser)
+        {
+        }
+        public virtual void Visit(ExpectationParser& parser)
+        {
+        }
+        public virtual void Visit(GroupingParser& parser)
+        {
+        }
+        public virtual void Visit(SequenceParser& parser)
+        {
+        }
+        public virtual void Visit(AlternativeParser& parser)
+        {
+        }
+        public virtual void Visit(DifferenceParser& parser)
+        {
+        }
+        public virtual void Visit(ListParser& parser)
+        {
+        }
+        public virtual void Visit(ActionParser& parser)
+        {
+        }
+        public virtual void Visit(NonterminalParser& parser)
+        {
+        }
+        public virtual void Visit(RuleParser& parser)
+        {
+        }
+        public virtual void Visit(GrammarParser& parser)
+        {
+        }
+        public virtual void Visit(ParserFile& parserFile)
+        {
+        }
+        public virtual void Visit(Domain& domain)
+        {
+        }
+        public virtual void Visit(LexerFile& lexerFile)
+        {
+        }
         public virtual void Visit(Char& c)
         {
         }

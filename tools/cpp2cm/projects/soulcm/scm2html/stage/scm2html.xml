@@ -40,82 +40,6 @@
                             <project name="scm2html"/>
                         </projects>
                         <classes>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="44" id="class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A" key="class" name="Alt" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="47" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="26" id="constructor_Alt_86C0E00EE04EB1F7C82EB07CF0CF3E80DAD03B3D" name="Alt">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_left__B71DF08E9BDC217B3A27398AFCD26D970061E437" name="left_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                            <parameter access="public" id="parameter_right__451D46C5C7483AA32CDDE39287BB4DA43CD500E9" name="right_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="48" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="30" id="function_Accept_5B24D161936DAF89CC180B516FE981FACAA790DD" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_67175B936B9CEE69DB680996DDC3D041DABF4AE5" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                            </class>
-                            <class abstract="true" access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="32" id="class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75" key="class" name="BinaryRegExpression" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                </baseClasses>
-                                <derivedClasses>
-                                    <derivedClass derivedClassId="class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A"/>
-                                    <derivedClass derivedClassId="class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80"/>
-                                </derivedClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="35" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="22" id="constructor_BinaryRegExpression_8F012734948277FE4AC862D9FA6AA7190C964A26" name="BinaryRegExpression">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_left__B7131812264A880D9967265F397A4F8EEAE6A304" name="left_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                            <parameter access="public" id="parameter_right__DBA983C57F60329C51303F8FFA7CC5EF32877673" name="right_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="38" id="function_IsCharSymbolExpr_CFE00F379EE80DB97684507F1CCE08D1734BCA9A" name="IsCharSymbolExpr" returnType="bool" specifiers="const override">
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_IsCharSymbolExpr_DB91C59FBB5F773C1FA226B6F9C8429F3D5548DB"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="36" id="function_Left_7069CDDBDC8175BD9B51AC070F3B8F1AD55DDC30" name="Left" returnType="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5" specifiers="const"/>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="37" id="function_Right_527071A83200C06EFEF197BD7596A7F4046F3227" name="Right" returnType="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5" specifiers="const"/>
-                                </functions>
-                                <variables>
-                                    <variable access="private" id="variable_left_65083348977A6051C3307AB91391627F8C8EFB69" name="left" type="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                    <variable access="private" id="variable_right_BB7A8DD7D6BC8C3A6ACADA93B04DC474C5C8A042" name="right" type="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                </variables>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="51" id="class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80" key="class" name="Cat" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="54" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="35" id="constructor_Cat_42A5E0C29B6AFD994B3C79B35B5589E282B8AA5E" name="Cat">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_left__B976235C99B200CC5C2BF15BC22AEF113041D1B4" name="left_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                            <parameter access="public" id="parameter_right__E1BEF9893D13FDE1A9AA0A486641BFE254328E27" name="right_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="55" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="39" id="function_Accept_9004236D13FA0017A08DCA4EB73F5163D544A766" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_67DC6E608C2C27B6A8C3FA1DC06762E9F050C262" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                            </class>
                             <class access="public" definitionFile="CharSet.hpp" definitionFileId="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html" definitionLine="13" id="class_CharSet_32B52028E6A76465259BCA939C642CBE13173650" key="class" name="CharSet" project="scm2html">
                                 <constructors>
                                     <constructor access="public" declarationFile="CharSet.hpp" declarationFileId="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html" declarationLine="16" definitionFile="CharSet.cpp" definitionFileId="file/CharSet.cpp_B7C476E79A7C77C80E38324FC25130C5B9930CBC.html" definitionLine="9" id="constructor_CharSet_9FD6E77571C2DB681FB3DBEC96D4FC7CCE416DBF" name="CharSet"/>
@@ -134,380 +58,6 @@
                                     <variable access="private" id="variable_inverse_787CE9206405598DACB4504BA234CE179F353751" name="inverse" type="bool"/>
                                     <variable access="private" id="variable_ranges_1D4060452EAD7C1CF3015765B842D595B8AB24C1" name="ranges" type="class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC.struct_Range_0D38C33D6060F43FC56212656D1ADC2E7480931B"/>
                                 </variables>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="58" id="class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B" key="class" name="Kleene" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="61" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="44" id="constructor_Kleene_642E355F3BC7913D74ECDDAD66273C298FA6C5F7" name="Kleene">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_child__F63BE042CECF65A7A079A4F3918A679A57F7B90C" name="child_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="62" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="48" id="function_Accept_EA6BAAA716E533163977FACABE71A957B062790F" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_8D1980539AFE3A9A692041BF189011AEABEC2B92" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="72" id="class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14" key="class" name="Opt" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="75" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="62" id="constructor_Opt_BF05CAE909828F8AA29911DC027F5F9CC7607374" name="Opt">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_child__673AE99943F39A0C209B9361FD2CA1B014612E45" name="child_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="76" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="66" id="function_Accept_5AFC4F049FB7C857D8157AD5117BC713A574230E" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_B7CAE085F3CBFC3CE5815713D39F09B10A0CAE56" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="79" id="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19" key="class" name="ParenExpr" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="82" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="71" id="constructor_ParenExpr_C23A52918D91EA6D971584D0AFFD05B2AF824DFF" name="ParenExpr">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_child__D53B246A8B450112EE41B504647AB19DA5958503" name="child_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="83" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="75" id="function_Accept_D6DCFFFC4AEEE46E40B4F20AA5D63B6EB8F2FD45" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_8E7FD733DC755AEBED5CA385737764210EA57520" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="65" id="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD" key="class" name="Pos" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="68" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="53" id="constructor_Pos_23FBB6BE0646CECDF6AE061B3EF445504C231BB0" name="Pos">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_child__EEECB37D6C1E48F97EF49D2C7EE1A0E12D6F9C1E" name="child_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="69" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="57" id="function_Accept_A7A59982D1624E80899A06EACC9C41FD835A06FF" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_A6A814AEEF2FC49D6EBDF01AE10EC15E89CF2A86" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="97" id="class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255" key="class" name="RefExpr" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="100" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="89" id="constructor_RefExpr_6607155FFB68E4A1962046CEAC20948F8F13BA69" name="RefExpr">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_exprId__9507D1E961914B093EDB94B51945F32438875D25" name="exprId_" type="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="102" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="93" id="function_Accept_FD9EB5AA09D47E7851049480F8E0493F52D453C5" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_DAB03D5C9CC804EED0F4AB476433D94D22403C29" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="101" id="function_ExprId_52E394BC48587C3C7191D813D526D2ED61120B77" name="ExprId" returnType="const.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89.lvalueref.typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89" specifiers="const"/>
-                                </functions>
-                                <variables>
-                                    <variable access="private" id="variable_exprId_F09DAC1D81EC35FC841C86B94AF622C7C1C78BE0" name="exprId" type="typedef_u32string_0E49687DADCC5D9280600F55FA5D93A7E207BB89"/>
-                                </variables>
-                            </class>
-                            <class abstract="true" access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="14" id="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5" key="class" name="RegExpression" project="scm2html">
-                                <derivedClasses>
-                                    <derivedClass derivedClassId="class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75"/>
-                                    <derivedClass derivedClassId="class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255"/>
-                                    <derivedClass derivedClassId="class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655"/>
-                                    <derivedClass derivedClassId="class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50"/>
-                                </derivedClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="17" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="10" id="constructor_RegExpression_61A94826A37761353B38FFEFDE7252FF92BDFEEA" name="RegExpression"/>
-                                </constructors>
-                                <functions>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="19" id="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373" name="Accept" returnType="void" specifiers="pure virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_61EC29C87417A98495B7B0A948DFFA8759F218DA" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overrides>
-                                            <override functionId="function_Accept_A75395809FFA44313E7A5D419BAAEE6C4184C541"/>
-                                            <override functionId="function_Accept_A7A59982D1624E80899A06EACC9C41FD835A06FF"/>
-                                            <override functionId="function_Accept_9004236D13FA0017A08DCA4EB73F5163D544A766"/>
-                                            <override functionId="function_Accept_5B24D161936DAF89CC180B516FE981FACAA790DD"/>
-                                            <override functionId="function_Accept_EA6BAAA716E533163977FACABE71A957B062790F"/>
-                                            <override functionId="function_Accept_5AFC4F049FB7C857D8157AD5117BC713A574230E"/>
-                                            <override functionId="function_Accept_FD9EB5AA09D47E7851049480F8E0493F52D453C5"/>
-                                            <override functionId="function_Accept_D6DCFFFC4AEEE46E40B4F20AA5D63B6EB8F2FD45"/>
-                                        </overrides>
-                                    </function>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="20" id="function_IsCharSymbolExpr_DB91C59FBB5F773C1FA226B6F9C8429F3D5548DB" name="IsCharSymbolExpr" returnType="bool" specifiers="const virtual">
-                                        <overrides>
-                                            <override functionId="function_IsCharSymbolExpr_CFE00F379EE80DB97684507F1CCE08D1734BCA9A"/>
-                                            <override functionId="function_IsCharSymbolExpr_B2E126432A2DC91B184B8479B7B5054AC8E42D5E"/>
-                                        </overrides>
-                                    </function>
-                                    <destructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="18" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="14" id="destructor_destructor_707A1E74DD891CA0323045CBBD36B4578E9EABB9" name="destructor" specifiers="virtual"/>
-                                </functions>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="86" id="class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655" key="class" name="SymbolExpr" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                </baseClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="89" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="80" id="constructor_SymbolExpr_DD340B630A87E27044C8785452A053B5818F668C" name="SymbolExpr">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_symbol__0D6ACF63C4A00EAE9F1C446754CA1FED64AC36D2" name="symbol_" type="type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E.ptr.type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="91" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="84" id="function_Accept_A75395809FFA44313E7A5D419BAAEE6C4184C541" name="Accept" returnType="void" specifiers="override">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_visitor_3D37345681AD2DAFCE8EA1A93FC02FDE3501774E" name="visitor" type="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
-                                        </parameters>
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="90" id="function_GetSymbol_8135FA2B5A61F4828E4280A434CE65C7FF4BAF01" name="GetSymbol" returnType="type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E.ptr.type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E" specifiers="const"/>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="92" id="function_IsCharSymbolExpr_B2E126432A2DC91B184B8479B7B5054AC8E42D5E" name="IsCharSymbolExpr" returnType="bool" specifiers="const override">
-                                        <overriddenFunctions>
-                                            <overriddenFunction functionId="function_IsCharSymbolExpr_DB91C59FBB5F773C1FA226B6F9C8429F3D5548DB"/>
-                                        </overriddenFunctions>
-                                    </function>
-                                </functions>
-                                <variables>
-                                    <variable access="private" id="variable_symbol_660AD471FC03AB77DCFC85388D9883B0E1989067" name="symbol" type="type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E.ptr.type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E"/>
-                                </variables>
-                            </class>
-                            <class access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="23" id="class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50" key="class" name="UnaryRegExpression" project="scm2html">
-                                <baseClasses>
-                                    <baseClass baseClassId="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                </baseClasses>
-                                <derivedClasses>
-                                    <derivedClass derivedClassId="class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B"/>
-                                    <derivedClass derivedClassId="class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14"/>
-                                    <derivedClass derivedClassId="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19"/>
-                                    <derivedClass derivedClassId="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD"/>
-                                </derivedClasses>
-                                <constructors>
-                                    <constructor access="public" declarationFile="RegEx.hpp" declarationFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" declarationLine="26" definitionFile="RegEx.cpp" definitionFileId="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html" definitionLine="18" id="constructor_UnaryRegExpression_3FD27CBC68B503EEAA42330EFCF407C4AB0C4B7A" name="UnaryRegExpression">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_child__5411F5702C8808348D72D0E5D77579E4E2CE2E65" name="child_" type="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                        </parameters>
-                                    </constructor>
-                                </constructors>
-                                <functions>
-                                    <function access="public" definitionFile="RegEx.hpp" definitionFileId="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html" definitionLine="27" id="function_Child_8B63AD8B1428261403BFA0E277029B75952368B7" name="Child" returnType="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5" specifiers="const"/>
-                                </functions>
-                                <variables>
-                                    <variable access="private" id="variable_child_2B2A1A8B4C5D9B9F993DED693765097E2F5D526E" name="child" type="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
-                                </variables>
-                            </class>
-                            <class access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="45" id="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682" key="class" name="Visitor" project="scm2html">
-                                <functions>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="63" id="function_Visit_EC39A88606773A4349EEACF88E125932DEB767EC" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_0CE528A4800172461F22EF69DDF01CA3890A8101" name="parser" type="type_EB923EC9B37A7387286A9B862CD1E7D15EC76CF4.lvalueref.type_EB923EC9B37A7387286A9B862CD1E7D15EC76CF4"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="74" id="function_Visit_1CD640FB11A510CAA3E75D9C3D99F478A474315D" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_alt_A2DE8AAAC6B6AD6C0B3DC9426A6432D021767AB6" name="alt" type="class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.lvalueref.class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="60" id="function_Visit_D75CC6965B2FBD0B26C58CB24566D473309FFFD4" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_1D32860A102084E8926C4B273B29C5B2A090D1DC" name="parser" type="type_268B04EB6B7518FC2D123FA13B912F07B8F5B966.lvalueref.type_268B04EB6B7518FC2D123FA13B912F07B8F5B966"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="71" id="function_Visit_BFBA6F6D4D2B665FF9FB9EA4237B351B9F719DD3" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_symbol_C0348FC6DFF051E870EFC93935E0BBCA0AD7D65B" name="symbol" type="type_322444D3BB52C341F429CA0454F292DC242F315B.lvalueref.type_322444D3BB52C341F429CA0454F292DC242F315B"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="75" id="function_Visit_B12D7AC34D6F53D57212C5B91900DADE682B301D" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_cat_551E636B78C833C3896CF2E92C3D1AE3A1DA13E1" name="cat" type="class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.lvalueref.class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="70" id="function_Visit_58BF7D8C41FF1C3CC236BBAEF426BA82A6931700" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_symbol_100EF30A187ED9608A4BBF1E3A470D1A480A7FF4" name="symbol" type="type_0F9BA953E35135A3F8EC268817CC92F2557202A9.lvalueref.type_0F9BA953E35135A3F8EC268817CC92F2557202A9"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="51" id="function_Visit_8D87972C79127520BF233EEC1C5149DE20309120" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_32EB58EA8E25FD2D29BA107CE4D214E0F53B3A70" name="parser" type="type_69CD83E8AC58E314719145762C2F1E00606D331F.lvalueref.type_69CD83E8AC58E314719145762C2F1E00606D331F"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="53" id="function_Visit_BAACB3FEE71C5935086852398F0BC8411D12A218" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_C5363D18298E7FA20F8E895022BB85F16FACBD2E" name="parser" type="type_7823DEB1AC590208ECD2026777D93D90A36E04F2.lvalueref.type_7823DEB1AC590208ECD2026777D93D90A36E04F2"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="73" id="function_Visit_9481BC6E1ABB3E9703AB3FA05D7F6C466C3FFEBC" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_symbol_A855234B46653FAD5E783210A29747AC30001385" name="symbol" type="type_41FF354B2B330BD1F8A0587675E43CB32A731F33.lvalueref.type_41FF354B2B330BD1F8A0587675E43CB32A731F33"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="61" id="function_Visit_B6F4245692505D2101ACF2F87F362BF424F2FEE9" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_C652C2AED0F5E4D00E2007B0229D224F7C240DEE" name="parser" type="type_9FDDFD89F8FC424434FAFBCBB54D162C50DA5A3D.lvalueref.type_9FDDFD89F8FC424434FAFBCBB54D162C50DA5A3D"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="68" id="function_Visit_57A0E9A4DAE350BE5674DCBC887BCF3E49DCF579" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_domain_8E1DD6ECC866287454402C223A928429A6CE83C5" name="domain" type="type_9B10914D8B0A097ACE7176E8973F5C3DEE92BB44.lvalueref.type_9B10914D8B0A097ACE7176E8973F5C3DEE92BB44"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="49" id="function_Visit_D4E87D00395CF98951EF9C23949BD14D91015BAD" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_2DB29FC64C484184E146426B0F17AC8E21D2752E" name="parser" type="type_326B963EBAECCAAA004A21815217B845A7E3EF9B.lvalueref.type_326B963EBAECCAAA004A21815217B845A7E3EF9B"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="57" id="function_Visit_CD94FAA49C639E217DBEE9339750E1743F5C104E" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_74AF88C25132CF2BC8BAF5E2FC4166A35457D097" name="parser" type="type_0B3407FEC54E60CA799ABB7786D528BFF89C1AC0.lvalueref.type_0B3407FEC54E60CA799ABB7786D528BFF89C1AC0"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="66" id="function_Visit_9CE2E1B08A6ECD046787C7A919817873651B5B96" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_AC08E11E6CFF633E03AF306763CC48F879572C89" name="parser" type="type_14EBD6F5EF5E30595D0BDF28760C3F746EE14052.lvalueref.type_14EBD6F5EF5E30595D0BDF28760C3F746EE14052"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="58" id="function_Visit_0F4BF87CD2046929C4B6D1E148879B1E1C6759F3" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_0D4D4EA54A624DC8D40B8AEAA3FF9CDA7A720518" name="parser" type="type_C578530D15858DBDFAE3ACBDA9C050D86386EFA0.lvalueref.type_C578530D15858DBDFAE3ACBDA9C050D86386EFA0"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="76" id="function_Visit_BB5D13CB35AC9580FA0074A0B37878638605D2CC" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_kleene_EBFD77946DD8273B1E4CED6DDD3A88F1FAD47EA0" name="kleene" type="class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.lvalueref.class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="55" id="function_Visit_79FF6B8E9AE9C1C9EB1E536E77830C828DC69630" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_155A4C461510CEF34127EBD10EC4E9B9DEADC0C0" name="parser" type="type_4B6AF5AE8856DD4FC93822291631BBB1A3022E52.lvalueref.type_4B6AF5AE8856DD4FC93822291631BBB1A3022E52"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="69" id="function_Visit_151E5B915553F58D9AC392961688AADFB213FF4E" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_lexerFile_EA48E4769C02F77ADECA48BB1D64A584FB548ACE" name="lexerFile" type="type_B7C590DB716D2BC10B3ED186A9A0125AFB474F44.lvalueref.type_B7C590DB716D2BC10B3ED186A9A0125AFB474F44"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="62" id="function_Visit_1B0005528BD9C614924C162F530E3BF7ADE4F50D" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_1B360ABE539EC48FB36A2390195E7E543AC64EDC" name="parser" type="type_87B581C9ACBB2B2DEE1CDC23FCE905C6E4E3BE19.lvalueref.type_87B581C9ACBB2B2DEE1CDC23FCE905C6E4E3BE19"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="64" id="function_Visit_DA3669EFA2C6DFBB9AF43CA3F10AB6626407FBEB" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_382F7DA6B2C6EE71DAD955BE2F655A89F8BC2C29" name="parser" type="type_8E460BF8F2417262C9998026D1E91518624D1322.lvalueref.type_8E460BF8F2417262C9998026D1E91518624D1322"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="78" id="function_Visit_65FF7214882AF1084F629F2D8DDB4691F5F6EA41" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_opt_370FA0C6C4D9452F04049E885788278D8F16BE03" name="opt" type="class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.lvalueref.class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="54" id="function_Visit_5D13A867378BC53EA7FFA3F18D21F27A22CFF16E" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_5A2C234088D9491C296A58BEE135E8F22C20FF09" name="parser" type="type_8210399AB8BD65E34328967DDFE9B6D7D47A64BE.lvalueref.type_8210399AB8BD65E34328967DDFE9B6D7D47A64BE"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="79" id="function_Visit_F0E096907C5FEF668695126BE70A1634D6873694" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parenExpr_21C2E15494B5615A4D3C2C35FEBE25A1A6771C24" name="parenExpr" type="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.lvalueref.class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="67" id="function_Visit_0ED9D4E6BB9B54D491E67F43A96039C574BC811B" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parserFile_E51F0D17FD8F8C0428C8A672DA08C4CDC8484EFD" name="parserFile" type="type_E39C6F5277CB409AA47BE413D63B984FDD8B78C1.lvalueref.type_E39C6F5277CB409AA47BE413D63B984FDD8B78C1"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="77" id="function_Visit_57392987DCA8503CCDB42F1ABA850B3365844A9F" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_pos_AE06A36E1CC47776A0094A38D3F9C3FFEAFA9CBD" name="pos" type="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.lvalueref.class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="56" id="function_Visit_CB7A05FEF0997F07DF10B30D0D087E736D6FC9C7" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_63515A0C99F81DA9B409245837B956485E35E757" name="parser" type="type_AD2B1F4EB7AADFE2BD4765538A414D2B0D4A46B6.lvalueref.type_AD2B1F4EB7AADFE2BD4765538A414D2B0D4A46B6"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="72" id="function_Visit_F04E74F7E9FA8B6BFABEF214225D6D21D497E23C" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_symbol_64DBC48D969D1BCF430CF52FD6AE23505C2DC3F2" name="symbol" type="type_A16C5BBE4BF996740F257AA1E81BD57E4C52C8DD.lvalueref.type_A16C5BBE4BF996740F257AA1E81BD57E4C52C8DD"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="81" id="function_Visit_CA56F047329B2E490EB124D84ED8EBE80ACA227A" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_refExpr_0ACA228EA9493F5FBE362FCAF2E9AB9C56B50376" name="refExpr" type="class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.lvalueref.class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="65" id="function_Visit_3EDFA4854E3825DFD09BB1B9DD2831C11B3C9E49" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_830348CF0DB39EC35B0C650C45286BD37CF62EE7" name="parser" type="type_0A868C5719862759DADACE3B0684C1F9132704F3.lvalueref.type_0A868C5719862759DADACE3B0684C1F9132704F3"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="59" id="function_Visit_0155A654EA417A966755BC73CA5C76E3451742EC" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_3CB8614E9F139CF5B3E5BA63CFA5CE3BAE9BF8ED" name="parser" type="type_3C5F3AB08904673F2B6428C55F3370C81FB8876D.lvalueref.type_3C5F3AB08904673F2B6428C55F3370C81FB8876D"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="52" id="function_Visit_F102B775ED919F3D9F9C934F078791F4866A59B6" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_FAEE44B0381490257236536254992C1B395D4AE1" name="parser" type="type_4BFC0534E0B31D2603368FDF29B4F53B8604BA1C.lvalueref.type_4BFC0534E0B31D2603368FDF29B4F53B8604BA1C"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="80" id="function_Visit_F81ED0903BE20638AC179E3952863870FC5638FC" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_symbolExpr_5E518B0E0F9C987F9FF0E62E9492C26905F32E4E" name="symbolExpr" type="class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.lvalueref.class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655"/>
-                                        </parameters>
-                                    </function>
-                                    <function access="public" definitionFile="Visitor.hpp" definitionFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" definitionLine="50" id="function_Visit_6025534F4E613ECECEF321296DB402ABED7796FC" name="Visit" returnType="void" specifiers="virtual">
-                                        <parameters>
-                                            <parameter access="public" id="parameter_parser_3742607EA2C35047CB0C0FFDAC6FAA1671B6FC22" name="parser" type="type_DAEF2147E79571AF8D5A4F376F29FB535295E66D.lvalueref.type_DAEF2147E79571AF8D5A4F376F29FB535295E66D"/>
-                                        </parameters>
-                                    </function>
-                                    <destructor access="public" declarationFile="Visitor.hpp" declarationFileId="file/Visitor.hpp_E2BE832FD1260077BA912CBDC98957B38CE4316C.html" declarationLine="48" definitionFile="Visitor.cpp" definitionFileId="file/Visitor.cpp_35B54DB5AA00FE5C1B21F1F7A994AC68CD39A82D.html" definitionLine="10" id="destructor_destructor_4558F320D9CDA7125803DDEABAAC3DB26B4C8952" name="destructor" specifiers="virtual"/>
-                                </functions>
                             </class>
                         </classes>
                     </namespace>
@@ -12108,13 +11658,6 @@
         </typedefs>
     </namespace>
     <types>
-        <externalType access="public" id="type_EB923EC9B37A7387286A9B862CD1E7D15EC76CF4" name="ActionParser"/>
-        <derivedType access="public" id="type_EB923EC9B37A7387286A9B862CD1E7D15EC76CF4.lvalueref.type_EB923EC9B37A7387286A9B862CD1E7D15EC76CF4" name="ActionParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_EB923EC9B37A7387286A9B862CD1E7D15EC76CF4"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_AddNode_F59D8A7AD6C7F52BC2A06BE180647D9281F62EAA.lvalueref.class_AddNode_F59D8A7AD6C7F52BC2A06BE180647D9281F62EAA" name="AddNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_AddNode_F59D8A7AD6C7F52BC2A06BE180647D9281F62EAA"/>
@@ -12130,26 +11673,6 @@
         <derivedType access="public" id="class_AliasNode_B40A668A6AEB9BCBCA7C048E388679AFBA6FA6D4.lvalueref.class_AliasNode_B40A668A6AEB9BCBCA7C048E388679AFBA6FA6D4" name="AliasNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_AliasNode_B40A668A6AEB9BCBCA7C048E388679AFBA6FA6D4"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.lvalueref.class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A" name="Alt&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_268B04EB6B7518FC2D123FA13B912F07B8F5B966" name="AlternativeParser"/>
-        <derivedType access="public" id="type_268B04EB6B7518FC2D123FA13B912F07B8F5B966.lvalueref.type_268B04EB6B7518FC2D123FA13B912F07B8F5B966" name="AlternativeParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_268B04EB6B7518FC2D123FA13B912F07B8F5B966"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_322444D3BB52C341F429CA0454F292DC242F315B" name="Any"/>
-        <derivedType access="public" id="type_322444D3BB52C341F429CA0454F292DC242F315B.lvalueref.type_322444D3BB52C341F429CA0454F292DC242F315B" name="Any&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_322444D3BB52C341F429CA0454F292DC242F315B"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -12369,12 +11892,6 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.lvalueref.class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80" name="Cat&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_CatchNode_C5332657F67C89B25013743776CA3876B3A5969A.lvalueref.class_CatchNode_C5332657F67C89B25013743776CA3876B3A5969A" name="CatchNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_CatchNode_C5332657F67C89B25013743776CA3876B3A5969A"/>
@@ -12387,13 +11904,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_0F9BA953E35135A3F8EC268817CC92F2557202A9" name="Char"/>
-        <derivedType access="public" id="type_0F9BA953E35135A3F8EC268817CC92F2557202A9.lvalueref.type_0F9BA953E35135A3F8EC268817CC92F2557202A9" name="Char&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_0F9BA953E35135A3F8EC268817CC92F2557202A9"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_CharLiteralNode_79B44AD52D16F8D05FD9B71E97FD23B00AE977DD.lvalueref.class_CharLiteralNode_79B44AD52D16F8D05FD9B71E97FD23B00AE977DD" name="CharLiteralNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_CharLiteralNode_79B44AD52D16F8D05FD9B71E97FD23B00AE977DD"/>
@@ -12403,27 +11913,6 @@
         <derivedType access="public" id="class_CharNode_D97C752E6DE2F8ED51F0342FF190332274DC276C.lvalueref.class_CharNode_D97C752E6DE2F8ED51F0342FF190332274DC276C" name="CharNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_CharNode_D97C752E6DE2F8ED51F0342FF190332274DC276C"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_69CD83E8AC58E314719145762C2F1E00606D331F" name="CharParser"/>
-        <derivedType access="public" id="type_69CD83E8AC58E314719145762C2F1E00606D331F.lvalueref.type_69CD83E8AC58E314719145762C2F1E00606D331F" name="CharParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_69CD83E8AC58E314719145762C2F1E00606D331F"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_7823DEB1AC590208ECD2026777D93D90A36E04F2" name="CharSetParser"/>
-        <derivedType access="public" id="type_7823DEB1AC590208ECD2026777D93D90A36E04F2.lvalueref.type_7823DEB1AC590208ECD2026777D93D90A36E04F2" name="CharSetParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_7823DEB1AC590208ECD2026777D93D90A36E04F2"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_41FF354B2B330BD1F8A0587675E43CB32A731F33" name="Class"/>
-        <derivedType access="public" id="type_41FF354B2B330BD1F8A0587675E43CB32A731F33.lvalueref.type_41FF354B2B330BD1F8A0587675E43CB32A731F33" name="Class&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_41FF354B2B330BD1F8A0587675E43CB32A731F33"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -12781,13 +12270,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_9FDDFD89F8FC424434FAFBCBB54D162C50DA5A3D" name="DifferenceParser"/>
-        <derivedType access="public" id="type_9FDDFD89F8FC424434FAFBCBB54D162C50DA5A3D.lvalueref.type_9FDDFD89F8FC424434FAFBCBB54D162C50DA5A3D" name="DifferenceParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_9FDDFD89F8FC424434FAFBCBB54D162C50DA5A3D"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_DisjunctionNode_8146227165C72A21A1D3B641CD1DCCCFE1062FBD.lvalueref.class_DisjunctionNode_8146227165C72A21A1D3B641CD1DCCCFE1062FBD" name="DisjunctionNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_DisjunctionNode_8146227165C72A21A1D3B641CD1DCCCFE1062FBD"/>
@@ -12818,13 +12300,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_9B10914D8B0A097ACE7176E8973F5C3DEE92BB44" name="Domain"/>
-        <derivedType access="public" id="type_9B10914D8B0A097ACE7176E8973F5C3DEE92BB44.lvalueref.type_9B10914D8B0A097ACE7176E8973F5C3DEE92BB44" name="Domain&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_9B10914D8B0A097ACE7176E8973F5C3DEE92BB44"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_DotNode_00CE98206AFDB0D9D33F072754FA67CCD9FCC726.lvalueref.class_DotNode_00CE98206AFDB0D9D33F072754FA67CCD9FCC726" name="DotNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_DotNode_00CE98206AFDB0D9D33F072754FA67CCD9FCC726"/>
@@ -12840,13 +12315,6 @@
         <derivedType access="public" id="class_DoubleNode_E7B613E244C35F5B6C1FD5106F577A1627A09507.lvalueref.class_DoubleNode_E7B613E244C35F5B6C1FD5106F577A1627A09507" name="DoubleNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_DoubleNode_E7B613E244C35F5B6C1FD5106F577A1627A09507"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_326B963EBAECCAAA004A21815217B845A7E3EF9B" name="EmptyParser"/>
-        <derivedType access="public" id="type_326B963EBAECCAAA004A21815217B845A7E3EF9B.lvalueref.type_326B963EBAECCAAA004A21815217B845A7E3EF9B" name="EmptyParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_326B963EBAECCAAA004A21815217B845A7E3EF9B"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -12895,13 +12363,6 @@
         <derivedType access="public" id="class_EquivalenceNode_4BB6CBD9BAFDFB4E2EE327A4EA535FAC0FBCEE5C.lvalueref.class_EquivalenceNode_4BB6CBD9BAFDFB4E2EE327A4EA535FAC0FBCEE5C" name="EquivalenceNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_EquivalenceNode_4BB6CBD9BAFDFB4E2EE327A4EA535FAC0FBCEE5C"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_0B3407FEC54E60CA799ABB7786D528BFF89C1AC0" name="ExpectationParser"/>
-        <derivedType access="public" id="type_0B3407FEC54E60CA799ABB7786D528BFF89C1AC0.lvalueref.type_0B3407FEC54E60CA799ABB7786D528BFF89C1AC0" name="ExpectationParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_0B3407FEC54E60CA799ABB7786D528BFF89C1AC0"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -13020,13 +12481,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_14EBD6F5EF5E30595D0BDF28760C3F746EE14052" name="GrammarParser"/>
-        <derivedType access="public" id="type_14EBD6F5EF5E30595D0BDF28760C3F746EE14052.lvalueref.type_14EBD6F5EF5E30595D0BDF28760C3F746EE14052" name="GrammarParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_14EBD6F5EF5E30595D0BDF28760C3F746EE14052"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_GreaterNode_61AF553B72A739FCCDF28F4ADA54FBC71D3FC113.lvalueref.class_GreaterNode_61AF553B72A739FCCDF28F4ADA54FBC71D3FC113" name="GreaterNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_GreaterNode_61AF553B72A739FCCDF28F4ADA54FBC71D3FC113"/>
@@ -13036,13 +12490,6 @@
         <derivedType access="public" id="class_GreaterOrEqualNode_BEDDEE526A3A115CCCC4EF49A6C21939ED31980D.lvalueref.class_GreaterOrEqualNode_BEDDEE526A3A115CCCC4EF49A6C21939ED31980D" name="GreaterOrEqualNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_GreaterOrEqualNode_BEDDEE526A3A115CCCC4EF49A6C21939ED31980D"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_C578530D15858DBDFAE3ACBDA9C050D86386EFA0" name="GroupingParser"/>
-        <derivedType access="public" id="type_C578530D15858DBDFAE3ACBDA9C050D86386EFA0.lvalueref.type_C578530D15858DBDFAE3ACBDA9C050D86386EFA0" name="GroupingParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_C578530D15858DBDFAE3ACBDA9C050D86386EFA0"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -13145,19 +12592,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.lvalueref.class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B" name="Kleene&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_4B6AF5AE8856DD4FC93822291631BBB1A3022E52" name="KleeneParser"/>
-        <derivedType access="public" id="type_4B6AF5AE8856DD4FC93822291631BBB1A3022E52.lvalueref.type_4B6AF5AE8856DD4FC93822291631BBB1A3022E52" name="KleeneParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_4B6AF5AE8856DD4FC93822291631BBB1A3022E52"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_LValueRefNode_5F81C4F2A34E2029B768017805FF11E9A326CEA6.lvalueref.class_LValueRefNode_5F81C4F2A34E2029B768017805FF11E9A326CEA6" name="LValueRefNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_LValueRefNode_5F81C4F2A34E2029B768017805FF11E9A326CEA6"/>
@@ -13210,20 +12644,6 @@
             <derivations>
                 <derivation kind="base" typeId="class_Lexer_75B3A28C791BF2C7E5C3BC60E0421BDF87014048"/>
                 <derivation kind="operator" str="*"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_B7C590DB716D2BC10B3ED186A9A0125AFB474F44" name="LexerFile"/>
-        <derivedType access="public" id="type_B7C590DB716D2BC10B3ED186A9A0125AFB474F44.lvalueref.type_B7C590DB716D2BC10B3ED186A9A0125AFB474F44" name="LexerFile&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_B7C590DB716D2BC10B3ED186A9A0125AFB474F44"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_87B581C9ACBB2B2DEE1CDC23FCE905C6E4E3BE19" name="ListParser"/>
-        <derivedType access="public" id="type_87B581C9ACBB2B2DEE1CDC23FCE905C6E4E3BE19.lvalueref.type_87B581C9ACBB2B2DEE1CDC23FCE905C6E4E3BE19" name="ListParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_87B581C9ACBB2B2DEE1CDC23FCE905C6E4E3BE19"/>
-                <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
         <derivedType access="public" id="class_LiteralNode_1A76F3823B6151408E0B854080BE8685B0ABF949.ptr.class_LiteralNode_1A76F3823B6151408E0B854080BE8685B0ABF949" name="LiteralNode*">
@@ -13459,13 +12879,6 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_8E460BF8F2417262C9998026D1E91518624D1322" name="NonterminalParser"/>
-        <derivedType access="public" id="type_8E460BF8F2417262C9998026D1E91518624D1322.lvalueref.type_8E460BF8F2417262C9998026D1E91518624D1322" name="NonterminalParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_8E460BF8F2417262C9998026D1E91518624D1322"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_NotEqualNode_82303B30654D538299B0C16B46AF159552026DFB.lvalueref.class_NotEqualNode_82303B30654D538299B0C16B46AF159552026DFB" name="NotEqualNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_NotEqualNode_82303B30654D538299B0C16B46AF159552026DFB"/>
@@ -13486,19 +12899,6 @@
         </derivedType>
         <externalType access="public" id="type_08A914CDE05039694EF0194D9EE79FF9A79DDE33" name="O"/>
         <externalType access="public" id="type_1E5C03C4CA5DBC17C5A6129FF8DBE16F01A71EBD" name="Op"/>
-        <derivedType access="public" id="class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.lvalueref.class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14" name="Opt&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_8210399AB8BD65E34328967DDFE9B6D7D47A64BE" name="OptionalParser"/>
-        <derivedType access="public" id="type_8210399AB8BD65E34328967DDFE9B6D7D47A64BE.lvalueref.type_8210399AB8BD65E34328967DDFE9B6D7D47A64BE" name="OptionalParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_8210399AB8BD65E34328967DDFE9B6D7D47A64BE"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <externalType access="public" id="type_511993D3C99719E38A6779073019DACD7178DDB9" name="P"/>
         <derivedType access="public" id="class_ParameterNode_8174A86CB900D2F3FB2B7B55769E36D3F7EE04C1.lvalueref.class_ParameterNode_8174A86CB900D2F3FB2B7B55769E36D3F7EE04C1" name="ParameterNode&amp;">
             <derivations>
@@ -13510,12 +12910,6 @@
             <derivations>
                 <derivation kind="base" typeId="class_ParameterNode_8174A86CB900D2F3FB2B7B55769E36D3F7EE04C1"/>
                 <derivation kind="operator" str="*"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.lvalueref.class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19" name="ParenExpr&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19"/>
-                <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
         <derivedType access="public" id="class_ParenthesizedConditionalCompilationExpressionNode_9C59C5AF1CE9E14A183B1ED2F3E4A8C1600FF78D.lvalueref.class_ParenthesizedConditionalCompilationExpressionNode_9C59C5AF1CE9E14A183B1ED2F3E4A8C1600FF78D" name="ParenthesizedConditionalCompilationExpressionNode&amp;">
@@ -13542,13 +12936,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_E39C6F5277CB409AA47BE413D63B984FDD8B78C1" name="ParserFile"/>
-        <derivedType access="public" id="type_E39C6F5277CB409AA47BE413D63B984FDD8B78C1.lvalueref.type_E39C6F5277CB409AA47BE413D63B984FDD8B78C1" name="ParserFile&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_E39C6F5277CB409AA47BE413D63B984FDD8B78C1"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873.ptr.class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873" name="ParsingLog*">
             <derivations>
                 <derivation kind="base" typeId="class_ParsingLog_0488190B3D4F09D97CAE0110EEFFC8C588A39873"/>
@@ -13558,19 +12945,6 @@
         <derivedType access="public" id="class_PointerNode_C30FB1E28226404DA13D72F1CD82CB9BCECC8C34.lvalueref.class_PointerNode_C30FB1E28226404DA13D72F1CD82CB9BCECC8C34" name="PointerNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_PointerNode_C30FB1E28226404DA13D72F1CD82CB9BCECC8C34"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.lvalueref.class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD" name="Pos&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_AD2B1F4EB7AADFE2BD4765538A414D2B0D4A46B6" name="PositiveParser"/>
-        <derivedType access="public" id="type_AD2B1F4EB7AADFE2BD4765538A414D2B0D4A46B6.lvalueref.type_AD2B1F4EB7AADFE2BD4765538A414D2B0D4A46B6" name="PositiveParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_AD2B1F4EB7AADFE2BD4765538A414D2B0D4A46B6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -13611,13 +12985,6 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_A16C5BBE4BF996740F257AA1E81BD57E4C52C8DD" name="Range"/>
-        <derivedType access="public" id="type_A16C5BBE4BF996740F257AA1E81BD57E4C52C8DD.lvalueref.type_A16C5BBE4BF996740F257AA1E81BD57E4C52C8DD" name="Range&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_A16C5BBE4BF996740F257AA1E81BD57E4C52C8DD"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_RangeForStatementNode_7D56028829947B6F343397991EE1C85B89A27A9E.lvalueref.class_RangeForStatementNode_7D56028829947B6F343397991EE1C85B89A27A9E" name="RangeForStatementNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_RangeForStatementNode_7D56028829947B6F343397991EE1C85B89A27A9E"/>
@@ -13627,18 +12994,6 @@
         <derivedType access="public" id="class_RangeForStatementNode_7D56028829947B6F343397991EE1C85B89A27A9E.ptr.class_RangeForStatementNode_7D56028829947B6F343397991EE1C85B89A27A9E" name="RangeForStatementNode*">
             <derivations>
                 <derivation kind="base" typeId="class_RangeForStatementNode_7D56028829947B6F343397991EE1C85B89A27A9E"/>
-                <derivation kind="operator" str="*"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.lvalueref.class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255" name="RefExpr&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.ptr.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5" name="RegExpression*">
-            <derivations>
-                <derivation kind="base" typeId="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
@@ -13660,13 +13015,6 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_0A868C5719862759DADACE3B0684C1F9132704F3" name="RuleParser"/>
-        <derivedType access="public" id="type_0A868C5719862759DADACE3B0684C1F9132704F3.lvalueref.type_0A868C5719862759DADACE3B0684C1F9132704F3" name="RuleParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_0A868C5719862759DADACE3B0684C1F9132704F3"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_SByteLiteralNode_B9A5B0BDC2CECE80F25781D817A1F9ABFE6B1EF8.lvalueref.class_SByteLiteralNode_B9A5B0BDC2CECE80F25781D817A1F9ABFE6B1EF8" name="SByteLiteralNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_SByteLiteralNode_B9A5B0BDC2CECE80F25781D817A1F9ABFE6B1EF8"/>
@@ -13682,13 +13030,6 @@
         <derivedType access="public" id="class_SameConstraintNode_CB514F4C37934533A9647C3B0DA895AAEC31D142.lvalueref.class_SameConstraintNode_CB514F4C37934533A9647C3B0DA895AAEC31D142" name="SameConstraintNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_SameConstraintNode_CB514F4C37934533A9647C3B0DA895AAEC31D142"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_3C5F3AB08904673F2B6428C55F3370C81FB8876D" name="SequenceParser"/>
-        <derivedType access="public" id="type_3C5F3AB08904673F2B6428C55F3370C81FB8876D.lvalueref.type_3C5F3AB08904673F2B6428C55F3370C81FB8876D" name="SequenceParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_3C5F3AB08904673F2B6428C55F3370C81FB8876D"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -13754,13 +13095,6 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_4BFC0534E0B31D2603368FDF29B4F53B8604BA1C" name="StringParser"/>
-        <derivedType access="public" id="type_4BFC0534E0B31D2603368FDF29B4F53B8604BA1C.lvalueref.type_4BFC0534E0B31D2603368FDF29B4F53B8604BA1C" name="StringParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_4BFC0534E0B31D2603368FDF29B4F53B8604BA1C"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="class_StructuredLiteralNode_21B802C8332CD70644D47102943C2D80F541E08E.lvalueref.class_StructuredLiteralNode_21B802C8332CD70644D47102943C2D80F541E08E" name="StructuredLiteralNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_StructuredLiteralNode_21B802C8332CD70644D47102943C2D80F541E08E"/>
@@ -13791,29 +13125,16 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <externalType access="public" id="type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E" name="Symbol"/>
-        <derivedType access="public" id="type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E.ptr.type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E" name="Symbol*">
-            <derivations>
-                <derivation kind="base" typeId="type_3F84EF531F9DB996694AD09A8FDDDBCA1440577E"/>
-                <derivation kind="operator" str="*"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.lvalueref.class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655" name="SymbolExpr&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <externalType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
-        <derivedType access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
-            <derivations>
-                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
             <derivations>
                 <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T&amp;">
+            <derivations>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -13881,13 +13202,6 @@
             <derivations>
                 <derivation kind="base" typeId="class_ThrowStatementNode_6C8E996246188F8121692B9867510A08F7AD9BC8"/>
                 <derivation kind="operator" str="*"/>
-            </derivations>
-        </derivedType>
-        <externalType access="public" id="type_DAEF2147E79571AF8D5A4F376F29FB535295E66D" name="TokenParser"/>
-        <derivedType access="public" id="type_DAEF2147E79571AF8D5A4F376F29FB535295E66D.lvalueref.type_DAEF2147E79571AF8D5A4F376F29FB535295E66D" name="TokenParser&amp;">
-            <derivations>
-                <derivation kind="base" typeId="type_DAEF2147E79571AF8D5A4F376F29FB535295E66D"/>
-                <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
         <derivedType access="public" id="class_TryStatementNode_975627099EB8910DB9EFA5251ADCE47BA0D1BDD6.lvalueref.class_TryStatementNode_975627099EB8910DB9EFA5251ADCE47BA0D1BDD6" name="TryStatementNode&amp;">
@@ -14002,12 +13316,6 @@
         <derivedType access="public" id="class_UuidLiteralNode_8A54D3E9EAC6499E12B4414060F3905DA1361C31.lvalueref.class_UuidLiteralNode_8A54D3E9EAC6499E12B4414060F3905DA1361C31" name="UuidLiteralNode&amp;">
             <derivations>
                 <derivation kind="base" typeId="class_UuidLiteralNode_8A54D3E9EAC6499E12B4414060F3905DA1361C31"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
-        <derivedType access="public" id="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.lvalueref.class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682" name="Visitor&amp;">
-            <derivations>
-                <derivation kind="base" typeId="class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -14375,17 +13683,17 @@
                 <derivation kind="operator" str="*"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
-            <derivations>
-                <derivation kind="specifier" str="const "/>
-                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
                 <derivation kind="base" typeId="type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="const T&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -14396,17 +13704,17 @@
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
-        <derivedType access="public" id="const.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
-            <derivations>
-                <derivation kind="specifier" str="const "/>
-                <derivation kind="base" typeId="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
-                <derivation kind="operator" str="&amp;"/>
-            </derivations>
-        </derivedType>
         <derivedType access="public" id="const.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
             <derivations>
                 <derivation kind="specifier" str="const "/>
                 <derivation kind="base" typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
+                <derivation kind="operator" str="&amp;"/>
+            </derivations>
+        </derivedType>
+        <derivedType access="public" id="const.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6.lvalueref.type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6" name="const U&amp;">
+            <derivations>
+                <derivation kind="specifier" str="const "/>
+                <derivation kind="base" typeId="type_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
                 <derivation kind="operator" str="&amp;"/>
             </derivations>
         </derivedType>
@@ -14597,15 +13905,15 @@
                 <templateArgument typeId="templateParameter_U_B2C7C0CAA10A0CCA5EA7D69E54018AE0C0389DD6"/>
             </templateArguments>
         </specialization>
-        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
-            <templateArguments>
-                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
-                <templateArgument typeId="bool"/>
-            </templateArguments>
-        </specialization>
         <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
             <templateArguments>
                 <templateArgument typeId="typedef_iterator_1D56B1C2DDD6995E22F9453985B96BD7D2FA494F"/>
+                <templateArgument typeId="bool"/>
+            </templateArguments>
+        </specialization>
+        <specialization access="public" id="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF.typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5.bool" name="pair&lt;iterator, bool>" primaryTypeId="class_pair_EB252093AEE495CFB9456D2DA7457A88FFB2A1DF">
+            <templateArguments>
+                <templateArgument typeId="typedef_iterator_F8FCFCBB63E660D3DEFFCDE6042006449221A2B5"/>
                 <templateArgument typeId="bool"/>
             </templateArguments>
         </specialization>
@@ -14692,11 +14000,6 @@
         <specialization access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_NodeFactory_6812844F8B3FDC42816BF78C8205B7CCD34B2E41" name="unique_ptr&lt;NodeFactory>" primaryTypeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA">
             <templateArguments>
                 <templateArgument typeId="class_NodeFactory_6812844F8B3FDC42816BF78C8205B7CCD34B2E41"/>
-            </templateArguments>
-        </specialization>
-        <specialization access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5" name="unique_ptr&lt;RegExpression>" primaryTypeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA">
-            <templateArguments>
-                <templateArgument typeId="class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5"/>
             </templateArguments>
         </specialization>
         <specialization access="public" id="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA.class_StatementNode_C645560C48648EE9245172CF4CA54D85381420E3" name="unique_ptr&lt;StatementNode>" primaryTypeId="class_unique_ptr_905CDB726A750D78992E85440F78F65CABC8D0AA">

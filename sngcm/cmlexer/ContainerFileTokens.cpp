@@ -10,23 +10,25 @@ namespace ContainerFileTokens
 
     void InitTokenIdMap()
     {
-        tokenIdMap[U"ACTIVEPROJECT"] = 12;
-        tokenIdMap[U"ASSIGN"] = 15;
-        tokenIdMap[U"DOT"] = 17;
-        tokenIdMap[U"FILEPATH"] = 14;
-        tokenIdMap[U"ID"] = 13;
-        tokenIdMap[U"LIBRARY"] = 9;
-        tokenIdMap[U"PROGRAM"] = 7;
+        tokenIdMap[U"ACTIVEPROJECT"] = 14;
+        tokenIdMap[U"ASSIGN"] = 17;
+        tokenIdMap[U"DOT"] = 19;
+        tokenIdMap[U"FILEPATH"] = 16;
+        tokenIdMap[U"ID"] = 15;
+        tokenIdMap[U"LIBRARY"] = 11;
+        tokenIdMap[U"PROGRAM"] = 8;
         tokenIdMap[U"PROJECT"] = 1;
         tokenIdMap[U"REFERENCE"] = 3;
-        tokenIdMap[U"SEMICOLON"] = 16;
+        tokenIdMap[U"RESOURCE"] = 5;
+        tokenIdMap[U"SEMICOLON"] = 18;
         tokenIdMap[U"SOLUTION"] = 2;
         tokenIdMap[U"SOURCE"] = 4;
-        tokenIdMap[U"TARGET"] = 6;
-        tokenIdMap[U"TEXT"] = 5;
-        tokenIdMap[U"UNITTEST"] = 11;
-        tokenIdMap[U"WINAPP"] = 8;
-        tokenIdMap[U"WINLIB"] = 10;
+        tokenIdMap[U"TARGET"] = 7;
+        tokenIdMap[U"TEXT"] = 6;
+        tokenIdMap[U"UNITTEST"] = 13;
+        tokenIdMap[U"WINAPP"] = 10;
+        tokenIdMap[U"WINGUIAPP"] = 9;
+        tokenIdMap[U"WINLIB"] = 12;
     }
 
     int GetTokenId(const std::u32string& tokenName)
@@ -49,9 +51,11 @@ namespace ContainerFileTokens
         "SOLUTION",
         "REFERENCE",
         "SOURCE",
+        "RESOURCE",
         "TEXT",
         "TARGET",
         "PROGRAM",
+        "WINGUIAPP",
         "WINAPP",
         "LIBRARY",
         "WINLIB",
@@ -76,9 +80,11 @@ namespace ContainerFileTokens
         "'solution'",
         "'reference'",
         "'source'",
+        "'resource'",
         "'text'",
         "'target'",
         "'program'",
+        "'winguiapp'",
         "'winapp'",
         "'library'",
         "'winlib'",

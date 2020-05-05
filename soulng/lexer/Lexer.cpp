@@ -380,6 +380,44 @@ std::u32string Lexer::RestOfLine(int maxLineLength)
     return restOfLine;
 }
 
+TokenLine Lexer::TokenizeLine(const std::u32string& line, int lineNumber, int startState)
+{
+    const char32_t* pos = line.c_str();
+    const char32_t* end = line.c_str() + line.length();
+    TokenLine tokenLine;
+    lexeme.begin = end;
+    lexeme.end = end;
+    token.match = lexeme;
+    token.id = INVALID_TOKEN;
+    token.line = lineNumber;
+    int state = startState;
+    while (pos != end)
+    {
+        char32_t c = *pos;
+        if (state == 0)
+        {
+            lexeme.begin = pos;
+            token.id = INVALID_TOKEN;
+            token.line = lineNumber;
+        }
+        lexeme.end = pos + 1;
+        state = NextState(state, c);
+        if (state == -1)
+        {
+            state = 0;
+            pos = token.match.end;
+            tokenLine.tokens.push_back(token);
+        }
+        ++pos;
+    }
+    if (token.match.begin != token.match.end)
+    {
+        tokenLine.tokens.push_back(token);
+    }
+    tokenLine.endState = state;
+    return tokenLine;
+}
+
 void WriteBeginRuleToLog(Lexer& lexer, const std::u32string& ruleName)
 {
     lexer.Log()->WriteBeginRule(ruleName);

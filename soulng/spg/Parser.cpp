@@ -50,6 +50,20 @@ void EmptyParser::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+AnyParser::AnyParser() : Parser(U"any")
+{
+}
+
+Parser* AnyParser::Clone() const
+{
+    return new AnyParser();
+}
+
+void AnyParser::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 TokenParser::TokenParser(const std::u32string& tokenName_) : Parser(tokenName_), tokenName(tokenName_)
 {
 }

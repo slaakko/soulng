@@ -13,8 +13,20 @@ namespace soulcm.scm2html
     public class LexerContext
     {
         public LexerContext(IdentifierClassKind identifierClassKind) :
-            classIndex(0), any(), epsilon(eps), classMap(null), tokens(null), keywords(null), expressions(null), lexer(null), currentExpression(null)
+            classIndex(0), any(), epsilon(eps), classMap(null), tokens(null), keywords(null), expressions(null), lexer(null), currentExpression(null), idStart(new Class(0)), idCont(new Class(0))
         {
+            if (identifierClassKind == IdentifierClassKind.unicode)
+            {
+                MakeUnicodeIdentifierClasses(*this);
+                symbols.Add(idStart);
+                symbols.Add(idCont);
+            }
+            else if (identifierClassKind == IdentifierClassKind.ascii)
+            {
+                MakeAsciiIdentifierClasses(*this);
+                symbols.Add(idStart);
+                symbols.Add(idCont);
+            }
         }
         public ~LexerContext()
         {

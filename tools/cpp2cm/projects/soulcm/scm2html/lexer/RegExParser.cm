@@ -775,7 +775,7 @@ public static class LexRegExParser
                                             }
                                             if (match.hit)
                                             {
-                                                ustring match = lexerGetMatch(span);
+                                                ustring match = lexer.GetMatch(span);
                                                 value.Reset(new soulcm.scm2html.SymbolExpr(lexerContext->MakeChar(match[0])));
                                             }
                                             *parentMatch23 = match;
@@ -999,8 +999,18 @@ public static class LexRegExParser
                                                     Match match(false);
                                                     Match* parentMatch13 = &match;
                                                     {
-                                                        Match match = LexRegExParser.Range(lexer, lexerContext);
-                                                        r.Reset(cast<soulcm.scm2html.Symbol*>(match.value));
+                                                        Match match(false);
+                                                        Match* parentMatch14 = &match;
+                                                        {
+                                                            long pos = lexer.GetPos();
+                                                            Match match = LexRegExParser.Range(lexer, lexerContext);
+                                                            r.Reset(cast<soulcm.scm2html.Symbol*>(match.value));
+                                                            if (match.hit)
+                                                            {
+                                                                cls->AddSymbol(r.Release());
+                                                            }
+                                                            *parentMatch14 = match;
+                                                        }
                                                         *parentMatch13 = match;
                                                     }
                                                     if (match.hit)
@@ -1030,10 +1040,10 @@ public static class LexRegExParser
                 if (match.hit)
                 {
                     Match match(false);
-                    Match* parentMatch14 = &match;
+                    Match* parentMatch15 = &match;
                     {
                         Match match(true);
-                        Match* parentMatch15 = &match;
+                        Match* parentMatch16 = &match;
                         {
                             System.Lex.Span span = lexer.GetSpan();
                             Match match(false);
@@ -1044,14 +1054,14 @@ public static class LexRegExParser
                             }
                             if (match.hit)
                             {
-                                *parentMatch15 = match;
+                                *parentMatch16 = match;
                             }
                             else
                             {
                                 lexer.ThrowExpectationFailure(span, GetTokenName(RBRACKET));
                             }
                         }
-                        *parentMatch14 = match;
+                        *parentMatch15 = match;
                     }
                     *parentMatch2 = match;
                 }

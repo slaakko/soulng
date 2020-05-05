@@ -84,14 +84,33 @@ namespace soulcm.scm2html
         public void Add(Keyword* keyword)
         {
             keywords.Add(UniquePtr<Keyword>(keyword));
+            keywordMap[keyword->token] = keyword->kw;
+        }
+        public ustring GetKeyword(const ustring& tokenId) const
+        {
+            Map<ustring, ustring>.ConstIterator it = keywordMap.CFind(tokenId);
+            if (it != keywordMap.CEnd())
+            {
+                return it->second;
+            }
+            else
+            {
+                return ustring();
+            }
         }
         private List<UniquePtr<Keyword>> keywords;
+        private Map<ustring, ustring> keywordMap;
     }
     public class Expression
     {
         public Expression(int index_, const ustring& id_, const ustring& value_, int line_) :
             index(index_), id(id_), value(value_), line(line_)
         {
+        }
+        public void Parse(LexerContext& lexerContext)
+        {
+            RegExLexer lexer(value, "", 0);
+            regEx = LexRegExParser.Parse(lexer, &lexerContext);
         }
         public int Index() const
         {
@@ -109,10 +128,19 @@ namespace soulcm.scm2html
         {
             return line;
         }
+        public nothrow inline RegExpression* RegEx() const
+        {
+            return regEx.Get();
+        }
+        public nothrow void SetRegEx(RegExpression* regEx_)
+        {
+            regEx.Reset(regEx_);
+        }
         private int index;
         private ustring id;
         private ustring value;
         private int line;
+        private UniquePtr<RegExpression> regEx;
     }
     public class Expressions : Declaration
     {
@@ -138,12 +166,25 @@ namespace soulcm.scm2html
                 throw Exception("expression \'" + ToUtf8(id) + "\' not found");
             }
         }
+        public void Parse(LexerContext& lexerContext)
+        {
+            for (const UniquePtr<Expression>& expr : expressions)
+            {
+                expr->Parse(lexerContext);
+            }
+            Expression* idStart = new Expression(cast<int>(expressions.Count()), u"idstart", ustring(), 0);
+            idStart->SetRegEx(new SymbolExpr(lexerContext.MakeIdStart()));
+            Add(idStart);
+            Expression* idCont = new Expression(cast<int>(expressions.Count()), u"idcont", ustring(), 0);
+            idCont->SetRegEx(new SymbolExpr(lexerContext.MakeIdCont()));
+            Add(idCont);
+        }
         private List<UniquePtr<Expression>> expressions;
         private Map<ustring, int> exprMap;
     }
-    public class Variable
+    public class LexerVariable
     {
-        public Variable(Cm.Ast.Node* type_, const ustring& name_) :
+        public LexerVariable(Cm.Ast.Node* type_, const ustring& name_) :
             type(type_), name(name_)
         {
         }
@@ -158,11 +199,39 @@ namespace soulcm.scm2html
         private UniquePtr<Cm.Ast.Node> type;
         private ustring name;
     }
+
+    class TokenIdResolverVisitor : Cm.Ast.DefaultVisitor
+    {
+        public override void Visit(ReturnStatementNode& returnStatement)
+        {
+            if (tokenId.IsEmpty())
+            {
+                if (returnStatement.Expression() != null)
+                {
+                    tokenId = ToUtf32(returnStatement.Expression()->ToString());
+                }
+            }
+        }
+        public const ustring& TokenId() const
+        {
+            return tokenId;
+        }
+        private ustring tokenId;
+    }
+
     public class LexerStatement
     {
         public LexerStatement(const ustring& expr_, Cm.Ast.CompoundStatementNode* stmt_, int action_, int line_) :
             index(-1), expr(expr_), stmt(stmt_), retract(true), action(action_), line(line_)
         {
+            TokenIdResolverVisitor visitor;
+            stmt->Accept(visitor);
+            tokenId = visitor.TokenId();
+        }
+        public void Parse(LexerContext& lexerContext)
+        {
+            RegExLexer lexer(expr, "", 0);
+            regEx = LexRegExParser.Parse(lexer, &lexerContext);
         }
         public void SetIndex(int index_)
         {
@@ -188,12 +257,22 @@ namespace soulcm.scm2html
         {
             return line;
         }
+        public const ustring& TokenId() const
+        {
+            return tokenId;
+        }
+        public nothrow inline RegExpression* RegEx() const
+        {
+            return regEx.Get();
+        }
         private int index;
         private ustring expr;
         private UniquePtr<Cm.Ast.CompoundStatementNode> stmt;
         private bool retract;
         private int action;
         private int line;
+        private ustring tokenId;
+        private UniquePtr<RegExpression> regEx;
     }
     public class Action
     {
@@ -248,19 +327,40 @@ namespace soulcm.scm2html
         {
             stmt->SetIndex(cast<int>(statements.Count()));
             statements.Add(UniquePtr<LexerStatement>(stmt));
+            lexerStatementMap[stmt->TokenId()] = stmt;
         }
-        public void AddVariable(Variable* variable)
+        public void AddVariable(LexerVariable* variable)
         {
-            variables.Add(UniquePtr<Variable>(variable));
+            variables.Add(UniquePtr<LexerVariable>(variable));
         }
         public void AddAction(Action* action)
         {
             actions.Add(action);
         }
+        public nothrow inline LexerStatement* GetStatement(const ustring& tokenId) const
+        {
+            Map<ustring, LexerStatement*>.ConstIterator it = lexerStatementMap.CFind(tokenId);
+            if (it != lexerStatementMap.CEnd())
+            {
+                return it->second;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public void Parse(LexerContext& lexerContext)
+        {
+            for (const UniquePtr<LexerStatement>& stmt : statements)
+            {
+                stmt->Parse(lexerContext);
+            }
+        }
         private ustring api;
         private List<UniquePtr<LexerStatement>> statements;
-        private List<UniquePtr<Variable>> variables;
+        private List<UniquePtr<LexerVariable>> variables;
         private Actions actions;
+        private Map<ustring, LexerStatement*> lexerStatementMap;
     }
     public class LexerFile
     {
@@ -268,8 +368,44 @@ namespace soulcm.scm2html
         {
             declarations.Add(UniquePtr<Declaration>(declaration));
             declarationMap[declaration->Name()] = declaration;
+            if (declaration is Expressions*)
+            {
+                expressions = cast<Expressions*>(declaration);
+            }
+            else if (declaration is Keywords*)
+            {
+                keywords = cast<Keywords*>(declaration);
+            }
+            else if (declaration is Lexer*)
+            {
+                lexer = cast<Lexer*>(declaration);
+            }
+        }
+        public nothrow inline Expressions* GetExpressions()
+        {
+            return expressions;
+        }
+        public nothrow inline Keywords* GetKeywords()
+        {
+            return keywords;
+        }
+        public nothrow inline Lexer* GetLexer()
+        {
+            return lexer;
+        }
+        public void Parse(LexerContext& lexerContext)
+        {
+            expressions->Parse(lexerContext);
+            lexer->Parse(lexerContext);
+        }
+        public void Accept(Visitor& visitor)
+        {
+            visitor.Visit(*this);
         }
         private List<UniquePtr<Declaration>> declarations;
         private Map<ustring, Declaration*> declarationMap;
+        private Expressions* expressions;
+        private Keywords* keywords;
+        private Lexer* lexer;
     }
 }

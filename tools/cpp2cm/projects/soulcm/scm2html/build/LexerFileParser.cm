@@ -2730,7 +2730,7 @@ public static class LexLexerFileParser
                 System.Lex.WriteBeginRuleToLog(lexer, u"Variables");
             }
         #endif
-        UniquePtr<soulcm.scm2html.Variable> variable;
+        UniquePtr<soulcm.scm2html.LexerVariable> variable;
         Match match(false);
         Match* parentMatch0 = &match;
         {
@@ -2798,7 +2798,7 @@ public static class LexLexerFileParser
                                     {
                                         long pos = lexer.GetPos();
                                         Match match = LexLexerFileParser.Variable(lexer, parsingContext);
-                                        variable.Reset(cast<soulcm.scm2html.Variable*>(match.value));
+                                        variable.Reset(cast<soulcm.scm2html.LexerVariable*>(match.value));
                                         if (match.hit)
                                         {
                                             currentLexer->AddVariable(variable.Release());
@@ -2944,7 +2944,7 @@ public static class LexLexerFileParser
                             #if (DEBUG)
                                 if (writeToLog) System.Lex.WriteSuccessToLog(lexer, debugSpan, u"Variable");
                             #endif
-                            return Match(true, new soulcm.scm2html.Variable(type.Release(), name));
+                            return Match(true, new soulcm.scm2html.LexerVariable(type.Release(), name));
                         }
                     }
                     *parentMatch5 = match;

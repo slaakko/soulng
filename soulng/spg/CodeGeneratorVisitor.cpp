@@ -37,6 +37,18 @@ void CodeGeneratorVisitor::Visit(EmptyParser& parser)
     formatter->WriteLine("soulng::parser::Match match(true);");
 }
 
+void CodeGeneratorVisitor::Visit(AnyParser& parser)
+{
+    formatter->WriteLine("soulng::parser::Match match(false);");
+    formatter->WriteLine("if (*lexer != soulng::lexer::END_TOKEN)");
+    formatter->WriteLine("{");
+    formatter->IncIndent();
+    formatter->WriteLine("++lexer;");
+    formatter->WriteLine("match.hit = true;");
+    formatter->DecIndent();
+    formatter->WriteLine("}");
+}
+
 void CodeGeneratorVisitor::Visit(TokenParser& parser)
 {
     if (stage == Stage::beginGenerateTokenSwitch)

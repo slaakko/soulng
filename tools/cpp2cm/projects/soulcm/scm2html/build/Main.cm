@@ -70,8 +70,12 @@ int main(int argc, const char** argv)
         }
         for (const string& scm2htmlFilePath : filePaths)
         {
-            Project project(scm2htmlFilePath);
-            project.Process(verbose);
+            Scm2htmlXml xml(scm2htmlFilePath);
+            xml.Process(verbose);
+        }
+        if (verbose)
+        {
+            Console.WriteLine("done.");
         }
     }
     catch (const Exception& ex)

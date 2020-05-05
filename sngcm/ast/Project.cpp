@@ -57,6 +57,13 @@ std::string CmajorSystemLibDir(const std::string& config, BackEnd backend)
     }
 }
 
+std::string CmajorResourceDir()
+{
+    boost::filesystem::path rd(CmajorRootDir());
+    rd /= "res";
+    return GetFullPath(rd.generic_string());
+}
+
 std::string outDir;
 
 void SetOutDir(const std::string& outDir_)
@@ -96,6 +103,10 @@ ReferenceDeclaration::ReferenceDeclaration(const std::string& filePath_) : Proje
 }
 
 SourceFileDeclaration::SourceFileDeclaration(const std::string& filePath_) : ProjectDeclaration(ProjectDeclarationType::sourceFileDeclaration), filePath(filePath_)
+{
+}
+
+ResourceFileDeclaration::ResourceFileDeclaration(const std::string& filePath_) : ProjectDeclaration(ProjectDeclarationType::resourceFileDeclaration), filePath(filePath_)
 {
 }
 
@@ -263,6 +274,30 @@ void Project::ResolveDeclarations()
                 }
                 break;
             }
+            case ProjectDeclarationType::resourceFileDeclaration:
+            {
+                ResourceFileDeclaration* resourceFileDeclaration = static_cast<ResourceFileDeclaration*>(declaration.get());
+                boost::filesystem::path rfp(resourceFileDeclaration->FilePath());
+                relativeResourceFilePaths.push_back(rfp.generic_string());
+                if (rfp.is_relative())
+                {
+                    rfp = sourceBasePath / rfp;
+                }
+                if (rfp.extension() != ".xml")
+                {
+                    throw std::runtime_error("invalid resource file extension '" + rfp.generic_string() + "' (not .xml)");
+                }
+                if (!boost::filesystem::exists(rfp))
+                {
+                    throw std::runtime_error("resource file path '" + GetFullPath(rfp.generic_string()) + "' not found");
+                }
+                std::string resourceFilePath = GetFullPath(rfp.generic_string());
+                if (std::find(resourceFilePaths.cbegin(), resourceFilePaths.cend(), resourceFilePath) == resourceFilePaths.cend())
+                {
+                    resourceFilePaths.push_back(resourceFilePath);
+                }
+                break;
+            }
             case ProjectDeclarationType::targetDeclaration:
             {
                 TargetDeclaration* targetDeclaration = static_cast<TargetDeclaration*>(declaration.get());
@@ -274,6 +309,12 @@ void Project::ResolveDeclarations()
                 TextFileDeclaration* textFileDeclaration = static_cast<TextFileDeclaration*>(declaration.get());
                 boost::filesystem::path tfp(textFileDeclaration->FilePath());
                 relativeTextFilePaths.push_back(tfp.generic_string());
+                if (tfp.is_relative())
+                {
+                    tfp = sourceBasePath / tfp;
+                }
+                std::string textFilePath = GetFullPath(tfp.generic_string());
+                textFilePaths.push_back(textFilePath);
                 break;
             }
             default:

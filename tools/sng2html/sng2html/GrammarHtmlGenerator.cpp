@@ -22,7 +22,6 @@ using namespace soulng::unicode;
 
 void AppendRuleName(sngxml::dom::Element* parent, const std::u32string& name)
 {
-    std::u32string ruleName;
     for (char32_t c : name)
     {
         switch (c)

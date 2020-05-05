@@ -136,8 +136,8 @@ parser LexLexerFileParser
         ::= VARIABLES LBRACE! (Variable(parsingContext):variable{ currentLexer->AddVariable(variable); })* RBRACE!
         ;
 
-    Variable(ParsingContext* parsingContext, var ustring name) : soulcm.scm2html.Variable*
-        ::= TypeExpr(parsingContext):type ID{ name = lexer.GetMatch(span); } SEMICOLON{ return new soulcm.scm2html.Variable(type, name); }
+    Variable(ParsingContext* parsingContext, var ustring name) : soulcm.scm2html.LexerVariable*
+        ::= TypeExpr(parsingContext):type ID{ name = lexer.GetMatch(span); } SEMICOLON{ return new soulcm.scm2html.LexerVariable(type, name); }
         ;
 
     Actions(soulcm.scm2html.Lexer* currentLexer, ParsingContext* parsingContext)

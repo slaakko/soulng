@@ -22,6 +22,7 @@ public:
     enum class Stage { generateHeader, generateSource, generateTokenSwitch, beginGenerateTokenSwitch, endGenerateTokenSwitch };
     CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_);
     void Visit(EmptyParser& parser) override;
+    void Visit(AnyParser& parser) override;
     void Visit(TokenParser& parser) override;
     void Visit(CharParser& parser) override;
     void Visit(StringParser& parser) override;

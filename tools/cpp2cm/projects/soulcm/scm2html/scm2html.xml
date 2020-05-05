@@ -24,10 +24,6 @@
     <file exclude="*"/>
     <file include="CharSet.hpp"/>
     <file include="CharSet.cpp"/>
-    <file include="RegEx.hpp"/>
-    <file include="RegEx.cpp"/>
-    <file include="Visitor.hpp"/>
-    <file include="Visitor.cpp"/>
   </filter>
   <text>
   </text>

@@ -66,6 +66,14 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
+class AnyParser : public Parser
+{
+public:
+    AnyParser();
+    Parser* Clone() const override;
+    void Accept(Visitor& visitor) override;
+};
+
 class TokenParser : public Parser
 {
 public:
