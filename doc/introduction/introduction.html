@@ -59,23 +59,30 @@
         The parser classes form together a recursive descent top-down backracking parser.
     </p>
 
-    <h2>Examples</h2>
+    <h2>Example</h2>
 
     <p>
-        Two examples are included in the project.
         The <strong>examples/minilang</strong> directory contains a Visual Studio project that enclose
         a lexical analyzer and a parser for a very small C-like language called <em>Minilang</em>. The tutorials included in this documentation
         guide through the development of the lexical analyzer and the parser for <em>Minilang</em> in stages.
-        The <strong>examples/cmajor</strong> directory contains a working lexical analyzer
-        and parser for the <a href="https://slaakko.github.io/cmajor/">Cmajor</a> programming language.
-        As of this writing, the parser included in the Cmajor <em>compiler</em> is still not yet implemented using <em>SoulNG</em>.
     </p>
     
     <h2>Projects</h2>
     
     <p>
-        The deployment package contains a C++ front-end, an XML and XPATH parser and the 'gendoc', 'cpp2cm' and 'sng2html'
-        tools all of which parsers and lexers are implemented using SoulNG.
+        The deployment package contains source code for the following high-level project modules that all use the <strong>soulng</strong> core module:
+    </p>
+    
+    <img src="image/soulng_modules.png"/>
+    
+    <p>
+        Arrows represent dependencies between the modules.
+    </p>
+    
+    <p>
+        The package contains a C++ front-end library module <strong>sngcpp</strong>, an XML and XPATH parsing library module <strong>sngxml</strong> and 
+        Cmajor language library module <strong>sngcm</strong> that is also contained by the <a href="https://slaakko.github.io/cmajor/">Cmajor</a> compiler.
+        The 'gendoc', 'sng2html' and 'cpp2cm' documentation and project conversion utilities are also included.
     </p>
     
 </body>
