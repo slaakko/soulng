@@ -21,9 +21,9 @@ clean:
 sources:
 	slg -v slg/LexerFileLexer.lexer
 	slg -v slg/RegExLexer.lexer
+	slg -v rex/RexLexer.lexer
 	slg -v spg/ParserFileLexer.lexer
 	slg -v spg/ProjectFileLexer.lexer
-	slg -v rex/RexLexer.lexer
 	spg -v slg/Parsers.spg
 	spg -v spg/Parsers.spg
 	spg -v rex/RexParser.spg

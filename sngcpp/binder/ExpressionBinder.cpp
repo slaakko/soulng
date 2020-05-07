@@ -11,6 +11,7 @@
 #include <sngcpp/ast/TypeExpr.hpp>
 #include <sngcpp/ast/Visitor.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <algorithm>
 
 namespace sngcpp { namespace binder {
 

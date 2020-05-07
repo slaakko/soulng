@@ -13,8 +13,8 @@ clean:
 	$(MAKE) -C tester clean
 
 sources:
-	spg -v xml/XmlParser.spg
 	slg -vn xpath/XPathLexer.lexer
+	spg -v xml/XmlParser.spg
 	spg -v xpath/XPathParser.spg
 
 prefix := /usr/local

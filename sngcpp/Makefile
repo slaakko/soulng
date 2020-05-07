@@ -6,27 +6,27 @@ all:
 	$(MAKE) -C lexer
 	$(MAKE) -C parser
 	$(MAKE) -C pp
-	$(MAKE) -C parsertester
 	$(MAKE) -C pptester
+	$(MAKE) -C parsertester
 	$(MAKE) -C symbols
-
+	
 clean:
 	$(MAKE) -C ast clean
 	$(MAKE) -C binder clean
 	$(MAKE) -C lexer clean
 	$(MAKE) -C parser clean
 	$(MAKE) -C pp clean
-	$(MAKE) -C parsertester clean
 	$(MAKE) -C pptester clean
+	$(MAKE) -C parsertester clean
 	$(MAKE) -C symbols clean
 
 sources:
 	slg -v lexer/CppLexer.lexer
 	slg -v lexer/CppTokenLexer.lexer
-	spg -v parser/CppParsers.spg
 	slg -v pp/PPLexer.lexer
-	spg -v pp/PPParser.spg
 	slg -v pp/TextLexer.lexer
+	spg -v parser/CppParsers.spg
+	spg -v pp/PPParser.spg
 
 prefix := /usr/local
 
