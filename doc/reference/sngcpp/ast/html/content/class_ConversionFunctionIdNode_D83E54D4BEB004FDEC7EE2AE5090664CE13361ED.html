@@ -125,7 +125,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;915</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;916</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_CDC5D5F8F88D29AEFFF0AC28496AD1FFD458CD9A">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;916</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;917</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -184,9 +184,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;926</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;927</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">IdentifierNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;927</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html">IdentifierNode</a><span class="other">::</span><span class="identifier">Read</span><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;928</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#variable_typeExpr_8B9AF0FB1150FB54413BABF222149343EFAFF2F0">typeExpr</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;928</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#variable_typeExpr_8B9AF0FB1150FB54413BABF222149343EFAFF2F0">typeExpr</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><span class="identifier">ReadNode</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;929</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -206,8 +206,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
-            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+            Calls: <a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#function_Read_1A29BAE56253FE2B49A64D344E5847610C165E13">sngcpp::ast::IdentifierNode::Read</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
         </span>
         <br/>
         <br/>
@@ -221,7 +221,7 @@
              of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">398</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeExpr</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">398</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#variable_typeExpr_8B9AF0FB1150FB54413BABF222149343EFAFF2F0">typeExpr</a><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -240,7 +240,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;920</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;921</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">IdentifierNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;921</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html">IdentifierNode</a><span class="other">::</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;922</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#variable_typeExpr_8B9AF0FB1150FB54413BABF222149343EFAFF2F0">typeExpr</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -262,7 +262,13 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            Calls: <a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#function_Write_D55C67B3DCD36A8915F0EBB7511FB26AB587FA92">sngcpp::ast::ConversionFunctionIdNode::Write</a>
+            , <a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#function_Write_CE1538D419EDBD06C2FB4CB0421CADE11F26BDE7">sngcpp::ast::IdentifierNode::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#function_Write_D55C67B3DCD36A8915F0EBB7511FB26AB587FA92">sngcpp::ast::ConversionFunctionIdNode::Write</a>
         </span>
         <br/>
         <br/>

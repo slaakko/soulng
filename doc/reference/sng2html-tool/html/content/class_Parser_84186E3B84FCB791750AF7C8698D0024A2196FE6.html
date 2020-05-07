@@ -1,0 +1,601 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Parser Abstract Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html">prev</a>
+         | <a href="class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">next</a>
+        <hr/>
+        <h1>Parser Abstract Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#21">21</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#constructor_Parser_4CA598622A4AD69212A84568FB72696FE4811613">Parser</a>(<span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">Clone</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsAction_DEBB302CA0EE1D8E8055837AB3F9ADFD82142C7C">IsAction</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsActionToken_567F534925EFE0082C919D3F5D32D3F3CE2C1009">IsActionToken</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsEmptyOrEmptyActionParser_8C2F683EFC7834C8556F29B50EE8A9AB40F3E5C2">IsEmptyOrEmptyActionParser</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsGrammar_F1E16907891C2EF8753F3B0A1333107BA24622F7">IsGrammar</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsList_67F57857D9783DEF93EEE508F798F464BC836B94">IsList</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsNonterminal_FE795ED5A2AEAF5175A62D5B1C6790FAAD7FC46E">IsNonterminal</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsPostfix_E4CCE86D69B8C6BCC8552B8B9D1CB5F4639BFCA2">IsPostfix</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsToken_A736E71197A81839D0AFC781FC266734820678A2">IsToken</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsTokenSwitch_1F285935270E89C659EEEE044A0EA5F932B378AE">IsTokenSwitch</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">Name</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Parent_E022EE179D4F1AD195B467ACA9709CCAA3ADF06F">Parent</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_ParentIsList_28E6437C7639BF930A4C24DD4C9DAD890F34E847">ParentIsList</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_SetParent_BE1E06EC12F0780A51619D6A691544C099A3E535">SetParent</a>(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>* parent_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_SetParentIsList_74310965AE57DC0D808BB7F03A345AADA8719BBB">SetParentIsList</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_name_626A665271A1AD69A22CFA768ADA253E4862DF4D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">name</td>
+            </tr>
+            <tr id="variable_parent_00A084C8BE66E4E05B18537799DC0CEA1F342374">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">parent</td>
+            </tr>
+            <tr id="variable_parentIsList_0B213E79C2F8D89B752CA12B1C8D7724ECA138A9">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">parentIsList</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Parser_4CA598622A4AD69212A84568FB72696FE4811613">Parser Constructor</h3>
+        <h4>
+            sng2html::sng2html::Parser::Parser(<span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#14">14</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_name_626A665271A1AD69A22CFA768ADA253E4862DF4D">name</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_parent_00A084C8BE66E4E05B18537799DC0CEA1F342374">parent</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_parentIsList_0B213E79C2F8D89B752CA12B1C8D7724ECA138A9">parentIsList</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#24">24</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Parser::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#27">27</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_Accept_BA513C58BA3470D08E9709651EB32C72D694DAF4">sng2html::sng2html::ActionParser::Accept</a>
+            , <a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html#function_Accept_F9DA78FC9ABD1BB0178C28A259E19758DE8E19F5">sng2html::sng2html::AlternativeParser::Accept</a>
+            , <a href="./class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html#function_Accept_9EADB276F868570B95A31DB806E5D87D5A01E883">sng2html::sng2html::CharParser::Accept</a>
+            , <a href="./class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html#function_Accept_FB04C73A29FF3FAF7F3B3C6174C9917B377BD369">sng2html::sng2html::CharSetParser::Accept</a>
+            , <a href="./class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html#function_Accept_40098602C14182BBF416FFB93C1B6DA52152CB81">sng2html::sng2html::DifferenceParser::Accept</a>
+            , <a href="./class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html#function_Accept_030FC3F96C50C7D8F15F70C48AF8C56845F55410">sng2html::sng2html::EmptyParser::Accept</a>
+            , <a href="./class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html#function_Accept_18730EB85A7B3A45A5A40A0E73DF0E439A12DB38">sng2html::sng2html::ExpectationParser::Accept</a>
+            , <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Accept_213795EE5EB1F79E41304DB2529BF189E0FE92EF">sng2html::sng2html::GrammarParser::Accept</a>
+            , <a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html#function_Accept_E1EAA42E412249D9722FABD467940F7DE6EDC053">sng2html::sng2html::GroupingParser::Accept</a>
+            , <a href="./class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html#function_Accept_E97A04A7412C56FF6FB707E76037296D384DE074">sng2html::sng2html::KleeneParser::Accept</a>
+            , <a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html#function_Accept_BB737EB02CE7CA711C9A67D6A2F1C920CA44C44C">sng2html::sng2html::ListParser::Accept</a>
+            , <a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html#function_Accept_D24755D407519C0A380BF8FA87A240D12D128258">sng2html::sng2html::NonterminalParser::Accept</a>
+            , <a href="./class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html#function_Accept_D7F52B77DB71A08603881851D784BCE60D805F25">sng2html::sng2html::OptionalParser::Accept</a>
+            , <a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_Accept_ECB7CEA9136D751B63228AABE9016249CFA65C88">sng2html::sng2html::PositiveParser::Accept</a>
+            , <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Accept_5B5307B1FF820E562DB334578530F03944A30705">sng2html::sng2html::RuleParser::Accept</a>
+            , <a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_Accept_A3501B3793FB7DDA82FE9131782343249CE0211E">sng2html::sng2html::SequenceParser::Accept</a>
+            , <a href="./class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html#function_Accept_2F27E1435334BC5C4C4659263B68258A622AC9B7">sng2html::sng2html::StringParser::Accept</a>
+            , <a href="./class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html#function_Accept_C11FC4AE47BC2189B61C210F619B9D36BA6A2EBB">sng2html::sng2html::TokenParser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_07C8F2418E6BB3DDB9BB19CD840C8FA1B62331F0">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_86317FAA498B81EA247A93BECFBBEF4DA9865532">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_1895C0A515C9CC721D0ADA87F222D11A0DF33BE6">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_B413BE99283F4F2C61BB15590B9D6F2EE7287F77">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_D04D5A21614DC697103CBCF4CCF79D53D803C707">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_944663C9BE08CB6A1AEA02E05E4E78B449C75319">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_42D52FAED3EB4A2B7303FDF474FEA1C2EE98131B">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_27E569097DEEF287BE23BD3CB57B59D9545E5506">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_B457A83BE556DB52FFB0977643CB3A24A20E0592">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_0795131FE9DBE5836A175BE976EECB0F8F52AC95">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_ECA3FF72E1D6E2D384A88530EC036F350CD3EDD4">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_3651F553945AE70B33B39D4254CFB61CB73296CD">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_4CB11FAB66261DAACBBEE360C54342C8A5949CCD">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_57C332616AA403F51A54FF1F373DF92464EC8EE9">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_E2C22DACAB6C9D3853B70D5972AB0AB7387A0A2F">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_79106A8049E8C6E2371B7B440F9DD00158F679E1">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_8269EDBB15678DAC53352277518544EE45C763A3">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9D01E6A06892700E65B534882D540A51F17A9361">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5858942B7E3288555DE5F1FBA13D0F70CAEA7B1A">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_053B7F27AF4954E62E6603BC72485A293B88E02D">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_6D6464EA4F636654337B5C2A51F4B9F951CCD73E">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * sng2html::sng2html::Parser::Clone() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#22">22</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">runtime_error</span><span class="other">(</span><span class="string">"this&nbsp;class&nbsp;does&nbsp;not&nbsp;support&nbsp;clone&nbsp;operation"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#26">26</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_Clone_ACE615D4C35F937F8ABC838A311DEF3C23211EDC">sng2html::sng2html::ActionParser::Clone</a>
+            , <a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html#function_Clone_4B6E641CBB434D308826AED493EB3DCC984A0B5A">sng2html::sng2html::AlternativeParser::Clone</a>
+            , <a href="./class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html#function_Clone_262CA4C3DF6F022A01D8B6A70C9DB82E6449C922">sng2html::sng2html::CharParser::Clone</a>
+            , <a href="./class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html#function_Clone_ADBFBA3A97A8DE4DA746B59FFD9B7CC2036868A5">sng2html::sng2html::CharSetParser::Clone</a>
+            , <a href="./class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html#function_Clone_663B345D9C5E1EB8808F5A1E09D82F6075884887">sng2html::sng2html::DifferenceParser::Clone</a>
+            , <a href="./class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html#function_Clone_1328000AF5ECC44553E5656991C26FDEF35C4663">sng2html::sng2html::EmptyParser::Clone</a>
+            , <a href="./class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html#function_Clone_906F0E4A8C6D01399606ABE3AD35F1F5C826EFBD">sng2html::sng2html::ExpectationParser::Clone</a>
+            , <a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html#function_Clone_C6FAEE09184AAD4A137E69A0BDC6CCD4462123C9">sng2html::sng2html::GroupingParser::Clone</a>
+            , <a href="./class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html#function_Clone_1725BF6E05D8D1CCB6101CDEC3D094549F581B12">sng2html::sng2html::KleeneParser::Clone</a>
+            , <a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html#function_Clone_332F14A433749205088C69EA6CFA0F5B94E0CDD5">sng2html::sng2html::ListParser::Clone</a>
+            , <a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html#function_Clone_61BDAAF789457925DA4EB43A31F6866C86CB6D78">sng2html::sng2html::NonterminalParser::Clone</a>
+            , <a href="./class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html#function_Clone_A61178C008DA792057200DB9359809EE95D1E73A">sng2html::sng2html::OptionalParser::Clone</a>
+            , <a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_Clone_BD31C33D91FDC9119451C3D8E26AFD9F40A177E8">sng2html::sng2html::PositiveParser::Clone</a>
+            , <a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_Clone_00403DEDA0DCD7507679D635C519851452E17A69">sng2html::sng2html::SequenceParser::Clone</a>
+            , <a href="./class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html#function_Clone_DDDE4E71DA74F7B2EBCE3C9A51142F14C07BFDB5">sng2html::sng2html::StringParser::Clone</a>
+            , <a href="./class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html#function_Clone_BB450B2101D34B1BECAD8BC4A408F487F0D7A871">sng2html::sng2html::TokenParser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_Clone_ACE615D4C35F937F8ABC838A311DEF3C23211EDC">sng2html::sng2html::ActionParser::Clone</a>
+            , <a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html#function_Clone_4B6E641CBB434D308826AED493EB3DCC984A0B5A">sng2html::sng2html::AlternativeParser::Clone</a>
+            , <a href="./class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html#function_Clone_663B345D9C5E1EB8808F5A1E09D82F6075884887">sng2html::sng2html::DifferenceParser::Clone</a>
+            , <a href="./class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html#function_Clone_906F0E4A8C6D01399606ABE3AD35F1F5C826EFBD">sng2html::sng2html::ExpectationParser::Clone</a>
+            , <a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html#function_Clone_C6FAEE09184AAD4A137E69A0BDC6CCD4462123C9">sng2html::sng2html::GroupingParser::Clone</a>
+            , <a href="./class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html#function_Clone_1725BF6E05D8D1CCB6101CDEC3D094549F581B12">sng2html::sng2html::KleeneParser::Clone</a>
+            , <a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html#function_Clone_332F14A433749205088C69EA6CFA0F5B94E0CDD5">sng2html::sng2html::ListParser::Clone</a>
+            , <a href="./class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html#function_Clone_A61178C008DA792057200DB9359809EE95D1E73A">sng2html::sng2html::OptionalParser::Clone</a>
+            , <a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_Clone_BD31C33D91FDC9119451C3D8E26AFD9F40A177E8">sng2html::sng2html::PositiveParser::Clone</a>
+            , <a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_Clone_00403DEDA0DCD7507679D635C519851452E17A69">sng2html::sng2html::SequenceParser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsAction_DEBB302CA0EE1D8E8055837AB3F9ADFD82142C7C">IsAction Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsAction() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#29">29</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsAction_FC14E34B06728D0243670E64D275011278B5AF50">sng2html::sng2html::ActionParser::IsAction</a>
+            , <a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html#function_IsAction_94B78FB7A335A77EA7B6002224CF057415474540">sng2html::sng2html::GroupingParser::IsAction</a>
+            , <a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_IsAction_CE37D1BA2C77E195252F3B21BDA2353B526BB823">sng2html::sng2html::SequenceParser::IsAction</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html#function_IsAction_94B78FB7A335A77EA7B6002224CF057415474540">sng2html::sng2html::GroupingParser::IsAction</a>
+            , <a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_IsAction_CE37D1BA2C77E195252F3B21BDA2353B526BB823">sng2html::sng2html::SequenceParser::IsAction</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsActionToken_567F534925EFE0082C919D3F5D32D3F3CE2C1009">IsActionToken Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsActionToken() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#31">31</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsActionToken_6879059FD34D0FC9CF3D9344B24ECF1E8C3EBE6B">sng2html::sng2html::ActionParser::IsActionToken</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html#function_IsTokenSwitch_5E3F588E676DD41E0A55A8FF84B784FAEB08921F">sng2html::sng2html::AlternativeParser::IsTokenSwitch</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsEmptyOrEmptyActionParser_8C2F683EFC7834C8556F29B50EE8A9AB40F3E5C2">IsEmptyOrEmptyActionParser Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsEmptyOrEmptyActionParser() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#34">34</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsEmptyOrEmptyActionParser_B015706454D260FAF703FEDBBD1263A431CEADE5">sng2html::sng2html::ActionParser::IsEmptyOrEmptyActionParser</a>
+            , <a href="./class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html#function_IsEmptyOrEmptyActionParser_0007FDBE2E4444FD89DBC9DAAEE7C9AFAF21700E">sng2html::sng2html::EmptyParser::IsEmptyOrEmptyActionParser</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsEmptyOrEmptyActionParser_B015706454D260FAF703FEDBBD1263A431CEADE5">sng2html::sng2html::ActionParser::IsEmptyOrEmptyActionParser</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_86317FAA498B81EA247A93BECFBBEF4DA9865532">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_IsAction_CE37D1BA2C77E195252F3B21BDA2353B526BB823">sng2html::sng2html::SequenceParser::IsAction</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsGrammar_F1E16907891C2EF8753F3B0A1333107BA24622F7">IsGrammar Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsGrammar() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#33">33</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_IsGrammar_0CD34F8AF7FF9641E484796E02310F1F4F107363">sng2html::sng2html::GrammarParser::IsGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_GetGrammar_C76EF24026F04CC2A7D9FC4BB2628E9316C2AC57">sng2html::sng2html::RuleParser::GetGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsList_67F57857D9783DEF93EEE508F798F464BC836B94">IsList Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsList() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#37">37</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_IsNonterminal_FE795ED5A2AEAF5175A62D5B1C6790FAAD7FC46E">IsNonterminal Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsNonterminal() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#28">28</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html#function_IsNonterminal_4145D181DC84D82FCEE3B9078624E9D3F8AFD5B3">sng2html::sng2html::NonterminalParser::IsNonterminal</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsPostfix_E4CCE86D69B8C6BCC8552B8B9D1CB5F4639BFCA2">IsPostfix Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsPostfix() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#35">35</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html#function_IsPostfix_1425FCEFFD302887D844F91248805E4C2674019D">sng2html::sng2html::KleeneParser::IsPostfix</a>
+            , <a href="./class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html#function_IsPostfix_F52EF1D466F90F4EEBC9D925105FD395D65A0B85">sng2html::sng2html::OptionalParser::IsPostfix</a>
+            , <a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_IsPostfix_0B04ACF65AACF603048B93898F37DBFBCC0AF4F9">sng2html::sng2html::PositiveParser::IsPostfix</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsToken_A736E71197A81839D0AFC781FC266734820678A2">IsToken Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsToken() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#32">32</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html#function_IsToken_FA76D23F54E8CA8212684A58E68B33045AC6FA6B">sng2html::sng2html::TokenParser::IsToken</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsActionToken_6879059FD34D0FC9CF3D9344B24ECF1E8C3EBE6B">sng2html::sng2html::ActionParser::IsActionToken</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsTokenSwitch_1F285935270E89C659EEEE044A0EA5F932B378AE">IsTokenSwitch Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::IsTokenSwitch() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#30">30</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html#function_IsTokenSwitch_5E3F588E676DD41E0A55A8FF84B784FAEB08921F">sng2html::sng2html::AlternativeParser::IsTokenSwitch</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html#function_IsTokenSwitch_5E3F588E676DD41E0A55A8FF84B784FAEB08921F">sng2html::sng2html::AlternativeParser::IsTokenSwitch</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">Name Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::Parser::Name() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#38">38</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_name_626A665271A1AD69A22CFA768ADA253E4862DF4D">name</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_AddParser_83813724B22A3E3A2C88023A6215CC2A933F858D">sng2html::sng2html::Domain::AddParser</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetGrammar_10D82C3AF64AFCA831D8DA1CE6E350F7C90FB424">sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetGrammar</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetRule_81866BAFB1844D5ED5EE238D98FFD0B72A0F78C5">sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetRule</a>
+            , <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_AddRule_0B2C1660C4F1967195469677E6C67583AE1E1F81">sng2html::sng2html::GrammarParser::AddRule</a>
+            , <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_GetRule_F39516C1D484AABA67AA88E5012085F1C3709B78">sng2html::sng2html::GrammarParser::GetRule</a>
+            , <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_MapRule_F3F3215E48B8B077FCD52532635A1D8F977C810D">sng2html::sng2html::GrammarParser::MapRule</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5CC28E5EFE45B97419CA9BDBF6811D63D80769A2">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html#function_Clone_61BDAAF789457925DA4EB43A31F6866C86CB6D78">sng2html::sng2html::NonterminalParser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parent_E022EE179D4F1AD195B467ACA9709CCAA3ADF06F">Parent Member Function</h3>
+        <h4>
+            <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * sng2html::sng2html::Parser::Parent() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#39">39</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_parent_00A084C8BE66E4E05B18537799DC0CEA1F342374">parent</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_GetGrammar_C76EF24026F04CC2A7D9FC4BB2628E9316C2AC57">sng2html::sng2html::RuleParser::GetGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParentIsList_28E6437C7639BF930A4C24DD4C9DAD890F34E847">ParentIsList Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::Parser::ParentIsList() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#36">36</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_parentIsList_0B213E79C2F8D89B752CA12B1C8D7724ECA138A9">parentIsList</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetParent_BE1E06EC12F0780A51619D6A691544C099A3E535">SetParent Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Parser::SetParent(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * parent_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#40">40</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_parent_00A084C8BE66E4E05B18537799DC0CEA1F342374">parent</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parent_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_AddRule_0B2C1660C4F1967195469677E6C67583AE1E1F81">sng2html::sng2html::GrammarParser::AddRule</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetParentIsList_74310965AE57DC0D808BB7F03A345AADA8719BBB">SetParentIsList Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Parser::SetParentIsList()</h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#41">41</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#variable_parentIsList_0B213E79C2F8D89B752CA12B1C8D7724ECA138A9">parentIsList</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html">prev</a>
+         | <a href="class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">next</a>
+    </body>
+</html>

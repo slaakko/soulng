@@ -1,0 +1,46 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="pp">#ifndef&nbsp;ProjectFileLexer_HPP</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="pp">#define&nbsp;ProjectFileLexer_HPP</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;this&nbsp;file&nbsp;has&nbsp;been&nbsp;automatically&nbsp;generated&nbsp;from&nbsp;'D:/work/soulng-project/tools/sng2html/sng2html/ProjectFileLexer.lexer'&nbsp;using&nbsp;soulng&nbsp;lexer&nbsp;generator&nbsp;slg&nbsp;version&nbsp;3.0.0</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/TokenValueParsers.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Lexer.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="type">Lexer</span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#constructor_ProjectFileLexer_454A7B84CB371ECB737AABAD1FC2E7F377C2FBA6">ProjectFileLexer</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">content_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="kw">int</span>&nbsp;<span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#constructor_ProjectFileLexer_9B3587FDD328A79B6AEB61358E75B0FD00868FDB">ProjectFileLexer</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">char32_t</span><span class="other">*</span>&nbsp;<span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="kw">char32_t</span><span class="other">*</span>&nbsp;<span class="identifier">end_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="kw">int</span>&nbsp;<span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#function_NextState_1E33DAC32FE0CDB19D61DD69CA7C9FC0A2432767">NextState</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">state</span><span class="other">,&nbsp;</span><span class="kw">char32_t</span>&nbsp;<span class="identifier">c</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#variable_filePath_ACD1C13170DF8820AA7087395BB7FEED8DA7843F">filePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#function_GetTokenId_35291664181BB04C91C3994FEB2C7825DD7F9B5B">GetTokenId</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">statementIndex</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="pp">#endif</span></span>
+  <br/>
+ </body>
+</html>

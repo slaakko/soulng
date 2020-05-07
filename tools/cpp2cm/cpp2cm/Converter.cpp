@@ -174,7 +174,7 @@ std::vector<sngcpp::symbols::SimpleTypeSpecifier> GetSimpleTypeSpecifiers(sngcm:
         case sngcm::ast::NodeType::voidNode: specifiers.push_back(sngcpp::symbols::SimpleTypeSpecifier::void_); break;
     }
     return specifiers;
-};
+}
 
 Converter::Converter(bool verbose_, const std::string& targetDir_, sngcpp::symbols::SymbolTable& symbolTable_, Map& map_,
     const std::set<std::u32string>& excludedClasses_, const std::set<std::u32string>& excludedFunctions_, NothrowList& nothrowList_) :

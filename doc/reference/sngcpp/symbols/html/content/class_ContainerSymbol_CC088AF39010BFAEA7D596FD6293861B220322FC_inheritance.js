@@ -270,13 +270,12 @@ function drawClassInheritanceDiagram() {
     var classes = [
         { name: "sngcpp::symbols::Symbol", id: "class_0", level: 0, subject: false, hasDerivedClasses: true, link: "./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html" },
         { name: "sngcpp::symbols::ContainerSymbol", id: "class_1", level: 1, subject: true, hasDerivedClasses: true, link: "./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html" },
-        { name: "sngcpp::symbols::DeclarationBlockSymbol", id: "class_2", level: 2, subject: false, hasDerivedClasses: false, link: "./class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html" },
-        { name: "sngcpp::symbols::FunctionDeclarationSymbol", id: "class_3", level: 2, subject: false, hasDerivedClasses: true, link: "./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html" },
-        { name: "sngcpp::symbols::FunctionSymbol", id: "class_4", level: 2, subject: false, hasDerivedClasses: true, link: "./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html" },
-        { name: "sngcpp::symbols::GrammarSymbol", id: "class_5", level: 2, subject: false, hasDerivedClasses: false, link: "./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html" },
-        { name: "sngcpp::symbols::LambdaExpressionSymbol", id: "class_6", level: 2, subject: false, hasDerivedClasses: false, link: "./class_LambdaExpressionSymbol_18B7D83302A73F8DB16D599B39A49C9724862CF6.html" },
-        { name: "sngcpp::symbols::NamespaceSymbol", id: "class_7", level: 2, subject: false, hasDerivedClasses: false, link: "./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html" },
-        { name: "sngcpp::symbols::TypeSymbol", id: "class_8", level: 2, subject: false, hasDerivedClasses: true, link: "./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html" }];
+        { name: "sngcpp::symbols::CallableSymbol", id: "class_2", level: 2, subject: false, hasDerivedClasses: true, link: "./class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html" },
+        { name: "sngcpp::symbols::DeclarationBlockSymbol", id: "class_3", level: 2, subject: false, hasDerivedClasses: false, link: "./class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html" },
+        { name: "sngcpp::symbols::GrammarSymbol", id: "class_4", level: 2, subject: false, hasDerivedClasses: false, link: "./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html" },
+        { name: "sngcpp::symbols::LambdaExpressionSymbol", id: "class_5", level: 2, subject: false, hasDerivedClasses: false, link: "./class_LambdaExpressionSymbol_18B7D83302A73F8DB16D599B39A49C9724862CF6.html" },
+        { name: "sngcpp::symbols::NamespaceSymbol", id: "class_6", level: 2, subject: false, hasDerivedClasses: false, link: "./class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html" },
+        { name: "sngcpp::symbols::TypeSymbol", id: "class_7", level: 2, subject: false, hasDerivedClasses: true, link: "./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html" }];
     drawDiagram(classes);
 }
 

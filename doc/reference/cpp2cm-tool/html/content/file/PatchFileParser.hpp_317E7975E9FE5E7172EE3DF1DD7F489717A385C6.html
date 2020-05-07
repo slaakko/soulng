@@ -1,0 +1,62 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="pp">#ifndef&nbsp;PATCHFILEPARSER_HPP</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="pp">#define&nbsp;PATCHFILEPARSER_HPP</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/Patch.hpp></span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Token.hpp></span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/parser/Match.hpp></span></span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/parser/Value.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="comment">//&nbsp;this&nbsp;file&nbsp;has&nbsp;been&nbsp;automatically&nbsp;generated&nbsp;from&nbsp;'D:/work/soulng-project/tools/cpp2cm/cpp2cm/PatchFileParser.parser'&nbsp;using&nbsp;soulng&nbsp;parser&nbsp;generator&nbsp;spg&nbsp;version&nbsp;3.0.0</span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="kw">class</span>&nbsp;<span class="identifier">TrivialLexer</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">struct</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html">PatchFileParser</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">cpp2cm</a><span class="other">::</span><a href="../class_PatchFile_840201B003176489B17F4ADD9DFDA225D0E965A5.html">PatchFile</a><span class="other">></span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Parse_5D48210CBC61CD9B385D6709B78A8F9F7A3EC683">Parse</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_PatchFile_888D9B78CCA71B6E9984FDC61110324F0E9EC221">PatchFile</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_PatchLine_B436C5467B2B9F37021D6AA4B595377F00449945">PatchLine</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_FileName_CFB8025C30589ABCA81B6B2D97D5C66DAC805F9A">FileName</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_LineNumber_3A07BF98A58774F3FB763447B365280243A7075D">LineNumber</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Patch_89E80548416F28CE5EB182D6C2353CB500EF4E69">Patch</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Insert_37CBD268C958204917D4CE5064606FF84A75EF88">Insert</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Delete_174F81F762EAAD9D0C7A5DBCACA39EF4EE15BA48">Delete</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Modify_529B72ABEF724139270D8B7A9D6DF9600298FEAF">Modify</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Text_4BDF6E69E2B1D393F1E0890299CC44000F9ADEEB">Text</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">parser</span><span class="other">::</span><span class="identifier">Match</span>&nbsp;<a href="../struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Newline_59B62F70B330CE0095D9A2E12F29FE9C0E600B39">Newline</a><span class="other">(</span><span class="identifier">TrivialLexer</span><span class="other">&amp;</span>&nbsp;<span class="identifier">lexer</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;PATCHFILEPARSER_HPP</span></span>
+  <br/>
+ </body>
+</html>

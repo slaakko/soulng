@@ -65,17 +65,6 @@
         <span>
             Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#712">712</a>
              of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">712</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html">Statement</a><span class="other">(</span><span class="string">U"try"</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_statement_9EB365C09AC2D3CB53CED7957CE5977DE4EFF8BF">statement</a><span class="other">(</span><span class="identifier">statement_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">713</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">714</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_statement_9EB365C09AC2D3CB53CED7957CE5977DE4EFF8BF">statement</a><span class="other">-></span><a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#function_SetParent_894C426F8D3FBAA9297E19D767174E12E80CB317">SetParent</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">715</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -95,27 +84,6 @@
         <span>
             Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#734">734</a>
              of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">735</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">736</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_C08EC075809566FD8B9F1F6E313DFA554E17E838.html#function_Visit_7186072D301458A90BA4DAC74CF89A4120044909">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">737</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_statement_9EB365C09AC2D3CB53CED7957CE5977DE4EFF8BF">statement</a><span class="other">-></span><a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Accept_1B9A347BFBD358A390B2C100D4D6C7AF88CE7B9E">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">738</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_handlers_D251472E94F981E946F8960B85AD2CF14AA5DF8F">handlers</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">739</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span>&nbsp;<span class="identifier">i</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">n</span><span class="other">;</span>&nbsp;<span class="other">++</span><span class="identifier">i</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">740</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">741</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_handlers_D251472E94F981E946F8960B85AD2CF14AA5DF8F">handlers</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">-></span><a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#function_Accept_1748A8491326D2B2F2C2A7D953A565116794D672">Accept</a><span class="other">(</span><span class="identifier">visitor</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">742</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">743</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -150,17 +118,6 @@
         <span>
             Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#717">717</a>
              of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">718</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">719</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Own_11CB8E98A2E450E7D4E47A0F503288C126F15582">Own</a><span class="other">(</span><span class="identifier">handler</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">720</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_handlers_D251472E94F981E946F8960B85AD2CF14AA5DF8F">handlers</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">handler</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">721</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -183,12 +140,8 @@
         <span>
             Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#300">300</a>
              of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">300</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">statement</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_Print_CD3A34D4405B5D9540614C481E78B000BE81EAFB">Print Member Function</h3>
@@ -199,28 +152,8 @@
         <span>
             Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#723">723</a>
              of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">724</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">725</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">formatter</span><span class="other">.</span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"try"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">726</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_statement_9EB365C09AC2D3CB53CED7957CE5977DE4EFF8BF">statement</a><span class="other">-></span><a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Print_167D78984474FE31E52F06F64E50CABAACCDE52D">Print</a><span class="other">(</span><span class="identifier">formatter</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">727</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_handlers_D251472E94F981E946F8960B85AD2CF14AA5DF8F">handlers</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">728</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span>&nbsp;<span class="identifier">i</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">n</span><span class="other">;</span>&nbsp;<span class="other">++</span><span class="identifier">i</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">729</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">730</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#variable_handlers_D251472E94F981E946F8960B85AD2CF14AA5DF8F">handlers</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">-></span><a href="./class_TryStatement_DD02CA113A39C632D59288740510706F14084A0B.html#function_Print_CD3A34D4405B5D9540614C481E78B000BE81EAFB">Print</a><span class="other">(</span><span class="identifier">formatter</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">731</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">732</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Print_167D78984474FE31E52F06F64E50CABAACCDE52D">soulng::cppcode::CompoundStatement::Print</a>

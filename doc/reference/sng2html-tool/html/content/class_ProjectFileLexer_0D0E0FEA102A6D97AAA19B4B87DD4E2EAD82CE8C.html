@@ -1,0 +1,165 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ProjectFileLexer Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_ParserStatementParser_CB7331396502D9358A486305E42A60E809D04433.html">prev</a>
+         | <a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html">next</a>
+        <hr/>
+        <h1>ProjectFileLexer Class</h1>
+        <span>
+            Definition at line <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html#9">9</a>
+             of <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html">ProjectFileLexer.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#constructor_ProjectFileLexer_9B3587FDD328A79B6AEB61358E75B0FD00868FDB">ProjectFileLexer</a>(<span class="kw">const </span><span class="kw">char32_t</span>* start_, <span class="kw">const </span><span class="kw">char32_t</span>* end_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#constructor_ProjectFileLexer_454A7B84CB371ECB737AABAD1FC2E7F377C2FBA6">ProjectFileLexer</a>(<span class="kw">const </span>std::u32string&amp; content_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#function_GetTokenId_35291664181BB04C91C3994FEB2C7825DD7F9B5B">GetTokenId</a>(<span class="kw">int</span> statementIndex)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#function_NextState_1E33DAC32FE0CDB19D61DD69CA7C9FC0A2432767">NextState</a>(<span class="kw">int</span> state, <span class="kw">char32_t</span> c) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_filePath_ACD1C13170DF8820AA7087395BB7FEED8DA7843F">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">filePath</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ProjectFileLexer_9B3587FDD328A79B6AEB61358E75B0FD00868FDB">ProjectFileLexer Constructor</h3>
+        <h4>
+            ProjectFileLexer::ProjectFileLexer(<span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * start_, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * end_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html#19">19</a>
+             of <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html">ProjectFileLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;19</span>&nbsp;<span class="other">:</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="identifier">end_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;20</span>&nbsp;<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#variable_filePath_ACD1C13170DF8820AA7087395BB7FEED8DA7843F">filePath</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;21</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">SetKeywordMap</span><span class="other">(</span><a href="./namespace_ProjectFileKeywords_574A870B198F3C766702F02DEA6299B7FBC99678.html">ProjectFileKeywords</a><span class="other">::</span><span class="identifier">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;23</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html#13">13</a>
+             of <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html">ProjectFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_ProjectFileLexer_454A7B84CB371ECB737AABAD1FC2E7F377C2FBA6">ProjectFileLexer Constructor</h3>
+        <h4>
+            ProjectFileLexer::ProjectFileLexer(<span class="kw">const </span>
+            std::u32string&amp; content_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html#13">13</a>
+             of <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html">ProjectFileLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;13</span>&nbsp;<span class="other">:</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">content_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;14</span>&nbsp;<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#variable_filePath_ACD1C13170DF8820AA7087395BB7FEED8DA7843F">filePath</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">SetKeywordMap</span><span class="other">(</span><a href="./namespace_ProjectFileKeywords_574A870B198F3C766702F02DEA6299B7FBC99678.html">ProjectFileKeywords</a><span class="other">::</span><span class="identifier">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html#12">12</a>
+             of <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html">ProjectFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_GetTokenId_35291664181BB04C91C3994FEB2C7825DD7F9B5B">GetTokenId Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             ProjectFileLexer::GetTokenId(<span class="kw">int</span>
+             statementIndex)</h4>
+        <span>
+            Definition at line <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html#1466">1466</a>
+             of <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html">ProjectFileLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html#17">17</a>
+             of <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html">ProjectFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#function_NextState_1E33DAC32FE0CDB19D61DD69CA7C9FC0A2432767">ProjectFileLexer::NextState</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NextState_1E33DAC32FE0CDB19D61DD69CA7C9FC0A2432767">NextState Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             ProjectFileLexer::NextState(<span class="kw">int</span>
+             state, <span class="kw">char32_t</span>
+             c) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html#25">25</a>
+             of <a href="file/ProjectFileLexer.cpp_A14FB7C9D8E3886CAF9C41D63EAE17CBF5C025B2.html">ProjectFileLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html#14">14</a>
+             of <a href="file/ProjectFileLexer.hpp_F90EEC6FBAB4C38BB19A3BB0210FCD5082B7A57D.html">ProjectFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html#function_GetTokenId_35291664181BB04C91C3994FEB2C7825DD7F9B5B">ProjectFileLexer::GetTokenId</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_ParserStatementParser_CB7331396502D9358A486305E42A60E809D04433.html">prev</a>
+         | <a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html">next</a>
+    </body>
+</html>

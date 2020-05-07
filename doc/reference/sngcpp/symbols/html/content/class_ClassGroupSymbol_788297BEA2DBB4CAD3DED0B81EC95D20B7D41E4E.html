@@ -8,7 +8,7 @@
     <body onload="drawClassInheritanceDiagram()">
         <a href="../../../../soulng-projects.html">top</a>
          | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
-         | <a href="struct_ByName_DC619DBBB3FB968F6E703C19D3553E66B00182C9.html">prev</a>
+         | <a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html">prev</a>
          | <a href="class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html">next</a>
         <hr/>
         <h1>ClassGroupSymbol Class</h1>
@@ -72,15 +72,15 @@
             Span&amp; span_, <span class="kw">const </span>
             std::u32string&amp; name_)</h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#163">163</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#165">165</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -99,19 +99,19 @@
              sngcpp::symbols::ClassGroupSymbol::AddClass(std::unique_ptr&lt;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a>
             >&amp;&amp; cls)</h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#167">167</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#169">169</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">cls</span><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">Parent</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">cls</span><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><span class="identifier">Parent</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_arityClassMap_B0425CB55EC300E077C7ABE941B8BAA8591FEB99">arityClassMap</a><span class="other">[</span><span class="identifier">cls</span><span class="other">-></span><span class="identifier">Arity</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">cls</span><span class="other">.</span><a href="#function_get_A466278C1F10070A3B4F6F62594FDDFCDAF5BFCA">get</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_arityClassMap_B0425CB55EC300E077C7ABE941B8BAA8591FEB99">arityClassMap</a><span class="other">[</span><span class="identifier">cls</span><span class="other">-></span><span class="identifier">Arity</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">cls</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_classes_36F2CDEBCCF473D2078A5E5EC455D2C42FE7D967">classes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">move</span><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_classes_36F2CDEBCCF473D2078A5E5EC455D2C42FE7D967">classes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -124,6 +124,7 @@
         <br/>
         <span>
             Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">sngcpp::symbols::Symbol::Parent</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetParent_F78F6B260EA6242F49F86FE9EF9F163F1A4FC9F9">sngcpp::symbols::Symbol::SetParent</a>
         </span>
         <br/>
         <br/>
@@ -144,7 +145,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">79</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">classes</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">79</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#variable_classes_36F2CDEBCCF473D2078A5E5EC455D2C42FE7D967">classes</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -160,15 +161,15 @@
             std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::ClassGroupSymbol::CreateElement() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#187">187</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#189">189</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"class_group"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">191</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"class_group"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -192,7 +193,7 @@
              arity) <span class="kw">const</span>
         </h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#174">174</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#176">176</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
         </span>
         <br/>
@@ -251,7 +252,7 @@
         <hr/>
         <a href="../../../../soulng-projects.html">top</a>
          | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
-         | <a href="struct_ByName_DC619DBBB3FB968F6E703C19D3553E66B00182C9.html">prev</a>
+         | <a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html">prev</a>
          | <a href="class_ClassGroupTypeSymbol_17F66CC7D23730B42BC08E3DD263ADF5A771FF04.html">next</a>
     </body>
 </html>

@@ -16,7 +16,7 @@
             <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
         </div>
         <span>
-            Definition at line <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html#266">266</a>
+            Definition at line <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html#264">264</a>
              of <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html">XPathExpr.hpp</a>
         </span>
         <br/>
@@ -24,7 +24,7 @@
         <table class="functionTable">
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_XPathPrincipalNodeTest_4ADC7338F3F959632DEEACF28C71251517021663.html#function_Select_1018DDC29AEE35DD7F149733DB239023C93DF403">Select</a>(<a href="./../../../dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a>* node, Axis axis) <span class="kw">const</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_XPathPrincipalNodeTest_4ADC7338F3F959632DEEACF28C71251517021663.html#function_Select_0463A89A293777ABF4FCF56FA07B1F38FDE58C7F">Select</a>(<a href="./../../../dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a>* node, <a href="./../../../dom/html/content/enum_Axis_9FE5833BBE1A5117E1FAECEB93689BFA574678E2.html">Axis</a> axis) <span class="kw">const override</span></td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./../../../dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a>></td>
@@ -33,15 +33,26 @@
         </table>
         <hr/>
         <h2>Member Function Details</h2>
-        <h3 id="function_Select_1018DDC29AEE35DD7F149733DB239023C93DF403">Select Member Function</h3>
+        <h3 id="function_Select_0463A89A293777ABF4FCF56FA07B1F38FDE58C7F">Select Member Function</h3>
         <h4>
             <span class="kw">bool</span>
              sngxml::xpath::XPathPrincipalNodeTest::Select(<a href="./../../../dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a>
-            * node, Axis axis) <span class="kw">const</span>
+            * node, <a href="./../../../dom/html/content/enum_Axis_9FE5833BBE1A5117E1FAECEB93689BFA574678E2.html">Axis</a>
+             axis) <span class="kw">const override</span>
         </h4>
         <span>
             Definition at line <a href="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html#1471">1471</a>
              of <a href="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html">XPathExpr.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html#267">267</a>
+             of <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html">XPathExpr.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_XPathNodeTestExpr_839EE20646A37F3CB92A3FDEA2AE2E582D910C4F.html#function_Select_42D36732F30F3CBFB214EC051FB87532979DEAC4">sngxml::xpath::XPathNodeTestExpr::Select</a>
         </span>
         <br/>
         <br/>
@@ -59,21 +70,10 @@
         <span>
             Definition at line <a href="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html#1487">1487</a>
              of <a href="file/XPathExpr.cpp_B2F1F3341BB8A105BA96AA3001198FB1F278426A.html">XPathExpr.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">1488</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1489</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">></span>&nbsp;<span class="identifier">element</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../dom/html/content/class_Element_53DAECAECE4CFF5A605FAE83BABF0BA9CB3ED2C0.html">Element</a><span class="other">(</span><span class="string">U"principalNodeTest"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1490</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">dom</span><span class="other">::</span><a href="./../../../dom/html/content/class_Node_2DB98192932AD5A81AEA60A4462A0D6400707720.html">Node</a><span class="other">></span><span class="other">(</span><span class="identifier">element</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1491</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html#270">270</a>
+            Declaration at line <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html#268">268</a>
              of <a href="file/XPathExpr.hpp_B40AF8ADA36917F0BEC39A57E180FC5318B2C227.html">XPathExpr.hpp</a>
         </span>
         <br/>

@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>CharSet Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html">prev</a>
+         | <a href="class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html">next</a>
+        <hr/>
+        <h1>CharSet Class</h1>
+        <span>
+            Definition at line <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html#13">13</a>
+             of <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html">CharSet.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#constructor_CharSet_9FD6E77571C2DB681FB3DBEC96D4FC7CCE416DBF">CharSet</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#function_AddRange_F198D999D01E19689240675DE4777FBD7E0D76C5">AddRange</a>(<span class="kw">const </span>soulng::parser::Range&amp; range)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#function_Inverse_19F0015DE06E6182CAB10568C7C5BA8497379FC0">Inverse</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;soulng::parser::Range>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#function_Ranges_DD56A200948D8DFD589316A4D597DF9DF4459955">Ranges</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#function_SetInverse_AF3406BA096EBD0E20BC3D0344B1ED537282080A">SetInverse</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_inverse_787CE9206405598DACB4504BA234CE179F353751">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">inverse</td>
+            </tr>
+            <tr id="variable_ranges_1D4060452EAD7C1CF3015765B842D595B8AB24C1">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;soulng::parser::Range></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ranges</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_CharSet_9FD6E77571C2DB681FB3DBEC96D4FC7CCE416DBF">CharSet Constructor</h3>
+        <h4>
+            sng2html::sng2html::CharSet::CharSet()</h4>
+        <span>
+            Definition at line <a href="file/CharSet.cpp_B7C476E79A7C77C80E38324FC25130C5B9930CBC.html#9">9</a>
+             of <a href="file/CharSet.cpp_B7C476E79A7C77C80E38324FC25130C5B9930CBC.html">CharSet.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#variable_inverse_787CE9206405598DACB4504BA234CE179F353751">inverse</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html#16">16</a>
+             of <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html">CharSet.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddRange_F198D999D01E19689240675DE4777FBD7E0D76C5">AddRange Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::CharSet::AddRange(<span class="kw">const </span>
+            soulng::parser::Range&amp; range)</h4>
+        <span>
+            Definition at line <a href="file/CharSet.cpp_B7C476E79A7C77C80E38324FC25130C5B9930CBC.html#13">13</a>
+             of <a href="file/CharSet.cpp_B7C476E79A7C77C80E38324FC25130C5B9930CBC.html">CharSet.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#variable_ranges_1D4060452EAD7C1CF3015765B842D595B8AB24C1">ranges</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">range</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html#20">20</a>
+             of <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html">CharSet.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Inverse_19F0015DE06E6182CAB10568C7C5BA8497379FC0">Inverse Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::CharSet::Inverse() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html#18">18</a>
+             of <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html">CharSet.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#variable_inverse_787CE9206405598DACB4504BA234CE179F353751">inverse</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A14C16B2B5620EA31F506FFC44A0C64C76773F6F">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Ranges_DD56A200948D8DFD589316A4D597DF9DF4459955">Ranges Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;soulng::parser::Range>&amp; sng2html::sng2html::CharSet::Ranges() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html#19">19</a>
+             of <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html">CharSet.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#variable_ranges_1D4060452EAD7C1CF3015765B842D595B8AB24C1">ranges</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A14C16B2B5620EA31F506FFC44A0C64C76773F6F">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetInverse_AF3406BA096EBD0E20BC3D0344B1ED537282080A">SetInverse Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::CharSet::SetInverse()</h4>
+        <span>
+            Definition at line <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html#17">17</a>
+             of <a href="file/CharSet.hpp_10C0AF9179F87B9E3A2C545928EEE5EC26F5A97E.html">CharSet.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#variable_inverse_787CE9206405598DACB4504BA234CE179F353751">inverse</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html">prev</a>
+         | <a href="class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html">next</a>
+    </body>
+</html>

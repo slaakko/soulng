@@ -1,0 +1,4 @@
+main.cm:12:M/NOT_CONVERTED << "arg " << i << " " << argv[i] << NOT_CONVERTED;/Console.Out() << "arg " << i << " " << argv[i] << endl();/
+main.cm:15:M/sort(args);/Example.sort(args);/
+main.cm:16:M/NOT_CONVERTED << "sorted:" << NOT_CONVERTED;/Console.Out() << "sorted:" << endl();/
+main.cm:19:M/NOT_CONVERTED << args[i] << NOT_CONVERTED;/Console.Out() << args[i] << endl();/

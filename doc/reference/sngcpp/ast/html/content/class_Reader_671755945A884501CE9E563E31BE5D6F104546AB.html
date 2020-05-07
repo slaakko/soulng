@@ -127,7 +127,7 @@
              of <a href="file/Reader.hpp_AF84180A94E7E98337196F582C3F602F6CA978A0.html">Reader.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">binaryReader</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#variable_binaryReader_B57CD0577A2BFD8E216E1C9717646821920D8BC9">binaryReader</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -135,6 +135,7 @@
         <span>
             Called by: <a href="./class_AliasDeclarationNode_10402FF684BE7A307DBD58D52E2B317B134BE264.html#function_Read_198195AF2CA72EBA65427A0E18CB1C9A47B52FE4">sngcpp::ast::AliasDeclarationNode::Read</a>
             , <a href="./class_ArrayDeclaratorNode_DBA59B2348AE56712241812A53EE20C05AA81567.html#function_Read_2D01EF8C22AE7AA6CF71FE480CDE0B92D995DFD8">sngcpp::ast::ArrayDeclaratorNode::Read</a>
+            , <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Read_03AD4452AA36CE7AD10DC7D9D959550B072EB8DD">sngcpp::ast::BinaryNode::Read</a>
             , <a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#function_Read_6CD1BE154DCCA492AF8FFE9C6790F4F1E7B8E5AC">sngcpp::ast::BooleanLiteralNode::Read</a>
             , <a href="./class_CharacterLiteralNode_1BBDA6256614B008A440C8A56A3B6AEE422FD57F.html#function_Read_41EEFFD84F2A029876DEDF1D2DE62DC324C640F0">sngcpp::ast::CharacterLiteralNode::Read</a>
             , <a href="./class_ClassNode_B06F46A751488B686D875BF28765AF2A104EE5EF.html#function_Read_2695F7583818AD360D5211C928D31D7D416B3D53">sngcpp::ast::ClassNode::Read</a>
@@ -164,6 +165,7 @@
             , <a href="./class_NewExpressionNode_6CE8CBB219536BBB5618356B7338DFFD655FC9A1.html#function_Read_F50DCF3BCD3C37FFD50EFF378E10455F8324B86F">sngcpp::ast::NewExpressionNode::Read</a>
             , <a href="./class_ParameterNode_C04B10A2ED38A6C5383CA46B1C6AC713CCFE0B57.html#function_Read_9A2D5A76D1B60F0CD9280CFE9E7D909A6208B26C">sngcpp::ast::ParameterNode::Read</a>
             , <a href="./class_ReturnStatementNode_3F2877807D2E2F2DD8FA2A9493B6C0F6DF9B609B.html#function_Read_35669FAD4FD49B5210DC2D72ACA561E769C8A716">sngcpp::ast::ReturnStatementNode::Read</a>
+            , <a href="./class_SimpleDeclarationNode_62E86E1DA1C4D0792046C5FF5A06FAD1A51675E1.html#function_Read_8EDE3D01CFCDD15706003E8F36AB39CBD574A15E">sngcpp::ast::SimpleDeclarationNode::Read</a>
             , <a href="./class_SimpleTypeNode_C1B8B4343B9E5F70772809DEB68F19BD9BF25116.html#function_Read_D7869C852E20CC4B56737B7FD098B688219EF950">sngcpp::ast::SimpleTypeNode::Read</a>
             , <a href="./class_SourceFileNode_84126815F2A18EDCEECEA25D712448FECD2DC365.html#function_Read_804C7ADD2A79336D5B2DA13154AF574FE716558A">sngcpp::ast::SourceFileNode::Read</a>
             , <a href="./class_SpecialMemberFunctionNode_1D50B1136366D0CDE9B8D4AA3E814A81BBF0C2FD.html#function_Read_5976543B2BAF4C3B601A7CA929E0A706F943A773">sngcpp::ast::SpecialMemberFunctionNode::Read</a>
@@ -407,11 +409,11 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a>&nbsp;<span class="identifier">nodeType</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNodeType_385C4152E74CB7DBD4984DB136920149874903AE">ReadNodeType</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a>&nbsp;<span class="identifier">nodeType</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">ReadNodeType</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">node</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">NodeFactory</span><span class="other">::</span><a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#function_Instance_49611902B4C58C1750F451DD81CBCB0E79BA2439">Instance</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#function_CreateNode_EA9F4B002FE111B812E7718FDC825DADEFE2EC86">CreateNode</a><span class="other">(</span><span class="identifier">nodeType</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">*</span>&nbsp;<span class="identifier">node</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html">NodeFactory</a><span class="other">::</span><span class="identifier">Instance</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">CreateNode</span><span class="other">(</span><span class="identifier">nodeType</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">node</span><span class="other">-></span><a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">Read</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">node</span><span class="other">-></span><span class="identifier">Read</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">node</span><span class="other">;</span></span>
                 <br/>
@@ -503,7 +505,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint8_t</span>&nbsp;<span class="identifier">x</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#variable_binaryReader_B57CD0577A2BFD8E216E1C9717646821920D8BC9">binaryReader</a><span class="other">.</span><span class="identifier">ReadByte</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint8_t</span>&nbsp;<span class="identifier">x</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#variable_binaryReader_B57CD0577A2BFD8E216E1C9717646821920D8BC9">binaryReader</a><span class="other">.</span><span class="identifier">ReadByte</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a><span class="other">></span><span class="other">(</span><span class="identifier">x</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>

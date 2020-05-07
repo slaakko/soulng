@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SequenceParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">prev</a>
+         | <a href="class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html">next</a>
+        <hr/>
+        <h1>SequenceParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#172">172</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#constructor_SequenceParser_C7C9003B45D7B2DA1212F626B2040936EFEDA561">SequenceParser</a>(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>* left_, <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>* right_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_Accept_A3501B3793FB7DDA82FE9131782343249CE0211E">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_Clone_00403DEDA0DCD7507679D635C519851452E17A69">Clone</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html#function_IsAction_CE37D1BA2C77E195252F3B21BDA2353B526BB823">IsAction</a>() <span class="kw">const override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_SequenceParser_C7C9003B45D7B2DA1212F626B2040936EFEDA561">SequenceParser Constructor</h3>
+        <h4>
+            sng2html::sng2html::SequenceParser::SequenceParser(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * left_, <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * right_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#188">188</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html">BinaryParser</a><span class="other">(</span><span class="string">U"sequence"</span><span class="other">,&nbsp;</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#175">175</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_A3501B3793FB7DDA82FE9131782343249CE0211E">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::SequenceParser::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#197">197</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">198</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">199</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">200</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#177">177</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_3F9BFFC2A1316D771F6268072674CA713477A694">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_00403DEDA0DCD7507679D635C519851452E17A69">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * sng2html::sng2html::SequenceParser::Clone() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#192">192</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">194</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html">SequenceParser</a><span class="other">(</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Clone</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Clone</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">195</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#176">176</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">sng2html::sng2html::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Left_37D43A68BB36B5706AEEC3CAEEAC35C7362E9428">sng2html::sng2html::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Right_61127414FC70D51F45B863FB1DC86F9A5D581596">sng2html::sng2html::BinaryParser::Right</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">sng2html::sng2html::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsAction_CE37D1BA2C77E195252F3B21BDA2353B526BB823">IsAction Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::SequenceParser::IsAction() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#202">202</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#178">178</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsAction_DEBB302CA0EE1D8E8055837AB3F9ADFD82142C7C">sng2html::sng2html::Parser::IsAction</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Left_37D43A68BB36B5706AEEC3CAEEAC35C7362E9428">sng2html::sng2html::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Right_61127414FC70D51F45B863FB1DC86F9A5D581596">sng2html::sng2html::BinaryParser::Right</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsAction_DEBB302CA0EE1D8E8055837AB3F9ADFD82142C7C">sng2html::sng2html::Parser::IsAction</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsEmptyOrEmptyActionParser_8C2F683EFC7834C8556F29B50EE8A9AB40F3E5C2">sng2html::sng2html::Parser::IsEmptyOrEmptyActionParser</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">prev</a>
+         | <a href="class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html">next</a>
+    </body>
+</html>

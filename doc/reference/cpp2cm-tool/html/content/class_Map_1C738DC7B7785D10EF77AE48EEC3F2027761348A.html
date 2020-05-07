@@ -1,0 +1,625 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Map Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">up</a>
+         | <a href="struct_Item_1E218381DCC3C34754ADFDBD55DD0F894BC41E8F.html">prev</a>
+         | <a href="class_ModifyPatch_767D44ED5FA64ED06104C53D56F73783448A43E4.html">next</a>
+        <hr/>
+        <h1>Map Class</h1>
+        <span>
+            Definition at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#22">22</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#constructor_Map_AF798B83899FA1E11D8BF79C80C396B05B8B1453">Map</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_AddSourceXmlDoc_C35E4230E46737A9BDC0ED1177BF4FBCE0FA6CDC">AddSourceXmlDoc</a>(sngxml::dom::Document* sourceXmlDoc, <span class="kw">const </span>std::u32string&amp; projectName)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_ClearNamespaceImports_56D536857723CBD4A24BC500DD62B9ABFBB496AD">ClearNamespaceImports</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::Node*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CreateNode_0F3A22FB7EB6937CBB796FA98E9F89C1A21C5330">CreateNode</a>(<span class="kw">const </span>std::u32string&amp; name)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::Node*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CreateNode_6A8A37F4A922A70137D934B374F6F2014CCBE644">CreateNode</a>(sngcm::ast::NodeType nodeType)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CurrentProjectName_4319835CF70995AACF8D72BBF1381B803AD1D6C6">CurrentProjectName</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_GetNs_A3963792BEF331708CBECE0EB52037E668A96A6B">GetNs</a>(<span class="kw">const </span>std::u32string&amp; source) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_InitNameNodeTypeMap_1A2902662E6F92B423E942CF90AB7BBFBDF97124">InitNameNodeTypeMap</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_InitSimpleTypeMap_4094BAAC386531C7A56F7AD282559D11B9A6FE74">InitSimpleTypeMap</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::Node*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MakeDerivedType_887D71626A1C1EEC11ACBC678823435F1C3A07B9">MakeDerivedType</a>(sngcm::ast::Node* node, <span class="kw">const </span>std::vector&lt;sngcpp::symbols::Derivation>&amp; derivations)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::IdentifierNode*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapFullTypeName_9933C5CF52E453118E48D90BB686F9790F6F4C0D">MapFullTypeName</a>(sngcpp::symbols::TypeSymbol* type)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::IdentifierNode*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapFunctionSymbol_7C1A7C26CC3A380EFD8F7F2C62EB4B1B8DB3EB7A">MapFunctionSymbol</a>(sngcpp::symbols::CallableSymbol* callableSymbol, std::u32string&amp; args)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::IdentifierNode*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapMemberSymbol_C2F09FF4504C80EE985111CB522E8DEAD0E9B3DD">MapMemberSymbol</a>(sngcpp::symbols::Symbol* memberSymbol, std::u32string&amp; args)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapNs_0C8B95035A4E661F37586C56915A2D3F92B93D02">MapNs</a>(<span class="kw">const </span>std::u32string&amp; source, <span class="kw">const </span>std::u32string&amp; target)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::NodeType</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapSimpleType_D9D4E3A5D66C0FB7EED0F6FE44D27D5F35BD8286">MapSimpleType</a>(sngcpp::ast::SimpleTypeSpecifierFlags flags)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::NodeType</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapSimpleType_001FE61E32CB959B4614735AFFFFDDBB4D9ED1F9">MapSimpleType</a>(sngcpp::symbols::SimpleTypeSymbol* simpleTypeSymbol)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcm::ast::Node*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">MapType</a>(sngcpp::symbols::TypeSymbol* type, sngxml::dom::Document*&amp; sourceXmlDoc)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::set&lt;std::u32string>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_NamespaceImports_44DE4BE90F6952F9F18B85050902AD33486B1A46">NamespaceImports</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_RemoveNamespace_2F583453CFFD5DAE0D46A0194CA7183A44A93F18">RemoveNamespace</a>(<span class="kw">const </span>std::u32string&amp; qid)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_SetCurrentContext_99C72FCB3EBE8115B1C8E0175314D3B2F63EA8D8">SetCurrentContext</a>(<a href="./struct_Context_B96292501BB650206F5AB9506836AF0FC43D23E7.html">Context</a>* context)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_SetCurrentProjectName_6303ED511F10CB352C7B2D63E43ECE02D6BF162C">SetCurrentProjectName</a>(<span class="kw">const </span>std::u32string&amp; projectName)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_SetSymbolTable_FFA456CD17D4AB8173D0F2A40EB7CD0EEA2EBD8A">SetSymbolTable</a>(sngcpp::symbols::SymbolTable* symbolTable_)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_currentContext_E6250AEB676C1329AB7D9DCFE74C769D12D392D2">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./struct_Context_B96292501BB650206F5AB9506836AF0FC43D23E7.html">Context</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentContext</td>
+            </tr>
+            <tr id="variable_currentProjectName_EAA89FDAC225577472C0755A7AAF2E216A3CB786">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentProjectName</td>
+            </tr>
+            <tr id="variable_nameNodeTypeMap_12447C91C1526C3EAB3EB56C697232E101FB28CC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, sngcm::ast::NodeType></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nameNodeTypeMap</td>
+            </tr>
+            <tr id="variable_namespaceImports_A5C302666B2F1CD271A30E04CE3B5FC522E25CFC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::set&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">namespaceImports</td>
+            </tr>
+            <tr id="variable_nsMap_E13A6859E5F346B992EA8AD57A7A0014C7EF9BDD">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nsMap</td>
+            </tr>
+            <tr id="variable_projectSourceXmlDocMap_E2EAA4ECDE279005E97B2C452CBFFFAC90365047">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, sngxml::dom::Document*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectSourceXmlDocMap</td>
+            </tr>
+            <tr id="variable_simpleTypeMap_664452CF66BBDE237A26D56D3B15B797D59E9CA7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;sngcpp::ast::SimpleTypeSpecifierFlags, sngcm::ast::NodeType></td>
+                <td class="functionTableSecondCol" xml:space="preserve">simpleTypeMap</td>
+            </tr>
+            <tr id="variable_sourceXmlDocs_D17E18B3B70A5FB70B1200CACE602E08C0D65316">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;sngxml::dom::Document*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">sourceXmlDocs</td>
+            </tr>
+            <tr id="variable_symbolTable_923A708C288388CB6C605DBC1A22D7B368EE1159">
+                <td class="functionTableFirstCol" xml:space="preserve">sngcpp::symbols::SymbolTable*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">symbolTable</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Map_AF798B83899FA1E11D8BF79C80C396B05B8B1453">Map Constructor</h3>
+        <h4>
+            cpp2cm::Map::Map()</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#71">71</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#25">25</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddSourceXmlDoc_C35E4230E46737A9BDC0ED1177BF4FBCE0FA6CDC">AddSourceXmlDoc Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::AddSourceXmlDoc(sngxml::dom::Document* sourceXmlDoc, <span class="kw">const </span>
+            std::u32string&amp; projectName)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#176">176</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#32">32</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">cpp2cm::Project::Convert</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ClearNamespaceImports_56D536857723CBD4A24BC500DD62B9ABFBB496AD">ClearNamespaceImports Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::ClearNamespaceImports()</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#569">569</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#42">42</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_5F4B449D7A6E33D2211C794D0233DC0DB8E797B8">cpp2cm::Converter::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateNode_0F3A22FB7EB6937CBB796FA98E9F89C1A21C5330">CreateNode Member Function</h3>
+        <h4>
+            sngcm::ast::Node* cpp2cm::Map::CreateNode(<span class="kw">const </span>
+            std::u32string&amp; name)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#150">150</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#28">28</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CreateNode_6A8A37F4A922A70137D934B374F6F2014CCBE644">cpp2cm::Map::CreateNode</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CreateNode_6A8A37F4A922A70137D934B374F6F2014CCBE644">CreateNode Member Function</h3>
+        <h4>
+            sngcm::ast::Node* cpp2cm::Map::CreateNode(sngcm::ast::NodeType nodeType)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#141">141</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#29">29</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_525BDC7A71CB90202A3DB279BBF8574F09E7B5F8">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CreateNode_0F3A22FB7EB6937CBB796FA98E9F89C1A21C5330">cpp2cm::Map::CreateNode</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_CurrentProjectName_4319835CF70995AACF8D72BBF1381B803AD1D6C6">CurrentProjectName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; cpp2cm::Map::CurrentProjectName() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#46">46</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetNs_A3963792BEF331708CBECE0EB52037E668A96A6B">GetNs Member Function</h3>
+        <h4>
+            std::u32string cpp2cm::Map::GetNs(<span class="kw">const </span>
+            std::u32string&amp; source) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#166">166</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#31">31</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_914514DC49D8D2DE978E3D23CE814FCA84E3BF65">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapFullTypeName_9933C5CF52E453118E48D90BB686F9790F6F4C0D">cpp2cm::Map::MapFullTypeName</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_InitNameNodeTypeMap_1A2902662E6F92B423E942CF90AB7BBFBDF97124">InitNameNodeTypeMap Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::InitNameNodeTypeMap()</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#78">78</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#26">26</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_InitSimpleTypeMap_4094BAAC386531C7A56F7AD282559D11B9A6FE74">InitSimpleTypeMap Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::InitSimpleTypeMap()</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#97">97</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#27">27</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MakeDerivedType_887D71626A1C1EEC11ACBC678823435F1C3A07B9">MakeDerivedType Member Function</h3>
+        <h4>
+            sngcm::ast::Node* cpp2cm::Map::MakeDerivedType(sngcm::ast::Node* node, <span class="kw">const </span>
+            std::vector&lt;sngcpp::symbols::Derivation>&amp; derivations)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#203">203</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#36">36</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapFullTypeName_9933C5CF52E453118E48D90BB686F9790F6F4C0D">MapFullTypeName Member Function</h3>
+        <h4>
+            sngcm::ast::IdentifierNode* cpp2cm::Map::MapFullTypeName(sngcpp::symbols::TypeSymbol* type)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#238">238</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#37">37</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_GetNs_A3963792BEF331708CBECE0EB52037E668A96A6B">cpp2cm::Map::GetNs</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapFunctionSymbol_7C1A7C26CC3A380EFD8F7F2C62EB4B1B8DB3EB7A">MapFunctionSymbol Member Function</h3>
+        <h4>
+            sngcm::ast::IdentifierNode* cpp2cm::Map::MapFunctionSymbol(sngcpp::symbols::CallableSymbol* callableSymbol, std::u32string&amp; args)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#533">533</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#40">40</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_RemoveNamespace_2F583453CFFD5DAE0D46A0194CA7183A44A93F18">cpp2cm::Map::RemoveNamespace</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_ConvertExpression_C2FA1EE0B7BEC789D0AAB8CCED2302467E7E8960">cpp2cm::Converter::ConvertExpression</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_6D8A04F7693AB5EE95150C935A4912179DD6F9AA">cpp2cm::Converter::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapMemberSymbol_C2F09FF4504C80EE985111CB522E8DEAD0E9B3DD">MapMemberSymbol Member Function</h3>
+        <h4>
+            sngcm::ast::IdentifierNode* cpp2cm::Map::MapMemberSymbol(sngcpp::symbols::Symbol* memberSymbol, std::u32string&amp; args)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#486">486</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#39">39</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_RemoveNamespace_2F583453CFFD5DAE0D46A0194CA7183A44A93F18">cpp2cm::Map::RemoveNamespace</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_D37BCABF45B81DCB24A98D3D66693D11262AF667">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_55B5417C1C2DEC56B1A98CDBFC9DA3378B556728">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_DB425FABB0A7910F7ECD2769557C5A6A7F5311E0">cpp2cm::Converter::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapNs_0C8B95035A4E661F37586C56915A2D3F92B93D02">MapNs Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::MapNs(<span class="kw">const </span>
+            std::u32string&amp; source, <span class="kw">const </span>
+            std::u32string&amp; target)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#161">161</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#30">30</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_MapNamespaces_122336BBA57E189C17080E70BDB8F6DC81502D02">cpp2cm::Project::MapNamespaces</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapSimpleType_D9D4E3A5D66C0FB7EED0F6FE44D27D5F35BD8286">MapSimpleType Member Function</h3>
+        <h4>
+            sngcm::ast::NodeType cpp2cm::Map::MapSimpleType(sngcpp::ast::SimpleTypeSpecifierFlags flags)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#187">187</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#34">34</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapSimpleType_001FE61E32CB959B4614735AFFFFDDBB4D9ED1F9">MapSimpleType Member Function</h3>
+        <h4>
+            sngcm::ast::NodeType cpp2cm::Map::MapSimpleType(sngcpp::symbols::SimpleTypeSymbol* simpleTypeSymbol)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#198">198</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#35">35</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_MakeCommonType_A34E7CEAAEDDC285380C39E369DF2393930A1730">cpp2cm::Converter::MakeCommonType</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">MapType Member Function</h3>
+        <h4>
+            sngcm::ast::Node* cpp2cm::Map::MapType(sngcpp::symbols::TypeSymbol* type, sngxml::dom::Document*&amp; sourceXmlDoc)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#297">297</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#38">38</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CreateNode_0F3A22FB7EB6937CBB796FA98E9F89C1A21C5330">cpp2cm::Map::CreateNode</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_CreateNode_6A8A37F4A922A70137D934B374F6F2014CCBE644">cpp2cm::Map::CreateNode</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MakeDerivedType_887D71626A1C1EEC11ACBC678823435F1C3A07B9">cpp2cm::Map::MakeDerivedType</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapFullTypeName_9933C5CF52E453118E48D90BB686F9790F6F4C0D">cpp2cm::Map::MapFullTypeName</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapSimpleType_001FE61E32CB959B4614735AFFFFDDBB4D9ED1F9">cpp2cm::Map::MapSimpleType</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_RemoveNamespace_2F583453CFFD5DAE0D46A0194CA7183A44A93F18">cpp2cm::Map::RemoveNamespace</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_ConvertExpression_C2FA1EE0B7BEC789D0AAB8CCED2302467E7E8960">cpp2cm::Converter::ConvertExpression</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_ConvertIdExpr_3E9FA5B2C769E15D907F680C08D7FED09DB38C7B">cpp2cm::Converter::ConvertIdExpr</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_ConvertTypeExpression_709671467E29D4C9C15C148706EB491FA3C76ED7">cpp2cm::Converter::ConvertTypeExpression</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_1B618DB12D7480659B69E96F169A6210CA6CB6F5">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_890E041039218B1BC465B601452C098DB44AD351">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_B2D40191B75D46C0ED67E05547BD70A5576A39E1">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_CBEAF44A375E4AC1E89586F6A546BC528ECB7D2F">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_DDA8DFA0A68741871067B9932B4EE9CB5AF1A513">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_BBE31D559DB5C212C11E432143405C530DA7DE43">cpp2cm::Converter::Visit</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NamespaceImports_44DE4BE90F6952F9F18B85050902AD33486B1A46">NamespaceImports Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::set&lt;std::u32string>&amp; cpp2cm::Map::NamespaceImports() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#43">43</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_5F4B449D7A6E33D2211C794D0233DC0DB8E797B8">cpp2cm::Converter::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_RemoveNamespace_2F583453CFFD5DAE0D46A0194CA7183A44A93F18">RemoveNamespace Member Function</h3>
+        <h4>
+            std::u32string cpp2cm::Map::RemoveNamespace(<span class="kw">const </span>
+            std::u32string&amp; qid)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#576">576</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#41">41</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapFunctionSymbol_7C1A7C26CC3A380EFD8F7F2C62EB4B1B8DB3EB7A">cpp2cm::Map::MapFunctionSymbol</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapMemberSymbol_C2F09FF4504C80EE985111CB522E8DEAD0E9B3DD">cpp2cm::Map::MapMemberSymbol</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapType_39B26976580AC0E560258B199EBC1BDB5A0C1C96">cpp2cm::Map::MapType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetCurrentContext_99C72FCB3EBE8115B1C8E0175314D3B2F63EA8D8">SetCurrentContext Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::SetCurrentContext(<a href="./struct_Context_B96292501BB650206F5AB9506836AF0FC43D23E7.html">Context</a>
+            * context)</h4>
+        <span>
+            Definition at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#44">44</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Visit_5F4B449D7A6E33D2211C794D0233DC0DB8E797B8">cpp2cm::Converter::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetCurrentProjectName_6303ED511F10CB352C7B2D63E43ECE02D6BF162C">SetCurrentProjectName Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::SetCurrentProjectName(<span class="kw">const </span>
+            std::u32string&amp; projectName)</h4>
+        <span>
+            Definition at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#45">45</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">cpp2cm::Project::Convert</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetSymbolTable_FFA456CD17D4AB8173D0F2A40EB7CD0EEA2EBD8A">SetSymbolTable Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Map::SetSymbolTable(sngcpp::symbols::SymbolTable* symbolTable_)</h4>
+        <span>
+            Definition at line <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html#182">182</a>
+             of <a href="file/Map.cpp_784EFFD97EECF3CCBFD6F9B09B8DD89E69A12248.html">Map.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html#33">33</a>
+             of <a href="file/Map.hpp_E33A93F780E9D702251A800F40F1B6A851A653E3.html">Map.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">cpp2cm::Project::Convert</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">up</a>
+         | <a href="struct_Item_1E218381DCC3C34754ADFDBD55DD0F894BC41E8F.html">prev</a>
+         | <a href="class_ModifyPatch_767D44ED5FA64ED06104C53D56F73783448A43E4.html">next</a>
+    </body>
+</html>

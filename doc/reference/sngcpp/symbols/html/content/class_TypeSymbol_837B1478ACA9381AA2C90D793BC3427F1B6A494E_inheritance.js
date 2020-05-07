@@ -278,10 +278,9 @@ function drawClassInheritanceDiagram() {
         { name: "sngcpp::symbols::EnumTypeSymbol", id: "class_7", level: 3, subject: false, hasDerivedClasses: false, link: "./class_EnumTypeSymbol_E6F6216C965632BC3D6CC0D84D5F808696E3D921.html" },
         { name: "sngcpp::symbols::ExternalTypeSymbol", id: "class_8", level: 3, subject: false, hasDerivedClasses: false, link: "./class_ExternalTypeSymbol_21F55D9E8DC3B068A8B291CAE14D082C06644160.html" },
         { name: "sngcpp::symbols::IntegerLiteralTypeSymbol", id: "class_9", level: 3, subject: false, hasDerivedClasses: false, link: "./class_IntegerLiteralTypeSymbol_30260614C598B4E861119D6434267E2F40F526F9.html" },
-        { name: "sngcpp::symbols::PseudoTypeSymbol", id: "class_10", level: 3, subject: false, hasDerivedClasses: false, link: "./class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html" },
-        { name: "sngcpp::symbols::SimpleTypeSymbol", id: "class_11", level: 3, subject: false, hasDerivedClasses: false, link: "./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html" },
-        { name: "sngcpp::symbols::TemplateParameterSymbol", id: "class_12", level: 3, subject: false, hasDerivedClasses: false, link: "./class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html" },
-        { name: "sngcpp::symbols::TypedefSymbol", id: "class_13", level: 3, subject: false, hasDerivedClasses: false, link: "./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html" }];
+        { name: "sngcpp::symbols::SimpleTypeSymbol", id: "class_10", level: 3, subject: false, hasDerivedClasses: false, link: "./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html" },
+        { name: "sngcpp::symbols::TemplateParameterSymbol", id: "class_11", level: 3, subject: false, hasDerivedClasses: false, link: "./class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html" },
+        { name: "sngcpp::symbols::TypedefSymbol", id: "class_12", level: 3, subject: false, hasDerivedClasses: false, link: "./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html" }];
     drawDiagram(classes);
 }
 

@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>SourceFile Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">up</a>
+         | <a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">prev</a>
+         | <a href="class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html">next</a>
+        <hr/>
+        <h1>SourceFile Class</h1>
+        <span>
+            Definition at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#14">14</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#constructor_SourceFile_15B520A9382215414CAC498EA8E4A6A182B3E92B">SourceFile</a>(<span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::string&amp; path_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#function_Apply_441CFED3BB9E6F84645E881585CF899EE7F1AEFC">Apply</a>(<a href="./class_Patch_70B08928AFE9041B9D7D47BD77C7EC9850B63A8C.html">Patch</a>* patch)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#function_InMemory_BE320128DC06F9500E4E4F0C499F358639A2C4E8">InMemory</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#function_Name_5FCDA96AC32CA7C478F1E4E5432CB1F1EF035966">Name</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#function_Path_078CBB405FB0CBAC467C8FE77290A02B19A40446">Path</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#function_Read_3B121B9D97F87C4EC8D4C998A99723C73F7224F1">Read</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html#function_Write_897A4ED8C70F85FA142BA18A8120E74612588045">Write</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_inMemory_335FA37564AEB73D099D3354179556BB32BEE6F7">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">inMemory</td>
+            </tr>
+            <tr id="variable_lineIteratorMap_EDDC02AA53D77F17FA5F8CE61914BCE474E059AB">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;<span class="kw">int</span>, std::list&lt;std::u32string>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">lineIteratorMap</td>
+            </tr>
+            <tr id="variable_lines_C57423DE4F56BDA4981825066FCC2F0B3318BD51">
+                <td class="functionTableFirstCol" xml:space="preserve">std::list&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">lines</td>
+            </tr>
+            <tr id="variable_name_2CCE085F1629A72884234F19D307662F8CB1E3A7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">name</td>
+            </tr>
+            <tr id="variable_path_8C2F0367A9E62BE58F866966AE43CA527DE7E2DC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">path</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_SourceFile_15B520A9382215414CAC498EA8E4A6A182B3E92B">SourceFile Constructor</h3>
+        <h4>
+            cpp2cm::SourceFile::SourceFile(<span class="kw">const </span>
+            std::u32string&amp; name_, <span class="kw">const </span>
+            std::string&amp; path_)</h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html#16">16</a>
+             of <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#17">17</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Apply_441CFED3BB9E6F84645E881585CF899EE7F1AEFC">Apply Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::SourceFile::Apply(<a href="./class_Patch_70B08928AFE9041B9D7D47BD77C7EC9850B63A8C.html">Patch</a>
+            * patch)</h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html#82">82</a>
+             of <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#21">21</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_InsertPatch_7D026CAD3FFD6B049FAC5BDE91146A1400D0A83B.html#function_Text_F5FAE9A6029A266E605C39C839FB73915103B2F3">cpp2cm::InsertPatch::Text</a>
+            , <a href="./class_ModifyPatch_767D44ED5FA64ED06104C53D56F73783448A43E4.html#function_NewText_2B2F6019C929C44C90652DAAC7471C1DB066E70D">cpp2cm::ModifyPatch::NewText</a>
+            , <a href="./class_ModifyPatch_767D44ED5FA64ED06104C53D56F73783448A43E4.html#function_OldText_E73621FFFBA8AB41A64FA2E26D8D8575193533CB">cpp2cm::ModifyPatch::OldText</a>
+            , <a href="./class_Patch_70B08928AFE9041B9D7D47BD77C7EC9850B63A8C.html#function_GetKind_79935867DF96B52E619AB7C296DBE467CDC83346">cpp2cm::Patch::GetKind</a>
+            , <a href="./class_Patch_70B08928AFE9041B9D7D47BD77C7EC9850B63A8C.html#function_LineNumber_E1EB7E24D12F00EBCFFAA65DDE70C32896BAF9DD">cpp2cm::Patch::LineNumber</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Apply_80D50AB65E1C683828221EEC5113D465C090AE95">cpp2cm::SourceFiles::Apply</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_InMemory_BE320128DC06F9500E4E4F0C499F358639A2C4E8">InMemory Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             cpp2cm::SourceFile::InMemory() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#18">18</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Apply_80D50AB65E1C683828221EEC5113D465C090AE95">cpp2cm::SourceFiles::Apply</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Name_5FCDA96AC32CA7C478F1E4E5432CB1F1EF035966">Name Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; cpp2cm::SourceFile::Name() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#22">22</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Add_3F9FA03BA9AF123785938E2916386C517F1A2885">cpp2cm::SourceFiles::Add</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Path_078CBB405FB0CBAC467C8FE77290A02B19A40446">Path Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::string&amp; cpp2cm::SourceFile::Path() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#23">23</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Read_3B121B9D97F87C4EC8D4C998A99723C73F7224F1">Read Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::SourceFile::Read()</h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html#20">20</a>
+             of <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#19">19</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Apply_80D50AB65E1C683828221EEC5113D465C090AE95">cpp2cm::SourceFiles::Apply</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Write_897A4ED8C70F85FA142BA18A8120E74612588045">Write Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::SourceFile::Write()</h4>
+        <span>
+            Definition at line <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html#71">71</a>
+             of <a href="file/SourceFile.cpp_202923414D864713B51C7A254068A8EE45CB5AF6.html">SourceFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html#20">20</a>
+             of <a href="file/SourceFile.hpp_EF9551BAF6C61649812B2402B4C7B80821FC980D.html">SourceFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">up</a>
+         | <a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">prev</a>
+         | <a href="class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html">next</a>
+    </body>
+</html>

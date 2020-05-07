@@ -1,0 +1,264 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Expression Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html">prev</a>
+         | <a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html">next</a>
+        <hr/>
+        <h1>Expression Class</h1>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#97">97</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#constructor_Expression_CCD41F1AEDC68A2B0C4C18D12EB29507603F37BB">Expression</a>(<span class="kw">int</span> index_, <span class="kw">const </span>std::u32string&amp; id_, <span class="kw">const </span>std::u32string&amp; value_, <span class="kw">int</span> line_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Id_B4952BD3502B0555BD08A214CA2A8C3CC95EBB24">Id</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Index_6C88E8404EC3D7CF3E8C6E976EBFCCBF884FC01F">Index</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Line_E88A20175CC6B73070FA3F5A973AEF0898341FF0">Line</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Parse_87AA678543276530573E34B7BEDF1F06A0CB5468">Parse</a>(<a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>&amp; lexerContext)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_RegEx_AE00E85E46BF42F3F37DDDA49BD560FD022B8A5F">RegEx</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_SetRegEx_9FB7C9E2FF40A077C62E013F384131DF6BEDC1C5">SetRegEx</a>(<a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>* regEx_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Value_03F8B1EBD70C86D1082E97E53B9DB1297CDDD1BF">Value</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_id_86E414F27262737E0F5C2A87B2688144CE3BADDA">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">id</td>
+            </tr>
+            <tr id="variable_index_F61241A1657604DA8F390576866B30BA3F46722E">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">index</td>
+            </tr>
+            <tr id="variable_line_AA40CD7381950A72066A947C58E34707664BBE26">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">line</td>
+            </tr>
+            <tr id="variable_regEx_4B7997F9D0F57AD1949581FC5056DCC4B7C7CC99">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">regEx</td>
+            </tr>
+            <tr id="variable_value_98EE8503E65D4A587FABBB59C938D90C99088DB5">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">value</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Expression_CCD41F1AEDC68A2B0C4C18D12EB29507603F37BB">Expression Constructor</h3>
+        <h4>
+            sng2html::sng2html::Expression::Expression(<span class="kw">int</span>
+             index_, <span class="kw">const </span>
+            std::u32string&amp; id_, <span class="kw">const </span>
+            std::u32string&amp; value_, <span class="kw">int</span>
+             line_)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#96">96</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_index_F61241A1657604DA8F390576866B30BA3F46722E">index</a><span class="other">(</span><span class="identifier">index_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_id_86E414F27262737E0F5C2A87B2688144CE3BADDA">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_value_98EE8503E65D4A587FABBB59C938D90C99088DB5">value</a><span class="other">(</span><span class="identifier">value_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_line_AA40CD7381950A72066A947C58E34707664BBE26">line</a><span class="other">(</span><span class="identifier">line_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#100">100</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Id_B4952BD3502B0555BD08A214CA2A8C3CC95EBB24">Id Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::Expression::Id() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#102">102</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_id_86E414F27262737E0F5C2A87B2688144CE3BADDA">id</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Add_A7446DD2198A15EEEA21AD9C983BAB3A48369AC7">sng2html::sng2html::Expressions::Add</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Index_6C88E8404EC3D7CF3E8C6E976EBFCCBF884FC01F">Index Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sng2html::sng2html::Expression::Index() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#101">101</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_index_F61241A1657604DA8F390576866B30BA3F46722E">index</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Add_A7446DD2198A15EEEA21AD9C983BAB3A48369AC7">sng2html::sng2html::Expressions::Add</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Line_E88A20175CC6B73070FA3F5A973AEF0898341FF0">Line Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sng2html::sng2html::Expression::Line() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#104">104</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_line_AA40CD7381950A72066A947C58E34707664BBE26">line</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Parse_87AA678543276530573E34B7BEDF1F06A0CB5468">Parse Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Expression::Parse(<a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>
+            &amp; lexerContext)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#100">100</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RegExLexer_57F38BA09EA0A6C548A69611650FE336FC16705F.html">RegExLexer</a>&nbsp;<span class="identifier">lexer</span><span class="other">(</span><a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_value_98EE8503E65D4A587FABBB59C938D90C99088DB5">value</a><span class="other">,&nbsp;</span><span class="string">""</span><span class="other">,&nbsp;</span><span class="other">0</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_regEx_4B7997F9D0F57AD1949581FC5056DCC4B7C7CC99">regEx</a><span class="other">&nbsp;=&nbsp;</span><a href="./struct_RegExParser_87BEE70E97AA9A233DD1BB5BC23B3DDDE0E10B57.html">RegExParser</a><span class="other">::</span><span class="identifier">Parse</span><span class="other">(</span><span class="identifier">lexer</span><span class="other">,&nbsp;</span><span class="other">&amp;</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#105">105</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_RegExParser_87BEE70E97AA9A233DD1BB5BC23B3DDDE0E10B57.html#function_Parse_CD7C7B58AB5126424EC0A1A1C49481C2176181AC">RegExParser::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_RegEx_AE00E85E46BF42F3F37DDDA49BD560FD022B8A5F">RegEx Member Function</h3>
+        <h4>
+            <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>
+            * sng2html::sng2html::Expression::RegEx() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#107">107</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_regEx_4B7997F9D0F57AD1949581FC5056DCC4B7C7CC99">regEx</a><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_CA4DA3097438EA4D1AE5173E61D5EB17F4F617A1">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetRegEx_9FB7C9E2FF40A077C62E013F384131DF6BEDC1C5">SetRegEx Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Expression::SetRegEx(<a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>
+            * regEx_)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#106">106</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_regEx_4B7997F9D0F57AD1949581FC5056DCC4B7C7CC99">regEx</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">regEx_</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Parse_2049FE4CB5356AEC8218C69A39F4F033D668D96C">sng2html::sng2html::Expressions::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Value_03F8B1EBD70C86D1082E97E53B9DB1297CDDD1BF">Value Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::Expression::Value() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#103">103</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#variable_value_98EE8503E65D4A587FABBB59C938D90C99088DB5">value</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html">prev</a>
+         | <a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html">next</a>
+    </body>
+</html>

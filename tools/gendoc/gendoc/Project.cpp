@@ -46,22 +46,22 @@ Project::Project(const std::string& docFilePath_) :
 {
 }
 
-void Project::Process(bool verbose, bool rebuild)
+void Project::Process(bool verbose, bool rebuild, bool single)
 {
     ReadName();
-    RunChildren(verbose, rebuild, false);
+    RunChildren(verbose, rebuild, false, single);
     GenerateAst(verbose, rebuild, true);
-    GenerateContent(verbose, rebuild, false);
+    GenerateContent(verbose, rebuild, false, single);
 }
 
-void Project::Clean(bool verbose)
+void Project::Clean(bool verbose, bool single)
 {
     ReadName();
     if (verbose)
     {
         std::cout << "cleaning " << ToUtf8(name) << "..." << std::endl;
     }
-    RunChildren(verbose, false, true);
+    RunChildren(verbose, false, true, single);
     SetAstFilePath();
     SetContentXmlFilePath();
     SetHtmlFilePath();
@@ -130,7 +130,7 @@ void Project::ReadChildren()
     }
 }
 
-void Project::RunChildren(bool verbose, bool rebuild, bool clean)
+void Project::RunChildren(bool verbose, bool rebuild, bool clean, bool single)
 {
     ReadChildren();
     if (children.empty()) return;
@@ -140,7 +140,14 @@ void Project::RunChildren(bool verbose, bool rebuild, bool clean)
         {
             std::cout << ToUtf8(name) << "> cleaning " << children.size() << " child projects..." << std::endl;
         }
-        RunChildrenWithFlags(verbose, false, "l");
+        if (single)
+        {
+            RunChildrenSingle(verbose, false, clean, false, false);
+        }
+        else
+        {
+            RunChildrenWithFlags(verbose, false, "l");
+        }
         if (verbose)
         {
             std::cout << ToUtf8(name) << "> " << children.size() << " child projects cleaned." << std::endl;
@@ -157,13 +164,27 @@ void Project::RunChildren(bool verbose, bool rebuild, bool clean)
             }
             std::cout << ToUtf8(name) << "> generating ASTs..." << std::endl;
         }
-        RunChildrenWithFlags(verbose, rebuild, "a");
+        if (single)
+        {
+            RunChildrenSingle(verbose, rebuild, false, true, false);
+        }
+        else
+        {
+            RunChildrenWithFlags(verbose, rebuild, "a");
+        }
         if (verbose)
         {
             std::cout << ToUtf8(name) << "> ASTs ready." << std::endl;
             std::cout << ToUtf8(name) << "> generating content..." << std::endl;
         }
-        RunChildrenWithFlags(verbose, rebuild, "ce");
+        if (single)
+        {
+            RunChildrenSingle(verbose, rebuild, false, false, true);
+        }
+        else
+        {
+            RunChildrenWithFlags(verbose, rebuild, "ce");
+        }
         if (verbose)
         {
             std::cout << ToUtf8(name) << "> content ready." << std::endl;
@@ -177,6 +198,26 @@ void Project::RunChildren(bool verbose, bool rebuild, bool clean)
                 }
             }
             std::cout << ToUtf8(name) << "> " << children.size() << " child projects built or up-to-date." << std::endl;
+        }
+    }
+}
+
+void Project::RunChildrenSingle(bool verbose, bool rebuild, bool clean, bool ast, bool content)
+{
+    for (int i = 0; i < children.size(); ++i)
+    {
+        Project project(children[i]);
+        if (clean)
+        {
+            project.Clean(verbose, false);
+        }
+        else if (ast)
+        {
+            project.GenerateAst(verbose, rebuild, false);
+        }
+        else if (content)
+        {
+            project.GenerateContent(verbose, rebuild, false, false);
         }
     }
 }
@@ -264,7 +305,7 @@ void Project::GenerateAst(bool verbose, bool rebuild, bool readAst)
     astGenerated = true;
 }
 
-void Project::GenerateContent(bool verbose, bool rebuild, bool endMessage)
+void Project::GenerateContent(bool verbose, bool rebuild, bool endMessage, bool single)
 {
     try
     {
@@ -287,7 +328,7 @@ void Project::GenerateContent(bool verbose, bool rebuild, bool endMessage)
             }
             else
             {
-                RunChildren(verbose, rebuild, false);
+                RunChildren(verbose, rebuild, false, single);
                 SetAstFilePath();
                 SetContentXmlFilePath();
             }

@@ -6,7 +6,7 @@
  <body>
   <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
   <br/>
-  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
   <br/>
   <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
   <br/>
@@ -20,39 +20,45 @@
   <br/>
   <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/symbols/TypeSymbol.hpp></span></span>
   <br/>
-  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/SimpleType.hpp></span></span>
   <br/>
-  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">symbols</span>&nbsp;<span class="other">{</span></span>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
   <br/>
-  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sngcpp</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">symbols</span>&nbsp;<span class="other">{</span></span>
   <br/>
-  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html">SimpleTypeSymbol</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a></span>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
   <br/>
-  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="other">{</span></span>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html">SimpleTypeSymbol</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<a href="../class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a></span>
   <br/>
-  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
   <br/>
-  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#constructor_SimpleTypeSymbol_571516536E4241EF8AEE0271C52713582551485C">SimpleTypeSymbol</a><span class="other">(</span><span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">id_</span><span class="other">)</span><span class="other">;</span></span>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
   <br/>
-  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_IsSimpleTypeSymbol_9ACC21E69134D7AD2F7879FA06D7284FBCFA2BF0">IsSimpleTypeSymbol</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#constructor_SimpleTypeSymbol_3D6926124B14EE7D5AFF4C89CC207DE8D0F44847">SimpleTypeSymbol</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">id_</span><span class="other">,&nbsp;</span><a href="../../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a>&nbsp;<span class="identifier">flags_</span><span class="other">)</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">CreateElement</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_IsSimpleTypeSymbol_9ACC21E69134D7AD2F7879FA06D7284FBCFA2BF0">IsSimpleTypeSymbol</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_Id_D47C10FDC6E771FEE00DE5ADEDF249861682A4C3">Id</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">CreateElement</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_Id_D47C10FDC6E771FEE00DE5ADEDF249861682A4C3">Id</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">id</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">id</span><span class="other">;</span></span>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_Flags_7C143554DBC73AB3D12A36D7F8B84B820CAAD1E9">Flags</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_flags_471DCAC349BB34339638BEDF3E096CA8CAC4B287">flags</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">};</span></span>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
   <br/>
-  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;</span>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">id</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::symbols</span></span>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a>&nbsp;<a href="../class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_flags_471DCAC349BB34339638BEDF3E096CA8CAC4B287">flags</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;</span>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">};</span></span>
   <br/>
-  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNGCPP_SYMBOLS_SIMPLE_TYPE_SYMBOL_INCLUDED</span></span>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sngcpp::symbols</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNGCPP_SYMBOLS_SIMPLE_TYPE_SYMBOL_INCLUDED</span></span>
   <br/>
  </body>
 </html>

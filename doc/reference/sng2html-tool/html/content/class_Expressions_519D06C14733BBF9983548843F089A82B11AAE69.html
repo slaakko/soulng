@@ -1,0 +1,223 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Expressions Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">prev</a>
+         | <a href="class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">next</a>
+        <hr/>
+        <h1>Expressions Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#116">116</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#constructor_Expressions_083825A058FF41E647343540AEFD6C8F92C1A1EF">Expressions</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Add_A7446DD2198A15EEEA21AD9C983BAB3A48369AC7">Add</a>(<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>* expression)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_AddToLexerFile_0F21E11C466C86CE4F59F5BC7ECACE0F4A1D2B6E">AddToLexerFile</a>(<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>&amp; lexerFile) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Get_FDC7E98E4D06F375D9F8FF703F9E5B001BC539B1">Get</a>(<span class="kw">const </span>std::u32string&amp; id) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Parse_2049FE4CB5356AEC8218C69A39F4F033D668D96C">Parse</a>(<a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>&amp; lexerContext)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_exprMap_FAE62A0574280C85C4E77A87FB78533EDAB25EEC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;std::u32string, <span class="kw">int</span>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">exprMap</td>
+            </tr>
+            <tr id="variable_expressions_9179D4D708E1CE4265053D3C3FA3B373B0CF858D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">expressions</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Expressions_083825A058FF41E647343540AEFD6C8F92C1A1EF">Expressions Constructor</h3>
+        <h4>
+            sng2html::sng2html::Expressions::Expressions()</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#106">106</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_CBF32E6A87C749CF513711EF033621E2DE054126.html">Declaration</a><span class="other">(</span><span class="string">U"expressions"</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#119">119</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Add_A7446DD2198A15EEEA21AD9C983BAB3A48369AC7">Add Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Expressions::Add(<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>
+            * expression)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#115">115</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#variable_expressions_9179D4D708E1CE4265053D3C3FA3B373B0CF858D">expressions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a><span class="other">></span><span class="other">(</span><span class="identifier">expression</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#variable_exprMap_FAE62A0574280C85C4E77A87FB78533EDAB25EEC">exprMap</a><span class="other">[</span><span class="identifier">expression</span><span class="other">-></span><span class="identifier">Id</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">expression</span><span class="other">-></span><span class="identifier">Index</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#120">120</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Id_B4952BD3502B0555BD08A214CA2A8C3CC95EBB24">sng2html::sng2html::Expression::Id</a>
+            , <a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_Index_6C88E8404EC3D7CF3E8C6E976EBFCCBF884FC01F">sng2html::sng2html::Expression::Index</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Parse_2049FE4CB5356AEC8218C69A39F4F033D668D96C">sng2html::sng2html::Expressions::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddToLexerFile_0F21E11C466C86CE4F59F5BC7ECACE0F4A1D2B6E">AddToLexerFile Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Expressions::AddToLexerFile(<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>
+            &amp; lexerFile) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#110">110</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerFile</span><span class="other">.</span><span class="identifier">SetExpressions</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#122">122</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Declaration_CBF32E6A87C749CF513711EF033621E2DE054126.html#function_AddToLexerFile_79D4D0B6500C30503E2BC2660B21F379C3D4B5CC">sng2html::sng2html::Declaration::AddToLexerFile</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_SetExpressions_E6850C3EDC61D8BA17C5F06648252F3972FF2D63">sng2html::sng2html::LexerFile::SetExpressions</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Get_FDC7E98E4D06F375D9F8FF703F9E5B001BC539B1">Get Member Function</h3>
+        <h4>
+            <a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>
+            * sng2html::sng2html::Expressions::Get(<span class="kw">const </span>
+            std::u32string&amp; id) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#121">121</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#121">121</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_7F303F320654E099503BF276A68F8623B331CD8A">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadGrammarFiles_8188A4BCF419E9D54D8AB78BD9505A0A651382C9">sng2html::sng2html::Project::ReadGrammarFiles</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parse_2049FE4CB5356AEC8218C69A39F4F033D668D96C">Parse Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Expressions::Parse(<a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>
+            &amp; lexerContext)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#135">135</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#123">123</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_SetRegEx_9FB7C9E2FF40A077C62E013F384131DF6BEDC1C5">sng2html::sng2html::Expression::SetRegEx</a>
+            , <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Add_A7446DD2198A15EEEA21AD9C983BAB3A48369AC7">sng2html::sng2html::Expressions::Add</a>
+            , <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Parse_2049FE4CB5356AEC8218C69A39F4F033D668D96C">sng2html::sng2html::Expressions::Parse</a>
+            , <a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html#function_MakeIdCont_8DD5311A44757B0B23007134BCF74AC2106963A6">sng2html::sng2html::LexerContext::MakeIdCont</a>
+            , <a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html#function_MakeIdStart_AFE0435C2AA33B412394D6C9DBA82F5E492DDAC5">sng2html::sng2html::LexerContext::MakeIdStart</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Parse_2049FE4CB5356AEC8218C69A39F4F033D668D96C">sng2html::sng2html::Expressions::Parse</a>
+            , <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_Parse_308B73D6776CE69DE54441E3EC530A7FE3512DF7">sng2html::sng2html::LexerFile::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">prev</a>
+         | <a href="class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">next</a>
+    </body>
+</html>

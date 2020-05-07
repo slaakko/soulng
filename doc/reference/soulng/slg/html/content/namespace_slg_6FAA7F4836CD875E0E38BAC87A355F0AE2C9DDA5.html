@@ -349,12 +349,12 @@
             <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#72">72</a>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#116">116</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#63">63</a>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#67">67</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
         </span>
         <br/>
@@ -386,35 +386,12 @@
             <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#60">60</a>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#104">104</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>&nbsp;<span class="identifier">cat</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">leftEnd</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">cat</span><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA">End</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">leftEnd</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733">SetAccept</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">rightStart</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">right</span><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C">Start</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">rightStart</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_SetStatementIndex_AB47AD7D9EBC74021637D2DBD7C6CA3764AACCAB">SetStatementIndex</a><span class="other">(</span><span class="other">-</span><span class="other">1</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">leftEnd</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_SetEdges_251B5A6CEEC7C0D58B519FDFB2063BB328F4DBE7">SetEdges</a><span class="other">(</span><span class="identifier">rightStart</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_Edges_B5FD873260F5B9540D26BD7D1BD95C347957A91E">Edges</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">cat</span><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_SetEnd_EA2C7505C0BC353B40AF898B3C1EBDE126097527">SetEnd</a><span class="other">(</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA">End</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">cat</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#62">62</a>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#66">66</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
         </span>
         <br/>
@@ -481,17 +458,6 @@
         <span>
             Definition at line <a href="file/Algorithm.cpp_F9775B8F7001902EC4303FF05D4AD1C703AB85CF.html#37">37</a>
              of <a href="file/Algorithm.cpp_F9775B8F7001902EC4303FF05D4AD1C703AB85CF.html">Algorithm.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">states</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_EpsilonClosure_C7B53AFD3244EE18B25CD5C57F1B7E56199D48FD">EpsilonClosure</a><span class="other">(</span><span class="identifier">states</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -533,12 +499,12 @@
             <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#400">400</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#433">433</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#135">135</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#138">138</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -559,12 +525,12 @@
             <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#81">81</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#98">98</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#94">94</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#97">97</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -590,12 +556,12 @@
             <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>
             &amp; nfa)</h4>
         <span>
-            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#93">93</a>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#137">137</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#64">64</a>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#68">68</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
         </span>
         <br/>
@@ -626,15 +592,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#18">18</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="string">"2.0.0"</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -644,10 +601,10 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>
@@ -689,26 +646,8 @@
         <span>
             Definition at line <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html#19">19</a>
              of <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html">Identifier.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a><span class="other">*</span>&nbsp;<span class="identifier">idCont</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeIdCont_775F3588D3C47E339C75535F5FD44B8D43A15D94">MakeIdCont</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idCont</span><span class="other">-></span><a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3">SetName</a><span class="other">(</span><span class="string">"{idcont}"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idCont</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange</a><span class="other">(</span><span class="string">'A'</span><span class="other">,&nbsp;</span><span class="string">'Z'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idCont</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange</a><span class="other">(</span><span class="string">'a'</span><span class="other">,&nbsp;</span><span class="string">'z'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idCont</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange</a><span class="other">(</span><span class="string">'0'</span><span class="other">,&nbsp;</span><span class="string">'9'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idCont</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552">MakeChar</a><span class="other">(</span><span class="string">'_'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">soulng::slg::Class::AddSymbol</a>
@@ -728,24 +667,8 @@
         <span>
             Definition at line <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html#10">10</a>
              of <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html">Identifier.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a><span class="other">*</span>&nbsp;<span class="identifier">idStart</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeIdStart_81D356464389981463E8FDA5C5544DDD481D19F7">MakeIdStart</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStart</span><span class="other">-></span><a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_SetName_78AEB766E752C968B1659DC63F492DEE90A02AA3">SetName</a><span class="other">(</span><span class="string">"{idstart}"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStart</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange</a><span class="other">(</span><span class="string">'A'</span><span class="other">,&nbsp;</span><span class="string">'Z'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStart</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">MakeRange</a><span class="other">(</span><span class="string">'a'</span><span class="other">,&nbsp;</span><span class="string">'z'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStart</span><span class="other">-></span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">AddSymbol</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeChar_97398D20DE9E6D1543E43F6656769320B7045552">MakeChar</a><span class="other">(</span><span class="string">'_'</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddSymbol_239530A714B04812DDAAE6990A75630615A0A09B">soulng::slg::Class::AddSymbol</a>
@@ -765,17 +688,6 @@
         <span>
             Definition at line <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html#849">849</a>
              of <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html">Identifier.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">850</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">851</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_MakeAsciiIdStart_28A8F81BE04B63570B088629655B46F0BF111C4B">MakeAsciiIdStart</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">852</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_MakeAsciiIdCont_5FBC5B193F5F93B7A330BAEEB9E5A3C27B96BFF2">MakeAsciiIdCont</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">853</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -795,12 +707,12 @@
             &amp; right, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#479">479</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#512">512</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#139">139</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#142">142</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -912,12 +824,12 @@
             &amp; right, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#423">423</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#456">456</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#137">137</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#140">140</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -943,29 +855,12 @@
             &amp; lexerContext, <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html">Symbol</a>
             * symbol)</h4>
         <span>
-            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#51">51</a>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#95">95</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">start</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7">MakeNfaState</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">end</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7">MakeNfaState</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">end</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_SetAccept_3AEFE7A1C48ACEC2D930DC7D780ADF15CD8EB733">SetAccept</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">start</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E">AddEdge</a><span class="other">(</span><a href="./class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html">NfaEdge</a><span class="other">(</span><span class="identifier">symbol</span><span class="other">,&nbsp;</span><span class="identifier">end</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a><span class="other">(</span><span class="identifier">start</span><span class="other">,&nbsp;</span><span class="identifier">end</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#61">61</a>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#65">65</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
         </span>
         <br/>
@@ -1089,17 +984,6 @@
         <span>
             Definition at line <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html#855">855</a>
              of <a href="file/Identifier.cpp_DA0CAF76223DC8E7DF2E8AFA9173F7696A52B4BA.html">Identifier.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">856</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">857</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_MakeUnicodeIdStart_CB81F87B7079042A2906488FD84BD6F23E7A9967">MakeUnicodeIdStart</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">858</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_MakeUnicodeIdCont_4B2F116B34A34BC83D8AC55836E1C36904EE97CD">MakeUnicodeIdCont</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">859</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1141,25 +1025,12 @@
             <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>
             &amp; nfa)</h4>
         <span>
-            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#128">128</a>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#172">172</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>&nbsp;<span class="identifier">opt</span><span class="other">(</span><span class="identifier">nfa</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">opt</span><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C">Start</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E">AddEdge</a><span class="other">(</span><a href="./class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html">NfaEdge</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E">MakeEpsilon</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">opt</span><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_End_35655A94ADADA8B9CF092419CAA85046AE6AE6FA">End</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">opt</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#66">66</a>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#70">70</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
         </span>
         <br/>
@@ -1228,12 +1099,12 @@
             <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html">Nfa</a>
             &amp; nfa)</h4>
         <span>
-            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#111">111</a>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#155">155</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#65">65</a>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#69">69</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
         </span>
         <br/>
@@ -1265,31 +1136,12 @@
             <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#94">94</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#111">111</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_Intersect_6D8491CC68F77D9142AFEA2351DF98433A2FAC7D">Intersect</a><span class="other">(</span><span class="identifier">left</span><span class="other">,&nbsp;</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>&nbsp;<span class="identifier">intersection</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">max</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">min</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">intersection</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a><span class="other">(</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="kw">char32_t</span><span class="other">></span><span class="other">(</span><span class="other">1</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="kw">char32_t</span><span class="other">></span><span class="other">(</span><span class="other">0</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#96">96</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#99">99</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -1310,12 +1162,12 @@
             <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#104">104</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#121">121</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#98">98</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#101">101</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -1337,22 +1189,10 @@
             &amp; right) <span class="kw">inline</span>
         </h4>
         <span>
-            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#87">87</a>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#90">90</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;>&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">soulng::slg::Range::End</a>
@@ -1370,12 +1210,12 @@
             <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a>
             &amp; right)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#365">365</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#398">398</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#133">133</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#136">136</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>
@@ -1397,18 +1237,10 @@
             &amp; right) <span class="kw">inline</span>
         </h4>
         <span>
-            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#82">82</a>
+            Definition at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#85">85</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">End</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">soulng::slg::Range::End</a>
@@ -1424,12 +1256,12 @@
             <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html">Range</a>
             &amp; that)</h4>
         <span>
-            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#135">135</a>
+            Definition at line <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html#152">152</a>
              of <a href="file/Symbol.cpp_697F5E987BB53FF9C546474C21EDDB2848262E06.html">Symbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#100">100</a>
+            Declaration at line <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html#103">103</a>
              of <a href="file/Symbol.hpp_5B868D552CDA2012C983E6DA341DA2DF3E303692.html">Symbol.hpp</a>
         </span>
         <br/>

@@ -183,7 +183,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;712</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;713</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_1BA7A88A563EA10AB5BDDEEF5BC506572A6BA837">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;713</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;714</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -224,7 +224,7 @@
              of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">367</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">identifier</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">367</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#variable_identifier_34A3EE7F7F670CECA23983177896C28154633307">identifier</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -264,9 +264,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;723</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;724</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;724</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">::</span><span class="identifier">Read</span><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;725</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#variable_identifier_34A3EE7F7F670CECA23983177896C28154633307">identifier</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;725</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#variable_identifier_34A3EE7F7F670CECA23983177896C28154633307">identifier</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><span class="identifier">GetBinaryReader</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadUtf32String</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;726</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -291,8 +291,14 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
-            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+            Calls: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#function_Read_031F0799E07621294EC7AA11C605C17E872BB56B">sngcpp::ast::ConversionFunctionIdNode::Read</a>
+            , <a href="./class_OperatorFunctionIdNode_2FB359DA0330D9E3C94408C0726F3C660035FA1B.html#function_Read_AFE496E4411F63F15115362F1B82468684C30863">sngcpp::ast::OperatorFunctionIdNode::Read</a>
         </span>
         <br/>
         <br/>
@@ -310,9 +316,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;717</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;718</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;718</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">::</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;719</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#variable_identifier_34A3EE7F7F670CECA23983177896C28154633307">identifier</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;719</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><span class="identifier">GetBinaryWriter</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#variable_identifier_34A3EE7F7F670CECA23983177896C28154633307">identifier</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;720</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -337,8 +343,16 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            Calls: <a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#function_Write_CE1538D419EDBD06C2FB4CB0421CADE11F26BDE7">sngcpp::ast::IdentifierNode::Write</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
             , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ConversionFunctionIdNode_D83E54D4BEB004FDEC7EE2AE5090664CE13361ED.html#function_Write_D55C67B3DCD36A8915F0EBB7511FB26AB587FA92">sngcpp::ast::ConversionFunctionIdNode::Write</a>
+            , <a href="./class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html#function_Write_CE1538D419EDBD06C2FB4CB0421CADE11F26BDE7">sngcpp::ast::IdentifierNode::Write</a>
+            , <a href="./class_OperatorFunctionIdNode_2FB359DA0330D9E3C94408C0726F3C660035FA1B.html#function_Write_5F122882E4F5FF366A3D922ED9F0C9C22CF1E45F">sngcpp::ast::OperatorFunctionIdNode::Write</a>
         </span>
         <br/>
         <br/>

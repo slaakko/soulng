@@ -16,7 +16,7 @@
             <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
         </div>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#76">76</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#79">79</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -87,7 +87,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#79">79</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#82">82</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -113,7 +113,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#80">80</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#83">83</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -134,13 +134,21 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#81">81</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#84">84</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -152,11 +160,11 @@
             <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
             * sngcpp::ast::UnaryNode::Child()</h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#85">85</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#88">88</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">child</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -176,31 +184,33 @@
             &amp; reader) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#85">85</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#89">89</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">::</span><span class="identifier">Read</span><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasChild</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">hasChild</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">reader</span><span class="other">.</span><span class="identifier">GetBinaryReader</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasChild</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">hasChild</span><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">ReadNode</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">reader</span><span class="other">.</span><span class="identifier">ReadNode</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#83">83</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#86">86</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -226,9 +236,25 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
+            Calls: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Read_7DF692E936A1763E5E7566E50FCF034E52341523">sngcpp::ast::Node::Read</a>
+            , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_SetParent_4A98EEFAD0D27F0C6F6659AD30C4D2502039FF27">sngcpp::ast::Node::SetParent</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
             , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadNode_352CAAA1EBC61AC6A0857FA24ADC5F0B8FEF1873">sngcpp::ast::Reader::ReadNode</a>
-            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ArrowNode_D5F4EE9F04DA45CFBDA007DF3BB38425574A9348.html#function_Read_A46C2DA0310B0D76419F43D94AEA998D77F816F4">sngcpp::ast::ArrowNode::Read</a>
+            , <a href="./class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Read_F801A2AE5BEC0047B741B106F3A747B47B66D925">sngcpp::ast::BracedInitializerListNode::Read</a>
+            , <a href="./class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html#function_Read_6733D5903C2C7A0912C930BFAAF18C1147FA2E00">sngcpp::ast::CaseStatementNode::Read</a>
+            , <a href="./class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Read_E852779A7EEE63100832C89108728B27646D6894">sngcpp::ast::CompoundStatementNode::Read</a>
+            , <a href="./class_DeleteExpressionNode_A4FC110FE7CB621D52C19118DA061E0BD2CFA981.html#function_Read_A609E6AE2E8EC00B638C0D83A721150587B9EF83">sngcpp::ast::DeleteExpressionNode::Read</a>
+            , <a href="./class_DotNode_D560426060C063A8546B2C8C79EB8598802EF710.html#function_Read_48935CE093A5F3D24ECB8F2274E43A4DC407BB2A">sngcpp::ast::DotNode::Read</a>
+            , <a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Read_36B7DF9E65A55C65B71E8718E55338C34C309F03">sngcpp::ast::InvokeExpressionNode::Read</a>
+            , <a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Read_4F6BE0FF06B56B71B242FEE4932E826EFD4F297A">sngcpp::ast::LabeledStatementNode::Read</a>
+            , <a href="./class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html#function_Read_B3D4A3C2A1898B1B10D903238A024E59F948AA41">sngcpp::ast::NamespaceNode::Read</a>
+            , <a href="./class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html#function_Read_528C4E63A5E064F5E92A4218368154B19BF424BF">sngcpp::ast::SubscriptExpressionNode::Read</a>
+            , <a href="./class_UnaryExpressionNode_0158205C576BD308E68A0A8F334BB20449473A4E.html#function_Read_398520065FFB0EB83AB0301EE3D60E7B1D5ECB42">sngcpp::ast::UnaryExpressionNode::Read</a>
         </span>
         <br/>
         <br/>
@@ -238,11 +264,11 @@
             <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
             * sngcpp::ast::UnaryNode::ReleaseChild()</h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#87">87</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#90">90</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">child</span><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">.</span><span class="identifier">release</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -261,11 +287,11 @@
              sngcpp::ast::UnaryNode::SetChild(<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
             * child_)</h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#86">86</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#89">89</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">child</span><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -284,35 +310,35 @@
              sngcpp::ast::UnaryNode::SetFullSpan() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#95">95</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#100">100</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">thisSpan</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_GetSpan_2837F114C2C6919F3166391AACC9DF445FC783F5">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">thisSpan</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">GetSpan</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">SetFullSpan</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">SetFullSpan</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="type">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">childSpan</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">GetSpan</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">Span</span><span class="other">&amp;</span>&nbsp;<span class="identifier">childSpan</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">GetSpan</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_SetSpanStart_7C4100E7CD051C107B4FF395DC8F0D083B2236C7">SetSpanStart</a><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">min</span><span class="other">(</span><span class="identifier">thisSpan</span><span class="other">.</span><span class="identifier">start</span><span class="other">,&nbsp;</span><span class="identifier">childSpan</span><span class="other">.</span><span class="identifier">start</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">SetSpanStart</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">min</span><span class="other">(</span><span class="identifier">thisSpan</span><span class="other">.</span><span class="identifier">start</span><span class="other">,&nbsp;</span><span class="identifier">childSpan</span><span class="other">.</span><span class="identifier">start</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_SetSpanEnd_F2E70B37D411455EB70190116378B69A4EABFB8B">SetSpanEnd</a><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">max</span><span class="other">(</span><span class="identifier">thisSpan</span><span class="other">.</span><span class="identifier">end</span><span class="other">,&nbsp;</span><span class="identifier">childSpan</span><span class="other">.</span><span class="identifier">end</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">SetSpanEnd</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">max</span><span class="other">(</span><span class="identifier">thisSpan</span><span class="other">.</span><span class="identifier">end</span><span class="other">,&nbsp;</span><span class="identifier">childSpan</span><span class="other">.</span><span class="identifier">end</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#84">84</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#87">87</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -326,6 +352,12 @@
             Calls: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_GetSpan_2837F114C2C6919F3166391AACC9DF445FC783F5">sngcpp::ast::Node::GetSpan</a>
             , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_SetSpanEnd_F2E70B37D411455EB70190116378B69A4EABFB8B">sngcpp::ast::Node::SetSpanEnd</a>
             , <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_SetSpanStart_7C4100E7CD051C107B4FF395DC8F0D083B2236C7">sngcpp::ast::Node::SetSpanStart</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_SetFullSpan_C53D7D69BEC457E4458420D2F4309CB31CF3F006">sngcpp::ast::UnaryNode::SetFullSpan</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_SetFullSpan_C53D7D69BEC457E4458420D2F4309CB31CF3F006">sngcpp::ast::UnaryNode::SetFullSpan</a>
         </span>
         <br/>
         <br/>
@@ -337,31 +369,31 @@
             &amp; writer) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#75">75</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#79">79</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Node</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a><span class="other">::</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><span class="identifier">GetBinaryWriter</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">&nbsp;!=&nbsp;</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#variable_child_31B5D6C462C747848B9D3B498C296070ECB75A21">child</a><span class="other">-></span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#82">82</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#85">85</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -387,8 +419,25 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            Calls: <a href="./class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Write_ACCFE195453E96BD1E5A03CE63C6405BD6D3A831">sngcpp::ast::Node::Write</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59">sngcpp::ast::UnaryNode::Write</a>
             , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_ArrowNode_D5F4EE9F04DA45CFBDA007DF3BB38425574A9348.html#function_Write_2073F3F0437A88B55F1EFBE835E298E021B43F41">sngcpp::ast::ArrowNode::Write</a>
+            , <a href="./class_BracedInitializerListNode_4B5416D4B7D5845705A49B3D62854D8FBE985F72.html#function_Write_D1AB13795D53246411B84E4240E6CF305EEE29F1">sngcpp::ast::BracedInitializerListNode::Write</a>
+            , <a href="./class_CaseStatementNode_94117DE63309113D0C69F113C5C67B0EC893BB4A.html#function_Write_C766B0AFBA507D67A6FAFBE40FF016E25704FF1F">sngcpp::ast::CaseStatementNode::Write</a>
+            , <a href="./class_CompoundStatementNode_7AC886EA85388FFD32E851E8404E5F6DD11DEE50.html#function_Write_E84BCA503614690E85DDDD51E6701C380398C489">sngcpp::ast::CompoundStatementNode::Write</a>
+            , <a href="./class_DeleteExpressionNode_A4FC110FE7CB621D52C19118DA061E0BD2CFA981.html#function_Write_FC5EF67AB392922536BF63748D5D265DC4338E93">sngcpp::ast::DeleteExpressionNode::Write</a>
+            , <a href="./class_DotNode_D560426060C063A8546B2C8C79EB8598802EF710.html#function_Write_0908D216D6E4E8CC9D999C682701007A1285D5C6">sngcpp::ast::DotNode::Write</a>
+            , <a href="./class_InvokeExpressionNode_9BB7176AE3AE3BABF44808E00B86F46FDC429F8A.html#function_Write_3C307F1517EFF2997BCAA143842EE14DDC7610D5">sngcpp::ast::InvokeExpressionNode::Write</a>
+            , <a href="./class_LabeledStatementNode_DC29268FAC8D4DA2FB1EFCBBAD0698E174200656.html#function_Write_B721F81DE6DE4C871369FACB216C250249CB4231">sngcpp::ast::LabeledStatementNode::Write</a>
+            , <a href="./class_NamespaceNode_C242C0BE52F147B75B335B17D8D3D94DD30C3CB9.html#function_Write_33A1838F7DACC12B0B00250439C3E7AF415E62FB">sngcpp::ast::NamespaceNode::Write</a>
+            , <a href="./class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html#function_Write_3CCD58014B0942BE4EE7831D6A35D8E4F23A65C5">sngcpp::ast::SubscriptExpressionNode::Write</a>
+            , <a href="./class_UnaryExpressionNode_0158205C576BD308E68A0A8F334BB20449473A4E.html#function_Write_9A9D6F703F2FB1C5BC3BE9CB7A713FE717357785">sngcpp::ast::UnaryExpressionNode::Write</a>
+            , <a href="./class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Write_60DB0CAF03BA97B9A8B02D3E3B8A1F5A71CFDF59">sngcpp::ast::UnaryNode::Write</a>
         </span>
         <br/>
         <br/>

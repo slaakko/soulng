@@ -122,7 +122,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_D1BB7820F3E86A8828867B5323C32B2575294CE3">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">179</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -159,9 +159,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LiteralNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html">LiteralNode</a><span class="other">::</span><span class="identifier">Read</span><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#variable_value_727E4D7FB48F174D99DCBB90C41CF31779748E77">value</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">GetBinaryReader</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">190</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#variable_value_727E4D7FB48F174D99DCBB90C41CF31779748E77">value</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><span class="identifier">GetBinaryReader</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">ReadBool</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">191</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -181,8 +181,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
-            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+            Calls: <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Read_2615515C93184178E873D6CD819E879F5605D942">sngcpp::ast::LiteralNode::Read</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_GetBinaryReader_9B14E3B3DF643591781E7EEDD379B549A389DE90">sngcpp::ast::Reader::GetBinaryReader</a>
         </span>
         <br/>
         <br/>
@@ -197,7 +197,7 @@
              of <a href="file/Literal.hpp_94F9584795FA4448C590E3EB6429D1BF78096E48.html">Literal.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">value</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#variable_value_727E4D7FB48F174D99DCBB90C41CF31779748E77">value</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -216,9 +216,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">182</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">183</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LiteralNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">183</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html">LiteralNode</a><span class="other">::</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">184</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">GetBinaryWriter</a><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#variable_value_727E4D7FB48F174D99DCBB90C41CF31779748E77">value</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">184</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><span class="identifier">GetBinaryWriter</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#variable_value_727E4D7FB48F174D99DCBB90C41CF31779748E77">value</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -238,8 +238,14 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            Calls: <a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#function_Write_4FADAFE79FCC745F01A156EE891BEEA9B4846837">sngcpp::ast::BooleanLiteralNode::Write</a>
+            , <a href="./class_LiteralNode_CD2EE481C2453E055EA0A1A47D845A6A5E5F0EFA.html#function_Write_2665681733401DC7E0ED572D99634D44ADFF407B">sngcpp::ast::LiteralNode::Write</a>
             , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_GetBinaryWriter_884E2A0D8312C896070EC8DD53635A72452A50ED">sngcpp::ast::Writer::GetBinaryWriter</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_BooleanLiteralNode_BC61A09A5B5F1E23183E1D1C39DD5C2EBA004334.html#function_Write_4FADAFE79FCC745F01A156EE891BEEA9B4846837">sngcpp::ast::BooleanLiteralNode::Write</a>
         </span>
         <br/>
         <br/>

@@ -1,0 +1,165 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>LexerFileLexer Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_LexerExpressionParser_FB4D602326412B7A7B82F4550C4A15BAB6D0B154.html">prev</a>
+         | <a href="struct_LexerFileParser_EC77F0391CD44CB2546995B7E01EB6AE560749F9.html">next</a>
+        <hr/>
+        <h1>LexerFileLexer Class</h1>
+        <span>
+            Definition at line <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html#8">8</a>
+             of <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html">LexerFileLexer.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#constructor_LexerFileLexer_27FF88A9FB4FCC5834392C19881943B1276BE776">LexerFileLexer</a>(<span class="kw">const </span><span class="kw">char32_t</span>* start_, <span class="kw">const </span><span class="kw">char32_t</span>* end_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#constructor_LexerFileLexer_4D00B0FADD0BEF8CA330840A359573080C444028">LexerFileLexer</a>(<span class="kw">const </span>std::u32string&amp; content_, <span class="kw">const </span>std::string&amp; fileName_, <span class="kw">int</span> fileIndex_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#function_GetTokenId_F7BAEE84661C33BAA697C85715769AC8D1307C09">GetTokenId</a>(<span class="kw">int</span> statementIndex)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#function_NextState_28A9EFE7E462784FC106A593A3032F6EDA28FA3C">NextState</a>(<span class="kw">int</span> state, <span class="kw">char32_t</span> c) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_leftAngleCount_BDED8936F506DA6AA4559FEE4D80AC2960FF8FFD">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">leftAngleCount</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_LexerFileLexer_27FF88A9FB4FCC5834392C19881943B1276BE776">LexerFileLexer Constructor</h3>
+        <h4>
+            LexerFileLexer::LexerFileLexer(<span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * start_, <span class="kw">const </span>
+            <span class="kw">char32_t</span>
+            * end_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html#19">19</a>
+             of <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html">LexerFileLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;19</span>&nbsp;<span class="other">:</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="identifier">end_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;20</span>&nbsp;<a href="./class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#variable_leftAngleCount_BDED8936F506DA6AA4559FEE4D80AC2960FF8FFD">leftAngleCount</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;21</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">SetKeywordMap</span><span class="other">(</span><a href="./namespace_LexerFileKeywords_CFE0AA76F2F6F58830834F2E19B1B2F400F81B64.html">LexerFileKeywords</a><span class="other">::</span><span class="identifier">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;23</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html#12">12</a>
+             of <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html">LexerFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="constructor_LexerFileLexer_4D00B0FADD0BEF8CA330840A359573080C444028">LexerFileLexer Constructor</h3>
+        <h4>
+            LexerFileLexer::LexerFileLexer(<span class="kw">const </span>
+            std::u32string&amp; content_, <span class="kw">const </span>
+            std::string&amp; fileName_, <span class="kw">int</span>
+             fileIndex_)</h4>
+        <span>
+            Definition at line <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html#13">13</a>
+             of <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html">LexerFileLexer.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;13</span>&nbsp;<span class="other">:</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">(</span><span class="identifier">content_</span><span class="other">,&nbsp;</span><span class="identifier">fileName_</span><span class="other">,&nbsp;</span><span class="identifier">fileIndex_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;14</span>&nbsp;<a href="./class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#variable_leftAngleCount_BDED8936F506DA6AA4559FEE4D80AC2960FF8FFD">leftAngleCount</a><span class="other">(</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">SetKeywordMap</span><span class="other">(</span><a href="./namespace_LexerFileKeywords_CFE0AA76F2F6F58830834F2E19B1B2F400F81B64.html">LexerFileKeywords</a><span class="other">::</span><span class="identifier">GetKeywordMap</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;&nbsp;17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html#11">11</a>
+             of <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html">LexerFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_GetTokenId_F7BAEE84661C33BAA697C85715769AC8D1307C09">GetTokenId Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             LexerFileLexer::GetTokenId(<span class="kw">int</span>
+             statementIndex)</h4>
+        <span>
+            Definition at line <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html#16418">16418</a>
+             of <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html">LexerFileLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html#16">16</a>
+             of <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html">LexerFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#function_NextState_28A9EFE7E462784FC106A593A3032F6EDA28FA3C">LexerFileLexer::NextState</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_NextState_28A9EFE7E462784FC106A593A3032F6EDA28FA3C">NextState Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             LexerFileLexer::NextState(<span class="kw">int</span>
+             state, <span class="kw">char32_t</span>
+             c) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html#25">25</a>
+             of <a href="file/LexerFileLexer.cpp_BB70589540567989DEF53902144D2FC566FA1552.html">LexerFileLexer.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html#13">13</a>
+             of <a href="file/LexerFileLexer.hpp_91F6D0795B2B3F9CAFF0D52F6C2459ACECF30E2D.html">LexerFileLexer.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_LexerFileLexer_4BD194D43593C74FBBF8695F29AB51B47BBFCE0F.html#function_GetTokenId_F7BAEE84661C33BAA697C85715769AC8D1307C09">LexerFileLexer::GetTokenId</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="struct_LexerExpressionParser_FB4D602326412B7A7B82F4550C4A15BAB6D0B154.html">prev</a>
+         | <a href="struct_LexerFileParser_EC77F0391CD44CB2546995B7E01EB6AE560749F9.html">next</a>
+    </body>
+</html>

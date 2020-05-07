@@ -9,7 +9,7 @@
         <a href="../../../../soulng-projects.html">top</a>
          | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
          | <a href="class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html">prev</a>
-         | <a href="class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html">next</a>
+         | <a href="class_DestructorSymbol_9A4F9D04DFFF63582EA8B27D56B02818D232D27C.html">next</a>
         <hr/>
         <h1>DerivedTypeSymbol Class</h1>
         <div class="diagram">
@@ -41,12 +41,24 @@
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_Derivations_752B8B5B21CBE28C812894BBB93170F4B51B18EC">Derivations</a>() <span class="kw">const</span></td>
             </tr>
             <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_HasConstDerivation_5B5CFCEF1E015399092FF313320B8885CCD57F7D">HasConstDerivation</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_Id_24342702F0B60C01FA48BBE8264228D1DE5F4B8E">Id</a>() <span class="kw">override</span></td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_IsDerivedTypeSymbol_E0D59D43256E0AD8F8FD423351B9D61C5B593A49">IsDerivedTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_IsPointerTypeSymbol_C8BAD9C0FEDA5BBFAECDDC0C42033A695AB96FA6">IsPointerTypeSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_IsReferenceTypeSymbol_03D3F014F5638C544AFF6BDD91F240F5D219F4E7">IsReferenceTypeSymbol</a>() <span class="kw">const override</span></td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
@@ -80,15 +92,15 @@
             >&amp; derivations_, <span class="kw">const </span>
             std::u32string&amp; id_)</h4>
         <span>
-            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#138">138</a>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#139">139</a>
              of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_baseType_4EB620474ECC4F62239E8918325787C64447F71B">baseType</a><span class="other">(</span><span class="identifier">baseType_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">(</span><span class="identifier">derivations_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_id_1D04510255B1F78929A6EF73727F9F5B775118A1">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_baseType_4EB620474ECC4F62239E8918325787C64447F71B">baseType</a><span class="other">(</span><span class="identifier">baseType_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">(</span><span class="identifier">derivations_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_id_1D04510255B1F78929A6EF73727F9F5B775118A1">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -111,7 +123,7 @@
              of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">baseType</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_baseType_4EB620474ECC4F62239E8918325787C64447F71B">baseType</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -132,12 +144,12 @@
             std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::DerivedTypeSymbol::CreateElement() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#166">166</a>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#187">187</a>
              of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#30">30</a>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#33">33</a>
              of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
         </span>
         <br/>
@@ -165,7 +177,7 @@
              of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">derivations</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -176,16 +188,42 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_HasConstDerivation_5B5CFCEF1E015399092FF313320B8885CCD57F7D">HasConstDerivation Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::DerivedTypeSymbol::HasConstDerivation() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#182">182</a>
+             of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">183</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">184</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">find</span><span class="other">(</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cbegin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a><span class="other">::</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html#enumerator_const__DB93AA5FE1E1864DCC8B5379591B9560AF0BF8BF">const_</a><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#32">32</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
         <h3 id="function_Id_24342702F0B60C01FA48BBE8264228D1DE5F4B8E">Id Member Function</h3>
         <h4>
             std::u32string sngcpp::symbols::DerivedTypeSymbol::Id() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#31">31</a>
+            Definition at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#34">34</a>
              of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_id_1D04510255B1F78929A6EF73727F9F5B775118A1">id</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -217,6 +255,75 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_IsPointerTypeSymbol_C8BAD9C0FEDA5BBFAECDDC0C42033A695AB96FA6">IsPointerTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::DerivedTypeSymbol::IsPointerTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#177">177</a>
+             of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">178</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">179</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">find</span><span class="other">(</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cbegin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a><span class="other">::</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html#enumerator_ptr_91F3CD74DE9277AA3D814E2753E78F60BC20FB03">ptr</a><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">180</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#31">31</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsPointerTypeSymbol_7AE59F6268CC358F39399DB5F92C24D91996056A">sngcpp::symbols::TypeSymbol::IsPointerTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsReferenceTypeSymbol_03D3F014F5638C544AFF6BDD91F240F5D219F4E7">IsReferenceTypeSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::DerivedTypeSymbol::IsReferenceTypeSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#171">171</a>
+             of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">find</span><span class="other">(</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cbegin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a><span class="other">::</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html#enumerator_lvalueRef_631A1110FD1590FB1A8A0791F71489A455BE5531">lvalueRef</a><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;||&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">find</span><span class="other">(</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cbegin</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html">Derivation</a><span class="other">::</span><a href="./enum_Derivation_88FA3A2DDFD924EF3EE24C296CB5E1671B855136.html#enumerator_rvalueRef_72273FA391C1BA6C6C16A2C6AC1100C02C4EDEB6">rvalueRef</a><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#variable_derivations_9B22BE9451313072A2C490CE6137F2FACE05D490">derivations</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">175</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html#30">30</a>
+             of <a href="file/DerivedTypeSymbol.hpp_D861C363F14F20CD4624736CD18CA75767E178F4.html">DerivedTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsReferenceTypeSymbol_C53817F2163E3EF2457F5045382F03425AE49C50">sngcpp::symbols::TypeSymbol::IsReferenceTypeSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
         <h3 id="function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">MatchValue Member Function</h3>
         <h4>
             <span class="kw">int</span>
@@ -224,7 +331,7 @@
             * argumentType) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#143">143</a>
+            Definition at line <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html#144">144</a>
              of <a href="file/DerivedTypeSymbol.cpp_FF6EBB91CFB7D6C45D4EED414A778CA0EB9AC8E4.html">DerivedTypeSymbol.cpp</a>
         </span>
         <br/>
@@ -240,15 +347,10 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
+            Calls: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_IsPointerTypeSymbol_C8BAD9C0FEDA5BBFAECDDC0C42033A695AB96FA6">sngcpp::symbols::DerivedTypeSymbol::IsPointerTypeSymbol</a>
             , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">sngcpp::symbols::TypeSymbol::BaseType</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsPointerTypeSymbol_7AE59F6268CC358F39399DB5F92C24D91996056A">sngcpp::symbols::TypeSymbol::IsPointerTypeSymbol</a>
             , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
-        </span>
-        <br/>
-        <br/>
-        <span>
-            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_MatchValue_8F77DE55938449D94873EC50D8F4CFE24F082D5F">sngcpp::symbols::ClassTypeSymbol::MatchValue</a>
-            , <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
         </span>
         <br/>
         <br/>
@@ -256,6 +358,6 @@
         <a href="../../../../soulng-projects.html">top</a>
          | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
          | <a href="class_DeclarationBlockSymbol_5BD234D3A5E98C669B777BB27B7A117B3E7F87C5.html">prev</a>
-         | <a href="class_ElaborateClassTypeSymbol_9241D239DC0CDC5B9451173D050D838C9A8B4457.html">next</a>
+         | <a href="class_DestructorSymbol_9A4F9D04DFFF63582EA8B27D56B02818D232D27C.html">next</a>
     </body>
 </html>

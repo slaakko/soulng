@@ -61,15 +61,6 @@
         <span>
             Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#16">16</a>
              of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html">CppObject</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Statement_71315EF68ECE63AEE0DAD6B9F3555D1D4AD09A54.html#variable_parent_CD410699FAD702D8939FC074CF705FAFCAF648B1">parent</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -88,12 +79,8 @@
         <span>
             Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#16">16</a>
              of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Derived class overrides: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_IsCompoundStatement_78F69BA9712D6D023D8637CB5861B21D84D7FC56">soulng::cppcode::CompoundStatement::IsCompoundStatement</a>
@@ -117,12 +104,8 @@
         <span>
             Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#18">18</a>
              of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parent</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_Replace_27DC2AEE7FA63F8D0695D090B929C9A3C74CBDEE">Replace Member Function</h3>
@@ -135,15 +118,6 @@
         <span>
             Definition at line <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html#20">20</a>
              of <a href="file/Statement.cpp_A5D3794F965EB5022580CC5475B27A33EB72D362.html">Statement.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><a href="./class_CppObject_5D0CDDF20081CBC53E368C43BB067295CB5F3C74.html#function_Name_82BD0D38BF5573433CF020A50647B584C2B8BF30">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;replace&nbsp;statement"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -171,6 +145,20 @@
         </span>
         <br/>
         <br/>
+        <span>
+            Called by: <a href="./class_CaseStatement_60B7413117DED64DD5E9F328992C0E79BF034416.html#function_Replace_4840F950193C6E4D2D4707CED82777A356589C7F">soulng::cppcode::CaseStatement::Replace</a>
+            , <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Replace_BF79CC7AD8514D64BA3A73812FF185A1F51B9BF1">soulng::cppcode::CompoundStatement::Replace</a>
+            , <a href="./class_DefaultStatement_D081110C2ABB4B8842017387DCC99D95D31DED36.html#function_Replace_D91A40A4B4F7B28AF8E3F06B5D12940624A6B367">soulng::cppcode::DefaultStatement::Replace</a>
+            , <a href="./class_DoStatement_CF86F87A0AFD3997B3745BAF14CDEA7810E1C29C.html#function_Replace_3F1F82222279A0BE29B7D91BD6754B659615A22F">soulng::cppcode::DoStatement::Replace</a>
+            , <a href="./class_ForStatement_F8E284EFD73476E95E843C7754C64923B742DA1E.html#function_Replace_FAFC9517C860BECA3DA97FF6FCA1D568C0B49584">soulng::cppcode::ForStatement::Replace</a>
+            , <a href="./class_IfStatement_AB9F5B9F493F65021C1688318BEDE8429B3C7BEE.html#function_Replace_64DD30B2460D3ECCBA15A8B4A398C445590C132E">soulng::cppcode::IfStatement::Replace</a>
+            , <a href="./class_LabeledStatement_07656263844CBB8C697EA21C3A76D2CE9A31FE30.html#function_Replace_2D36273A14E46BA7449DC65DC1B4A1C62673AD60">soulng::cppcode::LabeledStatement::Replace</a>
+            , <a href="./class_RangeForStatement_9D5F9477D7196D08EA52386794F75A086AF2FA74.html#function_Replace_294B9FDDF6568C82D4FA559CBD91196DDAD16974">soulng::cppcode::RangeForStatement::Replace</a>
+            , <a href="./class_SwitchStatement_80A7CCD9EFA4D97E925FE7D318E1947E8C45FD72.html#function_Replace_3E3E853E39218BC6F3934B1121C53310FD8CA3C9">soulng::cppcode::SwitchStatement::Replace</a>
+            , <a href="./class_WhileStatement_795BAFE37F3E00B0DA2D9AC644EF22264F5B7F0B.html#function_Replace_AB695770690C0BC2EB96F8EAC0D02B70E5111F5C">soulng::cppcode::WhileStatement::Replace</a>
+        </span>
+        <br/>
+        <br/>
         <hr/>
         <h3 id="function_SetParent_894C426F8D3FBAA9297E19D767174E12E80CB317">SetParent Member Function</h3>
         <h4>
@@ -180,12 +168,8 @@
         <span>
             Definition at line <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html#17">17</a>
              of <a href="file/Statement.hpp_9766C6B06D4C92AAEEE55F2413F00792F8AFC13A.html">Statement.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">parent</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parent_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_CompoundStatement_C97007E3A326DE399B31F127919A5F98005C4935.html#function_Add_C1287C7D68D28BD2775FACF1078166DD4C5FF471">soulng::cppcode::CompoundStatement::Add</a>

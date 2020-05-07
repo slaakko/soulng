@@ -1,0 +1,304 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/LinkerVisitor.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;7</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/Domain.hpp></span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/Unicode.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/util/Util.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">&nbsp;10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="kw">using</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">util</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#constructor_LinkerVisitor_218984E5153CAC310444BFE8A83E10C3140620F7">LinkerVisitor</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_domain_5511BD71EC5626989A9377C0AF3E5A07B2C4FEB9">domain</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentParser_C382FD8DF92D65F53907500C35BD6B59D9BC01FF">currentParser</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentRule_2B512F33FEA25EE39BAAE648A773CB30AD799C17">currentRule</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_stage_CE1EC65C3C0467F35CA3DC20B4C16D0780A1FEE8">stage</a><span class="other">(</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html">Stage</a><span class="other">::</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html#enumerator_addParsers_EF12BEE784C70D13D37FE3EBA287DE7E5A67757B">addParsers</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_4CB11FAB66261DAACBBEE360C54342C8A5949CCD">Visit</a><span class="other">(</span><a href="../class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html">OptionalParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_3651F553945AE70B33B39D4254CFB61CB73296CD">Visit</a><span class="other">(</span><a href="../class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html">KleeneParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_57C332616AA403F51A54FF1F373DF92464EC8EE9">Visit</a><span class="other">(</span><a href="../class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html">PositiveParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_E2C22DACAB6C9D3853B70D5972AB0AB7387A0A2F">Visit</a><span class="other">(</span><a href="../class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html">ExpectationParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_79106A8049E8C6E2371B7B440F9DD00158F679E1">Visit</a><span class="other">(</span><a href="../class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html">GroupingParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_8269EDBB15678DAC53352277518544EE45C763A3">Visit</a><span class="other">(</span><a href="../class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html">SequenceParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_ECA3FF72E1D6E2D384A88530EC036F350CD3EDD4">Visit</a><span class="other">(</span><a href="../class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html">AlternativeParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9D01E6A06892700E65B534882D540A51F17A9361">Visit</a><span class="other">(</span><a href="../class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html">DifferenceParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5858942B7E3288555DE5F1FBA13D0F70CAEA7B1A">Visit</a><span class="other">(</span><a href="../class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html">ListParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_053B7F27AF4954E62E6603BC72485A293B88E02D">Visit</a><span class="other">(</span><a href="../class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html">ActionParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5CC28E5EFE45B97419CA9BDBF6811D63D80769A2">Visit</a><span class="other">(</span><a href="../class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentRule_2B512F33FEA25EE39BAAE648A773CB30AD799C17">currentRule</a><span class="other">-></span><span class="identifier">AddNonterminal</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">parser</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span>&nbsp;<span class="identifier">rule</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentParser_C382FD8DF92D65F53907500C35BD6B59D9BC01FF">currentParser</a><span class="other">-></span><span class="identifier">GetRule</span><span class="other">(</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">RuleName</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">SetRule</span><span class="other">(</span><span class="identifier">rule</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">rule</span><span class="other">-></span><span class="identifier">Parameters</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Arguments</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">runtime_error</span><span class="other">(</span><span class="string">"Rule&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><span class="identifier">rule</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;takes&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">to_string</span><span class="other">(</span><span class="identifier">rule</span><span class="other">-></span><span class="identifier">Parameters</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"&nbsp;parameters&nbsp;("</span><span class="other">&nbsp;+&nbsp;</span></span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">to_string</span><span class="other">(</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Arguments</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"&nbsp;arguments&nbsp;supplied).&nbsp;Detected&nbsp;in&nbsp;parser&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentParser_C382FD8DF92D65F53907500C35BD6B59D9BC01FF">currentParser</a><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;rule&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentRule_2B512F33FEA25EE39BAAE648A773CB30AD799C17">currentRule</a><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'."</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_6D6464EA4F636654337B5C2A51F4B9F951CCD73E">Visit</a><span class="other">(</span><a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentRule_2B512F33FEA25EE39BAAE648A773CB30AD799C17">currentRule</a><span class="other">&nbsp;=&nbsp;</span><span class="other">&amp;</span><span class="identifier">parser</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Definition</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">Visit</a><span class="other">(</span><a href="../class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_stage_CE1EC65C3C0467F35CA3DC20B4C16D0780A1FEE8">stage</a><span class="other">&nbsp;==&nbsp;</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html">Stage</a><span class="other">::</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html#enumerator_addParsers_EF12BEE784C70D13D37FE3EBA287DE7E5A67757B">addParsers</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="95" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_domain_5511BD71EC5626989A9377C0AF3E5A07B2C4FEB9">domain</a><span class="other">-></span><span class="identifier">AddParser</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">parser</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="96" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="97" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span>&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_stage_CE1EC65C3C0467F35CA3DC20B4C16D0780A1FEE8">stage</a><span class="other">&nbsp;==&nbsp;</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html">Stage</a><span class="other">::</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html#enumerator_resolveRules_565AD8AFF090E5AC9545D3BF505F981A25E5474C">resolveRules</a><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="98" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="99" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_currentParser_C382FD8DF92D65F53907500C35BD6B59D9BC01FF">currentParser</a><span class="other">&nbsp;=&nbsp;</span><span class="other">&amp;</span><span class="identifier">parser</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="100" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">u</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Usings</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="101" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="102" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">></span>&nbsp;<span class="identifier">components</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">Split</span><span class="other">(</span><span class="identifier">u</span><span class="other">,&nbsp;</span><span class="string">'.'</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="103" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">components</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;!=&nbsp;</span><span class="other">2</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="104" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="105" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">runtime_error</span><span class="other">(</span><span class="string">"invalid&nbsp;using&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><span class="identifier">u</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;in&nbsp;parser&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'"</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="106" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="107" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parserName</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">components</span><span class="other">[</span><span class="other">0</span><span class="other">]</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="108" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">ruleName</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">components</span><span class="other">[</span><span class="other">1</span><span class="other">]</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="109" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a><span class="other">*</span>&nbsp;<span class="identifier">targetParser</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_domain_5511BD71EC5626989A9377C0AF3E5A07B2C4FEB9">domain</a><span class="other">-></span><span class="identifier">GetParser</span><span class="other">(</span><span class="identifier">parserName</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="110" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span>&nbsp;<span class="identifier">rule</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">targetParser</span><span class="other">-></span><span class="identifier">GetRule</span><span class="other">(</span><span class="identifier">ruleName</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="111" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">MapRule</span><span class="other">(</span><span class="identifier">rule</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="112" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="113" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">rule</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Rules</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="114" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="115" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">rule</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="116" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="117" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">ruleInfo</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">RuleInfos</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="118" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="119" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span>&nbsp;<span class="identifier">rule</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">GetRule</span><span class="other">(</span><span class="identifier">ruleInfo</span><span class="other">.</span><span class="identifier">first</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="120" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">rule</span><span class="other">-></span><span class="identifier">SetInfo</span><span class="other">(</span><span class="identifier">ruleInfo</span><span class="other">.</span><span class="identifier">second</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="121" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="122" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="123" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="124" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="125" xml:space="preserve"><span class="lineNumber">125</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5922B44CDD63BA667319D1CB1B794AD1BFF20D0C">Visit</a><span class="other">(</span><a href="../class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a><span class="other">&amp;</span>&nbsp;<span class="identifier">parserFile</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="126" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="127" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parser</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">parserFile</span><span class="other">.</span><span class="identifier">Parsers</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="128" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="129" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="130" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="131" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="132" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="133" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html">LinkerVisitor</a><span class="other">::</span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_275837557050B65B6094C75C8D0B6A8AEF440034">Visit</a><span class="other">(</span><a href="../class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html">Domain</a><span class="other">&amp;</span>&nbsp;<span class="identifier">domain</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="134" xml:space="preserve"><span class="lineNumber">134</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="135" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">this</span><span class="other">-></span><a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_domain_5511BD71EC5626989A9377C0AF3E5A07B2C4FEB9">domain</a><span class="other">&nbsp;=&nbsp;</span><span class="other">&amp;</span><span class="identifier">domain</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="136" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_stage_CE1EC65C3C0467F35CA3DC20B4C16D0780A1FEE8">stage</a><span class="other">&nbsp;=&nbsp;</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html">Stage</a><span class="other">::</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html#enumerator_addParsers_EF12BEE784C70D13D37FE3EBA287DE7E5A67757B">addParsers</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="137" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parserFile</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">domain</span><span class="other">.</span><span class="identifier">ParserFiles</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="138" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="139" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parserFile</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="140" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="141" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#variable_stage_CE1EC65C3C0467F35CA3DC20B4C16D0780A1FEE8">stage</a><span class="other">&nbsp;=&nbsp;</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html">Stage</a><span class="other">::</span><a href="../enum_Stage_1C5987C849AB84637CC033AB83F95D7685B2ACB8.html#enumerator_resolveRules_565AD8AFF090E5AC9545D3BF505F981A25E5474C">resolveRules</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="142" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parserFile</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">domain</span><span class="other">.</span><span class="identifier">ParserFiles</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="143" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="144" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parserFile</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="145" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="146" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="147" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="148" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sng2html::sng2html</span></span>
+  <br/>
+ </body>
+</html>

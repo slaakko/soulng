@@ -1,0 +1,544 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>GrammarParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html">prev</a>
+         | <a href="class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html">next</a>
+        <hr/>
+        <h1>GrammarParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#297">297</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#constructor_GrammarParser_A5D9C1596C9B7DCCB3321028F3FCB478E4D8E853">GrammarParser</a>(<span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::u32string&amp; api_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Accept_213795EE5EB1F79E41304DB2529BF189E0FE92EF">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_AddRule_0B2C1660C4F1967195469677E6C67583AE1E1F81">AddRule</a>(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>* rule)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_AddRuleInfo_A39381E70063950703CF08D3FB9637D5F5A2FC5E">AddRuleInfo</a>(<span class="kw">const </span>std::u32string&amp; ruleName, <span class="kw">const </span>std::u32string&amp; ruleInfo)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_AddUsing_C3374AF6673070FCBBA2A14FFED5C2D748E1B6EA">AddUsing</a>(<span class="kw">const </span>std::u32string&amp; using_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Api_B3B4C13B4CE3128197E57BFC0B1D6C0855DED626">Api</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_GetRule_F39516C1D484AABA67AA88E5012085F1C3709B78">GetRule</a>(<span class="kw">const </span>std::u32string&amp; ruleName) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_IsGrammar_0CD34F8AF7FF9641E484796E02310F1F4F107363">IsGrammar</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Lexer_83197B185B1AB142B14F47C4BC56F1BB8670C0F9">Lexer</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Main_D50C02E3A3F6F61CC43732D0EBF7D9D0A2BBCD7D">Main</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_MapRule_F3F3215E48B8B077FCD52532635A1D8F977C810D">MapRule</a>(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>* rule)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::pair&lt;std::u32string, std::u32string>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_RuleInfos_1D0DB30193303E4B03628ED6616BF294225562C5">RuleInfos</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::unique_ptr&lt;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Rules_C5510C7F57B2951C9BD7802E34CB03D415108F34">Rules</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_SetLexer_C75724BB97F719AC708F8F04E7371D858D73E967">SetLexer</a>(<span class="kw">const </span>std::u32string&amp; lexer_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_SetMain_385F6F21B8F81DEC2A2EF211C528B9A6FEBDBE2A">SetMain</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::u32string>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Usings_512EBAB3C3EAA44A648B2D5853A301A9E93B05F7">Usings</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_api_F09C81284591183499D48F6AE7A76DD7D5EABEC2">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">api</td>
+            </tr>
+            <tr id="variable_lexer_93767954D5BDD4E0CD38E7FDB25282E1FFE4B3A4">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexer</td>
+            </tr>
+            <tr id="variable_main_0F459A4E084C623AE7605D959DFBB9A831FF0A24">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">main</td>
+            </tr>
+            <tr id="variable_ruleInfos_0BCC9F6E6C00B8EC376E50372C07E615239A99BD">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::pair&lt;std::u32string, std::u32string>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ruleInfos</td>
+            </tr>
+            <tr id="variable_ruleMap_E35DBC90D9A36C0C71F3D0A3AE909BF430DFA488">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;std::u32string, <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ruleMap</td>
+            </tr>
+            <tr id="variable_rules_BB6AE9D5E033AAEE8A6A7B8CCC0704F1660522B0">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">rules</td>
+            </tr>
+            <tr id="variable_usings_697253180FBE7397625A91CD91066F53137832FD">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">usings</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_GrammarParser_A5D9C1596C9B7DCCB3321028F3FCB478E4D8E853">GrammarParser Constructor</h3>
+        <h4>
+            sng2html::sng2html::GrammarParser::GrammarParser(<span class="kw">const </span>
+            std::u32string&amp; name_, <span class="kw">const </span>
+            std::u32string&amp; api_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#406">406</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">406</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_api_F09C81284591183499D48F6AE7A76DD7D5EABEC2">api</a><span class="other">(</span><span class="identifier">api_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_main_0F459A4E084C623AE7605D959DFBB9A831FF0A24">main</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">407</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">408</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#300">300</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_213795EE5EB1F79E41304DB2529BF189E0FE92EF">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#410">410</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">411</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">412</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">413</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#302">302</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_727B6AE40015F38E4700A1CFAABDC0AC400C7ECA">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddRule_0B2C1660C4F1967195469677E6C67583AE1E1F81">AddRule Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::AddRule(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            * rule)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#420">420</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">421</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">422</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">rule</span><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">423</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_rules_BB6AE9D5E033AAEE8A6A7B8CCC0704F1660522B0">rules</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">></span><span class="other">(</span><span class="identifier">rule</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">424</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_ruleMap_E35DBC90D9A36C0C71F3D0A3AE909BF430DFA488">ruleMap</a><span class="other">[</span><span class="identifier">rule</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">rule</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">425</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#310">310</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">sng2html::sng2html::Parser::Name</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_SetParent_BE1E06EC12F0780A51619D6A691544C099A3E535">sng2html::sng2html::Parser::SetParent</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_RuleStatement_C121DECD9A352B3924878141071519DBC9E54DA6">ParserFileParser::RuleStatement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddRuleInfo_A39381E70063950703CF08D3FB9637D5F5A2FC5E">AddRuleInfo Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::AddRuleInfo(<span class="kw">const </span>
+            std::u32string&amp; ruleName, <span class="kw">const </span>
+            std::u32string&amp; ruleInfo)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#445">445</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">446</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">447</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_ruleInfos_0BCC9F6E6C00B8EC376E50372C07E615239A99BD">ruleInfos</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">make_pair</span><span class="other">(</span><span class="identifier">ruleName</span><span class="other">,&nbsp;</span><span class="identifier">ruleInfo</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">448</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#314">314</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_RuleInfo_A4BF4BEA83F03BCF535CD7FAD340EBBCA11932EC">ParserFileParser::RuleInfo</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddUsing_C3374AF6673070FCBBA2A14FFED5C2D748E1B6EA">AddUsing Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::AddUsing(<span class="kw">const </span>
+            std::u32string&amp; using_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#415">415</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">416</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">417</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_usings_697253180FBE7397625A91CD91066F53137832FD">usings</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">using_</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">418</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#306">306</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_UsingStatement_09165DA8E189A422439A1A165D390526DF94E570">ParserFileParser::UsingStatement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Api_B3B4C13B4CE3128197E57BFC0B1D6C0855DED626">Api Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::GrammarParser::Api() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#303">303</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">303</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_api_F09C81284591183499D48F6AE7A76DD7D5EABEC2">api</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_GetRule_F39516C1D484AABA67AA88E5012085F1C3709B78">GetRule Member Function</h3>
+        <h4>
+            <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            * sng2html::sng2html::GrammarParser::GetRule(<span class="kw">const </span>
+            std::u32string&amp; ruleName) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#432">432</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#312">312</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">sng2html::sng2html::Parser::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5CC28E5EFE45B97419CA9BDBF6811D63D80769A2">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadGrammarFiles_8188A4BCF419E9D54D8AB78BD9505A0A651382C9">sng2html::sng2html::Project::ReadGrammarFiles</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsGrammar_0CD34F8AF7FF9641E484796E02310F1F4F107363">IsGrammar Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::GrammarParser::IsGrammar() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#301">301</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">301</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsGrammar_F1E16907891C2EF8753F3B0A1333107BA24622F7">sng2html::sng2html::Parser::IsGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Lexer_83197B185B1AB142B14F47C4BC56F1BB8670C0F9">Lexer Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::GrammarParser::Lexer() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#309">309</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">309</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_lexer_93767954D5BDD4E0CD38E7FDB25282E1FFE4B3A4">lexer</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_51598A3411660552FFF55757C0165B87F508614F">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Main_D50C02E3A3F6F61CC43732D0EBF7D9D0A2BBCD7D">Main Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::GrammarParser::Main() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#305">305</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">305</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_main_0F459A4E084C623AE7605D959DFBB9A831FF0A24">main</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_MapRule_F3F3215E48B8B077FCD52532635A1D8F977C810D">MapRule Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::MapRule(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            * rule)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#427">427</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">428</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">429</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_ruleMap_E35DBC90D9A36C0C71F3D0A3AE909BF430DFA488">ruleMap</a><span class="other">[</span><span class="identifier">rule</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">rule</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">430</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#311">311</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">sng2html::sng2html::Parser::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_RuleInfos_1D0DB30193303E4B03628ED6616BF294225562C5">RuleInfos Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::pair&lt;std::u32string, std::u32string>>&amp; sng2html::sng2html::GrammarParser::RuleInfos() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#315">315</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">315</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_ruleInfos_0BCC9F6E6C00B8EC376E50372C07E615239A99BD">ruleInfos</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Rules_C5510C7F57B2951C9BD7802E34CB03D415108F34">Rules Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::unique_ptr&lt;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            >>&amp; sng2html::sng2html::GrammarParser::Rules() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#313">313</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">313</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_rules_BB6AE9D5E033AAEE8A6A7B8CCC0704F1660522B0">rules</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_51598A3411660552FFF55757C0165B87F508614F">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetLexer_C75724BB97F719AC708F8F04E7371D858D73E967">SetLexer Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::SetLexer(<span class="kw">const </span>
+            std::u32string&amp; lexer_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#308">308</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">308</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_lexer_93767954D5BDD4E0CD38E7FDB25282E1FFE4B3A4">lexer</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">lexer_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_LexerStatement_32B59DD1EAB1760F5A260A36616C441C45F3421C">ParserFileParser::LexerStatement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetMain_385F6F21B8F81DEC2A2EF211C528B9A6FEBDBE2A">SetMain Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarParser::SetMain()</h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#304">304</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">304</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_main_0F459A4E084C623AE7605D959DFBB9A831FF0A24">main</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_MainStatement_6C7F95DC15391B79EA872D75683A7FEE6DB5A572">ParserFileParser::MainStatement</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Usings_512EBAB3C3EAA44A648B2D5853A301A9E93B05F7">Usings Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::u32string>&amp; sng2html::sng2html::GrammarParser::Usings() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#307">307</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">307</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#variable_usings_697253180FBE7397625A91CD91066F53137832FD">usings</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html">prev</a>
+         | <a href="class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html">next</a>
+    </body>
+</html>

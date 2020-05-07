@@ -5,6 +5,7 @@
     <documentation file="docs.xml"/>
     <include path="../.."/>
       <imports>
+      <import project="../../soulng/util"/>
       <import project="../xml"/>
       <import project="../dom"/>
       <import project="../xpath"/>

@@ -9,5 +9,6 @@
       <import project="../../soulng/lexer"/>
       <import project="../../soulng/parser"/>
     </imports>
+    <grammars file="grammars.xml"/>
   </project>
 </gendoc>

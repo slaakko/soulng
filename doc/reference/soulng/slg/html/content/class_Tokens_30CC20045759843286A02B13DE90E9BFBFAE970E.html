@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <span class="kw">bool</span> debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
             </tr>
         </table>
         <h2>Member Variables</h2>
@@ -57,15 +57,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#85">85</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -85,15 +76,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#89">89</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#variable_tokens_BFE12B943FE470F2D05535B7B003E38E54CAA472">tokens</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">token</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -112,15 +94,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#94">94</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetTokens_E6D33C072C2B2D4950F13AA809AB21B0D8ECB28D">SetTokens</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -140,12 +113,13 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">Process Member Function</h3>
+        <h3 id="function_Process_BF1B5042324FE23632931C26A484D844870B83AE">Process Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Tokens::Process(<span class="kw">const </span>
             std::string&amp; root, <span class="kw">bool</span>
-             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+             verbose, <span class="kw">bool</span>
+             debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext) <span class="kw">override</span>
         </h4>
         <span>
@@ -160,7 +134,7 @@
         <br/>
         <br/>
         <span>
-            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_5B73D958C55323FABDD19047045BD23363561D3A">soulng::slg::Declaration::Process</a>
+            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_3CAA9CAF8401B40FE2EB06B5E51CA1A5B7AECC90">soulng::slg::Declaration::Process</a>
         </span>
         <br/>
         <br/>

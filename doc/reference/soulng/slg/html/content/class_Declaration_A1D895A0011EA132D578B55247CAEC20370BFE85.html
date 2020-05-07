@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_5B73D958C55323FABDD19047045BD23363561D3A">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">pure virtual</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_3CAA9CAF8401B40FE2EB06B5E51CA1A5B7AECC90">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <span class="kw">bool</span> debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">pure virtual</span></td>
             </tr>
         </table>
         <h2>Member Variables</h2>
@@ -57,15 +57,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#30">30</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#variable_name_98A868CBB619741E7BC032CA663445B4D343FD31">name</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -105,29 +96,26 @@
         <span>
             Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#41">41</a>
              of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">name</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
             , <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Add_C9464005DA65900342F7C2D63CBB640D4030A824">soulng::slg::LexerFile::Add</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_Process_5B73D958C55323FABDD19047045BD23363561D3A">Process Member Function</h3>
+        <h3 id="function_Process_3CAA9CAF8401B40FE2EB06B5E51CA1A5B7AECC90">Process Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Declaration::Process(<span class="kw">const </span>
             std::string&amp; root, <span class="kw">bool</span>
-             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+             verbose, <span class="kw">bool</span>
+             debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext) <span class="kw">pure virtual</span>
         </h4>
         <span>
@@ -137,10 +125,10 @@
         <br/>
         <br/>
         <span>
-            Derived class overrides: <a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Process_97AD6F66EE31DB59DE6A4A51B40A41E58B9E5145">soulng::slg::Expressions::Process</a>
-            , <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
-            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_Process_13252863F833BD97883AFBE6298F25A2AF492AF6">soulng::slg::Lexer::Process</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            Derived class overrides: <a href="./class_Expressions_500001D1A571A3C4903D433ACAACD27B3AF5B6E7.html#function_Process_DA75460C3E22C196EC326A7753E330DFC72ABE05">soulng::slg::Expressions::Process</a>
+            , <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_Process_F09A800893CD39CEBAE54AF927F115DE4CB6A73A">soulng::slg::Lexer::Process</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>

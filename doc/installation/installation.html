@@ -13,9 +13,9 @@
 
     <ul>
         <li><a href="../download/download.html">Download</a> the setup executable and run it.</li>
-        <li>The SoulNG is by default installed to the <strong>C:\soulng-2.0.0</strong> directory.</li>
-        <li>The <strong>C:\soulng-2.0.0\bin</strong> directory is added to the system PATH environment variable.</li>
-        <li>The setup creates a system environment variable <strong>SOULNG_ROOT</strong> that contains the path to the installation directory, that is by default <strong>C:\soulng-2.0.0</strong>.</li>
+        <li>The SoulNG is by default installed to the <strong>C:\soulng-3.0.0</strong> directory.</li>
+        <li>The <strong>C:\soulng-3.0.0\bin</strong> directory is added to the system PATH environment variable.</li>
+        <li>The setup creates a system environment variable <strong>SOULNG_ROOT</strong> that contains the path to the installation directory, that is by default <strong>C:\soulng-3.0.0</strong>.</li>
         <li>The <strong>SOULNG_ROOT</strong> environment variable is needed at run-time to locate the Unicode character database <strong>soulng_ucd.bin</strong> in the <strong>unicode</strong> subdirectory.</li>
     </ul>
 
@@ -26,32 +26,32 @@
     </h3>
 
     <ul>
-        <li><a href="../download/download.html">Download</a> the SoulNG 2.0.0 Source Package.</li>
-        <li>Extract it to a directory of your choice here called <strong>soulng-2.0.0</strong></li>
+        <li><a href="../download/download.html">Download</a> the SoulNG 3.0.0 Source Package.</li>
+        <li>Extract it to a directory of your choice here called <strong>soulng-3.0.0</strong></li>
         <li>
             change to the <strong>soulng</strong> subdirectory:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0$ cd soulng
+                slaakko@pluto:~/soulng-3.0.0$ cd soulng
             </pre>
         </li>
         <li>
             run make:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/soulng$ make
+                slaakko@pluto:~/soulng-3.0.0/soulng$ make
             </pre>
         </li>
         <li>
-            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-2.0.0</strong> directory.
+            Set an environment variable with name SOULNG_ROOT that points to the <strong>soung-3.0.0</strong> directory.
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/soulng$ export SOULNG_ROOT=~/soulng-2.0.0
+                slaakko@pluto:~/soulng-3.0.0/soulng$ export SOULNG_ROOT=~/soulng-3.0.0
             </pre>
             You have to put it to your profile script to make it permanent.
-            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-2.0.0/unicode</strong> subdirectory.
+            The SOULNG_ROOT environment variable is needed at run-time to locate the Unicode database that is in the <strong>soung-3.0.0/unicode</strong> subdirectory.
         </li>
         <li>
             run [sudo] make install
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/soulng$ sudo make install
+                slaakko@pluto:~/soulng-3.0.0/soulng$ sudo make install
             </pre>
             The binaries are installed by default to the <strong>/usr/local/bin</strong>,
             libraries to the <strong>/usr/local/lib</strong>,
@@ -69,19 +69,19 @@
         <li>
             change to the <strong>examples</strong> subdirectory:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0$ cd examples
+                slaakko@pluto:~/soulng-3.0.0$ cd examples
             </pre>
         </li>
         <li>
             run make:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/examples$ make
+                slaakko@pluto:~/soulng-3.0.0/examples$ make
             </pre>
         </li>
         <li>
             run [sudo] make install:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/examples$ sudo make install
+                slaakko@pluto:~/soulng-3.0.0/examples$ sudo make install
             </pre>
             The example binaries <strong>minilang</strong> and <strong>cmajortester</strong> are installed by default to the <strong>/usr/local/bin</strong> directory.
             You can set the installation location by giving the <strong>prefix</strong> argument:<br />
@@ -95,42 +95,42 @@
         <li>
             change to the <strong>sngxml</strong> subdirectory:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0$ cd sngxml
+                slaakko@pluto:~/soulng-3.0.0$ cd sngxml
             </pre>
         </li>
         <li>
             run make:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/sngxml$ make
+                slaakko@pluto:~/soulng-3.0.0/sngxml$ make
             </pre>
         </li>
         <li>
             run [sudo] make install:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/sngxml$ sudo make install
+                slaakko@pluto:~/soulng-3.0.0/sngxml$ sudo make install
             </pre>
         </li>
     </ul>
     
-    <h3>Building and installing C++ front-end (optional)</h3>
+    <h3>Building and installing C++ front-end libraries (optional)</h3>
     
     <ul>
         <li>
             change to the <strong>sngcpp</strong> subdirectory:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0$ cd sngcpp
+                slaakko@pluto:~/soulng-3.0.0$ cd sngcpp
             </pre>
         </li>
         <li>
             run make:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/sngcpp$ make
+                slaakko@pluto:~/soulng-3.0.0/sngcpp$ make
             </pre>
         </li>
         <li>
             run [sudo] make install:
             <pre>
-                slaakko@pluto:~/soulng-2.0.0/sngcpp$ sudo make install
+                slaakko@pluto:~/soulng-3.0.0/sngcpp$ sudo make install
             </pre>
         </li>
     </ul>

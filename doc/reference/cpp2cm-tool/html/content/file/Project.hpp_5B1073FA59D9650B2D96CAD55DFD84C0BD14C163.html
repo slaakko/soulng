@@ -1,0 +1,222 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;CPP2CM_CPP2CM_PROJECT_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;CPP2CM_CPP2CM_PROJECT_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/File.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/Filter.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">&nbsp;10</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/NothrowList.hpp></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/Map.hpp></span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/Patch.hpp></span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngxml/dom/Document.hpp></span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">&nbsp;14</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/pp/PP.hpp></span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/ast/Node.hpp></span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/symbols/SymbolTable.hpp></span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngcpp/binder/TypeBinder.hpp></span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/lexer/Lexer.hpp></span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/rex/Context.hpp></span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">cpp2cm</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<span class="identifier">ProcessType</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">stage</span><span class="other">,&nbsp;</span><span class="identifier">install</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">binder</span><span class="other">::</span><span class="type">SourceFileResolver</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">&nbsp;30</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#constructor_Project_821492E93BD092AF89E56E0DEA568178153271DB">Project</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">systemXmlFilePath_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">xmlFilePath_</span><span class="other">,&nbsp;</span><span class="kw">bool</span>&nbsp;<span class="identifier">nothrowStatus_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">Process</a><span class="other">(</span><span class="kw">bool</span>&nbsp;<span class="identifier">verbose</span><span class="other">,&nbsp;</span><a href="../enum_ProcessType_112716E41CCD70277F82EFBB7A0D925FE783FD53.html">ProcessType</a>&nbsp;<span class="identifier">processType</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadVCXProjectFilePath_9D64913D79BB0D7CE9D4454A4EFFF7476F43D72F">ReadVCXProjectFilePath</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSources_342D9B72EDCD98C7D95CDE131935226A8F0DA2A9">ReadSources</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadVCSources_743D0F586D9A08F1D7F3A92D57ED3A2EADF8B6FB">ReadVCSources</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadTextFiles_234FF67232E823AC51D2F3FFF78ABD69A659C893">ReadTextFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadIncludePath_9839EA5C3A3E594F1DAD14653D6C70F6D8408127">ReadIncludePath</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadTargetDir_34F1840BA5DC2ED029A202667B63644D389DCBCD">ReadTargetDir</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadInstallDir_2A6CCF270CF2B584FC08871A944B1765911A5D04">ReadInstallDir</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadFilter_3D4B698CB82DE832B3D4DF77F0B748205A39DC7B">ReadFilter</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadNothrowList_402C410790085993F43A28470DC26EFAB2766310">ReadNothrowList</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMap_9E46E798CD5FBA0E6B2F81E9D2B6908B154009D9">ReadMap</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadReferences_2E60AD699744EA2A8B2D3F12E29DA87F000AED8F">ReadReferences</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_MapNamespaces_122336BBA57E189C17080E70BDB8F6DC81502D02">MapNamespaces</a><span class="other">(</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Document</span><span class="other">*</span>&nbsp;<span class="identifier">mapDoc</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildAst_2F6DBFA96696162A41BBE3A8E244912677310DE2">BuildAst</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_WriteAst_B5AF4375CBF20E5BF76E13D62995634B02D98D3F">WriteAst</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadAst_0559492953D0F370342E3AE971323F42EB3B4A97">ReadAst</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Import_93291EB6BA2CBC41D81664E5E5F355E22171948A">Import</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSystemProjects_30ABD94B10930BF5C1352EDB380CE797D0B11BC7">ReadSystemProjects</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildSymbolTable_83E7DFC57A6DDAA93CEF665B376821F804B5871C">BuildSymbolTable</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_WriteSymbolTableXml_B0B149129F07D42E6A0D15E7BE5ACD166EA8A995">WriteSymbolTableXml</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSymbolTableXml_B3E04DC1039E365A3E8582291569E846E6E23A2F">ReadSymbolTableXml</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">Convert</a><span class="other">(</span><a href="../enum_ProcessType_112716E41CCD70277F82EFBB7A0D925FE783FD53.html">ProcessType</a>&nbsp;<span class="identifier">processType</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_SetStageDir_5BB28DBE49999A2B9F7BA9BFB2C33C2AA206379F">SetStageDir</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_SetAstFilePath_12140A530434A6931CC90F361A75E6EBC4479897">SetAstFilePath</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_SetSystem_23F59B69EBF950BF05A87C4A67B451058B2E8B70">SetSystem</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_system_ED969B49BD906C80125A538C940286F8DAA682E1">system</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_ast_ACA3CD8A94385D3E318E5AB8AF1618DA81381FE8">ast</a><span class="other">::</span><span class="identifier">SourceFileNode</span><span class="other">*</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_GetSourceFile_64445EF2CF103FBE61173412716F7D3B5FD0D6BE">GetSourceFile</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">sourceFilePath</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadPatchFiles_E7558671776A156024BDE6AAE1A185D5CCB9FB83">ReadPatchFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMergeDirFiles_08A58CD46F4C92C1FD0FE2455D9D1FDF5386CC46">ReadMergeDirFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_systemXmlFilePath_A4FD8819F819DE01301E08C8EF9128B8E3A348D1">systemXmlFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_systemRootDir_67A9BE32138206E6C721DC1E355E9EDC3A02BDC4">systemRootDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_xmlFilePath_6229A79687A474DAEAB299F61069E149249D19C4">xmlFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_projectRootDir_E3BDBDF111EE3CFF34C74C4D16CAF9C9FF0F3AFD">projectRootDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_astFilePath_ABA3ED710DA0971A09C1931406556A4627F41350">astFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_vcxprojectFilePath_36BA693213CCEADE0BA4A7BE79825AAEEBF71DC5">vcxprojectFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_vcxprojectRootDir_4EEC95BE1D26DD48132149E11A3D144719CF821B">vcxprojectRootDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_targetDir_BB522EEFA5CAF1EA79EB23B9855DC742B9DC4EE4">targetDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_installDir_868A8466A051BCEEF85314F990AB0FB707912695">installDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_mergeDir_5FE288A380D5CF8E5B1C8D0D7DFA3C3C8EC24135">mergeDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Document</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_doc_5DA2AD4EC463E8EECC0DF6000B7068B215A6EF6E">doc</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_name_9174FA3866B18422458F96E843319466B4E35702">name</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_type_06603B4A4A27A9DB2CA329DB5C46233595E1AE77">type</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_targetName_3BACEF8887EADA2B1E9FC328C0A7ADE0E36ADE56">targetName</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_stageReferences_BF87CB6C7D53EF72CEEDCA5AFBD3AFE6EDCB40E3">stageReferences</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_installReferences_B7F2FD90E470BDD92E39DC9277971443E4A4E812">installReferences</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_files_CB09572894EF2BF4E3E17828A7071F7D1B5BD25D">files</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">ast</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_ast_ACA3CD8A94385D3E318E5AB8AF1618DA81381FE8">ast</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_verbose_08BF2BADB506A09CC08992115F092A46D88C13A1">verbose</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_includePath_F6B6B81F6F13FA4A211627136D4BD96B1094C383">includePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">lexer</span><span class="other">::</span><span class="identifier">Lexer</span><span class="other">></span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_lexers_EEB95D8EBB6A7DE35BC744220E06E0CD63C63628">lexers</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">symbols</span><span class="other">::</span><span class="identifier">SymbolTable</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_symbolTable_ED6A99AFA4E33C290679557B63101071CBC90672">symbolTable</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_stageDir_287B284F3741693D8B7D46482262F18D3A7C8A42">stageDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">ast</span><span class="other">::</span><span class="identifier">SourceFileNode</span><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_sourceFiles_868CF9C7F9A37D552C36BC201F50104E8791E8C7">sourceFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">map</span><span class="other">::</span><span class="type">map</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">,&nbsp;</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">ast</span><span class="other">::</span><span class="identifier">SourceFileNode</span><span class="other">*</span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_sourceFileMap_211D04B0E8FE4D91D8B44BD3BE775BA14D1AD543">sourceFileMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_system_ED969B49BD906C80125A538C940286F8DAA682E1">system</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a><span class="other">></span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_projects_3122BDDBB99E082716C8DB20BAF8B91C6763C5A7">projects</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">,&nbsp;</span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_projectMap_3B7781BB57DDCB67E69D4305A17255BAF1150428">projectMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_imports_73966350DC0F94616BCE3DA8559067236F7A44C0">imports</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">pp</span><span class="other">::</span><span class="identifier">ProjectHeaderFileSet</span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_headerFiles_7A822D9A722DFCB83F0D824C8C213108496396D1">headerFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><a href="../struct_Context_B96292501BB650206F5AB9506836AF0FC43D23E7.html">Context</a>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_context_0737021F3CABE58412E4004236B89A447CA27FDC">context</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html">FilterList</a>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_filters_426FECC9679593450B03DCC2E2C65BD65DBA386D">filters</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html">Map</a>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_map_2CF564582636E21FA32D41C00016CB98E0ACDB8C">map</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Document</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_symbolTableXmlDoc_FD99DABEA69FDE0BA6568DD461B005AA6F2CEA22">symbolTableXmlDoc</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="95" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_PatchFile_840201B003176489B17F4ADD9DFDA225D0E965A5.html">PatchFile</a><span class="other">></span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_patchFiles_DADF79C2CDF4D7D2AB434A5E4F4007CC3F4FF2C7">patchFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="96" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">set</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_excludedFunctions_068CBEDC69B3A95D2CFA4BCA72DBFCD4A98DE8EF">excludedFunctions</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="97" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">set</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_excludedClasses_B4BF308C5C353AFF0F5C9765FB57832D42ECC150">excludedClasses</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="98" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a><span class="other">></span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_mergeDirFiles_72E1EE9E622EE487088C86AE9C5E01EB1E611723">mergeDirFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="99" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">map</span><span class="other">::</span><span class="type">map</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">,&nbsp;</span><a href="../class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a><span class="other">*</span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_mergeFileMap_DDC19676032A9A5528C77E91A5F7A80690214FFB">mergeFileMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="100" xml:space="preserve"><span class="lineNumber">100</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a><span class="other">></span><span class="other">></span><a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_extraFiles_05885EFB9704370D012B12896E6CDAD56FC59E12">extraFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="101" xml:space="preserve"><span class="lineNumber">101</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">></span>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_textFiles_838D0936B2F1657937F8637DFF7383EABDB138CF">textFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="102" xml:space="preserve"><span class="lineNumber">102</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_NothrowList_D406E65392105331AECF593C7DE16B07C7A73CB5.html">NothrowList</a>&nbsp;<a href="../class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#variable_nothrowList_CEB54FC8033AA5050FBAE383EBFB6E7EC6D7E838">nothrowList</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="103" xml:space="preserve"><span class="lineNumber">103</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="104" xml:space="preserve"><span class="lineNumber">104</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="105" xml:space="preserve"><span class="lineNumber">105</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;cpp2cm</span></span>
+  <br/>
+  <span class="code" id="106" xml:space="preserve"><span class="lineNumber">106</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="107" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;CPP2CM_CPP2CM_PROJECT_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

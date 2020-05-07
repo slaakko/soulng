@@ -269,16 +269,17 @@ function drawDiagram(classes) {
 function drawClassInheritanceDiagram() {
     var classes = [
         { name: "soulng::spg::Parser", id: "class_0", level: 0, subject: true, hasDerivedClasses: true, link: "./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html" },
-        { name: "soulng::spg::BinaryParser", id: "class_1", level: 1, subject: false, hasDerivedClasses: true, link: "./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html" },
-        { name: "soulng::spg::CharParser", id: "class_2", level: 1, subject: false, hasDerivedClasses: false, link: "./class_CharParser_E21B8AB860B10B1FCE8DC9CBD13594992CF75A28.html" },
-        { name: "soulng::spg::CharSetParser", id: "class_3", level: 1, subject: false, hasDerivedClasses: false, link: "./class_CharSetParser_B6ECE7C272FD123E9CA2B19F60F55F3C157AA96F.html" },
-        { name: "soulng::spg::EmptyParser", id: "class_4", level: 1, subject: false, hasDerivedClasses: false, link: "./class_EmptyParser_D40C5A955F5B32238F7393CAC2A9DF46017E5A9D.html" },
-        { name: "soulng::spg::GrammarParser", id: "class_5", level: 1, subject: false, hasDerivedClasses: false, link: "./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html" },
-        { name: "soulng::spg::NonterminalParser", id: "class_6", level: 1, subject: false, hasDerivedClasses: false, link: "./class_NonterminalParser_EE5C586DE55F875B723AE19B1FEE59162FE67DA2.html" },
-        { name: "soulng::spg::RuleParser", id: "class_7", level: 1, subject: false, hasDerivedClasses: false, link: "./class_RuleParser_70D9DD72A49D7FCCCA0EB22A38416E3B2E1D3925.html" },
-        { name: "soulng::spg::StringParser", id: "class_8", level: 1, subject: false, hasDerivedClasses: false, link: "./class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html" },
-        { name: "soulng::spg::TokenParser", id: "class_9", level: 1, subject: false, hasDerivedClasses: false, link: "./class_TokenParser_39F28A41BD113685B1F59F046B078CFE61235A36.html" },
-        { name: "soulng::spg::UnaryParser", id: "class_10", level: 1, subject: false, hasDerivedClasses: true, link: "./class_UnaryParser_D587619922188889605EA9F0CB5D5C22A7C9AA1B.html" }];
+        { name: "soulng::spg::AnyParser", id: "class_1", level: 1, subject: false, hasDerivedClasses: false, link: "./class_AnyParser_ED2567D49E1613371F498222DCBAB0F4E031B46C.html" },
+        { name: "soulng::spg::BinaryParser", id: "class_2", level: 1, subject: false, hasDerivedClasses: true, link: "./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html" },
+        { name: "soulng::spg::CharParser", id: "class_3", level: 1, subject: false, hasDerivedClasses: false, link: "./class_CharParser_E21B8AB860B10B1FCE8DC9CBD13594992CF75A28.html" },
+        { name: "soulng::spg::CharSetParser", id: "class_4", level: 1, subject: false, hasDerivedClasses: false, link: "./class_CharSetParser_B6ECE7C272FD123E9CA2B19F60F55F3C157AA96F.html" },
+        { name: "soulng::spg::EmptyParser", id: "class_5", level: 1, subject: false, hasDerivedClasses: false, link: "./class_EmptyParser_D40C5A955F5B32238F7393CAC2A9DF46017E5A9D.html" },
+        { name: "soulng::spg::GrammarParser", id: "class_6", level: 1, subject: false, hasDerivedClasses: false, link: "./class_GrammarParser_9B58DD1B3C72DDF74DECF2A9FBB2DE2C1A8DD795.html" },
+        { name: "soulng::spg::NonterminalParser", id: "class_7", level: 1, subject: false, hasDerivedClasses: false, link: "./class_NonterminalParser_EE5C586DE55F875B723AE19B1FEE59162FE67DA2.html" },
+        { name: "soulng::spg::RuleParser", id: "class_8", level: 1, subject: false, hasDerivedClasses: false, link: "./class_RuleParser_70D9DD72A49D7FCCCA0EB22A38416E3B2E1D3925.html" },
+        { name: "soulng::spg::StringParser", id: "class_9", level: 1, subject: false, hasDerivedClasses: false, link: "./class_StringParser_2D23C33E8E839095A20721D80146E8807002A752.html" },
+        { name: "soulng::spg::TokenParser", id: "class_10", level: 1, subject: false, hasDerivedClasses: false, link: "./class_TokenParser_39F28A41BD113685B1F59F046B078CFE61235A36.html" },
+        { name: "soulng::spg::UnaryParser", id: "class_11", level: 1, subject: false, hasDerivedClasses: true, link: "./class_UnaryParser_D587619922188889605EA9F0CB5D5C22A7C9AA1B.html" }];
     drawDiagram(classes);
 }
 

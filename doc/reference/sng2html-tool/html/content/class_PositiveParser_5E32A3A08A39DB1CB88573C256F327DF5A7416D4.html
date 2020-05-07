@@ -1,0 +1,172 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>PositiveParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html">prev</a>
+         | <a href="class_Prefix_E69E09DA7F457E9AAF6255882E3B177368F7FDD4.html">next</a>
+        <hr/>
+        <h1>PositiveParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#146">146</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#constructor_PositiveParser_D894F7261B6554C4118FC5FE6E732A162041F289">PositiveParser</a>(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>* child_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_Accept_ECB7CEA9136D751B63228AABE9016249CFA65C88">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_Clone_BD31C33D91FDC9119451C3D8E26AFD9F40A177E8">Clone</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html#function_IsPostfix_0B04ACF65AACF603048B93898F37DBFBCC0AF4F9">IsPostfix</a>() <span class="kw">const override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_PositiveParser_D894F7261B6554C4118FC5FE6E732A162041F289">PositiveParser Constructor</h3>
+        <h4>
+            sng2html::sng2html::PositiveParser::PositiveParser(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * child_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#146">146</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html">UnaryParser</a><span class="other">(</span><span class="string">U"positive"</span><span class="other">,&nbsp;</span><span class="identifier">child_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#149">149</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_ECB7CEA9136D751B63228AABE9016249CFA65C88">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::PositiveParser::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#155">155</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#151">151</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_80FEE1AC3546305E61E4C1F099E3E53DCEEB364C">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_BD31C33D91FDC9119451C3D8E26AFD9F40A177E8">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * sng2html::sng2html::PositiveParser::Clone() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#150">150</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html">PositiveParser</a><span class="other">(</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Clone</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#150">150</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">sng2html::sng2html::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">sng2html::sng2html::Parser::Clone</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsPostfix_0B04ACF65AACF603048B93898F37DBFBCC0AF4F9">IsPostfix Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::PositiveParser::IsPostfix() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#152">152</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsPostfix_E4CCE86D69B8C6BCC8552B8B9D1CB5F4639BFCA2">sng2html::sng2html::Parser::IsPostfix</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html">prev</a>
+         | <a href="class_Prefix_E69E09DA7F457E9AAF6255882E3B177368F7FDD4.html">next</a>
+    </body>
+</html>

@@ -9,7 +9,7 @@
         <a href="../../../../soulng-projects.html">top</a>
          | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
          | <a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html">prev</a>
-         | <a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html">next</a>
+         | <a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html">next</a>
         <hr/>
         <h1>ParameterSymbol Class</h1>
         <div class="diagram">
@@ -100,9 +100,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">parameterElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"parameter"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">parameterElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"parameter"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parameterElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"type"</span><span class="other">,&nbsp;</span><a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">type</a><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parameterElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"type"</span><span class="other">,&nbsp;</span><a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">type</a><span class="other">-></span><span class="identifier">Id</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parameterElement</span><span class="other">;</span></span>
                 <br/>
@@ -138,7 +138,7 @@
              of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">type</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">type</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -149,8 +149,9 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_GetFunctionDeclaration_CBCD8FA4EF5EB6E7A4D96691639542456514E65B">sngcpp::symbols::FunctionGroupSymbol::GetFunctionDeclaration</a>
-            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_42927DD553AD60AA77C1E500920851EA72F6214D">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
+            Called by: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_IdStr_6F3B474E5BBEDDE855F234203FE3BA4D552DA3C8">sngcpp::symbols::FunctionDeclarationSymbol::IdStr</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_GetFunctionDeclaration_EEAD748F61C14635603A29EB04E53944FF6349DA">sngcpp::symbols::FunctionGroupSymbol::GetFunctionDeclaration</a>
+            , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_C5B4C1CCF2A0A1A0EE58E54990DB49797B96247A">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
             , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IdStr_4556C4F165EC06206A87C4414D1DE1158727FC4B">sngcpp::symbols::FunctionSymbol::IdStr</a>
             , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_NameBefore_872A2F43E6F49D790DC42DB76D165D848EEF3C6C">sngcpp::symbols::FunctionSymbol::NameBefore</a>
         </span>
@@ -237,7 +238,7 @@
              of <a href="file/ParameterSymbol.hpp_A0E34FE0120B64D170BEC3C243B6FEE4ED18C561.html">ParameterSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">type</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">type_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html#variable_type_7B27A819541F7EFAB0576ABDC4584D9DB76DA518">type</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">type_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -246,6 +247,6 @@
         <a href="../../../../soulng-projects.html">top</a>
          | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
          | <a href="class_NamespaceSymbol_0C21C66C7D5F4EB5059F0E38A6C2549610675086.html">prev</a>
-         | <a href="class_PseudoTypeSymbol_741D88AE4A4EE335E7ACCA25A4A078FF16992A74.html">next</a>
+         | <a href="class_RuleSymbol_9A9C4D1DED62C565AE48DD3ECC68C1A9528D97C8.html">next</a>
     </body>
 </html>

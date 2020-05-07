@@ -11,6 +11,7 @@
       <import project="../xml"/>
       <import project="../dom"/>
     </imports>
+    <grammars file="grammars.xml"/>
   </project>
   <filter>
     <file exclude="XPathClassMap.cpp"/>

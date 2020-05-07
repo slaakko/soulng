@@ -60,15 +60,6 @@
         <span>
             Definition at line <a href="file/Domain.cpp_56AB6B6636960310E1A6AE0E022D35A6CB90D227.html#14">14</a>
              of <a href="file/Domain.cpp_56AB6B6636960310E1A6AE0E022D35A6CB90D227.html">Domain.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_777B2BC170859D4D2FC03125182E9C23D7C560BE">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -91,25 +82,6 @@
         <span>
             Definition at line <a href="file/Domain.cpp_56AB6B6636960310E1A6AE0E022D35A6CB90D227.html#24">24</a>
              of <a href="file/Domain.cpp_56AB6B6636960310E1A6AE0E022D35A6CB90D227.html">Domain.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">parser</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Name_FE5E39A77776A2869F1CE1CB4A54DAAD30DDB70A">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"parser&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">parser</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Name_FE5E39A77776A2869F1CE1CB4A54DAAD30DDB70A">Name</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;already&nbsp;exists"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserMap_C1E445BCD6C2952C157CDCF4CBC1122F73352727">parserMap</a><span class="other">[</span><span class="identifier">parser</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Name_FE5E39A77776A2869F1CE1CB4A54DAAD30DDB70A">Name</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parser</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -137,15 +109,6 @@
         <span>
             Definition at line <a href="file/Domain.cpp_56AB6B6636960310E1A6AE0E022D35A6CB90D227.html#19">19</a>
              of <a href="file/Domain.cpp_56AB6B6636960310E1A6AE0E022D35A6CB90D227.html">Domain.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#variable_parserFiles_DBC1E7E61599605266575813A725B07836262DC1">parserFiles</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">parserFile</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -187,12 +150,8 @@
         <span>
             Definition at line <a href="file/Domain.hpp_B8938D0D3F79DAE02FA5DD6D2E5CA841DC4C48DE.html#18">18</a>
              of <a href="file/Domain.hpp_B8938D0D3F79DAE02FA5DD6D2E5CA841DC4C48DE.html">Domain.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parserFiles</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_52B591C195303CA571FE00C697AFCEB0D211770E">soulng::spg::CodeGeneratorVisitor::Visit</a>

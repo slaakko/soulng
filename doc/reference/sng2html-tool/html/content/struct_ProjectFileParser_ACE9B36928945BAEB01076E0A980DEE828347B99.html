@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ProjectFileParser Struct</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">prev</a>
+         | <a href="class_RegExLexer_57F38BA09EA0A6C548A69611650FE336FC16705F.html">next</a>
+        <hr/>
+        <h1>ProjectFileParser Struct</h1>
+        <span>
+            Definition at line <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html#13">13</a>
+             of <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html">ProjectFileParser.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html">ProjectFile</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_Parse_73F72AD91038FEE55AD89ACB4AE442E43B6430B0">Parse</a>(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>&amp; lexer) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::parser::Match</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFile_4F0EFC97060A588FD5E3414F05CB04C1B1FF6FE1">ProjectFile</a>(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>&amp; lexer) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::parser::Match</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFileContent_F1BBD03CFE750A3E41DBA61D5F7ECADCFFE2E596">ProjectFileContent</a>(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>&amp; lexer, <a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html">ProjectFile</a>* projectFile) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::parser::Match</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_QualifiedId_53ED95CABF1D36CC80F5B40DB9D66FDFF7E91EB5">QualifiedId</a>(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>&amp; lexer) <span class="kw">static</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::parser::Match</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_SourceFile_B459A105AE998804AB32F602C036515EE479656D">SourceFile</a>(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>&amp; lexer, <a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html">ProjectFile</a>* projectFile) <span class="kw">static</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Parse_73F72AD91038FEE55AD89ACB4AE442E43B6430B0">Parse Member Function</h3>
+        <h4>
+            std::unique_ptr&lt;<a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html">ProjectFile</a>
+            > ProjectFileParser::Parse(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>
+            &amp; lexer) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html#12">12</a>
+             of <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html">ProjectFileParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html#15">15</a>
+             of <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html">ProjectFileParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFile_4F0EFC97060A588FD5E3414F05CB04C1B1FF6FE1">ProjectFileParser::ProjectFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ProjectFile_4F0EFC97060A588FD5E3414F05CB04C1B1FF6FE1">ProjectFile Member Function</h3>
+        <h4>
+            soulng::parser::Match ProjectFileParser::ProjectFile(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>
+            &amp; lexer) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html#51">51</a>
+             of <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html">ProjectFileParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html#16">16</a>
+             of <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html">ProjectFileParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFileContent_F1BBD03CFE750A3E41DBA61D5F7ECADCFFE2E596">ProjectFileParser::ProjectFileContent</a>
+            , <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_QualifiedId_53ED95CABF1D36CC80F5B40DB9D66FDFF7E91EB5">ProjectFileParser::QualifiedId</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_Parse_73F72AD91038FEE55AD89ACB4AE442E43B6430B0">ProjectFileParser::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ProjectFileContent_F1BBD03CFE750A3E41DBA61D5F7ECADCFFE2E596">ProjectFileContent Member Function</h3>
+        <h4>
+            soulng::parser::Match ProjectFileParser::ProjectFileContent(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>
+            &amp; lexer, <a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html">ProjectFile</a>
+            * projectFile) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html#186">186</a>
+             of <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html">ProjectFileParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html#17">17</a>
+             of <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html">ProjectFileParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_SourceFile_B459A105AE998804AB32F602C036515EE479656D">ProjectFileParser::SourceFile</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFile_4F0EFC97060A588FD5E3414F05CB04C1B1FF6FE1">ProjectFileParser::ProjectFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_QualifiedId_53ED95CABF1D36CC80F5B40DB9D66FDFF7E91EB5">QualifiedId Member Function</h3>
+        <h4>
+            soulng::parser::Match ProjectFileParser::QualifiedId(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>
+            &amp; lexer) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html#231">231</a>
+             of <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html">ProjectFileParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html#18">18</a>
+             of <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html">ProjectFileParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFile_4F0EFC97060A588FD5E3414F05CB04C1B1FF6FE1">ProjectFileParser::ProjectFile</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SourceFile_B459A105AE998804AB32F602C036515EE479656D">SourceFile Member Function</h3>
+        <h4>
+            soulng::parser::Match ProjectFileParser::SourceFile(<a href="./class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">ProjectFileLexer</a>
+            &amp; lexer, <a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html">ProjectFile</a>
+            * projectFile) <span class="kw">static</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html#369">369</a>
+             of <a href="file/ProjectFileParser.cpp_76E8269E9807128C94C8667BE6649580DC19BC44.html">ProjectFileParser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html#19">19</a>
+             of <a href="file/ProjectFileParser.hpp_16FE649859F940A3569C6073C81FACBE29016DAD.html">ProjectFileParser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_ProjectFile_932DC3CA50EAF5B59A11F439190848E9E6D86339.html#function_AddSourceFile_6D6135C9E604D2625F0EBFBB8D33A37476DB2BC7">sng2html::sng2html::ProjectFile::AddSourceFile</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ProjectFileParser_ACE9B36928945BAEB01076E0A980DEE828347B99.html#function_ProjectFileContent_F1BBD03CFE750A3E41DBA61D5F7ECADCFFE2E596">ProjectFileParser::ProjectFileContent</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace__DA39A3EE5E6B4B0D3255BFEF95601890AFD80709.html">up</a>
+         | <a href="class_ProjectFileLexer_0D0E0FEA102A6D97AAA19B4B87DD4E2EAD82CE8C.html">prev</a>
+         | <a href="class_RegExLexer_57F38BA09EA0A6C548A69611650FE336FC16705F.html">next</a>
+    </body>
+</html>

@@ -12,7 +12,7 @@
         <hr/>
         <h1>NodeFactory Class</h1>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#107">107</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#110">110</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -72,12 +72,12 @@
         <h4>
             sngcpp::ast::NodeFactory::NodeFactory()</h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#157">157</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#179">179</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#110">110</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#113">113</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -89,7 +89,7 @@
             &amp;&amp;) <span class="kw">delete</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#112">112</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#115">115</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -102,7 +102,7 @@
             &amp;) <span class="kw">delete</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#111">111</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#114">114</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -115,23 +115,23 @@
             * sngcpp::ast::NodeFactory::CreateNode(<a href="./enum_NodeType_1200C11B1F73ED83D02A7A3FE5D7BCADB31EA886.html">NodeType</a>
              nodeType)</h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#282">282</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#303">303</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">283</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">304</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">284</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA.html">NodeCreator</a><span class="other">*</span>&nbsp;<span class="identifier">creator</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_creators_ABBF59CC01CD82C597EE28CC05B9BFFE2424BC3E">creators</a><span class="other">[</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="kw">int</span><span class="other">></span><span class="other">(</span><span class="identifier">nodeType</span><span class="other">)</span><span class="other">]</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">305</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA.html">NodeCreator</a><span class="other">*</span>&nbsp;<span class="identifier">creator</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_creators_ABBF59CC01CD82C597EE28CC05B9BFFE2424BC3E">creators</a><span class="other">[</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="kw">int</span><span class="other">></span><span class="other">(</span><span class="identifier">nodeType</span><span class="other">)</span><span class="other">]</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">285</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">creator</span><span class="other">-></span><a href="./class_NodeCreator_AD3EB6B78B380A602664171213282FF001EDA9EA.html#function_Create_FF04902BA3152551C92EE69EC112CC10047A4EA3">Create</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">306</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">creator</span><span class="other">-></span><span class="identifier">Create</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">286</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">307</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#118">118</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#121">121</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -153,21 +153,21 @@
              sngcpp::ast::NodeFactory::Done() <span class="kw">static</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#147">147</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#169">169</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_instance_CF2F676627A0506FC2F5CAC2DF97C4D48AD79CE1">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_instance_CF2F676627A0506FC2F5CAC2DF97C4D48AD79CE1">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#116">116</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#119">119</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -179,21 +179,21 @@
              sngcpp::ast::NodeFactory::Init() <span class="kw">static</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#142">142</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#164">164</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_instance_CF2F676627A0506FC2F5CAC2DF97C4D48AD79CE1">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html">NodeFactory</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_instance_CF2F676627A0506FC2F5CAC2DF97C4D48AD79CE1">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html">NodeFactory</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#115">115</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#118">118</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -205,21 +205,21 @@
             &amp; sngcpp::ast::NodeFactory::Instance() <span class="kw">static</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#152">152</a>
+            Definition at line <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html#174">174</a>
              of <a href="file/Node.cpp_0D1DBF700330164D879CFCD483C15DF4D7F1F460.html">Node.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">175</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">*</span><a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_instance_CF2F676627A0506FC2F5CAC2DF97C4D48AD79CE1">instance</a><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">*</span><a href="./class_NodeFactory_BFE81162F157EADE5062BF464331B68D10D29DC3.html#variable_instance_CF2F676627A0506FC2F5CAC2DF97C4D48AD79CE1">instance</a><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">177</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#117">117</a>
+            Declaration at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#120">120</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -237,7 +237,7 @@
             &amp;&amp;) <span class="kw">delete</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#114">114</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#117">117</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>
@@ -251,7 +251,7 @@
             &amp;) <span class="kw">delete</span>
         </h4>
         <span>
-            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#113">113</a>
+            Definition at line <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html#116">116</a>
              of <a href="file/Node.hpp_68478C74BF1F6DF6E1A5E891516C5D64BCD07490.html">Node.hpp</a>
         </span>
         <br/>

@@ -123,7 +123,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;292</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;293</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><a href="./class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_A92E50FF27304D43EE60D341E6F1C824B56D3BB9">Visit</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;293</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;294</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -157,7 +157,7 @@
              of <a href="file/Expression.hpp_06A79190028778F07D74C772F564DED44A4CF1D1.html">Expression.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">op</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#variable_op_053A8033B1100DF7E4961F2AA7990B4677D5D99B">op</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -176,9 +176,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;303</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;304</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">BinaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">Read</a><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;304</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">::</span><span class="identifier">Read</span><span class="other">(</span><span class="identifier">reader</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;305</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#variable_op_053A8033B1100DF7E4961F2AA7990B4677D5D99B">op</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadOperator_231D741B918C05B9581EBBFF4106A455883B5CA3">ReadOperator</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;305</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#variable_op_053A8033B1100DF7E4961F2AA7990B4677D5D99B">op</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">reader</span><span class="other">.</span><span class="identifier">ReadOperator</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;306</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -198,8 +198,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadOperator_231D741B918C05B9581EBBFF4106A455883B5CA3">sngcpp::ast::Reader::ReadOperator</a>
-            , <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Read_DE82984E1195EDD4DAA6CD58ED50872668B042DC">sngcpp::ast::TemplateArgumentNode::Read</a>
+            Calls: <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Read_03AD4452AA36CE7AD10DC7D9D959550B072EB8DD">sngcpp::ast::BinaryNode::Read</a>
+            , <a href="./class_Reader_671755945A884501CE9E563E31BE5D6F104546AB.html#function_ReadOperator_231D741B918C05B9581EBBFF4106A455883B5CA3">sngcpp::ast::Reader::ReadOperator</a>
         </span>
         <br/>
         <br/>
@@ -217,9 +217,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;297</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;298</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">BinaryNode</span><span class="other">::</span><a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">Write</a><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;298</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html">BinaryNode</a><span class="other">::</span><span class="identifier">Write</span><span class="other">(</span><span class="identifier">writer</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;299</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B5383BE8E57A42F21077B308A15B01959A1B4C67">Write</a><span class="other">(</span><a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#variable_op_053A8033B1100DF7E4961F2AA7990B4677D5D99B">op</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;299</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">writer</span><span class="other">.</span><span class="identifier">Write</span><span class="other">(</span><a href="./class_ShiftExpressionNode_E11B8D46E97DD59B6D5B203D4A9F27B67C57B43C.html#variable_op_053A8033B1100DF7E4961F2AA7990B4677D5D99B">op</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;300</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -239,7 +239,7 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Write_691E6E110BBC6857BCF95F5A1BBB4346AB8C5E5B">sngcpp::ast::TemplateArgumentNode::Write</a>
+            Calls: <a href="./class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Write_9F252F93CCB5F5C430641DA5A67E81687114B9DA">sngcpp::ast::BinaryNode::Write</a>
             , <a href="./class_Writer_F7B6D7F8D0E27BF765C2B13FEC373FF8B8752575.html#function_Write_B5383BE8E57A42F21077B308A15B01959A1B4C67">sngcpp::ast::Writer::Write</a>
         </span>
         <br/>

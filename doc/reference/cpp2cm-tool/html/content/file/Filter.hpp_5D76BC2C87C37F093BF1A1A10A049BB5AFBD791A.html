@@ -1,0 +1,82 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;CPP2CM_CPP2CM_FILTER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;CPP2CM_CPP2CM_FILTER_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;cpp2cm/cpp2cm/File.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;soulng/rex/Nfa.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">cpp2cm</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html">Filter</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<span class="identifier">Type</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">include</span><span class="other">,&nbsp;</span><span class="identifier">exclude</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html#constructor_Filter_B2308917CC5083A023959A0DDDD68268C272B4C1">Filter</a><span class="other">(</span><span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><span class="identifier">Context</span><span class="other">&amp;</span>&nbsp;<span class="identifier">context_</span><span class="other">,&nbsp;</span><a href="../enum_Type_C834C68364F3B5956ACD351BB58EE179474977B9.html">Type</a>&nbsp;<span class="identifier">type_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">pattern_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html#function_Apply_64BF381F18EC42C43A18759945A9BAADA567D15A">Apply</a><span class="other">(</span><a href="../class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a><span class="other">&amp;</span>&nbsp;<span class="identifier">file</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Type_C834C68364F3B5956ACD351BB58EE179474977B9.html">Type</a>&nbsp;<a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html#variable_type_AD94145005C8EDCC3582D4DA1684654AAAC69CB2">type</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html#variable_pattern_B13CCE2A79756187CDC9565B28CC77C26E51DC1C">pattern</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">rex</span><span class="other">::</span><span class="identifier">Nfa</span>&nbsp;<a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html#variable_nfa_389B27ECFCE26831C76EC85C57D8961CB53E9014">nfa</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html">FilterList</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#constructor_FilterList_1E1350B6AC7D052EA72364E95FCDC57EBD71E5FC">FilterList</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#function_Add_39052AE4563E6FA38384BFC4FEA71EAE83F6247D">Add</a><span class="other">(</span><a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html">Filter</a><span class="other">&amp;</span>&nbsp;<span class="identifier">filter</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#function_Apply_0A03D066C9626100C4494C15A11AA96887BAAD1B">Apply</a><span class="other">(</span><a href="../class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a><span class="other">&amp;</span>&nbsp;<span class="identifier">file</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_Filter_C7C8EE4509C56C6FDC20DAC14BF33BB2FBEF476C.html">Filter</a><span class="other">></span>&nbsp;<a href="../class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#variable_filters_A97475D0B619F7D96DCE7A0EBF2180399D3B3EA1">filters</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;cpp2cm</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;CPP2CM_CPP2CM_FILTER_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

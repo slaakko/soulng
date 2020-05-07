@@ -6,7 +6,7 @@
  <body>
   <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
   <br/>
-  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
   <br/>
   <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
   <br/>
@@ -34,11 +34,11 @@
   <br/>
   <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;</span>
   <br/>
-  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="identifier">Context</span><span class="other">::</span><span class="other">~</span><span class="identifier">Context</span><span class="other">(</span><span class="other">)</span></span>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">Context</a><span class="other">::</span><span class="other">~</span><span class="identifier">Context</span><span class="other">(</span><span class="other">)</span></span>
   <br/>
   <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span></span>
   <br/>
-  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">nfaStates</span><span class="other">)</span></span>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_nfaStates_E4F790EB07E74933C06CF82F644A25E584E8C654">nfaStates</a><span class="other">)</span></span>
   <br/>
   <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
   <br/>
@@ -46,7 +46,7 @@
   <br/>
   <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a><span class="other">*</span>&nbsp;<span class="identifier">symbol</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">symbols</span><span class="other">)</span></span>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><a href="../class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a><span class="other">*</span>&nbsp;<span class="identifier">symbol</span><span class="other">&nbsp;:&nbsp;</span><a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_symbols_C1571F1AC21182C8DAFD4440CE94E4295BDE755D">symbols</a><span class="other">)</span></span>
   <br/>
   <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
   <br/>
@@ -76,7 +76,7 @@
   <br/>
   <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">{</span></span>
   <br/>
-  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_charSymbols_BBBBACBAE8FB9DEDF9CFEF76184F78A2E792BBAA">charSymbols</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">c</span><span class="other">)</span><span class="other">;</span></span>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">map</span><span class="other">&lt;</span><span class="kw">char32_t</span><span class="other">,&nbsp;</span><a href="../class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a><span class="other">*</span><span class="other">></span><span class="other">::</span><span class="identifier">const_iterator</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_charSymbols_BBBBACBAE8FB9DEDF9CFEF76184F78A2E792BBAA">charSymbols</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">c</span><span class="other">)</span><span class="other">;</span></span>
   <br/>
   <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_charSymbols_BBBBACBAE8FB9DEDF9CFEF76184F78A2E792BBAA">charSymbols</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
   <br/>
@@ -110,7 +110,7 @@
   <br/>
   <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html">Range</a>&nbsp;<span class="identifier">range</span><span class="other">(</span><span class="identifier">start</span><span class="other">,&nbsp;</span><span class="identifier">end</span><span class="other">)</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_rangeSymbols_5D734F221479B878FC55F1E1B487B014567BA17B">rangeSymbols</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">range</span><span class="other">)</span><span class="other">;</span></span>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">map</span><span class="other">&lt;</span><a href="../class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html">Range</a><span class="other">,&nbsp;</span><a href="../class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html">Symbol</a><span class="other">*</span><span class="other">></span><span class="other">::</span><span class="identifier">const_iterator</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_rangeSymbols_5D734F221479B878FC55F1E1B487B014567BA17B">rangeSymbols</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">range</span><span class="other">)</span><span class="other">;</span></span>
   <br/>
   <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="../class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#variable_rangeSymbols_5D734F221479B878FC55F1E1B487B014567BA17B">rangeSymbols</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
   <br/>

@@ -1,0 +1,134 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SNG2HTML_SNG2HTML_GRAMMAR_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SNG2HTML_SNG2HTML_GRAMMAR_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/Parser.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/LexerFile.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<span class="identifier">Kind</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexical</span><span class="other">,&nbsp;</span><span class="identifier">parser</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#constructor_Rule_6EBD64D7BCAD2FE698BA33DB78782649BFD34D10">Rule</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><a href="../class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a><span class="other">*</span>&nbsp;<span class="identifier">expression_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#constructor_Rule_A8167C52CC7F2B44567D3348C90E6CDB5825EF96">Rule</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span>&nbsp;<span class="identifier">parser_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_Name_29D9633097A51EA52056DA060DCF221CBAB15A71">Name</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_name_773244B095B728EBA84AB32C5606760F13843430">name</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a><span class="other">*</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_GetExpression_0E8A101D3559C3D469D86DEACFF136BA8B9F318E">GetExpression</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_expression_AAEFAC2E738469044BDEE07AF0D48B2BBCF99020">expression</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_Parser_F805914E0CFA38022553527BF35886D768EE8974">Parser</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_parser_FB9048A708094EB29741B67CF7CD7777B808C09D">parser</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Kind_7B12B0A0FFB04B6214D8A2D118D9681E6EEA4E4C.html">Kind</a>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_kind_343285F58BE670FB347FE262EAC43D3AA3D650F4">kind</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_name_773244B095B728EBA84AB32C5606760F13843430">name</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a><span class="other">*</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_expression_AAEFAC2E738469044BDEE07AF0D48B2BBCF99020">expression</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span>&nbsp;<a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#variable_parser_FB9048A708094EB29741B67CF7CD7777B808C09D">parser</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">enum&nbsp;class</span>&nbsp;<span class="identifier">Kind</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexical</span><span class="other">,&nbsp;</span><span class="identifier">parser</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#constructor_Grammar_2CF883F73F3F02CD1B0E131A5345C7672B1BE1B2">Grammar</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">title_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">htmlFilePath_</span><span class="other">,&nbsp;</span><a href="../class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a><span class="other">*</span>&nbsp;<span class="identifier">lexerFile_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#constructor_Grammar_092789B634797665D2F6FCC49637C7C4130EC7D7">Grammar</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">name_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">title_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">htmlFilePath_</span><span class="other">,&nbsp;</span><a href="../class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a><span class="other">*</span>&nbsp;<span class="identifier">parser_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Kind_2BF47CE39B1180A83B39BFF0FC7C7C58AC0524C2.html">Kind</a>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_GetKind_8FEDDDFC8C93010C0BC84769AF297728CF41FBB6">GetKind</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_kind_79243F7FF7C3730426F1EA2AA3B084895154DE2C">kind</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Name_A267FEEAFABFE94BB2C900BF28BC38E4F1F8992E">Name</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_name_6DA59E02A6AE38D76197EF14272544C52F634DE7">name</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Title_4094042565CDA6C6E76F146AFCACEF72F3595950">Title</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_title_875F7A38F7F10CD2C6623FEB41052E7AE0ABE894">title</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_HtmlFilePath_FA10CEF85B02886B98FE2FF15D7891D2CAA08043">HtmlFilePath</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_htmlFilePath_5721FAD23F45C301BB7ADAD38EE94464F7AED126">htmlFilePath</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a><span class="other">*</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Parser_CDFDFF2A481D214E11FD889E49647E781E5508F8">Parser</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_parser_DFE7CEA0F2E1674E3B87BCE01D64FDFBC833C037">parser</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_HtmlFileName_52C934D202993C6A8C92FC66D4E905D906AAE2C3">HtmlFileName</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_htmlFileName_B8D97C97F4795C1AC9071FA4EBD4C9293A840984">htmlFileName</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_AddRule_34E3DCCEF50AC4D45D28D42C03D468461FC403EE">AddRule</a><span class="other">(</span><a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a><span class="other">*</span>&nbsp;<span class="identifier">rule</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a><span class="other">></span><span class="other">></span><span class="other">&amp;</span><a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Rules_F1368587C9E364001445C3B20D2A5CAA31AA874E">Rules</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span><span class="other">{</span><span class="kw">return</span><a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_rules_81060AB1C949B8660AD7339D46EBA07D075F43EB">rules</a><span class="other">;</span><span class="other">}</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../enum_Kind_2BF47CE39B1180A83B39BFF0FC7C7C58AC0524C2.html">Kind</a>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_kind_79243F7FF7C3730426F1EA2AA3B084895154DE2C">kind</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_name_6DA59E02A6AE38D76197EF14272544C52F634DE7">name</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_title_875F7A38F7F10CD2C6623FEB41052E7AE0ABE894">title</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_htmlFilePath_5721FAD23F45C301BB7ADAD38EE94464F7AED126">htmlFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a><span class="other">*</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_lexerFile_080EA4C63AC6DE4A644FAD650BB461B5047D1491">lexerFile</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a><span class="other">*</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_parser_DFE7CEA0F2E1674E3B87BCE01D64FDFBC833C037">parser</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_htmlFileName_B8D97C97F4795C1AC9071FA4EBD4C9293A840984">htmlFileName</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_htmfFilePath_8AA811A6F2019CB513EF308C36F56929035FC85D">htmfFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a><span class="other">></span><span class="other">></span><a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#variable_rules_81060AB1C949B8660AD7339D46EBA07D075F43EB">rules</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sng2html::sng2html</span></span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">63</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNG2HTML_SNG2HTML_GRAMMAR_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

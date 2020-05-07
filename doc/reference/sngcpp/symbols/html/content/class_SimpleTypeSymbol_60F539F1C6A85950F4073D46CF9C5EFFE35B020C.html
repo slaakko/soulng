@@ -16,14 +16,14 @@
             <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
         </div>
         <span>
-            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#12">12</a>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#13">13</a>
              of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
         </span>
         <br/>
         <h2>Constructors</h2>
         <table class="constructorTable">
             <tr>
-                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#constructor_SimpleTypeSymbol_571516536E4241EF8AEE0271C52713582551485C">SimpleTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::u32string&amp; id_)</td>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#constructor_SimpleTypeSymbol_3D6926124B14EE7D5AFF4C89CC207DE8D0F44847">SimpleTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <span class="kw">const </span>std::u32string&amp; id_, <a href="./../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a> flags_)</td>
             </tr>
         </table>
         <h2>Member Functions</h2>
@@ -31,6 +31,10 @@
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_CreateElement_A2972CA2E5B87EA1B58FABB9E60811F75C24ADCE">CreateElement</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#function_Flags_7C143554DBC73AB3D12A36D7F8B84B820CAAD1E9">Flags</a>() <span class="kw">const</span></td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
@@ -43,6 +47,10 @@
         </table>
         <h2>Member Variables</h2>
         <table>
+            <tr id="variable_flags_471DCAC349BB34339638BEDF3E096CA8CAC4B287">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">flags</td>
+            </tr>
             <tr id="variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">
                 <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
                 <td class="functionTableSecondCol" xml:space="preserve">id</td>
@@ -50,18 +58,19 @@
         </table>
         <hr/>
         <h2>Constructor Details</h2>
-        <h3 id="constructor_SimpleTypeSymbol_571516536E4241EF8AEE0271C52713582551485C">SimpleTypeSymbol Constructor</h3>
+        <h3 id="constructor_SimpleTypeSymbol_3D6926124B14EE7D5AFF4C89CC207DE8D0F44847">SimpleTypeSymbol Constructor</h3>
         <h4>
             sngcpp::symbols::SimpleTypeSymbol::SimpleTypeSymbol(<span class="kw">const </span>
             Span&amp; span_, <span class="kw">const </span>
             std::u32string&amp; name_, <span class="kw">const </span>
-            std::u32string&amp; id_)</h4>
+            std::u32string&amp; id_, <a href="./../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a>
+             flags_)</h4>
         <span>
             Definition at line <a href="file/SimpleTypeSymbol.cpp_AAB02332E54F4587BC96ED55A476CD210499A759.html#10">10</a>
              of <a href="file/SimpleTypeSymbol.cpp_AAB02332E54F4587BC96ED55A476CD210499A759.html">SimpleTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">id</a><span class="other">(</span><span class="identifier">id_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_flags_471DCAC349BB34339638BEDF3E096CA8CAC4B287">flags</a><span class="other">(</span><span class="identifier">flags_</span><span class="other">)</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
                 <br/>
@@ -71,7 +80,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#15">15</a>
+            Declaration at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#16">16</a>
              of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
         </span>
         <br/>
@@ -89,7 +98,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"simpleType"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"simpleType"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeElement</span><span class="other">;</span></span>
                 <br/>
@@ -99,7 +108,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#17">17</a>
+            Declaration at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#18">18</a>
              of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
         </span>
         <br/>
@@ -111,16 +120,32 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_Flags_7C143554DBC73AB3D12A36D7F8B84B820CAAD1E9">Flags Member Function</h3>
+        <h4>
+            <a href="./../../../ast/html/content/enum_SimpleTypeSpecifierFlags_6EE05F6B2BC759C55425E067B983D3364180F382.html">SimpleTypeSpecifierFlags</a>
+             sngcpp::symbols::SimpleTypeSymbol::Flags() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#20">20</a>
+             of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_flags_471DCAC349BB34339638BEDF3E096CA8CAC4B287">flags</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
         <h3 id="function_Id_D47C10FDC6E771FEE00DE5ADEDF249861682A4C3">Id Member Function</h3>
         <h4>
             std::u32string sngcpp::symbols::SimpleTypeSymbol::Id() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#18">18</a>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#19">19</a>
              of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_SimpleTypeSymbol_60F539F1C6A85950F4073D46CF9C5EFFE35B020C.html#variable_id_ACD9BB7EB73D95AC01774582C8262082944677A0">id</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -137,11 +162,11 @@
              sngcpp::symbols::SimpleTypeSymbol::IsSimpleTypeSymbol() <span class="kw">const override</span>
         </h4>
         <span>
-            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#16">16</a>
+            Definition at line <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html#17">17</a>
              of <a href="file/SimpleTypeSymbol.hpp_B33DC9B259D932846B6F1225714D48CB8F86D079.html">SimpleTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>

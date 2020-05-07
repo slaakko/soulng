@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="example" type="program" targetName="Example">
+  <imports>
+    <import name="std"/>
+  </imports>
+  <references>
+  </references>
+  <vcxproject file="cpp_project/example/example.vcxproj"/>
+  <include path=".."/>
+  <target dir="build"/>
+  <install dir="install"/>
+  <map file="map.xml"/>
+  <patches>
+    <patch file="example.patches"/>
+  </patches>
+  <filter>
+  </filter>
+  <text>
+  </text>
+</project>

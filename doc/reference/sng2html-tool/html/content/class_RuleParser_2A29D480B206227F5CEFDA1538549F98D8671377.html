@@ -1,0 +1,518 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>RuleParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">prev</a>
+         | <a href="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html">next</a>
+        <hr/>
+        <h1>RuleParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#268">268</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#constructor_RuleParser_4A6BB1518C305409B35584728624D462F39AD115">RuleParser</a>(<span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Accept_5B5307B1FF820E562DB334578530F03944A30705">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_AddNonterminal_A04DCC314158ED2E9D13450F0BF122645D39F9B6">AddNonterminal</a>(<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>* nonterminal)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_AddParamOrVariable_72CD21AC85E92EE86B7D43FA635D9D16F80F4061">AddParamOrVariable</a>(<a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">Parameter</a>* paramOrVariable)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Definition_1B63FEA1CACB973C3560B613DE6962C3B5107758">Definition</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_GetGrammar_C76EF24026F04CC2A7D9FC4BB2628E9316C2AC57">GetGrammar</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_HasReturn_1ED4017D100C75D43B6BC6E1E76133ED38064CAC">HasReturn</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Info_6F9DC60601396C3D34F019CCAC0EDBC9ED4479C9">Info</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Nonterminals_521E4987F1D10729AFBE3A72855EA7CCBC7CA20F">Nonterminals</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::unique_ptr&lt;<a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">Parameter</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Parameters_D40509C567156D0B8C4678EF3022ED03ACB512DD">Parameters</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::cppcode::TypeId*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_ReturnType_8A59ED0C2EAC282AB80A0F3CE8AE211D695A066D">ReturnType</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_SetDefinition_BDB3927D1A2A5FAA5D54685B28A8566CD7319412">SetDefinition</a>(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>* definition_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_SetHasReturn_4F74B394FF7F5A958387F441575DF9705F796DAE">SetHasReturn</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_SetInfo_EC2AD5875B51D5038AEA71A3F0EA570B8E4A6364">SetInfo</a>(<span class="kw">const </span>std::u32string&amp; info_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_SetReturnType_570CEA6016A6BCCB7E41BA5D845EB018E73FAF31">SetReturnType</a>(soulng::cppcode::TypeId* returnType_)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::unique_ptr&lt;<a href="./struct_Variable_97A7FF0F428D0233628AA66BDDE9D4613224D0A3.html">Variable</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Variables_E40050FBC303299C2E9B801D6A7074206A612B33">Variables</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_definition_86D8E2773D2F105D205F1A27D023A6664E807F76">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">definition</td>
+            </tr>
+            <tr id="variable_hasReturn_85D3B16C1B47FCDD86D7168BBF08119711A28BB7">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">hasReturn</td>
+            </tr>
+            <tr id="variable_info_F3EEAC4B3BDF175086C628B1BB2791FCEAC45212">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">info</td>
+            </tr>
+            <tr id="variable_nonterminals_796E9345B8EE5C21DCC85574EBA44496D4D40C68">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nonterminals</td>
+            </tr>
+            <tr id="variable_parameters_0072BE0125FD52EBE7DE0098F1B19551F71178BE">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">Parameter</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">parameters</td>
+            </tr>
+            <tr id="variable_returnType_EB46F2A93A69EBFFBC4FC53E27D26164D5478B06">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;soulng::cppcode::TypeId></td>
+                <td class="functionTableSecondCol" xml:space="preserve">returnType</td>
+            </tr>
+            <tr id="variable_variables_BD1D6ADCC7005853B72070B470FDF9D77AA17A88">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./struct_Variable_97A7FF0F428D0233628AA66BDDE9D4613224D0A3.html">Variable</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">variables</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_RuleParser_4A6BB1518C305409B35584728624D462F39AD115">RuleParser Constructor</h3>
+        <h4>
+            sng2html::sng2html::RuleParser::RuleParser(<span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#346">346</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">346</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_hasReturn_85D3B16C1B47FCDD86D7168BBF08119711A28BB7">hasReturn</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">347</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">348</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#271">271</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_5B5307B1FF820E562DB334578530F03944A30705">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#391">391</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">392</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">393</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">394</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#273">273</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_8CC8060A0EC009A55F2AB6312B6B2C0C071A42F7">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddNonterminal_A04DCC314158ED2E9D13450F0BF122645D39F9B6">AddNonterminal Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::AddNonterminal(<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>
+            * nonterminal)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#396">396</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">397</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">398</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_nonterminals_796E9345B8EE5C21DCC85574EBA44496D4D40C68">nonterminals</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">nonterminal</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">399</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#281">281</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5CC28E5EFE45B97419CA9BDBF6811D63D80769A2">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddParamOrVariable_72CD21AC85E92EE86B7D43FA635D9D16F80F4061">AddParamOrVariable Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::AddParamOrVariable(<a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">Parameter</a>
+            * paramOrVariable)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#374">374</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">375</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">376</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">paramOrVariable</span><span class="other">-></span><a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html#variable_variable_602B0F6D1FC348AB11B69D8E175317CF5C7A85F7">variable</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">377</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">378</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_variables_BD1D6ADCC7005853B72070B470FDF9D77AA17A88">variables</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./struct_Variable_97A7FF0F428D0233628AA66BDDE9D4613224D0A3.html">Variable</a><span class="other">></span><span class="other">(</span><span class="kw">static_cast</span><span class="other">&lt;</span><a href="./struct_Variable_97A7FF0F428D0233628AA66BDDE9D4613224D0A3.html">Variable</a><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">paramOrVariable</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">379</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">380</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">381</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">382</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_parameters_0072BE0125FD52EBE7DE0098F1B19551F71178BE">parameters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">Parameter</a><span class="other">></span><span class="other">(</span><span class="identifier">paramOrVariable</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">383</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">384</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#276">276</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_ParserFileParser_971A19A46221A454C35423E170FEAEEA09FBDF7B.html#function_ParametersAndVariables_42558E4C3EE3105C5BE0775CFDB1306B3082B716">ParserFileParser::ParametersAndVariables</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Definition_1B63FEA1CACB973C3560B613DE6962C3B5107758">Definition Member Function</h3>
+        <h4>
+            <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * sng2html::sng2html::RuleParser::Definition()</h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#275">275</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">275</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_definition_86D8E2773D2F105D205F1A27D023A6664E807F76">definition</a><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_0795131FE9DBE5836A175BE976EECB0F8F52AC95">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_6D6464EA4F636654337B5C2A51F4B9F951CCD73E">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetGrammar_C76EF24026F04CC2A7D9FC4BB2628E9316C2AC57">GetGrammar Member Function</h3>
+        <h4>
+            <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>
+            * sng2html::sng2html::RuleParser::GetGrammar() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#350">350</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#272">272</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsGrammar_F1E16907891C2EF8753F3B0A1333107BA24622F7">sng2html::sng2html::Parser::IsGrammar</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Parent_E022EE179D4F1AD195B467ACA9709CCAA3ADF06F">sng2html::sng2html::Parser::Parent</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_F12B4F48FF032FAC1CCF005C0FB0C91F89630C0D">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_HasReturn_1ED4017D100C75D43B6BC6E1E76133ED38064CAC">HasReturn Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::RuleParser::HasReturn() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#286">286</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">286</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_hasReturn_85D3B16C1B47FCDD86D7168BBF08119711A28BB7">hasReturn</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Info_6F9DC60601396C3D34F019CCAC0EDBC9ED4479C9">Info Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::RuleParser::Info() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#283">283</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">283</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_info_F3EEAC4B3BDF175086C628B1BB2791FCEAC45212">info</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Nonterminals_521E4987F1D10729AFBE3A72855EA7CCBC7CA20F">Nonterminals Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>
+            *>&amp; sng2html::sng2html::RuleParser::Nonterminals() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#282">282</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">282</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_nonterminals_796E9345B8EE5C21DCC85574EBA44496D4D40C68">nonterminals</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Parameters_D40509C567156D0B8C4678EF3022ED03ACB512DD">Parameters Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::unique_ptr&lt;<a href="./struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">Parameter</a>
+            >>&amp; sng2html::sng2html::RuleParser::Parameters() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#277">277</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">277</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_parameters_0072BE0125FD52EBE7DE0098F1B19551F71178BE">parameters</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_5CC28E5EFE45B97419CA9BDBF6811D63D80769A2">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReturnType_8A59ED0C2EAC282AB80A0F3CE8AE211D695A066D">ReturnType Member Function</h3>
+        <h4>
+            soulng::cppcode::TypeId* sng2html::sng2html::RuleParser::ReturnType() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#280">280</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">280</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_returnType_EB46F2A93A69EBFFBC4FC53E27D26164D5478B06">returnType</a><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetDefinition_BDB3927D1A2A5FAA5D54685B28A8566CD7319412">SetDefinition Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::SetDefinition(<a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * definition_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#369">369</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">370</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">371</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_definition_86D8E2773D2F105D205F1A27D023A6664E807F76">definition</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">definition_</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">372</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#274">274</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetHasReturn_4F74B394FF7F5A958387F441575DF9705F796DAE">SetHasReturn Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::SetHasReturn()</h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#285">285</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">285</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_hasReturn_85D3B16C1B47FCDD86D7168BBF08119711A28BB7">hasReturn</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetInfo_EC2AD5875B51D5038AEA71A3F0EA570B8E4A6364">SetInfo Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::SetInfo(<span class="kw">const </span>
+            std::u32string&amp; info_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#401">401</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">402</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">403</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_info_F3EEAC4B3BDF175086C628B1BB2791FCEAC45212">info</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">info_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">404</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#284">284</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetReturnType_570CEA6016A6BCCB7E41BA5D845EB018E73FAF31">SetReturnType Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::RuleParser::SetReturnType(soulng::cppcode::TypeId* returnType_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#386">386</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">387</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">388</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_returnType_EB46F2A93A69EBFFBC4FC53E27D26164D5478B06">returnType</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="identifier">returnType_</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">389</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#279">279</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Variables_E40050FBC303299C2E9B801D6A7074206A612B33">Variables Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::unique_ptr&lt;<a href="./struct_Variable_97A7FF0F428D0233628AA66BDDE9D4613224D0A3.html">Variable</a>
+            >>&amp; sng2html::sng2html::RuleParser::Variables() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#278">278</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">278</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#variable_variables_BD1D6ADCC7005853B72070B470FDF9D77AA17A88">variables</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">prev</a>
+         | <a href="class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html">next</a>
+    </body>
+</html>

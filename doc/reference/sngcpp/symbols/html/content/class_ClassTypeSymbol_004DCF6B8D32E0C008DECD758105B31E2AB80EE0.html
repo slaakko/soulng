@@ -23,7 +23,7 @@
         <h2>Constructors</h2>
         <table class="constructorTable">
             <tr>
-                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#constructor_ClassTypeSymbol_280EE43AD0576CCD97EBA1350E3025BE8CD5CEBC">ClassTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, ClassKey classKey_)</td>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#constructor_ClassTypeSymbol_E9706A42B7F0908C35F7CBDF99AB6747F71E581D">ClassTypeSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_, <a href="./../../../ast/html/content/enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a> classKey_)</td>
             </tr>
         </table>
         <h2>Member Functions</h2>
@@ -166,11 +166,12 @@
         </table>
         <hr/>
         <h2>Constructor Details</h2>
-        <h3 id="constructor_ClassTypeSymbol_280EE43AD0576CCD97EBA1350E3025BE8CD5CEBC">ClassTypeSymbol Constructor</h3>
+        <h3 id="constructor_ClassTypeSymbol_E9706A42B7F0908C35F7CBDF99AB6747F71E581D">ClassTypeSymbol Constructor</h3>
         <h4>
             sngcpp::symbols::ClassTypeSymbol::ClassTypeSymbol(<span class="kw">const </span>
             Span&amp; span_, <span class="kw">const </span>
-            std::u32string&amp; name_, ClassKey classKey_)</h4>
+            std::u32string&amp; name_, <a href="./../../../ast/html/content/enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a>
+             classKey_)</h4>
         <span>
             Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#15">15</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
@@ -185,6 +186,12 @@
             <br/>
         </span>
         <br/>
+        <span>
+            Declaration at line <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html#18">18</a>
+             of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
         <hr/>
         <h2>Member Function Details</h2>
         <h3 id="function_AddBaseClass_8B56CAA4012467A2E444F76112008A96A0542C53">AddBaseClass Member Function</h3>
@@ -193,15 +200,15 @@
              sngcpp::symbols::ClassTypeSymbol::AddBaseClass(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
             * baseClass)</h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#71">71</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#73">73</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;72</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;73</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">baseClass</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">baseClass</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;74</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -219,15 +226,15 @@
              sngcpp::symbols::ClassTypeSymbol::AddDerivedClass(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
             * derivedClass)</h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#76">76</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#78">78</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">derivedClass</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">derivedClass</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -251,9 +258,13 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">move</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">></span>&nbsp;<span class="identifier">templateParam</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">GetContainerScope</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Install</span><span class="other">(</span><span class="identifier">templateParam</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">templateParam</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -265,7 +276,13 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginClass_28CD51B752CB190DBC356E2A0B74A7D310A0F799">sngcpp::symbols::SymbolTable::BeginClass</a>
+            Calls: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Install_A12F268F71C2E39EBA72733B0B263FE343173093">sngcpp::symbols::ContainerScope::Install</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginClass_5B19D70820762956DF3B348C7E9157088D033948">sngcpp::symbols::SymbolTable::BeginClass</a>
         </span>
         <br/>
         <br/>
@@ -276,15 +293,15 @@
              sngcpp::symbols::ClassTypeSymbol::AddVirtualFunction(<a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html">FunctionSymbol</a>
             * virtualFunction)</h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#147">147</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#149">149</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_virtualFunctions_F341634617982954F93601884026038D693D17FB">virtualFunctions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">virtualFunction</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_virtualFunctions_F341634617982954F93601884026038D693D17FB">virtualFunctions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">virtualFunction</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -306,7 +323,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">templateParameters</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -323,7 +340,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">baseClasses</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -334,7 +351,7 @@
             std::unique_ptr&lt;sngxml::dom::Element> sngcpp::symbols::ClassTypeSymbol::CreateElement() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#96">96</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#98">98</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
         </span>
         <br/>
@@ -358,6 +375,7 @@
         <span>
             Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">sngcpp::symbols::Symbol::GetSpan</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">sngcpp::symbols::Symbol::Id</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>
@@ -373,7 +391,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">derivedClasses</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_derivedClasses_F7AF84BE59B968AB800862970EF798B5301F8F70">derivedClasses</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -389,7 +407,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileId</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_fileId_AD23B64EBCEBE9BCDFFCED78B9A8D0A764A0A4B7">fileId</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -405,7 +423,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_fileName_84AF16D756BA3018DACA14EB663EACBE0C627B45">fileName</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -418,15 +436,15 @@
              i) <span class="kw">const override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#66">66</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#68">68</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -453,7 +471,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">classKey</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_classKey_7FFC117C36F79BFB3877F8D6532EFF8C97F91245">classKey</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -508,25 +526,25 @@
             std::u32string sngcpp::symbols::ClassTypeSymbol::IdStr() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#81">81</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#83">83</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">idStr</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">FullName</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<span class="identifier">idStr</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">FullName</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">></span><span class="other">&amp;</span>&nbsp;<span class="identifier">templateParameter</span><span class="other">&nbsp;:&nbsp;</span><a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a><span class="other">></span><span class="other">&amp;</span><span class="identifier">templateParameter</span><span class="other">&nbsp;:&nbsp;</span><a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_templateParameters_4A3473B3896C7866ECAD9C7AFA904AC9C7624E45">templateParameters</a><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStr</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="string">'_'</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">idStr</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="string">'_'</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">templateParameter</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idStr</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;90</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idStr</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;89</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;91</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -544,6 +562,7 @@
         <br/>
         <span>
             Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_FullName_9614AA2DE6A4FA1CA20F434616F3C8BE9C6C369A">sngcpp::symbols::Symbol::FullName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">sngcpp::symbols::Symbol::Name</a>
         </span>
         <br/>
         <br/>
@@ -558,7 +577,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">isAbstract</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_isAbstract_48EA78C2E85DAB5100C92900F7B6B06E090C77FF">isAbstract</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -632,15 +651,15 @@
             std::u32string sngcpp::symbols::ClassTypeSymbol::KindStr() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#91">91</a>
+            Definition at line <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html#93">93</a>
              of <a href="file/ClassTypeSymbol.cpp_C090A26777E3662D476C302AF5F669E3200A502E.html">ClassTypeSymbol.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html#function_ToString_E53B4356F1A036583D256A46C606F922AF740FDC">ToString</a><span class="other">(</span><a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_classKey_7FFC117C36F79BFB3877F8D6532EFF8C97F91245">classKey</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;95</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ToString</span><span class="other">(</span><a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_classKey_7FFC117C36F79BFB3877F8D6532EFF8C97F91245">classKey</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;96</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -681,9 +700,9 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_DerivedTypeSymbol_A5B6245DB70735E8F1360D2AC060449B23896C4B.html#function_MatchValue_860B214120F0061A7CB97B0C6A90596E65CDB841">sngcpp::symbols::DerivedTypeSymbol::MatchValue</a>
-            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">sngcpp::symbols::TypeSymbol::BaseType</a>
+            Calls: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_BaseType_7090901EF2277E663135FCC1FD659A14A71C64CF">sngcpp::symbols::TypeSymbol::BaseType</a>
             , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_HasBaseClass_4C22C0711D45191749E1631966D9223C9942BE7F">sngcpp::symbols::TypeSymbol::HasBaseClass</a>
+            , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
         </span>
         <br/>
         <br/>
@@ -698,7 +717,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">baseClasses</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_baseClasses_99D74C2934007DA2592AEB7161F8FC0023AA1A19">baseClasses</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -718,7 +737,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">isAbstract</span><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_isAbstract_48EA78C2E85DAB5100C92900F7B6B06E090C77FF">isAbstract</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -734,7 +753,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">fileId</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileId_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_fileId_AD23B64EBCEBE9BCDFFCED78B9A8D0A764A0A4B7">fileId</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileId_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -750,7 +769,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">fileName</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileName_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_fileName_84AF16D756BA3018DACA14EB663EACBE0C627B45">fileName</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileName_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -767,7 +786,7 @@
              of <a href="file/ClassTypeSymbol.hpp_0319E8A74DDA039E07DF19024F49544A5A60F6E6.html">ClassTypeSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">virtualFunctions</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#variable_virtualFunctions_F341634617982954F93601884026038D693D17FB">virtualFunctions</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>

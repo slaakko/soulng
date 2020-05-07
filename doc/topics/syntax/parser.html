@@ -511,7 +511,7 @@
     </p>
 
     <p>
-        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, a <em>token expression</em>, or a <em>lexerless expression</em>:
+        A <em>primitive</em> parsing expression is either an <em>empty epxression</em>, an <em>any expression</em>, a <em>token expression</em>, or a <em>lexerless expression</em>:
     </p>
 
     <table class="grammar">
@@ -520,6 +520,7 @@
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="rule"><a href="#rule.empty-expression">empty&#8209;expression</a></span> |
+                <span class="rule"><a href="#rule.any-expression">any&#8209;expression</a></span> |
                 <span class="rule"><a href="#rule.token-expression">token&#8209;expression</a></span> |
                 <span class="rule"><a href="#rule.lexerless-expression">lexerless&#8209;expression</a></span>
             </td>
@@ -529,6 +530,13 @@
             <td class="sep">&rarr;</td>
             <td class="rcontent">
                 <span class="kw">empty</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="rule" id="rule.any-expression">any&#8209;expression</td>
+            <td class="sep">&rarr;</td>
+            <td class="rcontent">
+                <span class="kw">any</span>
             </td>
         </tr>
         <tr>
@@ -560,6 +568,13 @@
     <p>
         An empty expression consists of the keyword <strong>empty</strong>.
         An empty expression matches always. Input position of the used lexer is not advanced for an empty expression.
+    </p>
+
+    <h5>Any expression</h5>
+
+    <p>
+        An any expression consists of the keyword <strong>any</strong>.
+        An any expression matches any token and "eats" the token: the input position of the used lexer is advanced to the next token using expression <em>++lexer</em>, and parsing proceeds.
     </p>
 
     <h5>Token expression</h5>

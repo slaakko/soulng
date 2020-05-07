@@ -68,15 +68,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#15">15</a>
              of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;15</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_accept_9FD406F994D71370F8F777FF2E6659D7AE01E4C2">accept</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">edges</a><span class="other">(</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;16</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -95,12 +86,8 @@
         <span>
             Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#30">30</a>
              of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">accept</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87">AddEdge Member Function</h3>
@@ -112,15 +99,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#24">24</a>
              of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">edges</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">edge</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -139,12 +117,8 @@
         <span>
             Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#32">32</a>
              of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">edges</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_Next_59DA5E6923E973673162E5FAEDCF7B165D41DAAD">Next Member Function</h3>
@@ -165,7 +139,9 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html#function_Match_1AE201DEDEF5F1D2AC6D097941F5C1E6325263C3">soulng::rex::Symbol::Match</a>
+            Calls: <a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html#function_GetSymbol_3AAE26C43E47D0CCD06F421B18E0C463030BBD9E">soulng::rex::NfaEdge::GetSymbol</a>
+            , <a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html#function_Next_3FC51ECDE0A6748164A9FE5A125DFDE7FD2DE4AE">soulng::rex::NfaEdge::Next</a>
+            , <a href="./class_Symbol_412EEF5954A2ED7F68F4F27DD0357457E6E7BFC4.html#function_Match_1AE201DEDEF5F1D2AC6D097941F5C1E6325263C3">soulng::rex::Symbol::Match</a>
         </span>
         <br/>
         <br/>
@@ -178,12 +154,8 @@
         <span>
             Definition at line <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html#31">31</a>
              of <a href="file/Nfa.hpp_4446AA10101854433D5E2481A4825ABC173E8843.html">Nfa.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">accept</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">accept_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3">SetEdges Member Function</h3>
@@ -195,15 +167,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#19">19</a>
              of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#variable_edges_38388A03AD014423110FAEFA83418207BA2513CD">edges</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">edges_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;22</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>

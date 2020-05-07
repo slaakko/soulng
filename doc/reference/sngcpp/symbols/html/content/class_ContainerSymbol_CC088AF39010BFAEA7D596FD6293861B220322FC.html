@@ -77,6 +77,10 @@
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeFunctionGroupSymbol_0BCC980B5EE798F799722604807ACE12282357AC">MakeFunctionGroupSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; groupName)</td>
             </tr>
             <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;std::unique_ptr&lt;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>>>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Members_684966296EE2C9FEB0B9C1C607E548EABC934473">Members</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Element></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Namespaces_289DF064675B029027F2780ED17A0F1044BAB28E">Namespaces</a>() <span class="kw">override</span></td>
             </tr>
@@ -166,15 +170,27 @@
             , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_AddFunction_F249081149D70DE11E22CEA378087D0977D63763">sngcpp::symbols::FunctionGroupSymbol::AddFunction</a>
             , <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_AddFunctionDeclaration_F905E5A64F20545C1F146046AA28EFC005CAB76B">sngcpp::symbols::FunctionGroupSymbol::AddFunctionDeclaration</a>
             , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_GroupName_57BB21C9C7E96183F5533CBEC2049414D9C51D25">sngcpp::symbols::FunctionSymbol::GroupName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetSpan_9F5DE08CB65D4FB60FF61768D6CEEA48B045D65E">sngcpp::symbols::Symbol::GetSpan</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassTypeSymbol_A16ED1C3208B8443DA7E57E42FBE7658A8155ED8">sngcpp::symbols::Symbol::IsClassTypeSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionDeclarationSymbol_6B0D5CC628182380CDFF22AF6694B7FA33C4F1AC">sngcpp::symbols::Symbol::IsFunctionDeclarationSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">sngcpp::symbols::Symbol::IsFunctionSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsInstallSymbol_D5B31C8D979DB0B6929D6BF562E97D58E3B6A056">sngcpp::symbols::Symbol::IsInstallSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">sngcpp::symbols::Symbol::Name</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_SetParent_F78F6B260EA6242F49F86FE9EF9F163F1A4FC9F9">sngcpp::symbols::Symbol::SetParent</a>
         </span>
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddEnumerator_D34A7D09CC510AD9072115D71F832DCCAA9C18BA">sngcpp::symbols::SymbolTable::AddEnumerator</a>
-            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddParameter_44DBF4F5FC91C8BA1C054FB4F32C589571EE0D91">sngcpp::symbols::SymbolTable::AddParameter</a>
+            Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeClassGroupSymbol_6F19066E87278AEF601C37C28D71F60239FF5C03">sngcpp::symbols::ContainerSymbol::MakeClassGroupSymbol</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeFunctionGroupSymbol_0BCC980B5EE798F799722604807ACE12282357AC">sngcpp::symbols::ContainerSymbol::MakeFunctionGroupSymbol</a>
+            , <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_AddMember_1E49E141A2AB89977E1DBC588E9B30FD4FD02ED5">sngcpp::symbols::FunctionDeclarationSymbol::AddMember</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_AddMember_AA17FB6AEEA9DC74DEF605CB77D74BD5FFDBF47B">sngcpp::symbols::FunctionSymbol::AddMember</a>
+            , <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_AddMember_47AC8B2F6282BCC5F698D8E41D8A9B37C9B96640">sngcpp::symbols::GrammarSymbol::AddMember</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddEnumerator_DDC1ADCFD69B47A226F67263F031AF60D7C1B53E">sngcpp::symbols::SymbolTable::AddEnumerator</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddParameter_C313843149507B91F1891ADB7279B3B8E7D97B4C">sngcpp::symbols::SymbolTable::AddParameter</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddRule_2A40467EF93CC7562B7FD92A409CB43EB9EC6E6E">sngcpp::symbols::SymbolTable::AddRule</a>
-            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddTypedef_419EF08BEC632DA403007D907494E1788A7C8B32">sngcpp::symbols::SymbolTable::AddTypedef</a>
-            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddTypedef_70C77C1C3C509C0C4EA667A6384FF2C34E87F079">sngcpp::symbols::SymbolTable::AddTypedef</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_B1B9159EAB6D5B1B5747788D263EA6684C488FFA">sngcpp::symbols::SymbolTable::AddVariable</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNamespace_1D7D7E041E7FDDB74E62D4F6EE7A8EAB12021B34">sngcpp::symbols::SymbolTable::BeginNamespace</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndClass_1ED66A41F4BFF73BBD8F2503511D9A9C7B3B2DC9">sngcpp::symbols::SymbolTable::EndClass</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_EndDeclarationBlock_BCCE0D7FBBCF1D278447189F84B42FB6CC7062AC">sngcpp::symbols::SymbolTable::EndDeclarationBlock</a>
@@ -197,7 +213,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#34">34</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#35">35</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -209,6 +225,7 @@
         <br/>
         <span>
             Calls: <a href="./class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html#function_Classes_A21069FED9EB7A2CCDFBD8BF378F98A473B2C2A0">sngcpp::symbols::ClassGroupSymbol::Classes</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassGroupSymbol_8F3E94683D0C80319F14B51D947FBA0BF170ED8F">sngcpp::symbols::Symbol::IsClassGroupSymbol</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
@@ -224,7 +241,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#35">35</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#36">36</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -236,6 +253,8 @@
         <br/>
         <span>
             Calls: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_Functions_A7094B98E3E0D99BA32B39B354D39D673EE93523">sngcpp::symbols::FunctionGroupSymbol::Functions</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsConstructorSymbol_A6192AF051630C88D5880FF863E85A8BF4661F26">sngcpp::symbols::Symbol::IsConstructorSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionGroupSymbol_2DA82061BF34A1C13AB053B6538A7299AFBD4DA2">sngcpp::symbols::Symbol::IsFunctionGroupSymbol</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
@@ -251,7 +270,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#37">37</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#38">38</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -262,7 +281,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsEnumTypeSymbol_69134E545714CF6E729202248DE76A49BD09ADD7">sngcpp::symbols::Symbol::IsEnumTypeSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>
@@ -277,7 +297,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#38">38</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#39">39</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -288,7 +308,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsEnumeratorSymbol_8E2FD3EC2D284461DF1787BE2CAE6B597D89B01B">sngcpp::symbols::Symbol::IsEnumeratorSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>
@@ -303,7 +324,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#36">36</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#37">37</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -315,6 +336,9 @@
         <br/>
         <span>
             Calls: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_Functions_A7094B98E3E0D99BA32B39B354D39D673EE93523">sngcpp::symbols::FunctionGroupSymbol::Functions</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsConstructorSymbol_A6192AF051630C88D5880FF863E85A8BF4661F26">sngcpp::symbols::Symbol::IsConstructorSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionGroupSymbol_2DA82061BF34A1C13AB053B6538A7299AFBD4DA2">sngcpp::symbols::Symbol::IsFunctionGroupSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionSymbol_64DC974602E148BCBF5190888706B26D6C331A02">sngcpp::symbols::Symbol::IsFunctionSymbol</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
@@ -327,11 +351,11 @@
              i) <span class="kw">const virtual</span>
         </h4>
         <span>
-            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#32">32</a>
+            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#33">33</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -353,11 +377,11 @@
             * sngcpp::symbols::ContainerSymbol::GetContainerScope() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#29">29</a>
+            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#30">30</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">containerScope</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#variable_containerScope_8915758070AD42B67E0347A910EB1613795DAB02">containerScope</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -368,9 +392,10 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
+            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_AddTemplateParameter_D3FDB3389EBD5BA8ADA4BFEBE34024D1D08B75AE">sngcpp::symbols::ClassTypeSymbol::AddTemplateParameter</a>
+            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
             , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
-            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_B1B9159EAB6D5B1B5747788D263EA6684C488FFA">sngcpp::symbols::SymbolTable::AddVariable</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNameSequence_F9ADA0CDA70D40C3592F668A680828C7AFE7DAB3">sngcpp::symbols::SymbolTable::BeginNameSequence</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNamespace_1D7D7E041E7FDDB74E62D4F6EE7A8EAB12021B34">sngcpp::symbols::SymbolTable::BeginNamespace</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_GetContainerScope_950127D4E33D07A266DCBA9E91C43AF2695539DF">sngcpp::symbols::SymbolTable::GetContainerScope</a>
@@ -388,7 +413,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#41">41</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#42">42</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -399,7 +424,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsGrammarSymbol_1F98ABAFE04C5C58D772EAB1D1D434BCB05585BE">sngcpp::symbols::Symbol::IsGrammarSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>
@@ -410,11 +436,11 @@
              sngcpp::symbols::ContainerSymbol::IsContainerSymbol() <span class="kw">const override</span>
         </h4>
         <span>
-            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#30">30</a>
+            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#31">31</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -437,14 +463,14 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#46">46</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#47">47</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
         <br/>
         <span>
             Calls: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_1339815AAFD5F12150741F581800960621901225">sngcpp::symbols::ContainerScope::Lookup</a>
-            , <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_AddMember_47AC8B2F6282BCC5F698D8E41D8A9B37C9B96640">sngcpp::symbols::GrammarSymbol::AddMember</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsClassGroupSymbol_8F3E94683D0C80319F14B51D947FBA0BF170ED8F">sngcpp::symbols::Symbol::IsClassGroupSymbol</a>
         </span>
         <br/>
@@ -467,14 +493,14 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#45">45</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#46">46</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
         <br/>
         <span>
             Calls: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_1339815AAFD5F12150741F581800960621901225">sngcpp::symbols::ContainerScope::Lookup</a>
-            , <a href="./class_GrammarSymbol_B430A5A85FDF7D550BDFB017288A82F98E2D5DA8.html#function_AddMember_47AC8B2F6282BCC5F698D8E41D8A9B37C9B96640">sngcpp::symbols::GrammarSymbol::AddMember</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsFunctionGroupSymbol_2DA82061BF34A1C13AB053B6538A7299AFBD4DA2">sngcpp::symbols::Symbol::IsFunctionGroupSymbol</a>
         </span>
         <br/>
@@ -483,6 +509,23 @@
             Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
         </span>
         <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Members_684966296EE2C9FEB0B9C1C607E548EABC934473">Members Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;std::unique_ptr&lt;<a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>
+            >>&amp; sngcpp::symbols::ContainerSymbol::Members() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#29">29</a>
+             of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#variable_members_5A3254471A73F9E46EC41CC205755DCB0725DCD9">members</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
         <br/>
         <hr/>
         <h3 id="function_Namespaces_289DF064675B029027F2780ED17A0F1044BAB28E">Namespaces Member Function</h3>
@@ -495,7 +538,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#33">33</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#34">34</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -506,7 +549,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsNamespaceSymbol_B31F06A521EE617A0BA75D888242ABFAA921AA07">sngcpp::symbols::Symbol::IsNamespaceSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>
@@ -517,11 +561,11 @@
              sngcpp::symbols::ContainerSymbol::NumBases() <span class="kw">const virtual</span>
         </h4>
         <span>
-            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#31">31</a>
+            Definition at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#32">32</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">0</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">0</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -547,7 +591,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#39">39</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#40">40</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -558,7 +602,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsTypedefSymbol_2F562AF9243B6B8B1B8DF5DF5DEEC9AF11D066D3">sngcpp::symbols::Symbol::IsTypedefSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>
@@ -573,7 +618,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#40">40</a>
+            Declaration at line <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html#41">41</a>
              of <a href="file/ContainerSymbol.hpp_1722A6DFC085B92F5C2A36C36C20AC348ED0D91B.html">ContainerSymbol.hpp</a>
         </span>
         <br/>
@@ -584,7 +629,8 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
+            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsVariableSymbol_4E8C11889A8B5CA709217C0E8B4FE5219A1F8B09">sngcpp::symbols::Symbol::IsVariableSymbol</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_ToDomElement_B2E5AA95533C0E26E25C52FB6A4083B636F190F1">sngcpp::symbols::Symbol::ToDomElement</a>
         </span>
         <br/>
         <br/>

@@ -86,15 +86,6 @@
         <span>
             Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#120">120</a>
              of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_instance_D446AFD575CB051CBDC6AD4DD181A4702D32DBA7">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -112,25 +103,6 @@
         <span>
             Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#125">125</a>
              of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">126</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><span class="type">Operator</span><span class="other">,&nbsp;</span><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a><span class="other">></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorMap_A1B57B98645CE426FB19A2E29897525CB847333D">operatorMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">operatorName</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">i</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorMap_A1B57B98645CE426FB19A2E29897525CB847333D">operatorMap</a><span class="other">.</span><span class="identifier">end</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">i</span><span class="other">-></span><span class="identifier">second</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"unknown&nbsp;operator&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><a href="./../../../util/html/content/namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_ToUtf8_1E9987786CFA10818B33BDD948A0E4BB8E8CBFEB">ToUtf8</a><span class="other">(</span><span class="identifier">operatorName</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -147,25 +119,6 @@
         <span>
             Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#135">135</a>
              of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><a href="./enum_Operator_8AF2B8131680C3AF87653AA0DA2D1EC41F690E2E.html">Operator</a><span class="other">,&nbsp;</span><span class="type">OperatorHash</span><span class="other">,&nbsp;</span><a href="./struct_OperatorHash_4F6B5C3A372C3157E18B41CFC65536BDE6ADBBF4.html">OperatorHash</a><span class="other">></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorStrMap_2D5271EBD81DC3AEDD6EA4F66C471926AF3C597D">operatorStrMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">op</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">i</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_operatorStrMap_2D5271EBD81DC3AEDD6EA4F66C471926AF3C597D">operatorStrMap</a><span class="other">.</span><span class="identifier">end</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">i</span><span class="other">-></span><span class="identifier">second</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"unknown&nbsp;operator"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -183,15 +136,6 @@
         <span>
             Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#115">115</a>
              of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html#variable_instance_D446AFD575CB051CBDC6AD4DD181A4702D32DBA7">instance</a><span class="other">.</span><span class="identifier">reset</span><span class="other">(</span><span class="kw">new&nbsp;</span><a href="./class_OperatorTable_E39117B20DC20E62A9E07105E9C8380B66B58F07.html">OperatorTable</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -209,16 +153,8 @@
         <span>
             Definition at line <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html#26">26</a>
              of <a href="file/Operator.cpp_9DE206DF2D7FB90B703627D2EB6E86D27250D2BB.html">Operator.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="other">*</span><span class="identifier">instance</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <a href="../../../../soulng-projects.html">top</a>

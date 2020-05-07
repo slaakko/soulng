@@ -204,27 +204,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#60">60</a>
              of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a>&nbsp;<span class="identifier">cat</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">leftEnd</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">cat</span><span class="other">.</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88">End</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">leftEnd</span><span class="other">-></span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE">SetAccept</a><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">rightStart</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">right</span><span class="other">.</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1">Start</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">leftEnd</span><span class="other">-></span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_SetEdges_7B1BE308B72EF2A1DCEFC54EE053388E2B32F1D3">SetEdges</a><span class="other">(</span><span class="identifier">rightStart</span><span class="other">-></span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_Edges_82621C44BBF83A404C563D988F630D74F35B05C8">Edges</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">cat</span><span class="other">.</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_SetEnd_4D06CBBCD582150AF1CB813D19DFFCAC537B708E">SetEnd</a><span class="other">(</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88">End</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">cat</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;69</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -256,17 +235,8 @@
             &amp; context, <span class="kw">const </span>
             std::u32string&amp; filePattern)</h4>
         <span>
-            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#47">47</a>
+            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#48">48</a>
              of <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html">Match.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_CompileRegularExpressionPattern_D94D23880380B40547C48D0D7FF768924D5CC13C">CompileRegularExpressionPattern</a><span class="other">(</span><span class="identifier">context</span><span class="other">,&nbsp;</span><a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_MakeRegularExpressionPatternFromFilePattern_220093C3058E1AACF7C017FD9C1B417C6986DA72">MakeRegularExpressionPatternFromFilePattern</a><span class="other">(</span><span class="identifier">filePattern</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -283,19 +253,8 @@
             &amp; context, <span class="kw">const </span>
             std::u32string&amp; regularExpressionPattern)</h4>
         <span>
-            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#41">41</a>
+            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#42">42</a>
              of <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html">Match.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_RexLexer_7117E584CDD14C6A60B096B9ADE5C6985AD1577F.html">RexLexer</a>&nbsp;<span class="identifier">lexer</span><span class="other">(</span><span class="identifier">regularExpressionPattern</span><span class="other">,&nbsp;</span><span class="string">""</span><span class="other">,&nbsp;</span><span class="other">0</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">RexParser</span><span class="other">::</span><a href="./struct_RexParser_920BA40BC6346732491B87D148CBD5E831C27DE9.html#function_Parse_006459CA14BA879F863EED078D9CFB66D8B457DA">Parse</a><span class="other">(</span><span class="identifier">lexer</span><span class="other">,&nbsp;</span><span class="other">&amp;</span><span class="identifier">context</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -316,19 +275,8 @@
             *> soulng::rex::EpsilonClosure(<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
             * state)</h4>
         <span>
-            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#37">37</a>
+            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#38">38</a>
              of <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html">Algorithm.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span><span class="other">></span>&nbsp;<span class="identifier">states</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_EpsilonClosure_B4AF44AEF0671A2ED0B2C5048794F37E1066260F">EpsilonClosure</a><span class="other">(</span><span class="identifier">states</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -345,7 +293,7 @@
             std::vector&lt;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a>
             *>&amp; states)</h4>
         <span>
-            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#12">12</a>
+            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#13">13</a>
              of <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html">Algorithm.cpp</a>
         </span>
         <br/>
@@ -368,17 +316,8 @@
             std::u32string&amp; filePath, <span class="kw">const </span>
             std::u32string&amp; filePattern)</h4>
         <span>
-            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#29">29</a>
+            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#30">30</a>
              of <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html">Match.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_PatternMatch_84362750029E4DDFD3455FBEA1B1582346BAE2F7">PatternMatch</a><span class="other">(</span><span class="identifier">filePath</span><span class="other">,&nbsp;</span><a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_MakeRegularExpressionPatternFromFilePattern_220093C3058E1AACF7C017FD9C1B417C6986DA72">MakeRegularExpressionPatternFromFilePattern</a><span class="other">(</span><span class="identifier">filePattern</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -463,23 +402,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#51">51</a>
              of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">start</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">context</span><span class="other">.</span><a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021">MakeNfaState</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">end</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">context</span><span class="other">.</span><a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeNfaState_FDBD50EF5ECB5105E683D00BCF7469BA5488D021">MakeNfaState</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">end</span><span class="other">-></span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_SetAccept_4B0A518719CC234BD94E959C897B90035F2400BE">SetAccept</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">start</span><span class="other">-></span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87">AddEdge</a><span class="other">(</span><a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a><span class="other">(</span><span class="identifier">symbol</span><span class="other">,&nbsp;</span><span class="identifier">end</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a><span class="other">(</span><span class="identifier">start</span><span class="other">,&nbsp;</span><span class="identifier">end</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -514,7 +436,7 @@
             &amp; nfa, <span class="kw">const </span>
             std::u32string&amp; s)</h4>
         <span>
-            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#60">60</a>
+            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#61">61</a>
              of <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html">Algorithm.cpp</a>
         </span>
         <br/>
@@ -539,7 +461,7 @@
             *>&amp; states, <span class="kw">char32_t</span>
              c)</h4>
         <span>
-            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#43">43</a>
+            Definition at line <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html#44">44</a>
              of <a href="file/Algorithm.cpp_83028B0603C9A3A048F4F21B270D89D51A0046CC.html">Algorithm.cpp</a>
         </span>
         <br/>
@@ -565,19 +487,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html#127">127</a>
              of <a href="file/Nfa.cpp_94FC9649902304AF30D6F07880FDC27E977AC40B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a>&nbsp;<span class="identifier">opt</span><span class="other">(</span><span class="identifier">nfa</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">opt</span><span class="other">.</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_Start_EBDD89EAC6B0DE59B9DDF90D6D0687E716F26DC1">Start</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_NfaState_6217EDF23110DC7C0126D51461193CB8AE9344B3.html#function_AddEdge_60E1EA230192A0F9E35235D453138D2E6434FC87">AddEdge</a><span class="other">(</span><a href="./class_NfaEdge_DE0EE9B1812411A0FD9F797C4DD6132FAA7949CB.html">NfaEdge</a><span class="other">(</span><span class="identifier">context</span><span class="other">.</span><a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html#function_MakeEpsilon_054C978880520E48130234B9674382EE2541ECED">MakeEpsilon</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">opt</span><span class="other">.</span><a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html#function_End_30F53D097F16E66C0C5B639652516D31E8E9BA88">End</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">opt</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -649,17 +558,8 @@
             std::u32string&amp; str, <a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a>
             &amp; nfa)</h4>
         <span>
-            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#52">52</a>
+            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#53">53</a>
              of <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html">Match.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_Match_702E71A3715413D6F47C8F847383155C298FC89C">Match</a><span class="other">(</span><span class="identifier">nfa</span><span class="other">,&nbsp;</span><span class="identifier">str</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -676,21 +576,8 @@
             std::u32string&amp; str, <span class="kw">const </span>
             std::u32string&amp; regularExpressionPattern)</h4>
         <span>
-            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#34">34</a>
+            Definition at line <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html#35">35</a>
              of <a href="file/Match.cpp_188A0817633CD9D1CECE41EF789C6FB10E96CF34.html">Match.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Context_B65B7FDA08D7640125310BEA4D7E641BB79FF2D4.html">Context</a>&nbsp;<span class="identifier">context</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Nfa_95B21B577EE47A1B855396330EA05B8066228E8B.html">Nfa</a>&nbsp;<span class="identifier">nfa</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_CompileRegularExpressionPattern_D94D23880380B40547C48D0D7FF768924D5CC13C">CompileRegularExpressionPattern</a><span class="other">(</span><span class="identifier">context</span><span class="other">,&nbsp;</span><span class="identifier">regularExpressionPattern</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_rex_D94E9B1719FAD13A04D57EC8CB78D8FC01F1828A.html#function_PatternMatch_8BA05B05BD0D98E4B0A3B6DC3E1CAB56BFB060D2">PatternMatch</a><span class="other">(</span><span class="identifier">str</span><span class="other">,&nbsp;</span><span class="identifier">nfa</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -748,20 +635,8 @@
         <span>
             Definition at line <a href="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html#55">55</a>
              of <a href="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html">Symbol.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_Start_AB8BE4A45114F3FBAF23BAACA557D59E53E928E6">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_Start_AB8BE4A45114F3FBAF23BAACA557D59E53E928E6">Start</a><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_Start_AB8BE4A45114F3FBAF23BAACA557D59E53E928E6">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;>&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_Start_AB8BE4A45114F3FBAF23BAACA557D59E53E928E6">Start</a><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_End_C36F3F959E1C49AE35F630885FB7D399CDCBA0ED">End</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_End_C36F3F959E1C49AE35F630885FB7D399CDCBA0ED">End</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_End_C36F3F959E1C49AE35F630885FB7D399CDCBA0ED">soulng::rex::Range::End</a>
@@ -782,16 +657,8 @@
         <span>
             Definition at line <a href="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html#50">50</a>
              of <a href="file/Symbol.hpp_EB91DB4C7838A00A38523A2B1B5EB2C6F05E8CE2.html">Symbol.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_Start_AB8BE4A45114F3FBAF23BAACA557D59E53E928E6">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_Start_AB8BE4A45114F3FBAF23BAACA557D59E53E928E6">Start</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">left</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_End_C36F3F959E1C49AE35F630885FB7D399CDCBA0ED">End</a><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">right</span><span class="other">.</span><a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_End_C36F3F959E1C49AE35F630885FB7D399CDCBA0ED">End</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Calls: <a href="./class_Range_FA6FA56D533F4285B343C2C21BE9D5AEEFDC8A79.html#function_End_C36F3F959E1C49AE35F630885FB7D399CDCBA0ED">soulng::rex::Range::End</a>

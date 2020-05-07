@@ -1,0 +1,196 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SNG2HTML_SNG2HTML_SYMBOL_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SNG2HTML_SNG2HTML_SYMBOL_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/Visitor.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;string></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="pp">#include&nbsp;&lt;vector></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#constructor_Symbol_59F7D93856D4634EBE466F6205D55654224843F0">Symbol</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">virtual</span>&nbsp;<span class="other">~</span><span class="identifier">Symbol</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">virtual</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_Accept_97EAC4CEF47F1E3C588CDD036D673E1ED025591A">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span>&nbsp;<span class="other">=&nbsp;0</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">virtual</span>&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_IsClass_E5F9B7CEE87516911B49A1B6EBBA41A28FE6B099">IsClass</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">virtual</span>&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_IsChar_662558E91D182929969E5C2048191BE40466560D">IsChar</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">virtual</span>&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_IsAny_9EE2528A3EA1839C1C31778DD592D3700C481DFC">IsAny</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">virtual</span>&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_IsRange_E8C6B40E681E963404663CAF4B8D19A0C73AF2AC">IsRange</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_Name_71CC9789BD4A701C2611B00970FB5275059A25DE">Name</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#variable_name_3B9BCA8C9EC74479BD5DDBD8A001370FCB104FC7">name</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#variable_name_3B9BCA8C9EC74479BD5DDBD8A001370FCB104FC7">name</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html">Char</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#constructor_Char_CA167314607F68119E62AC85308C3BD5C7FD1CC0">Char</a><span class="other">(</span><span class="kw">char32_t</span>&nbsp;<span class="identifier">chr_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#function_IsChar_D84CD17E79BB12D1A799D2E6792EE6F8E8C728F3">IsChar</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#function_Accept_CDB8DE49E056E9B28918A04C31FB9241EE27A59D">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char32_t</span>&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#function_Chr_F601020EB99167353CFD3A23F9E3DC1A51861D0E">Chr</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#variable_chr_581A9981A11114A76C5B3FE0101F74B3A619FCF0">chr</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char32_t</span>&nbsp;<a href="../class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#variable_chr_581A9981A11114A76C5B3FE0101F74B3A619FCF0">chr</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Any_8222DBCA58F5147074DB7FA22582159CAD697B5F.html">Any</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Any_8222DBCA58F5147074DB7FA22582159CAD697B5F.html#constructor_Any_7B7AE4AFF65B6F8B2360F42DEFE28C8D51BCD09E">Any</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Any_8222DBCA58F5147074DB7FA22582159CAD697B5F.html#function_Accept_8F247558A19C8CF890CF651986028024FF88CBA3">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Any_8222DBCA58F5147074DB7FA22582159CAD697B5F.html#function_IsAny_41DFA370F0B9122F41D3AEB6021B7104C38BE83F">IsAny</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#constructor_Range_2C48952DBAAEBA92E28E9EF3413AFB2D94162478">Range</a><span class="other">(</span><span class="kw">char32_t</span>&nbsp;<span class="identifier">start_</span><span class="other">,&nbsp;</span><span class="kw">char32_t</span>&nbsp;<span class="identifier">end_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_Accept_8F111B7ED777A029F812A7CAB0F10536EABC85C8">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_IsRange_423D5D56B22908591F5A822D01D39A3BF1602F3A">IsRange</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_IsEmpty_35B075373D9B7C70577BB33098493975343757E7">IsEmpty</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#variable_start_E333AE27E693542B556238EB7D34A001BAD2CA72">start</a><span class="other">&nbsp;>&nbsp;</span><a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#variable_end_7DE0BCACDFE6958BB4F0F751ED5CD18F20E6A265">end</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char32_t</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_Start_E6FA03DB546454E48C6D03C8A7B9C06B8728F204">Start</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#variable_start_E333AE27E693542B556238EB7D34A001BAD2CA72">start</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char32_t</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_End_D65E98A8F1F791784362BED4B8D83A80F00496C0">End</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#variable_end_7DE0BCACDFE6958BB4F0F751ED5CD18F20E6A265">end</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char32_t</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#variable_start_E333AE27E693542B556238EB7D34A001BAD2CA72">start</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char32_t</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#variable_end_7DE0BCACDFE6958BB4F0F751ED5CD18F20E6A265">end</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;<span class="kw">inline</span>&nbsp;<span class="kw">bool</span>&nbsp;<span class="kw">operator</span><span class="other">==</span><span class="other">(</span><span class="kw">const</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a><span class="other">&amp;</span>&nbsp;<span class="identifier">left</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a><span class="other">&amp;</span>&nbsp;<span class="identifier">right</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">63</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">64</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">left</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">65</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">66</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">67</span>&nbsp;<span class="kw">inline</span>&nbsp;<span class="kw">bool</span>&nbsp;<span class="kw">operator</span><span class="other">&lt;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a><span class="other">&amp;</span>&nbsp;<span class="identifier">left</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<a href="../class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a><span class="other">&amp;</span>&nbsp;<span class="identifier">right</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">68</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">69</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">left</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;>&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="identifier">right</span><span class="other">.</span><span class="identifier">End</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">72</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">73</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">74</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html">Class</a>&nbsp;<span class="other">:&nbsp;</span><span class="kw">public</span>&nbsp;<a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a></span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">75</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">76</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#constructor_Class_A478F98B49682FB5A1032D6A3357F11BF9722448">Class</a><span class="other">(</span><span class="kw">int</span>&nbsp;<span class="identifier">index_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">78</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_Accept_5D7B4A13A7A61886C98662334070669BCE856EB8">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span>&nbsp;<span class="kw">override</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_IsClass_5C44657F0692DBEE7CA002DB2DE2B7BB4FFA18A4">IsClass</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">override</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_Inverse_689DAE970EAE2EC8884CA43308B526C73883DF05">Inverse</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_inverse_70308E17000AED4D059A8C49E2899E402802D589">inverse</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_SetInverse_33EA10ACA52BC82FC5B2B998B255F4EEB9A1C674">SetInverse</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_inverse_70308E17000AED4D059A8C49E2899E402802D589">inverse</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a><span class="other">*</span><span class="other">></span><span class="other">&amp;</span><a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_Symbols_35E40BC29748FA4CB9D38F7001B607BC530BF795">Symbols</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span><span class="other">{</span><span class="kw">return</span><a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_symbols_45B519E4355449B58D92BC9800044923FDD4C142">symbols</a><span class="other">;</span><span class="other">}</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_AddSymbol_2AA0EA333F9F1561AF5EA2685B818CB6400BD032">AddSymbol</a><span class="other">(</span><a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a><span class="other">*</span>&nbsp;<span class="identifier">symbol</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_Index_916644C460B02E0B5062D8805C64436A4AE3E864">Index</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_index_D05CF1485F5792485D53183A03664864F8202759">index</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_IsEmpty_5E8BEF113ACC90B88E5D354A5722D1B5D9A22E3F">IsEmpty</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_symbols_45B519E4355449B58D92BC9800044923FDD4C142">symbols</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">86</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_index_D05CF1485F5792485D53183A03664864F8202759">index</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">88</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_inverse_70308E17000AED4D059A8C49E2899E402802D589">inverse</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">89</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#variable_symbols_45B519E4355449B58D92BC9800044923FDD4C142">symbols</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">90</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">91</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">92</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sng2html::sng2html</span></span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">93</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">94</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNG2HTML_SNG2HTML_SYMBOL_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

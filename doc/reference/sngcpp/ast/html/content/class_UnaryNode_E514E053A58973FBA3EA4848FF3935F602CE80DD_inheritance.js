@@ -298,10 +298,9 @@ function drawClassInheritanceDiagram() {
         { name: "sngcpp::ast::RValueRefNode", id: "class_27", level: 2, subject: false, hasDerivedClasses: false, link: "./class_RValueRefNode_69543375254B64F0CC387CA5032AACFCE16B1F24.html" },
         { name: "sngcpp::ast::SubscriptExpressionNode", id: "class_28", level: 2, subject: false, hasDerivedClasses: false, link: "./class_SubscriptExpressionNode_9DD145DD7A819CC1ECC448AF56862BD71C90388A.html" },
         { name: "sngcpp::ast::ThrowExpressionNode", id: "class_29", level: 2, subject: false, hasDerivedClasses: false, link: "./class_ThrowExpressionNode_BDF3BE553E93877F3F53B533BD02C80CB4738F41.html" },
-        { name: "sngcpp::ast::TypeExprNode", id: "class_30", level: 2, subject: false, hasDerivedClasses: false, link: "./class_TypeExprNode_0788344F072FE7A1D077B11B8056834449DF02FC.html" },
-        { name: "sngcpp::ast::TypeIdExpressionNode", id: "class_31", level: 2, subject: false, hasDerivedClasses: false, link: "./class_TypeIdExpressionNode_BE744203EEC5AB94F32BA26CFB69A9A56A352488.html" },
-        { name: "sngcpp::ast::UnaryExpressionNode", id: "class_32", level: 2, subject: false, hasDerivedClasses: false, link: "./class_UnaryExpressionNode_0158205C576BD308E68A0A8F334BB20449473A4E.html" },
-        { name: "sngcpp::ast::VolatileNode", id: "class_33", level: 2, subject: false, hasDerivedClasses: false, link: "./class_VolatileNode_FF7BC932368393C334F366B0BD1BB2A9EB058085.html" }];
+        { name: "sngcpp::ast::TypeIdExpressionNode", id: "class_30", level: 2, subject: false, hasDerivedClasses: false, link: "./class_TypeIdExpressionNode_BE744203EEC5AB94F32BA26CFB69A9A56A352488.html" },
+        { name: "sngcpp::ast::UnaryExpressionNode", id: "class_31", level: 2, subject: false, hasDerivedClasses: false, link: "./class_UnaryExpressionNode_0158205C576BD308E68A0A8F334BB20449473A4E.html" },
+        { name: "sngcpp::ast::VolatileNode", id: "class_32", level: 2, subject: false, hasDerivedClasses: false, link: "./class_VolatileNode_FF7BC932368393C334F366B0BD1BB2A9EB058085.html" }];
     drawDiagram(classes);
 }
 

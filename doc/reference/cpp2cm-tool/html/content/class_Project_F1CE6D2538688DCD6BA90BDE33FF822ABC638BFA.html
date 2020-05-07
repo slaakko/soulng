@@ -1,0 +1,1005 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Project Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">up</a>
+         | <a href="class_PatchFile_840201B003176489B17F4ADD9DFDA225D0E965A5.html">prev</a>
+         | <a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html">next</a>
+        <hr/>
+        <h1>Project Class</h1>
+        <span>
+            Definition at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#28">28</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#constructor_Project_821492E93BD092AF89E56E0DEA568178153271DB">Project</a>(<span class="kw">const </span>std::string&amp; systemXmlFilePath_, <span class="kw">const </span>std::string&amp; xmlFilePath_, <span class="kw">bool</span> nothrowStatus_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildAst_2F6DBFA96696162A41BBE3A8E244912677310DE2">BuildAst</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildSymbolTable_83E7DFC57A6DDAA93CEF665B376821F804B5871C">BuildSymbolTable</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">Convert</a>(<a href="./enum_ProcessType_112716E41CCD70277F82EFBB7A0D925FE783FD53.html">ProcessType</a> processType)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">sngcpp::ast::SourceFileNode*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_GetSourceFile_64445EF2CF103FBE61173412716F7D3B5FD0D6BE">GetSourceFile</a>(<span class="kw">const </span>std::string&amp; sourceFilePath) <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Import_93291EB6BA2CBC41D81664E5E5F355E22171948A">Import</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_MapNamespaces_122336BBA57E189C17080E70BDB8F6DC81502D02">MapNamespaces</a>(sngxml::dom::Document* mapDoc)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">Process</a>(<span class="kw">bool</span> verbose, <a href="./enum_ProcessType_112716E41CCD70277F82EFBB7A0D925FE783FD53.html">ProcessType</a> processType)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadAst_0559492953D0F370342E3AE971323F42EB3B4A97">ReadAst</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadFilter_3D4B698CB82DE832B3D4DF77F0B748205A39DC7B">ReadFilter</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadIncludePath_9839EA5C3A3E594F1DAD14653D6C70F6D8408127">ReadIncludePath</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadInstallDir_2A6CCF270CF2B584FC08871A944B1765911A5D04">ReadInstallDir</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMap_9E46E798CD5FBA0E6B2F81E9D2B6908B154009D9">ReadMap</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMergeDirFiles_08A58CD46F4C92C1FD0FE2455D9D1FDF5386CC46">ReadMergeDirFiles</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadNothrowList_402C410790085993F43A28470DC26EFAB2766310">ReadNothrowList</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadPatchFiles_E7558671776A156024BDE6AAE1A185D5CCB9FB83">ReadPatchFiles</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadReferences_2E60AD699744EA2A8B2D3F12E29DA87F000AED8F">ReadReferences</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSources_342D9B72EDCD98C7D95CDE131935226A8F0DA2A9">ReadSources</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSymbolTableXml_B3E04DC1039E365A3E8582291569E846E6E23A2F">ReadSymbolTableXml</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSystemProjects_30ABD94B10930BF5C1352EDB380CE797D0B11BC7">ReadSystemProjects</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadTargetDir_34F1840BA5DC2ED029A202667B63644D389DCBCD">ReadTargetDir</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadTextFiles_234FF67232E823AC51D2F3FFF78ABD69A659C893">ReadTextFiles</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadVCSources_743D0F586D9A08F1D7F3A92D57ED3A2EADF8B6FB">ReadVCSources</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadVCXProjectFilePath_9D64913D79BB0D7CE9D4454A4EFFF7476F43D72F">ReadVCXProjectFilePath</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_SetAstFilePath_12140A530434A6931CC90F361A75E6EBC4479897">SetAstFilePath</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_SetStageDir_5BB28DBE49999A2B9F7BA9BFB2C33C2AA206379F">SetStageDir</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_SetSystem_23F59B69EBF950BF05A87C4A67B451058B2E8B70">SetSystem</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_WriteAst_B5AF4375CBF20E5BF76E13D62995634B02D98D3F">WriteAst</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_WriteSymbolTableXml_B0B149129F07D42E6A0D15E7BE5ACD166EA8A995">WriteSymbolTableXml</a>()</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_ast_ACA3CD8A94385D3E318E5AB8AF1618DA81381FE8">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngcpp::ast::Node></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ast</td>
+            </tr>
+            <tr id="variable_astFilePath_ABA3ED710DA0971A09C1931406556A4627F41350">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">astFilePath</td>
+            </tr>
+            <tr id="variable_context_0737021F3CABE58412E4004236B89A447CA27FDC">
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::rex::Context</td>
+                <td class="functionTableSecondCol" xml:space="preserve">context</td>
+            </tr>
+            <tr id="variable_doc_5DA2AD4EC463E8EECC0DF6000B7068B215A6EF6E">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Document></td>
+                <td class="functionTableSecondCol" xml:space="preserve">doc</td>
+            </tr>
+            <tr id="variable_excludedClasses_B4BF308C5C353AFF0F5C9765FB57832D42ECC150">
+                <td class="functionTableFirstCol" xml:space="preserve">std::set&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">excludedClasses</td>
+            </tr>
+            <tr id="variable_excludedFunctions_068CBEDC69B3A95D2CFA4BCA72DBFCD4A98DE8EF">
+                <td class="functionTableFirstCol" xml:space="preserve">std::set&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">excludedFunctions</td>
+            </tr>
+            <tr id="variable_extraFiles_05885EFB9704370D012B12896E6CDAD56FC59E12">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">extraFiles</td>
+            </tr>
+            <tr id="variable_files_CB09572894EF2BF4E3E17828A7071F7D1B5BD25D">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">files</td>
+            </tr>
+            <tr id="variable_filters_426FECC9679593450B03DCC2E2C65BD65DBA386D">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html">FilterList</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">filters</td>
+            </tr>
+            <tr id="variable_headerFiles_7A822D9A722DFCB83F0D824C8C213108496396D1">
+                <td class="functionTableFirstCol" xml:space="preserve">sngcpp::pp::ProjectHeaderFileSet</td>
+                <td class="functionTableSecondCol" xml:space="preserve">headerFiles</td>
+            </tr>
+            <tr id="variable_imports_73966350DC0F94616BCE3DA8559067236F7A44C0">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">imports</td>
+            </tr>
+            <tr id="variable_includePath_F6B6B81F6F13FA4A211627136D4BD96B1094C383">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">includePath</td>
+            </tr>
+            <tr id="variable_installDir_868A8466A051BCEEF85314F990AB0FB707912695">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">installDir</td>
+            </tr>
+            <tr id="variable_installReferences_B7F2FD90E470BDD92E39DC9277971443E4A4E812">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">installReferences</td>
+            </tr>
+            <tr id="variable_lexers_EEB95D8EBB6A7DE35BC744220E06E0CD63C63628">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;soulng::lexer::Lexer>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexers</td>
+            </tr>
+            <tr id="variable_map_2CF564582636E21FA32D41C00016CB98E0ACDB8C">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html">Map</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">map</td>
+            </tr>
+            <tr id="variable_mergeDir_5FE288A380D5CF8E5B1C8D0D7DFA3C3C8EC24135">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">mergeDir</td>
+            </tr>
+            <tr id="variable_mergeDirFiles_72E1EE9E622EE487088C86AE9C5E01EB1E611723">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">mergeDirFiles</td>
+            </tr>
+            <tr id="variable_mergeFileMap_DDC19676032A9A5528C77E91A5F7A80690214FFB">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map::map&lt;std::u32string, <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html">File</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">mergeFileMap</td>
+            </tr>
+            <tr id="variable_name_9174FA3866B18422458F96E843319466B4E35702">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">name</td>
+            </tr>
+            <tr id="variable_nothrowList_CEB54FC8033AA5050FBAE383EBFB6E7EC6D7E838">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NothrowList_D406E65392105331AECF593C7DE16B07C7A73CB5.html">NothrowList</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">nothrowList</td>
+            </tr>
+            <tr id="variable_patchFiles_DADF79C2CDF4D7D2AB434A5E4F4007CC3F4FF2C7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_PatchFile_840201B003176489B17F4ADD9DFDA225D0E965A5.html">PatchFile</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">patchFiles</td>
+            </tr>
+            <tr id="variable_projectMap_3B7781BB57DDCB67E69D4305A17255BAF1150428">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectMap</td>
+            </tr>
+            <tr id="variable_projectRootDir_E3BDBDF111EE3CFF34C74C4D16CAF9C9FF0F3AFD">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">projectRootDir</td>
+            </tr>
+            <tr id="variable_projects_3122BDDBB99E082716C8DB20BAF8B91C6763C5A7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html">Project</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">projects</td>
+            </tr>
+            <tr id="variable_sourceFileMap_211D04B0E8FE4D91D8B44BD3BE775BA14D1AD543">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map::map&lt;std::string, sngcpp::ast::SourceFileNode*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">sourceFileMap</td>
+            </tr>
+            <tr id="variable_sourceFiles_868CF9C7F9A37D552C36BC201F50104E8791E8C7">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;sngcpp::ast::SourceFileNode*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">sourceFiles</td>
+            </tr>
+            <tr id="variable_stageDir_287B284F3741693D8B7D46482262F18D3A7C8A42">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">stageDir</td>
+            </tr>
+            <tr id="variable_stageReferences_BF87CB6C7D53EF72CEEDCA5AFBD3AFE6EDCB40E3">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">stageReferences</td>
+            </tr>
+            <tr id="variable_symbolTable_ED6A99AFA4E33C290679557B63101071CBC90672">
+                <td class="functionTableFirstCol" xml:space="preserve">sngcpp::symbols::SymbolTable</td>
+                <td class="functionTableSecondCol" xml:space="preserve">symbolTable</td>
+            </tr>
+            <tr id="variable_symbolTableXmlDoc_FD99DABEA69FDE0BA6568DD461B005AA6F2CEA22">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;sngxml::dom::Document></td>
+                <td class="functionTableSecondCol" xml:space="preserve">symbolTableXmlDoc</td>
+            </tr>
+            <tr id="variable_system_ED969B49BD906C80125A538C940286F8DAA682E1">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">system</td>
+            </tr>
+            <tr id="variable_systemRootDir_67A9BE32138206E6C721DC1E355E9EDC3A02BDC4">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">systemRootDir</td>
+            </tr>
+            <tr id="variable_systemXmlFilePath_A4FD8819F819DE01301E08C8EF9128B8E3A348D1">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">systemXmlFilePath</td>
+            </tr>
+            <tr id="variable_targetDir_BB522EEFA5CAF1EA79EB23B9855DC742B9DC4EE4">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">targetDir</td>
+            </tr>
+            <tr id="variable_targetName_3BACEF8887EADA2B1E9FC328C0A7ADE0E36ADE56">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">targetName</td>
+            </tr>
+            <tr id="variable_textFiles_838D0936B2F1657937F8637DFF7383EABDB138CF">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::u32string></td>
+                <td class="functionTableSecondCol" xml:space="preserve">textFiles</td>
+            </tr>
+            <tr id="variable_type_06603B4A4A27A9DB2CA329DB5C46233595E1AE77">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">type</td>
+            </tr>
+            <tr id="variable_vcxprojectFilePath_36BA693213CCEADE0BA4A7BE79825AAEEBF71DC5">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">vcxprojectFilePath</td>
+            </tr>
+            <tr id="variable_vcxprojectRootDir_4EEC95BE1D26DD48132149E11A3D144719CF821B">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">vcxprojectRootDir</td>
+            </tr>
+            <tr id="variable_verbose_08BF2BADB506A09CC08992115F092A46D88C13A1">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">verbose</td>
+            </tr>
+            <tr id="variable_xmlFilePath_6229A79687A474DAEAB299F61069E149249D19C4">
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">xmlFilePath</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Project_821492E93BD092AF89E56E0DEA568178153271DB">Project Constructor</h3>
+        <h4>
+            cpp2cm::Project::Project(<span class="kw">const </span>
+            std::string&amp; systemXmlFilePath_, <span class="kw">const </span>
+            std::string&amp; xmlFilePath_, <span class="kw">bool</span>
+             nothrowStatus_)</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#38">38</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#31">31</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_BuildAst_2F6DBFA96696162A41BBE3A8E244912677310DE2">BuildAst Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::BuildAst()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#568">568</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#45">45</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Included_E6803916EE407CF2D704D57554E87C87C54D0A99">cpp2cm::File::Included</a>
+            , <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Name_DF46F2119295B05F0857C3C155206306B96F20BE">cpp2cm::File::Name</a>
+            , <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Path_326715970FE2751BE92CA1BEB292EDE93A600C0D">cpp2cm::File::Path</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_BuildSymbolTable_83E7DFC57A6DDAA93CEF665B376821F804B5871C">BuildSymbolTable Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::BuildSymbolTable()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#737">737</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#50">50</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadAst_0559492953D0F370342E3AE971323F42EB3B4A97">cpp2cm::Project::ReadAst</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">Convert Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::Convert(<a href="./enum_ProcessType_112716E41CCD70277F82EFBB7A0D925FE783FD53.html">ProcessType</a>
+             processType)</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#797">797</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#53">53</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_GetSourceFiles_DE44480BD9213AC8E6702117268D083C3B8AA454">cpp2cm::Converter::GetSourceFiles</a>
+            , <a href="./class_Converter_1A328DEF97D4586D01605A05433221A08AF1A59B.html#function_Write_120C45360771C994D7092EEE0894FF30DE7895AC">cpp2cm::Converter::Write</a>
+            , <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Path_326715970FE2751BE92CA1BEB292EDE93A600C0D">cpp2cm::File::Path</a>
+            , <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_SetIncluded_BD8B4A71779C984196CDDF62DE2BF6CE4F01B828">cpp2cm::File::SetIncluded</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_AddSourceXmlDoc_C35E4230E46737A9BDC0ED1177BF4FBCE0FA6CDC">cpp2cm::Map::AddSourceXmlDoc</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_SetCurrentProjectName_6303ED511F10CB352C7B2D63E43ECE02D6BF162C">cpp2cm::Map::SetCurrentProjectName</a>
+            , <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_SetSymbolTable_FFA456CD17D4AB8173D0F2A40EB7CD0EEA2EBD8A">cpp2cm::Map::SetSymbolTable</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadPatchFiles_E7558671776A156024BDE6AAE1A185D5CCB9FB83">cpp2cm::Project::ReadPatchFiles</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSymbolTableXml_B3E04DC1039E365A3E8582291569E846E6E23A2F">cpp2cm::Project::ReadSymbolTableXml</a>
+            , <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Apply_80D50AB65E1C683828221EEC5113D465C090AE95">cpp2cm::SourceFiles::Apply</a>
+            , <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Get_3D275B236FBDADB88CBE3FE5589668FA42972D94">cpp2cm::SourceFiles::Get</a>
+            , <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Sort_CEF9453A14EB903494207CC349764C6A8B70B08C">cpp2cm::SourceFiles::Sort</a>
+            , <a href="./class_SourceFiles_B0541C85CD204ACB6FE65F7A8A4AC3AF55209186.html#function_Write_8119BDD4596DEBA55EDCD9D63E0DFF9D34321E3A">cpp2cm::SourceFiles::Write</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetSourceFile_64445EF2CF103FBE61173412716F7D3B5FD0D6BE">GetSourceFile Member Function</h3>
+        <h4>
+            sngcpp::ast::SourceFileNode* cpp2cm::Project::GetSourceFile(<span class="kw">const </span>
+            std::string&amp; sourceFilePath) <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#1057">1057</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#57">57</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Import_93291EB6BA2CBC41D81664E5E5F355E22171948A">Import Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::Import()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#645">645</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#48">48</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_NothrowList_D406E65392105331AECF593C7DE16B07C7A73CB5.html#function_Verbose_9E1A07F9015DD497247FE24D78EF170B169BA662">cpp2cm::NothrowList::Verbose</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSystemProjects_30ABD94B10930BF5C1352EDB380CE797D0B11BC7">cpp2cm::Project::ReadSystemProjects</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MapNamespaces_122336BBA57E189C17080E70BDB8F6DC81502D02">MapNamespaces Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::MapNamespaces(sngxml::dom::Document* mapDoc)</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#534">534</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#44">44</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Map_1C738DC7B7785D10EF77AE48EEC3F2027761348A.html#function_MapNs_0C8B95035A4E661F37586C56915A2D3F92B93D02">cpp2cm::Map::MapNs</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMap_9E46E798CD5FBA0E6B2F81E9D2B6908B154009D9">cpp2cm::Project::ReadMap</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">Process Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::Process(<span class="kw">bool</span>
+             verbose, <a href="./enum_ProcessType_112716E41CCD70277F82EFBB7A0D925FE783FD53.html">ProcessType</a>
+             processType)</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#64">64</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#32">32</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildAst_2F6DBFA96696162A41BBE3A8E244912677310DE2">cpp2cm::Project::BuildAst</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildSymbolTable_83E7DFC57A6DDAA93CEF665B376821F804B5871C">cpp2cm::Project::BuildSymbolTable</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">cpp2cm::Project::Convert</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Import_93291EB6BA2CBC41D81664E5E5F355E22171948A">cpp2cm::Project::Import</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadFilter_3D4B698CB82DE832B3D4DF77F0B748205A39DC7B">cpp2cm::Project::ReadFilter</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadIncludePath_9839EA5C3A3E594F1DAD14653D6C70F6D8408127">cpp2cm::Project::ReadIncludePath</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadInstallDir_2A6CCF270CF2B584FC08871A944B1765911A5D04">cpp2cm::Project::ReadInstallDir</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMap_9E46E798CD5FBA0E6B2F81E9D2B6908B154009D9">cpp2cm::Project::ReadMap</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadMergeDirFiles_08A58CD46F4C92C1FD0FE2455D9D1FDF5386CC46">cpp2cm::Project::ReadMergeDirFiles</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadNothrowList_402C410790085993F43A28470DC26EFAB2766310">cpp2cm::Project::ReadNothrowList</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadReferences_2E60AD699744EA2A8B2D3F12E29DA87F000AED8F">cpp2cm::Project::ReadReferences</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSources_342D9B72EDCD98C7D95CDE131935226A8F0DA2A9">cpp2cm::Project::ReadSources</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadTargetDir_34F1840BA5DC2ED029A202667B63644D389DCBCD">cpp2cm::Project::ReadTargetDir</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadTextFiles_234FF67232E823AC51D2F3FFF78ABD69A659C893">cpp2cm::Project::ReadTextFiles</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadVCXProjectFilePath_9D64913D79BB0D7CE9D4454A4EFFF7476F43D72F">cpp2cm::Project::ReadVCXProjectFilePath</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_WriteAst_B5AF4375CBF20E5BF76E13D62995634B02D98D3F">cpp2cm::Project::WriteAst</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_WriteSymbolTableXml_B0B149129F07D42E6A0D15E7BE5ACD166EA8A995">cpp2cm::Project::WriteSymbolTableXml</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadAst_0559492953D0F370342E3AE971323F42EB3B4A97">ReadAst Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadAst()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#633">633</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#47">47</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_BuildSymbolTable_83E7DFC57A6DDAA93CEF665B376821F804B5871C">cpp2cm::Project::BuildSymbolTable</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadFilter_3D4B698CB82DE832B3D4DF77F0B748205A39DC7B">ReadFilter Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadFilter()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#327">327</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#40">40</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#function_Add_39052AE4563E6FA38384BFC4FEA71EAE83F6247D">cpp2cm::FilterList::Add</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadIncludePath_9839EA5C3A3E594F1DAD14653D6C70F6D8408127">ReadIncludePath Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadIncludePath()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#239">239</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#37">37</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadInstallDir_2A6CCF270CF2B584FC08871A944B1765911A5D04">ReadInstallDir Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadInstallDir()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#296">296</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#39">39</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadMap_9E46E798CD5FBA0E6B2F81E9D2B6908B154009D9">ReadMap Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadMap()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#465">465</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#42">42</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_MapNamespaces_122336BBA57E189C17080E70BDB8F6DC81502D02">cpp2cm::Project::MapNamespaces</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadMergeDirFiles_08A58CD46F4C92C1FD0FE2455D9D1FDF5386CC46">ReadMergeDirFiles Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadMergeDirFiles()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#1035">1035</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#59">59</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Name_DF46F2119295B05F0857C3C155206306B96F20BE">cpp2cm::File::Name</a>
+            , <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_SetIncluded_BD8B4A71779C984196CDDF62DE2BF6CE4F01B828">cpp2cm::File::SetIncluded</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadNothrowList_402C410790085993F43A28470DC26EFAB2766310">ReadNothrowList Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadNothrowList()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#404">404</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#41">41</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_NothrowList_D406E65392105331AECF593C7DE16B07C7A73CB5.html#function_AddPattern_087BC3BDC547E320E46B3B1DA846D7C453D9B784">cpp2cm::NothrowList::AddPattern</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadPatchFiles_E7558671776A156024BDE6AAE1A185D5CCB9FB83">ReadPatchFiles Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadPatchFiles()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#1000">1000</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#58">58</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./struct_PatchFileParser_F6B60C5E03574F971A127512CECE5A50FDA40B2E.html#function_Parse_5D48210CBC61CD9B385D6709B78A8F9F7A3EC683">PatchFileParser::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">cpp2cm::Project::Convert</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadReferences_2E60AD699744EA2A8B2D3F12E29DA87F000AED8F">ReadReferences Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadReferences()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#496">496</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#43">43</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadSources_342D9B72EDCD98C7D95CDE131935226A8F0DA2A9">ReadSources Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadSources()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#113">113</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#34">34</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Included_E6803916EE407CF2D704D57554E87C87C54D0A99">cpp2cm::File::Included</a>
+            , <a href="./class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#function_Apply_0A03D066C9626100C4494C15A11AA96887BAAD1B">cpp2cm::FilterList::Apply</a>
+            , <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadVCSources_743D0F586D9A08F1D7F3A92D57ED3A2EADF8B6FB">cpp2cm::Project::ReadVCSources</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadSymbolTableXml_B3E04DC1039E365A3E8582291569E846E6E23A2F">ReadSymbolTableXml Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadSymbolTableXml()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#791">791</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#52">52</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Convert_1B564C7B1F23D1C1EEEE92F1E46CA48F613B2724">cpp2cm::Project::Convert</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadSystemProjects_30ABD94B10930BF5C1352EDB380CE797D0B11BC7">ReadSystemProjects Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadSystemProjects()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#702">702</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#49">49</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_NothrowList_D406E65392105331AECF593C7DE16B07C7A73CB5.html#function_Verbose_9E1A07F9015DD497247FE24D78EF170B169BA662">cpp2cm::NothrowList::Verbose</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Import_93291EB6BA2CBC41D81664E5E5F355E22171948A">cpp2cm::Project::Import</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadTargetDir_34F1840BA5DC2ED029A202667B63644D389DCBCD">ReadTargetDir Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadTargetDir()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#265">265</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#38">38</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadTextFiles_234FF67232E823AC51D2F3FFF78ABD69A659C893">ReadTextFiles Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadTextFiles()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#213">213</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#36">36</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadVCSources_743D0F586D9A08F1D7F3A92D57ED3A2EADF8B6FB">ReadVCSources Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadVCSources()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#149">149</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#35">35</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Included_E6803916EE407CF2D704D57554E87C87C54D0A99">cpp2cm::File::Included</a>
+            , <a href="./class_File_3B29C315BE5FAF4331BED011DA851474F37A72D0.html#function_Path_326715970FE2751BE92CA1BEB292EDE93A600C0D">cpp2cm::File::Path</a>
+            , <a href="./class_FilterList_AE6691E37354AA706D94FCA5AA93FFDD2855ECD8.html#function_Apply_0A03D066C9626100C4494C15A11AA96887BAAD1B">cpp2cm::FilterList::Apply</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_ReadSources_342D9B72EDCD98C7D95CDE131935226A8F0DA2A9">cpp2cm::Project::ReadSources</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReadVCXProjectFilePath_9D64913D79BB0D7CE9D4454A4EFFF7476F43D72F">ReadVCXProjectFilePath Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::ReadVCXProjectFilePath()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#86">86</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#33">33</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetAstFilePath_12140A530434A6931CC90F361A75E6EBC4479897">SetAstFilePath Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::SetAstFilePath()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#563">563</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#55">55</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetStageDir_5BB28DBE49999A2B9F7BA9BFB2C33C2AA206379F">SetStageDir Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::SetStageDir()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#557">557</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#54">54</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SetSystem_23F59B69EBF950BF05A87C4A67B451058B2E8B70">SetSystem Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::SetSystem()</h4>
+        <span>
+            Definition at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#56">56</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteAst_B5AF4375CBF20E5BF76E13D62995634B02D98D3F">WriteAst Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::WriteAst()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#616">616</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#46">46</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_WriteSymbolTableXml_B0B149129F07D42E6A0D15E7BE5ACD166EA8A995">WriteSymbolTableXml Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             cpp2cm::Project::WriteSymbolTableXml()</h4>
+        <span>
+            Definition at line <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html#770">770</a>
+             of <a href="file/Project.cpp_326A50D8A881989DD9E5EF33260AE066AC6F6715.html">Project.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html#51">51</a>
+             of <a href="file/Project.hpp_5B1073FA59D9650B2D96CAD55DFD84C0BD14C163.html">Project.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_F1CE6D2538688DCD6BA90BDE33FF822ABC638BFA.html#function_Process_1E74762494B9A6B3714B781D5A548189D8037F77">cpp2cm::Project::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_cpp2cm_8260B15047AE5B28BAB713C2649C525FEC0FBBA5.html">up</a>
+         | <a href="class_PatchFile_840201B003176489B17F4ADD9DFDA225D0E965A5.html">prev</a>
+         | <a href="class_SourceFile_912D00703FDDDD57A2C39D0704A8A1ED8BD7C6F5.html">next</a>
+    </body>
+</html>

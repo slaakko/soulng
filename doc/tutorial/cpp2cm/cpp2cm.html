@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Cpp2cm tutorial</title>
+    <link href="../../style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Cpp2cm tutorial</h1>
+
+    <h2>Introduction</h2>
+
+    <p>
+        Cpp2cm is a semiautomatic source-to-source tool for converting a Visual Studio C++ project to a Cmajor project.
+        It parses C++ source code, generates AST from it and then visits the AST nodes by converting each C++ language construct it can to the corresponding Cmajor language construct.
+        If it cannot convert something, it places the string "NOT_CONVERTED" to the output source code.
+    </p>
+    
+    <p>
+        The tool has a small "system" C++ library that contains interfaces of some standard C++ library classes and functions. 
+        The system library is used for mapping an std C++ class or function to the corresponding Cmajor class or function.
+        The system library can be extended.
+    </p>
+
+    <p>
+        The tool is configured with XML files and patch text files.
+    </p>
+
+    <p>
+        This document presents the steps needed for converting a toy C++ example project to the corresponding Cmajor project. 
+        The example project can be found in the %SOULNG_ROOT%\tools\cpp2cm\projects\example directory (that is by default C:\soulng-3.0.0\tools\cpp2cm\projects\example directory).
+    </p>
+
+    <h2>Example C++ project</h2>
+
+    <p>
+        The example Visual Studio C++ project contains three source files: <strong>main.cpp</strong> contains the main function that places the arguments given to the program to an std::vector,
+        calls a sorting function declarared in <strong>sort.hpp</strong> file to sort the vector, and prints the sorted vector.
+        The sort function is defined in the <strong>sort.cpp</strong> file.
+    </p>
+    
+    <p>
+    Here's the contents of the <strong>main.cpp</strong> source file:
+    </p>
+
+    <pre>
+    // main.cpp:
+    
+    #include &lt;iostream>
+    #include &lt;example/sort.hpp>
+
+    int main(int argc, const char** argv)
+    {
+        std::vector&lt;std::string> args;
+        int n = argc;
+        for (int i = 1; i < n; ++i)
+        {
+            std::cout &lt;&lt; "arg " &lt;&lt; i &lt;&lt; " " &lt;&lt; argv[i] &lt;&lt; std::endl;
+            args.push_back(argv[i]);
+        }
+        example_ns::sort(args);
+        std::cout &lt;&lt; "sorted:" &lt;&lt; std::endl;
+        for (int i = 0; i &lt; args.size(); ++i)
+        {
+            std::cout &lt;&lt; args[i] &lt;&lt; std::endl;
+        }
+        return 0;
+    }
+    </pre>
+    
+    <p>
+        The sort function is enclosed in a namespace for demonstrating the namespace mapping mechanism of cpp2cm.
+        Here's the contents of the <strong>sort.hpp</strong> source file:
+    </p>
+    
+    <pre>
+    // sort.hpp:
+    
+    #ifndef SORT_HPP
+    #define SORT_HPP
+    #include &lt;vector>
+    #include &lt;string>
+
+    namespace example_ns
+    {
+        void sort(std::vector&lt;std::string>& v);
+    }
+
+    #endif 
+    </pre>
+
+    <p>
+        The sort function just calls standard sort for the vector.
+        Here's the contents of the <strong>sort.cpp</strong> source file:
+    </p>
+
+    <pre>
+    // sort.cpp:
+    
+    #include &lt;example/sort.hpp>
+    #include &lt;algorithm>
+
+    namespace example_ns
+    {
+        void sort(std::vector&lt;std::string>& v)
+        {
+            std::sort(v.begin(), v.end());
+        }
+    }
+    </pre>
+    
+    <h2>Project configuration XML file</h2>
+    
+    <p>
+        The tool is given as argument an XML file that contains conversion settings.
+        Here's the contents of the configuration XML file that is named <strong>example.xml</strong>:
+    </p>
+    
+    <pre>
+    &lt;!-- example.xml: -->
+    
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;project name="example" type="program" targetName="Example">
+      &lt;imports>
+      &lt;/imports>
+      &lt;references>
+      &lt;/references>
+      &lt;vcxproject file="cpp_project/example/example.vcxproj"/>
+      &lt;include path=".."/>
+      &lt;target dir="build"/>
+      &lt;install dir="install"/>
+      &lt;map file="map.xml"/>
+      &lt;patches>
+      &lt;/patches>
+      &lt;filter>
+      &lt;/filter>
+      &lt;text>
+      &lt;/text>
+    &lt;/project>
+    </pre>
+
+    <ul>
+
+    <li>
+        The <strong>name</strong> attribute of the root <strong>project</strong> element names the project and sets it as the base name for generated <em>.ast</em> file, for example.
+        An optional <strong>type</strong> attribute can be either <strong>program</strong> or <strong>library</strong>. If not set, <strong>library</strong> is the default.
+        An optional <strong>targetName</strong> attribute sets the base name of the Cmajor project file. If not set, value of the <strong>name</strong> attribute is used.
+    </li>
+    
+    <li>
+        A project may import "system" modules and other projects. We leave the <strong>imports</strong> element empty for now.
+        The build and install references of the Cmajor target project may be given in the <strong>references</strong> element. We leave the <strong>references</strong> also empty for now.
+    </li>
+    
+    <li>
+        The path to the Visual Studio project to be converted is set in the <strong>file</strong> attribute of the <strong>vcxproject</strong> element.
+    </li>
+    
+    <li>
+        The INCLUDE path for parsing the C++ sources is set in the <strong>path</strong> attribute of the <strong>include</strong> element. Include directories are separated by semicolons.
+    </li>
+    
+    <li>
+        The conversion output or "build" directory is set using the <strong>dir</strong> attribute of the the <strong>target</strong> element.
+    </li>
+
+    <li>
+        The converted Cmajor source, project and text files are copied to the installation directory when <strong>--install</strong> option is given to the converter.
+        The installation directory is set using the <strong>dir</strong> attribute of the <strong>install</strong> element.
+    </li>
+    
+    <li>
+        The map file is used for mapping namespaces. The map file is set using the <strong>file</strong> attribute of the <strong>map</strong> element.
+    </li>
+    
+    <li>
+        The converted Cmajor source files may be patched with text patch files whose paths are given as <strong>file</strong> attributes of the <strong>patch</strong> elements that are
+        enclosed in the <strong>patches</strong> element.
+    </li>
+
+    <li>
+        The <strong>filter</strong> element can be used for excluding and including C++ source files. 
+        The <strong>exclude</strong> attribute of a <strong>file</strong> element sets C++ file names to exclude from the conversion. Wild cards * and ? can be used.
+        The <strong>include</strong> attribute of a <strong>file</strong> element sets C++ file names to include in conversion if previously excluded. Wild cards * and ? can be used.
+        The <strong>file</strong> elements are enclosed in a single <strong>filter</strong> element.
+    </li>
+
+    <li>
+        The <strong>text</strong> elements name text files to include in the converted Cmajor project. 
+        The names of the text files are set in the <strong>file</strong> attribute of the <strong>text</strong> element.
+    </li>
+    
+    </ul>
+
+    <h2>Map XML file</h2>
+
+    <p>
+        The map xml file is used for mapping namespace names.
+        Here we map C++ namespace <strong>example_ns</strong> as <strong>Example</strong> namespace in the generated target source code:
+    </p>
+
+    <pre>
+    &lt;!-- map.xml: -->
+    
+    &lt;?xml version="1.0" encoding="utf-8"?>
+    &lt;map>
+      &lt;namespace source="example_ns" target="Example"/>
+    &lt;/map>
+    </pre>
+
+    <h2>First run</h2>
+    
+    <p>
+        Here we run the <strong>cpp2cm</strong> converter with the <strong>-v</strong> argument for generating verbose output messages:
+    </p>
+    
+    <pre>
+    D:\work\soulng-project\tools\cpp2cm\projects\example>cpp2cm -v example.xml
+    example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/example.vcxproj
+    example> D:/work/soulng-project/tools/cpp2cm/projects/example/map.xml
+    example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.hpp
+    example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/main.cpp
+    example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.cpp
+    example==> D:/work/soulng-project/tools/cpp2cm/projects/example/stage/example.ast
+    example==> D:/work/soulng-project/tools/cpp2cm/projects/example/stage/example.xml
+    warning: main.cpp:10: expression not converted
+    warning: main.cpp:10: expression not converted
+    warning: main.cpp:14: expression not converted
+    warning: main.cpp:14: expression not converted
+    warning: main.cpp:17: expression not converted
+    warning: main.cpp:17: expression not converted
+    creating project file:
+    ==> D:/work/soulng-project/tools/cpp2cm/projects/example/build/Example.cmp
+    </pre>
+
+    <p>
+        The tool warns about constructs it could not convert. It places the converted files to the <strong>build</strong> directory.
+    </p>
+    
+    <h2>Converted main.cm (1)</h2>
+    
+    <p>
+        Here's the contents of the converted <strong>main.cm</strong>:
+    </p>
+    
+    <pre>
+    // main.cm (1):
+     
+    using System;
+    using System.Collections;
+
+    // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/main.cpp' using cpp2cm version 1.0.0
+
+    public int main(int argc, const char** argv)
+    {
+        NOT_CONVERTED&lt;NOT_CONVERTED> args;
+        int n = argc;
+        for (int i = 1; i &lt; n; ++i)
+        {
+            NOT_CONVERTED &lt;&lt; "arg " &lt;&lt; i &lt;&lt; " " &lt;&lt; argv[i] &lt;&lt; NOT_CONVERTED;
+            args.push_back(argv[i]);
+        }
+        sort(args);
+        NOT_CONVERTED &lt;&lt; "sorted:" &lt;&lt; NOT_CONVERTED;
+        for (int i = 0; i &lt; args.size(); ++i)
+        {
+            NOT_CONVERTED &lt;&lt; args[i] &lt;&lt; NOT_CONVERTED;
+        }
+        return 0;
+    }
+    </pre>
+    
+    <p>
+        The tool could not convert std::vector and output statements, but local variales and the for loop was converted.
+    </p>
+    
+    <h2>Converted sort.cm (1)</h2>
+    
+    <p>
+        Here's the contents of the converted <strong>sort.cm</strong>:
+    </p>
+    
+    <pre>
+    // sort.cm (1):
+     
+    using System;
+    using System.Collections;
+
+    // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.hpp' using cpp2cm version 1.0.0
+
+    // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.cpp' using cpp2cm version 1.0.0
+
+    namespace Example
+    {
+        public void sort(NOT_CONVERTED&lt;NOT_CONVERTED>& v)
+        {
+            sort(v.begin(), v.end());
+        }
+    } // namespace Example
+    </pre>
+    
+    <p>
+        Again the vector was not converted but the namespace was mapped and the sort call was left as is.
+    </p>
+    
+    <h2>Second run</h2>
+    
+    <p>
+        We now import the <strong>std</strong> system module by setting the <strong>name</strong> attribute of the <strong>import</strong> element in the configuration file:
+    </p>
+        
+    <pre>
+        &lt;!-- example.xml -->
+        ...
+        &lt;imports>
+          &lt;import name="std"/>
+        &lt;/imports>
+        ...
+    </pre>
+    
+    <p>
+        Other modules that can be imported are <strong>boost</strong> and <strong>soulng.util</strong>.
+    </p>
+    
+    <h3>main.cm (2)</h3>
+    
+    <p>
+        By running the conversion second time will give the following <strong>main.cm</strong> output:
+    </p>
+    
+    <pre>
+        D:\work\soulng-project\tools\cpp2cm\projects\example>cpp2cm -v example.xml
+    </pre>
+    
+    <pre>
+        // main.cm: 
+        
+        using System;
+        using System.Collections;
+
+        // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/main.cpp' using cpp2cm version 1.0.0
+
+        public int main(int argc, const char** argv)
+        {
+            List&lt;string> args;
+            int n = argc;
+            for (int i = 1; i < n; ++i)
+            {
+                NOT_CONVERTED &lt;&lt; "arg " &lt;&lt; i &lt;&lt; " " &lt;&lt; argv[i] &lt;&lt; NOT_CONVERTED;
+                args.Add(argv[i]);
+            }
+            sort(args);
+            NOT_CONVERTED &lt;&lt; "sorted:" &lt;&lt; NOT_CONVERTED;
+            for (int i = 0; i &lt; args.Count(); ++i)
+            {
+                NOT_CONVERTED &lt;&lt; args[i] &lt;&lt; NOT_CONVERTED;
+            }
+            return 0;
+        }
+    </pre>
+    
+    <p>
+        Now std::vector and std::string were found from the <strong>std</strong> module, so they are now converted to a Cmajor List&lt;string> type.
+    </p>
+    
+    <h3>sort.cm (2)</h3>
+    
+    <p>
+        Here's the contents of the <strong>sort.cm</strong> output:
+    </p>
+    
+    <pre>
+        using System;
+        using System.Collections;
+
+        // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.hpp' using cpp2cm version 1.0.0
+
+        // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.cpp' using cpp2cm version 1.0.0
+
+        namespace Example
+        {
+            public void sort(List&lt;string>& v)
+            {
+                Sort(v.Begin(), v.End());
+            }
+        } // namespace Example
+    </pre>
+    
+    <p>
+        The vector was converted to a <strong>List</strong>, the std::sort function call to a <strong>Sort</strong> function call, 
+        and the iterator access functions to <strong>Begin()</strong> and <strong>End()</strong>.
+        So the <strong>sort.cpp</strong> was successfully converted.
+    </p>
+    
+    <h2>Patching</h2>
+    
+    <p>
+      The tool has a simple source code patching mechanism. 
+      The names of the patch files are declared using the <strong>file</strong> attribute of the <strong>patch</strong> element within <strong>patches</strong> element in the project XML configuration file:
+    </p>
+    
+    <pre>
+      &lt;!-- example.xml -->
+      
+      ...
+      &lt;patches>
+        &lt;patch file="example.patches"/>
+      &lt;/patches>
+      ...
+    </pre>
+    
+    <p>
+        Patching works by inserting, deleting and modifying lines in the final output source code file.
+    </p>
+    
+    <p>
+        Here we patch the stream output operations of the <strong>main.cpp</strong>:
+    </p>
+    
+    <pre>
+        main.cm:12:M/NOT_CONVERTED &lt;&lt; "arg " &lt;&lt; i &lt;&lt; " " &lt;&lt; argv[i] &lt;&lt; NOT_CONVERTED;/Console.Out() &lt;&lt; "arg " &lt;&lt; i &lt;&lt; " " &lt;&lt; argv[i] &lt;&lt; endl();/
+        main.cm:15:M/sort(args);/Example.sort(args);/
+        main.cm:16:M/NOT_CONVERTED &lt;&lt; "sorted:" &lt;&lt; NOT_CONVERTED;/Console.Out() &lt;&lt; "sorted:" &lt;&lt; endl();/
+        main.cm:19:M/NOT_CONVERTED &lt;&lt; args[i] &lt;&lt; NOT_CONVERTED;/Console.Out() &lt;&lt; args[i] &lt;&lt; endl();/
+    </pre>
+    
+    <p>
+        The patch file has four modification patches for lines 12, 15, 16 and 19.
+        The syntax of the modification patch is as follows:
+    </p>
+    
+    <pre>
+       <em>source-file.cm</em><strong>:</strong><em>line number</em><strong>:M/</strong><em>source text</em><strong>/</strong><em>replacement text</em><strong>/</strong>
+    </pre>
+
+    <p>
+        The modification patch finds the source substring text from the given line of the output file and replaces it with the replacement text.
+    </p>
+    
+    <p>
+        The syntax of the insertion patch is as follows:
+    </p>
+    
+    <pre>
+        <em>source-file.cm</em><strong>:</strong><em>line number</em><strong>:I</strong>/<em>text line to insert</em><strong>/</strong>
+    </pre>
+    
+    <p>
+        The insertion patch inserts a line to the output file.
+    </p>
+    
+    <p>
+        The syntax of the deletion patch is as follows:
+    </p>
+    
+    <pre>
+        <em>source-file.cm</em><strong>:</strong><em>line number</em><strong>:D</strong>
+    </pre>
+    
+    <p>
+        The deletion patch deletes a line from the output file.
+    </p>
+    
+    <h2>Third run</h2>
+    
+    <pre>
+        D:\work\soulng-project\tools\cpp2cm\projects\example>cpp2cm -v example.xml
+    </pre>
+    
+    <h3>main.cm (3)</h3>
+    
+    <p>
+        Here's the contents of the patched <strong>main.cm</strong>:
+    </p>
+    
+    <pre>
+        // main.cm: 
+        
+        using System;
+        using System.Collections;
+
+        // this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/main.cpp' using cpp2cm version 1.0.0
+
+        public int main(int argc, const char** argv)
+        {
+            List&lt;string> args;
+            int n = argc;
+            for (int i = 1; i < n; ++i)
+            {
+                Console.Out() &lt;&lt; "arg " &lt;&lt; i &lt;&lt; " " &lt;&lt; argv[i] &lt;&lt; endl();
+                args.Add(argv[i]);
+            }
+            Example.sort(args);
+            Console.Out() &lt;&lt; "sorted:" &lt;&lt; endl();
+            for (int i = 0; i &lt; args.Count(); ++i)
+            {
+                Console.Out() &lt;&lt; args[i] &lt;&lt; endl();
+            }
+            return 0;
+        }
+    </pre>
+    
+    <h2>
+        Compiling the output project
+    </h2>
+    
+    <p>
+        Now compiling the output project succeeeds:
+    </p>
+    
+    <pre>
+        D:\work\soulng-project\tools\cpp2cm\projects\example\build>cmc -v Example.cmp
+        Cmajor compiler version 3.5.0 for Windows x64
+        00>===== Building project 'Example' (D:/work/soulng-project/tools/cpp2cm/projects/example/build/Example.cmp) using debug configuration.
+        00>Parsing 2 source files in main thread...
+        00>Source files parsed.
+        00>Binding types...
+        00>Compiling using 4 threads...
+        00>> D:/work/soulng-project/tools/cpp2cm/projects/example/build/main.cm
+        00>> D:/work/soulng-project/tools/cpp2cm/projects/example/build/sort.cm
+        00>Example compilation time: 00:00:00.183
+        00>Creating library...
+        00>==> D:/work/soulng-project/tools/cpp2cm/projects/example/build/lib/debug/Example.lib
+        00>Linking...
+        00>==> D:/work/soulng-project/tools/cpp2cm/projects/example/build/bin/debug/Example.exe
+        00>Writing module file...
+        00>==> D:/work/soulng-project/tools/cpp2cm/projects/example/build/lib/debug/Example.cmm
+        00>1543 class template specializations, 5 new, 5 copied.
+        00>Project 'Example' built successfully.
+    </pre>
+    
+    <h2>Installation</h2>
+    
+    <p>
+        We can now install the output project to a installation directory by running the converter with the <strong>--install</strong> option:
+    </p>
+    
+    <pre>
+        D:\work\soulng-project\tools\cpp2cm\projects\example>cpp2cm -v --install example.xml
+        example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/example.vcxproj
+        example> D:/work/soulng-project/tools/cpp2cm/projects/example/map.xml
+        example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.hpp
+        example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/main.cpp
+        example> D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.cpp
+        example==> D:/work/soulng-project/tools/cpp2cm/projects/example/stage/example.ast
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/stage/std.ast
+        example==> D:/work/soulng-project/tools/cpp2cm/projects/example/stage/example.xml
+        warning: main.cpp:10: expression not converted
+        warning: main.cpp:10: expression not converted
+        warning: main.cpp:14: expression not converted
+        warning: main.cpp:14: expression not converted
+        warning: main.cpp:17: expression not converted
+        warning: main.cpp:17: expression not converted
+        patching:
+        > D:/work/soulng-project/tools/cpp2cm/projects/example/example.patches
+        installing:
+        D:/work/soulng-project/tools/cpp2cm/projects/example/build/main.cm -> D:/work/soulng-project/tools/cpp2cm/projects/example/install/main.cm
+        D:/work/soulng-project/tools/cpp2cm/projects/example/build/sort.cm -> D:/work/soulng-project/tools/cpp2cm/projects/example/install/sort.cm
+        creating project file:
+        ==> D:/work/soulng-project/tools/cpp2cm/projects/example/install/Example.cmp
+    </pre>
+    
+    <h2>Project imports</h2>
+    
+    <p>
+        Besides importing a system module, a project can import another project. The imported project is specified by setting the path to its XML configuration file 
+        as the value of the <strong>project</strong> attribute of an <strong>import</strong> element.
+        For example the following setting will import a <strong>Cm.xml</strong> project from a sibling directory whose name is <strong>Cm</strong>:
+    </p>
+    
+    <pre>
+        &lt;!-- configuration.xml -->
+        ...
+        &lt;imports>
+          &lt;import project="../Cm/Cm.xml"/>
+        &lt;/imports>
+        ...
+    </pre>
+    
+    <p>
+        Then the symbol table of the imported project will be made available in the project that contains the import. 
+        The symbol table will be used for resolving references to namespace names, typedef names, class names and function names.
+    </p>
+    
+    <h2> Project references</h2>
+    
+    <p>
+        You can add Cmajor project references to the output project by setting the path to its <em>.cmp</em> project file as the value of the <strong>project</strong> attribute
+        of the <strong>reference</strong> element.
+        For example the following setting will add a reference to a <strong>Cm.cmp</strong> Cmajor project to the output project that will reside in a sibling directory whose name is <strong>Cm</strong>:
+    </p>
+    
+    <pre>
+        &lt;!-- configuration.xml -->
+        ...
+        &lt;references>
+          &lt;reference project="../Cm/Cm.cmp"/>
+        &lt;/references>
+        ...
+    </pre>
+    
+    <p>
+        A reference element may have a <strong>kind</strong> attribute that specifies whether the reference is for build the configuration: kind="<strong>stage</strong>", for 
+        installation configuration: kind="<strong>install</strong>", or both (the default).
+    </p>
+    
+    <h2>Extending system libraries</h2>
+    
+    <p>
+        The %SOULNG_ROOT%\tools\cpp2cm\system directory contains an XML file named <strong>system.xml</strong> and a subdirectory for each system module. 
+        The <strong>system.xml</strong> lists paths to system module projects in those subdirectories.
+    </p>
+    
+    <p>
+        The contents of the default <strong>system.xml</strong> is as follows:
+    </p>
+    
+    <pre>
+        &lt;?xml version="1.0" encoding="utf-8"?>
+        &lt;cpp2cm>
+          &lt;projects>
+            &lt;project file="std/std.xml"/>
+            &lt;project file="boost/boost.xml"/>
+            &lt;project file="soulng.util/soulng.util.xml"/>
+          &lt;/projects>
+        &lt;/cpp2cm>
+    </pre>
+    
+    <p>
+        A system module project XML file contains names of C++ header files that are used for building the symbol table of the system module. 
+        It may also contain an INCLUDE path and it may import the symbol table of another system module project.
+    </p>
+    
+    <h3>Project XML files for system modules</h3>
+    
+    <p>
+        Here's the contents of the <strong>std.xml</strong> project XML file for the <strong>std</strong> system module:
+    </p>
+    
+    <pre>
+        &lt;project name="std">
+          &lt;source file="algorithm.hpp"/>
+          &lt;source file="exception.hpp"/>
+          &lt;source file="list.hpp"/>
+          &lt;source file="map.hpp"/>
+          &lt;source file="move.hpp"/>
+          &lt;source file="pair.hpp"/>
+          &lt;source file="set.hpp"/>
+          &lt;source file="stack.hpp"/>
+          &lt;source file="stdint.hpp"/>
+          &lt;source file="string.hpp"/>
+          &lt;source file="stringstream.hpp"/>
+          &lt;source file="ostream.hpp"/>
+          &lt;source file="unique_ptr.hpp"/>
+          &lt;source file="unordered_map.hpp"/>
+          &lt;source file="unordered_set.hpp"/>
+          &lt;source file="vector.hpp"/>
+          &lt;include path="."/>
+        &lt;/project>
+    </pre>
+    
+    <p>
+        Here's the contents of the <strong>boost.xml</strong> project XML file for the <strong>boost</strong> system module:
+    </p>
+    
+    <pre>
+        &lt;project name="boost">
+          &lt;imports>
+            &lt;import project="../std/std.xml"/>
+          &lt;/imports>
+          &lt;source file="filesystem.hpp"/>
+          &lt;source file="uuid.hpp"/>
+          &lt;include path="."/>
+        &lt;/project>
+    </pre>
+
+    <p>
+        Here's the contents of the <strong>soulng.util.xml</strong> project XML file for the <strong>soulng.util</strong> system module:
+    </p>
+    
+    <pre>
+        &lt;project name="soulng.util">
+          &lt;imports>
+            &lt;import project="../std/std.xml"/>
+            &lt;import project="../boost/boost.xml"/>
+          &lt;/imports>
+          &lt;source file="BinaryReader.hpp"/>
+          &lt;source file="BinaryWriter.hpp"/>
+          &lt;source file="CodeFormatter.hpp"/>
+          &lt;source file="Path.hpp"/>
+          &lt;source file="Sha1.hpp"/>
+          &lt;source file="TextUtils.hpp"/>
+          &lt;source file="Unicode.hpp"/>
+          &lt;include path="../.."/>
+        &lt;/project>
+    </pre>
+    
+    <h3>Contents of a C++ header file of a system module</h3>
+    
+    <p>
+        Each C++ header file of a system module contains declarations of classes, typedefs and functions without implementations.
+        For example the <strong>vector.hpp</strong> looks like this:
+    </p>
+    
+    <pre>
+        namespace std
+        {
+            template&lt;class T>
+            class vector
+            {
+            public:
+                typedef type iterator;
+                typedef type const_iterator;
+                vector();
+                vector(int, const T&);
+                iterator begin();
+                iterator end();
+                const_iterator cbegin() const;
+                const_iterator cend() const;
+                const T& front() const;
+                const T& back() const;
+                T operator[](int);
+                bool empty() const;
+                int size() const;
+                void reserve(int);
+                void clear();
+                void push_back(const T&);
+                void pop_back();
+                void resize(int);
+            };
+        }
+    </pre>
+    
+    <h3>Building XML symbol tables of system modules</h3>
+    
+    <p>
+        By running the cpp2cm with <strong>--system</strong> option builds an AST and a symbol table for each system module from the C++ header files and exports them as binary AST file and an XML file to the 
+        <strong>stage</strong> subdirectory of the module directory:
+    </p>
+    
+    <pre>
+        D:\work\soulng-project\tools\cpp2cm\system>cpp2cm -v --system
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/algorithm.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/exception.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/list.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/map.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/move.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/pair.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/set.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/stack.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/stdint.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/string.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/stringstream.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/ostream.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/unique_ptr.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/unordered_map.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/unordered_set.hpp
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/vector.hpp
+        std==> D:/work/soulng-project/tools/cpp2cm/system/std/stage/std.ast
+        std==> D:/work/soulng-project/tools/cpp2cm/system/std/stage/std.xml
+        boost> D:/work/soulng-project/tools/cpp2cm/system/boost/filesystem.hpp
+        boost> D:/work/soulng-project/tools/cpp2cm/system/boost/uuid.hpp
+        boost==> D:/work/soulng-project/tools/cpp2cm/system/boost/stage/boost.ast
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/stage/std.ast
+        boost==> D:/work/soulng-project/tools/cpp2cm/system/boost/stage/boost.xml
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/BinaryReader.hpp
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/BinaryWriter.hpp
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/CodeFormatter.hpp
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/Path.hpp
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/Sha1.hpp
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/TextUtils.hpp
+        soulng.util> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/Unicode.hpp
+        soulng.util==> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/stage/soulng.util.ast
+        std> D:/work/soulng-project/tools/cpp2cm/system/std/stage/std.ast
+        boost> D:/work/soulng-project/tools/cpp2cm/system/boost/stage/boost.ast
+        soulng.util==> D:/work/soulng-project/tools/cpp2cm/system/soulng.util/stage/soulng.util.xml    
+    </pre>
+    
+    <h3>Adding <strong>target</strong> attributes to a symbol table XML</h3>
+    
+    <p>
+        The final step of extending a system module is to add a <strong>target</strong> attribute to a class, typedef of function, so that <strong>cpp2cm</strong> can map the name of that entity to
+        the corresponding Cmajor name.
+    </p>
+    
+    <p>
+        For example after adding target attributes to the std::vector class template, the vector class template in the symbol table XML will look like this:
+    </p>
+    
+    <pre>
+        &lt;class access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="4" id="class_vector_5CB6B8D7BBC6164DAFFCFA17CDCFF0469BA58EEC" key="class" name="vector" project="std" target="System.Collections.List">
+            &lt;templateParameters>
+                &lt;templateParameter access="public" id="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" name="T"/>
+            &lt;/templateParameters>
+            &lt;functions>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="12" id="function_back_76678EF262959C8F973EDB7C15900833EF9664D3" name="back" returnType="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" specifiers="const" target="Back"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="16" id="function_clear_FF0F6151BE376CD0D70A0BB5169017BC32854CD9" name="clear" returnType="void" target="Clear"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="13" id="function_empty_81EE6F57CB2C61553E5677950913871E31FAAF79" name="empty" returnType="bool" specifiers="const" target="IsEmpty"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="10" id="function_front_86732689DE3A08F388FEACDF70ACD2E33688EDFA" name="front" returnType="const.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.type_C2C53D66948214258A26CA9CA845D7AC0C17F8E7" specifiers="const" target="Front"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="19" id="function_pop_back_4F4524BD683677A0DAE8A8A3AE0FE4F7DA9A6D82" name="pop_back" returnType="void" target="RemoveLast"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="15" id="function_reserve_5E15BAF638E60510CC778FF1B24AD449FDEB658B" name="reserve" returnType="void" target="Reserve">
+                    &lt;parameters>
+                        &lt;parameter access="public" id="parameter__920337013164492D54CA637CEFEAEAB2D4EDA302" name="" type="int"/>
+                    &lt;/parameters>
+                &lt;/function>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="20" id="function_resize_9835A95FBEA4C2BFE0A20AA6CA6B70850DC54F77" name="resize" returnType="void" target="Resize">
+                    &lt;parameters>
+                        &lt;parameter access="public" id="parameter__0AE83340F5CF20CE81E1D296B6A0CA7B8C3E16B6" name="" type="int"/>
+                    &lt;/parameters>
+                &lt;/function>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="14" id="function_size_72A8E6C8099B35303A5A5AD3863DFF67FDA6BDE5" name="size" returnType="int" specifiers="const" target="Count"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="11" id="function_begin_749A3BBD89B9A90039FD7C6DD6FB2F3CBC5A890B" name="begin" returnType="typedef_iterator_A5CB8116875EBD90E1FD4D1AD3D707791675F1B1" target="Begin"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="13" id="function_cbegin_D15153952FEE3BE3F8222BAA083F62ACDE24F1B6" name="cbegin" returnType="typedef_const_iterator_627A48632213CE5CB8257035EC37851C75544BE4" specifiers="const" target="CBegin"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="14" id="function_cend_CB71E67A7A24DE96F599BCCF229F7A35058358D6" name="cend" returnType="typedef_const_iterator_627A48632213CE5CB8257035EC37851C75544BE4" specifiers="const" target="CEnd"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="12" id="function_end_5BA0A8AF5BBE4469D13E8671990F4EB82768D53A" name="end" returnType="typedef_iterator_A5CB8116875EBD90E1FD4D1AD3D707791675F1B1" target="End"/>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="21" id="function_push_back_C5AD21E6449CAE4EABFF40732FA9D855A413B4E2" name="push_back" returnType="void" target="Add">
+                    &lt;parameters>
+                        &lt;parameter access="public" id="parameter__E7F96002FFA26DC3BF6C6F45C0FAD944ADDA9C6E" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                    &lt;/parameters>
+                &lt;/function>
+                &lt;function access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="17" id="function_operator_subscript_5AA680DE882D1A6DA43DD2E589324023E13178D0" name="operator[]" returnType="templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7">
+                    &lt;parameters>
+                        &lt;parameter access="public" id="parameter__1E7B4EBC985A2A810BC7D15FBB352A4234ED939D" name="" type="int"/>
+                    &lt;/parameters>
+                &lt;/function>
+            &lt;/functions>
+            &lt;typedefs>
+                &lt;typedef access="public" id="typedef_const_iterator_627A48632213CE5CB8257035EC37851C75544BE4" name="const_iterator" target="ConstIterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+                &lt;typedef access="public" id="typedef_iterator_A5CB8116875EBD90E1FD4D1AD3D707791675F1B1" name="iterator" target="Iterator" type="type_D0A3E7F81A9885E99049D1CAE0336D269D5E47A9"/>
+            &lt;/typedefs>
+            &lt;constructors>
+                &lt;constructor access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="9" id="constructor_vector_BCB05555AEFC1BCEB9B4A11816D9AFE17900D1B5" name="vector" target="@constructor"/>
+                &lt;constructor access="public" definitionFile="vector.hpp" definitionFileId="file/vector.hpp_63EA1C07F0554E9C9B2C897958713F267BC4030B.html" definitionLine="10" id="constructor_vector_A07D23FE1DC0A4D369766DC97E4842F0E19AA278" name="vector" target="@constructor">
+                    &lt;parameters>
+                        &lt;parameter access="public" id="parameter__AE298771F7E9F1E5D80BCA7D593D455D0D39A79D" name="" type="int"/>
+                        &lt;parameter access="public" id="parameter__AE298771F7E9F1E5D80BCA7D593D455D0D39A79D" name="" type="const.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7.lvalueref.templateParameter_T_C2C53D66948214258A26CA9CA845D7AC0C17F8E7"/>
+                    &lt;/parameters>
+                &lt;/constructor>
+            &lt;/constructors>
+        &lt;/class>
+    </pre>
+    
+    That's the end of this tutorial.
+</body>

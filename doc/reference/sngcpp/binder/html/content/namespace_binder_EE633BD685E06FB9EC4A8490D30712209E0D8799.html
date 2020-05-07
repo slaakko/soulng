@@ -52,7 +52,11 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;Symbol*></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression</a>(Node* node, SymbolTable&amp; symbolTable, ContainerScope* containerScope, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>* boundSourceFile, FunctionSymbol* currentFunction, <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html">StatementBinder</a>* statementBinder)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_F67948B0425D6CA89D82980F96EA0F193C375C6A">BindExpression</a>(Node* node, SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>* boundSourceFile, FunctionSymbol* currentFunction, <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html">StatementBinder</a>* statementBinder)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;Symbol*></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_BindExpression_16E848D920F29E271FE099276303D40846632F70">BindExpression</a>(Node* node, SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>* boundSourceFile, FunctionSymbol* currentFunction, <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html">StatementBinder</a>* statementBinder, <span class="kw">bool</span>&amp; subjectIsConst)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
@@ -76,11 +80,11 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../symbols/html/content/class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveType_2B54C1DE257B39E912FC11EDD4A06F335A0511C7">ResolveType</a>(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp; boundSourceFile, Node* node)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveType_A8122069F772BD53B1914347E38969273B4C9D28">ResolveType</a>(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp; boundSourceFile, ClassTypeSymbol* currentClassType, Node* node)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../symbols/html/content/class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveType_59F178F945BCD5F7099FA4E017D260BCB494E46B">ResolveType</a>(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp; boundSourceFile, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a> flags, Node* node)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveType_E0EFD43B53FBFD3D63929E5BA327F3B57A7F66A6">ResolveType</a>(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp; boundSourceFile, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a> flags, ClassTypeSymbol* currentClassType, Node* node)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a></td>
@@ -122,13 +126,14 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_BindExpression_DD52C7EE8360E4DDED04C3790BA1B5BFDBE24E67">BindExpression Function</h3>
+        <h3 id="function_BindExpression_F67948B0425D6CA89D82980F96EA0F193C375C6A">BindExpression Function</h3>
         <h4>
-            std::vector&lt;Symbol*> sngcpp::binder::BindExpression(Node* node, SymbolTable&amp; symbolTable, ContainerScope* containerScope, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            std::vector&lt;Symbol*> sngcpp::binder::BindExpression(Node* node, SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>
+            std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
             * boundSourceFile, FunctionSymbol* currentFunction, <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html">StatementBinder</a>
             * statementBinder)</h4>
         <span>
-            Definition at line <a href="file/ExpressionBinder.cpp_71DC3E1C70074E3F9F161E174A93CCD4A4B63AB7.html#504">504</a>
+            Definition at line <a href="file/ExpressionBinder.cpp_71DC3E1C70074E3F9F161E174A93CCD4A4B63AB7.html#716">716</a>
              of <a href="file/ExpressionBinder.cpp_71DC3E1C70074E3F9F161E174A93CCD4A4B63AB7.html">ExpressionBinder.cpp</a>
         </span>
         <br/>
@@ -139,64 +144,97 @@
         <br/>
         <br/>
         <span>
+            Called by: <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A300F97ED9D73A8E1CDEC9BCB349452020E16C1E">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_B223A9843B4508F5E3CB22DF389E0B15D748FA9E">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_39C355AE4D901945E51363F6E3AD4CCC209DD937">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_4EE0D52C80CC5E783F1D413BBBAA65FB9FFB0562">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_08F20C145B3D6B94D63F821D370DF009360A8A91">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_9316BF337C33D6B78581D18175F202C7A402F811">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_ADEAAB32BDAE88AF4CB0617FFB9285F71ED414D0">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A77F1BBD83B8ED03B0E9613CAC3C793F509BB325">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_91C87F04FEBD03564CF3BD228BEDAFA9A54EAF1F">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_14553D90C5BFE3DEA672F9D5FC6475633929371B">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_02183D280A8925531CC1D95619AEA28AD9D24C88">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_7B761BA246A7D2768913D5A548C1F85D3AFE847E">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_9BECC02CC104AE00B54C10667C123300AC65C455">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_841174637B4DE7F1B5769DF6D33BC602874D9D45">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_8C70F0F90B8E768484DCD4DFBFD28743D21CB9A8">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_7B58494E946AA9B0C87CA1329669F9CDAE29B2CD">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_D895E9BE9240AB8DDECD5FCEFC6FB3E5315D6FE5">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_285262D9A92BEF2666B2FFABE94B504BAD399DE1">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A02C6717D590B4AA175BACC0448211B0EE6B9364">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_6B10BB1F67888A4FDCB141D93C22C61591C88326">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_E31A3832DDBCB00D2436986F91302FE4DA6F3EA5">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_17734E97250AA34AD804C668442F98258FDA6008">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_CD48AC1EA67029A677F7D86166B176FD699FC01F">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_0B3DCF924C1B80E2F5C40C991ADCF0EAA457F146">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_1D457E3909D74A7137012A7A1A0358C69A3E85CE">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_FF608557C2612C3DC7FF6217DAA8F9CFD7C375B6">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_90E4FD7CE4427C982406CCF6F4E53BFA416F12E3">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_7F99FEA018C8A3CDEB361E53517C0235C6F1C45C">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_F975287CFC2CD51A3B1115066B4DFFFB35245A06">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_BD6864792F85E13AAA78BC08DD5D15F598BEBBDC">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_011CF21A4F5FB62FFCF3AF8292D9D53D185D6C91">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_0E2689E7E7E908B4267B018E25D5464DF54117FA">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_60B2EF0CC1CBC2179F3C91614B82884FB657AD5A">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A3611C1270E3033598D9E85447E000AE19670974">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_0E38517B68E0802A1327FF4C11D04C1522A2A1D1">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_26ACEAB5167A64F77120AFD9BF5B7BA19E52AA5E">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_4BF82DCB10DD700D7F417EE2B5A61F14B4766CED">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_B9825B953720AF3831DA665547E5AAD70BD46E94">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A10113E405136BEC8A777B47C265DADEDD374E1A">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_551DA45C277F58D47B33062E70DC1D58AADD6694">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_D680EEDC62CCAFAEFA05F710DBEF8842AC86CDDB">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_588094DB0D35D97CFA99C3199ADAFBAE7B6ABB1A">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_653142A371CB1ADD9ED7EB9FB179D3E003DF1E38">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_8D6D3B6465E40F7E163BEBAC39B1970D7BFBE659">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_E51EAE0F790AFD6577408D5D87E80586798C5FB2">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_B031D9AD1239C3C299D761CE43AD1C40F43AAB0A">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_E47B4421CE2781EB17560F6B128F0D0FF0A27694">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_2478716D8B69661A6D972D0CE53E40434A5CF227">sngcpp::binder::ExpressionBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_82024E492114EFC104357B5D249FDB7AD281CE94">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_A16FDD10D4080EFF6463DE2B85AC4274C7BC0461">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_8BAADEE28FA785DAC434F8A307D1843D3F3BFB4D">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_7BEF7CFE6EA97772026F3D9A28B00ECE2C51501C">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_7B9ABDDDA6033A48DA89355FBF27D9EC8D5A725F">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_7A18048F519403E2F30486872ED80F840C5F4285">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_232354DA13974F57FC17113C387FE389A41E8734">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_40893544882EEF5AA6B867FC502E8D93198DA7BA">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_425BEE990B79BA22C0A0836E30DC05F4394E156B">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_DBB61FF4F1CC2E8AC26BD4B7CCD166BBEC560F3E">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_EA28547C9B2BCF4E299FDC46656A70164EBB499C">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_0E86A4384196F6F0CFD9D1FE062029869FE4D59C">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_0D299083A0F0DE64917DE5DCA9B1D8F82A007CE3">sngcpp::binder::StatementBinder::Visit</a>
+            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_B4D0353169AE75EEC646460E5AD232167131831B">sngcpp::binder::StatementBinder::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_BindExpression_16E848D920F29E271FE099276303D40846632F70">BindExpression Function</h3>
+        <h4>
+            std::vector&lt;Symbol*> sngcpp::binder::BindExpression(Node* node, SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>
+            std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            * boundSourceFile, FunctionSymbol* currentFunction, <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html">StatementBinder</a>
+            * statementBinder, <span class="kw">bool</span>
+            &amp; subjectIsConst)</h4>
+        <span>
+            Definition at line <a href="file/ExpressionBinder.cpp_71DC3E1C70074E3F9F161E174A93CCD4A4B63AB7.html#689">689</a>
+             of <a href="file/ExpressionBinder.cpp_71DC3E1C70074E3F9F161E174A93CCD4A4B63AB7.html">ExpressionBinder.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/ExpressionBinder.hpp_E7216FE992242200425C47359F62BABD537E28DA.html#20">20</a>
+             of <a href="file/ExpressionBinder.hpp_E7216FE992242200425C47359F62BABD537E28DA.html">ExpressionBinder.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
             Calls: <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_GetSymbols_0F10EADDF5C2AF0E7390D60FE79D7BDCA79AD827">sngcpp::binder::ExpressionBinder::GetSymbols</a>
         </span>
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_588094DB0D35D97CFA99C3199ADAFBAE7B6ABB1A">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_4EE0D52C80CC5E783F1D413BBBAA65FB9FFB0562">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_60B2EF0CC1CBC2179F3C91614B82884FB657AD5A">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_BD6864792F85E13AAA78BC08DD5D15F598BEBBDC">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A77F1BBD83B8ED03B0E9613CAC3C793F509BB325">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_0E38517B68E0802A1327FF4C11D04C1522A2A1D1">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_841174637B4DE7F1B5769DF6D33BC602874D9D45">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_7B58494E946AA9B0C87CA1329669F9CDAE29B2CD">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_7B761BA246A7D2768913D5A548C1F85D3AFE847E">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_D895E9BE9240AB8DDECD5FCEFC6FB3E5315D6FE5">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_02183D280A8925531CC1D95619AEA28AD9D24C88">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_08F20C145B3D6B94D63F821D370DF009360A8A91">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_39C355AE4D901945E51363F6E3AD4CCC209DD937">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_8C70F0F90B8E768484DCD4DFBFD28743D21CB9A8">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_14553D90C5BFE3DEA672F9D5FC6475633929371B">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_B223A9843B4508F5E3CB22DF389E0B15D748FA9E">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_6B10BB1F67888A4FDCB141D93C22C61591C88326">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_E31A3832DDBCB00D2436986F91302FE4DA6F3EA5">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_285262D9A92BEF2666B2FFABE94B504BAD399DE1">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_26ACEAB5167A64F77120AFD9BF5B7BA19E52AA5E">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_0E2689E7E7E908B4267B018E25D5464DF54117FA">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_17734E97250AA34AD804C668442F98258FDA6008">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_8D6D3B6465E40F7E163BEBAC39B1970D7BFBE659">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_0B3DCF924C1B80E2F5C40C991ADCF0EAA457F146">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A10113E405136BEC8A777B47C265DADEDD374E1A">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_1D457E3909D74A7137012A7A1A0358C69A3E85CE">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_90E4FD7CE4427C982406CCF6F4E53BFA416F12E3">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_FF608557C2612C3DC7FF6217DAA8F9CFD7C375B6">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_011CF21A4F5FB62FFCF3AF8292D9D53D185D6C91">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_7F99FEA018C8A3CDEB361E53517C0235C6F1C45C">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A3611C1270E3033598D9E85447E000AE19670974">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A300F97ED9D73A8E1CDEC9BCB349452020E16C1E">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_551DA45C277F58D47B33062E70DC1D58AADD6694">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_91C87F04FEBD03564CF3BD228BEDAFA9A54EAF1F">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_D680EEDC62CCAFAEFA05F710DBEF8842AC86CDDB">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_653142A371CB1ADD9ED7EB9FB179D3E003DF1E38">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_B9825B953720AF3831DA665547E5AAD70BD46E94">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_E51EAE0F790AFD6577408D5D87E80586798C5FB2">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_A02C6717D590B4AA175BACC0448211B0EE6B9364">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_ADEAAB32BDAE88AF4CB0617FFB9285F71ED414D0">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_CD48AC1EA67029A677F7D86166B176FD699FC01F">sngcpp::binder::ExpressionBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_8BAADEE28FA785DAC434F8A307D1843D3F3BFB4D">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_EA28547C9B2BCF4E299FDC46656A70164EBB499C">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_232354DA13974F57FC17113C387FE389A41E8734">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_40893544882EEF5AA6B867FC502E8D93198DA7BA">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_425BEE990B79BA22C0A0836E30DC05F4394E156B">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_B4D0353169AE75EEC646460E5AD232167131831B">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_82024E492114EFC104357B5D249FDB7AD281CE94">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_A16FDD10D4080EFF6463DE2B85AC4274C7BC0461">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_0E86A4384196F6F0CFD9D1FE062029869FE4D59C">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_DBB61FF4F1CC2E8AC26BD4B7CCD166BBEC560F3E">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_7A18048F519403E2F30486872ED80F840C5F4285">sngcpp::binder::StatementBinder::Visit</a>
-            , <a href="./class_StatementBinder_8CB97759E9E91A4F23DA77C99718BDA1C9691B2D.html#function_Visit_0D299083A0F0DE64917DE5DCA9B1D8F82A007CE3">sngcpp::binder::StatementBinder::Visit</a>
+            Called by: <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_60B2EF0CC1CBC2179F3C91614B82884FB657AD5A">sngcpp::binder::ExpressionBinder::Visit</a>
         </span>
         <br/>
         <br/>
@@ -293,21 +331,6 @@
         <span>
             Definition at line <a href="file/VirtualBinder.cpp_1F7EFC1AA0930D6DCE606924679EE5C914FCBA2B.html#110">110</a>
              of <a href="file/VirtualBinder.cpp_1F7EFC1AA0930D6DCE606924679EE5C914FCBA2B.html">VirtualBinder.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="identifier">sngcpp</span><span class="other">::</span><span class="identifier">symbols</span><span class="other">::</span><a href="./../../../symbols/html/content/class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html">ClassTypeSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">cls</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">classes</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveOverrideSets_9A544FD39D143DD27DA5854A34FECE8B30162549">ResolveOverrideSets</a><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -317,23 +340,15 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_ResolveType_2B54C1DE257B39E912FC11EDD4A06F335A0511C7">ResolveType Function</h3>
+        <h3 id="function_ResolveType_A8122069F772BD53B1914347E38969273B4C9D28">ResolveType Function</h3>
         <h4>
             <a href="./../../../symbols/html/content/class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
-            * sngcpp::binder::ResolveType(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
-            &amp; boundSourceFile, Node* node)</h4>
+            * sngcpp::binder::ResolveType(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>
+            std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp; boundSourceFile, ClassTypeSymbol* currentClassType, Node* node)</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#390">390</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#434">434</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">391</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">392</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveType_59F178F945BCD5F7099FA4E017D260BCB494E46B">ResolveType</a><span class="other">(</span><span class="identifier">symbolTable</span><span class="other">,&nbsp;</span><span class="identifier">containerScope</span><span class="other">,&nbsp;</span><span class="identifier">boundSourceFile</span><span class="other">,&nbsp;</span><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a><span class="other">::</span><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html#enumerator_none_C88AF0DB5118E9CAB38E5563D3997E6187470A9E">none</a><span class="other">,&nbsp;</span><span class="identifier">node</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">393</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -342,25 +357,21 @@
         </span>
         <br/>
         <br/>
-        <span>
-            Called by: <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_C2CC5A78E1F34D920F3F8137F61214DE38CE37E6">sngcpp::binder::TypeBinder::Visit</a>
-        </span>
-        <br/>
-        <br/>
         <hr/>
-        <h3 id="function_ResolveType_59F178F945BCD5F7099FA4E017D260BCB494E46B">ResolveType Function</h3>
+        <h3 id="function_ResolveType_E0EFD43B53FBFD3D63929E5BA327F3B57A7F66A6">ResolveType Function</h3>
         <h4>
             <a href="./../../../symbols/html/content/class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
-            * sngcpp::binder::ResolveType(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            * sngcpp::binder::ResolveType(SymbolTable&amp; symbolTable, ContainerScope* containerScope, <span class="kw">const </span>
+            std::vector&lt;ContainerScope*>&amp; prevContainerScopes, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
             &amp; boundSourceFile, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a>
-             flags, Node* node)</h4>
+             flags, ClassTypeSymbol* currentClassType, Node* node)</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#395">395</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#440">440</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html#35">35</a>
+            Declaration at line <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html#36">36</a>
              of <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html">TypeResolver.hpp</a>
         </span>
         <br/>
@@ -372,15 +383,16 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_AC28EF5930348CC6D069829A2F14C7A8E6A3421A">sngcpp::binder::TypeBinder::Visit</a>
-            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_E2954713D27799C2529E71544DD279074EBA984A">sngcpp::binder::TypeBinder::Visit</a>
-            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_56433ECF68C617DD746AC008544EF342160EFF6C">sngcpp::binder::TypeBinder::Visit</a>
+            Called by: <a href="./class_ExpressionBinder_A26719E520C22E25C0F2E8BE7A192BD75336D04F.html#function_Visit_1A0DACE1A9832E1AD3C8F6CD93B53A05F4FD08FF">sngcpp::binder::ExpressionBinder::Visit</a>
             , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_7511666B9D944D73697D4B42B1B7092DF017E04A">sngcpp::binder::TypeBinder::Visit</a>
-            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_156A24BF2D3470B3D8E5F0E55F11AF02CE3EF7C5">sngcpp::binder::TypeBinder::Visit</a>
-            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_C73F934D075A7FE0467BD79AC8B151807E544DF0">sngcpp::binder::TypeBinder::Visit</a>
-            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_B05FE9BF99A25BFE886334877A57E9F9F5D56B9D">sngcpp::binder::TypeBinder::Visit</a>
-            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_D1A8526AB372F97516EDACA1226EAFEDC80FB6F1">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_AC28EF5930348CC6D069829A2F14C7A8E6A3421A">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_E2954713D27799C2529E71544DD279074EBA984A">sngcpp::binder::TypeBinder::Visit</a>
             , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_0BEA2CAB6D249C71F832D8733E34E5B9F98F4EF5">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_C73F934D075A7FE0467BD79AC8B151807E544DF0">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_D1A8526AB372F97516EDACA1226EAFEDC80FB6F1">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_56433ECF68C617DD746AC008544EF342160EFF6C">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_156A24BF2D3470B3D8E5F0E55F11AF02CE3EF7C5">sngcpp::binder::TypeBinder::Visit</a>
+            , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_B05FE9BF99A25BFE886334877A57E9F9F5D56B9D">sngcpp::binder::TypeBinder::Visit</a>
             , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_D6625F899DC82B2EF837C80EB13617480A5292F1">sngcpp::binder::TypeBinder::Visit</a>
             , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_B2EC0A606C2DA3154EDBD4D6DD6E64F7A92EB17E">sngcpp::binder::TypeBinder::Visit</a>
             , <a href="./class_TypeBinder_3BB8238194300801CDD53371585C99303002CA03.html#function_Visit_2CE8C89F3B9024B4EBDC35E5C02BFE67A9E12896">sngcpp::binder::TypeBinder::Visit</a>
@@ -399,16 +411,8 @@
         <span>
             Definition at line <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html#29">29</a>
              of <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html">TypeResolver.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_operator_or_00256036A46B02C946642AD45099E129A6FA5124">operator| Function</h3>
@@ -421,16 +425,8 @@
         <span>
             Definition at line <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html#24">24</a>
              of <a href="file/TypeResolver.hpp_9D5B92CF3A3E512F4BDFE01ACA41BF9D5A668AEB.html">TypeResolver.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">left</span><span class="other">)</span><span class="other">&nbsp;|&nbsp;</span><span class="type">uint8_t</span><span class="other">(</span><span class="identifier">right</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <a href="../../../../soulng-projects.html">top</a>

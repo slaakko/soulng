@@ -126,6 +126,10 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Print_C45B994A18F36F9145F0E15E12CC8F74E83C901A">Print</a>(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>&amp; formatter)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetApi_0D4555EB6CE087D8175DA38013EE4749E246D4BA">SetApi</a>(<span class="kw">const </span>std::u32string&amp; api_)</td>
             </tr>
             <tr>
@@ -303,15 +307,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#524">524</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">525</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">526</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_includes_8BFD09137CE7D6084F3CD3E2D593E50C6F7007AB">includes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">include</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">527</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -334,17 +329,14 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#71">71</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;71</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">api</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>
@@ -357,19 +349,15 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#48">48</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">fileName</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
             , <a href="./class_RegularExpressionParser_D9FFA2EEC477407FB40163AC34B1B72DB1ED90B6.html#function_Parse_6660FE1D5187382B5F49C88FA72C4370B4F631DC">soulng::slg::RegularExpressionParser::Parse</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>
@@ -382,12 +370,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#50">50</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">classMap</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
@@ -404,12 +388,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#56">56</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">keywords</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
@@ -425,12 +405,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#59">59</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">lexer</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
@@ -446,15 +422,11 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#61">61</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">parser</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html#function_Process_4BC4D471C9F8BE94F5D68C298B565381682F8E3C">soulng::slg::LexerStatement::Process</a>
+            Called by: <a href="./class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html#function_Process_4E5D2E6C5AE350CD8B1F2D62A72098F38CD7803D">soulng::slg::LexerStatement::Process</a>
         </span>
         <br/>
         <br/>
@@ -467,17 +439,13 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#52">52</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;52</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">prefix</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>
@@ -490,15 +458,11 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#54">54</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">tokens</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
             , <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
         </span>
@@ -514,18 +478,14 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#68">68</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;68</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">includes</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">soulng::slg::Keywords::Process</a>
+            Called by: <a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">soulng::slg::Keywords::Process</a>
             , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeClassMap_351A45337D41E6C6A5C7A653E9BDE5C5C66D2CCE">soulng::slg::LexerContext::MakeClassMap</a>
-            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_288D09227C729C2A9ABF481B76B29F5EF5F83C3B">soulng::slg::Tokens::Process</a>
+            , <a href="./class_Tokens_30CC20045759843286A02B13DE90E9BFBFAE970E.html#function_Process_BF1B5042324FE23632931C26A484D844870B83AE">soulng::slg::Tokens::Process</a>
         </span>
         <br/>
         <br/>
@@ -537,12 +497,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#40">40</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">any</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./struct_RegExParser_87BEE70E97AA9A233DD1BB5BC23B3DDDE0E10B57.html#function_Primary_E089F2B3882D1B01AD4FD19EDC7AC1E5DEB10956">RegExParser::Primary</a>
@@ -570,6 +526,7 @@
             , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_AddChar_98C642CD75565680487363DED55F7F4258C5AB2A">soulng::slg::Class::AddChar</a>
             , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Chars_B6359F228BD9D6C458C12C6D89D892FCA72BF259">soulng::slg::Class::Chars</a>
             , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeCanonical_A36A7F554992792215E3BA559D7E215CBFCA26CB">soulng::slg::Class::MakeCanonical</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Ranges_E1B9E73C3F7C24E43942303F4E7A05CDA6A4F271">soulng::slg::Class::Ranges</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeRange_08D3217A47E30BEB4AE50E442903850A6D0E5386">soulng::slg::LexerContext::MakeRange</a>
             , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">soulng::slg::Range::Start</a>
             , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_Contained_A58E2537589F6186F1D64F468DA6C6458062A9F4">soulng::slg::Symbol::Contained</a>
@@ -621,19 +578,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#110">110</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a><span class="other">*</span>&nbsp;<span class="identifier">cls</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html">Class</a><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_classIndex_16944193AE220CB60CB4B79E02356EB460C4E86B">classIndex</a><span class="other">++</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_symbols_FE947B6B2503CD228FBE42CC13B2CCEEF474B42C">symbols</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">cls</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">cls</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -667,12 +611,15 @@
         <br/>
         <span>
             Calls: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012">soulng::slg::Class::Index</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Ranges_E1B9E73C3F7C24E43942303F4E7A05CDA6A4F271">soulng::slg::Class::Ranges</a>
             , <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Name_5D1BF1C7D0AEB24D62559892C810592CAF4D9FBE">soulng::slg::Declaration::Name</a>
             , <a href="./class_Include_5AD44124B94690FC2D2374C503E1FF146C95527D.html#function_Header_1C6D5BAF540F2C9B77B8286882606B22D315E9A6">soulng::slg::Include::Header</a>
+            , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Api_1EE4B450DFA5522A2A374477DAE281C800356213">soulng::slg::LexerContext::Api</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_FileName_3FAC6D3DFA3B6D0765D2B11953292D1826080475">soulng::slg::LexerContext::FileName</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_GetClassMap_9B9D121F9D4803AF8D1FFD93E3147D0BBBFB4622">soulng::slg::LexerContext::GetClassMap</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_Includes_4FA0EEB9BB4F33638BD82CFE437AABD5393EF961">soulng::slg::LexerContext::Includes</a>
             , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_End_94F69FE693EFB64E76283388E5FA4C6AD0C86B24">soulng::slg::Range::End</a>
+            , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_Start_89B1F1E3AB022A8908FB40BDD60D1F65FDACC4F8">soulng::slg::Range::Start</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
@@ -708,6 +655,7 @@
             Calls: <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Index_4B69A0A79139D1B8D4D8A6245AF9D32D1B2A5012">soulng::slg::Class::Index</a>
             , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_MakeMinimal_0D898D533EE556EA88F0B60F4BAE7695ED527425">soulng::slg::Class::MakeMinimal</a>
             , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Print_BD25FCA80EA89CD6D7ED22B57E358112A08F81C5">soulng::slg::Class::Print</a>
+            , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_Ranges_E1B9E73C3F7C24E43942303F4E7A05CDA6A4F271">soulng::slg::Class::Ranges</a>
             , <a href="./class_Class_E672D9D6F066B331679BA6817864D97FC79E685D.html#function_SetIndex_A92C2E0638A74AF2F96A16F30BACCFCDBFBF8048">soulng::slg::Class::SetIndex</a>
             , <a href="./class_Range_C8BE84F048DEE6392CFC2FF9E358ADF37D17B103.html#function_IsEmpty_551C147F0AA1D6A6E199FA2ED226649BF47C620B">soulng::slg::Range::IsEmpty</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
@@ -752,15 +700,11 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#41">41</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="other">&amp;</span><span class="identifier">epsilon</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">soulng::slg::Lexer::MakeMasterNfa</a>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_671CC47856036197E9C1C170157856E6B9542C9C">soulng::slg::Lexer::MakeMasterNfa</a>
         </span>
         <br/>
         <br/>
@@ -806,12 +750,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#44">44</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idCont</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
@@ -826,12 +766,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#43">43</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idStart</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeExpr_4251AECE23180ACDD49883100C4272CBD75F7E65">soulng::slg::LexerContext::MakeExpr</a>
@@ -846,19 +782,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#59">59</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;61</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">state</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_nextNfaStateId_5353651293C467D09ABC6CF44FEB72835683ED0E">nextNfaStateId</a><span class="other">++</span><span class="other">,&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_lexerStatementIndex_51CCC746F2D178028D7FA83D55CDCFB8B38D95FE">lexerStatementIndex</a><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;62</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_nfaStates_A8ABECB535E94B88F1FB9A31B57917D95275C764">nfaStates</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">state</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -868,7 +791,7 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">soulng::slg::Lexer::MakeMasterNfa</a>
+            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_671CC47856036197E9C1C170157856E6B9542C9C">soulng::slg::Lexer::MakeMasterNfa</a>
         </span>
         <br/>
         <br/>
@@ -906,12 +829,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#37">37</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">nfaStates</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_Partition_0485D4E0D8B669ACCCBF31C50607CB79308107A0">Partition Member Function</h3>
@@ -923,15 +842,36 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#67">67</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">partition</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
+        <br/>
         <span>
-            Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+            Called by: <a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Print_EEA5B4C3F8C60428D4D5CF8BF0B2CC780F4AF04E">soulng::slg::DfaState::Print</a>
+            , <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_C45B994A18F36F9145F0E15E12CC8F74E83C901A">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::LexerContext::Print(<a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html">CodeFormatter</a>
+            &amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#529">529</a>
+             of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_Print_AD217C5B27561858DCE51FF85FF1803CCC6207FD">soulng::slg::NfaState::Print</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
         </span>
         <br/>
         <br/>
@@ -944,12 +884,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#70">70</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;70</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">api</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">api_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A">soulng::slg::Lexer::FillContext</a>
@@ -965,23 +901,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#117">117</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">119</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_classMap_0063582A811F56D85CB7DE7E1EF0904A9A2D568E">classMap</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">120</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">121</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;class&nbsp;map&nbsp;declaration&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">122</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">123</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_classMap_0063582A811F56D85CB7DE7E1EF0904A9A2D568E">classMap</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">classMap_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">124</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1004,12 +923,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#63">63</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">currentExpression</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">currentExpression_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_SetExpressions_FFB1FEE907B387BB6E1996A1B64D1A62E4BACB9C">SetExpressions Member Function</h3>
@@ -1020,23 +935,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#153">153</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_expressions_FA87199765BA49AF527C6D2ACC7E5472FE42BEA9">expressions</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;set&nbsp;of&nbsp;expressions&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">159</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_expressions_FA87199765BA49AF527C6D2ACC7E5472FE42BEA9">expressions</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">expressions_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">160</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1059,15 +957,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#162">162</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">fileName_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1085,23 +974,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#144">144</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_keywords_30F386B45770B41A0850C668FEEC3A625827C991">keywords</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">148</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;set&nbsp;of&nbsp;keyword&nbsp;definitions&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_keywords_30F386B45770B41A0850C668FEEC3A625827C991">keywords</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">keywords_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1124,12 +996,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#58">58</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">lexer</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">lexer_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A">soulng::slg::Lexer::FillContext</a>
@@ -1145,12 +1013,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#60">60</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;60</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">parser</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parser_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_SetPrefix_CCDB00D6DB269F5C53084DF7AA3DDE403EC2B388">SetPrefix Member Function</h3>
@@ -1161,23 +1025,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#126">126</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">127</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">128</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_prefix_AA3D86A79E307B9E6CBC5287DE047B50198E4F44">prefix</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">129</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">130</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;prefix&nbsp;declaration&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_prefix_AA3D86A79E307B9E6CBC5287DE047B50198E4F44">prefix</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">prefix_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1200,23 +1047,6 @@
         <span>
             Definition at line <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html#135">135</a>
              of <a href="file/LexerContext.cpp_39F6D9530B8D8D2D452FB5E5658EB93D702221D1.html">LexerContext.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_tokens_7D26EDB53C4784CE9BFF888A65824AFC0F996B51">tokens</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">runtime_error</span><span class="other">(</span><span class="string">"error&nbsp;in&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_fileName_54ABAFAEED31E43750EB7DF40754DCDC9B05C14C">fileName</a><span class="other">&nbsp;+&nbsp;</span><span class="string">":&nbsp;cannot&nbsp;have&nbsp;more&nbsp;than&nbsp;one&nbsp;set&nbsp;of&nbsp;token&nbsp;definitions&nbsp;per&nbsp;.lexer&nbsp;file"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#variable_tokens_7D26EDB53C4784CE9BFF888A65824AFC0F996B51">tokens</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">tokens_</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -1240,12 +1070,8 @@
         <span>
             Definition at line <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html#46">46</a>
              of <a href="file/LexerContext.hpp_541F5E7643CDF8EDAE48E14725EB7BB536C20109.html">LexerContext.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">symbols</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <a href="../../../../soulng-projects.html">top</a>

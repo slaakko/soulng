@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <span class="kw">bool</span> debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
             </tr>
         </table>
         <h2>Member Variables</h2>
@@ -57,15 +57,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#267">267</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">267</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">269</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -84,15 +75,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#271">271</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">272</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">273</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Keywords_5AB4C7FA4A94CDE694258DB5BA4B4A05B7A89B09.html#variable_keywords_E733206F6CB63EE83EB3AE1EF1CBF3634CC5B8B4">keywords</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Keyword_59EAE10FCECD3E099776E02AEDFF6031ECA2065A.html">Keyword</a><span class="other">></span><span class="other">(</span><span class="identifier">keyword</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">274</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -111,15 +93,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#276">276</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">277</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">278</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetKeywords_F10CB643F72C8932400C9CADD2DC2381B87AD960">SetKeywords</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">279</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -139,12 +112,13 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_Process_B099BA100D4ABBB94EC6C1302CF0AA501F5A5DB1">Process Member Function</h3>
+        <h3 id="function_Process_2178682E3A39E33CF6D2B721250250F10193A61E">Process Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Keywords::Process(<span class="kw">const </span>
             std::string&amp; root, <span class="kw">bool</span>
-             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+             verbose, <span class="kw">bool</span>
+             debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext) <span class="kw">override</span>
         </h4>
         <span>
@@ -159,7 +133,7 @@
         <br/>
         <br/>
         <span>
-            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_5B73D958C55323FABDD19047045BD23363561D3A">soulng::slg::Declaration::Process</a>
+            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_3CAA9CAF8401B40FE2EB06B5E51CA1A5B7AECC90">soulng::slg::Declaration::Process</a>
         </span>
         <br/>
         <br/>
@@ -174,8 +148,8 @@
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
-            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED">soulng::util::Path::Combine</a>
         </span>
         <br/>

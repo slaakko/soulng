@@ -1,0 +1,278 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>CallableSymbol Abstract Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="struct_ByName_DC619DBBB3FB968F6E703C19D3553E66B00182C9.html">prev</a>
+         | <a href="class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">next</a>
+        <hr/>
+        <h1>CallableSymbol Abstract Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#16">16</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#constructor_CallableSymbol_F560575A09A939105EA4EBB39986E80F3A16F03B">CallableSymbol</a>(<span class="kw">const </span>Span&amp; span_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_Arity_4F16AAD849F94F7857AEAAC9113D51CC140CE42F">Arity</a>() <span class="kw">const pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_FunctionGroup_640EA76A3A57C3D5503827194A2695E00EBB8D44">FunctionGroup</a>() <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_FunctionId_6D7EACC40B47DD4F7F1CD81D4D6DCE2CD7D2CAAE">FunctionId</a>() <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_FunctionKind_75BB307590BFD59E5DDDF79CE4C05FF6E533B975">FunctionKind</a>() <span class="kw">pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_GroupName_EF3AA62D8EA56DE777C92A4C00BF4599E7B3D400">GroupName</a>() <span class="kw">const pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_IsCallableSymbol_634E4CE057C27D57EAB2DC3B6508CBA64DCE5C6A">IsCallableSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_IsConst_15917962E0D75767914B80CF5580DFE274D7601C">IsConst</a>() <span class="kw">const virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">ParameterSymbol</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_Parameters_F94341D927FFA8021F758A907449D683F28BB640">Parameters</a>() <span class="kw">const pure virtual</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html#function_ReturnType_27679F101CC2A5D121354EA093C10417DF0476E8">ReturnType</a>() <span class="kw">pure virtual</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_CallableSymbol_F560575A09A939105EA4EBB39986E80F3A16F03B">CallableSymbol Constructor</h3>
+        <h4>
+            sngcpp::symbols::CallableSymbol::CallableSymbol(<span class="kw">const </span>
+            Span&amp; span_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html#17">17</a>
+             of <a href="file/FunctionSymbol.cpp_898287AE868F36F257B2B834B2D655CCCA9CACBC.html">FunctionSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a><span class="other">(</span><span class="identifier">span_</span><span class="other">,&nbsp;</span><span class="identifier">name_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#19">19</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Arity_4F16AAD849F94F7857AEAAC9113D51CC140CE42F">Arity Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::CallableSymbol::Arity() <span class="kw">const pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#23">23</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Arity_BB91CFE3B2EC9E6757287584D430E3A9C77575A4">sngcpp::symbols::FunctionSymbol::Arity</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FunctionGroup_640EA76A3A57C3D5503827194A2695E00EBB8D44">FunctionGroup Member Function</h3>
+        <h4>
+            <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html">FunctionGroupSymbol</a>
+            * sngcpp::symbols::CallableSymbol::FunctionGroup() <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#26">26</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_FunctionGroup_9C0A81BFE755FA735BAB21A1B7DA55F9F35217A1">sngcpp::symbols::FunctionDeclarationSymbol::FunctionGroup</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_FunctionGroup_AD0F9DE4017237BC3A040A361D7FFADBE37EB8EB">sngcpp::symbols::FunctionSymbol::FunctionGroup</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FunctionId_6D7EACC40B47DD4F7F1CD81D4D6DCE2CD7D2CAAE">FunctionId Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::CallableSymbol::FunctionId() <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#28">28</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_FunctionId_97102A0BD43C14FF2A96F7BA2CC6529C603E1D62">sngcpp::symbols::FunctionDeclarationSymbol::FunctionId</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_FunctionId_C292689348BA3D8055D1C96411C3344DAE408451">sngcpp::symbols::FunctionSymbol::FunctionId</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FunctionKind_75BB307590BFD59E5DDDF79CE4C05FF6E533B975">FunctionKind Member Function</h3>
+        <h4>
+            std::u32string sngcpp::symbols::CallableSymbol::FunctionKind() <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#27">27</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html#function_FunctionKind_9399B10097950889C6FB79E3D6E1731E4B27FEFB">sngcpp::symbols::ConstructorDeclarationSymbol::FunctionKind</a>
+            , <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_FunctionKind_28CC481DEF1B0A3CCC90EF013C4790610A62566C">sngcpp::symbols::ConstructorSymbol::FunctionKind</a>
+            , <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_FunctionKind_D26B7748831FC0BEBF2B826EA56A45B52C60E06F">sngcpp::symbols::FunctionDeclarationSymbol::FunctionKind</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_FunctionKind_032BF4FDAD53715B5F3DC1BB4139BF218F156EF9">sngcpp::symbols::FunctionSymbol::FunctionKind</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GroupName_EF3AA62D8EA56DE777C92A4C00BF4599E7B3D400">GroupName Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::CallableSymbol::GroupName() <span class="kw">const pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#25">25</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_GroupName_E2606F0FA322874DE8E73658C18CB02D89C8A30C">sngcpp::symbols::FunctionDeclarationSymbol::GroupName</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_GroupName_57BB21C9C7E96183F5533CBEC2049414D9C51D25">sngcpp::symbols::FunctionSymbol::GroupName</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsCallableSymbol_634E4CE057C27D57EAB2DC3B6508CBA64DCE5C6A">IsCallableSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::CallableSymbol::IsCallableSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#20">20</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsCallableSymbol_1354EB4D0F3FB9DA7C0EC0BAB8B494BEB3C97676">sngcpp::symbols::Symbol::IsCallableSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsConst_15917962E0D75767914B80CF5580DFE274D7601C">IsConst Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::CallableSymbol::IsConst() <span class="kw">const virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#24">24</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">false</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_IsConst_EA65C8F5CA9F78F7701EDAA7D97585076256BC52">sngcpp::symbols::FunctionDeclarationSymbol::IsConst</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_IsConst_1F53DCE12A27478C28D2E2168CDBEEF2FB50A3D7">sngcpp::symbols::FunctionSymbol::IsConst</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parameters_F94341D927FFA8021F758A907449D683F28BB640">Parameters Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_ParameterSymbol_5ECE6B04CC7840379250651CF304DD87C1235AAD.html">ParameterSymbol</a>
+            *>&amp; sngcpp::symbols::CallableSymbol::Parameters() <span class="kw">const pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#21">21</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_Parameters_AB747BE0918176F76E97DE4BD4ACE7747D943336">sngcpp::symbols::FunctionDeclarationSymbol::Parameters</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_Parameters_6848EFC503D2107DFE1C937C48A9D20E51A7BB1B">sngcpp::symbols::FunctionSymbol::Parameters</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_FunctionGroupSymbol_E07155C77C7DE8B74F98DED554ED0940EAAE9264.html#function_ResolveOverload_C5B4C1CCF2A0A1A0EE58E54990DB49797B96247A">sngcpp::symbols::FunctionGroupSymbol::ResolveOverload</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ReturnType_27679F101CC2A5D121354EA093C10417DF0476E8">ReturnType Member Function</h3>
+        <h4>
+            <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * sngcpp::symbols::CallableSymbol::ReturnType() <span class="kw">pure virtual</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html#22">22</a>
+             of <a href="file/FunctionSymbol.hpp_48ECE4D320AB1973809DDC0FEF956CC3B6C42012.html">FunctionSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Derived class overrides: <a href="./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html#function_ReturnType_0B5221989AE5DD5F7B842740A0EC3FCEEA9F4E96">sngcpp::symbols::ConstructorDeclarationSymbol::ReturnType</a>
+            , <a href="./class_ConstructorSymbol_96630238281956C5A6A551C5C26EAFB3757B58EF.html#function_ReturnType_54346A8942C554C193E31FEF58DA8BC11816909B">sngcpp::symbols::ConstructorSymbol::ReturnType</a>
+            , <a href="./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html#function_ReturnType_5F2A5EDAEC4B3B324A7DA2638BF16D61382D8BD9">sngcpp::symbols::FunctionDeclarationSymbol::ReturnType</a>
+            , <a href="./class_FunctionSymbol_6E6D15A8486C2BC8D3BF3769E5595E8A5F5E9BA0.html#function_ReturnType_BF1B1C9CFC39D0A82777FEAD4E69872C611773A7">sngcpp::symbols::FunctionSymbol::ReturnType</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../../soulng-projects.html">top</a>
+         | <a href="namespace_symbols_3E045662C9577FA860D64BAA75D29EDEC2264BB7.html">up</a>
+         | <a href="struct_ByName_DC619DBBB3FB968F6E703C19D3553E66B00182C9.html">prev</a>
+         | <a href="class_ClassGroupSymbol_788297BEA2DBB4CAD3DED0B81EC95D20B7D41E4E.html">next</a>
+    </body>
+</html>

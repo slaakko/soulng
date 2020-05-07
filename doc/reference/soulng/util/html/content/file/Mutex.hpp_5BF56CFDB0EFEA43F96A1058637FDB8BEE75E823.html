@@ -6,7 +6,7 @@
  <body>
   <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
   <br/>
-  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
   <br/>
   <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
   <br/>
@@ -42,9 +42,9 @@
   <br/>
   <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
   <br/>
-  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>&nbsp;<span class="identifier">id</span><span class="other">;</span></span>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>&nbsp;<a href="../class_MutexOwner_F6E1EBE51136037061417224E1AEAEB0004DB28F.html#variable_id_A4D95400178D70CD2DE5F69C378B7727A94FCFAE">id</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">ownedMutexes</span><span class="other">;</span></span>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_MutexOwner_F6E1EBE51136037061417224E1AEAEB0004DB28F.html#variable_ownedMutexes_5F156D9E6733FCB846005E6A0935A08437EEF80A">ownedMutexes</a><span class="other">;</span></span>
   <br/>
   <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">};</span></span>
   <br/>
@@ -66,9 +66,9 @@
   <br/>
   <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
   <br/>
-  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html">Mutex</a><span class="other">&amp;</span>&nbsp;<span class="identifier">mtx</span><span class="other">;</span></span>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html">Mutex</a><span class="other">&amp;</span>&nbsp;<a href="../class_OwnerGuard_0D382A5CB5019BD64E16A5709B2CE00EB1D10A9E.html#variable_mtx_2AF186A19BDE8EF9EC81946521FAB859F1E2A865">mtx</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MutexOwner_F6E1EBE51136037061417224E1AEAEB0004DB28F.html">MutexOwner</a><span class="other">&amp;</span>&nbsp;<span class="identifier">owner</span><span class="other">;</span></span>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MutexOwner_F6E1EBE51136037061417224E1AEAEB0004DB28F.html">MutexOwner</a><span class="other">&amp;</span>&nbsp;<a href="../class_OwnerGuard_0D382A5CB5019BD64E16A5709B2CE00EB1D10A9E.html#variable_owner_8E528A17C58A82F37CB191ECCB24B244CE4778C2">owner</a><span class="other">;</span></span>
   <br/>
   <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">};</span></span>
   <br/>
@@ -90,11 +90,11 @@
   <br/>
   <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
   <br/>
-  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html">Mutex</a><span class="other">&amp;</span>&nbsp;<span class="identifier">mtx</span><span class="other">;</span></span>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html">Mutex</a><span class="other">&amp;</span>&nbsp;<a href="../class_LockGuard_F128A4BAF416AE2070FC347BCAAE16EFA55CB17C.html#variable_mtx_F74BB4BF2004D3E9324B593A3489FE4EC639B7C2">mtx</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MutexOwner_F6E1EBE51136037061417224E1AEAEB0004DB28F.html">MutexOwner</a><span class="other">&amp;</span>&nbsp;<span class="identifier">owner</span><span class="other">;</span></span>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_MutexOwner_F6E1EBE51136037061417224E1AEAEB0004DB28F.html">MutexOwner</a><span class="other">&amp;</span>&nbsp;<a href="../class_LockGuard_F128A4BAF416AE2070FC347BCAAE16EFA55CB17C.html#variable_owner_98886AD92E6DEEECF18AEA1A1A1D8593021B5A62">owner</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<span class="identifier">locked</span><span class="other">;</span></span>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_LockGuard_F128A4BAF416AE2070FC347BCAAE16EFA55CB17C.html#variable_locked_2AD98DB612DA9EACC2B1278AE29EBAF490224167">locked</a><span class="other">;</span></span>
   <br/>
   <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;<span class="other">};</span></span>
   <br/>
@@ -108,19 +108,19 @@
   <br/>
   <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#constructor_Mutex_B31C88592CE75D28746844C35B70054767DB1FFC">Mutex</a><span class="other">(</span><span class="kw">char</span>&nbsp;<span class="identifier">id_</span><span class="other">)</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Id_0FFCC4A73CEBB077BB895F9078B6B455FF3C2E77">Id</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">id</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Id_0FFCC4A73CEBB077BB895F9078B6B455FF3C2E77">Id</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#variable_id_AE6A21ED2B73D05554492103A49E2833D812F791">id</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Lock_17AB9838F20FA4F2565028C22C405EB69592F567">Lock</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">mtx</span><span class="other">.</span><span class="identifier">lock</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Lock_17AB9838F20FA4F2565028C22C405EB69592F567">Lock</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#variable_mtx_28739C34982B38899BB3F876293609CD65F54E4E">mtx</a><span class="other">.</span><span class="identifier">lock</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Unlock_07A83ADF646E6CC70DF686628D3C14BAD55C18C4">Unlock</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">mtx</span><span class="other">.</span><span class="identifier">unlock</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Unlock_07A83ADF646E6CC70DF686628D3C14BAD55C18C4">Unlock</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#variable_mtx_28739C34982B38899BB3F876293609CD65F54E4E">mtx</a><span class="other">.</span><span class="identifier">unlock</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">mutex</span><span class="other">&amp;</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Mtx_538597481469189192ABEDCEF8C7D4EFCC6F4D2D">Mtx</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">mtx</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">mutex</span><span class="other">&amp;</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#function_Mtx_538597481469189192ABEDCEF8C7D4EFCC6F4D2D">Mtx</a><span class="other">(</span><span class="other">)</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#variable_mtx_28739C34982B38899BB3F876293609CD65F54E4E">mtx</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
   <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
   <br/>
-  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>&nbsp;<span class="identifier">id</span><span class="other">;</span></span>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">char</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#variable_id_AE6A21ED2B73D05554492103A49E2833D812F791">id</a><span class="other">;</span></span>
   <br/>
-  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">mutex</span>&nbsp;<span class="identifier">mtx</span><span class="other">;</span></span>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">mutex</span>&nbsp;<a href="../class_Mutex_7C760F1D4760846B5984CC75B779E7C63EE1FC04.html#variable_mtx_28739C34982B38899BB3F876293609CD65F54E4E">mtx</a><span class="other">;</span></span>
   <br/>
   <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;<span class="other">};</span></span>
   <br/>

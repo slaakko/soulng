@@ -1,1 +1,1 @@
-spg: built
+spg: up-to-date

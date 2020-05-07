@@ -215,7 +215,19 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Format_7AEEF79D5A9F2C91821B09CC6EAD5CF98FC56256">Format</a>(<span class="kw">const </span>std::string&amp; s, <span class="kw">int</span> width, <a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a> justify)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Format_3EB31A266710B3AF13899A96463CA8A01CD0D3DE">Format</a>(<span class="kw">const </span>std::string&amp; s, <span class="kw">int</span> width, <a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a> fw)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Format_FDCAF5A67C1938004D4B81D64C0AEE956A593E31">Format</a>(<span class="kw">const </span>std::string&amp; s, <span class="kw">int</span> width, <a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a> fw, <a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a> justify)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">std::string</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Format_9C0BC7698749E05329F94B200467C2BFBB8F92FB">Format</a>(<span class="kw">const </span>std::string&amp; s, <span class="kw">int</span> width, <a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a> fw, <a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a> justify, <span class="kw">char</span> fillChar)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
@@ -275,7 +287,7 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_IsPrime_02E1104728DEA244289F6D0C99FF3BA2A7AD0CA4">IsPrime</a>(uint64_t x)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_IsPrime64_9FCE7FC5A9B053099A39937649AFE46CE3E47058">IsPrime64</a>(uint64_t n)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
@@ -302,8 +314,8 @@
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_NarrowString_863FD0AC3B9966D2B787C040D27181BBD661C8CF">NarrowString</a>(<span class="kw">const </span><span class="kw">char</span>* str, <span class="kw">int</span> length)</td>
             </tr>
             <tr>
-                <td class="functionTableFirstCol" xml:space="preserve">uint64_t</td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_NextPrime_9156BC18A7F2BE5CF6E419D6CB6AD05462C8DC85">NextPrime</a>(uint64_t x)</td>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_NextPrime_651C4FBF3E8E0CDFE831FE8A468498B1359F8E35">NextPrime</a>(boost::multiprecision::uint128_t&amp; x)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::string></td>
@@ -490,6 +502,11 @@
         <table>
             <tr>
                 <td>
+                    enum class <a href="enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     enum class <a href="enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a>
                 </td>
             </tr>
@@ -575,7 +592,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#29">29</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#34">34</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -591,7 +608,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#30">30</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#35">35</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -607,7 +624,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">116</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="type">duration_cast</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="type">milliseconds</span><span class="other">></span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="identifier">steady_clock</span><span class="other">::</span><span class="type">now</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;-&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="identifier">steady_clock</span><span class="other">::</span><span class="type">time_point</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">.</span><span class="identifier">count</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="type">duration_cast</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="identifier">milliseconds</span><span class="other">></span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="identifier">steady_clock</span><span class="other">::</span><span class="identifier">now</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;-&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="identifier">steady_clock</span><span class="other">::</span><span class="identifier">time_point</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">.</span><span class="identifier">count</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">118</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -631,9 +648,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">479</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">480</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">stringstream</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">480</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">stringstream</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">481</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">this_thread</span><span class="other">::</span><span class="type">get_id</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">481</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">this_thread</span><span class="other">::</span><span class="identifier">get_id</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">482</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">str</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -643,7 +660,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#49">49</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#54">54</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -702,7 +719,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">::</span><a href="./namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_UnicodeDone_44D2A4E76E27C691FB12FCD9F832FA3B586FB0BD">UnicodeDone</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B.html">soulng</a><span class="other">::</span><a href="./namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html">unicode</a><span class="other">::</span><span class="identifier">UnicodeDone</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -721,27 +738,27 @@
             <span class="kw">void</span>
              soulng::util::EndLog()</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#35">35</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#36">36</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_log_0FAC62489F31E47AB9188697EDBDC7DC03B9267D">log</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_log_0FAC62489F31E47AB9188697EDBDC7DC03B9267D">log</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_messageEnqueuedOrEndLog_87A9565E9059813B55526928347B03B4D3BCDFD7">messageEnqueuedOrEndLog</a><span class="other">.</span><span class="identifier">notify_one</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_messageEnqueuedOrEndLog_87A9565E9059813B55526928347B03B4D3BCDFD7">messageEnqueuedOrEndLog</a><span class="other">.</span><span class="identifier">notify_one</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">this_thread</span><span class="other">::</span><span class="type">sleep_for</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="type">milliseconds</span><span class="other">(</span><span class="other">{</span><span class="other">1</span>&nbsp;<span class="other">}</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">this_thread</span><span class="other">::</span><span class="identifier">sleep_for</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">chrono</span><span class="other">::</span><span class="identifier">milliseconds</span><span class="other">(</span><span class="other">{</span><span class="other">1</span>&nbsp;<span class="other">}</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_endLog_89196879EB22E20B0BC10A16846D3801E0229438">endLog</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_endLog_89196879EB22E20B0BC10A16846D3801E0229438">endLog</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">true</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_messageEnqueuedOrEndLog_87A9565E9059813B55526928347B03B4D3BCDFD7">messageEnqueuedOrEndLog</a><span class="other">.</span><span class="identifier">notify_one</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_messageEnqueuedOrEndLog_87A9565E9059813B55526928347B03B4D3BCDFD7">messageEnqueuedOrEndLog</a><span class="other">.</span><span class="identifier">notify_one</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -778,7 +795,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#36">36</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#41">41</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -791,7 +808,7 @@
             * buf, <span class="kw">int</span>
              size)</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#97">97</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#98">98</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
         </span>
         <br/>
@@ -831,7 +848,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">486</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">487</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Format_3EB31A266710B3AF13899A96463CA8A01CD0D3DE">Format</a><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="identifier">width</span><span class="other">,&nbsp;</span><a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a><span class="other">::</span><a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html#enumerator_exact_693C4E0E7DF15E447E26074EBC5FDF2EF8EF62C3">exact</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">487</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Format</span><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="identifier">width</span><span class="other">,&nbsp;</span><a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a><span class="other">::</span><a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html#enumerator_exact_693C4E0E7DF15E447E26074EBC5FDF2EF8EF62C3">exact</a><span class="other">,&nbsp;</span><a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a><span class="other">::</span><a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html#enumerator_left_82F4947E3AA67C1DF343B944BAAB3CE2D636FF4F">left</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">488</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -839,7 +856,34 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#50">50</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#55">55</a>
+             of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Format_7AEEF79D5A9F2C91821B09CC6EAD5CF98FC56256">Format Function</h3>
+        <h4>
+            std::string soulng::util::Format(<span class="kw">const </span>
+            std::string&amp; s, <span class="kw">int</span>
+             width, <a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a>
+             justify)</h4>
+        <span>
+            Definition at line <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html#490">490</a>
+             of <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html">TextUtils.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">491</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">492</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Format</span><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="identifier">width</span><span class="other">,&nbsp;</span><a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a><span class="other">::</span><a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html#enumerator_exact_693C4E0E7DF15E447E26074EBC5FDF2EF8EF62C3">exact</a><span class="other">,&nbsp;</span><span class="identifier">justify</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">493</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#56">56</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -852,12 +896,69 @@
              width, <a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a>
              fw)</h4>
         <span>
-            Definition at line <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html#490">490</a>
+            Definition at line <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html#495">495</a>
+             of <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html">TextUtils.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">496</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">497</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Format</span><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="identifier">width</span><span class="other">,&nbsp;</span><span class="identifier">fw</span><span class="other">,&nbsp;</span><a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a><span class="other">::</span><a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html#enumerator_left_82F4947E3AA67C1DF343B944BAAB3CE2D636FF4F">left</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">498</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#57">57</a>
+             of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Format_FDCAF5A67C1938004D4B81D64C0AEE956A593E31">Format Function</h3>
+        <h4>
+            std::string soulng::util::Format(<span class="kw">const </span>
+            std::string&amp; s, <span class="kw">int</span>
+             width, <a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a>
+             fw, <a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a>
+             justify)</h4>
+        <span>
+            Definition at line <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html#500">500</a>
+             of <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html">TextUtils.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">501</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">502</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Format</span><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="identifier">width</span><span class="other">,&nbsp;</span><span class="identifier">fw</span><span class="other">,&nbsp;</span><span class="identifier">justify</span><span class="other">,&nbsp;</span><span class="string">'&nbsp;'</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">503</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#58">58</a>
+             of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Format_9C0BC7698749E05329F94B200467C2BFBB8F92FB">Format Function</h3>
+        <h4>
+            std::string soulng::util::Format(<span class="kw">const </span>
+            std::string&amp; s, <span class="kw">int</span>
+             width, <a href="./enum_FormatWidth_F853F19DDAB272BBFE399B883B34302A489A2411.html">FormatWidth</a>
+             fw, <a href="./enum_FormatJustify_E64647088F4689DF011AA5390A898B2E5D769B34.html">FormatJustify</a>
+             justify, <span class="kw">char</span>
+             fillChar)</h4>
+        <span>
+            Definition at line <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html#505">505</a>
              of <a href="file/TextUtils.cpp_1B086B2232BC29CEF13FD19B273B80283BBABF2A.html">TextUtils.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#51">51</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#59">59</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -874,7 +975,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#48">48</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#53">53</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -906,15 +1007,15 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">time_t</span>&nbsp;<span class="identifier">currentTime</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">time_t</span>&nbsp;<span class="identifier">currentTime</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">time</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">time</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">struct</span>&nbsp;<span class="type">tm</span><span class="other">*</span>&nbsp;<span class="identifier">localTime</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">struct</span>&nbsp;<span class="identifier">tm</span><span class="other">*</span>&nbsp;<span class="identifier">localTime</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">localTime</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">localtime</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">localTime</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">localtime</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Date_BB1AFF51F54401ED1BE60C8FD06C971B9B3F5532.html">Date</a><span class="other">(</span><span class="other">1900</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_year</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><a href="./enum_Month_92FA697A3D21D76968797E2DC720D098051C1EBD.html">Month</a><span class="other">></span><span class="other">(</span><span class="other">1</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mon</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">int8_t</span><span class="other">></span><span class="other">(</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mday</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Date_BB1AFF51F54401ED1BE60C8FD06C971B9B3F5532.html">Date</a><span class="other">(</span><span class="other">1900</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_year</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><a href="./enum_Month_92FA697A3D21D76968797E2DC720D098051C1EBD.html">Month</a><span class="other">></span><span class="other">(</span><span class="other">1</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mon</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">int8_t</span><span class="other">></span><span class="other">(</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mday</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -939,15 +1040,15 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">107</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">time_t</span>&nbsp;<span class="identifier">currentTime</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">time_t</span>&nbsp;<span class="identifier">currentTime</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">time</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">time</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">struct</span>&nbsp;<span class="type">tm</span><span class="other">*</span>&nbsp;<span class="identifier">localTime</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">struct</span>&nbsp;<span class="identifier">tm</span><span class="other">*</span>&nbsp;<span class="identifier">localTime</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">nullptr</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">localTime</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">localtime</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">localTime</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">localtime</span><span class="other">(</span><span class="other">&amp;</span><span class="identifier">currentTime</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_DateTime_DC21B6F1AE49E156F006D5CBD87762523ECD9909.html">DateTime</a><span class="other">(</span><a href="./class_Date_BB1AFF51F54401ED1BE60C8FD06C971B9B3F5532.html">Date</a><span class="other">(</span><span class="other">1900</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_year</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><a href="./enum_Month_92FA697A3D21D76968797E2DC720D098051C1EBD.html">Month</a><span class="other">></span><span class="other">(</span><span class="other">1</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mon</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">int8_t</span><span class="other">></span><span class="other">(</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mday</span><span class="other">)</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_hour</span><span class="other">&nbsp;*&nbsp;</span><span class="other">3600</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_min</span><span class="other">&nbsp;*&nbsp;</span><span class="other">60</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_sec</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_DateTime_DC21B6F1AE49E156F006D5CBD87762523ECD9909.html">DateTime</a><span class="other">(</span><a href="./class_Date_BB1AFF51F54401ED1BE60C8FD06C971B9B3F5532.html">Date</a><span class="other">(</span><span class="other">1900</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_year</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><a href="./enum_Month_92FA697A3D21D76968797E2DC720D098051C1EBD.html">Month</a><span class="other">></span><span class="other">(</span><span class="other">1</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mon</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">int8_t</span><span class="other">></span><span class="other">(</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_mday</span><span class="other">)</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_hour</span><span class="other">&nbsp;*&nbsp;</span><span class="other">3600</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_min</span><span class="other">&nbsp;*&nbsp;</span><span class="other">60</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">localTime</span><span class="other">-></span><span class="identifier">tm_sec</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -986,7 +1087,7 @@
             std::string soulng::util::GetFullPath(<span class="kw">const </span>
             std::string&amp; path)</h4>
         <span>
-            Definition at line <a href="file/Path.cpp_A7C5BB32D325F4C8D685FD85593A314E3A257A84.html#369">369</a>
+            Definition at line <a href="file/Path.cpp_A7C5BB32D325F4C8D685FD85593A314E3A257A84.html#385">385</a>
              of <a href="file/Path.cpp_A7C5BB32D325F4C8D685FD85593A314E3A257A84.html">Path.cpp</a>
         </span>
         <br/>
@@ -1033,7 +1134,7 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">sha1</span><span class="other">.</span><span class="identifier">Process</span><span class="other">(</span><span class="other">(</span><span class="kw">void</span><span class="other">*</span><span class="other">)</span><span class="identifier">message</span><span class="other">.</span><span class="identifier">c_str</span><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="kw">int</span><span class="other">(</span><span class="identifier">message</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">sha1</span><span class="other">.</span><a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_GetDigest_D159828319EB9FF2A5735C75CE2FA4E0B7188134">GetDigest</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">sha1</span><span class="other">.</span><span class="identifier">GetDigest</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -1063,7 +1164,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">184</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">stringstream</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">185</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">stringstream</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">186</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="string">"\\x"</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">hex</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="kw">int</span><span class="other">(</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="kw">unsigned</span>&nbsp;<span class="kw">char</span><span class="other">></span><span class="other">(</span><span class="identifier">c</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -1075,7 +1176,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#27">27</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#32">32</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1091,7 +1192,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">191</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">stringstream</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">stringstream</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="string">"\\x"</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">hex</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="identifier">c</span><span class="other">;</span></span>
                 <br/>
@@ -1103,7 +1204,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#28">28</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#33">33</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1121,7 +1222,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">404</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">405</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="kw">const&nbsp;</span><span class="kw">char</span><span class="other">*</span>&nbsp;<span class="identifier">h</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"0123456789ABCDEF"</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">405</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">static</span>&nbsp;<span class="kw">const</span>&nbsp;<span class="kw">char</span><span class="other">*</span>&nbsp;<span class="identifier">h</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"0123456789ABCDEF"</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">406</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">h</span><span class="other">[</span><span class="identifier">n</span><span class="other">]</span><span class="other">;</span></span>
                 <br/>
@@ -1142,7 +1243,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">soulng</span><span class="other">::</span><span class="identifier">unicode</span><span class="other">::</span><a href="./namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_UnicodeInit_BE49F34F0D6F7F32B64AEBA7D999AD31282B6D72">UnicodeInit</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_soulng_FC22ADE78BF10F501D24FE52A5FF780AB8F3122B.html">soulng</a><span class="other">::</span><a href="./namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html">unicode</a><span class="other">::</span><span class="identifier">UnicodeInit</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -1175,7 +1276,7 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_mt_8BE496AA120F932F3BE70A7283B9A7B072C3D05D">mt</a><span class="other">-></span><a href="./class_MT_5CCD3FFBFC4F73CEEEE14F68F311FC46611B6974.html#function_Init_4B8362334C98002B5C41CF649674F6D719E11B47">Init</a><span class="other">(</span><span class="identifier">seed</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_mt_8BE496AA120F932F3BE70A7283B9A7B072C3D05D">mt</a><span class="other">-></span><span class="identifier">Init</span><span class="other">(</span><span class="identifier">seed</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -1205,9 +1306,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">id</span><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">id</span><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint64_t</span><span class="other">*</span>&nbsp;<span class="identifier">i64</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">reinterpret_cast</span><span class="other">&lt;</span><span class="type">uint64_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">i</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint64_t</span><span class="other">*</span>&nbsp;<span class="identifier">i64</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">reinterpret_cast</span><span class="other">&lt;</span><span class="identifier">uint64_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">i</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">*</span><span class="identifier">i64</span><span class="other">++</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">int1</span><span class="other">;</span></span>
                 <br/>
@@ -1225,12 +1326,12 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_IsPrime_02E1104728DEA244289F6D0C99FF3BA2A7AD0CA4">IsPrime Function</h3>
+        <h3 id="function_IsPrime64_9FCE7FC5A9B053099A39937649AFE46CE3E47058">IsPrime64 Function</h3>
         <h4>
             <span class="kw">bool</span>
-             soulng::util::IsPrime(uint64_t x)</h4>
+             soulng::util::IsPrime64(uint64_t n)</h4>
         <span>
-            Definition at line <a href="file/Prime.cpp_71CEB538D7866C40EDC3617C907B9865F3B43C04.html#10">10</a>
+            Definition at line <a href="file/Prime.cpp_71CEB538D7866C40EDC3617C907B9865F3B43C04.html#11">11</a>
              of <a href="file/Prime.cpp_71CEB538D7866C40EDC3617C907B9865F3B43C04.html">Prime.cpp</a>
         </span>
         <br/>
@@ -1249,7 +1350,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#34">34</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#39">39</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1313,7 +1414,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#47">47</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#52">52</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1326,7 +1427,7 @@
              logStreamId, <span class="kw">const </span>
             std::string&amp; message)</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#46">46</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#47">47</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
         </span>
         <br/>
@@ -1345,15 +1446,15 @@
             std::string&amp; message, <span class="kw">int</span>
              indent)</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#74">74</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#75">75</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;75</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;76</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_LogMessage_21C7139D0413A3F3A116C756DEA6454473D920D4">LogMessage</a><span class="other">(</span><span class="identifier">logStreamId</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">string</span><span class="other">(</span><span class="identifier">indent</span><span class="other">,&nbsp;</span><span class="string">'&nbsp;'</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">message</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">LogMessage</span><span class="other">(</span><span class="identifier">logStreamId</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">(</span><span class="identifier">indent</span><span class="other">,&nbsp;</span><span class="string">'&nbsp;'</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">message</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;77</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;78</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -1377,17 +1478,18 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#37">37</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#42">42</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_NextPrime_9156BC18A7F2BE5CF6E419D6CB6AD05462C8DC85">NextPrime Function</h3>
+        <h3 id="function_NextPrime_651C4FBF3E8E0CDFE831FE8A468498B1359F8E35">NextPrime Function</h3>
         <h4>
-            uint64_t soulng::util::NextPrime(uint64_t x)</h4>
+            <span class="kw">void</span>
+             soulng::util::NextPrime(boost::multiprecision::uint128_t&amp; x)</h4>
         <span>
-            Definition at line <a href="file/Prime.cpp_71CEB538D7866C40EDC3617C907B9865F3B43C04.html#28">28</a>
+            Definition at line <a href="file/Prime.cpp_71CEB538D7866C40EDC3617C907B9865F3B43C04.html#26">26</a>
              of <a href="file/Prime.cpp_71CEB538D7866C40EDC3617C907B9865F3B43C04.html">Prime.cpp</a>
         </span>
         <br/>
@@ -1441,7 +1543,7 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">280</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">281</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span><span class="other">(</span><span class="string">"\""</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">path</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"\""</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">281</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">(</span><span class="string">"\""</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">path</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"\""</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">282</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
@@ -1453,7 +1555,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#33">33</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#38">38</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1491,7 +1593,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">uint64_t</span><span class="other">></span><span class="other">(</span><a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Random_8CC173D939625DF08209581B2A2588E67B74FEB9">Random</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="other">32</span><span class="other">&nbsp;|&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">uint64_t</span><span class="other">></span><span class="other">(</span><a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_Random_8CC173D939625DF08209581B2A2588E67B74FEB9">Random</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">uint64_t</span><span class="other">></span><span class="other">(</span><span class="identifier">Random</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;&lt;&lt;&nbsp;</span><span class="other">32</span><span class="other">&nbsp;|&nbsp;</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">uint64_t</span><span class="other">></span><span class="other">(</span><span class="identifier">Random</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -1541,7 +1643,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">369</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">370</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="type">read</span><span class="other">(</span><span class="identifier">pipeHandle</span><span class="other">,&nbsp;</span><span class="identifier">buffer</span><span class="other">,&nbsp;</span><span class="identifier">count</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">370</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">read</span><span class="other">(</span><span class="identifier">pipeHandle</span><span class="other">,&nbsp;</span><span class="identifier">buffer</span><span class="other">,&nbsp;</span><span class="identifier">count</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">371</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -1585,7 +1687,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#25">25</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#30">30</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1603,7 +1705,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#26">26</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#31">31</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1633,15 +1735,15 @@
              soulng::util::SetLogMode(<a href="./enum_LogMode_7F4256930BC7135219DEC1F9938848CFEE0C292E.html">LogMode</a>
              mode)</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#25">25</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#26">26</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_logMode_298198E8CCD243963F567BE1B44C285D91C90D92">logMode</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">mode</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_logMode_298198E8CCD243963F567BE1B44C285D91C90D92">logMode</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">mode</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;28</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;29</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -1675,7 +1777,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#24">24</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#29">29</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1686,15 +1788,15 @@
             <span class="kw">void</span>
              soulng::util::StartLog()</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#30">30</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#31">31</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;31</span>&nbsp;<span class="other">{</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_endLog_89196879EB22E20B0BC10A16846D3801E0229438">endLog</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">false</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#variable_endLog_89196879EB22E20B0BC10A16846D3801E0229438">endLog</a><span class="other">&nbsp;=&nbsp;</span><span class="kw">false</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -1729,7 +1831,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#35">35</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#40">40</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1748,9 +1850,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint64_t</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint64_t</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">Assert</span><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="string">"null&nbsp;string&nbsp;ptr"</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Assert</span><span class="other">(</span><span class="identifier">s</span><span class="other">,&nbsp;</span><span class="string">"null&nbsp;string&nbsp;ptr"</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="other">*</span><span class="identifier">s</span><span class="other">++</span><span class="other">)</span>&nbsp;<span class="other">++</span><span class="identifier">n</span><span class="other">;</span></span>
                 <br/>
@@ -1773,7 +1875,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">256</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">257</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">r</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">257</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<span class="identifier">r</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">258</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -1793,7 +1895,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#31">31</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#36">36</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1810,7 +1912,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">267</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">u32string</span>&nbsp;<span class="identifier">r</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<span class="identifier">r</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">269</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -1830,7 +1932,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#32">32</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#37">37</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1913,7 +2015,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">242</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">243</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_System_C17966D8A5F016F0795650250FF67692441EBDB3">System</a><span class="other">(</span><span class="identifier">command</span><span class="other">,&nbsp;</span><span class="identifier">redirectFd</span><span class="other">,&nbsp;</span><span class="identifier">toFile</span><span class="other">,&nbsp;</span><span class="kw">false</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">243</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">System</span><span class="other">(</span><span class="identifier">command</span><span class="other">,&nbsp;</span><span class="identifier">redirectFd</span><span class="other">,&nbsp;</span><span class="identifier">toFile</span><span class="other">,&nbsp;</span><span class="kw">false</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">244</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -1957,11 +2059,11 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">417</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">418</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">418</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">419</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">8</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">419</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="identifier">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">8</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">420</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">420</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="identifier">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">421</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
@@ -1971,7 +2073,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#44">44</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#49">49</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -1987,15 +2089,15 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">425</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">426</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">426</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">427</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">24</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">427</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="identifier">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">24</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">428</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">16</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">428</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="identifier">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">16</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">429</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">8</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">429</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="identifier">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">8</span><span class="other">)</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">430</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="type">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">430</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="identifier">ToHexString</span><span class="other">(</span><span class="identifier">uint8_t</span><span class="other">(</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0xFF</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">431</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
@@ -2005,7 +2107,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#45">45</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#50">50</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2020,7 +2122,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#46">46</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#51">51</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2036,9 +2138,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">410</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">411</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">411</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">412</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_HexNibble_D1923DF348336235428A1A065F04F206DC60AA8A">HexNibble</a><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">4</span><span class="other">)</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><a href="./namespace_util_E23A9512F2AAFD7C9E0BD9C05F0E325D24E4033B.html#function_HexNibble_D1923DF348336235428A1A065F04F206DC60AA8A">HexNibble</a><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0x0F</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">412</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">HexNibble</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;>>&nbsp;</span><span class="other">4</span><span class="other">)</span><span class="other">)</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">HexNibble</span><span class="other">(</span><span class="identifier">x</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="other">0x0F</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">413</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">s</span><span class="other">;</span></span>
                 <br/>
@@ -2048,7 +2150,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#43">43</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#48">48</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2065,7 +2167,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">358</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">359</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">result</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">359</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<span class="identifier">result</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">360</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -2075,7 +2177,7 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">363</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">364</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">result</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">tolower</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">364</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">result</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">tolower</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">365</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
@@ -2087,7 +2189,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#39">39</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#44">44</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2112,7 +2214,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#40">40</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#45">45</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2138,7 +2240,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#41">41</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#46">46</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2156,7 +2258,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#42">42</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#47">47</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2173,7 +2275,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">346</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">347</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">string</span>&nbsp;<span class="identifier">result</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">347</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<span class="identifier">result</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">348</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">n</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -2183,7 +2285,7 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">351</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">352</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">result</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">toupper</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">352</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">result</span><span class="other">.</span><span class="identifier">append</span><span class="other">(</span><span class="other">1</span><span class="other">,&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">toupper</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">i</span><span class="other">]</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">353</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
@@ -2195,7 +2297,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#38">38</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#43">43</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2214,11 +2316,11 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">b</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">b</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">isspace</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">b</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">++</span><span class="identifier">b</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">b</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">isspace</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">b</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">++</span><span class="identifier">b</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">e</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;-&nbsp;</span><span class="other">1</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">e</span><span class="other">&nbsp;>=&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">isspace</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">e</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">--</span><span class="identifier">e</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">e</span><span class="other">&nbsp;>=&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">isspace</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">e</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">--</span><span class="identifier">e</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">substr</span><span class="other">(</span><span class="identifier">b</span><span class="other">,&nbsp;</span><span class="identifier">e</span><span class="other">&nbsp;-&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;+&nbsp;</span><span class="other">1</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -2228,7 +2330,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#20">20</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#25">25</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2247,11 +2349,11 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;79</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">b</span>&nbsp;<span class="other">=</span>&nbsp;<span class="other">0</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">b</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><a href="./namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_IsWhiteSpace_B6B9DC26B988B95EAA51DBB9CE11FC8B089F4A59">IsWhiteSpace</a><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">b</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">++</span><span class="identifier">b</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;80</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">b</span><span class="other">&nbsp;&lt;&nbsp;</span><span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">IsWhiteSpace</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">b</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">++</span><span class="identifier">b</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;81</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">int</span>&nbsp;<span class="identifier">e</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">int</span><span class="other">(</span><span class="identifier">s</span><span class="other">.</span><span class="identifier">length</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;-&nbsp;</span><span class="other">1</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">e</span><span class="other">&nbsp;>=&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><a href="./namespace_unicode_1CB99A2FA0E6E72BEB3B4AA1DF683913D2B58DFE.html#function_IsWhiteSpace_B6B9DC26B988B95EAA51DBB9CE11FC8B089F4A59">IsWhiteSpace</a><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">e</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">--</span><span class="identifier">e</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;82</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">e</span><span class="other">&nbsp;>=&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;&amp;&amp;&nbsp;</span><span class="identifier">IsWhiteSpace</span><span class="other">(</span><span class="identifier">s</span><span class="other">[</span><span class="identifier">e</span><span class="other">]</span><span class="other">)</span><span class="other">)</span>&nbsp;<span class="other">--</span><span class="identifier">e</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">s</span><span class="other">.</span><span class="identifier">substr</span><span class="other">(</span><span class="identifier">b</span><span class="other">,&nbsp;</span><span class="identifier">e</span><span class="other">&nbsp;-&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;+&nbsp;</span><span class="other">1</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -2261,7 +2363,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#22">22</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#27">27</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2277,7 +2379,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#21">21</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#26">26</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2293,7 +2395,7 @@
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#23">23</a>
+            Declaration at line <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html#28">28</a>
              of <a href="file/TextUtils.hpp_C183842B41DEEE51A1460C5FF0A23DC74A3E0015.html">TextUtils.hpp</a>
         </span>
         <br/>
@@ -2311,9 +2413,9 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="type">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">id</span><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">i</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">id</span><span class="other">.</span><span class="identifier">begin</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const&nbsp;</span><span class="type">uint64_t</span><span class="other">*</span>&nbsp;<span class="identifier">i64</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">reinterpret_cast</span><span class="other">&lt;</span><span class="kw">const&nbsp;</span><span class="type">uint64_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">i</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">const</span>&nbsp;<span class="identifier">uint64_t</span><span class="other">*</span>&nbsp;<span class="identifier">i64</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">reinterpret_cast</span><span class="other">&lt;</span><span class="kw">const</span>&nbsp;<span class="identifier">uint64_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">i</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">int1</span><span class="other">&nbsp;=&nbsp;</span><span class="other">*</span><span class="identifier">i64</span><span class="other">++</span><span class="other">;</span></span>
                 <br/>
@@ -2336,7 +2438,7 @@
             <span class="kw">int</span>
              soulng::util::WaitForLogMessage()</h4>
         <span>
-            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#81">81</a>
+            Definition at line <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html#82">82</a>
              of <a href="file/Log.cpp_DEF8EFF4D070860738644E137D556AAD4BB2AA4F.html">Log.cpp</a>
         </span>
         <br/>
@@ -2361,7 +2463,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">374</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">375</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="type">write</span><span class="other">(</span><span class="identifier">pipeHandle</span><span class="other">,&nbsp;</span><span class="identifier">buffer</span><span class="other">,&nbsp;</span><span class="identifier">count</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">375</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">write</span><span class="other">(</span><span class="identifier">pipeHandle</span><span class="other">,&nbsp;</span><span class="identifier">buffer</span><span class="other">,&nbsp;</span><span class="identifier">count</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">376</span>&nbsp;<span class="other">}</span></span>
             </span>

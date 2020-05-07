@@ -1,0 +1,1616 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>GrammarHtmlGeneratorVisitor Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">prev</a>
+         | <a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">next</a>
+        <hr/>
+        <h1>GrammarHtmlGeneratorVisitor Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#16">16</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#constructor_GrammarHtmlGeneratorVisitor_968E6124A1D71C23B24A62706866202845748972">GrammarHtmlGeneratorVisitor</a>(<span class="kw">bool</span> verbose_, std::unordered_map&lt;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>*, <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>*>&amp; parserGrammarMap_, std::unordered_map&lt;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>*, <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>*>&amp; parserRuleMap_, std::unordered_map&lt;<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>*, <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>*>&amp; lexerGrammarMap_, std::unordered_map&lt;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>*, <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>*>&amp; lexerRuleMap_, std::unordered_map&lt;std::u32string, <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>*>&amp; lexerMap_, <span class="kw">const </span>std::u32string&amp; styleFilePath_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetGrammar_10D82C3AF64AFCA831D8DA1CE6E350F7C90FB424">GetGrammar</a>(<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>* parser) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetRule_81866BAFB1844D5ED5EE238D98FFD0B72A0F78C5">GetRule</a>(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>* parser) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_944663C9BE08CB6A1AEA02E05E4E78B449C75319">Visit</a>(<a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html">ActionParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_FB186352BD36018EE5CCA83EEFBCA0B8441BD971">Visit</a>(<a href="./class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.html">Alt</a>&amp; alt) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_27E569097DEEF287BE23BD3CB57B59D9545E5506">Visit</a>(<a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html">AlternativeParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_E3634BEF06716E3F6A2658993CA4A7CC9A6147EC">Visit</a>(<a href="./class_Any_8222DBCA58F5147074DB7FA22582159CAD697B5F.html">Any</a>&amp; symbol) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_726F892B3F48202F4A0C636BE6AA4C1EA779C1EA">Visit</a>(<a href="./class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.html">Cat</a>&amp; cat) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_93175646C44DFD1A3AA40E2BC0142FB84A7E69E9">Visit</a>(<a href="./class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html">Char</a>&amp; symbol) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_D9DEA7318A7EDCE796544901BFAF50E2EBD2C5D6">Visit</a>(<a href="./class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html">CharParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A14C16B2B5620EA31F506FFC44A0C64C76773F6F">Visit</a>(<a href="./class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html">CharSetParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_1FAC34306589C1F827DC58B6AD3ADD67DDFA7965">Visit</a>(<a href="./class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html">Class</a>&amp; symbol) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_42D52FAED3EB4A2B7303FDF474FEA1C2EE98131B">Visit</a>(<a href="./class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html">DifferenceParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_6F3A8F33818D9556C73242E8065A5A201BD536D8">Visit</a>(<a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html">Domain</a>&amp; domain) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_4C648E5DCFD03B6DC99F4FB0E5E2DA550457B0B9">Visit</a>(<a href="./class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html">EmptyParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_D04D5A21614DC697103CBCF4CCF79D53D803C707">Visit</a>(<a href="./class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html">ExpectationParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_51598A3411660552FFF55757C0165B87F508614F">Visit</a>(<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">Visit</a>(<a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html">GroupingParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_07B09E176110B115543B00CCF1391F547B90BEFB">Visit</a>(<a href="./class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.html">Kleene</a>&amp; kleene) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_B413BE99283F4F2C61BB15590B9D6F2EE7287F77">Visit</a>(<a href="./class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html">KleeneParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_CA4DA3097438EA4D1AE5173E61D5EB17F4F617A1">Visit</a>(<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>&amp; lexerFile) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_B457A83BE556DB52FFB0977643CB3A24A20E0592">Visit</a>(<a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html">ListParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_F12B4F48FF032FAC1CCF005C0FB0C91F89630C0D">Visit</a>(<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_FA9F42A480E3CE9438AA51E104A2BBD2C86BBF65">Visit</a>(<a href="./class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.html">Opt</a>&amp; opt) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_07C8F2418E6BB3DDB9BB19CD840C8FA1B62331F0">Visit</a>(<a href="./class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html">OptionalParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_7F59E418F650714310E7ECCEDDF4C6E18CFC7B42">Visit</a>(<a href="./class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html">ParenExpr</a>&amp; parenExpr) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_AD95A66F33C020AC4723267824C7D16A78278122">Visit</a>(<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>&amp; parserFile) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_643611E04BF703787A8C7FBDCCCA22C64B2DFBF8">Visit</a>(<a href="./class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html">Pos</a>&amp; pos) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_1895C0A515C9CC721D0ADA87F222D11A0DF33BE6">Visit</a>(<a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html">PositiveParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_ADD371D421BC30D6358060460CA1399B7EED079E">Visit</a>(<a href="./class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a>&amp; symbol) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_7F303F320654E099503BF276A68F8623B331CD8A">Visit</a>(<a href="./class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html">RefExpr</a>&amp; refExpr) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_0795131FE9DBE5836A175BE976EECB0F8F52AC95">Visit</a>(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_86317FAA498B81EA247A93BECFBBEF4DA9865532">Visit</a>(<a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html">SequenceParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_7773B72CD8A80D907879EB24E1C0D52DE2A75AB0">Visit</a>(<a href="./class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html">StringParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_79A9F416C940FB11C6C86170FC137FB170C12455">Visit</a>(<a href="./class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html">SymbolExpr</a>&amp; symbolExpr) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_C70781ABB47E70371962A6B693DAB25DC07CBF00">Visit</a>(<a href="./class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html">TokenParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_currentGrammar_12344DDF1C8E3D030B839C8284BC6FB464261526">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentGrammar</td>
+            </tr>
+            <tr id="variable_lexerFile_9AE3DADA46A2A749BC29F948693F86AAD7CA856C">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexerFile</td>
+            </tr>
+            <tr id="variable_lexerGrammarMap_7E8EDA659C855550221CB9D178C0437A76E37F35">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>*, <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexerGrammarMap</td>
+            </tr>
+            <tr id="variable_lexerMap_F9111E9158EA8B3DB7AB0D7DA817F89294CDE9A0">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexerMap</td>
+            </tr>
+            <tr id="variable_lexerRuleMap_B9BBCA33086D30B88A612050F03B1D4BB08B97EC">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>*, <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexerRuleMap</td>
+            </tr>
+            <tr id="variable_parserGrammarMap_76DE28F6798CE61E71685565FEB213F9E5CF2F7C">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>*, <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">parserGrammarMap</td>
+            </tr>
+            <tr id="variable_parserRuleMap_370FC1D95C6B62CB85D5B27926A166C99A992E39">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>*, <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve">parserRuleMap</td>
+            </tr>
+            <tr id="variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">
+                <td class="functionTableFirstCol" xml:space="preserve">sngxml::dom::Element*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">ruleBodyElement</td>
+            </tr>
+            <tr id="variable_ruleTable_F5E74BA7BD44AB96B1483E864FA821D075FCF2A2">
+                <td class="functionTableFirstCol" xml:space="preserve">sngxml::dom::Element*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">ruleTable</td>
+            </tr>
+            <tr id="variable_styleFilePath_E798D1FCF96BB9CFF82B5B1473C38F8FA34735D2">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">styleFilePath</td>
+            </tr>
+            <tr id="variable_verbose_2D5D4FEBA76241EE7BE4CBC3F38DEA89EC68E3EF">
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve">verbose</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_GrammarHtmlGeneratorVisitor_968E6124A1D71C23B24A62706866202845748972">GrammarHtmlGeneratorVisitor Constructor</h3>
+        <h4>
+            sng2html::sng2html::GrammarHtmlGeneratorVisitor::GrammarHtmlGeneratorVisitor(<span class="kw">bool</span>
+             verbose_, std::unordered_map&lt;<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>
+            *, <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>
+            *>&amp; parserGrammarMap_, std::unordered_map&lt;<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            *, <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>
+            *>&amp; parserRuleMap_, std::unordered_map&lt;<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>
+            *, <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>
+            *>&amp; lexerGrammarMap_, std::unordered_map&lt;<a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a>
+            *, <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>
+            *>&amp; lexerRuleMap_, std::unordered_map&lt;std::u32string, <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>
+            *>&amp; lexerMap_, <span class="kw">const </span>
+            std::u32string&amp; styleFilePath_)</h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#35">35</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">:</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_verbose_2D5D4FEBA76241EE7BE4CBC3F38DEA89EC68E3EF">verbose</a><span class="other">(</span><span class="identifier">verbose_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_parserGrammarMap_76DE28F6798CE61E71685565FEB213F9E5CF2F7C">parserGrammarMap</a><span class="other">(</span><span class="identifier">parserGrammarMap_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_parserRuleMap_370FC1D95C6B62CB85D5B27926A166C99A992E39">parserRuleMap</a><span class="other">(</span><span class="identifier">parserRuleMap_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_lexerGrammarMap_7E8EDA659C855550221CB9D178C0437A76E37F35">lexerGrammarMap</a><span class="other">(</span><span class="identifier">lexerGrammarMap_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_lexerRuleMap_B9BBCA33086D30B88A612050F03B1D4BB08B97EC">lexerRuleMap</a><span class="other">(</span><span class="identifier">lexerRuleMap_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_lexerMap_F9111E9158EA8B3DB7AB0D7DA817F89294CDE9A0">lexerMap</a><span class="other">(</span><span class="identifier">lexerMap_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_styleFilePath_E798D1FCF96BB9CFF82B5B1473C38F8FA34735D2">styleFilePath</a><span class="other">(</span><span class="identifier">styleFilePath_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleTable_F5E74BA7BD44AB96B1483E864FA821D075FCF2A2">ruleTable</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_currentGrammar_12344DDF1C8E3D030B839C8284BC6FB464261526">currentGrammar</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_lexerFile_9AE3DADA46A2A749BC29F948693F86AAD7CA856C">lexerFile</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;42</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;43</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#19">19</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_GetGrammar_10D82C3AF64AFCA831D8DA1CE6E350F7C90FB424">GetGrammar Member Function</h3>
+        <h4>
+            <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a>
+            * sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetGrammar(<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>
+            * parser) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#608">608</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#55">55</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">sng2html::sng2html::Parser::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_F12B4F48FF032FAC1CCF005C0FB0C91F89630C0D">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_51598A3411660552FFF55757C0165B87F508614F">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetRule_81866BAFB1844D5ED5EE238D98FFD0B72A0F78C5">GetRule Member Function</h3>
+        <h4>
+            <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a>
+            * sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetRule(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            * parser) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#621">621</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#56">56</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">sng2html::sng2html::Parser::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_F12B4F48FF032FAC1CCF005C0FB0C91F89630C0D">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_0795131FE9DBE5836A175BE976EECB0F8F52AC95">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_944663C9BE08CB6A1AEA02E05E4E78B449C75319">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html">ActionParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#411">411</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">412</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">413</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">414</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#48">48</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_B89D5EEE901AD0F258CB68903C4AC0EAE1DF6D5B">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_FB186352BD36018EE5CCA83EEFBCA0B8441BD971">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.html">Alt</a>
+            &amp; alt) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#107">107</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">108</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">109</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">alt</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">110</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">111</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">112</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"&nbsp;|&nbsp;"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">113</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">114</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">alt</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">115</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#26">26</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_1CD640FB11A510CAA3E75D9C3D99F478A474315D">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#function_Left_7069CDDBDC8175BD9B51AC070F3B8F1AD55DDC30">sng2html::sng2html::BinaryRegExpression::Left</a>
+            , <a href="./class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#function_Right_527071A83200C06EFEF197BD7596A7F4046F3227">sng2html::sng2html::BinaryRegExpression::Right</a>
+            , <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_27E569097DEEF287BE23BD3CB57B59D9545E5506">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_AlternativeParser_FC07998B25E3D9C5C4B24B5096138168E1B12B77.html">AlternativeParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#379">379</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">380</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">381</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">382</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">383</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">384</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"&nbsp;|&nbsp;"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">385</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">386</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">387</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#45">45</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_161EF00086EB00E4FF7F162B1CEFF53914ECD838">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Left_37D43A68BB36B5706AEEC3CAEEAC35C7362E9428">sng2html::sng2html::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Right_61127414FC70D51F45B863FB1DC86F9A5D581596">sng2html::sng2html::BinaryParser::Right</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_E3634BEF06716E3F6A2658993CA4A7CC9A6147EC">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Any_8222DBCA58F5147074DB7FA22582159CAD697B5F.html">Any</a>
+            &amp; symbol) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#53">53</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;56</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;57</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"."</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;58</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;59</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#23">23</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_C6DA1ADD301E1C662C29C26D5F538A65E6CF7D47">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_726F892B3F48202F4A0C636BE6AA4C1EA779C1EA">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.html">Cat</a>
+            &amp; cat) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#117">117</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#27">27</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_B12D7AC34D6F53D57212C5B91900DADE682B301D">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#function_Left_7069CDDBDC8175BD9B51AC070F3B8F1AD55DDC30">sng2html::sng2html::BinaryRegExpression::Left</a>
+            , <a href="./class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#function_Right_527071A83200C06EFEF197BD7596A7F4046F3227">sng2html::sng2html::BinaryRegExpression::Right</a>
+            , <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_IsCharSymbolExpr_DB91C59FBB5F773C1FA226B6F9C8429F3D5548DB">sng2html::sng2html::RegExpression::IsCharSymbolExpr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_93175646C44DFD1A3AA40E2BC0142FB84A7E69E9">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html">Char</a>
+            &amp; symbol) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#45">45</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;46</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;48</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleChar"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;49</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="identifier">CharStr</span><span class="other">(</span><span class="identifier">symbol</span><span class="other">.</span><span class="identifier">Chr</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;51</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#22">22</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_9387183D06AD56D4A4D5DD06A0B65D20EA876D98">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Char_05251ABC0086602F3FDD33A0B3F680D31D6F54F8.html#function_Chr_F601020EB99167353CFD3A23F9E3DC1A51861D0E">sng2html::sng2html::Char::Chr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_D9DEA7318A7EDCE796544901BFAF50E2EBD2C5D6">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html">CharParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#262">262</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">263</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">264</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">265</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleChar"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">266</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="identifier">CharStr</span><span class="other">(</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Chr</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">267</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">268</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#36">36</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_83DA7BD66495ACF7A3DABCB279E1D3A668AEA8CC">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CharParser_80E6001AF0EFA34ACDC7ADEE2E26D4034D25609E.html#function_Chr_74A94189928EE0B6A6323B150AAA7BF894B519A7">sng2html::sng2html::CharParser::Chr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_A14C16B2B5620EA31F506FFC44A0C64C76773F6F">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html">CharSetParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#278">278</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#38">38</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_C34BD1AF986370C5633BE25A6D52668F15A8907A">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#function_Inverse_19F0015DE06E6182CAB10568C7C5BA8497379FC0">sng2html::sng2html::CharSet::Inverse</a>
+            , <a href="./class_CharSet_32B52028E6A76465259BCA939C642CBE13173650.html#function_Ranges_DD56A200948D8DFD589316A4D597DF9DF4459955">sng2html::sng2html::CharSet::Ranges</a>
+            , <a href="./class_CharSetParser_2EF04178C08B930AFF744B693A45F8926D2900F3.html#function_Set_06DFE4682FE9C01F94772471E4281BE464D52F80">sng2html::sng2html::CharSetParser::Set</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_1FAC34306589C1F827DC58B6AD3ADD67DDFA7965">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html">Class</a>
+            &amp; symbol) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#87">87</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#25">25</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_B4E2B41B86C59C9A56228A17251DDE20759A712D">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Class_454ADA23859B0377FC7A156EBD1C2411F2FB333D.html#function_Inverse_689DAE970EAE2EC8884CA43308B526C73883DF05">sng2html::sng2html::Class::Inverse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_42D52FAED3EB4A2B7303FDF474FEA1C2EE98131B">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html">DifferenceParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#389">389</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">390</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">391</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">392</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">393</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">394</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"&nbsp;"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">395</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">EntityReference</span><span class="other">(</span><span class="string">U"minus"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">396</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"&nbsp;"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">397</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">398</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">399</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#46">46</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_68A14DCA8993FC6F830E937DE9BB4CDB8299866E">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Left_37D43A68BB36B5706AEEC3CAEEAC35C7362E9428">sng2html::sng2html::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Right_61127414FC70D51F45B863FB1DC86F9A5D581596">sng2html::sng2html::BinaryParser::Right</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_6F3A8F33818D9556C73242E8065A5A201BD536D8">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html">Domain</a>
+            &amp; domain) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#527">527</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">528</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">529</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parserFile</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">domain</span><span class="other">.</span><span class="identifier">ParserFiles</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">530</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">531</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parserFile</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">532</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">533</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#53">53</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_31865571BA5B508E80972A9C91221AB65C7C0089">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_ParserFiles_9D897CEF566102732672F59DD39A8D1B08A2FAD4">sng2html::sng2html::Domain::ParserFiles</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_4C648E5DCFD03B6DC99F4FB0E5E2DA550457B0B9">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html">EmptyParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#211">211</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">212</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">213</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"&lt;empty>"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">216</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#34">34</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_2254AFB0AC9F3B99C82A75D57E31CEA65C99ACD2">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_D04D5A21614DC697103CBCF4CCF79D53D803C707">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_ExpectationParser_1DC095B032B06C741DFCAD6E7D1B31A5A3897118.html">ExpectationParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#327">327</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">328</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">329</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">330</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#42">42</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_968527BC60CE846B818C9D50A28A4EEC244E72F0">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_51598A3411660552FFF55757C0165B87F508614F">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#466">466</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#51">51</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_727B6AE40015F38E4700A1CFAABDC0AC400C7ECA">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_HtmlFilePath_FA10CEF85B02886B98FE2FF15D7891D2CAA08043">sng2html::sng2html::Grammar::HtmlFilePath</a>
+            , <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Title_4094042565CDA6C6E76F146AFCACEF72F3595950">sng2html::sng2html::Grammar::Title</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetGrammar_10D82C3AF64AFCA831D8DA1CE6E350F7C90FB424">sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetGrammar</a>
+            , <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Lexer_83197B185B1AB142B14F47C4BC56F1BB8670C0F9">sng2html::sng2html::GrammarParser::Lexer</a>
+            , <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html#function_Rules_C5510C7F57B2951C9BD7802E34CB03D415108F34">sng2html::sng2html::GrammarParser::Rules</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_A1863CEF860DDE3B355C76851878E9166721B7E4">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_GroupingParser_9F03C0B87E2795B8A8B3820E163A727CA300FC1B.html">GroupingParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#332">332</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#43">43</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_9EC826447723CC0012334EC7E3DE9F4184801C3F">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsAction_DEBB302CA0EE1D8E8055837AB3F9ADFD82142C7C">sng2html::sng2html::Parser::IsAction</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsPostfix_E4CCE86D69B8C6BCC8552B8B9D1CB5F4639BFCA2">sng2html::sng2html::Parser::IsPostfix</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Parent_E022EE179D4F1AD195B467ACA9709CCAA3ADF06F">sng2html::sng2html::Parser::Parent</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_ParentIsList_28E6437C7639BF930A4C24DD4C9DAD890F34E847">sng2html::sng2html::Parser::ParentIsList</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_07B09E176110B115543B00CCF1391F547B90BEFB">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.html">Kleene</a>
+            &amp; kleene) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#131">131</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">kleene</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">134</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">135</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">136</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"*"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#28">28</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_BB5D13CB35AC9580FA0074A0B37878638605D2CC">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html#function_Child_8B63AD8B1428261403BFA0E277029B75952368B7">sng2html::sng2html::UnaryRegExpression::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_B413BE99283F4F2C61BB15590B9D6F2EE7287F77">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html">KleeneParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#309">309</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">310</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">311</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">312</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">313</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">314</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"*"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">315</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">316</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#40">40</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_E5221BB1DC9868E877086762FC0423243D39ED40">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_CA4DA3097438EA4D1AE5173E61D5EB17F4F617A1">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>
+            &amp; lexerFile) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#535">535</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#54">54</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_D6B818639A582D1A2EF3944B9BA3E9770F6FBA1E">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html#function_RegEx_AE00E85E46BF42F3F37DDDA49BD560FD022B8A5F">sng2html::sng2html::Expression::RegEx</a>
+            , <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_HtmlFilePath_FA10CEF85B02886B98FE2FF15D7891D2CAA08043">sng2html::sng2html::Grammar::HtmlFilePath</a>
+            , <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Rules_F1368587C9E364001445C3B20D2A5CAA31AA874E">sng2html::sng2html::Grammar::Rules</a>
+            , <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_Title_4094042565CDA6C6E76F146AFCACEF72F3595950">sng2html::sng2html::Grammar::Title</a>
+            , <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_GetExpression_0E8A101D3559C3D469D86DEACFF136BA8B9F318E">sng2html::sng2html::Rule::GetExpression</a>
+            , <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_Name_29D9633097A51EA52056DA060DCF221CBAB15A71">sng2html::sng2html::Rule::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_B457A83BE556DB52FFB0977643CB3A24A20E0592">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html">ListParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#401">401</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">402</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">403</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Left</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">404</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">405</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">406</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"&nbsp;%&nbsp;"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">407</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">408</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Right</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">409</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#47">47</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_F0BE74CC3FEF37E2442878910E605E905CAE734F">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html#function_Left_F033EEE7358EA5DA96510B94987F25F3399AF57F">sng2html::sng2html::ListParser::Left</a>
+            , <a href="./class_ListParser_AC7F31795420C4F64BD56C360359CB96D5B613B7.html#function_Right_69EC34A87DF93730E9AE7B61CCA0EBCD61D2B4EB">sng2html::sng2html::ListParser::Right</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_F12B4F48FF032FAC1CCF005C0FB0C91F89630C0D">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html">NonterminalParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#416">416</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#49">49</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_5094B6F46DD0FDE101C62838D84AE5247C6863C1">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_HtmlFileName_52C934D202993C6A8C92FC66D4E905D906AAE2C3">sng2html::sng2html::Grammar::HtmlFileName</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetGrammar_10D82C3AF64AFCA831D8DA1CE6E350F7C90FB424">sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetGrammar</a>
+            , <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetRule_81866BAFB1844D5ED5EE238D98FFD0B72A0F78C5">sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetRule</a>
+            , <a href="./class_NonterminalParser_15FD2EC2F9DF82D2A4BAFEB9B657D5F21C1CFDE5.html#function_Rule_1D955A95AC108CD448A0995C80ABE30E390753DB">sng2html::sng2html::NonterminalParser::Rule</a>
+            , <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_Name_29D9633097A51EA52056DA060DCF221CBAB15A71">sng2html::sng2html::Rule::Name</a>
+            , <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_GetGrammar_C76EF24026F04CC2A7D9FC4BB2628E9316C2AC57">sng2html::sng2html::RuleParser::GetGrammar</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_FA9F42A480E3CE9438AA51E104A2BBD2C86BBF65">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.html">Opt</a>
+            &amp; opt) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#149">149</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">opt</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">153</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">154</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"?"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#30">30</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_65FF7214882AF1084F629F2D8DDB4691F5F6EA41">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html#function_Child_8B63AD8B1428261403BFA0E277029B75952368B7">sng2html::sng2html::UnaryRegExpression::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_07C8F2418E6BB3DDB9BB19CD840C8FA1B62331F0">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_OptionalParser_EDAE0B1E38A24447E65237C9E6CE0EE95E50C26E.html">OptionalParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#300">300</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">301</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">302</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">303</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">304</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">305</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"?"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">306</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">307</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#39">39</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_91C3C3A104B0611EBBF39248EC90C501A4517B16">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_7F59E418F650714310E7ECCEDDF4C6E18CFC7B42">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html">ParenExpr</a>
+            &amp; parenExpr) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#158">158</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#31">31</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_F0E096907C5FEF668695126BE70A1634D6873694">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html#function_Child_8B63AD8B1428261403BFA0E277029B75952368B7">sng2html::sng2html::UnaryRegExpression::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_AD95A66F33C020AC4723267824C7D16A78278122">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>
+            &amp; parserFile) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#519">519</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">520</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">521</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">grammar</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">parserFile</span><span class="other">.</span><span class="identifier">Parsers</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">522</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">523</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">grammar</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">524</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">525</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#52">52</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_A4CEE28436E900FD37D3BD265E43F6A18F28E9E3">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html#function_Parsers_698D16B171D9E86E997FAD5F4119E3DEE616F1B9">sng2html::sng2html::ParserFile::Parsers</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_643611E04BF703787A8C7FBDCCCA22C64B2DFBF8">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html">Pos</a>
+            &amp; pos) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#140">140</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">141</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">142</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">pos</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"+"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">147</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#29">29</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_57392987DCA8503CCDB42F1ABA850B3365844A9F">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html#function_Child_8B63AD8B1428261403BFA0E277029B75952368B7">sng2html::sng2html::UnaryRegExpression::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_1895C0A515C9CC721D0ADA87F222D11A0DF33BE6">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_PositiveParser_5E32A3A08A39DB1CB88573C256F327DF5A7416D4.html">PositiveParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#318">318</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">319</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">320</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">321</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">322</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleOp"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">323</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="string">U"+"</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">324</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">325</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#41">41</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_80FEE1AC3546305E61E4C1F099E3E53DCEEB364C">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_ADD371D421BC30D6358060460CA1399B7EED079E">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html">Range</a>
+            &amp; symbol) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#61">61</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#24">24</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_7CFDCA88F4018B5C4EC4EB922F10F7E480845815">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_End_D65E98A8F1F791784362BED4B8D83A80F00496C0">sng2html::sng2html::Range::End</a>
+            , <a href="./class_Range_25A8D77C95C138ADBC8159DDF1E566255AEC9961.html#function_Start_E6FA03DB546454E48C6D03C8A7B9C06B8728F204">sng2html::sng2html::Range::Start</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_7F303F320654E099503BF276A68F8623B331CD8A">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html">RefExpr</a>
+            &amp; refExpr) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#176">176</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#33">33</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_CA56F047329B2E490EB124D84ED8EBE80ACA227A">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Expressions_519D06C14733BBF9983548843F089A82B11AAE69.html#function_Get_FDC7E98E4D06F375D9F8FF703F9E5B001BC539B1">sng2html::sng2html::Expressions::Get</a>
+            , <a href="./class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html#function_HtmlFileName_52C934D202993C6A8C92FC66D4E905D906AAE2C3">sng2html::sng2html::Grammar::HtmlFileName</a>
+            , <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_GetExpressions_CF9DD5A7DAD2F9473092606BE483944EC558F4CE">sng2html::sng2html::LexerFile::GetExpressions</a>
+            , <a href="./class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html#function_ExprId_52E394BC48587C3C7191D813D526D2ED61120B77">sng2html::sng2html::RefExpr::ExprId</a>
+            , <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_Name_29D9633097A51EA52056DA060DCF221CBAB15A71">sng2html::sng2html::Rule::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_0795131FE9DBE5836A175BE976EECB0F8F52AC95">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#441">441</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#50">50</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_8CC8060A0EC009A55F2AB6312B6B2C0C071A42F7">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_GetRule_81866BAFB1844D5ED5EE238D98FFD0B72A0F78C5">sng2html::sng2html::GrammarHtmlGeneratorVisitor::GetRule</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html#function_Name_29D9633097A51EA52056DA060DCF221CBAB15A71">sng2html::sng2html::Rule::Name</a>
+            , <a href="./class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html#function_Definition_1B63FEA1CACB973C3560B613DE6962C3B5107758">sng2html::sng2html::RuleParser::Definition</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_86317FAA498B81EA247A93BECFBBEF4DA9865532">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_SequenceParser_6819F58ADC3AE8B4B21C44394055D2E406352A8E.html">SequenceParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#352">352</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#44">44</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_3F9BFFC2A1316D771F6268072674CA713477A694">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Left_37D43A68BB36B5706AEEC3CAEEAC35C7362E9428">sng2html::sng2html::BinaryParser::Left</a>
+            , <a href="./class_BinaryParser_A1989FAD83E7920DBD665058C11ACBC740B10649.html#function_Right_61127414FC70D51F45B863FB1DC86F9A5D581596">sng2html::sng2html::BinaryParser::Right</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+            , <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsEmptyOrEmptyActionParser_8C2F683EFC7834C8556F29B50EE8A9AB40F3E5C2">sng2html::sng2html::Parser::IsEmptyOrEmptyActionParser</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_7773B72CD8A80D907879EB24E1C0D52DE2A75AB0">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html">StringParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#270">270</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">271</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">272</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">spanElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"span"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">273</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"class"</span><span class="other">,&nbsp;</span><span class="string">U"ruleString"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">274</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">spanElement</span><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Node</span><span class="other">></span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Text</span><span class="other">(</span><span class="identifier">StringStr</span><span class="other">(</span><span class="identifier">parser</span><span class="other">.</span><span class="identifier">Str</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">275</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#variable_ruleBodyElement_1C7F4CB21E25AE144801EF6F56CC7ABD85D6BC08">ruleBodyElement</a><span class="other">-></span><span class="identifier">AppendChild</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">move</span><span class="other">(</span><span class="identifier">spanElement</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">276</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#37">37</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_F9D14C1BC718F2FB286A22159ACBDCED0FA5012F">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_StringParser_91E4F9DA5DB9529D9874706BE4D04C4E5D34771F.html#function_Str_6D0A1C40BB32E1194D67E87815ED30C6D56059C3">sng2html::sng2html::StringParser::Str</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_79A9F416C940FB11C6C86170FC137FB170C12455">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html">SymbolExpr</a>
+            &amp; symbolExpr) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#171">171</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">172</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">symbolExpr</span><span class="other">.</span><span class="identifier">GetSymbol</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#32">32</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_F81ED0903BE20638AC179E3952863870FC5638FC">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html#function_Accept_97EAC4CEF47F1E3C588CDD036D673E1ED025591A">sng2html::sng2html::Symbol::Accept</a>
+            , <a href="./class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html#function_GetSymbol_8135FA2B5A61F4828E4280A434CE65C7FF4BAF01">sng2html::sng2html::SymbolExpr::GetSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_C70781ABB47E70371962A6B693DAB25DC07CBF00">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit(<a href="./class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html">TokenParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html#219">219</a>
+             of <a href="file/GrammarHtmlGenerator.cpp_CAB4A63BBC78494096261B058371E1ECC881FB93.html">GrammarHtmlGenerator.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html#35">35</a>
+             of <a href="file/GrammarHtmlGenerator.hpp_BD67971E7EC5B163E56173C0BAE2167906FF25F8.html">GrammarHtmlGenerator.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_A1206BDE70821CCB2D4E3FF8A45483ECE5FE0588">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Keywords_434CF302E86BD055214FF679FADE0B6F1C8CE565.html#function_GetKeyword_DE0828DB6C96626137824EB43C5E6A67AD3228DE">sng2html::sng2html::Keywords::GetKeyword</a>
+            , <a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_GetStatement_E6E9359FD62C956A8ED8B95C6962DB9A66EFDBD3">sng2html::sng2html::Lexer::GetStatement</a>
+            , <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_GetKeywords_32ADA5BA8B284D0C999724895DE95B0009136B2C">sng2html::sng2html::LexerFile::GetKeywords</a>
+            , <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_GetLexer_B4C96356C93BEC9587E84D85080728BCD6CCB9AF">sng2html::sng2html::LexerFile::GetLexer</a>
+            , <a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html#function_RegEx_37BBFD4FC7E4C64F341A7ABEC772B029DB5FD972">sng2html::sng2html::LexerStatement::RegEx</a>
+            , <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+            , <a href="./class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html#function_TokenName_D03216CC95D512782230807AA05AF4761E346EDB">sng2html::sng2html::TokenParser::TokenName</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">prev</a>
+         | <a href="class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">next</a>
+    </body>
+</html>

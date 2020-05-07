@@ -15,14 +15,14 @@
             <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
         </div>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#19">19</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#20">20</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <h2>Constructors</h2>
         <table class="constructorTable">
             <tr>
-                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#constructor_TypeResolver_61231569912DE2681B7083F062EC7AF2882F2FDC">TypeResolver</a>(SymbolTable&amp; symbolTable_, ContainerScope* containerScope_, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp; boundSourceFile_, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a> flags_)</td>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#constructor_TypeResolver_50987119001D2C613FE74720EED25B22C5CA9F11">TypeResolver</a>(SymbolTable&amp; symbolTable_, ContainerScope* containerScope_, <span class="kw">const </span>std::vector&lt;ContainerScope*>&amp; prevContainerScopes_, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>&amp; boundSourceFile_, ClassTypeSymbol* currentClass_, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a> flags_)</td>
             </tr>
         </table>
         <h2>Member Functions</h2>
@@ -109,10 +109,6 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_Visit_827F437F8E385D40B724E7B4A3129FA56BE2F843">Visit</a>(<a href="./../../../ast/html/content/class_TypeExprNode_0788344F072FE7A1D077B11B8056834449DF02FC.html">TypeExprNode</a>&amp; typeExprNode) <span class="kw">override</span></td>
-            </tr>
-            <tr>
-                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_Visit_22100ACDA495812E80FE754F50495C057A7DE4A7">Visit</a>(<a href="./../../../ast/html/content/class_VolatileNode_FF7BC932368393C334F366B0BD1BB2A9EB058085.html">VolatileNode</a>&amp; volatileNode) <span class="kw">override</span></td>
             </tr>
         </table>
@@ -134,6 +130,10 @@
                 <td class="functionTableFirstCol" xml:space="preserve">ContainerScope*</td>
                 <td class="functionTableSecondCol" xml:space="preserve">containerScope</td>
             </tr>
+            <tr id="variable_currentClass_5F78B78DB74A7774DBD04D9C55F88BD62EB1B9F2">
+                <td class="functionTableFirstCol" xml:space="preserve">ClassTypeSymbol*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">currentClass</td>
+            </tr>
             <tr id="variable_currentContainerScope_8953A2F64FBD238B8875F7DE08F7A54676A9578F">
                 <td class="functionTableFirstCol" xml:space="preserve">ContainerScope*</td>
                 <td class="functionTableSecondCol" xml:space="preserve">currentContainerScope</td>
@@ -153,6 +153,10 @@
             <tr id="variable_parentResolved_CE33F9C08DEEBBEE6044B5AAD1B36D13BE835AAC">
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve">parentResolved</td>
+            </tr>
+            <tr id="variable_prevContainerScopes_DD9D94D9F17C75DABB32433943DE65583EAF5997">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;ContainerScope*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">prevContainerScopes</td>
             </tr>
             <tr id="variable_span_44F16E1E23E35891A4B26CCFCCA8FEE0E3319478">
                 <td class="functionTableFirstCol" xml:space="preserve">Span</td>
@@ -174,38 +178,22 @@
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../symbols/html/content/class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
                 <td class="functionTableSecondCol" xml:space="preserve">type</td>
             </tr>
-            <tr id="variable_typeExpressionNode_B70E44901BC96F402C31DF9C68947BC3666EBA7A">
-                <td class="functionTableFirstCol" xml:space="preserve"><a href="./../../../ast/html/content/class_TypeExprNode_0788344F072FE7A1D077B11B8056834449DF02FC.html">TypeExprNode</a>*</td>
-                <td class="functionTableSecondCol" xml:space="preserve">typeExpressionNode</td>
-            </tr>
         </table>
         <hr/>
         <h2>Constructor Details</h2>
-        <h3 id="constructor_TypeResolver_61231569912DE2681B7083F062EC7AF2882F2FDC">TypeResolver Constructor</h3>
+        <h3 id="constructor_TypeResolver_50987119001D2C613FE74720EED25B22C5CA9F11">TypeResolver Constructor</h3>
         <h4>
-            sngcpp::binder::TypeResolver::TypeResolver(SymbolTable&amp; symbolTable_, ContainerScope* containerScope_, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
-            &amp; boundSourceFile_, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a>
+            sngcpp::binder::TypeResolver::TypeResolver(SymbolTable&amp; symbolTable_, ContainerScope* containerScope_, <span class="kw">const </span>
+            std::vector&lt;ContainerScope*>&amp; prevContainerScopes_, <a href="./class_BoundSourceFile_D3FFC2A52F4BD41739143AD319CE201C881D9A90.html">BoundSourceFile</a>
+            &amp; boundSourceFile_, ClassTypeSymbol* currentClass_, <a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a>
              flags_)</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#63">63</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#65">65</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;63</span>&nbsp;<span class="other">:</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;64</span>&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_symbolTable_448FF96298D224336F9B523CD2E8E85B70E12D54">symbolTable</a><span class="other">(</span><span class="identifier">symbolTable_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_containerScope_C76B2CEE325BD6138F77AE690EF1014984F161CB">containerScope</a><span class="other">(</span><span class="identifier">containerScope_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_currentContainerScope_8953A2F64FBD238B8875F7DE08F7A54676A9578F">currentContainerScope</a><span class="other">(</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_containerScope_C76B2CEE325BD6138F77AE690EF1014984F161CB">containerScope</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_boundSourceFile_0154D10B062EDC7C7C9F8E18E832CAD0BFF744D2">boundSourceFile</a><span class="other">(</span><span class="identifier">boundSourceFile_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_flags_566949A71421E72CA63AF97651918D713DB3BA5E">flags</a><span class="other">(</span><span class="identifier">flags_</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;65</span>&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_type_84B3F36F8F0FA2BD0CCFFE22297CCA5958C7AF34">type</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_classGroup_DEAC3464FD8E8EA0111E2E5414BA9DF10E4A36B4">classGroup</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_classKey_DD150EA56A32C28B7094418125D6851C70429BE3">classKey</a><span class="other">(</span><a href="./../../../ast/html/content/enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html">ClassKey</a><span class="other">::</span><a href="./../../../ast/html/content/enum_ClassKey_C3ECAADE4586CA622331CD2B54EA88138AB3D799.html#enumerator_none_89B60B8CE1E87D6E1A159FCA8C42CC1404D00861">none</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_parentResolved_CE33F9C08DEEBBEE6044B5AAD1B36D13BE835AAC">parentResolved</a><span class="other">(</span><span class="kw">true</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_typeExpressionNode_B70E44901BC96F402C31DF9C68947BC3666EBA7A">typeExpressionNode</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;66</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;67</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#22">22</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#23">23</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -217,12 +205,12 @@
             <span class="kw">void</span>
              sngcpp::binder::TypeResolver::AddBaseDerivation()</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#341">341</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#376">376</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#58">58</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#60">60</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -240,14 +228,15 @@
             <a href="./../../../symbols/html/content/class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
             * sngcpp::binder::TypeResolver::GetType()</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#40">40</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#41">41</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;40</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">GetType</span><span class="other">(</span><span class="kw">false</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_GetType_845B08D50F6D98F9027B7068805BA6EC8DFA4EB6">sngcpp::binder::TypeResolver::GetType</a>
+        </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_GetType_845B08D50F6D98F9027B7068805BA6EC8DFA4EB6">GetType Member Function</h3>
@@ -256,12 +245,12 @@
             * sngcpp::binder::TypeResolver::GetType(<span class="kw">bool</span>
              noDerived)</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#69">69</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#72">72</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#39">39</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#40">40</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -272,7 +261,8 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_Visit_8784059F50B3BE4B762AD42BA8CC99DABCF0E7DC">sngcpp::binder::TypeResolver::Visit</a>
+            Called by: <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_GetType_BE558A0C52BA696250C5DE6DC25C1272889171B8">sngcpp::binder::TypeResolver::GetType</a>
+            , <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_Visit_8784059F50B3BE4B762AD42BA8CC99DABCF0E7DC">sngcpp::binder::TypeResolver::Visit</a>
         </span>
         <br/>
         <br/>
@@ -283,14 +273,10 @@
             std::vector&lt;<a href="./../../../ast/html/content/class_IdentifierNode_D35F937A599960879450AE3A78F15A75B8B38405.html">IdentifierNode</a>
             *>&amp; sngcpp::binder::TypeResolver::IdNodeSequence()</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#41">41</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#42">42</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;41</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">idNodeSequence</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_MakeExternalType_5866AA8B9834843C464599268AEE5E04D617714C">MakeExternalType Member Function</h3>
@@ -298,12 +284,12 @@
             <span class="kw">void</span>
              sngcpp::binder::TypeResolver::MakeExternalType()</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#111">111</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#114">114</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#60">60</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#62">62</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -325,19 +311,20 @@
              sngcpp::binder::TypeResolver::ResolveSymbol(<a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html">Node</a>
             &amp; node, Symbol* symbol)</h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#356">356</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#391">391</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#59">59</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#61">61</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <br/>
         <span>
-            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_GetSpan_2837F114C2C6919F3166391AACC9DF445FC783F5">sngcpp::ast::Node::GetSpan</a>
-            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+            Calls: <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+            , <a href="./../../../symbols/html/content/class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsTypedefSymbol_2F562AF9243B6B8B1B8DF5DF5DEEC9AF11D066D3">sngcpp::symbols::Symbol::IsTypedefSymbol</a>
+            , <a href="./../../../symbols/html/content/class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_GetType_D9B02BD603D00146F3794D61FCB301ED997C6296">sngcpp::symbols::TypedefSymbol::GetType</a>
         </span>
         <br/>
         <br/>
@@ -355,23 +342,12 @@
             &amp; constNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#148">148</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#151">151</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">149</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">150</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_derivations_24E303A726A669B370B9D1000D1F4170A8E795FD">derivations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">Derivation</span><span class="other">::</span><span class="identifier">const_</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">151</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">constNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">152</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#26">26</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#28">28</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -395,23 +371,12 @@
             &amp; elaborateClassNameNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#136">136</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#139">139</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">137</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">138</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">elaborateClassNameNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_ClassName_EFDED34B497058548ACB7107586F0EF0882F6F3C">ClassName</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">139</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_classKey_DD150EA56A32C28B7094418125D6851C70429BE3">classKey</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">elaborateClassNameNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_ElaborateClassNameNode_F210D8E4ED4CC6B925B3259D6669155B89B07E80.html#function_GetClassKey_0479DD34E02AAE4F2ED40E00CE431A603C718892">GetClassKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">140</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#24">24</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#26">26</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -436,23 +401,12 @@
             &amp; forwardClassDeclarationNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#130">130</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#133">133</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">131</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">132</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">forwardClassDeclarationNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_ClassName_2A4FADE43B6FCFAE7C0B48D7FF7D4325D3C16178">ClassName</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">133</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_classKey_DD150EA56A32C28B7094418125D6851C70429BE3">classKey</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">forwardClassDeclarationNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_ForwardClassDeclarationNode_A32432C5F18582F38A1566FE283383F06373D527.html#function_GetClassKey_A9287DFED92E32F8A7B7FFF6D9F3397AA04FD2BB">GetClassKey</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">134</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#23">23</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#25">25</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -477,12 +431,12 @@
             &amp; identifierNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#184">184</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#181">181</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#32">32</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#33">33</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -509,27 +463,12 @@
             &amp; integerLiteralNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#301">301</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#336">336</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">302</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">303</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="other">(</span><span class="identifier">flags</span><span class="other">&nbsp;&amp;&nbsp;</span><span class="identifier">TypeResolverFlags</span><span class="other">::</span><span class="identifier">noExternalTypes</span><span class="other">)</span><span class="other">&nbsp;==&nbsp;</span><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a><span class="other">::</span><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html#enumerator_none_C88AF0DB5118E9CAB38E5563D3997E6187470A9E">none</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">304</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">305</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_type_84B3F36F8F0FA2BD0CCFFE22297CCA5958C7AF34">type</a><span class="other">&nbsp;=&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_symbolTable_448FF96298D224336F9B523CD2E8E85B70E12D54">symbolTable</a><span class="other">.</span><span class="identifier">MakeIntegerLiteralTypeSymbol</span><span class="other">(</span><span class="identifier">integerLiteralNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_GetSpan_2837F114C2C6919F3166391AACC9DF445FC783F5">GetSpan</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="type">ToUtf32</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">to_string</span><span class="other">(</span><span class="identifier">integerLiteralNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_IntegerLiteralNode_9474DF73DF5CD9D4919AF57C69EA261851CD09A0.html#function_Value_73088EE50FA360787B9DE63D95019CA1D2929E19">Value</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">306</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">307</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#37">37</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#38">38</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -553,23 +492,12 @@
             &amp; lValueRefNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#172">172</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#175">175</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">173</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">174</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lValueRefNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">175</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_derivations_24E303A726A669B370B9D1000D1F4170A8E795FD">derivations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">Derivation</span><span class="other">::</span><span class="identifier">lvalueRef</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">176</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#30">30</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#32">32</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -593,12 +521,12 @@
             &amp; nestedIdNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#224">224</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#242">242</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#33">33</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#34">34</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -623,23 +551,12 @@
             &amp; pointerNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#160">160</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#163">163</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">161</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">162</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">pointerNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_derivations_24E303A726A669B370B9D1000D1F4170A8E795FD">derivations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">Derivation</span><span class="other">::</span><span class="identifier">ptr</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#28">28</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#30">30</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -663,23 +580,12 @@
             &amp; rValueRefNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#166">166</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#169">169</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">rValueRefNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_derivations_24E303A726A669B370B9D1000D1F4170A8E795FD">derivations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">Derivation</span><span class="other">::</span><span class="identifier">rvalueRef</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#29">29</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#31">31</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -703,23 +609,12 @@
             &amp; simpleTypeNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#142">142</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#145">145</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">143</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">144</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_type_84B3F36F8F0FA2BD0CCFFE22297CCA5958C7AF34">type</a><span class="other">&nbsp;=&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_symbolTable_448FF96298D224336F9B523CD2E8E85B70E12D54">symbolTable</a><span class="other">.</span><span class="identifier">MakeSimpleTypeSymbol</span><span class="other">(</span><span class="identifier">simpleTypeNode</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">145</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_AddBaseDerivation_EFAD8D53BFF3E7E884E596680AF59C41F92C562D">AddBaseDerivation</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">146</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#25">25</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#27">27</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -742,12 +637,12 @@
             &amp; stringLiteralNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#309">309</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#344">344</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#38">38</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#39">39</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -771,23 +666,12 @@
             &amp; templateArgumentNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#289">289</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#324">324</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">290</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">291</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_templateArgumentTypes_32C831F43EC3FBEDCB9A6CBC01F1EBFD435754D7">templateArgumentTypes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><a href="./namespace_binder_EE633BD685E06FB9EC4A8490D30712209E0D8799.html#function_ResolveType_59F178F945BCD5F7099FA4E017D260BCB494E46B">ResolveType</a><span class="other">(</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_symbolTable_448FF96298D224336F9B523CD2E8E85B70E12D54">symbolTable</a><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_containerScope_C76B2CEE325BD6138F77AE690EF1014984F161CB">containerScope</a><span class="other">,&nbsp;</span><a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_boundSourceFile_0154D10B062EDC7C7C9F8E18E832CAD0BFF744D2">boundSourceFile</a><span class="other">,&nbsp;</span><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html">TypeResolverFlags</a><span class="other">::</span><a href="./enum_TypeResolverFlags_BBD071F18E661948E308CC0B37976BA454151D4A.html#enumerator_noPseudoTypes_6431F7BA3A63400BD8CB0F15BBE0DF39C63C7F8B">noPseudoTypes</a><span class="other">,&nbsp;</span><span class="identifier">templateArgumentNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Arg_3A4440261BA1E48BB505F5411016C69E8A4733C2">Arg</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">292</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_templateArgumentNodes_E6CE1E5863D27865096A89DF9C533C8956C7583F">templateArgumentNodes</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">templateArgumentNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_TemplateArgumentNode_2E97CF467782F7D519085603AD7A6F979CF62941.html#function_Arg_3A4440261BA1E48BB505F5411016C69E8A4733C2">Arg</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">293</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#35">35</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#36">36</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -810,23 +694,12 @@
             &amp; templateArgumentSequenceNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#295">295</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#330">330</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">296</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">297</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">templateArgumentSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Left_011C603513BF568A54D8EBE1F8952C96FC26ECEC">Left</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">298</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">templateArgumentSequenceNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_BinaryNode_26C91921CA6DD0BE63655ECBBFF8C167D358B1DE.html#function_Right_A8F897827DF9F567982623DC3709211D622510D3">Right</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">299</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#36">36</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#37">37</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -851,12 +724,12 @@
             &amp; templateIdNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#237">237</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#255">255</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#34">34</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#35">35</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>
@@ -877,46 +750,10 @@
             , <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_AddBaseDerivation_EFAD8D53BFF3E7E884E596680AF59C41F92C562D">sngcpp::binder::TypeResolver::AddBaseDerivation</a>
             , <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_GetType_845B08D50F6D98F9027B7068805BA6EC8DFA4EB6">sngcpp::binder::TypeResolver::GetType</a>
             , <a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#function_ResolveSymbol_8B315FFB3F5D1969B3D20FC936F9BEA3ECE23EAD">sngcpp::binder::TypeResolver::ResolveSymbol</a>
-        </span>
-        <br/>
-        <br/>
-        <hr/>
-        <h3 id="function_Visit_827F437F8E385D40B724E7B4A3129FA56BE2F843">Visit Member Function</h3>
-        <h4>
-            <span class="kw">void</span>
-             sngcpp::binder::TypeResolver::Visit(<a href="./../../../ast/html/content/class_TypeExprNode_0788344F072FE7A1D077B11B8056834449DF02FC.html">TypeExprNode</a>
-            &amp; typeExprNode) <span class="kw">override</span>
-        </h4>
-        <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#178">178</a>
-             of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">179</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">180</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_typeExpressionNode_B70E44901BC96F402C31DF9C68947BC3666EBA7A">typeExpressionNode</a><span class="other">&nbsp;=&nbsp;</span><span class="other">&amp;</span><span class="identifier">typeExprNode</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">181</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">typeExprNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">182</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
-        </span>
-        <br/>
-        <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#31">31</a>
-             of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-        </span>
-        <br/>
-        <br/>
-        <span>
-            Base class overridden functions: <a href="./../../../ast/html/content/class_Visitor_344553F56B950DE252EE7B103A0A9ABF2B6733AD.html#function_Visit_45AD092BB2B0D7855ED6D4A23ECC759900139F77">sngcpp::ast::Visitor::Visit</a>
-        </span>
-        <br/>
-        <br/>
-        <span>
-            Calls: <a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">sngcpp::ast::Node::Accept</a>
-            , <a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">sngcpp::ast::UnaryNode::Child</a>
+            , <a href="./../../../symbols/html/content/class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_1339815AAFD5F12150741F581800960621901225">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
+            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
+            , <a href="./../../../symbols/html/content/class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_Members_684966296EE2C9FEB0B9C1C607E548EABC934473">sngcpp::symbols::ContainerSymbol::Members</a>
         </span>
         <br/>
         <br/>
@@ -928,23 +765,12 @@
             &amp; volatileNode) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#154">154</a>
+            Definition at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#157">157</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">155</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">156</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypeResolver_1EDAB9B67E549EBE4D6A48F491E0E4EE89898F36.html#variable_derivations_24E303A726A669B370B9D1000D1F4170A8E795FD">derivations</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">Derivation</span><span class="other">::</span><span class="identifier">volatile_</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">volatileNode</span><span class="other">.</span><a href="./../../../ast/html/content/class_UnaryNode_E514E053A58973FBA3EA4848FF3935F602CE80DD.html#function_Child_4A4132288468C744F00AB080B4514C3E2B9E9FC6">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./../../../ast/html/content/class_Node_3B0B48506D44C685C8137A93FE6DDDBED7067F89.html#function_Accept_46B4675B472FBF6268C6A34C55124E99AFE3CAF0">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">158</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#27">27</a>
+            Declaration at line <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html#29">29</a>
              of <a href="file/TypeResolver.cpp_94F2E1A1978996DFA24DD44DC1FF05A0AD0CF7AC.html">TypeResolver.cpp</a>
         </span>
         <br/>

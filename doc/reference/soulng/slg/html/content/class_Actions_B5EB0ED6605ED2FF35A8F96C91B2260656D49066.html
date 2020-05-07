@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_Process_26C2880EB70B0863E6C54DF0C5DE81937BB7AC39">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_Process_33D8F7C461B24160BE35CB073A0A600BC5467910">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <span class="kw">bool</span> debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
             </tr>
         </table>
         <h2>Member Variables</h2>
@@ -62,17 +62,8 @@
         <h4>
             soulng::slg::Actions::Actions()</h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#772">772</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#777">777</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">772</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">(</span><span class="string">U"actions"</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">773</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">774</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -89,19 +80,8 @@
              soulng::slg::Actions::Add(<a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a>
             * action)</h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#784">784</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#789">789</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">785</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">786</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#variable_actions_1CB09771183025D63DEA292A361E3D403843E879">actions</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html">Action</a><span class="other">></span><span class="other">(</span><span class="identifier">action</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">787</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#variable_actionMap_04D9534E04F8856EC8709E17AE4191AB5E1AEA58">actionMap</a><span class="other">[</span><span class="identifier">action</span><span class="other">-></span><a href="./class_Action_1B7769F52E8EB240C350E480EDE3080B6142D9C3.html#function_Id_6B46228FAF724521795950FD19A2ACD0BE7AE1EB">Id</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">action</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">788</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -127,15 +107,8 @@
              soulng::slg::Actions::FillContext(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext)</h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#776">776</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#781">781</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">777</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">778</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -152,7 +125,7 @@
              id) <span class="kw">const</span>
         </h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#790">790</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#795">795</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
         </span>
         <br/>
@@ -168,23 +141,17 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_Process_26C2880EB70B0863E6C54DF0C5DE81937BB7AC39">Process Member Function</h3>
+        <h3 id="function_Process_33D8F7C461B24160BE35CB073A0A600BC5467910">Process Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Actions::Process(<span class="kw">const </span>
             std::string&amp; root, <span class="kw">bool</span>
-             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+             verbose, <span class="kw">bool</span>
+             debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext)</h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#780">780</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#785">785</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">781</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">782</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>

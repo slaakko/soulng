@@ -17,6 +17,7 @@ namespace ParserFileKeywords
         {U"uselexer", USELEXER}, 
         {U"ruleinfo", RULEINFO}, 
         {U"empty", EMPTY}, 
+        {U"any", ANY}, 
         {U"var", VAR}, 
         {U"auto", AUTO}, 
         {U"register", REGISTER}, 

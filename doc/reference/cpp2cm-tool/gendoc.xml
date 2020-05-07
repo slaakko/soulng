@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gendoc>
+  <project name="cpp2cm-tool">
+    <vcxproject file="../../../tools/cpp2cm/cpp2cm/cpp2cm.vcxproj"/>
+    <documentation file="docs.xml"/>
+    <include path="../..;../../.."/>
+  </project>
+  <filter>
+    <file exclude="LexerFileClassMap.*"/>
+    <file exclude="ParserFileClassMap.*"/>
+    <file exclude="ProjectFileClassMap.*"/>
+    <file exclude="RegExClassMap.*"/>
+    <file exclude="ParserFileTokenLexerClassMap.*"/>
+  </filter>
+</gendoc>

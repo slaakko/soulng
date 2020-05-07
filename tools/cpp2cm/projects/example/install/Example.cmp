@@ -1,0 +1,4 @@
+project Example;
+target=program;
+source <main.cm>;
+source <sort.cm>;

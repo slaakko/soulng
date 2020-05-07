@@ -34,13 +34,14 @@ class Project : public gendoc::html::HtmlContentFilePathResolver, public sngcpp:
 {
 public:
     Project(const std::string& docFilePath_);
-    void Process(bool verbose, bool rebuild);
-    void Clean(bool verbose);
+    void Process(bool verbose, bool rebuild, bool single);
+    void Clean(bool verbose, bool single);
     void ReadChildren();
-    void RunChildren(bool verbose, bool rebuild, bool clean);
+    void RunChildren(bool verbose, bool rebuild, bool clean, bool single);
     void RunChildrenWithFlags(bool verbose, bool rebuild, const std::string& flags);
+    void RunChildrenSingle(bool verbose, bool rebuild, bool clean, bool ast, bool content);
     void GenerateAst(bool verbose, bool rebuild, bool readAst);
-    void GenerateContent(bool verbose, bool rebuild, bool endMessage);
+    void GenerateContent(bool verbose, bool rebuild, bool endMessage, bool single);
     void ReadName();
     void ReadTop();
     void ReadParentNameAndSiblings();

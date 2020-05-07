@@ -24,11 +24,11 @@
         <table class="functionTable">
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_68551ACCDD94D9E3A04B0B4589048CFA470C303B">Install</a>(<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>* containerScope, UsingDeclarationNode&amp; usingDeclarationNode)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_B54CFC5D38C2650E3F4DEC29A4853B0F563332D7">Install</a>(<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>* containerScope, <a href="./../../../ast/html/content/class_UsingDeclarationNode_47A7186316328E1256FA6692D853868EDE3D1A6F.html">UsingDeclarationNode</a>&amp; usingDeclarationNode)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_26E40801646C47918CE3A1996A87925368D53010">Install</a>(<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>* containerScope, UsingDirectiveNode&amp; usingDirectiveNode)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Install_D1B84C1201F52991D4F5555C679C63F2F59683DB">Install</a>(<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>* containerScope, <a href="./../../../ast/html/content/class_UsingDirectiveNode_A0CBB938BF2FC81F8B1D12066937ABD2455063C2.html">UsingDirectiveNode</a>&amp; usingDirectiveNode)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html">Symbol</a>*</td>
@@ -56,11 +56,12 @@
         </table>
         <hr/>
         <h2>Member Function Details</h2>
-        <h3 id="function_Install_68551ACCDD94D9E3A04B0B4589048CFA470C303B">Install Member Function</h3>
+        <h3 id="function_Install_B54CFC5D38C2650E3F4DEC29A4853B0F563332D7">Install Member Function</h3>
         <h4>
             <span class="kw">void</span>
              sngcpp::symbols::FileScope::Install(<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>
-            * containerScope, UsingDeclarationNode&amp; usingDeclarationNode)</h4>
+            * containerScope, <a href="./../../../ast/html/content/class_UsingDeclarationNode_47A7186316328E1256FA6692D853868EDE3D1A6F.html">UsingDeclarationNode</a>
+            &amp; usingDeclarationNode)</h4>
         <span>
             Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#210">210</a>
              of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
@@ -74,7 +75,7 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#variable_aliasSymbolMap_65BDEDA74385874DD6FFDECD5ECEE849020076B3">aliasSymbolMap</a><span class="other">[</span><span class="identifier">symbol</span><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">Name</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">symbol</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#variable_aliasSymbolMap_65BDEDA74385874DD6FFDECD5ECEE849020076B3">aliasSymbolMap</a><span class="other">[</span><span class="identifier">symbol</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">symbol</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">216</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
@@ -84,24 +85,38 @@
         </span>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">sngcpp::symbols::Symbol::Name</a>
+            Declaration at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#77">77</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../ast/html/content/class_UsingDeclarationNode_47A7186316328E1256FA6692D853868EDE3D1A6F.html#function_QualifiedId_728671B4AF344E7D2F3505ED13E77E3FAE2A7FCD">sngcpp::ast::UsingDeclarationNode::QualifiedId</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">sngcpp::symbols::Symbol::Name</a>
         </span>
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_Install_26E40801646C47918CE3A1996A87925368D53010">Install Member Function</h3>
+        <h3 id="function_Install_D1B84C1201F52991D4F5555C679C63F2F59683DB">Install Member Function</h3>
         <h4>
             <span class="kw">void</span>
              sngcpp::symbols::FileScope::Install(<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html">ContainerScope</a>
-            * containerScope, UsingDirectiveNode&amp; usingDirectiveNode)</h4>
+            * containerScope, <a href="./../../../ast/html/content/class_UsingDirectiveNode_A0CBB938BF2FC81F8B1D12066937ABD2455063C2.html">UsingDirectiveNode</a>
+            &amp; usingDirectiveNode)</h4>
         <span>
             Definition at line <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html#182">182</a>
              of <a href="file/Scope.cpp_C206DAB4396D44FD1795290FA166DB6951A45D67.html">Scope.cpp</a>
         </span>
         <br/>
+        <span>
+            Declaration at line <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html#76">76</a>
+             of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
+        </span>
+        <br/>
         <br/>
         <span>
-            Calls: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetContainerScope_5CF49F719C0B2B205335E25B5620EAEFA9E95381">sngcpp::symbols::Symbol::GetContainerScope</a>
+            Calls: <a href="./../../../ast/html/content/class_UsingDirectiveNode_A0CBB938BF2FC81F8B1D12066937ABD2455063C2.html#function_NamespaceName_46D5F704067395E710D8F8518D5057C52A5C582B">sngcpp::ast::UsingDirectiveNode::NamespaceName</a>
+            , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetContainerScope_5CF49F719C0B2B205335E25B5620EAEFA9E95381">sngcpp::symbols::Symbol::GetContainerScope</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_IsNamespaceSymbol_B31F06A521EE617A0BA75D888242ABFAA921AA07">sngcpp::symbols::Symbol::IsNamespaceSymbol</a>
         </span>
         <br/>
@@ -120,7 +135,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">220</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">221</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_FD4F36816D53383AED9AE7DF8320FEC5A30A4FBF">Lookup</a><span class="other">(</span><span class="identifier">name</span><span class="other">,&nbsp;</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a><span class="other">::</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html#enumerator_this__6D0485587DDBF5C60FDC994CFD9B6EFC8A90AA84">this_</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">221</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Lookup</span><span class="other">(</span><span class="identifier">name</span><span class="other">,&nbsp;</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a><span class="other">::</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html#enumerator_this__6D0485587DDBF5C60FDC994CFD9B6EFC8A90AA84">this_</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">222</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -173,8 +188,7 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_1339815AAFD5F12150741F581800960621901225">sngcpp::symbols::ContainerScope::Lookup</a>
-            , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_DD975BF80402FE0F7E71C1E1768BEF289CF0AC10">sngcpp::symbols::FileScope::Lookup</a>
+            Called by: <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_DD975BF80402FE0F7E71C1E1768BEF289CF0AC10">sngcpp::symbols::FileScope::Lookup</a>
         </span>
         <br/>
         <br/>
@@ -204,11 +218,6 @@
         <br/>
         <span>
             Calls: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
-        </span>
-        <br/>
-        <br/>
-        <span>
-            Called by: <a href="./class_Scope_4A388D81B8230FB546BC8D146C3D8492959286FB.html#function_Lookup_C402F7B54A8F52FA84FD772ED61E2944743E99AD">sngcpp::symbols::Scope::Lookup</a>
         </span>
         <br/>
         <br/>

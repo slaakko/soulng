@@ -76,7 +76,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;17</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_Reset_84214D9A1C2BD7AD3B2A535AABC6A3C3C9D0901E">Reset</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Reset</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;19</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -124,12 +124,17 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ProcessByte</span><span class="other">(</span><span class="identifier">x</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">bitCount</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">bitCount</span><span class="other">&nbsp;+&nbsp;</span><span class="other">8u</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#variable_bitCount_4301AE1672D8CDFDC35CF44C176664ECF19EAE9F">bitCount</a><span class="other">&nbsp;=&nbsp;</span><a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#variable_bitCount_4301AE1672D8CDFDC35CF44C176664ECF19EAE9F">bitCount</a><span class="other">&nbsp;+&nbsp;</span><span class="other">8u</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
+        <br/>
+        <span>
+            Calls: <a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_ProcessByte_0F011D4A76D4ABEFC13030B515D2FD5D37C80156">soulng::util::Sha1::ProcessByte</a>
+        </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_Process_53D2B7EBCCCD504D30CB3AB90B07E9D261B276CA">soulng::util::Sha1::Process</a>
@@ -150,7 +155,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">b</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">uint8_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">buf</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">b</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">uint8_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">buf</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Process</span><span class="other">(</span><span class="identifier">b</span><span class="other">,&nbsp;</span><span class="identifier">b</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">count</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -173,15 +178,15 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">b</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">uint8_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">begin</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">b</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">uint8_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">begin</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="type">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">e</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="type">uint8_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">end</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">uint8_t</span><span class="other">*</span>&nbsp;<span class="identifier">e</span>&nbsp;<span class="other">=</span>&nbsp;<span class="kw">static_cast</span><span class="other">&lt;</span><span class="identifier">uint8_t</span><span class="other">*</span><span class="other">></span><span class="other">(</span><span class="identifier">end</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">b</span><span class="other">&nbsp;!=&nbsp;</span><span class="identifier">e</span><span class="other">)</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_Process_0F2F6B11AC5F0FEC819F14D63871EA5635CE7098">Process</a><span class="other">(</span><span class="other">*</span><span class="identifier">b</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">Process</span><span class="other">(</span><span class="other">*</span><span class="identifier">b</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">++</span><span class="identifier">b</span><span class="other">;</span></span>
                 <br/>
@@ -219,6 +224,11 @@
         </span>
         <br/>
         <br/>
+        <span>
+            Called by: <a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_ProcessByte_0F011D4A76D4ABEFC13030B515D2FD5D37C80156">soulng::util::Sha1::ProcessByte</a>
+        </span>
+        <br/>
+        <br/>
         <hr/>
         <h3 id="function_ProcessByte_0F011D4A76D4ABEFC13030B515D2FD5D37C80156">ProcessByte Member Function</h3>
         <h4>
@@ -231,13 +241,13 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">block</span><span class="other">[</span><span class="identifier">byteIndex</span><span class="other">++</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">x</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">block</span><span class="other">[</span><a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#variable_byteIndex_383F5C5FC2C1A0A3C6F1638B18BA6B91713039A6">byteIndex</a><span class="other">++</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">x</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">byteIndex</span><span class="other">&nbsp;==&nbsp;</span><span class="other">64u</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#variable_byteIndex_383F5C5FC2C1A0A3C6F1638B18BA6B91713039A6">byteIndex</a><span class="other">&nbsp;==&nbsp;</span><span class="other">64u</span><span class="other">)</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">byteIndex</span><span class="other">&nbsp;=&nbsp;</span><span class="other">0u</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#variable_byteIndex_383F5C5FC2C1A0A3C6F1638B18BA6B91713039A6">byteIndex</a><span class="other">&nbsp;=&nbsp;</span><span class="other">0u</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">ProcessBlock</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
@@ -249,7 +259,13 @@
         </span>
         <br/>
         <span>
+            Calls: <a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_ProcessBlock_3F2999C99EF44FF907B25E1DB9A80D2451C7D00A">soulng::util::Sha1::ProcessBlock</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
             Called by: <a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_GetDigest_D159828319EB9FF2A5735C75CE2FA4E0B7188134">soulng::util::Sha1::GetDigest</a>
+            , <a href="./class_Sha1_B3C2923615491596C91180819B89DEE908A0A517.html#function_Process_0F2F6B11AC5F0FEC819F14D63871EA5635CE7098">soulng::util::Sha1::Process</a>
         </span>
         <br/>
         <br/>

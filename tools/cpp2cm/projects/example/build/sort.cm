@@ -1,0 +1,14 @@
+using System;
+using System.Collections;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.hpp' using cpp2cm version 1.0.0
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/sort.cpp' using cpp2cm version 1.0.0
+
+namespace Example
+{
+    public void sort(List<string>& v)
+    {
+        Sort(v.Begin(), v.End());
+    }
+} // namespace Example

@@ -1,0 +1,204 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/RegEx.hpp></span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">::</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#constructor_RegExpression_61A94826A37761353B38FFEFDE7252FF92BDFEEA">RegExpression</a><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">::</span><span class="other">~</span><span class="identifier">RegExpression</span><span class="other">(</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html">UnaryRegExpression</a><span class="other">::</span><a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html#constructor_UnaryRegExpression_3FD27CBC68B503EEAA42330EFCF407C4AB0C4B7A">UnaryRegExpression</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">child_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html#variable_child_2B2A1A8B4C5D9B9F993DED693765097E2F5D526E">child</a><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<a href="../class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html">BinaryRegExpression</a><span class="other">::</span><a href="../class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#constructor_BinaryRegExpression_8F012734948277FE4AC862D9FA6AA7190C964A26">BinaryRegExpression</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">left_</span><span class="other">,&nbsp;</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">right_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#variable_left_65083348977A6051C3307AB91391627F8C8EFB69">left</a><span class="other">(</span><span class="identifier">left_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="../class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html#variable_right_BB7A8DD7D6BC8C3A6ACADA93B04DC474C5C8A042">right</a><span class="other">(</span><span class="identifier">right_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<a href="../class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.html">Alt</a><span class="other">::</span><a href="../class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.html#constructor_Alt_86C0E00EE04EB1F7C82EB07CF0CF3E80DAD03B3D">Alt</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">left_</span><span class="other">,&nbsp;</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">right_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html">BinaryRegExpression</a><span class="other">(</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.html">Alt</a><span class="other">::</span><a href="../class_Alt_2CB3E7D616708BE0EC5345342F81849568CA4B0A.html#function_Accept_5B24D161936DAF89CC180B516FE981FACAA790DD">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;<a href="../class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.html">Cat</a><span class="other">::</span><a href="../class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.html#constructor_Cat_42A5E0C29B6AFD994B3C79B35B5589E282B8AA5E">Cat</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">left_</span><span class="other">,&nbsp;</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">right_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_BinaryRegExpression_D543D665184D2D316BBD89B7A473B50BCD0BEB75.html">BinaryRegExpression</a><span class="other">(</span><span class="identifier">left_</span><span class="other">,&nbsp;</span><span class="identifier">right_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.html">Cat</a><span class="other">::</span><a href="../class_Cat_373489CB2A8887CDB09FC5309349005C72E2DD80.html#function_Accept_9004236D13FA0017A08DCA4EB73F5163D544A766">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;<a href="../class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.html">Kleene</a><span class="other">::</span><a href="../class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.html#constructor_Kleene_642E355F3BC7913D74ECDDAD66273C298FA6C5F7">Kleene</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">child_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html">UnaryRegExpression</a><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.html">Kleene</a><span class="other">::</span><a href="../class_Kleene_72BD25258F675BAC2343B6E132ADD0897DB41A1B.html#function_Accept_EA6BAAA716E533163977FACABE71A957B062790F">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="53" xml:space="preserve"><span class="lineNumber">53</span>&nbsp;<a href="../class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html">Pos</a><span class="other">::</span><a href="../class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html#constructor_Pos_23FBB6BE0646CECDF6AE061B3EF445504C231BB0">Pos</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">child_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html">UnaryRegExpression</a><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="54" xml:space="preserve"><span class="lineNumber">54</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="55" xml:space="preserve"><span class="lineNumber">55</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="56" xml:space="preserve"><span class="lineNumber">56</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="57" xml:space="preserve"><span class="lineNumber">57</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html">Pos</a><span class="other">::</span><a href="../class_Pos_049ADE0B5BB7F8FC313BAE39A4A74C5E00858EAD.html#function_Accept_A7A59982D1624E80899A06EACC9C41FD835A06FF">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="58" xml:space="preserve"><span class="lineNumber">58</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="59" xml:space="preserve"><span class="lineNumber">59</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="60" xml:space="preserve"><span class="lineNumber">60</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="61" xml:space="preserve"><span class="lineNumber">61</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="62" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;<a href="../class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.html">Opt</a><span class="other">::</span><a href="../class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.html#constructor_Opt_BF05CAE909828F8AA29911DC027F5F9CC7607374">Opt</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">child_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html">UnaryRegExpression</a><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="63" xml:space="preserve"><span class="lineNumber">63</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="64" xml:space="preserve"><span class="lineNumber">64</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="65" xml:space="preserve"><span class="lineNumber">65</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="66" xml:space="preserve"><span class="lineNumber">66</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.html">Opt</a><span class="other">::</span><a href="../class_Opt_BDEBFE5AC1000AB98AB3E5080DD921DE764A0A14.html#function_Accept_5AFC4F049FB7C857D8157AD5117BC713A574230E">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="67" xml:space="preserve"><span class="lineNumber">67</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="68" xml:space="preserve"><span class="lineNumber">68</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="69" xml:space="preserve"><span class="lineNumber">69</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="70" xml:space="preserve"><span class="lineNumber">70</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="71" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;<a href="../class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html">ParenExpr</a><span class="other">::</span><a href="../class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html#constructor_ParenExpr_C23A52918D91EA6D971584D0AFFD05B2AF824DFF">ParenExpr</a><span class="other">(</span><a href="../class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a><span class="other">*</span>&nbsp;<span class="identifier">child_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html">UnaryRegExpression</a><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="72" xml:space="preserve"><span class="lineNumber">72</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="73" xml:space="preserve"><span class="lineNumber">73</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="74" xml:space="preserve"><span class="lineNumber">74</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="75" xml:space="preserve"><span class="lineNumber">75</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html">ParenExpr</a><span class="other">::</span><a href="../class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html#function_Accept_D6DCFFFC4AEEE46E40B4F20AA5D63B6EB8F2FD45">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="76" xml:space="preserve"><span class="lineNumber">76</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="77" xml:space="preserve"><span class="lineNumber">77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="78" xml:space="preserve"><span class="lineNumber">78</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="79" xml:space="preserve"><span class="lineNumber">79</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="80" xml:space="preserve"><span class="lineNumber">80</span>&nbsp;<a href="../class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html">SymbolExpr</a><span class="other">::</span><a href="../class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html#constructor_SymbolExpr_EBBC227C378E9DE843A95901213CD03F47A7E373">SymbolExpr</a><span class="other">(</span><a href="../class_Symbol_EB9F68A85E0F142958CDC43D2FA0AC95ACB44304.html">Symbol</a><span class="other">*</span>&nbsp;<span class="identifier">symbol_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html#variable_symbol_660AD471FC03AB77DCFC85388D9883B0E1989067">symbol</a><span class="other">(</span><span class="identifier">symbol_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="81" xml:space="preserve"><span class="lineNumber">81</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="82" xml:space="preserve"><span class="lineNumber">82</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="83" xml:space="preserve"><span class="lineNumber">83</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="84" xml:space="preserve"><span class="lineNumber">84</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html">SymbolExpr</a><span class="other">::</span><a href="../class_SymbolExpr_9497884EBEE0E2D1C416D24F065146CC65D7C655.html#function_Accept_A75395809FFA44313E7A5D419BAAEE6C4184C541">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="85" xml:space="preserve"><span class="lineNumber">85</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="86" xml:space="preserve"><span class="lineNumber">86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="87" xml:space="preserve"><span class="lineNumber">87</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="88" xml:space="preserve"><span class="lineNumber">88</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="89" xml:space="preserve"><span class="lineNumber">89</span>&nbsp;<a href="../class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html">RefExpr</a><span class="other">::</span><a href="../class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html#constructor_RefExpr_61D5B586269C8DDA4A0482D2CCD757AD695673B8">RefExpr</a><span class="other">(</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">exprId_</span><span class="other">)</span>&nbsp;<span class="other">:</span>&nbsp;<a href="../class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html#variable_exprId_F09DAC1D81EC35FC841C86B94AF622C7C1C78BE0">exprId</a><span class="other">(</span><span class="identifier">exprId_</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="90" xml:space="preserve"><span class="lineNumber">90</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="91" xml:space="preserve"><span class="lineNumber">91</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="92" xml:space="preserve"><span class="lineNumber">92</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="93" xml:space="preserve"><span class="lineNumber">93</span>&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html">RefExpr</a><span class="other">::</span><a href="../class_RefExpr_16C5A045CCAD7CE6DC1F85B91C31CC895EAFA255.html#function_Accept_FD9EB5AA09D47E7851049480F8E0493F52D453C5">Accept</a><span class="other">(</span><a href="../class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a><span class="other">&amp;</span>&nbsp;<span class="identifier">visitor</span><span class="other">)</span></span>
+  <br/>
+  <span class="code" id="94" xml:space="preserve"><span class="lineNumber">94</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="95" xml:space="preserve"><span class="lineNumber">95</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="96" xml:space="preserve"><span class="lineNumber">96</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="97" xml:space="preserve"><span class="lineNumber">97</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="98" xml:space="preserve"><span class="lineNumber">98</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sng2html::sng2html</span></span>
+  <br/>
+ </body>
+</html>

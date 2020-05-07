@@ -59,19 +59,6 @@
         <span>
             Definition at line <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html#33">33</a>
              of <a href="file/Parser.cpp_5D6075FC97BDA7851BD07A56BBD6B4D99752F55A.html">Parser.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;33</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html">Parser</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#variable_left_8450D697F452D94EB4F9485960E25592D5824130">left</a><span class="other">(</span><span class="identifier">left_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#variable_right_7A7AF0BA6B4A7C72C3A0FC6A0142A7A2D8065498">right</a><span class="other">(</span><span class="identifier">right_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;34</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#variable_left_8450D697F452D94EB4F9485960E25592D5824130">left</a><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_BinaryParser_20B8DAD047A03DE57DDF3DBC314851887D2C0177.html#variable_right_7A7AF0BA6B4A7C72C3A0FC6A0142A7A2D8065498">right</a><span class="other">-></span><span class="identifier">SetParent</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;37</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -90,24 +77,21 @@
         <span>
             Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#54">54</a>
              of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;54</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">left</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_Clone_F5936AC964B5550C556E9FCDB88A59323AD944CA">soulng::spg::AlternativeParser::Clone</a>
-            , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_0F3568CB0D9C1E9EFA1CB590C0C368FE0A67E0D3">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+            , <a href="./class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_IsTokenSwitch_778C337844087274952843DDD53B3ED7EE3E021E">soulng::spg::AlternativeParser::IsTokenSwitch</a>
             , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_5A7E622FA8B1965DEA8ECC598F4E56097ABE01A7">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+            , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_0F3568CB0D9C1E9EFA1CB590C0C368FE0A67E0D3">soulng::spg::ArrayGeneratorVisitor::Visit</a>
             , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_994E321F609D2B458B446ABC7255E52CD4E560F2">soulng::spg::ArrayGeneratorVisitor::Visit</a>
-            , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_AD5DB3CCF3F60DA3AC062F505FDF1D61DAAF9D60">soulng::spg::CodeGeneratorVisitor::Visit</a>
             , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_CD1C44A1622C1F6885E42054FCF6421C5B3E27B7">soulng::spg::CodeGeneratorVisitor::Visit</a>
+            , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_AD5DB3CCF3F60DA3AC062F505FDF1D61DAAF9D60">soulng::spg::CodeGeneratorVisitor::Visit</a>
             , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_C873701A6CCD06D021BA273848746305071FF1CA">soulng::spg::CodeGeneratorVisitor::Visit</a>
             , <a href="./class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html#function_Clone_6C1D7C3618B6F7218E2673ADB516EFFD406BDD1E">soulng::spg::DifferenceParser::Clone</a>
-            , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_48A0029804867A7D361425AE900346A522D5C053">soulng::spg::LinkerVisitor::Visit</a>
             , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_9ACC14780C595718B29C7ED8243FD3C40403070D">soulng::spg::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_48A0029804867A7D361425AE900346A522D5C053">soulng::spg::LinkerVisitor::Visit</a>
             , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_E69E9731E4515C953CF6A9DC678C178705F3CB2A">soulng::spg::LinkerVisitor::Visit</a>
             , <a href="./class_SequenceParser_E5072D7D7C4A1719B78D7481F0C708AF1BE7B253.html#function_Clone_F834A72295BCB96D71EB5B187BEE954C66B81642">soulng::spg::SequenceParser::Clone</a>
         </span>
@@ -122,24 +106,21 @@
         <span>
             Definition at line <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html#55">55</a>
              of <a href="file/Parser.hpp_2B2D422D20C895155AE79AD523EF210E92E7DD8D.html">Parser.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;55</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">right</span><span class="other">.</span><span class="identifier">get</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_Clone_F5936AC964B5550C556E9FCDB88A59323AD944CA">soulng::spg::AlternativeParser::Clone</a>
-            , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_0F3568CB0D9C1E9EFA1CB590C0C368FE0A67E0D3">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+            , <a href="./class_AlternativeParser_F2503F49391CBDD8B06268C0063EFE4CFE71B4AC.html#function_IsTokenSwitch_778C337844087274952843DDD53B3ED7EE3E021E">soulng::spg::AlternativeParser::IsTokenSwitch</a>
             , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_5A7E622FA8B1965DEA8ECC598F4E56097ABE01A7">soulng::spg::ArrayGeneratorVisitor::Visit</a>
+            , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_0F3568CB0D9C1E9EFA1CB590C0C368FE0A67E0D3">soulng::spg::ArrayGeneratorVisitor::Visit</a>
             , <a href="./class_ArrayGeneratorVisitor_84AEF9C418CDC86C49A04B5A7746BFAC5A39A90A.html#function_Visit_994E321F609D2B458B446ABC7255E52CD4E560F2">soulng::spg::ArrayGeneratorVisitor::Visit</a>
-            , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_AD5DB3CCF3F60DA3AC062F505FDF1D61DAAF9D60">soulng::spg::CodeGeneratorVisitor::Visit</a>
             , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_CD1C44A1622C1F6885E42054FCF6421C5B3E27B7">soulng::spg::CodeGeneratorVisitor::Visit</a>
+            , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_AD5DB3CCF3F60DA3AC062F505FDF1D61DAAF9D60">soulng::spg::CodeGeneratorVisitor::Visit</a>
             , <a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_C873701A6CCD06D021BA273848746305071FF1CA">soulng::spg::CodeGeneratorVisitor::Visit</a>
             , <a href="./class_DifferenceParser_35A5A3788984C8AC50172322EE8876A95F7F4251.html#function_Clone_6C1D7C3618B6F7218E2673ADB516EFFD406BDD1E">soulng::spg::DifferenceParser::Clone</a>
-            , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_48A0029804867A7D361425AE900346A522D5C053">soulng::spg::LinkerVisitor::Visit</a>
             , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_9ACC14780C595718B29C7ED8243FD3C40403070D">soulng::spg::LinkerVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_48A0029804867A7D361425AE900346A522D5C053">soulng::spg::LinkerVisitor::Visit</a>
             , <a href="./class_LinkerVisitor_D8DD2E2455402DDAA9F81B38CE03C9AB94A622F7.html#function_Visit_E69E9731E4515C953CF6A9DC678C178705F3CB2A">soulng::spg::LinkerVisitor::Visit</a>
             , <a href="./class_SequenceParser_E5072D7D7C4A1719B78D7481F0C708AF1BE7B253.html#function_Clone_F834A72295BCB96D71EB5B187BEE954C66B81642">soulng::spg::SequenceParser::Clone</a>
         </span>

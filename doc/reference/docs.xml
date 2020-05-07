@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <docs>
   <doc id="soulng">
-    <description>core libraries and tools</description>
+    <description>SoulNG core libraries and tools</description>
   </doc>
   <doc id="sngxml">
     <description>XML processing libraries</description>
@@ -9,7 +9,16 @@
   <doc id="sngcpp">
     <description>C++ front-end</description>
   </doc>
+  <doc id="sngcm">
+    <description>Cmajor lexer, parser and AST</description>
+  </doc>
   <doc id="gendoc-tool">
     <description>C++ reverse engineering tool</description>
+  </doc>
+  <doc id="sng2html-tool">
+    <description>SoulNG lexical grammar and parsing grammar to HTML generator tool</description>
+  </doc>
+  <doc id="cpp2cm-tool">
+    <description>Visual Studio C++ project to Cmajor project conversion tool</description>
   </doc>
 </docs>

@@ -6,7 +6,7 @@
  <body>
   <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
   <br/>
-  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2019&nbsp;Seppo&nbsp;Laakko</span></span>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
   <br/>
   <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
   <br/>
@@ -44,51 +44,57 @@
   <br/>
   <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">decdigit</span><span class="other">=</span><span class="string">"[0-9]"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">octaldigit</span><span class="other">=</span><span class="string">"[0-7]"</span><span class="other">;</span></span>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">decdigits</span><span class="other">=</span><span class="string">"{decdigit}+"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hexdigit</span><span class="other">=</span><span class="string">"[0-9a-fA-F]"</span><span class="other">;</span></span>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">octaldigit</span><span class="other">=</span><span class="string">"[0-7]"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hex4</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"{hexdigit}{hexdigit}{hexdigit}{hexdigit}"</span><span class="other">;</span></span>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">octaldigits</span><span class="other">=</span><span class="string">"{octaldigit}+"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hex8</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"{hex4}{hex4}"</span><span class="other">;</span></span>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hexdigit</span><span class="other">=</span><span class="string">"[0-9a-fA-F]"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">escape</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"\\((x|X){hexdigit}+|(d|D){decdigit}+|{octaldigit}+|u{hex4}|U{hex8}|(a|b|f|n|r|t|v|.))"</span><span class="other">;</span></span>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hexdigits</span><span class="other">=</span><span class="string">"{hexdigit}+"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hex4</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"{hexdigit}{hexdigit}{hexdigit}{hexdigit}"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;</span>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">hex8</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"{hex4}{hex4}"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="kw">lexer</span>&nbsp;<span class="kw">api</span><span class="other">(</span><span class="identifier">SOULNG_REX_API</span><span class="other">)</span>&nbsp;<span class="identifier">RexLexer</span></span>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">escape</span>&nbsp;<span class="other">=</span>&nbsp;<span class="string">"\\((x|X){hexdigit}+|(d|D){decdigit}+|{octaldigit}+|u{hex4}|U{hex8}|(a|b|f|n|r|t|v|.))"</span><span class="other">;</span></span>
   <br/>
-  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">{</span></span>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\("</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">LPAREN</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;</span>
   <br/>
-  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\)"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">RPAREN</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="kw">lexer</span>&nbsp;<span class="kw">api</span><span class="other">(</span><span class="identifier">SOULNG_REX_API</span><span class="other">)</span>&nbsp;<span class="identifier">RexLexer</span></span>
   <br/>
-  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\["</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">LBRACKET</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span></span>
   <br/>
-  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\]"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">RBRACKET</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\("</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">LPAREN</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\|"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ALT</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\)"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">RPAREN</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\*"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">STAR</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\["</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">LBRACKET</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\+"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">PLUS</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\]"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">RBRACKET</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\?"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">QUEST</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\|"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ALT</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\."</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">DOT</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\*"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">STAR</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"{escape}"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ESCAPE</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\+"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">PLUS</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"^"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">INVERSE</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\?"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">QUEST</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"-"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">MINUS</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"\."</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">DOT</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"[^\x0\r\n{}\\()[\]|*+?.^-]"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">CHAR</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"{escape}"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">ESCAPE</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
   <br/>
-  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;<span class="other">}</span></span>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"^"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">INVERSE</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"-"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">MINUS</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"[^\x0\r\n{}\\()[\]|*+?.^-]"</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">CHAR</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;<span class="other">}</span></span>
   <br/>
  </body>
 </html>

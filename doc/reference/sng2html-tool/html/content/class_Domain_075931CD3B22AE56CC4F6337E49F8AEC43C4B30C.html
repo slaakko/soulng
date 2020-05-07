@@ -1,0 +1,221 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Domain Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html">prev</a>
+         | <a href="class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html">next</a>
+        <hr/>
+        <h1>Domain Class</h1>
+        <span>
+            Definition at line <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html#13">13</a>
+             of <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html">Domain.hpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_Accept_1F6DCD77FA1281FC3E7065D4ACBA1A229D1C2A43">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_AddParser_83813724B22A3E3A2C88023A6215CC2A933F858D">AddParser</a>(<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>* parser)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_AddParserFile_3315C73F65B59A6F646F1702554F1AFCA44C5979">AddParserFile</a>(<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>* parserFile)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_GetParser_C2441A754CC4FD3B171D0E8D2C90FE39573ED36F">GetParser</a>(<span class="kw">const </span>std::u32string&amp; parserName) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>*>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#function_ParserFiles_9D897CEF566102732672F59DD39A8D1B08A2FAD4">ParserFiles</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_parserFiles_9DDD31F48F2F420BBA7AE99ACBF28A8B920E4156">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">parserFiles</td>
+            </tr>
+            <tr id="variable_parserMap_D1171389BD455A5A36EFD37BAA90B386ABD48A60">
+                <td class="functionTableFirstCol" xml:space="preserve">std::map&lt;std::u32string, <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">parserMap</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_1F6DCD77FA1281FC3E7065D4ACBA1A229D1C2A43">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Domain::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor)</h4>
+        <span>
+            Definition at line <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html#14">14</a>
+             of <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html">Domain.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html#16">16</a>
+             of <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html">Domain.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_31865571BA5B508E80972A9C91221AB65C7C0089">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_GenerateHtml_543F906D2C19A6B27EBFB6671BE9573E5777FF53">sng2html::sng2html::Project::GenerateHtml</a>
+            , <a href="./class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_Link_7F1B619014305B52DD4C00E4110CAB5F85382056">sng2html::sng2html::Project::Link</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddParser_83813724B22A3E3A2C88023A6215CC2A933F858D">AddParser Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Domain::AddParser(<a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>
+            * parser)</h4>
+        <span>
+            Definition at line <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html#24">24</a>
+             of <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html">Domain.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">auto</span>&nbsp;<span class="identifier">it</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#variable_parserMap_D1171389BD455A5A36EFD37BAA90B386ABD48A60">parserMap</a><span class="other">.</span><span class="identifier">find</span><span class="other">(</span><span class="identifier">parser</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">it</span><span class="other">&nbsp;!=&nbsp;</span><a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#variable_parserMap_D1171389BD455A5A36EFD37BAA90B386ABD48A60">parserMap</a><span class="other">.</span><span class="identifier">cend</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">throw&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">runtime_error</span><span class="other">(</span><span class="string">"parser&nbsp;'"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">ToUtf8</span><span class="other">(</span><span class="identifier">parser</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">"'&nbsp;already&nbsp;exists"</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#variable_parserMap_D1171389BD455A5A36EFD37BAA90B386ABD48A60">parserMap</a><span class="other">[</span><span class="identifier">parser</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">parser</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html#19">19</a>
+             of <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html">Domain.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Name_1A53530EC148722EF936621AB15DB9888B6ECF73">sng2html::sng2html::Parser::Name</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddParserFile_3315C73F65B59A6F646F1702554F1AFCA44C5979">AddParserFile Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Domain::AddParserFile(<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>
+            * parserFile)</h4>
+        <span>
+            Definition at line <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html#19">19</a>
+             of <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html">Domain.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#variable_parserFiles_9DDD31F48F2F420BBA7AE99ACBF28A8B920E4156">parserFiles</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">parserFile</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html#17">17</a>
+             of <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html">Domain.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadParserFiles_5FF68584A28729F165962A360E8444959BD2F062">sng2html::sng2html::Project::ReadParserFiles</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetParser_C2441A754CC4FD3B171D0E8D2C90FE39573ED36F">GetParser Member Function</h3>
+        <h4>
+            <a href="./class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a>
+            * sng2html::sng2html::Domain::GetParser(<span class="kw">const </span>
+            std::u32string&amp; parserName) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html#34">34</a>
+             of <a href="file/Domain.cpp_0FF286A8974E3282BB83DF0A03B8767DDA42061B.html">Domain.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html#20">20</a>
+             of <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html">Domain.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_9C26BCD251F70100512F1624ED93B1F0A7D90C42">sng2html::sng2html::LinkerVisitor::Visit</a>
+            , <a href="./class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadGrammarFiles_8188A4BCF419E9D54D8AB78BD9505A0A651382C9">sng2html::sng2html::Project::ReadGrammarFiles</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_ParserFiles_9D897CEF566102732672F59DD39A8D1B08A2FAD4">ParserFiles Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::vector&lt;<a href="./class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a>
+            *>&amp; sng2html::sng2html::Domain::ParserFiles() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html#18">18</a>
+             of <a href="file/Domain.hpp_9D52EAF674A8570B06A72A794FA1BA286A1A4656.html">Domain.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html#variable_parserFiles_9DDD31F48F2F420BBA7AE99ACBF28A8B920E4156">parserFiles</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_6F3A8F33818D9556C73242E8065A5A201BD536D8">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+            , <a href="./class_LinkerVisitor_048D2F52C8E195D4C7F60D2BEAE9D0CE67C45BDC.html#function_Visit_275837557050B65B6094C75C8D0B6A8AEF440034">sng2html::sng2html::LinkerVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_DifferenceParser_96147229580E48887A7D7790B1D602BFA93309B4.html">prev</a>
+         | <a href="class_EmptyParser_424BD91269B7C4D24FC6C160125333658F406968.html">next</a>
+    </body>
+</html>

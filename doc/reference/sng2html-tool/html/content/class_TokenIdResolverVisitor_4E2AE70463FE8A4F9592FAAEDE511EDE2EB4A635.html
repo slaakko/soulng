@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>TokenIdResolverVisitor Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="struct_Token_8DDEA5F87197F14455D2ED2B7E5EDFE73C60151E.html">prev</a>
+         | <a href="class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html">next</a>
+        <hr/>
+        <h1>TokenIdResolverVisitor Class</h1>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#153">153</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+        </span>
+        <br/>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TokenIdResolverVisitor_4E2AE70463FE8A4F9592FAAEDE511EDE2EB4A635.html#function_TokenId_D19FACA95B05514385B1232C302211C30018A4AF">TokenId</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TokenIdResolverVisitor_4E2AE70463FE8A4F9592FAAEDE511EDE2EB4A635.html#function_Visit_F82F18817F39C77FA2713D082FB946D38A73DA76">Visit</a>(soulng::cppcode::ReturnStatement&amp; object) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_tokenId_035DA571D0703D2E07A0DA42E42D5F8ABE0F0EB5">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">tokenId</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_TokenId_D19FACA95B05514385B1232C302211C30018A4AF">TokenId Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sng2html::sng2html::TokenIdResolverVisitor::TokenId() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#157">157</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">157</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_TokenIdResolverVisitor_4E2AE70463FE8A4F9592FAAEDE511EDE2EB4A635.html#variable_tokenId_035DA571D0703D2E07A0DA42E42D5F8ABE0F0EB5">tokenId</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_Visit_F82F18817F39C77FA2713D082FB946D38A73DA76">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::TokenIdResolverVisitor::Visit(soulng::cppcode::ReturnStatement&amp; object) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#162">162</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">163</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">164</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><a href="./class_TokenIdResolverVisitor_4E2AE70463FE8A4F9592FAAEDE511EDE2EB4A635.html#variable_tokenId_035DA571D0703D2E07A0DA42E42D5F8ABE0F0EB5">tokenId</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">165</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">166</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="identifier">object</span><span class="other">.</span><span class="identifier">GetExpression</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">167</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">168</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TokenIdResolverVisitor_4E2AE70463FE8A4F9592FAAEDE511EDE2EB4A635.html#variable_tokenId_035DA571D0703D2E07A0DA42E42D5F8ABE0F0EB5">tokenId</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">object</span><span class="other">.</span><span class="identifier">GetExpression</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">169</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">170</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">171</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#156">156</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="struct_Token_8DDEA5F87197F14455D2ED2B7E5EDFE73C60151E.html">prev</a>
+         | <a href="class_TokenParser_E7027522F9B074D3874FEC28A1DB0E500CEF11B7.html">next</a>
+    </body>
+</html>

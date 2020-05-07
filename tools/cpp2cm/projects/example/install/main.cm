@@ -1,0 +1,22 @@
+using System;
+using System.Collections;
+
+// this file has been semiautomatically generated from 'D:/work/soulng-project/tools/cpp2cm/projects/example/cpp_project/example/main.cpp' using cpp2cm version 1.0.0
+
+public int main(int argc, const char** argv)
+{
+    List<string> args;
+    int n = argc;
+    for (int i = 1; i < n; ++i)
+    {
+        Console.Out() << "arg " << i << " " << argv[i] << endl();
+        args.Add(argv[i]);
+    }
+    Example.sort(args);
+    Console.Out() << "sorted:" << endl();
+    for (int i = 0; i < args.Count(); ++i)
+    {
+        Console.Out() << args[i] << endl();
+    }
+    return 0;
+}

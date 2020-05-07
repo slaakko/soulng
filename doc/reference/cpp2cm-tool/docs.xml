@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="cpp2cm-tool">
+    <description>
+        Contains a semiautomatic tool that with great deal of manual help converts a Visual Studio C++ project to a Cmajor project.
+    </description>
+    <body>
+        <h2>Tutorial</h2>
+        <ul>
+            <li><a href="../../tutorial/cpp2cm/cpp2cm.html">Cpp2cm tutorial</a></li>
+        </ul>
+    </body>
+  </doc>
+</docs>

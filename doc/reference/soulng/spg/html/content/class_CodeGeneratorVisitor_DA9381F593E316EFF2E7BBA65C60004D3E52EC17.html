@@ -38,6 +38,10 @@
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_C99714D7C0541E530E4B39952005D527A902F261">Visit</a>(<a href="./class_AnyParser_ED2567D49E1613371F498222DCBAB0F4E031B46C.html">AnyParser</a>&amp; parser) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#function_Visit_413D7799B0347DDC07CBB54A9EC71A500E629413">Visit</a>(<a href="./class_CharParser_E21B8AB860B10B1FCE8DC9CBD13594992CF75A28.html">CharParser</a>&amp; parser) <span class="kw">override</span></td>
             </tr>
             <tr>
@@ -178,19 +182,6 @@
         <span>
             Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#29">29</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;29</span>&nbsp;<span class="other">:</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;30</span>&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_verbose_458E92294B429CE5278DF6E5F84A9524196105DF">verbose</a><span class="other">(</span><span class="identifier">verbose_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_noParserDebugSupport_4B05457E04FA70B4DAEEF2B4782A3927C22A67DD">noParserDebugSupport</a><span class="other">(</span><span class="identifier">noParserDebugSupport_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_domain_314BF89CB15C3D083C0C167650A461E8B32A43A7">domain</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_currentParser_834B17ACA9CDE5FF31E299AE8CA2C575C5A24863">currentParser</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_currentRule_C45343963A1D2373521B61B42B68D701ED7C0C22">currentRule</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_stage_E0352CAFD04042FDB4EE18B0D830833629C282EC">stage</a><span class="other">(</span><a href="./enum_Stage_D641F8A7016E6F2517A4680B92149658D8B658FF.html">Stage</a><span class="other">::</span><a href="./enum_Stage_D641F8A7016E6F2517A4680B92149658D8B658FF.html#enumerator_generateHeader_308955F9CAEF07B6A6E85E422678E912121BDAF7">generateHeader</a><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">(</span><span class="kw">nullptr</span><span class="other">)</span><span class="other">,&nbsp;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;31</span>&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_lexerTypeName_D053518563086C965F70EB11C29E36FA75FA3D4F">lexerTypeName</a><span class="other">(</span><span class="string">"soulng::lexer::Lexer"</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_parentMatchNumber_770EB75E89A5555E168A1F4D961ECDD281815F4C">parentMatchNumber</a><span class="other">(</span><span class="other">0</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_setParentMatchNumber_7BA0029D0D054BB9AF2AEE19A7838ED6FA6E031D">setParentMatchNumber</a><span class="other">(</span><span class="other">-</span><span class="other">1</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_sn_3CA1E1C076FDE1EE4C81EA13BA7AA2BC777C6A0B">sn</a><span class="other">(</span><span class="other">0</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;32</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;33</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -208,12 +199,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#460">460</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#472">472</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#38">38</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#39">39</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -252,12 +243,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#353">353</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#365">365</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#35">35</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#36">36</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -279,6 +270,36 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_Visit_C99714D7C0541E530E4B39952005D527A902F261">Visit Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::spg::CodeGeneratorVisitor::Visit(<a href="./class_AnyParser_ED2567D49E1613371F498222DCBAB0F4E031B46C.html">AnyParser</a>
+            &amp; parser) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#40">40</a>
+             of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#25">25</a>
+             of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Visitor_27D3E0E144625F09364F982184600A63863825BB.html#function_Visit_08FA5D977AB6AFA0302C4608DC8DE72B7C6E65BF">soulng::spg::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
         <h3 id="function_Visit_413D7799B0347DDC07CBB54A9EC71A500E629413">Visit Member Function</h3>
         <h4>
             <span class="kw">void</span>
@@ -286,35 +307,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#68">68</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#80">80</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;69</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;70</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"soulng::parser::Match&nbsp;match(false);"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;71</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"if&nbsp;(*lexer&nbsp;==&nbsp;"</span><span class="other">&nbsp;+&nbsp;</span><span class="identifier">std</span><span class="other">::</span><span class="type">to_string</span><span class="other">(</span><span class="kw">static_cast</span><span class="other">&lt;</span><span class="kw">int</span><span class="other">></span><span class="other">(</span><span class="identifier">parser</span><span class="other">.</span><a href="./class_CharParser_E21B8AB860B10B1FCE8DC9CBD13594992CF75A28.html#function_Chr_E5BC85E74A7526B19F69496C9B443A2D9C322B9F">Chr</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">&nbsp;+&nbsp;</span><span class="string">")"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;72</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"{"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;73</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">IncIndent</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;74</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"++lexer;"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;75</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"match.hit&nbsp;=&nbsp;true;"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;76</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">DecIndent</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"}"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;78</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#26">26</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#27">27</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -340,12 +338,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#103">103</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#115">115</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#28">28</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#29">29</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -373,12 +371,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#413">413</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#425">425</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#36">36</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#37">37</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -406,29 +404,12 @@
             &amp; domain) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#1074">1074</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#1092">1092</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">1075</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1076</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">this</span><span class="other">-></span><a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_domain_314BF89CB15C3D083C0C167650A461E8B32A43A7">domain</a><span class="other">&nbsp;=&nbsp;</span><span class="other">&amp;</span><span class="identifier">domain</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1077</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">parserFile</span><span class="other">&nbsp;:&nbsp;</span><span class="identifier">domain</span><span class="other">.</span><a href="./class_Domain_29D5FF66C405570E3EB38E38CD2E6FFAC37C10BA.html#function_ParserFiles_215590C0BFDF52BA2D475808C9810113D788254B">ParserFiles</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1078</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1079</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parserFile</span><span class="other">-></span><span class="identifier">Accept</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1080</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">1081</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#43">43</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#44">44</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -453,15 +434,6 @@
         <span>
             Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#35">35</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;36</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_CodeGeneratorVisitor_DA9381F593E316EFF2E7BBA65C60004D3E52EC17.html#variable_formatter_5E4649F234606194534C7934009B4C03BC4BACC2">formatter</a><span class="other">-></span><a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">WriteLine</a><span class="other">(</span><span class="string">"soulng::parser::Match&nbsp;match(true);"</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;&nbsp;38</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -488,12 +460,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#259">259</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#271">271</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#32">32</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#33">33</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -525,12 +497,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#746">746</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#764">764</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#41">41</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#42">42</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -568,12 +540,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#306">306</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#318">318</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#33">33</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#34">34</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -600,12 +572,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#173">173</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#185">185</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#30">30</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#31">31</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -632,21 +604,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#455">455</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#467">467</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;456</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;457</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">parser</span><span class="other">.</span><a href="./class_UnaryParser_D587619922188889605EA9F0CB5D5C22A7C9AA1B.html#function_Child_EB20E3C90584BB1CB04318ADBF991C70F689C4EB">Child</a><span class="other">(</span><span class="other">)</span><span class="other">-></span><a href="./class_Parser_E73A061302A54B1D9F7E3B44AC462CEB0090B908.html#function_Accept_1909C96AE52A2B305A815693715F56E7651FBBBD">Accept</a><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;458</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#37">37</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#38">38</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -670,12 +633,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#573">573</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#585">585</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#39">39</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#40">40</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -706,12 +669,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#146">146</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#158">158</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#29">29</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#30">30</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -738,12 +701,12 @@
             &amp; parserFile) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#986">986</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#1004">1004</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#42">42</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#43">43</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -759,8 +722,8 @@
             , <a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_Includes_E956C9AABDC981DEC4029A4A3A72E81A0F98F217">soulng::spg::ParserFile::Includes</a>
             , <a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_Parsers_0365007B3CF467C1D113D098F450F2DAC5129038">soulng::spg::ParserFile::Parsers</a>
             , <a href="./class_ParserFile_39DE84B5D94EDB40D309E9A467890F61B9819FCE.html#function_UsingNamespaceDeclarations_CE62772352B5E8A05CD98A548DA514B105914E10">soulng::spg::ParserFile::UsingNamespaceDeclarations</a>
-            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_ChangeExtension_C3DCF8301B5E768493A801CBC9DED9B230DE987C">soulng::util::Path::ChangeExtension</a>
             , <a href="./../../../util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_GetFileName_FFB6BA1348F72588E94982B1188E33E498DF17F6">soulng::util::Path::GetFileName</a>
         </span>
@@ -774,12 +737,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#210">210</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#222">222</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#31">31</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#32">32</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -806,12 +769,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#604">604</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#616">616</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#40">40</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#41">41</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -839,8 +802,8 @@
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
-            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
         </span>
         <br/>
         <br/>
@@ -852,12 +815,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#321">321</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#333">333</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#34">34</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#35">35</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -885,12 +848,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#80">80</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#92">92</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#27">27</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#28">28</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>
@@ -916,12 +879,12 @@
             &amp; parser) <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#40">40</a>
+            Definition at line <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html#52">52</a>
              of <a href="file/CodeGeneratorVisitor.cpp_C5A8A54D513CB8BC4A650B82BC9F3A9D71292F85.html">CodeGeneratorVisitor.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#25">25</a>
+            Declaration at line <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html#26">26</a>
              of <a href="file/CodeGeneratorVisitor.hpp_A5259AB5F2241ADD3963A6BAAD1402669B9AB54C.html">CodeGeneratorVisitor.hpp</a>
         </span>
         <br/>

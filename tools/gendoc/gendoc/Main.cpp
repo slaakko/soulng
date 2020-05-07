@@ -43,6 +43,8 @@ void PrintUsage()
     std::cout << "  Generate content when ASTS are already generated." << std::endl;
     std::cout << "--end-message | -e" << std::endl;
     std::cout << "  Generate status.msg in the same directory (used when executed recursively from the parent directory)." << std::endl;
+    std::cout << "--single-process | -s" << std::endl;
+    std::cout << "  Run in single process." << std::endl;
 }
 
 struct Initializer
@@ -75,6 +77,7 @@ int main(int argc, const char** argv)
         bool ast = false;
         bool content = false;
         bool endMessage = false;
+        bool single = false;
         std::vector<std::string> docFilePaths;
         for (int i = 1; i < argc; ++i)
         {
@@ -109,6 +112,10 @@ int main(int argc, const char** argv)
                 else if (arg == "--end-message")
                 {
                     endMessage = true;
+                }
+                else if (arg == "--single-process")
+                {
+                    single = true;
                 }
                 else
                 {
@@ -153,6 +160,10 @@ int main(int argc, const char** argv)
                     {
                         endMessage = true;
                     }
+                    else if (o == 's')
+                    {
+                        single = true;
+                    }
                     else
                     {
                         throw std::runtime_error("unknown option '-" + std::string(1, o) + "'");
@@ -178,7 +189,7 @@ int main(int argc, const char** argv)
             gendoc::Project project(docFilePath);
             if (clean)
             {
-                project.Clean(verbose);
+                project.Clean(verbose, single);
             }
             else if (ast)
             {
@@ -186,11 +197,11 @@ int main(int argc, const char** argv)
             }
             else if (content)
             {
-                project.GenerateContent(verbose, rebuild, endMessage);
+                project.GenerateContent(verbose, rebuild, endMessage, single);
             }
             else
             {
-                project.Process(verbose, rebuild);
+                project.Process(verbose, rebuild, single);
             }
         }
     }

@@ -45,16 +45,20 @@
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_FillContext_12B256A95C32EBF835DDEBBDFE12FC6CAA7B840A">FillContext</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
             </tr>
             <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html">Dfa</a>&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_GetDfa_C75DEE72A75F9340D89EB7BE7B1DB499FBB73296">GetDfa</a>()</td>
+            </tr>
+            <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeDfa_0632796D8414395C0C109EE393D5FD9DBA74AF93">MakeDfa</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">MakeMasterNfa</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext)</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_MakeMasterNfa_671CC47856036197E9C1C170157856E6B9542C9C">MakeMasterNfa</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext, <span class="kw">bool</span> debug)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
-                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_Process_13252863F833BD97883AFBE6298F25A2AF492AF6">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_Process_F09A800893CD39CEBAE54AF927F115DE4CB6A73A">Process</a>(<span class="kw">const </span>std::string&amp; root, <span class="kw">bool</span> verbose, <span class="kw">bool</span> debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext) <span class="kw">override</span></td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
@@ -98,15 +102,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#433">433</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">433</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html">Declaration</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_api_CFA200B262BEBE16BE8E759ABDE40ED3E881D03D">api</a><span class="other">(</span><span class="identifier">api_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">434</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">435</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -125,15 +120,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#448">448</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">449</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">450</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_actions_0955B4719DB059EF1345232C08792676F554E014">actions</a><span class="other">.</span><a href="./class_Actions_B5EB0ED6605ED2FF35A8F96C91B2260656D49066.html#function_Add_82322B43F98E6D59B9798BE56C08AF61CF15D2C3">Add</a><span class="other">(</span><span class="identifier">action</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">451</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -161,17 +147,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#437">437</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">438</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">439</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">stmt</span><span class="other">-></span><a href="./class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html#function_SetIndex_B87F466F79B04B8B1BE44076B5A64B5395F46343">SetIndex</a><span class="other">(</span><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_statements_BE48C79A490E122D3C8935662BFF4D0ED80D8BDF">statements</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">440</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_statements_BE48C79A490E122D3C8935662BFF4D0ED80D8BDF">statements</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_LexerStatement_AC724C260C6CD21F9101E96798FB57B8DDB65440.html">LexerStatement</a><span class="other">></span><span class="other">(</span><span class="identifier">stmt</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">441</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -199,15 +174,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#443">443</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">444</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">445</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_variables_7ACC527B4417ADABDB15034F1B8CC9A099476E44">variables</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_Variable_6274D6BC929F0C26F978C7D50488BE85266CF66B.html">Variable</a><span class="other">></span><span class="other">(</span><span class="identifier">variable</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">446</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -231,17 +197,6 @@
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#453">453</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">454</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">455</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetApi_0D4555EB6CE087D8175DA38013EE4749E246D4BA">SetApi</a><span class="other">(</span><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_api_CFA200B262BEBE16BE8E759ABDE40ED3E881D03D">api</a><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">456</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_SetLexer_CA3DF256DBB4C0B313CA7123A8782F99CA84B087">SetLexer</a><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">457</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -262,23 +217,30 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_GetDfa_C75DEE72A75F9340D89EB7BE7B1DB499FBB73296">GetDfa Member Function</h3>
+        <h4>
+            <a href="./class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html">Dfa</a>
+            &amp; soulng::slg::Lexer::GetDfa()</h4>
+        <span>
+            Definition at line <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html#208">208</a>
+             of <a href="file/Model.hpp_6F4D3BB826CB7878DF0EE89DA4E5B615FCB3926E.html">Model.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
         <h3 id="function_MakeDfa_0632796D8414395C0C109EE393D5FD9DBA74AF93">MakeDfa Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Lexer::MakeDfa(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext)</h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#477">477</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#482">482</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">478</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">479</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_dfa_7113D001A9590A6DEF3B7B544451AE9411F996B1">dfa</a><span class="other">&nbsp;=&nbsp;</span><a href="./namespace_slg_6FAA7F4836CD875E0E38BAC87A355F0AE2C9DDA5.html#function_Compile_73CFB542B0E6FBF3E8A6ECDA5A3AD51E00808B3E">Compile</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">,&nbsp;</span><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_masterNfa_98F5D47C1E6CC3123BB13FCF785F811678E65666">masterNfa</a><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">480</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -293,33 +255,15 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_MakeMasterNfa_6F86F4912D7020F38135A600469848E18D7CAA9A">MakeMasterNfa Member Function</h3>
+        <h3 id="function_MakeMasterNfa_671CC47856036197E9C1C170157856E6B9542C9C">MakeMasterNfa Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Lexer::MakeMasterNfa(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
-            &amp; lexerContext)</h4>
+            &amp; lexerContext, <span class="kw">bool</span>
+             debug)</h4>
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#467">467</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">468</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">469</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a><span class="other">*</span>&nbsp;<span class="identifier">start</span>&nbsp;<span class="other">=</span>&nbsp;<span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7">MakeNfaState</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">470</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_masterNfa_98F5D47C1E6CC3123BB13FCF785F811678E65666">masterNfa</a><span class="other">.</span><a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC">SetStart</a><span class="other">(</span><span class="identifier">start</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">471</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">statement</span><span class="other">&nbsp;:&nbsp;</span><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_statements_BE48C79A490E122D3C8935662BFF4D0ED80D8BDF">statements</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">472</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">473</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">start</span><span class="other">-></span><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E">AddEdge</a><span class="other">(</span><a href="./class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html">NfaEdge</a><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">.</span><a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E">MakeEpsilon</a><span class="other">(</span><span class="other">)</span><span class="other">,&nbsp;</span><span class="identifier">statement</span><span class="other">-></span><span class="identifier">GetNfa</span><span class="other">(</span><span class="other">)</span><span class="other">.</span><span class="identifier">Start</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">474</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">475</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -332,7 +276,10 @@
             Calls: <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeEpsilon_1F085D1C32145304ED08C5EC8077D258C17C5A0E">soulng::slg::LexerContext::MakeEpsilon</a>
             , <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html#function_MakeNfaState_769818AE136C2BCCB30C832DF0C2EDE1F18814B7">soulng::slg::LexerContext::MakeNfaState</a>
             , <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_SetStart_925B77C3842A871D0EC2CBA81E73498B16DA15DC">soulng::slg::Nfa::SetStart</a>
+            , <a href="./class_Nfa_EAAF6E151E0C91659AFDAAF934B5B6574D5E680C.html#function_Start_E5280B823405F8EE90A115772A7D1EDE1F74CB1C">soulng::slg::Nfa::Start</a>
             , <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E">soulng::slg::NfaState::AddEdge</a>
+            , <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_Id_660BF9E0FC0AB1EC87909A73E26DB6180B329560">soulng::slg::NfaState::Id</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
         </span>
         <br/>
         <br/>
@@ -342,32 +289,18 @@
         <br/>
         <br/>
         <hr/>
-        <h3 id="function_Process_13252863F833BD97883AFBE6298F25A2AF492AF6">Process Member Function</h3>
+        <h3 id="function_Process_F09A800893CD39CEBAE54AF927F115DE4CB6A73A">Process Member Function</h3>
         <h4>
             <span class="kw">void</span>
              soulng::slg::Lexer::Process(<span class="kw">const </span>
             std::string&amp; root, <span class="kw">bool</span>
-             verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+             verbose, <span class="kw">bool</span>
+             debug, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext) <span class="kw">override</span>
         </h4>
         <span>
             Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#459">459</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">460</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">461</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">const&nbsp;</span><span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">statement</span><span class="other">&nbsp;:&nbsp;</span><a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#variable_statements_BE48C79A490E122D3C8935662BFF4D0ED80D8BDF">statements</a><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">462</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">463</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">statement</span><span class="other">-></span><span class="identifier">Process</span><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">464</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">465</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -377,7 +310,7 @@
         <br/>
         <br/>
         <span>
-            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_5B73D958C55323FABDD19047045BD23363561D3A">soulng::slg::Declaration::Process</a>
+            Base class overridden functions: <a href="./class_Declaration_A1D895A0011EA132D578B55247CAEC20370BFE85.html#function_Process_3CAA9CAF8401B40FE2EB06B5E51CA1A5B7AECC90">soulng::slg::Declaration::Process</a>
         </span>
         <br/>
         <br/>
@@ -390,7 +323,7 @@
              verbose, <a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
             &amp; lexerContext)</h4>
         <span>
-            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#482">482</a>
+            Definition at line <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html#487">487</a>
              of <a href="file/Model.cpp_E9F18BA4356D242AD3806474B856D6A7D70F178A.html">Model.cpp</a>
         </span>
         <br/>
@@ -420,8 +353,8 @@
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_DecIndent_B36B7F7A6C76F0F622F1B9B00E4F3419DD8E7F9C">soulng::util::CodeFormatter::DecIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_IncIndent_BDA04C54C0FD0E48131D13C12C98C24F0E82085C">soulng::util::CodeFormatter::IncIndent</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_Write_CD7775F73D2C0A69FD368A415F86EBB6960314A5">soulng::util::CodeFormatter::Write</a>
-            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_E18FDC056022CF75C77787ED1B7B1FD9560BF36A">soulng::util::CodeFormatter::WriteLine</a>
+            , <a href="./../../../util/html/content/class_CodeFormatter_C58CAFDB50587A7AC80B6435A31CAA3A81DB6CC9.html#function_WriteLine_98AD881B7A691113AB22B336D14256F0C13FAEAF">soulng::util::CodeFormatter::WriteLine</a>
             , <a href="./../../../util/html/content/class_Path_4B3DE54C4207046D89CC15C18C3336BA3FDCEA6F.html#function_Combine_366AB69E7B19657179918C0792B9E79E0FC1F1ED">soulng::util::Path::Combine</a>
         </span>
         <br/>

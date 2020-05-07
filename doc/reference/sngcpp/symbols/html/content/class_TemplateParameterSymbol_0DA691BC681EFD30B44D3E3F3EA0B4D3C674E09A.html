@@ -33,8 +33,16 @@
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_CreateElement_A37DC6511929AD7E2224986AEE3807DF0DE677EC">CreateElement</a>() <span class="kw">override</span></td>
             </tr>
             <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_IsTemplateParameterSymbol_D4A91633C2E21C86AF08CF811ED8DB0F553B1C37">IsTemplateParameterSymbol</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
                 <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_KindStr_9F82A38E8F69F431ED61F70EEC1B8CFBA554BAFE">KindStr</a>() <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TemplateParameterSymbol_0DA691BC681EFD30B44D3E3F3EA0B4D3C674E09A.html#function_MatchValue_7CC15A265727564D597CE64BCF43BF714016FE14">MatchValue</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* argumentType) <span class="kw">override</span></td>
             </tr>
         </table>
         <hr/>
@@ -77,7 +85,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">templateParameter</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"templateParameter"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">templateParameter</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"templateParameter"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">templateParameter</span><span class="other">;</span></span>
                 <br/>
@@ -99,6 +107,27 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_IsTemplateParameterSymbol_D4A91633C2E21C86AF08CF811ED8DB0F553B1C37">IsTemplateParameterSymbol Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sngcpp::symbols::TemplateParameterSymbol::IsTemplateParameterSymbol() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TemplateSymbol.hpp_B751A3390E9849B3A8C6BC68E255A68459E88365.html#18">18</a>
+             of <a href="file/TemplateSymbol.hpp_B751A3390E9849B3A8C6BC68E255A68459E88365.html">TemplateSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_IsTemplateParameterSymbol_E6D40B4F9D89B53FC810B2293640F1772FBB7855">sngcpp::symbols::TypeSymbol::IsTemplateParameterSymbol</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
         <h3 id="function_KindStr_9F82A38E8F69F431ED61F70EEC1B8CFBA554BAFE">KindStr Member Function</h3>
         <h4>
             std::u32string sngcpp::symbols::TemplateParameterSymbol::KindStr() <span class="kw">override</span>
@@ -116,6 +145,38 @@
         <span>
             Base class overridden functions: <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_KindStr_6B77B13758BAABC57EE309F4C9443EAB82B92E12">sngcpp::symbols::Symbol::KindStr</a>
             , <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_KindStr_B607621E0E115094C947C0FD4D3DEF911AF33664">sngcpp::symbols::TypeSymbol::KindStr</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_MatchValue_7CC15A265727564D597CE64BCF43BF714016FE14">MatchValue Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::TemplateParameterSymbol::MatchValue(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * argumentType) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TemplateSymbol.cpp_7ACCFCED57ECDA2ABDEFFECEC6968B857767CD19.html#20">20</a>
+             of <a href="file/TemplateSymbol.cpp_7ACCFCED57ECDA2ABDEFFECEC6968B857767CD19.html">TemplateSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">numeric_limits</span><span class="other">&lt;</span><span class="kw">int</span><span class="other">></span><span class="other">::</span><span class="identifier">max</span><span class="other">(</span><span class="other">)</span><span class="other">&nbsp;-&nbsp;</span><span class="other">1</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TemplateSymbol.hpp_B751A3390E9849B3A8C6BC68E255A68459E88365.html#19">19</a>
+             of <a href="file/TemplateSymbol.hpp_B751A3390E9849B3A8C6BC68E255A68459E88365.html">TemplateSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
         </span>
         <br/>
         <br/>

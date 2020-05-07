@@ -1,0 +1,112 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <span class="code" id="1" xml:space="preserve"><span class="lineNumber">&nbsp;1</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="2" xml:space="preserve"><span class="lineNumber">&nbsp;2</span>&nbsp;<span class="comment">//&nbsp;Copyright&nbsp;(c)&nbsp;2020&nbsp;Seppo&nbsp;Laakko</span></span>
+  <br/>
+  <span class="code" id="3" xml:space="preserve"><span class="lineNumber">&nbsp;3</span>&nbsp;<span class="comment">//&nbsp;Distributed&nbsp;under&nbsp;the&nbsp;MIT&nbsp;license</span></span>
+  <br/>
+  <span class="code" id="4" xml:space="preserve"><span class="lineNumber">&nbsp;4</span>&nbsp;<span class="comment">//&nbsp;=================================</span></span>
+  <br/>
+  <span class="code" id="5" xml:space="preserve"><span class="lineNumber">&nbsp;5</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="6" xml:space="preserve"><span class="lineNumber">&nbsp;6</span>&nbsp;<span class="pp">#ifndef&nbsp;SNG2HTML_SNG2HTML_PROJECT_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="7" xml:space="preserve"><span class="lineNumber">&nbsp;7</span>&nbsp;<span class="pp">#define&nbsp;SNG2HTML_SNG2HTML_PROJECT_INCLUDED</span></span>
+  <br/>
+  <span class="code" id="8" xml:space="preserve"><span class="lineNumber">&nbsp;8</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/Domain.hpp></span></span>
+  <br/>
+  <span class="code" id="9" xml:space="preserve"><span class="lineNumber">&nbsp;9</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/LexerFile.hpp></span></span>
+  <br/>
+  <span class="code" id="10" xml:space="preserve"><span class="lineNumber">10</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/ParserFile.hpp></span></span>
+  <br/>
+  <span class="code" id="11" xml:space="preserve"><span class="lineNumber">11</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/Grammar.hpp></span></span>
+  <br/>
+  <span class="code" id="12" xml:space="preserve"><span class="lineNumber">12</span>&nbsp;<span class="pp">#include&nbsp;&lt;sng2html/sng2html/LexerContext.hpp></span></span>
+  <br/>
+  <span class="code" id="13" xml:space="preserve"><span class="lineNumber">13</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngxml/dom/Document.hpp></span></span>
+  <br/>
+  <span class="code" id="14" xml:space="preserve"><span class="lineNumber">14</span>&nbsp;<span class="pp">#include&nbsp;&lt;sngxml/dom/Parser.hpp></span></span>
+  <br/>
+  <span class="code" id="15" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="16" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">namespace</span>&nbsp;<span class="identifier">sng2html</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="17" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="18" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="kw">class</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html">Project</a>&nbsp;</span>
+  <br/>
+  <span class="code" id="19" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span></span>
+  <br/>
+  <span class="code" id="20" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="kw">public</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="21" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#constructor_Project_592BF551F9F2A9C481B916C30C2210CADE91AE7D">Project</a><span class="other">(</span><span class="kw">bool</span>&nbsp;<span class="identifier">verbose_</span><span class="other">,&nbsp;</span><span class="kw">const</span>&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span><span class="other">&amp;</span>&nbsp;<span class="identifier">xmlFilePath_</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="22" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_Process_115AC25C9FD3D4906AAD6D82E90DBDCE9084BF12">Process</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="23" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadLexerFiles_B0B223F4126E3411CEA8AA07943A0D31833868C0">ReadLexerFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="24" xml:space="preserve"><span class="lineNumber">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadParserFiles_5FF68584A28729F165962A360E8444959BD2F062">ReadParserFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="25" xml:space="preserve"><span class="lineNumber">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadOutDir_21262DC90EA954FD0F4C3756261C8C477FAC4B75">ReadOutDir</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="26" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadStyleFilePath_D135EBD98F57097A85EF429288887E443D7F9CCC">ReadStyleFilePath</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="27" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ReadGrammarFiles_8188A4BCF419E9D54D8AB78BD9505A0A651382C9">ReadGrammarFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="28" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_Link_7F1B619014305B52DD4C00E4110CAB5F85382056">Link</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="29" xml:space="preserve"><span class="lineNumber">29</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_ParseLexerFiles_B4D2FC91BDF7B9FB93C0FBA8AFB425D210262C7D">ParseLexerFiles</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="30" xml:space="preserve"><span class="lineNumber">30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">void</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#function_GenerateHtml_543F906D2C19A6B27EBFB6671BE9573E5777FF53">GenerateHtml</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="31" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="kw">private</span><span class="other">:</span></span>
+  <br/>
+  <span class="code" id="32" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">bool</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_verbose_307D409922E5CD5B58FCF6CC8AE1445F459BB4E4">verbose</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="33" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_xmlFilePath_B3D0AD1758480CFC5B82E57EB085350658C03EED">xmlFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="34" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_rootDir_B9AF5B0B3138220F2BF3EC574E7B289A48BA2137">rootDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="35" xml:space="preserve"><span class="lineNumber">35</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Document</span><span class="other">></span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_xmlDoc_D0FB792D64790EBA7DB7F14C58073AC77522B8F0">xmlDoc</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="36" xml:space="preserve"><span class="lineNumber">36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a><span class="other">></span><span class="other">></span><a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_lexerFiles_3CD1E420DE25CFD13A41C559440891DF42DF14AF">lexerFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="37" xml:space="preserve"><span class="lineNumber">37</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_ParserFile_3AEFDDDD510CBF836517D1F2E0824CCAA31D6677.html">ParserFile</a><span class="other">></span><span class="other">></span><a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_parserFiles_4B0029FDB3325D8E6C4B4CAC47BB28BDD12D39BA">parserFiles</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="38" xml:space="preserve"><span class="lineNumber">38</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_Domain_075931CD3B22AE56CC4F6337E49F8AEC43C4B30C.html">Domain</a>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_domain_19636CA8D6CBE18DF47B8B8FD88151D9F6E586F8">domain</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="39" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span><span class="other">,&nbsp;</span><a href="../class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_lexerMap_2A9A66BEB9B9EEA390092D41671F7F0499B62394">lexerMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="40" xml:space="preserve"><span class="lineNumber">40</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">string</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_outDir_07B2C246F0545FFE600886EB8EF73383116D2470">outDir</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="41" xml:space="preserve"><span class="lineNumber">41</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="identifier">u32string</span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_styleFilePath_20BFA317C771907B2217F18A82CE7450EC8DB275">styleFilePath</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="42" xml:space="preserve"><span class="lineNumber">42</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">vector</span><span class="other">&lt;</span><span class="identifier">std</span><span class="other">::</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a><span class="other">></span><span class="other">></span><a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_grammars_9454C4F1D46DDB2ACD252051281414CDF6D4E4F6">grammars</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="43" xml:space="preserve"><span class="lineNumber">43</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><a href="../class_GrammarParser_9831AF4EA2B90CE864996F324FDFF03F829F8254.html">GrammarParser</a><span class="other">*</span><span class="other">,&nbsp;</span><a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_parserGrammarMap_1FF59536AE1140EEF851F487FEFEFA83E103F449">parserGrammarMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="44" xml:space="preserve"><span class="lineNumber">44</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><a href="../class_RuleParser_2A29D480B206227F5CEFDA1538549F98D8671377.html">RuleParser</a><span class="other">*</span><span class="other">,&nbsp;</span><a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_parserRuleMap_19F2A7CFB1F2A68171C9D917EBFD82436614FBE9">parserRuleMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="45" xml:space="preserve"><span class="lineNumber">45</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><a href="../class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a><span class="other">*</span><span class="other">,&nbsp;</span><a href="../class_Grammar_09A940549BE1F1197D68A9B4F6439F1A87E6B785.html">Grammar</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_lexerGrammarMap_80A6B0F1AC0B6E7AD8BA27DF1404E334297A47EA">lexerGrammarMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="46" xml:space="preserve"><span class="lineNumber">46</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unordered_map</span><span class="other">&lt;</span><a href="../class_Expression_58A46386353A3A7A5553BF425663F4A162891B66.html">Expression</a><span class="other">*</span><span class="other">,&nbsp;</span><a href="../class_Rule_5E8066B094A87DA2B5B2607EB4FA9B38EBDF2B1F.html">Rule</a><span class="other">*</span><span class="other">></span>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_lexerRuleMap_19DA3DE86ECEDF5BE1ABFD2E7FB8F97A2F989062">lexerRuleMap</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="47" xml:space="preserve"><span class="lineNumber">47</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>&nbsp;<a href="../class_Project_6199B6FC2B68A45DC4B3A3EE66A9DCBE2A74F168.html#variable_lexerContext_E601663805F2C376AAFEDCD632A7772B41BCDC66">lexerContext</a><span class="other">;</span></span>
+  <br/>
+  <span class="code" id="48" xml:space="preserve"><span class="lineNumber">48</span>&nbsp;<span class="other">};</span></span>
+  <br/>
+  <span class="code" id="49" xml:space="preserve"><span class="lineNumber">49</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="50" xml:space="preserve"><span class="lineNumber">50</span>&nbsp;<span class="other">}</span>&nbsp;<span class="other">}</span>&nbsp;<span class="comment">//&nbsp;namespace&nbsp;sng2html::sng2html</span></span>
+  <br/>
+  <span class="code" id="51" xml:space="preserve"><span class="lineNumber">51</span>&nbsp;</span>
+  <br/>
+  <span class="code" id="52" xml:space="preserve"><span class="lineNumber">52</span>&nbsp;<span class="pp">#endif&nbsp;//&nbsp;SNG2HTML_SNG2HTML_PROJECT_INCLUDED</span></span>
+  <br/>
+ </body>
+</html>

@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ParenExpr Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">prev</a>
+         | <a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">next</a>
+        <hr/>
+        <h1>ParenExpr Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html#79">79</a>
+             of <a href="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html">RegEx.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html#constructor_ParenExpr_C23A52918D91EA6D971584D0AFFD05B2AF824DFF">ParenExpr</a>(<a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>* child_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ParenExpr_DEC1F3A4A63BAD6D050DEFD3848BB9CBB11BED19.html#function_Accept_D6DCFFFC4AEEE46E40B4F20AA5D63B6EB8F2FD45">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ParenExpr_C23A52918D91EA6D971584D0AFFD05B2AF824DFF">ParenExpr Constructor</h3>
+        <h4>
+            sng2html::sng2html::ParenExpr::ParenExpr(<a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html">RegExpression</a>
+            * child_)</h4>
+        <span>
+            Definition at line <a href="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html#71">71</a>
+             of <a href="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html">RegEx.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">71</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_UnaryRegExpression_B905778065E35989E3A2D35012DBE0713CC2BE50.html">UnaryRegExpression</a><span class="other">(</span><span class="identifier">child_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">72</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">73</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html#82">82</a>
+             of <a href="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html">RegEx.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_D6DCFFFC4AEEE46E40B4F20AA5D63B6EB8F2FD45">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::ParenExpr::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html#75">75</a>
+             of <a href="file/RegEx.cpp_BC06E3A521E3094CF9A880D6B2F336F373D6CB37.html">RegEx.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">76</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">77</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">78</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html#83">83</a>
+             of <a href="file/RegEx.hpp_57798BDF77A8BF84CA1CE9A51B2A2097A32D439C.html">RegEx.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_RegExpression_65886F2ED5D1FE26D3347901A04AB734D32AF6D5.html#function_Accept_DFC07C6E18BCEFB5323CC158142457D444C94373">sng2html::sng2html::RegExpression::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_F0E096907C5FEF668695126BE70A1634D6873694">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="struct_Parameter_CADCFCE7A41FE60A7A30AB511B303C0C83E4D780.html">prev</a>
+         | <a href="class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">next</a>
+    </body>
+</html>

@@ -32,6 +32,10 @@
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html">NfaState</a>*</td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html#function_Next_95C4B9D183CF4C99201597739D933540692F33EA">Next</a>() <span class="kw">const</span></td>
             </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html#function_Print_30BC2CBE439867C4116F27ECD641F55500770AA6">Print</a>(CodeFormatter&amp; formatter)</td>
+            </tr>
         </table>
         <h2>Member Variables</h2>
         <table>
@@ -54,15 +58,6 @@
         <span>
             Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#11">11</a>
              of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;11</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html#variable_symbol_58B28809073015CC9E749FDEFB681238A44D8F0C">symbol</a><span class="other">(</span><span class="identifier">symbol_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_NfaEdge_1595070F764A8EE55C12B8C79B5299FFF655E01B.html#variable_next_9A2D9ABF55B6416411DAB7C646993A69B824DFD3">next</a><span class="other">(</span><span class="identifier">next_</span><span class="other">)</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;12</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;13</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
@@ -81,12 +76,8 @@
         <span>
             Definition at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#20">20</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">symbol</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <hr/>
         <h3 id="function_Next_95C4B9D183CF4C99201597739D933540692F33EA">Next Member Function</h3>
@@ -97,12 +88,41 @@
         <span>
             Definition at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#21">21</a>
              of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">next</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_AddEdge_730E101F47380C8E385355D277AC617AF1BDFC3E">soulng::slg::NfaState::AddEdge</a>
+            , <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_SetEdges_251B5A6CEEC7C0D58B519FDFB2063BB328F4DBE7">soulng::slg::NfaState::SetEdges</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_30BC2CBE439867C4116F27ECD641F55500770AA6">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::NfaEdge::Print(CodeFormatter&amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html#15">15</a>
+             of <a href="file/Nfa.cpp_11FCC491DAF7358050664BE6C68E299CD8E0982B.html">Nfa.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html#22">22</a>
+             of <a href="file/Nfa.hpp_A06FEC4ACD02904A6318A5EF78AEBB50DB24528D.html">Nfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_Id_660BF9E0FC0AB1EC87909A73E26DB6180B329560">soulng::slg::NfaState::Id</a>
+            , <a href="./class_Symbol_F845492ADC2FE9DA3893F6B23F12102EA8C2BF18.html#function_Print_1C67AC260154BD9DE35EFEF62A67214D7AE89DA5">soulng::slg::Symbol::Print</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_NfaState_9109BF8DD718FA58BC1DC39A8F4C9FAA6C9C2CED.html#function_Print_AD217C5B27561858DCE51FF85FF1803CCC6207FD">soulng::slg::NfaState::Print</a>
+        </span>
+        <br/>
         <br/>
         <hr/>
         <a href="../../../../soulng-projects.html">top</a>

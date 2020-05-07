@@ -128,7 +128,7 @@
              of <a href="file/Scope.hpp_BF2575F115855F6239B7981F3BF097987409ABB9.html">Scope.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">container</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">62</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#variable_container_CDE039BB309B22836BE2D124EA88CC8ABFA7D36B">container</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -147,11 +147,11 @@
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;83</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html">ContainerSymbol</a><span class="other">*</span>&nbsp;<span class="identifier">globalNs</span>&nbsp;<span class="other">=</span>&nbsp;<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#variable_container_CDE039BB309B22836BE2D124EA88CC8ABFA7D36B">container</a><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">globalNs</span><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">Parent</a><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;84</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">while&nbsp;</span><span class="other">(</span><span class="identifier">globalNs</span><span class="other">-></span><span class="identifier">Parent</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;85</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">globalNs</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">globalNs</span><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">Parent</a><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;86</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">globalNs</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">globalNs</span><span class="other">-></span><span class="identifier">Parent</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;87</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
                 <br/>
@@ -191,7 +191,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;92</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#variable_symbolMap_A0ACDCF59EDAC8DF733A805EC3B0C829E61E1676">symbolMap</a><span class="other">[</span><span class="identifier">symbol</span><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Name_99E1A33105F124C4D2D0022A4AB55180D4B56BBF">Name</a><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">symbol</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;93</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#variable_symbolMap_A0ACDCF59EDAC8DF733A805EC3B0C829E61E1676">symbolMap</a><span class="other">[</span><span class="identifier">symbol</span><span class="other">-></span><span class="identifier">Name</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">symbol</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;94</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -210,7 +210,8 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
+            Called by: <a href="./class_ClassTypeSymbol_004DCF6B8D32E0C008DECD758105B31E2AB80EE0.html#function_AddTemplateParameter_D3FDB3389EBD5BA8ADA4BFEBE34024D1D08B75AE">sngcpp::symbols::ClassTypeSymbol::AddTemplateParameter</a>
+            , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_AddMember_858738577764C0A8E175AEEA9F54B8047521DFBE">sngcpp::symbols::ContainerSymbol::AddMember</a>
         </span>
         <br/>
         <br/>
@@ -228,7 +229,7 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;97</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_FD4F36816D53383AED9AE7DF8320FEC5A30A4FBF">Lookup</a><span class="other">(</span><span class="identifier">name</span><span class="other">,&nbsp;</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a><span class="other">::</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html#enumerator_this__6D0485587DDBF5C60FDC994CFD9B6EFC8A90AA84">this_</a><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;98</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Lookup</span><span class="other">(</span><span class="identifier">name</span><span class="other">,&nbsp;</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html">ScopeLookup</a><span class="other">::</span><a href="./enum_ScopeLookup_01188DD0D801D1028085888AB43D389FAA1727E5.html#enumerator_this__6D0485587DDBF5C60FDC994CFD9B6EFC8A90AA84">this_</a><span class="other">)</span><span class="other">;</span></span>
                 <br/>
                 <span class="code" xml:space="preserve"><span class="lineNumber">&nbsp;99</span>&nbsp;<span class="other">}</span></span>
             </span>
@@ -247,14 +248,14 @@
         <br/>
         <br/>
         <span>
-            Calls: <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_FD4F36816D53383AED9AE7DF8320FEC5A30A4FBF">sngcpp::symbols::FileScope::Lookup</a>
+            Calls: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
         </span>
         <br/>
         <br/>
         <span>
             Called by: <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeClassGroupSymbol_6F19066E87278AEF601C37C28D71F60239FF5C03">sngcpp::symbols::ContainerSymbol::MakeClassGroupSymbol</a>
             , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_MakeFunctionGroupSymbol_0BCC980B5EE798F799722604807ACE12282357AC">sngcpp::symbols::ContainerSymbol::MakeFunctionGroupSymbol</a>
-            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_C6CE75ABA5A62D6168940AA1F9B38F008954F4C8">sngcpp::symbols::SymbolTable::AddVariable</a>
+            , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_AddVariable_B1B9159EAB6D5B1B5747788D263EA6684C488FFA">sngcpp::symbols::SymbolTable::AddVariable</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNameSequence_F9ADA0CDA70D40C3592F668A680828C7AFE7DAB3">sngcpp::symbols::SymbolTable::BeginNameSequence</a>
             , <a href="./class_SymbolTable_CB73F65D53AAE4F3B938000C9753957C01BD41A4.html#function_BeginNamespace_1D7D7E041E7FDDB74E62D4F6EE7A8EAB12021B34">sngcpp::symbols::SymbolTable::BeginNamespace</a>
         </span>
@@ -294,7 +295,8 @@
         <br/>
         <br/>
         <span>
-            Called by: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
+            Called by: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_1339815AAFD5F12150741F581800960621901225">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
             , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
             , <a href="./class_FileScope_F16F643F2AC1D05544665A03BB31B736A7AEF902.html#function_Lookup_FD4F36816D53383AED9AE7DF8320FEC5A30A4FBF">sngcpp::symbols::FileScope::Lookup</a>
         </span>
@@ -326,8 +328,8 @@
         <br/>
         <span>
             Calls: <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_GlobalNs_71462AB42F42CE0F7EBEEE9A10FF1918F5670FD2">sngcpp::symbols::ContainerScope::GlobalNs</a>
-            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
             , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_D2F2F8B5E88009798A9121507D5D55BC3C4C5820">sngcpp::symbols::ContainerScope::Lookup</a>
+            , <a href="./class_ContainerScope_C5021F921B18977BA65A236E5A2AC28D595DEF22.html#function_Lookup_07AC05BB79DE44886CC796AD3AA68E7A018F53E2">sngcpp::symbols::ContainerScope::Lookup</a>
             , <a href="./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html#function_GetContainerScope_01375DB4577AE7557AF928BCCFD5B9ABD2C28760">sngcpp::symbols::ContainerSymbol::GetContainerScope</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_GetContainerScope_5CF49F719C0B2B205335E25B5620EAEFA9E95381">sngcpp::symbols::Symbol::GetContainerScope</a>
             , <a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Parent_1B935E3D2A0E9386A28B0D0B81139FEE4B7E8ADC">sngcpp::symbols::Symbol::Parent</a>

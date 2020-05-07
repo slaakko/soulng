@@ -45,12 +45,28 @@
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_KindStr_55642B68B5358372C379491F54DAC91F78FB24A0">KindStr</a>() <span class="kw">override</span></td>
             </tr>
             <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">int</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_MatchValue_4AA228601FA974EC8871CD91397D679AED8FD19E">MatchValue</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* argumentType) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::u32string&amp;</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_PrimaryId_B069FAE919FCF1CFF67A84557C733CAEAB5BBC33">PrimaryId</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_SetPrimaryId_07FF453BB1D5EC3AC6670C7BED987BFD95EFF3AC">SetPrimaryId</a>(<span class="kw">const </span>std::u32string&amp; primaryId_)</td>
+            </tr>
+            <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#function_SetType_63CA7B98C3B2443FD43957D95B1AA337B6E59CE5">SetType</a>(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>* type_)</td>
             </tr>
         </table>
         <h2>Member Variables</h2>
         <table>
+            <tr id="variable_primaryId_1816AD9FCBB0A7C4E0B6A80903429398F556E331">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">primaryId</td>
+            </tr>
             <tr id="variable_type_70C61466CC7EB175559EA4CD1373BD29291057A7">
                 <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>*</td>
                 <td class="functionTableSecondCol" xml:space="preserve">type</td>
@@ -96,19 +112,27 @@
             <span class="code">
                 <span class="code" xml:space="preserve"><span class="lineNumber">15</span>&nbsp;<span class="other">{</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="type">Element</span><span class="other">(</span><span class="string">U"typedef"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">></span>&nbsp;<span class="identifier">typeElement</span><span class="other">(</span><span class="kw">new&nbsp;</span><span class="identifier">sngxml</span><span class="other">::</span><span class="identifier">dom</span><span class="other">::</span><span class="identifier">Element</span><span class="other">(</span><span class="string">U"typedef"</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">typeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"type"</span><span class="other">,&nbsp;</span><a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_type_70C61466CC7EB175559EA4CD1373BD29291057A7">type</a><span class="other">-></span><a href="./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html#function_Id_C74529FB47651657F2A0B872D3B7EB7F61EC38A0">Id</a><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">typeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"type"</span><span class="other">,&nbsp;</span><a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_type_70C61466CC7EB175559EA4CD1373BD29291057A7">type</a><span class="other">-></span><span class="identifier">Id</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeElement</span><span class="other">;</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if&nbsp;</span><span class="other">(</span><span class="other">!</span><a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_primaryId_1816AD9FCBB0A7C4E0B6A80903429398F556E331">primaryId</a><span class="other">.</span><span class="identifier">empty</span><span class="other">(</span><span class="other">)</span><span class="other">)</span></span>
                 <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">typeElement</span><span class="other">-></span><span class="identifier">SetAttribute</span><span class="other">(</span><span class="string">U"primaryId"</span><span class="other">,&nbsp;</span><a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_primaryId_1816AD9FCBB0A7C4E0B6A80903429398F556E331">primaryId</a><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">typeElement</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#17">17</a>
+            Declaration at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#18">18</a>
              of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
         </span>
         <br/>
@@ -131,11 +155,11 @@
             * sngcpp::symbols::TypedefSymbol::GetType() <span class="kw">override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#19">19</a>
+            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#20">20</a>
              of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">type</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_type_70C61466CC7EB175559EA4CD1373BD29291057A7">type</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -153,11 +177,11 @@
              sngcpp::symbols::TypedefSymbol::IsTypedefSymbol() <span class="kw">const override</span>
         </h4>
         <span>
-            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#18">18</a>
+            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#19">19</a>
              of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">18</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">19</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>
@@ -189,17 +213,96 @@
         <br/>
         <br/>
         <hr/>
+        <h3 id="function_MatchValue_4AA228601FA974EC8871CD91397D679AED8FD19E">MatchValue Member Function</h3>
+        <h4>
+            <span class="kw">int</span>
+             sngcpp::symbols::TypedefSymbol::MatchValue(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
+            * argumentType) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypedefSymbol.cpp_5817A02AE8CE6E9B5A8E0749FDC586D5B63CDA9A.html#25">25</a>
+             of <a href="file/TypedefSymbol.cpp_5817A02AE8CE6E9B5A8E0749FDC586D5B63CDA9A.html">TypedefSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">26</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_type_70C61466CC7EB175559EA4CD1373BD29291057A7">type</a><span class="other">-></span><span class="identifier">MatchValue</span><span class="other">(</span><span class="identifier">argumentType</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">28</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#17">17</a>
+             of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html#function_MatchValue_2AB44054ED8F7E8D044D1358DC05F1101AF7C007">sngcpp::symbols::TypeSymbol::MatchValue</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_PrimaryId_B069FAE919FCF1CFF67A84557C733CAEAB5BBC33">PrimaryId Member Function</h3>
+        <h4>
+            <span class="kw">const </span>
+            std::u32string&amp; sngcpp::symbols::TypedefSymbol::PrimaryId() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#23">23</a>
+             of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">23</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_primaryId_1816AD9FCBB0A7C4E0B6A80903429398F556E331">primaryId</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_SetPrimaryId_07FF453BB1D5EC3AC6670C7BED987BFD95EFF3AC">SetPrimaryId Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sngcpp::symbols::TypedefSymbol::SetPrimaryId(<span class="kw">const </span>
+            std::u32string&amp; primaryId_)</h4>
+        <span>
+            Definition at line <a href="file/TypedefSymbol.cpp_5817A02AE8CE6E9B5A8E0749FDC586D5B63CDA9A.html#30">30</a>
+             of <a href="file/TypedefSymbol.cpp_5817A02AE8CE6E9B5A8E0749FDC586D5B63CDA9A.html">TypedefSymbol.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">31</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_primaryId_1816AD9FCBB0A7C4E0B6A80903429398F556E331">primaryId</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">primaryId_</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#22">22</a>
+             of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
         <h3 id="function_SetType_63CA7B98C3B2443FD43957D95B1AA337B6E59CE5">SetType Member Function</h3>
         <h4>
             <span class="kw">void</span>
              sngcpp::symbols::TypedefSymbol::SetType(<a href="./class_TypeSymbol_837B1478ACA9381AA2C90D793BC3427F1B6A494E.html">TypeSymbol</a>
             * type_)</h4>
         <span>
-            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#20">20</a>
+            Definition at line <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html#21">21</a>
              of <a href="file/TypedefSymbol.hpp_FC6239939165DBD386160D28DE462A2A882D753F.html">TypedefSymbol.hpp</a>
             :<br/>
             <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">20</span>&nbsp;<span class="other">{</span>&nbsp;<span class="identifier">type</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">type_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+                <span class="code" xml:space="preserve"><span class="lineNumber">21</span>&nbsp;<span class="other">{</span>&nbsp;<a href="./class_TypedefSymbol_6E2BC4A8B25F74824476F5F990131E22264C9BA2.html#variable_type_70C61466CC7EB175559EA4CD1373BD29291057A7">type</a><span class="other">&nbsp;=&nbsp;</span><span class="identifier">type_</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
             </span>
             <br/>
         </span>

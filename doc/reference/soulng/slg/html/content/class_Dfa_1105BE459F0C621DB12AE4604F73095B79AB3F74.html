@@ -12,7 +12,7 @@
         <hr/>
         <h1>Dfa Class</h1>
         <span>
-            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#35">35</a>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#36">36</a>
              of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
         </span>
         <br/>
@@ -25,6 +25,10 @@
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
                 <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html#function_Finalize_E9DA72EFAEE723AA2B47822D2CD563A81A69BC05">Finalize</a>()</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html#function_Print_216863FB559CFB76AEF2D7796F422143652ED1E7">Print</a>(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>&amp; lexerContext, CodeFormatter&amp; formatter)</td>
             </tr>
             <tr>
                 <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">const </span>std::vector&lt;<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>*>&amp;</td>
@@ -46,21 +50,12 @@
              soulng::slg::Dfa::AddState(<a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html">DfaState</a>
             * state)</h4>
         <span>
-            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#31">31</a>
+            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#76">76</a>
              of <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html">Dfa.cpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">32</span>&nbsp;<span class="other">{</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">33</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Dfa_1105BE459F0C621DB12AE4604F73095B79AB3F74.html#variable_states_EA637DCA112EEF0E57C3EB490AD692A00A579BE9">states</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">state</span><span class="other">)</span><span class="other">;</span></span>
-                <br/>
-                <span class="code" xml:space="preserve"><span class="lineNumber">34</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#38">38</a>
+            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#39">39</a>
              of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
         </span>
         <br/>
@@ -71,13 +66,40 @@
             <span class="kw">void</span>
              soulng::slg::Dfa::Finalize()</h4>
         <span>
-            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#36">36</a>
+            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#81">81</a>
              of <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html">Dfa.cpp</a>
         </span>
         <br/>
         <span>
-            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#40">40</a>
+            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#41">41</a>
              of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Print_216863FB559CFB76AEF2D7796F422143652ED1E7">Print Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             soulng::slg::Dfa::Print(<a href="./class_LexerContext_DCE262F4BE97021095AAC54FC656D834BFED62CB.html">LexerContext</a>
+            &amp; lexerContext, CodeFormatter&amp; formatter)</h4>
+        <span>
+            Definition at line <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html#99">99</a>
+             of <a href="file/Dfa.cpp_FA461D4FAFAD57A8723F0ED7B4CFA245BCFB0557.html">Dfa.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#42">42</a>
+             of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_DfaState_C62014CF5D863CD2D59676C519FD49D7B08A7052.html#function_Print_EEA5B4C3F8C60428D4D5CF8BF0B2CC780F4AF04E">soulng::slg::DfaState::Print</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_LexerFile_1B6D69F975E650501DC1FB369CBBCDB7E477E4DA.html#function_Process_F0EA9CF461B06FB435AAA8925716914B89CA4159">soulng::slg::LexerFile::Process</a>
         </span>
         <br/>
         <br/>
@@ -89,14 +111,10 @@
             *>&amp; soulng::slg::Dfa::States() <span class="kw">const</span>
         </h4>
         <span>
-            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#39">39</a>
+            Definition at line <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html#40">40</a>
              of <a href="file/Dfa.hpp_2E2E7603DF3D1BF100A4AAE6F7D13A9429149AE6.html">Dfa.hpp</a>
-            :<br/>
-            <span class="code">
-                <span class="code" xml:space="preserve"><span class="lineNumber">39</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">states</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
-            </span>
-            <br/>
         </span>
+        <br/>
         <br/>
         <span>
             Called by: <a href="./class_Lexer_3A67BD3190FD13F74D0B775EBCF8756AB82EE63E.html#function_WriteAutomaton_44213683862614934490809AF03C7710ED64ACDC">soulng::slg::Lexer::WriteAutomaton</a>

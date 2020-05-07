@@ -270,8 +270,9 @@ function drawClassInheritanceDiagram() {
     var classes = [
         { name: "sngcpp::symbols::Symbol", id: "class_0", level: 0, subject: false, hasDerivedClasses: true, link: "./class_Symbol_57F4E3B9C66096B88435D61FE25571DD0AE568A3.html" },
         { name: "sngcpp::symbols::ContainerSymbol", id: "class_1", level: 1, subject: false, hasDerivedClasses: true, link: "./class_ContainerSymbol_CC088AF39010BFAEA7D596FD6293861B220322FC.html" },
-        { name: "sngcpp::symbols::FunctionDeclarationSymbol", id: "class_2", level: 2, subject: true, hasDerivedClasses: true, link: "./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html" },
-        { name: "sngcpp::symbols::ConstructorDeclarationSymbol", id: "class_3", level: 3, subject: false, hasDerivedClasses: false, link: "./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html" }];
+        { name: "sngcpp::symbols::CallableSymbol", id: "class_2", level: 2, subject: false, hasDerivedClasses: true, link: "./class_CallableSymbol_0AD670A1A62D8E073CFB6E606C4696052215735E.html" },
+        { name: "sngcpp::symbols::FunctionDeclarationSymbol", id: "class_3", level: 3, subject: true, hasDerivedClasses: true, link: "./class_FunctionDeclarationSymbol_B3CA596B440D4E17267A36F1528CFFD7C495FCC6.html" },
+        { name: "sngcpp::symbols::ConstructorDeclarationSymbol", id: "class_4", level: 4, subject: false, hasDerivedClasses: false, link: "./class_ConstructorDeclarationSymbol_E2C16539CBD68F271DEE8ECDB9BF0081C9C38C5E.html" }];
     drawDiagram(classes);
 }
 

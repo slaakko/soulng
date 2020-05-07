@@ -1,0 +1,292 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>ActionParser Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Action_49ED9F1C63BE92724AF0F5B00D081EE23C8D6F0F.html">prev</a>
+         | <a href="class_Actions_F2321A50A4C15936B9CFA7F3BB84C87D4061044E.html">next</a>
+        <hr/>
+        <h1>ActionParser Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#211">211</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#constructor_ActionParser_97C25A418636AA5A179855E730C3A4DA550DA44C">ActionParser</a>(soulng::cppcode::CompoundStatement* successCode_, soulng::cppcode::CompoundStatement* failCode_, <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>* child_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_Accept_BA513C58BA3470D08E9709651EB32C72D694DAF4">Accept</a>(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>&amp; visitor) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_Clone_ACE615D4C35F937F8ABC838A311DEF3C23211EDC">Clone</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::cppcode::CompoundStatement*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_FailCode_67815F229872462ACA4EE9308AACC43BFB8A6774">FailCode</a>() <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsAction_FC14E34B06728D0243670E64D275011278B5AF50">IsAction</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsActionToken_6879059FD34D0FC9CF3D9344B24ECF1E8C3EBE6B">IsActionToken</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">bool</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_IsEmptyOrEmptyActionParser_B015706454D260FAF703FEDBBD1263A431CEADE5">IsEmptyOrEmptyActionParser</a>() <span class="kw">const override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::cppcode::CompoundStatement*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#function_SuccessCode_34319DF0279C7B7BB16228DC96E72D7A7FEBFFF8">SuccessCode</a>() <span class="kw">const</span></td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_failCode_2FEFFD53B8AECCAC92B8360F78BF4C834A589083">
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::cppcode::CompoundStatement*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">failCode</td>
+            </tr>
+            <tr id="variable_ownedFailCode_19E14F8F1DDB7EF9A55634728A8928F521123FC1">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;soulng::cppcode::CompoundStatement></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ownedFailCode</td>
+            </tr>
+            <tr id="variable_ownedSuccessCode_0B2A9D18954F4161748D7FBB70D4C1A80AF20FC3">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unique_ptr&lt;soulng::cppcode::CompoundStatement></td>
+                <td class="functionTableSecondCol" xml:space="preserve">ownedSuccessCode</td>
+            </tr>
+            <tr id="variable_successCode_A2B8212D5E5FCDE0F0BA0B1E00C916295061135B">
+                <td class="functionTableFirstCol" xml:space="preserve">soulng::cppcode::CompoundStatement*</td>
+                <td class="functionTableSecondCol" xml:space="preserve">successCode</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_ActionParser_97C25A418636AA5A179855E730C3A4DA550DA44C">ActionParser Constructor</h3>
+        <h4>
+            sng2html::sng2html::ActionParser::ActionParser(soulng::cppcode::CompoundStatement* successCode_, soulng::cppcode::CompoundStatement* failCode_, <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * child_)</h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#263">263</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#214">214</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_Accept_BA513C58BA3470D08E9709651EB32C72D694DAF4">Accept Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::ActionParser::Accept(<a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html">Visitor</a>
+            &amp; visitor) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#288">288</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">289</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">290</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">visitor</span><span class="other">.</span><span class="identifier">Visit</span><span class="other">(</span><span class="other">*</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">291</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#217">217</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Accept_40D2BA189FBDD9F7955894CD931FD994C043AF9D">sng2html::sng2html::Parser::Accept</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Visitor_89FC39B4125100CC26A153E9A905C985FFBA5682.html#function_Visit_B89D5EEE901AD0F258CB68903C4AC0EAE1DF6D5B">sng2html::sng2html::Visitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Clone_ACE615D4C35F937F8ABC838A311DEF3C23211EDC">Clone Member Function</h3>
+        <h4>
+            <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html">Parser</a>
+            * sng2html::sng2html::ActionParser::Clone() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#283">283</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">284</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">285</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">new&nbsp;</span><a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html">ActionParser</a><span class="other">(</span><a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#variable_successCode_A2B8212D5E5FCDE0F0BA0B1E00C916295061135B">successCode</a><span class="other">,&nbsp;</span><a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#variable_failCode_2FEFFD53B8AECCAC92B8360F78BF4C834A589083">failCode</a><span class="other">,&nbsp;</span><span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">Clone</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">286</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#216">216</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">sng2html::sng2html::Parser::Clone</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_Clone_07D1D82EAD6509219CEF160C956C63CBA8ECD63F">sng2html::sng2html::Parser::Clone</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_FailCode_67815F229872462ACA4EE9308AACC43BFB8A6774">FailCode Member Function</h3>
+        <h4>
+            soulng::cppcode::CompoundStatement* sng2html::sng2html::ActionParser::FailCode() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#222">222</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">222</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#variable_failCode_2FEFFD53B8AECCAC92B8360F78BF4C834A589083">failCode</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <h3 id="function_IsAction_FC14E34B06728D0243670E64D275011278B5AF50">IsAction Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::ActionParser::IsAction() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#218">218</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">218</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="kw">true</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsAction_DEBB302CA0EE1D8E8055837AB3F9ADFD82142C7C">sng2html::sng2html::Parser::IsAction</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsActionToken_6879059FD34D0FC9CF3D9344B24ECF1E8C3EBE6B">IsActionToken Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::ActionParser::IsActionToken() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html#293">293</a>
+             of <a href="file/Parser.cpp_960FB42979730044AA3CE335AC795CC8FD546061.html">Parser.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">294</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">295</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">IsToken</span><span class="other">(</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">296</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#219">219</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsActionToken_567F534925EFE0082C919D3F5D32D3F3CE2C1009">sng2html::sng2html::Parser::IsActionToken</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsToken_A736E71197A81839D0AFC781FC266734820678A2">sng2html::sng2html::Parser::IsToken</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_IsEmptyOrEmptyActionParser_B015706454D260FAF703FEDBBD1263A431CEADE5">IsEmptyOrEmptyActionParser Member Function</h3>
+        <h4>
+            <span class="kw">bool</span>
+             sng2html::sng2html::ActionParser::IsEmptyOrEmptyActionParser() <span class="kw">const override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#220">220</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">220</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<span class="identifier">Child</span><span class="other">(</span><span class="other">)</span><span class="other">-></span><span class="identifier">IsEmptyOrEmptyActionParser</span><span class="other">(</span><span class="other">)</span><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsEmptyOrEmptyActionParser_8C2F683EFC7834C8556F29B50EE8A9AB40F3E5C2">sng2html::sng2html::Parser::IsEmptyOrEmptyActionParser</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Parser_84186E3B84FCB791750AF7C8698D0024A2196FE6.html#function_IsEmptyOrEmptyActionParser_8C2F683EFC7834C8556F29B50EE8A9AB40F3E5C2">sng2html::sng2html::Parser::IsEmptyOrEmptyActionParser</a>
+            , <a href="./class_UnaryParser_BF022127553D8B4195AC251094522785478F2097.html#function_Child_127EDC2BE40E4AB9248AACA5160688ABCEF66380">sng2html::sng2html::UnaryParser::Child</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_SuccessCode_34319DF0279C7B7BB16228DC96E72D7A7FEBFFF8">SuccessCode Member Function</h3>
+        <h4>
+            soulng::cppcode::CompoundStatement* sng2html::sng2html::ActionParser::SuccessCode() <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html#221">221</a>
+             of <a href="file/Parser.hpp_1A3EB7EB1727F402B279E13C387EFF677CE3EF6D.html">Parser.hpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">221</span>&nbsp;<span class="other">{</span>&nbsp;<span class="kw">return</span>&nbsp;<a href="./class_ActionParser_2057B71CAEA0D5CE93462A5595847F8F889FD8D1.html#variable_successCode_A2B8212D5E5FCDE0F0BA0B1E00C916295061135B">successCode</a><span class="other">;</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_Action_49ED9F1C63BE92724AF0F5B00D081EE23C8D6F0F.html">prev</a>
+         | <a href="class_Actions_F2321A50A4C15936B9CFA7F3BB84C87D4061044E.html">next</a>
+    </body>
+</html>

@@ -1,0 +1,324 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Lexer Class</title>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <script src="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E_inheritance.js" type="text/javascript"> </script>
+    </head>
+    <body onload="drawClassInheritanceDiagram()">
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html">prev</a>
+         | <a href="class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">next</a>
+        <hr/>
+        <h1>Lexer Class</h1>
+        <div class="diagram">
+            <svg height="0" id="classInheritanceDiagram" version="2.0" width="0" xmlns="http://www.w3.org/2000/svg"/>
+        </div>
+        <span>
+            Definition at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#187">187</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <h2>Constructors</h2>
+        <table class="constructorTable">
+            <tr>
+                <td class="constructorTableFirstCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#constructor_Lexer_0642F92B10DEE871BB41A988F746EF15D4927315">Lexer</a>(<span class="kw">const </span>std::u32string&amp; api_, <span class="kw">const </span>std::u32string&amp; name_)</td>
+            </tr>
+        </table>
+        <h2>Member Functions</h2>
+        <table class="functionTable">
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_AddAction_884269240D452A6BEA7229A1F067E0942CE9B6B6">AddAction</a>(<a href="./class_Action_49ED9F1C63BE92724AF0F5B00D081EE23C8D6F0F.html">Action</a>* action)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_AddStatement_E0689D365E8845A57C4A2216E2E9C11B36C301CC">AddStatement</a>(<a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a>* stmt)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_AddToLexerFile_BE6299EB0F149C10F0F2161230AC549F2C1F046A">AddToLexerFile</a>(<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>&amp; lexerFile) <span class="kw">override</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_AddVariable_2C506B748466FF8E6959755633B88B9DF5CFB492">AddVariable</a>(<a href="./class_LexerVariable_B7356F63F889CBABD0E096D7AF6EDE18487C9FA1.html">LexerVariable</a>* variable)</td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a>*</td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_GetStatement_E6E9359FD62C956A8ED8B95C6962DB9A66EFDBD3">GetStatement</a>(<span class="kw">const </span>std::u32string&amp; tokenId) <span class="kw">const</span></td>
+            </tr>
+            <tr>
+                <td class="functionTableFirstCol" xml:space="preserve"><span class="kw">void</span></td>
+                <td class="functionTableSecondCol" xml:space="preserve"><a href="class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_Parse_402C2A84D6B431D78A8ABF41A90B04CEDC28084A">Parse</a>(<a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>&amp; lexerContext)</td>
+            </tr>
+        </table>
+        <h2>Member Variables</h2>
+        <table>
+            <tr id="variable_actions_BDAE97EC876B950BF5AFFD9225FAA13460CE9A35">
+                <td class="functionTableFirstCol" xml:space="preserve"><a href="./class_Actions_F2321A50A4C15936B9CFA7F3BB84C87D4061044E.html">Actions</a></td>
+                <td class="functionTableSecondCol" xml:space="preserve">actions</td>
+            </tr>
+            <tr id="variable_api_6A8F2E2B04FE75EAEC6718FECDD8EC247580A1BB">
+                <td class="functionTableFirstCol" xml:space="preserve">std::u32string</td>
+                <td class="functionTableSecondCol" xml:space="preserve">api</td>
+            </tr>
+            <tr id="variable_lexerStatementMap_A09121C4F0EE295BE4548A63F5EF378A804A4F53">
+                <td class="functionTableFirstCol" xml:space="preserve">std::unordered_map&lt;std::u32string, <a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a>*></td>
+                <td class="functionTableSecondCol" xml:space="preserve">lexerStatementMap</td>
+            </tr>
+            <tr id="variable_statements_4838B7A504C85C6E69D47438241DD5798D8EE322">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">statements</td>
+            </tr>
+            <tr id="variable_variables_BA6F0DA0F79657046B1442EFADF41F3791A34EB6">
+                <td class="functionTableFirstCol" xml:space="preserve">std::vector&lt;std::unique_ptr&lt;<a href="./class_LexerVariable_B7356F63F889CBABD0E096D7AF6EDE18487C9FA1.html">LexerVariable</a>>></td>
+                <td class="functionTableSecondCol" xml:space="preserve">variables</td>
+            </tr>
+        </table>
+        <hr/>
+        <h2>Constructor Details</h2>
+        <h3 id="constructor_Lexer_0642F92B10DEE871BB41A988F746EF15D4927315">Lexer Constructor</h3>
+        <h4>
+            sng2html::sng2html::Lexer::Lexer(<span class="kw">const </span>
+            std::u32string&amp; api_, <span class="kw">const </span>
+            std::u32string&amp; name_)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#187">187</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">187</span>&nbsp;<span class="other">:</span>&nbsp;<a href="./class_Declaration_CBF32E6A87C749CF513711EF033621E2DE054126.html">Declaration</a><span class="other">(</span><span class="identifier">name_</span><span class="other">)</span><span class="other">,&nbsp;</span><a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_api_6A8F2E2B04FE75EAEC6718FECDD8EC247580A1BB">api</a><span class="other">(</span><span class="identifier">api_</span><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">188</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">189</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#190">190</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h2>Member Function Details</h2>
+        <h3 id="function_AddAction_884269240D452A6BEA7229A1F067E0942CE9B6B6">AddAction Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Lexer::AddAction(<a href="./class_Action_49ED9F1C63BE92724AF0F5B00D081EE23C8D6F0F.html">Action</a>
+            * action)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#216">216</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">217</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">218</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_actions_BDAE97EC876B950BF5AFFD9225FAA13460CE9A35">actions</a><span class="other">.</span><span class="identifier">Add</span><span class="other">(</span><span class="identifier">action</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">219</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#194">194</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Actions_F2321A50A4C15936B9CFA7F3BB84C87D4061044E.html#function_Add_4BFF51B6EDBDE870CA925FF304489ECC6D4F378E">sng2html::sng2html::Actions::Add</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_LexerFileParser_EC77F0391CD44CB2546995B7E01EB6AE560749F9.html#function_Actions_ACAA12B75B2DC7D83C41CE019D58A27891B568A4">LexerFileParser::Actions</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddStatement_E0689D365E8845A57C4A2216E2E9C11B36C301CC">AddStatement Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Lexer::AddStatement(<a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a>
+            * stmt)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#191">191</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">192</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">193</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">stmt</span><span class="other">-></span><span class="identifier">SetIndex</span><span class="other">(</span><a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_statements_4838B7A504C85C6E69D47438241DD5798D8EE322">statements</a><span class="other">.</span><span class="identifier">size</span><span class="other">(</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">194</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_statements_4838B7A504C85C6E69D47438241DD5798D8EE322">statements</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a><span class="other">></span><span class="other">(</span><span class="identifier">stmt</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">195</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_lexerStatementMap_A09121C4F0EE295BE4548A63F5EF378A804A4F53">lexerStatementMap</a><span class="other">[</span><span class="identifier">stmt</span><span class="other">-></span><span class="identifier">TokenId</span><span class="other">(</span><span class="other">)</span><span class="other">]</span><span class="other">&nbsp;=&nbsp;</span><span class="identifier">stmt</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">196</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#191">191</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html#function_SetIndex_8D0C1C357CDA541C2286ACB3D06ED72A7E9EB688">sng2html::sng2html::LexerStatement::SetIndex</a>
+            , <a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html#function_TokenId_CF1C3D2E3993EF7CCB53776748FF66114CC41CBC">sng2html::sng2html::LexerStatement::TokenId</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_LexerFileParser_EC77F0391CD44CB2546995B7E01EB6AE560749F9.html#function_LexerClause_9D50C7FBFE368E2C3EED0039A54B104FDAD7394A">LexerFileParser::LexerClause</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddToLexerFile_BE6299EB0F149C10F0F2161230AC549F2C1F046A">AddToLexerFile Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Lexer::AddToLexerFile(<a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html">LexerFile</a>
+            &amp; lexerFile) <span class="kw">override</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#221">221</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">222</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">223</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">lexerFile</span><span class="other">.</span><span class="identifier">SetLexer</span><span class="other">(</span><span class="kw">this</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">224</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#195">195</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Base class overridden functions: <a href="./class_Declaration_CBF32E6A87C749CF513711EF033621E2DE054126.html#function_AddToLexerFile_79D4D0B6500C30503E2BC2660B21F379C3D4B5CC">sng2html::sng2html::Declaration::AddToLexerFile</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_SetLexer_D569922A72E8C964DDF5C21DDFE05F2E9CBCECDC">sng2html::sng2html::LexerFile::SetLexer</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_AddVariable_2C506B748466FF8E6959755633B88B9DF5CFB492">AddVariable Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Lexer::AddVariable(<a href="./class_LexerVariable_B7356F63F889CBABD0E096D7AF6EDE18487C9FA1.html">LexerVariable</a>
+            * variable)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#211">211</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">212</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">213</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_variables_BA6F0DA0F79657046B1442EFADF41F3791A34EB6">variables</a><span class="other">.</span><span class="identifier">push_back</span><span class="other">(</span><span class="identifier">std</span><span class="other">::</span><span class="type">unique_ptr</span><span class="other">&lt;</span><a href="./class_LexerVariable_B7356F63F889CBABD0E096D7AF6EDE18487C9FA1.html">LexerVariable</a><span class="other">></span><span class="other">(</span><span class="identifier">variable</span><span class="other">)</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">214</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#193">193</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./struct_LexerFileParser_EC77F0391CD44CB2546995B7E01EB6AE560749F9.html#function_Variables_8B5C613DF84C8F6A9F6FF7F7E1EDDC2EFF35E247">LexerFileParser::Variables</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_GetStatement_E6E9359FD62C956A8ED8B95C6962DB9A66EFDBD3">GetStatement Member Function</h3>
+        <h4>
+            <a href="./class_LexerStatement_EF4941819FCDB8F5AA22B9A2AA27CD8443BA2E1B.html">LexerStatement</a>
+            * sng2html::sng2html::Lexer::GetStatement(<span class="kw">const </span>
+            std::u32string&amp; tokenId) <span class="kw">const</span>
+        </h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#198">198</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#192">192</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_GrammarHtmlGeneratorVisitor_5B9B5F1EA0A43DDFAA449C1787213B9C16781EF8.html#function_Visit_C70781ABB47E70371962A6B693DAB25DC07CBF00">sng2html::sng2html::GrammarHtmlGeneratorVisitor::Visit</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <h3 id="function_Parse_402C2A84D6B431D78A8ABF41A90B04CEDC28084A">Parse Member Function</h3>
+        <h4>
+            <span class="kw">void</span>
+             sng2html::sng2html::Lexer::Parse(<a href="./class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">LexerContext</a>
+            &amp; lexerContext)</h4>
+        <span>
+            Definition at line <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html#226">226</a>
+             of <a href="file/LexerFile.cpp_3FF6BA9C7F4F48D7FB233CBDB6C48140DE1C14B4.html">LexerFile.cpp</a>
+            :<br/>
+            <span class="code">
+                <span class="code" xml:space="preserve"><span class="lineNumber">227</span>&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">228</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">for&nbsp;</span><span class="other">(</span><span class="kw">auto</span><span class="other">&amp;</span>&nbsp;<span class="identifier">statement</span><span class="other">&nbsp;:&nbsp;</span><a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#variable_statements_4838B7A504C85C6E69D47438241DD5798D8EE322">statements</a><span class="other">)</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">229</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">{</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">230</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="identifier">statement</span><span class="other">-></span><span class="identifier">Parse</span><span class="other">(</span><span class="identifier">lexerContext</span><span class="other">)</span><span class="other">;</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">231</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="other">}</span></span>
+                <br/>
+                <span class="code" xml:space="preserve"><span class="lineNumber">232</span>&nbsp;<span class="other">}</span></span>
+            </span>
+            <br/>
+        </span>
+        <br/>
+        <span>
+            Declaration at line <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html#196">196</a>
+             of <a href="file/LexerFile.hpp_FF697B20573CBDA31707F3A84B3F88CCBDE89BBF.html">LexerFile.hpp</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Calls: <a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_Parse_402C2A84D6B431D78A8ABF41A90B04CEDC28084A">sng2html::sng2html::Lexer::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <span>
+            Called by: <a href="./class_Lexer_2B0A8E2C82BD960BB4385E1D3FF908E7515B292E.html#function_Parse_402C2A84D6B431D78A8ABF41A90B04CEDC28084A">sng2html::sng2html::Lexer::Parse</a>
+            , <a href="./class_LexerFile_BD923FC08D3ACA499BF2B021C618D64634C82834.html#function_Parse_308B73D6776CE69DE54441E3EC530A7FE3512DF7">sng2html::sng2html::LexerFile::Parse</a>
+        </span>
+        <br/>
+        <br/>
+        <hr/>
+        <a href="../../../soulng-projects.html">top</a>
+         | <a href="namespace_sng2html_92D24587C807F807C259C25C5911803AD668C051.html">up</a>
+         | <a href="class_KleeneParser_973BEF443E2D6F6377DCD3770A5475ACB07FAB67.html">prev</a>
+         | <a href="class_LexerContext_97E762B079E8A65BF37027E68B82B7139A5F08D4.html">next</a>
+    </body>
+</html>

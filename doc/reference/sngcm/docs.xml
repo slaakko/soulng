@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+  <doc id="sngcm">
+    <description>
+        Abstract syntax tree, lexer and parser for the Cmajor programming language.
+    </description>
+  </doc>
+  <doc id="ast">
+    <description>Abstract syntax tree.</description>
+  </doc>
+  <doc id="cmlexer">
+    <description>Lexical analyzer.</description>
+  </doc>
+  <doc id="cmparser">
+    <description>Parser.</description>
+  </doc>
+</docs>

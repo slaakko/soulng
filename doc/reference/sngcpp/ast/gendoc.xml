@@ -4,4 +4,7 @@
     <vcxproject file="../../../../sngcpp/ast/ast.vcxproj"/>
     <include path="../.."/>
   </project>
+  <filter>
+    <file exclude="Solution.cpp"/>
+  </filter>
 </gendoc>

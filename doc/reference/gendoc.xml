@@ -6,5 +6,8 @@
   <child project="soulng"/>
   <child project="sngxml"/>
   <child project="sngcpp"/>
+  <child project="sngcm"/>
   <child project="gendoc-tool"/>
+  <child project="sng2html-tool"/>
+  <child project="cpp2cm-tool"/>
 </gendoc>
