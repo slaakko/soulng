@@ -19,27 +19,26 @@ SNGJSON_JSON_API std::unique_ptr<soulng::util::JsonValue> ToJson(const std::stri
 SNGJSON_JSON_API std::unique_ptr<soulng::util::JsonValue> ToJson(const std::u16string& value);
 SNGJSON_JSON_API std::unique_ptr<soulng::util::JsonValue> ToJson(const std::u32string& value);
 
-template<class T>
-SNGJSON_JSON_API std::unique_ptr<soulng::util::JsonValue> ToJson(const std::vector<T>& value)
-{
-    std::unique_ptr<soulng::util::JsonArray> val(new soulng::util::JsonArray());
-    int n = value.size();
-    for (int i = 0; i < n; ++i)
-    {
-        val->AddItem(std::move(ToJson(value[i])));
-    }
-    return val;
-}
-
 template<typename T>
 concept JsonExportable = requires(T t) { t.ToJson(); };
 
 template<typename T>
     requires JsonExportable<T>
-SNGJSON_JSON_API
 std::unique_ptr<soulng::util::JsonValue> ToJson(const T& value)
 {
     return value.ToJson();
+}
+
+template<class T>
+std::unique_ptr<soulng::util::JsonValue> ToJson(const std::vector<T>& value)
+{
+    std::unique_ptr<soulng::util::JsonArray> val(new soulng::util::JsonArray());
+    int n = value.size();
+    for (int i = 0; i < n; ++i)
+    {
+        val->AddItem(ToJson(value[i]));
+    }
+    return val;
 }
 
 } } // sngjson::json

@@ -105,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;SNGJSON_JSON_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\Boost\include\boost-1_71</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4060;4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
       <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
@@ -114,7 +114,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;SNGJSON_JSON_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../..;C:\Boost\include\boost-1_71</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4060;4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
       <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -152,13 +152,15 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\Boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\lib;C:\boost\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="JsonLexer.lexer" />
     <None Include="JsonParser.parser" />
     <None Include="JsonParser.spg" />
+    <None Include="JsonSchemaLexer.lexer" />
+    <None Include="JsonSchemaParser.parser" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JsonClassMap.hpp" />
@@ -167,6 +169,12 @@
     <ClInclude Include="JsonLexer.hpp" />
     <ClInclude Include="JsonApi.hpp" />
     <ClInclude Include="JsonParser.hpp" />
+    <ClInclude Include="JsonSchema.hpp" />
+    <ClInclude Include="JsonSchemaClassMap.hpp" />
+    <ClInclude Include="JsonSchemaKeywords.hpp" />
+    <ClInclude Include="JsonSchemaLexer.hpp" />
+    <ClInclude Include="JsonSchemaParser.hpp" />
+    <ClInclude Include="JsonSchemaTokens.hpp" />
     <ClInclude Include="JsonTokens.hpp" />
     <ClInclude Include="TokenValueParsers.hpp" />
   </ItemGroup>
@@ -176,6 +184,12 @@
     <ClCompile Include="JsonImport.cpp" />
     <ClCompile Include="JsonLexer.cpp" />
     <ClCompile Include="JsonParser.cpp" />
+    <ClCompile Include="JsonSchema.cpp" />
+    <ClCompile Include="JsonSchemaClassMap.cpp" />
+    <ClCompile Include="JsonSchemaKeywords.cpp" />
+    <ClCompile Include="JsonSchemaLexer.cpp" />
+    <ClCompile Include="JsonSchemaParser.cpp" />
+    <ClCompile Include="JsonSchemaTokens.cpp" />
     <ClCompile Include="JsonTokens.cpp" />
     <ClCompile Include="TokenValueParsers.cpp" />
   </ItemGroup>

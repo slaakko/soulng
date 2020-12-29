@@ -28,7 +28,72 @@
         
     </p>
     
-    <p>
+	<h2>
+		Parsing primitives in lexerless parsers
+	</h2>
+	
+	<p>
+		You can use three kinds of parsing primitives in lexerless parsers:
+		<ol>
+			<li>strings enclosed in double quotes</li>
+			<li>characters enclosed in single quotes, and</li>
+			<li>character sets enclosed in brackets that are enclosed in double quotes</li>
+		</ol>
+	</p>
+	
+	<h3>
+		Example of a rule recognizing a string
+	</h3>
+		
+	<pre>
+		somerule
+			:: "keyword"
+			;
+	</pre>
+	
+	<h3>
+		Example of a rule recognizig a character
+	</h3>
+	
+	<pre>
+		somerule
+			::= 'x'
+			;
+	</pre>
+	
+	<h3>
+		Example of a rule recognizing a set of characters
+	</h3>
+	
+	<pre>
+		hexchar
+			::= "[a-fA-F0-9]"
+			;
+	</pre>
+	
+	<h2>
+		Composite parsing expressions in lexerless parsers
+	</h2>
+	
+	<p>
+		You can combine primitive and composite parsing expressions using the following parsing operators:
+		<ol>
+			<li>when <em>x</em> and <em>y</em> are parsing expressions, <em>xy</em> is a parsing expression that recoognizes an <em>x</em> followed by a <em>y</em></li>
+			<li>when <em>x</em> is a parsing expression, <em>x</em>* is a parsing expression that recognizes 0 or more <em>x</em>s</li>
+			<li>when <em>x</em> is a parsing expression, <em>x</em>+ is a parsing expression that recognizes 1 or more <em>x</em>s</li>
+			<li>when <em>x</em> is a parsing expression, <em>x</em>? is a parsing expression that recognizes 0 or 1 <em>x</em>s.</li>
+			<li>when <em>x</em> and <em>y</em> are parsing expressions, <em>x</em> | <em>y</em> is a parsing expression that recognizes either an <em>x</em> or a <em>y</em>
+			in that order (meaning if <em>x</em> matches <em>y</em> is not tried).</li>
+			<li>you can group parsing expressions using parentheses: for example parsing expression <em>a</em> (<em>b</em> | <em>c</em>)* <em>d</em> would 
+			recognize an <em>a</em> followed by zero or more <em>b</em>s or <em>c</em>s in any order followed by a <em>d</em>.</li>
+		</ol>
+	</p>
+	
+	<h2>
+		Example
+	</h2>
+
+	<p>
         As an example of a lexerless parser, take a look at the 
         <a href="../../reference/sngxml/xml/html/content/file/XmlParser.parser_12A847894E9771D06F48F10B93986EF91D2D5BE6.html">XML parser</a>.
         You can recognize a lexerless parser by the <strong>uselexer</strong> <em>TrivialLexer</em>; statement.
