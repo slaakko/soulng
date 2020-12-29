@@ -10,7 +10,7 @@
 
 namespace sngxml { namespace xmlser {
 
-SNGXML_SERIALIZATION_API void GenerateXmlSerializationCode(const std::string& serializationDefinitionFilePath);
+SNGXML_SERIALIZATION_API void GenerateXmlSerializationCode(const std::string& serializationDefinitionFilePath, bool verbose);
 
 } } // namespace sngxml::xmlser
 

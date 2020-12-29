@@ -14,6 +14,7 @@
 #include <soulng/util/Unicode.hpp>
 #include <boost/uuid/uuid.hpp>
 #include <fstream>
+#include <iostream>
 
 namespace sngxml { namespace xmlser {
 
@@ -478,7 +479,7 @@ void GenerateXmlSerializationSourceFile(SourceFileNode* sourceFileNode, const st
     sourceFileNode->Accept(visitor);
 }
 
-void GenerateXmlSerializationCode(const std::string& serializationDefinitionFilePath)
+void GenerateXmlSerializationCode(const std::string& serializationDefinitionFilePath, bool verbose)
 {
     std::u32string content = ToUtf32(ReadFile(serializationDefinitionFilePath));
     XmlSerLexer lexer(content, serializationDefinitionFilePath, 0);
@@ -486,7 +487,15 @@ void GenerateXmlSerializationCode(const std::string& serializationDefinitionFile
     std::string headerFilePath = Path::ChangeExtension(serializationDefinitionFilePath, ".hpp");
     std::string sourceFilePath = Path::ChangeExtension(serializationDefinitionFilePath, ".cpp");
     GenerateXmlSerializationHeaderFile(sourceFile.get(), headerFilePath);
+    if (verbose)
+    {
+        std::cout << "==> " << headerFilePath << std::endl;
+    }
     GenerateXmlSerializationSourceFile(sourceFile.get(), sourceFilePath, headerFilePath);
+    if (verbose)
+    {
+        std::cout << "==> " << sourceFilePath << std::endl;
+    }
 }
 
 } } // namespace sngxml::xmlser

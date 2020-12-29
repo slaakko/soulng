@@ -14,7 +14,13 @@ using namespace soulng::util;
 
 void PrintHelp()
 {
-    // todo
+    std::cout << "xmlsergen [options] <file>" << std::endl;
+    std::cout << "Generate XML serialization classes from given XML schema file." << std::endl;
+    std::cout << "Options:" << std::endl;
+    std::cout << "--help | -h:" << std::endl;
+    std::cout << "  Print help and exit." << std::endl;
+    std::cout << "--verbose | -v:" << std::endl;
+    std::cout << "  Be verbose." << std::endl;
 }
 
 struct InitDone
@@ -90,7 +96,11 @@ int main(int argc, const char** argv)
         }
         for (const std::string& filePath : filePaths)
         {
-            sngxml::xmlser::GenerateXmlSerializationCode(filePath);
+            if (verbose)
+            {
+                std::cout << "> " << filePath << std::endl;
+            }
+            sngxml::xmlser::GenerateXmlSerializationCode(filePath, verbose);
         }
     }
     catch (const std::exception& ex)
