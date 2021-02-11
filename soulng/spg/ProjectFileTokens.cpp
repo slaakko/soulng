@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 3.10.0
 
 #include <soulng/spg/ProjectFileTokens.hpp>
 #include <map>
@@ -14,8 +14,10 @@ namespace ProjectFileTokens
         tokenIdMap[U"FILEPATH"] = 4;
         tokenIdMap[U"ID"] = 3;
         tokenIdMap[U"PROJECT"] = 1;
+        tokenIdMap[U"RECOVERY"] = 7;
         tokenIdMap[U"SEMICOLON"] = 6;
         tokenIdMap[U"SOURCE"] = 2;
+        tokenIdMap[U"TOKENS"] = 8;
     }
 
     int GetTokenId(const std::u32string& tokenName)
@@ -39,7 +41,9 @@ namespace ProjectFileTokens
         "ID",
         "FILEPATH",
         "DOT",
-        "SEMICOLON"
+        "SEMICOLON",
+        "RECOVERY",
+        "TOKENS"
     };
 
     const char* GetTokenName(int tokenId)
@@ -55,7 +59,9 @@ namespace ProjectFileTokens
         "identifier",
         "file path",
         "'.'",
-        "';'"
+        "';'",
+        "'recovery'",
+        "'tokens'"
     };
 
     const char* GetTokenInfo(int tokenId)

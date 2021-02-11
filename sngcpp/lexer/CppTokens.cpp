@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/lexer/CppLexer.lexer' using soulng lexer generator slg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp/lexer/CppLexer.lexer' using soulng lexer generator slg version 3.10.0
 
 #include <sngcpp/lexer/CppTokens.hpp>
 #include <map>

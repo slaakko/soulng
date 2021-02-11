@@ -11,6 +11,15 @@ namespace soulng { namespace spg {
 
 using namespace soulng::unicode;
 
+Domain::Domain() : recovery(false), inverseAdded(false), start(nullptr)
+{
+}
+
+void Domain::SetName(const std::string& name_)
+{
+    name = name_;
+}
+
 void Domain::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
@@ -42,6 +51,19 @@ GrammarParser* Domain::GetParser(const std::u32string& parserName) const
     {
         throw std::runtime_error("parser '" + ToUtf8(parserName) + "' not found");
     }
+}
+
+void Domain::Write(CodeFormatter& formatter)
+{
+    formatter.WriteLine("domain " + name);
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    for (ParserFile* parserFile : parserFiles)
+    {
+        parserFile->Write(formatter);
+    }
+    formatter.DecIndent();
+    formatter.WriteLine("}");
 }
 
 } } // namespae soulng::spg

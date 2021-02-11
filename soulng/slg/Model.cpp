@@ -17,7 +17,7 @@ namespace soulng { namespace slg {
 
 const char* LexerGeneratorVersionStr()
 {
-    return "3.0.0";
+    return "3.10.0";
 }
 
 using namespace soulng::util;
@@ -257,6 +257,26 @@ void Tokens::Process(const std::string& root, bool verbose, bool debug, LexerCon
     if (verbose)
     {
         std::cout << "==> " << tokenSourceFileName << std::endl;
+    }
+    std::string tokenTextFileName = Path::Combine(root, ToUtf8(Name()) + ".tokens");
+    std::ofstream tokenTextFile(tokenTextFileName);
+    CodeFormatter tokenTextFileFormatter(tokenTextFile);
+    tokenTextFileFormatter.WriteLine("END:0");
+    for (const auto& t : tokens)
+    {
+        tokenTextFileFormatter.Write(ToUtf8(t.name));
+        tokenTextFileFormatter.Write(":");
+        auto it = tokenIdMap.find(t.name);
+        if (it != tokenIdMap.cend())
+        {
+            int tokenId = it->second;
+            tokenTextFileFormatter.Write(std::to_string(tokenId));
+        }
+        else
+        {
+            throw std::runtime_error("token id for token '" + ToUtf8(t.name) + "' not found");
+        }
+        tokenTextFileFormatter.WriteLine();
     }
 }
 

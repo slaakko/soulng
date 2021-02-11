@@ -17,11 +17,18 @@ public:
     const std::string& BasePath() const { return basePath; }
     void AddSourceFile(const std::string& sourceFile);
     const std::vector<std::string>& SourceFiles() const { return sourceFiles; }
+    void AddTokenFile(const std::string& tokenFile);
+    const std::vector<std::string>& TokenFiles() const { return tokenFiles; }
+    const std::u32string& ProjectName() const { return projectName; }
+    void SetRecovery() { recovery = true; }
+    bool Recovery() const { return recovery; }
 private:
     std::string fileName;
     std::string basePath;
     std::u32string projectName;
     std::vector<std::string> sourceFiles;
+    std::vector<std::string> tokenFiles;
+    bool recovery;
 };
 
 } } // namespae soulng::spg

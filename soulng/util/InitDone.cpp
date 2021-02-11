@@ -4,6 +4,7 @@
 // =================================
 
 #include <soulng/util/InitDone.hpp>
+#include <soulng/util/Time.hpp>
 #include <soulng/util/Unicode.hpp>
 
 namespace soulng { namespace util {
@@ -11,10 +12,12 @@ namespace soulng { namespace util {
 void Init()
 {
     soulng::unicode::UnicodeInit();
+    soulng::util::TimeInit();
 }
 
 void Done()
 {
+    soulng::util::TimeDone();
     soulng::unicode::UnicodeDone();
 }
 

@@ -23,7 +23,7 @@ using namespace soulng::util;
 
 std::string ParserGeneratorVersionStr()
 {
-    return "3.0.0";
+    return "3.10.0";
 }
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_) :
@@ -296,17 +296,44 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
         {
             ruleInfo = rule->Name();
         }
-        formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
+        if (parser.IsNothrow())
+        {
+            formatter->WriteLine("match.hit = true;");
+            formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
+            formatter->WriteLine("lexer.AddError(span, U\"" + ToUtf8(ruleInfo) + "\");");
+        }
+        else
+        {
+            formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
+        }
     }
     else if (parser.Child()->IsToken())
     {
         std::u32string tokenName = static_cast<TokenParser*>(parser.Child())->TokenName();
-        formatter->WriteLine("lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(" + ToUtf8(tokenName) + ")));");
+        if (parser.IsNothrow())
+        {
+            formatter->WriteLine("match.hit = true;");
+            formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
+            formatter->WriteLine("lexer.AddError(span, ToUtf32(GetTokenInfo(" + ToUtf8(tokenName) + ")));");
+        }
+        else
+        {
+            formatter->WriteLine("lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(" + ToUtf8(tokenName) + ")));");
+        }
     }
     else
     {
         std::u32string parserName = parser.Child()->Name();
-        formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(parserName) + "\");");
+        if (parser.IsNothrow())
+        {
+            formatter->WriteLine("match.hit = true;");
+            formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
+            formatter->WriteLine("lexer.AddError(span, U\"" + ToUtf8(parserName) + "\");");
+        }
+        else
+        {
+            formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(parserName) + "\");");
+        }
     }
     formatter->DecIndent();
     formatter->WriteLine("}");
@@ -958,7 +985,29 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 formatter->WriteLine("else");
                 formatter->WriteLine("{");
                 formatter->IncIndent();
-                formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
+                if (parser.IsNothrow())
+                {
+                    formatter->WriteLine("lexer.AddError(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
+                    if (startRule->ReturnType())
+                    {
+                        if (startRule->ReturnType()->IsPtrType())
+                        {
+                            formatter->WriteLine("return value;");
+                        }
+                        else
+                        {
+                            formatter->WriteLine("return value->value;");
+                        }
+                    }
+                    else
+                    {
+                        formatter->WriteLine("return;");
+                    }
+                }
+                else
+                {
+                    formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
+                }
                 formatter->DecIndent();
                 formatter->WriteLine("}");
                 formatter->DecIndent();
@@ -971,7 +1020,29 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 {
                     ruleInfo = rule->Name();
                 }
-                formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
+                if (parser.IsNothrow())
+                {
+                    formatter->WriteLine("lexer.AddError(span, U\"" + ToUtf8(ruleInfo) + "\");");
+                    if (startRule->ReturnType())
+                    {
+                        if (startRule->ReturnType()->IsPtrType())
+                        {
+                            formatter->WriteLine("return value;");
+                        }
+                        else
+                        {
+                            formatter->WriteLine("return value->value;");
+                        }
+                    }
+                    else
+                    {
+                        formatter->WriteLine("return;");
+                    }
+                }
+                else
+                {
+                    formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
+                }
                 formatter->DecIndent();
                 formatter->WriteLine("}");
 				if (startRule->ReturnType())

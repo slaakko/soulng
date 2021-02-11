@@ -12,7 +12,7 @@ namespace soulng { namespace spg {
 
 using namespace soulng::unicode;
 
-Parser::Parser(const std::u32string& name_) : name(name_), parent(nullptr)
+Parser::Parser(const std::u32string& name_) : name(name_), parent(nullptr), firstComputed(false)
 {
 }
 
@@ -23,6 +23,20 @@ Parser::~Parser()
 Parser* Parser::Clone() const
 {
     throw std::runtime_error("this class does not support clone operation");
+}
+
+bool Parser::IsNothrow() const
+{
+    if (parent)
+    {
+        return parent->IsNothrow();
+    }
+    return false;
+}
+
+void Parser::SetFirst(const TokenSet& first_)
+{
+    first = first_;
 }
 
 UnaryParser::UnaryParser(const std::u32string& name_, Parser* child_) : Parser(name_), child(child_)
@@ -353,6 +367,7 @@ RuleParser::RuleParser(const std::u32string& name_) : Parser(name_), hasReturn(f
 void RuleParser::SetDefinition(Parser* definition_)
 {
     definition.reset(definition_);
+    definition->SetParent(this);
 }
 
 void RuleParser::AddParamOrVariable(Parameter* paramOrVariable)
@@ -387,7 +402,35 @@ void RuleParser::SetInfo(const std::u32string& info_)
     info = info_;
 }
 
-GrammarParser::GrammarParser(const std::u32string& name_, const std::u32string& api_) : Parser(name_), api(api_), main(false)
+void RuleParser::AddParser(Parser* parser)
+{
+    parsers.push_back(parser);
+}
+
+void RuleParser::Write(CodeFormatter& formatter)
+{
+    formatter.WriteLine("rule " + ToUtf8(Name()));
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    int n = parsers.size();
+    for (int i = 0; i < n; ++i)
+    {
+        Parser* parser = parsers[i];
+        formatter.Write(std::to_string(i));
+        formatter.Write(": ");
+        formatter.WriteLine(parser->Kind());
+        formatter.WriteLine("{");
+        formatter.IncIndent();
+        formatter.Write("first: ");
+        formatter.WriteLine(parser->First().ToString());
+        formatter.DecIndent();
+        formatter.WriteLine("}");
+    }
+    formatter.DecIndent();
+    formatter.WriteLine("}");
+}
+
+GrammarParser::GrammarParser(const std::u32string& name_, const std::u32string& api_) : Parser(name_), api(api_), main(false), start(false), nothrow(false)
 {
 }
 
@@ -429,6 +472,19 @@ RuleParser* GrammarParser::GetRule(const std::u32string& ruleName) const
 void GrammarParser::AddRuleInfo(const std::u32string& ruleName, const std::u32string& ruleInfo)
 {
     ruleInfos.push_back(std::make_pair(ruleName, ruleInfo));
+}
+
+void GrammarParser::Write(CodeFormatter& formatter)
+{
+    formatter.WriteLine("grammar " + ToUtf8(Name()));
+    formatter.WriteLine("{");
+    formatter.IncIndent();
+    for (const std::unique_ptr<RuleParser>& rule : rules)
+    {
+        rule->Write(formatter);
+    }
+    formatter.DecIndent();
+    formatter.WriteLine("}");
 }
 
 } } // namespae soulng::spg

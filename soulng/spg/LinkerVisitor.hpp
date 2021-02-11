@@ -16,6 +16,12 @@ class LinkerVisitor : public Visitor
 public:
     enum class Stage { addParsers, resolveRules };
     LinkerVisitor();
+    void Visit(EmptyParser& parser) override;
+    void Visit(AnyParser& parser) override;
+    void Visit(TokenParser& parser) override;
+    void Visit(CharParser& parser) override;
+    void Visit(StringParser& parser) override;
+    void Visit(CharSetParser& parser) override;
     void Visit(OptionalParser& parser) override;
     void Visit(KleeneParser& parser) override;
     void Visit(PositiveParser& parser) override;

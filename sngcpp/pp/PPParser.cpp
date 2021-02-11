@@ -3,7 +3,7 @@
 #include <sngcpp/pp/PPLexer.hpp>
 #include <sngcpp/pp/PPTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngcpp/pp/PPParser.parser' using soulng parser generator spg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp/pp/PPParser.parser' using soulng parser generator spg version 3.10.0
 
 using namespace soulng::unicode;
 using namespace PPTokens;

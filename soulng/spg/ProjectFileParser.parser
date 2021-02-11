@@ -24,11 +24,23 @@ parser ProjectFileParser
         ;
 
     ProjectFileContent(soulng::spg::ProjectFile* projectFile)
-        ::= SourceFile(projectFile):sourceFile*
+        ::= 
+        (   RecoveryDeclaration(projectFile):recoveryDecl
+        |   TokensDeclaration(projectFile):tokensDecl
+        |   SourceFile(projectFile):sourceFile
+        )*
         ;
 
     QualifiedId(var Span s) : std::u32string
         ::= (ID{ s = span; } (DOT ID{ s.end = span.end; })*){ return lexer.GetMatch(s); }
+        ;
+
+    TokensDeclaration(soulng::spg::ProjectFile* projectFile)
+        ::= TOKENS FILEPATH{ projectFile->AddTokenFile(lexer.filePath); } SEMICOLON!
+        ;
+
+    RecoveryDeclaration(soulng::spg::ProjectFile* projectFile)
+        ::= (RECOVERY SEMICOLON!){ projectFile->SetRecovery(); }
         ;
 
     SourceFile(soulng::spg::ProjectFile* projectFile)

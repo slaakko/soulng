@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 3.10.0
 
 #include <soulng/spg/ParserFileKeywords.hpp>
 #include <soulng/spg/ParserFileTokens.hpp>
@@ -14,6 +14,8 @@ namespace ParserFileKeywords
         {U"api", API}, 
         {U"include", INCLUDE}, 
         {U"main", MAIN}, 
+        {U"nothrow", NOTHROW}, 
+        {U"state", STATE}, 
         {U"uselexer", USELEXER}, 
         {U"ruleinfo", RULEINFO}, 
         {U"empty", EMPTY}, 

@@ -8,7 +8,7 @@
 #include <soulng/spg/ParserFileLexer.hpp>
 #include <soulng/spg/ParserFileTokens.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/soulng/spg/ParserFileParser.parser' using soulng parser generator spg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ParserFileParser.parser' using soulng parser generator spg version 3.10.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -1020,16 +1020,33 @@ soulng::parser::Match ParserFileParser::Statement(ParserFileLexer& lexer, soulng
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t save = lexer.GetPos();
-                    soulng::parser::Match match = ParserFileParser::MainStatement(lexer, grammarParser);
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch4 = &match;
+                    {
+                        int64_t save = lexer.GetPos();
+                        soulng::parser::Match match = ParserFileParser::MainStatement(lexer, grammarParser);
+                        *parentMatch4 = match;
+                        if (!match.hit)
+                        {
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch5 = &match;
+                            lexer.SetPos(save);
+                            {
+                                soulng::parser::Match match = ParserFileParser::NothrowStatement(lexer, grammarParser);
+                                *parentMatch5 = match;
+                            }
+                            *parentMatch4 = match;
+                        }
+                    }
                     *parentMatch3 = match;
                     if (!match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch4 = &match;
+                        soulng::parser::Match* parentMatch6 = &match;
                         lexer.SetPos(save);
                         {
                             soulng::parser::Match match = ParserFileParser::UsingStatement(lexer, grammarParser);
-                            *parentMatch4 = match;
+                            *parentMatch6 = match;
                         }
                         *parentMatch3 = match;
                     }
@@ -1038,11 +1055,11 @@ soulng::parser::Match ParserFileParser::Statement(ParserFileLexer& lexer, soulng
                 if (!match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch5 = &match;
+                    soulng::parser::Match* parentMatch7 = &match;
                     lexer.SetPos(save);
                     {
                         soulng::parser::Match match = ParserFileParser::LexerStatement(lexer, grammarParser);
-                        *parentMatch5 = match;
+                        *parentMatch7 = match;
                     }
                     *parentMatch2 = match;
                 }
@@ -1051,11 +1068,11 @@ soulng::parser::Match ParserFileParser::Statement(ParserFileLexer& lexer, soulng
             if (!match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch6 = &match;
+                soulng::parser::Match* parentMatch8 = &match;
                 lexer.SetPos(save);
                 {
                     soulng::parser::Match match = ParserFileParser::RuleInfoStatement(lexer, grammarParser);
-                    *parentMatch6 = match;
+                    *parentMatch8 = match;
                 }
                 *parentMatch1 = match;
             }
@@ -1064,11 +1081,11 @@ soulng::parser::Match ParserFileParser::Statement(ParserFileLexer& lexer, soulng
         if (!match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch7 = &match;
+            soulng::parser::Match* parentMatch9 = &match;
             lexer.SetPos(save);
             {
                 soulng::parser::Match match = ParserFileParser::RuleStatement(lexer, grammarParser);
-                *parentMatch7 = match;
+                *parentMatch9 = match;
             }
             *parentMatch0 = match;
         }
@@ -1152,6 +1169,80 @@ soulng::parser::Match ParserFileParser::MainStatement(ParserFileLexer& lexer, so
     {
         if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MainStatement"));
         else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("MainStatement"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (!match.hit)
+    {
+        match.value = nullptr;
+    }
+    return match;
+}
+
+soulng::parser::Match ParserFileParser::NothrowStatement(ParserFileLexer& lexer, soulng::spg::GrammarParser* grammarParser)
+{
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::Span parser_debug_match_span;
+    bool parser_debug_write_to_log = lexer.Log() != nullptr;
+    if (parser_debug_write_to_log)
+    {
+        parser_debug_match_span = lexer.GetSpan();
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("NothrowStatement"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::parser::Match match(false);
+    soulng::parser::Match* parentMatch0 = &match;
+    {
+        soulng::parser::Match match(false);
+        if (*lexer == NOTHROW)
+        {
+            ++lexer;
+            match.hit = true;
+        }
+        *parentMatch0 = match;
+    }
+    if (match.hit)
+    {
+        soulng::parser::Match match(false);
+        soulng::parser::Match* parentMatch1 = &match;
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch2 = &match;
+            {
+                int64_t pos = lexer.GetPos();
+                soulng::parser::Match match(true);
+                soulng::parser::Match* parentMatch3 = &match;
+                {
+                    soulng::lexer::Span span = lexer.GetSpan();
+                    soulng::parser::Match match(false);
+                    if (*lexer == SEMICOLON)
+                    {
+                        ++lexer;
+                        match.hit = true;
+                    }
+                    if (match.hit)
+                    {
+                        *parentMatch3 = match;
+                    }
+                    else
+                    {
+                        lexer.ThrowExpectationFailure(span, ToUtf32(GetTokenInfo(SEMICOLON)));
+                    }
+                }
+                if (match.hit)
+                {
+                    grammarParser->SetNothrow();
+                }
+                *parentMatch2 = match;
+            }
+            *parentMatch1 = match;
+        }
+        *parentMatch0 = match;
+    }
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (parser_debug_write_to_log)
+    {
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NothrowStatement"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NothrowStatement"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (!match.hit)

@@ -1,3 +1,4 @@
 project JsonParser;
+recovery;
+tokens <JsonTokens.tokens>;
 source <JsonParser.parser>;
-source <JsonSchemaParser.parser>;

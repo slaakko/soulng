@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathLexer.lexer' using soulng lexer generator slg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/sngxml/xpath/XPathLexer.lexer' using soulng lexer generator slg version 3.10.0
 
 #include <sngxml/xpath/XPathKeywords.hpp>
 #include <sngxml/xpath/XPathTokens.hpp>

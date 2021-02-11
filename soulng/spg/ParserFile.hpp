@@ -6,8 +6,11 @@
 #ifndef SOULNG_SPG_PARSER_FILE_INCLUDED
 #define SOULNG_SPG_PARSER_FILE_INCLUDED
 #include <soulng/spg/Parser.hpp>
+#include <soulng/util/CodeFormatter.hpp>
 
 namespace soulng { namespace spg {
+
+using namespace soulng::util;
 
 class Include
 {
@@ -32,6 +35,7 @@ public:
     const std::vector<std::unique_ptr<Include>>& Includes() const { return includes; }
     const std::vector<std::u32string>& UsingNamespaceDeclarations() const { return usingNamespaceDeclarations; }
     const std::vector<std::unique_ptr<GrammarParser>>& Parsers() const { return parsers; }
+    void Write(CodeFormatter& formatter);
 private:
     std::string fileName;
     std::vector<std::unique_ptr<Include>> includes;

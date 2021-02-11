@@ -160,6 +160,7 @@
     <ClCompile Include="CppLiteralParser.cpp" />
     <ClCompile Include="CppStatementParser.cpp" />
     <ClCompile Include="Domain.cpp" />
+    <ClCompile Include="FirstComputerVisitor.cpp" />
     <ClCompile Include="LinkerVisitor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NonterminalInfo.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="ProjectFileLexer.cpp" />
     <ClCompile Include="ProjectFileParser.cpp" />
     <ClCompile Include="ProjectFileTokens.cpp" />
+    <ClCompile Include="Tokens.cpp" />
     <ClCompile Include="TokenValueParsers.cpp" />
     <ClCompile Include="Visitor.cpp" />
   </ItemGroup>
@@ -192,6 +194,7 @@
     <ClInclude Include="CppLiteralParser.hpp" />
     <ClInclude Include="CppStatementParser.hpp" />
     <ClInclude Include="Domain.hpp" />
+    <ClInclude Include="FirstComputerVisitor.hpp" />
     <ClInclude Include="LinkerVisitor.hpp" />
     <ClInclude Include="NonterminalInfo.hpp" />
     <ClInclude Include="Parser.hpp" />
@@ -207,6 +210,7 @@
     <ClInclude Include="ProjectFileLexer.hpp" />
     <ClInclude Include="ProjectFileParser.hpp" />
     <ClInclude Include="ProjectFileTokens.hpp" />
+    <ClInclude Include="Tokens.hpp" />
     <ClInclude Include="TokenValueParsers.hpp" />
     <ClInclude Include="Visitor.hpp" />
   </ItemGroup>
@@ -222,6 +226,7 @@
     <None Include="Parsers.spg" />
     <None Include="ProjectFileLexer.lexer" />
     <None Include="ProjectFileParser.parser" />
+    <None Include="ProjectFileTokens.tokens" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

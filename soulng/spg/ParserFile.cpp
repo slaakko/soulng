@@ -36,4 +36,12 @@ void ParserFile::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+void ParserFile::Write(CodeFormatter& formatter)
+{
+    for (std::unique_ptr<GrammarParser>& parser : parsers)
+    {
+        parser->Write(formatter);
+    }
+}
+
 } } // namespae soulng::spg

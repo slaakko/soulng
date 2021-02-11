@@ -4,6 +4,7 @@
 // =================================
 
 #include <soulng/util/Time.hpp>
+#include <soulng/util/TextUtils.hpp>
 #include <boost/lexical_cast.hpp>
 #include <stdexcept>
 #include <ctime>
@@ -47,40 +48,18 @@ Date GetCurrentDate()
     return Date(1900 + localTime->tm_year, static_cast<Month>(1 + localTime->tm_mon), static_cast<int8_t>(localTime->tm_mday));
 }
 
-std::string DateTime::ToString() const
+bool operator==(const Date& left, const Date& right)
 {
-    return ToString(false, false, false, false);
+    return left.Year() == right.Year() && left.GetMonth() == right.GetMonth() && left.Day() == right.Day();
 }
 
-std::string DateTime::ToString(bool omitDashes, bool omitColons, bool omitMins, bool omitSecs) const
+bool operator<(const Date& left, const Date& right)
 {
-    std::string dateTime;
-    dateTime.append(date.ToString(omitDashes));
-    dateTime.append(1, 'T');
-    int32_t hh = Hours() % 24;
-    int32_t mm = Minutes() % 60;
-    int32_t ss = Seconds() % 60;
-    dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + ((hh / 10) % 10)));
-    dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + (hh % 10)));
-    if (!omitMins)
-    {
-        if (!omitColons)
-        {
-            dateTime.append(1, ':');
-        }
-        dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + ((mm / 10) % 10)));
-        dateTime.append(1, static_cast<char>(static_cast<int>('0') + (mm % 10)));
-        if (!omitSecs)
-        {
-            if (!omitColons)
-            {
-                dateTime.append(1, ':');
-            }
-            dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + ((ss / 10) % 10)));
-            dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + (ss % 10)));
-        }
-    }
-    return dateTime;
+    if (left.Year() < right.Year()) return true;
+    if (left.Year() > right.Year()) return false;
+    if (left.GetMonth() < right.GetMonth()) return true;
+    if (left.GetMonth() > right.GetMonth()) return false;
+    return left.Day() < right.Day();
 }
 
 void ThrowRuntimeError(const std::string& message)
@@ -143,6 +122,42 @@ Date ParseDate(const std::string& dateStr)
     return ParseDate(dateStr, dateEnd);
 }
 
+std::string DateTime::ToString() const
+{
+    return ToString(false, false, false, false);
+}
+
+std::string DateTime::ToString(bool omitDashes, bool omitColons, bool omitMins, bool omitSecs) const
+{
+    std::string dateTime;
+    dateTime.append(date.ToString(omitDashes));
+    dateTime.append(1, 'T');
+    int32_t hh = Hours() % 24;
+    int32_t mm = Minutes() % 60;
+    int32_t ss = Seconds() % 60;
+    dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + ((hh / 10) % 10)));
+    dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + (hh % 10)));
+    if (!omitMins)
+    {
+        if (!omitColons)
+        {
+            dateTime.append(1, ':');
+        }
+        dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + ((mm / 10) % 10)));
+        dateTime.append(1, static_cast<char>(static_cast<int>('0') + (mm % 10)));
+        if (!omitSecs)
+        {
+            if (!omitColons)
+            {
+                dateTime.append(1, ':');
+            }
+            dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + ((ss / 10) % 10)));
+            dateTime.append(1, static_cast<char>(static_cast<int32_t>('0') + (ss % 10)));
+        }
+    }
+    return dateTime;
+}
+
 std::string FormatTimeMs(int32_t milliseconds)
 {
     int32_t hh = milliseconds / 3600000;
@@ -172,6 +187,18 @@ DateTime GetCurrentDateTime()
     struct tm* localTime = nullptr;
     localTime = std::localtime(&currentTime);
     return DateTime(Date(1900 + localTime->tm_year, static_cast<Month>(1 + localTime->tm_mon), static_cast<int8_t>(localTime->tm_mday)), localTime->tm_hour * 3600 + localTime->tm_min * 60 + localTime->tm_sec);
+}
+
+bool operator==(const DateTime& left, const DateTime& right)
+{
+    return left.GetDate() == right.GetDate() && left.Seconds() == right.Seconds();
+}
+
+bool operator<(const DateTime& left, const DateTime& right)
+{
+    if (left.GetDate() < right.GetDate()) return true;
+    if (left.GetDate() > right.GetDate()) return false;
+    return left.Seconds() < right.Seconds();
 }
 
 DateTime ParseDateTime(const std::string& dateTimeStr)
@@ -223,6 +250,82 @@ DateTime ParseDateTime(const std::string& dateTimeStr)
     return DateTime(date, totalSecs);
 }
 
+std::string Timestamp::ToString() const
+{
+    std::string s(dateTime.ToString());
+    s.append(1, '.').append(Format(std::to_string(nanosecs), 9, FormatWidth::exact, FormatJustify::right, '0'));
+    return s;
+}
+
+bool operator==(const Timestamp& left, const Timestamp& right)
+{
+    return left.GetDateTime() == right.GetDateTime() && left.Nanoseconds() == right.Nanoseconds();
+}
+
+bool operator<(const Timestamp& left, const Timestamp& right)
+{
+    if (left.GetDateTime() < right.GetDateTime()) return true;
+    if (left.GetDateTime() > right.GetDateTime()) return false;
+    return left.Nanoseconds() < right.Nanoseconds();
+}
+
+class TimestampProvider
+{
+public:
+    static void Init();
+    static void Done();
+    static TimestampProvider& Instance() { return *instance; }
+    Timestamp GetCurrentTimestamp();
+private:
+    static std::unique_ptr<TimestampProvider> instance;
+    TimestampProvider();
+    DateTime startDateTime;
+    std::chrono::steady_clock::time_point startTimePoint;
+    void Reset();
+};
+
+std::unique_ptr<TimestampProvider> TimestampProvider::instance;
+
+void TimestampProvider::Init()
+{
+    instance.reset(new TimestampProvider());
+}
+
+void TimestampProvider::Done()
+{
+    instance.reset();
+}
+
+void TimestampProvider::Reset()
+{
+    startDateTime = GetCurrentDateTime();
+    startTimePoint = std::chrono::steady_clock::now();
+}
+
+TimestampProvider::TimestampProvider() : startDateTime(), startTimePoint()
+{
+    Reset();
+}
+
+Timestamp TimestampProvider::GetCurrentTimestamp()
+{
+    if (GetCurrentDate() != startDateTime.GetDate())
+    {
+        Reset();
+    }
+    std::chrono::nanoseconds elapsed = std::chrono::steady_clock::now() - startTimePoint;
+    int64_t elapsedNanosecs = elapsed.count();
+    int secs = static_cast<int>(elapsedNanosecs / 1000000000ll);
+    int nanosecs = static_cast<int>(elapsedNanosecs % 1000000000ll);
+    Timestamp timestamp(DateTime(startDateTime.GetDate(), startDateTime.Seconds() + secs), nanosecs);
+    return timestamp;
+}
+
+Timestamp GetCurrentTimestamp()
+{
+    return TimestampProvider::Instance().GetCurrentTimestamp();
+}
+
 std::int64_t CurrentMs()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - std::chrono::steady_clock::time_point()).count();
@@ -233,6 +336,68 @@ int64_t GetCurrentTime()
     std::time_t currentTime;
     std::time(&currentTime);
     return currentTime;
+}
+
+int64_t Hours(int64_t nanosecs)
+{
+    return nanosecs / (3600ll * int64_t(1000000000ll));
+}
+
+int64_t Minutes(int64_t nanosecs)
+{
+    return nanosecs / (60ll * int64_t(1000000000ll));
+}
+
+int64_t Seconds(int64_t nanosecs)
+{
+    return nanosecs / int64_t(1000000000ll);
+}
+
+int64_t Milliseconds(int64_t nanosecs)
+{
+    return nanosecs / int64_t(1000000ll);
+}
+
+int64_t Microseconds(int64_t nanosecs)
+{
+    return nanosecs / int64_t(1000ll);
+}
+
+std::string DurationStr(const std::chrono::nanoseconds& duration)
+{
+    std::string s;
+    long hh = Hours(duration.count()) % 24;
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(hh / 10 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(hh % 10)));
+    s.append(1, ':');
+    long mm = Minutes(duration.count()) % 60;
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(mm / 10 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(mm % 10)));
+    s.append(1, ':');
+    long ss = Seconds(duration.count()) % 60;
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(ss / 10 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(ss % 10)));
+    s.append(1, '.');
+    long ms = Milliseconds(duration.count()) % 1000;
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(ms / 100 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(ms / 10 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(ms % 10)));
+    s.append(1, '.');
+    long us = Microseconds(duration.count()) % 1000;
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(us / 100 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(us / 10 % 10)));
+    s.append(1, static_cast<char>(static_cast<uint8_t>('0') + static_cast<uint8_t>(us % 10)));
+    return s;
+}
+
+void TimeInit()
+{
+    TimestampProvider::Init();
+}
+
+void TimeDone()
+{
+    TimestampProvider::Done();
 }
 
 } } // namespace soulng::util

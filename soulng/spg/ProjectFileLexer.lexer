@@ -11,12 +11,12 @@ prefix "soulng/spg";
 
 tokens ProjectFileTokens
 {
-    (PROJECT, "'project'"), (SOURCE, "'source'"), (ID, "identifier"), (FILEPATH, "file path"), (DOT, "'.'"), (SEMICOLON, "';'")
+    (PROJECT, "'project'"), (SOURCE, "'source'"), (ID, "identifier"), (FILEPATH, "file path"), (DOT, "'.'"), (SEMICOLON, "';'"), (RECOVERY, "'recovery'"), (TOKENS, "'tokens'")
 }
 
 keywords ProjectFileKeywords
 {
-    ("project", PROJECT), ("source", SOURCE)
+    ("project", PROJECT), ("source", SOURCE), ("recovery", RECOVERY), ("tokens", TOKENS)
 }
 
 expressions

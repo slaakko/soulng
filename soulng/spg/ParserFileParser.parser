@@ -75,6 +75,8 @@ parser ParserFileParser
 
     Statement(soulng::spg::GrammarParser* grammarParser)
         ::= MainStatement(grammarParser):mainStatement
+        |   StartStatement(grammarParser):startStatement
+        |   NothrowStatement(grammarParser):nothrowStatement
         |   UsingStatement(grammarParser):usingStatement
         |   LexerStatement(grammarParser):lexerStatement
         |   RuleInfoStatement(grammarParser):ruleInfoStatement
@@ -83,6 +85,14 @@ parser ParserFileParser
 
     MainStatement(soulng::spg::GrammarParser* grammarParser)
         ::= MAIN SEMICOLON!{ grammarParser->SetMain(); }
+        ;
+
+    StartStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= START SEMICOLON!{ grammarParser->SetStart(); }
+        ;
+
+    NothrowStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= NOTHROW SEMICOLON!{ grammarParser->SetNothrow(); }
         ;
 
     UsingStatement(soulng::spg::GrammarParser* grammarParser)

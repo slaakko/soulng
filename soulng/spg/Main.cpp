@@ -10,12 +10,14 @@
 #include <soulng/spg/Domain.hpp>
 #include <soulng/spg/LinkerVisitor.hpp>
 #include <soulng/spg/CodeGeneratorVisitor.hpp>
+#include <soulng/spg/FirstComputerVisitor.hpp>
 #include <soulng/cppcode/InitDone.hpp>
 #include <soulng/util/InitDone.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <iostream>
+#include <fstream>
 #include <stdexcept>
 
 void PrintHelp()
@@ -29,6 +31,8 @@ void PrintHelp()
     std::cout << "  Be verbose." << std::endl;
     std::cout << "--no-parser-debug-support | -n" << std::endl;
     std::cout << "  Do not generate parser debug support code to the generated parsers." << std::endl;
+    std::cout << "--log | -l" << std::endl;
+    std::cout << "  Generate log file." << std::endl;
 }
 
 using namespace soulng::unicode;
@@ -55,6 +59,7 @@ int main(int argc, const char** argv)
     {
         bool verbose = false;
         bool noParserDebugSupport = false;
+        bool log = false;
         std::string projectFilePath;
         for (int i = 1; i < argc; ++i)
         {
@@ -69,6 +74,10 @@ int main(int argc, const char** argv)
                 else if (arg == "--verbose")
                 {
                     verbose = true;
+                }
+                else if (arg == "--log")
+                {
+                    log = true;
                 }
                 else if (arg == "--no-parser-debug-support")
                 {
@@ -98,6 +107,10 @@ int main(int argc, const char** argv)
                         else if (o == 'v')
                         {
                             verbose = true;
+                        }
+                        else if (o == 'l')
+                        {
+                            log = true;
                         }
                         else if (o == 'n')
                         {
@@ -146,12 +159,44 @@ int main(int argc, const char** argv)
             parserFiles.push_back(std::move(parserFile));
         }
         soulng::spg::Domain domain;
+        domain.SetName(ToUtf8(projectFile->ProjectName()));
+        if (projectFile->Recovery())
+        {
+            domain.SetRecovery();
+        }
+        if (projectFile->TokenFiles().size() == 1)
+        {
+            std::string tokenFilePath = GetFullPath(Path::Combine(projectFile->BasePath(), projectFile->TokenFiles()[0]));
+            std::unique_ptr<soulng::spg::Tokens> tokens(new soulng::spg::Tokens(tokenFilePath));
+            domain.SetTokens(tokens.release());
+        }
+        else if (projectFile->TokenFiles().size() > 1)
+        {
+            throw std::runtime_error("only one token file per project allowed");
+        }
         for (const auto& parserFile : parserFiles)
         {
             domain.AddParserFile(parserFile.get());
         }
         soulng::spg::LinkerVisitor linkerVisitor;
         domain.Accept(linkerVisitor);
+        if (domain.Recovery())
+        {
+            bool changed = true;
+            while (changed)
+            {
+                soulng::spg::FirstComputerVisitor firstComputerVisitor;
+                domain.Accept(firstComputerVisitor);
+                changed = firstComputerVisitor.Changed();
+            }
+            if (log)
+            {
+                std::string logFilePath = Path::ChangeExtension(projectFilePath, ".log");
+                std::ofstream logFile(logFilePath);
+                CodeFormatter formatter(logFile);
+                domain.Write(formatter);
+            }
+        }
         soulng::spg::CodeGeneratorVisitor codeGeneratorVisitor(verbose, noParserDebugSupport);
         domain.Accept(codeGeneratorVisitor);
     }

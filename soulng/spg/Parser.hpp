@@ -6,15 +6,19 @@
 #ifndef SOULNG_SPG_PARSER_INCLUDED
 #define SOULNG_SPG_PARSER_INCLUDED
 #include <soulng/spg/CharSet.hpp>
+#include <soulng/spg/Tokens.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/cppcode/Expression.hpp>
 #include <soulng/cppcode/Statement.hpp>
 #include <soulng/cppcode/Type.hpp>
+#include <soulng/util/CodeFormatter.hpp>
 #include <string>
 #include <memory>
 #include <map>
 
 namespace soulng { namespace spg {
+
+using namespace soulng::util;
 
 class Visitor;
 
@@ -30,12 +34,18 @@ public:
     virtual bool IsTokenSwitch() const { return false; }
     virtual bool IsActionToken() const { return false; }
     virtual bool IsToken() const { return false; }
+    virtual bool IsNothrow() const;
+    virtual std::string Kind() const = 0;
     const std::u32string& Name() const { return name; }
     Parser* Parent() const { return parent; }
     void SetParent(Parser* parent_) { parent = parent_; }
+    const TokenSet& First() const { return first; }
+    void SetFirst(const TokenSet& first_);
 private:
     Parser* parent;
     std::u32string name;
+    bool firstComputed;
+    TokenSet first;
 };
 
 class UnaryParser : public Parser
@@ -64,6 +74,7 @@ public:
     EmptyParser();
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "empty"; }
 };
 
 class AnyParser : public Parser
@@ -72,6 +83,7 @@ public:
     AnyParser();
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "any"; }
 };
 
 class TokenParser : public Parser
@@ -82,6 +94,7 @@ public:
     void Accept(Visitor& visitor) override;
     bool IsToken() const override { return true; }
     const std::u32string& TokenName() const { return tokenName; }
+    std::string Kind() const override { return "token"; }
 private:
     std::u32string tokenName;
 };
@@ -93,6 +106,7 @@ public:
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
     char32_t Chr() const { return chr; }
+    std::string Kind() const override { return "char"; }
 private:
     char32_t chr;
 };
@@ -106,6 +120,7 @@ public:
     const std::u32string& Str() const { return str; }
     void SetArrayName(const std::string& arrayName_);
     const std::string& ArrayName() const { return arrayName;  }
+    std::string Kind() const override { return "string"; }
 private:
     std::u32string str;
     std::string arrayName;
@@ -120,6 +135,7 @@ public:
     const CharSet& Set() const { return set; }
     void SetArrayName(const std::string& arrayName_);
     const std::string& ArrayName() const { return arrayName; }
+    std::string Kind() const override { return "set"; }
 private:
     CharSet set;
     std::string arrayName;
@@ -131,6 +147,7 @@ public:
     OptionalParser(Parser* child_);
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "optional"; }
 };
 
 class KleeneParser : public UnaryParser
@@ -139,6 +156,7 @@ public:
     KleeneParser(Parser* child_);
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "kleene"; }
 };
 
 class PositiveParser : public UnaryParser
@@ -147,6 +165,7 @@ public:
     PositiveParser(Parser* child_);
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "positive"; }
 };
 
 class ExpectationParser : public UnaryParser
@@ -155,6 +174,7 @@ public:
     ExpectationParser(Parser* child_);
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "expectation"; }
 };
 
 class GroupingParser : public UnaryParser
@@ -164,6 +184,7 @@ public:
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
     bool IsAction() const override { return Child()->IsAction(); }
+    std::string Kind() const override { return "grouping"; }
 };
 
 class SequenceParser : public BinaryParser
@@ -172,6 +193,7 @@ public:
     SequenceParser(Parser* left_, Parser* right_);
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "sequence"; }
 };
 
 class AlternativeParser : public BinaryParser
@@ -181,6 +203,7 @@ public:
     bool IsTokenSwitch() const override { return Left()->IsActionToken() && Right()->IsActionToken() || Left()->IsTokenSwitch() && Right()->IsActionToken(); }
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "choice"; }
 };
 
 class DifferenceParser : public BinaryParser
@@ -189,6 +212,7 @@ public:
     DifferenceParser(Parser* left_, Parser* right_);
     Parser* Clone() const override;
     void Accept(Visitor& visitor) override;
+    std::string Kind() const override { return "difference"; }
 };
 
 class ListParser : public UnaryParser
@@ -199,6 +223,7 @@ public:
     void Accept(Visitor& visitor) override;
     Parser* Left() const { return left; }
     Parser* Right() const { return right; }
+    std::string Kind() const override { return "list"; }
 private:
     Parser* left;
     Parser* right;
@@ -215,6 +240,7 @@ public:
     bool IsActionToken() const override;
     soulng::cppcode::CompoundStatement* SuccessCode() const { return successCode; }
     soulng::cppcode::CompoundStatement* FailCode() const { return failCode; }
+    std::string Kind() const override { return "action"; }
 private:
     soulng::cppcode::CompoundStatement* successCode;
     std::unique_ptr<soulng::cppcode::CompoundStatement> ownedSuccessCode;
@@ -251,6 +277,7 @@ public:
     RuleParser* Rule() const { return rule; }
     void SetArguments(soulng::cppcode::ExpressionList* args_);
     const std::vector<soulng::cppcode::CppObject*>& Arguments() const { return args; }
+    std::string Kind() const override { return "nonterminal"; }
 private:
     std::u32string ruleName;
     RuleParser* rule;
@@ -276,6 +303,9 @@ public:
     void SetInfo(const std::u32string& info_);
     void SetHasReturn() { hasReturn = true; }
     bool HasReturn() const { return hasReturn; }
+    void AddParser(Parser* parser);
+    std::string Kind() const override { return "rule"; }
+    void Write(CodeFormatter& formatter);
 private:
     std::unique_ptr<Parser> definition;
     std::vector<std::unique_ptr<Parameter>> parameters;
@@ -284,6 +314,7 @@ private:
     std::vector<NonterminalParser*> nonterminals;
     std::u32string info;
     bool hasReturn;
+    std::vector<Parser*> parsers;
 };
 
 class GrammarParser : public Parser
@@ -294,6 +325,11 @@ public:
     const std::u32string& Api() const { return api; }
     void SetMain() { main = true; }
     bool Main() const { return main; }
+    void SetStart() { start = true; }
+    bool Start() const { return start; }
+    void SetNothrow() { nothrow = true; }
+    bool Nothrow() const { return nothrow; }
+    bool IsNothrow() const override { return Nothrow(); }
     void AddUsing(const std::u32string& using_);
     const std::vector<std::u32string>& Usings() const { return usings; }
     void SetLexer(const std::u32string& lexer_) { lexer = lexer_; }
@@ -304,9 +340,13 @@ public:
     const std::vector<std::unique_ptr<RuleParser>>& Rules() const { return rules; }
     void AddRuleInfo(const std::u32string& ruleName, const std::u32string& ruleInfo);
     const std::vector<std::pair<std::u32string, std::u32string>>& RuleInfos() const { return ruleInfos; }
+    std::string Kind() const override { return "grammar"; }
+    void Write(CodeFormatter& formatter);
 private:
     std::u32string api;
     bool main;
+    bool start;
+    bool nothrow;
     std::vector<std::u32string> usings;
     std::u32string lexer;
     std::vector<std::unique_ptr<RuleParser>> rules;

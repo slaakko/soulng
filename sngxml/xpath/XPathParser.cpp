@@ -4,7 +4,7 @@
 #include <sngxml/xpath/XPathTokens.hpp>
 #include <sngxml/xpath/XPathTokenValueParsers.hpp>
 
-// this file has been automatically generated from 'D:/work/soulng-project/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 3.0.0
+// this file has been automatically generated from 'C:/work/soulng/sngxml/xpath/XPathParser.parser' using soulng parser generator spg version 3.10.0
 
 using namespace soulng::unicode;
 using namespace XPathTokens;
