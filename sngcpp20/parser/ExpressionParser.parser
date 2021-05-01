@@ -1,0 +1,680 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Expression.hpp>
+[hpp]#include <sngcpp20/ast/Identifier.hpp>
+[cpp]#include <sngcpp20/parser/AttributeParser.hpp>
+[cpp]#include <sngcpp20/parser/ConceptParser.hpp>
+[cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/InitializationParser.hpp>
+[cpp]#include <sngcpp20/parser/LambdaParser.hpp>
+[cpp]#include <sngcpp20/parser/LiteralParser.hpp>
+[cpp]#include <sngcpp20/parser/TemplateParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) ExpressionParser
+{
+    uselexer CppLexer;
+
+    using AttributeParser.AttributeSpecifierSeq;
+    using AttributeParser.LBracket;
+    using AttributeParser.RBracket;
+    using DeclarationParser.PtrOperator;
+    using LiteralParser.Literal;
+    using IdentifierParser.QualifiedId;
+    using IdentifierParser.UnqualifiedId;
+    using InitializationParser.InitializerClause;
+    using InitializationParser.InitializerList;
+    using InitializationParser.ExprOrBracedInitList;
+    using InitializationParser.BracedInitList;
+    using TypeParser.TypeId;
+    using TemplateParser.Template;
+    using TypeParser.TypeSpecifierSeq;
+    using TypeParser.SimpleTypeSpecifier;
+    using TypeParser.TypenameSpecifier;
+    using LambdaParser.LambdaExpression;
+    using ConceptParser.RequiresExpression;
+
+    Expression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos commaPos) : Node*
+        ::= 
+        (
+            AssignmentExpression(ctx):left{ node.reset(left); s = sourcePos; } 
+            (   
+                COMMA{ commaPos = sourcePos; } AssignmentExpression(ctx):right
+                {
+                    node.reset(new BinaryExprNode(s, new CommaNode(commaPos), node.release(), right));
+                }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ConstantExpression(sngcpp::par::Context* ctx) : Node*
+        ::= ConditionalExpression(ctx):conditionalExpr{ return conditionalExpr; }
+        ;
+
+    AssignmentExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+        ::= 
+        (   YieldExpression(ctx):yieldExpr{ node.reset(yieldExpr); }
+        |   ThrowExpression(ctx):throwExpr{ node.reset(throwExpr); }
+        |   LogicalOrExpression(ctx):left{ s = sourcePos; } AssignmentOp:op InitializerClause(ctx):right
+            {
+                node.reset(new BinaryExprNode(s, op, left, right));
+            }
+        |   ConditionalExpression(ctx):conditionalExpr{ node.reset(conditionalExpr); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    AssignmentOp : Node*
+        ::= ASSIGN{ return new AssignNode(sourcePos); }
+        |   MULASSIGN{ return new MulAssignNode(sourcePos); }
+        |   DIVASSIGN{ return new DivAssignNode(sourcePos); }
+        |   REMASSIGN{ return new ModAssignNode(sourcePos); }
+        |   ADDASSIGN{ return new PlusAssignNode(sourcePos); }
+        |   SUBASSIGN{ return new MinusAssignNode(sourcePos); }
+        |   SHIFTRIGHTASSIGN{ return new ShiftRightAssignNode(sourcePos); }
+        |   SHIFTLEFTASSIGN{ return new ShiftLeftAssignNode(sourcePos); }
+        |   ANDASSIGN{ return new AndAssignNode(sourcePos); }
+        |   XORASSIGN{ return new XorAssignNode(sourcePos); }
+        |   ORASSIGN{ return new OrAssignNode(sourcePos); }
+        ;
+
+    ConditionalExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+        ::= 
+        (   LogicalOrExpression(ctx):cond{ s = sourcePos; node.reset(cond); } 
+            (
+                Quest:quest Expression(ctx):thenExpr Colon:colon AssignmentExpression(ctx):elseExpr
+                {
+                    node.reset(new ConditionalExprNode(s, node.release(), quest, thenExpr, colon, elseExpr));
+                }
+            )?
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    Quest : Node*
+        ::= QUEST{ return new QuestNode(sourcePos); }
+        ;
+
+    Colon : Node*
+        ::= COLON{ return new ColonNode(sourcePos); }
+        ;
+
+    YieldExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= CO_YIELD{ s = sourcePos; }
+        (   AssignmentExpression(ctx):assignmentExpr{ return new YieldExprNode(s, assignmentExpr); }
+        |   BracedInitList(ctx):bracedInitList{ return new YieldExprNode(s, bracedInitList); }
+        )
+        ;
+
+    ThrowExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            THROW{ s = sourcePos; } AssignmentExpression(ctx):exception
+        )
+        {
+            return new ThrowExprNode(s, exception);
+        }
+        ;
+
+    LogicalOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
+        ::= 
+        (
+            LogicalAndExpression(ctx):left{ node.reset(left); s = sourcePos; } 
+            (
+                OROR{ opPos = sourcePos; } LogicalAndExpression(ctx):right{ node.reset(new BinaryExprNode(s, new DisjunctionNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    LogicalAndExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+        ::= 
+        (
+            InclusiveOrExpression(ctx):left{ node.reset(left); } 
+            (
+                AMPAMP{ opPos = sourcePos; } InclusiveOrExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new ConjunctionNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    InclusiveOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+        ::= 
+        (
+            ExclusiveOrExpression(ctx):left{ node.reset(left); } 
+            (
+                OR{ opPos = sourcePos; } ExclusiveOrExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new InclusiveOrNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ExclusiveOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+        ::= 
+        (
+            AndExpression(ctx):left{ node.reset(left); } 
+            (
+                XOR{ opPos = sourcePos; } AndExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new ExclusiveOrNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    AndExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+        ::= 
+        (
+            EqualityExpression(ctx):left{ node.reset(left); } 
+            (
+                AMP{ opPos = sourcePos; } EqualityExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new AndNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    EqualityExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            RelationalExpression(ctx):left{ node.reset(left); }
+            (
+                EqualityOp:op RelationalExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    EqualityOp : Node*
+        ::= EQ{ return new EqualNode(sourcePos); }
+        |   NEQ{ return new NotEqualNode(sourcePos); }
+        ;
+
+    RelationalExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            CompareExpression(ctx):left{ node.reset(left); }
+            (
+                RelationalOp:op CompareExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    RelationalOp : Node*
+        ::= LANGLE{ return new LessNode(sourcePos); }
+        |   RANGLE{ return new GreaterNode(sourcePos); }
+        |   LEQ{ return new LessOrEqualNode(sourcePos); }
+        |   GEQ{ return new GreaterOrEqualNode(sourcePos); }
+        ;
+
+    CompareExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+        ::=
+        (
+            ShiftExpression(ctx):left{ node.reset(left); }
+            (
+                SPACESHIP{ opPos = sourcePos; } ShiftExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new CompareNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ShiftExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            AdditiveExpression(ctx):left{ node.reset(left); }
+            (
+                ShiftOp:op AdditiveExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ShiftOp : Node*
+        ::= SHIFTLEFT{ return new ShiftLeftNode(sourcePos); }
+        |   SHIFTRIGHT{ return new ShiftRightNode(sourcePos); }
+        ;
+
+    AdditiveExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            MultiplicativeExpression(ctx):left{ node.reset(left); }
+            (
+                AdditiveOp:op MultiplicativeExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    AdditiveOp : Node*
+        ::= PLUS{ return new PlusNode(sourcePos); }
+        |   MINUS{ return new MinusNode(sourcePos); }
+        ;
+
+    MultiplicativeExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            PmExpression(ctx):left{ node.reset(left); }
+            (
+                MultiplicativeOp:op PmExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    MultiplicativeOp : Node*
+        ::= STAR{ return new MulNode(sourcePos); }
+        |   DIV{ return new DivNode(sourcePos); }
+        |   MOD{ return new ModNode(sourcePos); }
+        ;
+
+    PmExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            CastExpression(ctx):left{ node.reset(left); }
+            (
+                PmOp:op CastExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    PmOp : Node*
+        ::= DOTSTAR{ return new DotStarNode(sourcePos); }
+        |   ARROWSTAR{ return new ArrowStarNode(sourcePos); }
+        ;
+
+    CastExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::=  
+        (
+            (   
+                (LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; } CastExpression(ctx):child)
+                {
+                    node.reset(new CastExprNode(sourcePos, typeId, child, lpPos, rpPos));
+                }
+            )
+            |   UnaryExpression(ctx):ue{ node.reset(ue); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    UnaryExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (   UnaryOp:op CastExpression(ctx):child{ node.reset(new UnaryExprNode(sourcePos, op, child)); }
+        |   AwaitExpression(ctx):awaitExpr{ node.reset(awaitExpr); }
+        |   SizeOfExpression(ctx):sizeOfExpr{ node.reset(sizeOfExpr); }
+        |   AlignOfExpression(ctx):alignOfExpr{ node.reset(alignOfExpr); }
+        |   NoexceptEpression(ctx):noexceptExpr{ node.reset(noexceptExpr); }
+        |   NewExpression(ctx):newExpr{ node.reset(newExpr); }
+        |   DeleteExpression(ctx):deleteExpr{ node.reset(deleteExpr); }
+        |   PostfixExpression(ctx):postfixExpr{ node.reset(postfixExpr); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    UnaryOp : Node*
+        ::= STAR{ return new DerefNode(sourcePos); }
+        |   AMP{ return new AddrOfNode(sourcePos); }
+        |   PLUS{ return new PlusNode(sourcePos); }
+        |   MINUS{ return new MinusNode(sourcePos); }
+        |   EXCLAMATION{ return new NotNode(sourcePos); }
+        |   TILDE{ return new ComplementNode(sourcePos); }
+        |   PLUSPLUS{ return new PrefixIncNode(sourcePos); }
+        |   MINUSMINUS{ return new PrefixDecNode(sourcePos); }
+        ;
+
+    AwaitExpression(sngcpp::par::Context* ctx) : Node*
+        ::= CO_AWAIT CastExpression(ctx):child{ return new AwaitExprNode(sourcePos, child); }
+        ;
+
+    SizeOfExpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos ellipsesPos, var std::unique_ptr<Node> childNode) : Node*
+        ::= SIZEOF{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN
+            { 
+                rpPos = sourcePos; 
+                return new SizeOfTypeExprNode(s, typeId, lpPos, rpPos); 
+            }
+        |   SIZEOF{ s = sourcePos; } ELLIPSES{ ellipsesPos = sourcePos; } LPAREN{ lpPos = sourcePos; } ID{ childNode.reset(new IdentifierNode(sourcePos, lexer.GetMatch(pos))); } RPAREN
+            { 
+                rpPos = sourcePos; 
+                return new SizeOfPackExprNode(s, childNode.release(), ellipsesPos, lpPos, rpPos); 
+            }
+        |   SIZEOF{ s = sourcePos; } UnaryExpression(ctx):child{ return new SizeOfUnaryExprNode(s, child); }
+        ;
+
+    AlignOfExpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            ALIGNOF{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new AlignOfExprNode(s, typeId, lpPos, rpPos);
+        }
+        ;
+
+    NoexceptEpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            NOEXCEPT{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new NoexceptExprNode(s, expr, lpPos, rpPos);
+        }
+        ;
+
+    NewExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode) : Node*
+        ::= 
+        (
+            (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } NEW
+            |   NEW{ s = sourcePos; }
+            )
+            NewPlacement(ctx):placement? NewTypeId(ctx):newTypeId NewInitializer(ctx):newInitializer?
+        )
+        {
+            return new NewExprNode(s, placement, newTypeId, newInitializer, colonColonNode.release());
+        }
+        ;
+
+    NewPlacement(sngcpp::par::Context* ctx, var std::unique_ptr<NewPlacementNode> node) : Node*
+        ::= 
+        (
+            LPAREN{ node.reset(new NewPlacementNode(sourcePos)); node->SetLParenPos(sourcePos); } ExpressionList(ctx, node.get()):el RPAREN{ node->SetRParenPos(sourcePos); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    NewTypeId(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+            (LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }){ return new ParenNewTypeIdNode(sourcePos, typeId, lpPos, rpPos); }
+        |   TypeSpecifierSeq(ctx):typeSpecifierSeq 
+                (   NewDeclarator(ctx):newDeclarator{ return new NewTypeIdNode(sourcePos, typeSpecifierSeq, newDeclarator); }
+                |   empty{ return new NewTypeIdNode(sourcePos, typeSpecifierSeq, nullptr); }
+                )
+        ;
+
+    DeleteExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } DELETE
+        |   DELETE{ s = sourcePos; }
+        )
+        (   LBRACKET{ lbPos = sourcePos; } RBRACKET{ rbPos = sourcePos; } CastExpression(ctx):ptr1{ return new ArrayDeletePtrNode(s, ptr1, lbPos, rbPos); }
+        |   CastExpression(ctx):ptr2{ return new DeletePtrNode(s, ptr2); }
+        )
+        ;
+
+    PostfixExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode,
+        var SourcePos lbPos, var SourcePos rbPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            PrimaryExpression(ctx):primaryExpr{ node.reset(primaryExpr); s = sourcePos; }
+            (
+                (   LBRACKET{ lbPos = sourcePos; } ExprOrBracedInitList(ctx):index RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptExprNode(s, node.release(), index, lbPos, rbPos)); }
+                |   LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, node.release())); } 
+                    ExpressionList(ctx, invokeNode.get()):args? RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+                |   DotOp:dotOp IdExpression(ctx):idExpr1{ node.reset(new MemberExprNode(s, node.release(), dotOp, idExpr1)); }
+                |   ArrowOp:arrowOp IdExpression(ctx):idExpr2{ node.reset(new MemberExprNode(s, node.release(), arrowOp, idExpr2)); }
+                |   PLUSPLUS{ node.reset(new PostfixIncExprNode(s, node.release(), sourcePos)); }
+                |   MINUSMINUS{ node.reset(new PostfixDecExprNode(s, node.release(), sourcePos)); }
+                )*
+            )
+        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier1 
+            LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } 
+            ExpressionList(ctx, invokeNode.get()):args2? 
+            RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier2{ node.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } BracedInitList(ctx):args3{ node->AddNode(args3); }
+        |   TypenameSpecifier(ctx):typenameSpecifier1 
+            LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, typenameSpecifier1)); } 
+            ExpressionList(ctx, invokeNode.get()):args4? 
+            RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
+        |   TypenameSpecifier(ctx):typenameSpecifier2 { node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
+        |   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
+        |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    DotOp(var std::unique_ptr<Node> dotNode, var std::unique_ptr<Node> templateNode) : Node*
+        ::= DOT{ dotNode.reset(new DotNode(sourcePos)); } TEMPLATE{ templateNode.reset(new TemplateNode(sourcePos)); return new PairNode(sourcePos, dotNode.release(), templateNode.release()); }
+        |   DOT{ return new DotNode(sourcePos); }
+        ;
+
+    ArrowOp(var std::unique_ptr<Node> arrowNode, var std::unique_ptr<Node> templateNode) : Node*
+        ::= ARROW{ arrowNode.reset(new ArrowNode(sourcePos)); } TEMPLATE{ templateNode.reset(new TemplateNode(sourcePos)); return new PairNode(sourcePos, arrowNode.release(), templateNode.release()); }
+        |   ARROW{ return new ArrowNode(sourcePos); }
+        ;
+
+    TypeIdExpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var std::unique_ptr<Node> child) : Node*
+        ::= 
+        (
+            TYPEID{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } (TypeId(ctx):typeId{ child.reset(typeId); } | Expression(ctx):expr{ child.reset(expr); }) RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new TypeIdExprNode(s, child.release(), lpPos, rpPos);
+        }
+        ;
+
+    CppCastExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> op, var SourcePos laPos, var SourcePos raPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (   DYNAMIC_CAST{ op.reset(new DynamicCastNode(sourcePos)); }
+            |   STATIC_CAST{ op.reset(new StaticCastNode(sourcePos)); }
+            |   REINTERPRET_CAST{ op.reset(new ReinterpretCastNode(sourcePos)); }
+            |   CONST_CAST{ op.reset(new ConstCastNode(sourcePos)); }
+            )
+            LANGLE{ laPos = sourcePos; }
+            TypeId(ctx):typeId
+            RANGLE{ raPos = sourcePos; }
+            LPAREN{ lpPos = sourcePos;}
+            Expression(ctx):child
+            RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new CppCastExprNode(sourcePos, typeId, child, op.release(), laPos, raPos, lpPos, rpPos);
+        }
+        ;
+
+    PrimaryExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node) : Node*
+        ::= Literal(ctx):literal{ return literal; }
+        |   THIS{ return new ThisNode(sourcePos); }
+        |   FoldExpression(ctx):foldExpr{ return foldExpr; }
+        |   ParenthesizedExpression(ctx):parenExpr{ return parenExpr; }
+        |   IdExpression(ctx):idExpr{ return idExpr; }
+        |   LambdaExpression(ctx):lambdaExpr{ return lambdaExpr; }
+        |   RequiresExpression(ctx):requiresExpr{ return requiresExpr; }
+        ;
+
+    ParenthesizedExpression(sngcpp::par::Context* ctx, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new ParenthesizedExprNode(sourcePos, expr, lpPos, rpPos);
+        }
+        ;
+
+    IdExpression(sngcpp::par::Context* ctx) : Node*
+        ::= QualifiedId(ctx):qualifiedId{ return qualifiedId; }
+        |   UnqualifiedId(ctx):unqualifiedId{ return unqualifiedId; }
+        ;
+
+    FoldExpression(sngcpp::par::Context* ctx, var std::unique_ptr<FoldExprNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (   LPAREN{ lpPos = sourcePos; node.reset(new FoldExprNode(sourcePos)); }
+            (   
+                (
+                    CastExpression(ctx):castExpr1 FoldOp:op1 Ellipses:ellipses1
+                    (   FoldOp:op2 CastExpression(ctx):castExpr2
+                    )?
+                )
+                {
+                    node->AddNode(castExpr1);
+                    node->AddNode(op1);
+                    node->AddNode(ellipses1);
+                    if (op2)
+                    {
+                        node->AddNode(op2);
+                        node->AddNode(castExpr2);
+                    }
+                }
+            |   
+                (   
+                    Ellipses:ellipses3 FoldOp:op3 CastExpression(ctx):castExpr3
+                )
+                {
+                    node->AddNode(ellipses3);
+                    node->AddNode(op3);
+                    node->AddNode(castExpr3);
+                }
+            )
+            RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            node->SetLParenPos(lpPos);
+            node->SetRParenPos(rpPos);
+            return node.release();
+        }
+        ;
+
+    Ellipses : Node*
+        ::= ELLIPSES{ return new EllipsesNode(sourcePos); }
+        ;
+
+    FoldOp : Node*
+        ::= PLUS{ return new PlusNode(sourcePos); }
+        |   MINUS{ return new MinusNode(sourcePos); }
+        |   STAR{ return new MulNode(sourcePos); }
+        |   DIV{ return new DivNode(sourcePos); }
+        |   MOD{ return new ModNode(sourcePos); }
+        |   XOR{ return new ExclusiveOrNode(sourcePos); }
+        |   AMP{ return new AndNode(sourcePos); }
+        |   OR{ return new InclusiveOrNode(sourcePos); }
+        |   SHIFTLEFT{ return new ShiftLeftNode(sourcePos); }
+        |   SHIFTRIGHT{ return new ShiftRightNode(sourcePos); }
+        |   ADDASSIGN{ return new PlusAssignNode(sourcePos); }
+        |   SUBASSIGN{ return new MinusAssignNode(sourcePos); }
+        |   MULASSIGN{ return new MulAssignNode(sourcePos); }
+        |   DIVASSIGN{ return new DivAssignNode(sourcePos); }
+        |   REMASSIGN{ return new ModAssignNode(sourcePos); }
+        |   XORASSIGN{ return new XorAssignNode(sourcePos); }
+        |   ANDASSIGN{ return new AndAssignNode(sourcePos); }
+        |   ORASSIGN{ return new OrAssignNode(sourcePos); }
+        |   SHIFTLEFTASSIGN{ return new ShiftLeftAssignNode(sourcePos); }
+        |   SHIFTRIGHTASSIGN{ return new ShiftRightAssignNode(sourcePos); }
+        |   ASSIGN{ return new AssignNode(sourcePos); }
+        |   EQ{ return new EqualNode(sourcePos); }
+        |   NEQ{ return new NotEqualNode(sourcePos); }
+        |   LANGLE{ return new LessNode(sourcePos); }
+        |   RANGLE{ return new GreaterNode(sourcePos); }
+        |   LEQ{ return new LessOrEqualNode(sourcePos); }
+        |   GEQ{ return new GreaterOrEqualNode(sourcePos); }
+        |   AMPAMP{ return new ConjunctionNode(sourcePos); }
+        |   OROR{ return new DisjunctionNode(sourcePos); }
+        |   COMMA{ return new CommaNode(sourcePos); }
+        |   DOTSTAR{ return new DotStarNode(sourcePos); }
+        |   ARROWSTAR{ return new ArrowStarNode(sourcePos); }
+        ;
+
+    NewDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            PtrOperator(ctx):first{ node.reset(new NewDeclaratorNode(sourcePos)); node->AddNode(first); } 
+            (PtrOperator(ctx):next{ node->AddNode(next); })* 
+            (
+                NoPtrNewDeclarator(ctx):noPtrNewDeclarator{ node->AddNode(noPtrNewDeclarator); }
+            |   empty
+            )
+        |   NoPtrNewDeclarator(ctx):noPtrNewDecl{ node.reset(noPtrNewDecl); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    NoPtrNewDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            (
+                LBracket:lb{ node.reset(new ArrayNewDeclaratorNode(sourcePos)); node->AddNode(lb); } 
+                (Expression(ctx):size{ node->AddNode(size); })? 
+                RBracket:rb{ node->AddNode(rb); } 
+            )
+            (
+                LBracket:lb2{ node->AddNode(lb2); } 
+                ConstantExpression(ctx):size2{ node->AddNode(size2); }
+                RBracket:rb2{ node->AddNode(rb2); } 
+            )*
+            AttributeSpecifierSeq(ctx):attributes?
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    NewInitializer(sngcpp::par::Context* ctx, var std::unique_ptr<NewInitializerNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (
+                LPAREN{ lpPos = sourcePos; node.reset(new NewInitializerNode(sourcePos)); } ExpressionList(ctx, node.get()):exprList RPAREN{ rpPos = sourcePos; }
+            )
+            {
+                node->SetLParenPos(lpPos);
+                node->SetRParenPos(rpPos);
+                return node.release();
+            }
+        |   BracedInitList(ctx):bracedInitList{ return bracedInitList; }
+        )
+        ;
+
+    ExpressionList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+        ::= InitializerList(ctx, container):il
+        ;
+}

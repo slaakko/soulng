@@ -1,0 +1,114 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Expression.hpp>
+[hpp]#include <sngcpp20/ast/Identifier.hpp>
+[cpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[cpp]#include <sngcpp20/parser/LiteralParser.hpp>
+[cpp]#include <sngcpp20/parser/TemplateParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) IdentifierParser
+{
+    uselexer CppLexer;
+
+    using LiteralParser.LiteralOperatorId;
+    using TemplateParser.TemplateId;
+    using TemplateParser.SimpleTemplateId;
+    using FunctionParser.OperatorFunctionId;
+    using FunctionParser.ConversionFunctionId;
+    using FunctionParser.Comma;
+    using FunctionParser.DestructorId;
+
+    Identifier(sngcpp::par::Context* ctx) : Node*
+        ::= ID{ return new IdentifierNode(sourcePos, lexer.GetMatch(pos)); }
+        ;
+
+    UnqualifiedId(sngcpp::par::Context* ctx) : Node*
+        ::= TemplateId(ctx):templateId{ return templateId; }
+        |   Identifier(ctx):identifier{ return identifier; }
+        |   OperatorFunctionId(ctx):operatorFnId{ return operatorFnId; }
+        |   ConversionFunctionId(ctx):conversionFnId{ return conversionFnId; }
+        |   LiteralOperatorId(ctx):literalOperatorId{ return literalOperatorId; }
+        |   DestructorId(ctx):destructorId{ return destructorId; }
+        ;
+
+    QualifiedId(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
+        ::= 
+        (
+            NestedNameSpecifier(ctx):nns{ s = sourcePos; } 
+            (
+                Template:tmp{ tmpPos = sourcePos; } UnqualifiedId(ctx):unqualifiedId
+                {
+                    return new QualifiedIdNode(s, nns, new PrefixNode(tmpPos, tmp, unqualifiedId));
+                }
+            |   UnqualifiedId(ctx):unqualifiedId
+                {
+                    return new QualifiedIdNode(sourcePos, nns, unqualifiedId);
+                }
+            )
+        )
+        ;
+
+    Template : Node*
+        ::= TEMPLATE{ return new TemplateNode(sourcePos); }
+        ;
+
+    NestedNameSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<NestedNameSpecifierNode> nnsNode) : Node*
+        ::= 
+        (   empty{ nnsNode.reset(new NestedNameSpecifierNode(sourcePos)); }
+            (COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); })?
+            (
+                ID{ nnsNode->AddNode(new IdentifierNode(sourcePos, lexer.GetMatch(pos))); } 
+                COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); }
+            |   
+                (TEMPLATE{ nnsNode->AddNode(new TemplateNode(sourcePos)); })?
+                SimpleTemplateId(ctx):simpleTemplateId{ nnsNode->AddNode(simpleTemplateId); }
+                COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); }
+            )*
+        )
+        {
+            if (nnsNode->Nodes().IsEmpty())
+            {
+                pass = false;
+            }
+            else
+            {
+                nnsNode->SetSourcePos(nnsNode->Nodes()[0]->GetSourcePos());
+                return nnsNode.release();
+            }
+        }
+        ;
+
+    IdentifierList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> identifierListNode) : Node*
+        ::= 
+        (
+            Identifier(ctx):first{ identifierListNode.reset(new IdentifierListNode(sourcePos)); identifierListNode->AddNode(first); } 
+            (   Comma:comma{ identifierListNode->AddNode(comma); }
+                Identifier(ctx):next{ identifierListNode->AddNode(next); }
+            )*
+        )
+        {
+            return identifierListNode.release();
+        }
+        ;
+
+    Dot : Node*
+        ::= DOT{ return new DotNode(sourcePos); }
+        ;
+
+    ColonColon : Node*
+        ::= COLONCOLON{ return new ColonColonNode(sourcePos); }
+        ;
+
+}

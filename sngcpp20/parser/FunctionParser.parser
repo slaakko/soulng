@@ -1,0 +1,260 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Function.hpp>
+[hpp]#include <sngcpp20/ast/Expression.hpp>
+[cpp]#include <sngcpp20/parser/AttributeParser.hpp>
+[cpp]#include <sngcpp20/parser/ClassParser.hpp>
+[cpp]#include <sngcpp20/parser/ConceptParser.hpp>
+[cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/InitializationParser.hpp>
+[cpp]#include <sngcpp20/parser/StatementParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) FunctionParser
+{
+    uselexer CppLexer;
+
+    using AttributeParser.AttributeSpecifierSeq;
+    using ClassParser.CtorInitializer;
+    using ClassParser.VirtSpecifierSeq;
+    using ConceptParser.RequiresClause;
+    using DeclarationParser.AbstractDeclarator;
+    using DeclarationParser.DeclSpecifierSeq;
+    using DeclarationParser.Declarator;
+    using DeclarationParser.PtrOperator;
+    using ExpressionParser.Ellipses;
+    using InitializationParser.InitializerClause;
+    using StatementParser.CompoundStatement;
+    using StatementParser.HandlerSeq;
+    using StatementParser.Semicolon;
+    using TypeParser.TypeSpecifierSeq;
+    using TypeParser.TypeName;
+    using TypeParser.DeclTypeSpecifier;
+
+    FunctionDefinition(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> specifierNode) : Node*
+        ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
+            (DeclSpecifierSeq(ctx):declSpecifiers{ if (!s.IsValid()) s = sourcePos; })? 
+            Declarator(ctx):declarator{ if (!s.IsValid()) s = sourcePos; }
+            (   VirtSpecifierSeq(ctx):virtSpecifiers{ specifierNode.reset(virtSpecifiers); }
+            |   RequiresClause(ctx):requiresClause{ specifierNode.reset(requiresClause); }
+            |   empty
+            )
+            FunctionBody(ctx):functionBody
+            {
+                return new FunctionDefinitionNode(s, attributes, declSpecifiers, declarator, specifierNode.release(), functionBody);
+            }
+        ;
+
+    FunctionBody(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= Assign:assign{ s = sourcePos; } 
+            (   Default:def Semicolon:semicolon
+                { 
+                    return new GeneratedFunctionBodyNode(s, assign, def, semicolon); 
+                } 
+            |   Delete:del Semicolon:semicolon2
+                { 
+                    return new GeneratedFunctionBodyNode(s, assign, del, semicolon2); 
+                }
+            )
+        |   CtorInitializer(ctx):ctorInitializer{ s = sourcePos; } CompoundStatement(ctx):compoundStatement
+            {
+                return new ConstructorNode(s, ctorInitializer, compoundStatement);
+            }
+        |   CompoundStatement(ctx):compoundStatement2
+            {   
+                return new FunctionBodyNode(sourcePos, compoundStatement2); 
+            }
+        |   FunctionTryBlock(ctx):functionTryBlock
+            {
+                return functionTryBlock;
+            }
+        ;
+
+    Default : Node*
+        ::= DEFAULT{ return new DefaultNode(sourcePos); }
+        ;
+
+    Delete : Node*
+        ::= DELETE{ return new DeleteNode(sourcePos); }
+        ;
+
+    NoDeclSpecFunctionDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
+            Declarator(ctx):declarator{ if (!s.IsValid()) s = sourcePos; }
+            Semicolon:semicolon
+        )
+        {
+            return new FunctionDeclarationNode(s, declarator, attributes, semicolon);
+        }
+        ;
+
+    ParameterDeclarationClause(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+        ::= ParameterDeclarationList(ctx, container):paramList2 Comma:comma{ container->AddNode(comma); } Ellipses:ellipses{ container->AddNode(ellipses); }
+        |   empty{ container->Clear(); } ParameterDeclarationList(ctx, container):paramList1? (Ellipses:ellipses{ container->AddNode(ellipses); })?
+        ;
+
+    ParameterDeclarationList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+        ::= ParameterDeclaration(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } ParameterDeclaration(ctx):next{ container->AddNode(next); })*
+        ;
+
+    Comma : Node*
+        ::= COMMA{ return new CommaNode(sourcePos); }
+        ;
+
+    ParameterDeclaration(sngcpp::par::Context* ctx, var std::unique_ptr<ParameterNode> node) : Node*
+        ::= empty{ node.reset(new ParameterNode(sourcePos)); } 
+        (   (AttributeSpecifierSeq(ctx):attributes{ node->SetAttributes(attributes); })?
+            DeclSpecifierSeq(ctx):declSpecifierSeq{ node->SetDeclSpecifiers(declSpecifierSeq); }
+            (   Declarator(ctx):declarator{ node->SetDeclarator(declarator); }
+            |   AbstractDeclarator(ctx):abstractDeclarator{ node->SetDeclarator(abstractDeclarator); }
+            )?
+            (
+                Assign:assign{ node->SetAssign(assign); }
+                InitializerClause(ctx):initializer{ node->SetInitializer(initializer); }
+            )?
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    Assign : Node*
+        ::= ASSIGN{ return new AssignNode(sourcePos); }
+        ;
+
+    OperatorFunctionId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            OperatorKw:operatorKw{ s = sourcePos; }
+            Operator(ctx):op
+        )
+        {
+            return new OperatorFunctionIdNode(s, operatorKw, op);
+        }
+        ;
+
+    ConversionFunctionId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            OperatorKw:operatorKw{ s = sourcePos; }
+            ConversionTypeId(ctx):conversionTypeId
+        )
+        {
+            return new ConversionFunctionIdNode(s, operatorKw, conversionTypeId);
+        }
+        ;
+
+    DestructorId(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+        ::= TILDE{ s = sourcePos; } 
+        (   TypeName(ctx):typeName{ node.reset(typeName); }
+        |   DeclTypeSpecifier(ctx):declTypeSpecifier{ node.reset(declTypeSpecifier); }
+        )
+        {
+            return new DestructorIdNode(s, node.release());
+        }
+        ;
+
+    ConversionTypeId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            TypeSpecifierSeq(ctx):typeSpecifierSeq{ s = sourcePos; } ConversionDeclarator(ctx):declarator?
+        )
+        {
+            return new ConversionTypeIdNode(s, typeSpecifierSeq, declarator);
+        }
+        ;
+
+    ConversionDeclarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            PtrOperator(ctx):op{ s = sourcePos; } ConversionDeclarator(ctx):declarator?
+        )
+        {
+            return new ConversionDeclaratorNode(s, op, declarator);
+        }
+        ;
+
+    OperatorKw : Node*
+        ::= OPERATOR{ return new OperatorNode(sourcePos); }
+        ;
+
+    Operator(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (   NEW{ s = sourcePos; } LBRACKET{ lbPos = sourcePos; } RBRACKET{ rbPos = sourcePos; return new NewArrayOpNode(s, lbPos, rbPos); }
+        |   NEW{ return new NewOpNode(sourcePos); }
+        |   DELETE{ s = sourcePos; } LBRACKET{ lbPos = sourcePos; } RBRACKET{ rbPos = sourcePos; return new DeleteArrayOpNode(s, lbPos, rbPos); }
+        |   DELETE{ return new DeleteOpNode(sourcePos); }
+        |   CO_AWAIT{ return new CoAwaitOpNode(sourcePos); }
+        |   LPAREN{ s = sourcePos; } RPAREN{ return new InvokeOpNode(s); }
+        |   LBRACKET{ s = sourcePos; } RBRACKET{ return new SubscriptOpNode(s); }
+        |   ARROW{ return new ArrowNode(sourcePos); }
+        |   ARROWSTAR{ return new ArrowStarNode(sourcePos); }
+        |   TILDE{ return new ComplementNode(sourcePos); }
+        |   EXCLAMATION{ return new NotNode(sourcePos); }
+        |   PLUS{ return new PlusNode(sourcePos); }
+        |   MINUS{ return new MinusNode(sourcePos); }
+        |   STAR{ return new MulNode(sourcePos); }
+        |   DIV{ return new DivNode(sourcePos); }
+        |   MOD{ return new ModNode(sourcePos); }
+        |   XOR{ return new ExclusiveOrNode(sourcePos); }
+        |   AMP{ return new AndNode(sourcePos); }
+        |   OR{ return new InclusiveOrNode(sourcePos); }
+        |   ASSIGN{ return new AssignNode(sourcePos); }
+        |   ADDASSIGN{ return new PlusAssignNode(sourcePos); }
+        |   SUBASSIGN{ return new MinusAssignNode(sourcePos); }
+        |   MULASSIGN{ return new MulAssignNode(sourcePos); }
+        |   DIVASSIGN{ return new DivAssignNode(sourcePos); }
+        |   REMASSIGN{ return new ModAssignNode(sourcePos); }
+        |   XORASSIGN{ return new XorAssignNode(sourcePos); }
+        |   ANDASSIGN{ return new AndAssignNode(sourcePos); }
+        |   ORASSIGN{ return new OrAssignNode(sourcePos); }
+        |   SHIFTLEFTASSIGN{ return new ShiftLeftAssignNode(sourcePos); }
+        |   SHIFTRIGHTASSIGN{ return new ShiftRightAssignNode(sourcePos); } 
+        |   EQ{ return new EqualNode(sourcePos); }
+        |   NEQ{ return new NotEqualNode(sourcePos); }
+        |   LEQ{ return new LessOrEqualNode(sourcePos); }
+        |   GEQ{ return new GreaterOrEqualNode(sourcePos); }
+        |   SPACESHIP{ return new CompareNode(sourcePos); }
+        |   LANGLE{ return new LessNode(sourcePos); }
+        |   RANGLE{ return new GreaterNode(sourcePos); }
+        |   AMPAMP{ return new ConjunctionNode(sourcePos); }
+        |   OROR{ return new DisjunctionNode(sourcePos); }
+        |   SHIFTLEFT{ return new ShiftLeftNode(sourcePos); }
+        |   SHIFTRIGHT{ return new ShiftRightNode(sourcePos); }
+        |   PLUSPLUS{ return new PrefixIncNode(sourcePos); }
+        |   MINUSMINUS{ return new PrefixDecNode(sourcePos); }
+        |   COMMA{ return new CommaNode(sourcePos); }
+        )
+        ;
+
+    Noexcept : Node*
+        ::= NOEXCEPT{ return new NoexceptNode(sourcePos); }
+        ;
+
+    FunctionTryBlock(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            TRY{ s = sourcePos; }
+            CtorInitializer(ctx):ctorInitializer?
+            CompoundStatement(ctx):tryBlock 
+            HandlerSeq(ctx):handlers
+        )
+        {
+            return new FunctionTryBlockNode(s, ctorInitializer, tryBlock, handlers);
+        }
+        ;
+}

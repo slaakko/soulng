@@ -1,0 +1,386 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Identifier.hpp>
+[hpp]#include <sngcpp20/ast/Statement.hpp>
+[cpp]#include <sngcpp20/parser/AttributeParser.hpp>
+[cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/InitializationParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) StatementParser
+{
+    uselexer CppLexer;
+
+    using AttributeParser.AttributeSpecifierSeq;
+    using DeclarationParser.AbstractDeclarator;
+    using DeclarationParser.Declarator;
+    using DeclarationParser.DeclSpecifierSeq;
+    using DeclarationParser.BlockDeclaration;
+    using DeclarationParser.RefQualifier;
+    using DeclarationParser.SimpleDeclaration;
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.Expression;
+    using IdentifierParser.Identifier;
+    using IdentifierParser.IdentifierList;
+    using InitializationParser.ExprOrBracedInitList;
+    using InitializationParser.BraceOrEqualInitializer;
+    using TypeParser.TypeSpecifierSeq;
+
+    Statement(sngcpp::par::Context* ctx) : Node*
+        ::= LabeledStatement(ctx):labeledStatement{ return labeledStatement; }
+        |   CompoundStatement(ctx):compoundStatement{ return compoundStatement; }
+        |   SelectionStatement(ctx):selectionStatement{ return selectionStatement; }
+        |   IterationStatement(ctx):iterationStatement{ return iterationStatement; }
+        |   JumpStatement(ctx):jumpStatement{ return jumpStatement; }
+        |   TryStatement(ctx):tryStatement{ return tryStatement; }
+        |   ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
+        |   DeclarationStatement(ctx):declarationStatement{ return declarationStatement; }
+        ;
+
+    LabeledStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos labelPos, var int64_t labelP, var SourcePos colonPos, var SourcePos casePos, var SourcePos defaultPos) : Node*
+        ::= 
+        (
+            (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } ID{ labelPos = sourcePos; labelP = pos; } | ID{ s = sourcePos; labelPos = sourcePos; labelP = pos; }) 
+            COLON{ colonPos = sourcePos; } 
+            Statement(ctx):stmt
+            {
+                return new LabeledStatementNode(s, new IdentifierNode(labelPos, lexer.GetMatch(labelP)), stmt, attributes, colonPos);
+            }
+        |   (AttributeSpecifierSeq(ctx):attributes2{ s = sourcePos; } CASE{ casePos = sourcePos; } | CASE{ s = sourcePos; casePos = sourcePos; })
+            ConstantExpression(ctx):caseExpr 
+            COLON{ colonPos = sourcePos; }
+            Statement(ctx):stmt2
+            {
+                return new CaseStatementNode(s, caseExpr, stmt2, attributes2, casePos, colonPos);
+            }
+        |   (AttributeSpecifierSeq(ctx):attributes3{ s = sourcePos; } DEFAULT{ defaultPos = sourcePos; } | DEFAULT{ s = sourcePos; defaultPos = sourcePos; }) 
+            COLON{ colonPos = sourcePos; } Statement(ctx):stmt3
+            {
+                return new DefaultStatementNode(s, stmt3, attributes3, defaultPos, colonPos);
+            }
+        )
+        ;
+
+    CompoundStatement(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<CompoundStatementNode> compoundStatementNode) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } LBRACE{ compoundStatementNode.reset(new CompoundStatementNode(s)); compoundStatementNode->SetAttributes(attributes); }
+            |   LBRACE{ compoundStatementNode.reset(new CompoundStatementNode(sourcePos)); } 
+            )
+            (Statement(ctx):stmt{ compoundStatementNode->AddNode(stmt); })* 
+            RBRACE{ compoundStatementNode->SetRBracePos(sourcePos); }
+        )
+        {
+            return compoundStatementNode.release();
+        }
+        ;
+
+    SelectionStatement(sngcpp::par::Context* ctx) : Node*
+        ::= IfStatement(ctx):ifStmt{ return ifStmt; }
+        |   SwitchStatement(ctx):switchStmt{ return switchStmt; }
+        ;
+
+    IfStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos ifPos, var SourcePos constExprPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } IF{ ifPos = sourcePos; }
+            |   IF{ s = sourcePos; ifPos = sourcePos; } 
+            )
+            (CONSTEXPR{ constExprPos = sourcePos; })? 
+            LPAREN{ lpPos = sourcePos; } 
+            InitStatement(ctx):initStmt? 
+            Condition(ctx):cond 
+            RPAREN{ rpPos = sourcePos; } 
+            Statement(ctx):thenStmt 
+            (   ELSE 
+                Statement(ctx):elseStmt
+            )?
+        )
+        {
+            return new IfStatementNode(s, initStmt, cond, thenStmt, elseStmt, attributes, ifPos, lpPos, rpPos, constExprPos);
+        }
+        ;
+
+    SwitchStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos switchPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } SWITCH{ switchPos = sourcePos; }
+            |   SWITCH{ s = sourcePos; switchPos = sourcePos; } 
+            )
+            LPAREN{ lpPos = sourcePos; } InitStatement(ctx):initStmt? Condition(ctx):cond RPAREN{ rpPos = sourcePos; } Statement(ctx):stmt
+        )
+        {
+            return new SwitchStatementNode(s, initStmt, cond, stmt, attributes, switchPos, lpPos, rpPos);
+        }
+        ;
+
+    IterationStatement(sngcpp::par::Context* ctx) : Node*
+        ::= WhileStatement(ctx):whileStmt{ return whileStmt; }
+        |   DoStatement(ctx):doStmt{ return doStmt; }
+        |   RangeForStatement(ctx):rangeForStmt{ return rangeForStmt; }
+        |   ForStatement(ctx):forStmt{ return forStmt; }
+        ;
+
+    WhileStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos whilePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } WHILE{ whilePos = sourcePos; }
+            |   WHILE{ s = sourcePos; whilePos = sourcePos; } 
+            )
+            LPAREN{ lpPos = sourcePos; } Condition(ctx):cond RPAREN{ rpPos = sourcePos; } Statement(ctx):stmt
+        )
+        {
+            return new WhileStatementNode(s, cond, stmt, attributes, whilePos, lpPos, rpPos);
+        }
+        ;
+
+    DoStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos doPos, var SourcePos whilePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::=
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DO{ doPos = sourcePos; }
+            |   DO{ s = sourcePos; doPos = sourcePos; }
+            )
+            Statement(ctx):stmt WHILE{ whilePos = sourcePos; } LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; } Semicolon:semicolon
+        )
+        {
+            return new DoStatementNode(s, stmt, expr, attributes, semicolon, doPos, whilePos, lpPos, rpPos);
+        }
+        ;
+
+    RangeForStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos, var SourcePos colonPos) : Node*
+        ::=
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } FOR{ forPos = sourcePos; }
+            |   FOR{ s = sourcePos; forPos = sourcePos; }
+            )
+            LPAREN{ lpPos = sourcePos; } InitStatement(ctx):initStmt? ForRangeDeclaration(ctx):declaration COLON{ colonPos = sourcePos; } ForRangeInitializer(ctx):initializer RPAREN{ rpPos = sourcePos; }
+            Statement(ctx):stmt
+        )
+        {
+            return new RangeForStatementNode(s, initStmt, declaration, initializer, stmt, attributes, forPos, lpPos, rpPos, colonPos);
+        }
+        ;
+
+    ForRangeDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<Node> declSpecifierSeq, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DeclSpecifierSeq(ctx):declSpecifierSeq1{ declSpecifierSeq.reset(declSpecifierSeq1); }
+            |   DeclSpecifierSeq(ctx):declSpecifierSeq2{ s = sourcePos; declSpecifierSeq.reset(declSpecifierSeq2); }
+            )
+            (   Declarator(ctx):declarator{ node.reset(new ForRangeDeclarationNode(s, declSpecifierSeq.release(), declarator)); }
+            |   (   
+                    RefQualifier:refQualifier? LBRACKET{ lbPos = sourcePos; } IdentifierList(ctx):identifiers RBRACKET{ rbPos = sourcePos; }
+                )
+                {
+                    node.reset(new StructuredBindingNode(s, declSpecifierSeq.release(), refQualifier, identifiers, nullptr, nullptr, nullptr, lbPos, rbPos));
+                }
+            )
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ForRangeInitializer(sngcpp::par::Context* ctx) : Node*
+        ::= ExprOrBracedInitList(ctx):initializer{ return initializer; }
+        ;
+
+    ForStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } FOR{ forPos = sourcePos; }
+            |   FOR{ s = sourcePos; forPos = sourcePos; }
+            )
+            LPAREN{ lpPos = sourcePos; } InitStatement(ctx):initStmt Condition(ctx):cond? Semicolon:semicolon Expression(ctx):loopExpr? RPAREN{ rpPos = sourcePos; } Statement(ctx):stmt
+        )
+        {
+            return new ForStatementNode(s, initStmt, cond, loopExpr, stmt, attributes, semicolon, forPos, lpPos, rpPos);
+        }
+        ;
+
+    JumpStatement(sngcpp::par::Context* ctx) : Node*
+        ::= BreakStatement(ctx):breakStatement{ return breakStatement; }
+        |   ContinueStatement(ctx):continueStatement{ return continueStatement; }
+        |   ReturnStatement(ctx):returnStatement{ return returnStatement; }
+        |   CoroutineReturnStatement(ctx):coRoutineReturnStatement{ return coRoutineReturnStatement; }
+        |   GotoStatement(ctx):gotoStatement{ return gotoStatement; }
+        ;
+
+    BreakStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos breakPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } BREAK{ breakPos = sourcePos; }
+            |   BREAK{ s = sourcePos; breakPos = sourcePos; }
+            )
+            Semicolon:semicolon
+        )
+        {
+            return new BreakStatementNode(s, attributes, semicolon, breakPos); 
+        }
+        ;
+
+    ContinueStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos continuePos) : Node*
+        ::=
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } CONTINUE{ continuePos = sourcePos; }
+            |   CONTINUE{ s = sourcePos; continuePos = sourcePos; }
+            )
+            Semicolon:semicolon
+        )
+        {
+            return new ContinueStatementNode(s, attributes, semicolon, continuePos);
+        }
+        ;
+
+    ReturnStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos returnPos) : Node*
+        ::=
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } RETURN{ returnPos = sourcePos; }
+            |   RETURN{ s = sourcePos; returnPos = sourcePos; }
+            )
+            ExprOrBracedInitList(ctx):returnValue?
+            Semicolon:semicolon
+        )
+        {
+            return new ReturnStatementNode(s, returnValue, attributes, semicolon, returnPos);
+        }
+        ;
+
+    CoroutineReturnStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos coReturnPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } CO_RETURN{ coReturnPos = sourcePos; }
+            |   CO_RETURN{ s = sourcePos; coReturnPos = sourcePos; }
+            )
+            ExprOrBracedInitList(ctx):returnValue?
+            Semicolon:semicolon
+        )
+        {
+            return new CoReturnStatementNode(s, returnValue, attributes, semicolon, coReturnPos);
+        }
+        ;
+
+    GotoStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos gotoPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } GOTO{ gotoPos = sourcePos; }
+            |   GOTO{ s = sourcePos; gotoPos = sourcePos; }
+            )
+            Identifier(ctx):target
+            Semicolon:semicolon
+        )
+        {
+            return new GotoStatementNode(s, target, attributes, semicolon, gotoPos);
+        }
+        ;
+
+    TryStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos tryPos) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } TRY{ tryPos = sourcePos; }
+            |   TRY{ s = sourcePos; tryPos = sourcePos; }
+            )
+            CompoundStatement(ctx):tryBlock HandlerSeq(ctx):handlers
+        )
+        {
+            return new TryStatementNode(s, tryBlock, handlers, attributes, tryPos);
+        }
+        ;
+
+    HandlerSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> handlerSequenceNode) : Node*
+        ::= 
+        (
+            Handler(ctx):first{ handlerSequenceNode.reset(new HandlerSequenceNode(sourcePos)); handlerSequenceNode->AddNode(first); }
+            (Handler(ctx):next{ handlerSequenceNode->AddNode(next); })*
+        )
+        {
+            return handlerSequenceNode.release();
+        }
+        ;
+
+    Handler(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            CATCH{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } ExceptionDeclaration(ctx):exception RPAREN{ rpPos = sourcePos; } CompoundStatement(ctx):catchBlock
+        )
+        {
+            return new HandlerNode(s, exception, catchBlock, lpPos, rpPos);
+        }
+        ;
+
+    ExceptionDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> typeSpecifiers, var std::unique_ptr<Node> declarator) : Node*
+        ::= 
+        (
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } TypeSpecifierSeq(ctx):typeSpecifiers1{ typeSpecifiers.reset(typeSpecifiers1); }
+            |   TypeSpecifierSeq(ctx):typeSpecifiers2{ s = sourcePos; typeSpecifiers.reset(typeSpecifiers2); }
+            )
+            (   Declarator(ctx):declarator1{ declarator.reset(declarator1); } 
+            |   AbstractDeclarator(ctx):abstractDeclarator{ declarator.reset(abstractDeclarator); }
+            |   empty
+            )
+        )
+        {
+            return new ExceptionDeclarationNode(s, typeSpecifiers.release(), declarator.release(), attributes);
+        }
+        ;
+
+    ExpressionStatement(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> expr) : Node*
+        ::= 
+        (   
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } (Expression(ctx):expr1{ expr.reset(expr1); })?
+            |   Expression(ctx):expr2{ s = sourcePos; expr.reset(expr2); }
+            |   empty
+            )
+            Semicolon:semicolon
+        )
+        {
+            return new ExpressionStatementNode(s, expr.release(), attributes, semicolon);
+        }
+        ;
+
+    DeclarationStatement(sngcpp::par::Context* ctx) : Node*
+        ::=
+        (
+            BlockDeclaration(ctx):declaration
+        )
+        {
+            return new DeclarationStatementNode(sourcePos, declaration);
+        }
+        ;
+
+    InitStatement(sngcpp::par::Context* ctx) : Node*
+        ::= SimpleDeclaration(ctx):simpleDeclaration{ return simpleDeclaration; }
+        |   ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
+        ;
+
+    Condition(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> declSpecifiers) : Node*
+        ::= 
+        (   (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DeclSpecifierSeq(ctx):declSpecifiers1{ declSpecifiers.reset(declSpecifiers1); }
+            |   DeclSpecifierSeq(ctx):declSpecifiers2{ s = sourcePos; declSpecifiers.reset(declSpecifiers2); }
+            )
+            Declarator(ctx):declarator BraceOrEqualInitializer(ctx):initializer
+            {
+                return new InitConditionNode(s, declSpecifiers.release(), declarator, initializer, attributes);
+            }
+        |   Expression(ctx):expr{ return expr; }
+        )
+        ;
+
+    Semicolon : Node*
+        ::= SEMICOLON{ return new SemicolonNode(sourcePos); }
+        ;
+}

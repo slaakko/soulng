@@ -1,0 +1,224 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Class.hpp>
+[hpp]#include <sngcpp20/ast/Template.hpp>
+[hpp]#include <sngcpp20/ast/Identifier.hpp>
+[cpp]#include <sngcpp20/parser/ConceptParser.hpp>
+[cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/LiteralParser.hpp>
+[cpp]#include <sngcpp20/parser/StatementParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) TemplateParser
+{
+    uselexer CppLexer;
+
+    using ConceptParser.ConceptDefinition;
+    using ConceptParser.RequiresClause;
+    using ConceptParser.TypeConstraint;
+    using DeclarationParser.Declaration;
+    using DeclarationParser.ExplicitSpecifier;
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.Ellipses;
+    using ExpressionParser.IdExpression;
+    using FunctionParser.Assign;
+    using FunctionParser.Comma;
+    using FunctionParser.OperatorFunctionId;
+    using FunctionParser.ParameterDeclaration;
+    using FunctionParser.ParameterDeclarationClause;
+    using IdentifierParser.Identifier;
+    using LiteralParser.LiteralOperatorId;
+    using StatementParser.Semicolon;
+    using TypeParser.TypeId;
+
+    TemplateDeclaration(sngcpp::par::Context* ctx) : Node*
+        ::= 
+        (   TemplateHead(ctx):templateHead
+            (   ConceptDefinition(ctx):concepDefinition
+            |   Declaration(ctx):declaration
+            )
+        )
+        ;
+
+    TemplateHead(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            TEMPLATE{ s = sourcePos; }
+            TemplateParameterList(ctx):templateParamList
+            RequiresClause(ctx):requiresClause?
+        )
+        {
+            return new TemplateHeadNode(s, templateParamList, requiresClause);
+        }
+        ;
+
+    TemplateParameterList(sngcpp::par::Context* ctx, var std::unique_ptr<TemplateParameterListNode> node, var SourcePos laPos, var SourcePos raPos) : Node*
+        ::= 
+        (
+            LANGLE{ node.reset(new TemplateParameterListNode(sourcePos)); laPos = sourcePos; } 
+            TemplateParameter(ctx):first{ node->AddNode(first); } 
+            (Comma:comma{ node->AddNode(comma); } TemplateParameter(ctx):next{ node->AddNode(next); })*
+            RANGLE{ raPos = sourcePos; }
+        )
+        {
+            node->SetLAnglePos(laPos);
+            node->SetRAnglePos(raPos);
+            return node.release();
+        }
+        ;
+
+    TemplateParameter(sngcpp::par::Context* ctx) :Node*
+        ::= TypeParameter(ctx):typeParam{ return typeParam; }
+        |   ParameterDeclaration(ctx):param{ return param; }
+        ;
+
+    TypeParameter(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   TemplateHead(ctx):templateHead{ s = sourcePos; } 
+            TypeParameterKey:key 
+            (   Identifier(ctx):identifier? Assign:assign IdExpression(ctx):idExpr{ return new TypeParameterNode(s, key, identifier, assign, idExpr, nullptr, templateHead); }
+            |   (Ellipses:ellipses? Identifier(ctx):identifier2?){ return new TypeParameterNode(s, key, identifier2, nullptr, nullptr, ellipses, templateHead); }
+            )
+        |   TypeParameterKey:key2{ s = sourcePos; }
+            (   Identifier(ctx):identifier2? Assign:assign2 TypeId(ctx):typeId2{ return new TypeParameterNode(s, key2, identifier2, assign2, typeId2, nullptr, nullptr); }
+            |   (Ellipses:ellipses3? Identifier(ctx):identifier3?){ return new TypeParameterNode(s, key2, identifier3, nullptr, nullptr, ellipses3, nullptr); }
+            )
+        |   TypeConstraint(ctx):typeConstraint4{ s = sourcePos; }
+            (   Identifier(ctx):identifier4? Assign:assign4 TypeId(ctx):typeId4{ return new TypeParameterNode(s, typeConstraint4, identifier4, assign4, typeId4, nullptr, nullptr); }
+                (Ellipses:ellipses5? Identifier(ctx):identifier5?){ return new TypeParameterNode(s, typeConstraint4, identifier5, nullptr, nullptr, ellipses5, nullptr); }
+            )
+        )
+        ;
+
+    TypeParameterKey : Node*
+        ::= Typename:typename_{ return typename_; }
+        |   CLASS{ return new ClassNode(sourcePos); }
+        ;
+
+    Typename : Node*
+        ::= TYPENAME{ return new TypenameNode(sourcePos); }
+        ;
+
+    TemplateId(sngcpp::par::Context* ctx, var std::unique_ptr<TemplateIdNode> node, var std::unique_ptr<Node> templateName, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+        ::= 
+        (
+            (
+                (   OperatorFunctionId(ctx):operatorFunctionId{ templateName.reset(operatorFunctionId); s = sourcePos; }
+                |   LiteralOperatorId(ctx):literalOperatorId{ templateName.reset(literalOperatorId); s = sourcePos; }
+                )
+                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushFlag(ContextFlags::parsingTemplate); node.reset(new TemplateIdNode(s, templateName.release())); }
+                TemplateArgumentList(ctx, node.get()):templateArgs?
+                RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
+            )
+            {
+                node->SetLAnglePos(laPos);
+                node->SetRAnglePos(raPos);
+                return node.release();
+            }
+        )
+        |   SimpleTemplateId(ctx):simpleTemplateId{ return simpleTemplateId; }
+        ;
+
+    SimpleTemplateId(sngcpp::par::Context* ctx, var std::unique_ptr<TemplateIdNode> node, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+        ::= 
+        (
+            TemplateName(ctx):templateName{ s = sourcePos; }
+            LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushFlag(ContextFlags::parsingTemplate); node.reset(new TemplateIdNode(s, templateName)); }
+            TemplateArgumentList(ctx, node.get()):templateArgs?
+            RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
+        )
+        {
+            node->SetLAnglePos(laPos);
+            node->SetRAnglePos(raPos);
+            return node.release();
+        }
+        ;
+
+    TemplateName(sngcpp::par::Context* ctx) : Node*
+        ::= Identifier(ctx):identifier{ return identifier; }
+        ;
+
+    TemplateArgumentList(sngcpp::par::Context* ctx, sngcpp::ast::Node* templateIdNode)
+        ::= 
+        (
+            TemplateArgument(ctx):left{ templateIdNode->AddNode(left); }
+            (Comma:comma{ templateIdNode->AddNode(comma); } TemplateArgument(ctx):right{ templateIdNode->AddNode(right); })*
+        )
+        (
+            ELLIPSES{ templateIdNode->AddNode(new EllipsesNode(sourcePos)); }
+        )?
+        ;
+
+    TemplateArgument(sngcpp::par::Context* ctx) : Node*
+        ::= ConstantExpression(ctx):constantExpr{ return constantExpr; }
+        |   TypeId(ctx):typeId{ return typeId; }
+        |   IdExpression(ctx):idExpr{ return idExpr; }
+        ;
+
+    DeductionGuide(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<ParameterListNode> params, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (ExplicitSpecifier(ctx):explicitSpecifier{ s = sourcePos; })?
+            TemplateName(ctx):templateName{ if (!s.IsValid()) s = sourcePos; }
+            LPAREN{ lpPos = sourcePos; params.reset(new ParameterListNode(sourcePos)); } ParameterDeclarationClause(ctx, params.get()):paramDeclClause RPAREN{ rpPos = sourcePos; }
+            Arrow:arrow 
+            SimpleTemplateId(ctx):templateId
+            Semicolon:semicolon
+        )
+        {
+            return new DeductionGuideNode(s, templateName, params.release(), arrow, templateId, explicitSpecifier, semicolon, lpPos, rpPos);
+        }
+        ;
+
+    Arrow : Node*
+        ::= ARROW{ return new ArrowNode(sourcePos); }
+        ;
+
+    ExplicitInstantiation(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            (Extern:extrn{ s = sourcePos; })? 
+            Template:tmp{ if (!s.IsValid()) s = sourcePos; }
+            Declaration(ctx):declaration
+        )
+        {
+            return new ExplicitInstantiationNode(s, extrn, tmp, declaration);
+        }
+        ;
+
+    Extern : Node*
+        ::= EXTERN{ return new ExternNode(sourcePos); }
+        ;
+
+    Template : Node*
+        ::= TEMPLATE{ return new TemplateNode(sourcePos); }
+        ;
+
+    ExplicitSpecialization(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+        ::= 
+        (
+            Template:tmp{ s = sourcePos; }
+            LANGLE{ laPos = sourcePos; }
+            RANGLE{ raPos = sourcePos; }
+            Declaration(ctx):declaration
+        )
+        {
+            return new ExplicitSpecializationNode(s, tmp, declaration, laPos, raPos);
+        }
+        ;
+}

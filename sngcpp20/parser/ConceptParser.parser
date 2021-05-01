@@ -1,0 +1,207 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Concept.hpp>
+[hpp]#include <sngcpp20/ast/Function.hpp>
+[hpp]#include <sngcpp20/ast/Statement.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[hpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[hpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/StatementParser.hpp>
+[cpp]#include <sngcpp20/parser/TemplateParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) ConceptParser
+{
+    uselexer CppLexer;
+
+    using ExpressionParser.Expression;
+    using ExpressionParser.LogicalOrExpression;
+    using ExpressionParser.PrimaryExpression;
+    using FunctionParser.Assign;
+    using FunctionParser.Noexcept;
+    using FunctionParser.ParameterDeclarationClause;
+    using IdentifierParser.Identifier;
+    using IdentifierParser.NestedNameSpecifier;
+    using StatementParser.Semicolon;
+    using TemplateParser.TemplateArgumentList;
+    using TypeParser.TypeName;
+
+    ConceptDefinition(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            CONCEPT{ s = sourcePos; } ConceptName(ctx):conceptName Assign:assign ConstraintExpression(ctx):constraintExpr
+        )
+        {
+            return new ConceptDefinitioNode(s, conceptName, assign, constraintExpr);
+        }
+        ;
+
+    ConceptName(sngcpp::par::Context* ctx) : Node*
+        ::= Identifier(ctx):identifier{ return identifier; }
+        ;
+
+    RequiresExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            REQUIRES{ s = sourcePos; } RequirementParameterList(ctx):params? RequirementBody(ctx):body
+        )
+        {
+            return new RequiresExprNode(s, params, body);
+        }
+        ;
+
+    RequirementParameterList(sngcpp::par::Context* ctx, var std::unique_ptr<ParameterListNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            LPAREN{ lpPos = sourcePos; node.reset(new ParameterListNode(sourcePos)); } ParameterDeclarationClause(ctx, node.get()):paramDeclClause RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            node->SetLParenPos(lpPos);
+            node->SetRParenPos(rpPos);
+            return node.release();
+        }
+        ;
+
+    RequirementBody(sngcpp::par::Context* ctx, var std::unique_ptr<RequirementBodyNode> node, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            LBRACE{ lbPos = sourcePos; node.reset(new RequirementBodyNode(sourcePos)); }
+            RequirementSeq(ctx, node.get()):requirementSeq
+            RBRACE{ rbPos = sourcePos; }
+        )
+        {
+            node->SetLBracePos(lbPos);
+            node->SetRBracePos(rbPos);
+            return node.release();
+        }
+        ;
+
+    RequirementSeq(sngcpp::par::Context* ctx, sngcpp::ast::Node* requirementBody) 
+        ::= (Requirement(ctx):requirement{ requirementBody->AddNode(requirement); })+
+        ;
+
+    Requirement(sngcpp::par::Context* ctx) : Node*
+        ::= SimpleRequirement(ctx):simpleRequirement{ return simpleRequirement; }
+        |   TypeRequirement(ctx):typeRequirement{ return typeRequirement; }
+        |   CompoundRequirement(ctx):compoundRequirement{ return compoundRequirement; }
+        |   NestedRequirement(ctx):nestedRequirement{ return nestedRequirement; }
+        ;
+
+    SimpleRequirement(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= Expression(ctx):expr{ s = sourcePos; } Semicolon:semicolon{ return new SimpleRequirementNode(s, expr, semicolon); }
+        ;
+
+    TypeRequirement(sngcpp::par::Context* ctx, var SourcePos s): Node*
+        ::= TYPENAME{ s = sourcePos; } NestedNameSpecifier(ctx):nns? TypeName(ctx):typeName Semicolon:semicolon{ return new TypeRequirementNode(s, nns, typeName, semicolon); }
+        ;
+
+    CompoundRequirement(sngcpp::par::Context* ctx, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            LBRACE{ lbPos = sourcePos; }
+            Expression(ctx):expr 
+            RBRACE{ rbPos = sourcePos; }
+            Noexcept:noexcept_? ReturnTypeRequirement(ctx):returnTypeRequirement?
+            Semicolon:semicolon
+        )
+        {
+            return new CompoundRequirementNode(lbPos, expr, noexcept_, returnTypeRequirement, semicolon, lbPos, rbPos);
+        }
+        ;
+
+    ReturnTypeRequirement(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            ARROW{ s = sourcePos; } TypeConstraint(ctx):typeConstraint
+        )
+        {
+            return new ReturnTypeRequirementNode(s, typeConstraint);
+        }
+        ;
+
+    NestedRequirement(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            REQUIRES{ s = sourcePos; } ConstraintExpression(ctx):constraintExpr Semicolon:semicolon
+        )
+        {
+            return new NestedRequirementNode(s, constraintExpr, semicolon);
+        }
+        ;
+
+    TypeConstraint(sngcpp::par::Context* ctx, var std::unique_ptr<TypeConstraintNode> node, var std::unique_ptr<Node> conceptName, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+        ::= 
+        (
+            (
+                (   NestedNameSpecifier(ctx):nns{ s = sourcePos; } ConceptName(ctx):conceptName1{ conceptName.reset(new QualifiedIdNode(s, nns, conceptName1)); }
+                |   ConceptName(ctx):conceptName2{ conceptName.reset(conceptName2); }
+                )
+                {
+                    node.reset(new TypeConstraintNode(s, conceptName.release())); 
+                }
+            )
+            (
+                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushFlag(ContextFlags::parsingTemplate); node->SetHasTemplateArgumentList(); }
+                TemplateArgumentList(ctx, node.get()):templateArgs?
+                RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
+            )?
+        )
+        {
+            node->SetLAnglePos(laPos);
+            node->SetRAnglePos(raPos);
+            return node.release();
+        }
+        ;
+
+    ConstraintExpression(sngcpp::par::Context* ctx) : Node*
+        ::= LogicalOrExpression(ctx):logicalOrExpr{ return logicalOrExpr; }
+        ;
+
+    RequiresClause(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            REQUIRES{ s = sourcePos; } ConstraintLogicalOrExpression(ctx):orExpr
+        )
+        {
+            return new RequiresClauseNode(s, orExpr);
+        }
+        ;
+
+    ConstraintLogicalOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
+        ::= 
+        (
+            ConstraintLogicalAndExpression(ctx):left{ node.reset(left); s = sourcePos; } 
+            (
+                OROR{ opPos = sourcePos; } ConstraintLogicalAndExpression(ctx):right{ node.reset(new BinaryExprNode(s, new DisjunctionNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ConstraintLogicalAndExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
+        ::= 
+        (
+            PrimaryExpression(ctx):left{ node.reset(left); }
+            (
+                AMPAMP{ opPos = sourcePos; } PrimaryExpression(ctx):right{ node.reset(new BinaryExprNode(s, new ConjunctionNode(opPos), node.release(), right)); }
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+}

@@ -16,12 +16,14 @@ public:
     bool HasReturn() const { return hasReturn; }
     bool HasPass() const { return hasPass; }
     bool HasSpan() const { return hasSpan; }
+    bool HasSourcePos() const { return hasSourcePos; }
     void Visit(soulng::cppcode::ReturnStatement& object) override;
     void Visit(soulng::cppcode::IdExpr& object) override;
 private:
     bool hasReturn;
     bool hasPass;
     bool hasSpan;
+    bool hasSourcePos;
 };
 
 } } // namespae soulng::spg

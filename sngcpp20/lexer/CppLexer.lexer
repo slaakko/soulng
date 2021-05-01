@@ -1,0 +1,167 @@
+#include <sngcpp20/lexer/CppLexerApi.hpp>
+
+classmap CppClassMap;
+
+prefix "sngcpp20/lexer";
+
+tokens CppTokens
+{
+    (ALIGNAS, "'alignas'"), (ALIGNOF, "'alignof'"), (ASM, "'asm'"), (AUTO, "'auto'"), (BOOL, "'bool'"), (BREAK, "'break'"), (CASE, "'case'"), (CATCH, "'catch'"), 
+    (CHAR, "'char'"), (CHAR8_T, "'char8_t'"), (CHAR16_T, "'char16_t'"), (CHAR32_T, "'char32_t'"), (CLASS, "'class'"), (CONCEPT, "'concept'"), (CONST, "'const'"),
+    (CONSTEVAL, "'consteval'"), (CONSTEXPR, "'constexpr'"),
+    (CONSTINIT, "'constinit'"), (CONST_CAST, "'const_cast'"), (CONTINUE, "'continue'"), (CO_AWAIT, "'co_await'"), (CO_RETURN, "'co_return'"), (CO_YIELD, "'co_yield'"),
+    (DECLTYPE, "'decltype'"), (DEFAULT, "'default'"), (DELETE, "'delete'"), (DO, "'do'"), (DOUBLE, "'double'"), (DYNAMIC_CAST, "'dynamic_cast'"), (ELSE, "'else'"),
+    (ENUM, "'enum'"), (EXPLICIT, "'explicit'"), (EXPORT, "'export'"), (EXTERN, "'extern'"),
+    (FALSE, "'false'"), (FLOAT, "'float'"), (FOR, "'for'"), (FRIEND, "'friend'"), (GOTO, "'goto'"), (IF, "'if'"), (INLINE, "'inline'"), (INT, "'int'"), (LONG, "'long'"),
+    (MUTABLE, "'mutable'"), (NAMESPACE, "'namespace'"), (NEW, "'new'"), (NOEXCEPT, "'noexcept'"), (NULLPTR, "'nullptr'"), (OPERATOR, "'operator'"), (PRIVATE, "'private'"),
+    (PROTECTED, "'protected'"),
+    (PUBLIC, "'public'"), (REGISTER, "'register'"), (REINTERPRET_CAST, "'reinterpret_cast'"), (REQUIRES, "'requires'"), (RETURN, "'return'"), (SHORT, "'short'"), (SIGNED, "'signed'"),
+    (SIZEOF, "'sizeof'"), (STATIC, "'static'"), (STATIC_ASSERT, "'static_assert'"), (STATIC_CAST, "'static_cast'"), (STRUCT, "'struct'"), (SWITCH, "'switch'"), (TEMPLATE, "'template'"),
+    (THIS, "'this'"), (THREAD_LOCAL, "'thread_local'"), (THROW, "'throw'"),
+    (TRUE, "'true'"), (TRY, "'try'"), (TYPEDEF, "'typedef'"), (TYPEID, "'typeid'"), (TYPENAME, "'typename'"), (UNION, "'union'"), (UNSIGNED, "'unsigned'"), (USING, "'using'"),
+    (VIRTUAL, "'virtual'"), (VOID, "'void'"), (VOLATILE, "'volatile'"), (WCHAR_T, "'wchar_t'"), (WHILE, "'while'"),
+    (__DECLSPEC, "'__declspec'"), (__THREAD, "'__thread'"),
+    (FLOATLIT, "floating literal"), (INTLIT, "integer literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"), (BEGINRAWSTRINGLIT, "'begin raw string literal'"),
+    (ID, "identifier"), (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
+    (SHIFTRIGHTASSIGN, "'>>='"), (SHIFTLEFTASSIGN, "'<<='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"), (QUEST, "'?'"), (COLON, "':'"),
+    (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
+    (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
+    (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (ANGLEHEADERNAME, "'angle header name'"), (QUOTEHEADERNAME, "'quote header name'"),
+    (MAX, "max")
+}
+
+keywords CppKeywords
+{
+    ("alignas", ALIGNAS), ("alignof", ALIGNOF), ("asm", ASM), ("auto", AUTO), ("bool", BOOL), ("break", BREAK), ("case", CASE), ("catch", CATCH),
+    ("char", CHAR), ("char8_t", CHAR8_T), ("char16_t", CHAR16_T), ("char32_t", CHAR32_T), ("class", CLASS), ("concept", CONCEPT), ("const", CONST),
+    ("consteval", CONSTEVAL), ("constexpr", CONSTEXPR),
+    ("constinit", CONSTINIT), ("const_cast", CONST_CAST), ("continue", CONTINUE), ("co_await", CO_AWAIT), ("co_return", CO_RETURN), ("co_yield", CO_YIELD),
+    ("decltype", DECLTYPE), ("default", DEFAULT), ("delete", DELETE), ("do", DO), ("double", DOUBLE), ("dynamic_cast", DYNAMIC_CAST), ("else", ELSE),
+    ("enum", ENUM), ("explicit", EXPLICIT), ("export", EXPORT), ("extern", EXTERN),
+    ("false", FALSE), ("float", FLOAT), ("for", FOR), ("friend", FRIEND), ("goto", GOTO), ("if", IF), ("inline", INLINE), ("int", INT), ("long", LONG),
+    ("mutable", MUTABLE), ("namespace", NAMESPACE), ("new", NEW), ("noexcept", NOEXCEPT), ("nullptr", NULLPTR), ("operator", OPERATOR), ("private", PRIVATE),
+    ("protected", PROTECTED),
+    ("public", PUBLIC), ("register", REGISTER), ("reinterpret_cast", REINTERPRET_CAST), ("requires", REQUIRES), ("return", RETURN), ("short", SHORT), ("signed", SIGNED),
+    ("sizeof", SIZEOF), ("static", STATIC), ("static_assert", STATIC_ASSERT), ("static_cast", STATIC_CAST), ("struct", STRUCT), ("switch", SWITCH), ("template", TEMPLATE),
+    ("this", THIS), ("thread_local", THREAD_LOCAL), ("throw", THROW),
+    ("true", TRUE), ("try", TRY), ("typedef", TYPEDEF), ("typeid", TYPEID), ("typename", TYPENAME), ("union", UNION), ("unsigned", UNSIGNED), ("using", USING),
+    ("virtual", VIRTUAL), ("void", VOID), ("volatile", VOLATILE), ("wchar_t", WCHAR_T), ("while", WHILE),
+    ("__thread", __THREAD), ("__declspec", __DECLSPEC)
+}
+
+expressions
+{
+    ws = "[\n\r\t ]";
+    newline = "\r\n|\n|\r";
+    linecomment = "//[^\n\r]*{newline}";
+    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    ppline = "[\t ]*#[^\x0\r\n]*{newline}";
+    separators = "({ppline}|{linecomment}|{blockcomment}|{ws})+";
+    id = "{idstart}{idcont}*";
+    decimaldigit = "[0-9]";
+    digitsequence = "({decimaldigit}|')+";
+    hexdigit = "[0-9a-fA-F]";
+    hexdigitsequence = "({hexdigit}|')+";
+    fractionalconstant = "{digitsequence}?\.{digitsequence}|{digitsequence}\.";
+    sign = "\+|-";
+    exponentpart = "[eE]{sign}?{digitsequence}";
+    binaryexponentpart = "[pP]{sign}?{digitsequence}";
+    floatingsuffix = "[fF]|[lL]";
+    decimalfloatingliteral = "({fractionalconstant}{exponentpart}?|{digitsequence}{exponentpart}){floatingsuffix}?";
+    hexadecimalfractionalconstant = "{hexdigitsequence}?\.{hexdigitsequence}|{hexdigitsequence}\.";
+    hexadecimalfloatingliteral = "(0x|0X){hexadecimalfractionalconstant}{binaryexponentpart}{floatingsuffix}?|(0x|0X){hexdigitsequence}{binaryexponentpart}{floatingsuffix}?";
+    floatingliteral = "{decimalfloatingliteral}|{hexadecimalfloatingliteral}";
+    binarydigit = "0|1";
+    hexadecimalliteral = "(0x|0X)({hexdigit}|')+";
+    octaldigit = "[0-7]";
+    octalliteral = "0({octaldigit}|')*";
+    decimalliteral = "[1-9]({decimaldigit}|')*";
+    integersuffix = "[uU](ll|LL)?|[uU][lL]|[uU][zZ]|(ll|LL)[uU]?|[lL][uU]?|[zZ][uU]?";
+    binaryliteral = "(0b|0B)({binarydigit}|')+";
+    integerliteral = "{binaryliteral}{integersuffix}?|{hexadecimalliteral}{integersuffix}?|{octalliteral}{integersuffix}?|{decimalliteral}{integersuffix}?";
+    hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    hex8 = "{hex4}{hex4}";
+    simpleescape = "\\['\"\?\\abfnrtv]";
+    octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";
+    hexescape = "\\x{hexdigit}+";
+    escape = "{simpleescape}|{octalescape}|{hexescape}";
+    cchar = "[^\r\n\\']|{escape}|\\u{hex4}|\\U{hex8}";
+    encodingprefix = "u8|u|U|L";
+    characterliteral = "{encodingprefix}?'{cchar}+'";
+    schar = "[^\r\n\\\"]|{escape}|\\u{hex4}|\\U{hex8}";
+    beginrawstringliteral = "{encodingprefix}?R\"";
+    stringliteral = "{encodingprefix}?\"{schar}*\";
+}
+
+lexer api(LEXER_API) CppLexer
+{
+    "{separators}" {}
+    "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
+    "{floatingliteral}" { return FLOATLIT; }
+    "{integerliteral}" { return INTLIT; }
+    "{characterliteral}" { return CHARLIT; }
+    "{beginrawstringliteral}" { return BEGINRAWSTRINGLIT; }
+    "{stringliteral}" { return STRINGLIT; }
+    "::" { return COLONCOLON; }
+    "," { return COMMA; }
+    "=" { return ASSIGN; }
+    "\*=" { return MULASSIGN; }
+    "/=" { return DIVASSIGN; }
+    "%=" { return REMASSIGN; }
+    "\+=" { return ADDASSIGN; }
+    "-=" { return SUBASSIGN; }
+    ">>=" { return SHIFTRIGHTASSIGN; }
+    "<<=" { return SHIFTLEFTASSIGN; }
+    "&=" { return ANDASSIGN; }
+    "^=" { return XORASSIGN; }
+    "\|=" { return ORASSIGN; }
+    "\?" { return QUEST; }
+    ":" { return COLON; }
+    "\|\|" { return OROR; }
+    "&&" { return AMPAMP; }
+    "\|" { return OR; }
+    "^" { return XOR; }
+    "&" { return AMP; }
+    "==" { return EQ; }
+    "!=" { return NEQ; }
+    "<=" { return LEQ; }
+    ">=" { return GEQ; }
+    "<=>" { return SPACESHIP; }
+    "<" { return LANGLE; }
+    ">" { return RANGLE; }
+    "<<" { return SHIFTLEFT; }
+    ">>" $(1) { return SHIFTRIGHT; }
+    "\+" { return PLUS; }
+    "-" { return MINUS; }
+    "\*" { return STAR; }
+    "/" { return DIV; }
+    "%" { return MOD; }
+    "\.\*" { return DOTSTAR; }
+    "->\*" { return ARROWSTAR; }
+    "\(" { return LPAREN; }
+    "\)" { return RPAREN; }
+    "\+\+" { return PLUSPLUS; }
+    "--" { return MINUSMINUS; }
+    "!" { return EXCLAMATION; }
+    "~" { return TILDE; }
+    "\[" { return LBRACKET; }
+    "\]" { return RBRACKET; }
+    "\." { return DOT; }
+    "->" { return ARROW; }
+    ";" { return SEMICOLON; }
+    "\.\.\." { return ELLIPSES; }
+    "\{" { return LBRACE; }
+    "\}" { return RBRACE; }
+
+    variables
+    {
+        int langleCount;
+    }
+
+    actions
+    {
+        $(1) = { if (langleCount > 0) return INVALID_TOKEN; }
+    }
+}

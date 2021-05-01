@@ -7,6 +7,7 @@
 #define SOULNG_LEXER_LEXER_INCLUDED
 #include <soulng/lexer/Keyword.hpp>
 #include <soulng/lexer/Span.hpp>
+#include <soulng/lexer/SourcePos.hpp>
 #include <soulng/lexer/ParsingLog.hpp>
 #include <vector>
 #include <list>
@@ -45,6 +46,7 @@ public:
     void operator++();
     int64_t GetPos() const;
     void SetPos(int64_t pos);
+    SourcePos GetSourcePos() const;
     virtual int NextState(int state, char32_t c);
     void SetKeywordMap(KeywordMap* keywordMap_) { keywordMap = keywordMap_; }
     KeywordMap* GetKeywordMap() { return keywordMap; }
@@ -59,6 +61,7 @@ public:
     void SetCountLines(bool countLines_) { countLines = countLines_; }
     Token token;
     std::u32string GetMatch(const Span& span) const;
+    std::u32string GetMatch(int64_t pos) const;
     std::u32string ErrorLines(const Token& token) const;
     std::u32string ErrorLines(const Span& span) const;
     void GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) const;
@@ -79,9 +82,8 @@ public:
     bool GetFlag(LexerFlags flag) const { return (flags & flag) != LexerFlags::none; }
     void SetFlag(LexerFlags flag) { flags = flags | flag; }
     void ResetFlag(LexerFlags flag) { flags = flags & ~flag; }
-protected:
-    Lexeme lexeme;
     int32_t line;
+    Lexeme lexeme;
 private:
     std::u32string content;
     std::string fileName;
@@ -90,6 +92,7 @@ private:
     const char32_t* start;
     const char32_t* end;
     const char32_t* pos;
+    std::vector<const char32_t*> lineStarts;
     std::vector<Token> tokens;
     std::vector<Token>::iterator current;
     std::vector<std::exception> errors;
@@ -99,6 +102,7 @@ private:
     char32_t separatorChar;
     LexerFlags flags;
     void NextToken();
+    void CalculateLineStarts();
 };
 
 SOULNG_LEXER_API std::u32string GetErrorLines(const char32_t* start, const char32_t* end, const Span& externalSpan);

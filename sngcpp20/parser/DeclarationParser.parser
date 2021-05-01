@@ -1,0 +1,686 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Declaration.hpp>
+[hpp]#include <sngcpp20/ast/Qualifier.hpp>
+[cpp]#include <sngcpp20/parser/AttributeParser.hpp>
+[cpp]#include <sngcpp20/parser/ConceptParser.hpp>
+[cpp]#include <sngcpp20/parser/EnumParser.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/InitializationParser.hpp>
+[cpp]#include <sngcpp20/parser/LiteralParser.hpp>
+[cpp]#include <sngcpp20/parser/ModuleParser.hpp>
+[cpp]#include <sngcpp20/parser/StatementParser.hpp>
+[cpp]#include <sngcpp20/parser/TemplateParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) DeclarationParser
+{
+    uselexer CppLexer;
+
+    using AttributeParser.AttributeSpecifierSeq;
+    using ConceptParser.RequiresClause;
+    using EnumParser.ElaboratedEnumSpecifier;
+    using EnumParser.EnumBase;
+    using EnumParser.EnumHeadName;
+    using EnumParser.EnumKey;
+    using EnumParser.OpaqueEnumDeclaration;
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.Ellipses;
+    using ExpressionParser.IdExpression;
+    using FunctionParser.Assign;
+    using FunctionParser.Comma;
+    using FunctionParser.FunctionDefinition;
+    using FunctionParser.NoDeclSpecFunctionDeclaration;
+    using FunctionParser.ParameterDeclarationClause;
+    using IdentifierParser.ColonColon;
+    using IdentifierParser.Identifier;
+    using IdentifierParser.IdentifierList;
+    using IdentifierParser.NestedNameSpecifier;
+    using IdentifierParser.UnqualifiedId;
+    using InitializationParser.Initializer;
+    using LiteralParser.StringLiteral;
+    using ModuleParser.ExportDeclaration;
+    using ModuleParser.ImportDeclaration;
+    using StatementParser.Semicolon;
+    using TemplateParser.DeductionGuide;
+    using TemplateParser.ExplicitInstantiation;
+    using TemplateParser.ExplicitSpecialization;
+    using TemplateParser.Extern;
+    using TemplateParser.TemplateDeclaration;
+    using TemplateParser.Typename;
+    using TypeParser.DefiningTypeSpecifierSeq;
+    using TypeParser.DefiningTypeId;
+    using TypeParser.DefiningTypeSpecifier;
+    using TypeParser.TypeId;
+
+    DeclarationSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+        ::= 
+        (
+            Declaration(ctx):first{ node.reset(new DeclarationSequenceNode(s)); node->AddNode(first); } 
+            (Declaration(ctx):next{ node->AddNode(next); })*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    Declaration(sngcpp::par::Context* ctx) : Node*
+        ::= BlockDeclaration(ctx):blockDeclaration{ return blockDeclaration; }
+        |   NoDeclSpecFunctionDeclaration(ctx):noDeclSpecFunctionDeclaration { return noDeclSpecFunctionDeclaration; }
+        |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
+        |   TemplateDeclaration(ctx):templateDeclaration{ return templateDeclaration; }
+        |   DeductionGuide(ctx):deductionGuide{ return deductionGuide; }
+        |   ExplicitInstantiation(ctx):explicitInstantiation{ return explicitInstantiation; }
+        |   ExplicitSpecialization(ctx):explicitSpecialization{ return explicitSpecialization; }
+        |   ExportDeclaration(ctx):exportDeclaration{ return exportDeclaration; }
+        |   LinkageSpecification(ctx):linkageSpecification{ return linkageSpecification; }
+        |   NamespaceDefinition(ctx):namespaceDefinition{ return namespaceDefinition; }
+        |   EmptyDeclaration:emptyDeclaration{ return emptyDeclaration; }
+        |   AttributeDeclaration(ctx):attributeDeclaration{ return attributeDeclaration; }
+        |   ImportDeclaration(ctx):moduleImportDeclaration{ return moduleImportDeclaration; }
+        ;
+
+    BlockDeclaration(sngcpp::par::Context* ctx) : Node*
+        ::= SimpleDeclaration(ctx):simpleDeclation{ return simpleDeclation; }
+        |   AsmDeclaration(ctx):asmDeclaration{ return asmDeclaration; }
+        |   NamespaceAliasDefinition(ctx):namespaceAliasDefinition{ return namespaceAliasDefinition; }
+        |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
+        |   UsingEnumDeclaration(ctx):usingEnumDeclaration{ return usingEnumDeclaration; }
+        |   UsingDirective(ctx):usingDirective{ return usingDirective; }
+        |   StaticAssertDeclaration(ctx):staticAssertDeclaration{ return staticAssertDeclaration; }
+        |   AliasDeclaration(ctx):aliasDeclaration{ return aliasDeclaration; }
+        |   OpaqueEnumDeclaration(ctx):opaqueEnumDeclaration{ return opaqueEnumDeclaration; }
+        ;
+
+    SimpleDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } 
+            DeclSpecifierSeq(ctx):declSpecifierSeq 
+            InitDeclaratorList(ctx):initDeclaratorList 
+            Semicolon:semicolon
+            {
+                return new SimpleDeclarationNode(s, declSpecifierSeq, initDeclaratorList, attributes, semicolon); 
+            }
+        |   DeclSpecifierSeq(ctx):declSpecifierSeq2{ s = sourcePos; } 
+            InitDeclaratorList(ctx):initDeclaratorList2? 
+            Semicolon:semicolon2
+            { 
+                return new SimpleDeclarationNode(s, declSpecifierSeq2, initDeclaratorList2, nullptr, semicolon2);
+            }
+        |   (AttributeSpecifierSeq(ctx):attributes3{ s = sourcePos; })? 
+            DeclSpecifierSeq(ctx):declSpecifierSeq3{ if (!s.IsValid()) s = sourcePos; } 
+            RefQualifier:ref? 
+            LBRACKET{ lbPos = sourcePos; }
+            IdentifierList(ctx):identifiers
+            RBRACKET{ rbPos = sourcePos; }
+            Initializer(ctx):initializer
+            Semicolon:semicolon3
+            {
+                return new StructuredBindingNode(s, declSpecifierSeq3, ref, identifiers, initializer, attributes3, semicolon3, lbPos, rbPos);
+            }
+        )
+        ;
+
+    AsmDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })?
+            Asm:asm_{ if (!s.IsValid()) s = sourcePos; } 
+            LPAREN{ lpPos = sourcePos; } 
+            StringLiteral(ctx):asmText
+            RPAREN{ rpPos = sourcePos; } 
+            Semicolon:semicolon
+        )
+        {
+            return new AsmDeclarationNode(s, asm_, asmText, semicolon, attributes, lpPos, rpPos);
+        }
+        ;
+
+    Asm : Node*
+        ::= ASM{ return new AsmNode(sourcePos); }
+        ;
+
+    LinkageSpecification(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::=
+        (
+            Extern:extrn{ s = sourcePos; } 
+            StringLiteral(ctx):linkage 
+            (
+                LBRACE{ lbPos = sourcePos; } 
+                DeclarationSeq(ctx):declarations? 
+                (RBRACE{ rbPos = sourcePos; })
+                {
+                    node.reset(new LinkageSpecificationNode(s, extrn, linkage, declarations, lbPos, rbPos)); 
+                }
+            |   Declaration(ctx):declaration
+                {
+                    node.reset(new LinkageSpecificationNode(s, extrn, linkage, declaration, SourcePos(), SourcePos())); 
+                }
+            )
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    NamespaceDefinition(sngcpp::par::Context* ctx) : Node*
+        ::= NamedNamespaceDefinition(ctx):namedNamespaceDefinition{ return namedNamespaceDefinition; }
+        |   UnnamedNamespaceDefinition(ctx):unnamedNamespaceDefinition{ return unnamedNamespaceDefinition; }
+        |   NestedNamespaceDefinition(ctx):nestedNamespaceDefinition{ return nestedNamespaceDefinition; }
+        ;
+
+    NamedNamespaceDefinition(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            (Inline:inln{ s = sourcePos; })?
+            Namespace:nskw{ if (!s.IsValid()) s = sourcePos; }
+            AttributeSpecifierSeq(ctx):attributes?
+            Identifier(ctx):nsName
+            LBRACE{ lbPos = sourcePos; }
+            NamespaceBody(ctx):nsBody
+            RBRACE{ rbPos = sourcePos; }
+        )
+        {
+            return new NamespaceDefinitionNode(s, nskw, nsName, nsBody, inln, attributes, lbPos, rbPos);
+        }
+        ;
+
+    UnnamedNamespaceDefinition(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            (Inline:inln{ s = sourcePos; })?
+            Namespace:nskw{ if (!s.IsValid()) s = sourcePos; }
+            AttributeSpecifierSeq(ctx):attributes?
+            LBRACE{ lbPos = sourcePos; }
+            NamespaceBody(ctx):nsBody
+            RBRACE{ rbPos = sourcePos; }
+        )
+        {
+            return new NamespaceDefinitionNode(s, nskw, nullptr, nsBody, inln, attributes, lbPos, rbPos);
+        }
+        ;
+
+    NestedNamespaceDefinition(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<NestedNameSpecifierNode> nns,
+        var std::unique_ptr<Node> qualifiedNsName, var std::unique_ptr<Node> nsNameNode, var SourcePos nnsPos, var SourcePos inlnPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            Namespace:nskw{ s = sourcePos; }
+            (
+                empty{ nns.reset(new NestedNameSpecifierNode(sourcePos)); }
+                EnclosingNamespaceSpecifier(ctx, nns.get()):encNsSpecifier{ nnsPos = sourcePos; }
+                ColonColon:colonColon{ nns->AddNode(colonColon); }
+                (   (Inline:inln{ inlnPos = sourcePos; } Identifier(ctx):nsName){ nsNameNode.reset(new PrefixNode(inlnPos, inln, nsName)); }
+                |   Identifier(ctx):nsName2{ nsNameNode.reset(nsName2); }
+                )
+                {
+                    qualifiedNsName.reset(new QualifiedIdNode(nnsPos, nns.release(), nsNameNode.release()));
+                }
+            )
+            LBRACE{ lbPos = sourcePos; }
+            NamespaceBody(ctx):nsBody
+            RBRACE{ rbPos = sourcePos; }
+        )
+        {
+            return new NamespaceDefinitionNode(s, nskw, qualifiedNsName.release(), nsBody, inln, nullptr, lbPos, rbPos);
+        }
+        ;
+
+    NamespaceBody(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            (DeclarationSeq(ctx):declarations{ s = sourcePos; })?
+        )
+        {
+            return new NamespaceBodyNode(s, declarations);
+        }
+        ;
+
+    EnclosingNamespaceSpecifier(sngcpp::par::Context* ctx, sngcpp::ast::Node* container) : Node*
+        ::= Identifier(ctx):first{ container->AddNode(first); } 
+            (   ColonColon:colonColon{ container->AddNode(colonColon); } 
+                (Inline:inln{ container->AddNode(inln); })?
+                Identifier(ctx):next{ container->AddNode(next); }
+            )*
+        ;
+
+    NamespaceAliasDefinition(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            Namespace:ns{ s = sourcePos; } Identifier(ctx):id Assign:assign QualifiedNamespaceSpecifier(ctx):qns Semicolon:semicolon
+        )
+        {
+            return new NamespaceAliasDefinitionNode(s, id, assign, qns, semicolon);
+        }
+        ;
+
+    Namespace : Node*
+        ::= NAMESPACE{ return new NamespaceNode(sourcePos); }
+        ;
+
+    QualifiedNamespaceSpecifier(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= NestedNameSpecifier(ctx):nns{ s = sourcePos; } NamespaceName(ctx):nsName
+            {
+                return new QualifiedIdNode(s, nns, nsName);
+            }
+        |   NamespaceName(ctx):nsName2
+            { 
+                return nsName2; 
+            }
+        ;
+
+    UsingDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   
+            Using:usng{ s = sourcePos; } UsingDeclaratorList(ctx):usingDeclarators Semicolon:semicolon
+        )
+        {
+            return new UsingDeclarationNode(s, usng, usingDeclarators, semicolon);
+        }
+        ;
+
+    Using : Node*
+        ::= USING{ return new UsingNode(sourcePos); }
+        ;
+
+    UsingDeclaratorList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            UsingDeclarator(ctx):first{ node.reset(new UsingDeclaratorListNode(sourcePos)); node->AddNode(first); }
+            (Comma:comma{ node->AddNode(comma); } UsingDeclarator(ctx):next{ node->AddNode(next); })*
+            (Ellipses:ellipses{ node->AddNode(ellipses); })?
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    UsingDeclarator(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
+        ::= Typename:typename_{ s = sourcePos; } NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } UnqualifiedId(ctx):unqualifiedId
+            {
+                return new PrefixNode(s, typename_, new QualifiedIdNode(nnsPos, nns, unqualifiedId));
+            }
+        |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } UnqualifiedId(ctx):unqualifiedId2
+            { 
+                return new QualifiedIdNode(s, nns2, unqualifiedId2); 
+            }
+        ;
+
+    UsingEnumDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            Using:usng{ s = sourcePos; } ElaboratedEnumSpecifier(ctx):ees Semicolon:semicolon
+        )
+        {
+            return new UsingEnumDeclarationNode(s, usng, ees, semicolon);
+        }
+        ;
+
+    UsingDirective(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
+        ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
+            Using:usng{ if (!s.IsValid()) s = sourcePos; }
+            Namespace:nskw
+            (   NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } NamespaceName(ctx):nsName Semicolon:semicolon
+                {
+                    return new UsingDirectiveNode(s, usng, nskw, new QualifiedIdNode(nnsPos, nns, nsName), semicolon, attributes);
+                }
+            |   NamespaceName(ctx):nsName2 Semicolon:semicolon2
+                {
+                    return new UsingDirectiveNode(s, usng, nskw, nsName2, semicolon2, attributes);
+                }
+            )
+        ;
+
+    NamespaceName(sngcpp::par::Context* ctx) : Node*
+        ::= Identifier(ctx):identifier{ return identifier; }
+        ;
+
+    StaticAssertDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= StaticAssert:staticAssert{ s = sourcePos; } 
+            LPAREN{ lpPos = sourcePos; }
+            ConstantExpression(ctx):constantExpr
+            (
+                Comma:comma
+                StringLiteral(ctx):stringLiteral
+                RPAREN{ lpPos = sourcePos;}
+                Semicolon:semicolon
+                {
+                    return new StaticAssertDeclarationNode(s, staticAssert, constantExpr, comma, stringLiteral, semicolon, lpPos, rpPos);
+                }
+            |   RPAREN{ rpPos = sourcePos; }
+                Semicolon:semicolon2
+                {
+                    return new StaticAssertDeclarationNode(s, staticAssert, constantExpr, nullptr, nullptr, semicolon2, lpPos, rpPos);
+                }
+            )
+        ;
+
+    StaticAssert : Node*
+        ::= STATIC_ASSERT{ return new StaticAssertNode(sourcePos); }
+        ;
+
+    AliasDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   Using:usng{ s = sourcePos; } 
+            Identifier(ctx):identifier 
+            AttributeSpecifierSeq(ctx):attributes? 
+            Assign:assign 
+            DefiningTypeId(ctx):definingTypeId 
+            Semicolon:semicolon
+        )
+        {
+            return new AliasDeclarationNode(s, usng, identifier, assign, definingTypeId, attributes, semicolon);
+        }
+        ;
+
+    EmptyDeclaration : Node*
+        ::= SEMICOLON{ return new EmptyDeclarationNode(sourcePos); }
+        ;
+
+    AttributeDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   
+            AttributeSpecifierSeq(ctx):attributes 
+            Semicolon:semicolon
+        )
+        {
+            return new AttributeDeclarationNode(s, attributes, semicolon);
+        }
+        ;
+
+    DeclSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            DeclSpecifier(ctx):first{ node.reset(new DeclSpecifierSequenceNode(sourcePos)); node->AddNode(first); } 
+            (DeclSpecifier(ctx):next{ node->AddNode(next); })*
+            (AttributeSpecifierSeq(ctx):attributes{ node->AddNode(attributes); })?
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    Inline : Node*
+        ::= INLINE{ return new InlineNode(sourcePos); }
+        ;
+
+    DeclSpecifier(sngcpp::par::Context* ctx) : Node* 
+        ::= StorageClassSpecifier:storageClassSpecifier{ return storageClassSpecifier; }
+        |   DefiningTypeSpecifier(ctx):definingTypeSpecifier{ return definingTypeSpecifier; }
+        |   FunctionSpecifier(ctx):functionSpecifier{ return functionSpecifier; }
+        |   FRIEND{ return new FriendNode(sourcePos); }
+        |   TYPEDEF{ return new TypedefNode(sourcePos); }
+        |   CONSTEXPR{ return new ConstExprNode(sourcePos); }
+        |   CONSTEVAL{ return new ConstEvalNode(sourcePos); }
+        |   CONSTINIT{ return new ConstInitNode(sourcePos); }
+        |   Inline:inln{ return inln; }
+        ;
+
+    StorageClassSpecifier : Node*
+        ::= STATIC{ return new StaticNode(sourcePos); }
+        |   THREAD_LOCAL{ return new ThreadLocalNode(sourcePos); }
+        |   EXTERN{ return new ExternNode(sourcePos); }
+        |   MUTABLE{ return new MutableNode(sourcePos); }
+        ;
+
+    FunctionSpecifier(sngcpp::par::Context* ctx) : Node*
+        ::= VIRTUAL{ return new VirtualNode(sourcePos); }
+        |   ExplicitSpecifier(ctx):explicitSpecifier{ return explicitSpecifier; }
+        ;
+
+    ExplicitSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (   EXPLICIT{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } ConstantExpression(ctx):expr RPAREN{ rpPos = sourcePos; return new ConditionalExplicitNode(s, expr, lpPos, rpPos); }
+        |   EXPLICIT{ return new ExplicitNode(sourcePos); }
+        )
+        ;
+
+    InitDeclaratorList(sngcpp::par::Context* ctx, var std::unique_ptr<InitDeclaratorListNode> node) : Node*
+        ::= InitDeclarator(ctx):first{ node.reset(new InitDeclaratorListNode(sourcePos)); node->AddNode(first); } 
+            (Comma:comma{ node->AddNode(comma); } InitDeclarator(ctx):next{ node->AddNode(next); })*
+        ;
+
+    InitDeclarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= Declarator(ctx):declarator{ s = sourcePos; }
+        (   RequiresClause(ctx):requiresClause{ return new InitDeclaratorNode(s, declarator, requiresClause); }
+        |   Initializer(ctx):initializer{ return new InitDeclaratorNode(s, declarator, initializer); }
+        |   empty{ return declarator; }
+        )
+        ;
+
+    Declarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::=
+        (   NoPtrDeclarator(ctx):declarator{ s = sourcePos; } ParametersAndQualifiers(ctx):paramsAndQualifiers TrailingReturnType(ctx):trailingReturnType
+            {
+                return new TrailingInvokeDeclaratorNode(s, declarator, paramsAndQualifiers, trailingReturnType);
+            }
+        )
+        |   PtrDeclarator(ctx):ptrDeclarator{ return ptrDeclarator; }
+        ;
+
+    PtrDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<PtrDeclaratorNode> node) : Node*
+        ::= 
+        (
+            PtrOperator(ctx):first{ node.reset(new PtrDeclaratorNode(sourcePos)); node->AddNode(first); } 
+            (PtrOperator(ctx):next{ node->AddNode(next); })* 
+            NoPtrDeclarator(ctx):noPtrDeclarator{ node->AddNode(noPtrDeclarator); return node.release(); }
+        )
+        |   NoPtrDeclarator(ctx):noPtrDecl{ return noPtrDecl; }
+        ;
+
+    NoPtrDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            (   LPAREN{ s = sourcePos; lpPos = sourcePos; } PtrDeclarator(ctx):declarator RPAREN{ rpPos = sourcePos; node.reset(new ParenthesizedDeclaratorNode(s, declarator, lpPos, rpPos)); }
+            |   DeclaratorId(ctx):declaratorId{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes{ node.reset(new TrailingAttributesNode(s, declaratorId, attributes)); }
+            |   DeclaratorId(ctx):declaratorId2{ s = sourcePos; node.reset(declaratorId2); }
+            )
+            (   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
+                (   AttributeSpecifierSeq(ctx):attributes2{ node.reset(new TrailingAttributesNode(lbPos, node.release(), attributes2)); }
+                |   empty
+                )
+            |   ParametersAndQualifiers(ctx):paramsAndQualifiers
+                { 
+                    node.reset(new InvokeDeclaratorNode(s, node.release(), paramsAndQualifiers)); 
+                } 
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ParametersAndQualifiers(sngcpp::par::Context* ctx, 
+        var std::unique_ptr<ParameterListNode> parameterListNode, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (   
+            LPAREN{ s = sourcePos; lpPos = sourcePos; parameterListNode.reset(new ParameterListNode(s)); parameterListNode->SetLParenPos(lpPos); } 
+            ParameterDeclarationClause(ctx, parameterListNode.get()):params 
+            RPAREN{ rpPos = sourcePos; parameterListNode->SetRParenPos(rpPos); trailingQualifiersNode.reset(new TrailingQualifiersNode(s, parameterListNode.release())); }
+            (CVQualifierSeq:cvQualifiers{ trailingQualifiersNode->AddNode(cvQualifiers); })?
+            (RefQualifier:refQualifier{ trailingQualifiersNode->AddNode(refQualifier); })?
+            (NoexceptSpecifier(ctx):noexceptSpecifier{ trailingQualifiersNode->AddNode(noexceptSpecifier); })?
+            (AttributeSpecifierSeq(ctx):attributes{ trailingQualifiersNode->AddNode(attributes); })?
+        )
+        {
+            if (trailingQualifiersNode->Nodes().IsEmpty())
+            {
+                return trailingQualifiersNode->ReleaseSubject();
+            }
+            else
+            {
+                return trailingQualifiersNode.release();
+            }
+        }
+        ;
+
+    TrailingReturnType(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            ARROW{ s = sourcePos; } TypeId(ctx):typeId
+        )
+        {
+            return new TrailingReturnTypeNode(s, typeId);
+        }
+        ;
+
+    PtrOperator(sngcpp::par::Context* ctx, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode, var SourcePos s) : Node*
+        ::= 
+        (   (NestedNameSpecifier(ctx):nns{ s = sourcePos; } Ptr:ptr)
+            { 
+                trailingQualifiersNode.reset(new TrailingQualifiersNode(s, new QualifiedPtrNode(s, nns, ptr)));
+            }
+            (AttributeSpecifierSeq(ctx):attributes{ trailingQualifiersNode->AddNode(attributes); })? 
+            (CVQualifierSeq:cvQualifiers{ trailingQualifiersNode->AddNode(cvQualifiers); })?
+        |   Ptr:ptr2
+            { 
+                s = sourcePos; 
+                trailingQualifiersNode.reset(new TrailingQualifiersNode(s, ptr2));
+            } 
+            (AttributeSpecifierSeq(ctx):attributes2{ trailingQualifiersNode->AddNode(attributes2); })? 
+            (CVQualifierSeq:cvQualifiers2{ trailingQualifiersNode->AddNode(cvQualifiers2); })?
+        |   LvalueRef:lvalueRef
+            { 
+                s = sourcePos; 
+                trailingQualifiersNode.reset(new TrailingQualifiersNode(s, lvalueRef));
+            } 
+            (AttributeSpecifierSeq(ctx):attributes3{ trailingQualifiersNode->AddNode(attributes3); })?
+        |   RvalueRef:rvalueRef
+            { 
+                s = sourcePos; 
+                trailingQualifiersNode.reset(new TrailingQualifiersNode(s, rvalueRef));
+            } 
+            (AttributeSpecifierSeq(ctx):attributes4{ trailingQualifiersNode->AddNode(attributes4); })?
+        )
+        {
+            if (trailingQualifiersNode->Nodes().IsEmpty())
+            {
+                return trailingQualifiersNode->ReleaseSubject();
+            }
+            else
+            {
+                return trailingQualifiersNode.release();
+            }
+        }
+        ;
+
+    AbstractDeclarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   NoPtrAbstractDeclarator(ctx):declarator{ s = sourcePos; } ParametersAndQualifiers(ctx):params TrailingReturnType(ctx):trailingReturnType
+            {
+                return new TrailingInvokeDeclaratorNode(s, declarator, params, trailingReturnType);
+            }
+        |   PtrAbstractDeclarator(ctx):ptrAbstractDeclarator{ return ptrAbstractDeclarator; }
+        |   AbstractPackDeclarator(ctx):abstractPackDeclarator{ return abstractPackDeclarator; }
+        )
+        ;
+
+    NoPtrAbstractDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (
+            (   LPAREN{ s = sourcePos; lpPos = sourcePos; } PtrAbstractDeclarator(ctx):declarator RPAREN{ rpPos = sourcePos; node.reset(new ParenthesizedDeclaratorNode(s, declarator, lpPos, rpPos)); }
+            |   empty{ s = sourcePos; node.reset(new AbstractDeclaratorNode(sourcePos)); }
+            )
+            (   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
+                (   AttributeSpecifierSeq(ctx):attributes2{ node.reset(new TrailingAttributesNode(lbPos, node.release(), attributes2)); }
+                |   empty
+                )
+            |   ParametersAndQualifiers(ctx):paramsAndQualifiers
+                { 
+                    node.reset(new InvokeDeclaratorNode(s, node.release(), paramsAndQualifiers)); 
+                } 
+            )*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    PtrAbstractDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (
+            PtrOperator(ctx):first{ node.reset(new PtrDeclaratorNode(sourcePos)); node->AddNode(first); } 
+            (PtrOperator(ctx):next{ node->AddNode(next); })* 
+            (   NoPtrAbstractDeclarator(ctx):noPtrAbstractDeclarator{ node->AddNode(noPtrAbstractDeclarator); }
+            |   empty
+            )
+        |   NoPtrAbstractDeclarator(ctx):noPtrAbstractDecl{ node.reset(noPtrAbstractDecl); }
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    AbstractPackDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+        ::= 
+        (   NoPtrAbstractPackDeclarator(ctx):noPtrAbstractPackDeclarator{ return noPtrAbstractPackDeclarator; }
+        |   PtrOperator(ctx):first{ node.reset(new PtrDeclaratorNode(sourcePos)); node->AddNode(first); } 
+            (PtrOperator(ctx):next{ node->AddNode(next); })* 
+            NoPtrAbstractPackDeclarator(ctx):noPtrAbstractPackDeclarator2{ node->AddNode(noPtrAbstractPackDeclarator2); return node.release(); }
+        )
+        ;
+
+    NoPtrAbstractPackDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= Ellipses:ellipses{ node.reset(ellipses); s = sourcePos; }
+            (   ParametersAndQualifiers(ctx):paramsAndQualifiers{ node.reset(new InvokeDeclaratorNode(s, node.release(), paramsAndQualifiers)); }
+            |   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
+            )*
+        ;
+
+    DeclaratorId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (   Ellipses:ellipses{ s = sourcePos; } IdExpression(ctx):idExpr{ return new PackDeclaratorIdNode(s, ellipses, idExpr); }
+        |   IdExpression(ctx):idExpr2{ return idExpr2; }
+        )
+        ;
+
+    Ptr : Node*
+        ::= STAR{ return new PtrNode(sourcePos); }
+        ;
+
+    LvalueRef : Node*
+        ::= AMP{ return new LvalueRefNode(sourcePos); }
+        ;
+
+    RvalueRef : Node*
+        ::= AMPAMP{ return new RvalueRefNode(sourcePos); }
+        ;
+
+    RefQualifier : Node*
+        ::= RvalueRef:rvalueRef{ return rvalueRef; }
+        |   LvalueRef:lvalueRef{ return lvalueRef; }
+        ;
+
+    CVQualifierSeq(var std::unique_ptr<Node> sequence) : Node*
+        ::= CVQualifier:first{ sequence.reset(new CVQualifierSequenceNode(sourcePos)); sequence->AddNode(first); } (CVQualifier:next{ sequence->AddNode(next); })*
+        ;
+
+    CVQualifier : Node*
+        ::= CONST{ return new ConstNode(sourcePos); }
+        |   VOLATILE{ return new VolatileNode(sourcePos); }
+        ;
+
+    NoexceptSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            NOEXCEPT{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } ConstantExpression(ctx):constantExpr RPAREN{ rpPos = sourcePos; }
+        |   NOEXCEPT{ s = sourcePos; }
+        )
+        {
+            return new NoexceptSpecifierNode(s, constantExpr, lpPos, rpPos);
+        }
+        ;
+}

@@ -1,0 +1,166 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Module.hpp>
+[cpp]#include <sngcpp20/parser/AttributeParser.hpp>
+[cpp]#include <sngcpp20/parser/ClassParser.hpp>
+[cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/StatementParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) ModuleParser
+{
+    uselexer CppLexer;
+
+    using AttributeParser.AttributeSpecifierSeq;
+    using ClassParser.Private;
+    using DeclarationParser.DeclarationSeq;
+    using DeclarationParser.Declaration;
+    using ExpressionParser.Colon;
+    using IdentifierParser.Identifier;
+    using IdentifierParser.Dot;
+    using StatementParser.Semicolon;
+
+    ModuleDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            (ExportKeyword(ctx):exportKw{ s = sourcePos; })? 
+            ModuleKeyword(ctx):moduleKw{ if (!s.IsValid()) s = sourcePos; }
+            ModuleName(ctx):moduleName 
+            ModulePartition(ctx):modulePartition? 
+            AttributeSpecifierSeq(ctx):attributes? 
+            Semicolon:semicolon
+        )
+        {
+            return new ModuleDeclarationNode(s, exportKw, moduleKw, moduleName, modulePartition, attributes, semicolon);
+        }
+        ;
+
+    ExportDeclaration(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        ::= 
+        (   ExportKeyword(ctx):exprt{ s = sourcePos; }
+            (
+                LBRACE{ lbPos = sourcePos; }
+                DeclarationSeq(ctx):declarations?
+                (RBRACE{ rbPos = sourcePos; })
+                {
+                    node.reset(new ExportDeclarationNode(s, exprt, declarations, lbPos, rbPos));
+                }
+            |   ImportDeclaration(ctx):imprt
+                { 
+                    node.reset(new ExportDeclarationNode(s, exprt, imprt, SourcePos(), SourcePos())); 
+                }
+            |   Declaration(ctx):declaration
+                {
+                    node.reset(new ExportDeclarationNode(s, exprt, declaration, SourcePos(), SourcePos()));
+                }
+            )
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ExportKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"export"; }
+        )
+        {
+            return new ExportNode(s);
+        }
+        ;
+
+    ImportKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::=
+        (
+            Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"import"; }
+        )
+        {
+            return new ImportNode(s);
+        }
+        ;
+
+    ModuleKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"module"; }
+        )
+        {
+            return new ModuleNode(s);
+        }
+        ;
+
+    ImportDeclaration(sngcpp::par::Context* ctx, var std::unique_ptr<Node> subject, var SourcePos s) : Node*
+        ::= 
+        (
+            ImportKeyword(ctx):imprt{ s = sourcePos; }
+            (   ModuleName(ctx):moduleName{ subject.reset(moduleName); }
+            |   ModulePartition(ctx):modulePartition{ subject.reset(modulePartition); }
+            |   HeaderName(ctx):headerName{ subject.reset(headerName); }
+            )
+            AttributeSpecifierSeq(ctx):attributes? 
+            Semicolon:semicolon
+        )
+        {
+            return new ImportDeclarationNode(s, subject.release(), attributes, semicolon);
+        }
+        ;
+
+    ModuleName(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos dotPos) : Node*
+        ::= 
+        (
+            Identifier(ctx):first{ node.reset(first); s = sourcePos; } (Dot:dot Identifier(ctx):next{ node.reset(new QualifiedModuleIdNode(s, node.release(), next, dotPos)); })*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    ModulePartition(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            Colon:colon{ s = sourcePos; } ModuleName(ctx):moduleName
+        )
+        {
+            return new ModulePartitionNode(s, moduleName);
+        }
+        ;
+
+    GlobalModuleFragment(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            ModuleKeyword(ctx):moduleKw{ s = sourcePos; } Semicolon:semicolon DeclarationSeq(ctx):declarations?
+        )
+        {
+            return new GlobalModuleFragmentNode(s, moduleKw, semicolon, declarations);
+        }
+        ;
+
+    PrivateModuleFragment(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::=
+        (
+            ModuleKeyword(ctx):moduleKw{ s = sourcePos; } Colon:colon Private:privat Semicolon:semicolon DeclarationSeq(ctx):declarations?
+        )
+        {
+            return new PrivateModuleFragmentNode(s, moduleKw, colon, privat, semicolon, declarations);
+        }
+        ;
+
+    HeaderName(sngcpp::par::Context* ctx) : Node*
+        ::= ANGLEHEADERNAME{ return new AngleHeaderName(sourcePos); }
+        |   QUOTEHEADERNAME{ return new QuoteHeaderName(sourcePos); }
+        ;
+}

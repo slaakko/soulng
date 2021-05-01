@@ -1,0 +1,7 @@
+<sngcpp>
+    <project name="primitive">
+        <files>
+            <file name="empty.cpp"/>
+        </files>
+    </project>
+</sngcpp>

@@ -8,7 +8,7 @@
 
 namespace soulng { namespace spg {
 
-CodeEvaluationVisitor::CodeEvaluationVisitor() : hasReturn(false), hasPass(false), hasSpan(false)
+CodeEvaluationVisitor::CodeEvaluationVisitor() : hasReturn(false), hasPass(false), hasSpan(false), hasSourcePos(false)
 {
 }
 
@@ -26,6 +26,10 @@ void CodeEvaluationVisitor::Visit(soulng::cppcode::IdExpr& object)
     else if (object.Name() == U"span")
     {
         hasSpan = true;
+    }
+    else if (object.Name() == U"sourcePos")
+    {
+        hasSourcePos = true;
     }
 }
 

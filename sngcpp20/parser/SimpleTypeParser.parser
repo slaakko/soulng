@@ -1,0 +1,36 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/SimpleType.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) SimpleTypeParser
+{
+    uselexer CppLexer;
+
+    SimpleType(sngcpp::par::Context* ctx) : Node*
+        ::= CHAR{ return new CharNode(sourcePos); }
+        |   CHAR8_T{ return new Char8Node(sourcePos); }
+        |   CHAR16_T{ return new Char16Node(sourcePos); }
+        |   CHAR32_T{ return new Char32Node(sourcePos); }
+        |   WCHAR_T{ return new WCharNode(sourcePos); }
+        |   BOOL{ return new BoolNode(sourcePos); }
+        |   SHORT{ return new ShortNode(sourcePos); }
+        |   INT{ return new IntNode(sourcePos); }
+        |   LONG{ return new LongNode(sourcePos); }
+        |   SIGNED{ return new SignedNode(sourcePos); }
+        |   FLOAT{ return new FloatNode(sourcePos); }
+        |   DOUBLE{ return new DoubleNode(sourcePos); }
+        |   VOID{ return new VoidNode(sourcePos); }
+        ;
+}

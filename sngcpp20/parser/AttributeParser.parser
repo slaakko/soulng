@@ -1,0 +1,183 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/ast/Attribute.hpp>
+[cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
+[cpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) AttributeParser
+{
+    uselexer CppLexer;
+
+    using ExpressionParser.ConstantExpression;
+    using ExpressionParser.Ellipses;
+    using IdentifierParser.ColonColon;
+    using IdentifierParser.Identifier;
+    using FunctionParser.Comma;
+    using TypeParser.TypeId;
+
+    AttributeSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<AttributeSpecifierSequenceNode> node) : Node*
+        ::= 
+        (
+            AttributeSpecifier(ctx):first{ node.reset(new AttributeSpecifierSequenceNode(sourcePos)); node->AddNode(first); }
+            (AttributeSpecifier(ctx):next{ node->AddNode(next); })*
+        )
+        {
+            return node.release();
+        }
+        ;
+
+    AttributeSpecifier(sngcpp::par::Context* ctx, 
+        var SourcePos s, var SourcePos lbPos1, var SourcePos lbPos2, var SourcePos rbPos1, var SourcePos rbPos2, var std::unique_ptr<AttributeSpecifierNode> attributeSpecifierNode) : Node*
+        ::= 
+        (
+            LBRACKET{ lbPos1 = sourcePos; s = sourcePos; }
+            LBRACKET{ lbPos2 = sourcePos; attributeSpecifierNode.reset(new AttributeSpecifierNode(s)); } 
+            (AttributeUsingPrefix(ctx):usingPrefix{ attributeSpecifierNode->SetUsingPrefix(usingPrefix); })? 
+            AttributeList(ctx, attributeSpecifierNode.get()):attributeList
+            RBRACKET{ rbPos1 = sourcePos; } 
+            RBRACKET{ rbPos2 = sourcePos; attributeSpecifierNode->SetBracketPositions(lbPos1, lbPos2, rbPos1, rbPos2); return attributeSpecifierNode.release(); } 
+        |   AlignmentSpecifier(ctx):alignmentSpecifier{ return alignmentSpecifier; }
+        )
+        ;
+
+    AttributeList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+        ::= 
+        (
+            (   Attribute(ctx):firstOpt{ container->AddNode(firstOpt); }
+            )? 
+            (   Comma:comma1{ container->AddNode(comma1); } 
+                (   Attribute(ctx):nextOpt{ container->AddNode(nextOpt); }
+                )?
+            )*
+        |   empty{ container->Clear(); }
+            Attribute(ctx):first{ container->AddNode(first); } 
+            (   Comma:comma2{ container->AddNode(comma2); } 
+                Attribute(ctx):next{ container->AddNode(next); } 
+                Ellipses:ellipses{ container->AddNode(ellipses); }
+            )*
+        )
+        ;
+
+    AttributeUsingPrefix(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos colonPos) : Node*
+        ::= 
+        (
+            USING{ s = sourcePos; } AttributeNamespace(ctx):ns COLON{ colonPos = sourcePos; }
+        )
+        {
+            return new AttributeUsingPrefixNode(s, ns, colonPos);
+        }
+        ;
+
+    AttributeNamespace(sngcpp::par::Context* ctx) : Node*
+        ::= Identifier(ctx):ns{ return ns; }
+        ;
+
+    Attribute(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            AttributeToken(ctx):attributeToken{ s = sourcePos; } AttributeArgumentClause(ctx):attributeArgs?
+        )
+        {
+            return new AttributeNode(s, attributeToken, attributeArgs);
+        }
+        ;
+
+    AttributeToken(sngcpp::par::Context* ctx) : Node*
+        ::= AttributeScopedToken(ctx):scopedToken{ return scopedToken; }
+        |   Identifier(ctx):identifier{ return identifier; }
+        ;
+
+    AttributeScopedToken(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+        ::= 
+        (
+            AttributeNamespace(ctx):ns{ s = sourcePos; } ColonColon:colonColon Identifier(ctx):identifier
+        )
+        {
+            return new AttributeScopedTokenNode(s, ns, colonColon, identifier);
+        }
+        ;
+
+    AttributeArgumentClause(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            LPAREN{ lpPos = sourcePos; } BalancedTokenSeq(ctx):balancedTokenSeq? RPAREN{ rpPos = sourcePos; } 
+        )
+        {
+            return new AttributeArgumentsNode(s, balancedTokenSeq, lpPos, rpPos);
+        }
+        ;
+
+    BalancedTokenSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> sequence) : Node*
+        ::= 
+        (
+            BalancedToken(ctx):first{ sequence.reset(new BalancedTokenSequenceNode(sourcePos)); sequence->AddNode(first); }
+            (BalancedToken(ctx):next{ sequence->AddNode(next); })*
+        )
+        {
+            return sequence.release();
+        }
+        ;
+
+    BalancedToken(sngcpp::par::Context* ctx, var std::unique_ptr<Node> seq) : Node*
+        ::= 
+        (   LParen:lp{ seq.reset(new BalancedTokenSequenceNode(sourcePos)); seq->AddNode(lp); } BalancedTokenSeq(ctx):c1{ seq->AddNode(c1); } RParen:rp{ seq->AddNode(rp); }
+        |   LBracket:lb{ seq.reset(new BalancedTokenSequenceNode(sourcePos)); seq->AddNode(lb); } BalancedTokenSeq(ctx):c2{ seq->AddNode(c2); } RBracket:rb{ seq->AddNode(rb); }
+        |   LBrace:lbr{ seq.reset(new BalancedTokenSequenceNode(sourcePos)); seq->AddNode(lbr); } BalancedTokenSeq(ctx):c3{ seq->AddNode(c3); } RBrace:rbr{ seq->AddNode(rbr); }
+        |   (any - (LPAREN | RPAREN | LBRACKET | RBRACKET | LBRACE | RBRACE)){ seq.reset(new TokenNode(sourcePos, lexer.GetMatch(pos))); }
+        )
+        {
+            return seq.release();
+        }
+        ;
+
+    AlignmentSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<Node> alignment, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (   ALIGNAS{ s = sourcePos; } 
+            LPAREN{ lpPos = sourcePos; }
+            (TypeId(ctx):typeId{ alignment.reset(typeId); } | ConstantExpression(ctx):constantExpr{ alignment.reset(constantExpr); })
+            Ellipses:ellipses?
+            RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new AlignmentSpecifierNode(s, alignment.release(), ellipses, lpPos, rpPos);
+        }
+        ;
+
+    LParen : Node*
+        ::= LPAREN{ return new LParenNode(sourcePos); }
+        ;
+
+    RParen : Node*
+        ::= RPAREN{ return new RParenNode(sourcePos); }
+        ;
+
+    LBracket : Node*
+        ::= LBRACKET{ return new LBracketNode(sourcePos); }
+        ;
+
+    RBracket : Node*
+        ::= RBRACKET{ return new RBracketNode(sourcePos); }
+        ;
+
+    LBrace : Node*
+        ::= LBRACE{ return new LBraceNode(sourcePos); }
+        ;
+
+    RBrace : Node*
+        ::= RBRACE{ return new RBraceNode(sourcePos); }
+        ;
+}

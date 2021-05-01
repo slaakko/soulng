@@ -23,7 +23,7 @@ using namespace soulng::util;
 
 std::string ParserGeneratorVersionStr()
 {
-    return "3.10.0";
+    return "3.11.0";
 }
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(bool verbose_, bool noParserDebugSupport_) :
@@ -403,6 +403,7 @@ void CodeGeneratorVisitor::Visit(AlternativeParser& parser)
             Stage prevStage = stage;
             stage = Stage::generateTokenSwitch;
             formatter->WriteLine("int64_t pos = lexer.GetPos();");
+            formatter->WriteLine("soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();");
             formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
             formatter->WriteLine("switch (*lexer)");
             formatter->WriteLine("{");
@@ -556,9 +557,14 @@ void CodeGeneratorVisitor::Visit(ActionParser& parser)
         }
         bool hasPass = codeEvaluationVisitor.HasPass();
         bool hasSpan = codeEvaluationVisitor.HasSpan();
+        bool hasSourcePos = codeEvaluationVisitor.HasSourcePos();
         if (hasSpan)
         {
             formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
+        }
+        if (hasSourcePos)
+        {
+            formatter->WriteLine("soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();");
         }
         if (hasPass)
         {

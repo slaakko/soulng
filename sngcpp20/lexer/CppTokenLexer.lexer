@@ -1,0 +1,159 @@
+#include <sngcpp20/lexer/CppLexerApi.hpp>
+#include <sngcpp20/ast/SourceCodeWriter.hpp>
+
+classmap CppTokenLexerClassMap;
+
+prefix "sngcpp20/lexer";
+
+tokens CppTokenLexerTokens
+{
+    (ALIGNAS, "'alignas'"), (ALIGNOF, "'alignof'"), (ASM, "'asm'"), (AUTO, "'auto'"), (BOOL, "'bool'"), (BREAK, "'break'"), (CASE, "'case'"), (CATCH, "'catch'"), 
+    (CHAR, "'char'"), (CHAR8_T, "'char8_t'"), (CHAR16_T, "'char16_t'"), (CHAR32_T, "'char32_t'"), (CLASS, "'class'"), (CONCEPT, "'concept'"), (CONST, "'const'"),
+    (CONSTEVAL, "'consteval'"), (CONSTEXPR, "'constexpr'"),
+    (CONSTINIT, "'constinit'"), (CONST_CAST, "'const_cast'"), (CONTINUE, "'continue'"), (CO_AWAIT, "'co_await'"), (CO_RETURN, "'co_return'"), (CO_YIELD, "'co_yield'"),
+    (DECLTYPE, "'decltype'"), (DEFAULT, "'default'"), (DELETE, "'delete'"), (DO, "'do'"), (DOUBLE, "'double'"), (DYNAMIC_CAST, "'dynamic_cast'"), (ELSE, "'else'"),
+    (ENUM, "'enum'"), (EXPLICIT, "'explicit'"), (EXPORT, "'export'"), (EXTERN, "'extern'"),
+    (FALSE, "'false'"), (FLOAT, "'float'"), (FOR, "'for'"), (FRIEND, "'friend'"), (GOTO, "'goto'"), (IF, "'if'"), (INLINE, "'inline'"), (INT, "'int'"), (LONG, "'long'"),
+    (MUTABLE, "'mutable'"), (NAMESPACE, "'namespace'"), (NEW, "'new'"), (NOEXCEPT, "'noexcept'"), (NULLPTR, "'nullptr'"), (OPERATOR, "'operator'"), (PRIVATE, "'private'"),
+    (PROTECTED, "'protected'"),
+    (PUBLIC, "'public'"), (REGISTER, "'register'"), (REINTERPRET_CAST, "'reinterpret_cast'"), (REQUIRES, "'requires'"), (RETURN, "'return'"), (SHORT, "'short'"), (SIGNED, "'signed'"),
+    (SIZEOF, "'sizeof'"), (STATIC, "'static'"), (STATIC_ASSERT, "'static_assert'"), (STATIC_CAST, "'static_cast'"), (STRUCT, "'struct'"), (SWITCH, "'switch'"), (TEMPLATE, "'template'"),
+    (THIS, "'this'"), (THREAD_LOCAL, "'thread_local'"), (THROW, "'throw'"),
+    (TRUE, "'true'"), (TRY, "'try'"), (TYPEDEF, "'typedef'"), (TYPEID, "'typeid'"), (TYPENAME, "'typename'"), (UNION, "'union'"), (UNSIGNED, "'unsigned'"), (USING, "'using'"),
+    (VIRTUAL, "'virtual'"), (VOID, "'void'"), (VOLATILE, "'volatile'"), (WCHAR_T, "'wchar_t'"), (WHILE, "'while'"),
+    (__DECLSPEC, "'__declspec'"), (__THREAD, "'__thread'"),
+    (FLOATLIT, "floating literal"), (INTLIT, "integer literal"), (CHARLIT, "character literal"), (STRINGLIT, "string literal"), (BEGINRAWSTRINGLIT, "'begin raw string literal'"),
+    (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
+    (SHIFTRIGHTASSIGN, "'>>='"), (SHIFTLEFTASSIGN, "'<<='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"), (QUEST, "'?'"), (COLON, "':'"),
+    (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
+    (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
+    (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (WS, "white space"), (LINECOMMENT, "line comment"), (BLOCKCOMMENT, "block comment"), (BLOCKCOMMENTLINE, "block comment line"),
+    (KEYWORD, "keyword"), (ID, "identifier"), (NUMBER, "number"), (PP, "pp"), (OTHER, "other"),
+    (MAX, "max")
+}
+
+keywords CppTokenLexerKeywords
+{
+    ("alignas", ALIGNAS), ("alignof", ALIGNOF), ("asm", ASM), ("auto", AUTO), ("bool", BOOL), ("break", BREAK), ("case", CASE), ("catch", CATCH),
+    ("char", CHAR), ("char8_t", CHAR8_T), ("char16_t", CHAR16_T), ("char32_t", CHAR32_T), ("class", CLASS), ("concept", CONCEPT), ("const", CONST),
+    ("consteval", CONSTEVAL), ("constexpr", CONSTEXPR),
+    ("constinit", CONSTINIT), ("const_cast", CONST_CAST), ("continue", CONTINUE), ("co_await", CO_AWAIT), ("co_return", CO_RETURN), ("co_yield", CO_YIELD),
+    ("decltype", DECLTYPE), ("default", DEFAULT), ("delete", DELETE), ("do", DO), ("double", DOUBLE), ("dynamic_cast", DYNAMIC_CAST), ("else", ELSE),
+    ("enum", ENUM), ("explicit", EXPLICIT), ("export", EXPORT), ("extern", EXTERN),
+    ("false", FALSE), ("float", FLOAT), ("for", FOR), ("friend", FRIEND), ("goto", GOTO), ("if", IF), ("inline", INLINE), ("int", INT), ("long", LONG),
+    ("mutable", MUTABLE), ("namespace", NAMESPACE), ("new", NEW), ("noexcept", NOEXCEPT), ("nullptr", NULLPTR), ("operator", OPERATOR), ("private", PRIVATE),
+    ("protected", PROTECTED),
+    ("public", PUBLIC), ("register", REGISTER), ("reinterpret_cast", REINTERPRET_CAST), ("requires", REQUIRES), ("return", RETURN), ("short", SHORT), ("signed", SIGNED),
+    ("sizeof", SIZEOF), ("static", STATIC), ("static_assert", STATIC_ASSERT), ("static_cast", STATIC_CAST), ("struct", STRUCT), ("switch", SWITCH), ("template", TEMPLATE),
+    ("this", THIS), ("thread_local", THREAD_LOCAL), ("throw", THROW),
+    ("true", TRUE), ("try", TRY), ("typedef", TYPEDEF), ("typeid", TYPEID), ("typename", TYPENAME), ("union", UNION), ("unsigned", UNSIGNED), ("using", USING),
+    ("virtual", VIRTUAL), ("void", VOID), ("volatile", VOLATILE), ("wchar_t", WCHAR_T), ("while", WHILE),
+    ("__thread", __THREAD), ("__declspec", __DECLSPEC)
+}
+
+expressions
+{
+    ws = "[\t ]+";
+    newline = "\r\n|\n|\r";
+    linecomment = "//[^\n\r]*{newline}";
+    blockcomment = "/\*([^*\n\r]|\*[^/\n\r])*(\*/|{newline})";
+    blockcommentline = "([^*\n\r]|\*[^/\n\r])*(\*/|{newline})";
+    id = "{idstart}{idcont}*";
+    digit = "[0-9]";
+    nondigit = "[a-zA-Z_]";
+    hexdigit = "[0-9a-fA-F]";
+    hexquad = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    universalcharactername = "\\u{hexquad}|\\U{hexquad}{hexquad}";
+    identifiernondigit = "{nondigit}|{universalcharactername}";
+    sign = "\+|-";
+    ppnumber = "(({digit}|')+\.?|\.({digit}|')+)([eEpP]{sign}|{identifiernondigit})*";
+    octaldigit = "[0-7]";
+    simpleescape = "\\['\"\?\\abfnrtv]";
+    octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";
+    hexescape = "\\x{hexdigit}+";
+    escape = "{simpleescape}|{octalescape}|{hexescape}";
+    cchar = "[^\r\n\\']|{escape}|{universalcharactername}";
+    characterliteral = "[uUL]?'{cchar}+'";
+    encodingprefix = "u8|u|U|L";
+    schar = "[^\r\n\\\"]|{escape}|{universalcharactername}";
+    beginrawstringliteral = "{encodingprefix}?R\"";
+    stringliteral = "{encodingprefix}?\"{schar}*\";
+}
+
+lexer api(LEXER_API) CppTokenLexer
+{
+    "{ws}" { return WS; }
+    "{newline}" { }
+    "{linecomment}" { return LINECOMMENT; }
+    "{blockcomment}" { return BLOCKCOMMENT; }
+    "{blockcommentline}" $(1) { return BLOCKCOMMENTLINE; }
+    "{id}" { if (GetKeywordToken(token.match) != INVALID_TOKEN) return KEYWORD; else return ID; }
+    "{characterliteral}" { return CHARLIT; }
+    "{beginrawstringliteral}" { return BEGINRAWSTRINGLIT; }
+    "{stringliteral}" { return STRINGLIT; }
+    "{ppnumber}" { return NUMBER; }
+    "{ws}*#[^\x0\r\n]*" { return PP; }
+    "::" { return OTHER; }
+    "," { return OTHER; }
+    "=" { return OTHER; }
+    "\*=" { return OTHER; }
+    "/=" { return OTHER; }
+    "%=" { return OTHER; }
+    "\+=" { return OTHER; }
+    "-=" { return OTHER; }
+    ">>=" { return OTHER; }
+    "<<=" { return OTHER; }
+    "&=" { return OTHER; }
+    "^=" { return OTHER; }
+    "\|=" { return OTHER; }
+    "\?" { return OTHER; }
+    ":" { return OTHER; }
+    "\|\|" { return OTHER; }
+    "&&" { return OTHER; }
+    "\|" { return OTHER; }
+    "^" { return OTHER; }
+    "&" { return OTHER; }
+    "==" { return OTHER; }
+    "!=" { return OTHER; }
+    "<=" { return OTHER; }
+    ">=" { return OTHER; }
+    "<=>" { return OTHER; }
+    "<" { return OTHER; }
+    ">" { return OTHER; }
+    "<<" { return OTHER; }
+    ">>" { return OTHER; }
+    "\+" { return OTHER; }
+    "-" { return OTHER; }
+    "\*" { return OTHER; }
+    "/" { return OTHER; }
+    "%" { return OTHER; }
+    "\.\*" { return OTHER; }
+    "->\*" { return OTHER; }
+    "\(" { return OTHER; }
+    "\)" { return OTHER; }
+    "\+\+" { return OTHER; }
+    "--" { return OTHER; }
+    "!" { return OTHER; }
+    "~" { return OTHER; }
+    "\[" { return OTHER; }
+    "\]" { return OTHER; }
+    "\." { return OTHER; }
+    "->" { return OTHER; }
+    ";" { return OTHER; }
+    "\.\.\." { return OTHER; }
+    "\{" { return OTHER; }
+    "\}" { return OTHER; }
+
+    actions
+    {
+        $(1)={ if (!inBlockComment) return INVALID_TOKEN; }
+    }
+
+    variables
+    {
+        bool inBlockComment;
+        sngcpp::ast::SourceCodeWriter* writer;
+    }
+}

@@ -17,12 +17,14 @@ Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int f
     content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
     log(nullptr), countLines(true), separatorChar('\0'), flags()
 {
+    CalculateLineStarts();
 }
 
 Lexer::Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) :
     content(), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(start_), end(end_), pos(start), current(tokens.end()),
     log(nullptr), countLines(true), separatorChar('\0'), flags()
 {
+    CalculateLineStarts();
 }
 
 Lexer::~Lexer()
@@ -55,6 +57,18 @@ void Lexer::SetPos(int64_t pos)
 {
     current = tokens.begin() + static_cast<int32_t>(pos);
     line = static_cast<int32_t>(pos >> 32);
+}
+
+SourcePos Lexer::GetSourcePos() const
+{
+    if (line <= 0) return SourcePos();
+    const char32_t* s = pos;
+    if (line < lineStarts.size())
+    {
+        s = lineStarts[line];
+    }
+    int col = pos - s + 1;
+    return SourcePos(line, col);
 }
 
 void Lexer::NextToken()
@@ -217,6 +231,11 @@ std::u32string Lexer::GetMatch(const Span& span) const
         e = token.match.end;
     }
     return match;
+}
+
+std::u32string Lexer::GetMatch(int64_t pos) const
+{
+    return GetToken(pos).match.ToString();
 }
 
 const char32_t* LineStart(const char32_t* start, const char32_t* p)
@@ -450,6 +469,23 @@ bool Lexer::Synchronize()
         }
     }
     return false;
+}
+
+void Lexer::CalculateLineStarts()
+{
+    lineStarts.push_back(pos);
+    const char32_t* p = pos;
+    bool startOfLine = true;
+    while (p != end)
+    {
+        if (startOfLine)
+        {
+            lineStarts.push_back(p);
+        }
+        startOfLine = *p == '\n';
+        ++p;
+    }
+    lineStarts.push_back(end);
 }
 
 void WriteBeginRuleToLog(Lexer& lexer, const std::u32string& ruleName)
