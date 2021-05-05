@@ -104,11 +104,11 @@ parser api(PARSER_API) LambdaParser
         }
         ;
 
-    SimpleCapture(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> byRefCaptureNode) : Node*
+    SimpleCapture(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos thisPos, var std::unique_ptr<Node> byRefCaptureNode) : Node*
         ::= 
         (
-            STAR{ s = sourcePos; } THIS{ return new CurrentObjectCopyCapture(s); }
-        |   THIS{ return new CurrentObjectByRefCapture(s, sourcePos); }
+            STAR{ s = sourcePos; } THIS{ thisPos = sourcePos; return new CurrentObjectCopyCapture(s, thisPos); }
+        |   THIS{ thisPos = sourcePos; return new CurrentObjectByRefCapture(s, thisPos); }
         |
             (
                 (AMP{ s = sourcePos; byRefCaptureNode.reset(new ByRefCaptureNode(sourcePos)); })? 

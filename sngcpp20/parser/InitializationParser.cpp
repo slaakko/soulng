@@ -7,7 +7,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/InitializationParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/InitializationParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
@@ -679,7 +679,7 @@ soulng::parser::Match InitializationParser::ExprOrBracedInitList(CppLexer& lexer
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<Node> bracedInitList;
-    std::unique_ptr<Node> expr;
+    std::unique_ptr<sngcpp::ast::Node> expr;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -713,7 +713,7 @@ soulng::parser::Match InitializationParser::ExprOrBracedInitList(CppLexer& lexer
                 {
                     int64_t pos = lexer.GetPos();
                     soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                    expr.reset(static_cast<Node*>(match.value));
+                    expr.reset(static_cast<sngcpp::ast::Node*>(match.value));
                     if (match.hit)
                     {
                         {

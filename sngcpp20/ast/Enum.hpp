@@ -14,6 +14,9 @@ class AST_API EnumSpecifierNode : public ListNode
 public:
     EnumSpecifierNode(const SourcePos& sourcePos_);
     EnumSpecifierNode(const SourcePos& sourcePos_, Node* enumHead_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* EnumHead() const { return enumHead.get(); }
     void SetLBracePos(const SourcePos& lbPos_) { lbPos = lbPos_; }
     void SetRBracePos(const SourcePos& rbPos_) { rbPos = rbPos_; }
@@ -30,6 +33,9 @@ class AST_API EnumHeadNode : public CompoundNode
 public:
     EnumHeadNode(const SourcePos& sourcePos_);
     EnumHeadNode(const SourcePos& sourcePos_, Node* enumKey_, Node* enumHeadName_, Node* enumBase_, Node* attributes_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* EnumKey() const { return enumKey.get(); }
     Node* EnumHeadName() const { return enumHeadName.get(); }
     Node* EnumBase() const { return enumBase.get(); }
@@ -46,6 +52,7 @@ class AST_API EnumBaseNode : public UnaryNode
 public:
     EnumBaseNode(const SourcePos& sourcePos_);
     EnumBaseNode(const SourcePos& sourcePos_, Node* typeSpecifiers_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API EnumClassNode : public CompoundNode
@@ -53,6 +60,9 @@ class AST_API EnumClassNode : public CompoundNode
 public:
     EnumClassNode(const SourcePos& sourcePos_);
     EnumClassNode(const SourcePos& sourcePos_, const SourcePos& classPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const SourcePos& ClassPos() const { return classPos; }
 private:
     SourcePos classPos;
@@ -63,6 +73,9 @@ class AST_API EnumStructNode : public CompoundNode
 public:
     EnumStructNode(const SourcePos& sourcePos_);
     EnumStructNode(const SourcePos& sourcePos_, const SourcePos& structPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const SourcePos& StructPos() const { return structPos; }
 private:
     SourcePos structPos;
@@ -72,6 +85,7 @@ class AST_API EnumNode : public Node
 {
 public:
     EnumNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API EnumeratorDefinitionNode : public CompoundNode
@@ -79,6 +93,9 @@ class AST_API EnumeratorDefinitionNode : public CompoundNode
 public:
     EnumeratorDefinitionNode(const SourcePos& sourcePos_);
     EnumeratorDefinitionNode(const SourcePos& sourcePos_, Node* enumerator_, Node* value_, const SourcePos& assignPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Enumerator() const { return enumerator.get(); }
     Node* Value() const { return value.get(); }
     const SourcePos& AssignPos() const { return assignPos; }
@@ -93,6 +110,9 @@ class AST_API EnumeratorNode : public CompoundNode
 public:
     EnumeratorNode(const SourcePos& sourcePos_);
     EnumeratorNode(const SourcePos& sourcePos_, Node* identifier_, Node* attributes_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Identifier() const { return identifier.get(); }
     Node* Attributes() const { return attributes.get(); }
 private:
@@ -105,6 +125,7 @@ class AST_API ElaboratedEnumSpecifierNode : public UnaryNode
 public:
     ElaboratedEnumSpecifierNode(const SourcePos& sourcePos_);
     ElaboratedEnumSpecifierNode(const SourcePos& sourcePos_, Node* enumName_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API OpaqueEnumDeclarationNode : public CompoundNode
@@ -112,6 +133,9 @@ class AST_API OpaqueEnumDeclarationNode : public CompoundNode
 public:
     OpaqueEnumDeclarationNode(const SourcePos& sourcePos_);
     OpaqueEnumDeclarationNode(const SourcePos& sourcePos_, Node* enumKey_, Node* enumHeadName_, Node* enumBase_, Node* attributes_, Node* semicolon_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* EnumKey() const { return enumKey.get(); }
     Node* EnumHeadName() const { return enumHeadName.get(); }
     Node* EnumBase() const { return enumBase.get(); }

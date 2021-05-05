@@ -28,3 +28,5 @@ packages
 unicode.zip
 ucd.all.flat.xml
 fs
+build
+!sngcpp.xml

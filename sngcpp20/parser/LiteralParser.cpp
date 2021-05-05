@@ -5,7 +5,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/LiteralParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/LiteralParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
@@ -692,6 +692,7 @@ soulng::parser::Match LiteralParser::LiteralOperatorId(CppLexer& lexer, sngcpp::
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     SourcePos s = SourcePos();
+    SourcePos stringLitPos = SourcePos();
     SourcePos idPos = SourcePos();
     int64_t idp = int64_t();
     soulng::parser::Match match(false);
@@ -735,6 +736,7 @@ soulng::parser::Match LiteralParser::LiteralOperatorId(CppLexer& lexer, sngcpp::
                         soulng::parser::Match* parentMatch6 = &match;
                         {
                             int64_t pos = lexer.GetPos();
+                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
                             bool pass = true;
                             soulng::parser::Match match(false);
                             if (*lexer == STRINGLIT)
@@ -744,6 +746,7 @@ soulng::parser::Match LiteralParser::LiteralOperatorId(CppLexer& lexer, sngcpp::
                             }
                             if (match.hit)
                             {
+                                stringLitPos = sourcePos;
                                 pass = lexer.GetMatch(pos) == U"";
                             }
                             if (match.hit && !pass)
@@ -793,7 +796,7 @@ soulng::parser::Match LiteralParser::LiteralOperatorId(CppLexer& lexer, sngcpp::
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("LiteralOperatorId"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new LiteralOperatorIdNode(s, new IdentifierNode(idPos, lexer.GetMatch(idp))));
+                return soulng::parser::Match(true, new LiteralOperatorIdNode(s, new IdentifierNode(idPos, lexer.GetMatch(idp)), stringLitPos));
             }
         }
         *parentMatch0 = match;

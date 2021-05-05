@@ -4,8 +4,11 @@
 // =================================
 
 #include <sngcpp20/ast/Writer.hpp>
+#include <soulng/util/Unicode.hpp>
 
 namespace sngcpp::ast {
+
+using namespace soulng::unicode;
 
 Writer::Writer(const std::string& fileName) : binaryWriter(fileName)
 {
@@ -27,6 +30,16 @@ void Writer::Write(const SourcePos& sourcePos)
 void Writer::Write(NodeKind nodeKind)
 {
     binaryWriter.WriteULEB128UInt(static_cast<uint32_t>(nodeKind));
+}
+
+void Writer::Write(const std::u32string& str)
+{
+    binaryWriter.Write(str);
+}
+
+void Writer::Write(bool value)
+{
+    binaryWriter.Write(value);
 }
 
 void Writer::Write(Node* node)

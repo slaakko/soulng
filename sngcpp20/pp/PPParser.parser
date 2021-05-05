@@ -107,7 +107,7 @@ parser api(PP_API) PPLineParser
     Undef(sngcpp::pp::PP* pp)
         ::=
         (
-            HASH UNDEF ID
+            HASH UNDEF ID{ soulng::lexer::Token id = lexer.GetToken(pos); pp->Undef(id.match);}
         )
         ;
 

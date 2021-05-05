@@ -27,5 +27,5 @@
 
 #endif
 
-#endif // SNGCPP_PP_API_INCLUDED
+#endif // SNGCPP_AST_API_INCLUDED
 

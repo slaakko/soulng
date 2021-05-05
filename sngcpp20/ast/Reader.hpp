@@ -21,6 +21,8 @@ public:
     BinaryReader& GetBinaryReader() { return binaryReader; }
     SourcePos ReadSourcePos();
     NodeKind ReadNodeKind();
+    std::u32string ReadStr();
+    bool ReadBool();
     Node* ReadNode();
 private:
     BinaryReader binaryReader;

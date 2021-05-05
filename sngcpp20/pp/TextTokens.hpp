@@ -1,7 +1,7 @@
 #ifndef TextTokens_HPP
 #define TextTokens_HPP
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/pp/TextLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/pp/TextLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <sngcpp20/pp/PP.hpp>
 #include <string>

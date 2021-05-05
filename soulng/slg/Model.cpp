@@ -17,7 +17,7 @@ namespace soulng { namespace slg {
 
 const char* LexerGeneratorVersionStr()
 {
-    return "3.10.0";
+    return "4.0.0";
 }
 
 using namespace soulng::util;

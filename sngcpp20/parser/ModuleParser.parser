@@ -115,7 +115,7 @@ parser api(PARSER_API) ModuleParser
             Semicolon:semicolon
         )
         {
-            return new ImportDeclarationNode(s, subject.release(), attributes, semicolon);
+            return new ImportDeclarationNode(s, imprt, subject.release(), attributes, semicolon);
         }
         ;
 
@@ -160,7 +160,7 @@ parser api(PARSER_API) ModuleParser
         ;
 
     HeaderName(sngcpp::par::Context* ctx) : Node*
-        ::= ANGLEHEADERNAME{ return new AngleHeaderName(sourcePos); }
-        |   QUOTEHEADERNAME{ return new QuoteHeaderName(sourcePos); }
+        ::= ANGLEHEADERNAME{ return new AngleHeaderName(sourcePos, lexer.GetMatch(pos)); }
+        |   QUOTEHEADERNAME{ return new QuoteHeaderName(sourcePos, lexer.GetMatch(pos)); }
         ;
 }

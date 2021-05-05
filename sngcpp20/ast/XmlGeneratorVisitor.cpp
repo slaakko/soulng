@@ -35,11 +35,6 @@ void XmlGeneratorVisitor::EndVisit(Node& node)
     }
 }
 
-void XmlGeneratorVisitor::VisitColon(const SourcePos& colonPos)
-{
-    AddAttribute("colonPos", ToString(colonPos));
-}
-
 void XmlGeneratorVisitor::AddAttribute(const std::string& name, const std::string& value)
 {
     element->SetAttribute(ToUtf32(name), ToUtf32(value));

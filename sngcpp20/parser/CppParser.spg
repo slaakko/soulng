@@ -6,6 +6,7 @@ source <DeclarationParser.parser>;
 source <EnumParser.parser>;
 source <ExpressionParser.parser>;
 source <FunctionParser.parser>;
+source <GuardParser.parser>;
 source <IdentifierParser.parser>;
 source <InitializationParser.parser>;
 source <LambdaParser.parser>;

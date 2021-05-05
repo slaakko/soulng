@@ -8,7 +8,7 @@
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/StatementParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/StatementParser.parser' using soulng parser generator spg version 4.0.0
 
 class CppLexer;
 
@@ -16,6 +16,9 @@ struct PARSER_API StatementParser
 {
     static soulng::parser::Match Statement(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match LabeledStatement(CppLexer& lexer, sngcpp::par::Context* ctx);
+    static soulng::parser::Match CompoundStatementUnguarded(CppLexer& lexer, sngcpp::par::Context* ctx);
+    static soulng::parser::Match CompoundStatementGuarded(CppLexer& lexer, sngcpp::par::Context* ctx);
+    static soulng::parser::Match CompoundStatementSaved(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match CompoundStatement(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match SelectionStatement(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match IfStatement(CppLexer& lexer, sngcpp::par::Context* ctx);

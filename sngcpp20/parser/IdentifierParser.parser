@@ -7,6 +7,7 @@
 [hpp]#include <sngcpp20/parser/Context.hpp>
 [hpp]#include <sngcpp20/ast/Expression.hpp>
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
+[cpp]#include <sngcpp20/symbols/SymbolTable.hpp>
 [cpp]#include <sngcpp20/parser/FunctionParser.hpp>
 [cpp]#include <sngcpp20/parser/LiteralParser.hpp>
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
@@ -15,6 +16,7 @@
 
 using namespace sngcpp::par;
 using namespace sngcpp::ast;
+using namespace sngcpp::symbols;
 using namespace CppTokens;
 using namespace soulng::lexer;
 
@@ -32,6 +34,22 @@ parser api(PARSER_API) IdentifierParser
 
     Identifier(sngcpp::par::Context* ctx) : Node*
         ::= ID{ return new IdentifierNode(sourcePos, lexer.GetMatch(pos)); }
+        ;
+
+    TypeIdentifier(sngcpp::par::Context* ctx) : Node*
+        ::= ID
+            { 
+                std::u32string id = lexer.GetMatch(pos); 
+                Symbol* symbol = ctx->GetSymbolTable()->Lookup(id);
+                if (symbol && symbol->IsTypeSymbol())
+                {
+                    return new IdentifierNode(sourcePos, id); 
+                }
+                else
+                {
+                    pass = false;
+                }
+            }
         ;
 
     UnqualifiedId(sngcpp::par::Context* ctx) : Node*
@@ -64,17 +82,17 @@ parser api(PARSER_API) IdentifierParser
         ::= TEMPLATE{ return new TemplateNode(sourcePos); }
         ;
 
-    NestedNameSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<NestedNameSpecifierNode> nnsNode) : Node*
+    NestedNameSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<NestedNameSpecifierNode> nnsNode, var std::unique_ptr<Node> idNode) : Node*
         ::= 
         (   empty{ nnsNode.reset(new NestedNameSpecifierNode(sourcePos)); }
             (COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); })?
             (
-                ID{ nnsNode->AddNode(new IdentifierNode(sourcePos, lexer.GetMatch(pos))); } 
-                COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); }
+                ID{ idNode.reset(new IdentifierNode(sourcePos, lexer.GetMatch(pos))); } 
+                COLONCOLON{ nnsNode->AddNode(idNode.release()); nnsNode->AddNode(new ColonColonNode(sourcePos)); }
             |   
                 (TEMPLATE{ nnsNode->AddNode(new TemplateNode(sourcePos)); })?
-                SimpleTemplateId(ctx):simpleTemplateId{ nnsNode->AddNode(simpleTemplateId); }
-                COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); }
+                SimpleTemplateId(ctx):simpleTemplateId{ idNode.reset(simpleTemplateId); }
+                COLONCOLON{ nnsNode->AddNode(idNode.release()); nnsNode->AddNode(new ColonColonNode(sourcePos)); }
             )*
         )
         {
@@ -101,6 +119,10 @@ parser api(PARSER_API) IdentifierParser
         {
             return identifierListNode.release();
         }
+        ;
+
+    Unnamed : Node*
+        ::= empty{ return new UnnamedNode(sourcePos); }
         ;
 
     Dot : Node*

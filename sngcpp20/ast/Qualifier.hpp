@@ -13,36 +13,42 @@ class AST_API ConstNode : public Node
 {
 public:
     ConstNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API VolatileNode : public Node
 {
 public:
     VolatileNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API LvalueRefNode : public Node
 {
 public:
     LvalueRefNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API RvalueRefNode : public Node
 {
 public:
     RvalueRefNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API PtrNode : public Node
 {
 public:
     PtrNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API CVQualifierSequenceNode : public SequenceNode
 {
 public:
     CVQualifierSequenceNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 } // namespace sngcpp::ast

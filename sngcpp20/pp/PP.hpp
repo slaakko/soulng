@@ -28,6 +28,7 @@ struct PP_API PP
     std::vector<soulng::lexer::Token>* BeginDefine(const soulng::lexer::Lexeme& id);
     void EndDefine(std::vector<soulng::lexer::Token>& ppTokens);
     void Define(const soulng::lexer::Lexeme& lexeme);
+    void Undef(const soulng::lexer::Lexeme& lexeme);
     bool IsDefined(const soulng::lexer::Lexeme& lexeme) const;
     bool IsKeywordToken(const soulng::lexer::Token& token) const;
     bool IsProjectHeaderFile(const std::string& headerFilePath) const;

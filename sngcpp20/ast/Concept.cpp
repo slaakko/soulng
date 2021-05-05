@@ -4,6 +4,9 @@
 // =================================
 
 #include <sngcpp20/ast/Concept.hpp>
+#include <sngcpp20/ast/Visitor.hpp>
+#include <sngcpp20/ast/Writer.hpp>
+#include <sngcpp20/ast/Reader.hpp>
 
 namespace sngcpp::ast {
 
@@ -16,6 +19,27 @@ ConceptDefinitioNode::ConceptDefinitioNode(const SourcePos& sourcePos_, Node* co
 {
 }
 
+void ConceptDefinitioNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void ConceptDefinitioNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(conceptName.get());
+    writer.Write(assign.get());
+    writer.Write(constraintExpr.get());
+}
+
+void ConceptDefinitioNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    conceptName.reset(reader.ReadNode());
+    assign.reset(reader.ReadNode());
+    constraintExpr.reset(reader.ReadNode());
+}
+
 RequiresExprNode::RequiresExprNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::requiresExprNode, sourcePos_)
 {
 }
@@ -24,8 +48,46 @@ RequiresExprNode::RequiresExprNode(const SourcePos& sourcePos_, Node* params_, N
 {
 }
 
+void RequiresExprNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void RequiresExprNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(params.get());
+    writer.Write(body.get());
+}
+
+void RequiresExprNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    params.reset(reader.ReadNode());
+    body.reset(reader.ReadNode());
+}
+
 RequirementBodyNode::RequirementBodyNode(const SourcePos& sourcePos_) : SequenceNode(NodeKind::requirementBodyNode, sourcePos_)
 {
+}
+
+void RequirementBodyNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void RequirementBodyNode::Write(Writer& writer)
+{
+    SequenceNode::Write(writer);
+    writer.Write(lbPos);
+    writer.Write(rbPos);
+}
+
+void RequirementBodyNode::Read(Reader& reader)
+{
+    SequenceNode::Read(reader);
+    lbPos = reader.ReadSourcePos();
+    rbPos = reader.ReadSourcePos();
 }
 
 void RequirementBodyNode::SetLBracePos(const SourcePos& lbPos_)
@@ -46,6 +108,11 @@ SimpleRequirementNode::SimpleRequirementNode(const SourcePos& sourcePos_, Node* 
 {
 }
 
+void SimpleRequirementNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 TypeRequirementNode::TypeRequirementNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::typeRequirementNode, sourcePos_)
 {
 }
@@ -53,6 +120,27 @@ TypeRequirementNode::TypeRequirementNode(const SourcePos& sourcePos_) : Compound
 TypeRequirementNode::TypeRequirementNode(const SourcePos& sourcePos_, Node* nns_, Node* typeName_, Node* semicolon_) : 
     CompoundNode(NodeKind::typeRequirementNode, sourcePos_), nns(nns_), typeName(typeName_), semicolon(semicolon_)
 {
+}
+
+void TypeRequirementNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void TypeRequirementNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(nns.get());
+    writer.Write(typeName.get());
+    writer.Write(semicolon.get());
+}
+
+void TypeRequirementNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    nns.reset(reader.ReadNode());
+    typeName.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
 }
 
 CompoundRequirementNode::CompoundRequirementNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::compoundRequirementNode, sourcePos_)
@@ -65,12 +153,44 @@ CompoundRequirementNode::CompoundRequirementNode(const SourcePos& sourcePos_, No
 {
 }
 
+void CompoundRequirementNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void CompoundRequirementNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(expr.get());
+    writer.Write(noexceptNode.get());
+    writer.Write(returnTypeRequirement.get());
+    writer.Write(semicolon.get());
+    writer.Write(lbPos);
+    writer.Write(rbPos);
+}
+
+void CompoundRequirementNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    expr.reset(reader.ReadNode());
+    noexceptNode.reset(reader.ReadNode());
+    returnTypeRequirement.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+    lbPos = reader.ReadSourcePos();
+    rbPos = reader.ReadSourcePos();
+}
+
 ReturnTypeRequirementNode::ReturnTypeRequirementNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::returnTypeRequirementNode, sourcePos_, nullptr)
 {
 }
 
 ReturnTypeRequirementNode::ReturnTypeRequirementNode(const SourcePos& sourcePos_, Node* typeConstraint_) : UnaryNode(NodeKind::returnTypeRequirementNode, sourcePos_, typeConstraint_)
 {
+}
+
+void ReturnTypeRequirementNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 NestedRequirementNode::NestedRequirementNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::nestedRequirementNode, sourcePos_, nullptr, nullptr)
@@ -82,12 +202,40 @@ NestedRequirementNode::NestedRequirementNode(const SourcePos& sourcePos_, Node* 
 {
 }
 
+void NestedRequirementNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 TypeConstraintNode::TypeConstraintNode(const SourcePos& sourcePos_) : ListNode(NodeKind::typeConstraintNode, sourcePos_), hasTemplateArgumentList(false)
 {
 }
 
 TypeConstraintNode::TypeConstraintNode(const SourcePos& sourcePos_, Node* conceptName_) : ListNode(NodeKind::typeConstraintNode, sourcePos_), conceptName(conceptName_), hasTemplateArgumentList(false)
 {
+}
+
+void TypeConstraintNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void TypeConstraintNode::Write(Writer& writer)
+{
+    ListNode::Write(writer);
+    writer.Write(conceptName.get());
+    writer.Write(hasTemplateArgumentList);
+    writer.Write(laPos);
+    writer.Write(raPos);
+}
+
+void TypeConstraintNode::Read(Reader& reader)
+{
+    ListNode::Read(reader);
+    conceptName.reset(reader.ReadNode());
+    hasTemplateArgumentList = reader.ReadBool();
+    laPos = reader.ReadSourcePos();
+    raPos = reader.ReadSourcePos();
 }
 
 void TypeConstraintNode::SetLAnglePos(const SourcePos& laPos_)
@@ -106,6 +254,11 @@ RequiresClauseNode::RequiresClauseNode(const SourcePos& sourcePos_) : UnaryNode(
 
 RequiresClauseNode::RequiresClauseNode(const SourcePos& sourcePos_, Node* constraintLogicalOrExpr_) : UnaryNode(NodeKind::requiresClauseNode, sourcePos_, constraintLogicalOrExpr_)
 {
+}
+
+void RequiresClauseNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 } // sngcpp::ast

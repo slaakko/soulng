@@ -9,6 +9,18 @@
 #include <sngcpp20/ast/Concept.hpp>
 #include <sngcpp20/ast/Declaration.hpp>
 #include <sngcpp20/ast/Enum.hpp>
+#include <sngcpp20/ast/Expression.hpp>
+#include <sngcpp20/ast/Function.hpp>
+#include <sngcpp20/ast/Identifier.hpp>
+#include <sngcpp20/ast/Lambda.hpp>
+#include <sngcpp20/ast/Literal.hpp>
+#include <sngcpp20/ast/Module.hpp>
+#include <sngcpp20/ast/Qualifier.hpp>
+#include <sngcpp20/ast/SimpleType.hpp>
+#include <sngcpp20/ast/Statement.hpp>
+#include <sngcpp20/ast/Template.hpp>
+#include <sngcpp20/ast/TranslationUnit.hpp>
+#include <sngcpp20/ast/Type.hpp>
 #include <sngcpp20/ast/Writer.hpp>
 #include <sngcpp20/ast/Reader.hpp>
 #include <stdexcept>
@@ -38,17 +50,12 @@ std::string NodeKindStr(NodeKind nodeKind)
     return nodeKindStr[static_cast<int>(nodeKind)];
 }
 
-Node::Node(NodeKind kind_, const SourcePos& sourcePos_) : kind(kind_), sourcePos(sourcePos_)
+Node::Node(NodeKind kind_, const SourcePos& sourcePos_) : kind(kind_), sourcePos(sourcePos_), parent(nullptr)
 {
 }
 
 Node::~Node()
 {
-}
-
-void Node::Accept(Visitor& visitor)
-{
-    // todo
 }
 
 void Node::AddNode(Node* node)
@@ -75,6 +82,7 @@ CompoundNode::CompoundNode(NodeKind kind_, const SourcePos& sourcePos_) : Node(k
 
 UnaryNode::UnaryNode(NodeKind kind_, const SourcePos& sourcePos_, Node* child_) : Node(kind_, sourcePos_), child(child_)
 {
+    child->SetParent(this);
 }
 
 void UnaryNode::Write(Writer& writer)
@@ -91,6 +99,8 @@ void UnaryNode::Read(Reader& reader)
 
 BinaryNode::BinaryNode(NodeKind kind_, const SourcePos& sourcePos_, Node* left_, Node* right_) : Node(kind_, sourcePos_), left(left_), right(right_)
 {
+    left->SetParent(this);
+    right->SetParent(this);
 }
 
 void BinaryNode::Write(Writer& writer)
@@ -113,6 +123,7 @@ SequenceNode::SequenceNode(NodeKind kind_, const SourcePos& sourcePos_) : Node(k
 
 void SequenceNode::AddNode(Node* node)
 {
+    node->SetParent(this);
     nodes.Add(node);
 }
 
@@ -150,6 +161,7 @@ ListNode::ListNode(NodeKind kind_, const SourcePos& sourcePos_) : Node(kind_, so
 
 void ListNode::AddNode(Node* node)
 {
+    node->SetParent(this);
     nodes.Add(node);
     if (node->Kind() != NodeKind::commaNode)
     {
@@ -341,6 +353,225 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::enumeratorNode, new NodeFactory<EnumeratorNode>());
     Register(NodeKind::elaboratedEnumSpecifierNode, new NodeFactory<ElaboratedEnumSpecifierNode>());
     Register(NodeKind::opaqueEnumDeclarationNode, new NodeFactory<OpaqueEnumDeclarationNode>());
+    // Expression:
+    Register(NodeKind::binaryExprNode, new NodeFactory<BinaryExprNode>());
+    Register(NodeKind::unaryExprNode, new NodeFactory<UnaryExprNode>());
+    Register(NodeKind::expressionListNode, new NodeFactory<ExpressionListNode>());
+    Register(NodeKind::assignmentInitializerNode, new NodeFactory<AssignmentInitNode>());
+    Register(NodeKind::yieldExprNode, new NodeFactory<YieldExprNode>());
+    Register(NodeKind::throwExprNode, new NodeFactory<ThrowExprNode>());
+    Register(NodeKind::conditionalExprNode, new NodeFactory<ConditionalExprNode>());
+    Register(NodeKind::colonNode, new NodeFactory<ColonNode>());
+    Register(NodeKind::commaNode, new NodeFactory<CommaNode>());
+    Register(NodeKind::assignNode, new NodeFactory<AssignNode>());
+    Register(NodeKind::plusAssignNode, new NodeFactory<PlusAssignNode>());
+    Register(NodeKind::minusAssignNode, new NodeFactory<MinusAssignNode>());
+    Register(NodeKind::mulAssignNode, new NodeFactory<MulAssignNode>());
+    Register(NodeKind::divAssignNode, new NodeFactory<DivAssignNode>());
+    Register(NodeKind::modAssignNode, new NodeFactory<ModAssignNode>());
+    Register(NodeKind::xorAssignNode, new NodeFactory<XorAssignNode>());
+    Register(NodeKind::andAssignNode, new NodeFactory<AndAssignNode>());
+    Register(NodeKind::orAssignNode, new NodeFactory<OrAssignNode>());
+    Register(NodeKind::shiftLeftAssignNode, new NodeFactory<ShiftLeftAssignNode>());
+    Register(NodeKind::shiftRightAssignNode, new NodeFactory<ShiftRightAssignNode>());
+    Register(NodeKind::questNode, new NodeFactory<QuestNode>());
+    Register(NodeKind::disjunctionNode, new NodeFactory<DisjunctionNode>());
+    Register(NodeKind::conjunctionNode, new NodeFactory<ConjunctionNode>());
+    Register(NodeKind::inclusiveOrNode, new NodeFactory<InclusiveOrNode>());
+    Register(NodeKind::exclusiveOrNode, new NodeFactory<ExclusiveOrNode>());
+    Register(NodeKind::andNode, new NodeFactory<AndNode>());
+    Register(NodeKind::equalNode, new NodeFactory<EqualNode>());
+    Register(NodeKind::notEqualNode, new NodeFactory<NotEqualNode>());
+    Register(NodeKind::lessNode, new NodeFactory<LessNode>());
+    Register(NodeKind::greaterNode, new NodeFactory<GreaterNode>());
+    Register(NodeKind::lessOrEqualNode, new NodeFactory<LessOrEqualNode>());
+    Register(NodeKind::greaterOrEqualNode, new NodeFactory<GreaterOrEqualNode>());
+    Register(NodeKind::compareNode, new NodeFactory<CompareNode>());
+    Register(NodeKind::shiftLeftNode, new NodeFactory<ShiftLeftNode>());
+    Register(NodeKind::shiftRightNode, new NodeFactory<ShiftRightNode>());
+    Register(NodeKind::plusNode, new NodeFactory<PlusNode>());
+    Register(NodeKind::minusNode, new NodeFactory<MinusNode>());
+    Register(NodeKind::mulNode, new NodeFactory<MulNode>());
+    Register(NodeKind::divNode, new NodeFactory<DivNode>());
+    Register(NodeKind::modNode, new NodeFactory<ModNode>());
+    Register(NodeKind::dotStarNode, new NodeFactory<DotStarNode>());
+    Register(NodeKind::arrowStarNode, new NodeFactory<ArrowStarNode>());
+    Register(NodeKind::castExprNode, new NodeFactory<CastExprNode>());
+    Register(NodeKind::derefNode, new NodeFactory<DerefNode>());
+    Register(NodeKind::addrOfNode, new NodeFactory<AddrOfNode>());
+    Register(NodeKind::notNode, new NodeFactory<NotNode>());
+    Register(NodeKind::complementNode, new NodeFactory<ComplementNode>());
+    Register(NodeKind::prefixIncNode, new NodeFactory<PrefixIncNode>());
+    Register(NodeKind::prefixDecNode, new NodeFactory<PrefixDecNode>());
+    Register(NodeKind::awaitExprNode, new NodeFactory<AwaitExprNode>());
+    Register(NodeKind::sizeOfTypeExprNode, new NodeFactory<SizeOfTypeExprNode>());
+    Register(NodeKind::sizeOfPackExpNode, new NodeFactory<SizeOfPackExprNode>());
+    Register(NodeKind::sizeOfUnaryExprNode, new NodeFactory<SizeOfUnaryExprNode>());
+    Register(NodeKind::alignOfExprNode, new NodeFactory<AlignOfExprNode>());
+    Register(NodeKind::noexceptExprNode, new NodeFactory<NoexceptExprNode>());
+    Register(NodeKind::newExprNode, new NodeFactory<NewExprNode>());
+    Register(NodeKind::newPlacementNode, new NodeFactory<NewPlacementNode>());
+    Register(NodeKind::parenNewTypeIdNode, new NodeFactory<ParenNewTypeIdNode>());
+    Register(NodeKind::newTypeIdNode, new NodeFactory<NewTypeIdNode>());
+    Register(NodeKind::arrayDeletePtrNode, new NodeFactory<ArrayDeletePtrNode>());
+    Register(NodeKind::deletePtrNode, new NodeFactory<DeletePtrNode>());
+    Register(NodeKind::subscriptExprNode, new NodeFactory<SubscriptExprNode>());
+    Register(NodeKind::invokeExprNode, new NodeFactory<InvokeExprNode>());
+    Register(NodeKind::pairNode, new NodeFactory<PairNode>());
+    Register(NodeKind::arrowNode, new NodeFactory<ArrowNode>());
+    Register(NodeKind::memberExprNode, new NodeFactory<MemberExprNode>());
+    Register(NodeKind::postfixIncExprNode, new NodeFactory<PostfixIncExprNode>());
+    Register(NodeKind::postfixDecExprNode, new NodeFactory<PostfixDecExprNode>());
+    Register(NodeKind::typeIdExprNode, new NodeFactory<TypeIdExprNode>());
+    Register(NodeKind::dynamicCastNode, new NodeFactory<DynamicCastNode>());
+    Register(NodeKind::staticCastNode, new NodeFactory<StaticCastNode>());
+    Register(NodeKind::reinterpretCastNode, new NodeFactory<ReinterpretCastNode>());
+    Register(NodeKind::constCastNode, new NodeFactory<ConstCastNode>());
+    Register(NodeKind::cppCastExprNode, new NodeFactory<CppCastExprNode>());
+    Register(NodeKind::thisNode, new NodeFactory<ThisNode>());
+    Register(NodeKind::parenExprNode, new NodeFactory<ParenthesizedExprNode>());
+    Register(NodeKind::foldExprNode, new NodeFactory<FoldExprNode>());
+    Register(NodeKind::newDeclaratorNode, new NodeFactory<NewDeclaratorNode>());
+    Register(NodeKind::arrayNewDeclaratorNode, new NodeFactory<ArrayNewDeclaratorNode>());
+    Register(NodeKind::newInitializerNode, new NodeFactory<NewInitializerNode>());
+    Register(NodeKind::bracedInitListNode, new NodeFactory<BracedInitListNode>());
+    Register(NodeKind::designatedInitializerNode, new NodeFactory<DesignatedInitializerNode>());
+    Register(NodeKind::designatorNode, new NodeFactory<DesignatorNode>());
+    Register(NodeKind::ellipsesNode, new NodeFactory<EllipsesNode>());
+    // Function:
+    Register(NodeKind::functionDefinitionNode, new NodeFactory<FunctionDefinitionNode>());
+    Register(NodeKind::functionBodyNode, new NodeFactory<FunctionBodyNode>());
+    Register(NodeKind::defaultNode, new NodeFactory<DefaultNode>());
+    Register(NodeKind::deleteNode, new NodeFactory<DeleteNode>());
+    Register(NodeKind::generatedFunctionBodyNode, new NodeFactory<GeneratedFunctionBodyNode>());
+    Register(NodeKind::functionDeclarationNode, new NodeFactory<FunctionDeclarationNode>());
+    Register(NodeKind::operatorNode, new NodeFactory<OperatorNode>());
+    Register(NodeKind::newArrayOpNode, new NodeFactory<NewArrayOpNode>());
+    Register(NodeKind::newOpNode, new NodeFactory<NewOpNode>());
+    Register(NodeKind::deleteArrayOpNode, new NodeFactory<DeleteArrayOpNode>());
+    Register(NodeKind::deleteOpNode, new NodeFactory<DeleteOpNode>());
+    Register(NodeKind::coAwaitOpNode, new NodeFactory<CoAwaitOpNode>());
+    Register(NodeKind::invokeOpNode, new NodeFactory<InvokeOpNode>());
+    Register(NodeKind::subscriptOpNode, new NodeFactory<SubscriptOpNode>());
+    Register(NodeKind::operatorFnIdNode, new NodeFactory<OperatorFunctionIdNode>());
+    Register(NodeKind::conversionFnIdNode, new NodeFactory<ConversionFunctionIdNode>());
+    Register(NodeKind::conversionTypeIdNode, new NodeFactory<ConversionTypeIdNode>());
+    Register(NodeKind::conversionDeclaratorNode, new NodeFactory<ConversionDeclaratorNode>());
+    Register(NodeKind::destructorIdNode, new NodeFactory<DestructorIdNode>());
+    Register(NodeKind::parameterNode, new NodeFactory<ParameterNode>());
+    Register(NodeKind::parameterListNode, new NodeFactory<ParameterListNode>());
+    Register(NodeKind::noexceptNode, new NodeFactory<NoexceptNode>());
+    Register(NodeKind::functionTryBlock, new NodeFactory<FunctionTryBlockNode>());
+    // Identifier:
+    Register(NodeKind::identifierNode, new NodeFactory<IdentifierNode>());
+    Register(NodeKind::colonColonNode, new NodeFactory<ColonColonNode>());
+    Register(NodeKind::nestedNameSpecifierNode, new NodeFactory<NestedNameSpecifierNode>());
+    Register(NodeKind::qualifiedIdNode, new NodeFactory<QualifiedIdNode>());
+    Register(NodeKind::identifierListNode, new NodeFactory<IdentifierListNode>());
+    Register(NodeKind::qualifiedModuleIdNode, new NodeFactory<QualifiedModuleIdNode>());
+    Register(NodeKind::dotNode, new NodeFactory<DotNode>());
+    // Lambda:
+    Register(NodeKind::lambdaExpressionNode, new NodeFactory<LambdaExpressionNode>());
+    Register(NodeKind::lambdaIntroducerNode, new NodeFactory<LambdaIntroducerNode>());
+    Register(NodeKind::lambdaCaptureNode, new NodeFactory<LambdaCaptureNode>());
+    Register(NodeKind::defaultRefCaptureNode, new NodeFactory<DefaultRefCaptureNode>());
+    Register(NodeKind::simpleCaptureNode, new NodeFactory<SimpleCaptureNode>());
+    Register(NodeKind::currentObjectCopyCapture, new NodeFactory<CurrentObjectCopyCapture>());
+    Register(NodeKind::currentObjectByRefCapture, new NodeFactory<CurrentObjectByRefCapture>());
+    Register(NodeKind::initCaptureNode, new NodeFactory<InitCaptureNode>());
+    Register(NodeKind::lambdaDeclaratorNode, new NodeFactory<LambdaDeclaratorNode>());
+    Register(NodeKind::lambdaSpecifiersNode, new NodeFactory<LambdaSpecifiersNode>());
+    Register(NodeKind::lambdaTemplateParamsNode, new NodeFactory<LambdaTemplateParamsNode>());
+    // Literal:
+    Register(NodeKind::integerLiteralNode, new NodeFactory<IntegerLiteralNode>());
+    Register(NodeKind::floatingLiteralNode, new NodeFactory<FloatingLiteralNode>());
+    Register(NodeKind::characterLiteralNode, new NodeFactory<CharacterLiteralNode>());
+    Register(NodeKind::stringLiteralNode, new NodeFactory<StringLiteralNode>());
+    Register(NodeKind::booleanLiteralNode, new NodeFactory<BooleanLiteralNode>());
+    Register(NodeKind::nullPtrLiteralNode, new NodeFactory<NullPtrLiteralNode>());
+    Register(NodeKind::userDefinedLiteralNode, new NodeFactory< UserDefinedLiteraNode>());
+    Register(NodeKind::literalOperatorIdNode, new NodeFactory<LiteralOperatorIdNode>());
+    // Module:
+    Register(NodeKind::moduleDeclarationNode, new NodeFactory<ModuleDeclarationNode>());
+    Register(NodeKind::exportDeclarationNode, new NodeFactory<ExportDeclarationNode>());
+    Register(NodeKind::exportNode, new NodeFactory<ExportNode>());
+    Register(NodeKind::importNode, new NodeFactory<ImportNode>());
+    Register(NodeKind::importDeclarationNode, new NodeFactory<ImportDeclarationNode>());
+    Register(NodeKind::modulePartitionNode, new NodeFactory<ModulePartitionNode>());
+    Register(NodeKind::globalModuleFragmentNode, new NodeFactory<GlobalModuleFragmentNode>());
+    Register(NodeKind::privateModuleFragmentNode, new NodeFactory<PrivateModuleFragmentNode>());
+    // Qualifier:
+    Register(NodeKind::constNode, new NodeFactory<ConstNode>());
+    Register(NodeKind::volatileNode, new NodeFactory<VolatileNode>());
+    Register(NodeKind::lvalueRefNode, new NodeFactory<LvalueRefNode>());
+    Register(NodeKind::rvalueRefNode, new NodeFactory<RvalueRefNode>());
+    Register(NodeKind::ptrNode, new NodeFactory<PtrNode>());
+    Register(NodeKind::cvQualifierSequenceNode, new NodeFactory<CVQualifierSequenceNode>());
+    // SimpleType:
+    Register(NodeKind::charNode, new NodeFactory<CharNode>());
+    Register(NodeKind::char8Node, new NodeFactory<Char8Node>());
+    Register(NodeKind::char16Node, new NodeFactory<Char16Node>());
+    Register(NodeKind::char32Node, new NodeFactory<Char32Node>());
+    Register(NodeKind::wcharNode, new NodeFactory<WCharNode>());
+    Register(NodeKind::boolNode, new NodeFactory<BoolNode>());
+    Register(NodeKind::shortNode, new NodeFactory<ShortNode>());
+    Register(NodeKind::intNode, new NodeFactory<IntNode>());
+    Register(NodeKind::longNode, new NodeFactory<LongNode>());
+    Register(NodeKind::signedNode, new NodeFactory<SignedNode>());
+    Register(NodeKind::unsignedNode, new NodeFactory<UnsignedNode>());
+    Register(NodeKind::floatNode, new NodeFactory<FloatNode>());
+    Register(NodeKind::doubleNode, new NodeFactory<DoubleNode>());
+    Register(NodeKind::voidNode, new NodeFactory<VoidNode>());
+    // Statement:
+    Register(NodeKind::labeledStatementNode, new NodeFactory<LabeledStatementNode>());
+    Register(NodeKind::caseStatmentNode, new NodeFactory<CaseStatementNode>());
+    Register(NodeKind::defaultStatementNode, new NodeFactory<DefaultStatementNode>());
+    Register(NodeKind::compoundStatementNode, new NodeFactory<CompoundStatementNode>());
+    Register(NodeKind::ifStatementNode, new NodeFactory<IfStatementNode>());
+    Register(NodeKind::switchStatemeNode, new NodeFactory<SwitchStatementNode>());
+    Register(NodeKind::whileStatementNode, new NodeFactory<WhileStatementNode>());
+    Register(NodeKind::doStatementNode, new NodeFactory<DoStatementNode>());
+    Register(NodeKind::rangeForStatementNode, new NodeFactory<RangeForStatementNode>());
+    Register(NodeKind::forRangeDeclarationNode, new NodeFactory<ForRangeDeclarationNode>());
+    Register(NodeKind::structuredBindingNode, new NodeFactory<StructuredBindingNode>());
+    Register(NodeKind::forStatementNode, new NodeFactory<ForStatementNode>());
+    Register(NodeKind::breakStatementNode, new NodeFactory<BreakStatementNode>());
+    Register(NodeKind::continueStatementNode, new NodeFactory<ContinueStatementNode>());
+    Register(NodeKind::returnStatementNode, new NodeFactory<ReturnStatementNode>());
+    Register(NodeKind::coReturnStatementNode, new NodeFactory<CoReturnStatementNode>());
+    Register(NodeKind::gotoStatementNode, new NodeFactory<GotoStatementNode>());
+    Register(NodeKind::tryStatementNode, new NodeFactory<TryStatementNode>());
+    Register(NodeKind::handlerSequenceNode, new NodeFactory<HandlerSequenceNode>());
+    Register(NodeKind::handlerNode, new NodeFactory<HandlerNode>());
+    Register(NodeKind::exceptionDeclarationNode, new NodeFactory<ExceptionDeclarationNode>());
+    Register(NodeKind::expressionStatementNode, new NodeFactory<ExpressionStatementNode>());
+    Register(NodeKind::declarationStatementNode, new NodeFactory<DeclarationStatementNode>());
+    Register(NodeKind::initConditionNode, new NodeFactory<InitConditionNode>());
+    Register(NodeKind::semicolonNode, new NodeFactory<SemicolonNode>());
+    // Template:
+    Register(NodeKind::templateDeclarationNode, new NodeFactory<TemplateDeclarationNode>());
+    Register(NodeKind::templateHeadNode, new NodeFactory<TemplateHeadNode>());
+    Register(NodeKind::templateParameterListNode, new NodeFactory<TemplateParameterListNode>());
+    Register(NodeKind::typeParameterNode, new NodeFactory<TypeParameterNode>());
+    Register(NodeKind::templateIdNode, new NodeFactory<TemplateIdNode>());
+    Register(NodeKind::typenameNode, new NodeFactory<TypenameNode>());
+    Register(NodeKind::deductionGuideNode, new NodeFactory<DeductionGuideNode>());
+    Register(NodeKind::explicitInstantiationNode, new NodeFactory<ExplicitInstantiationNode>());
+    Register(NodeKind::templateNode, new NodeFactory<TemplateNode>());
+    Register(NodeKind::explicitSpecializationNode, new NodeFactory<ExplicitSpecializationNode>());
+    // TranslationUnit:
+    Register(NodeKind::translationUnitNode, new NodeFactory<TranslationUnitNode>());
+    Register(NodeKind::moduleUnitNode, new NodeFactory<ModuleUnitNode>());
+    // Type:
+    Register(NodeKind::typeSpecifierSequenceNode, new NodeFactory<TypeSpecifierSequenceNode>());
+    Register(NodeKind::typenameSpecifierNode, new NodeFactory<TypenameSpecifierNode>());
+    Register(NodeKind::typeIdNode, new NodeFactory<TypeIdNode>());
+    Register(NodeKind::definingTypeIdNode, new NodeFactory<DefiningTypeIdNode>());
+    Register(NodeKind::definingTypeSpecifierSequenceNode, new NodeFactory<DefiningTypeSpecifierSequenceNode>());
+    Register(NodeKind::trailingReturnTypeNode, new NodeFactory<TrailingReturnTypeNode>());
+    Register(NodeKind::elaboratedTypeSpecifierNode, new NodeFactory<ElaboratedTypeSpecifierNode>());
+    Register(NodeKind::declTypeSpecifierNode, new NodeFactory<DeclTypeSpecifierNode>());
+    Register(NodeKind::placeholderTypeSpecifierNode, new NodeFactory<PlaceholderTypeSpecifierNode>());
 }
 
 Node* NodeFactoryCollection::CreateNode(NodeKind nodeKind, const SourcePos& sourcePos)

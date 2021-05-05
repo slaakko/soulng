@@ -9,7 +9,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/ModuleParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/ModuleParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
@@ -830,7 +830,7 @@ soulng::parser::Match ModuleParser::ImportDeclaration(CppLexer& lexer, sngcpp::p
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ImportDeclaration"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new ImportDeclarationNode(s, subject.release(), attributes.release(), semicolon.release()));
+                return soulng::parser::Match(true, new ImportDeclarationNode(s, imprt.release(), subject.release(), attributes.release(), semicolon.release()));
             }
         }
         *parentMatch0 = match;
@@ -1330,7 +1330,7 @@ soulng::parser::Match ModuleParser::HeaderName(CppLexer& lexer, sngcpp::par::Con
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("HeaderName"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new AngleHeaderName(sourcePos));
+                    return soulng::parser::Match(true, new AngleHeaderName(sourcePos, lexer.GetMatch(pos)));
                 }
             }
             break;
@@ -1343,7 +1343,7 @@ soulng::parser::Match ModuleParser::HeaderName(CppLexer& lexer, sngcpp::par::Con
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("HeaderName"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new QuoteHeaderName(sourcePos));
+                    return soulng::parser::Match(true, new QuoteHeaderName(sourcePos, lexer.GetMatch(pos)));
                 }
             }
             break;

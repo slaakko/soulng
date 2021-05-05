@@ -6,6 +6,7 @@
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
 [hpp]#include <sngcpp20/parser/Context.hpp>
 [hpp]#include <sngcpp20/ast/Class.hpp>
+[cpp]#include <sngcpp20/symbols/SymbolFactory.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ConceptParser.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
@@ -45,6 +46,7 @@ parser api(PARSER_API) ClassParser
     using FunctionParser.FunctionDefinition;
     using IdentifierParser.Identifier;
     using IdentifierParser.NestedNameSpecifier;
+    using IdentifierParser.Unnamed;
     using InitializationParser.BracedInitList;
     using InitializationParser.BraceOrEqualInitializer;
     using StatementParser.Semicolon;
@@ -60,13 +62,14 @@ parser api(PARSER_API) ClassParser
         ::= 
         (
             ClassHead(ctx):classHead{ s = sourcePos; } 
-            LBRACE{ lbPos = sourcePos; node.reset(new ClassSpecifierNode(s, classHead)); } 
+            LBRACE{ lbPos = sourcePos; node.reset(new ClassSpecifierNode(s, classHead)); sngcpp::symbols::BeginClass(node.get(), ctx); } 
             MemberSpecification(ctx, node.get()):memberSpec? 
             RBRACE{ rbPos = sourcePos; }
         )
         {
             node->SetLBracePos(lbPos);
             node->SetRBracePos(rbPos);
+            sngcpp::symbols::EndClass(ctx);
             return node.release();
         }
         ;
@@ -75,13 +78,13 @@ parser api(PARSER_API) ClassParser
         ::= 
         (
             ClassKey:classKey{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes? 
-            (   (ClassHeadName(ctx):classHeadName ClassVirtSpecifier(ctx):classVirtSpecifier BaseClause(ctx):baseClause?)
+            (   (ClassHeadName(ctx):classHeadName ClassVirtSpecifier(ctx):classVirtSpecifier? BaseClause(ctx):baseClause?)
                 {
                     return new ClassHeadNode(s, classKey, classHeadName, classVirtSpecifier, baseClause, attributes);
                 }
-            |   (BaseClause(ctx):baseClause2?)
+            |   (Unnamed:unnamed BaseClause(ctx):baseClause2?)
                 {
-                    return new ClassHeadNode(s, classKey, nullptr, nullptr, baseClause2, attributes);
+                    return new ClassHeadNode(s, classKey, unnamed, nullptr, baseClause2, attributes);
                 }
             )
         )
@@ -122,18 +125,20 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    BaseSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> accessSpecifierNode, var std::unique_ptr<Node> virtualSpecifier) : Node*
+    BaseSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> accessSpecifierNode, var std::unique_ptr<Node> virtualSpecifier, var bool virtualFirst) : Node*
         ::= 
         (
             (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })?
-            (   VirtualSpecifier:virt{ if (!s.IsValid()) s = sourcePos; virtualSpecifier.reset(virt); } (AccessSpecifier:access{ if (!s.IsValid()) s = sourcePos; accessSpecifierNode.reset(access); })? 
-            |   AccessSpecifier:access2{ if (!s.IsValid()) s = sourcePos; accessSpecifierNode.reset(access2); } (VirtualSpecifier:virt2{ if (!s.IsValid()) s = sourcePos; virtualSpecifier.reset(virt2); })?
+            (   VirtualSpecifier:virt{ if (!s.IsValid()) s = sourcePos; virtualSpecifier.reset(virt); virtualFirst = true; } 
+                (AccessSpecifier:access{ if (!s.IsValid()) s = sourcePos; accessSpecifierNode.reset(access); })? 
+            |   AccessSpecifier:access2{ if (!s.IsValid()) s = sourcePos; accessSpecifierNode.reset(access2); } 
+                (VirtualSpecifier:virt2{ if (!s.IsValid()) s = sourcePos; virtualSpecifier.reset(virt2); })?
             |   empty
             )
             ClassOrDeclType(ctx):classOrDeclType{ if (!s.IsValid()) s = sourcePos; }
         )
         {
-            return new BaseSpecifierNode(s, classOrDeclType, accessSpecifierNode.release(), virtualSpecifier.release(), attributes);
+            return new BaseSpecifierNode(s, classOrDeclType, accessSpecifierNode.release(), virtualSpecifier.release(), attributes, virtualFirst);
         }
         ;
 

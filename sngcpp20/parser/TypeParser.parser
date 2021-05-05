@@ -38,6 +38,7 @@ parser api(PARSER_API) TypeParser
     using ExpressionParser.Expression;
     using IdentifierParser.Identifier;
     using IdentifierParser.NestedNameSpecifier;
+    using IdentifierParser.TypeIdentifier;
     using SimpleTypeParser.SimpleType;
     using TemplateParser.SimpleTemplateId;
     using TemplateParser.Template;
@@ -83,8 +84,8 @@ parser api(PARSER_API) TypeParser
         ;
 
     TypeSpecifier(sngcpp::par::Context* ctx) : Node*
-        ::= ElaboratedTypeSpecifier(ctx):elaboratedTypeSpecifier
-        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier
+        ::= ElaboratedTypeSpecifier(ctx):elaboratedTypeSpecifier{ return elaboratedTypeSpecifier; }
+        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier{ return simpleTypeSpecifier; }
         ;
 
     ElaboratedTypeSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos, var SourcePos tmpPos) : Node*
@@ -138,7 +139,7 @@ parser api(PARSER_API) TypeParser
 
     TypeName(sngcpp::par::Context* ctx) : Node*
         ::= SimpleTemplateId(ctx):templateId{ return templateId; }
-        |   Identifier(ctx):identifier{ return identifier; }
+        |   TypeIdentifier(ctx):typeIdentifier{ return typeIdentifier;  }        
         ;
 
     TypeId(sngcpp::par::Context* ctx, var SourcePos s) : Node*

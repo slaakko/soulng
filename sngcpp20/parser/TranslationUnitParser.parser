@@ -7,6 +7,7 @@
 [hpp]#include <sngcpp20/parser/Context.hpp>
 [hpp]#include <sngcpp20/ast/TranslationUnit.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
+[cpp]#include <sngcpp20/parser/ModuleParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -18,17 +19,18 @@ using namespace soulng::lexer;
 parser api(PARSER_API) TranslationUnitParser
 {
     uselexer CppLexer;
+    main;
 
     using DeclarationParser.DeclarationSeq;
     using ModuleParser.GlobalModuleFragment;
     using ModuleParser.ModuleDeclaration;
     using ModuleParser.PrivateModuleFragment;
 
-    TranslationUnit(sngcpp::par::Context* ctx) : Node*
+    TranslationUnit(sngcpp::par::Context* ctx) : sngcpp::ast::Node*
         ::= 
         (   ModuleUnit(ctx):moduleUnit{ return new TranslationUnitNode(sourcePos, moduleUnit); }
         |   DeclarationSeq(ctx):declarations{ return new TranslationUnitNode(sourcePos, declarations); }
-        |   empty{ return new TranslationUnitNode(s, nullptr); }
+        |   empty{ return new TranslationUnitNode(sourcePos, nullptr); }
         )
         ;
 

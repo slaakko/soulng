@@ -13,16 +13,20 @@ namespace soulng { namespace lexer {
 
 using namespace soulng::unicode;
 
+LexerState::LexerState() : token(), line(0), lexeme(), pos(), tokens(), current(), flags(), recordedPosPair()
+{
+}
+
 Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) :
     content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags()
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos())
 {
     CalculateLineStarts();
 }
 
 Lexer::Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) :
     content(), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(start_), end(end_), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags()
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos())
 {
     CalculateLineStarts();
 }
@@ -33,17 +37,40 @@ Lexer::~Lexer()
 
 void Lexer::operator++()
 {
-    if (current != tokens.end())
+    if (GetFlag(LexerFlags::recordedParse))
     {
-        ++current;
-    }
-    if (current == tokens.end())
-    {
-        NextToken();
+        // precondition: !tokens.empty() && tokens.back().id == END_TOKEN
+        int64_t currentPos = GetPos();
+        if (currentPos == recordedPosPair.end)
+        {
+            current = tokens.end() - 1; // set current to last token whose id is END_TOKEN
+            pos = tokens.back().match.end;
+        }
+        else
+        {
+            ++current;
+        }
+        line = current->line;
     }
     else
     {
-        line = current->line;
+        if (current != tokens.end())
+        {
+            ++current;
+        }
+        if (current == tokens.end())
+        {
+            NextToken();
+        }
+        else
+        {
+            line = current->line;
+        }
+        int64_t p = GetPos();
+        if (p > farthestPos)
+        {
+            farthestPos = p;
+        }
     }
 }
 
@@ -469,6 +496,63 @@ bool Lexer::Synchronize()
         }
     }
     return false;
+}
+
+LexerState Lexer::GetState() const
+{
+    LexerState state;
+    state.token = token;
+    state.line = line;
+    state.lexeme = lexeme;
+    state.pos = pos;
+    state.tokens = tokens;
+    state.current = current;
+    state.flags = flags;
+    state.recordedPosPair = recordedPosPair;
+    return state;
+}
+
+void Lexer::SetState(const LexerState& state)
+{
+    token = state.token;
+    line = state.line;
+    lexeme = state.lexeme;
+    pos = state.pos;
+    tokens = state.tokens;
+    current = state.current;
+    flags = state.flags;
+    recordedPosPair = state.recordedPosPair;
+}
+
+void Lexer::PushState()
+{
+    stateStack.push(GetState());
+}
+
+void Lexer::PopState()
+{
+    SetState(stateStack.top());
+    stateStack.pop();
+}
+
+void Lexer::BeginRecordedParse(const LexerPosPair& recordedPosPair_)
+{
+    PushState();
+    if (tokens.empty() || tokens.back().id != END_TOKEN)
+    {
+        Token endToken(END_TOKEN);
+        endToken.match.begin = end;
+        endToken.match.end = end;
+        tokens.push_back(endToken);
+    }
+    recordedPosPair = recordedPosPair_;
+    SetPos(recordedPosPair.start);
+    SetFlag(LexerFlags::recordedParse);
+}
+
+void Lexer::EndRecordedParse()
+{
+    PopState();
 }
 
 void Lexer::CalculateLineStarts()

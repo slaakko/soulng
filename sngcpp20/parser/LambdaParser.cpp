@@ -12,7 +12,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/LambdaParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/LambdaParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
@@ -872,6 +872,7 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::par::
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     SourcePos s = SourcePos();
+    SourcePos thisPos = SourcePos();
     std::unique_ptr<Node> byRefCaptureNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> ellipses;
@@ -917,6 +918,7 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::par::
                         soulng::parser::Match* parentMatch6 = &match;
                         {
                             int64_t pos = lexer.GetPos();
+                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
                             soulng::parser::Match match(false);
                             if (*lexer == THIS)
                             {
@@ -925,11 +927,12 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::par::
                             }
                             if (match.hit)
                             {
+                                thisPos = sourcePos;
                                 {
                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleCapture"));
                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                    return soulng::parser::Match(true, new CurrentObjectCopyCapture(s));
+                                    return soulng::parser::Match(true, new CurrentObjectCopyCapture(s, thisPos));
                                 }
                             }
                             *parentMatch6 = match;
@@ -958,11 +961,12 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::par::
                             }
                             if (match.hit)
                             {
+                                thisPos = sourcePos;
                                 {
                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleCapture"));
                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                    return soulng::parser::Match(true, new CurrentObjectByRefCapture(s, sourcePos));
+                                    return soulng::parser::Match(true, new CurrentObjectByRefCapture(s, thisPos));
                                 }
                             }
                             *parentMatch8 = match;

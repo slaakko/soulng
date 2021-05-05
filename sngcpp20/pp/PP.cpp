@@ -13,9 +13,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppKeywords.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
-/*
-#include <sngcpp20/parser/Expression.hpp>
-*/
+#include <sngcpp20/parser/ExpressionParser.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -365,6 +363,14 @@ void PP::Define(const soulng::lexer::Lexeme& lexeme)
     EndDefine(*def);
 }
 
+void PP::Undef(const soulng::lexer::Lexeme& lexeme)
+{
+    if (process)
+    {
+        macroMap.erase(lexeme);
+    }
+}
+
 bool PP::IsDefined(const soulng::lexer::Lexeme& lexeme) const
 {
     return macroMap.find(lexeme) != macroMap.cend();
@@ -427,22 +433,19 @@ const char32_t* emptyStr = U"";
 
 bool PP::Evaluate(const std::vector<soulng::lexer::Token>& exprPPTokens) const
 {
-/*
     std::vector<soulng::lexer::Token> exprTextTokens = ConvertPPTokensToTextTokens(exprPPTokens);
     exprTextTokens = MacroExpand(exprTextTokens, this);
     std::vector<soulng::lexer::Token> cppTokens = ConvertTextTokensToCppTokens(exprTextTokens, this);
     CppLexer lexer(emptyStr, emptyStr, fileName, fileIndex);
     lexer.SetLine(line);
     lexer.SetTokens(cppTokens);
-    sngcpp::cppparser::ParsingContext ctx;
+    sngcpp::par::Context ctx;
     std::unique_ptr<sngcpp::ast::Node> expr = ExpressionParser::Parse(lexer, &ctx);
     Evaluator evaluator(fileName, line, context);
     expr->Accept(evaluator);
     Value* value = evaluator.GetValue();
     BoolValue* boolValue = value->ToBool(context);
     return boolValue->GetValue();
-*/
-    return false;
 }
 
 void PP::If(const std::vector<soulng::lexer::Token>& exprPPTokens)
@@ -874,7 +877,9 @@ void Preprocess(const std::string& fileName, PP* pp)
     pp->line = 1;
     std::string prevFileName = pp->fileName;
     pp->fileName = fileName;
-    File* file = new File(std::move(ToUtf32(ReadFile(fileName))));
+    std::u32string content = ToUtf32(ReadFile(fileName));
+    content.append(1, '\n');
+    File* file = new File(std::move(content));
     pp->files.push_back(std::unique_ptr<File>(file));
     const char32_t* p = file->content.c_str();
     const char32_t* e = file->content.c_str() + file->content.length();

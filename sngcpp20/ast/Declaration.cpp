@@ -4,11 +4,19 @@
 // =================================
 
 #include <sngcpp20/ast/Declaration.hpp>
+#include <sngcpp20/ast/Visitor.hpp>
+#include <sngcpp20/ast/Writer.hpp>
+#include <sngcpp20/ast/Reader.hpp>
 
 namespace sngcpp::ast {
 
 DeclarationSequenceNode::DeclarationSequenceNode(const SourcePos& sourcePos_) : SequenceNode(NodeKind::declarationSequenceNode, sourcePos_)
 {
+}
+
+void DeclarationSequenceNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 SimpleDeclarationNode::SimpleDeclarationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::simpleDeclarationNode, sourcePos_)
@@ -20,6 +28,29 @@ SimpleDeclarationNode::SimpleDeclarationNode(const SourcePos& sourcePos_, Node* 
 {
 }
 
+void SimpleDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void SimpleDeclarationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(declarationSpecifiers.get());
+    writer.Write(initDeclaratorList.get());
+    writer.Write(attributes.get());
+    writer.Write(semicolon.get());
+}
+
+void SimpleDeclarationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    declarationSpecifiers.reset(reader.ReadNode());
+    initDeclaratorList.reset(reader.ReadNode());
+    attributes.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+}
+
 AsmDeclarationNode::AsmDeclarationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::asmDeclarationNode, sourcePos_)
 {
 }
@@ -29,8 +60,40 @@ AsmDeclarationNode::AsmDeclarationNode(const SourcePos& sourcePos_, Node* asm__,
 {
 }
 
+void AsmDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void AsmDeclarationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(asm_.get());
+    writer.Write(asmText.get());
+    writer.Write(semicolon.get());
+    writer.Write(attributes.get());
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void AsmDeclarationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    asm_.reset(reader.ReadNode());
+    asmText.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+    attributes.reset(reader.ReadNode());
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
+}
+
 AsmNode::AsmNode(const SourcePos& sourcePos_) : Node(NodeKind::asmNode, sourcePos_)
 {
+}
+
+void AsmNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 LinkageSpecificationNode::LinkageSpecificationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::linkageSpecificationNode, sourcePos_)
@@ -40,6 +103,31 @@ LinkageSpecificationNode::LinkageSpecificationNode(const SourcePos& sourcePos_) 
 LinkageSpecificationNode::LinkageSpecificationNode(const SourcePos& sourcePos_, Node* extrn_, Node* linkage_, Node* declarations_, const SourcePos& lbPos_, const SourcePos& rbPos_) :
     CompoundNode(NodeKind::linkageSpecificationNode, sourcePos_), extrn(extrn_), linkage(linkage_), declarations(declarations_), lbPos(lbPos_), rbPos(rbPos_)
 {
+}
+
+void LinkageSpecificationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void LinkageSpecificationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(extrn.get());
+    writer.Write(linkage.get());
+    writer.Write(declarations.get());
+    writer.Write(lbPos);
+    writer.Write(rbPos);
+}
+
+void LinkageSpecificationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    extrn.reset(reader.ReadNode());
+    linkage.reset(reader.ReadNode());
+    declarations.reset(reader.ReadNode());
+    lbPos = reader.ReadSourcePos();
+    rbPos = reader.ReadSourcePos();
 }
 
 NamespaceDefinitionNode::NamespaceDefinitionNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::namespaceDefinitionNode, sourcePos_)
@@ -52,12 +140,58 @@ NamespaceDefinitionNode::NamespaceDefinitionNode(const SourcePos& sourcePos_, No
 {
 }
 
+void NamespaceDefinitionNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void NamespaceDefinitionNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(nskw.get());
+    writer.Write(nsName.get());
+    writer.Write(nsBody.get());
+    writer.Write(inln.get());
+    writer.Write(attributes.get());
+    writer.Write(lbPos);
+    writer.Write(rbPos);
+}
+
+void NamespaceDefinitionNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    nskw.reset(reader.ReadNode());
+    nsName.reset(reader.ReadNode());
+    nsBody.reset(reader.ReadNode());
+    inln.reset(reader.ReadNode());
+    attributes.reset(reader.ReadNode());
+    lbPos = reader.ReadSourcePos();
+    rbPos = reader.ReadSourcePos();
+}
+
 NamespaceBodyNode::NamespaceBodyNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::namespaceBodyNode, sourcePos_)
 {
 }
 
 NamespaceBodyNode::NamespaceBodyNode(const SourcePos& sourcePos_, Node* declarations_) : CompoundNode(NodeKind::namespaceBodyNode, sourcePos_), declarations(declarations_)
 {
+}
+
+void NamespaceBodyNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void NamespaceBodyNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(declarations.get());
+}
+
+void NamespaceBodyNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    declarations.reset(reader.ReadNode());
 }
 
 NamespaceAliasDefinitionNode::NamespaceAliasDefinitionNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::namespaceAliasDefinitionNode, sourcePos_)
@@ -69,6 +203,29 @@ NamespaceAliasDefinitionNode::NamespaceAliasDefinitionNode(const SourcePos& sour
 {
 }
 
+void NamespaceAliasDefinitionNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void NamespaceAliasDefinitionNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(id.get());
+    writer.Write(assign.get());
+    writer.Write(qns.get());
+    writer.Write(semicolon.get());
+}
+
+void NamespaceAliasDefinitionNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    id.reset(reader.ReadNode());
+    assign.reset(reader.ReadNode());
+    qns.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+}
+
 UsingDeclarationNode::UsingDeclarationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::usingDeclarationNode, sourcePos_)
 {
 }
@@ -78,12 +235,43 @@ UsingDeclarationNode::UsingDeclarationNode(const SourcePos& sourcePos_, Node* us
 {
 }
 
+void UsingDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void UsingDeclarationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(usng.get());
+    writer.Write(declarators.get());
+    writer.Write(semicolon.get());
+}
+
+void UsingDeclarationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    usng.reset(reader.ReadNode());
+    declarators.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+}
+
 UsingNode::UsingNode(const SourcePos& sourcePos_) : Node(NodeKind::usingNode, sourcePos_)
 {
 }
 
+void UsingNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 UsingDeclaratorListNode::UsingDeclaratorListNode(const SourcePos& sourcePos_) : ListNode(NodeKind::usingDeclaratorListNode, sourcePos_)
 {
+}
+
+void UsingDeclaratorListNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 UsingEnumDeclarationNode::UsingEnumDeclarationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::usingEnumDeclarationNode, sourcePos_)
@@ -95,6 +283,27 @@ UsingEnumDeclarationNode::UsingEnumDeclarationNode(const SourcePos& sourcePos_, 
 {
 }
 
+void UsingEnumDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void UsingEnumDeclarationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(usng.get());
+    writer.Write(ees.get());
+    writer.Write(semicolon.get());
+}
+
+void UsingEnumDeclarationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    usng.reset(reader.ReadNode());
+    ees.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+}
+
 UsingDirectiveNode::UsingDirectiveNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::usingDirectiveNode, sourcePos_)
 {
 }
@@ -104,8 +313,38 @@ UsingDirectiveNode::UsingDirectiveNode(const SourcePos& sourcePos_, Node* usng_,
 {
 }
 
+void UsingDirectiveNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void UsingDirectiveNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(usng.get());
+    writer.Write(nskw.get());
+    writer.Write(id.get());
+    writer.Write(semicolon.get());
+    writer.Write(attributes.get());
+}
+
+void UsingDirectiveNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    usng.reset(reader.ReadNode());
+    nskw.reset(reader.ReadNode());
+    id.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+    attributes.reset(reader.ReadNode());
+}
+
 NamespaceNode::NamespaceNode(const SourcePos& sourcePos_) : Node(NodeKind::namespaceNode, sourcePos_)
 {
+}
+
+void NamespaceNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 StaticAssertDeclarationNode::StaticAssertDeclarationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::staticAssertDeclarationNode, sourcePos_)
@@ -119,8 +358,42 @@ StaticAssertDeclarationNode::StaticAssertDeclarationNode(const SourcePos& source
 {
 }
 
+void StaticAssertDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void StaticAssertDeclarationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(staticAssert.get());
+    writer.Write(constantExpr.get());
+    writer.Write(comma.get());
+    writer.Write(stringLiteral.get());
+    writer.Write(semicolon.get());
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void StaticAssertDeclarationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    staticAssert.reset(reader.ReadNode());
+    constantExpr.reset(reader.ReadNode());
+    comma.reset(reader.ReadNode());
+    stringLiteral.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
+}
+
 StaticAssertNode::StaticAssertNode(const SourcePos& sourcePos_) : Node(NodeKind::staticAssertNode, sourcePos_)
 {
+}
+
+void StaticAssertNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 AliasDeclarationNode::AliasDeclarationNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::aliasDeclarationNode, sourcePos_)
@@ -132,8 +405,40 @@ AliasDeclarationNode::AliasDeclarationNode(const SourcePos& sourcePos_, Node* us
 {
 }
 
+void AliasDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void AliasDeclarationNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(usng.get());
+    writer.Write(identifier.get());
+    writer.Write(assign.get());
+    writer.Write(definingTypeId.get());
+    writer.Write(attributes.get());
+    writer.Write(semicolon.get());
+}
+
+void AliasDeclarationNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    usng.reset(reader.ReadNode());
+    identifier.reset(reader.ReadNode());
+    assign.reset(reader.ReadNode());
+    definingTypeId.reset(reader.ReadNode());
+    attributes.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
+}
+
 EmptyDeclarationNode::EmptyDeclarationNode(const SourcePos& sourcePos_) : Node(NodeKind::emptyDeclarationNode, sourcePos_)
 {
+}
+
+void EmptyDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 AttributeDeclarationNode::AttributeDeclarationNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::attributeDeclarationNode, sourcePos_, nullptr, nullptr)
@@ -145,8 +450,18 @@ AttributeDeclarationNode::AttributeDeclarationNode(const SourcePos& sourcePos_, 
 {
 }
 
+void AttributeDeclarationNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 InitDeclaratorListNode::InitDeclaratorListNode(const SourcePos& sourcePos_) : ListNode(NodeKind::initDeclaratorListNode, sourcePos_)
 {
+}
+
+void InitDeclaratorListNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 InitDeclaratorNode::InitDeclaratorNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::initDeclaratorNode, sourcePos_, nullptr, nullptr)
@@ -155,6 +470,11 @@ InitDeclaratorNode::InitDeclaratorNode(const SourcePos& sourcePos_) : BinaryNode
 
 InitDeclaratorNode::InitDeclaratorNode(const SourcePos& sourcePos_, Node* declarator_, Node* init_) : BinaryNode(NodeKind::initDeclaratorNode, sourcePos_, declarator_, init_)
 {
+}
+
+void InitDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 TrailingInvokeDeclaratorNode::TrailingInvokeDeclaratorNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::trailingInvokeDeclaratorNode, sourcePos_)
@@ -166,6 +486,27 @@ TrailingInvokeDeclaratorNode::TrailingInvokeDeclaratorNode(const SourcePos& sour
 {
 }
 
+void TrailingInvokeDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void TrailingInvokeDeclaratorNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(declarator.get());
+    writer.Write(params.get());
+    writer.Write(trailingReturnType.get());
+}
+
+void TrailingInvokeDeclaratorNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    declarator.reset(reader.ReadNode());
+    params.reset(reader.ReadNode());
+    trailingReturnType.reset(reader.ReadNode());
+}
+
 ParenthesizedDeclaratorNode::ParenthesizedDeclaratorNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::parenthesizedDeclaratorNode, sourcePos_)
 {
 }
@@ -175,56 +516,142 @@ ParenthesizedDeclaratorNode::ParenthesizedDeclaratorNode(const SourcePos& source
 {
 }
 
+void ParenthesizedDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void ParenthesizedDeclaratorNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(declarator.get());
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void ParenthesizedDeclaratorNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    declarator.reset(reader.ReadNode());
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
+}
+
 AbstractDeclaratorNode::AbstractDeclaratorNode(const SourcePos& sourcePos_) : Node(NodeKind::abstractDeclaratorNode, sourcePos_)
 {
+}
+
+void AbstractDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 DeclSpecifierSequenceNode::DeclSpecifierSequenceNode(const SourcePos& sourcePos_) : SequenceNode(NodeKind::declSpecifierSequenceNode, sourcePos_)
 {
 }
 
+void DeclSpecifierSequenceNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 FriendNode::FriendNode(const SourcePos& sourcePos_) : Node(NodeKind::friendNode, sourcePos_)
 {
+}
+
+void FriendNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 TypedefNode::TypedefNode(const SourcePos& sourcePos_) : Node(NodeKind::typedefNode, sourcePos_)
 {
 }
 
+void TypedefNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 ConstExprNode::ConstExprNode(const SourcePos& sourcePos_) : Node(NodeKind::constExprNode, sourcePos_)
 {
+}
+
+void ConstExprNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 ConstEvalNode::ConstEvalNode(const SourcePos& sourcePos_) : Node(NodeKind::constEvalNode, sourcePos_)
 {
 }
 
+void ConstEvalNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 ConstInitNode::ConstInitNode(const SourcePos& sourcePos_) : Node(NodeKind::constInitNode, sourcePos_)
 {
+}
+
+void ConstInitNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 InlineNode::InlineNode(const SourcePos& sourcePos_) : Node(NodeKind::inlineNode, sourcePos_)
 {
 }
 
+void InlineNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 StaticNode::StaticNode(const SourcePos& sourcePos_) : Node(NodeKind::staticNode, sourcePos_)
 {
+}
+
+void StaticNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 ThreadLocalNode::ThreadLocalNode(const SourcePos& sourcePos_) : Node(NodeKind::threadLocalNode, sourcePos_)
 {
 }
 
+void ThreadLocalNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 ExternNode::ExternNode(const SourcePos& sourcePos_) : Node(NodeKind::externNode, sourcePos_)
 {
+}
+
+void ExternNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 MutableNode::MutableNode(const SourcePos& sourcePos_) : Node(NodeKind::mutableNode, sourcePos_)
 {
 }
 
+void MutableNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 ExplicitNode::ExplicitNode(const SourcePos& sourcePos_) : Node(NodeKind::explicitNode, sourcePos_)
 {
+}
+
+void ExplicitNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 ConditionalExplicitNode::ConditionalExplicitNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::conditionalExplicitNode, sourcePos_, nullptr)
@@ -236,6 +663,27 @@ ConditionalExplicitNode::ConditionalExplicitNode(const SourcePos& sourcePos_, No
 {
 }
 
+void ConditionalExplicitNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void ConditionalExplicitNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    writer.Write(cond.get());
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void ConditionalExplicitNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    cond.reset(reader.ReadNode());
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
+}
+
 QualifiedPtrNode::QualifiedPtrNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::qualifiedPtrNode, sourcePos_, nullptr, nullptr)
 {
 }
@@ -243,6 +691,11 @@ QualifiedPtrNode::QualifiedPtrNode(const SourcePos& sourcePos_) : BinaryNode(Nod
 QualifiedPtrNode::QualifiedPtrNode(const SourcePos& sourcePos_, Node* nns_, Node* ptr_) : 
     BinaryNode(NodeKind::qualifiedPtrNode, sourcePos_, nns_, ptr_)
 {
+}
+
+void QualifiedPtrNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 PtrOperatorNode::PtrOperatorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::ptrOperatorNode, sourcePos_, nullptr)
@@ -253,8 +706,18 @@ PtrOperatorNode::PtrOperatorNode(const SourcePos& sourcePos_, Node* child_) : Un
 {
 }
 
+void PtrOperatorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 PtrDeclaratorNode::PtrDeclaratorNode(const SourcePos& sourcePos_) : SequenceNode(NodeKind::ptrDeclaratorNode, sourcePos_)
 {
+}
+
+void PtrDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 PackDeclaratorIdNode::PackDeclaratorIdNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::packDeclaratorIdNode, sourcePos_, nullptr, nullptr)
@@ -266,6 +729,11 @@ PackDeclaratorIdNode::PackDeclaratorIdNode(const SourcePos& sourcePos_, Node* el
 {
 }
 
+void PackDeclaratorIdNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 SubscriptDeclaratorNode::SubscriptDeclaratorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::subscriptDeclaratorNode, sourcePos_, nullptr)
 {
 }
@@ -273,6 +741,27 @@ SubscriptDeclaratorNode::SubscriptDeclaratorNode(const SourcePos& sourcePos_) : 
 SubscriptDeclaratorNode::SubscriptDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_) :
     UnaryNode(NodeKind::subscriptDeclaratorNode, sourcePos_, child_), index(index_), lbPos(lbPos_), rbPos(rbPos_)
 {
+}
+
+void SubscriptDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void SubscriptDeclaratorNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    writer.Write(index.get());
+    writer.Write(lbPos);
+    writer.Write(rbPos);
+}
+
+void SubscriptDeclaratorNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    index.reset(reader.ReadNode());
+    lbPos = reader.ReadSourcePos();
+    rbPos = reader.ReadSourcePos();
 }
 
 InvokeDeclaratorNode::InvokeDeclaratorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::invokeDeclaratorNode, sourcePos_, nullptr)
@@ -283,12 +772,34 @@ InvokeDeclaratorNode::InvokeDeclaratorNode(const SourcePos& sourcePos_, Node* ch
 {
 }
 
+void InvokeDeclaratorNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void InvokeDeclaratorNode::Write(Writer& writer)
+{
+    UnaryNode::Write(writer);
+    writer.Write(params.get());
+}
+
+void InvokeDeclaratorNode::Read(Reader& reader)
+{
+    UnaryNode::Read(reader);
+    params.reset(reader.ReadNode());
+}
+
 PrefixNode::PrefixNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::prefixNode, sourcePos_, nullptr, nullptr)
 {
 }
 
 PrefixNode::PrefixNode(const SourcePos& sourcePos_, Node* prefix_, Node* subject_) : BinaryNode(NodeKind::prefixNode, sourcePos_, prefix_, subject_)
 {
+}
+
+void PrefixNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
 }
 
 TrailingQualifiersNode::TrailingQualifiersNode(const SourcePos& sourcePos_) : SequenceNode(NodeKind::trailingQualifiersNode, sourcePos_)
@@ -299,6 +810,23 @@ TrailingQualifiersNode::TrailingQualifiersNode(const SourcePos& sourcePos_, Node
 {
 }
 
+void TrailingQualifiersNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void TrailingQualifiersNode::Write(Writer& writer)
+{
+    SequenceNode::Write(writer);
+    writer.Write(subject.get());
+}
+
+void TrailingQualifiersNode::Read(Reader& reader)
+{
+    SequenceNode::Read(reader);
+    subject.reset(reader.ReadNode());
+}
+
 TrailingAttributesNode::TrailingAttributesNode(const SourcePos& sourcePos_) : BinaryNode(NodeKind::trailingAttributesNode, sourcePos_, nullptr, nullptr)
 {
 }
@@ -307,13 +835,39 @@ TrailingAttributesNode::TrailingAttributesNode(const SourcePos& sourcePos_, Node
 {
 }
 
-NoexceptSpecifierNode::NoexceptSpecifierNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::noexceptSpecifierNode, sourcePos_, nullptr)
+void TrailingAttributesNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+NoexceptSpecifierNode::NoexceptSpecifierNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::noexceptSpecifierNode, sourcePos_)
 {
 }
 
 NoexceptSpecifierNode::NoexceptSpecifierNode(const SourcePos& sourcePos_, Node* constantExpr_, const SourcePos& lpPos_, const SourcePos& rpPos_) :
-    UnaryNode(NodeKind::noexceptSpecifierNode, sourcePos_, constantExpr_), lpPos(lpPos_), rpPos(rpPos_)
+    CompoundNode(NodeKind::noexceptSpecifierNode, sourcePos_), constantExpr(constantExpr_), lpPos(lpPos_), rpPos(rpPos_)
 {
+}
+
+void NoexceptSpecifierNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void NoexceptSpecifierNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(constantExpr.get());
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void NoexceptSpecifierNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    constantExpr.reset(reader.ReadNode());
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
 }
 
 } // namespace sngcpp::ast

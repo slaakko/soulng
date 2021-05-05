@@ -16,7 +16,6 @@ class AST_API XmlGeneratorVisitor : public DefaultVisitor
 public:
     void BeginVisit(Node& node) override;
     void EndVisit(Node& node) override;
-    void VisitColon(const SourcePos& colonPos) override;
     void AddAttribute(const std::string& name, const std::string& value);
 private:
     std::unique_ptr<sngxml::dom::Element> element;

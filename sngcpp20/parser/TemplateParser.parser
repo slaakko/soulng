@@ -46,11 +46,11 @@ parser api(PARSER_API) TemplateParser
     using StatementParser.Semicolon;
     using TypeParser.TypeId;
 
-    TemplateDeclaration(sngcpp::par::Context* ctx) : Node*
+    TemplateDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
         ::= 
-        (   TemplateHead(ctx):templateHead
-            (   ConceptDefinition(ctx):concepDefinition
-            |   Declaration(ctx):declaration
+        (   TemplateHead(ctx):templateHead{ s = sourcePos; }
+            (   ConceptDefinition(ctx):concepDefinition{ return new TemplateDeclarationNode(s, templateHead, concepDefinition); }
+            |   Declaration(ctx):declaration{ return new TemplateDeclarationNode(s, templateHead, declaration); }
             )
         )
         ;
@@ -82,7 +82,7 @@ parser api(PARSER_API) TemplateParser
         }
         ;
 
-    TemplateParameter(sngcpp::par::Context* ctx) :Node*
+    TemplateParameter(sngcpp::par::Context* ctx) : Node*
         ::= TypeParameter(ctx):typeParam{ return typeParam; }
         |   ParameterDeclaration(ctx):param{ return param; }
         ;
@@ -121,7 +121,7 @@ parser api(PARSER_API) TemplateParser
                 (   OperatorFunctionId(ctx):operatorFunctionId{ templateName.reset(operatorFunctionId); s = sourcePos; }
                 |   LiteralOperatorId(ctx):literalOperatorId{ templateName.reset(literalOperatorId); s = sourcePos; }
                 )
-                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushFlag(ContextFlags::parsingTemplate); node.reset(new TemplateIdNode(s, templateName.release())); }
+                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName.release())); }
                 TemplateArgumentList(ctx, node.get()):templateArgs?
                 RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
             )
@@ -138,7 +138,7 @@ parser api(PARSER_API) TemplateParser
         ::= 
         (
             TemplateName(ctx):templateName{ s = sourcePos; }
-            LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushFlag(ContextFlags::parsingTemplate); node.reset(new TemplateIdNode(s, templateName)); }
+            LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName)); }
             TemplateArgumentList(ctx, node.get()):templateArgs?
             RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
         )

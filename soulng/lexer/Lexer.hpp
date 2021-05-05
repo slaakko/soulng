@@ -12,13 +12,14 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <stack>
 #include <stdint.h>
 
 namespace soulng { namespace lexer {
 
 enum class LexerFlags : int8_t
 {
-    none = 0, synchronize = 1 << 0, synchronized = 1 << 1, synchronizedAtLeastOnce = 1 << 2, cursorSeen = 1 << 3
+    none = 0, synchronize = 1 << 0, synchronized = 1 << 1, synchronizedAtLeastOnce = 1 << 2, cursorSeen = 1 << 3, recordedParse = 1 << 4
 };
 
 inline LexerFlags operator|(LexerFlags left, LexerFlags right)
@@ -36,6 +37,28 @@ inline LexerFlags operator~(LexerFlags flag)
     return static_cast<LexerFlags>(~static_cast<int8_t>(flag));
 }
 
+struct SOULNG_LEXER_API LexerPosPair
+{
+    LexerPosPair() : start(-1), end(-1) {}
+    LexerPosPair(int64_t start_, int64_t end_) { start = start_; end = end_; }
+    bool IsValid() const { return start != -1 && end != -1;  }
+    int64_t start;
+    int64_t end;
+};
+
+struct SOULNG_LEXER_API LexerState
+{
+    LexerState();
+    Token token;
+    int line;
+    Lexeme lexeme;
+    const char32_t* pos;
+    std::vector<Token> tokens;
+    std::vector<Token>::iterator current;
+    LexerFlags flags;
+    LexerPosPair recordedPosPair;
+};
+
 class SOULNG_LEXER_API Lexer
 {
 public:
@@ -47,6 +70,7 @@ public:
     int64_t GetPos() const;
     void SetPos(int64_t pos);
     SourcePos GetSourcePos() const;
+    int64_t FarthestPos() const { return farthestPos; }
     virtual int NextState(int state, char32_t c);
     void SetKeywordMap(KeywordMap* keywordMap_) { keywordMap = keywordMap_; }
     KeywordMap* GetKeywordMap() { return keywordMap; }
@@ -78,6 +102,12 @@ public:
     TokenLine TokenizeLine(const std::u32string& line, int lineNumber, int startState);
     void SetSyncTokens(const std::vector<int>& syncTokens_);
     bool Synchronize();
+    LexerState GetState() const;
+    void SetState(const LexerState& state);
+    void PushState();
+    void PopState();
+    void BeginRecordedParse(const LexerPosPair& recordedPosPair_);
+    void EndRecordedParse();
     LexerFlags Flags() const { return flags; }
     bool GetFlag(LexerFlags flag) const { return (flags & flag) != LexerFlags::none; }
     void SetFlag(LexerFlags flag) { flags = flags | flag; }
@@ -101,6 +131,9 @@ private:
     bool countLines;
     char32_t separatorChar;
     LexerFlags flags;
+    LexerPosPair recordedPosPair;
+    std::stack<LexerState> stateStack;
+    int64_t farthestPos;
     void NextToken();
     void CalculateLineStarts();
 };

@@ -491,7 +491,7 @@ CharacterLiteralNode* ParseCharacterLiteral(const SourcePos& sourcePos, const st
     return new CharacterLiteralNode(sourcePos, value, encodingPrefix, rep);
 }
 
-StringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::lexer::Lexer& lexer)
+RawStringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::lexer::Lexer& lexer)
 {
     const char32_t* start = lexer.Pos();
     const char32_t* p = start;
@@ -627,7 +627,7 @@ StringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::lex
     {
         throw std::runtime_error("invalid raw string literal in '" + lexer.FileName() + "' at line " + std::to_string(lexer.line));
     }
-    return new StringLiteralNode(sourcePos, value, encodingPrefix, rep);
+    return new RawStringLiteralNode(sourcePos, value, encodingPrefix, dm, rep);
 }
 
 StringLiteralNode* ParseStringLiteral(const SourcePos& sourcePos, const std::string& fileName, const std::u32string& rep)

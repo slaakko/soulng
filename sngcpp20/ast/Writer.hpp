@@ -21,6 +21,8 @@ public:
     BinaryWriter& GetBinaryWriter() { return binaryWriter; }
     void Write(const SourcePos& sourcePos);
     void Write(NodeKind nodeKind);
+    void Write(const std::u32string& str);
+    void Write(bool value);
     void Write(Node* node);
 private:
     BinaryWriter binaryWriter;

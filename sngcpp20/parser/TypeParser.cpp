@@ -13,7 +13,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/TypeParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/TypeParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
@@ -548,18 +548,48 @@ soulng::parser::Match TypeParser::TypeSpecifier(CppLexer& lexer, sngcpp::par::Co
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t save = lexer.GetPos();
-        soulng::parser::Match match = TypeParser::ElaboratedTypeSpecifier(lexer, ctx);
-        elaboratedTypeSpecifier.reset(static_cast<Node*>(match.value));
+        soulng::parser::Match match(false);
+        soulng::parser::Match* parentMatch1 = &match;
+        {
+            int64_t pos = lexer.GetPos();
+            soulng::parser::Match match = TypeParser::ElaboratedTypeSpecifier(lexer, ctx);
+            elaboratedTypeSpecifier.reset(static_cast<Node*>(match.value));
+            if (match.hit)
+            {
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, elaboratedTypeSpecifier.release());
+                }
+            }
+            *parentMatch1 = match;
+        }
         *parentMatch0 = match;
         if (!match.hit)
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch1 = &match;
+            soulng::parser::Match* parentMatch2 = &match;
             lexer.SetPos(save);
             {
-                soulng::parser::Match match = TypeParser::SimpleTypeSpecifier(lexer, ctx);
-                simpleTypeSpecifier.reset(static_cast<Node*>(match.value));
-                *parentMatch1 = match;
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch3 = &match;
+                {
+                    int64_t pos = lexer.GetPos();
+                    soulng::parser::Match match = TypeParser::SimpleTypeSpecifier(lexer, ctx);
+                    simpleTypeSpecifier.reset(static_cast<Node*>(match.value));
+                    if (match.hit)
+                    {
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, simpleTypeSpecifier.release());
+                        }
+                    }
+                    *parentMatch3 = match;
+                }
+                *parentMatch2 = match;
             }
             *parentMatch0 = match;
         }
@@ -1234,7 +1264,7 @@ soulng::parser::Match TypeParser::TypeName(CppLexer& lexer, sngcpp::par::Context
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     std::unique_ptr<Node> templateId;
-    std::unique_ptr<Node> identifier;
+    std::unique_ptr<Node> typeIdentifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1267,15 +1297,15 @@ soulng::parser::Match TypeParser::TypeName(CppLexer& lexer, sngcpp::par::Context
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
-                    identifier.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = IdentifierParser::TypeIdentifier(lexer, ctx);
+                    typeIdentifier.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
                         {
                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeName"));
                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                            return soulng::parser::Match(true, identifier.release());
+                            return soulng::parser::Match(true, typeIdentifier.release());
                         }
                     }
                     *parentMatch3 = match;
@@ -1580,7 +1610,7 @@ soulng::parser::Match TypeParser::DeclTypeSpecifier(CppLexer& lexer, sngcpp::par
     SourcePos s = SourcePos();
     SourcePos lpPos = SourcePos();
     SourcePos rpPos = SourcePos();
-    std::unique_ptr<Node> expr;
+    std::unique_ptr<sngcpp::ast::Node> expr;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1650,7 +1680,7 @@ soulng::parser::Match TypeParser::DeclTypeSpecifier(CppLexer& lexer, sngcpp::par
                     soulng::parser::Match* parentMatch8 = &match;
                     {
                         soulng::parser::Match match = ExpressionParser::Expression(lexer, ctx);
-                        expr.reset(static_cast<Node*>(match.value));
+                        expr.reset(static_cast<sngcpp::ast::Node*>(match.value));
                         *parentMatch8 = match;
                     }
                     *parentMatch3 = match;

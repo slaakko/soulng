@@ -1,0 +1,28 @@
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
+
+[hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <soulng/parser/Match.hpp>
+[cpp]#include <sngcpp20/lexer/CppLexer.hpp>
+[cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+
+using namespace sngcpp::par;
+using namespace sngcpp::ast;
+using namespace CppTokens;
+using namespace soulng::lexer;
+
+parser api(PARSER_API) GuardParser
+{
+    uselexer CppLexer;
+
+    MemberFunctionGuard(sngcpp::par::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(ContextFlags::parseMemberFunction); }
+        ;
+
+    SavedMemberFunctionBodyGuard(sngcpp::par::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(ContextFlags::parseSavedMemberFunctionBody); }
+        ;
+}

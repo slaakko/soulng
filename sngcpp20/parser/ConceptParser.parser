@@ -153,7 +153,7 @@ parser api(PARSER_API) ConceptParser
                 }
             )
             (
-                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushFlag(ContextFlags::parsingTemplate); node->SetHasTemplateArgumentList(); }
+                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(ContextFlags::parsingTemplateId); node->SetHasTemplateArgumentList(); }
                 TemplateArgumentList(ctx, node.get()):templateArgs?
                 RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
             )?

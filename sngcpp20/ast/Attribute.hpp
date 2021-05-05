@@ -21,7 +21,11 @@ class AST_API AttributeSpecifierNode : public ListNode
 {
 public:
     AttributeSpecifierNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     void SetUsingPrefix(Node* usingPrefix_) { usingPrefix.reset(usingPrefix_); }
+    Node* UsingPrefix() const { return usingPrefix.get(); }
     void SetBracketPositions(const SourcePos& lbPos1_, const SourcePos& lbPos2_, const SourcePos& rbPos1_, const SourcePos& rbPos2_);
     const SourcePos& LBracketPos1() const { return lbPos1; }
     const SourcePos& LBracketPos2() const { return lbPos2; }
@@ -40,6 +44,9 @@ class AST_API AttributeUsingPrefixNode : public UnaryNode
 public:
     AttributeUsingPrefixNode(const SourcePos& sourcePos_);
     AttributeUsingPrefixNode(const SourcePos& sourcePos_, Node* attributeNamespace_, const SourcePos& colonPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const SourcePos& ColonPos() const { return colonPos; }
 private:
     SourcePos colonPos;
@@ -50,6 +57,9 @@ class AST_API AttributeNode : public CompoundNode
 public:
     AttributeNode(const SourcePos& sourcePos_);
     AttributeNode(const SourcePos& sourcePos_, Node* attributeToken_, Node* attributeArgs_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* AttributeToken() const { return attributeToken.get(); }
     Node* AttributeArgs() const { return attributeArgs.get(); }
 private:
@@ -62,6 +72,9 @@ class AST_API AttributeScopedTokenNode : public CompoundNode
 public:
     AttributeScopedTokenNode(const SourcePos& sourcePos_);
     AttributeScopedTokenNode(const SourcePos& sourcePos_, Node* ns_, Node* colonColon_, Node* identifier_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Ns() const { return ns.get(); }
     Node* ColonColon() const { return colonColon.get(); }
     Node* Identifier() const { return identifier.get(); }
@@ -76,6 +89,9 @@ class AST_API AttributeArgumentsNode : public CompoundNode
 public:
     AttributeArgumentsNode(const SourcePos& sourcePos_);
     AttributeArgumentsNode(const SourcePos& sourcePos_, Node* balancedTokenSequence_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* BalancedTokenSequence() const { return balancedTokenSequence.get(); }
     const SourcePos& LParenPos() const { return lpPos; }
     const SourcePos& RParenPos() const { return rpPos; }
@@ -89,6 +105,7 @@ class AST_API BalancedTokenSequenceNode : public SequenceNode
 {
 public:
     BalancedTokenSequenceNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API TokenNode : public CompoundNode
@@ -96,7 +113,10 @@ class AST_API TokenNode : public CompoundNode
 public:
     TokenNode(const SourcePos& sourcePos_);
     TokenNode(const SourcePos& sourcePos_, const std::u32string& str_);
-    const std::u32string& Str() const { return str; }
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
+    std::u32string Str() const override { return str; }
 private:
     std::u32string str;
 };
@@ -106,6 +126,9 @@ class AST_API AlignmentSpecifierNode : public CompoundNode
 public:
     AlignmentSpecifierNode(const SourcePos& sourcePos_);
     AlignmentSpecifierNode(const SourcePos& sourcePos_, Node* alignment_, Node* ellipses_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Alignment() const { return alignment.get(); }
     Node* Ellipses() const { return ellipses.get(); }
     const SourcePos& LParenPos() const { return lpPos; }
@@ -121,36 +144,42 @@ class AST_API LParenNode : public Node
 {
 public:
     LParenNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API RParenNode : public Node
 {
 public:
     RParenNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API LBracketNode : public Node
 {
 public:
     LBracketNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API RBracketNode : public Node
 {
 public:
     RBracketNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API LBraceNode : public Node
 {
 public:
     LBraceNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API RBraceNode : public Node
 {
 public:
     RBraceNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 } // sngcpp::ast

@@ -6,12 +6,14 @@
 #ifndef SNGCPP_AST_STATEMENT_INCLUDED
 #define SNGCPP_AST_STATEMENT_INCLUDED
 #include <sngcpp20/ast/Node.hpp>
+#include <soulng/lexer/Lexer.hpp>
 
 namespace sngcpp::ast {
 
 class AST_API LabeledStatementNode : public CompoundNode
 {
 public:
+    LabeledStatementNode(const SourcePos& sourcePos_);
     LabeledStatementNode(const SourcePos& sourcePos_, Node* label_, Node* stmt_, Node* attributes_, const SourcePos& colonPos_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
@@ -30,7 +32,11 @@ private:
 class AST_API CaseStatementNode : public CompoundNode
 {
 public:
+    CaseStatementNode(const SourcePos& sourcePos_);
     CaseStatementNode(const SourcePos& sourcePos_, Node* caseExpr_, Node* stmt_, Node* attributes_, const SourcePos& casePos_, const SourcePos& colonPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* CaseExpression() const { return caseExpr.get(); }
     Node* Statement() const { return stmt.get(); }
     Node* Attributes() const { return attributes.get(); }
@@ -47,7 +53,11 @@ private:
 class AST_API DefaultStatementNode : public CompoundNode
 {
 public:
+    DefaultStatementNode(const SourcePos& sourcePos_);
     DefaultStatementNode(const SourcePos& sourcePos_, Node* stmt_, Node* attributes_, const SourcePos& defaultPos_, const SourcePos& colonPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Statement() const { return stmt.get(); }
     Node* Attributes() const { return attributes.get(); }
     const SourcePos& DefaultPos() const { return defaultPos; }
@@ -63,21 +73,33 @@ class AST_API CompoundStatementNode : public SequenceNode
 {
 public:
     CompoundStatementNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Attributes() const { return attributes.get(); }
     void SetAttributes(Node* attributes_) { attributes.reset(attributes_); }
+    void SetTokenPosPair(const soulng::lexer::LexerPosPair& tokenPosPair_);
+    const soulng::lexer::LexerPosPair& GetTokenPosPair() const { return tokenPosPair; }
+    void SetLBracePos(const SourcePos& lbPos_) { lbPos = lbPos_; }
     void SetRBracePos(const SourcePos& rbPos_) { rbPos = rbPos_; }
-    const SourcePos& LBracePos() const { return GetSourcePos(); }
+    const SourcePos& LBracePos() const { return lbPos; }
     const SourcePos& RBracePos() const { return rbPos; }
 private:
     std::unique_ptr<Node> attributes;
+    SourcePos lbPos;
     SourcePos rbPos;
+    soulng::lexer::LexerPosPair tokenPosPair;
 };
 
 class AST_API IfStatementNode : public CompoundNode
 {
 public:
+    IfStatementNode(const SourcePos& sourcePos_);
     IfStatementNode(const SourcePos& sourcePos_, Node* initStmt_, Node* cond_, Node* thenStmt_, Node* elseStmt_, Node* attributes_, 
-        const SourcePos& ifPos_,  const SourcePos& lpPos_, const SourcePos& rpPos_, const SourcePos& constExprPos_);
+        const SourcePos& ifPos_,  const SourcePos& lpPos_, const SourcePos& rpPos_, const SourcePos& constExprPos_, const SourcePos& elsePos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* InitStatement() const { return initStmt.get(); }
     Node* Condition() const { return cond.get(); }
     Node* ThenStatement() const { return thenStmt.get(); }
@@ -87,6 +109,7 @@ public:
     const SourcePos& LParenPos() const { return lpPos; }
     const SourcePos& RParenPos() const { return rpPos; }
     const SourcePos& ConstExprSourcePos() const { return constExprPos; }
+    const SourcePos& ElsePos() const { return elsePos; }
     bool IsConstExprIf() const { return constExprPos.IsValid(); }
 private:
     std::unique_ptr<Node> initStmt;
@@ -98,12 +121,17 @@ private:
     SourcePos lpPos;
     SourcePos rpPos;
     SourcePos constExprPos;
+    SourcePos elsePos;
 };
 
 class AST_API SwitchStatementNode : public CompoundNode
 {
 public:
+    SwitchStatementNode(const SourcePos& sourcePos_);
     SwitchStatementNode(const SourcePos& sourcePos_, Node* initStmt_, Node* cond_, Node* stmt_, Node* attributes_, const SourcePos& switchPos_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* InitStatement() const { return initStmt.get(); }
     Node* Condition() const { return cond.get(); }
     Node* Statement() const { return stmt.get(); }
@@ -124,7 +152,11 @@ private:
 class AST_API WhileStatementNode : public CompoundNode
 {
 public:
+    WhileStatementNode(const SourcePos& sourcePos_);
     WhileStatementNode(const SourcePos& sourcePos_, Node* cond_, Node* stmt_, Node* attributes_, const SourcePos& whilePos_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Condition() const { return cond.get(); }
     Node* Statement() const { return stmt.get(); }
     Node* Attributes() const { return attributes.get(); }
@@ -143,8 +175,12 @@ private:
 class AST_API DoStatementNode : public CompoundNode
 {
 public:
+    DoStatementNode(const SourcePos& sourcePos_);
     DoStatementNode(const SourcePos& sourcePos_, Node* stmt_, Node* expr_, Node* attributes_, Node* semicolon_, 
         const SourcePos& doPos_, const SourcePos& whilePos_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Statement() const { return stmt.get(); }
     Node* Expression() const { return expr.get(); }
     Node* Attributes() const { return attributes.get(); }
@@ -167,8 +203,12 @@ private:
 class AST_API RangeForStatementNode : public CompoundNode
 {
 public:
+    RangeForStatementNode(const SourcePos& sourcePos_);
     RangeForStatementNode(const SourcePos& sourcePos_, Node* initStmt_, Node* declaration_, Node* initializer_, Node* stmt_, Node* attributes_,
         const SourcePos& forPos_, const SourcePos& lpPos_, const SourcePos& rpPos_, const SourcePos& colonPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* InitStatement() const { return initStmt.get(); }
     Node* Declaration() const { return declaration.get(); }
     Node* Initializer() const { return initializer.get(); }
@@ -193,14 +233,25 @@ private:
 class AST_API ForRangeDeclarationNode : public BinaryNode
 {
 public:
-    ForRangeDeclarationNode(const SourcePos& sourcePos_, Node* declSpecifierSeq_, Node* declarator_);
+    ForRangeDeclarationNode(const SourcePos& sourcePos_);
+    ForRangeDeclarationNode(const SourcePos& sourcePos_, Node* declSpecifierSeq_, Node* declarator_, Node* attributes_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
+    Node* Attributes() const { return attributes.get(); }
+private:
+    std::unique_ptr<Node> attributes;
 };
 
 class AST_API StructuredBindingNode : public CompoundNode
 {
 public:
+    StructuredBindingNode(const SourcePos& sourcePos_);
     StructuredBindingNode(const SourcePos& sourcePos_, Node* declSpecifierSeq_, Node* refQualifier_, Node* identifiers_, Node* initializer_, Node* attributes_, Node* semicolon_, 
         const SourcePos& lbPos_, const SourcePos& rbPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* DeclSpecifiers() const { return declSpecifiers.get(); }
     Node* RefQualifier() const { return refQualifier.get(); }
     Node* Identifiers() const { return identifiers.get(); }
@@ -223,8 +274,12 @@ private:
 class AST_API ForStatementNode : public CompoundNode
 {
 public:
+    ForStatementNode(const SourcePos& sourcePos_);
     ForStatementNode(const SourcePos& sourcePos_, Node* initStmt_, Node* cond_, Node* loopExpr_, Node* stmt_, Node* attributes_, Node* semicolon_, const SourcePos& forPos_,
         const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* InitStatement() const { return initStmt.get(); }
     Node* Condition() const { return cond.get(); }
     Node* LoopExpr() const { return loopExpr.get(); }
@@ -249,7 +304,11 @@ private:
 class AST_API BreakStatementNode : public CompoundNode
 {
 public:
+    BreakStatementNode(const SourcePos& sourcePos_);
     BreakStatementNode(const SourcePos& sourcePos_, Node* attributes_, Node* semicolon_, const SourcePos& breakPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Attributes() const { return attributes.get(); }
     Node* Semicolon() const { return semicolon.get(); }
     const SourcePos& BreakPos() const { return breakPos; }
@@ -262,7 +321,11 @@ private:
 class AST_API ContinueStatementNode : public CompoundNode
 {
 public:
+    ContinueStatementNode(const SourcePos& sourcePos_);
     ContinueStatementNode(const SourcePos& sourcePos_, Node* attributes_, Node* semicolon_, const SourcePos& continuePos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Attributes() const { return attributes.get(); }
     Node* Semicolon() const { return semicolon.get(); }
     const SourcePos& ContinuePos() const { return continuePos; }
@@ -275,7 +338,11 @@ private:
 class AST_API ReturnStatementNode : public CompoundNode
 {
 public:
+    ReturnStatementNode(const SourcePos& sourcePos_);
     ReturnStatementNode(const SourcePos& sourcePos_, Node* returnValue_, Node* attributes_, Node* semicolon_, const SourcePos& returnPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* ReturnValue() const { return returnValue.get(); }
     Node* Attributes() const { return attributes.get(); }
     Node* Semicolon() const { return semicolon.get(); }
@@ -290,7 +357,11 @@ private:
 class AST_API CoReturnStatementNode : public CompoundNode
 {
 public:
+    CoReturnStatementNode(const SourcePos& sourcePos_);
     CoReturnStatementNode(const SourcePos& sourcePos_, Node* returnValue_, Node* attributes_, Node* semicolon_, const SourcePos& coReturnPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* ReturnValue() const { return returnValue.get(); }
     Node* Attributes() const { return attributes.get(); }
     Node* Semicolon() const { return semicolon.get(); }
@@ -305,7 +376,11 @@ private:
 class AST_API GotoStatementNode : public CompoundNode
 {
 public:
+    GotoStatementNode(const SourcePos& sourcePos_);
     GotoStatementNode(const SourcePos& sourcePos_, Node* target_, Node* attributes_, Node* semicolon_, const SourcePos& gotoPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Target() const { return target.get(); }
     Node* Attributes() const { return attributes.get(); }
     Node* Semimcolon() const { return semicolon.get(); }
@@ -320,7 +395,11 @@ private:
 class AST_API TryStatementNode : public CompoundNode
 {
 public:
+    TryStatementNode(const SourcePos& sourcePos_);
     TryStatementNode(const SourcePos& sourcePos_, Node* tryBlock_, Node* handlers_, Node* attributes_, const SourcePos& tryPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* TryBlock() const { return tryBlock.get(); }
     Node* Handlers() const { return handlers.get(); }
     Node* Attributes() const { return attributes.get(); }
@@ -336,12 +415,17 @@ class AST_API HandlerSequenceNode : public SequenceNode
 {
 public:
     HandlerSequenceNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API HandlerNode : public CompoundNode
 {
 public:
+    HandlerNode(const SourcePos& sourcePos_);
     HandlerNode(const SourcePos& sourcePos_, Node* exception_, Node* catchBlock_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Exception() const { return exception.get(); }
     Node* CatchBlock() const { return catchBlock.get(); }
     const SourcePos& LParenPos() const { return lpPos; }
@@ -356,7 +440,11 @@ private:
 class AST_API ExceptionDeclarationNode : public CompoundNode
 {
 public:
+    ExceptionDeclarationNode(const SourcePos& sourcePos_);
     ExceptionDeclarationNode(const SourcePos& sourcePos_, Node* typeSpecifiers_, Node* declarator_, Node* attributes_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* TypeSpecifiers() const { return typeSpecifiers.get(); }
     Node* Declarator() const { return declarator.get(); }
     Node* Attributes() const { return attributes.get(); }
@@ -369,7 +457,11 @@ private:
 class AST_API ExpressionStatementNode : public CompoundNode
 {
 public:
+    ExpressionStatementNode(const SourcePos& sourcePos_);
     ExpressionStatementNode(const SourcePos& sourcePos_, Node* expr_, Node* attributes_, Node* semicolon_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Expression() const { return expr.get(); }
     Node* Attributes() const { return attributes.get(); }
     Node* Semicolon() const { return semicolon.get(); }
@@ -382,7 +474,11 @@ private:
 class AST_API DeclarationStatementNode : public CompoundNode
 {
 public:
+    DeclarationStatementNode(const SourcePos& sourcePos_);
     DeclarationStatementNode(const SourcePos& sourcePos_, Node* declaration_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* Declaration() const { return declaration.get();  }
 private:
     std::unique_ptr<Node> declaration;
@@ -391,7 +487,11 @@ private:
 class AST_API InitConditionNode : public CompoundNode
 {
 public:
+    InitConditionNode(const SourcePos& sourcePos_);
     InitConditionNode(const SourcePos& sourcePos_, Node* declSpecifiers_, Node* declarator_, Node* initializer_, Node* attributes_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     Node* DeclSpecifiers() const { return declSpecifiers.get(); }
     Node* Declarator() const { return declarator.get(); }
     Node* Initializer() const { return initializer.get(); }
@@ -407,6 +507,7 @@ class AST_API SemicolonNode : public Node
 {
 public:
     SemicolonNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
 };
 
 } // sngcpp::ast

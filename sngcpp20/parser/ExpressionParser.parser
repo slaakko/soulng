@@ -27,6 +27,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) ExpressionParser
 {
     uselexer CppLexer;
+    main;
 
     using AttributeParser.AttributeSpecifierSeq;
     using AttributeParser.LBracket;
@@ -47,7 +48,7 @@ parser api(PARSER_API) ExpressionParser
     using LambdaParser.LambdaExpression;
     using ConceptParser.RequiresExpression;
 
-    Expression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos commaPos) : Node*
+    Expression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos commaPos) : sngcpp::ast::Node*
         ::= 
         (
             AssignmentExpression(ctx):left{ node.reset(left); s = sourcePos; } 
@@ -129,7 +130,7 @@ parser api(PARSER_API) ExpressionParser
     ThrowExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
-            THROW{ s = sourcePos; } AssignmentExpression(ctx):exception
+            THROW{ s = sourcePos; } AssignmentExpression(ctx):exception?
         )
         {
             return new ThrowExprNode(s, exception);
@@ -406,16 +407,16 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NewExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode) : Node*
+    NewExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos newPos) : Node*
         ::= 
         (
-            (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } NEW
-            |   NEW{ s = sourcePos; }
+            (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } NEW{ newPos = sourcePos; }
+            |   NEW{ s = sourcePos; newPos = sourcePos; }
             )
             NewPlacement(ctx):placement? NewTypeId(ctx):newTypeId NewInitializer(ctx):newInitializer?
         )
         {
-            return new NewExprNode(s, placement, newTypeId, newInitializer, colonColonNode.release());
+            return new NewExprNode(s, placement, newTypeId, newInitializer, colonColonNode.release(), newPos);
         }
         ;
 
@@ -438,13 +439,13 @@ parser api(PARSER_API) ExpressionParser
                 )
         ;
 
-    DeleteExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    DeleteExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos deletePos, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
-        (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } DELETE
-        |   DELETE{ s = sourcePos; }
+        (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } DELETE{ deletePos = sourcePos; }
+        |   DELETE{ s = sourcePos; deletePos = sourcePos; }
         )
-        (   LBRACKET{ lbPos = sourcePos; } RBRACKET{ rbPos = sourcePos; } CastExpression(ctx):ptr1{ return new ArrayDeletePtrNode(s, ptr1, lbPos, rbPos); }
-        |   CastExpression(ctx):ptr2{ return new DeletePtrNode(s, ptr2); }
+        (   LBRACKET{ lbPos = sourcePos; } RBRACKET{ rbPos = sourcePos; } CastExpression(ctx):ptr1{ return new ArrayDeletePtrNode(s, ptr1, colonColonNode.release(), deletePos, lbPos, rbPos); }
+        |   CastExpression(ctx):ptr2{ return new DeletePtrNode(s, ptr2, colonColonNode.release(), deletePos); }
         )
         ;
 

@@ -29,6 +29,7 @@ parser api(PARSER_API) EnumParser
     using FunctionParser.Comma;
     using IdentifierParser.Identifier;
     using IdentifierParser.NestedNameSpecifier;
+    using IdentifierParser.Unnamed;
     using StatementParser.Semicolon;
     using TypeParser.TypeSpecifierSeq;
 
@@ -50,13 +51,15 @@ parser api(PARSER_API) EnumParser
         }
         ;
 
-    EnumHead(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    EnumHead(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> name) : Node*
         ::= 
         (
-            EnumKey:enumKey{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes? EnumHeadName(ctx):enumHeadName? EnumBase(ctx):enumBase?
+            EnumKey:enumKey{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes? 
+            (EnumHeadName(ctx):enumHeadName{ name.reset(enumHeadName); } | Unnamed:unnamed{ name.reset(unnamed); }) 
+            EnumBase(ctx):enumBase?
         )
         {
-            return new EnumHeadNode(s, enumKey, enumHeadName, enumBase, attributes);
+            return new EnumHeadNode(s, enumKey, name.release(), enumBase, attributes);
         }
         ;
 

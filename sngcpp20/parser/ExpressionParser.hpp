@@ -8,12 +8,13 @@
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/ExpressionParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/ExpressionParser.parser' using soulng parser generator spg version 4.0.0
 
 class CppLexer;
 
 struct PARSER_API ExpressionParser
 {
+    static std::unique_ptr<sngcpp::ast::Node> Parse(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match Expression(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match ConstantExpression(CppLexer& lexer, sngcpp::par::Context* ctx);
     static soulng::parser::Match AssignmentExpression(CppLexer& lexer, sngcpp::par::Context* ctx);

@@ -52,13 +52,13 @@ parser api(PARSER_API) LiteralParser
         ::= ID{ return new IdentifierNode(sourcePos, lexer.GetMatch(pos)); }
         ;
 
-    LiteralOperatorId(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos idPos, var int64_t idp) : Node*
+    LiteralOperatorId(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos stringLitPos, var SourcePos idPos, var int64_t idp) : Node*
         ::= 
         (
-            OPERATOR{ s = sourcePos; } STRINGLIT{ pass = lexer.GetMatch(pos) == U""; } ID{ idPos = sourcePos; idp = pos; }
+            OPERATOR{ s = sourcePos; } STRINGLIT{ stringLitPos = sourcePos; pass = lexer.GetMatch(pos) == U""; } ID{ idPos = sourcePos; idp = pos; }
         )
         {
-            return new LiteralOperatorIdNode(s, new IdentifierNode(idPos, lexer.GetMatch(idp)));
+            return new LiteralOperatorIdNode(s, new IdentifierNode(idPos, lexer.GetMatch(idp)), stringLitPos);
         }
         ;
 

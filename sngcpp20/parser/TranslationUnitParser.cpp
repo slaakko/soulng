@@ -1,16 +1,56 @@
 #include "TranslationUnitParser.hpp"
 #include <soulng/util/Unicode.hpp>
 #include <sngcpp20/parser/DeclarationParser.hpp>
+#include <sngcpp20/parser/ModuleParser.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/TranslationUnitParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/TranslationUnitParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
+
+std::unique_ptr<sngcpp::ast::Node> TranslationUnitParser::Parse(CppLexer& lexer, sngcpp::par::Context* ctx)
+{
+    std::unique_ptr<sngcpp::ast::Node> value;
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (lexer.Log())
+    {
+        lexer.Log()->WriteBeginRule(soulng::unicode::ToUtf32("parse"));
+        lexer.Log()->IncIndent();
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    ++lexer;
+    soulng::lexer::Span span = lexer.GetSpan();
+    soulng::parser::Match match = TranslationUnitParser::TranslationUnit(lexer, ctx);
+    value.reset(static_cast<sngcpp::ast::Node*>(match.value));
+    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+    if (lexer.Log())
+    {
+        lexer.Log()->DecIndent();
+        lexer.Log()->WriteEndRule(soulng::unicode::ToUtf32("parse"));
+    }
+    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    if (match.hit)
+    {
+        if (*lexer == soulng::lexer::END_TOKEN)
+        {
+            return value;
+        }
+        else
+        {
+            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
+        }
+    }
+    else
+    {
+        lexer.ThrowExpectationFailure(span, U"TranslationUnit");
+    }
+    return value;
+}
 
 soulng::parser::Match TranslationUnitParser::TranslationUnit(CppLexer& lexer, sngcpp::par::Context* ctx)
 {
@@ -95,6 +135,7 @@ soulng::parser::Match TranslationUnitParser::TranslationUnit(CppLexer& lexer, sn
                     soulng::parser::Match* parentMatch7 = &match;
                     {
                         int64_t pos = lexer.GetPos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
                         soulng::parser::Match match(true);
                         if (match.hit)
                         {
@@ -102,7 +143,7 @@ soulng::parser::Match TranslationUnitParser::TranslationUnit(CppLexer& lexer, sn
                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TranslationUnit"));
                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                return soulng::parser::Match(true, new TranslationUnitNode(s, nullptr));
+                                return soulng::parser::Match(true, new TranslationUnitNode(sourcePos, nullptr));
                             }
                         }
                         *parentMatch7 = match;

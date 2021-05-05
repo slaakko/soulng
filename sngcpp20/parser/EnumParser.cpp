@@ -9,7 +9,7 @@
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/EnumParser.parser' using soulng parser generator spg version 3.11.0
+// this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/EnumParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace sngcpp::par;
@@ -260,9 +260,11 @@ soulng::parser::Match EnumParser::EnumHead(CppLexer& lexer, sngcpp::par::Context
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     SourcePos s = SourcePos();
+    std::unique_ptr<Node> name = std::unique_ptr<Node>();
     std::unique_ptr<Node> enumKey;
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> enumHeadName;
+    std::unique_ptr<Node> unnamed;
     std::unique_ptr<Node> enumBase;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -326,20 +328,50 @@ soulng::parser::Match EnumParser::EnumHead(CppLexer& lexer, sngcpp::par::Context
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch8 = &match;
                     {
-                        soulng::parser::Match match(true);
-                        int64_t save = lexer.GetPos();
+                        soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch9 = &match;
                         {
-                            soulng::parser::Match match = EnumParser::EnumHeadName(lexer, ctx);
-                            enumHeadName.reset(static_cast<Node*>(match.value));
-                            if (match.hit)
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch10 = &match;
                             {
-                                *parentMatch9 = match;
+                                int64_t save = lexer.GetPos();
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch11 = &match;
+                                {
+                                    int64_t pos = lexer.GetPos();
+                                    soulng::parser::Match match = EnumParser::EnumHeadName(lexer, ctx);
+                                    enumHeadName.reset(static_cast<Node*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        name.reset(enumHeadName.release());
+                                    }
+                                    *parentMatch11 = match;
+                                }
+                                *parentMatch10 = match;
+                                if (!match.hit)
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch12 = &match;
+                                    lexer.SetPos(save);
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch13 = &match;
+                                        {
+                                            int64_t pos = lexer.GetPos();
+                                            soulng::parser::Match match = IdentifierParser::Unnamed(lexer);
+                                            unnamed.reset(static_cast<Node*>(match.value));
+                                            if (match.hit)
+                                            {
+                                                name.reset(unnamed.release());
+                                            }
+                                            *parentMatch13 = match;
+                                        }
+                                        *parentMatch12 = match;
+                                    }
+                                    *parentMatch10 = match;
+                                }
                             }
-                            else
-                            {
-                                lexer.SetPos(save);
-                            }
+                            *parentMatch9 = match;
                         }
                         *parentMatch8 = match;
                     }
@@ -350,24 +382,24 @@ soulng::parser::Match EnumParser::EnumHead(CppLexer& lexer, sngcpp::par::Context
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch10 = &match;
+                soulng::parser::Match* parentMatch14 = &match;
                 {
                     soulng::parser::Match match(true);
                     int64_t save = lexer.GetPos();
-                    soulng::parser::Match* parentMatch11 = &match;
+                    soulng::parser::Match* parentMatch15 = &match;
                     {
                         soulng::parser::Match match = EnumParser::EnumBase(lexer, ctx);
                         enumBase.reset(static_cast<Node*>(match.value));
                         if (match.hit)
                         {
-                            *parentMatch11 = match;
+                            *parentMatch15 = match;
                         }
                         else
                         {
                             lexer.SetPos(save);
                         }
                     }
-                    *parentMatch10 = match;
+                    *parentMatch14 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -379,7 +411,7 @@ soulng::parser::Match EnumParser::EnumHead(CppLexer& lexer, sngcpp::par::Context
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("EnumHead"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new EnumHeadNode(s, enumKey.release(), enumHeadName.release(), enumBase.release(), attributes.release()));
+                return soulng::parser::Match(true, new EnumHeadNode(s, enumKey.release(), name.release(), enumBase.release(), attributes.release()));
             }
         }
         *parentMatch0 = match;

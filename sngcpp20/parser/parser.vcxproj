@@ -164,16 +164,19 @@
     <ClInclude Include="EnumParser.hpp" />
     <ClInclude Include="ExpressionParser.hpp" />
     <ClInclude Include="FunctionParser.hpp" />
+    <ClInclude Include="GuardParser.hpp" />
     <ClInclude Include="IdentifierParser.hpp" />
     <ClInclude Include="InitializationParser.hpp" />
     <ClInclude Include="LambdaParser.hpp" />
     <ClInclude Include="LiteralParser.hpp" />
     <ClInclude Include="LiteralTokenParser.hpp" />
     <ClInclude Include="ModuleParser.hpp" />
+    <ClInclude Include="CompoundStatementRecorder.hpp" />
     <ClInclude Include="ParserApi.hpp" />
     <ClInclude Include="SimpleTypeParser.hpp" />
     <ClInclude Include="StatementParser.hpp" />
     <ClInclude Include="TemplateParser.hpp" />
+    <ClInclude Include="TranslationUnitParser.hpp" />
     <ClInclude Include="TypeParser.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -185,15 +188,18 @@
     <ClCompile Include="EnumParser.cpp" />
     <ClCompile Include="ExpressionParser.cpp" />
     <ClCompile Include="FunctionParser.cpp" />
+    <ClCompile Include="GuardParser.cpp" />
     <ClCompile Include="IdentifierParser.cpp" />
     <ClCompile Include="InitializationParser.cpp" />
     <ClCompile Include="LambdaParser.cpp" />
     <ClCompile Include="LiteralParser.cpp" />
     <ClCompile Include="LiteralTokenParser.cpp" />
     <ClCompile Include="ModuleParser.cpp" />
+    <ClCompile Include="CompoundStatementRecorder.cpp" />
     <ClCompile Include="SimpleTypeParser.cpp" />
     <ClCompile Include="StatementParser.cpp" />
     <ClCompile Include="TemplateParser.cpp" />
+    <ClCompile Include="TranslationUnitParser.cpp" />
     <ClCompile Include="TypeParser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +211,7 @@
     <None Include="EnumParser.parser" />
     <None Include="ExpressionParser.parser" />
     <None Include="FunctionParser.parser" />
+    <None Include="GuardParser.parser" />
     <None Include="IdentifierParser.parser" />
     <None Include="InitializationParser.parser" />
     <None Include="LambdaParser.parser" />

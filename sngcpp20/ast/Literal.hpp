@@ -48,7 +48,10 @@ enum class EncodingPrefix : uint8_t
 class AST_API LiteralNode : public Node
 {
 public:
+    LiteralNode(NodeKind kind_, const SourcePos& sourcePos_);
     LiteralNode(NodeKind kind_, const SourcePos& sourcePos_, const std::u32string& rep_);
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const std::u32string& Rep() const { return rep; }
 private:
     std::u32string rep;
@@ -57,7 +60,11 @@ private:
 class AST_API IntegerLiteralNode : public LiteralNode
 {
 public:
+    IntegerLiteralNode(const SourcePos& sourcePos_);
     IntegerLiteralNode(const SourcePos& sourcePos_, uint64_t value_, Suffix suffix_, Base base_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     uint64_t Value() const { return value; }
     Suffix GetSuffix() const { return suffix; }
     Base GetBase() const { return base; }
@@ -70,7 +77,11 @@ private:
 class AST_API FloatingLiteralNode : public LiteralNode
 {
 public:
+    FloatingLiteralNode(const SourcePos& sourcePos_);
     FloatingLiteralNode(const SourcePos& sourcePos_, double value_, Suffix suffix_, Base base_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     double Value() const { return value; }
     Suffix GetSuffix() const { return suffix; }
     Base GetBase() const { return base; }
@@ -83,7 +94,11 @@ private:
 class AST_API CharacterLiteralNode : public LiteralNode
 {
 public:
+    CharacterLiteralNode(const SourcePos& sourcePos_);
     CharacterLiteralNode(const SourcePos& sourcePos_, char32_t value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     char32_t Value() const { return value; }
     EncodingPrefix GetEncodingPrefix() const { return encodingPrefix; }
 private:
@@ -94,7 +109,13 @@ private:
 class AST_API StringLiteralNode : public LiteralNode
 {
 public:
+    StringLiteralNode(const SourcePos& sourcePos_);
+    StringLiteralNode(NodeKind kind_, const SourcePos& sourcePos_);
     StringLiteralNode(const SourcePos& sourcePos_, const std::u32string& value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_);
+    StringLiteralNode(NodeKind kind_, const SourcePos& sourcePos_, const std::u32string& value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     const std::u32string& Value() const { return value; }
     EncodingPrefix GetEncodingPrefix() const { return encodingPrefix; }
 private:
@@ -102,10 +123,27 @@ private:
     EncodingPrefix encodingPrefix;
 };
 
+class AST_API RawStringLiteralNode : public StringLiteralNode
+{
+public:
+    RawStringLiteralNode(const SourcePos& sourcePos_);
+    RawStringLiteralNode(const SourcePos& sourcePos_, const std::u32string& value_, EncodingPrefix encodingPrefix_, const std::u32string& delimSequence_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
+    const std::u32string& DelimSequence() const { return delimSequence; }
+private:
+    std::u32string delimSequence;
+};
+
 class AST_API BooleanLiteralNode : public LiteralNode
 {
 public:
+    BooleanLiteralNode(const SourcePos& sourcePos_);
     BooleanLiteralNode(const SourcePos& sourcePos_, bool value_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
     bool Value() const { return value; }
 private:
     bool value;
@@ -114,19 +152,30 @@ private:
 class AST_API NullPtrLiteralNode : public LiteralNode
 {
 public:
+    NullPtrLiteralNode(const SourcePos& sourcePos_);
     NullPtrLiteralNode(const SourcePos& sourcePos_, const std::u32string& rep_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API UserDefinedLiteraNode : public BinaryNode
 {
 public:
+    UserDefinedLiteraNode(const SourcePos& sourcePos_);
     UserDefinedLiteraNode(const SourcePos& sourcePos_, Node* literalNode_, Node* udSuffix_);
+    void Accept(Visitor& visitor) override;
 };
 
 class AST_API LiteralOperatorIdNode : public UnaryNode
 {
 public:
-    LiteralOperatorIdNode(const SourcePos& sourcePos_, Node* id_);
+    LiteralOperatorIdNode(const SourcePos& sourcePos_);
+    LiteralOperatorIdNode(const SourcePos& sourcePos_, Node* id_, const SourcePos& stringLitPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
+    const SourcePos& StringLitPos() const { return stringLitPos; }
+private:
+    SourcePos stringLitPos;
 };
 
 } // namespace sngcpp::ast

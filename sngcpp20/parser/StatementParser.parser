@@ -8,8 +8,10 @@
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
 [hpp]#include <sngcpp20/ast/Statement.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
+[cpp]#include <sngcpp20/parser/CompoundStatementRecorder.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
 [cpp]#include <sngcpp20/parser/InitializationParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
@@ -34,6 +36,8 @@ parser api(PARSER_API) StatementParser
     using DeclarationParser.SimpleDeclaration;
     using ExpressionParser.ConstantExpression;
     using ExpressionParser.Expression;
+    using GuardParser.MemberFunctionGuard;
+    using GuardParser.SavedMemberFunctionBodyGuard;
     using IdentifierParser.Identifier;
     using IdentifierParser.IdentifierList;
     using InitializationParser.ExprOrBracedInitList;
@@ -75,18 +79,80 @@ parser api(PARSER_API) StatementParser
         )
         ;
 
-    CompoundStatement(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<CompoundStatementNode> compoundStatementNode) : Node*
+    CompoundStatementUnguarded(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<CompoundStatementNode> compoundStatementNode, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
-            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } LBRACE{ compoundStatementNode.reset(new CompoundStatementNode(s)); compoundStatementNode->SetAttributes(attributes); }
-            |   LBRACE{ compoundStatementNode.reset(new CompoundStatementNode(sourcePos)); } 
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } LBRACE{ lbPos = sourcePos; compoundStatementNode.reset(new CompoundStatementNode(s)); compoundStatementNode->SetAttributes(attributes); }
+            |   LBRACE{ lbPos = sourcePos; compoundStatementNode.reset(new CompoundStatementNode(sourcePos));  } 
             )
             (Statement(ctx):stmt{ compoundStatementNode->AddNode(stmt); })* 
-            RBRACE{ compoundStatementNode->SetRBracePos(sourcePos); }
+            RBRACE{ rbPos = sourcePos; }
+        )
+        {
+            compoundStatementNode->SetLBracePos(lbPos);
+            compoundStatementNode->SetRBracePos(rbPos); 
+            return compoundStatementNode.release();
+        }
+        ;
+
+    CompoundStatementGuarded(sngcpp::par::Context* ctx, var std::unique_ptr<CompoundStatementNode> compoundStatementNode) : Node*
+        ::= 
+        (   AttributeSpecifierSeq(ctx):attributes
+            { 
+                SourcePos s = sourcePos; 
+                soulng::lexer::LexerPosPair tokenPosPair = sngcpp::par::RecordCompoundStatement(lexer); 
+                if (tokenPosPair.IsValid())
+                {
+                    compoundStatementNode.reset(new CompoundStatementNode(s));  
+                    compoundStatementNode->SetTokenPosPair(tokenPosPair);
+                    compoundStatementNode->SetAttributes(attributes);
+                }
+                else
+                {
+                    pass = false;
+                }
+            }
+        |   empty
+            {
+                soulng::lexer::LexerPosPair tokenPosPair = sngcpp::par::RecordCompoundStatement(lexer);
+                if (tokenPosPair.IsValid())
+                {
+                    compoundStatementNode.reset(new CompoundStatementNode(SourcePos())); 
+                    compoundStatementNode->SetTokenPosPair(tokenPosPair);
+                }
+                else
+                {
+                    pass = false;
+                }
+            }
         )
         {
             return compoundStatementNode.release();
         }
+        ;
+
+    CompoundStatementSaved(sngcpp::par::Context* ctx, var sngcpp::ast::CompoundStatementNode* compoundStatementNode) : Node*
+        ::= empty{ compoundStatementNode = GetSavedCompoundStatementNode(ctx); if (!compoundStatementNode) pass = false; lexer.BeginRecordedParse(compoundStatementNode->GetTokenPosPair()); }
+        (
+            LBRACE{ compoundStatementNode->SetLBracePos(sourcePos); }
+            (Statement(ctx):stmt{ compoundStatementNode->AddNode(stmt); })* 
+            RBRACE{ compoundStatementNode->SetRBracePos(sourcePos); lexer.EndRecordedParse(); return compoundStatementNode; }
+        )
+        |   empty
+        {
+            lexer.EndRecordedParse();
+            pass = false;
+        }
+        ;
+
+    CompoundStatement(sngcpp::par::Context* ctx) : Node*
+        ::= 
+        (   MemberFunctionGuard(ctx):memberFunctionGuard
+            CompoundStatementGuarded(ctx):guardedCompoundStatement{ return guardedCompoundStatement; }
+        |   SavedMemberFunctionBodyGuard(ctx):savedMemberFunctionBodyGuard
+            CompoundStatementSaved(ctx):savedCompoundStatement{ return savedCompoundStatement; }
+        |   CompoundStatementUnguarded(ctx):unguardedCompoundStatement{ unguardedCompoundStatement; }
+        )
         ;
 
     SelectionStatement(sngcpp::par::Context* ctx) : Node*
@@ -94,7 +160,7 @@ parser api(PARSER_API) StatementParser
         |   SwitchStatement(ctx):switchStmt{ return switchStmt; }
         ;
 
-    IfStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos ifPos, var SourcePos constExprPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    IfStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos ifPos, var SourcePos constExprPos, var SourcePos elsePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } IF{ ifPos = sourcePos; }
@@ -106,12 +172,12 @@ parser api(PARSER_API) StatementParser
             Condition(ctx):cond 
             RPAREN{ rpPos = sourcePos; } 
             Statement(ctx):thenStmt 
-            (   ELSE 
+            (   ELSE{ elsePos = sourcePos; }
                 Statement(ctx):elseStmt
             )?
         )
         {
-            return new IfStatementNode(s, initStmt, cond, thenStmt, elseStmt, attributes, ifPos, lpPos, rpPos, constExprPos);
+            return new IfStatementNode(s, initStmt, cond, thenStmt, elseStmt, attributes, ifPos, lpPos, rpPos, constExprPos, elsePos);
         }
         ;
 
@@ -181,12 +247,12 @@ parser api(PARSER_API) StatementParser
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DeclSpecifierSeq(ctx):declSpecifierSeq1{ declSpecifierSeq.reset(declSpecifierSeq1); }
             |   DeclSpecifierSeq(ctx):declSpecifierSeq2{ s = sourcePos; declSpecifierSeq.reset(declSpecifierSeq2); }
             )
-            (   Declarator(ctx):declarator{ node.reset(new ForRangeDeclarationNode(s, declSpecifierSeq.release(), declarator)); }
+            (   Declarator(ctx):declarator{ node.reset(new ForRangeDeclarationNode(s, declSpecifierSeq.release(), declarator, attributes)); }
             |   (   
                     RefQualifier:refQualifier? LBRACKET{ lbPos = sourcePos; } IdentifierList(ctx):identifiers RBRACKET{ rbPos = sourcePos; }
                 )
                 {
-                    node.reset(new StructuredBindingNode(s, declSpecifierSeq.release(), refQualifier, identifiers, nullptr, nullptr, nullptr, lbPos, rbPos));
+                    node.reset(new StructuredBindingNode(s, declSpecifierSeq.release(), refQualifier, identifiers, nullptr, attributes, nullptr, lbPos, rbPos));
                 }
             )
         )

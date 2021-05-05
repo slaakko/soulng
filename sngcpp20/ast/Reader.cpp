@@ -25,6 +25,16 @@ NodeKind Reader::ReadNodeKind()
     return static_cast<NodeKind>(kind);
 }
 
+std::u32string Reader::ReadStr()
+{
+    return binaryReader.ReadUtf32String();
+}
+
+bool Reader::ReadBool()
+{
+    return binaryReader.ReadBool();
+}
+
 Node* Reader::ReadNode()
 {
     NodeKind kind = ReadNodeKind();

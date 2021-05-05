@@ -33,7 +33,7 @@ enum class NodeKind : uint16_t
     translationUnitNode, moduleUnitNode, 
     moduleDeclarationNode, exportDeclarationNode, exportNode, importNode, importDeclarationNode, modulePartitionNode, moduleNode, globalModuleFragmentNode, privateModuleFragmentNode,
     angleHeaderNameNode, quoteHeaderNameNode,
-    identifierNode, colonColonNode, nestedNameSpecifierNode, qualifiedIdNode, identifierListNode, qualifiedModuleIdNode,
+    identifierNode, unnamedNode, colonColonNode, nestedNameSpecifierNode, qualifiedIdNode, identifierListNode, qualifiedModuleIdNode,
     charNode, char8Node, char16Node, char32Node, wcharNode, boolNode, shortNode, intNode, longNode, signedNode, unsignedNode, floatNode, doubleNode, voidNode,
     constNode, volatileNode, lvalueRefNode, rvalueRefNode, ptrNode, cvQualifierSequenceNode, ptrOperatorNode, noexceptSpecifierNode, packDeclaratorIdNode, subscriptDeclaratorNode, invokeDeclaratorNode,
     prefixNode, trailingQualifiersNode, trailingAttributesNode, ptrDeclaratorNode,
@@ -50,11 +50,11 @@ enum class NodeKind : uint16_t
     dynamicCastNode, staticCastNode, reinterpretCastNode, constCastNode, cppCastExprNode, thisNode, parenExprNode,
     lambdaExpressionNode, lambdaIntroducerNode, lambdaCaptureNode, lambdaDeclaratorNode, lambdaSpecifiersNode, lambdaTemplateParamsNode,
     defaultRefCaptureNode, defaultCopyCaptureNode, byRefCaptureNode, simpleCaptureNode, initCaptureNode, currentObjectCopyCapture, currentObjectByRefCapture,
-    integerLiteralNode, floatingLiteralNode, characterLiteralNode, stringLiteralNode, booleanLiteralNode, nullPtrLiteralNode, userDefinedLiteralNode, literalOperatorIdNode,
+    integerLiteralNode, floatingLiteralNode, characterLiteralNode, stringLiteralNode, rawStringLiteralNode, booleanLiteralNode, nullPtrLiteralNode, userDefinedLiteralNode, literalOperatorIdNode,
     labeledStatementNode, caseStatmentNode, defaultStatementNode, compoundStatementNode, ifStatementNode, switchStatemeNode, whileStatementNode, doStatementNode,
     rangeForStatementNode, forRangeDeclarationNode, structuredBindingNode, forStatementNode, breakStatementNode, continueStatementNode, returnStatementNode, coReturnStatementNode,
     gotoStatementNode, tryStatementNode, handlerSequenceNode, handlerNode, exceptionDeclarationNode, expressionStatementNode, declarationStatementNode, initConditionNode, semicolonNode,
-    templateHeadNode, templateParameterListNode, typeParameterNode, templateIdNode, typenameNode, deductionGuideNode, explicitInstantiationNode, explicitSpecializationNode,
+    templateDeclarationNode, templateHeadNode, templateParameterListNode, typeParameterNode, templateIdNode, typenameNode, deductionGuideNode, explicitInstantiationNode, explicitSpecializationNode,
     declarationSequenceNode, simpleDeclarationNode, usingDeclarationNode, usingNode, usingDeclaratorListNode, usingEnumDeclarationNode, emptyDeclarationNode, namespaceNode, usingDirectiveNode,
     asmDeclarationNode, asmNode, namespaceAliasDefinitionNode, staticAssertDeclarationNode, staticAssertNode, aliasDeclarationNode, definingTypeIdNode, definingTypeSpecifierSequenceNode,
     opaqueEnumDeclarationNode, functionDeclarationNode, linkageSpecificationNode, namespaceDefinitionNode, namespaceBodyNode, attributeDeclarationNode,
@@ -84,18 +84,22 @@ public:
     Node(NodeKind kind_, const SourcePos& sourcePos_);
     virtual ~Node();
     NodeKind Kind() const { return kind; }
+    virtual std::u32string Str() const { return std::u32string(); }
     virtual NodeType Type() const { return NodeType::single; }
     virtual int Count() const { return 0; }
     const SourcePos& GetSourcePos() const { return sourcePos; }
     void SetSourcePos(const SourcePos& sourcePos_) { sourcePos = sourcePos_; }
-    virtual void Accept(Visitor& visitor);
+    virtual void Accept(Visitor& visitor) = 0;
     virtual void Write(Writer& writer);
     virtual void Read(Reader& reader);
     virtual void AddNode(Node* node);
     virtual void Clear();
+    Node* Parent() const { return parent; }
+    void SetParent(Node* parent_) { parent = parent_; }
 private:
     NodeKind kind;
     SourcePos sourcePos;
+    Node* parent;
 };
 
 class AST_API CompoundNode : public Node
