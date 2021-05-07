@@ -62,11 +62,11 @@ parser api(PARSER_API) FunctionParser
         ::= Assign:assign{ s = sourcePos; } 
             (   Default:def Semicolon:semicolon
                 { 
-                    return new GeneratedFunctionBodyNode(s, assign, def, semicolon); 
+                    return new DefaultedOrDeletedFunctionNode(s, assign, def, semicolon); 
                 } 
             |   Delete:del Semicolon:semicolon2
                 { 
-                    return new GeneratedFunctionBodyNode(s, assign, del, semicolon2); 
+                    return new DefaultedOrDeletedFunctionNode(s, assign, del, semicolon2); 
                 }
             )
         |   CtorInitializer(ctx):ctorInitializer{ s = sourcePos; } CompoundStatement(ctx):compoundStatement

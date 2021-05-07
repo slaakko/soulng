@@ -76,33 +76,33 @@ void DeleteNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-GeneratedFunctionBodyNode::GeneratedFunctionBodyNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::generatedFunctionBodyNode, sourcePos_)
+DefaultedOrDeletedFunctionNode::DefaultedOrDeletedFunctionNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::defaultedOrDeletedFunctionNode, sourcePos_)
 {
 }
 
-GeneratedFunctionBodyNode::GeneratedFunctionBodyNode(const SourcePos& sourcePos_, Node* assign_, Node* gen_, Node* semicolon_) : 
-    CompoundNode(NodeKind::generatedFunctionBodyNode, sourcePos_), assign(assign_), gen(gen_), semicolon(semicolon_)
+DefaultedOrDeletedFunctionNode::DefaultedOrDeletedFunctionNode(const SourcePos& sourcePos_, Node* assign_, Node* defaultOrDelete_, Node* semicolon_) : 
+    CompoundNode(NodeKind::defaultedOrDeletedFunctionNode, sourcePos_), assign(assign_), defaultOrDelete(defaultOrDelete_), semicolon(semicolon_)
 {
 }
 
-void GeneratedFunctionBodyNode::Accept(Visitor& visitor)
+void DefaultedOrDeletedFunctionNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-void GeneratedFunctionBodyNode::Write(Writer& writer)
+void DefaultedOrDeletedFunctionNode::Write(Writer& writer)
 {
     CompoundNode::Write(writer);
     writer.Write(assign.get());
-    writer.Write(gen.get());
+    writer.Write(defaultOrDelete.get());
     writer.Write(semicolon.get());
 }
 
-void GeneratedFunctionBodyNode::Read(Reader& reader)
+void DefaultedOrDeletedFunctionNode::Read(Reader& reader)
 {
     CompoundNode::Read(reader);
     assign.reset(reader.ReadNode());
-    gen.reset(reader.ReadNode());
+    defaultOrDelete.reset(reader.ReadNode());
     semicolon.reset(reader.ReadNode());
 }
 

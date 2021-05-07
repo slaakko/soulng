@@ -1745,11 +1745,11 @@ void DefaultVisitor::Visit(DeleteNode& node)
     EndVisit(node);
 }
 
-void DefaultVisitor::Visit(GeneratedFunctionBodyNode& node)
+void DefaultVisitor::Visit(DefaultedOrDeletedFunctionNode& node)
 {
     BeginVisit(node);
     node.Assign()->Accept(*this);
-    node.Gen()->Accept(*this);
+    node.DefaultOrDelete()->Accept(*this);
     node.Semicolon()->Accept(*this);
     EndVisit(node);
 }

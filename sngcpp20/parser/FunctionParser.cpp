@@ -350,7 +350,7 @@ soulng::parser::Match FunctionParser::FunctionBody(CppLexer& lexer, sngcpp::symb
                                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("FunctionBody"));
                                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                    return soulng::parser::Match(true, new GeneratedFunctionBodyNode(s, assign.release(), def.release(), semicolon.release()));
+                                                    return soulng::parser::Match(true, new DefaultedOrDeletedFunctionNode(s, assign.release(), def.release(), semicolon.release()));
                                                 }
                                             }
                                             *parentMatch10 = match;
@@ -390,7 +390,7 @@ soulng::parser::Match FunctionParser::FunctionBody(CppLexer& lexer, sngcpp::symb
                                                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("FunctionBody"));
                                                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                            return soulng::parser::Match(true, new GeneratedFunctionBodyNode(s, assign.release(), del.release(), semicolon2.release()));
+                                                            return soulng::parser::Match(true, new DefaultedOrDeletedFunctionNode(s, assign.release(), del.release(), semicolon2.release()));
                                                         }
                                                     }
                                                     *parentMatch14 = match;

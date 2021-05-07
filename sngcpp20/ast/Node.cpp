@@ -85,7 +85,7 @@ const char* nodeKindStr[] =
     "constructorNode", "constructorInitializerNode", "memberInitializerListNode", "memberInitializerNode",
     "publicNode", "protectedNode", "privateNode", "classNode", "structNode", "unionNode", "overrideNode", "finalNode", "pureSpecifierNode",
     "enumSpecifierNode", "enumHeadNode", "enumBaseNode", "enumClassNode", "enumStructNode", "enumNode", "enumeratorDefinitionNode", "enumeratorNode", "elaboratedEnumSpecifierNode",
-    "functionDefinitionNode", "functionBodyNode", "generatedFunctionBodyNode", "defaultNode", "deleteNode",
+    "functionDefinitionNode", "functionBodyNode", "defaultedOrDeletedFunctionNode", "defaultNode", "deleteNode",
     "operatorFnIdNode", "operatorNode", "newArrayOpNode", "newOpNode", "deleteArrayOpNode", "deleteOpNode", "coAwaitOpNode", "invokeOpNode", "subscriptOpNode",
     "conversionFnIdNode", "conversionTypeIdNode", "conversionDeclaratorNode", "destructorIdNode", "parameterNode", "parameterListNode", "noexceptNode", "functionTryBlock",
     "conceptDefinitionNode", "requiresExprNode", "requirementBodyNode", "simpleRequirementNode", "typeRequirementNode", "compoundRequirementNode", "returnTypeRequirementNode", "nestedRequirementNode",
@@ -493,7 +493,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::functionBodyNode, new NodeFactory<FunctionBodyNode>());
     Register(NodeKind::defaultNode, new NodeFactory<DefaultNode>());
     Register(NodeKind::deleteNode, new NodeFactory<DeleteNode>());
-    Register(NodeKind::generatedFunctionBodyNode, new NodeFactory<GeneratedFunctionBodyNode>());
+    Register(NodeKind::defaultedOrDeletedFunctionNode, new NodeFactory<DefaultedOrDeletedFunctionNode>());
     Register(NodeKind::functionDeclarationNode, new NodeFactory<FunctionDeclarationNode>());
     Register(NodeKind::operatorNode, new NodeFactory<OperatorNode>());
     Register(NodeKind::newArrayOpNode, new NodeFactory<NewArrayOpNode>());

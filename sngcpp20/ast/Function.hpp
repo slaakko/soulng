@@ -52,20 +52,20 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
-class AST_API GeneratedFunctionBodyNode : public CompoundNode
+class AST_API DefaultedOrDeletedFunctionNode : public CompoundNode
 {
 public:
-    GeneratedFunctionBodyNode(const SourcePos& sourcePos_);
-    GeneratedFunctionBodyNode(const SourcePos& sourcePos_, Node* assign_, Node* gen_, Node* semicolon_);
+    DefaultedOrDeletedFunctionNode(const SourcePos& sourcePos_);
+    DefaultedOrDeletedFunctionNode(const SourcePos& sourcePos_, Node* assign_, Node* defaultOrDelete_, Node* semicolon_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     Node* Assign() const { return assign.get(); }
-    Node* Gen() const { return gen.get(); }
+    Node* DefaultOrDelete() const { return defaultOrDelete.get(); }
     Node* Semicolon() const { return semicolon.get(); }
 private:
     std::unique_ptr<Node> assign;
-    std::unique_ptr<Node> gen;
+    std::unique_ptr<Node> defaultOrDelete;
     std::unique_ptr<Node> semicolon;
 };
 

@@ -66,7 +66,7 @@ enum class NodeKind : uint16_t
     constructorNode, constructorInitializerNode, memberInitializerListNode, memberInitializerNode,
     publicNode, protectedNode, privateNode, classNode, structNode, unionNode, overrideNode, finalNode, pureSpecifierNode,
     enumSpecifierNode, enumHeadNode, enumBaseNode, enumClassNode, enumStructNode, enumNode, enumeratorDefinitionNode, enumeratorNode, elaboratedEnumSpecifierNode,
-    functionDefinitionNode, functionBodyNode, generatedFunctionBodyNode, defaultNode, deleteNode,
+    functionDefinitionNode, functionBodyNode, defaultedOrDeletedFunctionNode, defaultNode, deleteNode,
     operatorFnIdNode, operatorNode, newArrayOpNode, newOpNode, deleteArrayOpNode, deleteOpNode, coAwaitOpNode, invokeOpNode, subscriptOpNode,
     conversionFnIdNode, conversionTypeIdNode, conversionDeclaratorNode, destructorIdNode, parameterNode, parameterListNode, noexceptNode, functionTryBlock,
     conceptDefinitionNode, requiresExprNode, requirementBodyNode, simpleRequirementNode, typeRequirementNode, compoundRequirementNode, returnTypeRequirementNode, nestedRequirementNode, 

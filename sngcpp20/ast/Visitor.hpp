@@ -219,7 +219,7 @@ class FunctionDefinitionNode;
 class FunctionBodyNode;
 class DefaultNode;
 class DeleteNode;
-class GeneratedFunctionBodyNode;
+class DefaultedOrDeletedFunctionNode;
 class FunctionDeclarationNode;
 class OperatorNode;
 class NewArrayOpNode;
@@ -578,7 +578,7 @@ public:
     virtual void Visit(FunctionBodyNode& node) {}
     virtual void Visit(DefaultNode& node) {}
     virtual void Visit(DeleteNode& node) {}
-    virtual void Visit(GeneratedFunctionBodyNode& node) {}
+    virtual void Visit(DefaultedOrDeletedFunctionNode& node) {}
     virtual void Visit(FunctionDeclarationNode& node) {}
     virtual void Visit(OperatorNode& node) {}
     virtual void Visit(NewArrayOpNode& node) {}
@@ -919,7 +919,7 @@ public:
     void Visit(FunctionBodyNode& node);
     void Visit(DefaultNode& node);
     void Visit(DeleteNode& node);
-    void Visit(GeneratedFunctionBodyNode& node);
+    void Visit(DefaultedOrDeletedFunctionNode& node);
     void Visit(FunctionDeclarationNode& node);
     void Visit(OperatorNode& node);
     void Visit(NewArrayOpNode& node);
