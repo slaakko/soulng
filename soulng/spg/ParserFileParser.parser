@@ -77,6 +77,8 @@ parser ParserFileParser
         ::= MainStatement(grammarParser):mainStatement
         |   StartStatement(grammarParser):startStatement
         |   NothrowStatement(grammarParser):nothrowStatement
+        |   FarthestErrorStatement(grammarParser):farthestErrorStatement
+        |   StateStatement(grammarParser):stateStatement
         |   UsingStatement(grammarParser):usingStatement
         |   LexerStatement(grammarParser):lexerStatement
         |   RuleInfoStatement(grammarParser):ruleInfoStatement
@@ -93,6 +95,14 @@ parser ParserFileParser
 
     NothrowStatement(soulng::spg::GrammarParser* grammarParser)
         ::= NOTHROW SEMICOLON!{ grammarParser->SetNothrow(); }
+        ;
+
+    FarthestErrorStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= FARTHEST_ERROR SEMICOLON!{ grammarParser->SetFarthestError(); }
+        ;
+
+    StateStatement(soulng::spg::GrammarParser* grammarParser)
+        ::= STATE SEMICOLON!{ grammarParser->SetState(); }
         ;
 
     UsingStatement(soulng::spg::GrammarParser* grammarParser)

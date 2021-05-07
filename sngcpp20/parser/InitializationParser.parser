@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Expression.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
@@ -13,7 +13,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -21,6 +20,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) InitializationParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.LBrace;
     using AttributeParser.RBrace;
@@ -31,7 +31,7 @@ parser api(PARSER_API) InitializationParser
     using IdentifierParser.Identifier;
     using FunctionParser.Comma;
 
-    Initializer(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var std::unique_ptr<ExpressionListNode> exprListNode) : Node*
+    Initializer(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var std::unique_ptr<ExpressionListNode> exprListNode) : Node*
         ::= 
         (   BraceOrEqualInitializer(ctx):braceOrEqualInit{ node.reset(braceOrEqualInit); }
         |   LPAREN{ exprListNode.reset(new ExpressionListNode(sourcePos)); exprListNode->SetLParenPos(sourcePos); } 
@@ -43,12 +43,12 @@ parser api(PARSER_API) InitializationParser
         }
         ;
 
-    InitializerClause(sngcpp::par::Context* ctx) : Node*
+    InitializerClause(sngcpp::symbols::Context* ctx) : Node*
         ::= BracedInitList(ctx):bracedInitList{ return bracedInitList; }
         |   AssignmentExpression(ctx):assignmentExpr{ return assignmentExpr; }
         ;
 
-    DesignatedInitializerClause(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    DesignatedInitializerClause(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Designator(ctx):designator{ s = sourcePos; } BraceOrEqualInitializer(ctx):initializer
@@ -58,7 +58,7 @@ parser api(PARSER_API) InitializationParser
         }
         ;
 
-    Designator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    Designator(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             DOT{ s = sourcePos; } Identifier(ctx):identifier
@@ -68,26 +68,26 @@ parser api(PARSER_API) InitializationParser
         }
         ;
 
-    InitializerList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    InitializerList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= InitializerClause(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } InitializerClause(ctx):next{ container->AddNode(next); })*
             (Ellipses:ellipses{ container->AddNode(ellipses); })?
         ;
 
-    DesignatedInitializerList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    DesignatedInitializerList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= DesignatedInitializerClause(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } DesignatedInitializerClause(ctx):next{ container->AddNode(next); })*
         ;
 
-    ExprOrBracedInitList(sngcpp::par::Context* ctx) : Node*
+    ExprOrBracedInitList(sngcpp::symbols::Context* ctx) : Node*
         ::= BracedInitList(ctx):bracedInitList{ return bracedInitList; }
         |   Expression(ctx):expr{ return expr; }
         ;
 
-    BraceOrEqualInitializer(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    BraceOrEqualInitializer(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= ASSIGN{ s = sourcePos; } InitializerClause(ctx):initializer{ return new AssignmentInitNode(s, initializer); }
         |   BracedInitList(ctx):bracedInitList{ return bracedInitList; }
         ;
 
-    BracedInitList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    BracedInitList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             LBrace:lbrace{ node.reset(new BracedInitListNode(sourcePos)); node->AddNode(lbrace); }

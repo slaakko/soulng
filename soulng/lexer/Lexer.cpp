@@ -19,14 +19,14 @@ LexerState::LexerState() : token(), line(0), lexeme(), pos(), tokens(), current(
 
 Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) :
     content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos())
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr)
 {
     CalculateLineStarts();
 }
 
 Lexer::Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) :
     content(), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(start_), end(end_), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos())
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr)
 {
     CalculateLineStarts();
 }
@@ -70,6 +70,7 @@ void Lexer::operator++()
         if (p > farthestPos)
         {
             farthestPos = p;
+            farthestRuleContext = ruleContext;
         }
     }
 }
@@ -86,16 +87,17 @@ void Lexer::SetPos(int64_t pos)
     line = static_cast<int32_t>(pos >> 32);
 }
 
-SourcePos Lexer::GetSourcePos() const
+SourcePos Lexer::GetSourcePos(int64_t pos) const
 {
-    if (line <= 0) return SourcePos();
-    const char32_t* s = pos;
+    const char32_t* s = start;
+    int line = GetLine(pos);
     if (line < lineStarts.size())
     {
         s = lineStarts[line];
     }
-    int col = pos - s + 1;
-    return SourcePos(line, col);
+    Token token = GetToken(pos);
+    int col = token.match.begin - s + 1;
+    return SourcePos(pos, line, col);
 }
 
 void Lexer::NextToken()
@@ -416,6 +418,13 @@ void Lexer::ThrowExpectationFailure(const Span& span, const std::u32string& name
     throw ParsingException("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
 }
 
+void Lexer::ThrowFarthestError()
+{
+    Token token = GetToken(farthestPos);
+    std::string parserStateStr = GetParserStateStr();
+    throw ParsingException("parsing error in '" + fileName + ":" + std::to_string(token.line) + "':\n" + ToUtf8(ErrorLines(token)) + parserStateStr, fileName);
+}
+
 void Lexer::AddError(const Span& span, const std::u32string& name)
 {
     Token token = GetToken(span.start);
@@ -553,6 +562,36 @@ void Lexer::BeginRecordedParse(const LexerPosPair& recordedPosPair_)
 void Lexer::EndRecordedParse()
 {
     PopState();
+}
+
+void Lexer::PushRule(int ruleId)
+{
+    ruleContext.push_back(ruleId);
+}
+
+void Lexer::PopRule()
+{
+    ruleContext.pop_back();
+}
+
+std::string Lexer::GetParserStateStr() const
+{
+    std::string parserStateStr;
+    int n = farthestRuleContext.size();
+    if (ruleNameVecPtr && n > 0)
+    {
+        parserStateStr.append("\nParser state:\n");
+        for (int i = 0; i < n; ++i)
+        {
+            int ruleId = farthestRuleContext[i];
+            if (ruleId >= 0 && ruleId < ruleNameVecPtr->size())
+            {
+                std::string ruleName = (*ruleNameVecPtr)[ruleId];
+                parserStateStr.append(ruleName.append("\n"));
+            }
+        }
+    }
+    return parserStateStr;
 }
 
 void Lexer::CalculateLineStarts()

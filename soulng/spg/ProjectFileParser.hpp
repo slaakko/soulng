@@ -6,7 +6,7 @@
 #include <soulng/parser/Match.hpp>
 #include <soulng/parser/Value.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileParser.parser' using soulng parser generator spg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileParser.parser' using soulng parser generator spg version 4.0.0
 
 class ProjectFileLexer;
 
@@ -17,6 +17,7 @@ struct ProjectFileParser
     static soulng::parser::Match ProjectFileContent(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile);
     static soulng::parser::Match QualifiedId(ProjectFileLexer& lexer);
     static soulng::parser::Match TokensDeclaration(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile);
+    static soulng::parser::Match RuleFileDeclaration(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile);
     static soulng::parser::Match RecoveryDeclaration(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile);
     static soulng::parser::Match SourceFile(ProjectFileLexer& lexer, soulng::spg::ProjectFile* projectFile);
 };

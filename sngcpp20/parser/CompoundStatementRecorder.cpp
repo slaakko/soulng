@@ -48,17 +48,17 @@ soulng::lexer::LexerPosPair RecordCompoundStatement(CppLexer& lexer)
     return soulng::lexer::LexerPosPair();
 }
 
-void PushSavedCompoundStatementNode(CompoundStatementNode* node, Context* context)
+void PushSavedCompoundStatementNode(CompoundStatementNode* node, sngcpp::symbols::Context* context)
 {
     context->PushNode(node);
 }
 
-void PopSavedCompoundStatementNode(Context* context)
+void PopSavedCompoundStatementNode(sngcpp::symbols::Context* context)
 {
     context->PopNode();
 }
 
-CompoundStatementNode* GetSavedCompoundStatementNode(Context* context)
+CompoundStatementNode* GetSavedCompoundStatementNode(sngcpp::symbols::Context* context)
 {
     Node* n = context->GetNode();
     if (n && n->Kind() == NodeKind::compoundStatementNode)

@@ -34,6 +34,15 @@ bool Parser::IsNothrow() const
     return false;
 }
 
+bool Parser::IsState() const
+{
+    if (parent)
+    {
+        return parent->IsState();
+    }
+    return false;
+}
+
 void Parser::SetFirst(const TokenSet& first_)
 {
     first = first_;
@@ -360,7 +369,7 @@ void NonterminalParser::SetArguments(soulng::cppcode::ExpressionList* args_)
     }
 }
 
-RuleParser::RuleParser(const std::u32string& name_) : Parser(name_), hasReturn(false)
+RuleParser::RuleParser(const std::u32string& name_) : Parser(name_), hasReturn(false), id(-1)
 {
 }
 
@@ -430,7 +439,7 @@ void RuleParser::Write(CodeFormatter& formatter)
     formatter.WriteLine("}");
 }
 
-GrammarParser::GrammarParser(const std::u32string& name_, const std::u32string& api_) : Parser(name_), api(api_), main(false), start(false), nothrow(false)
+GrammarParser::GrammarParser(const std::u32string& name_, const std::u32string& api_) : Parser(name_), api(api_), main(false), start(false), nothrow(false), farthestError(false), state(false)
 {
 }
 

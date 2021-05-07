@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <soulng/spg/ParserFileTokens.hpp>
 #include <map>
@@ -10,125 +10,127 @@ namespace ParserFileTokens
 
     void InitTokenIdMap()
     {
-        tokenIdMap[U"AMP"] = 77;
-        tokenIdMap[U"AMPAMP"] = 72;
-        tokenIdMap[U"ANDASSIGN"] = 117;
-        tokenIdMap[U"ANY"] = 10;
+        tokenIdMap[U"AMP"] = 79;
+        tokenIdMap[U"AMPAMP"] = 74;
+        tokenIdMap[U"ANDASSIGN"] = 119;
+        tokenIdMap[U"ANY"] = 12;
         tokenIdMap[U"API"] = 2;
-        tokenIdMap[U"ARROW"] = 93;
-        tokenIdMap[U"ARROWSTAR"] = 74;
-        tokenIdMap[U"ASSIGN"] = 109;
-        tokenIdMap[U"AUTO"] = 17;
-        tokenIdMap[U"BITOR"] = 75;
-        tokenIdMap[U"BITXOR"] = 76;
-        tokenIdMap[U"BOOL"] = 24;
-        tokenIdMap[U"BREAK"] = 60;
-        tokenIdMap[U"CASE"] = 52;
-        tokenIdMap[U"CATCH"] = 65;
-        tokenIdMap[U"CHAR"] = 22;
-        tokenIdMap[U"CHARLIT"] = 69;
-        tokenIdMap[U"COLON"] = 105;
-        tokenIdMap[U"COLONCOLON"] = 104;
-        tokenIdMap[U"COMMA"] = 108;
-        tokenIdMap[U"CONST"] = 34;
-        tokenIdMap[U"CONSTCAST"] = 44;
-        tokenIdMap[U"CONTINUE"] = 61;
-        tokenIdMap[U"CPL"] = 91;
-        tokenIdMap[U"CPPPREFIX"] = 12;
-        tokenIdMap[U"DEFAULT"] = 53;
-        tokenIdMap[U"DELETE"] = 48;
-        tokenIdMap[U"DISJUNCTION"] = 71;
-        tokenIdMap[U"DIV"] = 87;
-        tokenIdMap[U"DIVASSIGN"] = 111;
-        tokenIdMap[U"DO"] = 58;
-        tokenIdMap[U"DOT"] = 92;
-        tokenIdMap[U"DOTSTAR"] = 73;
-        tokenIdMap[U"DOUBLE"] = 31;
-        tokenIdMap[U"DYNAMICCAST"] = 41;
-        tokenIdMap[U"ELLIPSIS"] = 103;
-        tokenIdMap[U"ELSE"] = 55;
-        tokenIdMap[U"EMPTY"] = 9;
-        tokenIdMap[U"EQ"] = 78;
-        tokenIdMap[U"EXCLAMATION"] = 16;
-        tokenIdMap[U"EXTERN"] = 20;
-        tokenIdMap[U"FALSE"] = 50;
-        tokenIdMap[U"FILEPATH"] = 14;
-        tokenIdMap[U"FLOAT"] = 30;
-        tokenIdMap[U"FLOATINGLIT"] = 68;
-        tokenIdMap[U"FOR"] = 59;
-        tokenIdMap[U"GEQ"] = 81;
-        tokenIdMap[U"GOTO"] = 63;
-        tokenIdMap[U"HASH"] = 107;
-        tokenIdMap[U"HPPPREFIX"] = 13;
-        tokenIdMap[U"ID"] = 66;
-        tokenIdMap[U"IF"] = 54;
+        tokenIdMap[U"ARROW"] = 95;
+        tokenIdMap[U"ARROWSTAR"] = 76;
+        tokenIdMap[U"ASSIGN"] = 111;
+        tokenIdMap[U"AUTO"] = 19;
+        tokenIdMap[U"BITOR"] = 77;
+        tokenIdMap[U"BITXOR"] = 78;
+        tokenIdMap[U"BOOL"] = 26;
+        tokenIdMap[U"BREAK"] = 62;
+        tokenIdMap[U"CASE"] = 54;
+        tokenIdMap[U"CATCH"] = 67;
+        tokenIdMap[U"CHAR"] = 24;
+        tokenIdMap[U"CHARLIT"] = 71;
+        tokenIdMap[U"COLON"] = 107;
+        tokenIdMap[U"COLONCOLON"] = 106;
+        tokenIdMap[U"COMMA"] = 110;
+        tokenIdMap[U"CONST"] = 36;
+        tokenIdMap[U"CONSTCAST"] = 46;
+        tokenIdMap[U"CONTINUE"] = 63;
+        tokenIdMap[U"CPL"] = 93;
+        tokenIdMap[U"CPPPREFIX"] = 14;
+        tokenIdMap[U"DEFAULT"] = 55;
+        tokenIdMap[U"DELETE"] = 50;
+        tokenIdMap[U"DISJUNCTION"] = 73;
+        tokenIdMap[U"DIV"] = 89;
+        tokenIdMap[U"DIVASSIGN"] = 113;
+        tokenIdMap[U"DO"] = 60;
+        tokenIdMap[U"DOT"] = 94;
+        tokenIdMap[U"DOTSTAR"] = 75;
+        tokenIdMap[U"DOUBLE"] = 33;
+        tokenIdMap[U"DYNAMICCAST"] = 43;
+        tokenIdMap[U"ELLIPSIS"] = 105;
+        tokenIdMap[U"ELSE"] = 57;
+        tokenIdMap[U"EMPTY"] = 11;
+        tokenIdMap[U"EQ"] = 80;
+        tokenIdMap[U"EXCLAMATION"] = 18;
+        tokenIdMap[U"EXTERN"] = 22;
+        tokenIdMap[U"FALSE"] = 52;
+        tokenIdMap[U"FARTHEST_ERROR"] = 8;
+        tokenIdMap[U"FILEPATH"] = 16;
+        tokenIdMap[U"FLOAT"] = 32;
+        tokenIdMap[U"FLOATINGLIT"] = 70;
+        tokenIdMap[U"FOR"] = 61;
+        tokenIdMap[U"GEQ"] = 83;
+        tokenIdMap[U"GOTO"] = 65;
+        tokenIdMap[U"HASH"] = 109;
+        tokenIdMap[U"HPPPREFIX"] = 15;
+        tokenIdMap[U"ID"] = 68;
+        tokenIdMap[U"IF"] = 56;
         tokenIdMap[U"INCLUDE"] = 3;
-        tokenIdMap[U"INT"] = 26;
-        tokenIdMap[U"INTLIT"] = 67;
-        tokenIdMap[U"LANGLE"] = 101;
-        tokenIdMap[U"LBRACE"] = 97;
-        tokenIdMap[U"LBRACKET"] = 99;
-        tokenIdMap[U"LEQ"] = 80;
-        tokenIdMap[U"LONG"] = 27;
-        tokenIdMap[U"LPAREN"] = 95;
+        tokenIdMap[U"INT"] = 28;
+        tokenIdMap[U"INTLIT"] = 69;
+        tokenIdMap[U"LANGLE"] = 103;
+        tokenIdMap[U"LBRACE"] = 99;
+        tokenIdMap[U"LBRACKET"] = 101;
+        tokenIdMap[U"LEQ"] = 82;
+        tokenIdMap[U"LONG"] = 29;
+        tokenIdMap[U"LPAREN"] = 97;
         tokenIdMap[U"MAIN"] = 4;
-        tokenIdMap[U"MINUS"] = 85;
-        tokenIdMap[U"MINUSASSIGN"] = 114;
-        tokenIdMap[U"MINUSMINUS"] = 90;
-        tokenIdMap[U"MULASSIGN"] = 110;
-        tokenIdMap[U"MUTABLE"] = 21;
-        tokenIdMap[U"NAMESPACE"] = 37;
-        tokenIdMap[U"NEQ"] = 79;
-        tokenIdMap[U"NEW"] = 47;
-        tokenIdMap[U"NOTHROW"] = 5;
-        tokenIdMap[U"NULLPTR"] = 51;
-        tokenIdMap[U"OPERATOR"] = 40;
-        tokenIdMap[U"ORASSIGN"] = 119;
+        tokenIdMap[U"MINUS"] = 87;
+        tokenIdMap[U"MINUSASSIGN"] = 116;
+        tokenIdMap[U"MINUSMINUS"] = 92;
+        tokenIdMap[U"MULASSIGN"] = 112;
+        tokenIdMap[U"MUTABLE"] = 23;
+        tokenIdMap[U"NAMESPACE"] = 39;
+        tokenIdMap[U"NEQ"] = 81;
+        tokenIdMap[U"NEW"] = 49;
+        tokenIdMap[U"NOTHROW"] = 6;
+        tokenIdMap[U"NULLPTR"] = 53;
+        tokenIdMap[U"OPERATOR"] = 42;
+        tokenIdMap[U"ORASSIGN"] = 121;
         tokenIdMap[U"PARSER"] = 1;
-        tokenIdMap[U"PLUS"] = 84;
-        tokenIdMap[U"PLUSASSIGN"] = 113;
-        tokenIdMap[U"PLUSPLUS"] = 89;
-        tokenIdMap[U"PRODUCES"] = 15;
-        tokenIdMap[U"QUEST"] = 94;
-        tokenIdMap[U"RANGLE"] = 102;
-        tokenIdMap[U"RBRACE"] = 98;
-        tokenIdMap[U"RBRACKET"] = 100;
-        tokenIdMap[U"REGISTER"] = 18;
-        tokenIdMap[U"REINTERPRETCAST"] = 43;
-        tokenIdMap[U"REM"] = 88;
-        tokenIdMap[U"REMASSIGN"] = 112;
-        tokenIdMap[U"RETURN"] = 62;
-        tokenIdMap[U"RPAREN"] = 96;
-        tokenIdMap[U"RULEINFO"] = 8;
-        tokenIdMap[U"SEMICOLON"] = 106;
-        tokenIdMap[U"SHIFTLEFT"] = 82;
-        tokenIdMap[U"SHIFTLEFTASSIGN"] = 115;
-        tokenIdMap[U"SHIFTRIGHT"] = 83;
-        tokenIdMap[U"SHIFTRIGHTASSIGN"] = 116;
-        tokenIdMap[U"SHORT"] = 25;
-        tokenIdMap[U"SIGNED"] = 28;
-        tokenIdMap[U"SIZEOF"] = 39;
-        tokenIdMap[U"STAR"] = 86;
-        tokenIdMap[U"STATE"] = 6;
-        tokenIdMap[U"STATIC"] = 19;
-        tokenIdMap[U"STATICCAST"] = 42;
-        tokenIdMap[U"STRINGLIT"] = 70;
-        tokenIdMap[U"SWITCH"] = 56;
-        tokenIdMap[U"THIS"] = 46;
-        tokenIdMap[U"THROW"] = 38;
-        tokenIdMap[U"TRUE"] = 49;
-        tokenIdMap[U"TRY"] = 64;
-        tokenIdMap[U"TYPEDEF"] = 33;
-        tokenIdMap[U"TYPEID"] = 45;
-        tokenIdMap[U"UNSIGNED"] = 29;
-        tokenIdMap[U"USELEXER"] = 7;
-        tokenIdMap[U"USING"] = 36;
-        tokenIdMap[U"VAR"] = 11;
-        tokenIdMap[U"VOID"] = 32;
-        tokenIdMap[U"VOLATILE"] = 35;
-        tokenIdMap[U"WCHART"] = 23;
-        tokenIdMap[U"WHILE"] = 57;
-        tokenIdMap[U"XORASSIGN"] = 118;
+        tokenIdMap[U"PLUS"] = 86;
+        tokenIdMap[U"PLUSASSIGN"] = 115;
+        tokenIdMap[U"PLUSPLUS"] = 91;
+        tokenIdMap[U"PRODUCES"] = 17;
+        tokenIdMap[U"QUEST"] = 96;
+        tokenIdMap[U"RANGLE"] = 104;
+        tokenIdMap[U"RBRACE"] = 100;
+        tokenIdMap[U"RBRACKET"] = 102;
+        tokenIdMap[U"REGISTER"] = 20;
+        tokenIdMap[U"REINTERPRETCAST"] = 45;
+        tokenIdMap[U"REM"] = 90;
+        tokenIdMap[U"REMASSIGN"] = 114;
+        tokenIdMap[U"RETURN"] = 64;
+        tokenIdMap[U"RPAREN"] = 98;
+        tokenIdMap[U"RULEINFO"] = 10;
+        tokenIdMap[U"SEMICOLON"] = 108;
+        tokenIdMap[U"SHIFTLEFT"] = 84;
+        tokenIdMap[U"SHIFTLEFTASSIGN"] = 117;
+        tokenIdMap[U"SHIFTRIGHT"] = 85;
+        tokenIdMap[U"SHIFTRIGHTASSIGN"] = 118;
+        tokenIdMap[U"SHORT"] = 27;
+        tokenIdMap[U"SIGNED"] = 30;
+        tokenIdMap[U"SIZEOF"] = 41;
+        tokenIdMap[U"STAR"] = 88;
+        tokenIdMap[U"START"] = 5;
+        tokenIdMap[U"STATE"] = 7;
+        tokenIdMap[U"STATIC"] = 21;
+        tokenIdMap[U"STATICCAST"] = 44;
+        tokenIdMap[U"STRINGLIT"] = 72;
+        tokenIdMap[U"SWITCH"] = 58;
+        tokenIdMap[U"THIS"] = 48;
+        tokenIdMap[U"THROW"] = 40;
+        tokenIdMap[U"TRUE"] = 51;
+        tokenIdMap[U"TRY"] = 66;
+        tokenIdMap[U"TYPEDEF"] = 35;
+        tokenIdMap[U"TYPEID"] = 47;
+        tokenIdMap[U"UNSIGNED"] = 31;
+        tokenIdMap[U"USELEXER"] = 9;
+        tokenIdMap[U"USING"] = 38;
+        tokenIdMap[U"VAR"] = 13;
+        tokenIdMap[U"VOID"] = 34;
+        tokenIdMap[U"VOLATILE"] = 37;
+        tokenIdMap[U"WCHART"] = 25;
+        tokenIdMap[U"WHILE"] = 59;
+        tokenIdMap[U"XORASSIGN"] = 120;
     }
 
     int GetTokenId(const std::u32string& tokenName)
@@ -151,8 +153,10 @@ namespace ParserFileTokens
         "API",
         "INCLUDE",
         "MAIN",
+        "START",
         "NOTHROW",
         "STATE",
+        "FARTHEST_ERROR",
         "USELEXER",
         "RULEINFO",
         "EMPTY",
@@ -280,8 +284,10 @@ namespace ParserFileTokens
         "'api'",
         "'include'",
         "'main'",
+        "'start'",
         "'nothrow'",
         "'state'",
+        "'farthest_error'",
         "'uselexer'",
         "'ruleinfo'",
         "'empty'",

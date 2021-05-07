@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Expression.hpp>
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
@@ -19,7 +19,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -27,6 +26,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) ExpressionParser
 {
     uselexer CppLexer;
+    state;
     main;
 
     using AttributeParser.AttributeSpecifierSeq;
@@ -48,7 +48,7 @@ parser api(PARSER_API) ExpressionParser
     using LambdaParser.LambdaExpression;
     using ConceptParser.RequiresExpression;
 
-    Expression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos commaPos) : sngcpp::ast::Node*
+    Expression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos commaPos) : sngcpp::ast::Node*
         ::= 
         (
             AssignmentExpression(ctx):left{ node.reset(left); s = sourcePos; } 
@@ -64,11 +64,11 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    ConstantExpression(sngcpp::par::Context* ctx) : Node*
+    ConstantExpression(sngcpp::symbols::Context* ctx) : Node*
         ::= ConditionalExpression(ctx):conditionalExpr{ return conditionalExpr; }
         ;
 
-    AssignmentExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+    AssignmentExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (   YieldExpression(ctx):yieldExpr{ node.reset(yieldExpr); }
         |   ThrowExpression(ctx):throwExpr{ node.reset(throwExpr); }
@@ -97,7 +97,7 @@ parser api(PARSER_API) ExpressionParser
         |   ORASSIGN{ return new OrAssignNode(sourcePos); }
         ;
 
-    ConditionalExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+    ConditionalExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (   LogicalOrExpression(ctx):cond{ s = sourcePos; node.reset(cond); } 
             (
@@ -120,14 +120,14 @@ parser api(PARSER_API) ExpressionParser
         ::= COLON{ return new ColonNode(sourcePos); }
         ;
 
-    YieldExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    YieldExpression(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= CO_YIELD{ s = sourcePos; }
         (   AssignmentExpression(ctx):assignmentExpr{ return new YieldExprNode(s, assignmentExpr); }
         |   BracedInitList(ctx):bracedInitList{ return new YieldExprNode(s, bracedInitList); }
         )
         ;
 
-    ThrowExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ThrowExpression(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             THROW{ s = sourcePos; } AssignmentExpression(ctx):exception?
@@ -137,7 +137,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    LogicalOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
+    LogicalOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
             LogicalAndExpression(ctx):left{ node.reset(left); s = sourcePos; } 
@@ -150,7 +150,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    LogicalAndExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    LogicalAndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
         ::= 
         (
             InclusiveOrExpression(ctx):left{ node.reset(left); } 
@@ -163,7 +163,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    InclusiveOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    InclusiveOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
         ::= 
         (
             ExclusiveOrExpression(ctx):left{ node.reset(left); } 
@@ -176,7 +176,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    ExclusiveOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    ExclusiveOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
         ::= 
         (
             AndExpression(ctx):left{ node.reset(left); } 
@@ -189,7 +189,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    AndExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    AndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
         ::= 
         (
             EqualityExpression(ctx):left{ node.reset(left); } 
@@ -202,7 +202,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    EqualityExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    EqualityExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             RelationalExpression(ctx):left{ node.reset(left); }
@@ -220,7 +220,7 @@ parser api(PARSER_API) ExpressionParser
         |   NEQ{ return new NotEqualNode(sourcePos); }
         ;
 
-    RelationalExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    RelationalExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             CompareExpression(ctx):left{ node.reset(left); }
@@ -240,7 +240,7 @@ parser api(PARSER_API) ExpressionParser
         |   GEQ{ return new GreaterOrEqualNode(sourcePos); }
         ;
 
-    CompareExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    CompareExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
         ::=
         (
             ShiftExpression(ctx):left{ node.reset(left); }
@@ -253,7 +253,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    ShiftExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    ShiftExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             AdditiveExpression(ctx):left{ node.reset(left); }
@@ -271,7 +271,7 @@ parser api(PARSER_API) ExpressionParser
         |   SHIFTRIGHT{ return new ShiftRightNode(sourcePos); }
         ;
 
-    AdditiveExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    AdditiveExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             MultiplicativeExpression(ctx):left{ node.reset(left); }
@@ -289,7 +289,7 @@ parser api(PARSER_API) ExpressionParser
         |   MINUS{ return new MinusNode(sourcePos); }
         ;
 
-    MultiplicativeExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    MultiplicativeExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             PmExpression(ctx):left{ node.reset(left); }
@@ -308,7 +308,7 @@ parser api(PARSER_API) ExpressionParser
         |   MOD{ return new ModNode(sourcePos); }
         ;
 
-    PmExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    PmExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             CastExpression(ctx):left{ node.reset(left); }
@@ -326,7 +326,7 @@ parser api(PARSER_API) ExpressionParser
         |   ARROWSTAR{ return new ArrowStarNode(sourcePos); }
         ;
 
-    CastExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    CastExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::=  
         (
             (   
@@ -342,7 +342,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    UnaryExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    UnaryExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   UnaryOp:op CastExpression(ctx):child{ node.reset(new UnaryExprNode(sourcePos, op, child)); }
         |   AwaitExpression(ctx):awaitExpr{ node.reset(awaitExpr); }
@@ -369,11 +369,11 @@ parser api(PARSER_API) ExpressionParser
         |   MINUSMINUS{ return new PrefixDecNode(sourcePos); }
         ;
 
-    AwaitExpression(sngcpp::par::Context* ctx) : Node*
+    AwaitExpression(sngcpp::symbols::Context* ctx) : Node*
         ::= CO_AWAIT CastExpression(ctx):child{ return new AwaitExprNode(sourcePos, child); }
         ;
 
-    SizeOfExpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos ellipsesPos, var std::unique_ptr<Node> childNode) : Node*
+    SizeOfExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos ellipsesPos, var std::unique_ptr<Node> childNode) : Node*
         ::= SIZEOF{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN
             { 
                 rpPos = sourcePos; 
@@ -387,7 +387,7 @@ parser api(PARSER_API) ExpressionParser
         |   SIZEOF{ s = sourcePos; } UnaryExpression(ctx):child{ return new SizeOfUnaryExprNode(s, child); }
         ;
 
-    AlignOfExpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    AlignOfExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             ALIGNOF{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }
@@ -397,7 +397,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NoexceptEpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    NoexceptEpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             NOEXCEPT{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
@@ -407,7 +407,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NewExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos newPos) : Node*
+    NewExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos newPos) : Node*
         ::= 
         (
             (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } NEW{ newPos = sourcePos; }
@@ -420,7 +420,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NewPlacement(sngcpp::par::Context* ctx, var std::unique_ptr<NewPlacementNode> node) : Node*
+    NewPlacement(sngcpp::symbols::Context* ctx, var std::unique_ptr<NewPlacementNode> node) : Node*
         ::= 
         (
             LPAREN{ node.reset(new NewPlacementNode(sourcePos)); node->SetLParenPos(sourcePos); } ExpressionList(ctx, node.get()):el RPAREN{ node->SetRParenPos(sourcePos); }
@@ -430,7 +430,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NewTypeId(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    NewTypeId(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
             (LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }){ return new ParenNewTypeIdNode(sourcePos, typeId, lpPos, rpPos); }
         |   TypeSpecifierSeq(ctx):typeSpecifierSeq 
@@ -439,7 +439,7 @@ parser api(PARSER_API) ExpressionParser
                 )
         ;
 
-    DeleteExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos deletePos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    DeleteExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> colonColonNode, var SourcePos deletePos, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (   COLONCOLON{ s = sourcePos; colonColonNode.reset(new ColonColonNode(sourcePos)); } DELETE{ deletePos = sourcePos; }
         |   DELETE{ s = sourcePos; deletePos = sourcePos; }
@@ -449,7 +449,7 @@ parser api(PARSER_API) ExpressionParser
         )
         ;
 
-    PostfixExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode,
+    PostfixExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<InvokeExprNode> invokeNode,
         var SourcePos lbPos, var SourcePos rbPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
@@ -492,7 +492,7 @@ parser api(PARSER_API) ExpressionParser
         |   ARROW{ return new ArrowNode(sourcePos); }
         ;
 
-    TypeIdExpression(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var std::unique_ptr<Node> child) : Node*
+    TypeIdExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var std::unique_ptr<Node> child) : Node*
         ::= 
         (
             TYPEID{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } (TypeId(ctx):typeId{ child.reset(typeId); } | Expression(ctx):expr{ child.reset(expr); }) RPAREN{ rpPos = sourcePos; }
@@ -502,7 +502,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    CppCastExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> op, var SourcePos laPos, var SourcePos raPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    CppCastExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> op, var SourcePos laPos, var SourcePos raPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   DYNAMIC_CAST{ op.reset(new DynamicCastNode(sourcePos)); }
@@ -522,7 +522,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    PrimaryExpression(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node) : Node*
+    PrimaryExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node) : Node*
         ::= Literal(ctx):literal{ return literal; }
         |   THIS{ return new ThisNode(sourcePos); }
         |   FoldExpression(ctx):foldExpr{ return foldExpr; }
@@ -532,7 +532,7 @@ parser api(PARSER_API) ExpressionParser
         |   RequiresExpression(ctx):requiresExpr{ return requiresExpr; }
         ;
 
-    ParenthesizedExpression(sngcpp::par::Context* ctx, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    ParenthesizedExpression(sngcpp::symbols::Context* ctx, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
@@ -542,12 +542,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    IdExpression(sngcpp::par::Context* ctx) : Node*
+    IdExpression(sngcpp::symbols::Context* ctx) : Node*
         ::= QualifiedId(ctx):qualifiedId{ return qualifiedId; }
         |   UnqualifiedId(ctx):unqualifiedId{ return unqualifiedId; }
         ;
 
-    FoldExpression(sngcpp::par::Context* ctx, var std::unique_ptr<FoldExprNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    FoldExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<FoldExprNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (   LPAREN{ lpPos = sourcePos; node.reset(new FoldExprNode(sourcePos)); }
             (   
@@ -624,7 +624,7 @@ parser api(PARSER_API) ExpressionParser
         |   ARROWSTAR{ return new ArrowStarNode(sourcePos); }
         ;
 
-    NewDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    NewDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             PtrOperator(ctx):first{ node.reset(new NewDeclaratorNode(sourcePos)); node->AddNode(first); } 
@@ -640,7 +640,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NoPtrNewDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    NoPtrNewDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             (
@@ -660,7 +660,7 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NewInitializer(sngcpp::par::Context* ctx, var std::unique_ptr<NewInitializerNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    NewInitializer(sngcpp::symbols::Context* ctx, var std::unique_ptr<NewInitializerNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (
@@ -675,7 +675,7 @@ parser api(PARSER_API) ExpressionParser
         )
         ;
 
-    ExpressionList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    ExpressionList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= InitializerList(ctx, container):il
         ;
 }

@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
 [hpp]#include <sngcpp20/ast/Statement.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
@@ -18,7 +18,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -26,6 +25,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) StatementParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using DeclarationParser.AbstractDeclarator;
@@ -44,18 +44,18 @@ parser api(PARSER_API) StatementParser
     using InitializationParser.BraceOrEqualInitializer;
     using TypeParser.TypeSpecifierSeq;
 
-    Statement(sngcpp::par::Context* ctx) : Node*
+    Statement(sngcpp::symbols::Context* ctx) : Node*
         ::= LabeledStatement(ctx):labeledStatement{ return labeledStatement; }
         |   CompoundStatement(ctx):compoundStatement{ return compoundStatement; }
         |   SelectionStatement(ctx):selectionStatement{ return selectionStatement; }
         |   IterationStatement(ctx):iterationStatement{ return iterationStatement; }
         |   JumpStatement(ctx):jumpStatement{ return jumpStatement; }
         |   TryStatement(ctx):tryStatement{ return tryStatement; }
-        |   ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
         |   DeclarationStatement(ctx):declarationStatement{ return declarationStatement; }
+        |   ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
         ;
 
-    LabeledStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos labelPos, var int64_t labelP, var SourcePos colonPos, var SourcePos casePos, var SourcePos defaultPos) : Node*
+    LabeledStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos labelPos, var int64_t labelP, var SourcePos colonPos, var SourcePos casePos, var SourcePos defaultPos) : Node*
         ::= 
         (
             (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } ID{ labelPos = sourcePos; labelP = pos; } | ID{ s = sourcePos; labelPos = sourcePos; labelP = pos; }) 
@@ -79,7 +79,7 @@ parser api(PARSER_API) StatementParser
         )
         ;
 
-    CompoundStatementUnguarded(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<CompoundStatementNode> compoundStatementNode, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    CompoundStatementUnguarded(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<CompoundStatementNode> compoundStatementNode, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } LBRACE{ lbPos = sourcePos; compoundStatementNode.reset(new CompoundStatementNode(s)); compoundStatementNode->SetAttributes(attributes); }
@@ -95,7 +95,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    CompoundStatementGuarded(sngcpp::par::Context* ctx, var std::unique_ptr<CompoundStatementNode> compoundStatementNode) : Node*
+    CompoundStatementGuarded(sngcpp::symbols::Context* ctx, var std::unique_ptr<CompoundStatementNode> compoundStatementNode) : Node*
         ::= 
         (   AttributeSpecifierSeq(ctx):attributes
             { 
@@ -131,8 +131,8 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    CompoundStatementSaved(sngcpp::par::Context* ctx, var sngcpp::ast::CompoundStatementNode* compoundStatementNode) : Node*
-        ::= empty{ compoundStatementNode = GetSavedCompoundStatementNode(ctx); if (!compoundStatementNode) pass = false; lexer.BeginRecordedParse(compoundStatementNode->GetTokenPosPair()); }
+    CompoundStatementSaved(sngcpp::symbols::Context* ctx, var sngcpp::ast::CompoundStatementNode* compoundStatementNode) : Node*
+        ::= empty{ compoundStatementNode = sngcpp::par::GetSavedCompoundStatementNode(ctx); if (!compoundStatementNode) pass = false; lexer.BeginRecordedParse(compoundStatementNode->GetTokenPosPair()); }
         (
             LBRACE{ compoundStatementNode->SetLBracePos(sourcePos); }
             (Statement(ctx):stmt{ compoundStatementNode->AddNode(stmt); })* 
@@ -145,22 +145,22 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    CompoundStatement(sngcpp::par::Context* ctx) : Node*
+    CompoundStatement(sngcpp::symbols::Context* ctx) : Node*
         ::= 
         (   MemberFunctionGuard(ctx):memberFunctionGuard
             CompoundStatementGuarded(ctx):guardedCompoundStatement{ return guardedCompoundStatement; }
         |   SavedMemberFunctionBodyGuard(ctx):savedMemberFunctionBodyGuard
             CompoundStatementSaved(ctx):savedCompoundStatement{ return savedCompoundStatement; }
-        |   CompoundStatementUnguarded(ctx):unguardedCompoundStatement{ unguardedCompoundStatement; }
+        |   CompoundStatementUnguarded(ctx):unguardedCompoundStatement{ return unguardedCompoundStatement; }
         )
         ;
 
-    SelectionStatement(sngcpp::par::Context* ctx) : Node*
+    SelectionStatement(sngcpp::symbols::Context* ctx) : Node*
         ::= IfStatement(ctx):ifStmt{ return ifStmt; }
         |   SwitchStatement(ctx):switchStmt{ return switchStmt; }
         ;
 
-    IfStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos ifPos, var SourcePos constExprPos, var SourcePos elsePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    IfStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos ifPos, var SourcePos constExprPos, var SourcePos elsePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } IF{ ifPos = sourcePos; }
@@ -181,7 +181,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    SwitchStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos switchPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    SwitchStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos switchPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } SWITCH{ switchPos = sourcePos; }
@@ -194,14 +194,14 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    IterationStatement(sngcpp::par::Context* ctx) : Node*
+    IterationStatement(sngcpp::symbols::Context* ctx) : Node*
         ::= WhileStatement(ctx):whileStmt{ return whileStmt; }
         |   DoStatement(ctx):doStmt{ return doStmt; }
         |   RangeForStatement(ctx):rangeForStmt{ return rangeForStmt; }
         |   ForStatement(ctx):forStmt{ return forStmt; }
         ;
 
-    WhileStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos whilePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    WhileStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos whilePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } WHILE{ whilePos = sourcePos; }
@@ -214,7 +214,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    DoStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos doPos, var SourcePos whilePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    DoStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos doPos, var SourcePos whilePos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::=
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DO{ doPos = sourcePos; }
@@ -227,7 +227,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    RangeForStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos, var SourcePos colonPos) : Node*
+    RangeForStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos, var SourcePos colonPos) : Node*
         ::=
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } FOR{ forPos = sourcePos; }
@@ -241,7 +241,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    ForRangeDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<Node> declSpecifierSeq, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    ForRangeDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> node, var std::unique_ptr<Node> declSpecifierSeq, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DeclSpecifierSeq(ctx):declSpecifierSeq1{ declSpecifierSeq.reset(declSpecifierSeq1); }
@@ -261,11 +261,11 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    ForRangeInitializer(sngcpp::par::Context* ctx) : Node*
+    ForRangeInitializer(sngcpp::symbols::Context* ctx) : Node*
         ::= ExprOrBracedInitList(ctx):initializer{ return initializer; }
         ;
 
-    ForStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    ForStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } FOR{ forPos = sourcePos; }
@@ -278,7 +278,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    JumpStatement(sngcpp::par::Context* ctx) : Node*
+    JumpStatement(sngcpp::symbols::Context* ctx) : Node*
         ::= BreakStatement(ctx):breakStatement{ return breakStatement; }
         |   ContinueStatement(ctx):continueStatement{ return continueStatement; }
         |   ReturnStatement(ctx):returnStatement{ return returnStatement; }
@@ -286,7 +286,7 @@ parser api(PARSER_API) StatementParser
         |   GotoStatement(ctx):gotoStatement{ return gotoStatement; }
         ;
 
-    BreakStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos breakPos) : Node*
+    BreakStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos breakPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } BREAK{ breakPos = sourcePos; }
@@ -299,7 +299,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    ContinueStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos continuePos) : Node*
+    ContinueStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos continuePos) : Node*
         ::=
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } CONTINUE{ continuePos = sourcePos; }
@@ -312,7 +312,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    ReturnStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos returnPos) : Node*
+    ReturnStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos returnPos) : Node*
         ::=
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } RETURN{ returnPos = sourcePos; }
@@ -326,7 +326,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    CoroutineReturnStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos coReturnPos) : Node*
+    CoroutineReturnStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos coReturnPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } CO_RETURN{ coReturnPos = sourcePos; }
@@ -340,7 +340,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    GotoStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos gotoPos) : Node*
+    GotoStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos gotoPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } GOTO{ gotoPos = sourcePos; }
@@ -354,7 +354,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    TryStatement(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos tryPos) : Node*
+    TryStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos tryPos) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } TRY{ tryPos = sourcePos; }
@@ -367,7 +367,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    HandlerSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> handlerSequenceNode) : Node*
+    HandlerSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> handlerSequenceNode) : Node*
         ::= 
         (
             Handler(ctx):first{ handlerSequenceNode.reset(new HandlerSequenceNode(sourcePos)); handlerSequenceNode->AddNode(first); }
@@ -378,7 +378,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    Handler(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    Handler(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             CATCH{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } ExceptionDeclaration(ctx):exception RPAREN{ rpPos = sourcePos; } CompoundStatement(ctx):catchBlock
@@ -388,7 +388,7 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    ExceptionDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> typeSpecifiers, var std::unique_ptr<Node> declarator) : Node*
+    ExceptionDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> typeSpecifiers, var std::unique_ptr<Node> declarator) : Node*
         ::= 
         (
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } TypeSpecifierSeq(ctx):typeSpecifiers1{ typeSpecifiers.reset(typeSpecifiers1); }
@@ -404,7 +404,17 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    ExpressionStatement(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> expr) : Node*
+    DeclarationStatement(sngcpp::symbols::Context* ctx) : Node*
+        ::=
+        (
+            BlockDeclaration(ctx):declaration
+        )
+        {
+            return new DeclarationStatementNode(sourcePos, declaration);
+        }
+        ;
+
+    ExpressionStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> expr) : Node*
         ::= 
         (   
             (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } (Expression(ctx):expr1{ expr.reset(expr1); })?
@@ -418,22 +428,12 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    DeclarationStatement(sngcpp::par::Context* ctx) : Node*
-        ::=
-        (
-            BlockDeclaration(ctx):declaration
-        )
-        {
-            return new DeclarationStatementNode(sourcePos, declaration);
-        }
-        ;
-
-    InitStatement(sngcpp::par::Context* ctx) : Node*
+    InitStatement(sngcpp::symbols::Context* ctx) : Node*
         ::= SimpleDeclaration(ctx):simpleDeclaration{ return simpleDeclaration; }
         |   ExpressionStatement(ctx):expressionStatement{ return expressionStatement; }
         ;
 
-    Condition(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> declSpecifiers) : Node*
+    Condition(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> declSpecifiers) : Node*
         ::= 
         (   (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } DeclSpecifierSeq(ctx):declSpecifiers1{ declSpecifiers.reset(declSpecifiers1); }
             |   DeclSpecifierSeq(ctx):declSpecifiers2{ s = sourcePos; declSpecifiers.reset(declSpecifiers2); }

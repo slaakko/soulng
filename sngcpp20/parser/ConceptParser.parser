@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Concept.hpp>
 [hpp]#include <sngcpp20/ast/Function.hpp>
 [hpp]#include <sngcpp20/ast/Statement.hpp>
@@ -17,7 +17,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -25,6 +24,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) ConceptParser
 {
     uselexer CppLexer;
+    state;
 
     using ExpressionParser.Expression;
     using ExpressionParser.LogicalOrExpression;
@@ -38,7 +38,7 @@ parser api(PARSER_API) ConceptParser
     using TemplateParser.TemplateArgumentList;
     using TypeParser.TypeName;
 
-    ConceptDefinition(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ConceptDefinition(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             CONCEPT{ s = sourcePos; } ConceptName(ctx):conceptName Assign:assign ConstraintExpression(ctx):constraintExpr
@@ -48,11 +48,11 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    ConceptName(sngcpp::par::Context* ctx) : Node*
+    ConceptName(sngcpp::symbols::Context* ctx) : Node*
         ::= Identifier(ctx):identifier{ return identifier; }
         ;
 
-    RequiresExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    RequiresExpression(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             REQUIRES{ s = sourcePos; } RequirementParameterList(ctx):params? RequirementBody(ctx):body
@@ -62,7 +62,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    RequirementParameterList(sngcpp::par::Context* ctx, var std::unique_ptr<ParameterListNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    RequirementParameterList(sngcpp::symbols::Context* ctx, var std::unique_ptr<ParameterListNode> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             LPAREN{ lpPos = sourcePos; node.reset(new ParameterListNode(sourcePos)); } ParameterDeclarationClause(ctx, node.get()):paramDeclClause RPAREN{ rpPos = sourcePos; }
@@ -74,7 +74,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    RequirementBody(sngcpp::par::Context* ctx, var std::unique_ptr<RequirementBodyNode> node, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    RequirementBody(sngcpp::symbols::Context* ctx, var std::unique_ptr<RequirementBodyNode> node, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             LBRACE{ lbPos = sourcePos; node.reset(new RequirementBodyNode(sourcePos)); }
@@ -88,26 +88,26 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    RequirementSeq(sngcpp::par::Context* ctx, sngcpp::ast::Node* requirementBody) 
+    RequirementSeq(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* requirementBody) 
         ::= (Requirement(ctx):requirement{ requirementBody->AddNode(requirement); })+
         ;
 
-    Requirement(sngcpp::par::Context* ctx) : Node*
+    Requirement(sngcpp::symbols::Context* ctx) : Node*
         ::= SimpleRequirement(ctx):simpleRequirement{ return simpleRequirement; }
         |   TypeRequirement(ctx):typeRequirement{ return typeRequirement; }
         |   CompoundRequirement(ctx):compoundRequirement{ return compoundRequirement; }
         |   NestedRequirement(ctx):nestedRequirement{ return nestedRequirement; }
         ;
 
-    SimpleRequirement(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    SimpleRequirement(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= Expression(ctx):expr{ s = sourcePos; } Semicolon:semicolon{ return new SimpleRequirementNode(s, expr, semicolon); }
         ;
 
-    TypeRequirement(sngcpp::par::Context* ctx, var SourcePos s): Node*
+    TypeRequirement(sngcpp::symbols::Context* ctx, var SourcePos s): Node*
         ::= TYPENAME{ s = sourcePos; } NestedNameSpecifier(ctx):nns? TypeName(ctx):typeName Semicolon:semicolon{ return new TypeRequirementNode(s, nns, typeName, semicolon); }
         ;
 
-    CompoundRequirement(sngcpp::par::Context* ctx, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    CompoundRequirement(sngcpp::symbols::Context* ctx, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             LBRACE{ lbPos = sourcePos; }
@@ -121,7 +121,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    ReturnTypeRequirement(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ReturnTypeRequirement(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             ARROW{ s = sourcePos; } TypeConstraint(ctx):typeConstraint
@@ -131,7 +131,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    NestedRequirement(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    NestedRequirement(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             REQUIRES{ s = sourcePos; } ConstraintExpression(ctx):constraintExpr Semicolon:semicolon
@@ -141,7 +141,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    TypeConstraint(sngcpp::par::Context* ctx, var std::unique_ptr<TypeConstraintNode> node, var std::unique_ptr<Node> conceptName, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+    TypeConstraint(sngcpp::symbols::Context* ctx, var std::unique_ptr<TypeConstraintNode> node, var std::unique_ptr<Node> conceptName, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
             (
@@ -153,7 +153,7 @@ parser api(PARSER_API) ConceptParser
                 }
             )
             (
-                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(ContextFlags::parsingTemplateId); node->SetHasTemplateArgumentList(); }
+                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); node->SetHasTemplateArgumentList(); }
                 TemplateArgumentList(ctx, node.get()):templateArgs?
                 RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
             )?
@@ -165,11 +165,11 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    ConstraintExpression(sngcpp::par::Context* ctx) : Node*
+    ConstraintExpression(sngcpp::symbols::Context* ctx) : Node*
         ::= LogicalOrExpression(ctx):logicalOrExpr{ return logicalOrExpr; }
         ;
 
-    RequiresClause(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    RequiresClause(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             REQUIRES{ s = sourcePos; } ConstraintLogicalOrExpression(ctx):orExpr
@@ -179,7 +179,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    ConstraintLogicalOrExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
+    ConstraintLogicalOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
             ConstraintLogicalAndExpression(ctx):left{ node.reset(left); s = sourcePos; } 
@@ -192,7 +192,7 @@ parser api(PARSER_API) ConceptParser
         }
         ;
 
-    ConstraintLogicalAndExpression(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
+    ConstraintLogicalAndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
             PrimaryExpression(ctx):left{ node.reset(left); }

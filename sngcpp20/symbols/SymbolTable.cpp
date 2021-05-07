@@ -109,4 +109,20 @@ void SymbolTable::EndClass()
     EndScope();
 }
 
+TypeSymbol* SymbolTable::GetFundamentalTypeSymbol(FundamentalTypeKind kind)
+{
+    auto it = fundamentalTypeMap.find(static_cast<int>(kind));
+    if (it != fundamentalTypeMap.cend())
+    {
+        return it->second;
+    }
+    else
+    {
+        TypeSymbol* fundamentalTypeSymbol = new FundamentalTypeSymbol(kind);
+        fundamentalTypeMap[static_cast<int>(kind)] = fundamentalTypeSymbol;
+        globalNs.AddSymbol(fundamentalTypeSymbol);
+        return fundamentalTypeSymbol;
+    }
+}
+
 } // sngcpp::symbols

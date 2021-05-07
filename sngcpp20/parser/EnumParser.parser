@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Enum.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
@@ -15,7 +15,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -23,6 +22,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) EnumParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ExpressionParser.ConstantExpression;
@@ -33,11 +33,11 @@ parser api(PARSER_API) EnumParser
     using StatementParser.Semicolon;
     using TypeParser.TypeSpecifierSeq;
 
-    EnumName(sngcpp::par::Context* ctx) : Node*
+    EnumName(sngcpp::symbols::Context* ctx) : Node*
         ::= Identifier(ctx):identifier{ return identifier; }
         ;
 
-    EnumSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<EnumSpecifierNode> enumSpecifierNode, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    EnumSpecifier(sngcpp::symbols::Context* ctx, var std::unique_ptr<EnumSpecifierNode> enumSpecifierNode, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             EnumHead(ctx):enumHead{ s = sourcePos; } 
@@ -51,7 +51,7 @@ parser api(PARSER_API) EnumParser
         }
         ;
 
-    EnumHead(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> name) : Node*
+    EnumHead(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> name) : Node*
         ::= 
         (
             EnumKey:enumKey{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes? 
@@ -69,12 +69,12 @@ parser api(PARSER_API) EnumParser
         |   ENUM{ return new EnumNode(sourcePos); }
         ;
 
-    EnumHeadName(sngcpp::par::Context* ctx) : Node* 
+    EnumHeadName(sngcpp::symbols::Context* ctx) : Node* 
         ::= NestedNameSpecifier(ctx):nns Identifier(ctx):identifier{ return new QualifiedIdNode(sourcePos, nns, identifier); }
         |   Identifier(ctx):identifier2{ return identifier2;}
         ;
 
-    EnumBase(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    EnumBase(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             COLON{ s = sourcePos; } TypeSpecifierSeq(ctx):typeSpecifiers
@@ -84,11 +84,11 @@ parser api(PARSER_API) EnumParser
         }
         ;
 
-    EnumeratorList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    EnumeratorList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= EnumeratorDefinition(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } EnumeratorDefinition(ctx):next{ container->AddNode(next); })*
         ;
 
-    EnumeratorDefinition(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos assignPos) : Node*
+    EnumeratorDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos assignPos) : Node*
         ::= 
         (
             Enumerator(ctx):enumerator{ s = sourcePos; } (ASSIGN{ assignPos = sourcePos; } ConstantExpression(ctx):value)?
@@ -98,7 +98,7 @@ parser api(PARSER_API) EnumParser
         }
         ;
 
-    Enumerator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    Enumerator(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Identifier(ctx):identifier{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes?
@@ -109,14 +109,14 @@ parser api(PARSER_API) EnumParser
         ;
 
 
-    ElaboratedEnumSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
+    ElaboratedEnumSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
         ::= ENUM{ s = sourcePos; } 
         (   NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } Identifier(ctx):identifier{ return new ElaboratedEnumSpecifierNode(s, new QualifiedIdNode(nnsPos, nns, identifier)); }
         |   Identifier(ctx):identifier2{ return new ElaboratedEnumSpecifierNode(s, identifier2); }
         )
         ;
 
-    OpaqueEnumDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    OpaqueEnumDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   
             EnumKey:enumKey{ s = sourcePos; }

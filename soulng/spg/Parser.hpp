@@ -35,6 +35,7 @@ public:
     virtual bool IsActionToken() const { return false; }
     virtual bool IsToken() const { return false; }
     virtual bool IsNothrow() const;
+    virtual bool IsState() const;
     virtual std::string Kind() const = 0;
     const std::u32string& Name() const { return name; }
     Parser* Parent() const { return parent; }
@@ -306,6 +307,8 @@ public:
     void AddParser(Parser* parser);
     std::string Kind() const override { return "rule"; }
     void Write(CodeFormatter& formatter);
+    void SetId(int id_) { id = id_; }
+    int Id() const { return id; }
 private:
     std::unique_ptr<Parser> definition;
     std::vector<std::unique_ptr<Parameter>> parameters;
@@ -315,6 +318,7 @@ private:
     std::u32string info;
     bool hasReturn;
     std::vector<Parser*> parsers;
+    int id;
 };
 
 class GrammarParser : public Parser
@@ -330,6 +334,10 @@ public:
     void SetNothrow() { nothrow = true; }
     bool Nothrow() const { return nothrow; }
     bool IsNothrow() const override { return Nothrow(); }
+    bool IsState() const { return state; }
+    void SetState() { state = true; }
+    void SetFarthestError() { farthestError = true; }
+    bool IsFarthestError() const { return farthestError; }
     void AddUsing(const std::u32string& using_);
     const std::vector<std::u32string>& Usings() const { return usings; }
     void SetLexer(const std::u32string& lexer_) { lexer = lexer_; }
@@ -347,6 +355,8 @@ private:
     bool main;
     bool start;
     bool nothrow;
+    bool farthestError;
+    bool state;
     std::vector<std::u32string> usings;
     std::u32string lexer;
     std::vector<std::unique_ptr<RuleParser>> rules;

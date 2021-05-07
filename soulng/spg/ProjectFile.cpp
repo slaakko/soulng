@@ -25,4 +25,9 @@ void ProjectFile::AddTokenFile(const std::string& tokenFile)
     tokenFiles.push_back(tokenFile);
 }
 
+void ProjectFile::AddRuleFile(const std::string& ruleFile)
+{
+    ruleFiles.push_back(ruleFile);
+}
+
 } } // namespae soulng::spg

@@ -403,7 +403,7 @@ void CodeGeneratorVisitor::Visit(AlternativeParser& parser)
             Stage prevStage = stage;
             stage = Stage::generateTokenSwitch;
             formatter->WriteLine("int64_t pos = lexer.GetPos();");
-            formatter->WriteLine("soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();");
+            formatter->WriteLine("soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);");
             formatter->WriteLine("soulng::lexer::Span span = lexer.GetSpan();");
             formatter->WriteLine("switch (*lexer)");
             formatter->WriteLine("{");
@@ -564,7 +564,7 @@ void CodeGeneratorVisitor::Visit(ActionParser& parser)
         }
         if (hasSourcePos)
         {
-            formatter->WriteLine("soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();");
+            formatter->WriteLine("soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);");
         }
         if (hasPass)
         {
@@ -701,6 +701,10 @@ void CodeGeneratorVisitor::Visit(RuleParser& parser)
             formatter->DecIndent();
             formatter->WriteLine("}");
             formatter->WriteLine("#endif // SOULNG_PARSER_DEBUG_SUPPORT");
+        }
+        if (parser.IsState() && parser.Id() != -1)
+        {
+            formatter->WriteLine("soulng::lexer::RuleGuard ruleGuard(lexer, " + std::to_string(parser.Id()) + ");");
         }
         for (const auto& variable : parser.Variables())
         {
@@ -1012,7 +1016,14 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 }
                 else
                 {
-                    formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
+                    if (parser.IsFarthestError())
+                    {
+                        formatter->WriteLine("lexer.ThrowFarthestError();");
+                    }
+                    else
+                    {
+                        formatter->WriteLine("lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));");
+                    }
                 }
                 formatter->DecIndent();
                 formatter->WriteLine("}");
@@ -1047,7 +1058,14 @@ void CodeGeneratorVisitor::Visit(GrammarParser& parser)
                 }
                 else
                 {
-                    formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
+                    if (parser.IsFarthestError())
+                    {
+                        formatter->WriteLine("lexer.ThrowFarthestError();");
+                    }
+                    else
+                    {
+                        formatter->WriteLine("lexer.ThrowExpectationFailure(span, U\"" + ToUtf8(ruleInfo) + "\");");
+                    }
                 }
                 formatter->DecIndent();
                 formatter->WriteLine("}");
@@ -1166,12 +1184,56 @@ void CodeGeneratorVisitor::Visit(ParserFile& parserFile)
     }
 }
 
+void GenerateRuleFiles(Domain& domain)
+{
+    std::ofstream ruleHeaderFile(domain.RuleHeaderFilePath());
+    CodeFormatter headerFormatter(ruleHeaderFile);
+    headerFormatter.WriteLine("#ifndef RULES_H");
+    headerFormatter.WriteLine("#define RULES_H");
+    headerFormatter.WriteLine("#include <vector>");
+    headerFormatter.WriteLine();
+    headerFormatter.WriteLine("std::vector<const char*>* GetRuleNameVecPtr();");
+    headerFormatter.WriteLine();
+    headerFormatter.WriteLine("#endif // RULES_H");
+
+    std::ofstream ruleSourceFile(domain.RuleSourceFilePath());
+    CodeFormatter sourceFormatter(ruleSourceFile);
+    sourceFormatter.WriteLine("#include \"" + Path::GetFileName(domain.RuleHeaderFilePath()) + "\"");
+    sourceFormatter.WriteLine();
+    sourceFormatter.WriteLine("std::vector<const char*> rules = {");
+    bool first = true;
+    for (RuleParser* rule : domain.Rules())
+    {
+        if (first)
+        {
+            first = false;
+        }
+        else
+        {
+            sourceFormatter.Write(", ");
+        }
+        sourceFormatter.WriteLine("\"" + ToUtf8(rule->Parent()->Name()) + "." + ToUtf8(rule->Name()) + "\"");
+    }
+    sourceFormatter.WriteLine("};");
+    sourceFormatter.WriteLine();
+    sourceFormatter.WriteLine("std::vector<const char*>* GetRuleNameVecPtr()");
+    sourceFormatter.WriteLine("{");
+    sourceFormatter.IncIndent();
+    sourceFormatter.WriteLine("return &rules;");
+    sourceFormatter.DecIndent();
+    sourceFormatter.WriteLine("}");
+}
+
 void CodeGeneratorVisitor::Visit(Domain& domain)
 {
     this->domain = &domain;
     for (const auto& parserFile : domain.ParserFiles())
     {
         parserFile->Accept(*this);
+    }
+    if (!domain.RuleHeaderFilePath().empty() && !domain.RuleSourceFilePath().empty())
+    {
+        GenerateRuleFiles(domain);
     }
 }
 

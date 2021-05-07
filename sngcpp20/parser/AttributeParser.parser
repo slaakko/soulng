@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Attribute.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
@@ -13,7 +13,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -21,6 +20,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) AttributeParser
 {
     uselexer CppLexer;
+    state;
 
     using ExpressionParser.ConstantExpression;
     using ExpressionParser.Ellipses;
@@ -29,7 +29,7 @@ parser api(PARSER_API) AttributeParser
     using FunctionParser.Comma;
     using TypeParser.TypeId;
 
-    AttributeSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<AttributeSpecifierSequenceNode> node) : Node*
+    AttributeSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<AttributeSpecifierSequenceNode> node) : Node*
         ::= 
         (
             AttributeSpecifier(ctx):first{ node.reset(new AttributeSpecifierSequenceNode(sourcePos)); node->AddNode(first); }
@@ -40,7 +40,7 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    AttributeSpecifier(sngcpp::par::Context* ctx, 
+    AttributeSpecifier(sngcpp::symbols::Context* ctx, 
         var SourcePos s, var SourcePos lbPos1, var SourcePos lbPos2, var SourcePos rbPos1, var SourcePos rbPos2, var std::unique_ptr<AttributeSpecifierNode> attributeSpecifierNode) : Node*
         ::= 
         (
@@ -54,7 +54,7 @@ parser api(PARSER_API) AttributeParser
         )
         ;
 
-    AttributeList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    AttributeList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= 
         (
             (   Attribute(ctx):firstOpt{ container->AddNode(firstOpt); }
@@ -72,7 +72,7 @@ parser api(PARSER_API) AttributeParser
         )
         ;
 
-    AttributeUsingPrefix(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos colonPos) : Node*
+    AttributeUsingPrefix(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos colonPos) : Node*
         ::= 
         (
             USING{ s = sourcePos; } AttributeNamespace(ctx):ns COLON{ colonPos = sourcePos; }
@@ -82,11 +82,11 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    AttributeNamespace(sngcpp::par::Context* ctx) : Node*
+    AttributeNamespace(sngcpp::symbols::Context* ctx) : Node*
         ::= Identifier(ctx):ns{ return ns; }
         ;
 
-    Attribute(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    Attribute(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             AttributeToken(ctx):attributeToken{ s = sourcePos; } AttributeArgumentClause(ctx):attributeArgs?
@@ -96,12 +96,12 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    AttributeToken(sngcpp::par::Context* ctx) : Node*
+    AttributeToken(sngcpp::symbols::Context* ctx) : Node*
         ::= AttributeScopedToken(ctx):scopedToken{ return scopedToken; }
         |   Identifier(ctx):identifier{ return identifier; }
         ;
 
-    AttributeScopedToken(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    AttributeScopedToken(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             AttributeNamespace(ctx):ns{ s = sourcePos; } ColonColon:colonColon Identifier(ctx):identifier
@@ -111,7 +111,7 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    AttributeArgumentClause(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    AttributeArgumentClause(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             LPAREN{ lpPos = sourcePos; } BalancedTokenSeq(ctx):balancedTokenSeq? RPAREN{ rpPos = sourcePos; } 
@@ -121,7 +121,7 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    BalancedTokenSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> sequence) : Node*
+    BalancedTokenSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> sequence) : Node*
         ::= 
         (
             BalancedToken(ctx):first{ sequence.reset(new BalancedTokenSequenceNode(sourcePos)); sequence->AddNode(first); }
@@ -132,7 +132,7 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    BalancedToken(sngcpp::par::Context* ctx, var std::unique_ptr<Node> seq) : Node*
+    BalancedToken(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> seq) : Node*
         ::= 
         (   LParen:lp{ seq.reset(new BalancedTokenSequenceNode(sourcePos)); seq->AddNode(lp); } BalancedTokenSeq(ctx):c1{ seq->AddNode(c1); } RParen:rp{ seq->AddNode(rp); }
         |   LBracket:lb{ seq.reset(new BalancedTokenSequenceNode(sourcePos)); seq->AddNode(lb); } BalancedTokenSeq(ctx):c2{ seq->AddNode(c2); } RBracket:rb{ seq->AddNode(rb); }
@@ -144,7 +144,7 @@ parser api(PARSER_API) AttributeParser
         }
         ;
 
-    AlignmentSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<Node> alignment, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    AlignmentSpecifier(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> alignment, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (   ALIGNAS{ s = sourcePos; } 
             LPAREN{ lpPos = sourcePos; }

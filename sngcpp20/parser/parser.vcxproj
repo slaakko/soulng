@@ -159,7 +159,6 @@
     <ClInclude Include="AttributeParser.hpp" />
     <ClInclude Include="ClassParser.hpp" />
     <ClInclude Include="ConceptParser.hpp" />
-    <ClInclude Include="Context.hpp" />
     <ClInclude Include="DeclarationParser.hpp" />
     <ClInclude Include="EnumParser.hpp" />
     <ClInclude Include="ExpressionParser.hpp" />
@@ -173,6 +172,7 @@
     <ClInclude Include="ModuleParser.hpp" />
     <ClInclude Include="CompoundStatementRecorder.hpp" />
     <ClInclude Include="ParserApi.hpp" />
+    <ClInclude Include="Rules.hpp" />
     <ClInclude Include="SimpleTypeParser.hpp" />
     <ClInclude Include="StatementParser.hpp" />
     <ClInclude Include="TemplateParser.hpp" />
@@ -183,7 +183,6 @@
     <ClCompile Include="AttributeParser.cpp" />
     <ClCompile Include="ClassParser.cpp" />
     <ClCompile Include="ConceptParser.cpp" />
-    <ClCompile Include="Context.cpp" />
     <ClCompile Include="DeclarationParser.cpp" />
     <ClCompile Include="EnumParser.cpp" />
     <ClCompile Include="ExpressionParser.cpp" />
@@ -196,6 +195,7 @@
     <ClCompile Include="LiteralTokenParser.cpp" />
     <ClCompile Include="ModuleParser.cpp" />
     <ClCompile Include="CompoundStatementRecorder.cpp" />
+    <ClCompile Include="Rules.cpp" />
     <ClCompile Include="SimpleTypeParser.cpp" />
     <ClCompile Include="StatementParser.cpp" />
     <ClCompile Include="TemplateParser.cpp" />

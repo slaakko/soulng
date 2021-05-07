@@ -1,7 +1,7 @@
 #ifndef ProjectFileTokens_HPP
 #define ProjectFileTokens_HPP
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <soulng/spg/TokenValueParsers.hpp>
 #include <string>
@@ -17,6 +17,7 @@ namespace ProjectFileTokens
     const int SEMICOLON = 6;
     const int RECOVERY = 7;
     const int TOKENS = 8;
+    const int RULES = 9;
 
     void InitTokenIdMap();
     int GetTokenId(const std::u32string& tokenName);

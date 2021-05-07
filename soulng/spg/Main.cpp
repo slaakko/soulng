@@ -174,6 +174,16 @@ int main(int argc, const char** argv)
         {
             throw std::runtime_error("only one token file per project allowed");
         }
+        if (projectFile->RuleFiles().size() == 1)
+        {
+            std::string ruleFilePath = GetFullPath(Path::Combine(projectFile->BasePath(), projectFile->RuleFiles()[0]));
+            domain.SetRuleHeaderFilePath(ruleFilePath + ".hpp");
+            domain.SetRuleSourceFilePath(ruleFilePath + ".cpp");
+        }
+        else if (projectFile->RuleFiles().size() > 1)
+        {
+            throw std::runtime_error("only one rule file per project allowed");
+        }
         for (const auto& parserFile : parserFiles)
         {
             domain.AddParserFile(parserFile.get());

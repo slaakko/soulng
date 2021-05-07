@@ -339,6 +339,10 @@ void LinkerVisitor::Visit(RuleParser& parser)
 {
     currentRule = &parser;
     parser.Definition()->Accept(*this);
+    if (stage == Stage::resolveRules)
+    {
+        domain->AddRule(&parser);
+    }
 }
 
 void LinkerVisitor::Visit(GrammarParser& parser)

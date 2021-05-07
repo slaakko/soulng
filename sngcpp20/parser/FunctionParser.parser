@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Function.hpp>
 [hpp]#include <sngcpp20/ast/Expression.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
@@ -18,7 +18,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -26,6 +25,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) FunctionParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ClassParser.CtorInitializer;
@@ -44,7 +44,7 @@ parser api(PARSER_API) FunctionParser
     using TypeParser.TypeName;
     using TypeParser.DeclTypeSpecifier;
 
-    FunctionDefinition(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> specifierNode) : Node*
+    FunctionDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> specifierNode) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             (DeclSpecifierSeq(ctx):declSpecifiers{ if (!s.IsValid()) s = sourcePos; })? 
             Declarator(ctx):declarator{ if (!s.IsValid()) s = sourcePos; }
@@ -58,7 +58,7 @@ parser api(PARSER_API) FunctionParser
             }
         ;
 
-    FunctionBody(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    FunctionBody(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= Assign:assign{ s = sourcePos; } 
             (   Default:def Semicolon:semicolon
                 { 
@@ -91,7 +91,7 @@ parser api(PARSER_API) FunctionParser
         ::= DELETE{ return new DeleteNode(sourcePos); }
         ;
 
-    NoDeclSpecFunctionDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    NoDeclSpecFunctionDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             Declarator(ctx):declarator{ if (!s.IsValid()) s = sourcePos; }
@@ -102,12 +102,12 @@ parser api(PARSER_API) FunctionParser
         }
         ;
 
-    ParameterDeclarationClause(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    ParameterDeclarationClause(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= ParameterDeclarationList(ctx, container):paramList2 Comma:comma{ container->AddNode(comma); } Ellipses:ellipses{ container->AddNode(ellipses); }
         |   empty{ container->Clear(); } ParameterDeclarationList(ctx, container):paramList1? (Ellipses:ellipses{ container->AddNode(ellipses); })?
         ;
 
-    ParameterDeclarationList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+    ParameterDeclarationList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= ParameterDeclaration(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } ParameterDeclaration(ctx):next{ container->AddNode(next); })*
         ;
 
@@ -115,7 +115,7 @@ parser api(PARSER_API) FunctionParser
         ::= COMMA{ return new CommaNode(sourcePos); }
         ;
 
-    ParameterDeclaration(sngcpp::par::Context* ctx, var std::unique_ptr<ParameterNode> node) : Node*
+    ParameterDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<ParameterNode> node) : Node*
         ::= empty{ node.reset(new ParameterNode(sourcePos)); } 
         (   (AttributeSpecifierSeq(ctx):attributes{ node->SetAttributes(attributes); })?
             DeclSpecifierSeq(ctx):declSpecifierSeq{ node->SetDeclSpecifiers(declSpecifierSeq); }
@@ -136,7 +136,7 @@ parser api(PARSER_API) FunctionParser
         ::= ASSIGN{ return new AssignNode(sourcePos); }
         ;
 
-    OperatorFunctionId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    OperatorFunctionId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             OperatorKw:operatorKw{ s = sourcePos; }
@@ -147,7 +147,7 @@ parser api(PARSER_API) FunctionParser
         }
         ;
 
-    ConversionFunctionId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ConversionFunctionId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             OperatorKw:operatorKw{ s = sourcePos; }
@@ -158,7 +158,7 @@ parser api(PARSER_API) FunctionParser
         }
         ;
 
-    DestructorId(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+    DestructorId(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= TILDE{ s = sourcePos; } 
         (   TypeName(ctx):typeName{ node.reset(typeName); }
         |   DeclTypeSpecifier(ctx):declTypeSpecifier{ node.reset(declTypeSpecifier); }
@@ -168,7 +168,7 @@ parser api(PARSER_API) FunctionParser
         }
         ;
 
-    ConversionTypeId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ConversionTypeId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             TypeSpecifierSeq(ctx):typeSpecifierSeq{ s = sourcePos; } ConversionDeclarator(ctx):declarator?
@@ -178,7 +178,7 @@ parser api(PARSER_API) FunctionParser
         }
         ;
 
-    ConversionDeclarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ConversionDeclarator(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             PtrOperator(ctx):op{ s = sourcePos; } ConversionDeclarator(ctx):declarator?
@@ -192,7 +192,7 @@ parser api(PARSER_API) FunctionParser
         ::= OPERATOR{ return new OperatorNode(sourcePos); }
         ;
 
-    Operator(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    Operator(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (   NEW{ s = sourcePos; } LBRACKET{ lbPos = sourcePos; } RBRACKET{ rbPos = sourcePos; return new NewArrayOpNode(s, lbPos, rbPos); }
         |   NEW{ return new NewOpNode(sourcePos); }
@@ -245,7 +245,7 @@ parser api(PARSER_API) FunctionParser
         ::= NOEXCEPT{ return new NoexceptNode(sourcePos); }
         ;
 
-    FunctionTryBlock(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    FunctionTryBlock(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             TRY{ s = sourcePos; }

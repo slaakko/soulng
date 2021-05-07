@@ -6,12 +6,11 @@
 // this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/SimpleTypeParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
 
-soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -22,9 +21,10 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer, sngcpp::par:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleType"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 247);
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
-    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

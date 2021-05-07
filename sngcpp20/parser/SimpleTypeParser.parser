@@ -4,12 +4,11 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/SimpleType.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -17,8 +16,9 @@ using namespace soulng::lexer;
 parser api(PARSER_API) SimpleTypeParser
 {
     uselexer CppLexer;
+    state;
 
-    SimpleType(sngcpp::par::Context* ctx) : Node*
+    SimpleType(sngcpp::symbols::Context* ctx) : Node*
         ::= CHAR{ return new CharNode(sourcePos); }
         |   CHAR8_T{ return new Char8Node(sourcePos); }
         |   CHAR16_T{ return new Char16Node(sourcePos); }

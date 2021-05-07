@@ -1,5 +1,5 @@
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ProjectFileLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <soulng/spg/ProjectFileLexer.hpp>
 #include <soulng/spg/ProjectFileKeywords.hpp>

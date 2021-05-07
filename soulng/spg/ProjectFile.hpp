@@ -22,12 +22,15 @@ public:
     const std::u32string& ProjectName() const { return projectName; }
     void SetRecovery() { recovery = true; }
     bool Recovery() const { return recovery; }
+    void AddRuleFile(const std::string& ruleFile);
+    const std::vector<std::string>& RuleFiles() const { return ruleFiles; }
 private:
     std::string fileName;
     std::string basePath;
     std::u32string projectName;
     std::vector<std::string> sourceFiles;
     std::vector<std::string> tokenFiles;
+    std::vector<std::string> ruleFiles;
     bool recovery;
 };
 

@@ -24,19 +24,15 @@ using namespace soulng::rex;
 using namespace soulng::util;
 using namespace soulng::unicode;
 
-Project::Project(const std::string& path_, bool verbose) : dirPath(GetFullPath(path_))
+Project::Project(const std::string& dirPath_, bool verbose) : dirPath(GetFullPath(dirPath_))
 {
     if (boost::filesystem::exists(dirPath))
     {
-        if (boost::filesystem::is_directory(dirPath))
-        {
-            filePath = Path::Combine(dirPath, "sngcpp.xml");
-        }
-        else if (boost::filesystem::is_regular_file(dirPath))
-        {
-            filePath = dirPath;
-            dirPath = Path::GetDirectoryName(filePath);
-        }
+        filePath = Path::Combine(dirPath, "sngcpp.xml");
+    }
+    else
+    {
+        throw std::runtime_error("project directory '" + dirPath + "' does not exist");
     }
     rootPath = dirPath;
     if (!boost::filesystem::exists(filePath))
@@ -88,6 +84,28 @@ Project::Project(const std::string& path_, bool verbose) : dirPath(GetFullPath(p
         throw std::runtime_error("source root path '" + rootPath + "' not found");
     }
     std::cout << ">> " << rootPath << std::endl;
+    std::unique_ptr<sngxml::xpath::XPathObject> childObject = sngxml::xpath::Evaluate(U"/sngcpp/project/child", doc.get());
+    if (childObject)
+    {
+        if (childObject->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+        {
+            sngxml::xpath::XPathNodeSet* nodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(childObject.get());
+            int n = nodeSet->Length();
+            for (int i = 0; i < n; ++i)
+            {
+                sngxml::dom::Node* node = (*nodeSet)[i];
+                sngxml::dom::Element* element = static_cast<sngxml::dom::Element*>(node);
+                std::u32string projectAttr = element->GetAttribute(U"project");
+                if (projectAttr.empty())
+                {
+                    throw std::runtime_error("'child' element has no 'project' attribute in '" + filePath + "'");
+                }
+                std::string childProjectDir = Path::Combine(rootPath, ToUtf8(projectAttr));
+                std::unique_ptr<Project> childProject(new Project(childProjectDir, verbose));
+                childProjects.push_back(std::move(childProject));
+            }
+        }
+    }
     std::unique_ptr<sngxml::xpath::XPathObject> fileObject = sngxml::xpath::Evaluate(U"/sngcpp/project/files/file", doc.get());
     if (fileObject)
     {
@@ -116,40 +134,27 @@ Project::Project(const std::string& path_, bool verbose) : dirPath(GetFullPath(p
     }
 }
 
-void MakeProjectFile(const std::string& path, const std::string& patterns, bool verbose)
+void MakeProjectFile(const std::string& sourceDirPath, const std::string& projectDirPath, const std::string& patterns, int level, bool recursive, bool verbose)
 {
-    std::string currentDir = GetFullPath(".");
-    std::string dirPath = GetFullPath(path);
-    std::string filePath;
-    if (boost::filesystem::exists(dirPath))
+    std::string projectDir = projectDirPath;
+    if (projectDir.empty())
     {
-        if (boost::filesystem::is_directory(dirPath))
-        {
-            filePath = Path::Combine(currentDir, "sngcpp.xml");
-        }
-        else if (boost::filesystem::is_regular_file(dirPath))
-        {
-            filePath = dirPath;
-            dirPath = Path::GetDirectoryName(filePath);
-        }
+        projectDir = GetFullPath(".");
     }
-    else
-    {
-        throw std::runtime_error("path '" + path + "' not found");
-    }
-    std::string projectName = Path::GetFileNameWithoutExtension(dirPath);
+    std::string filePath = Path::Combine(projectDir, "sngcpp.xml");
+    std::string projectName = Path::GetFileNameWithoutExtension(sourceDirPath);
     sngxml::dom::Document doc;
     doc.AppendChild(std::unique_ptr<sngxml::dom::Node>(new sngxml::dom::Element(U"sngcpp")));
     std::unique_ptr<sngxml::dom::Element> projectElement(new sngxml::dom::Element(U"project"));
     projectElement->SetAttribute(U"name", ToUtf32(projectName));
-    if (currentDir != dirPath)
+    if (sourceDirPath != projectDir)
     {
-        std::string relativeDirPath = MakeRelativeDirPath(dirPath, currentDir);
+        std::string relativeDirPath = MakeRelativeDirPath(sourceDirPath, projectDir);
         projectElement->SetAttribute(U"path", ToUtf32(relativeDirPath));
     }
     if (verbose)
     {
-        std::cout << "> " << dirPath << std::endl;
+        std::cout << std::string(level + 1, '>') << Path::GetFileNameWithoutExtension(sourceDirPath) << std::endl;
     }
     std::vector<std::string> patternVec = Split(patterns, ';');
     Context context;
@@ -159,30 +164,56 @@ void MakeProjectFile(const std::string& path, const std::string& patterns, bool 
         nfas.push_back(CompileFilePattern(context, ToUtf32(pattern)));
     }
     std::vector<std::string> fileNames;
-    boost::filesystem::directory_iterator it(dirPath);
+    boost::filesystem::directory_iterator it(sourceDirPath);
     while (it != boost::filesystem::directory_iterator())
     {
         boost::filesystem::directory_entry entry(*it);
-        std::string filePath = GetFullPath(entry.path().generic_string());
-        std::string fileName = Path::GetFileName(filePath);
-        for (Nfa& nfa : nfas)
+        if (entry.status().type() == boost::filesystem::directory_file)
         {
-            if (PatternMatch(ToUtf32(fileName), nfa))
+            if (recursive)
             {
-                fileNames.push_back(fileName);
+                std::string name = Path::GetFileNameWithoutExtension(GetFullPath(entry.path().generic_string()));
+                if (name != "." && name != "..")
+                {
+                    std::string subSourceDirPath = Path::Combine(sourceDirPath, name);
+                    if (subSourceDirPath != projectDirPath)
+                    {
+                        std::string subProjectDirPath = Path::Combine(projectDir, name);
+                        boost::filesystem::create_directories(subProjectDirPath);
+                        std::unique_ptr<sngxml::dom::Element> childProjectElement(new sngxml::dom::Element(U"child"));
+                        childProjectElement->SetAttribute(U"project", ToUtf32(name));
+                        projectElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(childProjectElement.release()));
+                        MakeProjectFile(subSourceDirPath, subProjectDirPath, patterns, level + 1, recursive, verbose);
+                    }
+                }
+            }
+        }
+        else
+        {
+            std::string filePath = GetFullPath(entry.path().generic_string());
+            std::string fileName = Path::GetFileName(filePath);
+            for (Nfa& nfa : nfas)
+            {
+                if (PatternMatch(ToUtf32(fileName), nfa))
+                {
+                    fileNames.push_back(fileName);
+                }
             }
         }
         ++it;
     }
-    std::sort(fileNames.begin(), fileNames.end());
-    std::unique_ptr<sngxml::dom::Element> filesElement(new sngxml::dom::Element(U"files"));
-    for (const std::string& fileName : fileNames)
+    if (!fileNames.empty())
     {
-        std::unique_ptr<sngxml::dom::Element> fileElement(new sngxml::dom::Element(U"file"));
-        fileElement->SetAttribute(U"name", ToUtf32(fileName));
-        filesElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(fileElement.release()));
+        std::sort(fileNames.begin(), fileNames.end());
+        std::unique_ptr<sngxml::dom::Element> filesElement(new sngxml::dom::Element(U"files"));
+        for (const std::string& fileName : fileNames)
+        {
+            std::unique_ptr<sngxml::dom::Element> fileElement(new sngxml::dom::Element(U"file"));
+            fileElement->SetAttribute(U"name", ToUtf32(fileName));
+            filesElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(fileElement.release()));
+        }
+        projectElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(filesElement.release()));
     }
-    projectElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(filesElement.release()));
     doc.DocumentElement()->AppendChild(std::unique_ptr<sngxml::dom::Node>(projectElement.release()));
     std::ofstream file(filePath);
     CodeFormatter formatter(file);
@@ -190,6 +221,10 @@ void MakeProjectFile(const std::string& path, const std::string& patterns, bool 
     if (verbose)
     {
         std::cout << "==> " << filePath << std::endl;
+    }
+    if (verbose)
+    {
+        std::cout << std::string(level + 1, '<') << Path::GetFileNameWithoutExtension(sourceDirPath) << std::endl;
     }
 }
 

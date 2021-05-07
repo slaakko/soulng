@@ -59,6 +59,11 @@ struct SOULNG_LEXER_API LexerState
     LexerPosPair recordedPosPair;
 };
 
+SOULNG_LEXER_API inline int GetLine(int64_t pos)
+{
+    return pos >> 32;
+}
+
 class SOULNG_LEXER_API Lexer
 {
 public:
@@ -69,7 +74,7 @@ public:
     void operator++();
     int64_t GetPos() const;
     void SetPos(int64_t pos);
-    SourcePos GetSourcePos() const;
+    SourcePos GetSourcePos(int64_t pos) const;
     int64_t FarthestPos() const { return farthestPos; }
     virtual int NextState(int state, char32_t c);
     void SetKeywordMap(KeywordMap* keywordMap_) { keywordMap = keywordMap_; }
@@ -90,6 +95,7 @@ public:
     std::u32string ErrorLines(const Span& span) const;
     void GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) const;
     void ThrowExpectationFailure(const Span& span, const std::u32string& name);
+    void ThrowFarthestError();
     void AddError(const Span& span, const std::u32string& name);
     const std::vector<std::exception>& Errors() const { return errors; }
     const char32_t* Start() const { return start; }
@@ -108,6 +114,12 @@ public:
     void PopState();
     void BeginRecordedParse(const LexerPosPair& recordedPosPair_);
     void EndRecordedParse();
+    void PushRule(int ruleId);
+    void PopRule();
+    const std::vector<int>& RuleContext() const { return ruleContext; }
+    const std::vector<int>& FarthestRuleContext() const { return farthestRuleContext; }
+    void SetRuleNameVecPtr(std::vector<const char*>* ruleNameVecPtr_) { ruleNameVecPtr = ruleNameVecPtr_;  }
+    std::string GetParserStateStr() const;
     LexerFlags Flags() const { return flags; }
     bool GetFlag(LexerFlags flag) const { return (flags & flag) != LexerFlags::none; }
     void SetFlag(LexerFlags flag) { flags = flags | flag; }
@@ -134,8 +146,24 @@ private:
     LexerPosPair recordedPosPair;
     std::stack<LexerState> stateStack;
     int64_t farthestPos;
+    std::vector<int> ruleContext;
+    std::vector<int> farthestRuleContext;
+    std::vector<const char*>* ruleNameVecPtr;
     void NextToken();
     void CalculateLineStarts();
+};
+
+struct SOULNG_LEXER_API RuleGuard
+{
+    RuleGuard(Lexer& lexer_, int ruleId_) : lexer(lexer_)
+    {
+        lexer.PushRule(ruleId_);
+    }
+    ~RuleGuard()
+    {
+        lexer.PopRule();
+    }
+    Lexer& lexer;
 };
 
 SOULNG_LEXER_API std::u32string GetErrorLines(const char32_t* start, const char32_t* end, const Span& externalSpan);

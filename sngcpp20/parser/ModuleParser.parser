@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Module.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ClassParser.hpp>
@@ -15,7 +15,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -23,6 +22,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) ModuleParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ClassParser.Private;
@@ -33,7 +33,7 @@ parser api(PARSER_API) ModuleParser
     using IdentifierParser.Dot;
     using StatementParser.Semicolon;
 
-    ModuleDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ModuleDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             (ExportKeyword(ctx):exportKw{ s = sourcePos; })? 
@@ -48,7 +48,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ExportDeclaration(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    ExportDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (   ExportKeyword(ctx):exprt{ s = sourcePos; }
             (
@@ -73,7 +73,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ExportKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ExportKeyword(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"export"; }
@@ -83,7 +83,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ImportKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ImportKeyword(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::=
         (
             Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"import"; }
@@ -93,7 +93,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ModuleKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ModuleKeyword(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"module"; }
@@ -103,7 +103,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ImportDeclaration(sngcpp::par::Context* ctx, var std::unique_ptr<Node> subject, var SourcePos s) : Node*
+    ImportDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> subject, var SourcePos s) : Node*
         ::= 
         (
             ImportKeyword(ctx):imprt{ s = sourcePos; }
@@ -119,7 +119,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ModuleName(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos dotPos) : Node*
+    ModuleName(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos dotPos) : Node*
         ::= 
         (
             Identifier(ctx):first{ node.reset(first); s = sourcePos; } (Dot:dot Identifier(ctx):next{ node.reset(new QualifiedModuleIdNode(s, node.release(), next, dotPos)); })*
@@ -129,7 +129,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    ModulePartition(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ModulePartition(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Colon:colon{ s = sourcePos; } ModuleName(ctx):moduleName
@@ -139,7 +139,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    GlobalModuleFragment(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    GlobalModuleFragment(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             ModuleKeyword(ctx):moduleKw{ s = sourcePos; } Semicolon:semicolon DeclarationSeq(ctx):declarations?
@@ -149,7 +149,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    PrivateModuleFragment(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    PrivateModuleFragment(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::=
         (
             ModuleKeyword(ctx):moduleKw{ s = sourcePos; } Colon:colon Private:privat Semicolon:semicolon DeclarationSeq(ctx):declarations?
@@ -159,7 +159,7 @@ parser api(PARSER_API) ModuleParser
         }
         ;
 
-    HeaderName(sngcpp::par::Context* ctx) : Node*
+    HeaderName(sngcpp::symbols::Context* ctx) : Node*
         ::= ANGLEHEADERNAME{ return new AngleHeaderName(sourcePos, lexer.GetMatch(pos)); }
         |   QUOTEHEADERNAME{ return new QuoteHeaderName(sourcePos, lexer.GetMatch(pos)); }
         ;

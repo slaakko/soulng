@@ -1,7 +1,7 @@
 #ifndef SIMPLETYPEPARSER_HPP
 #define SIMPLETYPEPARSER_HPP
 #include <sngcpp20/parser/ParserApi.hpp>
-#include <sngcpp20/parser/Context.hpp>
+#include <sngcpp20/symbols/Context.hpp>
 #include <sngcpp20/ast/SimpleType.hpp>
 #include <soulng/lexer/Token.hpp>
 #include <soulng/parser/Match.hpp>
@@ -13,7 +13,7 @@ class CppLexer;
 
 struct PARSER_API SimpleTypeParser
 {
-    static soulng::parser::Match SimpleType(CppLexer& lexer, sngcpp::par::Context* ctx);
+    static soulng::parser::Match SimpleType(CppLexer& lexer, sngcpp::symbols::Context* ctx);
 };
 
 #endif // SIMPLETYPEPARSER_HPP

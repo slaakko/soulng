@@ -156,8 +156,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AliasTypeSymbol.hpp" />
     <ClInclude Include="ClassTypeSymbol.hpp" />
     <ClInclude Include="ContainerSymbol.hpp" />
+    <ClInclude Include="Context.hpp" />
+    <ClInclude Include="Declaration.hpp" />
+    <ClInclude Include="DeclarationProcessor.hpp" />
+    <ClInclude Include="Exception.hpp" />
+    <ClInclude Include="FundamentalTypeSymbol.hpp" />
+    <ClInclude Include="InitDone.hpp" />
     <ClInclude Include="NamespaceSymbol.hpp" />
     <ClInclude Include="Scope.hpp" />
     <ClInclude Include="Symbol.hpp" />
@@ -167,8 +174,15 @@
     <ClInclude Include="TypeSymbol.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AliasTypeSymbol.cpp" />
     <ClCompile Include="ClassTypeSymbol.cpp" />
     <ClCompile Include="ContainerSymbol.cpp" />
+    <ClCompile Include="Context.cpp" />
+    <ClCompile Include="Declaration.cpp" />
+    <ClCompile Include="DeclarationProcessor.cpp" />
+    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="FundamentalTypeSymbol.cpp" />
+    <ClCompile Include="InitDone.cpp" />
     <ClCompile Include="NamespaceSymbol.cpp" />
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="Symbol.cpp" />

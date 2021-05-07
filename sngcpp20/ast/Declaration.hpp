@@ -305,11 +305,11 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
-class AST_API TrailingInvokeDeclaratorNode : public CompoundNode
+class AST_API TrailingFunctionDeclaratorNode : public CompoundNode
 {
 public:
-    TrailingInvokeDeclaratorNode(const SourcePos& sourcePos_);
-    TrailingInvokeDeclaratorNode(const SourcePos& sourcePos_, Node* declarator_, Node* params_, Node* trailingReturnType_);
+    TrailingFunctionDeclaratorNode(const SourcePos& sourcePos_);
+    TrailingFunctionDeclaratorNode(const SourcePos& sourcePos_, Node* declarator_, Node* params_, Node* trailingReturnType_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
@@ -478,11 +478,11 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
-class AST_API SubscriptDeclaratorNode : public UnaryNode
+class AST_API ArrayDeclaratorNode : public UnaryNode
 {
 public:
-    SubscriptDeclaratorNode(const SourcePos& sourcePos_);
-    SubscriptDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_);
+    ArrayDeclaratorNode(const SourcePos& sourcePos_);
+    ArrayDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
@@ -495,11 +495,11 @@ private:
     SourcePos rbPos;
 };
 
-class AST_API InvokeDeclaratorNode : public UnaryNode
+class AST_API FunctionDeclaratorNode : public UnaryNode
 {
 public:
-    InvokeDeclaratorNode(const SourcePos& sourcePos_);
-    InvokeDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* parameters_);
+    FunctionDeclaratorNode(const SourcePos& sourcePos_);
+    FunctionDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* parameters_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;

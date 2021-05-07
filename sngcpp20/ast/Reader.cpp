@@ -16,7 +16,7 @@ SourcePos Reader::ReadSourcePos()
     int line = binaryReader.ReadULEB128UInt();
     if (line == 0) return SourcePos();
     int col = binaryReader.ReadULEB128UInt();
-    return SourcePos(line, col);
+    return SourcePos(-1, line, col);
 }
 
 NodeKind Reader::ReadNodeKind()

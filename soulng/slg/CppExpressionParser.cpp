@@ -8,7 +8,7 @@
 #include <soulng/slg/LexerFileLexer.hpp>
 #include <soulng/slg/LexerFileTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/slg/CppExpressionParser.parser' using soulng parser generator spg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/slg/CppExpressionParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -358,6 +358,7 @@ soulng::parser::Match CppExpressionParser::AssignmentOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -1655,6 +1656,7 @@ soulng::parser::Match CppExpressionParser::EqOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -1852,6 +1854,7 @@ soulng::parser::Match CppExpressionParser::RelOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -2075,6 +2078,7 @@ soulng::parser::Match CppExpressionParser::ShiftOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -2272,6 +2276,7 @@ soulng::parser::Match CppExpressionParser::AddOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -2469,6 +2474,7 @@ soulng::parser::Match CppExpressionParser::MulOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -2679,6 +2685,7 @@ soulng::parser::Match CppExpressionParser::PmOp(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
@@ -3387,6 +3394,7 @@ soulng::parser::Match CppExpressionParser::UnaryOperator(LexerFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

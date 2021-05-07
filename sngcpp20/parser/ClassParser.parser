@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Class.hpp>
 [cpp]#include <sngcpp20/symbols/SymbolFactory.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
@@ -21,7 +21,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -29,6 +28,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) ClassParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ConceptParser.RequiresClause;
@@ -58,7 +58,7 @@ parser api(PARSER_API) ClassParser
     using TypeParser.DeclTypeSpecifier;
     using TypeParser.TypeName;
 
-    ClassSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<ClassSpecifierNode> node, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    ClassSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<ClassSpecifierNode> node, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             ClassHead(ctx):classHead{ s = sourcePos; } 
@@ -74,7 +74,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    ClassHead(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ClassHead(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             ClassKey:classKey{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes? 
@@ -90,12 +90,12 @@ parser api(PARSER_API) ClassParser
         )
         ;
 
-    ClassHeadName(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ClassHeadName(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= NestedNameSpecifier(ctx):nns{ s = sourcePos; } ClassName(ctx):className{ return new QualifiedIdNode(s, nns, className); }
         |   ClassName(ctx):className2{ return className2; }
         ;
 
-    ClassName(sngcpp::par::Context* ctx) : Node*
+    ClassName(sngcpp::symbols::Context* ctx) : Node*
         ::= SimpleTemplateId(ctx):templateId{ return templateId; }
         |   Identifier(ctx):identifier{ return identifier; }
         ;
@@ -106,14 +106,14 @@ parser api(PARSER_API) ClassParser
         |   UNION{ return new UnionNode(sourcePos); }
         ;
 
-    BaseClause(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    BaseClause(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= COLON{ s = sourcePos; } BaseSpecifierList(ctx):baseSpecifierList
         {
             return new BaseClauseNode(s, baseSpecifierList);
         }
         ;
 
-    BaseSpecifierList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    BaseSpecifierList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             BaseSpecifier(ctx):first{ node.reset(new BaseSpecifierListNode(sourcePos)); node->AddNode(first); } 
@@ -125,7 +125,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    BaseSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> accessSpecifierNode, var std::unique_ptr<Node> virtualSpecifier, var bool virtualFirst) : Node*
+    BaseSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> accessSpecifierNode, var std::unique_ptr<Node> virtualSpecifier, var bool virtualFirst) : Node*
         ::= 
         (
             (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })?
@@ -142,7 +142,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    ClassOrDeclType(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
+    ClassOrDeclType(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
         ::= NestedNameSpecifier(ctx):nns{ s = sourcePos; } Template:tmp{ tmpPos = sourcePos; } SimpleTemplateId(ctx):simpleTemplateId
             { 
                 return new QualifiedIdNode(s, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)); 
@@ -169,11 +169,11 @@ parser api(PARSER_API) ClassParser
         ::= VIRTUAL{ return new VirtualNode(sourcePos); }
         ;
 
-    ClassVirtSpecifier(sngcpp::par::Context* ctx) : Node*
+    ClassVirtSpecifier(sngcpp::symbols::Context* ctx) : Node*
         ::= FinalKeyword(ctx):finalKw{ return finalKw; }
         ;
 
-    VirtSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    VirtSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             VirtSpecifier(ctx):first{ node.reset(new VirtSpecifierSequenceNode(sourcePos)); node->AddNode(first); } (VirtSpecifier(ctx):next{ node->AddNode(next); })*
@@ -183,12 +183,12 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    VirtSpecifier(sngcpp::par::Context* ctx) : Node*
+    VirtSpecifier(sngcpp::symbols::Context* ctx) : Node*
         ::= OverrideKeyword(ctx):overrideKw{ return overrideKw; }
         |   FinalKeyword(ctx):finalKw{ return finalKw; }
         ;
 
-    OverrideKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    OverrideKeyword(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Identifier(ctx):identifier{ s = sourcePos; std::u32string id = lexer.GetMatch(pos); pass = id == U"override"; }
@@ -198,7 +198,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    FinalKeyword(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    FinalKeyword(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Identifier(ctx):identifier{ std::u32string id = lexer.GetMatch(pos); pass = id == U"final"; }
@@ -218,14 +218,14 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    MemberSpecification(sngcpp::par::Context* ctx, sngcpp::ast::Node* container, var SourcePos s, var SourcePos colonPos)
+    MemberSpecification(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container, var SourcePos s, var SourcePos colonPos)
         ::= 
         (   AccessSpecifier:accessSpecifier{ s = sourcePos; } COLON{ colonPos = sourcePos; container->AddNode(new BeginAccessGroupNode(s, accessSpecifier, colonPos)); }
         |   MemberDeclaration(ctx):memberDeclaration{ container->AddNode(memberDeclaration); }
         )+
         ;
 
-    MemberDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    MemberDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             (DeclSpecifierSeq(ctx):declSpecifiers{ if (!s.IsValid()) s = sourcePos; })? 
             (MemberDeclaratorList(ctx):declarators{ if (!s.IsValid()) s = sourcePos; })? 
@@ -245,7 +245,7 @@ parser api(PARSER_API) ClassParser
         |   EmptyDeclaration:emptyDeclaration{ return emptyDeclaration; }
         ;
 
-    MemberDeclaratorList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    MemberDeclaratorList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             MemberDeclarator(ctx):first{ node.reset(new MemberDeclaratorListNode(sourcePos)); node->AddNode(first); }
@@ -256,7 +256,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    MemberDeclarator(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode) : Node*
+    MemberDeclarator(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode) : Node*
         ::= 
         (
             Declarator(ctx):declarator{ s = sourcePos; } 
@@ -279,14 +279,14 @@ parser api(PARSER_API) ClassParser
         }
         ;    
 
-    CtorInitializer(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    CtorInitializer(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= COLON{ s = sourcePos; } MemberInitializerList(ctx):memberInitializerList
         {
             return new ConstructorInitializerNode(s, memberInitializerList);
         }
         ;
 
-    MemberInitializerList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    MemberInitializerList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   
             MemberInitializer(ctx):first{ node.reset(new MemberInitializerListNode(sourcePos)); node->AddNode(first); }
@@ -298,7 +298,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    MemberInitializer(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<ExpressionListNode> exprListNode, var std::unique_ptr<Node> node) : Node*
+    MemberInitializer(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<ExpressionListNode> exprListNode, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   MemberInitializerId(ctx):id{ s = sourcePos; }
             (
@@ -313,7 +313,7 @@ parser api(PARSER_API) ClassParser
         }
         ;
 
-    MemberInitializerId(sngcpp::par::Context* ctx) : Node*
+    MemberInitializerId(sngcpp::symbols::Context* ctx) : Node*
         ::= ClassOrDeclType(ctx):classOrDeclType{ return classOrDeclType; }
         |   Identifier(ctx):identifier{ return identifier; }
         ;

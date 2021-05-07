@@ -10,12 +10,11 @@
 // this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/AttributeParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
 
-soulng::parser::Match AttributeParser::AttributeSpecifierSeq(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeSpecifierSeq(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -26,6 +25,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifierSeq(CppLexer& lexer, sn
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeSpecifierSeq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 0);
     std::unique_ptr<AttributeSpecifierSequenceNode> node = std::unique_ptr<AttributeSpecifierSequenceNode>();
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> next;
@@ -43,7 +43,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifierSeq(CppLexer& lexer, sn
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                     soulng::parser::Match match = AttributeParser::AttributeSpecifier(lexer, ctx);
                     first.reset(static_cast<Node*>(match.value));
                     if (match.hit)
@@ -127,7 +127,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifierSeq(CppLexer& lexer, sn
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -138,6 +138,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 1);
     SourcePos s = SourcePos();
     SourcePos lbPos1 = SourcePos();
     SourcePos lbPos2 = SourcePos();
@@ -172,7 +173,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcp
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
-                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                     soulng::parser::Match match(false);
                                     if (*lexer == LBRACKET)
                                     {
@@ -197,7 +198,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcp
                                     soulng::parser::Match* parentMatch9 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
-                                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                         soulng::parser::Match match(false);
                                         if (*lexer == LBRACKET)
                                         {
@@ -279,7 +280,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcp
                         soulng::parser::Match* parentMatch16 = &match;
                         {
                             int64_t pos = lexer.GetPos();
-                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                             soulng::parser::Match match(false);
                             if (*lexer == RBRACKET)
                             {
@@ -307,7 +308,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcp
                     soulng::parser::Match* parentMatch18 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match(false);
                         if (*lexer == RBRACKET)
                         {
@@ -376,7 +377,7 @@ soulng::parser::Match AttributeParser::AttributeSpecifier(CppLexer& lexer, sngcp
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeList(CppLexer& lexer, sngcpp::par::Context* ctx, sngcpp::ast::Node* container)
+soulng::parser::Match AttributeParser::AttributeList(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -387,6 +388,7 @@ soulng::parser::Match AttributeParser::AttributeList(CppLexer& lexer, sngcpp::pa
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 2);
     std::unique_ptr<Node> firstOpt;
     std::unique_ptr<Node> comma1;
     std::unique_ptr<Node> nextOpt;
@@ -692,7 +694,7 @@ soulng::parser::Match AttributeParser::AttributeList(CppLexer& lexer, sngcpp::pa
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeUsingPrefix(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeUsingPrefix(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -703,6 +705,7 @@ soulng::parser::Match AttributeParser::AttributeUsingPrefix(CppLexer& lexer, sng
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeUsingPrefix"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 3);
     SourcePos s = SourcePos();
     SourcePos colonPos = SourcePos();
     std::unique_ptr<Node> ns;
@@ -723,7 +726,7 @@ soulng::parser::Match AttributeParser::AttributeUsingPrefix(CppLexer& lexer, sng
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match(false);
                         if (*lexer == USING)
                         {
@@ -760,7 +763,7 @@ soulng::parser::Match AttributeParser::AttributeUsingPrefix(CppLexer& lexer, sng
                     soulng::parser::Match* parentMatch7 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match(false);
                         if (*lexer == COLON)
                         {
@@ -804,7 +807,7 @@ soulng::parser::Match AttributeParser::AttributeUsingPrefix(CppLexer& lexer, sng
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeNamespace(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeNamespace(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -815,6 +818,7 @@ soulng::parser::Match AttributeParser::AttributeNamespace(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeNamespace"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 4);
     std::unique_ptr<Node> ns;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -847,7 +851,7 @@ soulng::parser::Match AttributeParser::AttributeNamespace(CppLexer& lexer, sngcp
     return match;
 }
 
-soulng::parser::Match AttributeParser::Attribute(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::Attribute(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -858,6 +862,7 @@ soulng::parser::Match AttributeParser::Attribute(CppLexer& lexer, sngcpp::par::C
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Attribute"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 5);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> attributeToken;
     std::unique_ptr<Node> attributeArgs;
@@ -875,7 +880,7 @@ soulng::parser::Match AttributeParser::Attribute(CppLexer& lexer, sngcpp::par::C
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                     soulng::parser::Match match = AttributeParser::AttributeToken(lexer, ctx);
                     attributeToken.reset(static_cast<Node*>(match.value));
                     if (match.hit)
@@ -937,7 +942,7 @@ soulng::parser::Match AttributeParser::Attribute(CppLexer& lexer, sngcpp::par::C
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeToken(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeToken(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -948,6 +953,7 @@ soulng::parser::Match AttributeParser::AttributeToken(CppLexer& lexer, sngcpp::p
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeToken"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 6);
     std::unique_ptr<Node> scopedToken;
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
@@ -1014,7 +1020,7 @@ soulng::parser::Match AttributeParser::AttributeToken(CppLexer& lexer, sngcpp::p
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeScopedToken(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeScopedToken(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -1025,6 +1031,7 @@ soulng::parser::Match AttributeParser::AttributeScopedToken(CppLexer& lexer, sng
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeScopedToken"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 7);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> ns;
     std::unique_ptr<Node> colonColon;
@@ -1046,7 +1053,7 @@ soulng::parser::Match AttributeParser::AttributeScopedToken(CppLexer& lexer, sng
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match = AttributeParser::AttributeNamespace(lexer, ctx);
                         ns.reset(static_cast<Node*>(match.value));
                         if (match.hit)
@@ -1108,7 +1115,7 @@ soulng::parser::Match AttributeParser::AttributeScopedToken(CppLexer& lexer, sng
     return match;
 }
 
-soulng::parser::Match AttributeParser::AttributeArgumentClause(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AttributeArgumentClause(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -1119,6 +1126,7 @@ soulng::parser::Match AttributeParser::AttributeArgumentClause(CppLexer& lexer, 
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AttributeArgumentClause"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 8);
     SourcePos s = SourcePos();
     SourcePos lpPos = SourcePos();
     SourcePos rpPos = SourcePos();
@@ -1140,7 +1148,7 @@ soulng::parser::Match AttributeParser::AttributeArgumentClause(CppLexer& lexer, 
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match(false);
                         if (*lexer == LPAREN)
                         {
@@ -1190,7 +1198,7 @@ soulng::parser::Match AttributeParser::AttributeArgumentClause(CppLexer& lexer, 
                     soulng::parser::Match* parentMatch8 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -1234,7 +1242,7 @@ soulng::parser::Match AttributeParser::AttributeArgumentClause(CppLexer& lexer, 
     return match;
 }
 
-soulng::parser::Match AttributeParser::BalancedTokenSeq(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::BalancedTokenSeq(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -1245,6 +1253,7 @@ soulng::parser::Match AttributeParser::BalancedTokenSeq(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("BalancedTokenSeq"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 9);
     std::unique_ptr<Node> sequence = std::unique_ptr<Node>();
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> next;
@@ -1262,7 +1271,7 @@ soulng::parser::Match AttributeParser::BalancedTokenSeq(CppLexer& lexer, sngcpp:
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                     soulng::parser::Match match = AttributeParser::BalancedToken(lexer, ctx);
                     first.reset(static_cast<Node*>(match.value));
                     if (match.hit)
@@ -1346,7 +1355,7 @@ soulng::parser::Match AttributeParser::BalancedTokenSeq(CppLexer& lexer, sngcpp:
     return match;
 }
 
-soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -1357,6 +1366,7 @@ soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::pa
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("BalancedToken"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 10);
     std::unique_ptr<Node> seq = std::unique_ptr<Node>();
     std::unique_ptr<Node> lp;
     std::unique_ptr<Node> c1;
@@ -1396,7 +1406,7 @@ soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::pa
                                 soulng::parser::Match* parentMatch7 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
-                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                     soulng::parser::Match match = AttributeParser::LParen(lexer);
                                     lp.reset(static_cast<Node*>(match.value));
                                     if (match.hit)
@@ -1469,7 +1479,7 @@ soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::pa
                                         soulng::parser::Match* parentMatch15 = &match;
                                         {
                                             int64_t pos = lexer.GetPos();
-                                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                             soulng::parser::Match match = AttributeParser::LBracket(lexer);
                                             lb.reset(static_cast<Node*>(match.value));
                                             if (match.hit)
@@ -1547,7 +1557,7 @@ soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::pa
                                     soulng::parser::Match* parentMatch23 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
-                                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                         soulng::parser::Match match = AttributeParser::LBrace(lexer);
                                         lbr.reset(static_cast<Node*>(match.value));
                                         if (match.hit)
@@ -1619,7 +1629,7 @@ soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::pa
                         soulng::parser::Match* parentMatch29 = &match;
                         {
                             int64_t pos = lexer.GetPos();
-                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch30 = &match;
                             {
@@ -1812,7 +1822,7 @@ soulng::parser::Match AttributeParser::BalancedToken(CppLexer& lexer, sngcpp::pa
     return match;
 }
 
-soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -1823,6 +1833,7 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("AlignmentSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 11);
     std::unique_ptr<Node> alignment = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     SourcePos lpPos = SourcePos();
@@ -1853,7 +1864,7 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
                             soulng::parser::Match* parentMatch6 = &match;
                             {
                                 int64_t pos = lexer.GetPos();
-                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                 soulng::parser::Match match(false);
                                 if (*lexer == ALIGNAS)
                                 {
@@ -1877,7 +1888,7 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
                                 soulng::parser::Match* parentMatch8 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
-                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                     soulng::parser::Match match(false);
                                     if (*lexer == LPAREN)
                                     {
@@ -1987,7 +1998,7 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
                     soulng::parser::Match* parentMatch18 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                         soulng::parser::Match match(false);
                         if (*lexer == RPAREN)
                         {
@@ -2042,11 +2053,12 @@ soulng::parser::Match AttributeParser::LParen(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LParen"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 12);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
         if (*lexer == LPAREN)
         {
@@ -2089,11 +2101,12 @@ soulng::parser::Match AttributeParser::RParen(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RParen"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 13);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
         if (*lexer == RPAREN)
         {
@@ -2136,11 +2149,12 @@ soulng::parser::Match AttributeParser::LBracket(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LBracket"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 14);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
         if (*lexer == LBRACKET)
         {
@@ -2183,11 +2197,12 @@ soulng::parser::Match AttributeParser::RBracket(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RBracket"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 15);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
         if (*lexer == RBRACKET)
         {
@@ -2230,11 +2245,12 @@ soulng::parser::Match AttributeParser::LBrace(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LBrace"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 16);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
         if (*lexer == LBRACE)
         {
@@ -2277,11 +2293,12 @@ soulng::parser::Match AttributeParser::RBrace(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("RBrace"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 17);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
         int64_t pos = lexer.GetPos();
-        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
         if (*lexer == RBRACE)
         {

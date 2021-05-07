@@ -9,7 +9,7 @@ prefix "soulng/spg";
 
 tokens ParserFileTokens
 {
-    (PARSER, "'parser'"), (API, "'api'"), (INCLUDE, "'include'"), (MAIN, "'main'"), (START, "'start'"), (NOTHROW, "'nothrow'"), (STATE, "'state'"),
+    (PARSER, "'parser'"), (API, "'api'"), (INCLUDE, "'include'"), (MAIN, "'main'"), (START, "'start'"), (NOTHROW, "'nothrow'"), (STATE, "'state'"), (FARTHEST_ERROR, "'farthest_error'"),
     (USELEXER, "'uselexer'"), (RULEINFO, "'ruleinfo'"), (EMPTY, "'empty'"), (ANY, "'any'"), (VAR, "'var'"),
     (CPPPREFIX, "cpp-prefix"), (HPPPREFIX, "hpp-prefix"), (FILEPATH, "file path"), (PRODUCES, "'::='"), (EXCLAMATION, "'!'"),
     (AUTO, "'auto'"), (REGISTER, "'register'"), (STATIC, "'static'"), (EXTERN, "'extern'"), (MUTABLE, "'mutable'"),
@@ -31,7 +31,7 @@ tokens ParserFileTokens
 
 keywords ParserFileKeywords
 {
-    ("parser", PARSER), ("api", API), ("include", INCLUDE), ("main", MAIN), ("start", START), ("nothrow", NOTHROW), ("state", STATE),
+    ("parser", PARSER), ("api", API), ("include", INCLUDE), ("main", MAIN), ("start", START), ("nothrow", NOTHROW), ("state", STATE), ("farthest_error", FARTHEST_ERROR),
     ("uselexer", USELEXER), ("ruleinfo", RULEINFO), ("empty", EMPTY), ("any", ANY), ("var", VAR),
     ("auto", AUTO), ("register", REGISTER), ("static", STATIC), ("extern", EXTERN), ("mutable", MUTABLE),
     ("char", CHAR), ("wchar_t", WCHART), ("bool", BOOL), ("short", SHORT), ("int", INT), ("long", LONG), ("signed", SIGNED), ("unsigned", UNSIGNED),

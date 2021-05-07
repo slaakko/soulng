@@ -17,3 +17,4 @@ source <StatementParser.parser>;
 source <TemplateParser.parser>;
 source <TranslationUnitParser.parser>;
 source <TypeParser.parser>;
+rules <Rules>;

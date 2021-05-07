@@ -4,12 +4,11 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <soulng/parser/Match.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -17,12 +16,13 @@ using namespace soulng::lexer;
 parser api(PARSER_API) GuardParser
 {
     uselexer CppLexer;
+    state;
 
-    MemberFunctionGuard(sngcpp::par::Context* ctx)
-        ::= empty{ pass = ctx->GetFlag(ContextFlags::parseMemberFunction); }
+    MemberFunctionGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseMemberFunction); }
         ;
 
-    SavedMemberFunctionBodyGuard(sngcpp::par::Context* ctx)
-        ::= empty{ pass = ctx->GetFlag(ContextFlags::parseSavedMemberFunctionBody); }
+    SavedMemberFunctionBodyGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody); }
         ;
 }

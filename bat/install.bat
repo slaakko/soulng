@@ -51,8 +51,8 @@ xcopy /Y /D ..\tools\gendoc\x64\Debug\gendocd.exe ..\bin
 xcopy /Y /D ..\tools\gendoc\x64\Release\gendoc.exe ..\bin
 xcopy /Y /D ..\tools\cpp2cm\x64\Debug\cpp2cmd.exe ..\bin
 xcopy /Y /D ..\tools\cpp2cm\x64\Release\cpp2cm.exe ..\bin
-xcopy /Y /D ..\tools\sngcpp\x64\Debug\sngcppd.exe ..\bin
-xcopy /Y /D ..\tools\sngcpp\x64\Release\sngcpp.exe ..\bin
+xcopy /Y /D ..\tools\snginst\x64\Debug\snginstd.exe ..\bin
+xcopy /Y /D ..\tools\snginst\x64\Release\snginst.exe ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_astd.dll ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_astd.lib ..\lib
 xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_lexerd.dll ..\bin
@@ -68,6 +68,7 @@ xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_ppd.dll ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_ppd.lib ..\lib
 xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_driverd.dll ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Debug\sngcpp20_driverd.lib ..\lib
+xcopy /Y /D ..\sngcpp20\x64\Debug\sngcppd.exe ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_ast.dll ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_ast.lib ..\lib
 xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_lexer.dll ..\bin
@@ -82,3 +83,4 @@ xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_pp.dll ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_pp.lib ..\lib
 xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_driver.dll ..\bin
 xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp20_driver.lib ..\lib
+xcopy /Y /D ..\sngcpp20\x64\Release\sngcpp.exe ..\bin

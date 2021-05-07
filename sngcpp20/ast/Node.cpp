@@ -43,6 +43,56 @@ std::string NodeTypeStr(NodeType nodeType)
 const char* nodeKindStr[] =
 {
     "nullNode", 
+    "translationUnitNode", "moduleUnitNode",
+    "moduleDeclarationNode", "exportDeclarationNode", "exportNode", "importNode", "importDeclarationNode", "modulePartitionNode", "moduleNode", "globalModuleFragmentNode", "privateModuleFragmentNode",
+    "angleHeaderNameNode", "quoteHeaderNameNode",
+    "identifierNode", "unnamedNode", "colonColonNode", "nestedNameSpecifierNode", "qualifiedIdNode", "identifierListNode", "qualifiedModuleIdNode",
+    "charNode", "char8Node", "char16Node", "char32Node", "wcharNode", "boolNode", "shortNode", "intNode", "longNode", "signedNode", "unsignedNode", "floatNode", "doubleNode", "voidNode",
+    "constNode", "volatileNode", "lvalueRefNode", "rvalueRefNode", "ptrNode", "cvQualifierSequenceNode", "ptrOperatorNode", "noexceptSpecifierNode", "packDeclaratorIdNode", "arrayDeclaratorNode", 
+    "functionDeclaratorNode",
+    "prefixNode", "trailingQualifiersNode", "trailingAttributesNode", "ptrDeclaratorNode",
+    "expressionListNode", "assignmentInitializerNode",
+    "conditionalExprNode", "questNode", "colonNode", "commaNode", "binaryExprNode", "unaryExprNode", "yieldExprNode", "throwExprNode",
+    "assignNode", "plusAssignNode", "minusAssignNode", "mulAssignNode", "divAssignNode", "modAssignNode", "xorAssignNode", "andAssignNode", "orAssignNode", "shiftLeftAssignNode", "shiftRightAssignNode",
+    "disjunctionNode", "conjunctionNode", "inclusiveOrNode", "exclusiveOrNode", "andNode", "equalNode", "notEqualNode", "lessNode", "greaterNode", "lessOrEqualNode", "greaterOrEqualNode",
+    "compareNode", "shiftLeftNode", "shiftRightNode", "plusNode", "minusNode", "mulNode", "divNode", "modNode", "dotStarNode", "arrowStarNode",
+    "castExprNode", "derefNode", "addrOfNode", "notNode", "complementNode", "prefixIncNode", "prefixDecNode",
+    "awaitExprNode", "sizeOfTypeExprNode", "sizeOfPackExpNode", "sizeOfUnaryExprNode", "alignOfExprNode", "noexceptExprNode",
+    "foldExprNode", "newDeclaratorNode", "arrayNewDeclaratorNode", "newInitializerNode", "ellipsesNode", "bracedInitListNode", "designatedInitializerNode", "designatorNode",
+    "newExprNode", "newPlacementNode", "parenNewTypeIdNode", "newTypeIdNode", "arrayDeletePtrNode", "deletePtrNode",
+    "subscriptExprNode", "invokeExprNode", "dotNode", "templateNode", "arrowNode", "pairNode", "memberExprNode", "postfixIncExprNode", "postfixDecExprNode", "typeIdExprNode",
+    "dynamicCastNode", "staticCastNode", "reinterpretCastNode", "constCastNode", "cppCastExprNode", "thisNode", "parenExprNode",
+    "lambdaExpressionNode", "lambdaIntroducerNode", "lambdaCaptureNode", "lambdaDeclaratorNode", "lambdaSpecifiersNode", "lambdaTemplateParamsNode",
+    "defaultRefCaptureNode", "defaultCopyCaptureNode", "byRefCaptureNode", "simpleCaptureNode", "initCaptureNode", "currentObjectCopyCapture", "currentObjectByRefCapture",
+    "integerLiteralNode", "floatingLiteralNode", "characterLiteralNode", "stringLiteralNode", "rawStringLiteralNode", "booleanLiteralNode", "nullPtrLiteralNode", "userDefinedLiteralNode", 
+    "literalOperatorIdNode",
+    "labeledStatementNode", "caseStatmentNode", "defaultStatementNode", "compoundStatementNode", "ifStatementNode", "switchStatemeNode", "whileStatementNode", "doStatementNode",
+    "rangeForStatementNode", "forRangeDeclarationNode", "structuredBindingNode", "forStatementNode", "breakStatementNode", "continueStatementNode", "returnStatementNode", "coReturnStatementNode",
+    "gotoStatementNode", "tryStatementNode", "handlerSequenceNode", "handlerNode", "exceptionDeclarationNode", "expressionStatementNode", "declarationStatementNode", "initConditionNode", "semicolonNode",
+    "templateDeclarationNode", "templateHeadNode", "templateParameterListNode", "typeParameterNode", "templateIdNode", "typenameNode", "deductionGuideNode", "explicitInstantiationNode", 
+    "explicitSpecializationNode",
+    "declarationSequenceNode", "simpleDeclarationNode", "usingDeclarationNode", "usingNode", "usingDeclaratorListNode", "usingEnumDeclarationNode", "emptyDeclarationNode", "namespaceNode", 
+    "usingDirectiveNode",
+    "asmDeclarationNode", "asmNode", "namespaceAliasDefinitionNode", "staticAssertDeclarationNode", "staticAssertNode", "aliasDeclarationNode", "definingTypeIdNode", "definingTypeSpecifierSequenceNode",
+    "opaqueEnumDeclarationNode", "functionDeclarationNode", "linkageSpecificationNode", "namespaceDefinitionNode", "namespaceBodyNode", "attributeDeclarationNode",
+    "initDeclaratorListNode", "initDeclaratorNode", "trailingFunctionDeclaratorNode", "parenthesizedDeclaratorNode", "abstractDeclaratorNode", "declSpecifierSequenceNode",
+    "friendNode", "typedefNode", "constExprNode", "constEvalNode", "constInitNode", "inlineNode", "staticNode", "threadLocalNode", "externNode", "mutableNode", "virtualNode", "explicitNode", 
+    "conditionalExplicitNode",
+    "qualifiedPtrNode",
+    "typeSpecifierSequenceNode", "typenameSpecifierNode", "typeIdNode", "trailingReturnTypeNode", "elaboratedTypeSpecifierNode", "declTypeSpecifierNode", "placeholderTypeSpecifierNode",
+    "classSpecifierNode", "classHeadNode", "baseClauseNode", "baseSpecifierListNode", "baseSpecifierNode", "beginAccessGroupNode", "memberDeclarationNode", "memberDeclaratorListNode", 
+    "virtSpecifierSequenceNode",
+    "constructorNode", "constructorInitializerNode", "memberInitializerListNode", "memberInitializerNode",
+    "publicNode", "protectedNode", "privateNode", "classNode", "structNode", "unionNode", "overrideNode", "finalNode", "pureSpecifierNode",
+    "enumSpecifierNode", "enumHeadNode", "enumBaseNode", "enumClassNode", "enumStructNode", "enumNode", "enumeratorDefinitionNode", "enumeratorNode", "elaboratedEnumSpecifierNode",
+    "functionDefinitionNode", "functionBodyNode", "generatedFunctionBodyNode", "defaultNode", "deleteNode",
+    "operatorFnIdNode", "operatorNode", "newArrayOpNode", "newOpNode", "deleteArrayOpNode", "deleteOpNode", "coAwaitOpNode", "invokeOpNode", "subscriptOpNode",
+    "conversionFnIdNode", "conversionTypeIdNode", "conversionDeclaratorNode", "destructorIdNode", "parameterNode", "parameterListNode", "noexceptNode", "functionTryBlock",
+    "conceptDefinitionNode", "requiresExprNode", "requirementBodyNode", "simpleRequirementNode", "typeRequirementNode", "compoundRequirementNode", "returnTypeRequirementNode", "nestedRequirementNode",
+    "typeConstraintNode", "requiresClauseNode",
+    "attributeSpecifierSequenceNode", "attributeSpecifierNode", "attributeUsingPrefixNode", "attrbuteNode", "attributeScopedTokenNode", "attributeArgumentsNode", "balancedTokenSequenceNode", 
+    "tokenNode",
+    "lparenNode", "rparenNode", "lbracketNode", "rbracketNode", "lbraceNode", "rbraceNode", "alignmentSpecifierNode"
 };
 
 std::string NodeKindStr(NodeKind nodeKind)
@@ -316,7 +366,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::attributeDeclarationNode, new NodeFactory<AttributeDeclarationNode>());
     Register(NodeKind::initDeclaratorListNode, new NodeFactory<InitDeclaratorListNode>());
     Register(NodeKind::initDeclaratorNode, new NodeFactory<InitDeclaratorNode>());
-    Register(NodeKind::trailingInvokeDeclaratorNode, new NodeFactory<TrailingInvokeDeclaratorNode>());
+    Register(NodeKind::trailingFunctionDeclaratorNode, new NodeFactory<TrailingFunctionDeclaratorNode>());
     Register(NodeKind::parenthesizedDeclaratorNode, new NodeFactory<ParenthesizedDeclaratorNode>());
     Register(NodeKind::abstractDeclaratorNode, new NodeFactory<AbstractDeclaratorNode>());
     Register(NodeKind::declSpecifierSequenceNode, new NodeFactory<DeclSpecifierSequenceNode>());
@@ -336,8 +386,8 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::ptrOperatorNode, new NodeFactory<PtrOperatorNode>());
     Register(NodeKind::ptrDeclaratorNode, new NodeFactory<PtrDeclaratorNode>());
     Register(NodeKind::packDeclaratorIdNode, new NodeFactory<PackDeclaratorIdNode>());
-    Register(NodeKind::subscriptDeclaratorNode, new NodeFactory<SubscriptDeclaratorNode>());
-    Register(NodeKind::invokeDeclaratorNode, new NodeFactory<InvokeDeclaratorNode>());
+    Register(NodeKind::arrayDeclaratorNode, new NodeFactory<ArrayDeclaratorNode>());
+    Register(NodeKind::functionDeclaratorNode, new NodeFactory<FunctionDeclaratorNode>());
     Register(NodeKind::prefixNode, new NodeFactory<PrefixNode>());
     Register(NodeKind::trailingQualifiersNode, new NodeFactory<TrailingQualifiersNode>());
     Register(NodeKind::trailingAttributesNode, new NodeFactory<TrailingAttributesNode>());

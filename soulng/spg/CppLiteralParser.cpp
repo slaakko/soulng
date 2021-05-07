@@ -3,7 +3,7 @@
 #include <soulng/spg/ParserFileLexer.hpp>
 #include <soulng/spg/ParserFileTokens.hpp>
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/spg/CppLiteralParser.parser' using soulng parser generator spg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/CppLiteralParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
 using namespace soulng::lexer;
@@ -22,6 +22,7 @@ soulng::parser::Match CppLiteralParser::CppLiteral(ParserFileLexer& lexer)
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {

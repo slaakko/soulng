@@ -6,6 +6,7 @@
 #ifndef SNGCPP_SYMBOLS_SYMBOL_TABLE_INCLUDED
 #define SNGCPP_SYMBOLS_SYMBOL_TABLE_INCLUDED
 #include <sngcpp20/symbols/NamespaceSymbol.hpp>
+#include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
 #include <sngcpp20/ast/Identifier.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <unordered_map>
@@ -32,12 +33,14 @@ public:
     void EndScope();
     void BeginClass(Node* node);
     void EndClass();
+    TypeSymbol* GetFundamentalTypeSymbol(FundamentalTypeKind kind);
 private:
     NamespaceSymbol globalNs;
     std::stack<Scope*> scopeStack;
     Scope* currentScope;
     std::unordered_map<Node*, Symbol*> nodeSymbolMap;
     std::unordered_map<Symbol*, Node*> symbolNodeMap;
+    std::unordered_map<int, TypeSymbol*> fundamentalTypeMap;
 };
 
 } // sngcpp::symbols

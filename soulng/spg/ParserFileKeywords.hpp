@@ -1,7 +1,7 @@
 #ifndef ParserFileKeywords_HPP
 #define ParserFileKeywords_HPP
 
-// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 3.10.0
+// this file has been automatically generated from 'C:/work/soulng/soulng/spg/ParserFileLexer.lexer' using soulng lexer generator slg version 4.0.0
 
 #include <soulng/lexer/Keyword.hpp>
 

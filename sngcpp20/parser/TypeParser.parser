@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Type.hpp>
 [cpp]#include <sngcpp20/ast/Qualifier.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
@@ -19,7 +19,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -27,6 +26,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) TypeParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ClassParser.ClassKey;
@@ -43,7 +43,7 @@ parser api(PARSER_API) TypeParser
     using TemplateParser.SimpleTemplateId;
     using TemplateParser.Template;
 
-    TypeSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    TypeSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             TypeSpecifier(ctx):first{ node.reset(new TypeSpecifierSequenceNode(sourcePos)); node->AddNode(first); } 
@@ -55,7 +55,7 @@ parser api(PARSER_API) TypeParser
         }
         ;
 
-    DefiningTypeId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    DefiningTypeId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             DefiningTypeSpecifierSeq(ctx):definingTypeSpecifierSeq{ s = sourcePos; } AbstractDeclarator(ctx):abstractDeclararator?
@@ -65,7 +65,7 @@ parser api(PARSER_API) TypeParser
         }
         ;
 
-    DefiningTypeSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    DefiningTypeSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   
             DefiningTypeSpecifier(ctx):first{ node.reset(new DefiningTypeSpecifierSequenceNode(sourcePos)); node->AddNode(first); }
@@ -77,18 +77,18 @@ parser api(PARSER_API) TypeParser
         }
         ;
 
-    DefiningTypeSpecifier(sngcpp::par::Context* ctx) : Node*
+    DefiningTypeSpecifier(sngcpp::symbols::Context* ctx) : Node*
         ::= ClassSpecifier(ctx):classSpecifier{ return classSpecifier; }
         |   EnumSpecifier(ctx):enumSpecifier{ return enumSpecifier; }
         |   TypeSpecifier(ctx):typeSpecifier{ return typeSpecifier; }
         ;
 
-    TypeSpecifier(sngcpp::par::Context* ctx) : Node*
+    TypeSpecifier(sngcpp::symbols::Context* ctx) : Node*
         ::= ElaboratedTypeSpecifier(ctx):elaboratedTypeSpecifier{ return elaboratedTypeSpecifier; }
         |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier{ return simpleTypeSpecifier; }
         ;
 
-    ElaboratedTypeSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos, var SourcePos tmpPos) : Node*
+    ElaboratedTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos nnsPos, var SourcePos tmpPos) : Node*
         ::= ClassKey:classKey{ s = sourcePos; }
             AttributeSpecifierSeq(ctx):attributes?
             (
@@ -120,7 +120,7 @@ parser api(PARSER_API) TypeParser
         |   ElaboratedEnumSpecifier(ctx):elaboratedEnumSpecifier{ return elaboratedEnumSpecifier; }
         ;
 
-    SimpleTypeSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
+    SimpleTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
         ::= 
         (   SimpleType(ctx):simpleType{ return simpleType; }
         |   NestedNameSpecifier(ctx):nns{ s = sourcePos; } Template:tmp{ tmpPos = sourcePos; } SimpleTemplateId(ctx):simpleTemplateId
@@ -137,12 +137,12 @@ parser api(PARSER_API) TypeParser
         |   PlaceholderTypeSpecifier(ctx):placeholderTypeSpecifier{ return placeholderTypeSpecifier; }
         ;
 
-    TypeName(sngcpp::par::Context* ctx) : Node*
+    TypeName(sngcpp::symbols::Context* ctx) : Node*
         ::= SimpleTemplateId(ctx):templateId{ return templateId; }
         |   TypeIdentifier(ctx):typeIdentifier{ return typeIdentifier;  }        
         ;
 
-    TypeId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    TypeId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             TypeSpecifierSeq(ctx):typeSpecifiers{ s = sourcePos; } AbstractDeclarator(ctx):declarator?
@@ -152,7 +152,7 @@ parser api(PARSER_API) TypeParser
         }
         ;
 
-    TypenameSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> templateNode) : Node*
+    TypenameSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> templateNode) : Node*
         ::= TYPENAME{ s = sourcePos; } 
             NestedNameSpecifier(ctx):nns 
             (   (Template:t{ templateNode.reset(t); })?
@@ -167,7 +167,7 @@ parser api(PARSER_API) TypeParser
             )
         ;
 
-    DeclTypeSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    DeclTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             DECLTYPE{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
@@ -177,7 +177,7 @@ parser api(PARSER_API) TypeParser
         }
         ;
 
-    PlaceholderTypeSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos dtPos, var SourcePos autoPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    PlaceholderTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos dtPos, var SourcePos autoPos, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (TypeConstraint(ctx):typeConstraint{ s = sourcePos; })? 

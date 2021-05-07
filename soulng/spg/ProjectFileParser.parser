@@ -27,6 +27,7 @@ parser ProjectFileParser
         ::= 
         (   RecoveryDeclaration(projectFile):recoveryDecl
         |   TokensDeclaration(projectFile):tokensDecl
+        |   RuleFileDeclaration(projectFile):ruleFileDecl
         |   SourceFile(projectFile):sourceFile
         )*
         ;
@@ -37,6 +38,10 @@ parser ProjectFileParser
 
     TokensDeclaration(soulng::spg::ProjectFile* projectFile)
         ::= TOKENS FILEPATH{ projectFile->AddTokenFile(lexer.filePath); } SEMICOLON!
+        ;
+
+    RuleFileDeclaration(soulng::spg::ProjectFile* projectFile)
+        ::= RULES FILEPATH{ projectFile->AddRuleFile(lexer.filePath); } SEMICOLON!
         ;
 
     RecoveryDeclaration(soulng::spg::ProjectFile* projectFile)

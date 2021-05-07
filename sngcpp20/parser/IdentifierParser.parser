@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Expression.hpp>
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
 [cpp]#include <sngcpp20/symbols/SymbolTable.hpp>
@@ -14,7 +14,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace sngcpp::symbols;
 using namespace CppTokens;
@@ -23,6 +22,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) IdentifierParser
 {
     uselexer CppLexer;
+    state;
 
     using LiteralParser.LiteralOperatorId;
     using TemplateParser.TemplateId;
@@ -32,11 +32,11 @@ parser api(PARSER_API) IdentifierParser
     using FunctionParser.Comma;
     using FunctionParser.DestructorId;
 
-    Identifier(sngcpp::par::Context* ctx) : Node*
+    Identifier(sngcpp::symbols::Context* ctx) : Node*
         ::= ID{ return new IdentifierNode(sourcePos, lexer.GetMatch(pos)); }
         ;
 
-    TypeIdentifier(sngcpp::par::Context* ctx) : Node*
+    TypeIdentifier(sngcpp::symbols::Context* ctx) : Node*
         ::= ID
             { 
                 std::u32string id = lexer.GetMatch(pos); 
@@ -52,7 +52,7 @@ parser api(PARSER_API) IdentifierParser
             }
         ;
 
-    UnqualifiedId(sngcpp::par::Context* ctx) : Node*
+    UnqualifiedId(sngcpp::symbols::Context* ctx) : Node*
         ::= TemplateId(ctx):templateId{ return templateId; }
         |   Identifier(ctx):identifier{ return identifier; }
         |   OperatorFunctionId(ctx):operatorFnId{ return operatorFnId; }
@@ -61,7 +61,7 @@ parser api(PARSER_API) IdentifierParser
         |   DestructorId(ctx):destructorId{ return destructorId; }
         ;
 
-    QualifiedId(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
+    QualifiedId(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
         ::= 
         (
             NestedNameSpecifier(ctx):nns{ s = sourcePos; } 
@@ -82,7 +82,7 @@ parser api(PARSER_API) IdentifierParser
         ::= TEMPLATE{ return new TemplateNode(sourcePos); }
         ;
 
-    NestedNameSpecifier(sngcpp::par::Context* ctx, var std::unique_ptr<NestedNameSpecifierNode> nnsNode, var std::unique_ptr<Node> idNode) : Node*
+    NestedNameSpecifier(sngcpp::symbols::Context* ctx, var std::unique_ptr<NestedNameSpecifierNode> nnsNode, var std::unique_ptr<Node> idNode) : Node*
         ::= 
         (   empty{ nnsNode.reset(new NestedNameSpecifierNode(sourcePos)); }
             (COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); })?
@@ -108,7 +108,7 @@ parser api(PARSER_API) IdentifierParser
         }
         ;
 
-    IdentifierList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> identifierListNode) : Node*
+    IdentifierList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> identifierListNode) : Node*
         ::= 
         (
             Identifier(ctx):first{ identifierListNode.reset(new IdentifierListNode(sourcePos)); identifierListNode->AddNode(first); } 

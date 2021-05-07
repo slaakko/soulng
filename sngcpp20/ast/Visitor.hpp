@@ -92,7 +92,7 @@ class EmptyDeclarationNode;
 class AttributeDeclarationNode;
 class InitDeclaratorListNode;
 class InitDeclaratorNode;
-class TrailingInvokeDeclaratorNode;
+class TrailingFunctionDeclaratorNode;
 class ParenthesizedDeclaratorNode;
 class AbstractDeclaratorNode;
 class DeclSpecifierSequenceNode;
@@ -112,8 +112,8 @@ class QualifiedPtrNode;
 class PtrOperatorNode;
 class PtrDeclaratorNode;
 class PackDeclaratorIdNode;
-class SubscriptDeclaratorNode;
-class InvokeDeclaratorNode;
+class ArrayDeclaratorNode;
+class FunctionDeclaratorNode;
 class PrefixNode;
 class TrailingQualifiersNode;
 class TrailingAttributesNode;
@@ -451,7 +451,7 @@ public:
     virtual void Visit(AttributeDeclarationNode& node) {}
     virtual void Visit(InitDeclaratorListNode& node) {}
     virtual void Visit(InitDeclaratorNode& node) {}
-    virtual void Visit(TrailingInvokeDeclaratorNode& node) {}
+    virtual void Visit(TrailingFunctionDeclaratorNode& node) {}
     virtual void Visit(ParenthesizedDeclaratorNode& node) {}
     virtual void Visit(AbstractDeclaratorNode& node) {}
     virtual void Visit(DeclSpecifierSequenceNode& node) {}
@@ -471,8 +471,8 @@ public:
     virtual void Visit(PtrOperatorNode& node) {}
     virtual void Visit(PtrDeclaratorNode& node) {}
     virtual void Visit(PackDeclaratorIdNode& node) {}
-    virtual void Visit(SubscriptDeclaratorNode& node) {}
-    virtual void Visit(InvokeDeclaratorNode& node) {}
+    virtual void Visit(ArrayDeclaratorNode& node) {}
+    virtual void Visit(FunctionDeclaratorNode& node) {}
     virtual void Visit(PrefixNode& node) {}
     virtual void Visit(TrailingQualifiersNode& node) {}
     virtual void Visit(TrailingAttributesNode& node) {}
@@ -792,7 +792,7 @@ public:
     void Visit(AttributeDeclarationNode& node);
     void Visit(InitDeclaratorListNode& node);
     void Visit(InitDeclaratorNode& node);
-    void Visit(TrailingInvokeDeclaratorNode& node);
+    void Visit(TrailingFunctionDeclaratorNode& node);
     void Visit(ParenthesizedDeclaratorNode& node);
     void Visit(AbstractDeclaratorNode& node);
     void Visit(DeclSpecifierSequenceNode& node);
@@ -812,8 +812,8 @@ public:
     void Visit(PtrOperatorNode& node);
     void Visit(PtrDeclaratorNode& node);
     void Visit(PackDeclaratorIdNode& node);
-    void Visit(SubscriptDeclaratorNode& node);
-    void Visit(InvokeDeclaratorNode& node);
+    void Visit(ArrayDeclaratorNode& node);
+    void Visit(FunctionDeclaratorNode& node);
     void Visit(PrefixNode& node);
     void Visit(TrailingQualifiersNode& node);
     void Visit(TrailingAttributesNode& node);

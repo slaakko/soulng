@@ -15,6 +15,7 @@ class SOULNG_LEXER_API ParsingException : public std::runtime_error
 {
 public:
     ParsingException(const std::string& message_, const std::string& fileName_, const Span& span_);
+    ParsingException(const std::string& message_, const std::string& fileName_);
     const std::string& Project() const { return project; }
     const std::string& Message() const { return message; }
     const std::string& FileName() const { return fileName; }

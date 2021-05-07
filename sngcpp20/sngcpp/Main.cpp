@@ -7,10 +7,13 @@
 #include <sngcpp20/driver/Interface.hpp>
 #include <sngcpp20/parser/ClassParser.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
+#include <sngcpp20/symbols/InitDone.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <soulng/rex/Context.hpp>
 #include <soulng/rex/Nfa.hpp>
 #include <soulng/rex/Match.hpp>
+#include <soulng/util/CodeFormatter.hpp>
+#include <soulng/util/InitDone.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -22,19 +25,19 @@
 using namespace sngcpp::project;
 using namespace sngcpp::driver;
 using namespace sngcpp::symbols;
-using namespace sngcpp::par;
 using namespace soulng::rex;
 using namespace soulng::util;
 using namespace soulng::unicode;
 
 void PrintHelp()
 {
-    std::cout << "sngcpp [options] [ { SOURCEFILES } | DIRPATH ]" << std::endl;
+    std::cout << "sngcpp [options] [ PATH... ]" << std::endl;
     std::cout << std::endl;
-    std::cout << "SOURCEFILES consists of source files to process" << std::endl;
-    std::cout << "For example: foo.cpp or *.h" << std::endl;
+    std::cout << "PATH can be a source file path, source file mask or a directory path " << std::endl;
+    std::cout << "if PATH is an existing source file path or source file mask, " << std::endl;
+    std::cout << "for example: foo.cpp or *.h, sngcpp processes the specified file(s) with given options" << std::endl;
     std::cout << std::endl;
-    std::cout << "DIRPATH is path to a directory that contains sngcpp.xml project file to process" << std::endl;
+    std::cout << "if PATH is a path to a directory is should contains a sngcpp.xml project file to process" << std::endl;
     std::cout << std::endl;
     std::cout << "options:" << std::endl;
     std::cout << std::endl;
@@ -79,15 +82,16 @@ void PrintHelp()
     std::cout << "--config=CONFIG | -c=CONFIG" << std::endl;
     std::cout << "  use CONFIG configuration" << std::endl;
     std::cout << std::endl;
-    std::cout << "--makeproject | -m  [--patterns=PATTERNS | -t=PATTERNS]" << std::endl;
-    std::cout << "  make project XML file sngcpp.xml from contents of DIRPATH and write it to current directory" << std::endl;
-    std::cout << "  if no DIRPATH given, make project XML from contents of current directory" << std::endl;
+    std::cout << "--makeproject | -m  [--patterns=PATTERNS | -t=PATTERNS] [--recursive | -r]" << std::endl;
+    std::cout << "  make project XML file sngcpp.xml from contents of first directory PATH" << std::endl;
+    std::cout << "  write the project file to second directory PATH, or to current directory if there is no second directory PATH" << std::endl;
+    std::cout << "  if no  directory PATH given, make project XML from contents of current directory" << std::endl;
     std::cout << "  PATTERNS is source file patterns to process separated by semicolons" << std::endl;
-    std::cout << "  PATTERNS is by default \"*.cpp;*.hpp;*.ixx\"" << std::endl;
+    std::cout << "  PATTERNS is by default \"*.c;*.h;*.cpp;*.hpp;*.cxx;*.hxx;*.ixx\"" << std::endl;
     std::cout << std::endl;
-    std::cout << "if sole DIRPATH is given, process project file sngcpp.xml in that directory" << std::endl;
+    std::cout << "if sole directory PATH is given, process project file sngcpp.xml in that directory" << std::endl;
     std::cout << std::endl;
-    std::cout << "if no SOURCEFILES and no DIRPATH is given, process sngcpp.xml in the current directory" << std::endl;
+    std::cout << "if no PATHs are given, process sngcpp.xml in the current directory" << std::endl;
     std::cout << std::endl;
 }
 
@@ -98,13 +102,181 @@ void TestClassParse()
     ++lexer;
     lexer.SetLine(1);
     SymbolTable symbolTable;
-    sngcpp::par::Context context;
+    sngcpp::symbols::Context context;
     context.SetSymbolTable(&symbolTable);
     ClassParser::ClassSpecifier(lexer, &context);
     //TranslationUnitParser::TranslationUnit(lexer, &context);
 }
+
+enum class Options : int
+{
+    none = 0, 
+    preprocess = 1 << 0, 
+    parse = 1 << 1, 
+    xml = 1 << 2, 
+    bin = 1 << 3, 
+    log = 1 << 4, 
+    all = preprocess | parse | xml | bin
+};
+
+inline Options operator|(Options left, Options right)
+{
+    return Options(int(left) | int(right));
+}
+
+inline Options operator&(Options left, Options right)
+{
+    return Options(int(left) & int(right));
+}
+
+inline Options operator~(Options opts)
+{
+    return Options(~int(opts));
+}
+
+std::unique_ptr<std::u32string> Preprocess(const std::string& filePath, std::ostream& stream, const std::string& outFilePath, bool verbose, int level)
+{
+    if (verbose)
+    {
+        std::cout << std::string(level, '>') << "pp> " << Path::GetFileName(filePath) << std::endl;
+    }
+    std::unique_ptr<std::u32string> preprocessedText = Preprocess(filePath);
+    stream << ToUtf8(*preprocessedText) << std::endl;
+    if (verbose)
+    {
+        if (!outFilePath.empty())
+        {
+            std::cout << "==> " << outFilePath << std::endl;
+        }
+    }
+    return preprocessedText;
+}
+
+ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedText, const std::string& filePath, ParseOptions parseOptions, bool verbose, int level)
+{
+    try
+    {
+        if (verbose)
+        {
+            std::cout << std::string(level, '>') << "p> " << Path::GetFileName(filePath) << std::endl;
+        }
+        if (!preprocessedText)
+        {
+            return Parse(filePath, parseOptions);
+        }
+        else
+        {
+            return Parse(std::move(preprocessedText), parseOptions);
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        if (verbose)
+        {
+            std::cout << ex.what() << std::endl;
+        }
+    }
+    return ParseResult();
+}
+
+void WriteSourceCode(Node* translationUnit, std::ostream& stream, const std::string& outFilePath, bool verbose)
+{
+    WriteSourceCode(translationUnit, stream);
+    if (verbose)
+    {
+        if (!outFilePath.empty())
+        {
+            std::cout << "==> " << outFilePath << std::endl;
+        }
+    }
+}
+
+void WriteXml(Node* translationUnit, std::ostream& stream, const std::string& outFilePath, bool verbose)
+{
+    WriteXml(translationUnit, stream);
+    if (verbose)
+    {
+        if (!outFilePath.empty())
+        {
+            std::cout << "==> " << outFilePath << std::endl;
+        }
+    }
+}
+
+void ProcessFile(const std::string& filePath, const std::string destDir, Options options, bool out, bool verbose)
+{
+    std::ostream* stream = &std::cout;
+    std::unique_ptr<std::u32string> preprocessedText;
+    if ((options & Options::preprocess) != Options::none)
+    {
+        std::string outFilePath;
+        std::ofstream fstream;
+        if (out)
+        {
+            outFilePath = Path::Combine(destDir, Path::GetFileName(filePath) + ".pp");
+            fstream.open(outFilePath);
+            stream = &fstream;
+        }
+        preprocessedText = Preprocess(filePath, *stream, outFilePath, verbose, 0);
+    }
+    ParseOptions parseOptions;
+    if ((options & Options::log) != Options::none)
+    {
+        parseOptions.Log(true);
+        if (out)
+        {
+            parseOptions.LogFilePath(Path::Combine(destDir, Path::GetFileName(filePath) + ".log"));
+        }
+    }
+    ParseResult result = Parse(std::move(preprocessedText), filePath, parseOptions, verbose, 0);
+    if ((options & Options::parse) != Options::none)
+    {
+        std::string outFilePath;
+        std::ofstream fstream;
+        if (out)
+        {
+            outFilePath = Path::Combine(destDir, Path::GetFileName(filePath) + ".par");
+            fstream.open(outFilePath);
+            stream = &fstream;
+        }
+        WriteSourceCode(result.translationUnitNode.get(), *stream, outFilePath, verbose);
+    }
+    if ((options & Options::xml) != Options::none)
+    {
+        std::string outFilePath;
+        std::ofstream fstream;
+        if (out)
+        {
+            outFilePath = Path::Combine(destDir, Path::GetFileName(filePath) + ".xml");
+            fstream.open(outFilePath);
+            stream = &fstream;
+        }
+        WriteXml(result.translationUnitNode.get(), *stream, outFilePath, verbose);
+    }
+    if ((options & Options::bin) != Options::none)
+    { 
+        std::string outFilePath = Path::Combine(destDir, Path::GetFileName(filePath) + ".bin");
+        WriteBinary(result.translationUnitNode.get(), outFilePath);
+    }
+}
+
+struct InitDone
+{
+    InitDone()
+    {
+        soulng::util::Init();
+        sngcpp::symbols::Init();
+    }
+    ~InitDone()
+    {
+        sngcpp::symbols::Done();
+        soulng::util::Done();
+    }
+};
+
 int main(int argc, const char** argv)
 {
+    InitDone initDone;
     try
     {
         std::string patterns = "*.c;*.h;*.cpp;*.hpp;*.cxx;*.hxx;*.ixx";
@@ -112,6 +284,9 @@ int main(int argc, const char** argv)
         bool preprocess = false;
         bool makeProject = false;
         bool verbose = false;
+        bool recursive = false;
+        bool out = false;
+        Options options = Options::none;
         for (int i = 1; i < argc; ++i)
         {
             std::string arg = argv[i];
@@ -140,7 +315,23 @@ int main(int argc, const char** argv)
                 {
                     if (arg == "--pp")
                     {
-                        preprocess = true;
+                        options = options | Options::preprocess;
+                    }
+                    else if (arg == "--par")
+                    {
+                        options = options | Options::parse;
+                    }
+                    else if (arg == "--xml")
+                    {
+                        options = options | Options::xml;
+                    }
+                    else if (arg == "--bin")
+                    {
+                        options = options | Options::bin;
+                    }
+                    else if (arg == "--log")
+                    {
+                        options = options | Options::log;
                     }
                     else if (arg == "--makeproject")
                     {
@@ -184,8 +375,8 @@ int main(int argc, const char** argv)
                 }
                 else
                 {
-                    std::string options = arg.substr(1);
-                    for (char o : options)
+                    std::string optstr = arg.substr(1);
+                    for (char o : optstr)
                     {
                         switch (o)
                         {
@@ -196,7 +387,27 @@ int main(int argc, const char** argv)
                             }
                             case 'e':
                             {
-                                preprocess = true;
+                                options = options | Options::preprocess;
+                                break;
+                            }
+                            case 'p':
+                            {
+                                options = options | Options::parse;
+                                break;
+                            }
+                            case 'x':
+                            {
+                                options = options | Options::xml;
+                                break;
+                            }
+                            case 'b':
+                            {
+                                options = options | Options::bin;
+                                break;
+                            }
+                            case 'l':
+                            {
+                                options = options | Options::log;
                                 break;
                             }
                             case 'v':
@@ -208,6 +419,11 @@ int main(int argc, const char** argv)
                             {
                                 PrintHelp();
                                 return 1;
+                            }
+                            case 'r':
+                            {
+                                recursive = true;
+                                break;
                             }
                             default:
                             {
@@ -259,6 +475,40 @@ int main(int argc, const char** argv)
                     }
                     ++it;
                 }
+            }
+        }
+        if (makeProject)
+        {
+            std::string sourceDir;
+            if (!dirPaths.empty())
+            {
+                sourceDir = dirPaths.front();
+            }
+            std::string projectDir;
+            if (dirPaths.size() > 1)
+            {
+                projectDir = dirPaths[1];
+            }
+            MakeProjectFile(sourceDir, projectDir, patterns, 0, recursive, verbose);
+        }
+        else
+        {
+            if (options == Options::none)
+            {
+                options = Options::parse;
+            }
+            std::string destDir;
+            if (dirPaths.empty())
+            {
+                destDir = GetFullPath(".");
+            }
+            else
+            {
+                destDir = dirPaths.front();
+            }
+            for (const std::string& filePath : filePaths)
+            {
+                ProcessFile(filePath, destDir, options, out, verbose);
             }
         }
     }

@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Declaration.hpp>
 [hpp]#include <sngcpp20/ast/Qualifier.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
@@ -19,10 +19,10 @@
 [cpp]#include <sngcpp20/parser/StatementParser.hpp>
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/symbols/DeclarationProcessor.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -30,6 +30,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) DeclarationParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ConceptParser.RequiresClause;
@@ -67,7 +68,7 @@ parser api(PARSER_API) DeclarationParser
     using TypeParser.DefiningTypeSpecifier;
     using TypeParser.TypeId;
 
-    DeclarationSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
+    DeclarationSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
             Declaration(ctx):first{ node.reset(new DeclarationSequenceNode(s)); node->AddNode(first); } 
@@ -78,7 +79,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    Declaration(sngcpp::par::Context* ctx) : Node*
+    Declaration(sngcpp::symbols::Context* ctx) : Node*
         ::= BlockDeclaration(ctx):blockDeclaration{ return blockDeclaration; }
         |   NoDeclSpecFunctionDeclaration(ctx):noDeclSpecFunctionDeclaration { return noDeclSpecFunctionDeclaration; }
         |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
@@ -94,7 +95,7 @@ parser api(PARSER_API) DeclarationParser
         |   ImportDeclaration(ctx):moduleImportDeclaration{ return moduleImportDeclaration; }
         ;
 
-    BlockDeclaration(sngcpp::par::Context* ctx) : Node*
+    BlockDeclaration(sngcpp::symbols::Context* ctx) : Node*
         ::= SimpleDeclaration(ctx):simpleDeclation{ return simpleDeclation; }
         |   AsmDeclaration(ctx):asmDeclaration{ return asmDeclaration; }
         |   NamespaceAliasDefinition(ctx):namespaceAliasDefinition{ return namespaceAliasDefinition; }
@@ -106,20 +107,24 @@ parser api(PARSER_API) DeclarationParser
         |   OpaqueEnumDeclaration(ctx):opaqueEnumDeclaration{ return opaqueEnumDeclaration; }
         ;
 
-    SimpleDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    SimpleDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } 
             DeclSpecifierSeq(ctx):declSpecifierSeq 
             InitDeclaratorList(ctx):initDeclaratorList 
             Semicolon:semicolon
             {
-                return new SimpleDeclarationNode(s, declSpecifierSeq, initDeclaratorList, attributes, semicolon); 
+                std::unique_ptr<Node> node(new SimpleDeclarationNode(s, declSpecifierSeq, initDeclaratorList, attributes, semicolon)); 
+                sngcpp::symbols::ProcessSimpleDeclaration(node.get(), ctx);
+                return node.release();
             }
         |   DeclSpecifierSeq(ctx):declSpecifierSeq2{ s = sourcePos; } 
             InitDeclaratorList(ctx):initDeclaratorList2? 
             Semicolon:semicolon2
             { 
-                return new SimpleDeclarationNode(s, declSpecifierSeq2, initDeclaratorList2, nullptr, semicolon2);
+                std::unique_ptr<Node> node(new SimpleDeclarationNode(s, declSpecifierSeq2, initDeclaratorList2, nullptr, semicolon2));
+                sngcpp::symbols::ProcessSimpleDeclaration(node.get(), ctx);
+                return node.release();
             }
         |   (AttributeSpecifierSeq(ctx):attributes3{ s = sourcePos; })? 
             DeclSpecifierSeq(ctx):declSpecifierSeq3{ if (!s.IsValid()) s = sourcePos; } 
@@ -135,7 +140,7 @@ parser api(PARSER_API) DeclarationParser
         )
         ;
 
-    AsmDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    AsmDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })?
@@ -154,7 +159,7 @@ parser api(PARSER_API) DeclarationParser
         ::= ASM{ return new AsmNode(sourcePos); }
         ;
 
-    LinkageSpecification(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    LinkageSpecification(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::=
         (
             Extern:extrn{ s = sourcePos; } 
@@ -177,13 +182,13 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    NamespaceDefinition(sngcpp::par::Context* ctx) : Node*
+    NamespaceDefinition(sngcpp::symbols::Context* ctx) : Node*
         ::= NamedNamespaceDefinition(ctx):namedNamespaceDefinition{ return namedNamespaceDefinition; }
         |   UnnamedNamespaceDefinition(ctx):unnamedNamespaceDefinition{ return unnamedNamespaceDefinition; }
         |   NestedNamespaceDefinition(ctx):nestedNamespaceDefinition{ return nestedNamespaceDefinition; }
         ;
 
-    NamedNamespaceDefinition(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    NamedNamespaceDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             (Inline:inln{ s = sourcePos; })?
@@ -199,7 +204,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    UnnamedNamespaceDefinition(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    UnnamedNamespaceDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             (Inline:inln{ s = sourcePos; })?
@@ -214,7 +219,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    NestedNamespaceDefinition(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<NestedNameSpecifierNode> nns,
+    NestedNamespaceDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<NestedNameSpecifierNode> nns,
         var std::unique_ptr<Node> qualifiedNsName, var std::unique_ptr<Node> nsNameNode, var SourcePos nnsPos, var SourcePos inlnPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
@@ -239,7 +244,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    NamespaceBody(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    NamespaceBody(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             (DeclarationSeq(ctx):declarations{ s = sourcePos; })?
@@ -249,7 +254,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    EnclosingNamespaceSpecifier(sngcpp::par::Context* ctx, sngcpp::ast::Node* container) : Node*
+    EnclosingNamespaceSpecifier(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container) : Node*
         ::= Identifier(ctx):first{ container->AddNode(first); } 
             (   ColonColon:colonColon{ container->AddNode(colonColon); } 
                 (Inline:inln{ container->AddNode(inln); })?
@@ -257,7 +262,7 @@ parser api(PARSER_API) DeclarationParser
             )*
         ;
 
-    NamespaceAliasDefinition(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    NamespaceAliasDefinition(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Namespace:ns{ s = sourcePos; } Identifier(ctx):id Assign:assign QualifiedNamespaceSpecifier(ctx):qns Semicolon:semicolon
@@ -271,7 +276,7 @@ parser api(PARSER_API) DeclarationParser
         ::= NAMESPACE{ return new NamespaceNode(sourcePos); }
         ;
 
-    QualifiedNamespaceSpecifier(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    QualifiedNamespaceSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= NestedNameSpecifier(ctx):nns{ s = sourcePos; } NamespaceName(ctx):nsName
             {
                 return new QualifiedIdNode(s, nns, nsName);
@@ -282,7 +287,7 @@ parser api(PARSER_API) DeclarationParser
             }
         ;
 
-    UsingDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    UsingDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   
             Using:usng{ s = sourcePos; } UsingDeclaratorList(ctx):usingDeclarators Semicolon:semicolon
@@ -296,7 +301,7 @@ parser api(PARSER_API) DeclarationParser
         ::= USING{ return new UsingNode(sourcePos); }
         ;
 
-    UsingDeclaratorList(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    UsingDeclaratorList(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             UsingDeclarator(ctx):first{ node.reset(new UsingDeclaratorListNode(sourcePos)); node->AddNode(first); }
@@ -308,7 +313,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    UsingDeclarator(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
+    UsingDeclarator(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
         ::= Typename:typename_{ s = sourcePos; } NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } UnqualifiedId(ctx):unqualifiedId
             {
                 return new PrefixNode(s, typename_, new QualifiedIdNode(nnsPos, nns, unqualifiedId));
@@ -319,7 +324,7 @@ parser api(PARSER_API) DeclarationParser
             }
         ;
 
-    UsingEnumDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    UsingEnumDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             Using:usng{ s = sourcePos; } ElaboratedEnumSpecifier(ctx):ees Semicolon:semicolon
@@ -329,7 +334,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    UsingDirective(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
+    UsingDirective(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             Using:usng{ if (!s.IsValid()) s = sourcePos; }
             Namespace:nskw
@@ -344,11 +349,11 @@ parser api(PARSER_API) DeclarationParser
             )
         ;
 
-    NamespaceName(sngcpp::par::Context* ctx) : Node*
+    NamespaceName(sngcpp::symbols::Context* ctx) : Node*
         ::= Identifier(ctx):identifier{ return identifier; }
         ;
 
-    StaticAssertDeclaration(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    StaticAssertDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= StaticAssert:staticAssert{ s = sourcePos; } 
             LPAREN{ lpPos = sourcePos; }
             ConstantExpression(ctx):constantExpr
@@ -372,7 +377,7 @@ parser api(PARSER_API) DeclarationParser
         ::= STATIC_ASSERT{ return new StaticAssertNode(sourcePos); }
         ;
 
-    AliasDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    AliasDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   Using:usng{ s = sourcePos; } 
             Identifier(ctx):identifier 
@@ -390,7 +395,7 @@ parser api(PARSER_API) DeclarationParser
         ::= SEMICOLON{ return new EmptyDeclarationNode(sourcePos); }
         ;
 
-    AttributeDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    AttributeDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   
             AttributeSpecifierSeq(ctx):attributes 
@@ -401,7 +406,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    DeclSpecifierSeq(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    DeclSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             DeclSpecifier(ctx):first{ node.reset(new DeclSpecifierSequenceNode(sourcePos)); node->AddNode(first); } 
@@ -417,16 +422,16 @@ parser api(PARSER_API) DeclarationParser
         ::= INLINE{ return new InlineNode(sourcePos); }
         ;
 
-    DeclSpecifier(sngcpp::par::Context* ctx) : Node* 
+    DeclSpecifier(sngcpp::symbols::Context* ctx) : Node* 
         ::= StorageClassSpecifier:storageClassSpecifier{ return storageClassSpecifier; }
         |   DefiningTypeSpecifier(ctx):definingTypeSpecifier{ return definingTypeSpecifier; }
         |   FunctionSpecifier(ctx):functionSpecifier{ return functionSpecifier; }
+        |   Inline:inln{ return inln; }
         |   FRIEND{ return new FriendNode(sourcePos); }
         |   TYPEDEF{ return new TypedefNode(sourcePos); }
         |   CONSTEXPR{ return new ConstExprNode(sourcePos); }
         |   CONSTEVAL{ return new ConstEvalNode(sourcePos); }
         |   CONSTINIT{ return new ConstInitNode(sourcePos); }
-        |   Inline:inln{ return inln; }
         ;
 
     StorageClassSpecifier : Node*
@@ -436,24 +441,30 @@ parser api(PARSER_API) DeclarationParser
         |   MUTABLE{ return new MutableNode(sourcePos); }
         ;
 
-    FunctionSpecifier(sngcpp::par::Context* ctx) : Node*
+    FunctionSpecifier(sngcpp::symbols::Context* ctx) : Node*
         ::= VIRTUAL{ return new VirtualNode(sourcePos); }
         |   ExplicitSpecifier(ctx):explicitSpecifier{ return explicitSpecifier; }
         ;
 
-    ExplicitSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    ExplicitSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (   EXPLICIT{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } ConstantExpression(ctx):expr RPAREN{ rpPos = sourcePos; return new ConditionalExplicitNode(s, expr, lpPos, rpPos); }
         |   EXPLICIT{ return new ExplicitNode(sourcePos); }
         )
         ;
 
-    InitDeclaratorList(sngcpp::par::Context* ctx, var std::unique_ptr<InitDeclaratorListNode> node) : Node*
-        ::= InitDeclarator(ctx):first{ node.reset(new InitDeclaratorListNode(sourcePos)); node->AddNode(first); } 
+    InitDeclaratorList(sngcpp::symbols::Context* ctx, var std::unique_ptr<InitDeclaratorListNode> node) : Node*
+        ::= 
+        (
+            InitDeclarator(ctx):first{ node.reset(new InitDeclaratorListNode(sourcePos)); node->AddNode(first); } 
             (Comma:comma{ node->AddNode(comma); } InitDeclarator(ctx):next{ node->AddNode(next); })*
+        )
+        {
+            return node.release();
+        }
         ;
 
-    InitDeclarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    InitDeclarator(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= Declarator(ctx):declarator{ s = sourcePos; }
         (   RequiresClause(ctx):requiresClause{ return new InitDeclaratorNode(s, declarator, requiresClause); }
         |   Initializer(ctx):initializer{ return new InitDeclaratorNode(s, declarator, initializer); }
@@ -461,17 +472,17 @@ parser api(PARSER_API) DeclarationParser
         )
         ;
 
-    Declarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    Declarator(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::=
         (   NoPtrDeclarator(ctx):declarator{ s = sourcePos; } ParametersAndQualifiers(ctx):paramsAndQualifiers TrailingReturnType(ctx):trailingReturnType
             {
-                return new TrailingInvokeDeclaratorNode(s, declarator, paramsAndQualifiers, trailingReturnType);
+                return new TrailingFunctionDeclaratorNode(s, declarator, paramsAndQualifiers, trailingReturnType);
             }
         )
         |   PtrDeclarator(ctx):ptrDeclarator{ return ptrDeclarator; }
         ;
 
-    PtrDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<PtrDeclaratorNode> node) : Node*
+    PtrDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<PtrDeclaratorNode> node) : Node*
         ::= 
         (
             PtrOperator(ctx):first{ node.reset(new PtrDeclaratorNode(sourcePos)); node->AddNode(first); } 
@@ -481,20 +492,20 @@ parser api(PARSER_API) DeclarationParser
         |   NoPtrDeclarator(ctx):noPtrDecl{ return noPtrDecl; }
         ;
 
-    NoPtrDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    NoPtrDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             (   LPAREN{ s = sourcePos; lpPos = sourcePos; } PtrDeclarator(ctx):declarator RPAREN{ rpPos = sourcePos; node.reset(new ParenthesizedDeclaratorNode(s, declarator, lpPos, rpPos)); }
             |   DeclaratorId(ctx):declaratorId{ s = sourcePos; } AttributeSpecifierSeq(ctx):attributes{ node.reset(new TrailingAttributesNode(s, declaratorId, attributes)); }
             |   DeclaratorId(ctx):declaratorId2{ s = sourcePos; node.reset(declaratorId2); }
             )
-            (   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
+            (   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new ArrayDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
                 (   AttributeSpecifierSeq(ctx):attributes2{ node.reset(new TrailingAttributesNode(lbPos, node.release(), attributes2)); }
                 |   empty
                 )
             |   ParametersAndQualifiers(ctx):paramsAndQualifiers
                 { 
-                    node.reset(new InvokeDeclaratorNode(s, node.release(), paramsAndQualifiers)); 
+                    node.reset(new FunctionDeclaratorNode(s, node.release(), paramsAndQualifiers)); 
                 } 
             )*
         )
@@ -503,7 +514,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    ParametersAndQualifiers(sngcpp::par::Context* ctx, 
+    ParametersAndQualifiers(sngcpp::symbols::Context* ctx, 
         var std::unique_ptr<ParameterListNode> parameterListNode, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (   
@@ -527,7 +538,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    TrailingReturnType(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    TrailingReturnType(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             ARROW{ s = sourcePos; } TypeId(ctx):typeId
@@ -537,7 +548,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    PtrOperator(sngcpp::par::Context* ctx, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode, var SourcePos s) : Node*
+    PtrOperator(sngcpp::symbols::Context* ctx, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode, var SourcePos s) : Node*
         ::= 
         (   (NestedNameSpecifier(ctx):nns{ s = sourcePos; } Ptr:ptr)
             { 
@@ -577,30 +588,30 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    AbstractDeclarator(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    AbstractDeclarator(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   NoPtrAbstractDeclarator(ctx):declarator{ s = sourcePos; } ParametersAndQualifiers(ctx):params TrailingReturnType(ctx):trailingReturnType
             {
-                return new TrailingInvokeDeclaratorNode(s, declarator, params, trailingReturnType);
+                return new TrailingFunctionDeclaratorNode(s, declarator, params, trailingReturnType);
             }
         |   PtrAbstractDeclarator(ctx):ptrAbstractDeclarator{ return ptrAbstractDeclarator; }
         |   AbstractPackDeclarator(ctx):abstractPackDeclarator{ return abstractPackDeclarator; }
         )
         ;
 
-    NoPtrAbstractDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    NoPtrAbstractDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (
             (   LPAREN{ s = sourcePos; lpPos = sourcePos; } PtrAbstractDeclarator(ctx):declarator RPAREN{ rpPos = sourcePos; node.reset(new ParenthesizedDeclaratorNode(s, declarator, lpPos, rpPos)); }
             |   empty{ s = sourcePos; node.reset(new AbstractDeclaratorNode(sourcePos)); }
             )
-            (   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
+            (   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new ArrayDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
                 (   AttributeSpecifierSeq(ctx):attributes2{ node.reset(new TrailingAttributesNode(lbPos, node.release(), attributes2)); }
                 |   empty
                 )
             |   ParametersAndQualifiers(ctx):paramsAndQualifiers
                 { 
-                    node.reset(new InvokeDeclaratorNode(s, node.release(), paramsAndQualifiers)); 
+                    node.reset(new FunctionDeclaratorNode(s, node.release(), paramsAndQualifiers)); 
                 } 
             )*
         )
@@ -609,7 +620,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    PtrAbstractDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    PtrAbstractDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
             PtrOperator(ctx):first{ node.reset(new PtrDeclaratorNode(sourcePos)); node->AddNode(first); } 
@@ -624,7 +635,7 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    AbstractPackDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    AbstractPackDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   NoPtrAbstractPackDeclarator(ctx):noPtrAbstractPackDeclarator{ return noPtrAbstractPackDeclarator; }
         |   PtrOperator(ctx):first{ node.reset(new PtrDeclaratorNode(sourcePos)); node->AddNode(first); } 
@@ -633,14 +644,14 @@ parser api(PARSER_API) DeclarationParser
         )
         ;
 
-    NoPtrAbstractPackDeclarator(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    NoPtrAbstractPackDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= Ellipses:ellipses{ node.reset(ellipses); s = sourcePos; }
-            (   ParametersAndQualifiers(ctx):paramsAndQualifiers{ node.reset(new InvokeDeclaratorNode(s, node.release(), paramsAndQualifiers)); }
-            |   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new SubscriptDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
+            (   ParametersAndQualifiers(ctx):paramsAndQualifiers{ node.reset(new FunctionDeclaratorNode(s, node.release(), paramsAndQualifiers)); }
+            |   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new ArrayDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
             )*
         ;
 
-    DeclaratorId(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    DeclaratorId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   Ellipses:ellipses{ s = sourcePos; } IdExpression(ctx):idExpr{ return new PackDeclaratorIdNode(s, ellipses, idExpr); }
         |   IdExpression(ctx):idExpr2{ return idExpr2; }
@@ -673,7 +684,7 @@ parser api(PARSER_API) DeclarationParser
         |   VOLATILE{ return new VolatileNode(sourcePos); }
         ;
 
-    NoexceptSpecifier(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    NoexceptSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             NOEXCEPT{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } ConstantExpression(ctx):constantExpr RPAREN{ rpPos = sourcePos; }

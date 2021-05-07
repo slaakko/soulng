@@ -17,6 +17,10 @@ struct DRIVER_API ParseOptions
     ParseOptions() : fileIndex(0), log(false)
     {
     }
+    ParseOptions& Defaults()
+    {
+        return *this;
+    }
     ParseOptions& FileName(const std::string& fileName_)
     {
         fileName = fileName_;
@@ -43,9 +47,23 @@ struct DRIVER_API ParseOptions
     std::string logFilePath;
 };
 
-DRIVER_API std::u32string Preprocess(const std::string& sourceFileName);
-DRIVER_API std::unique_ptr<Node> Parse(const std::u32string& sourceFileContent, ParseOptions& options);
-DRIVER_API std::unique_ptr<Node> Parse(const std::string& sourceFileName, ParseOptions& options);
+DRIVER_API std::unique_ptr<std::u32string> Preprocess(const std::string& sourceFileName);
+
+struct DRIVER_API ParseResult
+{
+    ParseResult();
+    ParseResult(std::unique_ptr<std::u32string>&& preprocessedSourceText_, std::unique_ptr<Node>&& translationUnitNode_);
+    std::unique_ptr<std::u32string> preprocessedSourceText;
+    std::unique_ptr<Node> translationUnitNode;
+};
+
+DRIVER_API ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, ParseOptions& options);
+DRIVER_API ParseResult Parse(const std::string& sourceFileName, ParseOptions& options);
+DRIVER_API void WriteSourceCode(Node* translationUnitNode, std::ostream& stream);
+DRIVER_API void WriteSourceCode(Node* translationUnitNode, const std::string& fileName);
+DRIVER_API void WriteXml(Node* translationUnitNode, std::ostream& stream);
+DRIVER_API void WriteXml(Node* translationUnitNode, const std::string& fileName);
+DRIVER_API void WriteBinary(Node* translationUnitNode, const std::string& fileName);
 
 } // sngcpp::driver
 

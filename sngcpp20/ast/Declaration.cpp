@@ -477,21 +477,21 @@ void InitDeclaratorNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-TrailingInvokeDeclaratorNode::TrailingInvokeDeclaratorNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::trailingInvokeDeclaratorNode, sourcePos_)
+TrailingFunctionDeclaratorNode::TrailingFunctionDeclaratorNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::trailingFunctionDeclaratorNode, sourcePos_)
 {
 }
 
-TrailingInvokeDeclaratorNode::TrailingInvokeDeclaratorNode(const SourcePos& sourcePos_, Node* declarator_, Node* params_, Node* trailingReturnType_) :
-    CompoundNode(NodeKind::trailingInvokeDeclaratorNode, sourcePos_), declarator(declarator_), params(params_), trailingReturnType(trailingReturnType_)
+TrailingFunctionDeclaratorNode::TrailingFunctionDeclaratorNode(const SourcePos& sourcePos_, Node* declarator_, Node* params_, Node* trailingReturnType_) :
+    CompoundNode(NodeKind::trailingFunctionDeclaratorNode, sourcePos_), declarator(declarator_), params(params_), trailingReturnType(trailingReturnType_)
 {
 }
 
-void TrailingInvokeDeclaratorNode::Accept(Visitor& visitor)
+void TrailingFunctionDeclaratorNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-void TrailingInvokeDeclaratorNode::Write(Writer& writer)
+void TrailingFunctionDeclaratorNode::Write(Writer& writer)
 {
     CompoundNode::Write(writer);
     writer.Write(declarator.get());
@@ -499,7 +499,7 @@ void TrailingInvokeDeclaratorNode::Write(Writer& writer)
     writer.Write(trailingReturnType.get());
 }
 
-void TrailingInvokeDeclaratorNode::Read(Reader& reader)
+void TrailingFunctionDeclaratorNode::Read(Reader& reader)
 {
     CompoundNode::Read(reader);
     declarator.reset(reader.ReadNode());
@@ -734,21 +734,21 @@ void PackDeclaratorIdNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-SubscriptDeclaratorNode::SubscriptDeclaratorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::subscriptDeclaratorNode, sourcePos_, nullptr)
+ArrayDeclaratorNode::ArrayDeclaratorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::arrayDeclaratorNode, sourcePos_, nullptr)
 {
 }
 
-SubscriptDeclaratorNode::SubscriptDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_) :
-    UnaryNode(NodeKind::subscriptDeclaratorNode, sourcePos_, child_), index(index_), lbPos(lbPos_), rbPos(rbPos_)
+ArrayDeclaratorNode::ArrayDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_) :
+    UnaryNode(NodeKind::arrayDeclaratorNode, sourcePos_, child_), index(index_), lbPos(lbPos_), rbPos(rbPos_)
 {
 }
 
-void SubscriptDeclaratorNode::Accept(Visitor& visitor)
+void ArrayDeclaratorNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-void SubscriptDeclaratorNode::Write(Writer& writer)
+void ArrayDeclaratorNode::Write(Writer& writer)
 {
     UnaryNode::Write(writer);
     writer.Write(index.get());
@@ -756,7 +756,7 @@ void SubscriptDeclaratorNode::Write(Writer& writer)
     writer.Write(rbPos);
 }
 
-void SubscriptDeclaratorNode::Read(Reader& reader)
+void ArrayDeclaratorNode::Read(Reader& reader)
 {
     UnaryNode::Read(reader);
     index.reset(reader.ReadNode());
@@ -764,26 +764,26 @@ void SubscriptDeclaratorNode::Read(Reader& reader)
     rbPos = reader.ReadSourcePos();
 }
 
-InvokeDeclaratorNode::InvokeDeclaratorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::invokeDeclaratorNode, sourcePos_, nullptr)
+FunctionDeclaratorNode::FunctionDeclaratorNode(const SourcePos& sourcePos_) : UnaryNode(NodeKind::functionDeclaratorNode, sourcePos_, nullptr)
 {
 }
 
-InvokeDeclaratorNode::InvokeDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* parameters_) : UnaryNode(NodeKind::invokeDeclaratorNode, sourcePos_, child_), params(parameters_)
+FunctionDeclaratorNode::FunctionDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* parameters_) : UnaryNode(NodeKind::functionDeclaratorNode, sourcePos_, child_), params(parameters_)
 {
 }
 
-void InvokeDeclaratorNode::Accept(Visitor& visitor)
+void FunctionDeclaratorNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-void InvokeDeclaratorNode::Write(Writer& writer)
+void FunctionDeclaratorNode::Write(Writer& writer)
 {
     UnaryNode::Write(writer);
     writer.Write(params.get());
 }
 
-void InvokeDeclaratorNode::Read(Reader& reader)
+void FunctionDeclaratorNode::Read(Reader& reader)
 {
     UnaryNode::Read(reader);
     params.reset(reader.ReadNode());

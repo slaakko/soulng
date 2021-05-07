@@ -12,9 +12,10 @@ namespace soulng { namespace lexer {
 
 struct SOULNG_LEXER_API SourcePos
 {
-    SourcePos() : line(0), col(0) {}
-    SourcePos(int line_, int col_) : line(line_), col(col_) {}
+    SourcePos() : pos(-1), line(0), col(0) {}
+    SourcePos(int64_t pos_, int line_, int col_) : pos(pos_), line(line_), col(col_) {}
     bool IsValid() const { return line != 0; }
+    int64_t pos;
     int line;
     int col;
 };

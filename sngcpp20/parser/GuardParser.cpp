@@ -6,12 +6,11 @@
 // this file has been automatically generated from 'C:/work/soulng/sngcpp20/parser/GuardParser.parser' using soulng parser generator spg version 4.0.0
 
 using namespace soulng::unicode;
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
 
-soulng::parser::Match GuardParser::MemberFunctionGuard(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match GuardParser::MemberFunctionGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -22,6 +21,7 @@ soulng::parser::Match GuardParser::MemberFunctionGuard(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("MemberFunctionGuard"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 199);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -30,7 +30,7 @@ soulng::parser::Match GuardParser::MemberFunctionGuard(CppLexer& lexer, sngcpp::
         soulng::parser::Match match(true);
         if (match.hit)
         {
-            pass = ctx->GetFlag(ContextFlags::parseMemberFunction);
+            pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseMemberFunction);
         }
         if (match.hit && !pass)
         {
@@ -52,7 +52,7 @@ soulng::parser::Match GuardParser::MemberFunctionGuard(CppLexer& lexer, sngcpp::
     return match;
 }
 
-soulng::parser::Match GuardParser::SavedMemberFunctionBodyGuard(CppLexer& lexer, sngcpp::par::Context* ctx)
+soulng::parser::Match GuardParser::SavedMemberFunctionBodyGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -63,6 +63,7 @@ soulng::parser::Match GuardParser::SavedMemberFunctionBodyGuard(CppLexer& lexer,
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SavedMemberFunctionBodyGuard"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
+    soulng::lexer::RuleGuard ruleGuard(lexer, 200);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -71,7 +72,7 @@ soulng::parser::Match GuardParser::SavedMemberFunctionBodyGuard(CppLexer& lexer,
         soulng::parser::Match match(true);
         if (match.hit)
         {
-            pass = ctx->GetFlag(ContextFlags::parseSavedMemberFunctionBody);
+            pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody);
         }
         if (match.hit && !pass)
         {

@@ -439,7 +439,7 @@ bool PP::Evaluate(const std::vector<soulng::lexer::Token>& exprPPTokens) const
     CppLexer lexer(emptyStr, emptyStr, fileName, fileIndex);
     lexer.SetLine(line);
     lexer.SetTokens(cppTokens);
-    sngcpp::par::Context ctx;
+    sngcpp::symbols::Context ctx;
     std::unique_ptr<sngcpp::ast::Node> expr = ExpressionParser::Parse(lexer, &ctx);
     Evaluator evaluator(fileName, line, context);
     expr->Accept(evaluator);

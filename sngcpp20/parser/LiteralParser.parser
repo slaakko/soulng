@@ -4,14 +4,13 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Literal.hpp>
 [cpp]#include <sngcpp20/ast/Identifier.hpp>
 [cpp]#include <sngcpp20/parser/LiteralTokenParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -19,8 +18,9 @@ using namespace soulng::lexer;
 parser api(PARSER_API) LiteralParser
 {
     uselexer CppLexer;
+    state;
 
-    Literal(sngcpp::par::Context* ctx) : Node*
+    Literal(sngcpp::symbols::Context* ctx) : Node*
         ::= UserDefinedLiteral(ctx):udLiteral{ return udLiteral; }
         |   INTLIT{ return sngcpp::par::ParseIntegerLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
         |   FLOATLIT{ return sngcpp::par::ParseFloatingLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
@@ -32,7 +32,7 @@ parser api(PARSER_API) LiteralParser
         |   NULLPTR{ return new NullPtrLiteralNode(sourcePos, lexer.GetMatch(pos)); }
         ;
 
-    UserDefinedLiteral(sngcpp::par::Context* ctx, var SourcePos s, var int64_t p, var std::unique_ptr<Node> udLiteralNode) : Node*
+    UserDefinedLiteral(sngcpp::symbols::Context* ctx, var SourcePos s, var int64_t p, var std::unique_ptr<Node> udLiteralNode) : Node*
         ::= 
         (   INTLIT{ s = sourcePos; p = pos; }
             UdSuffix:udSuffix{ udLiteralNode.reset(new UserDefinedLiteraNode(s, sngcpp::par::ParseIntegerLiteral(s, lexer.FileName(), lexer.GetMatch(p)), udSuffix)); }
@@ -52,7 +52,7 @@ parser api(PARSER_API) LiteralParser
         ::= ID{ return new IdentifierNode(sourcePos, lexer.GetMatch(pos)); }
         ;
 
-    LiteralOperatorId(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos stringLitPos, var SourcePos idPos, var int64_t idp) : Node*
+    LiteralOperatorId(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos stringLitPos, var SourcePos idPos, var int64_t idp) : Node*
         ::= 
         (
             OPERATOR{ s = sourcePos; } STRINGLIT{ stringLitPos = sourcePos; pass = lexer.GetMatch(pos) == U""; } ID{ idPos = sourcePos; idp = pos; }
@@ -62,7 +62,7 @@ parser api(PARSER_API) LiteralParser
         }
         ;
 
-    StringLiteral(sngcpp::par::Context* ctx) : Node*
+    StringLiteral(sngcpp::symbols::Context* ctx) : Node*
         ::= STRINGLIT{ return sngcpp::par::ParseStringLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
         ;
 }

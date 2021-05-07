@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Class.hpp>
 [hpp]#include <sngcpp20/ast/Template.hpp>
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
@@ -19,7 +19,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -27,6 +26,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) TemplateParser
 {
     uselexer CppLexer;
+    state;
 
     using ConceptParser.ConceptDefinition;
     using ConceptParser.RequiresClause;
@@ -46,7 +46,7 @@ parser api(PARSER_API) TemplateParser
     using StatementParser.Semicolon;
     using TypeParser.TypeId;
 
-    TemplateDeclaration(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    TemplateDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   TemplateHead(ctx):templateHead{ s = sourcePos; }
             (   ConceptDefinition(ctx):concepDefinition{ return new TemplateDeclarationNode(s, templateHead, concepDefinition); }
@@ -55,7 +55,7 @@ parser api(PARSER_API) TemplateParser
         )
         ;
 
-    TemplateHead(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    TemplateHead(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             TEMPLATE{ s = sourcePos; }
@@ -67,7 +67,7 @@ parser api(PARSER_API) TemplateParser
         }
         ;
 
-    TemplateParameterList(sngcpp::par::Context* ctx, var std::unique_ptr<TemplateParameterListNode> node, var SourcePos laPos, var SourcePos raPos) : Node*
+    TemplateParameterList(sngcpp::symbols::Context* ctx, var std::unique_ptr<TemplateParameterListNode> node, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
             LANGLE{ node.reset(new TemplateParameterListNode(sourcePos)); laPos = sourcePos; } 
@@ -82,12 +82,12 @@ parser api(PARSER_API) TemplateParser
         }
         ;
 
-    TemplateParameter(sngcpp::par::Context* ctx) : Node*
+    TemplateParameter(sngcpp::symbols::Context* ctx) : Node*
         ::= TypeParameter(ctx):typeParam{ return typeParam; }
         |   ParameterDeclaration(ctx):param{ return param; }
         ;
 
-    TypeParameter(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    TypeParameter(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (   TemplateHead(ctx):templateHead{ s = sourcePos; } 
             TypeParameterKey:key 
@@ -114,14 +114,14 @@ parser api(PARSER_API) TemplateParser
         ::= TYPENAME{ return new TypenameNode(sourcePos); }
         ;
 
-    TemplateId(sngcpp::par::Context* ctx, var std::unique_ptr<TemplateIdNode> node, var std::unique_ptr<Node> templateName, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+    TemplateId(sngcpp::symbols::Context* ctx, var std::unique_ptr<TemplateIdNode> node, var std::unique_ptr<Node> templateName, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
             (
                 (   OperatorFunctionId(ctx):operatorFunctionId{ templateName.reset(operatorFunctionId); s = sourcePos; }
                 |   LiteralOperatorId(ctx):literalOperatorId{ templateName.reset(literalOperatorId); s = sourcePos; }
                 )
-                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName.release())); }
+                LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName.release())); }
                 TemplateArgumentList(ctx, node.get()):templateArgs?
                 RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
             )
@@ -134,11 +134,11 @@ parser api(PARSER_API) TemplateParser
         |   SimpleTemplateId(ctx):simpleTemplateId{ return simpleTemplateId; }
         ;
 
-    SimpleTemplateId(sngcpp::par::Context* ctx, var std::unique_ptr<TemplateIdNode> node, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+    SimpleTemplateId(sngcpp::symbols::Context* ctx, var std::unique_ptr<TemplateIdNode> node, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
             TemplateName(ctx):templateName{ s = sourcePos; }
-            LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName)); }
+            LANGLE{ laPos = sourcePos; ++lexer.langleCount; ctx->PushSetFlag(sngcpp::symbols::ContextFlags::parsingTemplateId); node.reset(new TemplateIdNode(s, templateName)); }
             TemplateArgumentList(ctx, node.get()):templateArgs?
             RANGLE{ raPos = sourcePos; --lexer.langleCount; ctx->PopFlags(); } / { ctx->PopFlags(); }
         )
@@ -149,11 +149,11 @@ parser api(PARSER_API) TemplateParser
         }
         ;
 
-    TemplateName(sngcpp::par::Context* ctx) : Node*
+    TemplateName(sngcpp::symbols::Context* ctx) : Node*
         ::= Identifier(ctx):identifier{ return identifier; }
         ;
 
-    TemplateArgumentList(sngcpp::par::Context* ctx, sngcpp::ast::Node* templateIdNode)
+    TemplateArgumentList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* templateIdNode)
         ::= 
         (
             TemplateArgument(ctx):left{ templateIdNode->AddNode(left); }
@@ -164,13 +164,13 @@ parser api(PARSER_API) TemplateParser
         )?
         ;
 
-    TemplateArgument(sngcpp::par::Context* ctx) : Node*
+    TemplateArgument(sngcpp::symbols::Context* ctx) : Node*
         ::= ConstantExpression(ctx):constantExpr{ return constantExpr; }
         |   TypeId(ctx):typeId{ return typeId; }
         |   IdExpression(ctx):idExpr{ return idExpr; }
         ;
 
-    DeductionGuide(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<ParameterListNode> params, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    DeductionGuide(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<ParameterListNode> params, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (ExplicitSpecifier(ctx):explicitSpecifier{ s = sourcePos; })?
@@ -189,7 +189,7 @@ parser api(PARSER_API) TemplateParser
         ::= ARROW{ return new ArrowNode(sourcePos); }
         ;
 
-    ExplicitInstantiation(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    ExplicitInstantiation(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             (Extern:extrn{ s = sourcePos; })? 
@@ -209,7 +209,7 @@ parser api(PARSER_API) TemplateParser
         ::= TEMPLATE{ return new TemplateNode(sourcePos); }
         ;
 
-    ExplicitSpecialization(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
+    ExplicitSpecialization(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos laPos, var SourcePos raPos) : Node*
         ::= 
         (
             Template:tmp{ s = sourcePos; }

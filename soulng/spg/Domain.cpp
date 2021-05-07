@@ -53,6 +53,16 @@ GrammarParser* Domain::GetParser(const std::u32string& parserName) const
     }
 }
 
+void Domain::SetRuleHeaderFilePath(const std::string& ruleHeaderFilePath_)
+{
+    ruleHeaderFilePath = ruleHeaderFilePath_;
+}
+
+void Domain::SetRuleSourceFilePath(const std::string& ruleSourceFilePath_)
+{
+    ruleSourceFilePath = ruleSourceFilePath_;
+}
+
 void Domain::Write(CodeFormatter& formatter)
 {
     formatter.WriteLine("domain " + name);
@@ -64,6 +74,13 @@ void Domain::Write(CodeFormatter& formatter)
     }
     formatter.DecIndent();
     formatter.WriteLine("}");
+}
+
+void Domain::AddRule(RuleParser* rule)
+{
+    int ruleId = rules.size();
+    rule->SetId(ruleId);
+    rules.push_back(rule);
 }
 
 } } // namespae soulng::spg

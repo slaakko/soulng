@@ -4,7 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
-[hpp]#include <sngcpp20/parser/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Lambda.hpp>
 [cpp]#include <sngcpp20/Parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/Parser/ConceptParser.hpp>
@@ -18,7 +18,6 @@
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
-using namespace sngcpp::par;
 using namespace sngcpp::ast;
 using namespace CppTokens;
 using namespace soulng::lexer;
@@ -26,6 +25,7 @@ using namespace soulng::lexer;
 parser api(PARSER_API) LambdaParser
 {
     uselexer CppLexer;
+    state;
 
     using AttributeParser.AttributeSpecifierSeq;
     using ConceptParser.RequiresClause;
@@ -41,7 +41,7 @@ parser api(PARSER_API) LambdaParser
     using StatementParser.CompoundStatement;
     using TemplateParser.TemplateParameterList;
 
-    LambdaExpression(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    LambdaExpression(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             LambdaIntroducer(ctx):introducer{ s = sourcePos; }
@@ -54,7 +54,7 @@ parser api(PARSER_API) LambdaParser
         }
         ;
 
-    LambdaIntroducer(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    LambdaIntroducer(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
         ::= 
         (   
             LBRACKET{ s = sourcePos; lbPos = sourcePos; }
@@ -66,7 +66,7 @@ parser api(PARSER_API) LambdaParser
         }
         ;
 
-    LambdaCapture(sngcpp::par::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    LambdaCapture(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (   CaptureDefault:captureDefault{ node.reset(new LambdaCaptureNode(sourcePos)); node->AddNode(captureDefault); } 
             (Comma:comma{ node->AddNode(comma); } CaptureList(ctx, node.get()):captureList)?
@@ -82,16 +82,16 @@ parser api(PARSER_API) LambdaParser
         |   ASSIGN{ return new DefaultCopyCaptureNode(sourcePos); }
         ;
 
-    CaptureList(sngcpp::par::Context* ctx, sngcpp::ast::Node* container) 
+    CaptureList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container) 
         ::= Capture(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } Capture(ctx):next{ container->AddNode(next); })*
         ;
 
-    Capture(sngcpp::par::Context* ctx) : Node*
+    Capture(sngcpp::symbols::Context* ctx) : Node*
         ::= InitCapture(ctx):initCapture{ return initCapture; }
         |   SimpleCapture(ctx):simpleCapture{ return simpleCapture; }
         ;
 
-    InitCapture(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<Node> byRefCaptureNode) : Node*
+    InitCapture(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> byRefCaptureNode) : Node*
         ::= 
         (
             (AMP{ s = sourcePos; byRefCaptureNode.reset(new ByRefCaptureNode(sourcePos)); })? 
@@ -104,7 +104,7 @@ parser api(PARSER_API) LambdaParser
         }
         ;
 
-    SimpleCapture(sngcpp::par::Context* ctx, var SourcePos s, var SourcePos thisPos, var std::unique_ptr<Node> byRefCaptureNode) : Node*
+    SimpleCapture(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos thisPos, var std::unique_ptr<Node> byRefCaptureNode) : Node*
         ::= 
         (
             STAR{ s = sourcePos; } THIS{ thisPos = sourcePos; return new CurrentObjectCopyCapture(s, thisPos); }
@@ -121,7 +121,7 @@ parser api(PARSER_API) LambdaParser
         )
         ;
 
-    LambdaDeclarator(sngcpp::par::Context* ctx, var SourcePos s, var std::unique_ptr<ParameterListNode> parameterList, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    LambdaDeclarator(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<ParameterListNode> parameterList, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
             (   LPAREN{ s = sourcePos; lpPos = sourcePos; parameterList.reset(new ParameterListNode(sourcePos)); } 
@@ -136,7 +136,7 @@ parser api(PARSER_API) LambdaParser
         }
         ;
 
-    LambdaSpecifiers(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    LambdaSpecifiers(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             (DeclSpecifierSeq(ctx):declSpecifiers{ s = sourcePos; })?
@@ -149,7 +149,7 @@ parser api(PARSER_API) LambdaParser
         }
         ;
 
-    LambdaTemplateParams(sngcpp::par::Context* ctx, var SourcePos s) : Node*
+    LambdaTemplateParams(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
             TemplateParameterList(ctx):templateParams{ s = sourcePos; } RequiresClause(ctx):requiresClause?

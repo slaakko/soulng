@@ -1077,10 +1077,21 @@ soulng::parser::Match PPLineParser::Undef(PPLexer& lexer, sngcpp::pp::PP* pp)
             soulng::parser::Match* parentMatch4 = &match;
             {
                 soulng::parser::Match match(false);
-                if (*lexer == ID)
+                soulng::parser::Match* parentMatch5 = &match;
                 {
-                    ++lexer;
-                    match.hit = true;
+                    int64_t pos = lexer.GetPos();
+                    soulng::parser::Match match(false);
+                    if (*lexer == ID)
+                    {
+                        ++lexer;
+                        match.hit = true;
+                    }
+                    if (match.hit)
+                    {
+                        soulng::lexer::Token id = lexer.GetToken(pos);
+                        pp->Undef(id.match);
+                    }
+                    *parentMatch5 = match;
                 }
                 *parentMatch4 = match;
             }
@@ -1187,7 +1198,7 @@ soulng::parser::Match PPLineParser::PPToken(PPLexer& lexer, std::vector<soulng::
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
-    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos();
+    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
     soulng::lexer::Span span = lexer.GetSpan();
     switch (*lexer)
     {
