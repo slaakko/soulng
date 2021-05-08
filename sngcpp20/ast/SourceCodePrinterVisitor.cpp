@@ -5,6 +5,7 @@
 
 #include <sngcpp20/ast/SourceCodePrinterVisitor.hpp>
 #include <sngcpp20/ast/Node.hpp>
+#include <sngcpp20/ast/Util.hpp>
 #include <soulng/util/Unicode.hpp>
 
 namespace sngcpp::ast {
@@ -71,7 +72,7 @@ void SourceCodePrinterVisitor::BeginVisit(Node& node)
 void SourceCodePrinterVisitor::VisitIdentfier(const std::u32string& id, const SourcePos& sourcePos)
 {
     Move(sourcePos);
-    Write(id);
+    Write(ToUniversalId(id));
 }
 
 void SourceCodePrinterVisitor::VisitKeyword(const std::string& keyword, const SourcePos& sourcePos)

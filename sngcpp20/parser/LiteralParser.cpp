@@ -2,6 +2,7 @@
 #include <soulng/util/Unicode.hpp>
 #include <sngcpp20/ast/Identifier.hpp>
 #include <sngcpp20/parser/LiteralTokenParser.hpp>
+#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -663,7 +664,7 @@ soulng::parser::Match LiteralParser::UdSuffix(CppLexer& lexer)
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("UdSuffix"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new IdentifierNode(sourcePos, lexer.GetMatch(pos)));
+                return soulng::parser::Match(true, sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
             }
         }
         *parentMatch0 = match;
@@ -799,7 +800,7 @@ soulng::parser::Match LiteralParser::LiteralOperatorId(CppLexer& lexer, sngcpp::
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("LiteralOperatorId"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new LiteralOperatorIdNode(s, new IdentifierNode(idPos, lexer.GetMatch(idp)), stringLitPos));
+                return soulng::parser::Match(true, new LiteralOperatorIdNode(s, sngcpp::par::ParseIdentifier(idPos, lexer.FileName(), lexer.GetMatch(idp)), stringLitPos));
             }
         }
         *parentMatch0 = match;

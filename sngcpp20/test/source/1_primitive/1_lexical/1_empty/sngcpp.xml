@@ -1,0 +1,11 @@
+<sngcpp>
+    <project name="1_empty">
+        <files>
+            <file name="block_comment.cpp"/>
+            <file name="empty.cpp"/>
+            <file name="empty_block_comment.cpp"/>
+            <file name="empty_line_comment.cpp"/>
+            <file name="line_comments.cpp"/>
+        </files>
+    </project>
+</sngcpp>

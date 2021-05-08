@@ -8,6 +8,7 @@
 #include <sngcpp20/parser/IdentifierParser.hpp>
 #include <sngcpp20/parser/InitializationParser.hpp>
 #include <sngcpp20/parser/TypeParser.hpp>
+#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -474,7 +475,7 @@ soulng::parser::Match StatementParser::LabeledStatement(CppLexer& lexer, sngcpp:
                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("LabeledStatement"));
                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                    return soulng::parser::Match(true, new LabeledStatementNode(s, new IdentifierNode(labelPos, lexer.GetMatch(labelP)), stmt.release(), attributes.release(), colonPos));
+                                    return soulng::parser::Match(true, new LabeledStatementNode(s, sngcpp::par::ParseIdentifier(labelPos, lexer.FileName(), lexer.GetMatch(labelP)), stmt.release(), attributes.release(), colonPos));
                                 }
                             }
                             *parentMatch16 = match;

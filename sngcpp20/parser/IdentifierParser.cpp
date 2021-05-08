@@ -4,6 +4,7 @@
 #include <sngcpp20/parser/FunctionParser.hpp>
 #include <sngcpp20/parser/LiteralParser.hpp>
 #include <sngcpp20/parser/TemplateParser.hpp>
+#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -44,7 +45,7 @@ soulng::parser::Match IdentifierParser::Identifier(CppLexer& lexer, sngcpp::symb
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Identifier"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new IdentifierNode(sourcePos, lexer.GetMatch(pos)));
+                return soulng::parser::Match(true, sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
             }
         }
         *parentMatch0 = match;
@@ -89,15 +90,16 @@ soulng::parser::Match IdentifierParser::TypeIdentifier(CppLexer& lexer, sngcpp::
         }
         if (match.hit)
         {
-            std::u32string id = lexer.GetMatch(pos);
-            Symbol * symbol = ctx->GetSymbolTable()->Lookup(id);
+            std::unique_ptr<IdentifierNode> identifier(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
+            Symbol * symbol = ctx->GetSymbolTable()->Lookup(identifier->Str());
             if (symbol && symbol->IsTypeSymbol())
             {
+                ctx->GetSymbolTable()->MapNode(identifier.get(), symbol);
                 {
                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeIdentifier"));
                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, new IdentifierNode(sourcePos, id));
+                    return soulng::parser::Match(true, identifier.release());
                 }
             }
             else
@@ -657,7 +659,7 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
                                                 }
                                                 if (match.hit)
                                                 {
-                                                    idNode.reset(new IdentifierNode(sourcePos, lexer.GetMatch(pos)));
+                                                    idNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
                                                 }
                                                 *parentMatch14 = match;
                                             }

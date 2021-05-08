@@ -100,7 +100,7 @@ Project::Project(const std::string& dirPath_, bool verbose) : dirPath(GetFullPat
                 {
                     throw std::runtime_error("'child' element has no 'project' attribute in '" + filePath + "'");
                 }
-                std::string childProjectDir = Path::Combine(rootPath, ToUtf8(projectAttr));
+                std::string childProjectDir = Path::Combine(dirPath, ToUtf8(projectAttr));
                 std::unique_ptr<Project> childProject(new Project(childProjectDir, verbose));
                 childProjects.push_back(std::move(childProject));
             }

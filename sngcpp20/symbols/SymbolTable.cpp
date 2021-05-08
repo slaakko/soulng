@@ -74,7 +74,7 @@ void SymbolTable::MapNode(Node* node, Symbol* symbol)
     symbolNodeMap[symbol] = node;
 }
 
-Symbol* SymbolTable::Lookup(std::u32string& name) const
+Symbol* SymbolTable::Lookup(const std::u32string& name) const
 {
     return currentScope->Lookup(name, ScopeLookup::thisAndParentScope);
 }

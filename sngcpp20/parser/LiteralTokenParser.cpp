@@ -678,4 +678,4 @@ StringLiteralNode* ParseStringLiteral(const SourcePos& sourcePos, const std::str
     return new StringLiteralNode(sourcePos, value, encodingPrefix, rep);
 }
 
-} // namespace sngcpp::cppparser
+} // namespace sngcpp::par

@@ -9,6 +9,7 @@
 #include <sngcpp20/parser/LiteralParser.hpp>
 #include <sngcpp20/parser/TemplateParser.hpp>
 #include <sngcpp20/parser/TypeParser.hpp>
+#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -4018,7 +4019,7 @@ soulng::parser::Match ExpressionParser::SizeOfExpression(CppLexer& lexer, sngcpp
                                     }
                                     if (match.hit)
                                     {
-                                        childNode.reset(new IdentifierNode(sourcePos, lexer.GetMatch(pos)));
+                                        childNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
                                     }
                                     *parentMatch22 = match;
                                 }

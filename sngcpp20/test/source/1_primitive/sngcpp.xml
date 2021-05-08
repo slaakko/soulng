@@ -1,0 +1,5 @@
+<sngcpp>
+    <project name="1_primitive">
+        <child project="1_lexical"/>
+    </project>
+</sngcpp>

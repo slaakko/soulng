@@ -11,6 +11,7 @@
 [cpp]#include <sngcpp20/parser/FunctionParser.hpp>
 [cpp]#include <sngcpp20/parser/LiteralParser.hpp>
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -33,17 +34,18 @@ parser api(PARSER_API) IdentifierParser
     using FunctionParser.DestructorId;
 
     Identifier(sngcpp::symbols::Context* ctx) : Node*
-        ::= ID{ return new IdentifierNode(sourcePos, lexer.GetMatch(pos)); }
+        ::= ID{ return sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
         ;
 
     TypeIdentifier(sngcpp::symbols::Context* ctx) : Node*
         ::= ID
             { 
-                std::u32string id = lexer.GetMatch(pos); 
-                Symbol* symbol = ctx->GetSymbolTable()->Lookup(id);
+                std::unique_ptr<IdentifierNode> identifier(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
+                Symbol* symbol = ctx->GetSymbolTable()->Lookup(identifier->Str());
                 if (symbol && symbol->IsTypeSymbol())
                 {
-                    return new IdentifierNode(sourcePos, id); 
+                    ctx->GetSymbolTable()->MapNode(identifier.get(), symbol);
+                    return identifier.release();
                 }
                 else
                 {
@@ -87,7 +89,7 @@ parser api(PARSER_API) IdentifierParser
         (   empty{ nnsNode.reset(new NestedNameSpecifierNode(sourcePos)); }
             (COLONCOLON{ nnsNode->AddNode(new ColonColonNode(sourcePos)); })?
             (
-                ID{ idNode.reset(new IdentifierNode(sourcePos, lexer.GetMatch(pos))); } 
+                ID{ idNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos))); } 
                 COLONCOLON{ nnsNode->AddNode(idNode.release()); nnsNode->AddNode(new ColonColonNode(sourcePos)); }
             |   
                 (TEMPLATE{ nnsNode->AddNode(new TemplateNode(sourcePos)); })?

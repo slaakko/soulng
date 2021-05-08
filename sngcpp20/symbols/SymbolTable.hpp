@@ -27,7 +27,7 @@ public:
     Symbol* GetSymbolNothrow(Node* node) const;
     Symbol* GetSymbol(Node* node) const;
     void MapNode(Node* node, Symbol* symbol);
-    Symbol* Lookup(std::u32string& name) const;
+    Symbol* Lookup(const std::u32string& name) const;
     Scope* CurrentScope() const { return currentScope; }
     void BeginScope(Scope& scope);
     void EndScope();

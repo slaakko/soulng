@@ -5,6 +5,7 @@
 
 #ifndef SOULNG_UTIL_UTIL_INCLUDED
 #define SOULNG_UTIL_UTIL_INCLUDED
+#include <soulng/util/UtilApi.hpp>
 #include <vector>
 #include <stdint.h>
 #include <string>
@@ -36,6 +37,8 @@ inline uint64_t Align(uint64_t n, uint64_t alignment)
 {
     return (n + alignment - 1u) & -alignment;
 }
+
+UTIL_API bool FileContentsEqual(const std::string& filePath1, const std::string& filePath2);
 
 } } // namespace soulng::util
 

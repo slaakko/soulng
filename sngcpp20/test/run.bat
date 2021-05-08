@@ -1,2 +1,2 @@
 @echo off
-sngcpp -a build
+sngcpp -oav build

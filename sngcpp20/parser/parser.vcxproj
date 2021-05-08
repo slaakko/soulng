@@ -165,6 +165,7 @@
     <ClInclude Include="FunctionParser.hpp" />
     <ClInclude Include="GuardParser.hpp" />
     <ClInclude Include="IdentifierParser.hpp" />
+    <ClInclude Include="IdentifierTokenParser.hpp" />
     <ClInclude Include="InitializationParser.hpp" />
     <ClInclude Include="LambdaParser.hpp" />
     <ClInclude Include="LiteralParser.hpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="FunctionParser.cpp" />
     <ClCompile Include="GuardParser.cpp" />
     <ClCompile Include="IdentifierParser.cpp" />
+    <ClCompile Include="IdentifierTokenParser.cpp" />
     <ClCompile Include="InitializationParser.cpp" />
     <ClCompile Include="LambdaParser.cpp" />
     <ClCompile Include="LiteralParser.cpp" />

@@ -1,0 +1,17 @@
+parsing error at 'C:/work/soulng/sngcpp20/test/source/1_primitive/1_1_lexical/1_1_2_identifier/id9_error.cpp:1':
+int 0;
+    ^ 
+
+Parser state:
+TranslationUnitParser.TranslationUnit
+DeclarationParser.DeclarationSeq
+DeclarationParser.Declaration
+DeclarationParser.BlockDeclaration
+DeclarationParser.SimpleDeclaration
+DeclarationParser.DeclSpecifierSeq
+DeclarationParser.DeclSpecifier
+TypeParser.DefiningTypeSpecifier
+TypeParser.TypeSpecifier
+TypeParser.SimpleTypeSpecifier
+SimpleTypeParser.SimpleType
+

@@ -59,10 +59,13 @@ expressions
     blockcomment = "/\*([^*]|\*[^/])*\*/";
     ppline = "[\t ]*#[^\x0\r\n]*{newline}";
     separators = "({ppline}|{linecomment}|{blockcomment}|{ws})+";
-    id = "{idstart}{idcont}*";
+    hexdigit = "[0-9a-fA-F]";
+    hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    hex8 = "{hex4}{hex4}";
+    univcn = "\\u{hex4}|\\U{hex8}";
+    id = "({idstart}|{univcn})({idcont}|{univcn})*";
     decimaldigit = "[0-9]";
     digitsequence = "({decimaldigit}|')+";
-    hexdigit = "[0-9a-fA-F]";
     hexdigitsequence = "({hexdigit}|')+";
     fractionalconstant = "{digitsequence}?\.{digitsequence}|{digitsequence}\.";
     sign = "\+|-";
@@ -81,16 +84,14 @@ expressions
     integersuffix = "[uU](ll|LL)?|[uU][lL]|[uU][zZ]|(ll|LL)[uU]?|[lL][uU]?|[zZ][uU]?";
     binaryliteral = "(0b|0B)({binarydigit}|')+";
     integerliteral = "{binaryliteral}{integersuffix}?|{hexadecimalliteral}{integersuffix}?|{octalliteral}{integersuffix}?|{decimalliteral}{integersuffix}?";
-    hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
-    hex8 = "{hex4}{hex4}";
     simpleescape = "\\['\"\?\\abfnrtv]";
     octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";
     hexescape = "\\x{hexdigit}+";
     escape = "{simpleescape}|{octalescape}|{hexescape}";
-    cchar = "[^\r\n\\']|{escape}|\\u{hex4}|\\U{hex8}";
+    cchar = "[^\r\n\\']|{escape}|{univcn}";
     encodingprefix = "u8|u|U|L";
     characterliteral = "{encodingprefix}?'{cchar}+'";
-    schar = "[^\r\n\\\"]|{escape}|\\u{hex4}|\\U{hex8}";
+    schar = "[^\r\n\\\"]|{escape}|{univcn}";
     beginrawstringliteral = "{encodingprefix}?R\"";
     stringliteral = "{encodingprefix}?\"{schar}*\";
 }

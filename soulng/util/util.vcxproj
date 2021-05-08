@@ -168,6 +168,7 @@
     <ClCompile Include="TextUtils.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Unicode.cpp" />
+    <ClCompile Include="Util.cpp" />
     <ClCompile Include="Uuid.cpp" />
   </ItemGroup>
   <ItemGroup>

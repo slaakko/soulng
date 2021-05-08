@@ -1059,13 +1059,211 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
+                case 19:
+                {
+                    return 55;
+                }
                 default:
                 {
                     return -1;
                 }
             }
         }
-        case 54:
+        case 55:
+        {
+            switch (i)
+            {
+                case 15:
+                {
+                    return 56;
+                }
+                case 16:
+                {
+                    return 57;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 57:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 58;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 58:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 59;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 59:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 60;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 60:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 61;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 61:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 62;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 62:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 63;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 63:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 64;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 64:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 65;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 65:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -1110,73 +1308,9 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 53:
-        {
-            switch (i)
-            {
-                case 2:
+                case 19:
                 {
                     return 55;
-                }
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 19:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 56;
                 }
                 default:
                 {
@@ -1185,364 +1319,6 @@ int TextLexer::NextState(int state, char32_t c)
             }
         }
         case 56:
-        {
-            switch (i)
-            {
-                case 2:
-                {
-                    return 55;
-                }
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 19:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 56;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 55:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(8);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            return -1;
-        }
-        case 17:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(6);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 26:
-                case 30:
-                case 34:
-                {
-                    return 17;
-                }
-                case 10:
-                {
-                    return 57;
-                }
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 27:
-                case 31:
-                case 32:
-                case 33:
-                case 35:
-                {
-                    return 58;
-                }
-                case 19:
-                {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 60:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(6);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 27:
-                case 31:
-                case 32:
-                case 33:
-                case 35:
-                {
-                    return 58;
-                }
-                case 19:
-                {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                case 11:
-                {
-                    return 61;
-                }
-                case 12:
-                {
-                    return 62;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 62:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(6);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 27:
-                case 31:
-                case 32:
-                case 33:
-                case 35:
-                {
-                    return 58;
-                }
-                case 19:
-                {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 61:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(6);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 27:
-                case 31:
-                case 32:
-                case 33:
-                case 35:
-                {
-                    return 58;
-                }
-                case 19:
-                {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 59:
-        {
-            switch (i)
-            {
-                case 15:
-                {
-                    return 63;
-                }
-                case 16:
-                {
-                    return 64;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 64:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 65;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 65:
         {
             switch (i)
             {
@@ -1632,8 +1408,36 @@ int TextLexer::NextState(int state, char32_t c)
         }
         case 69:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(5);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
+                case 5:
+                case 6:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
                 case 26:
                 case 27:
                 case 28:
@@ -1643,8 +1447,13 @@ int TextLexer::NextState(int state, char32_t c)
                 case 32:
                 case 33:
                 case 34:
+                case 35:
                 {
-                    return 70;
+                    return 54;
+                }
+                case 19:
+                {
+                    return 55;
                 }
                 default:
                 {
@@ -1652,10 +1461,38 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 70:
+        case 54:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(5);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
+                case 5:
+                case 6:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
                 case 26:
                 case 27:
                 case 28:
@@ -1665,6 +1502,79 @@ int TextLexer::NextState(int state, char32_t c)
                 case 32:
                 case 33:
                 case 34:
+                case 35:
+                {
+                    return 54;
+                }
+                case 19:
+                {
+                    return 55;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 53:
+        {
+            switch (i)
+            {
+                case 2:
+                {
+                    return 70;
+                }
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
                 {
                     return 71;
                 }
@@ -1678,6 +1588,33 @@ int TextLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
+                case 2:
+                {
+                    return 70;
+                }
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
                 case 26:
                 case 27:
                 case 28:
@@ -1687,8 +1624,27 @@ int TextLexer::NextState(int state, char32_t c)
                 case 32:
                 case 33:
                 case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
                 {
-                    return 72;
+                    return 71;
                 }
                 default:
                 {
@@ -1696,7 +1652,90 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 72:
+        case 70:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(8);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            return -1;
+        }
+        case 17:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(6);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 26:
+                case 30:
+                case 34:
+                {
+                    return 17;
+                }
+                case 10:
+                {
+                    return 72;
+                }
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 27:
+                case 31:
+                case 32:
+                case 33:
+                case 35:
+                {
+                    return 73;
+                }
+                case 19:
+                {
+                    return 74;
+                }
+                case 28:
+                case 29:
+                {
+                    return 75;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 75:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -1732,104 +1771,77 @@ int TextLexer::NextState(int state, char32_t c)
                 case 33:
                 case 35:
                 {
-                    return 58;
+                    return 73;
                 }
                 case 19:
                 {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 63:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 73;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 73:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
                     return 74;
                 }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 74:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
                 case 28:
                 case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
                 {
                     return 75;
                 }
+                case 11:
+                {
+                    return 76;
+                }
+                case 12:
+                {
+                    return 77;
+                }
                 default:
                 {
                     return -1;
                 }
             }
         }
-        case 75:
+        case 77:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(6);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
-                case 26:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
                 case 27:
-                case 28:
-                case 29:
-                case 30:
                 case 31:
                 case 32:
                 case 33:
-                case 34:
+                case 35:
                 {
-                    return 76;
+                    return 73;
+                }
+                case 19:
+                {
+                    return 74;
+                }
+                case 28:
+                case 29:
+                {
+                    return 75;
                 }
                 default:
                 {
@@ -1873,16 +1885,16 @@ int TextLexer::NextState(int state, char32_t c)
                 case 33:
                 case 35:
                 {
-                    return 58;
+                    return 73;
                 }
                 case 19:
                 {
-                    return 59;
+                    return 74;
                 }
                 case 28:
                 case 29:
                 {
-                    return 60;
+                    return 75;
                 }
                 default:
                 {
@@ -1890,194 +1902,15 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 58:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(6);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 27:
-                case 31:
-                case 32:
-                case 33:
-                case 35:
-                {
-                    return 58;
-                }
-                case 19:
-                {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 57:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(6);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            switch (i)
-            {
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 27:
-                case 31:
-                case 32:
-                case 33:
-                case 35:
-                {
-                    return 58;
-                }
-                case 19:
-                {
-                    return 59;
-                }
-                case 28:
-                case 29:
-                {
-                    return 60;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 16:
-        {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(22);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            return -1;
-        }
-        case 15:
+        case 74:
         {
             switch (i)
             {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
                 case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
                 {
                     return 78;
                 }
-                case 20:
+                case 16:
                 {
                     return 79;
                 }
@@ -2089,54 +1922,104 @@ int TextLexer::NextState(int state, char32_t c)
         }
         case 79:
         {
-            Lexeme prevMatch = token.match;
-            token.match = lexeme;
-            int tokenId = GetTokenId(7);
-            if (tokenId == CONTINUE_TOKEN)
-            {
-                token.id = tokenId;
-                return -1;
-            }
-            else if (tokenId != INVALID_TOKEN)
-            {
-                token.id = tokenId;
-            }
-            else
-            {
-                token.match = prevMatch;
-            }
-            return -1;
-        }
-        case 78:
-        {
             switch (i)
             {
-                case 2:
-                case 19:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
                 case 31:
                 case 32:
                 case 33:
+                case 34:
                 {
                     return 80;
                 }
-                case 15:
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 80:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
                 {
                     return 81;
                 }
-                case 16:
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 81:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
                 {
                     return 82;
                 }
-                case 18:
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 82:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
                 {
                     return 83;
                 }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 83:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
                 case 34:
                 {
                     return 84;
@@ -2151,28 +2034,6 @@ int TextLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
                 case 26:
                 case 27:
                 case 28:
@@ -2181,36 +2042,6 @@ int TextLexer::NextState(int state, char32_t c)
                 case 31:
                 case 32:
                 case 33:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
-                {
-                    return 78;
-                }
-                case 20:
-                {
-                    return 79;
-                }
                 case 34:
                 {
                     return 85;
@@ -2225,28 +2056,6 @@ int TextLexer::NextState(int state, char32_t c)
         {
             switch (i)
             {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
                 case 26:
                 case 27:
                 case 28:
@@ -2255,36 +2064,6 @@ int TextLexer::NextState(int state, char32_t c)
                 case 31:
                 case 32:
                 case 33:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
-                {
-                    return 78;
-                }
-                case 20:
-                {
-                    return 79;
-                }
                 case 34:
                 {
                     return 86;
@@ -2296,77 +2075,6 @@ int TextLexer::NextState(int state, char32_t c)
             }
         }
         case 86:
-        {
-            switch (i)
-            {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
-                {
-                    return 78;
-                }
-                case 20:
-                {
-                    return 79;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 83:
         {
             switch (i)
             {
@@ -2390,71 +2098,50 @@ int TextLexer::NextState(int state, char32_t c)
         }
         case 87:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(6);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
                 case 13:
                 case 14:
                 case 15:
                 case 16:
                 case 17:
                 case 18:
-                case 21:
                 case 22:
                 case 23:
                 case 24:
                 case 25:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
-                {
-                    return 78;
-                }
-                case 20:
-                {
-                    return 79;
-                }
-                case 26:
                 case 27:
-                case 28:
-                case 29:
-                case 30:
                 case 31:
                 case 32:
                 case 33:
-                case 34:
+                case 35:
                 {
-                    return 87;
+                    return 73;
+                }
+                case 19:
+                {
+                    return 74;
+                }
+                case 28:
+                case 29:
+                {
+                    return 75;
                 }
                 default:
                 {
@@ -2462,7 +2149,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 82:
+        case 78:
         {
             switch (i)
             {
@@ -2552,8 +2239,209 @@ int TextLexer::NextState(int state, char32_t c)
         }
         case 91:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(6);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
             switch (i)
             {
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 27:
+                case 31:
+                case 32:
+                case 33:
+                case 35:
+                {
+                    return 73;
+                }
+                case 19:
+                {
+                    return 74;
+                }
+                case 28:
+                case 29:
+                {
+                    return 75;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 73:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(6);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 27:
+                case 31:
+                case 32:
+                case 33:
+                case 35:
+                {
+                    return 73;
+                }
+                case 19:
+                {
+                    return 74;
+                }
+                case 28:
+                case 29:
+                {
+                    return 75;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 72:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(6);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 27:
+                case 31:
+                case 32:
+                case 33:
+                case 35:
+                {
+                    return 73;
+                }
+                case 19:
+                {
+                    return 74;
+                }
+                case 28:
+                case 29:
+                {
+                    return 75;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 16:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(22);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            return -1;
+        }
+        case 15:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
                 case 26:
                 case 27:
                 case 28:
@@ -2563,50 +2451,33 @@ int TextLexer::NextState(int state, char32_t c)
                 case 32:
                 case 33:
                 case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
                 {
                     return 92;
                 }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 92:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
+                case 19:
                 {
                     return 93;
                 }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 93:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
+                case 20:
                 {
                     return 94;
                 }
@@ -2618,6 +2489,285 @@ int TextLexer::NextState(int state, char32_t c)
         }
         case 94:
         {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(7);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            return -1;
+        }
+        case 93:
+        {
+            switch (i)
+            {
+                case 2:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 31:
+                case 32:
+                case 33:
+                {
+                    return 95;
+                }
+                case 15:
+                {
+                    return 96;
+                }
+                case 16:
+                {
+                    return 97;
+                }
+                case 18:
+                {
+                    return 98;
+                }
+                case 34:
+                {
+                    return 99;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 99:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 92;
+                }
+                case 19:
+                {
+                    return 93;
+                }
+                case 20:
+                {
+                    return 94;
+                }
+                case 34:
+                {
+                    return 100;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 100:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 92;
+                }
+                case 19:
+                {
+                    return 93;
+                }
+                case 20:
+                {
+                    return 94;
+                }
+                case 34:
+                {
+                    return 101;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 101:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 92;
+                }
+                case 19:
+                {
+                    return 93;
+                }
+                case 20:
+                {
+                    return 94;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 98:
+        {
             switch (i)
             {
                 case 26:
@@ -2630,7 +2780,487 @@ int TextLexer::NextState(int state, char32_t c)
                 case 33:
                 case 34:
                 {
-                    return 95;
+                    return 102;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 102:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 92;
+                }
+                case 19:
+                {
+                    return 93;
+                }
+                case 20:
+                {
+                    return 94;
+                }
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 102;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 97:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 103;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 103:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 104;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 104:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 105;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 105:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 106;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 106:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 107;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 107:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 108;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 108:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 109;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 109:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 110;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 110:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 92;
+                }
+                case 19:
+                {
+                    return 93;
+                }
+                case 20:
+                {
+                    return 94;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 96:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 111;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 111:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 112;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 112:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 113;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 113:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 114;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 114:
+        {
+            switch (i)
+            {
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 92;
+                }
+                case 19:
+                {
+                    return 93;
+                }
+                case 20:
+                {
+                    return 94;
                 }
                 default:
                 {
@@ -2693,15 +3323,15 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 77;
+                    return 92;
                 }
                 case 19:
                 {
-                    return 78;
+                    return 93;
                 }
                 case 20:
                 {
-                    return 79;
+                    return 94;
                 }
                 default:
                 {
@@ -2709,95 +3339,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 81:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 96;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 96:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 97;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 97:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 98;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 98:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 99;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 99:
+        case 92:
         {
             switch (i)
             {
@@ -2852,157 +3394,15 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 77;
+                    return 92;
                 }
                 case 19:
                 {
-                    return 78;
+                    return 93;
                 }
                 case 20:
                 {
-                    return 79;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 80:
-        {
-            switch (i)
-            {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
-                {
-                    return 78;
-                }
-                case 20:
-                {
-                    return 79;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 77:
-        {
-            switch (i)
-            {
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 77;
-                }
-                case 19:
-                {
-                    return 78;
-                }
-                case 20:
-                {
-                    return 79;
+                    return 94;
                 }
                 default:
                 {
@@ -3016,11 +3416,19 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 0:
                 {
-                    return 100;
+                    return 115;
                 }
                 case 1:
                 {
-                    return 101;
+                    return 116;
+                }
+                case 15:
+                {
+                    return 117;
+                }
+                case 16:
+                {
+                    return 118;
                 }
                 default:
                 {
@@ -3028,7 +3436,381 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 101:
+        case 118:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 119;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 119:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 120;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 120:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 121;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 121:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 122;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 122:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 123;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 123:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 124;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 124:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 125;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 125:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 126;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 126:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(5);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 5:
+                case 6:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                {
+                    return 54;
+                }
+                case 19:
+                {
+                    return 55;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 117:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 127;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 127:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 128;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 128:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 129;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 129:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 130;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 130:
+        {
+            Lexeme prevMatch = token.match;
+            token.match = lexeme;
+            int tokenId = GetTokenId(5);
+            if (tokenId == CONTINUE_TOKEN)
+            {
+                token.id = tokenId;
+                return -1;
+            }
+            else if (tokenId != INVALID_TOKEN)
+            {
+                token.id = tokenId;
+            }
+            else
+            {
+                token.match = prevMatch;
+            }
+            switch (i)
+            {
+                case 5:
+                case 6:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                {
+                    return 54;
+                }
+                case 19:
+                {
+                    return 55;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 116:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3048,7 +3830,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 100:
+        case 115:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3070,7 +3852,7 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 1:
                 {
-                    return 102;
+                    return 131;
                 }
                 default:
                 {
@@ -3078,7 +3860,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 102:
+        case 131:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3150,9 +3932,13 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
+                case 19:
+                {
+                    return 55;
+                }
                 case 35:
                 {
-                    return 103;
+                    return 132;
                 }
                 default:
                 {
@@ -3160,7 +3946,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 103:
+        case 132:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3208,6 +3994,10 @@ int TextLexer::NextState(int state, char32_t c)
                 case 35:
                 {
                     return 54;
+                }
+                case 19:
+                {
+                    return 55;
                 }
                 default:
                 {
@@ -3267,9 +4057,13 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
+                case 19:
+                {
+                    return 55;
+                }
                 case 35:
                 {
-                    return 103;
+                    return 132;
                 }
                 default:
                 {
@@ -3328,13 +4122,17 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
+                case 19:
+                {
+                    return 55;
+                }
                 case 35:
                 {
-                    return 103;
+                    return 132;
                 }
                 case 30:
                 {
-                    return 104;
+                    return 133;
                 }
                 default:
                 {
@@ -3342,7 +4140,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 104:
+        case 133:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3390,9 +4188,13 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
+                case 19:
+                {
+                    return 55;
+                }
                 case 35:
                 {
-                    return 103;
+                    return 132;
                 }
                 default:
                 {
@@ -3422,15 +4224,15 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 12:
                 {
-                    return 105;
+                    return 134;
                 }
                 case 38:
                 {
-                    return 106;
+                    return 135;
                 }
                 case 40:
                 {
-                    return 107;
+                    return 136;
                 }
                 default:
                 {
@@ -3438,7 +4240,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 107:
+        case 136:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3460,7 +4262,7 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 4:
                 {
-                    return 108;
+                    return 137;
                 }
                 default:
                 {
@@ -3468,7 +4270,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 108:
+        case 137:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3488,7 +4290,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 106:
+        case 135:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3508,7 +4310,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 105:
+        case 134:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3550,11 +4352,11 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 11:
                 {
-                    return 109;
+                    return 138;
                 }
                 case 38:
                 {
-                    return 110;
+                    return 139;
                 }
                 default:
                 {
@@ -3562,7 +4364,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 110:
+        case 139:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3582,7 +4384,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 109:
+        case 138:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3624,17 +4426,17 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 4:
                 {
-                    return 111;
+                    return 140;
                 }
                 case 10:
                 {
-                    return 112;
+                    return 141;
                 }
                 case 26:
                 case 30:
                 case 34:
                 {
-                    return 113;
+                    return 142;
                 }
                 default:
                 {
@@ -3642,7 +4444,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 113:
+        case 142:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3678,22 +4480,22 @@ int TextLexer::NextState(int state, char32_t c)
                 case 33:
                 case 35:
                 {
-                    return 58;
+                    return 73;
                 }
                 case 19:
                 {
-                    return 59;
+                    return 74;
                 }
                 case 28:
                 case 29:
                 {
-                    return 60;
+                    return 75;
                 }
                 case 26:
                 case 30:
                 case 34:
                 {
-                    return 113;
+                    return 142;
                 }
                 default:
                 {
@@ -3701,13 +4503,13 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 112:
+        case 141:
         {
             switch (i)
             {
                 case 10:
                 {
-                    return 114;
+                    return 143;
                 }
                 default:
                 {
@@ -3715,7 +4517,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 114:
+        case 143:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3735,7 +4537,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 111:
+        case 140:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3831,6 +4633,10 @@ int TextLexer::NextState(int state, char32_t c)
                 {
                     return 54;
                 }
+                case 19:
+                {
+                    return 55;
+                }
                 default:
                 {
                     return -1;
@@ -3859,7 +4665,7 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 38:
                 {
-                    return 115;
+                    return 144;
                 }
                 default:
                 {
@@ -3867,7 +4673,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 115:
+        case 144:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3909,15 +4715,15 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 3:
                 {
-                    return 116;
+                    return 145;
                 }
                 case 4:
                 {
-                    return 117;
+                    return 146;
                 }
                 case 38:
                 {
-                    return 118;
+                    return 147;
                 }
                 default:
                 {
@@ -3925,7 +4731,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 118:
+        case 147:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -3945,7 +4751,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 117:
+        case 146:
         {
             switch (i)
             {
@@ -4003,11 +4809,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 119;
+                    return 148;
                 }
                 case 4:
                 {
-                    return 120;
+                    return 149;
                 }
                 default:
                 {
@@ -4015,13 +4821,13 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 120:
+        case 149:
         {
             switch (i)
             {
                 case 4:
                 {
-                    return 120;
+                    return 149;
                 }
                 case 0:
                 case 1:
@@ -4076,11 +4882,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 121;
+                    return 150;
                 }
                 case 3:
                 {
-                    return 122;
+                    return 151;
                 }
                 default:
                 {
@@ -4088,7 +4894,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 122:
+        case 151:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -4162,11 +4968,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 119;
+                    return 148;
                 }
                 case 4:
                 {
-                    return 120;
+                    return 149;
                 }
                 default:
                 {
@@ -4174,7 +4980,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 121:
+        case 150:
         {
             switch (i)
             {
@@ -4232,11 +5038,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 119;
+                    return 148;
                 }
                 case 4:
                 {
-                    return 120;
+                    return 149;
                 }
                 default:
                 {
@@ -4244,7 +5050,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 119:
+        case 148:
         {
             switch (i)
             {
@@ -4302,11 +5108,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 119;
+                    return 148;
                 }
                 case 4:
                 {
-                    return 120;
+                    return 149;
                 }
                 default:
                 {
@@ -4314,17 +5120,17 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 116:
+        case 145:
         {
             switch (i)
             {
                 case 0:
                 {
-                    return 123;
+                    return 152;
                 }
                 case 1:
                 {
-                    return 124;
+                    return 153;
                 }
                 case 2:
                 case 3:
@@ -4379,7 +5185,7 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 125;
+                    return 154;
                 }
                 default:
                 {
@@ -4387,17 +5193,17 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 125:
+        case 154:
         {
             switch (i)
             {
                 case 0:
                 {
-                    return 123;
+                    return 152;
                 }
                 case 1:
                 {
-                    return 124;
+                    return 153;
                 }
                 case 2:
                 case 3:
@@ -4452,7 +5258,7 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 125;
+                    return 154;
                 }
                 default:
                 {
@@ -4460,7 +5266,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 124:
+        case 153:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -4480,7 +5286,7 @@ int TextLexer::NextState(int state, char32_t c)
             }
             return -1;
         }
-        case 123:
+        case 152:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -4502,7 +5308,7 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 1:
                 {
-                    return 126;
+                    return 155;
                 }
                 default:
                 {
@@ -4510,7 +5316,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 126:
+        case 155:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -4536,7 +5342,7 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 2:
                 {
-                    return 127;
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -4589,11 +5395,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 default:
                 {
@@ -4601,7 +5407,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 129:
+        case 158:
         {
             switch (i)
             {
@@ -4617,23 +5423,23 @@ int TextLexer::NextState(int state, char32_t c)
                 case 32:
                 case 33:
                 {
-                    return 130;
+                    return 159;
                 }
                 case 15:
                 {
-                    return 131;
+                    return 160;
                 }
                 case 16:
                 {
-                    return 132;
+                    return 161;
                 }
                 case 18:
                 {
-                    return 133;
+                    return 162;
                 }
                 case 34:
                 {
-                    return 134;
+                    return 163;
                 }
                 default:
                 {
@@ -4641,13 +5447,13 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 134:
+        case 163:
         {
             switch (i)
             {
                 case 2:
                 {
-                    return 127;
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -4699,15 +5505,15 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 case 34:
                 {
-                    return 135;
+                    return 164;
                 }
                 default:
                 {
@@ -4715,13 +5521,13 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 135:
+        case 164:
         {
             switch (i)
             {
                 case 2:
                 {
-                    return 127;
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -4773,15 +5579,15 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 case 34:
                 {
-                    return 136;
+                    return 165;
                 }
                 default:
                 {
@@ -4789,356 +5595,13 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 136:
+        case 165:
         {
             switch (i)
             {
                 case 2:
                 {
-                    return 127;
-                }
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 128;
-                }
-                case 19:
-                {
-                    return 129;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 133:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 137;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 137:
-        {
-            switch (i)
-            {
-                case 2:
-                {
-                    return 127;
-                }
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                case 16:
-                case 17:
-                case 18:
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                case 35:
-                case 36:
-                case 37:
-                case 38:
-                case 39:
-                case 40:
-                case 41:
-                case 42:
-                case 43:
-                case 44:
-                case 45:
-                case 46:
-                case 47:
-                case 48:
-                case 49:
-                case 50:
-                case 51:
-                case 52:
-                case 53:
-                {
-                    return 128;
-                }
-                case 19:
-                {
-                    return 129;
-                }
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 137;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 132:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 138;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 138:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 139;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 139:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 140;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 140:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 141;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 141:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 142;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 142:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 143;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 143:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 144;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 144:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 145;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 145:
-        {
-            switch (i)
-            {
-                case 2:
-                {
-                    return 127;
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -5191,11 +5654,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 default:
                 {
@@ -5203,7 +5666,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 131:
+        case 162:
         {
             switch (i)
             {
@@ -5217,7 +5680,7 @@ int TextLexer::NextState(int state, char32_t c)
                 case 33:
                 case 34:
                 {
-                    return 146;
+                    return 166;
                 }
                 default:
                 {
@@ -5225,79 +5688,263 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 146:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 147;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 147:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 148;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 148:
-        {
-            switch (i)
-            {
-                case 26:
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                case 33:
-                case 34:
-                {
-                    return 149;
-                }
-                default:
-                {
-                    return -1;
-                }
-            }
-        }
-        case 149:
+        case 166:
         {
             switch (i)
             {
                 case 2:
                 {
-                    return 127;
+                    return 156;
+                }
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 157;
+                }
+                case 19:
+                {
+                    return 158;
+                }
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 166;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 161:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 167;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 167:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 168;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 168:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 169;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 169:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 170;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 170:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 171;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 171:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 172;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 172:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 173;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 173:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 174;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 174:
+        {
+            switch (i)
+            {
+                case 2:
+                {
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -5350,11 +5997,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 default:
                 {
@@ -5362,13 +6009,101 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 130:
+        case 160:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 175;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 175:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 176;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 176:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 177;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 177:
+        {
+            switch (i)
+            {
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                {
+                    return 178;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 178:
         {
             switch (i)
             {
                 case 2:
                 {
-                    return 127;
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -5421,11 +6156,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 default:
                 {
@@ -5433,13 +6168,13 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 128:
+        case 159:
         {
             switch (i)
             {
                 case 2:
                 {
-                    return 127;
+                    return 156;
                 }
                 case 3:
                 case 4:
@@ -5492,11 +6227,11 @@ int TextLexer::NextState(int state, char32_t c)
                 case 52:
                 case 53:
                 {
-                    return 128;
+                    return 157;
                 }
                 case 19:
                 {
-                    return 129;
+                    return 158;
                 }
                 default:
                 {
@@ -5504,7 +6239,78 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 127:
+        case 157:
+        {
+            switch (i)
+            {
+                case 2:
+                {
+                    return 156;
+                }
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                case 17:
+                case 18:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
+                case 26:
+                case 27:
+                case 28:
+                case 29:
+                case 30:
+                case 31:
+                case 32:
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                {
+                    return 157;
+                }
+                case 19:
+                {
+                    return 158;
+                }
+                default:
+                {
+                    return -1;
+                }
+            }
+        }
+        case 156:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;
@@ -5566,7 +6372,7 @@ int TextLexer::NextState(int state, char32_t c)
             {
                 case 1:
                 {
-                    return 150;
+                    return 179;
                 }
                 default:
                 {
@@ -5574,7 +6380,7 @@ int TextLexer::NextState(int state, char32_t c)
                 }
             }
         }
-        case 150:
+        case 179:
         {
             Lexeme prevMatch = token.match;
             token.match = lexeme;

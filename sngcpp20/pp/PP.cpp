@@ -917,6 +917,8 @@ void Preprocess(const std::string& fileName, PP* pp)
             lexer.SetCountLines(false);
             std::vector<soulng::lexer::Token> tokens;
             pp->tokens = &tokens;
+            bool prevSave = pp->save;
+            pp->save = false;
             ++lexer;
             int i = 0;
             while (*lexer != TextTokens::END)
@@ -924,12 +926,17 @@ void Preprocess(const std::string& fileName, PP* pp)
                 tokens.push_back(lexer.GetToken(i++));
                 ++lexer;
             }
+            pp->save = prevSave;
             tokens = MacroExpand(tokens, pp);
             for (const soulng::lexer::Token& token : tokens)
             {
                 if (token.id != TextTokens::BLOCKCOMMENT && token.id != TextTokens::LINECOMMENT)
                 {
                     pp->Emit(token.match);
+                }
+                else
+                {
+                    pp->Emit(U" ");
                 }
                 if (pp->save)
                 {

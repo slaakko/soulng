@@ -66,11 +66,14 @@ void Lexer::operator++()
         {
             line = current->line;
         }
-        int64_t p = GetPos();
-        if (p > farthestPos)
+        if (GetFlag(LexerFlags::farthestError))
         {
-            farthestPos = p;
-            farthestRuleContext = ruleContext;
+            int64_t p = GetPos();
+            if (p > farthestPos)
+            {
+                farthestPos = p;
+                farthestRuleContext = ruleContext;
+            }
         }
     }
 }
@@ -415,20 +418,20 @@ void Lexer::GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) con
 void Lexer::ThrowExpectationFailure(const Span& span, const std::u32string& name)
 {
     Token token = GetToken(span.start);
-    throw ParsingException("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
+    throw ParsingException("parsing error at '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
 }
 
 void Lexer::ThrowFarthestError()
 {
     Token token = GetToken(farthestPos);
     std::string parserStateStr = GetParserStateStr();
-    throw ParsingException("parsing error in '" + fileName + ":" + std::to_string(token.line) + "':\n" + ToUtf8(ErrorLines(token)) + parserStateStr, fileName);
+    throw ParsingException("parsing error at '" + fileName + ":" + std::to_string(token.line) + "':\n" + ToUtf8(ErrorLines(token)) + parserStateStr, fileName);
 }
 
 void Lexer::AddError(const Span& span, const std::u32string& name)
 {
     Token token = GetToken(span.start);
-    ParsingException error("parsing error in '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
+    ParsingException error("parsing error at '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
     errors.push_back(std::move(error));
 }
 

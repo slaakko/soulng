@@ -16,6 +16,7 @@
 [cpp]#include <sngcpp20/parser/LiteralParser.hpp>
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -379,7 +380,7 @@ parser api(PARSER_API) ExpressionParser
                 rpPos = sourcePos; 
                 return new SizeOfTypeExprNode(s, typeId, lpPos, rpPos); 
             }
-        |   SIZEOF{ s = sourcePos; } ELLIPSES{ ellipsesPos = sourcePos; } LPAREN{ lpPos = sourcePos; } ID{ childNode.reset(new IdentifierNode(sourcePos, lexer.GetMatch(pos))); } RPAREN
+        |   SIZEOF{ s = sourcePos; } ELLIPSES{ ellipsesPos = sourcePos; } LPAREN{ lpPos = sourcePos; } ID{ childNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos))); } RPAREN
             { 
                 rpPos = sourcePos; 
                 return new SizeOfPackExprNode(s, childNode.release(), ellipsesPos, lpPos, rpPos); 

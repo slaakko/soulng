@@ -13,6 +13,7 @@
 #include <sngcpp20/ast/SourceCodePrinterVisitor.hpp>
 #include <sngcpp20/ast/XmlGeneratorVisitor.hpp>
 #include <sngcpp20/ast/Writer.hpp>
+#include <sngcpp20/ast/Reader.hpp>
 #include <soulng/lexer/XmlParsingLog.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -36,6 +37,10 @@ ParseResult::ParseResult(std::unique_ptr<std::u32string>&& preprocessedSourceTex
 {
 }
 
+ParseResult::ParseResult(const std::string& error_) : error(error_)
+{
+}
+
 std::unique_ptr<std::u32string> Preprocess(const std::string& sourceFileName)
 {
     EvaluationContext evaluationContext;
@@ -47,6 +52,7 @@ std::unique_ptr<std::u32string> Preprocess(const std::string& sourceFileName)
 ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, ParseOptions& options)
 {
     CppLexer lexer(preprocessedSourceText->c_str(), preprocessedSourceText->c_str() + preprocessedSourceText->length(), options.fileName, options.fileIndex);
+    lexer.SetFlag(LexerFlags::farthestError);
     std::ostream* stream = &std::cout;
     std::ofstream fstream;
     if (!options.logFilePath.empty())
@@ -63,7 +69,21 @@ ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, Pars
     Context ctx;
     ctx.SetSymbolTable(&symbolTable);
     ctx.SetLexer(&lexer);
-    return ParseResult(std::move(preprocessedSourceText), TranslationUnitParser::Parse(lexer, &ctx));
+    if (options.throwFlag)
+    {
+        return ParseResult(std::move(preprocessedSourceText), TranslationUnitParser::Parse(lexer, &ctx));
+    }
+    else
+    {
+        try
+        {
+            return ParseResult(std::move(preprocessedSourceText), TranslationUnitParser::Parse(lexer, &ctx));
+        }
+        catch (const std::exception& ex)
+        {
+            return ParseResult(ex.what());
+        }
+    }
 }
 
 ParseResult Parse(const std::string& sourceFileName, ParseOptions& options)
@@ -79,6 +99,7 @@ void WriteSourceCode(Node* translationUnitNode, std::ostream& stream)
     {
         translationUnitNode->Accept(visitor);
     }
+    stream << std::endl;
 }
 
 void WriteSourceCode(Node* translationUnitNode, const std::string& fileName)
@@ -110,6 +131,13 @@ void WriteBinary(Node* translationUnitNode, const std::string& fileName)
 {
     Writer writer(fileName);
     writer.Write(translationUnitNode);
+}
+
+std::unique_ptr<Node> ReadBinary(const std::string& fileName)
+{
+    Reader reader(fileName);
+    std::unique_ptr<Node> node(reader.ReadNode());
+    return node;
 }
 
 } // sngcpp::driver

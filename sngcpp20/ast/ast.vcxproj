@@ -180,6 +180,7 @@
     <ClInclude Include="Template.hpp" />
     <ClInclude Include="TranslationUnit.hpp" />
     <ClInclude Include="Type.hpp" />
+    <ClInclude Include="Util.hpp" />
     <ClInclude Include="Visitor.hpp" />
     <ClInclude Include="Writer.hpp" />
     <ClInclude Include="XmlGeneratorVisitor.hpp" />
@@ -208,6 +209,7 @@
     <ClCompile Include="Template.cpp" />
     <ClCompile Include="TranslationUnit.cpp" />
     <ClCompile Include="Type.cpp" />
+    <ClCompile Include="Util.cpp" />
     <ClCompile Include="Visitor.cpp" />
     <ClCompile Include="Writer.cpp" />
     <ClCompile Include="XmlGeneratorVisitor.cpp" />

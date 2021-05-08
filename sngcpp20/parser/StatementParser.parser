@@ -15,6 +15,7 @@
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
 [cpp]#include <sngcpp20/parser/InitializationParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/parser/IdentifierTokenParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -62,7 +63,7 @@ parser api(PARSER_API) StatementParser
             COLON{ colonPos = sourcePos; } 
             Statement(ctx):stmt
             {
-                return new LabeledStatementNode(s, new IdentifierNode(labelPos, lexer.GetMatch(labelP)), stmt, attributes, colonPos);
+                return new LabeledStatementNode(s, sngcpp::par::ParseIdentifier(labelPos, lexer.FileName(), lexer.GetMatch(labelP)), stmt, attributes, colonPos);
             }
         |   (AttributeSpecifierSeq(ctx):attributes2{ s = sourcePos; } CASE{ casePos = sourcePos; } | CASE{ s = sourcePos; casePos = sourcePos; })
             ConstantExpression(ctx):caseExpr 
