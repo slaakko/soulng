@@ -91,7 +91,7 @@ soulng::parser::Match IdentifierParser::TypeIdentifier(CppLexer& lexer, sngcpp::
         if (match.hit)
         {
             std::unique_ptr<IdentifierNode> identifier(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
-            Symbol * symbol = ctx->GetSymbolTable()->Lookup(identifier->Str());
+            Symbol * symbol = ctx->GetSymbolTable()->Lookup(identifier->Str(), sourcePos, ctx);
             if (symbol && symbol->IsTypeSymbol())
             {
                 ctx->GetSymbolTable()->MapNode(identifier.get(), symbol);

@@ -1,0 +1,20 @@
+<sngcpp>
+    <project name="1_integer">
+        <files>
+            <file name="binary1.cpp"/>
+            <file name="binary2_error.cpp"/>
+            <file name="binary3_error.cpp"/>
+            <file name="binary4_error.cpp"/>
+            <file name="decimal1.cpp"/>
+            <file name="decimal2_error.cpp"/>
+            <file name="decimal3_error.cpp"/>
+            <file name="hexadecimal1.cpp"/>
+            <file name="hexadecimal2_error.cpp"/>
+            <file name="hexadecimal3_error.cpp"/>
+            <file name="octal1.cpp"/>
+            <file name="octal2_error.cpp"/>
+            <file name="octal4_error.cpp"/>
+            <file name="suffix1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

@@ -1,0 +1,4 @@
+<configurations>
+ <configuration name="vc" file="vc.config.xml"/>
+ <default configuration="vc"/>
+</configurations>

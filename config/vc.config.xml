@@ -1,0 +1,16 @@
+<configuration name="vc">
+ <defines>
+  <define file="std.define.xml"/>
+  <define file="vc.define.xml"/>
+ </defines>
+ <includes>
+  <include path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\ATLMFC\include"/>
+  <include path="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include"/>
+  <include path="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+  <include path="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+  <include path="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+  <include path="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+  <include path="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+  <include path="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+ </includes>
+</configuration>

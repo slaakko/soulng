@@ -60,13 +60,14 @@ expressions
     linecomment = "//[^\n\r]*{newline}";
     blockcomment = "/\*([^*\n\r]|\*[^/\n\r])*(\*/|{newline})";
     blockcommentline = "([^*\n\r]|\*[^/\n\r])*(\*/|{newline})";
-    id = "{idstart}{idcont}*";
+    hexdigit = "[0-9a-fA-F]";
+    hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
+    hex8 = "{hex4}{hex4}";
+    univcn = "\\u{hex4}|\\U{hex8}";
+    id = "({idstart}|{univcn})({idcont}|{univcn})*";
     digit = "[0-9]";
     nondigit = "[a-zA-Z_]";
-    hexdigit = "[0-9a-fA-F]";
-    hexquad = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
-    universalcharactername = "\\u{hexquad}|\\U{hexquad}{hexquad}";
-    identifiernondigit = "{nondigit}|{universalcharactername}";
+    identifiernondigit = "{nondigit}|{univcn}";
     sign = "\+|-";
     ppnumber = "(({digit}|')+\.?|\.({digit}|')+)([eEpP]{sign}|{identifiernondigit})*";
     octaldigit = "[0-7]";
@@ -74,10 +75,10 @@ expressions
     octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";
     hexescape = "\\x{hexdigit}+";
     escape = "{simpleescape}|{octalescape}|{hexescape}";
-    cchar = "[^\r\n\\']|{escape}|{universalcharactername}";
+    cchar = "[^\r\n\\']|{escape}|{univcn}";
     characterliteral = "[uUL]?'{cchar}+'";
     encodingprefix = "u8|u|U|L";
-    schar = "[^\r\n\\\"]|{escape}|{universalcharactername}";
+    schar = "[^\r\n\\\"]|{escape}|{univcn}";
     beginrawstringliteral = "{encodingprefix}?R\"";
     stringliteral = "{encodingprefix}?\"{schar}*\";
 }

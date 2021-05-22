@@ -4,19 +4,25 @@
 // =================================
 
 #include <sngcpp20/pp/PP.hpp>
+#include <sngcpp20/pp/Lines.hpp>
+#include <sngcpp20/pp/Scan.hpp>
 #include <sngcpp20/pp/PPLexer.hpp>
 #include <sngcpp20/pp/PPParser.hpp>
 #include <sngcpp20/pp/PPTokens.hpp>
-#include <sngcpp20/pp/TextTokens.hpp>
 #include <sngcpp20/pp/TextLexer.hpp>
-#include <sngcpp20/pp/Evaluator.hpp>
-#include <sngcpp20/lexer/CppLexer.hpp>
+#include <sngcpp20/pp/TextTokens.hpp>
+#include <sngcpp20/pp/Util.hpp>
 #include <sngcpp20/lexer/CppKeywords.hpp>
+#include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
+#include <sngcpp20/parser/LiteralTokenParser.hpp>
 #include <sngcpp20/parser/ExpressionParser.hpp>
+#include <sngcpp20/symbols/Context.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Path.hpp>
+#include <soulng/util/Time.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <boost/filesystem.hpp>
 #include <iostream>
 
 namespace sngcpp::pp {
@@ -24,205 +30,298 @@ namespace sngcpp::pp {
 using namespace soulng::util;
 using namespace soulng::unicode;
 
-const char32_t* ndebugStr = U"NDEBUG";
-const soulng::lexer::Lexeme ndebug(ndebugStr, ndebugStr + 6);
-
-static int textTokenCppTokenMap[TextTokens::MAX];
-static int ppTokenTextTokenMap[PPTokens::MAX];
-
-void InitTextTokenCppTokenMap()
+PPSourceLocation::PPSourceLocation() : fileIndex(0), lineNumber(0)
 {
-    for (int i = 0; i < TextTokens::MAX; ++i)
-    {
-        textTokenCppTokenMap[i] = soulng::lexer::INVALID_TOKEN;
-    }
-    textTokenCppTokenMap[TextTokens::END] = CppTokens::END;
-    textTokenCppTokenMap[TextTokens::ID] = CppTokens::ID;
-    textTokenCppTokenMap[TextTokens::CHARLITERAL] = CppTokens::CHARLIT;
-    textTokenCppTokenMap[TextTokens::STRINGLITERAL] = CppTokens::STRINGLIT;
-    textTokenCppTokenMap[TextTokens::COLONCOLON] = CppTokens::COLONCOLON;
-    textTokenCppTokenMap[TextTokens::COMMA] = CppTokens::COMMA;
-    textTokenCppTokenMap[TextTokens::ASSIGN] = CppTokens::ASSIGN;
-    textTokenCppTokenMap[TextTokens::MULASSIGN] = CppTokens::MULASSIGN;
-    textTokenCppTokenMap[TextTokens::DIVASSIGN] = CppTokens::DIVASSIGN;
-    textTokenCppTokenMap[TextTokens::REMASSIGN] = CppTokens::REMASSIGN;
-    textTokenCppTokenMap[TextTokens::ADDASSIGN] = CppTokens::ADDASSIGN;
-    textTokenCppTokenMap[TextTokens::SUBASSIGN] = CppTokens::SUBASSIGN;
-    textTokenCppTokenMap[TextTokens::SHIFTRIGHTASSIGN] = CppTokens::SHIFTRIGHTASSIGN;
-    textTokenCppTokenMap[TextTokens::SHIFTLEFTASSIGN] = CppTokens::SHIFTLEFTASSIGN;
-    textTokenCppTokenMap[TextTokens::ANDASSIGN] = CppTokens::ANDASSIGN;
-    textTokenCppTokenMap[TextTokens::XORASSIGN] = CppTokens::XORASSIGN;
-    textTokenCppTokenMap[TextTokens::ORASSIGN] = CppTokens::ORASSIGN;
-    textTokenCppTokenMap[TextTokens::QUEST] = CppTokens::QUEST;
-    textTokenCppTokenMap[TextTokens::COLON] = CppTokens::COLON;
-    textTokenCppTokenMap[TextTokens::OROR] = CppTokens::OROR;
-    textTokenCppTokenMap[TextTokens::AMPAMP] = CppTokens::AMPAMP;
-    textTokenCppTokenMap[TextTokens::OR] = CppTokens::OR;
-    textTokenCppTokenMap[TextTokens::XOR] = CppTokens::XOR;
-    textTokenCppTokenMap[TextTokens::AMP] = CppTokens::AMP;
-    textTokenCppTokenMap[TextTokens::EQ] = CppTokens::EQ;
-    textTokenCppTokenMap[TextTokens::NEQ] = CppTokens::NEQ;
-    textTokenCppTokenMap[TextTokens::LEQ] = CppTokens::LEQ;
-    textTokenCppTokenMap[TextTokens::GEQ] = CppTokens::GEQ;
-    textTokenCppTokenMap[TextTokens::SPACESHIP] = CppTokens::SPACESHIP;
-    textTokenCppTokenMap[TextTokens::LANGLE] = CppTokens::LANGLE;
-    textTokenCppTokenMap[TextTokens::RANGLE] = CppTokens::RANGLE;
-    textTokenCppTokenMap[TextTokens::SHIFTLEFT] = CppTokens::SHIFTLEFT;
-    textTokenCppTokenMap[TextTokens::SHIFTRIGHT] = CppTokens::SHIFTRIGHT;
-    textTokenCppTokenMap[TextTokens::PLUS] = CppTokens::PLUS;
-    textTokenCppTokenMap[TextTokens::MINUS] = CppTokens::MINUS;
-    textTokenCppTokenMap[TextTokens::STAR] = CppTokens::STAR;
-    textTokenCppTokenMap[TextTokens::DIV] = CppTokens::DIV;
-    textTokenCppTokenMap[TextTokens::MOD] = CppTokens::MOD;
-    textTokenCppTokenMap[TextTokens::DOTSTAR] = CppTokens::DOTSTAR;
-    textTokenCppTokenMap[TextTokens::ARROWSTAR] = CppTokens::ARROWSTAR;
-    textTokenCppTokenMap[TextTokens::LPAREN] = CppTokens::LPAREN;
-    textTokenCppTokenMap[TextTokens::RPAREN] = CppTokens::RPAREN;
-    textTokenCppTokenMap[TextTokens::PLUSPLUS] = CppTokens::PLUSPLUS;
-    textTokenCppTokenMap[TextTokens::MINUSMINUS] = CppTokens::MINUSMINUS;
-    textTokenCppTokenMap[TextTokens::EXCLAMATION] = CppTokens::EXCLAMATION;
-    textTokenCppTokenMap[TextTokens::TILDE] = CppTokens::TILDE;
-    textTokenCppTokenMap[TextTokens::LBRACKET] = CppTokens::LBRACKET;
-    textTokenCppTokenMap[TextTokens::RBRACKET] = CppTokens::RBRACKET;
-    textTokenCppTokenMap[TextTokens::DOT] = CppTokens::DOT;
-    textTokenCppTokenMap[TextTokens::ARROW] = CppTokens::ARROW;
-    textTokenCppTokenMap[TextTokens::SEMICOLON] = CppTokens::SEMICOLON;
-    textTokenCppTokenMap[TextTokens::ELLIPSES] = CppTokens::ELLIPSES;
-    textTokenCppTokenMap[TextTokens::LBRACE] = CppTokens::LBRACE;
-    textTokenCppTokenMap[TextTokens::RBRACE] = CppTokens::RBRACE;
 }
 
-void InitPPTokenTextTokenMap()
+PPSourceLocation::PPSourceLocation(int fileIndex_, int lineNumber_) : fileIndex(fileIndex_), lineNumber(lineNumber_)
 {
-    for (int i = 0; i < PPTokens::MAX; ++i)
-    {
-        ppTokenTextTokenMap[i] = soulng::lexer::INVALID_TOKEN;
-    }
-    ppTokenTextTokenMap[PPTokens::END] = TextTokens::END;
-    ppTokenTextTokenMap[PPTokens::DEFINED] = TextTokens::DEFINED;
-    ppTokenTextTokenMap[PPTokens::ANGLEHEADERNAME] = TextTokens::ANGLEHEADERNAME;
-    ppTokenTextTokenMap[PPTokens::QUOTEHEADERNAME] = TextTokens::QUOTEHEADERNAME;
-    ppTokenTextTokenMap[PPTokens::PPNUMBER] = TextTokens::PPNUMBER;
-    ppTokenTextTokenMap[PPTokens::CHARLITERAL] = TextTokens::CHARLITERAL;
-    ppTokenTextTokenMap[PPTokens::STRINGLITERAL] = TextTokens::STRINGLITERAL;
-    ppTokenTextTokenMap[PPTokens::CHAR] = TextTokens::CHAR;
-    ppTokenTextTokenMap[PPTokens::ID] = TextTokens::ID;
-    ppTokenTextTokenMap[PPTokens::COLONCOLON] = TextTokens::COLONCOLON;
-    ppTokenTextTokenMap[PPTokens::COMMA] = TextTokens::COMMA;
-    ppTokenTextTokenMap[PPTokens::ASSIGN] = TextTokens::ASSIGN;
-    ppTokenTextTokenMap[PPTokens::MULASSIGN] = TextTokens::MULASSIGN;
-    ppTokenTextTokenMap[PPTokens::DIVASSIGN] = TextTokens::DIVASSIGN;
-    ppTokenTextTokenMap[PPTokens::REMASSIGN] = TextTokens::REMASSIGN;
-    ppTokenTextTokenMap[PPTokens::ADDASSIGN] = TextTokens::ADDASSIGN;
-    ppTokenTextTokenMap[PPTokens::SUBASSIGN] = TextTokens::SUBASSIGN;
-    ppTokenTextTokenMap[PPTokens::SHIFTRIGHTASSIGN] = TextTokens::SHIFTRIGHTASSIGN;
-    ppTokenTextTokenMap[PPTokens::SHIFTLEFTASSIGN] = TextTokens::SHIFTLEFTASSIGN;
-    ppTokenTextTokenMap[PPTokens::ANDASSIGN] = TextTokens::ANDASSIGN;
-    ppTokenTextTokenMap[PPTokens::XORASSIGN] = TextTokens::XORASSIGN;
-    ppTokenTextTokenMap[PPTokens::ORASSIGN] = TextTokens::ORASSIGN;
-    ppTokenTextTokenMap[PPTokens::QUEST] = TextTokens::QUEST;
-    ppTokenTextTokenMap[PPTokens::COLON] = TextTokens::COLON;
-    ppTokenTextTokenMap[PPTokens::OROR] = TextTokens::OROR;
-    ppTokenTextTokenMap[PPTokens::AMPAMP] = TextTokens::AMPAMP;
-    ppTokenTextTokenMap[PPTokens::OR] = TextTokens::OR;
-    ppTokenTextTokenMap[PPTokens::XOR] = TextTokens::XOR;
-    ppTokenTextTokenMap[PPTokens::AMP] = TextTokens::AMP;
-    ppTokenTextTokenMap[PPTokens::EQ] = TextTokens::EQ;
-    ppTokenTextTokenMap[PPTokens::NEQ] = TextTokens::NEQ;
-    ppTokenTextTokenMap[PPTokens::LEQ] = TextTokens::LEQ;
-    ppTokenTextTokenMap[PPTokens::GEQ] = TextTokens::GEQ;
-    ppTokenTextTokenMap[PPTokens::SPACESHIP] = TextTokens::SPACESHIP;
-    ppTokenTextTokenMap[PPTokens::LANGLE] = TextTokens::LANGLE;
-    ppTokenTextTokenMap[PPTokens::RANGLE] = TextTokens::RANGLE;
-    ppTokenTextTokenMap[PPTokens::SHIFTLEFT] = TextTokens::SHIFTLEFT;
-    ppTokenTextTokenMap[PPTokens::SHIFTRIGHT] = TextTokens::SHIFTRIGHT;
-    ppTokenTextTokenMap[PPTokens::PLUS] = TextTokens::PLUS;
-    ppTokenTextTokenMap[PPTokens::MINUS] = TextTokens::MINUS;
-    ppTokenTextTokenMap[PPTokens::STAR] = TextTokens::STAR;
-    ppTokenTextTokenMap[PPTokens::DIV] = TextTokens::DIV;
-    ppTokenTextTokenMap[PPTokens::MOD] = TextTokens::MOD;
-    ppTokenTextTokenMap[PPTokens::DOTSTAR] = TextTokens::DOTSTAR;
-    ppTokenTextTokenMap[PPTokens::ARROWSTAR] = TextTokens::ARROWSTAR;
-    ppTokenTextTokenMap[PPTokens::LPAREN] = TextTokens::LPAREN;
-    ppTokenTextTokenMap[PPTokens::RPAREN] = TextTokens::RPAREN;
-    ppTokenTextTokenMap[PPTokens::PLUSPLUS] = TextTokens::PLUSPLUS;
-    ppTokenTextTokenMap[PPTokens::MINUSMINUS] = TextTokens::MINUSMINUS;
-    ppTokenTextTokenMap[PPTokens::EXCLAMATION] = TextTokens::EXCLAMATION;
-    ppTokenTextTokenMap[PPTokens::TILDE] = TextTokens::TILDE;
-    ppTokenTextTokenMap[PPTokens::LBRACKET] = TextTokens::LBRACKET;
-    ppTokenTextTokenMap[PPTokens::RBRACKET] = TextTokens::RBRACKET;
-    ppTokenTextTokenMap[PPTokens::DOT] = TextTokens::DOT;
-    ppTokenTextTokenMap[PPTokens::ARROW] = TextTokens::ARROW;
-    ppTokenTextTokenMap[PPTokens::SEMICOLON] = TextTokens::SEMICOLON;
-    ppTokenTextTokenMap[PPTokens::ELLIPSES] = TextTokens::ELLIPSES;
-    ppTokenTextTokenMap[PPTokens::LBRACE] = TextTokens::LBRACE;
-    ppTokenTextTokenMap[PPTokens::RBRACE] = TextTokens::RBRACE;
 }
 
-std::vector<soulng::lexer::Token> MacroExpand(const std::vector<soulng::lexer::Token>& tokens, const PP* pp)
+Token CombineStringLitTokens(const Token& left, const Token& right, PP* pp)
 {
-    bool prevWasMacro = false;
-    std::vector<soulng::lexer::Token> expandedTokens;
-    for (const soulng::lexer::Token& token : tokens)
+    std::unique_ptr<sngcpp::ast::StringLiteralNode> leftNode(sngcpp::par::ParseStringLiteral(pp->GetSourcePos(), pp->FileName(), left.match.ToString()));
+    sngcpp::ast::EncodingPrefix leftEncodingPrefix = leftNode->GetEncodingPrefix();
+    std::unique_ptr<sngcpp::ast::StringLiteralNode> rightNode(sngcpp::par::ParseStringLiteral(pp->GetSourcePos(), pp->FileName(), right.match.ToString()));
+    sngcpp::ast::EncodingPrefix rightEncodingPrefix = rightNode->GetEncodingPrefix();
+    sngcpp::ast::EncodingPrefix commonEncodingPrefix = CommonEncodingPrefix(leftEncodingPrefix, rightEncodingPrefix);
+    std::u32string rep = sngcpp::ast::EncodingPrefixStr(commonEncodingPrefix);
+    rep.append(1, '"');
+    rep.append(leftNode->Value());
+    rep.append(rightNode->Value());
+    rep.append(1, '"');
+    Lexeme lexeme = pp->StringsRef().Install(std::move(rep));
+    return Token(TextTokens::STRINGLITERAL, lexeme, left.line);
+}
+
+std::vector<Token> CombineAdjacentStringLiterals(const std::vector<Token>& tokens, PP* pp)
+{
+    std::vector<Token> combinedTokens;
+    int n = tokens.size();
+    int state = 0;
+    if (n > 0)
     {
-        if (token.id == TextTokens::ID)
+        for (int i = 0; i < n; ++i)
         {
-            auto it = pp->macroMap.find(token.match);
-            if (it != pp->macroMap.cend())
+            Token token = tokens[i];
+            switch (state)
             {
-                const std::vector<soulng::lexer::Token>& replacementTokens = it->second;
-                for (const soulng::lexer::Token& replacementToken : replacementTokens)
+                case 0:
                 {
-                    expandedTokens.push_back(replacementToken);
+                    if (token.id == TextTokens::STRINGLITERAL || token.id == TextTokens::QUOTEHEADERNAME)
+                    {
+                        token.id = TextTokens::STRINGLITERAL;
+                        combinedTokens.push_back(token);
+                        state = 1;
+                    }
+                    else
+                    {
+                        combinedTokens.push_back(token);
+                    }
+                    break;
                 }
-                prevWasMacro = true;
-            }
-            else
-            {
-                expandedTokens.push_back(token);
-            }
-        }
-        else
-        {
-            if (prevWasMacro)
-            {
-                prevWasMacro = false;
-                if (token.id != TextTokens::WS)
+                case 1:
                 {
-                    expandedTokens.push_back(token);
+                    if (token.id == TextTokens::STRINGLITERAL || token.id == TextTokens::QUOTEHEADERNAME)
+                    {
+                        token.id = TextTokens::STRINGLITERAL;
+                        std::vector<Token>::iterator p = combinedTokens.end() - 1;
+                        while (p != combinedTokens.begin() && (p->id == TextTokens::WS || p->id == TextTokens::NEWLINE))
+                        {
+                            --p;
+                        }
+                        *p = CombineStringLitTokens(*p, token, pp);
+                        combinedTokens.erase(p + 1, combinedTokens.end());
+                    }
+                    else if (token.id == TextTokens::WS || token.id == TextTokens::NEWLINE)
+                    {
+                        combinedTokens.push_back(token);
+                    }
+                    else
+                    {
+                        combinedTokens.push_back(token);
+                        state = 0;
+                    }
+                    break;
                 }
-            }
-            else
-            {
-                expandedTokens.push_back(token);
             }
         }
     }
-    return expandedTokens;
+    return combinedTokens;
 }
 
-std::vector<soulng::lexer::Token> ConvertPPTokensToTextTokens(const std::vector<soulng::lexer::Token>& ppTokens)
+class PPTokenToTextTokenMap
 {
-    std::vector<soulng::lexer::Token> textTokens;
-    for (const soulng::lexer::Token& ppToken : ppTokens)
-    {
-        textTokens.push_back(std::move(soulng::lexer::Token(ppTokenTextTokenMap[ppToken.id], ppToken.match, ppToken.line)));
-    }
-    return textTokens;
+public:
+    static void Init();
+    static void Done();
+    static PPTokenToTextTokenMap& Instance() { return *instance; }
+    Token GetTextToken(const Token& ppToken) const;
+private:
+    PPTokenToTextTokenMap();
+    static std::unique_ptr<PPTokenToTextTokenMap> instance;
+    std::map<int, int> map;
+};
+
+std::unique_ptr<PPTokenToTextTokenMap> PPTokenToTextTokenMap::instance;
+
+void PPTokenToTextTokenMap::Init()
+{
+    instance.reset(new PPTokenToTextTokenMap());
 }
 
-const char32_t* zeroStr = U"0";
-const soulng::lexer::Lexeme zeroLexeme(zeroStr, zeroStr + 1);
+void PPTokenToTextTokenMap::Done()
+{
+    instance.reset();
+}
+
+PPTokenToTextTokenMap::PPTokenToTextTokenMap()
+{
+    map[PPTokens::END] = TextTokens::END;
+    map[PPTokens::DEFINED] = TextTokens::DEFINED;
+    map[PPTokens::ANGLEHEADERNAME] = TextTokens::ANGLEHEADERNAME;
+    map[PPTokens::QUOTEHEADERNAME] = TextTokens::QUOTEHEADERNAME;
+    map[PPTokens::PPNUMBER] = TextTokens::PPNUMBER;
+    map[PPTokens::CHARLITERAL] = TextTokens::CHARLITERAL;
+    map[PPTokens::STRINGLITERAL] = TextTokens::STRINGLITERAL;
+    map[PPTokens::BEGINRAWSTRINGLITERAL] = TextTokens::BEGINRAWSTRINGLITERAL;
+    map[PPTokens::BLOCKCOMMENT] = TextTokens::BLOCKCOMMENT;
+    map[PPTokens::LINECOMMENT] = TextTokens::LINECOMMENT;
+    map[PPTokens::WS] = TextTokens::WS;
+    map[PPTokens::NEWLINE] = TextTokens::NEWLINE;
+    map[PPTokens::HASHHASH] = TextTokens::HASHHASH;
+    map[PPTokens::HASH] = TextTokens::HASH;
+    map[PPTokens::CHAR] = TextTokens::CHAR;
+    map[PPTokens::ID] = TextTokens::ID;
+    map[PPTokens::COLONCOLON] = TextTokens::COLONCOLON;
+    map[PPTokens::COMMA] = TextTokens::COMMA;
+    map[PPTokens::ASSIGN] = TextTokens::ASSIGN;
+    map[PPTokens::MULASSIGN] = TextTokens::MULASSIGN;
+    map[PPTokens::DIVASSIGN] = TextTokens::DIVASSIGN;
+    map[PPTokens::REMASSIGN] = TextTokens::REMASSIGN;
+    map[PPTokens::ADDASSIGN] = TextTokens::ADDASSIGN;
+    map[PPTokens::SUBASSIGN] = TextTokens::SUBASSIGN;
+    map[PPTokens::SHIFTRIGHTASSIGN] = TextTokens::SHIFTRIGHTASSIGN;
+    map[PPTokens::SHIFTLEFTASSIGN] = TextTokens::SHIFTLEFTASSIGN;
+    map[PPTokens::ANDASSIGN] = TextTokens::ANDASSIGN;
+    map[PPTokens::XORASSIGN] = TextTokens::XORASSIGN;
+    map[PPTokens::ORASSIGN] = TextTokens::ORASSIGN;
+    map[PPTokens::QUEST] = TextTokens::QUEST;
+    map[PPTokens::COLON] = TextTokens::COLON;
+    map[PPTokens::OROR] = TextTokens::OROR;
+    map[PPTokens::AMPAMP] = TextTokens::AMPAMP;
+    map[PPTokens::OR] = TextTokens::OR;
+    map[PPTokens::XOR] = TextTokens::XOR;
+    map[PPTokens::AMP] = TextTokens::AMP;
+    map[PPTokens::EQ] = TextTokens::EQ;
+    map[PPTokens::NEQ] = TextTokens::NEQ;
+    map[PPTokens::LEQ] = TextTokens::LEQ;
+    map[PPTokens::GEQ] = TextTokens::GEQ;
+    map[PPTokens::SPACESHIP] = TextTokens::SPACESHIP;
+    map[PPTokens::LANGLE] = TextTokens::LANGLE;
+    map[PPTokens::RANGLE] = TextTokens::RANGLE;
+    map[PPTokens::SHIFTLEFT] = TextTokens::SHIFTLEFT;
+    map[PPTokens::SHIFTRIGHT] = TextTokens::SHIFTRIGHT;
+    map[PPTokens::PLUS] = TextTokens::PLUS;
+    map[PPTokens::MINUS] = TextTokens::MINUS;
+    map[PPTokens::STAR] = TextTokens::STAR;
+    map[PPTokens::DIV] = TextTokens::DIV;
+    map[PPTokens::MOD] = TextTokens::MOD;
+    map[PPTokens::DOTSTAR] = TextTokens::DOTSTAR;
+    map[PPTokens::ARROWSTAR] = TextTokens::ARROWSTAR;
+    map[PPTokens::LPAREN] = TextTokens::LPAREN;
+    map[PPTokens::RPAREN] = TextTokens::RPAREN;
+    map[PPTokens::PLUSPLUS] = TextTokens::PLUSPLUS;
+    map[PPTokens::MINUSMINUS] = TextTokens::MINUSMINUS;
+    map[PPTokens::EXCLAMATION] = TextTokens::EXCLAMATION;
+    map[PPTokens::TILDE] = TextTokens::TILDE;
+    map[PPTokens::LBRACKET] = TextTokens::LBRACKET;
+    map[PPTokens::RBRACKET] = TextTokens::RBRACKET;
+    map[PPTokens::LBRACE] = TextTokens::LBRACE;
+    map[PPTokens::RBRACE] = TextTokens::RBRACE;
+    map[PPTokens::DOT] = TextTokens::DOT;
+    map[PPTokens::ARROW] = TextTokens::ARROW;
+    map[PPTokens::SEMICOLON] = TextTokens::SEMICOLON;
+    map[PPTokens::ELLIPSES] = TextTokens::ELLIPSES;
+    map[PPTokens::OTHER] = TextTokens::OTHER;
+}
+
+Token PPTokenToTextTokenMap::GetTextToken(const Token& ppToken) const
+{
+    int id = TextTokens::OTHER;
+    auto it = map.find(ppToken.id);
+    if (it != map.cend())
+    {
+        id = it->second;
+    }
+    return Token(id, ppToken.match, ppToken.line);
+}
+
+Token ConvertPPTokenToTextToken(const Token& ppToken)
+{
+    return PPTokenToTextTokenMap::Instance().GetTextToken(ppToken);
+}
+
+class TextTokenToCppTokenMap
+{
+public:
+    static void Init();
+    static void Done();
+    static TextTokenToCppTokenMap& Instance() { return *instance; }
+    std::vector<Token> ConvertTextTokensToCppTokens(const std::vector<Token>& textTokens, PP* pp) const;
+private:
+    TextTokenToCppTokenMap();
+    static std::unique_ptr<TextTokenToCppTokenMap> instance;
+    std::map<int, int> map;
+};
+
+std::unique_ptr<TextTokenToCppTokenMap> TextTokenToCppTokenMap::instance;
+
+void TextTokenToCppTokenMap::Init()
+{
+    instance.reset(new TextTokenToCppTokenMap());
+}
+
+void TextTokenToCppTokenMap::Done()
+{
+    instance.reset();
+}
+
+TextTokenToCppTokenMap::TextTokenToCppTokenMap()
+{
+    for (int tokenId = TextTokens::END; tokenId < TextTokens::MAX; ++tokenId)
+    {
+        map[tokenId] = INVALID_TOKEN;
+    }
+    map[TextTokens::END] = CppTokens::END;
+    map[TextTokens::CHARLITERAL] = CppTokens::CHARLIT;
+    map[TextTokens::STRINGLITERAL] = CppTokens::STRINGLIT;
+    map[TextTokens::ID] = CppTokens::ID;
+    map[TextTokens::COLONCOLON] = CppTokens::COLONCOLON;
+    map[TextTokens::COMMA] = CppTokens::COMMA;
+    map[TextTokens::ASSIGN] = CppTokens::ASSIGN;
+    map[TextTokens::MULASSIGN] = CppTokens::MULASSIGN;
+    map[TextTokens::DIVASSIGN] = CppTokens::DIVASSIGN;
+    map[TextTokens::REMASSIGN] = CppTokens::REMASSIGN;
+    map[TextTokens::ADDASSIGN] = CppTokens::ADDASSIGN;
+    map[TextTokens::SUBASSIGN] = CppTokens::SUBASSIGN;
+    map[TextTokens::SHIFTRIGHTASSIGN] = CppTokens::SHIFTRIGHTASSIGN;
+    map[TextTokens::SHIFTLEFTASSIGN] = CppTokens::SHIFTLEFTASSIGN;
+    map[TextTokens::ANDASSIGN] = CppTokens::ANDASSIGN;
+    map[TextTokens::XORASSIGN] = CppTokens::XORASSIGN;
+    map[TextTokens::ORASSIGN] = CppTokens::ORASSIGN;
+    map[TextTokens::QUEST] = CppTokens::QUEST;
+    map[TextTokens::COLON] = CppTokens::COLON;
+    map[TextTokens::OROR] = CppTokens::OROR;
+    map[TextTokens::AMPAMP] = CppTokens::AMPAMP;
+    map[TextTokens::OR] = CppTokens::OR;
+    map[TextTokens::XOR] = CppTokens::XOR;
+    map[TextTokens::AMP] = CppTokens::AMP;
+    map[TextTokens::EQ] = CppTokens::EQ;
+    map[TextTokens::NEQ] = CppTokens::NEQ;
+    map[TextTokens::LEQ] = CppTokens::LEQ;
+    map[TextTokens::GEQ] = CppTokens::GEQ;
+    map[TextTokens::SPACESHIP] = CppTokens::SPACESHIP;
+    map[TextTokens::LANGLE] = CppTokens::LANGLE;
+    map[TextTokens::RANGLE] = CppTokens::RANGLE;
+    map[TextTokens::SHIFTLEFT] = CppTokens::SHIFTLEFT;
+    map[TextTokens::SHIFTRIGHT] = CppTokens::SHIFTRIGHT;
+    map[TextTokens::PLUS] = CppTokens::PLUS;
+    map[TextTokens::MINUS] = CppTokens::MINUS;
+    map[TextTokens::STAR] = CppTokens::STAR;
+    map[TextTokens::DIV] = CppTokens::DIV;
+    map[TextTokens::MOD] = CppTokens::MOD;
+    map[TextTokens::DOTSTAR] = CppTokens::DOTSTAR;
+    map[TextTokens::ARROWSTAR] = CppTokens::ARROWSTAR;
+    map[TextTokens::LPAREN] = CppTokens::LPAREN;
+    map[TextTokens::RPAREN] = CppTokens::RPAREN;
+    map[TextTokens::PLUSPLUS] = CppTokens::PLUSPLUS;
+    map[TextTokens::MINUSMINUS] = CppTokens::MINUSMINUS;
+    map[TextTokens::EXCLAMATION] = CppTokens::EXCLAMATION;
+    map[TextTokens::TILDE] = CppTokens::TILDE;
+    map[TextTokens::LBRACKET] = CppTokens::LBRACKET;
+    map[TextTokens::RBRACKET] = CppTokens::RBRACKET;
+    map[TextTokens::LBRACE] = CppTokens::LBRACE;
+    map[TextTokens::RBRACE] = CppTokens::RBRACE;
+    map[TextTokens::DOT] = CppTokens::DOT;
+    map[TextTokens::ARROW] = CppTokens::ARROW;
+    map[TextTokens::SEMICOLON] = CppTokens::SEMICOLON;
+    map[TextTokens::ELLIPSES] = CppTokens::ELLIPSES;
+}
+
+const char32_t* zeroLit = U"0";
+const soulng::lexer::Lexeme zeroLexeme(zeroLit, zeroLit + 1);
 const soulng::lexer::Token zeroToken(CppTokens::INTLIT, zeroLexeme, 1);
-const char32_t* oneStr = U"1";
-const soulng::lexer::Lexeme oneLexeme(oneStr, oneStr + 1);
+
+const char32_t* oneLit = U"1";
+const soulng::lexer::Lexeme oneLexeme(oneLit, oneLit + 1);
 const soulng::lexer::Token oneToken(CppTokens::INTLIT, oneLexeme, 1);
 
-std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector<soulng::lexer::Token>& textTokens, const PP* pp)
+std::vector<Token> TextTokenToCppTokenMap::ConvertTextTokensToCppTokens(const std::vector<Token>& textTokens, PP* pp) const
 {
-    std::vector<soulng::lexer::Token> cppTokens;
+    std::vector<Token> cppTokens;
     int state = 0;
-    for (const soulng::lexer::Token& textToken : textTokens)
+    for (const Token& textToken : textTokens)
     {
         switch (state)
         {
@@ -230,7 +329,7 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
             {
                 switch (textToken.id)
                 {
-                    case TextTokens::KEYWORD:
+                    case TextTokens::KEYWORD:   
                     case TextTokens::ID:
                     {
                         cppTokens.push_back(zeroToken);
@@ -240,7 +339,7 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
                     {
                         CppLexer lexer(textToken.match.begin, textToken.match.end, std::string(), 0);
                         ++lexer;
-                        cppTokens.push_back(*lexer);
+                        cppTokens.push_back(lexer.GetToken(lexer.GetPos()));
                         break;
                     }
                     case TextTokens::DEFINED:
@@ -248,9 +347,22 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
                         state = 1;
                         break;
                     }
+                    case TextTokens::WS:
+                    {
+                        break;
+                    }
                     default:
                     {
-                        cppTokens.push_back(std::move(soulng::lexer::Token(textTokenCppTokenMap[textToken.id], textToken.match, textToken.line)));
+                        auto it = map.find(textToken.id);
+                        if (it != map.cend())
+                        {
+                            int id = it->second;
+                            cppTokens.push_back(Token(id, textToken.match, textToken.line));
+                        }
+                        else
+                        {
+                            cppTokens.push_back(INVALID_TOKEN);
+                        }
                         break;
                     }
                 }
@@ -267,7 +379,7 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
                     }
                     case TextTokens::ID:
                     {
-                        if (pp->IsDefined(textToken.match))
+                        if (pp->IsMacroDefined(textToken.match))
                         {
                             cppTokens.push_back(oneToken);
                         }
@@ -276,6 +388,10 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
                             cppTokens.push_back(zeroToken);
                         }
                         state = 0;
+                        break;
+                    }
+                    case TextTokens::WS:
+                    {
                         break;
                     }
                     default:
@@ -293,7 +409,7 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
                 {
                     case TextTokens::ID:
                     {
-                        if (pp->IsDefined(textToken.match))
+                        if (pp->IsMacroDefined(textToken.match))
                         {
                             cppTokens.push_back(oneToken);
                         }
@@ -304,20 +420,32 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
                         state = 3;
                         break;
                     }
+                    case TextTokens::WS:
+                    {
+                        break;
+                    }
                     default:
                     {
                         cppTokens.push_back(zeroToken);
                         state = 3;
+                        break;
                     }
                 }
                 break;
             }
             case 3:
             {
-                if (textToken.id == TextTokens::RPAREN)
+                switch (textToken.id)
                 {
-                    state = 0;
-                    break;
+                    case TextTokens::RPAREN:
+                    {
+                        state = 0;
+                        break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
                 }
                 break;
             }
@@ -326,21 +454,28 @@ std::vector<soulng::lexer::Token> ConvertTextTokensToCppTokens(const std::vector
     return cppTokens;
 }
 
-PP::PP(EvaluationContext& context_) :
-    fileIndex(0), save(true), process(true), processed(false), elseGroupProcessed(false), inIfGroup(false), verbose(false),
-    projectHeaderFileSet(nullptr), root(GetCurrentWorkingDirectory()), line(1), context(context_), rootMode(false), tokens(nullptr)
+std::vector<Token> ConvertTextTokensToCppTokens(const std::vector<Token>& textTokens, PP* pp)
+{
+    return TextTokenToCppTokenMap::Instance().ConvertTextTokensToCppTokens(textTokens, pp);
+}
+
+PPResult::PPResult() : lineMapper(*this), empty(true), msvcMode(false)
 {
 }
 
-PP::~PP()
+PPResult::PPResult(std::vector<std::string>&& fileNames_, Strings&& strings_, std::vector<std::unique_ptr<LogicalPhysicalMapping>>&& logicalPhysicalMappings_, 
+    std::map<int, PPSourceLocation>&& lineMap_, const Lexeme& resultText_, std::vector<std::string>&& errors_) :
+    lineMapper(*this), fileNames(std::move(fileNames_)), strings(std::move(strings_)), logicalPhysicalMappings(std::move(logicalPhysicalMappings_)), lineMap(lineMap_), resultText(resultText_), 
+    errors(std::move(errors_)), empty(false), msvcMode(false)
 {
 }
 
-std::vector<soulng::lexer::Token>* PP::BeginDefine(const soulng::lexer::Lexeme& id)
+const PPSourceLocation* PPResult::GetSourceLocation(int line) const
 {
-    if (process)
+    auto it = lineMap.find(line);
+    if (it != lineMap.cend())
     {
-        return &macroMap[id];
+        return &it->second;
     }
     else
     {
@@ -348,616 +483,771 @@ std::vector<soulng::lexer::Token>* PP::BeginDefine(const soulng::lexer::Lexeme& 
     }
 }
 
-void PP::EndDefine(std::vector<soulng::lexer::Token>& tokens)
+std::string PPResult::GetFileName(int fileIndex) const
 {
-    if (process)
+    if (fileIndex >= 0 && fileIndex < fileNames.size())
     {
-        std::vector<soulng::lexer::Token> textTokens = ConvertPPTokensToTextTokens(tokens);
-        std::swap(tokens, textTokens);
+        return fileNames[fileIndex];
+    }
+    else
+    {
+        return std::string();
     }
 }
 
-void PP::Define(const soulng::lexer::Lexeme& lexeme)
+const LogicalPhysicalMapping* PPResult::GetMapping(int fileIndex) const
 {
-    std::vector<soulng::lexer::Token>* def = BeginDefine(lexeme);
-    EndDefine(*def);
-}
-
-void PP::Undef(const soulng::lexer::Lexeme& lexeme)
-{
-    if (process)
+    if (fileIndex >= 0 && fileIndex < logicalPhysicalMappings.size())
     {
-        macroMap.erase(lexeme);
+        return logicalPhysicalMappings[fileIndex].get();
+    }
+    else
+    {
+        return nullptr;
     }
 }
 
-bool PP::IsDefined(const soulng::lexer::Lexeme& lexeme) const
+std::string PPResult::GetSourceLine(int fileIndex, int lineNumber)
 {
-    return macroMap.find(lexeme) != macroMap.cend();
+    const LogicalPhysicalMapping* mapping = GetMapping(fileIndex);
+    if (mapping && lineNumber <= mapping->LogicalLines().Count())
+    {
+        Lexeme line = mapping->LogicalLines()[lineNumber - 1];
+        return ToUtf8(line.ToString());
+    }
+    else
+    {
+        return std::string();
+    }
 }
 
-bool PP::IsKeywordToken(const soulng::lexer::Token& token) const
+PPLineMapper::PPLineMapper(PPResult& ppResult_) : ppResult(ppResult_)
+{
+}
+
+SourceInfo PPLineMapper::GetSourceInfo(int line)
+{
+    const PPSourceLocation* sourceLocation = ppResult.GetSourceLocation(line);
+    if (sourceLocation && sourceLocation->lineNumber)
+    {
+        SourceInfo sourceInfo;
+        sourceInfo.fileName = ppResult.GetFileName(sourceLocation->fileIndex);
+        sourceInfo.lineNumber = sourceLocation->lineNumber;
+        sourceInfo.sourceLine = ppResult.GetSourceLine(sourceLocation->fileIndex, sourceLocation->lineNumber);
+        return sourceInfo;
+    }
+    else
+    {
+        return SourceInfo();
+    }
+}
+
+PP::PP(EvaluationContext& evaluationContext_) : evaluationContext(evaluationContext_), fileIndex(-1), skip(false), lineNumber(1), level(0), lineIndex(0), skipToEnd(false)
+{
+    space = strings.Install(U" ");
+    std::string date = GetCurrentDate().ToString();
+    std::string dateTime = GetCurrentDateTime().ToString();
+    std::string time = dateTime.substr(11);
+    DefineObjectMacro(U"__DATE__", ToUtf32(date));
+    DefineObjectMacro(U"__TIME__", ToUtf32(time));
+    fileMacro.reset(new ObjectMacro(strings.Install(U"__FILE__"), "", 0, std::vector<Token>(), std::u32string()));
+    lineMacro.reset(new ObjectMacro(strings.Install(U"__LINE__"), "", 0, std::vector<Token>(), std::u32string()));
+    sngcppMSVCModeMacroName = strings.Install(U"__SNGCPP_MSVC_MODE");
+}
+
+bool PP::IsKeywordToken(const Token& token) const
 {
     soulng::lexer::KeywordMap* keywordMap = CppKeywords::GetKeywordMap();
     return keywordMap->GetKeywordToken(token.match) != soulng::lexer::INVALID_TOKEN;
 }
 
-bool PP::IsProjectHeaderFile(const std::string& headerFilePath) const
+Macro* PP::GetMacro(const Lexeme& name) const
 {
-    if (projectHeaderFileSet)
+    auto it = macroMap.find(name);
+    if (it != macroMap.cend())
     {
-        return projectHeaderFileSet->IsProjectHeaderFile(headerFilePath);
+        return it->second;
     }
-    return false;
+    else
+    {
+        return nullptr;
+    }
 }
 
-void PP::Include(bool isAngleHeader, const std::string& headerName)
+std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens)
 {
-    bool found = false;
-    std::string headerFilePath;
-    if (isAngleHeader)
+    return MacroExpand(tokens, false);
+}
+
+std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, bool saveDefined)
+{
+    std::set<Macro*> expandedMacros;
+    std::vector<Token>::const_iterator i = tokens.cbegin();
+    std::vector<Token>::const_iterator e = tokens.cend();
+    std::vector<Token> expandedTokens;
+    std::vector<Token> tokensToProcess;
+    bool expanded = true;
+    bool definedSeen = false;
+    bool recursive = false;
+    while (expanded)
     {
-        for (const std::string& includeDir : includePath)
+        expanded = false;
+        std::set<Macro*> loopExpandedMacros;
+        while (i != e)
         {
-            headerFilePath = GetFullPath(Path::Combine(Path::Combine(root, includeDir), headerName));
-            if (FileExists(headerFilePath))
+            Token token = *i;
+            switch (token.id)
             {
-                found = true;
-                break;
+                case TextTokens::ID:
+                {
+                    if (saveDefined && definedSeen)
+                    {
+                        expandedTokens.push_back(token);
+                        definedSeen = false;
+                    }
+                    else
+                    {
+                        Macro* macro = GetMacro(token.match);
+                        if (macro)
+                        {
+                            if (!recursive || expandedMacros.find(macro) == expandedMacros.cend())
+                            {
+                                i = macro->Expand(i, e, expandedTokens, this);
+                                expanded = true;
+                                loopExpandedMacros.insert(macro);
+                            }
+                            else
+                            {
+                                expandedTokens.push_back(token);
+                            }
+                        }
+                        else
+                        {
+                            expandedTokens.push_back(token);
+                        }
+                    }
+                    break;
+                }
+                case TextTokens::DEFINED:
+                {
+                    expandedTokens.push_back(token);
+                    definedSeen = true;
+                    break;
+                }
+                default:
+                {
+                    expandedTokens.push_back(token);
+                    break;
+                }
+            }
+            if (i != e)
+            {
+                ++i;
+            }
+        }
+        if (expanded)
+        {
+            for (const auto& macro : loopExpandedMacros)
+            {
+                expandedMacros.insert(macro);
+            }
+            tokensToProcess.clear();
+            std::swap(expandedTokens, tokensToProcess);
+            tokensToProcess = ConcatenateTokens(tokensToProcess, this);
+            i = tokensToProcess.cbegin();
+            e = tokensToProcess.cend();
+            recursive = true;
+        }
+    }
+    return expandedTokens;
+}
+
+void PP::AddError(const std::string& error)
+{
+    errors.push_back(error);
+}
+
+void PP::AddToken(const Token& token)
+{
+    tokens.push_back(token);
+}
+
+Lexeme PP::EmitText()
+{
+    std::u32string text;
+    for (const Token& token : tokens)
+    {
+        text.append(token.match.ToString());
+    }
+    return strings.Install(std::move(text));
+}
+
+void PP::SetFile(const std::string& file_)
+{
+    fileStr = ToUtf32(file_);
+    fileMacro->SetValue(Token(TextTokens::STRINGLITERAL, Lexeme(fileStr.c_str(), fileStr.c_str() + fileStr.length()), 1));
+}
+
+void PP::SetLine(int line_)
+{
+    lineStr = ToUtf32(std::to_string(line_));
+    lineMacro->SetValue(Token(TextTokens::PPNUMBER, Lexeme(lineStr.c_str(), lineStr.c_str() + lineStr.length()), 1));
+}
+
+void PP::PushLineIndex()
+{
+    lineIndexStack.push(lineIndex);
+}
+
+void PP::PopLineIndex()
+{
+    lineIndex = lineIndexStack.top();
+    lineIndexStack.pop();
+}
+
+void PP::PushLineNumber()
+{
+    lineNumberStack.push(lineNumber);
+}
+
+void PP::PopLineNumber()
+{
+    lineNumber = lineNumberStack.top();
+    lineNumberStack.pop();
+}
+
+void PP::AddProcessedHeader(const std::string& header)
+{
+    processedHeaders.insert(header);
+}
+
+bool PP::IsHeaderProcessed(const std::string& header) const
+{
+    return processedHeaders.find(header) != processedHeaders.cend();
+}
+
+void PP::AddFileName(const std::string& fileName)
+{
+    fileNames.push_back(fileName);
+}
+
+void PP::AddLogicalPhysicalMapping(std::unique_ptr<LogicalPhysicalMapping>&& mapping)
+{
+    logicalPhysicalMappings.push_back(std::move(mapping));
+}
+
+void PP::DefineObjectMacro(const Lexeme& name, const std::vector<Token>& replacementList, const std::u32string& definitionStr)
+{
+    Macro* prevMacro = GetMacro(name);
+    if (prevMacro)
+    {
+        if (prevMacro->IsObjectMacro())
+        {
+            ObjectMacro* objectMacro = static_cast<ObjectMacro*>(prevMacro);
+            if (definitionStr != objectMacro->DefinitionStr())
+            {
+                std::string error = "error: object macro '" + ToUtf8(name.ToString()) + "' definition not equal to previous definition: " + fileName + ":" + std::to_string(lineNumber);
+                error.append("\nnote: previous definition was in '" + prevMacro->FileName() + ":" + std::to_string(prevMacro->LineNumber()) + "'");
+                AddError(error);
+            }
+        }
+        else if (prevMacro->IsFunctionMacro())
+        {
+            std::string error = "error: object macro '" + ToUtf8(name.ToString()) + "' definition not equal to previous definition: note: previous was function macro: " + 
+                fileName + ":" + std::to_string(lineNumber);
+            error.append("\nnote: previous definition was in '" + prevMacro->FileName() + ":" + std::to_string(prevMacro->LineNumber()) + "'");
+            AddError(error);
+        }
+    }
+    else
+    {
+        std::vector<Token> definition = MacroExpand(replacementList);
+        if (ContainsHash(definition))
+        {
+            std::string error = "error: replacement list of an object macro cannot contain the # operator: " + fileName + ":" + std::to_string(lineNumber);
+            AddError(error);
+        }
+        else if (ContainsHashHash(definition))
+        {
+            std::string error = "error: replacement list of an object macro cannot contain the ## operator: " + fileName + ":" + std::to_string(lineNumber);
+            AddError(error);
+        }
+        std::unique_ptr<Macro> macro(new ObjectMacro(name, fileName, lineNumber, definition, definitionStr));
+        macroMap[name] = macro.get();
+        macros.push_back(std::move(macro));
+    }
+}
+
+void PP::DefineFunctionMacro(const Lexeme& name, const std::vector<Token>& paramList, const std::vector<Token>& replacementList, const std::u32string& definitionStr)
+{
+    Macro* prevMacro = GetMacro(name);
+    if (prevMacro)
+    {
+        if (prevMacro->IsObjectMacro())
+        {
+            std::string error = "error: function macro '" + ToUtf8(name.ToString()) + "' definition not equal to previous definition: note: previous was object macro: " + 
+                fileName + ":" + std::to_string(lineNumber);
+            error.append("\nnote: previous definition was in '" + prevMacro->FileName() + ":" + std::to_string(prevMacro->LineNumber()) + "'");
+            AddError(error);
+        }
+        else if (prevMacro->IsFunctionMacro())
+        {
+            FunctionMacro* functionMacro = static_cast<FunctionMacro*>(prevMacro);
+            if (ToString(functionMacro->Parameters()) != ToString(paramList))
+            {
+                std::string error = "error: function macro '" + ToUtf8(name.ToString()) + "' definition not equal to previous definition: " + fileName + ":" + std::to_string(lineNumber);
+                error.append("\nnote: parameter lists differ: note: previous definition in '" + prevMacro->FileName() + ":" + std::to_string(prevMacro->LineNumber()) + "'");
+                AddError(error);
+            }
+            else if (functionMacro->DefinitionStr() != definitionStr)
+            {
+                std::string error = "error: function macro '" + ToUtf8(name.ToString()) + "' definition not equal to previous definition: " + fileName + ":" + std::to_string(lineNumber);
+                error.append("\nnote: definitions differ: note: previous definition was in '" + prevMacro->FileName() + ":" + std::to_string(prevMacro->LineNumber()) + "'");
+                AddError(error);
             }
         }
     }
     else
     {
-        headerFilePath = GetFullPath(Path::Combine(root, headerName));
-        if (FileExists(headerFilePath))
+        std::vector<Token> definition = MacroExpand(replacementList);
+        std::unique_ptr<FunctionMacro> macro(new FunctionMacro(name, fileName, lineNumber, paramList, definition, definitionStr, this));
+        if (!macro->MakeParamIndexMap())
         {
-            found = true;
+            std::string error = "error: duplicate identifier in parameter list of function macro '" + ToUtf8(macro->Name().ToString()) + "' : " + fileName + ":" + std::to_string(lineNumber);
+            AddError(error);
         }
-    }
-    if (found)
-    {
-        if (IsProjectHeaderFile(headerFilePath) || rootMode && Path::GetDirectoryName(headerFilePath) == root)
+        else
         {
-            bool prevSave = save;
-            save = false;
-            ++fileIndex;
-            headerFilePaths.push_back(headerFilePath);
-            Preprocess(headerFilePath, this);
-            save = prevSave;
+            macroMap[name] = macro.get();
+            macros.push_back(std::move(macro));
         }
     }
 }
 
-const char32_t* emptyStr = U"";
-
-bool PP::Evaluate(const std::vector<soulng::lexer::Token>& exprPPTokens) const
+void PP::DefineObjectMacro(const std::u32string& name, const std::u32string& value)
 {
-    std::vector<soulng::lexer::Token> exprTextTokens = ConvertPPTokensToTextTokens(exprPPTokens);
-    exprTextTokens = MacroExpand(exprTextTokens, this);
-    std::vector<soulng::lexer::Token> cppTokens = ConvertTextTokensToCppTokens(exprTextTokens, this);
-    CppLexer lexer(emptyStr, emptyStr, fileName, fileIndex);
-    lexer.SetLine(line);
-    lexer.SetTokens(cppTokens);
-    sngcpp::symbols::Context ctx;
-    std::unique_ptr<sngcpp::ast::Node> expr = ExpressionParser::Parse(lexer, &ctx);
-    Evaluator evaluator(fileName, line, context);
-    expr->Accept(evaluator);
-    Value* value = evaluator.GetValue();
-    BoolValue* boolValue = value->ToBool(context);
-    return boolValue->GetValue();
-}
-
-void PP::If(const std::vector<soulng::lexer::Token>& exprPPTokens)
-{
-    processStack.push(process);
-    bool processGroup = processStack.top() && Evaluate(exprPPTokens);
-    process = processGroup;
-    processedStack.push(processed);
-    processed = process;
-    inIfGroupStack.push(inIfGroup);
-    inIfGroup = true;
-    elseGroupProcessedStack.push(elseGroupProcessed);
-    elseGroupProcessed = false;
-}
-
-void PP::Ifdef(bool defined)
-{
-    processStack.push(process);
-    bool processGroup = processStack.top() && defined;
-    process = processGroup;
-    processedStack.push(processed);
-    processed = process;
-    inIfGroupStack.push(inIfGroup);
-    inIfGroup = true;
-    elseGroupProcessedStack.push(elseGroupProcessed);
-    elseGroupProcessed = false;
-}
-
-void PP::Ifndef(bool defined)
-{
-    processStack.push(process);
-    bool processGroup = processStack.top() && !defined;
-    process = processGroup;
-    processedStack.push(processed);
-    processed = process;
-    inIfGroupStack.push(inIfGroup);
-    inIfGroup = true;
-    elseGroupProcessedStack.push(elseGroupProcessed);
-    elseGroupProcessed = false;
-}
-
-void PP::Elif(const std::vector<soulng::lexer::Token>& exprPPTokens)
-{
-    if (!inIfGroup)
+    std::u32string nm = name;
+    Lexeme macroName = strings.Install(std::move(nm));
+    if (!value.empty())
     {
-        throw std::runtime_error("error: " + fileName + ":" + std::to_string(line) + ": not in #if group");
-    }
-    if (processed)
-    {
-        process = false;
+        std::u32string replacementText = value;
+        Lexeme replacement = strings.Install(std::move(replacementText));
+        PPLexer lexer(replacement.begin, replacement.end, fileName, fileIndex);
+        ++lexer;
+        std::vector<Token> replacementList;
+        ParseReplacementList(lexer, replacementList);
+        DefineObjectMacro(macroName, replacementList, value);
     }
     else
     {
-        bool processGroup = Evaluate(exprPPTokens);
-        process = processGroup;
-        if (process)
+        DefineObjectMacro(macroName, std::vector<Token>(), std::u32string());
+    }
+}
+
+void PP::Undefine(const Lexeme& name)
+{
+    macroMap.erase(name);
+}
+
+void PP::Line(const std::vector<Token>& tokens)
+{
+    // todo
+}
+
+void PP::Error(const std::vector<Token>& tokens)
+{
+    // todo
+}
+
+void PP::Pragma(const std::vector<Token>& tokens)
+{
+    if (IsMacroDefined(sngcppMSVCModeMacroName))
+    {
+        if (tokens.size() == 1 && tokens.front().match.ToString() == U"once")
         {
-            processed = true;
+            if (IsHeaderProcessed(fileName))
+            {
+                SetSkipToEnd();
+            }
+            else
+            {
+                AddProcessedHeader(fileName);
+            }
         }
+    }
+}
+
+struct IncludeGuard
+{
+    IncludeGuard(PP* pp_) : pp(pp_)
+    {
+        pp->PushLineIndex();
+        pp->PushLineNumber();
+    }
+    ~IncludeGuard()
+    {
+        pp->PopLineNumber();
+        pp->PopLineIndex();
+    }
+    PP* pp;
+};
+
+void PP::Include(const std::vector<Token>& tokens)
+{
+    std::string headerName;
+    bool parse = true;
+    bool expanded = false;
+    bool searchCurrentDir = false;
+    if (!tokens.empty())
+    {
+        Token token = tokens.front();
+        while (parse)
+        {
+            if (token.id == TextTokens::ANGLEHEADERNAME)
+            {
+                headerName = ParseAngleHeaderName(token, this);
+                parse = false;
+            }
+            else if (token.id == TextTokens::QUOTEHEADERNAME)
+            {
+                headerName = ParseQuoteHeaderName(token, this);
+                searchCurrentDir = true;
+                parse = false;
+            }
+            else 
+            {
+                if (expanded)
+                {
+                    parse = false;
+                }
+                else
+                {
+                    expanded = true;
+                    std::vector<Token> replacementTokens = TrimTextTokens(MacroExpand(tokens));
+                    if (!replacementTokens.empty())
+                    {
+                        token = replacementTokens.front();
+                    }
+                    else
+                    {
+                        parse = false;
+                    }
+                }
+            }
+        }
+    }
+    if (!headerName.empty())
+    {
+        for (const std::string& includePath : includePaths)
+        {
+            std::string filePath = GetFullPath(Path::Combine(includePath, headerName));
+            if (boost::filesystem::exists(filePath))
+            {
+                IncludeGuard guard(this);
+                Preprocess(filePath, this);
+                return;
+            }
+        }
+        if (searchCurrentDir)
+        {
+            std::string filePath = GetFullPath(Path::Combine(Path::GetDirectoryName(fileName), headerName));
+            if (boost::filesystem::exists(filePath))
+            {
+                IncludeGuard guard(this);
+                Preprocess(filePath, this);
+                return;
+            }
+        }
+        std::string error = "include file name '" + headerName + "' not found: " + fileName + ":" + std::to_string(lineNumber);
+        AddError(error);
+    }
+    else
+    {
+        std::string error = "invalid include directive: " + fileName + ":" + std::to_string(lineNumber);
+        AddError(error);
+    }
+}
+
+bool PP::IsMacroDefined(const Lexeme& macroName) const
+{
+    return macroMap.find(macroName) != macroMap.cend();
+}
+
+void PP::Ifdef(const Token& id)
+{
+    skipStack.push(skip);
+    if (!skip)
+    {
+        bool defined = IsMacroDefined(id.match);
+        skip = !defined;
+    }
+}
+
+void PP::Ifndef(const Token& id)
+{
+    skipStack.push(skip);
+    if (!skip)
+    {
+        bool defined = IsMacroDefined(id.match);
+        skip = defined;
+    }
+}
+
+void PP::If(const std::vector<Token>& tokens)
+{
+    skipStack.push(skip);
+    if (!skip)
+    {
+        bool cond = Evaluate(tokens);
+        skip = !cond;
+    }
+}
+
+void PP::Elif(const std::vector<Token>& tokens)
+{
+    if (!skipStack.top() && skip)
+    {
+        bool cond = Evaluate(tokens);
+        skip = !cond;
     }
 }
 
 void PP::Else()
 {
-    if (!inIfGroup)
+    if (!skipStack.top() && skip)
     {
-        throw std::runtime_error("error: " + fileName + ":" + std::to_string(line) + ": not in #if group");
-    }
-    if (elseGroupProcessed)
-    {
-        throw std::runtime_error("error: " + fileName + ":" + std::to_string(line) + ": duplicate #else group");
-    }
-    if (processStack.top())
-    {
-        if (!processed)
-        {
-            process = true;
-            processed = true;
-        }
-        elseGroupProcessed = true;
-    }
-    else
-    {
-        process = false;
+        skip = false;
     }
 }
 
-void PP::Endif()
+void PP::EndIf()
 {
-    if (!inIfGroup)
-    {
-        throw std::runtime_error("error: " + fileName + ":" + std::to_string(line) + ": not in #if group");
-    }
-    process = processStack.top();
-    processStack.pop();
-    processed = processedStack.top();
-    processedStack.pop();
-    elseGroupProcessed = elseGroupProcessedStack.top();
-    elseGroupProcessedStack.pop();
-    inIfGroup = inIfGroupStack.top();
-    inIfGroupStack.pop();
+    skip = skipStack.top();
+    skipStack.pop();
 }
 
-void PP::Emit(const char32_t* s)
+bool PP::Evaluate(const std::vector<Token>& tokens)
 {
-    if (save)
+    try
     {
-        while (*s)
-        {
-            text.append(1, *s);
-            ++s;
-        }
+        std::vector<Token> conditionTextTokens = MacroExpand(tokens, true);
+        std::vector<Token> conditionCppTokens = ConvertTextTokensToCppTokens(conditionTextTokens, this);
+        CppLexer lexer(std::u32string(), fileName, fileIndex);
+        lexer.SetLine(lineNumber);
+        lexer.SetTokens(conditionCppTokens);
+        sngcpp::symbols::Context ctx;
+        std::unique_ptr<sngcpp::ast::Node> expr = ExpressionParser::Parse(lexer, &ctx);
+        bool value = EvaluateBooleanConstantExpression(expr.get(), evaluationContext, this);
+        return value;
     }
-}
-
-void PP::Emit(const soulng::lexer::Lexeme& lexeme)
-{
-    if (save)
+    catch (const std::exception& ex)
     {
-        const char32_t* p = lexeme.begin;
-        const char32_t* e = lexeme.end;
-        while (p != e)
-        {
-            text.append(1, *p);
-            ++p;
-        }
+        AddError(ex.what());
     }
-}
-
-void PP::Emit(const char32_t* s, const soulng::lexer::Lexeme& lexeme, int tokenID)
-{
-    Emit(s);
-    soulng::lexer::Lexeme match;
-    match.begin = lexeme.begin;
-    match.end = lexeme.end;
-    if (lexeme.end > lexeme.begin)
-    {
-        const char32_t* p = lexeme.end - 1;
-        while (p != lexeme.begin && (*p == '\r' || *p == '\n'))
-        {
-            --p;
-        }
-        ++p;
-        match.end = p;
-    }
-    tokens->push_back(soulng::lexer::Token(tokenID, match, line));
-}
-
-inline bool IsPPLine(const char32_t* p, const char32_t* e)
-{
-    while (p != e && (*p == ' ' || *p == '\t'))
-    {
-        ++p;
-    }
-    if (p != e && *p == '#') return true;
     return false;
 }
 
-inline void SkipLineEnd(const char32_t*& p, const char32_t* e)
+void PP::AddIncludePath(const std::string& includePath)
 {
-    if (p != e && *p == '\r')
+    includePaths.push_back(includePath);
+}
+
+void PP::PushFileName(const std::string& fileName_)
+{
+    fileNameStack.push(fileName);
+    fileName = fileName_;
+}
+
+void PP::PopFileName()
+{
+    fileName = fileNameStack.top();
+    fileNameStack.pop();
+}
+
+SourcePos PP::GetSourcePos() const
+{
+    return SourcePos(-1, lineNumber, 1);
+}
+
+void PP::PrintMacros()
+{
+    std::u32string macroText;
+    for (const auto& macro : macroMap)
     {
-        ++p;
-    }
-    if (p != e && *p == '\n')
-    {
-        ++p;
+        macroText.append(U"#define ").append(ToUtf32(macro.second->ToString())).append(1, '\n');
     }
 }
 
-void GetLine(const char32_t*& p, const char32_t* e, const char32_t*& begin, const char32_t*& end, int& numNewLines)
+void PP::MapLine(int lineNumber, const PPSourceLocation& sourceLocation)
 {
-    numNewLines = 0;
-    begin = p;
-    end = e;
-    int state = 0;
-    while (p != e)
+    lineMap[lineNumber] = sourceLocation;
+}
+
+std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
+{
+    try
     {
-        switch (state)
+        pp->AddFileName(fileName);
+        pp->IncFileIndex();
+        pp->SetFile(fileName);
+        pp->IncLevel();
+        pp->PushFileName(fileName);
+        Lexeme fileContent = pp->StringsRef().Install(ToUtf32(ReadFile(fileName)));
+        pp->AddLogicalPhysicalMapping(MapLines(fileContent, pp));
+        LogicalPhysicalMapping* lineMapping = pp->CurrentLogicalPhysicalMapping();
+        const Lines& lines = lineMapping->LogicalLines();
+        int lineIndex = 0;
+        while (lineIndex < lines.Count())
         {
-            case 0:
+            pp->SetLineIndex(lineIndex);
+            pp->SetLine(lineIndex + 1);
+            Lexeme line = lines[lineIndex];
+            if (IsPPLine(line))
             {
-                switch (*p)
-                {
-                    case '\r': case '\n':
-                    {
-                        SkipLineEnd(p, e);
-                        end = p;
-                        return;
-                    }
-                    case '/':
-                    {
-                        state = 1;
-                        break;
-                    }
-                    case '\\':
-                    {
-                        state = 6;
-                        break;
-                    }
-                }
-                break;
-            }
-            case 1:
-            {
-                switch (*p)
-                {
-                    case '\r': case '\n':
-                    {
-                        SkipLineEnd(p, e);
-                        end = p;
-                        return;
-                    }
-                    case '/':
-                    {
-                        state = 2;
-                        break;
-                    }
-                    case '*':
-                    {
-                        state = 3;
-                        break;
-                    }
-                    default:
-                    {
-                        state = 0;
-                        break;
-                    }
-                }
-                break;
-            }
-            case 2:
-            {
-                switch (*p)
-                {
-                    case '\r': case '\n':
-                    {
-                        SkipLineEnd(p, e);
-                        end = p;
-                        return;
-                    }
-                }
-                break;
-            }
-            case 3:
-            {
-                switch (*p)
-                {
-                    case '*':
-                    {
-                        state = 4;
-                        break;
-                    }
-                    case '\n':
-                    {
-                        ++numNewLines;
-                        break;
-                    }
-                }
-                break;
-            }
-            case 4:
-            {
-                switch (*p)
-                {
-                    case '*':
-                    {
-                        break;
-                    }
-                    case '/':
-                    {
-                        ++p;
-                        end = p;
-                        return;
-                    }
-                    case '\n':
-                    {
-                        ++numNewLines;
-                        state = 3;
-                        break;
-                    }
-                    default:
-                    {
-                        state = 3;
-                        break;
-                    }
-                }
-                break;
-            }
-            case 6:
-            {
-                switch (*p)
-                {
-                    case '\\':
-                    {
-                        break;
-                    }
-                    case '\r': 
-                    {
-                        state = 7;
-                        break;
-                    }
-                    case '\n':
-                    {
-                        ++numNewLines;
-                        state = 0;
-                        break;
-                    }
-                    default:
-                    {
-                        state = 0;
-                        break;
-                    }
-                }
-                break;
-            }
-            case 7:
-            {
-                switch (*p)
-                {
-                    case '\r':
-                    {
-                        state = 7;
-                        break;
-                    }
-                    case '\n':
-                    {
-                        ++numNewLines;
-                        state = 0;
-                        break;
-                    }
-                    case '\\':
-                    {
-                        state = 6;
-                        break;
-                    }
-                    default:
-                    {
-                        state = 0;
-                        break;
-                    }
-                }
-                break;
-            }
-        }
-        ++p;
-    }
-}
-
-std::string ParseAngleHeaderName(const std::string& fileName, const soulng::lexer::Token& headerNameToken)
-{
-    const char32_t* p = headerNameToken.match.begin;
-    const char32_t* e = headerNameToken.match.end;
-    const char32_t* begin = p;
-    const char32_t* end = e;
-    if (p != e && *p == '<')
-    {
-        ++p;
-        begin = p;
-    }
-    else
-    {
-        throw std::runtime_error("invalid header name in file '" + fileName + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString())));
-    }
-    while (p != e && *p != '>')
-    {
-        ++p;
-    }
-    if (p != e && *p == '>')
-    {
-        end = p;
-        ++p;
-    }
-    else
-    {
-        throw std::runtime_error("invalid header name in file '" + fileName + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString())));
-    }
-    if (p == e)
-    {
-        return ToUtf8(std::u32string(begin, end));
-    }
-    else
-    {
-        throw std::runtime_error("invalid header name in file '" + fileName + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString())));
-    }
-}
-
-std::string ParseQuoteHeaderName(const std::string& fileName, const soulng::lexer::Token& headerNameToken)
-{
-    const char32_t* p = headerNameToken.match.begin;
-    const char32_t* e = headerNameToken.match.end;
-    const char32_t* begin = p;
-    const char32_t* end = e;
-    if (p != e && *p == '"')
-    {
-        ++p;
-        begin = p;
-    }
-    else
-    {
-        throw std::runtime_error("invalid header name in file '" + fileName + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString())));
-    }
-    while (p != e && *p != '"')
-    {
-        ++p;
-    }
-    if (p != e && *p == '"')
-    {
-        end = p;
-        ++p;
-    }
-    else
-    {
-        throw std::runtime_error("invalid header name in file '" + fileName + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString())));
-    }
-    if (p == e)
-    {
-        return ToUtf8(std::u32string(begin, end));
-    }
-    else
-    {
-        throw std::runtime_error("invalid header name in file '" + fileName + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString())));
-    }
-}
-
-void Preprocess(const std::string& fileName, PP* pp)
-{
-    int prevLine = pp->line;
-    pp->line = 1;
-    std::string prevFileName = pp->fileName;
-    pp->fileName = fileName;
-    std::u32string content = ToUtf32(ReadFile(fileName));
-    content.append(1, '\n');
-    File* file = new File(std::move(content));
-    pp->files.push_back(std::unique_ptr<File>(file));
-    const char32_t* p = file->content.c_str();
-    const char32_t* e = file->content.c_str() + file->content.length();
-    while (p != e)
-    {
-        const char32_t* begin = p;
-        const char32_t* end = e;
-        int numNewLines = 0;
-        GetLine(p, e, begin, end, numNewLines);
-        if (IsPPLine(begin, end))
-        {
-            PPLexer lexer(begin, end, fileName, pp->fileIndex);
-            lexer.SetSeparatorChar('\n');
-            lexer.pp = pp;
-            lexer.SetLine(pp->line);
-            lexer.SetCountLines(false);
-            PPLineParser::Parse(lexer, pp);
-            if (pp->save)
-            {
-                for (const char32_t* p = begin; p != end; ++p)
-                {
-                    if (*p != '\n' && *p != '\r')
-                    {
-                        pp->ctext.append(1, *p);
-                    }
-                }
-            }
-        }
-        else if (pp->process)
-        {
-            TextLexer lexer(begin, end, fileName, pp->fileIndex);
-            lexer.SetSeparatorChar('\n');
-            lexer.pp = pp;
-            lexer.SetLine(pp->line);
-            lexer.SetCountLines(false);
-            std::vector<soulng::lexer::Token> tokens;
-            pp->tokens = &tokens;
-            bool prevSave = pp->save;
-            pp->save = false;
-            ++lexer;
-            int i = 0;
-            while (*lexer != TextTokens::END)
-            {
-                tokens.push_back(lexer.GetToken(i++));
+                PPLexer lexer(line.begin, lines.End(), fileName, pp->FileIndex());
+                lexer.SetLine(pp->LineNumber());
+                lexer.SetCountLines(false);
+                lexer.pp = pp;
                 ++lexer;
+                ParseControlLine(lexer);
+                lineIndex = pp->GetLineIndex();
+                if (pp->SkipToEnd())
+                {
+                    pp->ResetSkipToEnd();
+                    lineIndex = lines.Count();
+                    continue;
+                }
             }
-            pp->save = prevSave;
-            tokens = MacroExpand(tokens, pp);
-            for (const soulng::lexer::Token& token : tokens)
+            else if (!pp->Skip())
             {
-                if (token.id != TextTokens::BLOCKCOMMENT && token.id != TextTokens::LINECOMMENT)
+                PPSourceLocation ppSourceLocation(pp->FileIndex(), lineIndex + 1);
+                pp->MapLine(pp->LineNumber(), ppSourceLocation);
+                TextLexer lexer(line.begin, lines.End(), fileName, pp->FileIndex());
+                lexer.pp = pp;
+                lexer.SetLine(pp->LineNumber());
+                lexer.SetCountLines(false);
+                ++lexer;
+                int i = 0;
+                std::vector<Token> tokens;
+                bool end = false;
+                while (*lexer != TextTokens::END && !end)
                 {
-                    pp->Emit(token.match);
+                    soulng::lexer::Token token = lexer.GetToken(i++);
+                    switch (token.id)
+                    {
+                        case TextTokens::NEWLINE:
+                        {
+                            end = true;
+                            tokens.push_back(token);
+                            pp->SetLineNumber(pp->LineNumber() + 1);
+                            break;
+                        }
+                        case TextTokens::LINECOMMENT:
+                        {
+                            tokens.push_back(token);
+                            end = true;
+                            break;
+                        }
+                        case TextTokens::BEGINBLOCKCOMMENT:
+                        {
+                            if (ScanBlockComment(lexer, token))
+                            {
+                                int n = GetNumberOfNewLines(token.match);
+                                lineIndex += n;
+                            }
+                            else
+                            {
+                                std::string error = "error: open block comment: " + pp->FileName() + ":" + std::to_string(pp->LineNumber());
+                                pp->AddError(error);
+                                end = true;
+                            }
+                            break;
+                        }
+                        case TextTokens::BEGINRAWSTRINGLITERAL:
+                        {
+                            if (ScanRawStringLiteral(lexer, token))
+                            {
+                                int n = GetNumberOfNewLines(token.match);
+                                lineIndex += n;
+                                pp->SetLineNumber(pp->LineNumber() + n);
+                            }
+                            else
+                            {
+                                std::string error = "error: open raw string literal: " + pp->FileName() + ":" + std::to_string(pp->LineNumber());
+                                pp->AddError(error);
+                                end = true;
+                            }
+                            break;
+                        }
+                        case TextTokens::QUOTEHEADERNAME:
+                        {
+                            token.id = TextTokens::STRINGLITERAL;
+                            break;
+                        }
+                    }
+                    if (!end)
+                    {
+                        tokens.push_back(token);
+                        ++lexer;
+                    }
                 }
-                else
+                tokens = pp->MacroExpand(tokens);
+                for (const Token& token : tokens)
                 {
-                    pp->Emit(U" ");
-                }
-                if (pp->save)
-                {
-                    pp->ctext.append(token.match.ToString());
+                    switch (token.id)
+                    {
+                        case TextTokens::BLOCKCOMMENT:
+                        case TextTokens::LINECOMMENT:
+                        {
+                            pp->AddToken(Token(TextTokens::WS, pp->Space(), pp->LineNumber()));
+                            break;
+                        }
+                        default:
+                        {
+                            pp->AddToken(token);
+                            break;
+                        }
+                    }
                 }
             }
+            ++lineIndex;
         }
-        for (int i = 0; i < numNewLines; ++i)
+        pp->PopFileName();
+        pp->DecLevel();
+        if (pp->Level() == 0)
         {
-            pp->Emit(U"\n");
-            ++pp->line;
+            std::vector<Token> tokens = pp->GetTokens();
+            tokens = CombineAdjacentStringLiterals(tokens, pp);
+            pp->SetTokens(std::move(tokens));
+            Lexeme resultText = pp->EmitText();
+            std::vector<std::string> fileNames = pp->GetFileNames();
+            std::vector<std::unique_ptr<LogicalPhysicalMapping>> mappings = pp->GetLogicalPhysicalMappings();
+            std::map<int, PPSourceLocation> lineMap = pp->GetLineMap();
+            std::vector<std::string> errors = pp->GetErrors();
+            Strings strings = pp->GetStrings();
+            return std::unique_ptr<PPResult>(new PPResult(std::move(fileNames), std::move(strings), std::move(mappings), std::move(lineMap), resultText, std::move(errors)));
         }
-        pp->Emit(U"\n");
-        if (pp->save)
-        {
-            pp->ctext.append(U"\n");
-        }
-        ++pp->line;
     }
-    pp->fileName = prevFileName;
-    pp->line = prevLine;
+    catch (const std::exception& ex)
+    {
+        pp->AddProcessedHeader(fileName);
+        pp->AddError(pp->FileName() + ":" + std::to_string(pp->LineNumber()) + ": " + ex.what());
+        pp->PopFileName();
+        pp->DecLevel();
+    }
+    return std::unique_ptr<PPResult>();
+}
+
+void InitPP()
+{
+    PPTokenToTextTokenMap::Init();
+    TextTokenToCppTokenMap::Init();
+}
+
+void DonePP()
+{
+    TextTokenToCppTokenMap::Done();
+    PPTokenToTextTokenMap::Done();
 }
 
 } // namespace sngcpp::pp

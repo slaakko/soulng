@@ -25,6 +25,11 @@ struct SOULNG_LEXER_API Token
     int line;
 };
 
+SOULNG_LEXER_API inline bool operator==(const Token& left, const Token& right)
+{
+    return left.id == right.id && left.match == right.match;
+}
+
 SOULNG_LEXER_API bool NoWhiteSpaceBetweenTokens(const Token& first, const Token& second);
 
 SOULNG_LEXER_API std::string GetEndTokenInfo();

@@ -1,0 +1,3 @@
+<defines>
+ <define name="__SNGCPP_MSVC_MODE" value="1"/>
+</defines>

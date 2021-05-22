@@ -1,0 +1,9 @@
+<sngcpp>
+    <project name="3_floating-point">
+        <files>
+            <file name="decimal1.cpp"/>
+            <file name="hexadecimal1.cpp"/>
+            <file name="suffix1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

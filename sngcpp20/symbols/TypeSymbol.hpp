@@ -13,7 +13,9 @@ class SYMBOLS_API TypeSymbol : public ContainerSymbol
 {
 public:
     TypeSymbol(const std::u32string& name_);
+    std::string SymbolKindStr() const override { return "type symbol"; }
     virtual bool IsTypeSymbol() const override { return true; }
+    virtual const TypeSymbol* ReferredType() const { return this; }
 };
 
 } // sngcpp::symbols

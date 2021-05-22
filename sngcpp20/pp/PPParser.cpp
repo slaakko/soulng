@@ -1,2002 +1,771 @@
-#include "PPParser.hpp"
-#include <soulng/util/Unicode.hpp>
-#include <sngcpp20/pp/PPLexer.hpp>
-#include <sngcpp20/pp/PPTokens.hpp>
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/pp/PPParser.parser' using soulng parser generator spg version 4.0.0
+#include <sngcpp20/pp/PPParser.hpp>
+#include <sngcpp20/pp/PPTokens.hpp>
+#include <sngcpp20/pp/Scan.hpp>
+#include <sngcpp20/pp/Util.hpp>
+#include <soulng/util/Unicode.hpp>
+
+namespace sngcpp::pp {
 
 using namespace soulng::unicode;
-using namespace PPTokens;
 
-void PPLineParser::Parse(PPLexer& lexer, sngcpp::pp::PP* pp)
+std::string ParseAngleHeaderName(const soulng::lexer::Token& headerNameToken, PP* pp)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (lexer.Log())
+    const char32_t* p = headerNameToken.match.begin;
+    const char32_t* e = headerNameToken.match.end;
+    const char32_t* begin = p;
+    const char32_t* end = e;
+    if (p != e && *p == '<')
     {
-        lexer.Log()->WriteBeginRule(soulng::unicode::ToUtf32("parse"));
-        lexer.Log()->IncIndent();
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    ++lexer;
-    soulng::lexer::Span span = lexer.GetSpan();
-    soulng::parser::Match match = PPLineParser::PPLine(lexer, pp);
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (lexer.Log())
-    {
-        lexer.Log()->DecIndent();
-        lexer.Log()->WriteEndRule(soulng::unicode::ToUtf32("parse"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (match.hit)
-    {
-        if (*lexer == soulng::lexer::END_TOKEN)
-        {
-            return;
-        }
-        else
-        {
-            lexer.ThrowExpectationFailure(lexer.GetSpan(), ToUtf32(soulng::lexer::GetEndTokenInfo()));
-        }
+        ++p;
+        begin = p;
     }
     else
     {
-        lexer.ThrowExpectationFailure(span, U"PPLine");
+        std::string error = "invalid header name in file '" + pp->FileName() + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString()));
+        pp->AddError(error);
+        return std::string();
     }
-    return;
+    while (p != e && *p != '>')
+    {
+        ++p;
+    }
+    if (p != e && *p == '>')
+    {
+        end = p;
+        ++p;
+    }
+    else
+    {
+        std::string error = "invalid header name in file '" + pp->FileName() + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString()));
+        pp->AddError(error);
+        return std::string();
+    }
+    if (p == e)
+    {
+        return ToUtf8(std::u32string(begin, end));
+    }
+    else
+    {
+        std::string error = "invalid header name in file '" + pp->FileName() + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString()));
+        pp->AddError(error);
+        return std::string();
+    }
 }
 
-soulng::parser::Match PPLineParser::PPLine(PPLexer& lexer, sngcpp::pp::PP* pp)
+std::string ParseQuoteHeaderName(const soulng::lexer::Token& headerNameToken, PP* pp)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    const char32_t* p = headerNameToken.match.begin;
+    const char32_t* e = headerNameToken.match.end;
+    const char32_t* begin = p;
+    const char32_t* end = e;
+    if (p != e && *p == '"')
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("PPLine"));
+        ++p;
+        begin = p;
     }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
+    else
     {
-        int64_t save = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
-        {
-            int64_t save = lexer.GetPos();
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
-            {
-                int64_t save = lexer.GetPos();
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    int64_t save = lexer.GetPos();
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        int64_t save = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch5 = &match;
-                        {
-                            int64_t save = lexer.GetPos();
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch6 = &match;
-                            {
-                                int64_t save = lexer.GetPos();
-                                soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch7 = &match;
-                                {
-                                    int64_t save = lexer.GetPos();
-                                    soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch8 = &match;
-                                    {
-                                        int64_t save = lexer.GetPos();
-                                        soulng::parser::Match match = PPLineParser::Define(lexer, pp);
-                                        *parentMatch8 = match;
-                                        if (!match.hit)
-                                        {
-                                            soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch9 = &match;
-                                            lexer.SetPos(save);
-                                            {
-                                                soulng::parser::Match match = PPLineParser::Include(lexer, pp);
-                                                *parentMatch9 = match;
-                                            }
-                                            *parentMatch8 = match;
-                                        }
-                                    }
-                                    *parentMatch7 = match;
-                                    if (!match.hit)
-                                    {
-                                        soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch10 = &match;
-                                        lexer.SetPos(save);
-                                        {
-                                            soulng::parser::Match match = PPLineParser::If(lexer, pp);
-                                            *parentMatch10 = match;
-                                        }
-                                        *parentMatch7 = match;
-                                    }
-                                }
-                                *parentMatch6 = match;
-                                if (!match.hit)
-                                {
-                                    soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch11 = &match;
-                                    lexer.SetPos(save);
-                                    {
-                                        soulng::parser::Match match = PPLineParser::Ifdef(lexer, pp);
-                                        *parentMatch11 = match;
-                                    }
-                                    *parentMatch6 = match;
-                                }
-                            }
-                            *parentMatch5 = match;
-                            if (!match.hit)
-                            {
-                                soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch12 = &match;
-                                lexer.SetPos(save);
-                                {
-                                    soulng::parser::Match match = PPLineParser::Ifndef(lexer, pp);
-                                    *parentMatch12 = match;
-                                }
-                                *parentMatch5 = match;
-                            }
-                        }
-                        *parentMatch4 = match;
-                        if (!match.hit)
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch13 = &match;
-                            lexer.SetPos(save);
-                            {
-                                soulng::parser::Match match = PPLineParser::Elif(lexer, pp);
-                                *parentMatch13 = match;
-                            }
-                            *parentMatch4 = match;
-                        }
-                    }
-                    *parentMatch3 = match;
-                    if (!match.hit)
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch14 = &match;
-                        lexer.SetPos(save);
-                        {
-                            soulng::parser::Match match = PPLineParser::Else(lexer, pp);
-                            *parentMatch14 = match;
-                        }
-                        *parentMatch3 = match;
-                    }
-                }
-                *parentMatch2 = match;
-                if (!match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch15 = &match;
-                    lexer.SetPos(save);
-                    {
-                        soulng::parser::Match match = PPLineParser::Endif(lexer, pp);
-                        *parentMatch15 = match;
-                    }
-                    *parentMatch2 = match;
-                }
-            }
-            *parentMatch1 = match;
-            if (!match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch16 = &match;
-                lexer.SetPos(save);
-                {
-                    soulng::parser::Match match = PPLineParser::Undef(lexer, pp);
-                    *parentMatch16 = match;
-                }
-                *parentMatch1 = match;
-            }
-        }
-        *parentMatch0 = match;
-        if (!match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch17 = &match;
-            lexer.SetPos(save);
-            {
-                soulng::parser::Match match = PPLineParser::Other(lexer, pp);
-                *parentMatch17 = match;
-            }
-            *parentMatch0 = match;
-        }
+        std::string error = "invalid header name in file '" + pp->FileName() + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString()));
+        pp->AddError(error);
+        return std::string();
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
+    while (p != e && *p != '"')
     {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPLine"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PPLine"));
+        ++p;
     }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
+    if (p != e && *p == '"')
     {
-        match.value = nullptr;
+        end = p;
+        ++p;
     }
-    return match;
+    else
+    {
+        std::string error = "invalid header name in file '" + pp->FileName() + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString()));
+        pp->AddError(error);
+        return std::string();
+    }
+    if (p == e)
+    {
+        return ToUtf8(std::u32string(begin, end));
+    }
+    else
+    {
+        std::string error = "invalid header name in file '" + pp->FileName() + ":" + std::to_string(headerNameToken.line) + "': " + ToUtf8(std::u32string(headerNameToken.match.ToString()));
+        pp->AddError(error);
+        return std::string();
+    }
 }
 
-soulng::parser::Match PPLineParser::Define(PPLexer& lexer, sngcpp::pp::PP* pp)
+void OptWs(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    while (*lexer == PPTokens::WS || *lexer == PPTokens::LINECOMMENT || *lexer == PPTokens::BEGINBLOCKCOMMENT)
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Define"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    std::vector<soulng::lexer::Token>* tokens = nullptr;
-    std::unique_ptr<int> ppToken;
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        if (*lexer == PPTokens::BEGINBLOCKCOMMENT)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanBlockComment(lexer, token))
             {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        if (*lexer == HASH)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    if (match.hit)
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch5 = &match;
-                        {
-                            soulng::parser::Match match(false);
-                            if (*lexer == DEFINE)
-                            {
-                                ++lexer;
-                                match.hit = true;
-                            }
-                            *parentMatch5 = match;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch6 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch7 = &match;
-                        {
-                            int64_t pos = lexer.GetPos();
-                            soulng::parser::Match match(false);
-                            if (*lexer == ID)
-                            {
-                                ++lexer;
-                                match.hit = true;
-                            }
-                            if (match.hit)
-                            {
-                                soulng::lexer::Token id = lexer.GetToken(pos);
-                                tokens = pp->BeginDefine(id.match);
-                            }
-                            *parentMatch7 = match;
-                        }
-                        *parentMatch6 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
+                int n = GetNumberOfNewLines(token.match);
+                lexer.pp->SetLineIndex(lexer.pp->GetLineIndex() + n);
+                ++lexer;
             }
-            if (match.hit)
+            else
             {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch8 = &match;
-                {
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch9 = &match;
-                    {
-                        while (true)
-                        {
-                            int64_t save = lexer.GetPos();
-                            {
-                                soulng::parser::Match match = PPLineParser::PPToken(lexer, tokens);
-                                ppToken.reset(static_cast<int*>(match.value));
-                                if (match.hit)
-                                {
-                                    *parentMatch9 = match;
-                                }
-                                else
-                                {
-                                    lexer.SetPos(save);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    *parentMatch8 = match;
-                }
-                *parentMatch2 = match;
+                std::string error = "error: open block comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->LineNumber());
+                lexer.pp->AddError(error);
+                return;
             }
-            *parentMatch1 = match;
         }
-        if (match.hit)
+        else if (*lexer == PPTokens::LINECOMMENT)
         {
-            pp->EndDefine(*tokens);
-        }
-        *parentMatch0 = match;
-    }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Define"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Define"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
-}
-
-soulng::parser::Match PPLineParser::Include(PPLexer& lexer, sngcpp::pp::PP* pp)
-{
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
-    {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Include"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    bool isAngleHeader = bool();
-    std::string headerName = std::string();
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
-        {
-            soulng::parser::Match match(false);
-            if (*lexer == HASH)
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanLineCommentWithoutNewLine(lexer, token))
             {
                 ++lexer;
-                match.hit = true;
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            else
             {
-                soulng::parser::Match match(false);
-                if (*lexer == INCLUDE)
-                {
-                    ++lexer;
-                    match.hit = true;
-                }
-                *parentMatch2 = match;
+                std::string error = "internal error: invalid line comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->LineNumber());
+                lexer.pp->AddError(error);
+                return;
             }
-            *parentMatch1 = match;
         }
-        *parentMatch0 = match;
+        else
+        {
+            ++lexer;
+        }
     }
-    if (match.hit)
+}
+
+bool ParseHash(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::HASH)
     {
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch3 = &match;
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseNewLine(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::NEWLINE)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseId(PPLexer& lexer, Token& id)
+{
+    if (*lexer == PPTokens::ID)
+    {
+        id = lexer.GetToken(lexer.GetPos());
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseLParen(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::LPAREN)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseRParen(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::RPAREN)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseDefineKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::DEFINE)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseUndefKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::UNDEF)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseLineKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::LINE)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseErrorKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::ERROR)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParsePragmaKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::PRAGMA)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseIncludeKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::INCLUDE)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseIfdefKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::IFDEF)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseIfndefKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::IFNDEF)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseIfKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::IF)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseElifKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::ELIF)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseElseKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::ELSE)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseEndifKeyword(PPLexer& lexer)
+{
+    if (*lexer == PPTokens::ENDIF)
+    {
+        ++lexer;
+        return true;
+    }
+    return false;
+}
+
+bool ParseReplacementList(PPLexer& lexer, std::vector<Token>& replacementList)
+{
+    while (*lexer != PPTokens::END && *lexer != PPTokens::LINECOMMENT && *lexer != PPTokens::BEGINBLOCKCOMMENT && *lexer != PPTokens::NEWLINE)
+    {
+        replacementList.push_back(ConvertPPTokenToTextToken(lexer.GetToken(lexer.GetPos())));
+        ++lexer;
+    }
+    replacementList = TrimTextTokens(replacementList);
+    return true;
+}
+
+bool ParseMacroParams(PPLexer& lexer, std::vector<Token>& paramList)
+{
+    Token id;
+    if (ParseId(lexer, id))
+    {
+        paramList.push_back(id);
+        OptWs(lexer);
+        while (*lexer == PPTokens::COMMA)
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch4 = &match;
+            ++lexer;
+            OptWs(lexer);
+            if (ParseId(lexer, id))
             {
-                int64_t pos = lexer.GetPos();
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
+                paramList.push_back(id);
+                OptWs(lexer);
+            }
+        }
+    }
+    if (*lexer == PPTokens::ELLIPSES)
+    {
+        paramList.push_back(lexer.GetToken(lexer.GetPos()));
+        ++lexer;
+    }
+    return true;
+}
+
+bool ParseDefine(PPLexer& lexer)
+{
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
+    {
+        OptWs(lexer);
+        if (ParseDefineKeyword(lexer))
+        {
+            OptWs(lexer);
+            Token id;
+            if (ParseId(lexer, id))
+            {
+                if (ParseLParen(lexer))
                 {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch6 = &match;
+                    OptWs(lexer);
+                    std::vector<Token> paramList;
+                    if (ParseMacroParams(lexer, paramList))
                     {
-                        int64_t save = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch7 = &match;
+                        OptWs(lexer);
+                        if (ParseRParen(lexer))
                         {
-                            int64_t pos = lexer.GetPos();
-                            soulng::parser::Match match(false);
-                            if (*lexer == ANGLEHEADERNAME)
+                            std::vector<Token> replacementList;
+                            if (ParseReplacementList(lexer, replacementList))
                             {
-                                ++lexer;
-                                match.hit = true;
-                            }
-                            if (match.hit)
-                            {
-                                isAngleHeader = true;
-                                soulng::lexer::Token headerNameToken = lexer.GetToken(pos);
-                                headerName = sngcpp::pp::ParseAngleHeaderName(lexer.FileName(), headerNameToken);
-                            }
-                            *parentMatch7 = match;
-                        }
-                        *parentMatch6 = match;
-                        if (!match.hit)
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch8 = &match;
-                            lexer.SetPos(save);
-                            {
-                                soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch9 = &match;
+                                OptWs(lexer);
+                                if (ParseNewLine(lexer))
                                 {
-                                    int64_t pos = lexer.GetPos();
-                                    soulng::parser::Match match(false);
-                                    if (*lexer == QUOTEHEADERNAME)
+                                    if (!lexer.pp->Skip())
                                     {
-                                        ++lexer;
-                                        match.hit = true;
+                                        lexer.pp->DefineFunctionMacro(id.match, paramList, replacementList, ToString(replacementList));
                                     }
-                                    if (match.hit)
-                                    {
-                                        isAngleHeader = false;
-                                        soulng::lexer::Token headerNameToken = lexer.GetToken(pos);
-                                        headerName = sngcpp::pp::ParseQuoteHeaderName(lexer.FileName(), headerNameToken);
-                                    }
-                                    *parentMatch9 = match;
+                                    return true;
                                 }
-                                *parentMatch8 = match;
                             }
-                            *parentMatch6 = match;
                         }
                     }
-                    *parentMatch5 = match;
                 }
-                if (match.hit)
+                else
                 {
-                    pp->Include(isAngleHeader, headerName);
-                }
-                *parentMatch4 = match;
-            }
-            *parentMatch3 = match;
-        }
-        *parentMatch0 = match;
-    }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Include"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Include"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
-}
-
-soulng::parser::Match PPLineParser::If(PPLexer& lexer, sngcpp::pp::PP* pp)
-{
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
-    {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("If"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    std::vector<soulng::lexer::Token> exprTokens = std::vector<soulng::lexer::Token>();
-    std::unique_ptr<int> ppToken;
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == HASH)
+                    OptWs(lexer);
+                    std::vector<Token> replacementList;
+                    if (ParseReplacementList(lexer, replacementList))
                     {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        if (*lexer == IF)
+                        OptWs(lexer);
+                        if (ParseNewLine(lexer))
                         {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
-            }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
-                {
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch6 = &match;
-                    {
-                        while (true)
-                        {
-                            int64_t save = lexer.GetPos();
+                            if (!lexer.pp->Skip())
                             {
-                                soulng::parser::Match match = PPLineParser::PPToken(lexer, &exprTokens);
-                                ppToken.reset(static_cast<int*>(match.value));
-                                if (match.hit)
-                                {
-                                    *parentMatch6 = match;
-                                }
-                                else
-                                {
-                                    lexer.SetPos(save);
-                                    break;
-                                }
+                                lexer.pp->DefineObjectMacro(id.match, replacementList, ToString(replacementList));
                             }
+                            return true;
                         }
                     }
-                    *parentMatch5 = match;
                 }
-                *parentMatch2 = match;
             }
-            *parentMatch1 = match;
         }
-        if (match.hit)
-        {
-            pp->If(exprTokens);
-        }
-        *parentMatch0 = match;
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("If"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("If"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
 
-soulng::parser::Match PPLineParser::Ifdef(PPLexer& lexer, sngcpp::pp::PP* pp)
+bool ParseUndef(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Ifdef"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    bool defined = bool();
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        OptWs(lexer);
+        if (ParseUndefKeyword(lexer))
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            OptWs(lexer);
+            Token id;
+            if (ParseId(lexer, id))
             {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    soulng::parser::Match match(false);
-                    if (*lexer == HASH)
+                    if (!lexer.pp->Skip())
                     {
-                        ++lexer;
-                        match.hit = true;
+                        lexer.pp->Undefine(id.match);
                     }
-                    *parentMatch3 = match;
+                    return true;
                 }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        if (*lexer == IFDEF)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
             }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch6 = &match;
-                    {
-                        int64_t pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == ID)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        if (match.hit)
-                        {
-                            soulng::lexer::Token token = lexer.GetToken(pos);
-                            defined = pp->IsDefined(token.match);
-                        }
-                        *parentMatch6 = match;
-                    }
-                    *parentMatch5 = match;
-                }
-                *parentMatch2 = match;
-            }
-            *parentMatch1 = match;
         }
-        if (match.hit)
-        {
-            pp->Ifdef(defined);
-        }
-        *parentMatch0 = match;
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Ifdef"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Ifdef"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
 
-soulng::parser::Match PPLineParser::Ifndef(PPLexer& lexer, sngcpp::pp::PP* pp)
+void OptPPTokens(PPLexer& lexer, std::vector<Token>& tokens)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    while (*lexer != PPTokens::END && *lexer != PPTokens::LINECOMMENT && *lexer != PPTokens::BEGINBLOCKCOMMENT && *lexer != PPTokens::NEWLINE)
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Ifndef"));
+        tokens.push_back(ConvertPPTokenToTextToken(lexer.GetToken(lexer.GetPos())));
+        ++lexer;
     }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    bool defined = bool();
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == HASH)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        if (*lexer == IFNDEF)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
-            }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch6 = &match;
-                    {
-                        int64_t pos = lexer.GetPos();
-                        soulng::parser::Match match(false);
-                        if (*lexer == ID)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        if (match.hit)
-                        {
-                            soulng::lexer::Token token = lexer.GetToken(pos);
-                            defined = pp->IsDefined(token.match);
-                        }
-                        *parentMatch6 = match;
-                    }
-                    *parentMatch5 = match;
-                }
-                *parentMatch2 = match;
-            }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            pp->Ifndef(defined);
-        }
-        *parentMatch0 = match;
-    }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Ifndef"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Ifndef"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
 }
 
-soulng::parser::Match PPLineParser::Elif(PPLexer& lexer, sngcpp::pp::PP* pp)
+bool ParsePPTokens(PPLexer& lexer, std::vector<Token>& tokens)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    if (*lexer != PPTokens::END && *lexer != PPTokens::LINECOMMENT && *lexer != PPTokens::BEGINBLOCKCOMMENT && *lexer != PPTokens::NEWLINE)
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Elif"));
+        OptPPTokens(lexer, tokens);
+        return true;
     }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    std::vector<soulng::lexer::Token> exprTokens = std::vector<soulng::lexer::Token>();
-    std::unique_ptr<int> ppToken;
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == HASH)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        soulng::parser::Match match(false);
-                        if (*lexer == ELIF)
-                        {
-                            ++lexer;
-                            match.hit = true;
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
-            }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
-                {
-                    soulng::parser::Match match(true);
-                    soulng::parser::Match* parentMatch6 = &match;
-                    {
-                        while (true)
-                        {
-                            int64_t save = lexer.GetPos();
-                            {
-                                soulng::parser::Match match = PPLineParser::PPToken(lexer, &exprTokens);
-                                ppToken.reset(static_cast<int*>(match.value));
-                                if (match.hit)
-                                {
-                                    *parentMatch6 = match;
-                                }
-                                else
-                                {
-                                    lexer.SetPos(save);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    *parentMatch5 = match;
-                }
-                *parentMatch2 = match;
-            }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            pp->Elif(exprTokens);
-        }
-        *parentMatch0 = match;
-    }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Elif"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Elif"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    return false;
 }
 
-soulng::parser::Match PPLineParser::Else(PPLexer& lexer, sngcpp::pp::PP* pp)
+bool ParseLine(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Else"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        OptWs(lexer);
+        if (ParseLineKeyword(lexer))
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            OptWs(lexer);
+            std::vector<Token> tokens;
+            if (ParsePPTokens(lexer, tokens))
             {
-                soulng::parser::Match match(false);
-                if (*lexer == HASH)
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    ++lexer;
-                    match.hit = true;
-                }
-                *parentMatch2 = match;
-            }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == ELSE)
+                    if (!lexer.pp->Skip())
                     {
-                        ++lexer;
-                        match.hit = true;
+                        lexer.pp->Line(tokens);
                     }
-                    *parentMatch3 = match;
+                    return true;
                 }
-                *parentMatch2 = match;
             }
-            *parentMatch1 = match;
         }
-        if (match.hit)
-        {
-            pp->Else();
-        }
-        *parentMatch0 = match;
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Else"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Else"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
 
-soulng::parser::Match PPLineParser::Endif(PPLexer& lexer, sngcpp::pp::PP* pp)
+bool ParseError(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Endif"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        int64_t pos = lexer.GetPos();
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        OptWs(lexer);
+        if (ParseErrorKeyword(lexer))
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            OptWs(lexer);
+            std::vector<Token> tokens;
+            OptPPTokens(lexer, tokens);
+            OptWs(lexer);
+            if (ParseNewLine(lexer))
             {
-                soulng::parser::Match match(false);
-                if (*lexer == HASH)
+                if (!lexer.pp->Skip())
                 {
-                    ++lexer;
-                    match.hit = true;
+                    lexer.pp->Error(tokens);
                 }
-                *parentMatch2 = match;
+                return true;
             }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == ENDIF)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
-            }
-            *parentMatch1 = match;
         }
-        if (match.hit)
-        {
-            pp->Endif();
-        }
-        *parentMatch0 = match;
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Endif"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Endif"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
 
-soulng::parser::Match PPLineParser::Undef(PPLexer& lexer, sngcpp::pp::PP* pp)
+bool ParsePragma(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Undef"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        OptWs(lexer);
+        if (ParsePragmaKeyword(lexer))
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            OptWs(lexer);
+            std::vector<Token> tokens;
+            OptPPTokens(lexer, tokens);
+            OptWs(lexer);
+            if (ParseNewLine(lexer))
             {
-                soulng::parser::Match match(false);
-                if (*lexer == HASH)
+                if (!lexer.pp->Skip())
                 {
-                    ++lexer;
-                    match.hit = true;
+                    lexer.pp->Pragma(tokens);
                 }
-                *parentMatch2 = match;
+                return true;
             }
-            if (match.hit)
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    if (*lexer == UNDEF)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    *parentMatch3 = match;
-                }
-                *parentMatch2 = match;
-            }
-            *parentMatch1 = match;
         }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch4 = &match;
-            {
-                soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch5 = &match;
-                {
-                    int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match(false);
-                    if (*lexer == ID)
-                    {
-                        ++lexer;
-                        match.hit = true;
-                    }
-                    if (match.hit)
-                    {
-                        soulng::lexer::Token id = lexer.GetToken(pos);
-                        pp->Undef(id.match);
-                    }
-                    *parentMatch5 = match;
-                }
-                *parentMatch4 = match;
-            }
-            *parentMatch1 = match;
-        }
-        *parentMatch0 = match;
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Undef"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Undef"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
 
-soulng::parser::Match PPLineParser::Other(PPLexer& lexer, sngcpp::pp::PP* pp)
+bool ParseInclude(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Other"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    std::unique_ptr<int> ppToken;
-    soulng::parser::Match match(false);
-    soulng::parser::Match* parentMatch0 = &match;
-    {
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch1 = &match;
+        OptWs(lexer);
+        if (ParseIncludeKeyword(lexer))
         {
-            soulng::parser::Match match(false);
-            if (*lexer == HASH)
+            OptWs(lexer);
+            std::vector<Token> tokens;
+            if (ParsePPTokens(lexer, tokens))
             {
-                ++lexer;
-                match.hit = true;
-            }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
-            {
-                soulng::parser::Match match(true);
-                soulng::parser::Match* parentMatch3 = &match;
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    while (true)
+                    if (!lexer.pp->Skip())
                     {
-                        int64_t save = lexer.GetPos();
-                        {
-                            soulng::parser::Match match = PPLineParser::PPToken(lexer, nullptr);
-                            ppToken.reset(static_cast<int*>(match.value));
-                            if (match.hit)
-                            {
-                                *parentMatch3 = match;
-                            }
-                            else
-                            {
-                                lexer.SetPos(save);
-                                break;
-                            }
-                        }
+                        lexer.pp->Include(tokens);
                     }
+                    return true;
                 }
-                *parentMatch2 = match;
             }
-            *parentMatch1 = match;
         }
-        *parentMatch0 = match;
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Other"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Other"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
 
-soulng::parser::Match PPLineParser::PPToken(PPLexer& lexer, std::vector<soulng::lexer::Token>* tokens)
+bool ParseIfdef(PPLexer& lexer)
 {
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::Span parser_debug_match_span;
-    bool parser_debug_write_to_log = lexer.Log() != nullptr;
-    if (parser_debug_write_to_log)
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
     {
-        parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("PPToken"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::parser::Match match(false);
-    int64_t pos = lexer.GetPos();
-    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-    soulng::lexer::Span span = lexer.GetSpan();
-    switch (*lexer)
-    {
-        case ID:
+        OptWs(lexer);
+        if (ParseIfdefKeyword(lexer))
         {
-            ++lexer;
+            OptWs(lexer);
+            Token id;
+            if (ParseId(lexer, id))
             {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
+                    lexer.pp->Ifdef(id);
+                    return true;
                 }
             }
-            break;
-        }
-        case DEFINED:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ANGLEHEADERNAME:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case QUOTEHEADERNAME:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case PPNUMBER:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case CHARLITERAL:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case STRINGLITERAL:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case CHAR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case COLONCOLON:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case COMMA:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case MULASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case DIVASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case REMASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ADDASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SUBASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SHIFTRIGHTASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SHIFTLEFTASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ANDASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case XORASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ORASSIGN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case QUEST:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case COLON:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case OROR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case AMPAMP:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case OR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case XOR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case AMP:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case EQ:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case NEQ:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case LEQ:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case GEQ:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SPACESHIP:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case LANGLE:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case RANGLE:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SHIFTLEFT:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SHIFTRIGHT:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case PLUS:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case MINUS:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case STAR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case DIV:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case MOD:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case DOTSTAR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ARROWSTAR:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case LPAREN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case RPAREN:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case PLUSPLUS:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case MINUSMINUS:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case EXCLAMATION:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case TILDE:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case LBRACKET:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case RBRACKET:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case DOT:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ARROW:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case SEMICOLON:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
-        }
-        case ELLIPSES:
-        {
-            ++lexer;
-            {
-                if (tokens) tokens->push_back(lexer.GetToken(pos));
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, nullptr);
-                }
-            }
-            break;
         }
     }
-    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-    if (parser_debug_write_to_log)
-    {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("PPToken"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("PPToken"));
-    }
-    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    if (!match.hit)
-    {
-        match.value = nullptr;
-    }
-    return match;
+    lexer.SetPos(save);
+    return false;
 }
+
+bool ParseIfndef(PPLexer& lexer)
+{
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
+    {
+        OptWs(lexer);
+        if (ParseIfndefKeyword(lexer))
+        {
+            OptWs(lexer);
+            Token id;
+            if (ParseId(lexer, id))
+            {
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
+                {
+                    lexer.pp->Ifndef(id);
+                    return true;
+                }
+            }
+        }
+    }
+    lexer.SetPos(save);
+    return false;
+}
+
+bool ParseIf(PPLexer& lexer)
+{
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
+    {
+        OptWs(lexer);
+        if (ParseIfKeyword(lexer))
+        {
+            OptWs(lexer);
+            std::vector<Token> tokens;
+            if (ParsePPTokens(lexer, tokens))
+            {
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
+                {
+                    lexer.pp->If(tokens);
+                    return true;
+                }
+            }
+        }
+    }
+    lexer.SetPos(save);
+    return false;
+}
+
+bool ParseElif(PPLexer& lexer)
+{
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
+    {
+        OptWs(lexer);
+        if (ParseElifKeyword(lexer))
+        {
+            OptWs(lexer);
+            std::vector<Token> tokens;
+            if (ParsePPTokens(lexer, tokens))
+            {
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
+                {
+                    lexer.pp->Elif(tokens);
+                    return true;
+                }
+            }
+        }
+    }
+    lexer.SetPos(save);
+    return false;
+}
+
+bool ParseElse(PPLexer& lexer)
+{
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
+    {
+        OptWs(lexer);
+        if (ParseElseKeyword(lexer))
+        {
+            OptWs(lexer);
+            if (ParseNewLine(lexer))
+            {
+                lexer.pp->Else();
+                return true;
+            }
+        }
+    }
+    lexer.SetPos(save);
+    return false;
+}
+
+bool ParseEndif(PPLexer& lexer)
+{
+    int64_t save = lexer.GetPos();
+    if (ParseHash(lexer))
+    {
+        OptWs(lexer);
+        if (ParseEndifKeyword(lexer))
+        {
+            OptWs(lexer);
+            if (ParseNewLine(lexer))
+            {
+                lexer.pp->EndIf();
+                return true;
+            }
+        }
+    }
+    lexer.SetPos(save);
+    return false;
+}
+
+void ParseControlLine(PPLexer& lexer)
+{
+    OptWs(lexer);
+    bool matched = ParseDefine(lexer);
+    if (!matched)
+    {
+        matched = ParseUndef(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseLine(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseError(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParsePragma(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseInclude(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseIfdef(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseIfndef(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseIf(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseElif(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseElse(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseEndif(lexer);
+    }
+    if (!matched)
+    {
+        matched = ParseHash(lexer);
+        if (matched)
+        {
+            matched = ParseNewLine(lexer);
+        }
+    }
+    if (!matched)
+    {
+        lexer.pp->AddError(lexer.GetFarthestError());
+    }
+}
+
+} // namespace sngcpp::pp

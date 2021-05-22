@@ -158,6 +158,19 @@ soulng::parser::Match SimpleTypeParser::SimpleType(CppLexer& lexer, sngcpp::symb
             }
             break;
         }
+        case UNSIGNED:
+        {
+            ++lexer;
+            {
+                {
+                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleType"));
+                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                    return soulng::parser::Match(true, new UnsignedNode(sourcePos));
+                }
+            }
+            break;
+        }
         case FLOAT:
         {
             ++lexer;

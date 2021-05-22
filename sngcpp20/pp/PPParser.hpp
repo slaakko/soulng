@@ -1,29 +1,21 @@
-#ifndef PPPARSER_HPP
-#define PPPARSER_HPP
-#include <sngcpp20/pp/PP.hpp>
-#include <soulng/lexer/Token.hpp>
-#include <soulng/parser/Match.hpp>
-#include <soulng/parser/Value.hpp>
+// =================================
+// Copyright (c) 2021 Seppo Laakko
+// Distributed under the MIT license
+// =================================
 
-// this file has been automatically generated from 'C:/work/soulng/sngcpp20/pp/PPParser.parser' using soulng parser generator spg version 4.0.0
+#ifndef SNGCPP_PP_PARSER_INCLUDED
+#define SNGCPP_PP_PARSER_INCLUDED
+#include <sngcpp20/pp/PPLexer.hpp>
 
-class PPLexer;
+namespace sngcpp::pp {
 
-struct PP_API PPLineParser
-{
-    static void Parse(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match PPLine(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Define(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Include(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match If(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Ifdef(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Ifndef(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Elif(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Else(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Endif(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Undef(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match Other(PPLexer& lexer, sngcpp::pp::PP* pp);
-    static soulng::parser::Match PPToken(PPLexer& lexer, std::vector<soulng::lexer::Token>* tokens);
-};
+class PP;
 
-#endif // PPPARSER_HPP
+PP_API void ParseControlLine(PPLexer& lexer);
+PP_API std::string ParseAngleHeaderName(const soulng::lexer::Token& headerNameToken, PP* pp);
+PP_API std::string ParseQuoteHeaderName(const soulng::lexer::Token& headerNameToken, PP* pp);
+PP_API bool ParseReplacementList(PPLexer& lexer, std::vector<Token>& replacementList);
+
+} // namespace sngcpp::pp
+
+#endif // SNGCPP_PP_PARSER_INCLUDED

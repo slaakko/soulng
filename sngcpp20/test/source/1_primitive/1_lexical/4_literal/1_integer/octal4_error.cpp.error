@@ -1,0 +1,2 @@
+soulng::lexer::Lexer::NextToken(): error: invalid character '
+' in file 'C:/work/soulng/sngcpp20/test/source/1_primitive/1_lexical/3_literal/1_integer/octal4_error.cpp' at line 1

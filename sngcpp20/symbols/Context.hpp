@@ -29,7 +29,8 @@ enum class ContextFlags : int
     none = 0,
     parsingTemplateId = 1 << 0,
     parseMemberFunction = 1 << 1,
-    parseSavedMemberFunctionBody = 1 << 2
+    parseSavedMemberFunctionBody = 1 << 2,
+    msvcMode = 1 << 3
 };
 
 SYMBOLS_API inline ContextFlags operator|(ContextFlags left, ContextFlags right)
@@ -55,6 +56,7 @@ public:
     void PopFlags();
     void PushSetFlag(ContextFlags flag);
     void PushResetFlag(ContextFlags flag);
+    void SetFlag(ContextFlags flag) { flags = flags | flag; }
     bool GetFlag(ContextFlags flag) const { return (flags & flag) != ContextFlags::none; }
     void PushNode(sngcpp::ast::Node* node_);
     void PopNode();

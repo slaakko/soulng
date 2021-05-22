@@ -29,6 +29,7 @@ parser api(PARSER_API) SimpleTypeParser
         |   INT{ return new IntNode(sourcePos); }
         |   LONG{ return new LongNode(sourcePos); }
         |   SIGNED{ return new SignedNode(sourcePos); }
+        |   UNSIGNED{ return new UnsignedNode(sourcePos); }
         |   FLOAT{ return new FloatNode(sourcePos); }
         |   DOUBLE{ return new DoubleNode(sourcePos); }
         |   VOID{ return new VoidNode(sourcePos); }

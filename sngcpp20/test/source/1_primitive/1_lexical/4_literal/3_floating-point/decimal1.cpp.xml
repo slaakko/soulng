@@ -1,0 +1,165 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="7" pos="()" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <doubleNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,8)" type="list">
+    <initDeclaratorNode count="2" pos="(1,8)" type="binary">
+     <identifierNode pos="(1,8)" type="compound">
+      <identifier pos="(1,8)" value="d0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,11)" type="unary">
+      <operator pos="(1,11)" value="="/>
+      <floatingLiteralNode pos="(1,13)" type="single">
+       <literal pos="(1,13)" value=".1"/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,15)" type="single">
+    <operator pos="(1,15)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <doubleNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,8)" type="list">
+    <initDeclaratorNode count="2" pos="(2,8)" type="binary">
+     <identifierNode pos="(2,8)" type="compound">
+      <identifier pos="(2,8)" value="d1"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,11)" type="unary">
+      <operator pos="(2,11)" value="="/>
+      <floatingLiteralNode pos="(2,13)" type="single">
+       <literal pos="(2,13)" value="1."/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,15)" type="single">
+    <operator pos="(2,15)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(3,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(3,1)" type="sequence">
+    <doubleNode pos="(3,1)" type="single">
+     <keyword pos="(3,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(3,8)" type="list">
+    <initDeclaratorNode count="2" pos="(3,8)" type="binary">
+     <identifierNode pos="(3,8)" type="compound">
+      <identifier pos="(3,8)" value="d2"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(3,11)" type="unary">
+      <operator pos="(3,11)" value="="/>
+      <floatingLiteralNode pos="(3,13)" type="single">
+       <literal pos="(3,13)" value="1.2"/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(3,16)" type="single">
+    <operator pos="(3,16)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(4,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(4,1)" type="sequence">
+    <doubleNode pos="(4,1)" type="single">
+     <keyword pos="(4,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(4,8)" type="list">
+    <initDeclaratorNode count="2" pos="(4,8)" type="binary">
+     <identifierNode pos="(4,8)" type="compound">
+      <identifier pos="(4,8)" value="d3"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(4,11)" type="unary">
+      <operator pos="(4,11)" value="="/>
+      <floatingLiteralNode pos="(4,13)" type="single">
+       <literal pos="(4,13)" value="1e1"/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(4,16)" type="single">
+    <operator pos="(4,16)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(5,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(5,1)" type="sequence">
+    <doubleNode pos="(5,1)" type="single">
+     <keyword pos="(5,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(5,8)" type="list">
+    <initDeclaratorNode count="2" pos="(5,8)" type="binary">
+     <identifierNode pos="(5,8)" type="compound">
+      <identifier pos="(5,8)" value="d4"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(5,11)" type="unary">
+      <operator pos="(5,11)" value="="/>
+      <floatingLiteralNode pos="(5,13)" type="single">
+       <literal pos="(5,13)" value="1.2e2"/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(5,18)" type="single">
+    <operator pos="(5,18)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(6,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(6,1)" type="sequence">
+    <doubleNode pos="(6,1)" type="single">
+     <keyword pos="(6,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(6,8)" type="list">
+    <initDeclaratorNode count="2" pos="(6,8)" type="binary">
+     <identifierNode pos="(6,8)" type="compound">
+      <identifier pos="(6,8)" value="d5"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(6,11)" type="unary">
+      <operator pos="(6,11)" value="="/>
+      <floatingLiteralNode pos="(6,13)" type="single">
+       <literal pos="(6,13)" value="1.3e-1"/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(6,19)" type="single">
+    <operator pos="(6,19)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(7,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(7,1)" type="sequence">
+    <doubleNode pos="(7,1)" type="single">
+     <keyword pos="(7,1)" value="double"/>
+    </doubleNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(7,8)" type="list">
+    <initDeclaratorNode count="2" pos="(7,8)" type="binary">
+     <identifierNode pos="(7,8)" type="compound">
+      <identifier pos="(7,8)" value="d6"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(7,11)" type="unary">
+      <operator pos="(7,11)" value="="/>
+      <floatingLiteralNode pos="(7,13)" type="single">
+       <literal pos="(7,13)" value="1e+3"/>
+      </floatingLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(7,17)" type="single">
+    <operator pos="(7,17)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

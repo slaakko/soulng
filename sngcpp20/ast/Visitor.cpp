@@ -901,6 +901,7 @@ void DefaultVisitor::Visit(ArrayDeclaratorNode& node)
 void DefaultVisitor::Visit(FunctionDeclaratorNode& node)
 {
     VisitUnaryNode(node);
+    node.Params()->Accept(*this);
 }
 
 void DefaultVisitor::Visit(PrefixNode& node)

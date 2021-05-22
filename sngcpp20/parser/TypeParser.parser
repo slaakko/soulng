@@ -33,6 +33,7 @@ parser api(PARSER_API) TypeParser
     using ClassParser.ClassSpecifier;
     using ConceptParser.TypeConstraint;
     using DeclarationParser.AbstractDeclarator;
+    using DeclarationParser.CVQualifier;
     using EnumParser.EnumSpecifier;
     using EnumParser.ElaboratedEnumSpecifier;
     using ExpressionParser.Expression;
@@ -86,6 +87,8 @@ parser api(PARSER_API) TypeParser
     TypeSpecifier(sngcpp::symbols::Context* ctx) : Node*
         ::= ElaboratedTypeSpecifier(ctx):elaboratedTypeSpecifier{ return elaboratedTypeSpecifier; }
         |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier{ return simpleTypeSpecifier; }
+        |   TypenameSpecifier(ctx):typenameSpecifier{ return typenameSpecifier; }
+        |   CVQualifier:cvQualifier{ return cvQualifier; }
         ;
 
     ElaboratedTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos nnsPos, var SourcePos tmpPos) : Node*

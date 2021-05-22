@@ -17,16 +17,24 @@ LexerState::LexerState() : token(), line(0), lexeme(), pos(), tokens(), current(
 {
 }
 
+SourceInfo::SourceInfo() : fileName(), lineNumber(0), sourceLine()
+{
+}
+
+LineMapper::~LineMapper()
+{
+}
+
 Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) :
     content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr)
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr), lineMapper(nullptr)
 {
     CalculateLineStarts();
 }
 
 Lexer::Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) :
     content(), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(start_), end(end_), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr)
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr), lineMapper(nullptr)
 {
     CalculateLineStarts();
 }
@@ -421,11 +429,27 @@ void Lexer::ThrowExpectationFailure(const Span& span, const std::u32string& name
     throw ParsingException("parsing error at '" + fileName + ":" + std::to_string(token.line) + "': " + ToUtf8(name) + " expected:\n" + ToUtf8(ErrorLines(span)), fileName, span);
 }
 
-void Lexer::ThrowFarthestError()
+std::string Lexer::GetFarthestError() const
 {
     Token token = GetToken(farthestPos);
     std::string parserStateStr = GetParserStateStr();
-    throw ParsingException("parsing error at '" + fileName + ":" + std::to_string(token.line) + "':\n" + ToUtf8(ErrorLines(token)) + parserStateStr, fileName);
+    if (lineMapper)
+    {
+        SourceInfo sourceInfo = lineMapper->GetSourceInfo(token.line);
+        const char32_t* lineStart = LineStart(start, token.match.begin);
+        std::string caretLine = std::string(token.match.begin - lineStart, ' ') + std::string(std::max(static_cast<int64_t>(1), token.match.end - token.match.begin), '^');
+        return "parsing error at '" + sourceInfo.fileName + ":" + std::to_string(sourceInfo.lineNumber) + ":\n" +
+            sourceInfo.sourceLine + caretLine + "\n" + parserStateStr;
+    }
+    else
+    {
+        return "parsing error at '" + fileName + ":" + std::to_string(token.line) + "':\n" + ToUtf8(ErrorLines(token)) + parserStateStr;
+    }
+}
+
+void Lexer::ThrowFarthestError()
+{
+    throw ParsingException(GetFarthestError(), fileName);
 }
 
 void Lexer::AddError(const Span& span, const std::u32string& name)

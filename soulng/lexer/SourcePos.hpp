@@ -25,16 +25,31 @@ SOULNG_LEXER_API inline bool operator==(const SourcePos& left, const SourcePos& 
     return left.line == right.line && left.col == right.col;
 }
 
-SOULNG_LEXER_API inline bool operator!=(const SourcePos& left, const SourcePos& right)
-{
-    return !(left == right);
-}
-
 SOULNG_LEXER_API inline bool operator<(const SourcePos& left, const SourcePos& right)
 {
     if (left.line < right.line) return true;
     if (left.line > right.line) return false;
     return left.col < right.col;
+}
+
+SOULNG_LEXER_API inline bool operator!=(const SourcePos& left, const SourcePos& right)
+{
+    return !(left == right);
+}
+
+SOULNG_LEXER_API inline bool operator>(const SourcePos& left, const SourcePos& right)
+{
+    return right < left;
+}
+
+SOULNG_LEXER_API inline bool operator<=(const SourcePos& left, const SourcePos& right)
+{
+    return !(left > right);
+}
+
+SOULNG_LEXER_API inline bool operator>=(const SourcePos& left, const SourcePos& right)
+{
+    return !(left < right);
 }
 
 SOULNG_LEXER_API std::string ToString(const SourcePos& sourcePos);

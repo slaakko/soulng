@@ -1,0 +1,13 @@
+<sngcpp>
+    <project name="2_comment">
+        <files>
+            <file name="combine_lines.cpp"/>
+            <file name="empty_block_comment.cpp"/>
+            <file name="empty_line_comment.cpp"/>
+            <file name="nonempty_block_comment.cpp"/>
+            <file name="nonempty_line_comment.cpp"/>
+            <file name="star_block_comment.cpp"/>
+            <file name="string.cpp"/>
+        </files>
+    </project>
+</sngcpp>

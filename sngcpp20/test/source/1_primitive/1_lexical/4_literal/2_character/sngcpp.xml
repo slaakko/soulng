@@ -1,0 +1,9 @@
+<sngcpp>
+    <project name="2_character">
+        <files>
+            <file name="character1.cpp"/>
+            <file name="character2_error.cpp"/>
+            <file name="encoding_prefix1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

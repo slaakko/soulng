@@ -25,12 +25,12 @@ ClassCreatorVisitor::ClassCreatorVisitor(Context* context_) : context(context_)
 
 void ClassCreatorVisitor::Visit(IdentifierNode& node)
 {
-    context->GetSymbolTable()->BeginClass(&node);
+    context->GetSymbolTable()->BeginClass(&node, context);
 }
 
 void ClassCreatorVisitor::Visit(UnnamedNode& node)
 {
-    context->GetSymbolTable()->BeginClass(&node);
+    context->GetSymbolTable()->BeginClass(&node, context);
 }
 
 void BeginClass(Node* node, Context* context)

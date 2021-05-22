@@ -132,7 +132,10 @@ CompoundNode::CompoundNode(NodeKind kind_, const SourcePos& sourcePos_) : Node(k
 
 UnaryNode::UnaryNode(NodeKind kind_, const SourcePos& sourcePos_, Node* child_) : Node(kind_, sourcePos_), child(child_)
 {
-    child->SetParent(this);
+    if (child)
+    {
+        child->SetParent(this);
+    }
 }
 
 void UnaryNode::Write(Writer& writer)
@@ -149,8 +152,14 @@ void UnaryNode::Read(Reader& reader)
 
 BinaryNode::BinaryNode(NodeKind kind_, const SourcePos& sourcePos_, Node* left_, Node* right_) : Node(kind_, sourcePos_), left(left_), right(right_)
 {
-    left->SetParent(this);
-    right->SetParent(this);
+    if (left)
+    {
+        left->SetParent(this);
+    }
+    if (right)
+    {
+        right->SetParent(this);
+    }
 }
 
 void BinaryNode::Write(Writer& writer)

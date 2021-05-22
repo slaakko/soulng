@@ -197,6 +197,7 @@ soulng::parser::Match LiteralParser::Literal(CppLexer& lexer, sngcpp::symbols::C
                                     }
                                     if (match.hit)
                                     {
+                                        lexer.SetPos(pos);
                                         {
                                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Literal"));

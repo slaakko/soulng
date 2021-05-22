@@ -11,6 +11,10 @@ namespace soulng { namespace util {
 
 bool FileContentsEqual(const std::string& filePath1, const std::string& filePath2)
 {
+    if (!boost::filesystem::exists(filePath1) || !boost::filesystem::exists(filePath2))
+    {
+        return false;
+    }
     int64_t fileSize1 = boost::filesystem::file_size(filePath1);
     int64_t fileSize2 = boost::filesystem::file_size(filePath2);
     if (fileSize1 != fileSize2)

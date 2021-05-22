@@ -1,0 +1,6 @@
+<sngcpp>
+    <project name="declaration">
+        <child project="function"/>
+        <child project="typedef"/>
+    </project>
+</sngcpp>

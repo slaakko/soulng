@@ -1,0 +1,7 @@
+<sngcpp>
+    <project name="5_include">
+        <files>
+            <file name="include.cpp"/>
+        </files>
+    </project>
+</sngcpp>

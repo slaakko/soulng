@@ -83,7 +83,10 @@ Project::Project(const std::string& dirPath_, bool verbose) : dirPath(GetFullPat
     {
         throw std::runtime_error("source root path '" + rootPath + "' not found");
     }
-    std::cout << ">> " << rootPath << std::endl;
+    if (verbose)
+    {
+        std::cout << ">> " << rootPath << std::endl;
+    }
     std::unique_ptr<sngxml::xpath::XPathObject> childObject = sngxml::xpath::Evaluate(U"/sngcpp/project/child", doc.get());
     if (childObject)
     {

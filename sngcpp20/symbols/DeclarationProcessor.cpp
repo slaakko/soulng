@@ -4,20 +4,32 @@
 // =================================
 
 #include <sngcpp20/symbols/DeclarationProcessor.hpp>
+#include <sngcpp20/symbols/AliasTypeSymbol.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
+#include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
+#include <sngcpp20/symbols/ScopeResolver.hpp>
+#include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
 #include <sngcpp20/ast/Declaration.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <sngcpp20/ast/SimpleType.hpp>
+#include <sngcpp20/ast/Qualifier.hpp>
+#include <soulng/util/Unicode.hpp>
 #include <stdexcept>
 
 namespace sngcpp::symbols {
 
+using namespace soulng::unicode;
+
 class DeclarationProcessorVisitor : public DefaultVisitor
 {
 public:
+    enum class Stage
+    {
+        processDeclSpecifiers, processInitDeclarators
+    };
     DeclarationProcessorVisitor(Context* context_);
-    DeclarationFlags Flags() const { return flags; }
+    void Visit(SimpleDeclarationNode& node) override;
     void Visit(StaticNode& node) override;
     void Visit(ThreadLocalNode& node) override;
     void Visit(ExternNode& node) override;
@@ -50,22 +62,103 @@ public:
     void Visit(IdentifierNode& node) override;
     void Visit(QualifiedIdNode& node) override;
 
-    void Visit(PtrDeclaratorNode& node) override;
     void Visit(PtrNode& node) override;
     void Visit(LvalueRefNode& node) override;
     void Visit(RvalueRefNode& node) override;
     void Visit(ConstNode& node) override;
     void Visit(VolatileNode& node) override;
 
+    void Visit(InitDeclaratorListNode& node);
     void Visit(InitDeclaratorNode& node) override;
 
+    void Visit(FunctionDeclaratorNode& node) override;
+
 private:
-    Context* context;
+    void ProcessDeclSpecifiers(Node* declSpecifiers);
+    void ProcesInitDeclarators(Node* initDeclaratorList);
+    void AddSymbol();
+    void AddTypedef();
+    Stage stage;
     DeclarationFlags flags;
+    Context* context;
+    TypeSymbol* baseTypeSymbol;
+    TypeSymbol* type;
+    Node* idNode;
+    Scope* scope;
+    Node* typedefNode;
 };
 
-DeclarationProcessorVisitor::DeclarationProcessorVisitor(Context* context_) : flags(), context(context_)
+DeclarationProcessorVisitor::DeclarationProcessorVisitor(Context* context_) : 
+    stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeSymbol(nullptr), type(nullptr), idNode(nullptr), scope(nullptr), typedefNode(nullptr)
 {
+}
+
+void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
+{
+    ProcessDeclSpecifiers(node.DeclarationSpecifiers());
+    ProcesInitDeclarators(node.InitDeclaratorList());
+}
+
+void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
+{
+    stage = Stage::processDeclSpecifiers;
+    declSpecifiers->Accept(*this);
+    DeclarationFlags fundamentalTypeFlags = flags & DeclarationFlags::fundamentalTypeFlags;
+    if (fundamentalTypeFlags != DeclarationFlags::none)
+    {
+        if (baseTypeSymbol)
+        {
+            throw Exception("duplicate type symbol in declaration specifier sequence", declSpecifiers->GetSourcePos(), context);
+        }
+        baseTypeSymbol = GetFundamentalType(fundamentalTypeFlags, declSpecifiers->GetSourcePos(), context);
+    }
+    else
+    {
+        if (!baseTypeSymbol)
+        {
+            throw Exception("declaration specifier sequence does not contain a type symbol", declSpecifiers->GetSourcePos(), context);
+        }
+    }
+    if ((flags & DeclarationFlags::constFlag) != DeclarationFlags::none)
+    {
+        baseTypeSymbol = context->GetSymbolTable()->MakeConstType(baseTypeSymbol);
+    }
+    if ((flags & DeclarationFlags::volatileFlag) != DeclarationFlags::none)
+    {
+        baseTypeSymbol = context->GetSymbolTable()->MakeVolatileType(baseTypeSymbol);
+    }
+    if ((flags & DeclarationFlags::typedefFlag) != DeclarationFlags::none)
+    {
+        if ((flags & DeclarationFlags::typedefFlagMask) != DeclarationFlags::none)
+        {
+            throw Exception("invalid declaration specifier sequence: typedef cannot be combined with these specifiers", declSpecifiers->GetSourcePos(), context);
+        }
+    }
+}
+
+void DeclarationProcessorVisitor::ProcesInitDeclarators(Node* initDeclaratorList)
+{
+    stage = Stage::processInitDeclarators;
+    flags = flags & ~DeclarationFlags::cvQualifierFlagMask;
+    initDeclaratorList->Accept(*this);
+}
+
+void DeclarationProcessorVisitor::AddSymbol()
+{
+    if ((flags & DeclarationFlags::typedefFlag) != DeclarationFlags::none)
+    {
+        AddTypedef();
+    }
+}
+
+void DeclarationProcessorVisitor::AddTypedef()
+{
+    if (!idNode)
+    {
+        throw Exception("no declarators specified for a typedef", typedefNode->GetSourcePos(), context);
+    }
+    Symbol* typedefSymbol = new AliasTypeSymbol(idNode->Str(), type); 
+    scope->AddSymbol(typedefSymbol, typedefNode->GetSourcePos(), context);
 }
 
 void DeclarationProcessorVisitor::Visit(StaticNode& node)
@@ -127,6 +220,7 @@ void DeclarationProcessorVisitor::Visit(TypedefNode& node)
 {
     CheckDuplicateSpecifier(flags, DeclarationFlags::typedefFlag, "typedef", node.GetSourcePos(), context);
     flags = flags | DeclarationFlags::typedefFlag;
+    typedefNode = &node;
 }
 
 void DeclarationProcessorVisitor::Visit(ConstExprNode& node)
@@ -240,12 +334,58 @@ void DeclarationProcessorVisitor::Visit(VoidNode& node)
 
 void DeclarationProcessorVisitor::Visit(IdentifierNode& node)
 {
-    // todo
+    if (stage == Stage::processDeclSpecifiers)
+    {
+        Symbol* symbol = context->GetSymbolTable()->GetSymbolNothrow(&node);
+        if (symbol)
+        {
+            if (symbol->IsTypeSymbol())
+            {
+                if (baseTypeSymbol)
+                {
+                    throw Exception("duplicate type symbol in declaration specifier sequence", node.GetSourcePos(), context);
+                }
+                else
+                {
+                    baseTypeSymbol = static_cast<TypeSymbol*>(symbol);
+                }
+            }
+            else
+            {
+                throw Exception("symbol '" + ToUtf8(node.Str()) + "' does not denote a type", node.GetSourcePos(), context);
+            }
+        }
+        else
+        {
+            throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+        }
+    }
+    else if (stage == Stage::processInitDeclarators)
+    {
+        if (idNode)
+        {
+            throw Exception("duplicate identifier in declarator list", node.GetSourcePos(), context);
+        }
+        idNode = &node;
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(QualifiedIdNode& node)
 {
-    // todo
+    scope = ResolveScope(node.Left(), context);
+    node.Right()->Accept(*this);
+}
+
+void DeclarationProcessorVisitor::Visit(InitDeclaratorListNode& node)
+{
+    for (Node* item : node.Items())
+    {
+        type = baseTypeSymbol;
+        idNode = nullptr;
+        scope = context->GetSymbolTable()->CurrentScope();
+        item->Accept(*this);
+        AddSymbol();
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(InitDeclaratorNode& node)
@@ -253,34 +393,58 @@ void DeclarationProcessorVisitor::Visit(InitDeclaratorNode& node)
     // todo
 }
 
-void DeclarationProcessorVisitor::Visit(PtrDeclaratorNode& node)
-{
-    // todo
-}
-
 void DeclarationProcessorVisitor::Visit(PtrNode& node)
 {
-    // todo
+    type = context->GetSymbolTable()->MakePointerType(type);
 }
 
 void DeclarationProcessorVisitor::Visit(LvalueRefNode& node)
 {
-    // todo
+    CheckDuplicateSpecifier(flags, DeclarationFlags::lvalueRefFlag, "&", node.GetSourcePos(), context);
+    flags = flags | DeclarationFlags::lvalueRefFlag;
+    type = context->GetSymbolTable()->MakeLvalueRefType(type);
 }
 
 void DeclarationProcessorVisitor::Visit(RvalueRefNode& node)
 {
-    // todo
+    CheckDuplicateSpecifier(flags, DeclarationFlags::rvalueRefFlag, "&&", node.GetSourcePos(), context);
+    flags = flags | DeclarationFlags::rvalueRefFlag;
+    type = context->GetSymbolTable()->MakeRvalueRefType(type);
 }
 
 void DeclarationProcessorVisitor::Visit(ConstNode& node)
 {
-    // todo
+    CheckDuplicateSpecifier(flags, DeclarationFlags::constFlag, "const", node.GetSourcePos(), context);
+    if (stage == Stage::processDeclSpecifiers)
+    {
+        flags = flags | DeclarationFlags::constFlag;
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(VolatileNode& node)
 {
-    // todo
+    CheckDuplicateSpecifier(flags, DeclarationFlags::volatileFlag, "volatile", node.GetSourcePos(), context);
+    if (stage == Stage::processDeclSpecifiers)
+    {
+        flags = flags | DeclarationFlags::volatileFlag;
+    }
+}
+
+void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
+{
+    node.Child()->Accept(*this);
+    if (idNode && scope)
+    {
+        context->GetSymbolTable()->BeginScope(*scope);
+        context->GetSymbolTable()->BeginFunction(idNode, type, context);
+        node.Params()->Accept(*this);
+        context->GetSymbolTable()->EndFunction();
+        context->GetSymbolTable()->EndScope();
+    }
+    else
+    {
+        // todo
+    }
 }
 
 void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, const std::string& specifierStr, const SourcePos& sourcePos, Context* context)
@@ -295,11 +459,6 @@ void ProcessSimpleDeclaration(Node* declaration, Context* context)
 {
     DeclarationProcessorVisitor visitor(context);
     declaration->Accept(visitor);
-    DeclarationFlags fundamentalTypeFlags = visitor.Flags() & DeclarationFlags::fundamentalTypeFlags;
-    if (fundamentalTypeFlags != DeclarationFlags::none)
-    {
-
-    }
 }
 
 } // sngcpp::symbols

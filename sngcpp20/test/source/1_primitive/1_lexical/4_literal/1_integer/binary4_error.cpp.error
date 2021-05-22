@@ -1,0 +1,36 @@
+parsing error at 'C:/work/soulng/sngcpp20/test/source/1_primitive/1_lexical/3_literal/1_integer/binary4_error.cpp:1':
+
+^
+
+Parser state:
+TranslationUnitParser.TranslationUnit
+DeclarationParser.DeclarationSeq
+DeclarationParser.Declaration
+DeclarationParser.BlockDeclaration
+DeclarationParser.SimpleDeclaration
+DeclarationParser.InitDeclaratorList
+DeclarationParser.InitDeclarator
+InitializationParser.Initializer
+InitializationParser.BraceOrEqualInitializer
+InitializationParser.InitializerClause
+ExpressionParser.AssignmentExpression
+ExpressionParser.LogicalOrExpression
+ExpressionParser.LogicalAndExpression
+ExpressionParser.InclusiveOrExpression
+ExpressionParser.ExclusiveOrExpression
+ExpressionParser.AndExpression
+ExpressionParser.EqualityExpression
+ExpressionParser.RelationalExpression
+ExpressionParser.CompareExpression
+ExpressionParser.ShiftExpression
+ExpressionParser.AdditiveExpression
+ExpressionParser.MultiplicativeExpression
+ExpressionParser.PmExpression
+ExpressionParser.CastExpression
+ExpressionParser.UnaryExpression
+ExpressionParser.PostfixExpression
+ExpressionParser.PrimaryExpression
+LiteralParser.Literal
+LiteralParser.UserDefinedLiteral
+LiteralParser.UdSuffix
+

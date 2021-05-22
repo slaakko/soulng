@@ -7,14 +7,16 @@ prefix "sngcpp20/pp";
 tokens TextTokens
 {
     (DEFINED, "'defined'"), (ANGLEHEADERNAME, "angleheadername"), (QUOTEHEADERNAME, "quoteheadername"), (PPNUMBER, "preprocessing number"), (CHARLITERAL, "character literal"),
-    (STRINGLITERAL, "string literal"), (CHAR, "character"),
-    (ID, "identifier"), (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
+    (STRINGLITERAL, "string literal"), (BEGINRAWSTRINGLITERAL, "begin raw string literal"), (CHAR, "character"),
+    (ID, "identifier"), (KEYWORD, "keyword"),
+    (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
     (SHIFTRIGHTASSIGN, "'>>='"), (SHIFTLEFTASSIGN, "'<<='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"), (QUEST, "'?'"), (COLON, "':'"),
     (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
     (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
-    (KEYWORD, "keyword"), (WS, "white space"), (BLOCKCOMMENT, "block comment"), (LINECOMMENT, "line comment"),
+    (WS, "white space"), (BEGINBLOCKCOMMENT, "begin block comment"), (BLOCKCOMMENT, "block comment"), (LINECOMMENT, "line comment"), (NEWLINE, "'newline'"), (OTHER, "'other'"),
+    (HASHHASH, "'##'"), (HASH, "'#'"), (PLACEMARKER, "place marker"),
     (MAX, "max")
 }
 
@@ -22,9 +24,8 @@ expressions
 {
     ws = "[\t ]+";
     newline = "\r\n|\n|\r";
-    linecontinuation = "\\{newline}";
     linecomment = "//[^\n\r]*{newline}";
-    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    beginblockcomment = "/\*";
     hexdigit = "[0-9a-fA-F]";
     hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
     hex8 = "{hex4}{hex4}";
@@ -34,7 +35,7 @@ expressions
     nondigit = "[a-zA-Z_]";
     identifiernondigit = "{nondigit}|{univcn}";
     sign = "\+|-";
-    ppnumber = "({digit}+\.?|\.{digit}+)([eE]{sign}|{identifiernondigit})*";
+    ppnumber = "(({digit}|')+\.?|\.({digit}|')+)([eEpP]{sign}|{identifiernondigit})*";
     octaldigit = "[0-7]";
     simpleescape = "\\['\"\?\\abfnrtv]";
     octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";
@@ -44,20 +45,24 @@ expressions
     characterliteral = "[uUL]?'{cchar}+'";
     encodingprefix = "u8|u|U|L";
     schar = "[^\r\n\\\"]|{escape}|{univcn}";
-    stringliteral = "{encodingprefix}?\"{schar}*\"|{encodingprefix}?R\"[^\n\r\"]*\"";
+    beginrawstringliteral = "{encodingprefix}?R\"";
+    stringliteral = "{encodingprefix}?\"{schar}*\"";
 }
 
 lexer api(PP_API) TextLexer
 {
     "{ws}" { return WS; }
-    "{linecontinuation}" {}
-    "{blockcomment}" { pp->Emit(U" ", token.match, BLOCKCOMMENT); }
-    "{linecomment}" { pp->Emit(U" ", token.match, LINECOMMENT); }
-    "{newline}" {}
+    //"{blockcomment}" { return BLOCKCOMMENT; }
+    "{beginblockcomment}" { return BEGINBLOCKCOMMENT; }
+    "{linecomment}" { return LINECOMMENT; }
+    "{newline}" { return NEWLINE; }
     "{id}" { if (pp->IsKeywordToken(token)) return KEYWORD; else return ID; }
     "{ppnumber}" { return PPNUMBER; }
     "{characterliteral}" { return CHARLITERAL; }
+    "{beginrawstringliteral}" { return BEGINRAWSTRINGLITERAL; }
     "{stringliteral}" { return STRINGLITERAL; }
+    "##" { return HASHHASH; }
+    "#" { return HASH; }
     "::" { return COLONCOLON; }
     "," { return COMMA; }
     "=" { return ASSIGN; }

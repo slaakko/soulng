@@ -1,0 +1,8 @@
+<sngcpp>
+    <project name="4_literal">
+        <child project="1_integer"/>
+        <child project="2_character"/>
+        <child project="3_floating-point"/>
+        <child project="4_string"/>
+    </project>
+</sngcpp>

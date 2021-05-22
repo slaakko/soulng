@@ -64,6 +64,21 @@ SOULNG_LEXER_API inline int GetLine(int64_t pos)
     return pos >> 32;
 }
 
+struct SOULNG_LEXER_API SourceInfo
+{
+    SourceInfo();
+    std::string fileName;
+    int lineNumber;
+    std::string sourceLine;
+};
+
+class SOULNG_LEXER_API LineMapper
+{
+public:
+    virtual ~LineMapper();
+    virtual SourceInfo GetSourceInfo(int line) = 0;
+};
+
 class SOULNG_LEXER_API Lexer
 {
 public:
@@ -95,12 +110,14 @@ public:
     std::u32string ErrorLines(const Span& span) const;
     void GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) const;
     void ThrowExpectationFailure(const Span& span, const std::u32string& name);
+    std::string GetFarthestError() const;
     void ThrowFarthestError();
     void AddError(const Span& span, const std::u32string& name);
     const std::vector<std::exception>& Errors() const { return errors; }
     const char32_t* Start() const { return start; }
     const char32_t* End() const { return end; }
     const char32_t* Pos() const { return pos; }
+    void SetPos(const char32_t* pos_) { pos = pos_; }
     void SetLog(ParsingLog* log_) { log = log_; }
     ParsingLog* Log() const { return log; }
     std::u32string RestOfLine(int maxLineLength);
@@ -126,6 +143,10 @@ public:
     void ResetFlag(LexerFlags flag) { flags = flags & ~flag; }
     int32_t line;
     Lexeme lexeme;
+    std::vector<Token>::iterator Current() { return current; }
+    std::vector<Token>& Tokens() { return tokens; }
+    const LineMapper* GetLineMapper() const { return lineMapper; }
+    void SetLineMapper(LineMapper* lineMapper_) { lineMapper = lineMapper_; }
 private:
     std::u32string content;
     std::string fileName;
@@ -149,6 +170,7 @@ private:
     std::vector<int> ruleContext;
     std::vector<int> farthestRuleContext;
     std::vector<const char*>* ruleNameVecPtr;
+    LineMapper* lineMapper;
     void NextToken();
     void CalculateLineStarts();
 };

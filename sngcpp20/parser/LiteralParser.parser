@@ -26,7 +26,7 @@ parser api(PARSER_API) LiteralParser
         |   INTLIT{ return sngcpp::par::ParseIntegerLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
         |   FLOATLIT{ return sngcpp::par::ParseFloatingLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
         |   CHARLIT{ return sngcpp::par::ParseCharacterLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
-        |   BEGINRAWSTRINGLIT{ return sngcpp::par::ParseRawStringLiteral(sourcePos, lexer); }
+        |   BEGINRAWSTRINGLIT{ lexer.SetPos(pos); return sngcpp::par::ParseRawStringLiteral(sourcePos, lexer); }
         |   STRINGLIT{ return sngcpp::par::ParseStringLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
         |   TRUE{ return new BooleanLiteralNode(sourcePos, true, lexer.GetMatch(pos)); }
         |   FALSE{ return new BooleanLiteralNode(sourcePos, false, lexer.GetMatch(pos)); }

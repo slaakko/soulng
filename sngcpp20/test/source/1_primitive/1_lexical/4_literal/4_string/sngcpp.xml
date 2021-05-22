@@ -1,0 +1,8 @@
+<sngcpp>
+    <project name="4_string">
+        <files>
+            <file name="raw1.cpp"/>
+            <file name="string1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

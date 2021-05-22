@@ -1,0 +1,11 @@
+parsing error at 'C:/work/soulng/sngcpp20/test/source/1_primitive/1_lexical/2_comment/combine_lines.cpp:1':
+
+^
+
+Parser state:
+TranslationUnitParser.TranslationUnit
+TranslationUnitParser.ModuleUnit
+ModuleParser.GlobalModuleFragment
+ModuleParser.ModuleKeyword
+IdentifierParser.Identifier
+

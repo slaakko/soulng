@@ -24,6 +24,7 @@ class SYMBOLS_API FundamentalTypeSymbol : public TypeSymbol
 public:
     FundamentalTypeSymbol(FundamentalTypeKind kind_);
     FundamentalTypeKind Kind() const { return kind; }
+    std::string SymbolKindStr() const override { return "fundamental type symbol"; }
 private:
     FundamentalTypeKind kind;
 };

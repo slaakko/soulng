@@ -16,6 +16,26 @@ namespace sngcpp::symbols {
 
 using namespace sngcpp::ast;
 
+enum class MapKind : int
+{
+    none, nodeToSymbol = 1 << 0, symbolToNode = 1 << 1, both = nodeToSymbol | symbolToNode
+};
+
+inline MapKind operator|(MapKind left, MapKind right)
+{
+    return MapKind(int(left) | int(right));
+}
+
+inline MapKind operator&(MapKind left, MapKind right)
+{
+    return MapKind(int(left) & int(right));
+}
+
+inline MapKind operator~(MapKind kind)
+{
+    return MapKind(~int(kind));
+}
+
 class SYMBOLS_API SymbolTable
 {
 public:
@@ -27,13 +47,24 @@ public:
     Symbol* GetSymbolNothrow(Node* node) const;
     Symbol* GetSymbol(Node* node) const;
     void MapNode(Node* node, Symbol* symbol);
-    Symbol* Lookup(const std::u32string& name) const;
+    void MapNode(Node* node, Symbol* symbol, MapKind kind);
+    Symbol* Lookup(const std::u32string& name, const SourcePos& sourcePos, Context* context) const;
     Scope* CurrentScope() const { return currentScope; }
+    void SetCurrentScope(Scope* scope) { currentScope = scope; }
+    void PushScope();
+    void PopScope();
     void BeginScope(Scope& scope);
     void EndScope();
-    void BeginClass(Node* node);
+    void BeginClass(Node* node, Context* context);
     void EndClass();
+    void BeginFunction(Node* node, TypeSymbol* returnType, Context* context);
+    void EndFunction();
     TypeSymbol* GetFundamentalTypeSymbol(FundamentalTypeKind kind);
+    TypeSymbol* MakeConstType(TypeSymbol* baseTypeSymbol);
+    TypeSymbol* MakeVolatileType(TypeSymbol* baseTypeSymbol);
+    TypeSymbol* MakePointerType(TypeSymbol* baseTypeSymbol);
+    TypeSymbol* MakeLvalueRefType(TypeSymbol* baseTypeSymbol);
+    TypeSymbol* MakeRvalueRefType(TypeSymbol* baseTypeSymbol);
 private:
     NamespaceSymbol globalNs;
     std::stack<Scope*> scopeStack;
@@ -41,6 +72,12 @@ private:
     std::unordered_map<Node*, Symbol*> nodeSymbolMap;
     std::unordered_map<Symbol*, Node*> symbolNodeMap;
     std::unordered_map<int, TypeSymbol*> fundamentalTypeMap;
+    std::unordered_map<TypeSymbol*, TypeSymbol*> constTypeMap;
+    std::unordered_map<TypeSymbol*, TypeSymbol*> volatileTypeMap;
+    std::unordered_map<TypeSymbol*, TypeSymbol*> pointerTypeMap;
+    std::unordered_map<TypeSymbol*, TypeSymbol*> lvalueRefTypeMap;
+    std::unordered_map<TypeSymbol*, TypeSymbol*> rvalueRefTypeMap;
+    std::vector<std::unique_ptr<TypeSymbol>> types;
 };
 
 } // sngcpp::symbols

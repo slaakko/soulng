@@ -1,0 +1,15 @@
+<sngcpp>
+    <project name="3_identifier">
+        <files>
+            <file name="id1.cpp"/>
+            <file name="id2.cpp"/>
+            <file name="id3.cpp"/>
+            <file name="id4.cpp"/>
+            <file name="id5.cpp"/>
+            <file name="id6.cpp"/>
+            <file name="id7.cpp"/>
+            <file name="id8.cpp"/>
+            <file name="id9_error.cpp"/>
+        </files>
+    </project>
+</sngcpp>

@@ -1,6 +1,9 @@
 <sngcpp>
     <project name="1_lexical">
         <child project="1_empty"/>
-        <child project="2_identifier"/>
+        <child project="2_comment"/>
+        <child project="3_identifier"/>
+        <child project="4_literal"/>
+        <child project="5_include"/>
     </project>
 </sngcpp>

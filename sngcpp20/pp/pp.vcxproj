@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c4ef96cc-c2f3-4997-8eba-153110e1ff09}</ProjectGuid>
+    <ProjectGuid>{266aa07c-c465-47a0-a42a-4ea7e2893caa}</ProjectGuid>
     <RootNamespace>pp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -122,10 +122,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;PP_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,9 +142,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;PP_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>../..;C:\boost\include\boost-1_74</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <DisableSpecificWarnings>4141;4146;4244;4267;4291;4624;4996;4251;4275</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -156,23 +156,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Evaluator.cpp" />
-    <ClCompile Include="File.cpp" />
-    <ClCompile Include="InitDone.cpp" />
-    <ClCompile Include="PP.cpp" />
-    <ClCompile Include="PPClassMap.cpp" />
-    <ClCompile Include="PPKeywords.cpp" />
-    <ClCompile Include="PPLexer.cpp" />
-    <ClCompile Include="PPParser.cpp" />
-    <ClCompile Include="PPTokens.cpp" />
-    <ClCompile Include="TextClassMap.cpp" />
-    <ClCompile Include="TextLexer.cpp" />
-    <ClCompile Include="TextTokens.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Evaluator.hpp" />
-    <ClInclude Include="File.hpp" />
     <ClInclude Include="InitDone.hpp" />
+    <ClInclude Include="Lines.hpp" />
+    <ClInclude Include="Macro.hpp" />
     <ClInclude Include="PP.hpp" />
     <ClInclude Include="PPApi.hpp" />
     <ClInclude Include="PPClassMap.hpp" />
@@ -180,15 +167,35 @@
     <ClInclude Include="PPLexer.hpp" />
     <ClInclude Include="PPParser.hpp" />
     <ClInclude Include="PPTokens.hpp" />
+    <ClInclude Include="Scan.hpp" />
+    <ClInclude Include="Strings.hpp" />
     <ClInclude Include="TextClassMap.hpp" />
     <ClInclude Include="TextLexer.hpp" />
     <ClInclude Include="TextTokens.hpp" />
+    <ClInclude Include="Util.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Evaluator.cpp" />
+    <ClCompile Include="InitDone.cpp" />
+    <ClCompile Include="Lines.cpp" />
+    <ClCompile Include="Macro.cpp" />
+    <ClCompile Include="PP.cpp" />
+    <ClCompile Include="PPClassMap.cpp" />
+    <ClCompile Include="PPKeywords.cpp" />
+    <ClCompile Include="PPLexer.cpp" />
+    <ClCompile Include="PPParser.cpp" />
+    <ClCompile Include="PPTokens.cpp" />
+    <ClCompile Include="Scan.cpp" />
+    <ClCompile Include="Strings.cpp" />
+    <ClCompile Include="TextClassMap.cpp" />
+    <ClCompile Include="TextLexer.cpp" />
+    <ClCompile Include="TextTokens.cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PPLexer.lexer" />
-    <None Include="PPParser.parser" />
-    <None Include="PPParser.spg" />
     <None Include="TextLexer.lexer" />
+    <None Include="TextTokens.tokens" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

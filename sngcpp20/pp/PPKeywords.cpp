@@ -19,6 +19,9 @@ namespace PPKeywords
         {U"ifdef", IFDEF}, 
         {U"ifndef", IFNDEF}, 
         {U"undef", UNDEF}, 
+        {U"line", LINE}, 
+        {U"error", ERROR}, 
+        {U"pragma", PRAGMA}, 
         {U"defined", DEFINED},
         {nullptr, -1}
     };

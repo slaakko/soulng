@@ -10,69 +10,76 @@ namespace TextTokens
 
     void InitTokenIdMap()
     {
-        tokenIdMap[U"ADDASSIGN"] = 15;
-        tokenIdMap[U"AMP"] = 28;
-        tokenIdMap[U"AMPAMP"] = 25;
-        tokenIdMap[U"ANDASSIGN"] = 19;
+        tokenIdMap[U"ADDASSIGN"] = 17;
+        tokenIdMap[U"AMP"] = 30;
+        tokenIdMap[U"AMPAMP"] = 27;
+        tokenIdMap[U"ANDASSIGN"] = 21;
         tokenIdMap[U"ANGLEHEADERNAME"] = 2;
-        tokenIdMap[U"ARROW"] = 56;
-        tokenIdMap[U"ARROWSTAR"] = 44;
-        tokenIdMap[U"ASSIGN"] = 11;
-        tokenIdMap[U"BLOCKCOMMENT"] = 61;
-        tokenIdMap[U"CHAR"] = 7;
+        tokenIdMap[U"ARROW"] = 58;
+        tokenIdMap[U"ARROWSTAR"] = 46;
+        tokenIdMap[U"ASSIGN"] = 13;
+        tokenIdMap[U"BEGINBLOCKCOMMENT"] = 62;
+        tokenIdMap[U"BEGINRAWSTRINGLITERAL"] = 7;
+        tokenIdMap[U"BLOCKCOMMENT"] = 63;
+        tokenIdMap[U"CHAR"] = 8;
         tokenIdMap[U"CHARLITERAL"] = 5;
-        tokenIdMap[U"COLON"] = 23;
-        tokenIdMap[U"COLONCOLON"] = 9;
-        tokenIdMap[U"COMMA"] = 10;
+        tokenIdMap[U"COLON"] = 25;
+        tokenIdMap[U"COLONCOLON"] = 11;
+        tokenIdMap[U"COMMA"] = 12;
         tokenIdMap[U"DEFINED"] = 1;
-        tokenIdMap[U"DIV"] = 41;
-        tokenIdMap[U"DIVASSIGN"] = 13;
-        tokenIdMap[U"DOT"] = 55;
-        tokenIdMap[U"DOTSTAR"] = 43;
-        tokenIdMap[U"ELLIPSES"] = 58;
-        tokenIdMap[U"EQ"] = 29;
-        tokenIdMap[U"EXCLAMATION"] = 49;
-        tokenIdMap[U"GEQ"] = 32;
-        tokenIdMap[U"ID"] = 8;
-        tokenIdMap[U"KEYWORD"] = 59;
-        tokenIdMap[U"LANGLE"] = 34;
-        tokenIdMap[U"LBRACE"] = 53;
-        tokenIdMap[U"LBRACKET"] = 51;
-        tokenIdMap[U"LEQ"] = 31;
-        tokenIdMap[U"LINECOMMENT"] = 62;
-        tokenIdMap[U"LPAREN"] = 45;
-        tokenIdMap[U"MAX"] = 63;
-        tokenIdMap[U"MINUS"] = 39;
-        tokenIdMap[U"MINUSMINUS"] = 48;
-        tokenIdMap[U"MOD"] = 42;
-        tokenIdMap[U"MULASSIGN"] = 12;
-        tokenIdMap[U"NEQ"] = 30;
-        tokenIdMap[U"OR"] = 26;
-        tokenIdMap[U"ORASSIGN"] = 21;
-        tokenIdMap[U"OROR"] = 24;
-        tokenIdMap[U"PLUS"] = 38;
-        tokenIdMap[U"PLUSPLUS"] = 47;
+        tokenIdMap[U"DIV"] = 43;
+        tokenIdMap[U"DIVASSIGN"] = 15;
+        tokenIdMap[U"DOT"] = 57;
+        tokenIdMap[U"DOTSTAR"] = 45;
+        tokenIdMap[U"ELLIPSES"] = 60;
+        tokenIdMap[U"EQ"] = 31;
+        tokenIdMap[U"EXCLAMATION"] = 51;
+        tokenIdMap[U"GEQ"] = 34;
+        tokenIdMap[U"HASH"] = 68;
+        tokenIdMap[U"HASHHASH"] = 67;
+        tokenIdMap[U"ID"] = 9;
+        tokenIdMap[U"KEYWORD"] = 10;
+        tokenIdMap[U"LANGLE"] = 36;
+        tokenIdMap[U"LBRACE"] = 55;
+        tokenIdMap[U"LBRACKET"] = 53;
+        tokenIdMap[U"LEQ"] = 33;
+        tokenIdMap[U"LINECOMMENT"] = 64;
+        tokenIdMap[U"LPAREN"] = 47;
+        tokenIdMap[U"MAX"] = 70;
+        tokenIdMap[U"MINUS"] = 41;
+        tokenIdMap[U"MINUSMINUS"] = 50;
+        tokenIdMap[U"MOD"] = 44;
+        tokenIdMap[U"MULASSIGN"] = 14;
+        tokenIdMap[U"NEQ"] = 32;
+        tokenIdMap[U"NEWLINE"] = 65;
+        tokenIdMap[U"OR"] = 28;
+        tokenIdMap[U"ORASSIGN"] = 23;
+        tokenIdMap[U"OROR"] = 26;
+        tokenIdMap[U"OTHER"] = 66;
+        tokenIdMap[U"PLACEMARKER"] = 69;
+        tokenIdMap[U"PLUS"] = 40;
+        tokenIdMap[U"PLUSPLUS"] = 49;
         tokenIdMap[U"PPNUMBER"] = 4;
-        tokenIdMap[U"QUEST"] = 22;
+        tokenIdMap[U"QUEST"] = 24;
         tokenIdMap[U"QUOTEHEADERNAME"] = 3;
-        tokenIdMap[U"RANGLE"] = 35;
-        tokenIdMap[U"RBRACE"] = 54;
-        tokenIdMap[U"RBRACKET"] = 52;
-        tokenIdMap[U"REMASSIGN"] = 14;
-        tokenIdMap[U"RPAREN"] = 46;
-        tokenIdMap[U"SEMICOLON"] = 57;
-        tokenIdMap[U"SHIFTLEFT"] = 36;
-        tokenIdMap[U"SHIFTLEFTASSIGN"] = 18;
-        tokenIdMap[U"SHIFTRIGHT"] = 37;
-        tokenIdMap[U"SHIFTRIGHTASSIGN"] = 17;
-        tokenIdMap[U"SPACESHIP"] = 33;
-        tokenIdMap[U"STAR"] = 40;
+        tokenIdMap[U"RANGLE"] = 37;
+        tokenIdMap[U"RBRACE"] = 56;
+        tokenIdMap[U"RBRACKET"] = 54;
+        tokenIdMap[U"REMASSIGN"] = 16;
+        tokenIdMap[U"RPAREN"] = 48;
+        tokenIdMap[U"SEMICOLON"] = 59;
+        tokenIdMap[U"SHIFTLEFT"] = 38;
+        tokenIdMap[U"SHIFTLEFTASSIGN"] = 20;
+        tokenIdMap[U"SHIFTRIGHT"] = 39;
+        tokenIdMap[U"SHIFTRIGHTASSIGN"] = 19;
+        tokenIdMap[U"SPACESHIP"] = 35;
+        tokenIdMap[U"STAR"] = 42;
         tokenIdMap[U"STRINGLITERAL"] = 6;
-        tokenIdMap[U"SUBASSIGN"] = 16;
-        tokenIdMap[U"TILDE"] = 50;
-        tokenIdMap[U"WS"] = 60;
-        tokenIdMap[U"XOR"] = 27;
-        tokenIdMap[U"XORASSIGN"] = 20;
+        tokenIdMap[U"SUBASSIGN"] = 18;
+        tokenIdMap[U"TILDE"] = 52;
+        tokenIdMap[U"WS"] = 61;
+        tokenIdMap[U"XOR"] = 29;
+        tokenIdMap[U"XORASSIGN"] = 22;
     }
 
     int GetTokenId(const std::u32string& tokenName)
@@ -97,8 +104,10 @@ namespace TextTokens
         "PPNUMBER",
         "CHARLITERAL",
         "STRINGLITERAL",
+        "BEGINRAWSTRINGLITERAL",
         "CHAR",
         "ID",
+        "KEYWORD",
         "COLONCOLON",
         "COMMA",
         "ASSIGN",
@@ -149,10 +158,15 @@ namespace TextTokens
         "ARROW",
         "SEMICOLON",
         "ELLIPSES",
-        "KEYWORD",
         "WS",
+        "BEGINBLOCKCOMMENT",
         "BLOCKCOMMENT",
         "LINECOMMENT",
+        "NEWLINE",
+        "OTHER",
+        "HASHHASH",
+        "HASH",
+        "PLACEMARKER",
         "MAX"
     };
 
@@ -170,8 +184,10 @@ namespace TextTokens
         "preprocessing number",
         "character literal",
         "string literal",
+        "begin raw string literal",
         "character",
         "identifier",
+        "keyword",
         "'::'",
         "','",
         "'='",
@@ -222,10 +238,15 @@ namespace TextTokens
         "'->'",
         "';'",
         "'...'",
-        "keyword",
         "white space",
+        "begin block comment",
         "block comment",
         "line comment",
+        "'newline'",
+        "'other'",
+        "'##'",
+        "'#'",
+        "place marker",
         "max"
     };
 

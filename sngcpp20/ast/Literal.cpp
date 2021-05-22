@@ -90,12 +90,12 @@ void FloatingLiteralNode::Read(Reader& reader)
     base = static_cast<Base>(reader.GetBinaryReader().ReadByte());
 }
 
-CharacterLiteralNode::CharacterLiteralNode(const SourcePos& sourcePos_) : LiteralNode(NodeKind::characterLiteralNode, sourcePos_), value(), encodingPrefix()
+CharacterLiteralNode::CharacterLiteralNode(const SourcePos& sourcePos_) : LiteralNode(NodeKind::characterLiteralNode, sourcePos_), value(), encodingPrefix(), hasMultipleCharacters(false)
 {
 }
 
-CharacterLiteralNode::CharacterLiteralNode(const SourcePos& sourcePos_, char32_t value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_) : 
-    LiteralNode(NodeKind::characterLiteralNode, sourcePos_, rep_), value(value_), encodingPrefix(encodingPrefix_)
+CharacterLiteralNode::CharacterLiteralNode(const SourcePos& sourcePos_, char32_t value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_, bool hasMultipleCharacters_) :
+    LiteralNode(NodeKind::characterLiteralNode, sourcePos_, rep_), value(value_), encodingPrefix(encodingPrefix_), hasMultipleCharacters(hasMultipleCharacters_)
 {
 }
 
@@ -109,6 +109,7 @@ void CharacterLiteralNode::Write(Writer& writer)
     LiteralNode::Write(writer);
     writer.GetBinaryWriter().Write(value);
     writer.GetBinaryWriter().Write(static_cast<uint8_t>(encodingPrefix));
+    writer.GetBinaryWriter().Write(hasMultipleCharacters);
 }
 
 void CharacterLiteralNode::Read(Reader& reader)
@@ -116,6 +117,7 @@ void CharacterLiteralNode::Read(Reader& reader)
     LiteralNode::Read(reader);
     value = reader.GetBinaryReader().ReadUChar();
     encodingPrefix = static_cast<EncodingPrefix>(reader.GetBinaryReader().ReadByte());
+    hasMultipleCharacters = reader.GetBinaryReader().ReadBool();
 }
 
 StringLiteralNode::StringLiteralNode(const SourcePos& sourcePos_) : LiteralNode(NodeKind::stringLiteralNode, sourcePos_), value(), encodingPrefix()
@@ -259,6 +261,57 @@ void LiteralOperatorIdNode::Read(Reader& reader)
 {
     UnaryNode::Read(reader);
     stringLitPos = reader.ReadSourcePos();
+}
+
+std::u32string EncodingPrefixStr(EncodingPrefix encodingPrefix)
+{
+    switch (encodingPrefix)
+    {
+        case EncodingPrefix::none: return std::u32string();
+        case EncodingPrefix::u8: return std::u32string(U"u8");
+        case EncodingPrefix::u: return std::u32string(U"u");
+        case EncodingPrefix::U: return std::u32string(U"U");
+        case EncodingPrefix::L: return std::u32string(U"L");
+    }
+    return std::u32string();
+}
+
+EncodingPrefix CommonEncodingPrefix(sngcpp::ast::EncodingPrefix leftEncodingPrefix, sngcpp::ast::EncodingPrefix rightEncodingPrefix)
+{
+    switch (leftEncodingPrefix)
+    {
+        case EncodingPrefix::none:
+        {
+            switch (rightEncodingPrefix)
+            {
+                case EncodingPrefix::none:
+                {
+                    return EncodingPrefix::none;
+                }
+                default:
+                {
+                    return rightEncodingPrefix;
+                }
+            }
+            break;
+        }
+        default:
+        {
+            switch (rightEncodingPrefix)
+            {
+                case EncodingPrefix::none:
+                {
+                    return leftEncodingPrefix;
+                }
+                default:
+                {
+                    return EncodingPrefix::u8;
+                }
+            }
+            break;
+        }
+    }
+    return EncodingPrefix::u8;
 }
 
 } // namespace sngcpp::ast

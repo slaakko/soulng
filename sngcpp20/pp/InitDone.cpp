@@ -10,12 +10,12 @@ namespace sngcpp::pp {
 
 void Init()
 {
-    //InitTextTokenCppTokenMap();
-    //InitPPTokenTextTokenMap();
+    InitPP();
 }
 
 void Done()
 {
+    DonePP();
 }
 
 } // namespace sngcpp::pp

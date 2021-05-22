@@ -6,11 +6,15 @@
 #ifndef SNGCPP_DRIVER_INTERFACE_INCLUDED
 #define SNGCPP_DRIVER_INTERFACE_INCLUDED
 #include <sngcpp20/driver/DriverApi.hpp>
+#include <sngcpp20/pp/PP.hpp>
+#include <sngcpp20/config/Config.hpp>
 #include <sngcpp20/ast/Node.hpp>
 
 namespace sngcpp::driver {
 
 using namespace sngcpp::ast;
+using namespace sngcpp::pp;
+using namespace sngcpp::config;
 
 struct DRIVER_API ParseOptions
 {
@@ -53,20 +57,20 @@ struct DRIVER_API ParseOptions
     bool throwFlag;
 };
 
-DRIVER_API std::unique_ptr<std::u32string> Preprocess(const std::string& sourceFileName);
+DRIVER_API std::unique_ptr<PPResult> Preprocess(const std::string& sourceFileName, const Configuration& configuration, bool printMacros);
 
 struct DRIVER_API ParseResult
 {
     ParseResult();
-    ParseResult(std::unique_ptr<std::u32string>&& preprocessedSourceText_, std::unique_ptr<Node>&& translationUnitNode_);
+    ParseResult(std::unique_ptr<PPResult>&& ppResult_, std::unique_ptr<Node>&& translationUnitNode_);
     ParseResult(const std::string& error_);
-    std::unique_ptr<std::u32string> preprocessedSourceText;
+    std::unique_ptr<PPResult> ppResult;
     std::unique_ptr<Node> translationUnitNode;
     std::string error;
 };
 
-DRIVER_API ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, ParseOptions& options);
-DRIVER_API ParseResult Parse(const std::string& sourceFileName, ParseOptions& options);
+DRIVER_API ParseResult Parse(std::unique_ptr<PPResult>&& ppResult, ParseOptions& options);
+DRIVER_API ParseResult Parse(const std::string& sourceFileName, ParseOptions& options, const Configuration& configuration,  bool printMacros);
 DRIVER_API void WriteSourceCode(Node* translationUnitNode, std::ostream& stream);
 DRIVER_API void WriteSourceCode(Node* translationUnitNode, const std::string& fileName);
 DRIVER_API void WriteXml(Node* translationUnitNode, std::ostream& stream);

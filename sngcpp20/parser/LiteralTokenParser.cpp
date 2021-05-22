@@ -40,12 +40,15 @@ Suffix ParseIntegerSuffix(const char32_t*& p, const char32_t* e)
     }
     if (p != e && (*p == 'z' || *p == 'Z'))
     {
-        suffix = suffix | Suffix::z;
-        ++p;
-        if (p != e && (*p == 'u' || *p == 'U'))
+        if ((suffix & (Suffix::l | Suffix::ll)) == Suffix::none)
         {
-            suffix = suffix | Suffix::u;
+            suffix = suffix | Suffix::z;
             ++p;
+            if (p != e && (*p == 'u' || *p == 'U'))
+            {
+                suffix = suffix | Suffix::u;
+                ++p;
+            }
         }
     }
     return suffix;
@@ -280,6 +283,9 @@ IntegerLiteralNode* ParseIntegerLiteral(const SourcePos& sourcePos, const std::s
     Suffix suffix = Suffix::none;
     const char32_t* p = rep.c_str();
     const char32_t* e = rep.c_str() + rep.size();
+    bool firstWasSingleQuote = false;
+    bool lastWasSingleQuote = false;
+    bool first = true;
     if (p != e && *p == '0')
     {
         ++p;
@@ -289,10 +295,23 @@ IntegerLiteralNode* ParseIntegerLiteral(const SourcePos& sourcePos, const std::s
             ++p;
             while (p != e && (*p == '0' || *p == '1' || *p == '\''))
             {
+                if (first)
+                {
+                    first = false;
+                    if (*p == '\'')
+                    {
+                        firstWasSingleQuote = true;
+                    }
+                }
                 if (*p == '0' || *p == '1')
                 {
                     uint64_t bit = (*p - '0');
                     value = 2 * value + bit;
+                    lastWasSingleQuote = false;
+                }
+                else if (*p == '\'')
+                {
+                    lastWasSingleQuote = true;
                 }
                 ++p;
             }
@@ -304,9 +323,22 @@ IntegerLiteralNode* ParseIntegerLiteral(const SourcePos& sourcePos, const std::s
             ++p;
             while (p != e && (IsHexChar(*p) || *p == '\''))
             {
+                if (first)
+                {
+                    first = false;
+                    if (*p == '\'')
+                    {
+                        firstWasSingleQuote = true;
+                    }
+                }
                 if (*p != '\'')
                 {
                     value = 16 * value + ParseHexChar(*p);
+                    lastWasSingleQuote = false;
+                }
+                else
+                {
+                    lastWasSingleQuote = true;
                 }
                 ++p;
             }
@@ -314,12 +346,25 @@ IntegerLiteralNode* ParseIntegerLiteral(const SourcePos& sourcePos, const std::s
         }
         else
         {
+            if (first)
+            {
+                first = false;
+                if (*p == '\'')
+                {
+                    firstWasSingleQuote = true;
+                }
+            }
             base = Base::octal;
             while (p != e && ((*p >= '0' && *p <= '7') || *p == '\''))
             {
                 if (*p != '\'')
                 {
                     value = 8 * value + *p - '0';
+                    lastWasSingleQuote = false;
+                }
+                else
+                {
+                    lastWasSingleQuote = true;
                 }
                 ++p;
             }
@@ -328,6 +373,14 @@ IntegerLiteralNode* ParseIntegerLiteral(const SourcePos& sourcePos, const std::s
     }
     else if (p != e && (*p >= '1' && *p <= '9'))
     {
+        if (first)
+        {
+            first = false;
+            if (*p == '\'')
+            {
+                firstWasSingleQuote = true;
+            }
+        }
         value = *p - '0';
         ++p;
         while (p != e && ((*p >= '0' && *p <= '9') || *p == '\''))
@@ -335,12 +388,25 @@ IntegerLiteralNode* ParseIntegerLiteral(const SourcePos& sourcePos, const std::s
             if (*p != '\'')
             {
                 value = 10 * value + *p - '0';
+                lastWasSingleQuote = false;
+            }
+            else
+            {
+                lastWasSingleQuote = true;
             }
             ++p;
         }
         suffix = ParseIntegerSuffix(p, e);
     }
-    if (p != e)
+    if (firstWasSingleQuote)
+    {
+        throw std::runtime_error("invalid integer literal in '" + fileName + "' at line " + std::to_string(sourcePos.line) + ", literal begins with single quote: " + ToUtf8(rep));
+    }
+    else if (lastWasSingleQuote)
+    {
+        throw std::runtime_error("invalid integer literal in '" + fileName + "' at line " + std::to_string(sourcePos.line) + ", literal ends with single quote: " + ToUtf8(rep));
+    }
+    else if (p != e)
     {
         throw std::runtime_error("invalid integer literal in '" + fileName + "' at line " + std::to_string(sourcePos.line) + ": " + ToUtf8(rep));
     }
@@ -386,6 +452,11 @@ FloatingLiteralNode* ParseFloatingLiteral(const SourcePos& sourcePos, const std:
                 ++p;
             }
             if (p != e && (*p == 'p' || *p == 'P'))
+            {
+                s.append(1, *p);
+                ++p;
+            }
+            if (p != e && (*p == '-' || *p == '+'))
             {
                 s.append(1, *p);
                 ++p;
@@ -454,6 +525,7 @@ FloatingLiteralNode* ParseFloatingLiteral(const SourcePos& sourcePos, const std:
 CharacterLiteralNode* ParseCharacterLiteral(const SourcePos& sourcePos, const std::string& fileName, const std::u32string& rep)
 {
     bool valid = false;
+    bool hasMultipleCharacters = false;
     char32_t value = '\0';
     const char32_t* p = rep.c_str();
     const char32_t* e = rep.c_str() + rep.size();
@@ -462,21 +534,31 @@ CharacterLiteralNode* ParseCharacterLiteral(const SourcePos& sourcePos, const st
     if (p != e && '\'')
     {
         ++p;
-        if (p != e && *p == '\\')
+        while (p != e && *p != '\'')
         {
-            ++p;
-            bool escapeValid = false;
-            value = ParseEscape(p, e, escapeValid);
-            if (escapeValid)
+            if (p != e && *p == '\\')
             {
-                valueParsed = true;
+                ++p;
+                bool escapeValid = false;
+                value = ParseEscape(p, e, escapeValid);
+                if (escapeValid)
+                {
+                    valueParsed = true;
+                }
             }
-        }
-        else if (p != e && *p != '\'' && *p != '\\' && *p != '\n')
-        {
-            value = *p;
-            valueParsed = true;
-            ++p;
+            else if (p != e && *p != '\'' && *p != '\\' && *p != '\n')
+            {
+                if (value == '\0')
+                {
+                    value = *p;
+                    valueParsed = true;
+                }
+                else
+                {
+                    hasMultipleCharacters = true;
+                }
+                ++p;
+            }
         }
         if (p != e && valueParsed && *p == '\'')
         {
@@ -488,12 +570,13 @@ CharacterLiteralNode* ParseCharacterLiteral(const SourcePos& sourcePos, const st
     {
         throw std::runtime_error("invalid character literal in '" + fileName + "' at line " + std::to_string(sourcePos.line) + ": " + ToUtf8(rep));
     }
-    return new CharacterLiteralNode(sourcePos, value, encodingPrefix, rep);
+    return new CharacterLiteralNode(sourcePos, value, encodingPrefix, rep, hasMultipleCharacters);
 }
 
 RawStringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::lexer::Lexer& lexer)
 {
-    const char32_t* start = lexer.Pos();
+    soulng::lexer::Token token = lexer.GetToken(lexer.GetPos());
+    const char32_t* start = token.match.begin;
     const char32_t* p = start;
     const char32_t* e = lexer.End();
     bool valid = false;
@@ -622,6 +705,12 @@ RawStringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::
     if (valid)
     {
         lexer.token.match.end = p;
+        lexer.lexeme.end = p;
+        std::vector<soulng::lexer::Token>::iterator current = lexer.Current();
+        current->match.end = p;
+        lexer.Tokens().erase(current + 1, lexer.Tokens().end());
+        lexer.SetPos(p);
+        ++lexer;
     }
     else
     {
@@ -659,6 +748,7 @@ StringLiteralNode* ParseStringLiteral(const SourcePos& sourcePos, const std::str
             else if (*p != '"' && *p != '\\' && *p != '\n')
             {
                 value.append(1, *p);
+                ++p;
             }
             else
             {

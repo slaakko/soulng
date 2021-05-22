@@ -548,6 +548,8 @@ soulng::parser::Match TypeParser::TypeSpecifier(CppLexer& lexer, sngcpp::symbols
     soulng::lexer::RuleGuard ruleGuard(lexer, 303);
     std::unique_ptr<Node> elaboratedTypeSpecifier;
     std::unique_ptr<Node> simpleTypeSpecifier;
+    std::unique_ptr<Node> typenameSpecifier;
+    std::unique_ptr<Node> cvQualifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -555,45 +557,111 @@ soulng::parser::Match TypeParser::TypeSpecifier(CppLexer& lexer, sngcpp::symbols
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int64_t pos = lexer.GetPos();
-            soulng::parser::Match match = TypeParser::ElaboratedTypeSpecifier(lexer, ctx);
-            elaboratedTypeSpecifier.reset(static_cast<Node*>(match.value));
-            if (match.hit)
-            {
-                {
-                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
-                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                    return soulng::parser::Match(true, elaboratedTypeSpecifier.release());
-                }
-            }
-            *parentMatch1 = match;
-        }
-        *parentMatch0 = match;
-        if (!match.hit)
-        {
+            int64_t save = lexer.GetPos();
             soulng::parser::Match match(false);
             soulng::parser::Match* parentMatch2 = &match;
-            lexer.SetPos(save);
             {
+                int64_t save = lexer.GetPos();
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = TypeParser::SimpleTypeSpecifier(lexer, ctx);
-                    simpleTypeSpecifier.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = TypeParser::ElaboratedTypeSpecifier(lexer, ctx);
+                    elaboratedTypeSpecifier.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
                         {
                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                            return soulng::parser::Match(true, simpleTypeSpecifier.release());
+                            return soulng::parser::Match(true, elaboratedTypeSpecifier.release());
                         }
                     }
                     *parentMatch3 = match;
                 }
                 *parentMatch2 = match;
+                if (!match.hit)
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch4 = &match;
+                    lexer.SetPos(save);
+                    {
+                        soulng::parser::Match match(false);
+                        soulng::parser::Match* parentMatch5 = &match;
+                        {
+                            int64_t pos = lexer.GetPos();
+                            soulng::parser::Match match = TypeParser::SimpleTypeSpecifier(lexer, ctx);
+                            simpleTypeSpecifier.reset(static_cast<Node*>(match.value));
+                            if (match.hit)
+                            {
+                                {
+                                    #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                    if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
+                                    #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                    return soulng::parser::Match(true, simpleTypeSpecifier.release());
+                                }
+                            }
+                            *parentMatch5 = match;
+                        }
+                        *parentMatch4 = match;
+                    }
+                    *parentMatch2 = match;
+                }
+            }
+            *parentMatch1 = match;
+            if (!match.hit)
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch6 = &match;
+                lexer.SetPos(save);
+                {
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch7 = &match;
+                    {
+                        int64_t pos = lexer.GetPos();
+                        soulng::parser::Match match = TypeParser::TypenameSpecifier(lexer, ctx);
+                        typenameSpecifier.reset(static_cast<Node*>(match.value));
+                        if (match.hit)
+                        {
+                            {
+                                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
+                                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                                return soulng::parser::Match(true, typenameSpecifier.release());
+                            }
+                        }
+                        *parentMatch7 = match;
+                    }
+                    *parentMatch6 = match;
+                }
+                *parentMatch1 = match;
+            }
+        }
+        *parentMatch0 = match;
+        if (!match.hit)
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch8 = &match;
+            lexer.SetPos(save);
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch9 = &match;
+                {
+                    int64_t pos = lexer.GetPos();
+                    soulng::parser::Match match = DeclarationParser::CVQualifier(lexer);
+                    cvQualifier.reset(static_cast<Node*>(match.value));
+                    if (match.hit)
+                    {
+                        {
+                            #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                            if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeSpecifier"));
+                            #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                            return soulng::parser::Match(true, cvQualifier.release());
+                        }
+                    }
+                    *parentMatch9 = match;
+                }
+                *parentMatch8 = match;
             }
             *parentMatch0 = match;
         }

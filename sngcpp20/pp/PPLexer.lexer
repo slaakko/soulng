@@ -6,31 +6,33 @@ prefix "sngcpp20/pp";
 
 tokens PPTokens
 {
-    (DEFINE, "'define'"), (INCLUDE, "'include'"), (IF, "'if'"), (ELIF, "'elif'"), (ELSE, "'else'"), (ENDIF, "'endif'"), (IFDEF, "'ifdef"), (IFNDEF, "'ifndef'"), (UNDEF, "'undef'"),
-    (DEFINED, "'defined'"), (ANGLEHEADERNAME, "angleheadername"), (QUOTEHEADERNAME, "quoteheadername"), (PPNUMBER, "preprocessing number"), (CHARLITERAL, "character literal"),
-    (STRINGLITERAL, "string literal"),
-    (HASH, "'#'"), (CHAR, "character"),
+    (DEFINE, "'define'"), (INCLUDE, "'include'"), (IF, "'if'"), (ELIF, "'elif'"), (ELSE, "'else'"), (ENDIF, "'endif'"), (IFDEF, "'ifdef"), (IFNDEF, "'ifndef'"), (UNDEF, "'undef'"), 
+    (LINE, "'line'"), (ERROR, "'error'"), (PRAGMA, "'pragma'"), (DEFINED, "'defined'"), 
+    (ANGLEHEADERNAME, "angleheadername"), (QUOTEHEADERNAME, "quoteheadername"), (PPNUMBER, "preprocessing number"), (CHARLITERAL, "character literal"),
+    (STRINGLITERAL, "string literal"), (BEGINRAWSTRINGLITERAL, "begin raw string literal"), (BEGINBLOCKCOMMENT, "begin block comment"), 
+    (BLOCKCOMMENT, "'block comment'"), (LINECOMMENT, "'line comment'"), (WS, "'ws'"), (NEWLINE, "'newline'"),
+    (HASHHASH, "'##'"), (HASH, "'#'"), (CHAR, "character"),
     (ID, "identifier"), (COLONCOLON, "'::'"), (COMMA, "','"), (ASSIGN, "'='"), (MULASSIGN, "'*='"), (DIVASSIGN, "'/='"), (REMASSIGN, "'%='"), (ADDASSIGN, "'+='"), (SUBASSIGN, "'-='"),
     (SHIFTRIGHTASSIGN, "'>>='"), (SHIFTLEFTASSIGN, "'<<='"), (ANDASSIGN, "'&='"), (XORASSIGN, "'^='"), (ORASSIGN, "'|='"), (QUEST, "'?'"), (COLON, "':'"),
     (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
-    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"), (OTHER, "'other'"),
     (MAX, "max")
 }
 
 keywords PPKeywords
 {
-    ("define", DEFINE), ("include", INCLUDE), ("if", IF), ("elif", ELIF), ("else", ELSE), ("endif", ENDIF), ("ifdef", IFDEF), ("ifndef", IFNDEF), ("undef", UNDEF), ("defined", DEFINED)
+    ("define", DEFINE), ("include", INCLUDE), ("if", IF), ("elif", ELIF), ("else", ELSE), ("endif", ENDIF), ("ifdef", IFDEF), ("ifndef", IFNDEF), ("undef", UNDEF), 
+    ("line", LINE), ("error", ERROR), ("pragma", PRAGMA), ("defined", DEFINED)
 }
 
 expressions
 {
     ws = "[\t ]+";
     newline = "\r\n|\n|\r";
-    linecontinuation = "\\{newline}";
     linecomment = "//[^\n\r]*{newline}";
-    blockcomment = "/\*([^*]|\*[^/])*\*/";
+    beginblockcomment = "/\*";
     hexdigit = "[0-9a-fA-F]";
     hex4 = "{hexdigit}{hexdigit}{hexdigit}{hexdigit}";
     hex8 = "{hex4}{hex4}";
@@ -52,22 +54,25 @@ expressions
     characterliteral = "[uUL]?'{cchar}+'";
     encodingprefix = "u8|u|U|L";
     schar = "[^\r\n\\\"]|{escape}|{univcn}";
-    stringliteral = "{encodingprefix}?\"{schar}*\"|{encodingprefix}?R\"[^\n\r\"]*\"";
+    beginrawstringliteral = "{encodingprefix}?R\"";
+    stringliteral = "{encodingprefix}?\"{schar}*\"";
 }
 
 lexer api(PP_API) PPLexer
 {
-    "{ws}" { pp->Emit(token.match); }
-    "{linecontinuation}" {}
-    "{blockcomment}" { pp->Emit(U" "); }
-    "{linecomment}" { pp->Emit(U" "); }
-    "{newline}" {}
+    "{ws}" { return WS; }
+    //"{blockcomment}" { return BLOCKCOMMENT; }
+    "{beginblockcomment}" { return BEGINBLOCKCOMMENT; }
+    "{linecomment}" { return LINECOMMENT; }
+    "{newline}" { return NEWLINE; }
     "{id}" { int kw = GetKeywordToken(token.match); if (kw == INVALID_TOKEN) return ID; else return kw; }
     "{angleheadername}" { return ANGLEHEADERNAME; }
     "{quoteheadername}" { return QUOTEHEADERNAME; }
     "{ppnumber}" { return PPNUMBER; }
     "{characterliteral}" { return CHARLITERAL; }
+    "{beginrawstringliteral}" { return BEGINRAWSTRINGLITERAL; }
     "{stringliteral}" { return STRINGLITERAL; }
+    "##" { return HASHHASH; }
     "#" { return HASH; }
     "::" { return COLONCOLON; }
     "," { return COMMA; }

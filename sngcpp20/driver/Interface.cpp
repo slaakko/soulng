@@ -17,6 +17,7 @@
 #include <soulng/lexer/XmlParsingLog.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <soulng/util/Util.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -32,8 +33,8 @@ ParseResult::ParseResult()
 {
 }
 
-ParseResult::ParseResult(std::unique_ptr<std::u32string>&& preprocessedSourceText_, std::unique_ptr<Node>&& translationUnitNode_) : 
-    preprocessedSourceText(std::move(preprocessedSourceText_)), translationUnitNode(std::move(translationUnitNode_))
+ParseResult::ParseResult(std::unique_ptr<PPResult>&& ppResult_, std::unique_ptr<Node>&& translationUnitNode_) :
+    ppResult(std::move(ppResult_)), translationUnitNode(std::move(translationUnitNode_))
 {
 }
 
@@ -41,17 +42,38 @@ ParseResult::ParseResult(const std::string& error_) : error(error_)
 {
 }
 
-std::unique_ptr<std::u32string> Preprocess(const std::string& sourceFileName)
+std::unique_ptr<PPResult> Preprocess(const std::string& sourceFileName, const Configuration& configuration, bool printMacros)
 {
     EvaluationContext evaluationContext;
     PP pp(evaluationContext);
-    Preprocess(GetFullPath(sourceFileName), &pp);
-    return std::unique_ptr<std::u32string>(new std::u32string(std::move(pp.text)));
+    for (const auto& definePair : configuration.Defines())
+    {
+        const std::u32string& name = definePair.first;
+        const std::u32string& value = definePair.second;
+        pp.DefineObjectMacro(name, value);
+    }
+    for (const auto& includePath : configuration.Includes())
+    {
+        pp.AddIncludePath(includePath);
+    }
+    std::unique_ptr<PPResult> result = Preprocess(GetFullPath(sourceFileName), &pp);
+    if (pp.IsMacroDefined(pp.SNGCPPMSVCModeMacroName()))
+    {
+        result->SetMSVCMode();
+    }
+    if (printMacros)
+    {
+        pp.PrintMacros();
+    }
+    return result;
 }
 
-ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, ParseOptions& options)
+ParseResult Parse(std::unique_ptr<PPResult>&& ppResult, ParseOptions& options)
 {
-    CppLexer lexer(preprocessedSourceText->c_str(), preprocessedSourceText->c_str() + preprocessedSourceText->length(), options.fileName, options.fileIndex);
+    if (!ppResult) return ParseResult();
+    Lexeme resultText = ppResult->ResultText();
+    CppLexer lexer(resultText.begin, resultText.end, options.fileName, options.fileIndex);
+    lexer.SetLineMapper(ppResult->GetLineMapper());
     lexer.SetFlag(LexerFlags::farthestError);
     std::ostream* stream = &std::cout;
     std::ofstream fstream;
@@ -67,17 +89,21 @@ ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, Pars
     }
     SymbolTable symbolTable;
     Context ctx;
+    if (ppResult->MSVCMode())
+    {
+        ctx.SetFlag(ContextFlags::msvcMode);
+    }
     ctx.SetSymbolTable(&symbolTable);
     ctx.SetLexer(&lexer);
     if (options.throwFlag)
     {
-        return ParseResult(std::move(preprocessedSourceText), TranslationUnitParser::Parse(lexer, &ctx));
+        return ParseResult(std::move(ppResult), TranslationUnitParser::Parse(lexer, &ctx));
     }
     else
     {
         try
         {
-            return ParseResult(std::move(preprocessedSourceText), TranslationUnitParser::Parse(lexer, &ctx));
+            return ParseResult(std::move(ppResult), TranslationUnitParser::Parse(lexer, &ctx));
         }
         catch (const std::exception& ex)
         {
@@ -86,10 +112,10 @@ ParseResult Parse(std::unique_ptr<std::u32string>&& preprocessedSourceText, Pars
     }
 }
 
-ParseResult Parse(const std::string& sourceFileName, ParseOptions& options)
+ParseResult Parse(const std::string& sourceFileName, ParseOptions& options, const Configuration& configuration, bool printMacros)
 {
     options.fileName = GetFullPath(sourceFileName);
-    return Parse(Preprocess(options.fileName), options);
+    return Parse(Preprocess(options.fileName, configuration, printMacros), options);
 }
 
 void WriteSourceCode(Node* translationUnitNode, std::ostream& stream)

@@ -151,12 +151,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    LogicalAndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    LogicalAndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
-            InclusiveOrExpression(ctx):left{ node.reset(left); } 
+            InclusiveOrExpression(ctx):left{ node.reset(left); s = sourcePos; } 
             (
-                AMPAMP{ opPos = sourcePos; } InclusiveOrExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new ConjunctionNode(opPos), node.release(), right)); }
+                AMPAMP{ opPos = sourcePos; } InclusiveOrExpression(ctx):right{ node.reset(new BinaryExprNode(s, new ConjunctionNode(opPos), node.release(), right)); }
             )*
         )
         {
@@ -164,12 +164,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    InclusiveOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    InclusiveOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
-            ExclusiveOrExpression(ctx):left{ node.reset(left); } 
+            ExclusiveOrExpression(ctx):left{ node.reset(left); s = sourcePos; } 
             (
-                OR{ opPos = sourcePos; } ExclusiveOrExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new InclusiveOrNode(opPos), node.release(), right)); }
+                OR{ opPos = sourcePos; } ExclusiveOrExpression(ctx):right{ node.reset(new BinaryExprNode(s, new InclusiveOrNode(opPos), node.release(), right)); }
             )*
         )
         {
@@ -177,12 +177,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    ExclusiveOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    ExclusiveOrExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
-            AndExpression(ctx):left{ node.reset(left); } 
+            AndExpression(ctx):left{ node.reset(left); s = sourcePos; } 
             (
-                XOR{ opPos = sourcePos; } AndExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new ExclusiveOrNode(opPos), node.release(), right)); }
+                XOR{ opPos = sourcePos; } AndExpression(ctx):right{ node.reset(new BinaryExprNode(s, new ExclusiveOrNode(opPos), node.release(), right)); }
             )*
         )
         {
@@ -190,12 +190,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    AndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    AndExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::= 
         (
-            EqualityExpression(ctx):left{ node.reset(left); } 
+            EqualityExpression(ctx):left{ node.reset(left); s = sourcePos; } 
             (
-                AMP{ opPos = sourcePos; } EqualityExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new AndNode(opPos), node.release(), right)); }
+                AMP{ opPos = sourcePos; } EqualityExpression(ctx):right{ node.reset(new BinaryExprNode(s, new AndNode(opPos), node.release(), right)); }
             )*
         )
         {
@@ -203,12 +203,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    EqualityExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    EqualityExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            RelationalExpression(ctx):left{ node.reset(left); }
+            RelationalExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                EqualityOp:op RelationalExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+                EqualityOp:op RelationalExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -221,12 +221,12 @@ parser api(PARSER_API) ExpressionParser
         |   NEQ{ return new NotEqualNode(sourcePos); }
         ;
 
-    RelationalExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    RelationalExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            CompareExpression(ctx):left{ node.reset(left); }
+            CompareExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                RelationalOp:op CompareExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+                RelationalOp:op CompareExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -241,12 +241,12 @@ parser api(PARSER_API) ExpressionParser
         |   GEQ{ return new GreaterOrEqualNode(sourcePos); }
         ;
 
-    CompareExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos opPos) : Node*
+    CompareExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos opPos) : Node*
         ::=
         (
-            ShiftExpression(ctx):left{ node.reset(left); }
+            ShiftExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                SPACESHIP{ opPos = sourcePos; } ShiftExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, new CompareNode(opPos), node.release(), right)); }
+                SPACESHIP{ opPos = sourcePos; } ShiftExpression(ctx):right{ node.reset(new BinaryExprNode(s, new CompareNode(opPos), node.release(), right)); }
             )*
         )
         {
@@ -254,12 +254,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    ShiftExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    ShiftExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            AdditiveExpression(ctx):left{ node.reset(left); }
+            AdditiveExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                ShiftOp:op AdditiveExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+                ShiftOp:op AdditiveExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -272,12 +272,12 @@ parser api(PARSER_API) ExpressionParser
         |   SHIFTRIGHT{ return new ShiftRightNode(sourcePos); }
         ;
 
-    AdditiveExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    AdditiveExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            MultiplicativeExpression(ctx):left{ node.reset(left); }
+            MultiplicativeExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                AdditiveOp:op MultiplicativeExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+                AdditiveOp:op MultiplicativeExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -290,12 +290,12 @@ parser api(PARSER_API) ExpressionParser
         |   MINUS{ return new MinusNode(sourcePos); }
         ;
 
-    MultiplicativeExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    MultiplicativeExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            PmExpression(ctx):left{ node.reset(left); }
+            PmExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                MultiplicativeOp:op PmExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+                MultiplicativeOp:op PmExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -309,12 +309,12 @@ parser api(PARSER_API) ExpressionParser
         |   MOD{ return new ModNode(sourcePos); }
         ;
 
-    PmExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    PmExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            CastExpression(ctx):left{ node.reset(left); }
+            CastExpression(ctx):left{ node.reset(left); s = sourcePos; }
             (
-                PmOp:op CastExpression(ctx):right{ node.reset(new BinaryExprNode(sourcePos, op, node.release(), right)); }
+                PmOp:op CastExpression(ctx):right{ node.reset(new BinaryExprNode(s, op, node.release(), right)); }
             )*
         )
         {
@@ -327,13 +327,13 @@ parser api(PARSER_API) ExpressionParser
         |   ARROWSTAR{ return new ArrowStarNode(sourcePos); }
         ;
 
-    CastExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    CastExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::=  
         (
             (   
-                (LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; } CastExpression(ctx):child)
+                (LPAREN{ lpPos = sourcePos; s = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; } CastExpression(ctx):child)
                 {
-                    node.reset(new CastExprNode(sourcePos, typeId, child, lpPos, rpPos));
+                    node.reset(new CastExprNode(s, typeId, child, lpPos, rpPos));
                 }
             )
             |   UnaryExpression(ctx):ue{ node.reset(ue); }
@@ -343,9 +343,9 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    UnaryExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
+    UnaryExpression(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
-        (   UnaryOp:op CastExpression(ctx):child{ node.reset(new UnaryExprNode(sourcePos, op, child)); }
+        (   UnaryOp:op{ s = sourcePos; } CastExpression(ctx):child{ node.reset(new UnaryExprNode(s, op, child)); }
         |   AwaitExpression(ctx):awaitExpr{ node.reset(awaitExpr); }
         |   SizeOfExpression(ctx):sizeOfExpr{ node.reset(sizeOfExpr); }
         |   AlignOfExpression(ctx):alignOfExpr{ node.reset(alignOfExpr); }
@@ -370,8 +370,8 @@ parser api(PARSER_API) ExpressionParser
         |   MINUSMINUS{ return new PrefixDecNode(sourcePos); }
         ;
 
-    AwaitExpression(sngcpp::symbols::Context* ctx) : Node*
-        ::= CO_AWAIT CastExpression(ctx):child{ return new AwaitExprNode(sourcePos, child); }
+    AwaitExpression(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
+        ::= CO_AWAIT{ s = sourcePos; } CastExpression(ctx):child{ return new AwaitExprNode(s, child); }
         ;
 
     SizeOfExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos ellipsesPos, var std::unique_ptr<Node> childNode) : Node*
@@ -431,12 +431,12 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    NewTypeId(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    NewTypeId(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
-            (LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }){ return new ParenNewTypeIdNode(sourcePos, typeId, lpPos, rpPos); }
-        |   TypeSpecifierSeq(ctx):typeSpecifierSeq 
-                (   NewDeclarator(ctx):newDeclarator{ return new NewTypeIdNode(sourcePos, typeSpecifierSeq, newDeclarator); }
-                |   empty{ return new NewTypeIdNode(sourcePos, typeSpecifierSeq, nullptr); }
+            (LPAREN{ lpPos = sourcePos; s = sourcePos; } TypeId(ctx):typeId RPAREN{ rpPos = sourcePos; }){ return new ParenNewTypeIdNode(s, typeId, lpPos, rpPos); }
+        |   TypeSpecifierSeq(ctx):typeSpecifierSeq{ s = sourcePos; } 
+                (   NewDeclarator(ctx):newDeclarator{ return new NewTypeIdNode(s, typeSpecifierSeq, newDeclarator); }
+                |   empty{ return new NewTypeIdNode(s, typeSpecifierSeq, nullptr); }
                 )
         ;
 
@@ -533,13 +533,13 @@ parser api(PARSER_API) ExpressionParser
         |   RequiresExpression(ctx):requiresExpr{ return requiresExpr; }
         ;
 
-    ParenthesizedExpression(sngcpp::symbols::Context* ctx, var SourcePos lpPos, var SourcePos rpPos) : Node*
+    ParenthesizedExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
         ::= 
         (
-            LPAREN{ lpPos = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
+            LPAREN{ lpPos = sourcePos; s = sourcePos; } Expression(ctx):expr RPAREN{ rpPos = sourcePos; }
         )
         {
-            return new ParenthesizedExprNode(sourcePos, expr, lpPos, rpPos);
+            return new ParenthesizedExprNode(s, expr, lpPos, rpPos);
         }
         ;
 

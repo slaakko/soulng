@@ -19,12 +19,12 @@ public:
     ContainerSymbol(const ContainerSymbol&) = delete;
     ContainerSymbol& operator=(const ContainerSymbol&) = delete;
     bool IsContainerSymbol() const override { return true; }
-    void AddSymbol(Symbol* symbol);
-    const Scope& GetScope() const { return scope; }
-    Scope& GetScope() { return scope; }
+    virtual void AddSymbol(Symbol* symbol);
+    const ContainerScope& GetScope() const { return scope; }
+    ContainerScope& GetScope() { return scope; }
 private:
     std::vector<std::unique_ptr<Symbol>> symbols;
-    Scope scope;
+    ContainerScope scope;
 };
 
 } // sngcpp::symbols

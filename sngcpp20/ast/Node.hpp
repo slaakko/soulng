@@ -167,7 +167,7 @@ public:
     void AddNode(Node* node) override;
     void Clear() override;
     NodeList<Node>& Nodes() { return nodes; }
-    const std::vector<Node*> Items() const { return items; }
+    const std::vector<Node*>& Items() const { return items; }
 private:
     NodeList<Node> nodes;
     std::vector<Node*> items;

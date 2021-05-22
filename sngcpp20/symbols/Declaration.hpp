@@ -25,26 +25,34 @@ enum class DeclarationFlags : int
     constrExprFlag = 1 << 9,
     constEvalFlag = 1 << 10,
     constInitFlag = 1 << 11,
+    constFlag = 1 << 12,
+    volatileFlag = 1 << 13,
+    lvalueRefFlag = 1 << 14,
+    rvalueRefFlag = 1 << 15,
 
-    charFlag = 1 << 12,
-    char8Flag = 1 << 13,
-    char16Flag = 1 << 14,
-    char32Flag = 1 << 15,
-    wcharFlag = 1 << 16,
-    boolFlag = 1 << 17,
-    shortFlag = 1 << 18,
-    intFlag = 1 << 19,
-    longFlag = 1 << 20,
-    longLongFlag = 1 << 21,
-    signedFlag = 1 << 22,
-    unsignedFlag = 1 << 23,
-    floatFlag = 1 << 24,
-    doubleFlag = 1 << 25,
-    longDoubleFlag = 1 << 26,
-    voidFlag = 1 << 27,
+    charFlag = 1 << 16,
+    char8Flag = 1 << 17,
+    char16Flag = 1 << 18,
+    char32Flag = 1 << 19,
+    wcharFlag = 1 << 20,
+    boolFlag = 1 << 21,
+    shortFlag = 1 << 22,
+    intFlag = 1 << 23,
+    longFlag = 1 << 24,
+    longLongFlag = 1 << 25,
+    signedFlag = 1 << 26,
+    unsignedFlag = 1 << 27,
+    floatFlag = 1 << 28,
+    doubleFlag = 1 << 29,
+    voidFlag = 1 << 30,
 
     fundamentalTypeFlags = 
-        charFlag | char8Flag | char16Flag | char32Flag | wcharFlag | boolFlag | shortFlag | intFlag | longFlag | longLongFlag | signedFlag | unsignedFlag | floatFlag | doubleFlag | voidFlag
+        charFlag | char8Flag | char16Flag | char32Flag | wcharFlag | boolFlag | shortFlag | intFlag | longFlag | longLongFlag | signedFlag | unsignedFlag | floatFlag | doubleFlag | 
+        voidFlag,
+
+    typedefFlagMask = staticFlag | threadLocalFlag | externFlag | mutableFlag | virtualFlag | explicitFlag | inlineFlag | friendFlag | constrExprFlag | constEvalFlag | constInitFlag,
+
+    cvQualifierFlagMask = constFlag | volatileFlag
 };
 
 inline DeclarationFlags operator|(DeclarationFlags left, DeclarationFlags right)

@@ -95,15 +95,17 @@ class AST_API CharacterLiteralNode : public LiteralNode
 {
 public:
     CharacterLiteralNode(const SourcePos& sourcePos_);
-    CharacterLiteralNode(const SourcePos& sourcePos_, char32_t value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_);
+    CharacterLiteralNode(const SourcePos& sourcePos_, char32_t value_, EncodingPrefix encodingPrefix_, const std::u32string& rep_, bool hasMultipleCharacters_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     char32_t Value() const { return value; }
     EncodingPrefix GetEncodingPrefix() const { return encodingPrefix; }
+    bool HasMultipleCharacters() const { return hasMultipleCharacters; }
 private:
     char32_t value;
     EncodingPrefix encodingPrefix;
+    bool hasMultipleCharacters;
 };
 
 class AST_API StringLiteralNode : public LiteralNode
@@ -177,6 +179,10 @@ public:
 private:
     SourcePos stringLitPos;
 };
+
+AST_API std::u32string EncodingPrefixStr(EncodingPrefix encodingPrefix);
+AST_API EncodingPrefix CommonEncodingPrefix(sngcpp::ast::EncodingPrefix leftEncodingPrefix, sngcpp::ast::EncodingPrefix rightEncodingPrefix);
+
 
 } // namespace sngcpp::ast
 

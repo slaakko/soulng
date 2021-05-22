@@ -12,6 +12,8 @@ namespace sngcpp::symbols {
 
 class ContainerSymbol;
 
+enum class ScopeKind : int;
+
 class SYMBOLS_API Symbol
 {
 public:
@@ -19,7 +21,11 @@ public:
     virtual ~Symbol();
     virtual bool IsTypeSymbol() const { return false; }
     virtual bool IsContainerSymbol() const { return false; }
+    virtual bool IsFunctionSymbol() const { return false; }
+    virtual bool IsParameterSymbol() const { return false; }
     virtual std::u32string FullName() const;
+    virtual std::string SymbolKindStr() const = 0;
+    virtual bool IsValidDeclarationScope(ScopeKind scopeKind) const { return true; }
     const std::u32string& Name() const { return name; }
     ContainerSymbol* Parent() const { return parent; }
     void SetParent(ContainerSymbol* parent_) { parent = parent_; }

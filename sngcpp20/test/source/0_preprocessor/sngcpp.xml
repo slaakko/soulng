@@ -1,0 +1,17 @@
+<sngcpp>
+    <project name="0_preprocessor">
+        <files>
+            <file name="catenate.cpp"/>
+            <file name="empty.cpp"/>
+            <file name="empty_define.cpp"/>
+            <file name="empty_line_comment.cpp"/>
+            <file name="if.cpp"/>
+            <file name="include.cpp"/>
+            <file name="line_comments.cpp"/>
+            <file name="max.cpp"/>
+            <file name="raw_string_lit.cpp"/>
+            <file name="stringize.cpp"/>
+            <file name="two_level_macro.cpp"/>
+        </files>
+    </project>
+</sngcpp>
