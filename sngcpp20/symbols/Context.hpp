@@ -74,8 +74,10 @@ private:
     soulng::lexer::Lexer* lexer;
 };
 
-SYMBOLS_API std::string GetFileName(Context* context);
-SYMBOLS_API std::string ErrorLines(Context* context, const soulng::lexer::SourcePos& sourcePos);
+SYMBOLS_API std::string MappedFileName(Context* context, const soulng::lexer::SourcePos& sourcePos);
+SYMBOLS_API std::string MappedFileLine(Context* context, const soulng::lexer::SourcePos& sourcePos);
+SYMBOLS_API std::string MappedErrorLines(Context* context, const soulng::lexer::SourcePos& sourcePos);
+SYMBOLS_API int MappedLineNumber(Context* context, const soulng::lexer::SourcePos& sourcePos);
 
 } // namespace sngcpp::symbols
 

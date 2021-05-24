@@ -23,7 +23,6 @@
 #include <soulng/util/Time.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <boost/filesystem.hpp>
-#include <iostream>
 
 namespace sngcpp::pp {
 
@@ -139,6 +138,10 @@ PPTokenToTextTokenMap::PPTokenToTextTokenMap()
 {
     map[PPTokens::END] = TextTokens::END;
     map[PPTokens::DEFINED] = TextTokens::DEFINED;
+    map[PPTokens::IF] = TextTokens::ID;
+    map[PPTokens::ELSE] = TextTokens::ID;
+    map[PPTokens::LINECOMMENT] = TextTokens::LINECOMMENT;
+    map[PPTokens::BLOCKCOMMENT] = TextTokens::BLOCKCOMMENT;
     map[PPTokens::ANGLEHEADERNAME] = TextTokens::ANGLEHEADERNAME;
     map[PPTokens::QUOTEHEADERNAME] = TextTokens::QUOTEHEADERNAME;
     map[PPTokens::PPNUMBER] = TextTokens::PPNUMBER;
@@ -464,9 +467,9 @@ PPResult::PPResult() : lineMapper(*this), empty(true), msvcMode(false)
 }
 
 PPResult::PPResult(std::vector<std::string>&& fileNames_, Strings&& strings_, std::vector<std::unique_ptr<LogicalPhysicalMapping>>&& logicalPhysicalMappings_, 
-    std::map<int, PPSourceLocation>&& lineMap_, const Lexeme& resultText_, std::vector<std::string>&& errors_) :
+    std::map<int, PPSourceLocation>&& lineMap_, const Lexeme& resultText_, std::vector<std::string>&& errors_, const Lexeme& macros_) :
     lineMapper(*this), fileNames(std::move(fileNames_)), strings(std::move(strings_)), logicalPhysicalMappings(std::move(logicalPhysicalMappings_)), lineMap(lineMap_), resultText(resultText_), 
-    errors(std::move(errors_)), empty(false), msvcMode(false)
+    errors(std::move(errors_)), empty(false), msvcMode(false), macros(macros_)
 {
 }
 
@@ -483,7 +486,7 @@ const PPSourceLocation* PPResult::GetSourceLocation(int line) const
     }
 }
 
-std::string PPResult::GetFileName(int fileIndex) const
+std::string PPResult::GetMappedFileName(int fileIndex) const
 {
     if (fileIndex >= 0 && fileIndex < fileNames.size())
     {
@@ -494,7 +497,7 @@ std::string PPResult::GetFileName(int fileIndex) const
         return std::string();
     }
 }
-
+   
 const LogicalPhysicalMapping* PPResult::GetMapping(int fileIndex) const
 {
     if (fileIndex >= 0 && fileIndex < logicalPhysicalMappings.size())
@@ -507,13 +510,52 @@ const LogicalPhysicalMapping* PPResult::GetMapping(int fileIndex) const
     }
 }
 
-std::string PPResult::GetSourceLine(int fileIndex, int lineNumber)
+SourcePos PPResult::GetMappedPos(const SourcePos& sourcePos) const
 {
-    const LogicalPhysicalMapping* mapping = GetMapping(fileIndex);
-    if (mapping && lineNumber <= mapping->LogicalLines().Count())
+    const PPSourceLocation* sourceLocation = GetSourceLocation(sourcePos.line);
+    if (sourceLocation)
     {
-        Lexeme line = mapping->LogicalLines()[lineNumber - 1];
-        return ToUtf8(line.ToString());
+        const LogicalPhysicalMapping* mapping = GetMapping(sourceLocation->fileIndex);
+        if (mapping)
+        {
+            SourcePos logicalPos(-1, sourceLocation->lineNumber, sourcePos.col);
+            SourcePos physicalPos = mapping->GetMappedPos(logicalPos);
+            return physicalPos;
+        }
+        else
+        {
+            return SourcePos();
+        }
+    }
+    else
+    { 
+        return SourcePos();
+    }
+}
+
+std::string PPResult::GetMappedSourceLine(const SourcePos& sourcePos) const
+{
+    const PPSourceLocation* sourceLocation = GetSourceLocation(sourcePos.line);
+    if (sourceLocation)
+    {
+        const LogicalPhysicalMapping* mapping = GetMapping(sourceLocation->fileIndex);
+        if (mapping)
+        {
+            SourcePos logicalPos(-1, sourceLocation->lineNumber, sourcePos.col);
+            SourcePos physicalPos = mapping->GetMappedPos(logicalPos);
+            if (physicalPos.line >= 1 && physicalPos.line <= mapping->PhysicalLines().Count())
+            {
+                return ToUtf8(mapping->PhysicalLines()[physicalPos.line - 1].ToString());
+            }
+            else
+            {
+                return std::string();
+            }
+        }
+        else
+        {
+            return std::string();
+        }
     }
     else
     {
@@ -525,15 +567,16 @@ PPLineMapper::PPLineMapper(PPResult& ppResult_) : ppResult(ppResult_)
 {
 }
 
-SourceInfo PPLineMapper::GetSourceInfo(int line)
+SourceInfo PPLineMapper::GetSourceInfo(const SourcePos& sourcePos)
 {
-    const PPSourceLocation* sourceLocation = ppResult.GetSourceLocation(line);
+    const PPSourceLocation* sourceLocation = ppResult.GetSourceLocation(sourcePos.line);
     if (sourceLocation && sourceLocation->lineNumber)
     {
         SourceInfo sourceInfo;
-        sourceInfo.fileName = ppResult.GetFileName(sourceLocation->fileIndex);
-        sourceInfo.lineNumber = sourceLocation->lineNumber;
-        sourceInfo.sourceLine = ppResult.GetSourceLine(sourceLocation->fileIndex, sourceLocation->lineNumber);
+        sourceInfo.fileName = ppResult.GetMappedFileName(sourceLocation->fileIndex);
+        SourcePos physicalPos = ppResult.GetMappedPos(sourcePos);
+        sourceInfo.lineNumber = physicalPos.line;
+        sourceInfo.sourceLine = ppResult.GetMappedSourceLine(sourcePos);
         return sourceInfo;
     }
     else
@@ -542,9 +585,12 @@ SourceInfo PPLineMapper::GetSourceInfo(int line)
     }
 }
 
-PP::PP(EvaluationContext& evaluationContext_) : evaluationContext(evaluationContext_), fileIndex(-1), skip(false), lineNumber(1), level(0), lineIndex(0), skipToEnd(false)
+PP::PP(EvaluationContext& evaluationContext_) : 
+    evaluationContext(evaluationContext_), fileIndex(-1), skip(false), processed(false), lineNumber(1), level(0), lineIndex(0), skipToEnd(false), inMSVCMode(false), printMacros(false)
 {
     space = strings.Install(U" ");
+    nl = strings.Install(U"\n");
+    mspragmaLexeme = strings.Install(U"__pragma");
     std::string date = GetCurrentDate().ToString();
     std::string dateTime = GetCurrentDateTime().ToString();
     std::string time = dateTime.substr(11);
@@ -553,6 +599,14 @@ PP::PP(EvaluationContext& evaluationContext_) : evaluationContext(evaluationCont
     fileMacro.reset(new ObjectMacro(strings.Install(U"__FILE__"), "", 0, std::vector<Token>(), std::u32string()));
     lineMacro.reset(new ObjectMacro(strings.Install(U"__LINE__"), "", 0, std::vector<Token>(), std::u32string()));
     sngcppMSVCModeMacroName = strings.Install(U"__SNGCPP_MSVC_MODE");
+}
+
+void PP::SetMSVCModeFlag()
+{
+    if (IsMacroDefined(sngcppMSVCModeMacroName))
+    {
+        inMSVCMode = true;
+    }
 }
 
 bool PP::IsKeywordToken(const Token& token) const
@@ -574,28 +628,38 @@ Macro* PP::GetMacro(const Lexeme& name) const
     }
 }
 
-std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens)
+std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, soulng::lexer::Lexer* lexer)
 {
-    return MacroExpand(tokens, false);
+    return MacroExpand(tokens, lexer, false);
 }
 
-std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, bool saveDefined)
+std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, soulng::lexer::Lexer* lexer, bool saveDefined)
 {
     std::set<Macro*> expandedMacros;
-    std::vector<Token>::const_iterator i = tokens.cbegin();
-    std::vector<Token>::const_iterator e = tokens.cend();
     std::vector<Token> expandedTokens;
     std::vector<Token> tokensToProcess;
+    const std::vector<Token>* tokenVecPtr = &tokens;
     bool expanded = true;
     bool definedSeen = false;
     bool recursive = false;
-    while (expanded)
+    while (expanded || lexer != nullptr)
     {
         expanded = false;
         std::set<Macro*> loopExpandedMacros;
-        while (i != e)
+        bool end = false;
+        int i = 0;
+        int e = tokenVecPtr->size();
+        while (i != e || (lexer != nullptr && !end))
         {
-            Token token = *i;
+            Token token;
+            if (lexer != nullptr)
+            {
+                token = lexer->GetToken(i);
+            }
+            else
+            {
+                token = (*tokenVecPtr)[i];
+            }
             switch (token.id)
             {
                 case TextTokens::ID:
@@ -612,7 +676,11 @@ std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, bool saveDe
                         {
                             if (!recursive || expandedMacros.find(macro) == expandedMacros.cend())
                             {
-                                i = macro->Expand(i, e, expandedTokens, this);
+                                i = macro->Expand(i, e, *tokenVecPtr, lexer, expandedTokens, this, end);
+                                if (end)
+                                {
+                                    break;
+                                }
                                 expanded = true;
                                 loopExpandedMacros.insert(macro);
                             }
@@ -634,17 +702,99 @@ std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, bool saveDe
                     definedSeen = true;
                     break;
                 }
+                case TextTokens::NEWLINE:
+                {
+                    expandedTokens.push_back(token);
+                    end = true;
+                    SetLineNumber(LineNumber() + 1);
+                    break;
+                }
+                case TextTokens::END:
+                {
+                    end = true;
+                    break;
+                }
+                case TextTokens::LINECOMMENT:
+                {
+                    expandedTokens.push_back(token);
+                    end = true;
+                    break;
+                }
+                case TextTokens::BEGINBLOCKCOMMENT:
+                {
+                    if (lexer)
+                    {
+                        if (ScanBlockComment(*lexer, token))
+                        {
+                            int n = GetNumberOfNewLines(token.match);
+                            lineIndex += n;
+                            expandedTokens.push_back(token);
+                        }
+                        else
+                        {
+                            std::string error = "error: open block comment: " + FileName() + ":" + std::to_string(GetLineIndex() + 1);
+                            AddError(error);
+                            end = true;
+                        }
+                    }
+                    else
+                    {
+                        std::string error = "internal error: block comment inside macro: " + FileName() + ":" + std::to_string(GetLineIndex() + 1);
+                        AddError(error);
+                        end = true;
+                    }
+                    break;
+                }
+                case TextTokens::BEGINRAWSTRINGLITERAL:
+                {
+                    if (lexer)
+                    {
+                        if (ScanRawStringLiteral(*lexer, token))
+                        {
+                            int n = GetNumberOfNewLines(token.match);
+                            lineIndex += n;
+                            SetLineNumber(LineNumber() + n);
+                            expandedTokens.push_back(token);
+                        }
+                        else
+                        {
+                            std::string error = "error: open raw string literal: " + FileName() + ":" + std::to_string(GetLineIndex() + 1);
+                            AddError(error);
+                            end = true;
+                        }
+                    }
+                    else
+                    {
+                        std::string error = "internal error: raw string literal inside macro: " + FileName() + ":" + std::to_string(GetLineIndex() + 1);
+                        AddError(error);
+                        end = true;
+                    }
+                    break;
+                }
+                case TextTokens::QUOTEHEADERNAME:
+                {
+                    token.id = TextTokens::STRINGLITERAL;
+                    expandedTokens.push_back(token);
+                    break;
+                }
                 default:
                 {
                     expandedTokens.push_back(token);
                     break;
                 }
             }
-            if (i != e)
+            if (lexer)
+            {
+                ++(*lexer);
+                ++i;
+                e = i;
+            }
+            else if (i != e)
             {
                 ++i;
             }
         }
+        lexer = nullptr;
         if (expanded)
         {
             for (const auto& macro : loopExpandedMacros)
@@ -654,8 +804,9 @@ std::vector<Token> PP::MacroExpand(const std::vector<Token>& tokens, bool saveDe
             tokensToProcess.clear();
             std::swap(expandedTokens, tokensToProcess);
             tokensToProcess = ConcatenateTokens(tokensToProcess, this);
-            i = tokensToProcess.cbegin();
-            e = tokensToProcess.cend();
+            tokenVecPtr = &tokensToProcess;
+            i = 0;
+            e = tokenVecPtr->size();
             recursive = true;
         }
     }
@@ -705,17 +856,6 @@ void PP::PopLineIndex()
     lineIndexStack.pop();
 }
 
-void PP::PushLineNumber()
-{
-    lineNumberStack.push(lineNumber);
-}
-
-void PP::PopLineNumber()
-{
-    lineNumber = lineNumberStack.top();
-    lineNumberStack.pop();
-}
-
 void PP::AddProcessedHeader(const std::string& header)
 {
     processedHeaders.insert(header);
@@ -761,7 +901,7 @@ void PP::DefineObjectMacro(const Lexeme& name, const std::vector<Token>& replace
     }
     else
     {
-        std::vector<Token> definition = MacroExpand(replacementList);
+        std::vector<Token> definition = MacroExpand(replacementList, nullptr);
         if (ContainsHash(definition))
         {
             std::string error = "error: replacement list of an object macro cannot contain the # operator: " + fileName + ":" + std::to_string(lineNumber);
@@ -809,7 +949,7 @@ void PP::DefineFunctionMacro(const Lexeme& name, const std::vector<Token>& param
     }
     else
     {
-        std::vector<Token> definition = MacroExpand(replacementList);
+        std::vector<Token> definition = MacroExpand(replacementList, nullptr);
         std::unique_ptr<FunctionMacro> macro(new FunctionMacro(name, fileName, lineNumber, paramList, definition, definitionStr, this));
         if (!macro->MakeParamIndexMap())
         {
@@ -861,7 +1001,7 @@ void PP::Error(const std::vector<Token>& tokens)
 
 void PP::Pragma(const std::vector<Token>& tokens)
 {
-    if (IsMacroDefined(sngcppMSVCModeMacroName))
+    if (InMSVCMode())
     {
         if (tokens.size() == 1 && tokens.front().match.ToString() == U"once")
         {
@@ -882,11 +1022,9 @@ struct IncludeGuard
     IncludeGuard(PP* pp_) : pp(pp_)
     {
         pp->PushLineIndex();
-        pp->PushLineNumber();
     }
     ~IncludeGuard()
     {
-        pp->PopLineNumber();
         pp->PopLineIndex();
     }
     PP* pp;
@@ -923,7 +1061,7 @@ void PP::Include(const std::vector<Token>& tokens)
                 else
                 {
                     expanded = true;
-                    std::vector<Token> replacementTokens = TrimTextTokens(MacroExpand(tokens));
+                    std::vector<Token> replacementTokens = TrimTextTokens(MacroExpand(tokens, nullptr));
                     if (!replacementTokens.empty())
                     {
                         token = replacementTokens.front();
@@ -975,62 +1113,110 @@ bool PP::IsMacroDefined(const Lexeme& macroName) const
 
 void PP::Ifdef(const Token& id)
 {
+    processedStack.push(processed);
+    processed = false;
     skipStack.push(skip);
     if (!skip)
     {
         bool defined = IsMacroDefined(id.match);
         skip = !defined;
+        if (!skip)
+        {
+            processed = true;
+        }
     }
 }
 
 void PP::Ifndef(const Token& id)
 {
+    processedStack.push(processed);
+    processed = false;
     skipStack.push(skip);
     if (!skip)
     {
         bool defined = IsMacroDefined(id.match);
         skip = defined;
+        if (!skip)
+        {
+            processed = true;
+        }
     }
 }
 
 void PP::If(const std::vector<Token>& tokens)
 {
+    processedStack.push(processed);
+    processed = false;
     skipStack.push(skip);
     if (!skip)
     {
         bool cond = Evaluate(tokens);
         skip = !cond;
+        if (!skip)
+        {
+            processed = true;
+        }
     }
 }
 
 void PP::Elif(const std::vector<Token>& tokens)
 {
-    if (!skipStack.top() && skip)
+    if (!skipStack.top() && !processed)
     {
         bool cond = Evaluate(tokens);
         skip = !cond;
+        if (!skip)
+        {
+            processed = true;
+        }
+    }
+    else
+    {
+        skip = true;
     }
 }
 
 void PP::Else()
 {
-    if (!skipStack.top() && skip)
+    if (!skipStack.top() && !processed)
     {
         skip = false;
+    }
+    else
+    {
+        skip = true;
     }
 }
 
 void PP::EndIf()
 {
-    skip = skipStack.top();
-    skipStack.pop();
+    if (!skipStack.empty())
+    {
+        skip = skipStack.top();
+        skipStack.pop();
+    }
+    else
+    {
+        std::string error = "error: skip stack is empty: " + FileName() + ":" + std::to_string(LineNumber());
+        AddError(error);
+    }
+    if (!processedStack.empty())
+    {
+        processed = processedStack.top();
+        processedStack.pop();
+    }
+    else
+    {
+        std::string error = "error: processed stack is empty: " + FileName() + ":" + std::to_string(LineNumber());
+        AddError(error);
+    }
 }
 
 bool PP::Evaluate(const std::vector<Token>& tokens)
 {
     try
     {
-        std::vector<Token> conditionTextTokens = MacroExpand(tokens, true);
+        std::vector<Token> conditionTextTokens = MacroExpand(tokens, nullptr, true);
         std::vector<Token> conditionCppTokens = ConvertTextTokensToCppTokens(conditionTextTokens, this);
         CppLexer lexer(std::u32string(), fileName, fileIndex);
         lexer.SetLine(lineNumber);
@@ -1060,8 +1246,16 @@ void PP::PushFileName(const std::string& fileName_)
 
 void PP::PopFileName()
 {
-    fileName = fileNameStack.top();
-    fileNameStack.pop();
+    if (!fileNameStack.empty())
+    {
+        fileName = fileNameStack.top();
+        fileNameStack.pop();
+    }
+    else
+    {
+        std::string error = "error: file name stack is empty: " + FileName() + ":" + std::to_string(LineNumber());
+        AddError(error);
+    }
 }
 
 SourcePos PP::GetSourcePos() const
@@ -1069,13 +1263,14 @@ SourcePos PP::GetSourcePos() const
     return SourcePos(-1, lineNumber, 1);
 }
 
-void PP::PrintMacros()
+Lexeme PP::DoPrintMacros()
 {
     std::u32string macroText;
     for (const auto& macro : macroMap)
     {
         macroText.append(U"#define ").append(ToUtf32(macro.second->ToString())).append(1, '\n');
     }
+    return strings.Install(std::move(macroText));
 }
 
 void PP::MapLine(int lineNumber, const PPSourceLocation& sourceLocation)
@@ -1087,6 +1282,10 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
 {
     try
     {
+        if (pp->Level() == 0)
+        {
+            pp->SetMSVCModeFlag();
+        }
         pp->AddFileName(fileName);
         pp->IncFileIndex();
         pp->SetFile(fileName);
@@ -1102,6 +1301,7 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
             pp->SetLineIndex(lineIndex);
             pp->SetLine(lineIndex + 1);
             Lexeme line = lines[lineIndex];
+            std::u32string s = line.ToString();
             if (IsPPLine(line))
             {
                 PPLexer lexer(line.begin, lines.End(), fileName, pp->FileIndex());
@@ -1127,71 +1327,19 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
                 lexer.SetLine(pp->LineNumber());
                 lexer.SetCountLines(false);
                 ++lexer;
-                int i = 0;
                 std::vector<Token> tokens;
-                bool end = false;
-                while (*lexer != TextTokens::END && !end)
+                tokens = pp->MacroExpand(tokens, &lexer);
+                lineIndex = pp->GetLineIndex();
+                if (pp->InMSVCMode())
                 {
-                    soulng::lexer::Token token = lexer.GetToken(i++);
-                    switch (token.id)
+                    std::vector<Token> pragmaTokens;
+                    int newLines = 0;
+                    if (IsMSPragma(tokens, pp->MSPragmaLexeme(), pragmaTokens, newLines))
                     {
-                        case TextTokens::NEWLINE:
-                        {
-                            end = true;
-                            tokens.push_back(token);
-                            pp->SetLineNumber(pp->LineNumber() + 1);
-                            break;
-                        }
-                        case TextTokens::LINECOMMENT:
-                        {
-                            tokens.push_back(token);
-                            end = true;
-                            break;
-                        }
-                        case TextTokens::BEGINBLOCKCOMMENT:
-                        {
-                            if (ScanBlockComment(lexer, token))
-                            {
-                                int n = GetNumberOfNewLines(token.match);
-                                lineIndex += n;
-                            }
-                            else
-                            {
-                                std::string error = "error: open block comment: " + pp->FileName() + ":" + std::to_string(pp->LineNumber());
-                                pp->AddError(error);
-                                end = true;
-                            }
-                            break;
-                        }
-                        case TextTokens::BEGINRAWSTRINGLITERAL:
-                        {
-                            if (ScanRawStringLiteral(lexer, token))
-                            {
-                                int n = GetNumberOfNewLines(token.match);
-                                lineIndex += n;
-                                pp->SetLineNumber(pp->LineNumber() + n);
-                            }
-                            else
-                            {
-                                std::string error = "error: open raw string literal: " + pp->FileName() + ":" + std::to_string(pp->LineNumber());
-                                pp->AddError(error);
-                                end = true;
-                            }
-                            break;
-                        }
-                        case TextTokens::QUOTEHEADERNAME:
-                        {
-                            token.id = TextTokens::STRINGLITERAL;
-                            break;
-                        }
-                    }
-                    if (!end)
-                    {
-                        tokens.push_back(token);
-                        ++lexer;
+                        tokens.swap(pragmaTokens);
+                        pp->SetLineNumber(pp->LineNumber() + newLines);
                     }
                 }
-                tokens = pp->MacroExpand(tokens);
                 for (const Token& token : tokens)
                 {
                     switch (token.id)
@@ -1224,14 +1372,19 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
             std::vector<std::unique_ptr<LogicalPhysicalMapping>> mappings = pp->GetLogicalPhysicalMappings();
             std::map<int, PPSourceLocation> lineMap = pp->GetLineMap();
             std::vector<std::string> errors = pp->GetErrors();
+            Lexeme macros;
+            if (pp->PrintMacros())
+            {
+                macros = pp->DoPrintMacros();
+            }
             Strings strings = pp->GetStrings();
-            return std::unique_ptr<PPResult>(new PPResult(std::move(fileNames), std::move(strings), std::move(mappings), std::move(lineMap), resultText, std::move(errors)));
+            return std::unique_ptr<PPResult>(new PPResult(std::move(fileNames), std::move(strings), std::move(mappings), std::move(lineMap), resultText, std::move(errors), macros));
         }
     }
     catch (const std::exception& ex)
     {
         pp->AddProcessedHeader(fileName);
-        pp->AddError(pp->FileName() + ":" + std::to_string(pp->LineNumber()) + ": " + ex.what());
+        pp->AddError(pp->FileName() + ":" + std::to_string(pp->GetLineIndex() + 1) + ": " + ex.what());
         pp->PopFileName();
         pp->DecLevel();
     }

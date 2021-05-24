@@ -63,7 +63,7 @@ struct DRIVER_API ParseResult
 {
     ParseResult();
     ParseResult(std::unique_ptr<PPResult>&& ppResult_, std::unique_ptr<Node>&& translationUnitNode_);
-    ParseResult(const std::string& error_);
+    ParseResult(std::unique_ptr<PPResult>&& ppResult_, const std::string& error_);
     std::unique_ptr<PPResult> ppResult;
     std::unique_ptr<Node> translationUnitNode;
     std::string error;

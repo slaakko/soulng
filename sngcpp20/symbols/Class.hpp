@@ -3,8 +3,8 @@
 // Distributed under the MIT license
 // =================================
 
-#ifndef SNGCPP_SYMBOLS_SYMBOL_FACTORY_INCLUDED
-#define SNGCPP_SYMBOLS_SYMBOL_FACTORY_INCLUDED
+#ifndef SNGCPP_SYMBOLS_CLASS_INCLUDED
+#define SNGCPP_SYMBOLS_CLASS_INCLUDED
 #include <sngcpp20/symbols/SymbolsApi.hpp>
 #include <sngcpp20/ast/Node.hpp>
 #include <sngcpp20/symbols/Context.hpp>
@@ -18,4 +18,4 @@ SYMBOLS_API void EndClass(Context* context);
 
 } // sngcpp::symbols
 
-#endif // SNGCPP_SYMBOLS_SYMBOL_FACTORY_INCLUDED
+#endif // SNGCPP_SYMBOLS_CLASS_INCLUDED

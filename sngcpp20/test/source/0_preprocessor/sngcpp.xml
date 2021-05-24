@@ -5,13 +5,18 @@
             <file name="empty.cpp"/>
             <file name="empty_define.cpp"/>
             <file name="empty_line_comment.cpp"/>
+            <file name="hello.cpp"/>
             <file name="if.cpp"/>
-            <file name="include.cpp"/>
+            <file name="include_stdint.cpp"/>
+            <file name="include_stdio.cpp"/>
+            <file name="include_stdlib.cpp"/>
+            <file name="include_string.cpp"/>
             <file name="line_comments.cpp"/>
             <file name="max.cpp"/>
             <file name="raw_string_lit.cpp"/>
             <file name="stringize.cpp"/>
             <file name="two_level_macro.cpp"/>
+            <file name="vaarg.cpp"/>
         </files>
     </project>
 </sngcpp>

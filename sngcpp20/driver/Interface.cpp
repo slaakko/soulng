@@ -38,7 +38,7 @@ ParseResult::ParseResult(std::unique_ptr<PPResult>&& ppResult_, std::unique_ptr<
 {
 }
 
-ParseResult::ParseResult(const std::string& error_) : error(error_)
+ParseResult::ParseResult(std::unique_ptr<PPResult>&& ppResult_, const std::string& error_) : ppResult(std::move(ppResult_)), error(error_)
 {
 }
 
@@ -56,14 +56,14 @@ std::unique_ptr<PPResult> Preprocess(const std::string& sourceFileName, const Co
     {
         pp.AddIncludePath(includePath);
     }
-    std::unique_ptr<PPResult> result = Preprocess(GetFullPath(sourceFileName), &pp);
-    if (pp.IsMacroDefined(pp.SNGCPPMSVCModeMacroName()))
-    {
-        result->SetMSVCMode();
-    }
     if (printMacros)
     {
-        pp.PrintMacros();
+        pp.SetPrintMacros();
+    }
+    std::unique_ptr<PPResult> result = Preprocess(GetFullPath(sourceFileName), &pp);
+    if (result && pp.InMSVCMode())
+    {
+        result->SetMSVCMode();
     }
     return result;
 }
@@ -107,7 +107,7 @@ ParseResult Parse(std::unique_ptr<PPResult>&& ppResult, ParseOptions& options)
         }
         catch (const std::exception& ex)
         {
-            return ParseResult(ex.what());
+            return ParseResult(std::move(ppResult), ex.what());
         }
     }
 }

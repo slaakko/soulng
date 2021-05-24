@@ -1,6 +1,6 @@
 #include "ClassParser.hpp"
 #include <soulng/util/Unicode.hpp>
-#include <sngcpp20/symbols/SymbolFactory.hpp>
+#include <sngcpp20/symbols/Class.hpp>
 #include <sngcpp20/parser/AttributeParser.hpp>
 #include <sngcpp20/parser/ConceptParser.hpp>
 #include <sngcpp20/parser/DeclarationParser.hpp>

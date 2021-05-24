@@ -6,7 +6,7 @@
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
 [hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Class.hpp>
-[cpp]#include <sngcpp20/symbols/SymbolFactory.hpp>
+[cpp]#include <sngcpp20/symbols/Class.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ConceptParser.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>

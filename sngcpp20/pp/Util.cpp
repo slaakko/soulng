@@ -42,6 +42,10 @@ std::vector<Token> TrimTextTokens(const std::vector<Token>& tokens)
     {
         ++i;
     }
+    if (i == tokens.cend())
+    {
+        return std::vector<Token>();
+    }
     std::vector<Token>::const_iterator e = tokens.cend() - 1;
     while (e != tokens.cbegin() && e->id == TextTokens::WS)
     {
@@ -154,7 +158,7 @@ std::vector<Token> ConcatenateTokens(const std::vector<Token>& tokens, PP* pp)
                     }
                     else
                     {
-                        std::string error = "## operator must be preceded by a parameter: ': " + pp->FileName() + ":" + std::to_string(pp->LineNumber());
+                        std::string error = "## operator must be preceded by a parameter: ': " + pp->FileName() + ":" + std::to_string(pp->GetLineIndex() + 1);
                         pp->AddError(error);
                         return tokens;
                     }
@@ -166,7 +170,7 @@ std::vector<Token> ConcatenateTokens(const std::vector<Token>& tokens, PP* pp)
     }
     if (state == 1)
     {
-        std::string error = "## operator must be followed by a parameter: '" + pp->FileName() + ":" + std::to_string(pp->LineNumber());
+        std::string error = "## operator must be followed by a parameter: '" + pp->FileName() + ":" + std::to_string(pp->GetLineIndex() + 1);
         pp->AddError(error);
         return tokens;
     }
@@ -196,6 +200,62 @@ bool ContainsHashHash(const std::vector<Token>& tokens)
         }
     }
     return false;
+}
+
+bool IsMSPragma(const std::vector<Token>& tokens, const Lexeme& mspragmaLexeme, std::vector<Token>& pragmaTokens, int& newLines)
+{
+    int state = 0;
+    int parenCount = 0;
+    bool result = false;
+    for (const Token& token : tokens)
+    {
+        switch (state)
+        {
+            case 0:
+            {
+                if (token.id == TextTokens::WS || token.id == TextTokens::RBRACE)
+                {
+                    pragmaTokens.push_back(token);
+                }
+                else if (token.match == mspragmaLexeme)
+                {
+                    state = 1;
+                    result = true;
+                }
+                else
+                {
+                    return false;
+                }
+                break;
+            }
+            case 1:
+            {
+                if (token.id == TextTokens::LPAREN)
+                {
+                    ++parenCount;
+                }
+                else if (token.id == TextTokens::RPAREN)
+                {
+                    --parenCount;
+                    if (parenCount == 0)
+                    {
+                        state = 2;
+                    }
+                }
+                break;
+            }
+            case 2:
+            {
+                pragmaTokens.push_back(token);
+                if (token.id == TextTokens::NEWLINE)
+                {
+                    ++newLines;
+                }
+                break;
+            }
+        }
+    }
+    return result;
 }
 
 } // namespace sngcpp::pp

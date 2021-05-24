@@ -343,8 +343,6 @@ extern "C" {
     
 
 
-
-
      
  
 
@@ -428,19 +426,11 @@ extern "C" {
 
 
 
-
-
    
 
 
 
-
-
-
-
-
-
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -467,8 +457,6 @@ __pragma(pack(push, 8))         extern "C" {
     typedef int              intptr_t;
 
     typedef bool  __vcrt_bool;
-              typedef char __vcrt_bool;
-    typedef _Bool __vcrt_bool;
 
  
 
@@ -505,7 +493,7 @@ __pragma(pack(push, 8))         extern "C" {
 extern uintptr_t __security_cookie;
 
 
-}                             __pragma(pack(pop))
+}                             
 
 
 
@@ -517,7 +505,7 @@ extern uintptr_t __security_cookie;
 
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
      
   
@@ -549,8 +537,6 @@ __pragma(pack(push, 8))         extern "C" {
 }
 
     typedef bool  __crt_bool;
-              typedef char __crt_bool;
-    typedef _Bool __crt_bool;
 
 
 
@@ -690,8 +676,6 @@ typedef _Mbstatet mbstate_t;
 
 
 
-
-
      
 
 
@@ -738,16 +722,14 @@ typedef _Mbstatet mbstate_t;
 
 
 
-
-
-}                             __pragma(pack(pop))
+}                             
 
 
         
        
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -909,14 +891,14 @@ void* __cdecl _aligned_recalloc(
 
 
 
-}                             __pragma(pack(pop))
+}                             
 
           
               
        
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -944,12 +926,12 @@ __pragma(pack(push, 8))         extern "C" {
 
 
 
-}                             __pragma(pack(pop))
+}                             
 
 
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
     typedef int (__cdecl* _CoreCrtSecureSearchSortCompareFunction)(void*, void const*, void const*);
@@ -1038,7 +1020,7 @@ __pragma(pack(push, 8))         extern "C" {
 
 
 
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_lfind" ". See online help for details."))
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _lfind. See online help for details."))
      void* __cdecl lfind(
                                                            void const*   _Key,
           void const*   _Base,
@@ -1047,7 +1029,7 @@ __pragma(pack(push, 8))         extern "C" {
                               _CoreCrtNonSecureSearchSortCompareFunction _CompareFunction
         );
 
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_lsearch" ". See online help for details."))
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _lsearch. See online help for details."))
      void* __cdecl lsearch(
                                                                 void const*   _Key,
           void*         _Base,
@@ -1059,13 +1041,13 @@ __pragma(pack(push, 8))         extern "C" {
 
 
 
-}                             __pragma(pack(pop))
+}                             
 
         
        
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -1085,16 +1067,9 @@ __pragma(pack(push, 8))         extern "C" {
                                   int      _Radix
         );
 
-            errno_t, _itow_s,
-          int,     _Value,
-             wchar_t, _Buffer,
-          int,     _Radix
-        )
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _itow_s(  int _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-            wchar_t*,                              int,     _Value,
-           , wchar_t, _Buffer,
-                             int,     _Radix
-        )
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _itow(                     int _Value,     wchar_t *_Buffer,                      int _Radix);
 
      
     
@@ -1105,16 +1080,9 @@ __pragma(pack(push, 8))         extern "C" {
                                   int      _Radix
         );
 
-            errno_t, _ltow_s,
-          long,    _Value,
-             wchar_t, _Buffer,
-          int,     _Radix
-        )
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltow_s(  long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-            wchar_t*,                              long,    _Value,
-           , wchar_t, _Buffer,
-                             int,     _Radix
-        )
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ltow(                     long _Value,     wchar_t *_Buffer,                      int _Radix);
 
     
      errno_t __cdecl _ultow_s(
@@ -1124,16 +1092,9 @@ __pragma(pack(push, 8))         extern "C" {
                                   int           _Radix
         );
 
-            errno_t, _ultow_s,
-          unsigned long, _Value,
-             wchar_t,       _Buffer,
-          int,           _Radix
-        )
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultow_s(  unsigned long _Value, wchar_t (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultow_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-            wchar_t*,                              unsigned long, _Value,
-           , wchar_t,       _Buffer,
-                             int,           _Radix
-        )
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t* __cdecl _ultow(                     unsigned long _Value,     wchar_t *_Buffer,                      int _Radix);
 
      
      double __cdecl wcstod(
@@ -1286,7 +1247,7 @@ __pragma(pack(push, 8))         extern "C" {
                                   int      _Radix
         );
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_i64tow_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _i64tow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      wchar_t* __cdecl _i64tow(
                             __int64  _Value,
             wchar_t* _Buffer,
@@ -1301,7 +1262,7 @@ __pragma(pack(push, 8))         extern "C" {
                                   int              _Radix
         );
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_ui64tow_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _ui64tow_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      wchar_t* __cdecl _ui64tow(
                             unsigned __int64 _Value,
             wchar_t*         _Buffer,
@@ -1369,26 +1330,15 @@ __pragma(pack(push, 8))         extern "C" {
                             wchar_t const* _Ext
         );
 
-            errno_t, _wmakepath_s,
-                   wchar_t,        _Buffer,
-          wchar_t const*, _Drive,
-          wchar_t const*, _Dir,
-          wchar_t const*, _Filename,
-          wchar_t const*, _Ext
-        )
+    extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wmakepath_s(wchar_t (&_Buffer)[_Size],   wchar_t const* _Drive,   wchar_t const* _Dir,   wchar_t const* _Filename,   wchar_t const* _Ext) throw()                  {                                                                                                                                                                     return _wmakepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
 
-        void,            , wchar_t,        _Buffer,
-                       wchar_t const*, _Drive,
-                       wchar_t const*, _Dir,
-                       wchar_t const*, _Filename,
-                       wchar_t const*, _Ext
-        )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wmakepath(    wchar_t *_Buffer,                wchar_t const* _Drive,                wchar_t const* _Dir,                wchar_t const* _Filename,                wchar_t const* _Ext);
 
      void __cdecl _wperror(
           wchar_t const* _ErrorMessage
         );
 
-    __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_wsplitpath_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _wsplitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      void __cdecl _wsplitpath(
                             wchar_t const* _FullPath,
             wchar_t*       _Drive,
@@ -1409,9 +1359,7 @@ __pragma(pack(push, 8))         extern "C" {
                                         size_t         _ExtCount
         );
 
-            errno_t, _wsplitpath_s,
-        wchar_t, _Path
-        )
+    extern "C++"                                                                                                      {                                                                                                                     template <size_t _DriveSize, size_t _DirSize, size_t _NameSize, size_t _ExtSize>                                  inline                                                                                                            errno_t __cdecl _wsplitpath_s(                                                                                        wchar_t const* _Path,                                                                                        wchar_t (&_Drive)[_DriveSize],                                                                            wchar_t (&_Dir)[_DirSize],                                                                                wchar_t (&_Name)[_NameSize],                                                                              wchar_t (&_Ext)[_ExtSize]                                                                               ) throw()                                                                                     {                                                                                                                     return _wsplitpath_s(_Path, _Drive, _DriveSize, _Dir, _DirSize, _Name, _NameSize, _Ext, _ExtSize);                 }                                                                                                             }
 
 
         
@@ -1422,7 +1370,7 @@ __pragma(pack(push, 8))         extern "C" {
             );
 
 
-          __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_wdupenv_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+          __declspec(deprecated("This function or variable may be unsafe. Consider using _wdupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
          wchar_t* __cdecl _wgetenv(
               wchar_t const* _VarName
             );
@@ -1436,12 +1384,7 @@ __pragma(pack(push, 8))         extern "C" {
                                         wchar_t const* _VarName
             );
 
-                     
-            errno_t, _wgetenv_s,
-               size_t*,        _RequiredCount,
-                   wchar_t,        _Buffer,
-              wchar_t const*, _VarName
-            )
+        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                        errno_t __cdecl _wgetenv_s(   size_t* _RequiredCount, wchar_t (&_Buffer)[_Size],   wchar_t const* _VarName) throw()                 {                                                                                                                                    return _wgetenv_s(_RequiredCount, _Buffer, _Size, _VarName);                                                                               }                                                                                                                            }
 
          
          int __cdecl _wputenv(
@@ -1461,16 +1404,9 @@ __pragma(pack(push, 8))         extern "C" {
                                       size_t         _BufferCount
             );
 
-                    errno_t, _wsearchenv_s,
-              wchar_t const*, _Filename,
-              wchar_t const*, _VarName,
-                   wchar_t,        _ResultPath
-                   )
+        extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _wsearchenv_s(  wchar_t const* _Filename,   wchar_t const* _VarName, wchar_t (&_ResultPath)[_Size]) throw()                 {                                                                                                                                    return _wsearchenv_s(_Filename, _VarName, _ResultPath, _Size);                                                                               }                                                                                                                            }
 
-                    void,                                wchar_t const*, _Filename,
-                               wchar_t const*, _VarName,
-               , wchar_t,        _ResultPath
-            )
+        __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _wsearchenv(                   wchar_t const* _Filename,                    wchar_t const* _VarName,     wchar_t *_ResultPath);
 
          int __cdecl _wsystem(
               wchar_t const* _Command
@@ -1479,12 +1415,12 @@ __pragma(pack(push, 8))         extern "C" {
 
 
 
-}                             __pragma(pack(pop))
+}                             
 
        
        
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -1495,12 +1431,12 @@ __pragma(pack(push, 8))         extern "C" {
 
      
 
-}                             __pragma(pack(pop))
+}                             
 
 
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -1596,17 +1532,17 @@ int __cdecl at_quick_exit(void (__cdecl*)(void));
      errno_t __cdecl _set_doserrno(  unsigned long _Value);
      errno_t __cdecl _get_doserrno(  unsigned long * _Value);
 
-          __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "strerror"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details.")) char** __cdecl __sys_errlist(void);
+          __declspec(deprecated("This function or variable may be unsafe. Consider using strerror instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) char** __cdecl __sys_errlist(void);
 
-     __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "strerror"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details.")) int * __cdecl __sys_nerr(void);
+     __declspec(deprecated("This function or variable may be unsafe. Consider using strerror instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.")) int * __cdecl __sys_nerr(void);
 
      void __cdecl perror(  char const* _ErrMsg);
 
 
 
- __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "replacement"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))  char**    __cdecl __p__pgmptr (void);
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "replacement"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))  wchar_t** __cdecl __p__wpgmptr(void);
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "replacement"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))  int*      __cdecl __p__fmode  (void);
+ __declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char**    __cdecl __p__pgmptr (void);
+__declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  wchar_t** __cdecl __p__wpgmptr(void);
+__declspec(deprecated("This function or variable may be unsafe. Consider using replacement instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  int*      __cdecl __p__fmode  (void);
 
 
  
@@ -1728,10 +1664,6 @@ extern "C++"
     {
         unsigned char ld[10];
     } _LDOUBLE;
-
-
-
-         typedef long double _LDOUBLE;
 
 
 
@@ -1937,17 +1869,9 @@ typedef struct
                               int    _Radix
     );
 
-     
-    errno_t, _itoa_s,
-      int,  _Value,
-         char, _Buffer,
-      int,  _Radix
-    )
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                errno_t __cdecl _itoa_s(  int _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _itoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-    char*,                          int,  _Value,
-       , char, _Buffer,
-                         int,  _Radix
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _itoa(                     int _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -1958,16 +1882,9 @@ typedef struct
                               int    _Radix
     );
 
-    errno_t, _ltoa_s,
-      long, _Value,
-         char, _Buffer,
-      int,  _Radix
-    )
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ltoa_s(  long _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ltoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-    char*,                          long, _Value,
-       , char, _Buffer,
-                         int,  _Radix
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ltoa(                     long _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -1978,16 +1895,9 @@ typedef struct
                               int           _Radix
     );
 
-    errno_t, _ultoa_s,
-      unsigned long, _Value,
-         char,          _Buffer,
-      int,           _Radix
-    )
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _ultoa_s(  unsigned long _Value, char (&_Buffer)[_Size],   int _Radix) throw()                 {                                                                                                                                    return _ultoa_s(_Value, _Buffer, _Size, _Radix);                                                                               }                                                                                                                            }
 
-    char*,                          unsigned long, _Value,
-       , char,          _Buffer,
-                         int,           _Radix
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  char* __cdecl _ultoa(                     unsigned long _Value,     char *_Buffer,                      int _Radix);
 
  
 
@@ -1999,7 +1909,7 @@ typedef struct
     );
 
  
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_i64toa_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+__declspec(deprecated("This function or variable may be unsafe. Consider using _i64toa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char* __cdecl _i64toa(
                         __int64 _Value,
         char*   _Buffer,
@@ -2015,7 +1925,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                               int              _Radix
     );
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_ui64toa_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+__declspec(deprecated("This function or variable may be unsafe. Consider using _ui64toa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char* __cdecl _ui64toa(
                         unsigned __int64 _Value,
         char*            _Buffer,
@@ -2036,15 +1946,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
       int*                         _PtSign
     );
 
-    errno_t, _ecvt_s,
-          char,   _Buffer,
-       double, _Value,
-       int,    _DigitCount,
-      int*,   _PtDec,
-      int*,   _PtSign
-    )
+extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _ecvt_s(char (&_Buffer)[_Size],    double _Value,    int _DigitCount,   int* _PtDec,   int* _PtSign) throw()                  {                                                                                                                                                                     return _ecvt_s(_Buffer, _Size, _Value, _DigitCount, _PtDec, _PtSign);                                                                                                }                                                                                                                                                             }
 
-  __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_ecvt_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _ecvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char* __cdecl _ecvt(
        double _Value,
        int    _DigitCount,
@@ -2063,17 +1967,10 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                              int*   _PtSign
     );
 
-     
-    errno_t, _fcvt_s,
-          char,   _Buffer,
-       double, _Value,
-       int,    _FractionalDigitCount,
-      int*,   _PtDec,
-      int*,   _PtSign
-    )
+extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                                 errno_t __cdecl _fcvt_s(char (&_Buffer)[_Size],    double _Value,    int _FractionalDigitCount,   int* _PtDec,   int* _PtSign) throw()                  {                                                                                                                                                                     return _fcvt_s(_Buffer, _Size, _Value, _FractionalDigitCount, _PtDec, _PtSign);                                                                                                }                                                                                                                                                             }
 
  
-  __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_fcvt_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+  __declspec(deprecated("This function or variable may be unsafe. Consider using _fcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char* __cdecl _fcvt(
        double _Value,
        int    _FractionalDigitCount,
@@ -2089,14 +1986,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                               int    _DigitCount
     );
 
-     
-    errno_t, _gcvt_s,
-         char,   _Buffer,
-      double, _Value,
-      int,    _DigitCount
-    )
+extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                                errno_t __cdecl _gcvt_s(char (&_Buffer)[_Size],   double _Value,   int _DigitCount) throw()                 {                                                                                                                                    return _gcvt_s(_Buffer, _Size, _Value, _DigitCount);                                                                               }                                                                                                                            }
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_gcvt_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+__declspec(deprecated("This function or variable may be unsafe. Consider using _gcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  char* __cdecl _gcvt(
                         double _Value,
                         int    _DigitCount,
@@ -2180,18 +2072,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                                                            size_t      _MaxCount
     );
 
-    errno_t, mbstowcs_s,
-      size_t*,     _PtNumOfCharConverted,
-       wchar_t,     _Dest,
-         char const*, _Source,
-           size_t,      _MaxCount
-    )
+extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                           errno_t __cdecl mbstowcs_s(  size_t* _PtNumOfCharConverted,    wchar_t (&_Dest)[_Size],      char const* _Source,        size_t _MaxCount) throw()                 {                                                                                                                                                    return mbstowcs_s(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount);                                                                                       }                                                                                                                                            }
 
-    , mbstowcs,
-     , wchar_t,     _Dest,
-                              char const*, _Source,
-                                size_t,      _MaxCount
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl mbstowcs(  wchar_t *_Dest,                           char const* _Source,                             size_t _MaxCount);
 
 
  errno_t __cdecl _mbstowcs_s_l(
@@ -2203,32 +2086,20 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                                                        _locale_t   _Locale
     );
 
-    errno_t, _mbstowcs_s_l,
-      size_t*,     _PtNumOfCharConverted,
-       wchar_t,     _Dest,
-         char const*, _Source,
-           size_t,      _MaxCount,
-       _locale_t,   _Locale
-    )
+extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _mbstowcs_s_l(  size_t* _PtNumOfCharConverted,    wchar_t (&_Dest)[_Size],      char const* _Source,        size_t _MaxCount,    _locale_t _Locale) throw()                  {                                                                                                                                                                     return _mbstowcs_s_l(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount, _Locale);                                                                                                }                                                                                                                                                             }
 
-    , _mbstowcs_l, _mbstowcs_s_l,
-       wchar_t,
-     , wchar_t,     _Dest,
-                          char const*, _Source,
-                            size_t,      _MaxCount,
-                        _locale_t,   _Locale
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _mbstowcs_l(  wchar_t *_Dest,                       char const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
 
 
 
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "wctomb_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+__declspec(deprecated("This function or variable may be unsafe. Consider using wctomb_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  int __cdecl wctomb(
       char*   _MbCh,
                                 wchar_t _WCh
     );
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_wctomb_s_l"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+__declspec(deprecated("This function or variable may be unsafe. Consider using _wctomb_s_l instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  int __cdecl _wctomb_l(
         char*     _MbCh,
                           wchar_t   _WCh,
@@ -2262,18 +2133,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                                                                     size_t         _MaxCountInBytes
     );
 
-    errno_t, wcstombs_s,
-                          size_t*,        _PtNumOfCharConverted,
-      char,           _Dest,
-                             wchar_t const*, _Source,
-                               size_t,         _MaxCount
-    )
+extern "C++"                                                                                                                                     {                                                                                                                                                    template <size_t _Size>                                                                                                                          inline                                                                                                                                           errno_t __cdecl wcstombs_s(                      size_t* _PtNumOfCharConverted,   char (&_Dest)[_Size],                          wchar_t const* _Source,                            size_t _MaxCount) throw()                 {                                                                                                                                                    return wcstombs_s(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount);                                                                                       }                                                                                                                                            }
 
-    , wcstombs,
-     ,   char,           _Dest,
-                              wchar_t const*, _Source,
-                                size_t,         _MaxCount
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl wcstombs(  char *_Dest,                           wchar_t const* _Source,                             size_t _MaxCount);
 
 
  errno_t __cdecl _wcstombs_s_l(
@@ -2285,21 +2147,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                                                                 _locale_t      _Locale
     );
 
-    errno_t, _wcstombs_s_l,
-                    size_t*,        _PtNumOfCharConverted,
-      char,           _Dest,
-                       wchar_t const*, _Source,
-                         size_t,         _MaxCount,
-                     _locale_t,      _Locale
-    )
+extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _wcstombs_s_l(                size_t* _PtNumOfCharConverted,   char (&_Dest)[_Size],                    wchar_t const* _Source,                      size_t _MaxCount,                  _locale_t _Locale) throw()                  {                                                                                                                                                                     return _wcstombs_s_l(_PtNumOfCharConverted, _Dest, _Size, _Source, _MaxCount, _Locale);                                                                                                }                                                                                                                                                             }
 
-    , _wcstombs_l, _wcstombs_s_l,
-       char,
-     ,   char,           _Dest,
-                          wchar_t const*, _Source,
-                            size_t,         _MaxCount,
-                        _locale_t,      _Locale
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  size_t __cdecl _wcstombs_l(  char *_Dest,                       wchar_t const* _Source,                         size_t _MaxCount,                     _locale_t _Locale);
 
 
 
@@ -2325,22 +2175,11 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using "
                         char const* _Ext
     );
 
-    errno_t, _makepath_s,
-               char,        _Buffer,
-      char const*, _Drive,
-      char const*, _Dir,
-      char const*, _Filename,
-      char const*, _Ext
-    )
+extern "C++"                                                                                                                                                      {                                                                                                                                                                     template <size_t _Size>                                                                                                                                           inline                                                                                                                                                            errno_t __cdecl _makepath_s(char (&_Buffer)[_Size],   char const* _Drive,   char const* _Dir,   char const* _Filename,   char const* _Ext) throw()                  {                                                                                                                                                                     return _makepath_s(_Buffer, _Size, _Drive, _Dir, _Filename, _Ext);                                                                                                }                                                                                                                                                             }
 
-    void,        , char,        _Buffer,
-                   char const*, _Drive,
-                   char const*, _Dir,
-                   char const*, _Filename,
-                   char const*, _Ext
-    )
+__declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _makepath(    char *_Buffer,                char const* _Drive,                char const* _Dir,                char const* _Filename,                char const* _Ext);
 
-__declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_splitpath_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+__declspec(deprecated("This function or variable may be unsafe. Consider using _splitpath_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
  void __cdecl _splitpath(
                         char const* _FullPath,
         char*       _Drive,
@@ -2393,16 +2232,12 @@ extern "C++"                                                                    
  
 
 
-      __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_dupenv_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+      __declspec(deprecated("This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl getenv(
           char const* _VarName
         );
 
-            errno_t, getenv_s,
-           size_t*,     _RequiredCount,
-               char,        _Buffer,
-          char const*, _VarName
-        )
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl getenv_s(   size_t* _RequiredCount, char (&_Buffer)[_Size],   char const* _VarName) throw()                 {                                                                                                                                    return getenv_s(_RequiredCount, _Buffer, _Size, _VarName);                                                                               }                                                                                                                            }
 
 
     
@@ -2437,29 +2272,22 @@ extern "C++"                                                                    
                                   size_t      _BufferCount
         );
 
-            errno_t, _searchenv_s,
-          char const*, _Filename,
-          char const*, _VarName,
-               char,        _Buffer
-        )
+    extern "C++"                                                                                                                     {                                                                                                                                    template <size_t _Size>                                                                                                          inline                                                                                                                           errno_t __cdecl _searchenv_s(  char const* _Filename,   char const* _VarName, char (&_Buffer)[_Size]) throw()                 {                                                                                                                                    return _searchenv_s(_Filename, _VarName, _Buffer, _Size);                                                                               }                                                                                                                            }
 
-            void,                            char const*, _Filename,
-                           char const*, _VarName,
-           , char,        _Buffer
-        )
+    __declspec(deprecated("This function or variable may be unsafe. Consider using _SecureFuncName instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))  void __cdecl _searchenv(                   char const* _Filename,                    char const* _VarName,     char *_Buffer);
 
-         __declspec(deprecated("This function or variable has been superceded by newer library "              "or operating system functionality. Consider using " "SetErrorMode" " "             "instead. See online help for details."))
+         __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using SetErrorMode instead. See online help for details."))
      void __cdecl _seterrormode(
           int _Mode
         );
 
-    __declspec(deprecated("This function or variable has been superceded by newer library "              "or operating system functionality. Consider using " "Beep" " "             "instead. See online help for details."))
+    __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using Beep instead. See online help for details."))
      void __cdecl _beep(
           unsigned _Frequency,
           unsigned _Duration
         );
 
-    __declspec(deprecated("This function or variable has been superceded by newer library "              "or operating system functionality. Consider using " "Sleep" " "             "instead. See online help for details."))
+    __declspec(deprecated("This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details."))
      void __cdecl _sleep(
           unsigned long _Duration
         );
@@ -2470,7 +2298,7 @@ extern "C++"                                                                    
 
 
 
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_ecvt" ". See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_ecvt_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ecvt. See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _ecvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl ecvt(
            double _Value,
            int    _DigitCount,
@@ -2478,7 +2306,7 @@ extern "C++"                                                                    
           int*   _PtSign
         );
 
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_fcvt" ". See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_fcvt_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _fcvt. See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _fcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl fcvt(
            double _Value,
            int    _FractionalDigitCount,
@@ -2486,21 +2314,21 @@ extern "C++"                                                                    
           int*   _PtSign
         );
 
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_gcvt" ". See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_fcvt_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _gcvt. See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _fcvt_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl gcvt(
                             double _Value,
                             int    _DigitCount,
             char*  _DstBuf
         );
 
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_itoa" ". See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_itoa_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _itoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl itoa(
                             int   _Value,
             char* _Buffer,
                             int   _Radix
         );
 
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_ltoa" ". See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_ltoa_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ltoa. See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _ltoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl ltoa(
                             long  _Value,
             char* _Buffer,
@@ -2508,14 +2336,14 @@ extern "C++"                                                                    
         );
 
 
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_swab" ". See online help for details."))
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _swab. See online help for details."))
      void __cdecl swab(
           char* _Buf1,
           char* _Buf2,
                                      int   _SizeInBytes
         );
 
-    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_ultoa" ". See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using "                    "_ultoa_s"                                                                 " instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. "             "See online help for details."))
+    __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ultoa. See online help for details.")) __declspec(deprecated("This function or variable may be unsafe. Consider using _ultoa_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details."))
      char* __cdecl ultoa(
                             unsigned long _Value,
             char*         _Buffer,
@@ -2523,7 +2351,7 @@ extern "C++"                                                                    
         );
 
 
-      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C "             "and C++ conformant name: " "_putenv" ". See online help for details."))
+      __declspec(deprecated("The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _putenv. See online help for details."))
      int __cdecl putenv(
           char const* _EnvString
         );
@@ -2534,6 +2362,6 @@ extern "C++"                                                                    
 
 
 
-}                             __pragma(pack(pop))
+}                             
 
 

@@ -14,7 +14,7 @@ bool EvaluateBooleanConstantExpression(Node* constantExpression, EvaluationConte
     Value* value = EvaluateConstantExpression(constantExpression, context);
     if (!value)
     {
-        std::string error = "could not evaluate expression: " + pp->FileName() + ":" + std::to_string(pp->LineNumber());
+        std::string error = "could not evaluate expression: " + pp->FileName() + ":" + std::to_string(pp->GetLineIndex() + 1);
         pp->AddError(error);
         return false;
     }

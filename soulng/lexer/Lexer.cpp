@@ -218,6 +218,57 @@ int Lexer::GetKeywordToken(const Lexeme& lexeme) const
     }
 }
 
+std::string Lexer::MappedFileName(const SourcePos& sourcePos) const
+{
+    SourceInfo sourceInfo;
+    if (lineMapper)
+    {
+        sourceInfo = lineMapper->GetSourceInfo(sourcePos);
+    }
+    if (!sourceInfo.fileName.empty())
+    {
+        return sourceInfo.fileName;
+    }
+    else
+    {
+        return FileName();
+    }
+}
+
+std::string Lexer::MappedFileLine(const SourcePos& sourcePos) const
+{
+    SourceInfo sourceInfo;
+    if (lineMapper)
+    {
+        sourceInfo = lineMapper->GetSourceInfo(sourcePos);
+    }
+    if (sourceInfo.lineNumber && !sourceInfo.fileName.empty())
+    {
+        return sourceInfo.fileName + ":" + std::to_string(sourceInfo.lineNumber);
+    }
+    else
+    {
+        return FileName() + ":" + std::to_string(line);
+    }
+}
+
+int Lexer::MappedLineNumber(const SourcePos& sourcePos) const
+{
+    SourceInfo sourceInfo;
+    if (lineMapper)
+    {
+        sourceInfo = lineMapper->GetSourceInfo(sourcePos);
+    }
+    if (sourceInfo.lineNumber)
+    {
+        return sourceInfo.lineNumber;
+    }
+    else
+    {
+        return line;
+    }
+}
+
 void Lexer::ConvertExternal(Span& span)
 {
     Token startToken = GetToken(span.start);
@@ -367,6 +418,27 @@ std::u32string Lexer::ErrorLines(const Token& token) const
     return lines;
 }
 
+std::string Lexer::MappedErrorLines(const Token& token) const
+{
+    SourceInfo sourceInfo;
+    if (lineMapper)
+    {
+        const char32_t* lineStart = LineStart(start, token.match.begin);
+        SourcePos sourcePos(-1, token.line, token.match.begin - lineStart);
+        sourceInfo = lineMapper->GetSourceInfo(sourcePos);
+    }
+    if (sourceInfo.lineNumber)
+    {
+        const char32_t* lineStart = LineStart(start, token.match.begin);
+        std::string caretLine = std::string(token.match.begin - lineStart, ' ') + std::string(std::max(static_cast<int64_t>(1), token.match.end - token.match.begin), '^');
+        return sourceInfo.sourceLine + caretLine;
+    }
+    else
+    {
+        return ToUtf8(ErrorLines(token));
+    }
+}
+
 std::u32string Lexer::ErrorLines(const Span& span) const
 {
     std::u32string lines;
@@ -435,9 +507,10 @@ std::string Lexer::GetFarthestError() const
     std::string parserStateStr = GetParserStateStr();
     if (lineMapper)
     {
-        SourceInfo sourceInfo = lineMapper->GetSourceInfo(token.line);
         const char32_t* lineStart = LineStart(start, token.match.begin);
-        std::string caretLine = std::string(token.match.begin - lineStart, ' ') + std::string(std::max(static_cast<int64_t>(1), token.match.end - token.match.begin), '^');
+        SourcePos sourcePos(-1, token.line, token.match.begin - lineStart);
+        SourceInfo sourceInfo = lineMapper->GetSourceInfo(sourcePos);
+        std::string caretLine = std::string(sourcePos.col - 1, ' ') + std::string(std::max(static_cast<int64_t>(1), token.match.end - token.match.begin), '^');
         return "parsing error at '" + sourceInfo.fileName + ":" + std::to_string(sourceInfo.lineNumber) + ":\n" +
             sourceInfo.sourceLine + caretLine + "\n" + parserStateStr;
     }

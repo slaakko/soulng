@@ -35,7 +35,7 @@ expressions
     nondigit = "[a-zA-Z_]";
     identifiernondigit = "{nondigit}|{univcn}";
     sign = "\+|-";
-    ppnumber = "(({digit}|')+\.?|\.({digit}|')+)([eEpP]{sign}|{identifiernondigit})*";
+    ppnumber = "(({digit}|')+\.?|\.({digit}|')+)([eEpP]{sign}|{digit}|{identifiernondigit})*";
     octaldigit = "[0-7]";
     simpleescape = "\\['\"\?\\abfnrtv]";
     octalescape = "\\{octaldigit}|\\{octaldigit}{octaldigit}|\\{octaldigit}{octaldigit}{octaldigit}";

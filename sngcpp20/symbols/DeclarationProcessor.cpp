@@ -30,6 +30,10 @@ public:
     };
     DeclarationProcessorVisitor(Context* context_);
     void Visit(SimpleDeclarationNode& node) override;
+
+    void Visit(ClassSpecifierNode& node);
+    void Visit(EnumSpecifierNode& node);
+
     void Visit(StaticNode& node) override;
     void Visit(ThreadLocalNode& node) override;
     void Visit(ExternNode& node) override;
@@ -97,6 +101,16 @@ void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
 {
     ProcessDeclSpecifiers(node.DeclarationSpecifiers());
     ProcesInitDeclarators(node.InitDeclaratorList());
+}
+
+void DeclarationProcessorVisitor::Visit(ClassSpecifierNode& node)
+{
+    // todo
+}
+
+void DeclarationProcessorVisitor::Visit(EnumSpecifierNode& node)
+{
+    // todo
 }
 
 void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)

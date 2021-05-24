@@ -6,7 +6,7 @@
 #ifndef SNGCPP_PP_MACRO_INCLUDED
 #define SNGCPP_PP_MACRO_INCLUDED
 #include <sngcpp20/pp/PPApi.hpp>
-#include <soulng/lexer/Token.hpp>
+#include <soulng/lexer/Lexer.hpp>
 #include <map>
 #include <vector>
 
@@ -28,7 +28,7 @@ public:
     virtual ~Macro();
     virtual bool IsObjectMacro() const { return false; }
     virtual bool IsFunctionMacro() const { return false; }
-    virtual std::vector<Token>::const_iterator Expand(std::vector<Token>::const_iterator i, std::vector<Token>::const_iterator e, std::vector<Token>& expandedTokens, PP* pp);
+    virtual int Expand(int i, int e, const std::vector<Token>& tokens, soulng::lexer::Lexer* lexer, std::vector<Token>& expandedTokens, PP* pp, bool& end);
     virtual std::string ToString() const = 0;
     const Lexeme& Name() const { return name; }
     const std::string& FileName() const { return fileName; }
@@ -49,7 +49,7 @@ public:
     const std::vector<Token>& ReplacementList() const { return replacementList; }
     void SetValue(const Token& value);
     void SetReplacementList(const std::vector<Token>& replacementList_);
-    std::vector<Token>::const_iterator Expand(std::vector<Token>::const_iterator i, std::vector<Token>::const_iterator e, std::vector<Token>& expandedTokens, PP* pp) override;
+    int Expand(int i, int e, const std::vector<Token>& tokens, soulng::lexer::Lexer* lexer, std::vector<Token>& expandedTokens, PP* pp, bool& end) override;
     std::string ToString() const override;
 private:
     std::vector<Token> replacementList;
@@ -64,7 +64,7 @@ public:
     bool MakeParamIndexMap();
     const std::vector<Token>& Parameters() const { return paramList; }
     const std::vector<Token>& ReplacementList() const { return replacementList; }
-    std::vector<Token>::const_iterator Expand(std::vector<Token>::const_iterator i, std::vector<Token>::const_iterator e, std::vector<Token>& expandedTokens, PP* pp) override;
+    int Expand(int i, int e, const std::vector<Token>& tokens, soulng::lexer::Lexer* lexer, std::vector<Token>& expandedTokens, PP* pp, bool& end) override;
     std::string ToString() const override;
     int GetParamIndex(const Lexeme& id) const;
     bool IsVariableArgs() const { return variableArgs; }
@@ -76,6 +76,7 @@ private:
 };
 
 PP_API std::u32string ToString(const std::vector<Token>& replacementList);
+PP_API std::u32string NoCommentString(const std::vector<Token>& replacementList);
 
 } // namespace sngcpp::pp
 

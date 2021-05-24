@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AliasTypeSymbol.hpp" />
+    <ClInclude Include="Class.hpp" />
     <ClInclude Include="ClassTypeSymbol.hpp" />
     <ClInclude Include="CompoundStatementSymbol.hpp" />
     <ClInclude Include="CompoundTypeSymbol.hpp" />
@@ -173,7 +174,6 @@
     <ClInclude Include="Scope.hpp" />
     <ClInclude Include="ScopeResolver.hpp" />
     <ClInclude Include="Symbol.hpp" />
-    <ClInclude Include="SymbolFactory.hpp" />
     <ClInclude Include="SymbolsApi.hpp" />
     <ClInclude Include="SymbolTable.hpp" />
     <ClInclude Include="TypeSymbol.hpp" />
@@ -182,6 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AliasTypeSymbol.cpp" />
+    <ClCompile Include="Class.cpp" />
     <ClCompile Include="ClassTypeSymbol.cpp" />
     <ClCompile Include="CompoundStatementSymbol.cpp" />
     <ClCompile Include="CompoundTypeSymbol.cpp" />
@@ -198,7 +199,6 @@
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="ScopeResolver.cpp" />
     <ClCompile Include="Symbol.cpp" />
-    <ClCompile Include="SymbolFactory.cpp" />
     <ClCompile Include="SymbolTable.cpp" />
     <ClCompile Include="TypeSymbol.cpp" />
     <ClCompile Include="Value.cpp" />

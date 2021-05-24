@@ -210,6 +210,17 @@ std::unique_ptr<PPResult> Preprocess(const std::string& filePath, std::ostream& 
     {
         Lexeme resultText = result->ResultText();
         stream << ToUtf8(resultText.ToString()) << std::endl;
+        if ((options & Options::printMacros) != Options::none)
+        {
+            stream << ToUtf8(result->Macros().ToString()) << std::endl;
+        }
+        if (!result->Errors().empty())
+        {
+            for (const auto& error : result->Errors())
+            {
+                stream << error << std::endl;
+            }
+        }
         if (verbose)
         {
             if (!outFilePath.empty())

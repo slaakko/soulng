@@ -342,8 +342,6 @@ extern "C" {
     
 
 
-
-
      
  
 
@@ -427,13 +425,11 @@ extern "C" {
 
 
 
-
-
    
 
 
 
-__pragma(pack(push, 8))         extern "C" {
+         extern "C" {
 
 
 
@@ -496,7 +492,7 @@ __pragma(pack(push, 8))         extern "C" {
 extern uintptr_t __security_cookie;
 
 
-}                             __pragma(pack(pop))
+}                             
 
 
 

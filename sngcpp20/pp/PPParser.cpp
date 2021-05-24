@@ -5,6 +5,7 @@
 
 #include <sngcpp20/pp/PPParser.hpp>
 #include <sngcpp20/pp/PPTokens.hpp>
+#include <sngcpp20/pp/TextTokens.hpp>
 #include <sngcpp20/pp/Scan.hpp>
 #include <sngcpp20/pp/Util.hpp>
 #include <soulng/util/Unicode.hpp>
@@ -12,6 +13,14 @@
 namespace sngcpp::pp {
 
 using namespace soulng::unicode;
+
+void SkipPPTokens(PPLexer& lexer)
+{
+    while (*lexer != PPTokens::END && *lexer != PPTokens::NEWLINE)
+    {
+        ++lexer;
+    }
+}
 
 std::string ParseAngleHeaderName(const soulng::lexer::Token& headerNameToken, PP* pp)
 {
@@ -116,7 +125,7 @@ void OptWs(PPLexer& lexer)
             }
             else
             {
-                std::string error = "error: open block comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->LineNumber());
+                std::string error = "error: open block comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
                 lexer.pp->AddError(error);
                 return;
             }
@@ -130,7 +139,7 @@ void OptWs(PPLexer& lexer)
             }
             else
             {
-                std::string error = "internal error: invalid line comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->LineNumber());
+                std::string error = "internal error: invalid line comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
                 lexer.pp->AddError(error);
                 return;
             }
@@ -315,10 +324,47 @@ bool ParseEndifKeyword(PPLexer& lexer)
 
 bool ParseReplacementList(PPLexer& lexer, std::vector<Token>& replacementList)
 {
-    while (*lexer != PPTokens::END && *lexer != PPTokens::LINECOMMENT && *lexer != PPTokens::BEGINBLOCKCOMMENT && *lexer != PPTokens::NEWLINE)
+    while (*lexer != PPTokens::END && *lexer != PPTokens::NEWLINE)
     {
-        replacementList.push_back(ConvertPPTokenToTextToken(lexer.GetToken(lexer.GetPos())));
-        ++lexer;
+        if (*lexer == PPTokens::BEGINBLOCKCOMMENT)
+        {
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanBlockComment(lexer, token))
+            {
+                Token spaceToken(TextTokens::WS, lexer.pp->Space(), lexer.pp->LineNumber());
+                replacementList.push_back(spaceToken);
+                int n = GetNumberOfNewLines(token.match);
+                lexer.pp->SetLineIndex(lexer.pp->GetLineIndex() + n);
+                ++lexer;
+            }
+            else
+            {
+                std::string error = "error: open block comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
+                lexer.pp->AddError(error);
+                return false;
+            }
+        }
+        else if (*lexer == PPTokens::LINECOMMENT)
+        {
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanLineCommentWithoutNewLine(lexer, token))
+            {
+                Token spaceToken(TextTokens::WS, lexer.pp->Space(), lexer.pp->LineNumber());
+                replacementList.push_back(spaceToken);
+                ++lexer;
+            }
+            else
+            {
+                std::string error = "internal error: invalid line comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
+                lexer.pp->AddError(error);
+                return false;
+            }
+        }
+        else
+        {
+            replacementList.push_back(ConvertPPTokenToTextToken(lexer.GetToken(lexer.GetPos())));
+            ++lexer;
+        }
     }
     replacementList = TrimTextTokens(replacementList);
     return true;
@@ -358,49 +404,60 @@ bool ParseDefine(PPLexer& lexer)
         OptWs(lexer);
         if (ParseDefineKeyword(lexer))
         {
-            OptWs(lexer);
-            Token id;
-            if (ParseId(lexer, id))
+            if (lexer.pp->Skip())
             {
-                if (ParseLParen(lexer))
+                SkipPPTokens(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    OptWs(lexer);
-                    std::vector<Token> paramList;
-                    if (ParseMacroParams(lexer, paramList))
+                    return true;
+                }
+            }
+            else
+            {
+                OptWs(lexer);
+                Token id;
+                if (ParseId(lexer, id))
+                {
+                    if (ParseLParen(lexer))
                     {
                         OptWs(lexer);
-                        if (ParseRParen(lexer))
+                        std::vector<Token> paramList;
+                        if (ParseMacroParams(lexer, paramList))
                         {
-                            std::vector<Token> replacementList;
-                            if (ParseReplacementList(lexer, replacementList))
+                            OptWs(lexer);
+                            if (ParseRParen(lexer))
                             {
-                                OptWs(lexer);
-                                if (ParseNewLine(lexer))
+                                std::vector<Token> replacementList;
+                                if (ParseReplacementList(lexer, replacementList))
                                 {
-                                    if (!lexer.pp->Skip())
+                                    OptWs(lexer);
+                                    if (ParseNewLine(lexer))
                                     {
-                                        lexer.pp->DefineFunctionMacro(id.match, paramList, replacementList, ToString(replacementList));
+                                        if (!lexer.pp->Skip())
+                                        {
+                                            lexer.pp->DefineFunctionMacro(id.match, paramList, replacementList, NoCommentString(replacementList));
+                                        }
+                                        return true;
                                     }
-                                    return true;
                                 }
                             }
                         }
                     }
-                }
-                else
-                {
-                    OptWs(lexer);
-                    std::vector<Token> replacementList;
-                    if (ParseReplacementList(lexer, replacementList))
+                    else
                     {
                         OptWs(lexer);
-                        if (ParseNewLine(lexer))
+                        std::vector<Token> replacementList;
+                        if (ParseReplacementList(lexer, replacementList))
                         {
-                            if (!lexer.pp->Skip())
+                            OptWs(lexer);
+                            if (ParseNewLine(lexer))
                             {
-                                lexer.pp->DefineObjectMacro(id.match, replacementList, ToString(replacementList));
+                                if (!lexer.pp->Skip())
+                                {
+                                    lexer.pp->DefineObjectMacro(id.match, replacementList, NoCommentString(replacementList));
+                                }
+                                return true;
                             }
-                            return true;
                         }
                     }
                 }
@@ -419,18 +476,29 @@ bool ParseUndef(PPLexer& lexer)
         OptWs(lexer);
         if (ParseUndefKeyword(lexer))
         {
-            OptWs(lexer);
-            Token id;
-            if (ParseId(lexer, id))
+            if (lexer.pp->Skip())
             {
-                OptWs(lexer);
+                SkipPPTokens(lexer);
                 if (ParseNewLine(lexer))
                 {
-                    if (!lexer.pp->Skip())
-                    {
-                        lexer.pp->Undefine(id.match);
-                    }
                     return true;
+                }
+            }
+            else
+            {
+                OptWs(lexer);
+                Token id;
+                if (ParseId(lexer, id))
+                {
+                    OptWs(lexer);
+                    if (ParseNewLine(lexer))
+                    {
+                        if (!lexer.pp->Skip())
+                        {
+                            lexer.pp->Undefine(id.match);
+                        }
+                        return true;
+                    }
                 }
             }
         }
@@ -466,18 +534,29 @@ bool ParseLine(PPLexer& lexer)
         OptWs(lexer);
         if (ParseLineKeyword(lexer))
         {
-            OptWs(lexer);
-            std::vector<Token> tokens;
-            if (ParsePPTokens(lexer, tokens))
+            if (lexer.pp->Skip())
             {
-                OptWs(lexer);
+                SkipPPTokens(lexer);
                 if (ParseNewLine(lexer))
                 {
-                    if (!lexer.pp->Skip())
-                    {
-                        lexer.pp->Line(tokens);
-                    }
                     return true;
+                }
+            }
+            else
+            {
+                OptWs(lexer);
+                std::vector<Token> tokens;
+                if (ParsePPTokens(lexer, tokens))
+                {
+                    OptWs(lexer);
+                    if (ParseNewLine(lexer))
+                    {
+                        if (!lexer.pp->Skip())
+                        {
+                            lexer.pp->Line(tokens);
+                        }
+                        return true;
+                    }
                 }
             }
         }
@@ -494,17 +573,28 @@ bool ParseError(PPLexer& lexer)
         OptWs(lexer);
         if (ParseErrorKeyword(lexer))
         {
-            OptWs(lexer);
-            std::vector<Token> tokens;
-            OptPPTokens(lexer, tokens);
-            OptWs(lexer);
-            if (ParseNewLine(lexer))
+            if (lexer.pp->Skip())
             {
-                if (!lexer.pp->Skip())
+                SkipPPTokens(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    lexer.pp->Error(tokens);
+                    return true;
                 }
-                return true;
+            }
+            else
+            {
+                OptWs(lexer);
+                std::vector<Token> tokens;
+                OptPPTokens(lexer, tokens);
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
+                {
+                    if (!lexer.pp->Skip())
+                    {
+                        lexer.pp->Error(tokens);
+                    }
+                    return true;
+                }
             }
         }
     }
@@ -520,17 +610,28 @@ bool ParsePragma(PPLexer& lexer)
         OptWs(lexer);
         if (ParsePragmaKeyword(lexer))
         {
-            OptWs(lexer);
-            std::vector<Token> tokens;
-            OptPPTokens(lexer, tokens);
-            OptWs(lexer);
-            if (ParseNewLine(lexer))
+            if (lexer.pp->Skip())
             {
-                if (!lexer.pp->Skip())
+                SkipPPTokens(lexer);
+                if (ParseNewLine(lexer))
                 {
-                    lexer.pp->Pragma(tokens);
+                    return true;
                 }
-                return true;
+            }
+            else
+            {
+                OptWs(lexer);
+                std::vector<Token> tokens;
+                OptPPTokens(lexer, tokens);
+                OptWs(lexer);
+                if (ParseNewLine(lexer))
+                {
+                    if (!lexer.pp->Skip())
+                    {
+                        lexer.pp->Pragma(tokens);
+                    }
+                    return true;
+                }
             }
         }
     }
@@ -546,18 +647,29 @@ bool ParseInclude(PPLexer& lexer)
         OptWs(lexer);
         if (ParseIncludeKeyword(lexer))
         {
-            OptWs(lexer);
-            std::vector<Token> tokens;
-            if (ParsePPTokens(lexer, tokens))
+            if (lexer.pp->Skip())
             {
-                OptWs(lexer);
+                SkipPPTokens(lexer);
                 if (ParseNewLine(lexer))
                 {
-                    if (!lexer.pp->Skip())
-                    {
-                        lexer.pp->Include(tokens);
-                    }
                     return true;
+                }
+            }
+            else
+            {
+                OptWs(lexer);
+                std::vector<Token> tokens;
+                if (ParsePPTokens(lexer, tokens))
+                {
+                    OptWs(lexer);
+                    if (ParseNewLine(lexer))
+                    {
+                        if (!lexer.pp->Skip())
+                        {
+                            lexer.pp->Include(tokens);
+                        }
+                        return true;
+                    }
                 }
             }
         }
@@ -603,6 +715,10 @@ bool ParseIfndef(PPLexer& lexer)
             Token id;
             if (ParseId(lexer, id))
             {
+                if (id.match.ToString() == U"_STD_ATOMIC_ALWAYS_USE_CMPXCHG16B")
+                {
+                    int x = 0;
+                }
                 OptWs(lexer);
                 if (ParseNewLine(lexer))
                 {

@@ -19,6 +19,7 @@ PP_API Token Stringize(const std::vector<Token>& tokens, PP* pp);
 PP_API std::vector<Token> ConcatenateTokens(const std::vector<Token>& tokens, PP* pp);
 PP_API bool ContainsHash(const std::vector<Token>& tokens);
 PP_API bool ContainsHashHash(const std::vector<Token>& tokens);
+PP_API bool IsMSPragma(const std::vector<Token>& tokens, const Lexeme& mspragmaLexeme, std::vector<Token>& pragmaTokens, int& newLines);
 
 } // namespace sngcpp::pp
 

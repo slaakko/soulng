@@ -51,12 +51,12 @@ void Context::PopNode()
     nodeStack.pop();
 }
 
-std::string GetFileName(Context* context)
+std::string MappedFileName(Context* context, const soulng::lexer::SourcePos& sourcePos)
 {
     soulng::lexer::Lexer* lexer = context->GetLexer();
     if (lexer)
     {
-        return lexer->FileName();
+        return lexer->MappedFileName(sourcePos);
     }
     else
     {
@@ -64,17 +64,43 @@ std::string GetFileName(Context* context)
     }
 }
 
-std::string ErrorLines(Context* context, const soulng::lexer::SourcePos& sourcePos)
+std::string MappedFileLine(Context* context, const SourcePos& sourcePos)
+{
+    soulng::lexer::Lexer* lexer = context->GetLexer();
+    if (lexer)
+    {
+        return lexer->MappedFileLine(sourcePos);
+    }
+    else
+    {
+        return std::string();
+    }
+}
+
+std::string MappedErrorLines(Context* context, const soulng::lexer::SourcePos& sourcePos)
 {
     soulng::lexer::Lexer* lexer = context->GetLexer();
     if (lexer)
     {
         soulng::lexer::Token token = lexer->GetToken(sourcePos.pos);
-        return ToUtf8(lexer->ErrorLines(token));
+        return lexer->MappedErrorLines(token);
     }
     else
     {
         return std::string();
+    }
+}
+
+int MappedLineNumber(Context* context, const soulng::lexer::SourcePos& sourcePos)
+{
+    soulng::lexer::Lexer* lexer = context->GetLexer();
+    if (lexer)
+    {
+        return lexer->MappedLineNumber(sourcePos);
+    }
+    else
+    {
+        return sourcePos.line;
     }
 }
 

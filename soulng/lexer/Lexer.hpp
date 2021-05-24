@@ -76,7 +76,7 @@ class SOULNG_LEXER_API LineMapper
 {
 public:
     virtual ~LineMapper();
-    virtual SourceInfo GetSourceInfo(int line) = 0;
+    virtual SourceInfo GetSourceInfo(const SourcePos& sourcePos) = 0;
 };
 
 class SOULNG_LEXER_API Lexer
@@ -97,6 +97,9 @@ public:
     int GetKeywordToken(const Lexeme& lexeme) const;
     void Retract() { token.match.end = pos; }
     const std::string& FileName() const { return fileName; }
+    std::string MappedFileName(const SourcePos& sourcePos) const;
+    std::string MappedFileLine(const SourcePos& sourcePos) const;
+    int MappedLineNumber(const SourcePos& sourcePos) const;
     Span GetSpan() const { return Span(fileIndex, line, static_cast<int32_t>(GetPos())); }
     void ConvertExternal(Span& span);
     Token GetToken(int64_t pos) const;
@@ -107,6 +110,7 @@ public:
     std::u32string GetMatch(const Span& span) const;
     std::u32string GetMatch(int64_t pos) const;
     std::u32string ErrorLines(const Token& token) const;
+    std::string MappedErrorLines(const Token& token) const;
     std::u32string ErrorLines(const Span& span) const;
     void GetColumns(const Span& span, int32_t& startCol, int32_t& endCol) const;
     void ThrowExpectationFailure(const Span& span, const std::u32string& name);
@@ -145,7 +149,7 @@ public:
     Lexeme lexeme;
     std::vector<Token>::iterator Current() { return current; }
     std::vector<Token>& Tokens() { return tokens; }
-    const LineMapper* GetLineMapper() const { return lineMapper; }
+    LineMapper* GetLineMapper() { return lineMapper; }
     void SetLineMapper(LineMapper* lineMapper_) { lineMapper = lineMapper_; }
 private:
     std::u32string content;
