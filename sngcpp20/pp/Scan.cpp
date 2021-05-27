@@ -5,6 +5,7 @@
 
 #include <sngcpp20/pp/Scan.hpp>
 #include <sngcpp20/pp/TextTokens.hpp>
+#include <sngcpp20/parser/LiteralTokenParser.hpp>
 
 namespace sngcpp::pp {
 
@@ -18,6 +19,7 @@ bool ScanRawStringLiteral(soulng::lexer::Lexer& lexer, soulng::lexer::Token& tok
     int state = 0;
     int index = 0;
     std::u32string dm;
+    EncodingPrefix encodingPrefix = sngcpp::par::ParseEncodingPrefix(p, e);
     while (p != e && !stop && !valid)
     {
         switch (state)
@@ -28,7 +30,7 @@ bool ScanRawStringLiteral(soulng::lexer::Lexer& lexer, soulng::lexer::Token& tok
                 {
                     state = 1;
                 }
-                else if (*p != 'L')
+                else 
                 {
                     stop = true;
                 }
