@@ -48,6 +48,7 @@ public:
     Lexeme Macros() const { return macros; }
     const std::vector<std::string>& Errors() const { return errors; }
     bool IsEmpty() const { return empty; }
+    const std::vector<std::string>& FileNames() const { return fileNames; }
     const PPSourceLocation* GetSourceLocation(int line) const;
     const LogicalPhysicalMapping* GetMapping(int fileIndex) const;
     std::string GetMappedFileName(int fileIndex) const;

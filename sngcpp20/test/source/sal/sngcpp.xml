@@ -1,9 +1,0 @@
-<sngcpp>
-    <project name="sal">
-        <files>
-            <file name="s.cpp"/>
-            <file name="s.h"/>
-            <file name="stdlib.h"/>
-        </files>
-    </project>
-</sngcpp>

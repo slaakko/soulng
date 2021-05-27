@@ -386,10 +386,14 @@ extern "C" {
 extern "C" {
 
 
-        typedef unsigned int uintptr_t;
+        typedef unsigned __int64  uintptr_t;
 
         typedef char* va_list;
 
+
+
+
+    void __cdecl __va_start(va_list* , ...);
 
 
 
@@ -451,28 +455,25 @@ extern "C" {
 
 
  
-     typedef unsigned int     size_t;
-    typedef int              ptrdiff_t;
-    typedef int              intptr_t;
+     typedef unsigned __int64 size_t;
+    typedef __int64          ptrdiff_t;
+    typedef __int64          intptr_t;
 
     typedef bool  __vcrt_bool;
 
  
 
 
-     typedef unsigned short wchar_t;
-
+ 
 
 
 
     extern "C++"
     {
         template <typename _CountofType, size_t _SizeOfArray>
-        char (*__countof_helper( _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
+        char (*__countof_helper(__unaligned _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
 
     }
-
-
 
 
 

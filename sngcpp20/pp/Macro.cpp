@@ -282,12 +282,19 @@ int FunctionMacro::Expand(int i, int e, const std::vector<Token>& tokens, soulng
         }
         else
         {
-            if (args.size() != paramList.size())
+            if (args.size() > paramList.size())
             {
                 std::string error = "invalid invocation of function macro '" + ToUtf8(Name().ToString()) + "' in '" + pp->FileName() + ":" + std::to_string(pp->GetLineIndex() + 1) +
                     "': wrong number of arguments: note: definition in '" + FileName() + ":" + std::to_string(LineNumber()) + "'";
                 pp->AddError(error);
                 return e;
+            }
+            else if (args.size() < paramList.size())
+            {
+                while (args.size() < paramList.size())
+                {
+                    args.push_back(MacroArgument());
+                }
             }
         }
         std::vector<Token>::const_iterator ri = replacementList.cbegin();

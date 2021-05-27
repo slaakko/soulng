@@ -387,10 +387,14 @@ extern "C" {
 extern "C" {
 
 
-        typedef unsigned int uintptr_t;
+        typedef unsigned __int64  uintptr_t;
 
         typedef char* va_list;
 
+
+
+
+    void __cdecl __va_start(va_list* , ...);
 
 
 
@@ -452,28 +456,25 @@ extern "C" {
 
 
  
-     typedef unsigned int     size_t;
-    typedef int              ptrdiff_t;
-    typedef int              intptr_t;
+     typedef unsigned __int64 size_t;
+    typedef __int64          ptrdiff_t;
+    typedef __int64          intptr_t;
 
     typedef bool  __vcrt_bool;
 
  
 
 
-     typedef unsigned short wchar_t;
-
+ 
 
 
 
     extern "C++"
     {
         template <typename _CountofType, size_t _SizeOfArray>
-        char (*__countof_helper( _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
+        char (*__countof_helper(__unaligned _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
 
     }
-
-
 
 
 
@@ -915,7 +916,7 @@ typedef _Mbstatet mbstate_t;
 
 
      
-      wchar_t* __cdecl _wtempnam(
+     __declspec(allocator) wchar_t* __cdecl _wtempnam(
           wchar_t const* _Directory,
           wchar_t const* _FilePrefix
         );
@@ -1128,9 +1129,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwprintf_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1142,9 +1143,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfwprintf_l(_Stream, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1157,9 +1158,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwprintf_s_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1172,9 +1173,9 @@ typedef _Mbstatet mbstate_t;
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfwprintf_s_l(_Stream, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -1188,9 +1189,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwprintf_p_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1202,9 +1203,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfwprintf_p_l(_Stream, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1216,9 +1217,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1229,9 +1230,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfwprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1243,9 +1244,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1257,9 +1258,9 @@ typedef _Mbstatet mbstate_t;
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfwprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -1272,9 +1273,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1285,9 +1286,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfwprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1397,9 +1398,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwscanf_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1411,9 +1412,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfwscanf_l(_Stream, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1426,9 +1427,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwscanf_s_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1441,9 +1442,9 @@ typedef _Mbstatet mbstate_t;
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfwscanf_s_l(_Stream, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -1456,9 +1457,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1469,9 +1470,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfwscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1483,9 +1484,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfwscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1497,9 +1498,9 @@ typedef _Mbstatet mbstate_t;
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfwscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -1814,9 +1815,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = __vswprintf_l(_Buffer, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1831,9 +1832,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1846,9 +1847,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = __vswprintf_l(_Buffer, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1862,9 +1863,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1883,9 +1884,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vswprintf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1899,14 +1900,14 @@ typedef _Mbstatet mbstate_t;
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vswprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
 
-    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl swprintf_s(            wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));                                                                                                  return vswprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
+    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl swprintf_s(            wchar_t (&_Buffer)[_Size],     wchar_t const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                  return vswprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
 
      
     
@@ -1919,9 +1920,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vswprintf_p_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1935,9 +1936,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vswprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1952,9 +1953,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1968,9 +1969,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vswprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -1985,11 +1986,11 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
 
         _Result = _vsnwprintf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2003,11 +2004,11 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
 
         _Result = _vsnwprintf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2023,9 +2024,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2040,13 +2041,13 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsnwprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
-    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snwprintf_s(            wchar_t (&_Buffer)[_Size],                            size_t _BufferCount,     wchar_t const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));                                                                                                                   return _vsnwprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
+    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snwprintf_s(            wchar_t (&_Buffer)[_Size],                            size_t _BufferCount,     wchar_t const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                                   return _vsnwprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
 
      
     __inline int __cdecl _scwprintf_l(
@@ -2056,9 +2057,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vscwprintf_l(_Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2070,9 +2071,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vscwprintf_l(_Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2085,9 +2086,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vscwprintf_p_l(_Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2099,9 +2100,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vscwprintf_p_l(_Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2116,9 +2117,9 @@ typedef _Mbstatet mbstate_t;
             {
                 int _Result;
                 va_list _ArgList;
-                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
                 _Result = vswprintf(_Buffer, 2147483647, _Format, _ArgList);
-                __crt_va_end(_ArgList);
+                ((void)(_ArgList = (va_list)0));
                 return _Result;
             }
 
@@ -2141,9 +2142,9 @@ typedef _Mbstatet mbstate_t;
             {
                 int _Result;
                 va_list _ArgList;
-                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+                ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
                 _Result = _vswprintf_l(_Buffer, (size_t)-1, _Format, _Locale, _ArgList);
-                __crt_va_end(_ArgList);
+                ((void)(_ArgList = (va_list)0));
                 return _Result;
             }
 
@@ -2266,9 +2267,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vswscanf_l(_Buffer, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2281,9 +2282,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vswscanf_l(_Buffer, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2297,9 +2298,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vswscanf_s_l(_Buffer, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2313,9 +2314,9 @@ typedef _Mbstatet mbstate_t;
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vswscanf_s_l(_Buffer, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -2331,11 +2332,11 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
 
         _Result = _vsnwscanf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2349,11 +2350,11 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
 
         _Result = _vsnwscanf_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2368,9 +2369,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsnwscanf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2384,9 +2385,9 @@ typedef _Mbstatet mbstate_t;
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsnwscanf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -2755,7 +2756,7 @@ typedef __int64 fpos_t;
 
 
      
-      char* __cdecl _tempnam(
+     __declspec(allocator) char* __cdecl _tempnam(
           char const* _DirectoryName,
           char const* _FilePrefix
         );
@@ -3047,9 +3048,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfprintf_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3061,9 +3062,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfprintf_l(_Stream, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3082,9 +3083,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfprintf_s_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3097,9 +3098,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfprintf_s_l(_Stream, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -3113,9 +3114,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfprintf_p_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3127,9 +3128,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfprintf_p_l(_Stream, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3141,9 +3142,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfprintf_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3154,9 +3155,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfprintf_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3168,9 +3169,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfprintf_s_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3182,9 +3183,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfprintf_s_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -3197,9 +3198,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfprintf_p_l((__acrt_iob_func(1)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3210,9 +3211,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfprintf_p_l((__acrt_iob_func(1)), _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3323,9 +3324,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfscanf_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3337,9 +3338,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfscanf_l(_Stream, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3352,9 +3353,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfscanf_s_l(_Stream, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3367,9 +3368,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfscanf_s_l(_Stream, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -3382,9 +3383,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfscanf_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3395,9 +3396,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vfscanf_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3409,9 +3410,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vfscanf_s_l((__acrt_iob_func(0)), _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3423,9 +3424,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vfscanf_s_l((__acrt_iob_func(0)), _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -3738,11 +3739,11 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
 
         _Result = _vsprintf_l(_Buffer, _Format, _Locale, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3755,11 +3756,11 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
 
         _Result = _vsprintf_l(_Buffer, _Format, 0, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3776,9 +3777,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsprintf_s_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3793,14 +3794,14 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
             _Result = _vsprintf_s_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
 
-    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl sprintf_s(            char (&_Buffer)[_Size],     char const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));                                                                                                  return vsprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
+    extern "C++"                                                                                                                       {                                                                                                                                      template <size_t _Size>                                                                                                            inline                                                                                                                                      int __cdecl sprintf_s(            char (&_Buffer)[_Size],     char const* _Format, ...) throw()                              {                                                                                                                                      va_list _ArgList;                                                                                                                  ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                  return vsprintf_s(_Buffer, _Size, _Format, _ArgList);                                                                              }                                                                                                                              }
 
      
     
@@ -3813,9 +3814,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsprintf_p_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3829,9 +3830,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsprintf_p_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3846,11 +3847,11 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
 
         _Result = _vsnprintf_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3865,9 +3866,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3881,9 +3882,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsnprintf(_Buffer, _BufferCount, _Format, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3900,9 +3901,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsnprintf_c_l(_Buffer, _BufferCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3916,9 +3917,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsnprintf_c_l(_Buffer, _BufferCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3934,9 +3935,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3951,13 +3952,13 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsnprintf_s_l(_Buffer, _BufferCount, _MaxCount, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
-    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));                                                                                                                   return _vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
+    extern "C++"                                                                                                                                        {                                                                                                                                                       template <size_t _Size>                                                                                                                             inline                                                                                                                                                       int __cdecl _snprintf_s(            char (&_Buffer)[_Size],                            size_t _BufferCount,     char const* _Format, ...) throw()                               {                                                                                                                                                       va_list _ArgList;                                                                                                                                   ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));                                                                                                                   return _vsnprintf_s(_Buffer, _Size, _BufferCount, _Format, _ArgList);                                                                                       }                                                                                                                                               }
 
     
     __inline int __cdecl _scprintf_l(
@@ -3967,9 +3968,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vscprintf_l(_Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3980,9 +3981,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vscprintf_l(_Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -3994,9 +3995,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vscprintf_p_l(_Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4007,9 +4008,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vscprintf_p(_Format, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4083,9 +4084,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsscanf_l(_Buffer, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4097,9 +4098,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
         _Result = _vsscanf_l(_Buffer, _Format, 0, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4112,9 +4113,9 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
         _Result = _vsscanf_s_l(_Buffer, _Format, _Locale, _ArgList);
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4127,11 +4128,11 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
         {
             int _Result;
             va_list _ArgList;
-            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+            ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
 
             _Result = vsscanf_s(_Buffer, _Format, _ArgList);
 
-            __crt_va_end(_ArgList);
+            ((void)(_ArgList = (va_list)0));
             return _Result;
         }
 
@@ -4147,13 +4148,13 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
 
         _Result = __stdio_common_vsscanf(
             (*__local_stdio_scanf_options ()),
             _Buffer, _BufferCount, _Format, _Locale, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4166,13 +4167,13 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
 
         _Result = __stdio_common_vsscanf(
             (*__local_stdio_scanf_options ()),
             _Buffer, _BufferCount, _Format, 0, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4187,13 +4188,13 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Locale)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Locale)))));
 
         _Result = __stdio_common_vsscanf(
             (*__local_stdio_scanf_options ()) | (1ULL << 0),
             _Buffer, _BufferCount, _Format, _Locale, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 
@@ -4206,13 +4207,13 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
     {
         int _Result;
         va_list _ArgList;
-        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), __crt_va_start_a(_ArgList, _Format)));
+        ((void)(__vcrt_assert_va_start_is_not_reference<decltype(x)>(), ((void)(__va_start(&_ArgList, _Format)))));
 
         _Result = __stdio_common_vsscanf(
             (*__local_stdio_scanf_options ()) | (1ULL << 0),
             _Buffer, _BufferCount, _Format, 0, _ArgList);
 
-        __crt_va_end(_ArgList);
+        ((void)(_ArgList = (va_list)0));
         return _Result;
     }
 

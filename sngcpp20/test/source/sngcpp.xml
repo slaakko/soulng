@@ -2,6 +2,5 @@
     <project name="source">
         <child project="0_preprocessor"/>
         <child project="1_primitive"/>
-        <child project="sal"/>
     </project>
 </sngcpp>

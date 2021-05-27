@@ -18,7 +18,40 @@ void SkipPPTokens(PPLexer& lexer)
 {
     while (*lexer != PPTokens::END && *lexer != PPTokens::NEWLINE)
     {
-        ++lexer;
+        if (*lexer == PPTokens::BEGINBLOCKCOMMENT)
+        {
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanBlockComment(lexer, token))
+            {
+                int n = GetNumberOfNewLines(token.match);
+                lexer.pp->SetLineIndex(lexer.pp->GetLineIndex() + n);
+                ++lexer;
+            }
+            else
+            {
+                std::string error = "error: open block comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
+                lexer.pp->AddError(error);
+                return;
+            }
+        }
+        else if (*lexer == PPTokens::LINECOMMENT)
+        {
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanLineCommentWithoutNewLine(lexer, token))
+            {
+                ++lexer;
+            }
+            else
+            {
+                std::string error = "internal error: invalid line comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
+                lexer.pp->AddError(error);
+                return;
+            }
+        }
+        else
+        {
+            ++lexer;
+        }
     }
 }
 
@@ -509,16 +542,53 @@ bool ParseUndef(PPLexer& lexer)
 
 void OptPPTokens(PPLexer& lexer, std::vector<Token>& tokens)
 {
-    while (*lexer != PPTokens::END && *lexer != PPTokens::LINECOMMENT && *lexer != PPTokens::BEGINBLOCKCOMMENT && *lexer != PPTokens::NEWLINE)
+    while (*lexer != PPTokens::END && *lexer != PPTokens::NEWLINE)
     {
-        tokens.push_back(ConvertPPTokenToTextToken(lexer.GetToken(lexer.GetPos())));
-        ++lexer;
+        if (*lexer == PPTokens::BEGINBLOCKCOMMENT)
+        {
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanBlockComment(lexer, token))
+            {
+                int n = GetNumberOfNewLines(token.match);
+                lexer.pp->SetLineIndex(lexer.pp->GetLineIndex() + n);
+                Token spaceToken(TextTokens::WS, lexer.pp->Space(), lexer.pp->LineNumber());
+                tokens.push_back(spaceToken);
+                ++lexer;
+            }
+            else
+            {
+                std::string error = "error: open block comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
+                lexer.pp->AddError(error);
+                return;
+            }
+        }
+        else if (*lexer == PPTokens::LINECOMMENT)
+        {
+            Token token = lexer.GetToken(lexer.GetPos());
+            if (ScanLineCommentWithoutNewLine(lexer, token))
+            {
+                Token spaceToken(TextTokens::WS, lexer.pp->Space(), lexer.pp->LineNumber());
+                tokens.push_back(spaceToken);
+                ++lexer;
+            }
+            else
+            {
+                std::string error = "internal error: invalid line comment: " + lexer.pp->FileName() + ":" + std::to_string(lexer.pp->GetLineIndex() + 1);
+                lexer.pp->AddError(error);
+                return;
+            }
+        }
+        else
+        {
+            tokens.push_back(ConvertPPTokenToTextToken(lexer.GetToken(lexer.GetPos())));
+            ++lexer;
+        }
     }
 }
 
 bool ParsePPTokens(PPLexer& lexer, std::vector<Token>& tokens)
 {
-    if (*lexer != PPTokens::END && *lexer != PPTokens::LINECOMMENT && *lexer != PPTokens::BEGINBLOCKCOMMENT && *lexer != PPTokens::NEWLINE)
+    if (*lexer != PPTokens::END && *lexer != PPTokens::NEWLINE)
     {
         OptPPTokens(lexer, tokens);
         return true;
@@ -586,7 +656,6 @@ bool ParseError(PPLexer& lexer)
                 OptWs(lexer);
                 std::vector<Token> tokens;
                 OptPPTokens(lexer, tokens);
-                OptWs(lexer);
                 if (ParseNewLine(lexer))
                 {
                     if (!lexer.pp->Skip())
@@ -623,7 +692,6 @@ bool ParsePragma(PPLexer& lexer)
                 OptWs(lexer);
                 std::vector<Token> tokens;
                 OptPPTokens(lexer, tokens);
-                OptWs(lexer);
                 if (ParseNewLine(lexer))
                 {
                     if (!lexer.pp->Skip())
@@ -715,10 +783,6 @@ bool ParseIfndef(PPLexer& lexer)
             Token id;
             if (ParseId(lexer, id))
             {
-                if (id.match.ToString() == U"_STD_ATOMIC_ALWAYS_USE_CMPXCHG16B")
-                {
-                    int x = 0;
-                }
                 OptWs(lexer);
                 if (ParseNewLine(lexer))
                 {

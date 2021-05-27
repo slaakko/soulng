@@ -4,6 +4,7 @@
 // =================================
 
 #include <sngcpp20/pp/PP.hpp>
+#include <sngcpp20/pp/Macro.hpp>
 #include <sngcpp20/pp/Lines.hpp>
 #include <sngcpp20/pp/Scan.hpp>
 #include <sngcpp20/pp/PPLexer.hpp>
@@ -20,9 +21,11 @@
 #include <sngcpp20/symbols/Context.hpp>
 #include <soulng/util/MappedInputFile.hpp>
 #include <soulng/util/Path.hpp>
+#include <soulng/util/TextUtils.hpp>
 #include <soulng/util/Time.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <boost/filesystem.hpp>
+#include <iostream>
 
 namespace sngcpp::pp {
 
@@ -46,8 +49,9 @@ Token CombineStringLitTokens(const Token& left, const Token& right, PP* pp)
     sngcpp::ast::EncodingPrefix commonEncodingPrefix = CommonEncodingPrefix(leftEncodingPrefix, rightEncodingPrefix);
     std::u32string rep = sngcpp::ast::EncodingPrefixStr(commonEncodingPrefix);
     rep.append(1, '"');
-    rep.append(leftNode->Value());
-    rep.append(rightNode->Value());
+    std::u32string value = leftNode->Value();
+    value.append(rightNode->Value());
+    rep.append(StringStr(value));
     rep.append(1, '"');
     Lexeme lexeme = pp->StringsRef().Install(std::move(rep));
     return Token(TextTokens::STRINGLITERAL, lexeme, left.line);
@@ -351,6 +355,8 @@ std::vector<Token> TextTokenToCppTokenMap::ConvertTextTokensToCppTokens(const st
                         break;
                     }
                     case TextTokens::WS:
+                    case TextTokens::BLOCKCOMMENT:
+                    case TextTokens::LINECOMMENT:
                     {
                         break;
                     }
@@ -920,6 +926,16 @@ void PP::DefineObjectMacro(const Lexeme& name, const std::vector<Token>& replace
 
 void PP::DefineFunctionMacro(const Lexeme& name, const std::vector<Token>& paramList, const std::vector<Token>& replacementList, const std::u32string& definitionStr)
 {
+    std::vector<Token> params;
+    for (const Token& param : paramList)
+    {
+        std::vector<Token> p(1, param);
+        std::vector<Token> tokens = MacroExpand(p, nullptr);
+        for (const Token& t : tokens)
+        {
+            params.push_back(t);
+        }
+    }
     Macro* prevMacro = GetMacro(name);
     if (prevMacro)
     {
@@ -933,7 +949,7 @@ void PP::DefineFunctionMacro(const Lexeme& name, const std::vector<Token>& param
         else if (prevMacro->IsFunctionMacro())
         {
             FunctionMacro* functionMacro = static_cast<FunctionMacro*>(prevMacro);
-            if (ToString(functionMacro->Parameters()) != ToString(paramList))
+            if (ToString(functionMacro->Parameters()) != ToString(params))
             {
                 std::string error = "error: function macro '" + ToUtf8(name.ToString()) + "' definition not equal to previous definition: " + fileName + ":" + std::to_string(lineNumber);
                 error.append("\nnote: parameter lists differ: note: previous definition in '" + prevMacro->FileName() + ":" + std::to_string(prevMacro->LineNumber()) + "'");
@@ -950,7 +966,7 @@ void PP::DefineFunctionMacro(const Lexeme& name, const std::vector<Token>& param
     else
     {
         std::vector<Token> definition = MacroExpand(replacementList, nullptr);
-        std::unique_ptr<FunctionMacro> macro(new FunctionMacro(name, fileName, lineNumber, paramList, definition, definitionStr, this));
+        std::unique_ptr<FunctionMacro> macro(new FunctionMacro(name, fileName, lineNumber, params, definition, definitionStr, this));
         if (!macro->MakeParamIndexMap())
         {
             std::string error = "error: duplicate identifier in parameter list of function macro '" + ToUtf8(macro->Name().ToString()) + "' : " + fileName + ":" + std::to_string(lineNumber);
@@ -996,7 +1012,7 @@ void PP::Line(const std::vector<Token>& tokens)
 
 void PP::Error(const std::vector<Token>& tokens)
 {
-    // todo
+    AddError(ToUtf8(ToString(tokens)));
 }
 
 void PP::Pragma(const std::vector<Token>& tokens)
@@ -1013,6 +1029,10 @@ void PP::Pragma(const std::vector<Token>& tokens)
             {
                 AddProcessedHeader(fileName);
             }
+        }
+        else if (tokens.size() >= 1 && tokens.front().match.ToString() == U"message")
+        {
+            std::cout << ToUtf8(ToString(tokens)) << std::endl;
         }
     }
 }
@@ -1302,6 +1322,10 @@ std::unique_ptr<PPResult> Preprocess(const std::string& fileName, PP* pp)
             pp->SetLine(lineIndex + 1);
             Lexeme line = lines[lineIndex];
             std::u32string s = line.ToString();
+            if (s.find(U"#pragma warning(pop) // _UCRT_DISABLED_WARNINGS") != std::u32string::npos)
+            {
+                int x = 0;
+            }
             if (IsPPLine(line))
             {
                 PPLexer lexer(line.begin, lines.End(), fileName, pp->FileIndex());

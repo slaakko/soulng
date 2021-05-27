@@ -28,7 +28,7 @@ bool ScanRawStringLiteral(soulng::lexer::Lexer& lexer, soulng::lexer::Token& tok
                 {
                     state = 1;
                 }
-                else
+                else if (*p != 'L')
                 {
                     stop = true;
                 }

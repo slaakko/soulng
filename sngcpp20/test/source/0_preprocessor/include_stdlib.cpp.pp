@@ -387,10 +387,14 @@ extern "C" {
 extern "C" {
 
 
-        typedef unsigned int uintptr_t;
+        typedef unsigned __int64  uintptr_t;
 
         typedef char* va_list;
 
+
+
+
+    void __cdecl __va_start(va_list* , ...);
 
 
 
@@ -452,28 +456,25 @@ extern "C" {
 
 
  
-     typedef unsigned int     size_t;
-    typedef int              ptrdiff_t;
-    typedef int              intptr_t;
+     typedef unsigned __int64 size_t;
+    typedef __int64          ptrdiff_t;
+    typedef __int64          intptr_t;
 
     typedef bool  __vcrt_bool;
 
  
 
 
-     typedef unsigned short wchar_t;
-
+ 
 
 
 
     extern "C++"
     {
         template <typename _CountofType, size_t _SizeOfArray>
-        char (*__countof_helper( _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
+        char (*__countof_helper(__unaligned _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
 
     }
-
-
 
 
 
@@ -735,14 +736,14 @@ typedef _Mbstatet mbstate_t;
 
 
      
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _calloc_base(
       size_t _Count,
       size_t _Size
     );
 
      
-   __declspec(restrict) 
+  __declspec(allocator) __declspec(restrict) 
 void* __cdecl calloc(
        size_t _Count,
        size_t _Size
@@ -754,7 +755,7 @@ void* __cdecl calloc(
     );
 
      
-  
+ __declspec(allocator) 
 void* __cdecl _expand(
                 void*  _Block,
        size_t _Size
@@ -771,13 +772,13 @@ void __cdecl free(
     );
 
      
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _malloc_base(
       size_t _Size
     );
 
      
-   __declspec(restrict) 
+ __declspec(allocator)  __declspec(restrict) 
 void* __cdecl malloc(
        size_t _Size
     );
@@ -795,21 +796,21 @@ size_t __cdecl _msize(
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _realloc_base(
          void*  _Block,
                                  size_t _Size
     );
 
        
-  __declspec(restrict) 
+ __declspec(allocator) __declspec(restrict) 
 void* __cdecl realloc(
         void*  _Block,
               size_t _Size
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _recalloc_base(
         void*  _Block,
                                 size_t _Count,
@@ -817,7 +818,7 @@ void* __cdecl _recalloc_base(
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _recalloc(
         void*  _Block,
               size_t _Count,
@@ -830,14 +831,14 @@ void __cdecl _aligned_free(
     );
 
      
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _aligned_malloc(
        size_t _Size,
                          size_t _Alignment
     );
 
      
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _aligned_offset_malloc(
        size_t _Size,
                          size_t _Alignment,
@@ -853,7 +854,7 @@ size_t __cdecl _aligned_msize(
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _aligned_offset_realloc(
         void*  _Block,
               size_t _Size,
@@ -862,7 +863,7 @@ void* __cdecl _aligned_offset_realloc(
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _aligned_offset_recalloc(
         void*  _Block,
               size_t _Count,
@@ -872,7 +873,7 @@ void* __cdecl _aligned_offset_recalloc(
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _aligned_realloc(
         void*  _Block,
               size_t _Size,
@@ -880,7 +881,7 @@ void* __cdecl _aligned_realloc(
     );
 
        
-  __declspec(restrict)
+ __declspec(allocator) __declspec(restrict)
 void* __cdecl _aligned_recalloc(
         void*  _Block,
               size_t _Count,
@@ -1313,7 +1314,7 @@ void* __cdecl _aligned_recalloc(
 
      
      
-      wchar_t* __cdecl _wfullpath(
+     __declspec(allocator) wchar_t* __cdecl _wfullpath(
           wchar_t*       _Buffer,
                                     wchar_t const* _Path,
                                       size_t         _BufferCount
@@ -2158,7 +2159,7 @@ __declspec(deprecated("This function or variable may be unsafe. Consider using _
 
  
  
-  char* __cdecl _fullpath(
+ __declspec(allocator) char* __cdecl _fullpath(
       char*       _Buffer,
                                 char const* _Path,
                                   size_t      _BufferCount

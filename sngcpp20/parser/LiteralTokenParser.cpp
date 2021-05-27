@@ -599,7 +599,7 @@ RawStringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::
                 {
                     state = 1;
                 }
-                else
+                else if (*p != 'L')
                 {
                     stop = true;
                 }

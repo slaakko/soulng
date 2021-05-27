@@ -220,6 +220,7 @@ std::unique_ptr<PPResult> Preprocess(const std::string& filePath, std::ostream& 
             {
                 stream << error << std::endl;
             }
+            std::cout << result->Errors().size() << " errors" << std::endl;
         }
         if (verbose)
         {

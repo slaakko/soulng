@@ -61,7 +61,6 @@ expressions
 lexer api(PP_API) PPLexer
 {
     "{ws}" { return WS; }
-    //"{blockcomment}" { return BLOCKCOMMENT; }
     "{beginblockcomment}" { return BEGINBLOCKCOMMENT; }
     "{linecomment}" { return LINECOMMENT; }
     "{newline}" { return NEWLINE; }

@@ -1,3 +1,37 @@
 <defines>
  <define name="__SNGCPP_MSVC_MODE" value="1"/>
+ <define name="_WCHAR_T_DEFINED" value="1"/>
+ <define name="_CPPRTTI" value="1"/>
+ <define name="__STDCPP_DEFAULT_NEW_ALIGNMENT__" value="16ull"/>
+ <define name="_M_X64" value="100"/>
+ <define name="_MSC_EXTENSIONS" value="1"/>
+ <define name="_MSVC_LANG" value="201402L"/>
+ <define name="_MSC_BUILD" value="0"/>
+ <define name="_NATIVE_WCHAR_T_DEFINED" value="1"/>
+ <define name="__BOOL_DEFINED" value="1"/>
+ <define name="_WIN64" value="1"/>
+ <define name="_BUILTIN_LAUNDER_SUPPORTED" value="1"/>
+ <define name="_HAS_CHAR16_T_LANGUAGE_SUPPORT" value="1"/>
+ <define name="_IS_ASSIGNABLE_NOCHECK_SUPPORTED" value="1"/>
+ <define name="_M_AMD64" value="100"/>
+ <define name="_CONSTEXPR_CHAR_TRAITS_SUPPORTED" value="1"/>
+ <define name="_MT" value="1"/>
+ <define name="_WCHAR_T_DEFINED" value="1"/>
+ <define name="_MSVC_WARNING_LEVEL" value="1L"/>
+ <define name="__STDC_HOSTED__" value="1"/>
+ <define name="_NOEXCEPT_TYPES_SUPPORTED" value="1"/>
+ <define name="_NATIVE_NULLPTR_SUPPORTED" value="1"/>
+ <define name="__STDCPP_THREADS__" value="1"/>
+ <define name="_MSC_FULL_VER" value="192829914"/>
+ <define name="_MSC_VER" value="1928"/>
+ <define name="_MSVC_TRADITIONAL" value="0"/>
+ <define name="_INTEGRAL_MAX_BITS" value="64"/>
+ <define name="_WIN32" value="1"/>
+ <define name="_CRT_USE_BUILTIN_OFFSETOF" value="1"/>
+ <define name="__STDC_HOSTED__" value="1"/>
+ <define name="_NATIVE_NULLPTR_SUPPORTED" value="1"/>
+ <define name="__STDCPP_THREADS__" value="1"/>
+ <define name="_INTEGRAL_MAX_BITS" value="64"/>
+ <define name="_HAS_CXX17" value="1"/>
+ <define name="_HAS_CXX20" value="1"/>
 </defines>
