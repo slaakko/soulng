@@ -3839,7 +3839,7 @@ soulng::parser::Match ExpressionParser::SizeOfExpression(CppLexer& lexer, sngcpp
     SourcePos s = SourcePos();
     SourcePos lpPos = SourcePos();
     SourcePos rpPos = SourcePos();
-    SourcePos ellipsesPos = SourcePos();
+    SourcePos ellipsisPos = SourcePos();
     std::unique_ptr<Node> childNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> typeId;
     std::unique_ptr<Node> child;
@@ -4001,14 +4001,14 @@ soulng::parser::Match ExpressionParser::SizeOfExpression(CppLexer& lexer, sngcpp
                                             int64_t pos = lexer.GetPos();
                                             soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                             soulng::parser::Match match(false);
-                                            if (*lexer == ELLIPSES)
+                                            if (*lexer == ELLIPSIS)
                                             {
                                                 ++lexer;
                                                 match.hit = true;
                                             }
                                             if (match.hit)
                                             {
-                                                ellipsesPos = sourcePos;
+                                                ellipsisPos = sourcePos;
                                             }
                                             *parentMatch18 = match;
                                         }
@@ -4097,7 +4097,7 @@ soulng::parser::Match ExpressionParser::SizeOfExpression(CppLexer& lexer, sngcpp
                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SizeOfExpression"));
                                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                        return soulng::parser::Match(true, new SizeOfPackExprNode(s, childNode.release(), ellipsesPos, lpPos, rpPos));
+                                        return soulng::parser::Match(true, new SizeOfPackExprNode(s, childNode.release(), ellipsisPos, lpPos, rpPos));
                                     }
                                 }
                                 *parentMatch24 = match;
@@ -7319,10 +7319,10 @@ soulng::parser::Match ExpressionParser::FoldExpression(CppLexer& lexer, sngcpp::
     SourcePos rpPos = SourcePos();
     std::unique_ptr<Node> castExpr1;
     std::unique_ptr<Node> op1;
-    std::unique_ptr<Node> ellipses1;
+    std::unique_ptr<Node> ellipsis1;
     std::unique_ptr<Node> op2;
     std::unique_ptr<Node> castExpr2;
-    std::unique_ptr<Node> ellipses3;
+    std::unique_ptr<Node> ellipsis3;
     std::unique_ptr<Node> op3;
     std::unique_ptr<Node> castExpr3;
     soulng::parser::Match match(false);
@@ -7408,8 +7408,8 @@ soulng::parser::Match ExpressionParser::FoldExpression(CppLexer& lexer, sngcpp::
                                                 soulng::parser::Match match(false);
                                                 soulng::parser::Match* parentMatch14 = &match;
                                                 {
-                                                    soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                                    ellipses1.reset(static_cast<Node*>(match.value));
+                                                    soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                                    ellipsis1.reset(static_cast<Node*>(match.value));
                                                     *parentMatch14 = match;
                                                 }
                                                 *parentMatch11 = match;
@@ -7467,7 +7467,7 @@ soulng::parser::Match ExpressionParser::FoldExpression(CppLexer& lexer, sngcpp::
                                     {
                                         node->AddNode(castExpr1.release());
                                         node->AddNode(op1.release());
-                                        node->AddNode(ellipses1.release());
+                                        node->AddNode(ellipsis1.release());
                                         if (op2.release())
                                         {
                                             node->AddNode(op2.release());
@@ -7496,8 +7496,8 @@ soulng::parser::Match ExpressionParser::FoldExpression(CppLexer& lexer, sngcpp::
                                                     soulng::parser::Match match(false);
                                                     soulng::parser::Match* parentMatch24 = &match;
                                                     {
-                                                        soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                                        ellipses3.reset(static_cast<Node*>(match.value));
+                                                        soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                                        ellipsis3.reset(static_cast<Node*>(match.value));
                                                         *parentMatch24 = match;
                                                     }
                                                     if (match.hit)
@@ -7528,7 +7528,7 @@ soulng::parser::Match ExpressionParser::FoldExpression(CppLexer& lexer, sngcpp::
                                             }
                                             if (match.hit)
                                             {
-                                                node->AddNode(ellipses3.release());
+                                                node->AddNode(ellipsis3.release());
                                                 node->AddNode(op3.release());
                                                 node->AddNode(castExpr3.release());
                                             }
@@ -7602,7 +7602,7 @@ soulng::parser::Match ExpressionParser::FoldExpression(CppLexer& lexer, sngcpp::
     return match;
 }
 
-soulng::parser::Match ExpressionParser::Ellipses(CppLexer& lexer)
+soulng::parser::Match ExpressionParser::Ellipsis(CppLexer& lexer)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -7610,7 +7610,7 @@ soulng::parser::Match ExpressionParser::Ellipses(CppLexer& lexer)
     if (parser_debug_write_to_log)
     {
         parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Ellipses"));
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Ellipsis"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 174);
@@ -7620,7 +7620,7 @@ soulng::parser::Match ExpressionParser::Ellipses(CppLexer& lexer)
         int64_t pos = lexer.GetPos();
         soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
         soulng::parser::Match match(false);
-        if (*lexer == ELLIPSES)
+        if (*lexer == ELLIPSIS)
         {
             ++lexer;
             match.hit = true;
@@ -7629,9 +7629,9 @@ soulng::parser::Match ExpressionParser::Ellipses(CppLexer& lexer)
         {
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Ellipses"));
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Ellipsis"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new EllipsesNode(sourcePos));
+                return soulng::parser::Match(true, new EllipsisNode(sourcePos));
             }
         }
         *parentMatch0 = match;
@@ -7639,8 +7639,8 @@ soulng::parser::Match ExpressionParser::Ellipses(CppLexer& lexer)
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (parser_debug_write_to_log)
     {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Ellipses"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Ellipses"));
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Ellipsis"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("Ellipsis"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (!match.hit)

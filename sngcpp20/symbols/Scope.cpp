@@ -19,6 +19,7 @@ std::string ScopeKindStr(ScopeKind kind)
     switch (kind)
     {
         case ScopeKind::namespaceScope: return "namespace scope";
+        case ScopeKind::templateDeclarationScope: "temnplate declaration scope";
         case ScopeKind::classScope: return "class scope";
         case ScopeKind::enumerationScope: return "enumeration scope";
         case ScopeKind::functionScope: return "function scope";
@@ -135,16 +136,22 @@ void ContainerScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, s
     Scope::Lookup(id, scopeLookup, symbols);
     if ((scopeLookup & ScopeLookup::parentScope) != ScopeLookup::none)
     {
-        if (parentScope)
+        if (symbols.empty())
         {
-            parentScope->Lookup(id, scopeLookup, symbols);
+            if (parentScope)
+            {
+                parentScope->Lookup(id, scopeLookup, symbols);
+            }
         }
     }
     if ((scopeLookup & ScopeLookup::baseScope) != ScopeLookup::none)
     {
-        for (ContainerScope* baseScope : baseScopes)
+        if (symbols.empty())
         {
-            baseScope->Lookup(id, scopeLookup, symbols);
+            for (ContainerScope* baseScope : baseScopes)
+            {
+                baseScope->Lookup(id, scopeLookup, symbols);
+            }
         }
     }
     if ((scopeLookup & ScopeLookup::usingScope) != ScopeLookup::none)
@@ -195,7 +202,7 @@ void ContainerScope::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Conte
     {
         throw Exception("cannot declare symbol '" + ToUtf8(symbol->Name()) + "' in " + ScopeKindStr(Kind()) + " '" + FullName() + "'", sourcePos, context);
     }
-    containerSymbol->AddSymbol(symbol); 
+    containerSymbol->AddSymbol(symbol, sourcePos, context); 
 }
 
 UsingDeclarationScope::UsingDeclarationScope(ContainerScope* parentScope_) : Scope(), parentScope(parentScope_)

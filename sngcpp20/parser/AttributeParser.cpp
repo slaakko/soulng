@@ -395,7 +395,7 @@ soulng::parser::Match AttributeParser::AttributeList(CppLexer& lexer, sngcpp::sy
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma2;
     std::unique_ptr<Node> next;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -643,11 +643,11 @@ soulng::parser::Match AttributeParser::AttributeList(CppLexer& lexer, sngcpp::sy
                                                     soulng::parser::Match* parentMatch30 = &match;
                                                     {
                                                         int64_t pos = lexer.GetPos();
-                                                        soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                                        ellipses.reset(static_cast<Node*>(match.value));
+                                                        soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                                        ellipsis.reset(static_cast<Node*>(match.value));
                                                         if (match.hit)
                                                         {
-                                                            container->AddNode(ellipses.release());
+                                                            container->AddNode(ellipsis.release());
                                                         }
                                                         *parentMatch30 = match;
                                                     }
@@ -1840,7 +1840,7 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
     SourcePos rpPos = SourcePos();
     std::unique_ptr<Node> typeId;
     std::unique_ptr<Node> constantExpr;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1972,8 +1972,8 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
                         int64_t save = lexer.GetPos();
                         soulng::parser::Match* parentMatch16 = &match;
                         {
-                            soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                            ellipses.reset(static_cast<Node*>(match.value));
+                            soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                            ellipsis.reset(static_cast<Node*>(match.value));
                             if (match.hit)
                             {
                                 *parentMatch16 = match;
@@ -2023,7 +2023,7 @@ soulng::parser::Match AttributeParser::AlignmentSpecifier(CppLexer& lexer, sngcp
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("AlignmentSpecifier"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new AlignmentSpecifierNode(s, alignment.release(), ellipses.release(), lpPos, rpPos));
+                return soulng::parser::Match(true, new AlignmentSpecifierNode(s, alignment.release(), ellipsis.release(), lpPos, rpPos));
             }
         }
         *parentMatch0 = match;

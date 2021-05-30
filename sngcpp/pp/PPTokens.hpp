@@ -76,7 +76,7 @@ namespace PPTokens
     const int DOT = 65;
     const int ARROW = 66;
     const int SEMICOLON = 67;
-    const int ELLIPSES = 68;
+    const int ELLIPSIS = 68;
     const int MAX = 69;
 
     SNGCPP_PP_API void InitTokenIdMap();

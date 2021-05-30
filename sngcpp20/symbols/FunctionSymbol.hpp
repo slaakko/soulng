@@ -16,10 +16,12 @@ class SYMBOLS_API FunctionSymbol : public ContainerSymbol
 {
 public:
     FunctionSymbol(const std::u32string& name_);
-    void AddSymbol(Symbol* symbol) override;
+    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;
     std::string SymbolKindStr() const override { return "function symbol"; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
+    bool CanInstall() const override { return false; }
     bool IsFunctionSymbol() const override { return true; }
+    void AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context) override;
     void SetReturnType(TypeSymbol* returnType_) { returnType = returnType_;  }
     TypeSymbol* ReturnType() const { return returnType; }
 private:

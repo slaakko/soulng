@@ -724,8 +724,8 @@ PackDeclaratorIdNode::PackDeclaratorIdNode(const SourcePos& sourcePos_) : Binary
 {
 }
 
-PackDeclaratorIdNode::PackDeclaratorIdNode(const SourcePos& sourcePos_, Node* ellipses_, Node* idExpr_) :
-    BinaryNode(NodeKind::packDeclaratorIdNode, sourcePos_, ellipses_, idExpr_)
+PackDeclaratorIdNode::PackDeclaratorIdNode(const SourcePos& sourcePos_, Node* ellipsis_, Node* idExpr_) :
+    BinaryNode(NodeKind::packDeclaratorIdNode, sourcePos_, ellipsis_, idExpr_)
 {
 }
 

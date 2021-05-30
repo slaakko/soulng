@@ -44,7 +44,7 @@ enum class NodeKind : uint16_t
     compareNode, shiftLeftNode, shiftRightNode, plusNode, minusNode, mulNode, divNode, modNode, dotStarNode, arrowStarNode,
     castExprNode, derefNode, addrOfNode, notNode, complementNode, prefixIncNode, prefixDecNode,
     awaitExprNode, sizeOfTypeExprNode, sizeOfPackExpNode, sizeOfUnaryExprNode, alignOfExprNode, noexceptExprNode, 
-    foldExprNode, newDeclaratorNode, arrayNewDeclaratorNode, newInitializerNode, ellipsesNode, bracedInitListNode, designatedInitializerNode, designatorNode,
+    foldExprNode, newDeclaratorNode, arrayNewDeclaratorNode, newInitializerNode, EllipsisNode, bracedInitListNode, designatedInitializerNode, designatorNode,
     newExprNode, newPlacementNode, parenNewTypeIdNode, newTypeIdNode, arrayDeletePtrNode, deletePtrNode,
     subscriptExprNode, invokeExprNode, dotNode, templateNode, arrowNode, pairNode, memberExprNode, postfixIncExprNode, postfixDecExprNode, typeIdExprNode,
     dynamicCastNode, staticCastNode, reinterpretCastNode, constCastNode, cppCastExprNode, thisNode, parenExprNode,

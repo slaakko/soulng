@@ -30,7 +30,8 @@ enum class ContextFlags : int
     parsingTemplateId = 1 << 0,
     parseMemberFunction = 1 << 1,
     parseSavedMemberFunctionBody = 1 << 2,
-    msvcMode = 1 << 3
+    assume = 1 << 3,
+    msvcMode = 1 << 4
 };
 
 SYMBOLS_API inline ContextFlags operator|(ContextFlags left, ContextFlags right)

@@ -5940,7 +5940,7 @@ int TextLexer::GetTokenId(int statementIndex)
         case 56:
         {
             Retract();
-            return ELLIPSES;
+            return ELLIPSIS;
             break;
         }
         case 57:

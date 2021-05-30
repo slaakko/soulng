@@ -40,7 +40,7 @@ parser api(PARSER_API) DeclarationParser
     using EnumParser.EnumKey;
     using EnumParser.OpaqueEnumDeclaration;
     using ExpressionParser.ConstantExpression;
-    using ExpressionParser.Ellipses;
+    using ExpressionParser.Ellipsis;
     using ExpressionParser.IdExpression;
     using FunctionParser.Assign;
     using FunctionParser.Comma;
@@ -71,7 +71,7 @@ parser api(PARSER_API) DeclarationParser
     DeclarationSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s) : Node*
         ::= 
         (
-            Declaration(ctx):first{ node.reset(new DeclarationSequenceNode(s)); node->AddNode(first); } 
+            Declaration(ctx):first{ s = sourcePos; node.reset(new DeclarationSequenceNode(s)); node->AddNode(first); } 
             (Declaration(ctx):next{ node->AddNode(next); })*
         )
         {
@@ -306,7 +306,7 @@ parser api(PARSER_API) DeclarationParser
         (
             UsingDeclarator(ctx):first{ node.reset(new UsingDeclaratorListNode(sourcePos)); node->AddNode(first); }
             (Comma:comma{ node->AddNode(comma); } UsingDeclarator(ctx):next{ node->AddNode(next); })*
-            (Ellipses:ellipses{ node->AddNode(ellipses); })?
+            (Ellipsis:ellipsis{ node->AddNode(ellipsis); })?
         )
         {
             return node.release();
@@ -645,7 +645,7 @@ parser api(PARSER_API) DeclarationParser
         ;
 
     NoPtrAbstractPackDeclarator(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
-        ::= Ellipses:ellipses{ node.reset(ellipses); s = sourcePos; }
+        ::= Ellipsis:ellipsis{ node.reset(ellipsis); s = sourcePos; }
             (   ParametersAndQualifiers(ctx):paramsAndQualifiers{ node.reset(new FunctionDeclaratorNode(s, node.release(), paramsAndQualifiers)); }
             |   LBRACKET{ lbPos = sourcePos; } ConstantExpression(ctx):index? RBRACKET{ rbPos = sourcePos; node.reset(new ArrayDeclaratorNode(s, node.release(), index, lbPos, rbPos)); } 
             )*
@@ -653,7 +653,7 @@ parser api(PARSER_API) DeclarationParser
 
     DeclaratorId(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
-        (   Ellipses:ellipses{ s = sourcePos; } IdExpression(ctx):idExpr{ return new PackDeclaratorIdNode(s, ellipses, idExpr); }
+        (   Ellipsis:ellipsis{ s = sourcePos; } IdExpression(ctx):idExpr{ return new PackDeclaratorIdNode(s, ellipsis, idExpr); }
         |   IdExpression(ctx):idExpr2{ return idExpr2; }
         )
         ;

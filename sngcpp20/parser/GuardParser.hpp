@@ -15,6 +15,7 @@ struct PARSER_API GuardParser
 {
     static soulng::parser::Match MemberFunctionGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match SavedMemberFunctionBodyGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match AssumeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
 };
 
 #endif // GUARDPARSER_HPP

@@ -1,0 +1,9 @@
+template <typename T> using Ref = T&;
+
+template <typename T>
+concept C = requires
+{
+    typename T::inner;
+    typename Ref<T>;
+};
+

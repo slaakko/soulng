@@ -5,6 +5,7 @@
 
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
 #include <sngcpp20/symbols/VariableSymbol.hpp>
+#include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
 
 namespace sngcpp::symbols {
 
@@ -23,13 +24,19 @@ bool FunctionSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
     return false;
 }
 
-void FunctionSymbol::AddSymbol(Symbol* symbol)
+void FunctionSymbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context)
 {
-    ContainerSymbol::AddSymbol(symbol);
+    ContainerSymbol::AddSymbol(symbol, sourcePos, context);
     if (symbol->IsParameterSymbol())
     {
         parameters.push_back(static_cast<ParameterSymbol*>(symbol));
     }
+}
+
+void FunctionSymbol::AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context)
+{
+    FunctionGroupSymbol* functionGroup = containerSymbol->GetOrInsertFunctionGroup(Name(), sourcePos, context);
+    functionGroup->AddFunction(this);
 }
 
 } // sngcpp::symbols

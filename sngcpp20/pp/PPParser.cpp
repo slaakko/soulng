@@ -421,7 +421,7 @@ bool ParseMacroParams(PPLexer& lexer, std::vector<Token>& paramList)
             }
         }
     }
-    if (*lexer == PPTokens::ELLIPSES)
+    if (*lexer == PPTokens::ELLIPSIS)
     {
         paramList.push_back(lexer.GetToken(lexer.GetPos()));
         ++lexer;

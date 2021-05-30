@@ -23,7 +23,7 @@ class UsingDirectiveScope;
 
 enum class ScopeKind : int
 {
-    none, namespaceScope, classScope, enumerationScope, functionScope, blockScope, usingDeclarationScope, usingDirectiveScope
+    none, namespaceScope, templateDeclarationScope, classScope, enumerationScope, functionScope, blockScope, usingDeclarationScope, usingDirectiveScope
 };
 
 SYMBOLS_API std::string ScopeKindStr(ScopeKind kind);

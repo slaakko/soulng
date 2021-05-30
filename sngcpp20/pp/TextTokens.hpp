@@ -68,7 +68,7 @@ namespace TextTokens
     const int DOT = 57;
     const int ARROW = 58;
     const int SEMICOLON = 59;
-    const int ELLIPSES = 60;
+    const int ELLIPSIS = 60;
     const int WS = 61;
     const int BEGINBLOCKCOMMENT = 62;
     const int BLOCKCOMMENT = 63;

@@ -33,7 +33,7 @@ parser api(PARSER_API) LambdaParser
     using DeclarationParser.NoexceptSpecifier;
     using DeclarationParser.TrailingReturnType;
     using ExpressionParser.ConstantExpression;
-    using ExpressionParser.Ellipses;
+    using ExpressionParser.Ellipsis;
     using FunctionParser.Comma;
     using FunctionParser.ParameterDeclarationClause;
     using IdentifierParser.Identifier;
@@ -67,10 +67,10 @@ parser api(PARSER_API) LambdaParser
         ;
 
     LambdaCapture(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
-        ::= 
-        (   CaptureDefault:captureDefault{ node.reset(new LambdaCaptureNode(sourcePos)); node->AddNode(captureDefault); } 
-            (Comma:comma{ node->AddNode(comma); } CaptureList(ctx, node.get()):captureList)?
-        |   empty{ node.reset(new LambdaCaptureNode(sourcePos)); } CaptureList(ctx, node.get()):captureList2
+        ::= empty{ node.reset(new LambdaCaptureNode(sourcePos)); }
+        (   CaptureList(ctx, node.get()):captureList
+        |   CaptureDefault:captureDefault{ node->AddNode(captureDefault); } 
+            (Comma:comma{ node->AddNode(comma); } CaptureList(ctx, node.get()):captureList2)?
         )
         {
             return node.release();
@@ -95,12 +95,12 @@ parser api(PARSER_API) LambdaParser
         ::= 
         (
             (AMP{ s = sourcePos; byRefCaptureNode.reset(new ByRefCaptureNode(sourcePos)); })? 
-            (Ellipses:ellipses{ if (!s.IsValid()) s = sourcePos; })? 
+            (Ellipsis:ellipsis{ if (!s.IsValid()) s = sourcePos; })? 
             Identifier(ctx):identifier{ if (!s.IsValid()) s = sourcePos; }
             Initializer(ctx):initializer
         )
         {
-            return new InitCaptureNode(s, identifier, initializer, byRefCaptureNode.release(), ellipses);
+            return new InitCaptureNode(s, identifier, initializer, byRefCaptureNode.release(), ellipsis);
         }
         ;
 
@@ -113,10 +113,10 @@ parser api(PARSER_API) LambdaParser
             (
                 (AMP{ s = sourcePos; byRefCaptureNode.reset(new ByRefCaptureNode(sourcePos)); })? 
                 Identifier(ctx):identifier{ if (!s.IsValid()) s = sourcePos; }
-                Ellipses:ellipses?
+                Ellipsis:ellipsis?
             )
             {
-                return new SimpleCaptureNode(s, identifier, byRefCaptureNode.release(), ellipses);
+                return new SimpleCaptureNode(s, identifier, byRefCaptureNode.release(), ellipsis);
             }
         )
         ;

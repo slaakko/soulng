@@ -77,17 +77,17 @@ class AST_API SimpleCaptureNode : public CompoundNode
 {
 public:
     SimpleCaptureNode(const SourcePos& sourcePos_);
-    SimpleCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* byRefCapture_, Node* ellipses_);
+    SimpleCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* byRefCapture_, Node* ellipsis_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     Node* Identifier() const { return identifier.get(); }
     Node* ByRefCapture() const { return byRefCapture.get(); }
-    Node* Ellipses() const { return ellipses.get(); }
+    Node* Ellipsis() const { return ellipsis.get(); }
 private:
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> byRefCapture;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
 };
 
 class AST_API CurrentObjectCopyCapture : public CompoundNode
@@ -120,19 +120,19 @@ class AST_API InitCaptureNode : public CompoundNode
 {
 public:
     InitCaptureNode(const SourcePos& sourcePos_);
-    InitCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* initializer_, Node* byRefCapture_, Node* ellipses_);
+    InitCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* initializer_, Node* byRefCapture_, Node* ellipsis_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     Node* Identifier() const { return identifier.get(); }
     Node* Initializer() const { return initializer.get(); }
     Node* ByRefCapture() const { return byRefCapture.get(); }
-    Node* Ellipses() const { return ellipses.get(); }
+    Node* Ellipsis() const { return ellipsis.get(); }
 private:
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> initializer;
     std::unique_ptr<Node> byRefCapture;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
 };
 
 class AST_API LambdaDeclaratorNode : public CompoundNode

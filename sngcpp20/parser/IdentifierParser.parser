@@ -9,6 +9,7 @@
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
 [cpp]#include <sngcpp20/symbols/SymbolTable.hpp>
 [cpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [cpp]#include <sngcpp20/parser/LiteralParser.hpp>
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierTokenParser.hpp>
@@ -25,6 +26,7 @@ parser api(PARSER_API) IdentifierParser
     uselexer CppLexer;
     state;
 
+    using GuardParser.AssumeGuard;
     using LiteralParser.LiteralOperatorId;
     using TemplateParser.TemplateId;
     using TemplateParser.SimpleTemplateId;
@@ -38,6 +40,15 @@ parser api(PARSER_API) IdentifierParser
         ;
 
     TypeIdentifier(sngcpp::symbols::Context* ctx) : Node*
+        ::= AssumeGuard(ctx):assumeGuard TypeIdentifierUnchecked(ctx):typeName{ return typeName; }
+        |   TypeIdentifierChecked(ctx):typeIdentifier{ return typeIdentifier; }
+        ;
+
+    TypeIdentifierUnchecked(sngcpp::symbols::Context* ctx) : Node*
+        ::= Identifier(ctx):id{ return id; }
+        ;
+
+    TypeIdentifierChecked(sngcpp::symbols::Context* ctx) : Node*
         ::= ID
             { 
                 std::unique_ptr<IdentifierNode> identifier(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));

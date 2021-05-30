@@ -25,4 +25,8 @@ parser api(PARSER_API) GuardParser
     SavedMemberFunctionBodyGuard(sngcpp::symbols::Context* ctx)
         ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody); }
         ;
+
+    AssumeGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::assume); }
+        ;
 }

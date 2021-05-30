@@ -30,7 +30,7 @@ soulng::parser::Match LambdaParser::LambdaExpression(CppLexer& lexer, sngcpp::sy
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LambdaExpression"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 220);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 223);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> introducer;
     std::unique_ptr<Node> templateParams;
@@ -155,7 +155,7 @@ soulng::parser::Match LambdaParser::LambdaIntroducer(CppLexer& lexer, sngcpp::sy
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LambdaIntroducer"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 221);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 224);
     SourcePos s = SourcePos();
     SourcePos lbPos = SourcePos();
     SourcePos rbPos = SourcePos();
@@ -283,143 +283,141 @@ soulng::parser::Match LambdaParser::LambdaCapture(CppLexer& lexer, sngcpp::symbo
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LambdaCapture"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 222);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 225);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     std::unique_ptr<Node> captureDefault;
     std::unique_ptr<Node> comma;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
-        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch2 = &match;
+            int64_t pos = lexer.GetPos();
+            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
+            soulng::parser::Match match(true);
+            if (match.hit)
             {
-                int64_t save = lexer.GetPos();
+                node.reset(new LambdaCaptureNode(sourcePos));
+            }
+            *parentMatch1 = match;
+        }
+        *parentMatch0 = match;
+    }
+    if (match.hit)
+    {
+        soulng::parser::Match match(false);
+        soulng::parser::Match* parentMatch2 = &match;
+        {
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch3 = &match;
+            {
+                int64_t pos = lexer.GetPos();
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch3 = &match;
-                {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch4 = &match;
-                    {
-                        int64_t pos = lexer.GetPos();
-                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                        soulng::parser::Match match = LambdaParser::CaptureDefault(lexer);
-                        captureDefault.reset(static_cast<Node*>(match.value));
-                        if (match.hit)
-                        {
-                            node.reset(new LambdaCaptureNode(sourcePos));
-                            node->AddNode(captureDefault.release());
-                        }
-                        *parentMatch4 = match;
-                    }
-                    *parentMatch3 = match;
-                }
-                if (match.hit)
+                soulng::parser::Match* parentMatch4 = &match;
                 {
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch5 = &match;
                     {
-                        soulng::parser::Match match(true);
                         int64_t save = lexer.GetPos();
-                        soulng::parser::Match* parentMatch6 = &match;
+                        soulng::parser::Match match = LambdaParser::CaptureList(lexer, ctx, node.get());
+                        *parentMatch5 = match;
+                        if (!match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch7 = &match;
+                            soulng::parser::Match* parentMatch6 = &match;
+                            lexer.SetPos(save);
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch8 = &match;
+                                soulng::parser::Match* parentMatch7 = &match;
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch8 = &match;
+                                    {
+                                        int64_t pos = lexer.GetPos();
+                                        soulng::parser::Match match = LambdaParser::CaptureDefault(lexer);
+                                        captureDefault.reset(static_cast<Node*>(match.value));
+                                        if (match.hit)
+                                        {
+                                            node->AddNode(captureDefault.release());
+                                        }
+                                        *parentMatch8 = match;
+                                    }
+                                    *parentMatch7 = match;
+                                }
+                                if (match.hit)
                                 {
                                     soulng::parser::Match match(false);
                                     soulng::parser::Match* parentMatch9 = &match;
                                     {
-                                        int64_t pos = lexer.GetPos();
-                                        soulng::parser::Match match = FunctionParser::Comma(lexer);
-                                        comma.reset(static_cast<Node*>(match.value));
-                                        if (match.hit)
+                                        soulng::parser::Match match(true);
+                                        int64_t save = lexer.GetPos();
+                                        soulng::parser::Match* parentMatch10 = &match;
                                         {
-                                            node->AddNode(comma.release());
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch11 = &match;
+                                            {
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch12 = &match;
+                                                {
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch13 = &match;
+                                                    {
+                                                        int64_t pos = lexer.GetPos();
+                                                        soulng::parser::Match match = FunctionParser::Comma(lexer);
+                                                        comma.reset(static_cast<Node*>(match.value));
+                                                        if (match.hit)
+                                                        {
+                                                            node->AddNode(comma.release());
+                                                        }
+                                                        *parentMatch13 = match;
+                                                    }
+                                                    *parentMatch12 = match;
+                                                }
+                                                if (match.hit)
+                                                {
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch14 = &match;
+                                                    {
+                                                        soulng::parser::Match match = LambdaParser::CaptureList(lexer, ctx, node.get());
+                                                        *parentMatch14 = match;
+                                                    }
+                                                    *parentMatch12 = match;
+                                                }
+                                                *parentMatch11 = match;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                *parentMatch10 = match;
+                                            }
+                                            else
+                                            {
+                                                lexer.SetPos(save);
+                                            }
                                         }
                                         *parentMatch9 = match;
                                     }
-                                    *parentMatch8 = match;
+                                    *parentMatch7 = match;
                                 }
-                                if (match.hit)
-                                {
-                                    soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch10 = &match;
-                                    {
-                                        soulng::parser::Match match = LambdaParser::CaptureList(lexer, ctx, node.get());
-                                        *parentMatch10 = match;
-                                    }
-                                    *parentMatch8 = match;
-                                }
-                                *parentMatch7 = match;
-                            }
-                            if (match.hit)
-                            {
                                 *parentMatch6 = match;
                             }
-                            else
-                            {
-                                lexer.SetPos(save);
-                            }
+                            *parentMatch5 = match;
                         }
-                        *parentMatch5 = match;
                     }
-                    *parentMatch3 = match;
+                    *parentMatch4 = match;
                 }
-                *parentMatch2 = match;
-                if (!match.hit)
+                if (match.hit)
                 {
-                    soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch11 = &match;
-                    lexer.SetPos(save);
                     {
-                        soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch12 = &match;
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch13 = &match;
-                            {
-                                int64_t pos = lexer.GetPos();
-                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                soulng::parser::Match match(true);
-                                if (match.hit)
-                                {
-                                    node.reset(new LambdaCaptureNode(sourcePos));
-                                }
-                                *parentMatch13 = match;
-                            }
-                            *parentMatch12 = match;
-                        }
-                        if (match.hit)
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch14 = &match;
-                            {
-                                soulng::parser::Match match = LambdaParser::CaptureList(lexer, ctx, node.get());
-                                *parentMatch14 = match;
-                            }
-                            *parentMatch12 = match;
-                        }
-                        *parentMatch11 = match;
+                        #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                        if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("LambdaCapture"));
+                        #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                        return soulng::parser::Match(true, node.release());
                     }
-                    *parentMatch2 = match;
                 }
+                *parentMatch3 = match;
             }
-            *parentMatch1 = match;
-        }
-        if (match.hit)
-        {
-            {
-                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
-                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("LambdaCapture"));
-                #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, node.release());
-            }
+            *parentMatch2 = match;
         }
         *parentMatch0 = match;
     }
@@ -448,7 +446,7 @@ soulng::parser::Match LambdaParser::CaptureDefault(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("CaptureDefault"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 223);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 226);
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
     soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
@@ -507,7 +505,7 @@ soulng::parser::Match LambdaParser::CaptureList(CppLexer& lexer, sngcpp::symbols
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("CaptureList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 224);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 227);
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
@@ -624,7 +622,7 @@ soulng::parser::Match LambdaParser::Capture(CppLexer& lexer, sngcpp::symbols::Co
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Capture"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 225);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 228);
     std::unique_ptr<Node> initCapture;
     std::unique_ptr<Node> simpleCapture;
     soulng::parser::Match match(false);
@@ -702,10 +700,10 @@ soulng::parser::Match LambdaParser::InitCapture(CppLexer& lexer, sngcpp::symbols
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("InitCapture"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 226);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 229);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> byRefCaptureNode = std::unique_ptr<Node>();
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> initializer;
     soulng::parser::Match match(false);
@@ -779,8 +777,8 @@ soulng::parser::Match LambdaParser::InitCapture(CppLexer& lexer, sngcpp::symbols
                                     {
                                         int64_t pos = lexer.GetPos();
                                         soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                        soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                        ellipses.reset(static_cast<Node*>(match.value));
+                                        soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                        ellipsis.reset(static_cast<Node*>(match.value));
                                         if (match.hit)
                                         {
                                             if (!s.IsValid()) s = sourcePos;
@@ -847,7 +845,7 @@ soulng::parser::Match LambdaParser::InitCapture(CppLexer& lexer, sngcpp::symbols
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("InitCapture"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new InitCaptureNode(s, identifier.release(), initializer.release(), byRefCaptureNode.release(), ellipses.release()));
+                return soulng::parser::Match(true, new InitCaptureNode(s, identifier.release(), initializer.release(), byRefCaptureNode.release(), ellipsis.release()));
             }
         }
         *parentMatch0 = match;
@@ -877,12 +875,12 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::symbo
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("SimpleCapture"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 227);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 230);
     SourcePos s = SourcePos();
     SourcePos thisPos = SourcePos();
     std::unique_ptr<Node> byRefCaptureNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> identifier;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1074,8 +1072,8 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::symbo
                                     int64_t save = lexer.GetPos();
                                     soulng::parser::Match* parentMatch20 = &match;
                                     {
-                                        soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                        ellipses.reset(static_cast<Node*>(match.value));
+                                        soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                        ellipsis.reset(static_cast<Node*>(match.value));
                                         if (match.hit)
                                         {
                                             *parentMatch20 = match;
@@ -1097,7 +1095,7 @@ soulng::parser::Match LambdaParser::SimpleCapture(CppLexer& lexer, sngcpp::symbo
                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SimpleCapture"));
                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                return soulng::parser::Match(true, new SimpleCaptureNode(s, identifier.release(), byRefCaptureNode.release(), ellipses.release()));
+                                return soulng::parser::Match(true, new SimpleCaptureNode(s, identifier.release(), byRefCaptureNode.release(), ellipsis.release()));
                             }
                         }
                         *parentMatch10 = match;
@@ -1134,7 +1132,7 @@ soulng::parser::Match LambdaParser::LambdaDeclarator(CppLexer& lexer, sngcpp::sy
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LambdaDeclarator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 228);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 231);
     SourcePos s = SourcePos();
     std::unique_ptr<ParameterListNode> parameterList = std::unique_ptr<ParameterListNode>();
     SourcePos lpPos = SourcePos();
@@ -1327,7 +1325,7 @@ soulng::parser::Match LambdaParser::LambdaSpecifiers(CppLexer& lexer, sngcpp::sy
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LambdaSpecifiers"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 229);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 232);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> declSpecifiers;
     std::unique_ptr<Node> noexceptSpecifier;
@@ -1544,7 +1542,7 @@ soulng::parser::Match LambdaParser::LambdaTemplateParams(CppLexer& lexer, sngcpp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("LambdaTemplateParams"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 230);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 233);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> templateParams;
     std::unique_ptr<Node> requiresClause;

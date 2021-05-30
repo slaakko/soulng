@@ -125,17 +125,17 @@ class AST_API AlignmentSpecifierNode : public CompoundNode
 {
 public:
     AlignmentSpecifierNode(const SourcePos& sourcePos_);
-    AlignmentSpecifierNode(const SourcePos& sourcePos_, Node* alignment_, Node* ellipses_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    AlignmentSpecifierNode(const SourcePos& sourcePos_, Node* alignment_, Node* ellipsis_, const SourcePos& lpPos_, const SourcePos& rpPos_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     Node* Alignment() const { return alignment.get(); }
-    Node* Ellipses() const { return ellipses.get(); }
+    Node* Ellipsis() const { return ellipsis.get(); }
     const SourcePos& LParenPos() const { return lpPos; }
     const SourcePos& RParenPos() const { return rpPos; }
 private:
     std::unique_ptr<Node> alignment;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     SourcePos lpPos;
     SourcePos rpPos;
 };

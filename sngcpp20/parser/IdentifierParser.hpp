@@ -16,6 +16,8 @@ struct PARSER_API IdentifierParser
 {
     static soulng::parser::Match Identifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match TypeIdentifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match TypeIdentifierUnchecked(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match TypeIdentifierChecked(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match UnqualifiedId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match QualifiedId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Template(CppLexer& lexer);

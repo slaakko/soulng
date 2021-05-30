@@ -107,9 +107,9 @@ void PrintHelp()
     std::cout << "--test | -t" << std::endl;
     std::cout << "  compare generated files in destination directory to generated files in source directory and generate a HTML report." << std::endl;
     std::cout << std::endl;
-    std::cout << "--makeconfig [CONFIG] | -g [CONFIG]" << std::endl;
-    std::cout << "  make configuration XML file CONFIG.config.xml and write it to current directory" << std::endl;
-    std::cout << "  if no CONFIG name is given, make default sngcpp.config.xml and write it to current directory" << std::endl;
+    std::cout << "--makeconfig CONFIG | -g CONFIG" << std::endl;
+    std::cout << "  make configuration XML file CONFIG.config.xml and write it to '" + SoulngConfigDir() + "' directory" << std::endl;
+    std::cout << "  CONFIG can be 'vc' for Visual C++" << std::endl;
     std::cout << std::endl;
     std::cout << "--config=CONFIG | -c=CONFIG" << std::endl;
     std::cout << "  use CONFIG configuration" << std::endl;
@@ -543,6 +543,7 @@ int main(int argc, const char** argv)
         std::vector<std::string> paths;
         bool preprocess = false;
         bool makeProject = false;
+        bool makeConfig = false;
         bool verbose = false;
         bool recursive = false;
         bool out = false;
@@ -613,6 +614,10 @@ int main(int argc, const char** argv)
                     else if (arg == "--makeproject")
                     {
                         makeProject = true;
+                    }
+                    else if (arg == "--makeconfig")
+                    {
+                        makeConfig = true;
                     }
                     else if (arg == "--verbose")
                     {
@@ -734,6 +739,11 @@ int main(int argc, const char** argv)
                                 out = true;
                                 break;
                             }
+                            case 'g':
+                            {
+                                makeConfig = true;
+                                break;
+                            }
                             default:
                             {
                                 throw std::runtime_error("unknown option '-" + std::string(1, o) + "'");
@@ -742,12 +752,16 @@ int main(int argc, const char** argv)
                     }
                 }
             }
+            else if (makeConfig)
+            {
+                config = arg;
+            }
             else
             {
                 paths.push_back(GetFullPath(arg));
             }
         }
-        if (paths.empty())
+        if (paths.empty() && !makeConfig)
         {
             paths.push_back(GetFullPath("."));
         }
@@ -813,6 +827,14 @@ int main(int argc, const char** argv)
                 projectDir = dirPaths[1];
             }
             MakeProjectFile(sourceDir, projectDir, patterns, 0, recursive, verbose);
+        }
+        else if (makeConfig)
+        {
+            if (config.empty())
+            {
+                throw std::runtime_error("--makeconfig run without CONFIG");
+            }
+            MakeConfig(config, verbose);
         }
         else
         {

@@ -1867,7 +1867,7 @@ soulng::parser::Match PPLineParser::PPToken(PPLexer& lexer, std::vector<soulng::
             }
             break;
         }
-        case ELLIPSES:
+        case ELLIPSIS:
         {
             ++lexer;
             {

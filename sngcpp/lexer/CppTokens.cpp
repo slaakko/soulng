@@ -54,7 +54,7 @@ namespace CppTokens
         tokenIdMap[U"DOTSTAR"] = 125;
         tokenIdMap[U"DOUBLE"] = 28;
         tokenIdMap[U"DYNAMIC_CAST"] = 29;
-        tokenIdMap[U"ELLIPSES"] = 140;
+        tokenIdMap[U"ELLIPSIS"] = 140;
         tokenIdMap[U"ELSE"] = 30;
         tokenIdMap[U"ENUM"] = 31;
         tokenIdMap[U"EQ"] = 111;
@@ -308,7 +308,7 @@ namespace CppTokens
         "DOT",
         "ARROW",
         "SEMICOLON",
-        "ELLIPSES",
+        "ELLIPSIS",
         "MAX"
     };
 

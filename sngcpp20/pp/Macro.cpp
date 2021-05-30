@@ -191,20 +191,20 @@ FunctionMacro::FunctionMacro(const Lexeme& name_, const std::string& fileName_, 
     for (int i = 0; i < n; ++i)
     {
         const Token& param = paramList[i];
-        if (param.id == PPTokens::ELLIPSES)
+        if (param.id == PPTokens::ELLIPSIS)
         {
             variableArgs = true;
             for (int j = i + 1; j < n; ++j)
             {
-                if (paramList[j].id == PPTokens::ELLIPSES)
+                if (paramList[j].id == PPTokens::ELLIPSIS)
                 {
-                    std::string error = "error: multiple ellipses parameter in variable argument function macro definition '" + ToUtf8(Name().ToString());
+                    std::string error = "error: multiple ellipsis parameter in variable argument function macro definition '" + ToUtf8(Name().ToString());
                     pp->AddError(error);
                     return;
                 }
                 else 
                 {
-                    std::string error = "error: ellipses is not last parameter in variable argument function macro definition '" + ToUtf8(Name().ToString());
+                    std::string error = "error: ellipsis is not last parameter in variable argument function macro definition '" + ToUtf8(Name().ToString());
                     pp->AddError(error);
                     return;
                 }

@@ -1,0 +1,39 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="2" pos="(1,1)" type="sequence">
+    <constNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="const"/>
+    </constNode>
+    <charNode pos="(1,7)" type="single">
+     <keyword pos="(1,7)" value="char"/>
+    </charNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,11)" type="list">
+    <initDeclaratorNode count="2" pos="(1,11)" type="binary">
+     <ptrDeclaratorNode count="2" pos="(1,11)" type="sequence">
+      <ptrNode pos="(1,11)" type="single">
+       <operator pos="(1,11)" value="*"/>
+      </ptrNode>
+      <identifierNode pos="(1,13)" type="compound">
+       <identifier pos="(1,13)" value="r1"/>
+      </identifierNode>
+     </ptrDeclaratorNode>
+     <assignmentInitializerNode count="1" pos="(1,16)" type="unary">
+      <operator pos="(1,16)" value="="/>
+      <rawStringLiteralNode pos="(1,18)" type="single">
+       <literal pos="(1,18)" value='R"xyzzy(
+foo
+bar
+baz
+)xyzzy"'/>
+      </rawStringLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(5,8)" type="single">
+    <operator pos="(5,8)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

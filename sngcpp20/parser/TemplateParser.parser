@@ -8,6 +8,7 @@
 [hpp]#include <sngcpp20/ast/Class.hpp>
 [hpp]#include <sngcpp20/ast/Template.hpp>
 [hpp]#include <sngcpp20/ast/Identifier.hpp>
+[cpp]#include <sngcpp20/symbols/Template.hpp>
 [cpp]#include <sngcpp20/parser/ConceptParser.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
@@ -34,7 +35,7 @@ parser api(PARSER_API) TemplateParser
     using DeclarationParser.Declaration;
     using DeclarationParser.ExplicitSpecifier;
     using ExpressionParser.ConstantExpression;
-    using ExpressionParser.Ellipses;
+    using ExpressionParser.Ellipsis;
     using ExpressionParser.IdExpression;
     using FunctionParser.Assign;
     using FunctionParser.Comma;
@@ -46,13 +47,16 @@ parser api(PARSER_API) TemplateParser
     using StatementParser.Semicolon;
     using TypeParser.TypeId;
 
-    TemplateDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
+    TemplateDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> templateHeadNode, var SourcePos s) : Node*
         ::= 
-        (   TemplateHead(ctx):templateHead{ s = sourcePos; }
-            (   ConceptDefinition(ctx):concepDefinition{ return new TemplateDeclarationNode(s, templateHead, concepDefinition); }
-            |   Declaration(ctx):declaration{ return new TemplateDeclarationNode(s, templateHead, declaration); }
+        (   TemplateHead(ctx):templateHead{ templateHeadNode.reset(templateHead); s = sourcePos; sngcpp::symbols::BeginTemplateDeclaration(templateHeadNode.get(), ctx); }
+            (   ConceptDefinition(ctx):concepDefinition{ return new TemplateDeclarationNode(s, templateHeadNode.release(), concepDefinition); }
+            |   Declaration(ctx):declaration{ return new TemplateDeclarationNode(s, templateHeadNode.release(), declaration); }
             )
         )
+        {
+            sngcpp::symbols::EndTemplateDeclaration(ctx);
+        }
         ;
 
     TemplateHead(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
@@ -92,15 +96,15 @@ parser api(PARSER_API) TemplateParser
         (   TemplateHead(ctx):templateHead{ s = sourcePos; } 
             TypeParameterKey:key 
             (   Identifier(ctx):identifier? Assign:assign IdExpression(ctx):idExpr{ return new TypeParameterNode(s, key, identifier, assign, idExpr, nullptr, templateHead); }
-            |   (Ellipses:ellipses? Identifier(ctx):identifier2?){ return new TypeParameterNode(s, key, identifier2, nullptr, nullptr, ellipses, templateHead); }
+            |   (Ellipsis:ellipsis? Identifier(ctx):identifier2?){ return new TypeParameterNode(s, key, identifier2, nullptr, nullptr, ellipsis, templateHead); }
             )
         |   TypeParameterKey:key2{ s = sourcePos; }
             (   Identifier(ctx):identifier2? Assign:assign2 TypeId(ctx):typeId2{ return new TypeParameterNode(s, key2, identifier2, assign2, typeId2, nullptr, nullptr); }
-            |   (Ellipses:ellipses3? Identifier(ctx):identifier3?){ return new TypeParameterNode(s, key2, identifier3, nullptr, nullptr, ellipses3, nullptr); }
+            |   (Ellipsis:ellipsis3? Identifier(ctx):identifier3?){ return new TypeParameterNode(s, key2, identifier3, nullptr, nullptr, ellipsis3, nullptr); }
             )
         |   TypeConstraint(ctx):typeConstraint4{ s = sourcePos; }
             (   Identifier(ctx):identifier4? Assign:assign4 TypeId(ctx):typeId4{ return new TypeParameterNode(s, typeConstraint4, identifier4, assign4, typeId4, nullptr, nullptr); }
-                (Ellipses:ellipses5? Identifier(ctx):identifier5?){ return new TypeParameterNode(s, typeConstraint4, identifier5, nullptr, nullptr, ellipses5, nullptr); }
+                (Ellipsis:ellipsis5? Identifier(ctx):identifier5?){ return new TypeParameterNode(s, typeConstraint4, identifier5, nullptr, nullptr, ellipsis5, nullptr); }
             )
         )
         ;
@@ -160,7 +164,7 @@ parser api(PARSER_API) TemplateParser
             (Comma:comma{ templateIdNode->AddNode(comma); } TemplateArgument(ctx):right{ templateIdNode->AddNode(right); })*
         )
         (
-            ELLIPSES{ templateIdNode->AddNode(new EllipsesNode(sourcePos)); }
+            ELLIPSIS{ templateIdNode->AddNode(new EllipsisNode(sourcePos)); }
         )?
         ;
 

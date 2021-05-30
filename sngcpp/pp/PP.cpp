@@ -87,7 +87,7 @@ void InitTextTokenCppTokenMap()
     textTokenCppTokenMap[TextTokens::DOT] = CppTokens::DOT;
     textTokenCppTokenMap[TextTokens::ARROW] = CppTokens::ARROW;
     textTokenCppTokenMap[TextTokens::SEMICOLON] = CppTokens::SEMICOLON;
-    textTokenCppTokenMap[TextTokens::ELLIPSES] = CppTokens::ELLIPSES;
+    textTokenCppTokenMap[TextTokens::ELLIPSIS] = CppTokens::ELLIPSIS;
     textTokenCppTokenMap[TextTokens::LBRACE] = CppTokens::LBRACE;
     textTokenCppTokenMap[TextTokens::RBRACE] = CppTokens::RBRACE;
 }
@@ -154,7 +154,7 @@ void InitPPTokenTextTokenMap()
     ppTokenTextTokenMap[PPTokens::DOT] = TextTokens::DOT;
     ppTokenTextTokenMap[PPTokens::ARROW] = TextTokens::ARROW;
     ppTokenTextTokenMap[PPTokens::SEMICOLON] = TextTokens::SEMICOLON;
-    ppTokenTextTokenMap[PPTokens::ELLIPSES] = TextTokens::ELLIPSES;
+    ppTokenTextTokenMap[PPTokens::ELLIPSIS] = TextTokens::ELLIPSIS;
     ppTokenTextTokenMap[PPTokens::LBRACE] = TextTokens::LBRACE;
     ppTokenTextTokenMap[PPTokens::RBRACE] = TextTokens::RBRACE;
 }

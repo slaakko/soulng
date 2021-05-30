@@ -1,0 +1,7 @@
+<sngcpp>
+    <project name="1_lambda">
+        <files>
+            <file name="lambda1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

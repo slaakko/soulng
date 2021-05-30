@@ -613,8 +613,8 @@ SizeOfPackExprNode::SizeOfPackExprNode(const SourcePos& sourcePos_) : UnaryNode(
 {
 }
 
-SizeOfPackExprNode::SizeOfPackExprNode(const SourcePos& sourcePos_, Node* idNode_, const SourcePos& ellipsesPos_, const SourcePos& lpPos_, const SourcePos& rpPos_) :
-    UnaryNode(NodeKind::sizeOfPackExpNode, sourcePos_, idNode_), ellipsesPos(ellipsesPos_), lpPos(lpPos_), rpPos(rpPos_)
+SizeOfPackExprNode::SizeOfPackExprNode(const SourcePos& sourcePos_, Node* idNode_, const SourcePos& ellipsisPos_, const SourcePos& lpPos_, const SourcePos& rpPos_) :
+    UnaryNode(NodeKind::sizeOfPackExpNode, sourcePos_, idNode_), ellipsisPos(ellipsisPos_), lpPos(lpPos_), rpPos(rpPos_)
 {
 }
 
@@ -626,7 +626,7 @@ void SizeOfPackExprNode::Accept(Visitor& visitor)
 void SizeOfPackExprNode::Write(Writer& writer)
 {
     UnaryNode::Write(writer);
-    writer.Write(ellipsesPos);
+    writer.Write(ellipsisPos);
     writer.Write(lpPos);
     writer.Write(rpPos);
 }
@@ -634,7 +634,7 @@ void SizeOfPackExprNode::Write(Writer& writer)
 void SizeOfPackExprNode::Read(Reader& reader)
 {
     UnaryNode::Read(reader);
-    ellipsesPos = reader.ReadSourcePos();
+    ellipsisPos = reader.ReadSourcePos();
     lpPos = reader.ReadSourcePos();
     rpPos = reader.ReadSourcePos();
 }
@@ -1274,11 +1274,11 @@ void DesignatorNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
-EllipsesNode::EllipsesNode(const SourcePos& sourcePos_) : Node(NodeKind::ellipsesNode, sourcePos_)
+EllipsisNode::EllipsisNode(const SourcePos& sourcePos_) : Node(NodeKind::EllipsisNode, sourcePos_)
 {
 }
 
-void EllipsesNode::Accept(Visitor& visitor)
+void EllipsisNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }

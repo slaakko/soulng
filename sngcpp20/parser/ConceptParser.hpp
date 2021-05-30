@@ -2,6 +2,7 @@
 #define CONCEPTPARSER_HPP
 #include <sngcpp20/parser/ParserApi.hpp>
 #include <sngcpp20/symbols/Context.hpp>
+#include <sngcpp20/symbols/Concept.hpp>
 #include <sngcpp20/ast/Concept.hpp>
 #include <sngcpp20/ast/Function.hpp>
 #include <sngcpp20/ast/Statement.hpp>

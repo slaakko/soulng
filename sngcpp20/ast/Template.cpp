@@ -79,8 +79,8 @@ TypeParameterNode::TypeParameterNode(const SourcePos& sourcePos_) : CompoundNode
 {
 }
 
-TypeParameterNode::TypeParameterNode(const SourcePos& sourcePos_, Node* typeConstraint_, Node* identifier_, Node* assign_, Node* typeId_, Node* ellipses_, Node* templateHead_) :
-    CompoundNode(NodeKind::typeParameterNode, sourcePos_), typeConstraint(typeConstraint_), identifier(identifier_), assign(assign_), typeId(typeId_), ellipses(ellipses_), templateHead(templateHead_)
+TypeParameterNode::TypeParameterNode(const SourcePos& sourcePos_, Node* typeConstraint_, Node* identifier_, Node* assign_, Node* typeId_, Node* ellipsis_, Node* templateHead_) :
+    CompoundNode(NodeKind::typeParameterNode, sourcePos_), typeConstraint(typeConstraint_), identifier(identifier_), assign(assign_), typeId(typeId_), ellipsis(ellipsis_), templateHead(templateHead_)
 {
 }
 
@@ -96,7 +96,7 @@ void TypeParameterNode::Write(Writer& writer)
     writer.Write(identifier.get());
     writer.Write(assign.get());
     writer.Write(typeId.get());
-    writer.Write(ellipses.get());
+    writer.Write(ellipsis.get());
     writer.Write(templateHead.get());
 }
 
@@ -107,7 +107,7 @@ void TypeParameterNode::Read(Reader& reader)
     identifier.reset(reader.ReadNode());
     assign.reset(reader.ReadNode());
     typeId.reset(reader.ReadNode());
-    ellipses.reset(reader.ReadNode());
+    ellipsis.reset(reader.ReadNode());
     templateHead.reset(reader.ReadNode());
 }
 

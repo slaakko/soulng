@@ -60,7 +60,7 @@ class OverrideNode;
 class FinalNode;
 class PureSpecifierNode;
 // Concept:
-class ConceptDefinitioNode;
+class ConceptDefinitionNode;
 class RequiresExprNode;
 class RequirementBodyNode;
 class SimpleRequirementNode;
@@ -213,7 +213,7 @@ class NewInitializerNode;
 class BracedInitListNode;
 class DesignatedInitializerNode;
 class DesignatorNode;
-class EllipsesNode;
+class EllipsisNode;
 // Function:
 class FunctionDefinitionNode;
 class FunctionBodyNode;
@@ -419,7 +419,7 @@ public:
     virtual void Visit(FinalNode& node) {}
     virtual void Visit(PureSpecifierNode& node) {}
     // Concept:
-    virtual void Visit(ConceptDefinitioNode& node) {}
+    virtual void Visit(ConceptDefinitionNode& node) {}
     virtual void Visit(RequiresExprNode& node) {}
     virtual void Visit(RequirementBodyNode& node) {}
     virtual void Visit(SimpleRequirementNode& node) {}
@@ -572,7 +572,7 @@ public:
     virtual void Visit(BracedInitListNode& node) {}
     virtual void Visit(DesignatedInitializerNode& node) {}
     virtual void Visit(DesignatorNode& node) {}
-    virtual void Visit(EllipsesNode& node) {}
+    virtual void Visit(EllipsisNode& node) {}
     // Function:
     virtual void Visit(FunctionDefinitionNode& node) {}
     virtual void Visit(FunctionBodyNode& node) {}
@@ -760,7 +760,7 @@ public:
     void Visit(FinalNode& node);
     void Visit(PureSpecifierNode& node);
     // Concept:
-    void Visit(ConceptDefinitioNode& node);
+    void Visit(ConceptDefinitionNode& node);
     void Visit(RequiresExprNode& node);
     void Visit(RequirementBodyNode& node);
     void Visit(SimpleRequirementNode& node);
@@ -913,7 +913,7 @@ public:
     void Visit(BracedInitListNode& node);
     void Visit(DesignatedInitializerNode& node);
     void Visit(DesignatorNode& node);
-    void Visit(EllipsesNode& node);
+    void Visit(EllipsisNode& node);
     // Function:
     void Visit(FunctionDefinitionNode& node);
     void Visit(FunctionBodyNode& node);

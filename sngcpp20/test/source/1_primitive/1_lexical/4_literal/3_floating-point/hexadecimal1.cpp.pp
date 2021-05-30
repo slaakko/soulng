@@ -4,4 +4,3 @@ double x2 = 0x1.0p1;
 double x3 = 0x1.0P2;
 double x4 = 0x1.0P-2;
 
-

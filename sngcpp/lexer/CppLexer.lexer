@@ -27,7 +27,7 @@ tokens CppTokens
     (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
-    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSIS, "'...'"),
     (MAX, "max")
 }
 
@@ -141,7 +141,7 @@ lexer api(SNGCPP_LEXER_API) CppLexer
     "\." { return DOT; }
     "->" { return ARROW; }
     ";" { return SEMICOLON; }
-    "\.\.\." { return ELLIPSES; }
+    "\.\.\." { return ELLIPSIS; }
     "\{" { return LBRACE; }
     "\}" { return RBRACE; }
 

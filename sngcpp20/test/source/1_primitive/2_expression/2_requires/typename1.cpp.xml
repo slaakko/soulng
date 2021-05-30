@@ -1,0 +1,116 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <templateDeclarationNode count="2" pos="(1,1)" type="binary">
+   <templateHeadNode pos="(1,1)" type="compound">
+    <keyword pos="(1,1)" value="template"/>
+    <templateParameterListNode count="1" pos="(1,10)" type="list">
+     <operator pos="(1,10)" value="&lt;"/>
+     <typeParameterNode pos="(1,11)" type="compound">
+      <typenameNode pos="(1,11)" type="single">
+       <keyword pos="(1,11)" value="typename"/>
+      </typenameNode>
+      <identifierNode pos="(1,20)" type="compound">
+       <identifier pos="(1,20)" value="T"/>
+      </identifierNode>
+     </typeParameterNode>
+     <operator pos="(1,21)" value=">"/>
+    </templateParameterListNode>
+   </templateHeadNode>
+   <aliasDeclarationNode pos="(1,23)" type="compound">
+    <usingNode pos="(1,23)" type="single">
+     <keyword pos="(1,23)" value="using"/>
+    </usingNode>
+    <identifierNode pos="(1,29)" type="compound">
+     <identifier pos="(1,29)" value="Ref"/>
+    </identifierNode>
+    <assignNode pos="(1,33)" type="single">
+     <operator pos="(1,33)" value="="/>
+    </assignNode>
+    <definingTypeIdNode pos="(1,35)" type="compound">
+     <definingTypeSpecifierSequenceNode count="1" pos="(1,35)" type="sequence">
+      <identifierNode pos="(1,35)" type="compound">
+       <identifier pos="(1,35)" value="T"/>
+      </identifierNode>
+     </definingTypeSpecifierSequenceNode>
+     <ptrDeclaratorNode count="2" pos="(1,36)" type="sequence">
+      <lvalueRefNode pos="(1,36)" type="single">
+       <operator pos="(1,36)" value="&amp;"/>
+      </lvalueRefNode>
+      <abstractDeclaratorNode pos="(1,37)" type="single"/>
+     </ptrDeclaratorNode>
+    </definingTypeIdNode>
+    <semicolonNode pos="(1,37)" type="single">
+     <operator pos="(1,37)" value=";"/>
+    </semicolonNode>
+   </aliasDeclarationNode>
+  </templateDeclarationNode>
+  <templateDeclarationNode count="2" pos="(3,1)" type="binary">
+   <templateHeadNode pos="(3,1)" type="compound">
+    <keyword pos="(3,1)" value="template"/>
+    <templateParameterListNode count="1" pos="(3,10)" type="list">
+     <operator pos="(3,10)" value="&lt;"/>
+     <typeParameterNode pos="(3,11)" type="compound">
+      <typenameNode pos="(3,11)" type="single">
+       <keyword pos="(3,11)" value="typename"/>
+      </typenameNode>
+      <identifierNode pos="(3,20)" type="compound">
+       <identifier pos="(3,20)" value="T"/>
+      </identifierNode>
+     </typeParameterNode>
+     <operator pos="(3,21)" value=">"/>
+    </templateParameterListNode>
+   </templateHeadNode>
+   <conceptDefinitionNode pos="(4,1)" type="compound">
+    <keyword pos="(4,1)" value="concept"/>
+    <identifierNode pos="(4,9)" type="compound">
+     <identifier pos="(4,9)" value="C"/>
+    </identifierNode>
+    <assignNode pos="(4,11)" type="single">
+     <operator pos="(4,11)" value="="/>
+    </assignNode>
+    <requiresExprNode pos="(4,13)" type="compound">
+     <keyword pos="(4,13)" value="requires"/>
+     <requirementBodyNode count="2" pos="(5,1)" type="sequence">
+      <operator pos="(5,1)" value="{"/>
+      <requirementBodyNode count="2" pos="(5,1)" type="sequence">
+       <typeRequirementNode pos="(6,5)" type="compound">
+        <keyword pos="(6,5)" value="typename"/>
+        <nestedNameSpecifierNode count="2" pos="(6,14)" type="sequence">
+         <identifierNode pos="(6,14)" type="compound">
+          <identifier pos="(6,14)" value="T"/>
+         </identifierNode>
+         <colonColonNode pos="(6,15)" type="single">
+          <operator pos="(6,15)" value="::"/>
+         </colonColonNode>
+        </nestedNameSpecifierNode>
+        <identifierNode pos="(6,17)" type="compound">
+         <identifier pos="(6,17)" value="inner"/>
+        </identifierNode>
+        <semicolonNode pos="(6,22)" type="single">
+         <operator pos="(6,22)" value=";"/>
+        </semicolonNode>
+       </typeRequirementNode>
+       <typeRequirementNode pos="(7,5)" type="compound">
+        <keyword pos="(7,5)" value="typename"/>
+        <templateIdNode count="1" pos="(7,14)" type="list">
+         <identifierNode pos="(7,14)" type="compound">
+          <identifier pos="(7,14)" value="Ref"/>
+         </identifierNode>
+         <operator pos="(7,17)" value="&lt;"/>
+         <identifierNode pos="(7,18)" type="compound">
+          <identifier pos="(7,18)" value="T"/>
+         </identifierNode>
+         <operator pos="(7,19)" value=">"/>
+        </templateIdNode>
+        <semicolonNode pos="(7,20)" type="single">
+         <operator pos="(7,20)" value=";"/>
+        </semicolonNode>
+       </typeRequirementNode>
+      </requirementBodyNode>
+      <operator pos="(8,1)" value="}"/>
+     </requirementBodyNode>
+    </requiresExprNode>
+   </conceptDefinitionNode>
+  </templateDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

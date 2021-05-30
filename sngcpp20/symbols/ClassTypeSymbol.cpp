@@ -4,6 +4,7 @@
 // =================================
 
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
 
 namespace sngcpp::symbols {
 
@@ -20,6 +21,12 @@ bool ClassTypeSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
         case ScopeKind::classScope: return true;
     }
     return false;
+}
+
+void ClassTypeSymbol::AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context)
+{
+    ClassGroupSymbol* classGroup = containerSymbol->GetOrInsertClassGroup(Name(), sourcePos, context);
+    classGroup->AddClass(this);
 }
 
 } // sngcpp::symbols

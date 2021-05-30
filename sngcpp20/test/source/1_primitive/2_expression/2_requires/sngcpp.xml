@@ -1,0 +1,8 @@
+<sngcpp>
+    <project name="2_requires">
+        <files>
+            <file name="requires1.cpp"/>
+            <file name="simple1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

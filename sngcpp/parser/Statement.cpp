@@ -3704,7 +3704,7 @@ soulng::parser::Match StatementParser::ExceptionDeclaration(CppLexer& lexer, sng
                     int64_t pos = lexer.GetPos();
                     soulng::lexer::Span span = lexer.GetSpan();
                     soulng::parser::Match match(false);
-                    if (*lexer == ELLIPSES)
+                    if (*lexer == ELLIPSIS)
                     {
                         ++lexer;
                         match.hit = true;

@@ -27,7 +27,7 @@ tokens CppTokens
     (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
-    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSIS, "'...'"),
     (ANGLEHEADERNAME, "'angle header name'"), (QUOTEHEADERNAME, "'quote header name'"),
     (MAX, "max")
 }
@@ -152,7 +152,7 @@ lexer api(LEXER_API) CppLexer
     "\." { return DOT; }
     "->" { return ARROW; }
     ";" { return SEMICOLON; }
-    "\.\.\." { return ELLIPSES; }
+    "\.\.\." { return ELLIPSIS; }
     "\{" { return LBRACE; }
     "\}" { return RBRACE; }
 

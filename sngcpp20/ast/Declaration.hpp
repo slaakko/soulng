@@ -474,7 +474,7 @@ class AST_API PackDeclaratorIdNode : public BinaryNode
 {
 public:
     PackDeclaratorIdNode(const SourcePos& sourcePos_);
-    PackDeclaratorIdNode(const SourcePos& sourcePos_, Node* ellipses_, Node* idExpr_);
+    PackDeclaratorIdNode(const SourcePos& sourcePos_, Node* ellipsis_, Node* idExpr_);
     void Accept(Visitor& visitor) override;
 };
 

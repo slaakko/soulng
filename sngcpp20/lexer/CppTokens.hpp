@@ -147,7 +147,7 @@ namespace CppTokens
     const int DOT = 136;
     const int ARROW = 137;
     const int SEMICOLON = 138;
-    const int ELLIPSES = 139;
+    const int ELLIPSIS = 139;
     const int ANGLEHEADERNAME = 140;
     const int QUOTEHEADERNAME = 141;
     const int MAX = 142;

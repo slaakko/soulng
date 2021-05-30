@@ -35368,7 +35368,7 @@ int CppLexer::GetTokenId(int statementIndex)
         case 54:
         {
             Retract();
-            return ELLIPSES;
+            return ELLIPSIS;
             break;
         }
         case 55:

@@ -1,0 +1,50 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <boolNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="bool"/>
+    </boolNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,6)" type="list">
+    <initDeclaratorNode count="2" pos="(1,6)" type="binary">
+     <identifierNode pos="(1,6)" type="compound">
+      <identifier pos="(1,6)" value="x0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,9)" type="unary">
+      <operator pos="(1,9)" value="="/>
+      <booleanLiteralNode pos="(1,11)" type="single">
+       <literal pos="(1,11)" value="true"/>
+      </booleanLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,15)" type="single">
+    <operator pos="(1,15)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <boolNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="bool"/>
+    </boolNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,6)" type="list">
+    <initDeclaratorNode count="2" pos="(2,6)" type="binary">
+     <identifierNode pos="(2,6)" type="compound">
+      <identifier pos="(2,6)" value="x1"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,9)" type="unary">
+      <operator pos="(2,9)" value="="/>
+      <booleanLiteralNode pos="(2,11)" type="single">
+       <literal pos="(2,11)" value="false"/>
+      </booleanLiteralNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,16)" type="single">
+    <operator pos="(2,16)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

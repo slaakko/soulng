@@ -651,6 +651,12 @@ RawStringLiteralNode* ParseRawStringLiteral(const SourcePos& sourcePos, soulng::
                         state = 4;
                         break;
                     }
+                    case '\n':
+                    {
+                        value.append(1, *p);
+                        ++lexer.line;
+                        break;
+                    }
                     default:
                     {
                         value.append(1, *p);

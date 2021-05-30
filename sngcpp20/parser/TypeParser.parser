@@ -74,7 +74,7 @@ parser api(PARSER_API) TypeParser
             (AttributeSpecifierSeq(ctx):attributes{ node->AddNode(attributes); })?
         )
         {
-            node.release();
+            return node.release();
         }
         ;
 

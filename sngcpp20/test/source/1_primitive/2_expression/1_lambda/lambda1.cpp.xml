@@ -1,0 +1,536 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="10" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,5)" type="list">
+    <initDeclaratorNode count="2" pos="(1,5)" type="binary">
+     <identifierNode pos="(1,5)" type="compound">
+      <identifier pos="(1,5)" value="i0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,8)" type="unary">
+      <operator pos="(1,8)" value="="/>
+      <lambdaExpressionNode pos="(1,10)" type="compound">
+       <lambdaIntroducerNode pos="(1,10)" type="compound">
+        <operator pos="(1,10)" value="["/>
+        <operator pos="(1,11)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(1,12)" type="compound">
+        <parameterListNode count="1" pos="(1,12)" type="list">
+         <operator pos="(1,12)" value="("/>
+         <parameterNode pos="(1,13)" type="compound">
+          <declSpecifierSequenceNode count="1" pos="(1,13)" type="sequence">
+           <intNode pos="(1,13)" type="single">
+            <keyword pos="(1,13)" value="int"/>
+           </intNode>
+          </declSpecifierSequenceNode>
+          <identifierNode pos="(1,17)" type="compound">
+           <identifier pos="(1,17)" value="i"/>
+          </identifierNode>
+         </parameterNode>
+         <operator pos="(1,18)" value=")"/>
+        </parameterListNode>
+       </lambdaDeclaratorNode>
+       <compoundStatementNode count="1" pos="(1,19)" type="sequence">
+        <operator pos="(1,19)" value="{"/>
+        <returnStatementNode pos="(1,21)" type="compound">
+         <keyword pos="(1,21)" value="return"/>
+         <identifierNode pos="(1,28)" type="compound">
+          <identifier pos="(1,28)" value="i"/>
+         </identifierNode>
+         <semicolonNode pos="(1,29)" type="single">
+          <operator pos="(1,29)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(1,31)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,32)" type="single">
+    <operator pos="(1,32)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <intNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,5)" type="list">
+    <initDeclaratorNode count="2" pos="(2,5)" type="binary">
+     <identifierNode pos="(2,5)" type="compound">
+      <identifier pos="(2,5)" value="i1"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,8)" type="unary">
+      <operator pos="(2,8)" value="="/>
+      <lambdaExpressionNode pos="(2,10)" type="compound">
+       <lambdaIntroducerNode pos="(2,10)" type="compound">
+        <operator pos="(2,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(2,11)" type="list">
+         <defaultRefCaptureNode pos="(2,11)" type="single">
+          <operator pos="(2,11)" value="&amp;"/>
+         </defaultRefCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(2,12)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(2,13)" type="compound">
+        <parameterListNode count="1" pos="(2,13)" type="list">
+         <operator pos="(2,13)" value="("/>
+         <parameterNode pos="(2,14)" type="compound">
+          <declSpecifierSequenceNode count="1" pos="(2,14)" type="sequence">
+           <intNode pos="(2,14)" type="single">
+            <keyword pos="(2,14)" value="int"/>
+           </intNode>
+          </declSpecifierSequenceNode>
+          <identifierNode pos="(2,18)" type="compound">
+           <identifier pos="(2,18)" value="i"/>
+          </identifierNode>
+         </parameterNode>
+         <operator pos="(2,19)" value=")"/>
+        </parameterListNode>
+       </lambdaDeclaratorNode>
+       <compoundStatementNode count="1" pos="(2,20)" type="sequence">
+        <operator pos="(2,20)" value="{"/>
+        <returnStatementNode pos="(2,22)" type="compound">
+         <keyword pos="(2,22)" value="return"/>
+         <identifierNode pos="(2,29)" type="compound">
+          <identifier pos="(2,29)" value="i"/>
+         </identifierNode>
+         <semicolonNode pos="(2,30)" type="single">
+          <operator pos="(2,30)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(2,32)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,33)" type="single">
+    <operator pos="(2,33)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(3,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(3,1)" type="sequence">
+    <intNode pos="(3,1)" type="single">
+     <keyword pos="(3,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(3,5)" type="list">
+    <initDeclaratorNode count="2" pos="(3,5)" type="binary">
+     <identifierNode pos="(3,5)" type="compound">
+      <identifier pos="(3,5)" value="i2"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(3,8)" type="unary">
+      <operator pos="(3,8)" value="="/>
+      <lambdaExpressionNode pos="(3,10)" type="compound">
+       <lambdaIntroducerNode pos="(3,10)" type="compound">
+        <operator pos="(3,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(3,11)" type="list">
+         <defaultCopyCaptureNode pos="(3,11)" type="single">
+          <operator pos="(3,11)" value="="/>
+         </defaultCopyCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(3,12)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(3,13)" type="compound">
+        <parameterListNode count="1" pos="(3,13)" type="list">
+         <operator pos="(3,13)" value="("/>
+         <parameterNode pos="(3,14)" type="compound">
+          <declSpecifierSequenceNode count="1" pos="(3,14)" type="sequence">
+           <intNode pos="(3,14)" type="single">
+            <keyword pos="(3,14)" value="int"/>
+           </intNode>
+          </declSpecifierSequenceNode>
+          <identifierNode pos="(3,18)" type="compound">
+           <identifier pos="(3,18)" value="i"/>
+          </identifierNode>
+         </parameterNode>
+         <operator pos="(3,19)" value=")"/>
+        </parameterListNode>
+       </lambdaDeclaratorNode>
+       <compoundStatementNode count="1" pos="(3,20)" type="sequence">
+        <operator pos="(3,20)" value="{"/>
+        <returnStatementNode pos="(3,22)" type="compound">
+         <keyword pos="(3,22)" value="return"/>
+         <identifierNode pos="(3,29)" type="compound">
+          <identifier pos="(3,29)" value="i"/>
+         </identifierNode>
+         <semicolonNode pos="(3,30)" type="single">
+          <operator pos="(3,30)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(3,32)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(3,33)" type="single">
+    <operator pos="(3,33)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(4,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(4,1)" type="sequence">
+    <intNode pos="(4,1)" type="single">
+     <keyword pos="(4,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(4,5)" type="list">
+    <initDeclaratorNode count="2" pos="(4,5)" type="binary">
+     <identifierNode pos="(4,5)" type="compound">
+      <identifier pos="(4,5)" value="i3"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(4,8)" type="unary">
+      <operator pos="(4,8)" value="="/>
+      <lambdaExpressionNode pos="(4,10)" type="compound">
+       <lambdaIntroducerNode pos="(4,10)" type="compound">
+        <operator pos="(4,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(4,11)" type="list">
+         <simpleCaptureNode pos="(4,11)" type="compound">
+          <identifierNode pos="(4,11)" type="compound">
+           <identifier pos="(4,11)" value="x"/>
+          </identifierNode>
+         </simpleCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(4,12)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(4,14)" type="compound"/>
+       <compoundStatementNode count="1" pos="(4,14)" type="sequence">
+        <operator pos="(4,14)" value="{"/>
+        <returnStatementNode pos="(4,16)" type="compound">
+         <keyword pos="(4,16)" value="return"/>
+         <identifierNode pos="(4,23)" type="compound">
+          <identifier pos="(4,23)" value="x"/>
+         </identifierNode>
+         <semicolonNode pos="(4,24)" type="single">
+          <operator pos="(4,24)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(4,26)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(4,27)" type="single">
+    <operator pos="(4,27)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(5,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(5,1)" type="sequence">
+    <intNode pos="(5,1)" type="single">
+     <keyword pos="(5,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(5,5)" type="list">
+    <initDeclaratorNode count="2" pos="(5,5)" type="binary">
+     <identifierNode pos="(5,5)" type="compound">
+      <identifier pos="(5,5)" value="i4"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(5,8)" type="unary">
+      <operator pos="(5,8)" value="="/>
+      <lambdaExpressionNode pos="(5,10)" type="compound">
+       <lambdaIntroducerNode pos="(5,10)" type="compound">
+        <operator pos="(5,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(5,11)" type="list">
+         <simpleCaptureNode pos="(5,11)" type="compound">
+          <byRefCaptureNode pos="(5,11)" type="single">
+           <operator pos="(5,11)" value="&amp;"/>
+          </byRefCaptureNode>
+          <identifierNode pos="(5,12)" type="compound">
+           <identifier pos="(5,12)" value="x"/>
+          </identifierNode>
+         </simpleCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(5,13)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(5,15)" type="compound"/>
+       <compoundStatementNode count="1" pos="(5,15)" type="sequence">
+        <operator pos="(5,15)" value="{"/>
+        <returnStatementNode pos="(5,17)" type="compound">
+         <keyword pos="(5,17)" value="return"/>
+         <identifierNode pos="(5,24)" type="compound">
+          <identifier pos="(5,24)" value="x"/>
+         </identifierNode>
+         <semicolonNode pos="(5,25)" type="single">
+          <operator pos="(5,25)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(5,27)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(5,28)" type="single">
+    <operator pos="(5,28)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(6,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(6,1)" type="sequence">
+    <intNode pos="(6,1)" type="single">
+     <keyword pos="(6,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(6,5)" type="list">
+    <initDeclaratorNode count="2" pos="(6,5)" type="binary">
+     <identifierNode pos="(6,5)" type="compound">
+      <identifier pos="(6,5)" value="i5"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(6,8)" type="unary">
+      <operator pos="(6,8)" value="="/>
+      <lambdaExpressionNode pos="(6,10)" type="compound">
+       <lambdaIntroducerNode pos="(6,10)" type="compound">
+        <operator pos="(6,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(6,11)" type="list">
+         <currentObjectByRefCapture pos="()" type="compound">
+          <keyword pos="(6,11)" value="this"/>
+         </currentObjectByRefCapture>
+        </lambdaCaptureNode>
+        <operator pos="(6,15)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(6,17)" type="compound"/>
+       <compoundStatementNode count="1" pos="(6,17)" type="sequence">
+        <operator pos="(6,17)" value="{"/>
+        <returnStatementNode pos="(6,19)" type="compound">
+         <keyword pos="(6,19)" value="return"/>
+         <identifierNode pos="(6,26)" type="compound">
+          <identifier pos="(6,26)" value="x"/>
+         </identifierNode>
+         <semicolonNode pos="(6,27)" type="single">
+          <operator pos="(6,27)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(6,29)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(6,30)" type="single">
+    <operator pos="(6,30)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(7,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(7,1)" type="sequence">
+    <intNode pos="(7,1)" type="single">
+     <keyword pos="(7,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(7,5)" type="list">
+    <initDeclaratorNode count="2" pos="(7,5)" type="binary">
+     <identifierNode pos="(7,5)" type="compound">
+      <identifier pos="(7,5)" value="i6"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(7,8)" type="unary">
+      <operator pos="(7,8)" value="="/>
+      <lambdaExpressionNode pos="(7,10)" type="compound">
+       <lambdaIntroducerNode pos="(7,10)" type="compound">
+        <operator pos="(7,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(7,11)" type="list">
+         <currentObjectCopyCapture pos="(7,11)" type="compound">
+          <operator pos="(7,11)" value="*"/>
+          <keyword pos="(7,12)" value="this"/>
+         </currentObjectCopyCapture>
+        </lambdaCaptureNode>
+        <operator pos="(7,16)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(7,18)" type="compound"/>
+       <compoundStatementNode count="1" pos="(7,18)" type="sequence">
+        <operator pos="(7,18)" value="{"/>
+        <returnStatementNode pos="(7,20)" type="compound">
+         <keyword pos="(7,20)" value="return"/>
+         <identifierNode pos="(7,27)" type="compound">
+          <identifier pos="(7,27)" value="x"/>
+         </identifierNode>
+         <semicolonNode pos="(7,28)" type="single">
+          <operator pos="(7,28)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(7,30)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(7,31)" type="single">
+    <operator pos="(7,31)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(8,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(8,1)" type="sequence">
+    <intNode pos="(8,1)" type="single">
+     <keyword pos="(8,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(8,5)" type="list">
+    <initDeclaratorNode count="2" pos="(8,5)" type="binary">
+     <identifierNode pos="(8,5)" type="compound">
+      <identifier pos="(8,5)" value="i7"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(8,8)" type="unary">
+      <operator pos="(8,8)" value="="/>
+      <lambdaExpressionNode pos="(8,10)" type="compound">
+       <lambdaIntroducerNode pos="(8,10)" type="compound">
+        <operator pos="(8,10)" value="["/>
+        <lambdaCaptureNode count="3" pos="(8,11)" type="list">
+         <simpleCaptureNode pos="(8,11)" type="compound">
+          <identifierNode pos="(8,11)" type="compound">
+           <identifier pos="(8,11)" value="x"/>
+          </identifierNode>
+         </simpleCaptureNode>
+         <commaNode pos="(8,12)" type="single">
+          <operator pos="(8,12)" value=","/>
+         </commaNode>
+         <simpleCaptureNode pos="(8,14)" type="compound">
+          <identifierNode pos="(8,14)" type="compound">
+           <identifier pos="(8,14)" value="y"/>
+          </identifierNode>
+         </simpleCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(8,15)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(8,16)" type="compound"/>
+       <compoundStatementNode count="1" pos="(8,16)" type="sequence">
+        <operator pos="(8,16)" value="{"/>
+        <returnStatementNode pos="(8,18)" type="compound">
+         <keyword pos="(8,18)" value="return"/>
+         <binaryExprNode count="2" pos="(8,25)" type="binary">
+          <identifierNode pos="(8,25)" type="compound">
+           <identifier pos="(8,25)" value="x"/>
+          </identifierNode>
+          <plusNode pos="(8,27)" type="single">
+           <operator pos="(8,27)" value="+"/>
+          </plusNode>
+          <identifierNode pos="(8,29)" type="compound">
+           <identifier pos="(8,29)" value="y"/>
+          </identifierNode>
+         </binaryExprNode>
+         <semicolonNode pos="(8,30)" type="single">
+          <operator pos="(8,30)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(8,32)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(8,33)" type="single">
+    <operator pos="(8,33)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(9,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(9,1)" type="sequence">
+    <intNode pos="(9,1)" type="single">
+     <keyword pos="(9,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(9,5)" type="list">
+    <initDeclaratorNode count="2" pos="(9,5)" type="binary">
+     <identifierNode pos="(9,5)" type="compound">
+      <identifier pos="(9,5)" value="i8"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(9,8)" type="unary">
+      <operator pos="(9,8)" value="="/>
+      <lambdaExpressionNode pos="(9,10)" type="compound">
+       <lambdaIntroducerNode pos="(9,10)" type="compound">
+        <operator pos="(9,10)" value="["/>
+        <lambdaCaptureNode count="1" pos="(9,11)" type="list">
+         <initCaptureNode pos="(9,11)" type="compound">
+          <identifierNode pos="(9,11)" type="compound">
+           <identifier pos="(9,11)" value="x"/>
+          </identifierNode>
+          <assignmentInitializerNode count="1" pos="(9,13)" type="unary">
+           <operator pos="(9,13)" value="="/>
+           <integerLiteralNode pos="(9,15)" type="single">
+            <literal pos="(9,15)" value="1"/>
+           </integerLiteralNode>
+          </assignmentInitializerNode>
+         </initCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(9,16)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(9,17)" type="compound"/>
+       <compoundStatementNode count="1" pos="(9,17)" type="sequence">
+        <operator pos="(9,17)" value="{"/>
+        <returnStatementNode pos="(9,19)" type="compound">
+         <keyword pos="(9,19)" value="return"/>
+         <identifierNode pos="(9,26)" type="compound">
+          <identifier pos="(9,26)" value="x"/>
+         </identifierNode>
+         <semicolonNode pos="(9,27)" type="single">
+          <operator pos="(9,27)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(9,29)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(9,30)" type="single">
+    <operator pos="(9,30)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(10,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(10,1)" type="sequence">
+    <intNode pos="(10,1)" type="single">
+     <keyword pos="(10,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(10,5)" type="list">
+    <initDeclaratorNode count="2" pos="(10,5)" type="binary">
+     <identifierNode pos="(10,5)" type="compound">
+      <identifier pos="(10,5)" value="i9"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(10,8)" type="unary">
+      <operator pos="(10,8)" value="="/>
+      <lambdaExpressionNode pos="(10,10)" type="compound">
+       <lambdaIntroducerNode pos="(10,10)" type="compound">
+        <operator pos="(10,10)" value="["/>
+        <lambdaCaptureNode count="3" pos="(10,11)" type="list">
+         <defaultCopyCaptureNode pos="(10,11)" type="single">
+          <operator pos="(10,11)" value="="/>
+         </defaultCopyCaptureNode>
+         <commaNode pos="(10,12)" type="single">
+          <operator pos="(10,12)" value=","/>
+         </commaNode>
+         <simpleCaptureNode pos="(10,14)" type="compound">
+          <identifierNode pos="(10,14)" type="compound">
+           <identifier pos="(10,14)" value="x"/>
+          </identifierNode>
+         </simpleCaptureNode>
+        </lambdaCaptureNode>
+        <operator pos="(10,15)" value="]"/>
+       </lambdaIntroducerNode>
+       <lambdaDeclaratorNode pos="(10,16)" type="compound"/>
+       <compoundStatementNode count="1" pos="(10,16)" type="sequence">
+        <operator pos="(10,16)" value="{"/>
+        <returnStatementNode pos="(10,18)" type="compound">
+         <keyword pos="(10,18)" value="return"/>
+         <identifierNode pos="(10,25)" type="compound">
+          <identifier pos="(10,25)" value="x"/>
+         </identifierNode>
+         <semicolonNode pos="(10,26)" type="single">
+          <operator pos="(10,26)" value=";"/>
+         </semicolonNode>
+        </returnStatementNode>
+        <operator pos="(10,28)" value="}"/>
+       </compoundStatementNode>
+      </lambdaExpressionNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(10,29)" type="single">
+    <operator pos="(10,29)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

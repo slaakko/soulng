@@ -58,7 +58,7 @@ const char* nodeKindStr[] =
     "compareNode", "shiftLeftNode", "shiftRightNode", "plusNode", "minusNode", "mulNode", "divNode", "modNode", "dotStarNode", "arrowStarNode",
     "castExprNode", "derefNode", "addrOfNode", "notNode", "complementNode", "prefixIncNode", "prefixDecNode",
     "awaitExprNode", "sizeOfTypeExprNode", "sizeOfPackExpNode", "sizeOfUnaryExprNode", "alignOfExprNode", "noexceptExprNode",
-    "foldExprNode", "newDeclaratorNode", "arrayNewDeclaratorNode", "newInitializerNode", "ellipsesNode", "bracedInitListNode", "designatedInitializerNode", "designatorNode",
+    "foldExprNode", "newDeclaratorNode", "arrayNewDeclaratorNode", "newInitializerNode", "EllipsisNode", "bracedInitListNode", "designatedInitializerNode", "designatorNode",
     "newExprNode", "newPlacementNode", "parenNewTypeIdNode", "newTypeIdNode", "arrayDeletePtrNode", "deletePtrNode",
     "subscriptExprNode", "invokeExprNode", "dotNode", "templateNode", "arrowNode", "pairNode", "memberExprNode", "postfixIncExprNode", "postfixDecExprNode", "typeIdExprNode",
     "dynamicCastNode", "staticCastNode", "reinterpretCastNode", "constCastNode", "cppCastExprNode", "thisNode", "parenExprNode",
@@ -343,7 +343,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::finalNode, new NodeFactory<FinalNode>());
     Register(NodeKind::pureSpecifierNode, new NodeFactory<PureSpecifierNode>());
     // Concept:
-    Register(NodeKind::conceptDefinitionNode, new NodeFactory<ConceptDefinitioNode>());
+    Register(NodeKind::conceptDefinitionNode, new NodeFactory<ConceptDefinitionNode>());
     Register(NodeKind::requiresExprNode, new NodeFactory<RequiresExprNode>());
     Register(NodeKind::requirementBodyNode, new NodeFactory<RequirementBodyNode>());
     Register(NodeKind::simpleRequirementNode, new NodeFactory<SimpleRequirementNode>());
@@ -496,7 +496,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::bracedInitListNode, new NodeFactory<BracedInitListNode>());
     Register(NodeKind::designatedInitializerNode, new NodeFactory<DesignatedInitializerNode>());
     Register(NodeKind::designatorNode, new NodeFactory<DesignatorNode>());
-    Register(NodeKind::ellipsesNode, new NodeFactory<EllipsesNode>());
+    Register(NodeKind::EllipsisNode, new NodeFactory<EllipsisNode>());
     // Function:
     Register(NodeKind::functionDefinitionNode, new NodeFactory<FunctionDefinitionNode>());
     Register(NodeKind::functionBodyNode, new NodeFactory<FunctionBodyNode>());
@@ -534,6 +534,8 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::lambdaIntroducerNode, new NodeFactory<LambdaIntroducerNode>());
     Register(NodeKind::lambdaCaptureNode, new NodeFactory<LambdaCaptureNode>());
     Register(NodeKind::defaultRefCaptureNode, new NodeFactory<DefaultRefCaptureNode>());
+    Register(NodeKind::defaultCopyCaptureNode, new NodeFactory<DefaultCopyCaptureNode>());
+    Register(NodeKind::byRefCaptureNode, new NodeFactory<ByRefCaptureNode>());
     Register(NodeKind::simpleCaptureNode, new NodeFactory<SimpleCaptureNode>());
     Register(NodeKind::currentObjectCopyCapture, new NodeFactory<CurrentObjectCopyCapture>());
     Register(NodeKind::currentObjectByRefCapture, new NodeFactory<CurrentObjectByRefCapture>());
@@ -546,6 +548,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::floatingLiteralNode, new NodeFactory<FloatingLiteralNode>());
     Register(NodeKind::characterLiteralNode, new NodeFactory<CharacterLiteralNode>());
     Register(NodeKind::stringLiteralNode, new NodeFactory<StringLiteralNode>());
+    Register(NodeKind::rawStringLiteralNode, new NodeFactory<RawStringLiteralNode>());
     Register(NodeKind::booleanLiteralNode, new NodeFactory<BooleanLiteralNode>());
     Register(NodeKind::nullPtrLiteralNode, new NodeFactory<NullPtrLiteralNode>());
     Register(NodeKind::userDefinedLiteralNode, new NodeFactory< UserDefinedLiteraNode>());

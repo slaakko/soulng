@@ -1,0 +1,7 @@
+<sngcpp>
+    <project name="5_boolean">
+        <files>
+            <file name="bool.cpp"/>
+        </files>
+    </project>
+</sngcpp>

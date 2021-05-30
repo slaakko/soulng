@@ -23,7 +23,7 @@ parser api(PARSER_API) AttributeParser
     state;
 
     using ExpressionParser.ConstantExpression;
-    using ExpressionParser.Ellipses;
+    using ExpressionParser.Ellipsis;
     using IdentifierParser.ColonColon;
     using IdentifierParser.Identifier;
     using FunctionParser.Comma;
@@ -67,7 +67,7 @@ parser api(PARSER_API) AttributeParser
             Attribute(ctx):first{ container->AddNode(first); } 
             (   Comma:comma2{ container->AddNode(comma2); } 
                 Attribute(ctx):next{ container->AddNode(next); } 
-                Ellipses:ellipses{ container->AddNode(ellipses); }
+                Ellipsis:ellipsis{ container->AddNode(ellipsis); }
             )*
         )
         ;
@@ -149,11 +149,11 @@ parser api(PARSER_API) AttributeParser
         (   ALIGNAS{ s = sourcePos; } 
             LPAREN{ lpPos = sourcePos; }
             (TypeId(ctx):typeId{ alignment.reset(typeId); } | ConstantExpression(ctx):constantExpr{ alignment.reset(constantExpr); })
-            Ellipses:ellipses?
+            Ellipsis:ellipsis?
             RPAREN{ rpPos = sourcePos; }
         )
         {
-            return new AlignmentSpecifierNode(s, alignment.release(), ellipses, lpPos, rpPos);
+            return new AlignmentSpecifierNode(s, alignment.release(), ellipsis, lpPos, rpPos);
         }
         ;
 

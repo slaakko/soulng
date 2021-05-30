@@ -432,15 +432,15 @@ class AST_API SizeOfPackExprNode : public UnaryNode
 {
 public:
     SizeOfPackExprNode(const SourcePos& sourcePos_);
-    SizeOfPackExprNode(const SourcePos& sourcePos_, Node* idNode_, const SourcePos& ellipsesPos_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    SizeOfPackExprNode(const SourcePos& sourcePos_, Node* idNode_, const SourcePos& ellipsisPos_, const SourcePos& lpPos_, const SourcePos& rpPos_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
-    const SourcePos& EllipsesPos() const { return ellipsesPos; }
+    const SourcePos& EllipsisPos() const { return ellipsisPos; }
     const SourcePos& LParenPos() const { return lpPos; }
     const SourcePos& RParenPos() const { return rpPos; }
 private:
-    SourcePos ellipsesPos;
+    SourcePos ellipsisPos;
     SourcePos lpPos;
     SourcePos rpPos;
 };
@@ -831,10 +831,10 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
-class AST_API EllipsesNode : public Node
+class AST_API EllipsisNode : public Node
 {
 public:
-    EllipsesNode(const SourcePos& sourcePos_);
+    EllipsisNode(const SourcePos& sourcePos_);
     void Accept(Visitor& visitor) override;
 };
 

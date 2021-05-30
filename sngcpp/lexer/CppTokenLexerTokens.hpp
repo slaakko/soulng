@@ -148,7 +148,7 @@ namespace CppTokenLexerTokens
     const int DOT = 136;
     const int ARROW = 137;
     const int SEMICOLON = 138;
-    const int ELLIPSES = 139;
+    const int ELLIPSIS = 139;
     const int WS = 140;
     const int LINECOMMENT = 141;
     const int BLOCKCOMMENT = 142;

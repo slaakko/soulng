@@ -158,15 +158,20 @@
   <ItemGroup>
     <ClInclude Include="AliasTypeSymbol.hpp" />
     <ClInclude Include="Class.hpp" />
+    <ClInclude Include="ClassGroupSymbol.hpp" />
     <ClInclude Include="ClassTypeSymbol.hpp" />
     <ClInclude Include="CompoundStatementSymbol.hpp" />
     <ClInclude Include="CompoundTypeSymbol.hpp" />
+    <ClInclude Include="Concept.hpp" />
+    <ClInclude Include="ConceptGroupSymbol.hpp" />
+    <ClInclude Include="ConceptSymbol.hpp" />
     <ClInclude Include="ContainerSymbol.hpp" />
     <ClInclude Include="Context.hpp" />
     <ClInclude Include="Declaration.hpp" />
     <ClInclude Include="DeclarationProcessor.hpp" />
     <ClInclude Include="Evaluator.hpp" />
     <ClInclude Include="Exception.hpp" />
+    <ClInclude Include="FunctionGroupSymbol.hpp" />
     <ClInclude Include="FunctionSymbol.hpp" />
     <ClInclude Include="FundamentalTypeSymbol.hpp" />
     <ClInclude Include="InitDone.hpp" />
@@ -176,6 +181,8 @@
     <ClInclude Include="Symbol.hpp" />
     <ClInclude Include="SymbolsApi.hpp" />
     <ClInclude Include="SymbolTable.hpp" />
+    <ClInclude Include="Template.hpp" />
+    <ClInclude Include="TemplateDeclarationSymbol.hpp" />
     <ClInclude Include="TypeSymbol.hpp" />
     <ClInclude Include="Value.hpp" />
     <ClInclude Include="VariableSymbol.hpp" />
@@ -183,15 +190,20 @@
   <ItemGroup>
     <ClCompile Include="AliasTypeSymbol.cpp" />
     <ClCompile Include="Class.cpp" />
+    <ClCompile Include="ClassGroupSymbol.cpp" />
     <ClCompile Include="ClassTypeSymbol.cpp" />
     <ClCompile Include="CompoundStatementSymbol.cpp" />
     <ClCompile Include="CompoundTypeSymbol.cpp" />
+    <ClCompile Include="Concept.cpp" />
+    <ClCompile Include="ConceptGroupSymbol.cpp" />
+    <ClCompile Include="ConceptSymbol.cpp" />
     <ClCompile Include="ContainerSymbol.cpp" />
     <ClCompile Include="Context.cpp" />
     <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="DeclarationProcessor.cpp" />
     <ClCompile Include="Evaluator.cpp" />
     <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="FunctionGroupSymbol.cpp" />
     <ClCompile Include="FunctionSymbol.cpp" />
     <ClCompile Include="FundamentalTypeSymbol.cpp" />
     <ClCompile Include="InitDone.cpp" />
@@ -200,6 +212,8 @@
     <ClCompile Include="ScopeResolver.cpp" />
     <ClCompile Include="Symbol.cpp" />
     <ClCompile Include="SymbolTable.cpp" />
+    <ClCompile Include="Template.cpp" />
+    <ClCompile Include="TemplateDeclarationSymbol.cpp" />
     <ClCompile Include="TypeSymbol.cpp" />
     <ClCompile Include="Value.cpp" />
     <ClCompile Include="VariableSymbol.cpp" />

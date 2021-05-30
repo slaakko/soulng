@@ -13,7 +13,7 @@ tokens TextTokens
     (OROR, "'||'"), (AMPAMP, "'&&'"), (OR, "'|'"), (XOR, "'^'"), (AMP, "'&'"), (EQ, "'=='"), (NEQ, "'!='"), (LEQ, "'<='"), (GEQ, "'>='"), (SPACESHIP, "<=>"), (LANGLE, "'<'"), (RANGLE, "'>'"),
     (SHIFTLEFT, "'<<'"), (SHIFTRIGHT, "'>>'"), (PLUS, "'+'"), (MINUS, "'-'"), (STAR, "'*'"), (DIV, "'/'"), (MOD, "'%'"), (DOTSTAR, "'.*'"), (ARROWSTAR, "'->*'"), (LPAREN, "'('"), (RPAREN, "')'"),
     (PLUSPLUS, "'++'"), (MINUSMINUS, "'--'"), (EXCLAMATION, "'!'"), (TILDE, "'~'"), 
-    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSES, "'...'"),
+    (LBRACKET, "'['"), (RBRACKET, "']'"), (LBRACE, "'{'"), (RBRACE, "'}'"), (DOT, "'.'"), (ARROW, "'->'"), (SEMICOLON, "';'"), (ELLIPSIS, "'...'"),
     (KEYWORD, "keyword"), (WS, "white space"), (BLOCKCOMMENT, "block comment"), (LINECOMMENT, "line comment"),
     (MAX, "max")
 }
@@ -104,7 +104,7 @@ lexer api(SNGCPP_PP_API) TextLexer
     "\." { return DOT; }
     "->" { return ARROW; }
     ";" { return SEMICOLON; }
-    "\.\.\." { return ELLIPSES; }
+    "\.\.\." { return ELLIPSIS; }
     "\{" { return LBRACE; }
     "\}" { return RBRACE; }
 

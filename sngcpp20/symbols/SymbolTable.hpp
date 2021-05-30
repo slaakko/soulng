@@ -59,6 +59,10 @@ public:
     void EndClass();
     void BeginFunction(Node* node, TypeSymbol* returnType, Context* context);
     void EndFunction();
+    void AddConcept(Node* node, Context* context);
+    void BeginTemplateDeclaration(Node* node, Context* context);
+    void EndTemplateDeclaration();
+    void AddTemplateParameter(Node* node, Context* context);
     TypeSymbol* GetFundamentalTypeSymbol(FundamentalTypeKind kind);
     TypeSymbol* MakeConstType(TypeSymbol* baseTypeSymbol);
     TypeSymbol* MakeVolatileType(TypeSymbol* baseTypeSymbol);

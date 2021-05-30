@@ -8113,7 +8113,7 @@ int TextLexer::GetTokenId(int statementIndex)
         case 58:
         {
             Retract();
-            return ELLIPSES;
+            return ELLIPSIS;
             break;
         }
         case 59:

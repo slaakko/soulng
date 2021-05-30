@@ -52,7 +52,7 @@ class AST_API TypeParameterNode : public CompoundNode
 {
 public:
     TypeParameterNode(const SourcePos& sourcePos_);
-    TypeParameterNode(const SourcePos& sourcePos_, Node* typeConstraint_, Node* identifier_, Node* assign_, Node* typeId_, Node* ellipses_, Node* templateHead_);
+    TypeParameterNode(const SourcePos& sourcePos_, Node* typeConstraint_, Node* identifier_, Node* assign_, Node* typeId_, Node* ellipsis_, Node* templateHead_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
@@ -60,14 +60,14 @@ public:
     Node* Identifier() const { return identifier.get(); }
     Node* Assign() const { return assign.get(); }
     Node* TypeId() const { return typeId.get(); }
-    Node* Ellipses() const { return ellipses.get(); }
+    Node* Ellipsis() const { return ellipsis.get(); }
     Node* TemplateHead() const { return templateHead.get(); }
 private:
     std::unique_ptr<Node> typeConstraint;
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> assign;
     std::unique_ptr<Node> typeId;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     std::unique_ptr<Node> templateHead;
 };
 

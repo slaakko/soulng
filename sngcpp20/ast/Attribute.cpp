@@ -208,8 +208,8 @@ AlignmentSpecifierNode::AlignmentSpecifierNode(const SourcePos& sourcePos_) : Co
 {
 }
 
-AlignmentSpecifierNode::AlignmentSpecifierNode(const SourcePos& sourcePos_, Node* alignment_, Node* ellipses_, const SourcePos& lpPos_, const SourcePos& rpPos_) :
-    CompoundNode(NodeKind::alignmentSpecifierNode, sourcePos_), alignment(alignment_), ellipses(ellipses_), lpPos(lpPos_), rpPos(rpPos_)
+AlignmentSpecifierNode::AlignmentSpecifierNode(const SourcePos& sourcePos_, Node* alignment_, Node* ellipsis_, const SourcePos& lpPos_, const SourcePos& rpPos_) :
+    CompoundNode(NodeKind::alignmentSpecifierNode, sourcePos_), alignment(alignment_), ellipsis(ellipsis_), lpPos(lpPos_), rpPos(rpPos_)
 {
 }
 
@@ -222,7 +222,7 @@ void AlignmentSpecifierNode::Write(Writer& writer)
 {
     CompoundNode::Write(writer);
     writer.Write(alignment.get());
-    writer.Write(ellipses.get());
+    writer.Write(ellipsis.get());
     writer.Write(lpPos);
     writer.Write(rpPos);
 }
@@ -231,7 +231,7 @@ void AlignmentSpecifierNode::Read(Reader& reader)
 {
     CompoundNode::Read(reader);
     alignment.reset(reader.ReadNode());
-    ellipses.reset(reader.ReadNode());
+    ellipsis.reset(reader.ReadNode());
     lpPos = reader.ReadSourcePos();
     rpPos = reader.ReadSourcePos();
 }

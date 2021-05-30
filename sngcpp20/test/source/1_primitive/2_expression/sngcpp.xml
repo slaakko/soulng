@@ -1,0 +1,6 @@
+<sngcpp>
+    <project name="2_expression">
+        <child project="1_lambda"/>
+        <child project="2_requires"/>
+    </project>
+</sngcpp>

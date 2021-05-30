@@ -40,7 +40,7 @@ parser api(PARSER_API) ClassParser
     using DeclarationParser.UsingDeclaration;
     using DeclarationParser.StaticAssertDeclaration;
     using EnumParser.OpaqueEnumDeclaration;
-    using ExpressionParser.Ellipses;
+    using ExpressionParser.Ellipsis;
     using ExpressionParser.ExpressionList;
     using FunctionParser.Comma;
     using FunctionParser.FunctionDefinition;
@@ -118,7 +118,7 @@ parser api(PARSER_API) ClassParser
         (
             BaseSpecifier(ctx):first{ node.reset(new BaseSpecifierListNode(sourcePos)); node->AddNode(first); } 
             (Comma:comma{ node->AddNode(comma); } BaseSpecifier(ctx):next{ node->AddNode(next); })*
-            (Ellipses:ellipses{ node->AddNode(ellipses); })?
+            (Ellipsis:ellipsis{ node->AddNode(ellipsis); })?
         )
         {
             return node.release();
@@ -291,7 +291,7 @@ parser api(PARSER_API) ClassParser
         (   
             MemberInitializer(ctx):first{ node.reset(new MemberInitializerListNode(sourcePos)); node->AddNode(first); }
             (Comma:comma{ node->AddNode(comma); } MemberInitializer(ctx):next{ node->AddNode(next); })*
-            (Ellipses:ellipses{ node->AddNode(ellipses); })
+            (Ellipsis:ellipsis{ node->AddNode(ellipsis); })
         )
         {
             return node.release();

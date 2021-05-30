@@ -777,7 +777,7 @@ soulng::parser::Match ClassParser::BaseSpecifierList(CppLexer& lexer, sngcpp::sy
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -896,11 +896,11 @@ soulng::parser::Match ClassParser::BaseSpecifierList(CppLexer& lexer, sngcpp::sy
                             soulng::parser::Match* parentMatch15 = &match;
                             {
                                 int64_t pos = lexer.GetPos();
-                                soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                ellipses.reset(static_cast<Node*>(match.value));
+                                soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                ellipsis.reset(static_cast<Node*>(match.value));
                                 if (match.hit)
                                 {
-                                    node->AddNode(ellipses.release());
+                                    node->AddNode(ellipsis.release());
                                 }
                                 *parentMatch15 = match;
                             }
@@ -3369,7 +3369,7 @@ soulng::parser::Match ClassParser::MemberInitializerList(CppLexer& lexer, sngcpp
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -3484,11 +3484,11 @@ soulng::parser::Match ClassParser::MemberInitializerList(CppLexer& lexer, sngcpp
                         soulng::parser::Match* parentMatch14 = &match;
                         {
                             int64_t pos = lexer.GetPos();
-                            soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                            ellipses.reset(static_cast<Node*>(match.value));
+                            soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                            ellipsis.reset(static_cast<Node*>(match.value));
                             if (match.hit)
                             {
-                                node->AddNode(ellipses.release());
+                                node->AddNode(ellipsis.release());
                             }
                             *parentMatch14 = match;
                         }

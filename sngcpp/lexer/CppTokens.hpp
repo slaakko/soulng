@@ -148,7 +148,7 @@ namespace CppTokens
     const int DOT = 137;
     const int ARROW = 138;
     const int SEMICOLON = 139;
-    const int ELLIPSES = 140;
+    const int ELLIPSIS = 140;
     const int MAX = 141;
 
     SNGCPP_LEXER_API void InitTokenIdMap();

@@ -1,0 +1,8 @@
+<configuration name="vc">
+ <defines>
+  <define file="std.define.xml"/>
+  <define file="vc.define.xml"/>
+ </defines>
+ <includes>
+ </includes>
+</configuration>

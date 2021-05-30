@@ -27,7 +27,7 @@ parser api(PARSER_API) InitializationParser
     using ExpressionParser.AssignmentExpression;
     using ExpressionParser.Expression;
     using ExpressionParser.ExpressionList;
-    using ExpressionParser.Ellipses;
+    using ExpressionParser.Ellipsis;
     using IdentifierParser.Identifier;
     using FunctionParser.Comma;
 
@@ -70,7 +70,7 @@ parser api(PARSER_API) InitializationParser
 
     InitializerList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
         ::= InitializerClause(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } InitializerClause(ctx):next{ container->AddNode(next); })*
-            (Ellipses:ellipses{ container->AddNode(ellipses); })?
+            (Ellipsis:ellipsis{ container->AddNode(ellipsis); })?
         ;
 
     DesignatedInitializerList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)

@@ -7,7 +7,9 @@
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
 #include <sngcpp20/symbols/CompoundTypeSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
+#include <sngcpp20/symbols/ConceptSymbol.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
+#include <sngcpp20/symbols/TemplateDeclarationSymbol.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <stdexcept>
 
@@ -70,8 +72,6 @@ Symbol* SymbolTable::GetSymbol(Node* node) const
         throw std::runtime_error("symbol for node not found");
     }
 }
-
-
 
 void SymbolTable::MapNode(Node* node, Symbol* symbol)
 {
@@ -168,6 +168,33 @@ void SymbolTable::BeginFunction(Node* node, TypeSymbol* returnType, Context* con
 void SymbolTable::EndFunction()
 {
     EndScope();
+}
+
+void SymbolTable::AddConcept(Node* node, Context* context)
+{
+    ConceptSymbol* conceptSymbol = new ConceptSymbol(node->Str());
+    currentScope->AddSymbol(conceptSymbol, node->GetSourcePos(), context);
+    MapNode(node, conceptSymbol);
+}
+
+void SymbolTable::BeginTemplateDeclaration(Node* node, Context* context)
+{
+    TemplateDeclarationSymbol* templateDeclarationSymbol = new TemplateDeclarationSymbol();
+    currentScope->AddSymbol(templateDeclarationSymbol, node->GetSourcePos(), context);
+    MapNode(node, templateDeclarationSymbol);
+    BeginScope(templateDeclarationSymbol->GetScope());
+}
+
+void SymbolTable::EndTemplateDeclaration()
+{
+    EndScope();
+}
+
+void SymbolTable::AddTemplateParameter(Node* node, Context* context)
+{
+    TemplateParameterSymbol* templateParameterSymbol = new TemplateParameterSymbol(node->Str());
+    currentScope->AddSymbol(templateParameterSymbol, node->GetSourcePos(), context);
+    MapNode(node, templateParameterSymbol);
 }
 
 TypeSymbol* SymbolTable::GetFundamentalTypeSymbol(FundamentalTypeKind kind)

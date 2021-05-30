@@ -5,3 +5,4 @@ double d3 = 1e1;
 double d4 = 1.2e2;
 double d5 = 1.3e-1;
 double d6 = 1e+3;
+double ohseven = .007;

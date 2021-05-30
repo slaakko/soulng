@@ -166,6 +166,6 @@ parser api(SNGCPP_PP_API) PPLineParser
         |   DOT{ if (tokens) tokens->push_back(lexer.GetToken(pos)); return nullptr; }
         |   ARROW{ if (tokens) tokens->push_back(lexer.GetToken(pos)); return nullptr; }
         |   SEMICOLON{ if (tokens) tokens->push_back(lexer.GetToken(pos)); return nullptr; }
-        |   ELLIPSES{ if (tokens) tokens->push_back(lexer.GetToken(pos)); return nullptr; }
+        |   ELLIPSIS{ if (tokens) tokens->push_back(lexer.GetToken(pos)); return nullptr; }
         ;
 }

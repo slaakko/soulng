@@ -5,6 +5,7 @@
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
 [hpp]#include <sngcpp20/symbols/Context.hpp>
+[hpp]#include <sngcpp20/symbols/Concept.hpp>
 [hpp]#include <sngcpp20/ast/Concept.hpp>
 [hpp]#include <sngcpp20/ast/Function.hpp>
 [hpp]#include <sngcpp20/ast/Statement.hpp>
@@ -41,10 +42,12 @@ parser api(PARSER_API) ConceptParser
     ConceptDefinition(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= 
         (
-            CONCEPT{ s = sourcePos; } ConceptName(ctx):conceptName Assign:assign ConstraintExpression(ctx):constraintExpr
+            CONCEPT{ s = sourcePos; } ConceptName(ctx):conceptName Assign:assign ConstraintExpression(ctx):constraintExpr Semicolon:semicolon
         )
         {
-            return new ConceptDefinitioNode(s, conceptName, assign, constraintExpr);
+            ConceptDefinitionNode* conceptDefinitionNode = new ConceptDefinitionNode(s, conceptName, assign, constraintExpr, semicolon);
+            sngcpp::symbols::AddConcept(conceptDefinitionNode, ctx);
+            return conceptDefinitionNode;
         }
         ;
 
@@ -104,7 +107,14 @@ parser api(PARSER_API) ConceptParser
         ;
 
     TypeRequirement(sngcpp::symbols::Context* ctx, var SourcePos s): Node*
-        ::= TYPENAME{ s = sourcePos; } NestedNameSpecifier(ctx):nns? TypeName(ctx):typeName Semicolon:semicolon{ return new TypeRequirementNode(s, nns, typeName, semicolon); }
+        ::= TYPENAME{ s = sourcePos; } 
+            NestedNameSpecifier(ctx):nns? 
+            empty{ ctx->PushSetFlag(sngcpp::symbols::ContextFlags::assume); }
+            TypeName(ctx):typeName{ ctx->PopFlags(); } / { ctx->PopFlags(); }
+            Semicolon:semicolon
+        { 
+            return new TypeRequirementNode(s, nns, typeName, semicolon); 
+        }
         ;
 
     CompoundRequirement(sngcpp::symbols::Context* ctx, var SourcePos lbPos, var SourcePos rbPos) : Node*

@@ -4,5 +4,7 @@
         <child project="2_character"/>
         <child project="3_floating-point"/>
         <child project="4_string"/>
+        <child project="5_boolean"/>
+        <child project="6_pointer"/>
     </project>
 </sngcpp>

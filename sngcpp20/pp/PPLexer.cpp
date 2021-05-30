@@ -10387,7 +10387,7 @@ int PPLexer::GetTokenId(int statementIndex)
         case 60:
         {
             Retract();
-            return ELLIPSES;
+            return ELLIPSIS;
             break;
         }
         case 61:

@@ -10,34 +10,36 @@
 
 namespace sngcpp::ast {
 
-ConceptDefinitioNode::ConceptDefinitioNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::conceptDefinitionNode, sourcePos_)
+ConceptDefinitionNode::ConceptDefinitionNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::conceptDefinitionNode, sourcePos_)
 {
 }
 
-ConceptDefinitioNode::ConceptDefinitioNode(const SourcePos& sourcePos_, Node* conceptName_, Node* assign_, Node* constraintExpr_) :
-    CompoundNode(NodeKind::conceptDefinitionNode, sourcePos_), conceptName(conceptName_), assign(assign_), constraintExpr(constraintExpr_)
+ConceptDefinitionNode::ConceptDefinitionNode(const SourcePos& sourcePos_, Node* conceptName_, Node* assign_, Node* constraintExpr_, Node* semicolon_) :
+    CompoundNode(NodeKind::conceptDefinitionNode, sourcePos_), conceptName(conceptName_), assign(assign_), constraintExpr(constraintExpr_), semicolon(semicolon_)
 {
 }
 
-void ConceptDefinitioNode::Accept(Visitor& visitor)
+void ConceptDefinitionNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
 }
 
-void ConceptDefinitioNode::Write(Writer& writer)
+void ConceptDefinitionNode::Write(Writer& writer)
 {
     CompoundNode::Write(writer);
     writer.Write(conceptName.get());
     writer.Write(assign.get());
     writer.Write(constraintExpr.get());
+    writer.Write(semicolon.get());
 }
 
-void ConceptDefinitioNode::Read(Reader& reader)
+void ConceptDefinitionNode::Read(Reader& reader)
 {
     CompoundNode::Read(reader);
     conceptName.reset(reader.ReadNode());
     assign.reset(reader.ReadNode());
     constraintExpr.reset(reader.ReadNode());
+    semicolon.reset(reader.ReadNode());
 }
 
 RequiresExprNode::RequiresExprNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::requiresExprNode, sourcePos_)

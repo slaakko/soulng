@@ -153,6 +153,6 @@ parser api(SNGCPP_PARSER_API) StatementParser
 
     ExceptionDeclaration(sngcpp::cppparser::ParsingContext* ctx, var Span s) : sngcpp::ast::Node*
         ::= (TypeExpr(ctx):typeExpr{ s = span; } (Declarator(ctx):declarator{ s.end = span.end; })?){ return new sngcpp::ast::SimpleDeclarationNode(s, sngcpp::ast::Specifier::none, typeExpr, declarator); }
-        |   ELLIPSES{ return new sngcpp::ast::CatchAllNode(span); }
+        |   ELLIPSIS{ return new sngcpp::ast::CatchAllNode(span); }
         ;
 }

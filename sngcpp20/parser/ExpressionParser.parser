@@ -374,16 +374,16 @@ parser api(PARSER_API) ExpressionParser
         ::= CO_AWAIT{ s = sourcePos; } CastExpression(ctx):child{ return new AwaitExprNode(s, child); }
         ;
 
-    SizeOfExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos ellipsesPos, var std::unique_ptr<Node> childNode) : Node*
+    SizeOfExpression(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos, var SourcePos ellipsisPos, var std::unique_ptr<Node> childNode) : Node*
         ::= SIZEOF{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } TypeId(ctx):typeId RPAREN
             { 
                 rpPos = sourcePos; 
                 return new SizeOfTypeExprNode(s, typeId, lpPos, rpPos); 
             }
-        |   SIZEOF{ s = sourcePos; } ELLIPSES{ ellipsesPos = sourcePos; } LPAREN{ lpPos = sourcePos; } ID{ childNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos))); } RPAREN
+        |   SIZEOF{ s = sourcePos; } ELLIPSIS{ ellipsisPos = sourcePos; } LPAREN{ lpPos = sourcePos; } ID{ childNode.reset(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos))); } RPAREN
             { 
                 rpPos = sourcePos; 
-                return new SizeOfPackExprNode(s, childNode.release(), ellipsesPos, lpPos, rpPos); 
+                return new SizeOfPackExprNode(s, childNode.release(), ellipsisPos, lpPos, rpPos); 
             }
         |   SIZEOF{ s = sourcePos; } UnaryExpression(ctx):child{ return new SizeOfUnaryExprNode(s, child); }
         ;
@@ -553,14 +553,14 @@ parser api(PARSER_API) ExpressionParser
         (   LPAREN{ lpPos = sourcePos; node.reset(new FoldExprNode(sourcePos)); }
             (   
                 (
-                    CastExpression(ctx):castExpr1 FoldOp:op1 Ellipses:ellipses1
+                    CastExpression(ctx):castExpr1 FoldOp:op1 Ellipsis:ellipsis1
                     (   FoldOp:op2 CastExpression(ctx):castExpr2
                     )?
                 )
                 {
                     node->AddNode(castExpr1);
                     node->AddNode(op1);
-                    node->AddNode(ellipses1);
+                    node->AddNode(ellipsis1);
                     if (op2)
                     {
                         node->AddNode(op2);
@@ -569,10 +569,10 @@ parser api(PARSER_API) ExpressionParser
                 }
             |   
                 (   
-                    Ellipses:ellipses3 FoldOp:op3 CastExpression(ctx):castExpr3
+                    Ellipsis:ellipsis3 FoldOp:op3 CastExpression(ctx):castExpr3
                 )
                 {
-                    node->AddNode(ellipses3);
+                    node->AddNode(ellipsis3);
                     node->AddNode(op3);
                     node->AddNode(castExpr3);
                 }
@@ -586,8 +586,8 @@ parser api(PARSER_API) ExpressionParser
         }
         ;
 
-    Ellipses : Node*
-        ::= ELLIPSES{ return new EllipsesNode(sourcePos); }
+    Ellipsis : Node*
+        ::= ELLIPSIS{ return new EllipsisNode(sourcePos); }
         ;
 
     FoldOp : Node*

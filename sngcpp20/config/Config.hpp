@@ -12,6 +12,8 @@
 
 namespace sngcpp::config {
 
+CONFIG_API std::string SoulngConfigDir();
+
 struct CONFIG_API Config
 {
     Config();
@@ -35,6 +37,8 @@ private:
     std::vector<std::string> includes;
     std::string name;
 };
+
+CONFIG_API void MakeConfig(const std::string& configName, bool verbose);
 
 } // namespace sngcpp::config
 

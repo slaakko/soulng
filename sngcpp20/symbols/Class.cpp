@@ -9,7 +9,7 @@
 
 namespace sngcpp::symbols {
 
-class SYMBOLS_API ClassCreatorVisitor : public DefaultVisitor
+class ClassCreatorVisitor : public DefaultVisitor
 {
 public:
     ClassCreatorVisitor(Context* context_);

@@ -209,7 +209,7 @@ PPTokenToTextTokenMap::PPTokenToTextTokenMap()
     map[PPTokens::DOT] = TextTokens::DOT;
     map[PPTokens::ARROW] = TextTokens::ARROW;
     map[PPTokens::SEMICOLON] = TextTokens::SEMICOLON;
-    map[PPTokens::ELLIPSES] = TextTokens::ELLIPSES;
+    map[PPTokens::ELLIPSIS] = TextTokens::ELLIPSIS;
     map[PPTokens::OTHER] = TextTokens::OTHER;
 }
 
@@ -313,7 +313,7 @@ TextTokenToCppTokenMap::TextTokenToCppTokenMap()
     map[TextTokens::DOT] = CppTokens::DOT;
     map[TextTokens::ARROW] = CppTokens::ARROW;
     map[TextTokens::SEMICOLON] = CppTokens::SEMICOLON;
-    map[TextTokens::ELLIPSES] = CppTokens::ELLIPSES;
+    map[TextTokens::ELLIPSIS] = CppTokens::ELLIPSIS;
 }
 
 const char32_t* zeroLit = U"0";

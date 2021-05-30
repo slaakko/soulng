@@ -25,7 +25,7 @@ soulng::parser::Match InitializationParser::Initializer(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Initializer"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 211);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 214);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     std::unique_ptr<ExpressionListNode> exprListNode = std::unique_ptr<ExpressionListNode>();
     std::unique_ptr<Node> braceOrEqualInit;
@@ -167,7 +167,7 @@ soulng::parser::Match InitializationParser::InitializerClause(CppLexer& lexer, s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("InitializerClause"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 212);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 215);
     std::unique_ptr<Node> bracedInitList;
     std::unique_ptr<Node> assignmentExpr;
     soulng::parser::Match match(false);
@@ -245,7 +245,7 @@ soulng::parser::Match InitializationParser::DesignatedInitializerClause(CppLexer
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DesignatedInitializerClause"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 213);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 216);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> designator;
     std::unique_ptr<Node> initializer;
@@ -323,7 +323,7 @@ soulng::parser::Match InitializationParser::Designator(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Designator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 214);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 217);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
@@ -404,11 +404,11 @@ soulng::parser::Match InitializationParser::InitializerList(CppLexer& lexer, sng
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("InitializerList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 215);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 218);
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -518,11 +518,11 @@ soulng::parser::Match InitializationParser::InitializerList(CppLexer& lexer, sng
                     soulng::parser::Match* parentMatch13 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                        ellipses.reset(static_cast<Node*>(match.value));
+                        soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                        ellipsis.reset(static_cast<Node*>(match.value));
                         if (match.hit)
                         {
-                            container->AddNode(ellipses.release());
+                            container->AddNode(ellipsis.release());
                         }
                         *parentMatch13 = match;
                     }
@@ -566,7 +566,7 @@ soulng::parser::Match InitializationParser::DesignatedInitializerList(CppLexer& 
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("DesignatedInitializerList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 216);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 219);
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
@@ -683,7 +683,7 @@ soulng::parser::Match InitializationParser::ExprOrBracedInitList(CppLexer& lexer
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ExprOrBracedInitList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 217);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 220);
     std::unique_ptr<Node> bracedInitList;
     std::unique_ptr<sngcpp::ast::Node> expr;
     soulng::parser::Match match(false);
@@ -761,7 +761,7 @@ soulng::parser::Match InitializationParser::BraceOrEqualInitializer(CppLexer& le
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("BraceOrEqualInitializer"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 218);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 221);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> initializer;
     std::unique_ptr<Node> bracedInitList;
@@ -871,7 +871,7 @@ soulng::parser::Match InitializationParser::BracedInitList(CppLexer& lexer, sngc
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("BracedInitList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 219);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 222);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     std::unique_ptr<Node> lbrace;
     std::unique_ptr<Node> comma;

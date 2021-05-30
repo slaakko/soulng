@@ -10,6 +10,7 @@
 #include <sngxml/xpath/XPathEvaluate.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
+#include <soulng/util/Util.hpp>
 #include <boost/filesystem.hpp>
 #include <stdlib.h>
 #include <stdexcept>
@@ -260,6 +261,86 @@ void Configuration::ReadDefines(const std::string& filePath)
         {
             throw std::runtime_error("node set expected in '" + filePath + "'");
         }
+    }
+}
+
+void MakeConfig(const std::string& configName, bool verbose)
+{
+    std::string configDir = SoulngConfigDir();
+    std::string templateConfigFileName = Path::Combine(configDir, configName) + ".config.template.xml";
+    if (!boost::filesystem::exists(templateConfigFileName))
+    {
+        throw std::runtime_error("template configuration file '" + templateConfigFileName + "' for '" + configName + "' configuration not found");
+    }
+    if (verbose)
+    {
+        std::cout << "> " << templateConfigFileName << std::endl;
+    }
+    std::string configFileName = Path::Combine(configDir, configName) + ".config.xml";
+    std::string backupConfigFileName;
+    for (int i = 0; i < 10; ++i)
+    {
+        std::string fileName = configFileName + ".00" + std::to_string(i);
+        if (!boost::filesystem::exists(fileName))
+        {
+            backupConfigFileName = fileName;
+            break;
+        }
+    }
+    if (backupConfigFileName.empty())
+    {
+        throw std::runtime_error("maximum number of backup configuration files for '" + configName + "' exist, delete some");
+    }
+    std::unique_ptr<sngxml::dom::Document> configDoc = sngxml::dom::ReadDocument(templateConfigFileName);
+    if (configName == "vc")
+    {
+        const char* includeEnv = std::getenv("INCLUDE");;
+        if (!includeEnv || !*includeEnv)
+        {
+            throw std::runtime_error("'INCLUDE' environment variable not set, run from Visual Studio command prompt");
+        }
+        std::string includeStr = includeEnv;
+        std::vector<std::string> includePaths = Split(includeStr, ';');
+        std::unique_ptr<sngxml::xpath::XPathObject> includeObject = sngxml::xpath::Evaluate(U"/configuration/includes", configDoc.get());
+        if (includeObject)
+        {
+            if (includeObject->Type() == sngxml::xpath::XPathObjectType::nodeSet)
+            {
+                sngxml::xpath::XPathNodeSet* nodeSet = static_cast<sngxml::xpath::XPathNodeSet*>(includeObject.get());
+                if (nodeSet->Length() == 1)
+                {
+                    sngxml::dom::Node* node = (*nodeSet)[0];
+                    if (node->GetNodeType() == sngxml::dom::NodeType::elementNode)
+                    {
+                        sngxml::dom::Element* includesElement = static_cast<sngxml::dom::Element*>(node);
+                        for (const std::string& includePath : includePaths)
+                        {
+                            sngxml::dom::Element* includeElement = new sngxml::dom::Element(U"include");
+                            std::u32string includePathValue = ToUtf32(GetFullPath(includePath));
+                            includeElement->SetAttribute(U"path", includePathValue);
+                            includesElement->AppendChild(std::unique_ptr<sngxml::dom::Node>(includeElement));
+                        }
+                    }
+                }
+                else
+                {
+                    throw std::runtime_error("one 'includes' element expected");
+                }
+            }
+        }
+        boost::filesystem::copy_file(configFileName, backupConfigFileName);
+        std::ofstream configXmlFile(configFileName);
+        CodeFormatter formatter(configXmlFile);
+        formatter.SetIndentSize(1);
+        configDoc->Write(formatter);
+        if (verbose)
+        {
+            std::cout << "==> " << configFileName << std::endl;
+        }
+    }
+    else
+    {
+        throw std::runtime_error("unknown configuration '" + configName + "'");
     }
 }
 

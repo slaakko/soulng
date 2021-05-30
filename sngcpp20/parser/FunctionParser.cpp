@@ -772,7 +772,7 @@ soulng::parser::Match FunctionParser::ParameterDeclarationClause(CppLexer& lexer
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 185);
     std::unique_ptr<Node> comma;
-    std::unique_ptr<Node> ellipses;
+    std::unique_ptr<Node> ellipsis;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -818,11 +818,11 @@ soulng::parser::Match FunctionParser::ParameterDeclarationClause(CppLexer& lexer
                 soulng::parser::Match* parentMatch6 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                    ellipses.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                    ellipsis.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
-                        container->AddNode(ellipses.release());
+                        container->AddNode(ellipsis.release());
                     }
                     *parentMatch6 = match;
                 }
@@ -897,11 +897,11 @@ soulng::parser::Match FunctionParser::ParameterDeclarationClause(CppLexer& lexer
                                 soulng::parser::Match* parentMatch16 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
-                                    soulng::parser::Match match = ExpressionParser::Ellipses(lexer);
-                                    ellipses.reset(static_cast<Node*>(match.value));
+                                    soulng::parser::Match match = ExpressionParser::Ellipsis(lexer);
+                                    ellipsis.reset(static_cast<Node*>(match.value));
                                     if (match.hit)
                                     {
-                                        container->AddNode(ellipses.release());
+                                        container->AddNode(ellipsis.release());
                                     }
                                     *parentMatch16 = match;
                                 }

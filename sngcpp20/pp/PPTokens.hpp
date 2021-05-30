@@ -86,7 +86,7 @@ namespace PPTokens
     const int DOT = 75;
     const int ARROW = 76;
     const int SEMICOLON = 77;
-    const int ELLIPSES = 78;
+    const int ELLIPSIS = 78;
     const int OTHER = 79;
     const int MAX = 80;
 

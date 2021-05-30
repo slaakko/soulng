@@ -9,21 +9,23 @@
 
 namespace sngcpp::ast {
 
-class AST_API ConceptDefinitioNode : public CompoundNode
+class AST_API ConceptDefinitionNode : public CompoundNode
 {
 public:
-    ConceptDefinitioNode(const SourcePos& sourcePos_);
-    ConceptDefinitioNode(const SourcePos& sourcePos_, Node* conceptName_, Node* assign_, Node* constraintExpr_);
+    ConceptDefinitionNode(const SourcePos& sourcePos_);
+    ConceptDefinitionNode(const SourcePos& sourcePos_, Node* conceptName_, Node* assign_, Node* constraintExpr_, Node* semicolon_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     Node* ConceptName() const { return conceptName.get(); }
     Node* Assign() const { return assign.get(); }
     Node* ConstraintExpression() const { return constraintExpr.get(); }
+    Node* Semicolon() const { return semicolon.get(); }
 private:
     std::unique_ptr<Node> conceptName;
     std::unique_ptr<Node> assign;
     std::unique_ptr<Node> constraintExpr;
+    std::unique_ptr<Node> semicolon;
 };
 
 class AST_API RequiresExprNode : public CompoundNode

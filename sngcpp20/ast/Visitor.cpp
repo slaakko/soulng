@@ -166,9 +166,9 @@ void DefaultVisitor::Visit(AlignmentSpecifierNode& node)
     VisitKeyword("alignas", node.GetSourcePos());
     VisitOperator("(", node.LParenPos());
     node.Alignment()->Accept(*this);
-    if (node.Ellipses())
+    if (node.Ellipsis())
     {
-        node.Ellipses()->Accept(*this);
+        node.Ellipsis()->Accept(*this);
     }
     VisitOperator(")", node.RParenPos());
     EndVisit(node);
@@ -427,7 +427,7 @@ void DefaultVisitor::Visit(PureSpecifierNode& node)
 
 // Concept:
 
-void DefaultVisitor::Visit(ConceptDefinitioNode& node)
+void DefaultVisitor::Visit(ConceptDefinitionNode& node)
 {
     BeginVisit(node);
     VisitKeyword("concept", node.GetSourcePos());
@@ -1419,7 +1419,7 @@ void DefaultVisitor::Visit(SizeOfPackExprNode& node)
 {
     BeginVisit(node);
     VisitKeyword("sizeof", node.GetSourcePos());
-    VisitOperator("...", node.EllipsesPos());
+    VisitOperator("...", node.EllipsisPos());
     VisitOperator("(", node.LParenPos());
     node.Child()->Accept(*this);
     VisitOperator(")", node.RParenPos());
@@ -1698,7 +1698,7 @@ void DefaultVisitor::Visit(DesignatorNode& node)
     EndVisit(node);
 }
 
-void DefaultVisitor::Visit(EllipsesNode& node)
+void DefaultVisitor::Visit(EllipsisNode& node)
 {
     BeginVisit(node);
     VisitOperator("...", node.GetSourcePos());
@@ -2029,9 +2029,9 @@ void DefaultVisitor::Visit(SimpleCaptureNode& node)
         node.ByRefCapture()->Accept(*this);
     }
     node.Identifier()->Accept(*this);
-    if (node.Ellipses())
+    if (node.Ellipsis())
     {
-        node.Ellipses()->Accept(*this);
+        node.Ellipsis()->Accept(*this);
     }
     EndVisit(node);
 }
@@ -2058,9 +2058,9 @@ void DefaultVisitor::Visit(InitCaptureNode& node)
     {
         node.ByRefCapture()->Accept(*this);
     }
-    if (node.Ellipses())
+    if (node.Ellipsis())
     {
-        node.Ellipses()->Accept(*this);
+        node.Ellipsis()->Accept(*this);
     }
     node.Identifier()->Accept(*this);
     node.Initializer()->Accept(*this);
@@ -2857,9 +2857,9 @@ void DefaultVisitor::Visit(TypeParameterNode& node)
         node.TemplateHead()->Accept(*this);
     }
     node.TypeConstraint()->Accept(*this);
-    if (node.Ellipses())
+    if (node.Ellipsis())
     {
-        node.Ellipses()->Accept(*this);
+        node.Ellipsis()->Accept(*this);
     }
     if (node.Identifier())
     {

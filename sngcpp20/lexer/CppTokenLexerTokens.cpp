@@ -57,7 +57,7 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"DOTSTAR"] = 123;
         tokenIdMap[U"DOUBLE"] = 28;
         tokenIdMap[U"DYNAMIC_CAST"] = 29;
-        tokenIdMap[U"ELLIPSES"] = 138;
+        tokenIdMap[U"ELLIPSIS"] = 138;
         tokenIdMap[U"ELSE"] = 30;
         tokenIdMap[U"ENUM"] = 31;
         tokenIdMap[U"EQ"] = 109;
@@ -313,7 +313,7 @@ namespace CppTokenLexerTokens
         "DOT",
         "ARROW",
         "SEMICOLON",
-        "ELLIPSES",
+        "ELLIPSIS",
         "WS",
         "LINECOMMENT",
         "BLOCKCOMMENT",

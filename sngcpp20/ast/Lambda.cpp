@@ -112,8 +112,8 @@ SimpleCaptureNode::SimpleCaptureNode(const SourcePos& sourcePos_) : CompoundNode
 {
 }
 
-SimpleCaptureNode::SimpleCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* byRefCapture_, Node* ellipses_) : 
-    CompoundNode(NodeKind::simpleCaptureNode, sourcePos_), identifier(identifier_), byRefCapture(byRefCapture_), ellipses(ellipses_)
+SimpleCaptureNode::SimpleCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* byRefCapture_, Node* ellipsis_) : 
+    CompoundNode(NodeKind::simpleCaptureNode, sourcePos_), identifier(identifier_), byRefCapture(byRefCapture_), ellipsis(ellipsis_)
 {
 }
 
@@ -127,7 +127,7 @@ void SimpleCaptureNode::Write(Writer& writer)
     CompoundNode::Write(writer);
     writer.Write(identifier.get());
     writer.Write(byRefCapture.get());
-    writer.Write(ellipses.get());
+    writer.Write(ellipsis.get());
 }
 
 void SimpleCaptureNode::Read(Reader& reader)
@@ -135,7 +135,7 @@ void SimpleCaptureNode::Read(Reader& reader)
     CompoundNode::Read(reader);
     identifier.reset(reader.ReadNode());
     byRefCapture.reset(reader.ReadNode());
-    ellipses.reset(reader.ReadNode());
+    ellipsis.reset(reader.ReadNode());
 }
 
 CurrentObjectCopyCapture::CurrentObjectCopyCapture(const SourcePos& sourcePos_) : CompoundNode(NodeKind::currentObjectCopyCapture, sourcePos_)
@@ -192,8 +192,8 @@ InitCaptureNode::InitCaptureNode(const SourcePos& sourcePos_) : CompoundNode(Nod
 {
 }
 
-InitCaptureNode::InitCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* initializer_, Node* byRefCapture_, Node* ellipses_) :
-    CompoundNode(NodeKind::initCaptureNode, sourcePos_), identifier(identifier_), initializer(initializer_), byRefCapture(byRefCapture_), ellipses(ellipses_)
+InitCaptureNode::InitCaptureNode(const SourcePos& sourcePos_, Node* identifier_, Node* initializer_, Node* byRefCapture_, Node* ellipsis_) :
+    CompoundNode(NodeKind::initCaptureNode, sourcePos_), identifier(identifier_), initializer(initializer_), byRefCapture(byRefCapture_), ellipsis(ellipsis_)
 {
 }
 
@@ -208,7 +208,7 @@ void InitCaptureNode::Write(Writer& writer)
     writer.Write(identifier.get());
     writer.Write(initializer.get());
     writer.Write(byRefCapture.get());
-    writer.Write(ellipses.get());
+    writer.Write(ellipsis.get());
 }
 
 void InitCaptureNode::Read(Reader& reader)
@@ -217,7 +217,7 @@ void InitCaptureNode::Read(Reader& reader)
     identifier.reset(reader.ReadNode());
     initializer.reset(reader.ReadNode());
     byRefCapture.reset(reader.ReadNode());
-    ellipses.reset(reader.ReadNode());
+    ellipsis.reset(reader.ReadNode());
 }
 
 LambdaDeclaratorNode::LambdaDeclaratorNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::lambdaDeclaratorNode, sourcePos_)

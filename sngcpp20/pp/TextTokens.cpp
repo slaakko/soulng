@@ -31,7 +31,7 @@ namespace TextTokens
         tokenIdMap[U"DIVASSIGN"] = 15;
         tokenIdMap[U"DOT"] = 57;
         tokenIdMap[U"DOTSTAR"] = 45;
-        tokenIdMap[U"ELLIPSES"] = 60;
+        tokenIdMap[U"ELLIPSIS"] = 60;
         tokenIdMap[U"EQ"] = 31;
         tokenIdMap[U"EXCLAMATION"] = 51;
         tokenIdMap[U"GEQ"] = 34;
@@ -157,7 +157,7 @@ namespace TextTokens
         "DOT",
         "ARROW",
         "SEMICOLON",
-        "ELLIPSES",
+        "ELLIPSIS",
         "WS",
         "BEGINBLOCKCOMMENT",
         "BLOCKCOMMENT",

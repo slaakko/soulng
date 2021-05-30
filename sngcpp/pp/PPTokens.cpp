@@ -30,7 +30,7 @@ namespace PPTokens
         tokenIdMap[U"DOT"] = 65;
         tokenIdMap[U"DOTSTAR"] = 53;
         tokenIdMap[U"ELIF"] = 4;
-        tokenIdMap[U"ELLIPSES"] = 68;
+        tokenIdMap[U"ELLIPSIS"] = 68;
         tokenIdMap[U"ELSE"] = 5;
         tokenIdMap[U"ENDIF"] = 6;
         tokenIdMap[U"EQ"] = 39;
@@ -164,7 +164,7 @@ namespace PPTokens
         "DOT",
         "ARROW",
         "SEMICOLON",
-        "ELLIPSES",
+        "ELLIPSIS",
         "MAX"
     };
 
