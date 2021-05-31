@@ -1,0 +1,13 @@
+<sngcpp>
+    <project name="2_requires">
+        <files>
+            <file name="compound1.cpp"/>
+            <file name="compound2.cpp"/>
+            <file name="compound3.cpp"/>
+            <file name="nested1.cpp"/>
+            <file name="requires1.cpp"/>
+            <file name="simple1.cpp"/>
+            <file name="typename1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

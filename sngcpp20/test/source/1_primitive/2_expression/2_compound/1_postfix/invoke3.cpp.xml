@@ -1,0 +1,45 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,5)" type="list">
+    <initDeclaratorNode count="2" pos="(1,5)" type="binary">
+     <identifierNode pos="(1,5)" type="compound">
+      <identifier pos="(1,5)" value="x0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,8)" type="unary">
+      <operator pos="(1,8)" value="="/>
+      <invokeExprNode count="1" pos="()" type="list">
+       <typenameSpecifierNode pos="(1,10)" type="compound">
+        <keyword pos="(1,10)" value="typename"/>
+        <nestedNameSpecifierNode count="2" pos="(1,19)" type="sequence">
+         <identifierNode pos="(1,19)" type="compound">
+          <identifier pos="(1,19)" value="T"/>
+         </identifierNode>
+         <colonColonNode pos="(1,20)" type="single">
+          <operator pos="(1,20)" value="::"/>
+         </colonColonNode>
+        </nestedNameSpecifierNode>
+        <identifierNode pos="(1,22)" type="compound">
+         <identifier pos="(1,22)" value="foo"/>
+        </identifierNode>
+       </typenameSpecifierNode>
+       <operator pos="(1,25)" value="("/>
+       <integerLiteralNode pos="(1,26)" type="single">
+        <literal pos="(1,26)" value="1"/>
+       </integerLiteralNode>
+       <operator pos="(1,27)" value=")"/>
+      </invokeExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,28)" type="single">
+    <operator pos="(1,28)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

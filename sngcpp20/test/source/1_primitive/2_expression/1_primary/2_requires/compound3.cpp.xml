@@ -26,7 +26,7 @@
     </assignNode>
     <requiresExprNode pos="(2,13)" type="compound">
      <keyword pos="(2,13)" value="requires"/>
-     <parameterListNode count="3" pos="(2,21)" type="list">
+     <parameterListNode count="1" pos="(2,21)" type="list">
       <operator pos="(2,21)" value="("/>
       <parameterNode pos="(2,22)" type="compound">
        <declSpecifierSequenceNode count="1" pos="(2,22)" type="sequence">
@@ -35,44 +35,33 @@
         </identifierNode>
        </declSpecifierSequenceNode>
        <identifierNode pos="(2,24)" type="compound">
-        <identifier pos="(2,24)" value="a"/>
+        <identifier pos="(2,24)" value="x"/>
        </identifierNode>
       </parameterNode>
-      <commaNode pos="(2,25)" type="single">
-       <operator pos="(2,25)" value=","/>
-      </commaNode>
-      <parameterNode pos="(2,27)" type="compound">
-       <declSpecifierSequenceNode count="1" pos="(2,27)" type="sequence">
-        <identifierNode pos="(2,27)" type="compound">
-         <identifier pos="(2,27)" value="T"/>
-        </identifierNode>
-       </declSpecifierSequenceNode>
-       <identifierNode pos="(2,29)" type="compound">
-        <identifier pos="(2,29)" value="b"/>
-       </identifierNode>
-      </parameterNode>
-      <operator pos="(2,30)" value=")"/>
+      <operator pos="(2,25)" value=")"/>
      </parameterListNode>
      <requirementBodyNode count="1" pos="(3,1)" type="sequence">
       <operator pos="(3,1)" value="{"/>
-      <requirementBodyNode count="1" pos="(3,1)" type="sequence">
-       <simpleRequirementNode count="2" pos="(4,5)" type="binary">
-        <binaryExprNode count="2" pos="(4,5)" type="binary">
-         <identifierNode pos="(4,5)" type="compound">
-          <identifier pos="(4,5)" value="a"/>
-         </identifierNode>
-         <plusNode pos="(4,7)" type="single">
-          <operator pos="(4,7)" value="+"/>
-         </plusNode>
-         <identifierNode pos="(4,9)" type="compound">
-          <identifier pos="(4,9)" value="b"/>
-         </identifierNode>
-        </binaryExprNode>
-        <semicolonNode pos="(4,10)" type="single">
-         <operator pos="(4,10)" value=";"/>
-        </semicolonNode>
-       </simpleRequirementNode>
-      </requirementBodyNode>
+      <compoundRequirementNode pos="(4,5)" type="compound">
+       <operator pos="(4,5)" value="{"/>
+       <invokeExprNode count="1" pos="(4,7)" type="list">
+        <identifierNode pos="(4,7)" type="compound">
+         <identifier pos="(4,7)" value="g"/>
+        </identifierNode>
+        <operator pos="(4,8)" value="("/>
+        <identifierNode pos="(4,9)" type="compound">
+         <identifier pos="(4,9)" value="x"/>
+        </identifierNode>
+        <operator pos="(4,10)" value=")"/>
+       </invokeExprNode>
+       <operator pos="(4,12)" value="}"/>
+       <noexceptNode pos="(4,14)" type="single">
+        <keyword pos="(4,14)" value="noexcept"/>
+       </noexceptNode>
+       <semicolonNode pos="(4,22)" type="single">
+        <operator pos="(4,22)" value=";"/>
+       </semicolonNode>
+      </compoundRequirementNode>
       <operator pos="(5,1)" value="}"/>
      </requirementBodyNode>
     </requiresExprNode>

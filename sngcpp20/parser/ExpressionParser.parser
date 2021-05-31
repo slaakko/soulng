@@ -465,16 +465,16 @@ parser api(PARSER_API) ExpressionParser
                 |   MINUSMINUS{ node.reset(new PostfixDecExprNode(s, node.release(), sourcePos)); }
                 )*
             )
-        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier1 
+        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier1{ s = sourcePos; } 
             LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } 
             ExpressionList(ctx, invokeNode.get()):args2? 
             RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
-        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier2{ node.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } BracedInitList(ctx):args3{ node->AddNode(args3); }
-        |   TypenameSpecifier(ctx):typenameSpecifier1 
+        |   SimpleTypeSpecifier(ctx):simpleTypeSpecifier2{ s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier1)); } BracedInitList(ctx):args3{ node->AddNode(args3); }
+        |   TypenameSpecifier(ctx):typenameSpecifier1{ s = sourcePos; } 
             LPAREN{ lpPos = sourcePos; invokeNode.reset(new InvokeExprNode(s, typenameSpecifier1)); } 
             ExpressionList(ctx, invokeNode.get()):args4? 
             RPAREN{ rpPos = sourcePos; invokeNode->SetLParenPos(lpPos); invokeNode->SetRParenPos(rpPos); node.reset(invokeNode.release()); }
-        |   TypenameSpecifier(ctx):typenameSpecifier2 { node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
+        |   TypenameSpecifier(ctx):typenameSpecifier2 { s = sourcePos; node.reset(new InvokeExprNode(s, simpleTypeSpecifier2)); } BracedInitList(ctx):args5{ node->AddNode(args5); }
         |   CppCastExpression(ctx):cppCastExpr{ node.reset(cppCastExpr); }
         |   TypeIdExpression(ctx):typeIdExpr{ node.reset(typeIdExpr); }
         )
@@ -665,7 +665,7 @@ parser api(PARSER_API) ExpressionParser
         ::= 
         (
             (
-                LPAREN{ lpPos = sourcePos; node.reset(new NewInitializerNode(sourcePos)); } ExpressionList(ctx, node.get()):exprList RPAREN{ rpPos = sourcePos; }
+                LPAREN{ lpPos = sourcePos; node.reset(new NewInitializerNode(sourcePos)); } ExpressionList(ctx, node.get()):exprList? RPAREN{ rpPos = sourcePos; }
             )
             {
                 node->SetLParenPos(lpPos);

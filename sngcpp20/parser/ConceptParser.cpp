@@ -631,10 +631,10 @@ soulng::parser::Match ConceptParser::Requirement(CppLexer& lexer, sngcpp::symbol
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 50);
-    std::unique_ptr<Node> simpleRequirement;
+    std::unique_ptr<Node> nestedRequirement;
     std::unique_ptr<Node> typeRequirement;
     std::unique_ptr<Node> compoundRequirement;
-    std::unique_ptr<Node> nestedRequirement;
+    std::unique_ptr<Node> simpleRequirement;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -651,15 +651,15 @@ soulng::parser::Match ConceptParser::Requirement(CppLexer& lexer, sngcpp::symbol
                 soulng::parser::Match* parentMatch3 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = ConceptParser::SimpleRequirement(lexer, ctx);
-                    simpleRequirement.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = ConceptParser::NestedRequirement(lexer, ctx);
+                    nestedRequirement.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
                         {
                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Requirement"));
                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                            return soulng::parser::Match(true, simpleRequirement.release());
+                            return soulng::parser::Match(true, nestedRequirement.release());
                         }
                     }
                     *parentMatch3 = match;
@@ -733,15 +733,15 @@ soulng::parser::Match ConceptParser::Requirement(CppLexer& lexer, sngcpp::symbol
                 soulng::parser::Match* parentMatch9 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = ConceptParser::NestedRequirement(lexer, ctx);
-                    nestedRequirement.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = ConceptParser::SimpleRequirement(lexer, ctx);
+                    simpleRequirement.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
                         {
                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("Requirement"));
                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                            return soulng::parser::Match(true, nestedRequirement.release());
+                            return soulng::parser::Match(true, simpleRequirement.release());
                         }
                     }
                     *parentMatch9 = match;

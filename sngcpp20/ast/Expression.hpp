@@ -800,7 +800,7 @@ public:
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
     void SetLParenPos(const SourcePos& lpPos_) { lpPos = lpPos_; }
-    void SetRParenPos(const SourcePos& lpPos_) { lpPos = lpPos_; }
+    void SetRParenPos(const SourcePos& rpPos_) { rpPos = rpPos_; }
     const SourcePos& LParenPos() const { return lpPos; }
     const SourcePos& RParenPos() const { return rpPos; }
 private:

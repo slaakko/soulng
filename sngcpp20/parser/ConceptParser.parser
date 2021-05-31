@@ -96,10 +96,10 @@ parser api(PARSER_API) ConceptParser
         ;
 
     Requirement(sngcpp::symbols::Context* ctx) : Node*
-        ::= SimpleRequirement(ctx):simpleRequirement{ return simpleRequirement; }
+        ::= NestedRequirement(ctx):nestedRequirement{ return nestedRequirement; }
         |   TypeRequirement(ctx):typeRequirement{ return typeRequirement; }
         |   CompoundRequirement(ctx):compoundRequirement{ return compoundRequirement; }
-        |   NestedRequirement(ctx):nestedRequirement{ return nestedRequirement; }
+        |   SimpleRequirement(ctx):simpleRequirement{ return simpleRequirement; }
         ;
 
     SimpleRequirement(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*

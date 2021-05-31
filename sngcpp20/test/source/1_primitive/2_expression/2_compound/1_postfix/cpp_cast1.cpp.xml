@@ -1,0 +1,184 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="4" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,4)" type="list">
+    <initDeclaratorNode count="2" pos="(1,4)" type="binary">
+     <ptrDeclaratorNode count="2" pos="(1,4)" type="sequence">
+      <ptrNode pos="(1,4)" type="single">
+       <operator pos="(1,4)" value="*"/>
+      </ptrNode>
+      <identifierNode pos="(1,6)" type="compound">
+       <identifier pos="(1,6)" value="foo"/>
+      </identifierNode>
+     </ptrDeclaratorNode>
+     <assignmentInitializerNode count="1" pos="(1,10)" type="unary">
+      <operator pos="(1,10)" value="="/>
+      <cppCastExprNode count="1" pos="(1,12)" type="unary">
+       <dynamicCastNode pos="(1,12)" type="single">
+        <keyword pos="(1,12)" value="dynamic_cast"/>
+       </dynamicCastNode>
+       <operator pos="(1,24)" value="&lt;"/>
+       <typeIdNode pos="(1,25)" type="compound">
+        <typeSpecifierSequenceNode count="1" pos="(1,25)" type="sequence">
+         <intNode pos="(1,25)" type="single">
+          <keyword pos="(1,25)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+        <ptrDeclaratorNode count="2" pos="(1,28)" type="sequence">
+         <ptrNode pos="(1,28)" type="single">
+          <operator pos="(1,28)" value="*"/>
+         </ptrNode>
+         <abstractDeclaratorNode pos="(1,29)" type="single"/>
+        </ptrDeclaratorNode>
+       </typeIdNode>
+       <operator pos="(1,29)" value=">"/>
+       <operator pos="(1,30)" value="("/>
+       <identifierNode pos="(1,31)" type="compound">
+        <identifier pos="(1,31)" value="x"/>
+       </identifierNode>
+       <operator pos="(1,32)" value=")"/>
+      </cppCastExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,33)" type="single">
+    <operator pos="(1,33)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <intNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,5)" type="list">
+    <initDeclaratorNode count="2" pos="(2,5)" type="binary">
+     <identifierNode pos="(2,5)" type="compound">
+      <identifier pos="(2,5)" value="x0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,8)" type="unary">
+      <operator pos="(2,8)" value="="/>
+      <cppCastExprNode count="1" pos="(2,10)" type="unary">
+       <staticCastNode pos="(2,10)" type="single">
+        <keyword pos="(2,10)" value="static_cast"/>
+       </staticCastNode>
+       <operator pos="(2,21)" value="&lt;"/>
+       <typeIdNode pos="(2,22)" type="compound">
+        <typeSpecifierSequenceNode count="1" pos="(2,22)" type="sequence">
+         <intNode pos="(2,22)" type="single">
+          <keyword pos="(2,22)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(2,25)" type="single"/>
+       </typeIdNode>
+       <operator pos="(2,25)" value=">"/>
+       <operator pos="(2,26)" value="("/>
+       <integerLiteralNode pos="(2,27)" type="single">
+        <literal pos="(2,27)" value="0"/>
+       </integerLiteralNode>
+       <operator pos="(2,28)" value=")"/>
+      </cppCastExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,29)" type="single">
+    <operator pos="(2,29)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(3,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(3,1)" type="sequence">
+    <intNode pos="(3,1)" type="single">
+     <keyword pos="(3,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(3,5)" type="list">
+    <initDeclaratorNode count="2" pos="(3,5)" type="binary">
+     <identifierNode pos="(3,5)" type="compound">
+      <identifier pos="(3,5)" value="x1"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(3,8)" type="unary">
+      <operator pos="(3,8)" value="="/>
+      <cppCastExprNode count="1" pos="(3,10)" type="unary">
+       <constCastNode pos="(3,10)" type="single">
+        <keyword pos="(3,10)" value="const_cast"/>
+       </constCastNode>
+       <operator pos="(3,20)" value="&lt;"/>
+       <typeIdNode pos="(3,21)" type="compound">
+        <typeSpecifierSequenceNode count="1" pos="(3,21)" type="sequence">
+         <intNode pos="(3,21)" type="single">
+          <keyword pos="(3,21)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(3,24)" type="single"/>
+       </typeIdNode>
+       <operator pos="(3,24)" value=">"/>
+       <operator pos="(3,25)" value="("/>
+       <identifierNode pos="(3,26)" type="compound">
+        <identifier pos="(3,26)" value="x"/>
+       </identifierNode>
+       <operator pos="(3,27)" value=")"/>
+      </cppCastExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(3,28)" type="single">
+    <operator pos="(3,28)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(4,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(4,1)" type="sequence">
+    <intNode pos="(4,1)" type="single">
+     <keyword pos="(4,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(4,4)" type="list">
+    <initDeclaratorNode count="2" pos="(4,4)" type="binary">
+     <ptrDeclaratorNode count="2" pos="(4,4)" type="sequence">
+      <ptrNode pos="(4,4)" type="single">
+       <operator pos="(4,4)" value="*"/>
+      </ptrNode>
+      <identifierNode pos="(4,6)" type="compound">
+       <identifier pos="(4,6)" value="x2"/>
+      </identifierNode>
+     </ptrDeclaratorNode>
+     <assignmentInitializerNode count="1" pos="(4,9)" type="unary">
+      <operator pos="(4,9)" value="="/>
+      <cppCastExprNode count="1" pos="(4,11)" type="unary">
+       <reinterpretCastNode pos="(4,11)" type="single">
+        <keyword pos="(4,11)" value="reinterpret_cast"/>
+       </reinterpretCastNode>
+       <operator pos="(4,27)" value="&lt;"/>
+       <typeIdNode pos="(4,28)" type="compound">
+        <typeSpecifierSequenceNode count="1" pos="(4,28)" type="sequence">
+         <intNode pos="(4,28)" type="single">
+          <keyword pos="(4,28)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+        <ptrDeclaratorNode count="2" pos="(4,31)" type="sequence">
+         <ptrNode pos="(4,31)" type="single">
+          <operator pos="(4,31)" value="*"/>
+         </ptrNode>
+         <abstractDeclaratorNode pos="(4,32)" type="single"/>
+        </ptrDeclaratorNode>
+       </typeIdNode>
+       <operator pos="(4,32)" value=">"/>
+       <operator pos="(4,33)" value="("/>
+       <identifierNode pos="(4,34)" type="compound">
+        <identifier pos="(4,34)" value="z"/>
+       </identifierNode>
+       <operator pos="(4,35)" value=")"/>
+      </cppCastExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(4,36)" type="single">
+    <operator pos="(4,36)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

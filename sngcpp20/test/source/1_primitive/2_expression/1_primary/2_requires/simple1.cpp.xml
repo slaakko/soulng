@@ -1,0 +1,80 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <templateDeclarationNode count="2" pos="(1,1)" type="binary">
+   <templateHeadNode pos="(1,1)" type="compound">
+    <keyword pos="(1,1)" value="template"/>
+    <templateParameterListNode count="1" pos="(1,10)" type="list">
+     <operator pos="(1,10)" value="&lt;"/>
+     <typeParameterNode pos="(1,11)" type="compound">
+      <typenameNode pos="(1,11)" type="single">
+       <keyword pos="(1,11)" value="typename"/>
+      </typenameNode>
+      <identifierNode pos="(1,20)" type="compound">
+       <identifier pos="(1,20)" value="T"/>
+      </identifierNode>
+     </typeParameterNode>
+     <operator pos="(1,21)" value=">"/>
+    </templateParameterListNode>
+   </templateHeadNode>
+   <conceptDefinitionNode pos="(2,1)" type="compound">
+    <keyword pos="(2,1)" value="concept"/>
+    <identifierNode pos="(2,9)" type="compound">
+     <identifier pos="(2,9)" value="C"/>
+    </identifierNode>
+    <assignNode pos="(2,11)" type="single">
+     <operator pos="(2,11)" value="="/>
+    </assignNode>
+    <requiresExprNode pos="(2,13)" type="compound">
+     <keyword pos="(2,13)" value="requires"/>
+     <parameterListNode count="3" pos="(2,21)" type="list">
+      <operator pos="(2,21)" value="("/>
+      <parameterNode pos="(2,22)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(2,22)" type="sequence">
+        <identifierNode pos="(2,22)" type="compound">
+         <identifier pos="(2,22)" value="T"/>
+        </identifierNode>
+       </declSpecifierSequenceNode>
+       <identifierNode pos="(2,24)" type="compound">
+        <identifier pos="(2,24)" value="a"/>
+       </identifierNode>
+      </parameterNode>
+      <commaNode pos="(2,25)" type="single">
+       <operator pos="(2,25)" value=","/>
+      </commaNode>
+      <parameterNode pos="(2,27)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(2,27)" type="sequence">
+        <identifierNode pos="(2,27)" type="compound">
+         <identifier pos="(2,27)" value="T"/>
+        </identifierNode>
+       </declSpecifierSequenceNode>
+       <identifierNode pos="(2,29)" type="compound">
+        <identifier pos="(2,29)" value="b"/>
+       </identifierNode>
+      </parameterNode>
+      <operator pos="(2,30)" value=")"/>
+     </parameterListNode>
+     <requirementBodyNode count="1" pos="(3,1)" type="sequence">
+      <operator pos="(3,1)" value="{"/>
+      <simpleRequirementNode count="2" pos="(4,5)" type="binary">
+       <binaryExprNode count="2" pos="(4,5)" type="binary">
+        <identifierNode pos="(4,5)" type="compound">
+         <identifier pos="(4,5)" value="a"/>
+        </identifierNode>
+        <plusNode pos="(4,7)" type="single">
+         <operator pos="(4,7)" value="+"/>
+        </plusNode>
+        <identifierNode pos="(4,9)" type="compound">
+         <identifier pos="(4,9)" value="b"/>
+        </identifierNode>
+       </binaryExprNode>
+       <semicolonNode pos="(4,10)" type="single">
+        <operator pos="(4,10)" value=";"/>
+       </semicolonNode>
+      </simpleRequirementNode>
+      <operator pos="(5,1)" value="}"/>
+     </requirementBodyNode>
+    </requiresExprNode>
+   </conceptDefinitionNode>
+  </templateDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

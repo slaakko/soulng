@@ -1,0 +1,67 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,5)" type="list">
+    <initDeclaratorNode count="2" pos="(1,5)" type="binary">
+     <identifierNode pos="(1,5)" type="compound">
+      <identifier pos="(1,5)" value="s0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,8)" type="unary">
+      <operator pos="(1,8)" value="="/>
+      <sizeOfTypeExprNode count="1" pos="(1,10)" type="unary">
+       <keyword pos="(1,10)" value="sizeof"/>
+       <operator pos="(1,16)" value="("/>
+       <typeIdNode pos="(1,17)" type="compound">
+        <typeSpecifierSequenceNode count="1" pos="(1,17)" type="sequence">
+         <intNode pos="(1,17)" type="single">
+          <keyword pos="(1,17)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(1,20)" type="single"/>
+       </typeIdNode>
+       <operator pos="(1,20)" value=")"/>
+      </sizeOfTypeExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,21)" type="single">
+    <operator pos="(1,21)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <intNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,5)" type="list">
+    <initDeclaratorNode count="2" pos="(2,5)" type="binary">
+     <identifierNode pos="(2,5)" type="compound">
+      <identifier pos="(2,5)" value="s1"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,8)" type="unary">
+      <operator pos="(2,8)" value="="/>
+      <sizeOfUnaryExprNode count="1" pos="(2,10)" type="unary">
+       <keyword pos="(2,10)" value="sizeof"/>
+       <parenExprNode count="1" pos="(2,16)" type="unary">
+        <operator pos="(2,16)" value="("/>
+        <identifierNode pos="(2,17)" type="compound">
+         <identifier pos="(2,17)" value="x"/>
+        </identifierNode>
+        <operator pos="(2,18)" value=")"/>
+       </parenExprNode>
+      </sizeOfUnaryExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,19)" type="single">
+    <operator pos="(2,19)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

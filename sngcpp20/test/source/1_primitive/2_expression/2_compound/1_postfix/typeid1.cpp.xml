@@ -1,0 +1,63 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="3" pos="(1,1)" type="sequence">
+    <typedefNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="typedef"/>
+    </typedefNode>
+    <constNode pos="(1,9)" type="single">
+     <keyword pos="(1,9)" value="const"/>
+    </constNode>
+    <intNode pos="(1,15)" type="single">
+     <keyword pos="(1,15)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,18)" type="list">
+    <ptrDeclaratorNode count="2" pos="(1,18)" type="sequence">
+     <lvalueRefNode pos="(1,18)" type="single">
+      <operator pos="(1,18)" value="&amp;"/>
+     </lvalueRefNode>
+     <identifierNode pos="(1,20)" type="compound">
+      <identifier pos="(1,20)" value="TI"/>
+     </identifierNode>
+    </ptrDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,22)" type="single">
+    <operator pos="(1,22)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <identifierNode pos="(2,1)" type="compound">
+     <identifier pos="(2,1)" value="TI"/>
+    </identifierNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,4)" type="list">
+    <initDeclaratorNode count="2" pos="(2,4)" type="binary">
+     <identifierNode pos="(2,4)" type="compound">
+      <identifier pos="(2,4)" value="ti"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,7)" type="unary">
+      <operator pos="(2,7)" value="="/>
+      <typeIdExprNode count="1" pos="(2,9)" type="unary">
+       <keyword pos="(2,9)" value="typeid"/>
+       <operator pos="(2,15)" value="("/>
+       <typeIdNode pos="(2,16)" type="compound">
+        <typeSpecifierSequenceNode count="1" pos="(2,16)" type="sequence">
+         <intNode pos="(2,16)" type="single">
+          <keyword pos="(2,16)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+        <abstractDeclaratorNode pos="(2,19)" type="single"/>
+       </typeIdNode>
+       <operator pos="(2,19)" value=")"/>
+      </typeIdExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,20)" type="single">
+    <operator pos="(2,20)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

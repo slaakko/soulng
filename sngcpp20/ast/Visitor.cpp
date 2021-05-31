@@ -453,7 +453,7 @@ void DefaultVisitor::Visit(RequirementBodyNode& node)
 {
     BeginVisit(node);
     VisitOperator("{", node.LBracePos());
-    VisitSequence(node);
+    VisitSequenceContent(node);
     VisitOperator("}", node.RBracePos());
     EndVisit(node);
 }
