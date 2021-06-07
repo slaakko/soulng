@@ -12,6 +12,7 @@
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
 [cpp]#include <sngcpp20/parser/StatementParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
+[cpp]#include <sngcpp20/symbols/Enum.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -41,12 +42,13 @@ parser api(PARSER_API) EnumParser
         ::= 
         (
             EnumHead(ctx):enumHead{ s = sourcePos; } 
-            LBRACE{ lbPos = sourcePos; enumSpecifierNode.reset(new EnumSpecifierNode(s, enumHead)); } 
+            LBRACE{ lbPos = sourcePos; enumSpecifierNode.reset(new EnumSpecifierNode(s, enumHead)); sngcpp::symbols::BeginEnumType(enumSpecifierNode.get(), ctx); } 
             EnumeratorList(ctx, enumSpecifierNode.get()):el 
             (Comma:comma{ enumSpecifierNode->AddNode(comma); })?
             RBRACE{ rbPos = sourcePos; enumSpecifierNode->SetLBracePos(lbPos); enumSpecifierNode->SetRBracePos(rbPos); }
         )
         {
+            sngcpp::symbols::EndEnumType(ctx);
             return enumSpecifierNode.release();
         }
         ;

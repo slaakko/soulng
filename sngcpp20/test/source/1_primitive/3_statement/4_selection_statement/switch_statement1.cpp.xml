@@ -1,0 +1,122 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <switchStatemeNode pos="(3,5)" type="compound">
+      <keyword pos="(3,5)" value="switch"/>
+      <operator pos="(3,12)" value="("/>
+      <identifierNode pos="(3,13)" type="compound">
+       <identifier pos="(3,13)" value="c"/>
+      </identifierNode>
+      <operator pos="(3,14)" value=")"/>
+      <compoundStatementNode count="6" pos="(4,5)" type="sequence">
+       <operator pos="(4,5)" value="{"/>
+       <caseStatmentNode pos="(5,9)" type="compound">
+        <keyword pos="(5,9)" value="case"/>
+        <integerLiteralNode pos="(5,14)" type="single">
+         <literal pos="(5,14)" value="0"/>
+        </integerLiteralNode>
+        <operator pos="(5,15)" value=":"/>
+        <expressionStatementNode pos="(5,17)" type="compound">
+         <binaryExprNode count="2" pos="(5,17)" type="binary">
+          <identifierNode pos="(5,17)" type="compound">
+           <identifier pos="(5,17)" value="x"/>
+          </identifierNode>
+          <assignNode pos="(5,19)" type="single">
+           <operator pos="(5,19)" value="="/>
+          </assignNode>
+          <integerLiteralNode pos="(5,21)" type="single">
+           <literal pos="(5,21)" value="1"/>
+          </integerLiteralNode>
+         </binaryExprNode>
+         <semicolonNode pos="(5,22)" type="single">
+          <operator pos="(5,22)" value=";"/>
+         </semicolonNode>
+        </expressionStatementNode>
+       </caseStatmentNode>
+       <breakStatementNode pos="(5,24)" type="compound">
+        <keyword pos="(5,24)" value="break"/>
+        <semicolonNode pos="(5,29)" type="single">
+         <operator pos="(5,29)" value=";"/>
+        </semicolonNode>
+       </breakStatementNode>
+       <caseStatmentNode pos="(6,9)" type="compound">
+        <keyword pos="(6,9)" value="case"/>
+        <integerLiteralNode pos="(6,14)" type="single">
+         <literal pos="(6,14)" value="1"/>
+        </integerLiteralNode>
+        <operator pos="(6,15)" value=":"/>
+        <expressionStatementNode pos="(6,17)" type="compound">
+         <binaryExprNode count="2" pos="(6,17)" type="binary">
+          <identifierNode pos="(6,17)" type="compound">
+           <identifier pos="(6,17)" value="x"/>
+          </identifierNode>
+          <assignNode pos="(6,19)" type="single">
+           <operator pos="(6,19)" value="="/>
+          </assignNode>
+          <integerLiteralNode pos="(6,21)" type="single">
+           <literal pos="(6,21)" value="2"/>
+          </integerLiteralNode>
+         </binaryExprNode>
+         <semicolonNode pos="(6,22)" type="single">
+          <operator pos="(6,22)" value=";"/>
+         </semicolonNode>
+        </expressionStatementNode>
+       </caseStatmentNode>
+       <breakStatementNode pos="(6,24)" type="compound">
+        <keyword pos="(6,24)" value="break"/>
+        <semicolonNode pos="(6,29)" type="single">
+         <operator pos="(6,29)" value=";"/>
+        </semicolonNode>
+       </breakStatementNode>
+       <defaultStatementNode pos="(7,9)" type="compound">
+        <keyword pos="(7,9)" value="default"/>
+        <operator pos="(7,16)" value=":"/>
+        <expressionStatementNode pos="(7,18)" type="compound">
+         <binaryExprNode count="2" pos="(7,18)" type="binary">
+          <identifierNode pos="(7,18)" type="compound">
+           <identifier pos="(7,18)" value="x"/>
+          </identifierNode>
+          <assignNode pos="(7,20)" type="single">
+           <operator pos="(7,20)" value="="/>
+          </assignNode>
+          <integerLiteralNode pos="(7,22)" type="single">
+           <literal pos="(7,22)" value="3"/>
+          </integerLiteralNode>
+         </binaryExprNode>
+         <semicolonNode pos="(7,23)" type="single">
+          <operator pos="(7,23)" value=";"/>
+         </semicolonNode>
+        </expressionStatementNode>
+       </defaultStatementNode>
+       <breakStatementNode pos="(7,25)" type="compound">
+        <keyword pos="(7,25)" value="break"/>
+        <semicolonNode pos="(7,30)" type="single">
+         <operator pos="(7,30)" value=";"/>
+        </semicolonNode>
+       </breakStatementNode>
+       <operator pos="(8,5)" value="}"/>
+      </compoundStatementNode>
+     </switchStatemeNode>
+     <operator pos="(9,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

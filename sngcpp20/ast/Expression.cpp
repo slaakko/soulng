@@ -114,7 +114,7 @@ ThrowExprNode::ThrowExprNode(const SourcePos& sourcePos_) : CompoundNode(NodeKin
 {
 }
 
-ThrowExprNode::ThrowExprNode(const SourcePos& sourcePos_, Node* exception_) : CompoundNode(NodeKind::throwExprNode, sourcePos_)
+ThrowExprNode::ThrowExprNode(const SourcePos& sourcePos_, Node* exception_) : CompoundNode(NodeKind::throwExprNode, sourcePos_), exception(exception_)
 {
 }
 

@@ -1,0 +1,65 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <expressionStatementNode pos="(3,5)" type="compound">
+      <invokeExprNode count="5" pos="(3,5)" type="list">
+       <identifierNode pos="(3,5)" type="compound">
+        <identifier pos="(3,5)" value="f"/>
+       </identifierNode>
+       <operator pos="(3,6)" value="("/>
+       <identifierNode pos="(3,7)" type="compound">
+        <identifier pos="(3,7)" value="a"/>
+       </identifierNode>
+       <commaNode pos="(3,8)" type="single">
+        <operator pos="(3,8)" value=","/>
+       </commaNode>
+       <parenExprNode count="1" pos="(3,10)" type="unary">
+        <operator pos="(3,10)" value="("/>
+        <binaryExprNode count="2" pos="(3,11)" type="binary">
+         <identifierNode pos="(3,11)" type="compound">
+          <identifier pos="(3,11)" value="b"/>
+         </identifierNode>
+         <commaNode pos="(3,12)" type="single">
+          <operator pos="(3,12)" value=","/>
+         </commaNode>
+         <identifierNode pos="(3,14)" type="compound">
+          <identifier pos="(3,14)" value="c"/>
+         </identifierNode>
+        </binaryExprNode>
+        <operator pos="(3,15)" value=")"/>
+       </parenExprNode>
+       <commaNode pos="(3,16)" type="single">
+        <operator pos="(3,16)" value=","/>
+       </commaNode>
+       <identifierNode pos="(3,18)" type="compound">
+        <identifier pos="(3,18)" value="d"/>
+       </identifierNode>
+       <operator pos="(3,19)" value=")"/>
+      </invokeExprNode>
+      <semicolonNode pos="(3,20)" type="single">
+       <operator pos="(3,20)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <operator pos="(4,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

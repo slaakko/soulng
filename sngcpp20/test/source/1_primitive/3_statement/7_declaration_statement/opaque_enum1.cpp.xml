@@ -1,0 +1,48 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <declarationStatementNode pos="(3,5)" type="compound">
+      <opaqueEnumDeclarationNode pos="(3,5)" type="compound">
+       <enumClassNode pos="(3,5)" type="compound">
+        <keyword pos="(3,5)" value="enum"/>
+        <keyword pos="(3,10)" value="class"/>
+       </enumClassNode>
+       <identifierNode pos="(3,16)" type="compound">
+        <identifier pos="(3,16)" value="foo"/>
+       </identifierNode>
+       <enumBaseNode count="1" pos="(3,20)" type="unary">
+        <operator pos="(3,20)" value=":"/>
+        <typeSpecifierSequenceNode count="1" pos="(3,22)" type="sequence">
+         <intNode pos="(3,22)" type="single">
+          <keyword pos="(3,22)" value="int"/>
+         </intNode>
+        </typeSpecifierSequenceNode>
+       </enumBaseNode>
+       <semicolonNode pos="(3,25)" type="single">
+        <operator pos="(3,25)" value=";"/>
+       </semicolonNode>
+      </opaqueEnumDeclarationNode>
+     </declarationStatementNode>
+     <operator pos="(4,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

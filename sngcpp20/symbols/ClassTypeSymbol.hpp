@@ -9,14 +9,22 @@
 
 namespace sngcpp::symbols {
 
+using namespace sngcpp::ast;
+
 class SYMBOLS_API ClassTypeSymbol : public TypeSymbol
 {
 public:
     ClassTypeSymbol(const std::u32string& name_);
+    bool IsClassTypeSymbol() const override { return true; }
     std::string SymbolKindStr() const override { return "class type symbol"; }
     void AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context);
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     bool CanInstall() const override { return false; }
+    void SetIdNode(Node* idNode_) { idNode = idNode_; }
+    Node* IdNode() const { return idNode; }
+    int Level() const;
+private:
+    Node* idNode;
 };
 
 } // sngcpp::symbols

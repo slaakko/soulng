@@ -1,0 +1,49 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <declarationStatementNode pos="(3,5)" type="compound">
+      <staticAssertDeclarationNode pos="(3,5)" type="compound">
+       <staticAssertNode pos="(3,5)" type="single">
+        <keyword pos="(3,5)" value="static_assert"/>
+       </staticAssertNode>
+       <operator pos="(3,18)" value="("/>
+       <binaryExprNode count="2" pos="(3,19)" type="binary">
+        <integerLiteralNode pos="(3,19)" type="single">
+         <literal pos="(3,19)" value="0"/>
+        </integerLiteralNode>
+        <equalNode pos="(3,21)" type="single">
+         <operator pos="(3,21)" value="=="/>
+        </equalNode>
+        <integerLiteralNode pos="(3,24)" type="single">
+         <literal pos="(3,24)" value="0"/>
+        </integerLiteralNode>
+       </binaryExprNode>
+       <operator pos="(3,25)" value=")"/>
+       <semicolonNode pos="(3,26)" type="single">
+        <operator pos="(3,26)" value=";"/>
+       </semicolonNode>
+      </staticAssertDeclarationNode>
+     </declarationStatementNode>
+     <operator pos="(4,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

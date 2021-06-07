@@ -18,5 +18,6 @@ PARSER_API soulng::lexer::LexerPosPair RecordCompoundStatement(CppLexer& lexer);
 PARSER_API void PushSavedCompoundStatementNode(CompoundStatementNode* node, sngcpp::symbols::Context* context);
 PARSER_API void PopSavedCompoundStatementNode(sngcpp::symbols::Context* context);
 PARSER_API CompoundStatementNode* GetSavedCompoundStatementNode(sngcpp::symbols::Context* context);
+PARSER_API void RecordedParse(CompoundStatementNode* node, sngcpp::symbols::Context* context);
 
 } // namespace sngcpp::par

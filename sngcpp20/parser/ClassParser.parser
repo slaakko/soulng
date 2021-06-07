@@ -7,6 +7,7 @@
 [hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/Class.hpp>
 [cpp]#include <sngcpp20/symbols/Class.hpp>
+[cpp]#include <sngcpp20/symbols/DeclarationProcessor.hpp>
 [cpp]#include <sngcpp20/parser/AttributeParser.hpp>
 [cpp]#include <sngcpp20/parser/ConceptParser.hpp>
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
@@ -225,15 +226,22 @@ parser api(PARSER_API) ClassParser
         )+
         ;
 
-    MemberDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
+    MemberDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> functionDefinition) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             (DeclSpecifierSeq(ctx):declSpecifiers{ if (!s.IsValid()) s = sourcePos; })? 
             (MemberDeclaratorList(ctx):declarators{ if (!s.IsValid()) s = sourcePos; })? 
             (Semicolon:semicolon{ if (!s.IsValid()) s = sourcePos; })
             {
-                return new MemberDeclarationNode(s, attributes, declSpecifiers, declarators, semicolon);
+                MemberDeclarationNode* memberDeclarationNode = new MemberDeclarationNode(s, attributes, declSpecifiers, declarators, semicolon);
+                sngcpp::symbols::ProcessMemberDeclaration(memberDeclarationNode, ctx);
+                return memberDeclarationNode;
             }
-        |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
+        |   FunctionDefinition(ctx):fnDef
+            { 
+                functionDefinition.reset(fnDef); 
+                sngcpp::symbols::ProcessFunctionDefinition(functionDefinition.get(), ctx); 
+                return functionDefinition.release();
+            }
         |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
         |   UsingEnumDeclaration(ctx):usingEnumDeclaration{ return usingEnumDeclaration; }
         |   StaticAssertDeclaration(ctx):staticAssertDeclaration{ return staticAssertDeclaration; }

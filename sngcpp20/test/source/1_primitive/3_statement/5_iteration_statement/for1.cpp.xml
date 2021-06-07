@@ -1,0 +1,105 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <forStatementNode pos="(3,5)" type="compound">
+      <keyword pos="(3,5)" value="for"/>
+      <operator pos="(3,9)" value="("/>
+      <simpleDeclarationNode pos="(3,10)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(3,10)" type="sequence">
+        <intNode pos="(3,10)" type="single">
+         <keyword pos="(3,10)" value="int"/>
+        </intNode>
+       </declSpecifierSequenceNode>
+       <initDeclaratorListNode count="1" pos="(3,14)" type="list">
+        <initDeclaratorNode count="2" pos="(3,14)" type="binary">
+         <identifierNode pos="(3,14)" type="compound">
+          <identifier pos="(3,14)" value="i"/>
+         </identifierNode>
+         <assignmentInitializerNode count="1" pos="(3,16)" type="unary">
+          <operator pos="(3,16)" value="="/>
+          <integerLiteralNode pos="(3,18)" type="single">
+           <literal pos="(3,18)" value="0"/>
+          </integerLiteralNode>
+         </assignmentInitializerNode>
+        </initDeclaratorNode>
+       </initDeclaratorListNode>
+       <semicolonNode pos="(3,19)" type="single">
+        <operator pos="(3,19)" value=";"/>
+       </semicolonNode>
+      </simpleDeclarationNode>
+      <binaryExprNode count="2" pos="(3,21)" type="binary">
+       <identifierNode pos="(3,21)" type="compound">
+        <identifier pos="(3,21)" value="i"/>
+       </identifierNode>
+       <lessNode pos="(3,23)" type="single">
+        <operator pos="(3,23)" value="&lt;"/>
+       </lessNode>
+       <integerLiteralNode pos="(3,25)" type="single">
+        <literal pos="(3,25)" value="10"/>
+       </integerLiteralNode>
+      </binaryExprNode>
+      <semicolonNode pos="(3,27)" type="single">
+       <operator pos="(3,27)" value=";"/>
+      </semicolonNode>
+      <unaryExprNode count="1" pos="(3,29)" type="unary">
+       <prefixIncNode pos="(3,29)" type="single">
+        <operator pos="(3,29)" value="++"/>
+       </prefixIncNode>
+       <identifierNode pos="(3,31)" type="compound">
+        <identifier pos="(3,31)" value="i"/>
+       </identifierNode>
+      </unaryExprNode>
+      <operator pos="(3,32)" value=")"/>
+      <compoundStatementNode count="1" pos="(4,5)" type="sequence">
+       <operator pos="(4,5)" value="{"/>
+       <declarationStatementNode pos="(5,9)" type="compound">
+        <simpleDeclarationNode pos="(5,9)" type="compound">
+         <declSpecifierSequenceNode count="1" pos="(5,9)" type="sequence">
+          <intNode pos="(5,9)" type="single">
+           <keyword pos="(5,9)" value="int"/>
+          </intNode>
+         </declSpecifierSequenceNode>
+         <initDeclaratorListNode count="1" pos="(5,13)" type="list">
+          <initDeclaratorNode count="2" pos="(5,13)" type="binary">
+           <identifierNode pos="(5,13)" type="compound">
+            <identifier pos="(5,13)" value="x"/>
+           </identifierNode>
+           <assignmentInitializerNode count="1" pos="(5,15)" type="unary">
+            <operator pos="(5,15)" value="="/>
+            <identifierNode pos="(5,17)" type="compound">
+             <identifier pos="(5,17)" value="i"/>
+            </identifierNode>
+           </assignmentInitializerNode>
+          </initDeclaratorNode>
+         </initDeclaratorListNode>
+         <semicolonNode pos="(5,18)" type="single">
+          <operator pos="(5,18)" value=";"/>
+         </semicolonNode>
+        </simpleDeclarationNode>
+       </declarationStatementNode>
+       <operator pos="(6,5)" value="}"/>
+      </compoundStatementNode>
+     </forStatementNode>
+     <operator pos="(7,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

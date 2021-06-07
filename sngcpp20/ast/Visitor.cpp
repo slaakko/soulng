@@ -3050,7 +3050,10 @@ void DefaultVisitor::Visit(DeclTypeSpecifierNode& node)
 void DefaultVisitor::Visit(PlaceholderTypeSpecifierNode& node)
 {
     BeginVisit(node);
-    node.TypeConstraint()->Accept(*this);
+    if (node.TypeConstraint())
+    {
+        node.TypeConstraint()->Accept(*this);
+    }
     if (node.IsDeclType())
     {
         VisitKeyword("delctype", node.DeclTypePos());

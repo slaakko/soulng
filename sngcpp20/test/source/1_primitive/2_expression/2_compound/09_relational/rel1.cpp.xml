@@ -1,0 +1,128 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="4" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <boolNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="bool"/>
+    </boolNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,6)" type="list">
+    <initDeclaratorNode count="2" pos="(1,6)" type="binary">
+     <identifierNode pos="(1,6)" type="compound">
+      <identifier pos="(1,6)" value="b0"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,9)" type="unary">
+      <operator pos="(1,9)" value="="/>
+      <binaryExprNode count="2" pos="(1,11)" type="binary">
+       <identifierNode pos="(1,11)" type="compound">
+        <identifier pos="(1,11)" value="x"/>
+       </identifierNode>
+       <lessNode pos="(1,13)" type="single">
+        <operator pos="(1,13)" value="&lt;"/>
+       </lessNode>
+       <identifierNode pos="(1,15)" type="compound">
+        <identifier pos="(1,15)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,16)" type="single">
+    <operator pos="(1,16)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <boolNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="bool"/>
+    </boolNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,6)" type="list">
+    <initDeclaratorNode count="2" pos="(2,6)" type="binary">
+     <identifierNode pos="(2,6)" type="compound">
+      <identifier pos="(2,6)" value="b1"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(2,9)" type="unary">
+      <operator pos="(2,9)" value="="/>
+      <binaryExprNode count="2" pos="(2,11)" type="binary">
+       <identifierNode pos="(2,11)" type="compound">
+        <identifier pos="(2,11)" value="x"/>
+       </identifierNode>
+       <greaterNode pos="(2,13)" type="single">
+        <operator pos="(2,13)" value=">"/>
+       </greaterNode>
+       <identifierNode pos="(2,15)" type="compound">
+        <identifier pos="(2,15)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,16)" type="single">
+    <operator pos="(2,16)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(3,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(3,1)" type="sequence">
+    <boolNode pos="(3,1)" type="single">
+     <keyword pos="(3,1)" value="bool"/>
+    </boolNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(3,6)" type="list">
+    <initDeclaratorNode count="2" pos="(3,6)" type="binary">
+     <identifierNode pos="(3,6)" type="compound">
+      <identifier pos="(3,6)" value="b2"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(3,9)" type="unary">
+      <operator pos="(3,9)" value="="/>
+      <binaryExprNode count="2" pos="(3,11)" type="binary">
+       <identifierNode pos="(3,11)" type="compound">
+        <identifier pos="(3,11)" value="x"/>
+       </identifierNode>
+       <lessOrEqualNode pos="(3,13)" type="single">
+        <operator pos="(3,13)" value="&lt;="/>
+       </lessOrEqualNode>
+       <identifierNode pos="(3,16)" type="compound">
+        <identifier pos="(3,16)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(3,17)" type="single">
+    <operator pos="(3,17)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(4,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(4,1)" type="sequence">
+    <boolNode pos="(4,1)" type="single">
+     <keyword pos="(4,1)" value="bool"/>
+    </boolNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(4,6)" type="list">
+    <initDeclaratorNode count="2" pos="(4,6)" type="binary">
+     <identifierNode pos="(4,6)" type="compound">
+      <identifier pos="(4,6)" value="b3"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(4,9)" type="unary">
+      <operator pos="(4,9)" value="="/>
+      <binaryExprNode count="2" pos="(4,11)" type="binary">
+       <identifierNode pos="(4,11)" type="compound">
+        <identifier pos="(4,11)" value="x"/>
+       </identifierNode>
+       <greaterOrEqualNode pos="(4,13)" type="single">
+        <operator pos="(4,13)" value=">="/>
+       </greaterOrEqualNode>
+       <identifierNode pos="(4,16)" type="compound">
+        <identifier pos="(4,16)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(4,17)" type="single">
+    <operator pos="(4,17)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

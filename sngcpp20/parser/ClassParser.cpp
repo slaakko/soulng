@@ -1,6 +1,7 @@
 #include "ClassParser.hpp"
 #include <soulng/util/Unicode.hpp>
 #include <sngcpp20/symbols/Class.hpp>
+#include <sngcpp20/symbols/DeclarationProcessor.hpp>
 #include <sngcpp20/parser/AttributeParser.hpp>
 #include <sngcpp20/parser/ConceptParser.hpp>
 #include <sngcpp20/parser/DeclarationParser.hpp>
@@ -2349,11 +2350,12 @@ soulng::parser::Match ClassParser::MemberDeclaration(CppLexer& lexer, sngcpp::sy
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 37);
     SourcePos s = SourcePos();
+    std::unique_ptr<Node> functionDefinition = std::unique_ptr<Node>();
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> declSpecifiers;
     std::unique_ptr<Node> declarators;
     std::unique_ptr<Node> semicolon;
-    std::unique_ptr<Node> functionDefinition;
+    std::unique_ptr<Node> fnDef;
     std::unique_ptr<Node> usingDeclaration;
     std::unique_ptr<Node> usingEnumDeclaration;
     std::unique_ptr<Node> staticAssertDeclaration;
@@ -2558,11 +2560,13 @@ soulng::parser::Match ClassParser::MemberDeclaration(CppLexer& lexer, sngcpp::sy
                                                         }
                                                         if (match.hit)
                                                         {
+                                                            MemberDeclarationNode * memberDeclarationNode = new MemberDeclarationNode(s, attributes.release(), declSpecifiers.release(), declarators.release(), semicolon.release());
+                                                            sngcpp::symbols::ProcessMemberDeclaration(memberDeclarationNode, ctx);
                                                             {
                                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MemberDeclaration"));
                                                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                                return soulng::parser::Match(true, new MemberDeclarationNode(s, attributes.release(), declSpecifiers.release(), declarators.release(), semicolon.release()));
+                                                                return soulng::parser::Match(true, memberDeclarationNode);
                                                             }
                                                         }
                                                         *parentMatch25 = match;
@@ -2583,9 +2587,11 @@ soulng::parser::Match ClassParser::MemberDeclaration(CppLexer& lexer, sngcpp::sy
                                                     {
                                                         int64_t pos = lexer.GetPos();
                                                         soulng::parser::Match match = FunctionParser::FunctionDefinition(lexer, ctx);
-                                                        functionDefinition.reset(static_cast<Node*>(match.value));
+                                                        fnDef.reset(static_cast<Node*>(match.value));
                                                         if (match.hit)
                                                         {
+                                                            functionDefinition.reset(fnDef.release());
+                                                            sngcpp::symbols::ProcessFunctionDefinition(functionDefinition.get(), ctx);
                                                             {
                                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MemberDeclaration"));

@@ -1,5 +1,6 @@
 <sngcpp>
     <project name="2_expression">
         <child project="1_primary"/>
+        <child project="2_compound"/>
     </project>
 </sngcpp>

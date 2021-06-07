@@ -85,7 +85,7 @@ parser api(PARSER_API) IdentifierParser
                 }
             |   UnqualifiedId(ctx):unqualifiedId
                 {
-                    return new QualifiedIdNode(sourcePos, nns, unqualifiedId);
+                    return new QualifiedIdNode(s, nns, unqualifiedId);
                 }
             )
         )

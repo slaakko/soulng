@@ -1,0 +1,11 @@
+<sngcpp>
+    <project name="02_unary">
+        <files>
+            <file name="delete1.cpp"/>
+            <file name="new1.cpp"/>
+            <file name="noexcept1.cpp"/>
+            <file name="sizeof1.cpp"/>
+            <file name="unary1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

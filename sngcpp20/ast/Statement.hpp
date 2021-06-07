@@ -84,6 +84,7 @@ public:
     void SetRBracePos(const SourcePos& rbPos_) { rbPos = rbPos_; }
     const SourcePos& LBracePos() const { return lbPos; }
     const SourcePos& RBracePos() const { return rbPos; }
+    int Level() const;
 private:
     std::unique_ptr<Node> attributes;
     SourcePos lbPos;

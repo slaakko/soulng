@@ -1,0 +1,48 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <labeledStatementNode pos="(3,1)" type="compound">
+      <identifierNode pos="(3,1)" type="compound">
+       <identifier pos="(3,1)" value="foo"/>
+      </identifierNode>
+      <operator pos="(3,4)" value=":"/>
+      <expressionStatementNode pos="(3,6)" type="compound">
+       <binaryExprNode count="2" pos="(3,6)" type="binary">
+        <identifierNode pos="(3,6)" type="compound">
+         <identifier pos="(3,6)" value="x"/>
+        </identifierNode>
+        <assignNode pos="(3,8)" type="single">
+         <operator pos="(3,8)" value="="/>
+        </assignNode>
+        <integerLiteralNode pos="(3,10)" type="single">
+         <literal pos="(3,10)" value="0"/>
+        </integerLiteralNode>
+       </binaryExprNode>
+       <semicolonNode pos="(3,11)" type="single">
+        <operator pos="(3,11)" value=";"/>
+       </semicolonNode>
+      </expressionStatementNode>
+     </labeledStatementNode>
+     <operator pos="(4,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

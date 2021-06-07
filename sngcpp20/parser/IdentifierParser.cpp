@@ -584,7 +584,6 @@ soulng::parser::Match IdentifierParser::QualifiedId(CppLexer& lexer, sngcpp::sym
                                 soulng::parser::Match* parentMatch11 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
-                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
                                     soulng::parser::Match match = IdentifierParser::UnqualifiedId(lexer, ctx);
                                     unqualifiedId.reset(static_cast<Node*>(match.value));
                                     if (match.hit)
@@ -593,7 +592,7 @@ soulng::parser::Match IdentifierParser::QualifiedId(CppLexer& lexer, sngcpp::sym
                                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("QualifiedId"));
                                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                            return soulng::parser::Match(true, new QualifiedIdNode(sourcePos, nns.release(), unqualifiedId.release()));
+                                            return soulng::parser::Match(true, new QualifiedIdNode(s, nns.release(), unqualifiedId.release()));
                                         }
                                     }
                                     *parentMatch11 = match;

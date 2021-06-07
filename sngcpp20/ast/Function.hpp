@@ -22,6 +22,7 @@ public:
     Node* Declarator() const { return declarator.get(); }
     Node* Specifiers() const { return specifiers.get(); }
     Node* FunctionBody() const { return functionBody.get(); }
+    void ResetFunctionBody(Node* functionBody_);
 private:
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> declSpecifiers;

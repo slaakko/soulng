@@ -1439,16 +1439,26 @@ soulng::parser::Match StatementParser::CompoundStatement(CppLexer& lexer, sngcpp
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch7 = &match;
                         {
-                            soulng::parser::Match match = GuardParser::SavedMemberFunctionBodyGuard(lexer, ctx);
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch8 = &match;
+                            {
+                                int64_t pos = lexer.GetPos();
+                                soulng::parser::Match match = GuardParser::SavedMemberFunctionBodyGuard(lexer, ctx);
+                                if (match.hit)
+                                {
+                                    ctx->ResetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody);
+                                }
+                                *parentMatch8 = match;
+                            }
                             *parentMatch7 = match;
                         }
                         if (match.hit)
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch8 = &match;
+                            soulng::parser::Match* parentMatch9 = &match;
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch9 = &match;
+                                soulng::parser::Match* parentMatch10 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
                                     soulng::parser::Match match = StatementParser::CompoundStatementSaved(lexer, ctx);
@@ -1462,9 +1472,9 @@ soulng::parser::Match StatementParser::CompoundStatement(CppLexer& lexer, sngcpp
                                             return soulng::parser::Match(true, savedCompoundStatement.release());
                                         }
                                     }
-                                    *parentMatch9 = match;
+                                    *parentMatch10 = match;
                                 }
-                                *parentMatch8 = match;
+                                *parentMatch9 = match;
                             }
                             *parentMatch7 = match;
                         }
@@ -1477,11 +1487,11 @@ soulng::parser::Match StatementParser::CompoundStatement(CppLexer& lexer, sngcpp
             if (!match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch10 = &match;
+                soulng::parser::Match* parentMatch11 = &match;
                 lexer.SetPos(save);
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch11 = &match;
+                    soulng::parser::Match* parentMatch12 = &match;
                     {
                         int64_t pos = lexer.GetPos();
                         soulng::parser::Match match = StatementParser::CompoundStatementUnguarded(lexer, ctx);
@@ -1495,9 +1505,9 @@ soulng::parser::Match StatementParser::CompoundStatement(CppLexer& lexer, sngcpp
                                 return soulng::parser::Match(true, unguardedCompoundStatement.release());
                             }
                         }
-                        *parentMatch11 = match;
+                        *parentMatch12 = match;
                     }
-                    *parentMatch10 = match;
+                    *parentMatch11 = match;
                 }
                 *parentMatch1 = match;
             }

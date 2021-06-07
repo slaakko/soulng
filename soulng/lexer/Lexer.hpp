@@ -54,9 +54,12 @@ struct SOULNG_LEXER_API LexerState
     Lexeme lexeme;
     const char32_t* pos;
     std::vector<Token> tokens;
-    std::vector<Token>::iterator current;
     LexerFlags flags;
     LexerPosPair recordedPosPair;
+    int64_t farthestPos;
+    std::vector<int> ruleContext;
+    std::vector<int> farthestRuleContext;
+    int64_t currentPos;
 };
 
 SOULNG_LEXER_API inline int GetLine(int64_t pos)

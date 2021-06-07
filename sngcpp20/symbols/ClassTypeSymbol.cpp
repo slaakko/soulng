@@ -8,7 +8,7 @@
 
 namespace sngcpp::symbols {
 
-ClassTypeSymbol::ClassTypeSymbol(const std::u32string& name_) : TypeSymbol(name_)
+ClassTypeSymbol::ClassTypeSymbol(const std::u32string& name_) : TypeSymbol(name_), idNode(nullptr)
 {
     GetScope().SetKind(ScopeKind::classScope);
 }
@@ -27,6 +27,20 @@ void ClassTypeSymbol::AddToGroup(ContainerSymbol* containerSymbol, const SourceP
 {
     ClassGroupSymbol* classGroup = containerSymbol->GetOrInsertClassGroup(Name(), sourcePos, context);
     classGroup->AddClass(this);
+}
+
+int ClassTypeSymbol::Level() const
+{
+    Symbol* parent = Parent();
+    while (parent)
+    {
+        if (parent->IsClassTypeSymbol())
+        {
+            return static_cast<ClassTypeSymbol*>(parent)->Level() + 1;
+        }
+        parent = parent->Parent();
+    }
+    return 0;
 }
 
 } // sngcpp::symbols

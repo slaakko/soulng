@@ -55,8 +55,10 @@ public:
     void PopScope();
     void BeginScope(Scope& scope);
     void EndScope();
-    void BeginClass(Node* node, Context* context);
+    void BeginClass(Node* specifierNode, Node* node, Context* context);
     void EndClass();
+    void BeginEnumType(Node* specifierNode, Node* node, Context* context);
+    void EndEnumType();
     void BeginFunction(Node* node, TypeSymbol* returnType, Context* context);
     void EndFunction();
     void AddConcept(Node* node, Context* context);

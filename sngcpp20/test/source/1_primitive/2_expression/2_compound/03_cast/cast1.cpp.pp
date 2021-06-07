@@ -1,0 +1,2 @@
+void* p = (void*)x;
+

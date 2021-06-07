@@ -1,0 +1,35 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,5)" type="list">
+    <initDeclaratorNode count="2" pos="(1,5)" type="binary">
+     <identifierNode pos="(1,5)" type="compound">
+      <identifier pos="(1,5)" value="x"/>
+     </identifierNode>
+     <assignmentInitializerNode count="1" pos="(1,7)" type="unary">
+      <operator pos="(1,7)" value="="/>
+      <binaryExprNode count="2" pos="(1,9)" type="binary">
+       <identifierNode pos="(1,9)" type="compound">
+        <identifier pos="(1,9)" value="y"/>
+       </identifierNode>
+       <andNode pos="(1,11)" type="single">
+        <operator pos="(1,11)" value="&amp;"/>
+       </andNode>
+       <identifierNode pos="(1,13)" type="compound">
+        <identifier pos="(1,13)" value="z"/>
+       </identifierNode>
+      </binaryExprNode>
+     </assignmentInitializerNode>
+    </initDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,14)" type="single">
+    <operator pos="(1,14)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

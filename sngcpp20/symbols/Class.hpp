@@ -15,6 +15,7 @@ using namespace sngcpp::ast;
 
 SYMBOLS_API void BeginClass(Node* node, Context* context);
 SYMBOLS_API void EndClass(Context* context);
+SYMBOLS_API void ProcessInlineMemberFunctions(Node* classSpecifierNode, Context* context);
 
 } // sngcpp::symbols
 

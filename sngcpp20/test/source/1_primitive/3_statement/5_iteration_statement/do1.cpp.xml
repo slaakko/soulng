@@ -1,0 +1,99 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <doStatementNode pos="(3,5)" type="compound">
+      <keyword pos="(3,5)" value="do"/>
+      <compoundStatementNode count="1" pos="(4,5)" type="sequence">
+       <operator pos="(4,5)" value="{"/>
+       <expressionStatementNode pos="(5,9)" type="compound">
+        <binaryExprNode count="2" pos="(5,9)" type="binary">
+         <binaryExprNode count="2" pos="(5,9)" type="binary">
+          <qualifiedIdNode count="2" pos="(5,9)" type="binary">
+           <nestedNameSpecifierNode count="2" pos="(5,9)" type="sequence">
+            <identifierNode pos="(5,9)" type="compound">
+             <identifier pos="(5,9)" value="std"/>
+            </identifierNode>
+            <colonColonNode pos="(5,12)" type="single">
+             <operator pos="(5,12)" value="::"/>
+            </colonColonNode>
+           </nestedNameSpecifierNode>
+           <identifierNode pos="(5,14)" type="compound">
+            <identifier pos="(5,14)" value="cout"/>
+           </identifierNode>
+          </qualifiedIdNode>
+          <shiftLeftNode pos="(5,19)" type="single">
+           <operator pos="(5,19)" value="&lt;&lt;"/>
+          </shiftLeftNode>
+          <identifierNode pos="(5,22)" type="compound">
+           <identifier pos="(5,22)" value="x"/>
+          </identifierNode>
+         </binaryExprNode>
+         <shiftLeftNode pos="(5,24)" type="single">
+          <operator pos="(5,24)" value="&lt;&lt;"/>
+         </shiftLeftNode>
+         <qualifiedIdNode count="2" pos="(5,27)" type="binary">
+          <nestedNameSpecifierNode count="2" pos="(5,27)" type="sequence">
+           <identifierNode pos="(5,27)" type="compound">
+            <identifier pos="(5,27)" value="std"/>
+           </identifierNode>
+           <colonColonNode pos="(5,30)" type="single">
+            <operator pos="(5,30)" value="::"/>
+           </colonColonNode>
+          </nestedNameSpecifierNode>
+          <identifierNode pos="(5,32)" type="compound">
+           <identifier pos="(5,32)" value="endl"/>
+          </identifierNode>
+         </qualifiedIdNode>
+        </binaryExprNode>
+        <semicolonNode pos="(5,36)" type="single">
+         <operator pos="(5,36)" value=";"/>
+        </semicolonNode>
+       </expressionStatementNode>
+       <operator pos="(6,5)" value="}"/>
+      </compoundStatementNode>
+      <keyword pos="(7,5)" value="while"/>
+      <operator pos="(7,11)" value="("/>
+      <binaryExprNode count="2" pos="(7,12)" type="binary">
+       <unaryExprNode count="1" pos="(7,12)" type="unary">
+        <prefixDecNode pos="(7,12)" type="single">
+         <operator pos="(7,12)" value="--"/>
+        </prefixDecNode>
+        <identifierNode pos="(7,14)" type="compound">
+         <identifier pos="(7,14)" value="x"/>
+        </identifierNode>
+       </unaryExprNode>
+       <greaterOrEqualNode pos="(7,16)" type="single">
+        <operator pos="(7,16)" value=">="/>
+       </greaterOrEqualNode>
+       <integerLiteralNode pos="(7,19)" type="single">
+        <literal pos="(7,19)" value="0"/>
+       </integerLiteralNode>
+      </binaryExprNode>
+      <operator pos="(7,20)" value=")"/>
+      <semicolonNode pos="(7,21)" type="single">
+       <operator pos="(7,21)" value=";"/>
+      </semicolonNode>
+     </doStatementNode>
+     <operator pos="(8,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

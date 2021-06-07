@@ -5,6 +5,7 @@
 
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
+#include <sngcpp20/symbols/EnumTypeSymbol.hpp>
 #include <sngcpp20/symbols/CompoundTypeSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
 #include <sngcpp20/symbols/ConceptSymbol.hpp>
@@ -121,15 +122,32 @@ void SymbolTable::EndScope()
     PopScope();
 }
 
-void SymbolTable::BeginClass(Node* node, Context* context)
+void SymbolTable::BeginClass(Node* specifierNode, Node* node, Context* context)
 {
     ClassTypeSymbol* classTypeSymbol = new ClassTypeSymbol(node->Str());
+    classTypeSymbol->SetIdNode(node);
     currentScope->AddSymbol(classTypeSymbol, node->GetSourcePos(), context);
-    MapNode(node, classTypeSymbol);
+    MapNode(specifierNode, classTypeSymbol);
+    MapNode(node, classTypeSymbol, MapKind::nodeToSymbol);
     BeginScope(classTypeSymbol->GetScope());
 }
 
 void SymbolTable::EndClass()
+{
+    EndScope();
+}
+
+void SymbolTable::BeginEnumType(Node* specifierNode, Node* node, Context* context)
+{
+    EnumTypeSymbol* enumTypeSymbol = new EnumTypeSymbol(node->Str());
+    enumTypeSymbol->SetIdNode(node);
+    currentScope->AddSymbol(enumTypeSymbol, node->GetSourcePos(), context);
+    MapNode(specifierNode, enumTypeSymbol);
+    MapNode(node, enumTypeSymbol, MapKind::nodeToSymbol);
+    BeginScope(enumTypeSymbol->GetScope());
+}
+
+void SymbolTable::EndEnumType()
 {
     EndScope();
 }

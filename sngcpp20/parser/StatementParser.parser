@@ -150,7 +150,7 @@ parser api(PARSER_API) StatementParser
         ::= 
         (   MemberFunctionGuard(ctx):memberFunctionGuard
             CompoundStatementGuarded(ctx):guardedCompoundStatement{ return guardedCompoundStatement; }
-        |   SavedMemberFunctionBodyGuard(ctx):savedMemberFunctionBodyGuard
+        |   SavedMemberFunctionBodyGuard(ctx):savedMemberFunctionBodyGuard{ ctx->ResetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody); }
             CompoundStatementSaved(ctx):savedCompoundStatement{ return savedCompoundStatement; }
         |   CompoundStatementUnguarded(ctx):unguardedCompoundStatement{ return unguardedCompoundStatement; }
         )

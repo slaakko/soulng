@@ -1,0 +1,91 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="2" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <ifStatementNode pos="(3,5)" type="compound">
+      <keyword pos="(3,5)" value="if"/>
+      <operator pos="(3,8)" value="("/>
+      <identifierNode pos="(3,9)" type="compound">
+       <identifier pos="(3,9)" value="v"/>
+      </identifierNode>
+      <operator pos="(3,10)" value=")"/>
+      <expressionStatementNode pos="(3,12)" type="compound">
+       <binaryExprNode count="2" pos="(3,12)" type="binary">
+        <identifierNode pos="(3,12)" type="compound">
+         <identifier pos="(3,12)" value="v"/>
+        </identifierNode>
+        <assignNode pos="(3,14)" type="single">
+         <operator pos="(3,14)" value="="/>
+        </assignNode>
+        <booleanLiteralNode pos="(3,16)" type="single">
+         <literal pos="(3,16)" value="false"/>
+        </booleanLiteralNode>
+       </binaryExprNode>
+       <semicolonNode pos="(3,21)" type="single">
+        <operator pos="(3,21)" value=";"/>
+       </semicolonNode>
+      </expressionStatementNode>
+     </ifStatementNode>
+     <ifStatementNode pos="(4,2)" type="compound">
+      <keyword pos="(4,2)" value="if"/>
+      <operator pos="(4,5)" value="("/>
+      <identifierNode pos="(4,6)" type="compound">
+       <identifier pos="(4,6)" value="v"/>
+      </identifierNode>
+      <operator pos="(4,7)" value=")"/>
+      <expressionStatementNode pos="(4,9)" type="compound">
+       <binaryExprNode count="2" pos="(4,9)" type="binary">
+        <identifierNode pos="(4,9)" type="compound">
+         <identifier pos="(4,9)" value="v"/>
+        </identifierNode>
+        <assignNode pos="(4,11)" type="single">
+         <operator pos="(4,11)" value="="/>
+        </assignNode>
+        <booleanLiteralNode pos="(4,13)" type="single">
+         <literal pos="(4,13)" value="false"/>
+        </booleanLiteralNode>
+       </binaryExprNode>
+       <semicolonNode pos="(4,18)" type="single">
+        <operator pos="(4,18)" value=";"/>
+       </semicolonNode>
+      </expressionStatementNode>
+      <keyword pos="(4,20)" value="else"/>
+      <expressionStatementNode pos="(4,25)" type="compound">
+       <binaryExprNode count="2" pos="(4,25)" type="binary">
+        <identifierNode pos="(4,25)" type="compound">
+         <identifier pos="(4,25)" value="v"/>
+        </identifierNode>
+        <assignNode pos="(4,27)" type="single">
+         <operator pos="(4,27)" value="="/>
+        </assignNode>
+        <booleanLiteralNode pos="(4,29)" type="single">
+         <literal pos="(4,29)" value="true"/>
+        </booleanLiteralNode>
+       </binaryExprNode>
+       <semicolonNode pos="(4,33)" type="single">
+        <operator pos="(4,33)" value=";"/>
+       </semicolonNode>
+      </expressionStatementNode>
+     </ifStatementNode>
+     <operator pos="(5,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

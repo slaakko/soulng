@@ -6,6 +6,7 @@
 #include <sngcpp20/parser/IdentifierParser.hpp>
 #include <sngcpp20/parser/StatementParser.hpp>
 #include <sngcpp20/parser/TypeParser.hpp>
+#include <sngcpp20/symbols/Enum.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -132,6 +133,7 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
                                     {
                                         lbPos = sourcePos;
                                         enumSpecifierNode.reset(new EnumSpecifierNode(s, enumHead.release()));
+                                        sngcpp::symbols::BeginEnumType(enumSpecifierNode.get(), ctx);
                                     }
                                     *parentMatch8 = match;
                                 }
@@ -226,6 +228,7 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
         }
         if (match.hit)
         {
+            sngcpp::symbols::EndEnumType(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("EnumSpecifier"));

@@ -1,0 +1,252 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="13" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <declarationStatementNode pos="(3,5)" type="compound">
+      <simpleDeclarationNode pos="(3,5)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(3,5)" type="sequence">
+        <intNode pos="(3,5)" type="single">
+         <keyword pos="(3,5)" value="int"/>
+        </intNode>
+       </declSpecifierSequenceNode>
+       <initDeclaratorListNode count="1" pos="(3,9)" type="list">
+        <initDeclaratorNode count="2" pos="(3,9)" type="binary">
+         <identifierNode pos="(3,9)" type="compound">
+          <identifier pos="(3,9)" value="x"/>
+         </identifierNode>
+         <assignmentInitializerNode count="1" pos="(3,11)" type="unary">
+          <operator pos="(3,11)" value="="/>
+          <integerLiteralNode pos="(3,13)" type="single">
+           <literal pos="(3,13)" value="1"/>
+          </integerLiteralNode>
+         </assignmentInitializerNode>
+        </initDeclaratorNode>
+       </initDeclaratorListNode>
+       <semicolonNode pos="(3,14)" type="single">
+        <operator pos="(3,14)" value=";"/>
+       </semicolonNode>
+      </simpleDeclarationNode>
+     </declarationStatementNode>
+     <declarationStatementNode pos="(4,5)" type="compound">
+      <simpleDeclarationNode pos="(4,5)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(4,5)" type="sequence">
+        <intNode pos="(4,5)" type="single">
+         <keyword pos="(4,5)" value="int"/>
+        </intNode>
+       </declSpecifierSequenceNode>
+       <initDeclaratorListNode count="1" pos="(4,9)" type="list">
+        <initDeclaratorNode count="2" pos="(4,9)" type="binary">
+         <identifierNode pos="(4,9)" type="compound">
+          <identifier pos="(4,9)" value="y"/>
+         </identifierNode>
+         <assignmentInitializerNode count="1" pos="(4,11)" type="unary">
+          <operator pos="(4,11)" value="="/>
+          <integerLiteralNode pos="(4,13)" type="single">
+           <literal pos="(4,13)" value="2"/>
+          </integerLiteralNode>
+         </assignmentInitializerNode>
+        </initDeclaratorNode>
+       </initDeclaratorListNode>
+       <semicolonNode pos="(4,14)" type="single">
+        <operator pos="(4,14)" value=";"/>
+       </semicolonNode>
+      </simpleDeclarationNode>
+     </declarationStatementNode>
+     <expressionStatementNode pos="(5,5)" type="compound">
+      <binaryExprNode count="2" pos="(5,5)" type="binary">
+       <identifierNode pos="(5,5)" type="compound">
+        <identifier pos="(5,5)" value="x"/>
+       </identifierNode>
+       <assignNode pos="(5,7)" type="single">
+        <operator pos="(5,7)" value="="/>
+       </assignNode>
+       <identifierNode pos="(5,9)" type="compound">
+        <identifier pos="(5,9)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(5,10)" type="single">
+       <operator pos="(5,10)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(6,5)" type="compound">
+      <binaryExprNode count="2" pos="(6,5)" type="binary">
+       <identifierNode pos="(6,5)" type="compound">
+        <identifier pos="(6,5)" value="x"/>
+       </identifierNode>
+       <plusAssignNode pos="(6,7)" type="single">
+        <operator pos="(6,7)" value="+="/>
+       </plusAssignNode>
+       <identifierNode pos="(6,10)" type="compound">
+        <identifier pos="(6,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(6,11)" type="single">
+       <operator pos="(6,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(7,5)" type="compound">
+      <binaryExprNode count="2" pos="(7,5)" type="binary">
+       <identifierNode pos="(7,5)" type="compound">
+        <identifier pos="(7,5)" value="x"/>
+       </identifierNode>
+       <minusAssignNode pos="(7,7)" type="single">
+        <operator pos="(7,7)" value="-="/>
+       </minusAssignNode>
+       <identifierNode pos="(7,10)" type="compound">
+        <identifier pos="(7,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(7,11)" type="single">
+       <operator pos="(7,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(8,5)" type="compound">
+      <binaryExprNode count="2" pos="(8,5)" type="binary">
+       <identifierNode pos="(8,5)" type="compound">
+        <identifier pos="(8,5)" value="x"/>
+       </identifierNode>
+       <mulAssignNode pos="(8,7)" type="single">
+        <operator pos="(8,7)" value="*="/>
+       </mulAssignNode>
+       <identifierNode pos="(8,10)" type="compound">
+        <identifier pos="(8,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(8,11)" type="single">
+       <operator pos="(8,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(9,5)" type="compound">
+      <binaryExprNode count="2" pos="(9,5)" type="binary">
+       <identifierNode pos="(9,5)" type="compound">
+        <identifier pos="(9,5)" value="x"/>
+       </identifierNode>
+       <divAssignNode pos="(9,7)" type="single">
+        <operator pos="(9,7)" value="/="/>
+       </divAssignNode>
+       <identifierNode pos="(9,10)" type="compound">
+        <identifier pos="(9,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(9,11)" type="single">
+       <operator pos="(9,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(10,5)" type="compound">
+      <binaryExprNode count="2" pos="(10,5)" type="binary">
+       <identifierNode pos="(10,5)" type="compound">
+        <identifier pos="(10,5)" value="x"/>
+       </identifierNode>
+       <modAssignNode pos="(10,7)" type="single">
+        <operator pos="(10,7)" value="%="/>
+       </modAssignNode>
+       <identifierNode pos="(10,10)" type="compound">
+        <identifier pos="(10,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(10,11)" type="single">
+       <operator pos="(10,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(11,5)" type="compound">
+      <binaryExprNode count="2" pos="(11,5)" type="binary">
+       <identifierNode pos="(11,5)" type="compound">
+        <identifier pos="(11,5)" value="x"/>
+       </identifierNode>
+       <shiftRightAssignNode pos="(11,7)" type="single">
+        <operator pos="(11,7)" value=">>="/>
+       </shiftRightAssignNode>
+       <identifierNode pos="(11,11)" type="compound">
+        <identifier pos="(11,11)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(11,12)" type="single">
+       <operator pos="(11,12)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(12,5)" type="compound">
+      <binaryExprNode count="2" pos="(12,5)" type="binary">
+       <identifierNode pos="(12,5)" type="compound">
+        <identifier pos="(12,5)" value="x"/>
+       </identifierNode>
+       <shiftLeftAssignNode pos="(12,7)" type="single">
+        <operator pos="(12,7)" value="&lt;&lt;="/>
+       </shiftLeftAssignNode>
+       <identifierNode pos="(12,11)" type="compound">
+        <identifier pos="(12,11)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(12,12)" type="single">
+       <operator pos="(12,12)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(13,5)" type="compound">
+      <binaryExprNode count="2" pos="(13,5)" type="binary">
+       <identifierNode pos="(13,5)" type="compound">
+        <identifier pos="(13,5)" value="x"/>
+       </identifierNode>
+       <andAssignNode pos="(13,7)" type="single">
+        <operator pos="(13,7)" value="&amp;="/>
+       </andAssignNode>
+       <identifierNode pos="(13,10)" type="compound">
+        <identifier pos="(13,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(13,11)" type="single">
+       <operator pos="(13,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(14,5)" type="compound">
+      <binaryExprNode count="2" pos="(14,5)" type="binary">
+       <identifierNode pos="(14,5)" type="compound">
+        <identifier pos="(14,5)" value="x"/>
+       </identifierNode>
+       <orAssignNode pos="(14,7)" type="single">
+        <operator pos="(14,7)" value="|="/>
+       </orAssignNode>
+       <identifierNode pos="(14,10)" type="compound">
+        <identifier pos="(14,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(14,11)" type="single">
+       <operator pos="(14,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <expressionStatementNode pos="(15,5)" type="compound">
+      <binaryExprNode count="2" pos="(15,5)" type="binary">
+       <identifierNode pos="(15,5)" type="compound">
+        <identifier pos="(15,5)" value="x"/>
+       </identifierNode>
+       <xorAssignNode pos="(15,7)" type="single">
+        <operator pos="(15,7)" value="^="/>
+       </xorAssignNode>
+       <identifierNode pos="(15,10)" type="compound">
+        <identifier pos="(15,10)" value="y"/>
+       </identifierNode>
+      </binaryExprNode>
+      <semicolonNode pos="(15,11)" type="single">
+       <operator pos="(15,11)" value=";"/>
+      </semicolonNode>
+     </expressionStatementNode>
+     <operator pos="(16,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

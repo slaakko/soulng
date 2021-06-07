@@ -59,6 +59,7 @@ public:
     void PushResetFlag(ContextFlags flag);
     void SetFlag(ContextFlags flag) { flags = flags | flag; }
     bool GetFlag(ContextFlags flag) const { return (flags & flag) != ContextFlags::none; }
+    void ResetFlag(ContextFlags flag) { flags = flags & ~flag; }
     void PushNode(sngcpp::ast::Node* node_);
     void PopNode();
     sngcpp::ast::Node* GetNode() const { return node; }

@@ -1,0 +1,63 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,5)" type="unary">
+    <identifierNode pos="(1,5)" type="compound">
+     <identifier pos="(1,5)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,6)" type="list">
+    <operator pos="(1,6)" value="("/>
+    <operator pos="(1,7)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <returnStatementNode pos="(3,5)" type="compound">
+      <keyword pos="(3,5)" value="return"/>
+      <integerLiteralNode pos="(3,12)" type="single">
+       <literal pos="(3,12)" value="0"/>
+      </integerLiteralNode>
+      <semicolonNode pos="(3,13)" type="single">
+       <operator pos="(3,13)" value=";"/>
+      </semicolonNode>
+     </returnStatementNode>
+     <operator pos="(4,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+  <functionDefinitionNode pos="(6,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(6,1)" type="sequence">
+    <voidNode pos="(6,1)" type="single">
+     <keyword pos="(6,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(6,6)" type="unary">
+    <identifierNode pos="(6,6)" type="compound">
+     <identifier pos="(6,6)" value="g"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(6,7)" type="list">
+    <operator pos="(6,7)" value="("/>
+    <operator pos="(6,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(7,1)" type="unary">
+    <compoundStatementNode count="1" pos="(7,1)" type="sequence">
+     <operator pos="(7,1)" value="{"/>
+     <returnStatementNode pos="(8,5)" type="compound">
+      <keyword pos="(8,5)" value="return"/>
+      <semicolonNode pos="(8,11)" type="single">
+       <operator pos="(8,11)" value=";"/>
+      </semicolonNode>
+     </returnStatementNode>
+     <operator pos="(9,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

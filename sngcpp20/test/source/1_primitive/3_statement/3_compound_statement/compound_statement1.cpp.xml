@@ -1,0 +1,63 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <functionDefinitionNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+    <identifierNode pos="(1,6)" type="compound">
+     <identifier pos="(1,6)" value="f"/>
+    </identifierNode>
+   </functionDeclaratorNode>
+   <parameterListNode pos="(1,7)" type="list">
+    <operator pos="(1,7)" value="("/>
+    <operator pos="(1,8)" value=")"/>
+   </parameterListNode>
+   <functionBodyNode count="1" pos="(2,1)" type="unary">
+    <compoundStatementNode count="1" pos="(2,1)" type="sequence">
+     <operator pos="(2,1)" value="{"/>
+     <compoundStatementNode count="2" pos="(3,5)" type="sequence">
+      <operator pos="(3,5)" value="{"/>
+      <declarationStatementNode pos="(4,3)" type="compound">
+       <simpleDeclarationNode pos="(4,3)" type="compound">
+        <declSpecifierSequenceNode count="1" pos="(4,3)" type="sequence">
+         <intNode pos="(4,3)" type="single">
+          <keyword pos="(4,3)" value="int"/>
+         </intNode>
+        </declSpecifierSequenceNode>
+        <initDeclaratorListNode count="1" pos="(4,7)" type="list">
+         <identifierNode pos="(4,7)" type="compound">
+          <identifier pos="(4,7)" value="x"/>
+         </identifierNode>
+        </initDeclaratorListNode>
+        <semicolonNode pos="(4,8)" type="single">
+         <operator pos="(4,8)" value=";"/>
+        </semicolonNode>
+       </simpleDeclarationNode>
+      </declarationStatementNode>
+      <expressionStatementNode pos="(5,3)" type="compound">
+       <binaryExprNode count="2" pos="(5,3)" type="binary">
+        <identifierNode pos="(5,3)" type="compound">
+         <identifier pos="(5,3)" value="x"/>
+        </identifierNode>
+        <assignNode pos="(5,5)" type="single">
+         <operator pos="(5,5)" value="="/>
+        </assignNode>
+        <integerLiteralNode pos="(5,7)" type="single">
+         <literal pos="(5,7)" value="0"/>
+        </integerLiteralNode>
+       </binaryExprNode>
+       <semicolonNode pos="(5,8)" type="single">
+        <operator pos="(5,8)" value=";"/>
+       </semicolonNode>
+      </expressionStatementNode>
+      <operator pos="(6,2)" value="}"/>
+     </compoundStatementNode>
+     <operator pos="(7,1)" value="}"/>
+    </compoundStatementNode>
+   </functionBodyNode>
+  </functionDefinitionNode>
+ </declarationSequenceNode>
+</translationUnitNode>

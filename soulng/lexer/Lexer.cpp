@@ -13,7 +13,7 @@ namespace soulng { namespace lexer {
 
 using namespace soulng::unicode;
 
-LexerState::LexerState() : token(), line(0), lexeme(), pos(), tokens(), current(), flags(), recordedPosPair()
+LexerState::LexerState() : token(), line(0), lexeme(), pos(), tokens(), flags(), recordedPosPair(), farthestPos(), currentPos()
 {
 }
 
@@ -615,9 +615,12 @@ LexerState Lexer::GetState() const
     state.lexeme = lexeme;
     state.pos = pos;
     state.tokens = tokens;
-    state.current = current;
     state.flags = flags;
     state.recordedPosPair = recordedPosPair;
+    state.farthestPos = farthestPos;
+    state.ruleContext = ruleContext;
+    state.farthestRuleContext = farthestRuleContext;
+    state.currentPos = GetPos();
     return state;
 }
 
@@ -628,9 +631,12 @@ void Lexer::SetState(const LexerState& state)
     lexeme = state.lexeme;
     pos = state.pos;
     tokens = state.tokens;
-    current = state.current;
     flags = state.flags;
     recordedPosPair = state.recordedPosPair;
+    farthestPos = state.farthestPos;
+    ruleContext = state.ruleContext;
+    farthestRuleContext = state.farthestRuleContext;
+    SetPos(state.currentPos);
 }
 
 void Lexer::PushState()

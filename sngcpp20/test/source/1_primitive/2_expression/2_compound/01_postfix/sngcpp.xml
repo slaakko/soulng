@@ -1,0 +1,15 @@
+<sngcpp>
+    <project name="01_postfix">
+        <files>
+            <file name="cpp_cast1.cpp"/>
+            <file name="invoke1.cpp"/>
+            <file name="invoke2.cpp"/>
+            <file name="invoke3.cpp"/>
+            <file name="member_access1.cpp"/>
+            <file name="postfix_dec1.cpp"/>
+            <file name="postfix_inc1.cpp"/>
+            <file name="subscript1.cpp"/>
+            <file name="typeid1.cpp"/>
+        </files>
+    </project>
+</sngcpp>

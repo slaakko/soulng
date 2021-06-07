@@ -20,6 +20,11 @@ FunctionDefinitionNode::FunctionDefinitionNode(const SourcePos& sourcePos_, Node
 {
 }
 
+void FunctionDefinitionNode::ResetFunctionBody(Node* functionBody_)
+{
+    functionBody.reset(functionBody_);
+}
+
 void FunctionDefinitionNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);

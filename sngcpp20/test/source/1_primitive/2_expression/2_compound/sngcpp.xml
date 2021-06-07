@@ -1,0 +1,23 @@
+<sngcpp>
+    <project name="2_compound">
+        <child project="01_postfix"/>
+        <child project="02_unary"/>
+        <child project="03_cast"/>
+        <child project="04_pm"/>
+        <child project="05_multiplicative"/>
+        <child project="06_additive"/>
+        <child project="07_shift"/>
+        <child project="08_compare"/>
+        <child project="09_relational"/>
+        <child project="10_equality"/>
+        <child project="11_and"/>
+        <child project="12_xor"/>
+        <child project="13_or"/>
+        <child project="14_logical_and"/>
+        <child project="15_logical_or"/>
+        <child project="16_conditional"/>
+        <child project="17_throw"/>
+        <child project="18_assignment"/>
+        <child project="19_comma"/>
+    </project>
+</sngcpp>

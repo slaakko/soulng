@@ -2,6 +2,7 @@
     <project name="1_primitive">
         <child project="1_lexical"/>
         <child project="2_expression"/>
+        <child project="3_statement"/>
         <child project="declaration"/>
     </project>
 </sngcpp>

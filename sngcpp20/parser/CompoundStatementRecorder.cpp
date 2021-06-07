@@ -4,6 +4,9 @@
 // =================================
 
 #include <sngcpp20/parser/CompoundStatementRecorder.hpp>
+#include <sngcpp20/parser/StatementParser.hpp>
+#include <sngcpp20/lexer/CppLexer.hpp>
+#include <soulng/lexer/Lexer.hpp>
 
 namespace sngcpp::par {
 
@@ -71,5 +74,13 @@ CompoundStatementNode* GetSavedCompoundStatementNode(sngcpp::symbols::Context* c
     }
 }
 
+void RecordedParse(CompoundStatementNode* node, sngcpp::symbols::Context* context)
+{
+    context->PushSetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody);
+    PushSavedCompoundStatementNode(node, context);
+    StatementParser::CompoundStatement(*static_cast<CppLexer*>(context->GetLexer()), context);
+    PopSavedCompoundStatementNode(context);
+    context->PopFlags();
+}
 
 } // namespace sngcpp::par

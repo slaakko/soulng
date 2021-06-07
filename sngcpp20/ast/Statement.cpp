@@ -112,6 +112,21 @@ CompoundStatementNode::CompoundStatementNode(const SourcePos& sourcePos_) : Sequ
 {
 }
 
+int CompoundStatementNode::Level() const
+{
+    Node* parent = Parent();
+    while (parent)
+    {
+        if (parent->Kind() == NodeKind::compoundStatementNode)
+        {
+            CompoundStatementNode* compoundStatement = static_cast<CompoundStatementNode*>(parent);
+            return compoundStatement->Level() + 1;
+        }
+        parent = parent->Parent();
+    }
+    return 0;
+}
+
 void CompoundStatementNode::Accept(Visitor& visitor)
 {
     visitor.Visit(*this);
