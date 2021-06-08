@@ -1,3 +1,4 @@
+
 // =================================
 // Copyright (c) 2021 Seppo Laakko
 // Distributed under the MIT license
@@ -528,6 +529,7 @@ void DeclarationProcessorVisitor::Visit(InitDeclaratorNode& node)
     node.Left()->Accept(*this);
     stage = Stage::processInitializer;
     node.Right()->Accept(*this);
+    stage = Stage::processDeclarators;
 }
 
 void DeclarationProcessorVisitor::Visit(MemberDeclaratorListNode& node)
@@ -617,6 +619,7 @@ void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, cons
 
 void ProcessSimpleDeclaration(Node* declaration, Context* context)
 {
+    if (context->GetFlag(ContextFlags::skipSimpleDeclarations)) return;
     DeclarationProcessorVisitor visitor(context);
     declaration->Accept(visitor);
     std::vector<Declaration> declarations = visitor.GetDeclarations();
@@ -628,7 +631,7 @@ void ProcessSimpleDeclaration(Node* declaration, Context* context)
             if (classTypeSymbol->Level() == 0)
             {
                 Node* classSpecifierNode = context->GetSymbolTable()->GetNode(classTypeSymbol);
-                ProcessInlineMemberFunctions(classSpecifierNode, context);
+                ParseInlineMemberFunctions(classSpecifierNode, context);
             }
         }
     }

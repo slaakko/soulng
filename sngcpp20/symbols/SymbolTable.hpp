@@ -55,6 +55,8 @@ public:
     void PopScope();
     void BeginScope(Scope& scope);
     void EndScope();
+    void BeginNamespace(Node* node, Context* context);
+    void EndNamespace(int level);
     void BeginClass(Node* specifierNode, Node* node, Context* context);
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* node, Context* context);

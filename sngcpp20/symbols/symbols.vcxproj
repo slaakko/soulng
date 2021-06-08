@@ -177,6 +177,7 @@
     <ClInclude Include="FunctionSymbol.hpp" />
     <ClInclude Include="FundamentalTypeSymbol.hpp" />
     <ClInclude Include="InitDone.hpp" />
+    <ClInclude Include="Namespace.hpp" />
     <ClInclude Include="NamespaceSymbol.hpp" />
     <ClInclude Include="Scope.hpp" />
     <ClInclude Include="ScopeResolver.hpp" />
@@ -211,6 +212,7 @@
     <ClCompile Include="FunctionSymbol.cpp" />
     <ClCompile Include="FundamentalTypeSymbol.cpp" />
     <ClCompile Include="InitDone.cpp" />
+    <ClCompile Include="Namespace.cpp" />
     <ClCompile Include="NamespaceSymbol.cpp" />
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="ScopeResolver.cpp" />

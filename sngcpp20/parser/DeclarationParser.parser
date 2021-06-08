@@ -20,6 +20,7 @@
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
 [cpp]#include <sngcpp20/parser/TypeParser.hpp>
 [cpp]#include <sngcpp20/symbols/DeclarationProcessor.hpp>
+[cpp]#include <sngcpp20/symbols/Namespace.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -183,24 +184,25 @@ parser api(PARSER_API) DeclarationParser
         ;
 
     NamespaceDefinition(sngcpp::symbols::Context* ctx) : Node*
-        ::= NamedNamespaceDefinition(ctx):namedNamespaceDefinition{ return namedNamespaceDefinition; }
+        ::= NestedNamespaceDefinition(ctx):nestedNamespaceDefinition{ return nestedNamespaceDefinition; }
+        |   NamedNamespaceDefinition(ctx):namedNamespaceDefinition{ return namedNamespaceDefinition; }
         |   UnnamedNamespaceDefinition(ctx):unnamedNamespaceDefinition{ return unnamedNamespaceDefinition; }
-        |   NestedNamespaceDefinition(ctx):nestedNamespaceDefinition{ return nestedNamespaceDefinition; }
         ;
 
-    NamedNamespaceDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
+    NamedNamespaceDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos, var std::unique_ptr<Node> nsName) : Node*
         ::= 
         (
             (Inline:inln{ s = sourcePos; })?
             Namespace:nskw{ if (!s.IsValid()) s = sourcePos; }
             AttributeSpecifierSeq(ctx):attributes?
-            Identifier(ctx):nsName
+            Identifier(ctx):nsn{ nsName.reset(nsn); sngcpp::symbols::BeginNamespace(nsName.get(), ctx); }
             LBRACE{ lbPos = sourcePos; }
             NamespaceBody(ctx):nsBody
             RBRACE{ rbPos = sourcePos; }
         )
         {
-            return new NamespaceDefinitionNode(s, nskw, nsName, nsBody, inln, attributes, lbPos, rbPos);
+            sngcpp::symbols::EndNamespace(1, ctx); 
+            return new NamespaceDefinitionNode(s, nskw, nsName.release(), nsBody, inln, attributes, lbPos, rbPos);
         }
         ;
 
@@ -220,27 +222,20 @@ parser api(PARSER_API) DeclarationParser
         ;
 
     NestedNamespaceDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<NestedNameSpecifierNode> nns,
-        var std::unique_ptr<Node> qualifiedNsName, var std::unique_ptr<Node> nsNameNode, var SourcePos nnsPos, var SourcePos inlnPos, var SourcePos lbPos, var SourcePos rbPos) : Node*
+        var std::unique_ptr<Node> qualifiedNsName, var std::unique_ptr<Node> nsNameNode, var SourcePos nnsPos, var SourcePos inlnPos, var SourcePos lbPos, var SourcePos rbPos, var int nsLevel) : Node*
         ::= 
         (
             Namespace:nskw{ s = sourcePos; }
             (
                 empty{ nns.reset(new NestedNameSpecifierNode(sourcePos)); }
-                EnclosingNamespaceSpecifier(ctx, nns.get()):encNsSpecifier{ nnsPos = sourcePos; }
-                ColonColon:colonColon{ nns->AddNode(colonColon); }
-                (   (Inline:inln{ inlnPos = sourcePos; } Identifier(ctx):nsName){ nsNameNode.reset(new PrefixNode(inlnPos, inln, nsName)); }
-                |   Identifier(ctx):nsName2{ nsNameNode.reset(nsName2); }
-                )
-                {
-                    qualifiedNsName.reset(new QualifiedIdNode(nnsPos, nns.release(), nsNameNode.release()));
-                }
+                NestedNamespaceSpecifier(ctx, nns.get()):level{ nnsPos = sourcePos; nsLevel = level; }
             )
-            LBRACE{ lbPos = sourcePos; }
+            LBRACE{ lbPos = sourcePos; sngcpp::symbols::BeginNamespace(nns.get(), ctx); }
             NamespaceBody(ctx):nsBody
-            RBRACE{ rbPos = sourcePos; }
+            RBRACE{ rbPos = sourcePos; sngcpp::symbols::EndNamespace(nsLevel, ctx); }
         )
         {
-            return new NamespaceDefinitionNode(s, nskw, qualifiedNsName.release(), nsBody, inln, nullptr, lbPos, rbPos);
+            return new NamespaceDefinitionNode(s, nskw, nns.release(), nsBody, nullptr, nullptr, lbPos, rbPos);
         }
         ;
 
@@ -254,12 +249,18 @@ parser api(PARSER_API) DeclarationParser
         }
         ;
 
-    EnclosingNamespaceSpecifier(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container) : Node*
-        ::= Identifier(ctx):first{ container->AddNode(first); } 
+    NestedNamespaceSpecifier(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container, var int level) : int
+        ::= 
+        (
+            Identifier(ctx):first{ container->AddNode(first); level = 1; } 
             (   ColonColon:colonColon{ container->AddNode(colonColon); } 
                 (Inline:inln{ container->AddNode(inln); })?
-                Identifier(ctx):next{ container->AddNode(next); }
-            )*
+                Identifier(ctx):next{ container->AddNode(next); ++level; }
+            )+
+        )
+        {
+            return level;
+        }
         ;
 
     NamespaceAliasDefinition(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*

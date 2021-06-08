@@ -74,7 +74,7 @@ std::vector<const char*> rules = {
 , "DeclarationParser.UnnamedNamespaceDefinition"
 , "DeclarationParser.NestedNamespaceDefinition"
 , "DeclarationParser.NamespaceBody"
-, "DeclarationParser.EnclosingNamespaceSpecifier"
+, "DeclarationParser.NestedNamespaceSpecifier"
 , "DeclarationParser.NamespaceAliasDefinition"
 , "DeclarationParser.Namespace"
 , "DeclarationParser.QualifiedNamespaceSpecifier"

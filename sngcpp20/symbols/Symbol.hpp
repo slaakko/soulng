@@ -26,6 +26,7 @@ public:
     virtual bool IsContainerSymbol() const { return false; }
     virtual bool IsFunctionSymbol() const { return false; }
     virtual bool IsParameterSymbol() const { return false; }
+    virtual bool IsNamespaceSymbol() const { return false; }
     virtual bool IsClassTypeSymbol() const { return false; }
     virtual bool IsEnumTypeSymbol() const { return false; }
     virtual bool IsClassGroupSymbol() const { return false; }

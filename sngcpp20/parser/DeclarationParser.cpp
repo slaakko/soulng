@@ -13,6 +13,7 @@
 #include <sngcpp20/parser/TemplateParser.hpp>
 #include <sngcpp20/parser/TypeParser.hpp>
 #include <sngcpp20/symbols/DeclarationProcessor.hpp>
+#include <sngcpp20/symbols/Namespace.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -1837,9 +1838,9 @@ soulng::parser::Match DeclarationParser::NamespaceDefinition(CppLexer& lexer, sn
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 68);
+    std::unique_ptr<Node> nestedNamespaceDefinition;
     std::unique_ptr<Node> namedNamespaceDefinition;
     std::unique_ptr<Node> unnamedNamespaceDefinition;
-    std::unique_ptr<Node> nestedNamespaceDefinition;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1852,15 +1853,15 @@ soulng::parser::Match DeclarationParser::NamespaceDefinition(CppLexer& lexer, sn
             soulng::parser::Match* parentMatch2 = &match;
             {
                 int64_t pos = lexer.GetPos();
-                soulng::parser::Match match = DeclarationParser::NamedNamespaceDefinition(lexer, ctx);
-                namedNamespaceDefinition.reset(static_cast<Node*>(match.value));
+                soulng::parser::Match match = DeclarationParser::NestedNamespaceDefinition(lexer, ctx);
+                nestedNamespaceDefinition.reset(static_cast<Node*>(match.value));
                 if (match.hit)
                 {
                     {
                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NamespaceDefinition"));
                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                        return soulng::parser::Match(true, namedNamespaceDefinition.release());
+                        return soulng::parser::Match(true, nestedNamespaceDefinition.release());
                     }
                 }
                 *parentMatch2 = match;
@@ -1876,15 +1877,15 @@ soulng::parser::Match DeclarationParser::NamespaceDefinition(CppLexer& lexer, sn
                     soulng::parser::Match* parentMatch4 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::parser::Match match = DeclarationParser::UnnamedNamespaceDefinition(lexer, ctx);
-                        unnamedNamespaceDefinition.reset(static_cast<Node*>(match.value));
+                        soulng::parser::Match match = DeclarationParser::NamedNamespaceDefinition(lexer, ctx);
+                        namedNamespaceDefinition.reset(static_cast<Node*>(match.value));
                         if (match.hit)
                         {
                             {
                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NamespaceDefinition"));
                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                return soulng::parser::Match(true, unnamedNamespaceDefinition.release());
+                                return soulng::parser::Match(true, namedNamespaceDefinition.release());
                             }
                         }
                         *parentMatch4 = match;
@@ -1905,15 +1906,15 @@ soulng::parser::Match DeclarationParser::NamespaceDefinition(CppLexer& lexer, sn
                 soulng::parser::Match* parentMatch6 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = DeclarationParser::NestedNamespaceDefinition(lexer, ctx);
-                    nestedNamespaceDefinition.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = DeclarationParser::UnnamedNamespaceDefinition(lexer, ctx);
+                    unnamedNamespaceDefinition.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
                         {
                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NamespaceDefinition"));
                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                            return soulng::parser::Match(true, nestedNamespaceDefinition.release());
+                            return soulng::parser::Match(true, unnamedNamespaceDefinition.release());
                         }
                     }
                     *parentMatch6 = match;
@@ -1952,10 +1953,11 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
     SourcePos s = SourcePos();
     SourcePos lbPos = SourcePos();
     SourcePos rbPos = SourcePos();
+    std::unique_ptr<Node> nsName = std::unique_ptr<Node>();
     std::unique_ptr<Node> inln;
     std::unique_ptr<Node> nskw;
     std::unique_ptr<Node> attributes;
-    std::unique_ptr<Node> nsName;
+    std::unique_ptr<Node> nsn;
     std::unique_ptr<Node> nsBody;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -2070,8 +2072,19 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch15 = &match;
                             {
-                                soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
-                                nsName.reset(static_cast<Node*>(match.value));
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch16 = &match;
+                                {
+                                    int64_t pos = lexer.GetPos();
+                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
+                                    nsn.reset(static_cast<Node*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        nsName.reset(nsn.release());
+                                        sngcpp::symbols::BeginNamespace(nsName.get(), ctx);
+                                    }
+                                    *parentMatch16 = match;
+                                }
                                 *parentMatch15 = match;
                             }
                             *parentMatch5 = match;
@@ -2081,10 +2094,10 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch16 = &match;
+                        soulng::parser::Match* parentMatch17 = &match;
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch17 = &match;
+                            soulng::parser::Match* parentMatch18 = &match;
                             {
                                 int64_t pos = lexer.GetPos();
                                 soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
@@ -2098,9 +2111,9 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                                 {
                                     lbPos = sourcePos;
                                 }
-                                *parentMatch17 = match;
+                                *parentMatch18 = match;
                             }
-                            *parentMatch16 = match;
+                            *parentMatch17 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -2109,11 +2122,11 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch18 = &match;
+                    soulng::parser::Match* parentMatch19 = &match;
                     {
                         soulng::parser::Match match = DeclarationParser::NamespaceBody(lexer, ctx);
                         nsBody.reset(static_cast<Node*>(match.value));
-                        *parentMatch18 = match;
+                        *parentMatch19 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -2122,10 +2135,10 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch19 = &match;
+                soulng::parser::Match* parentMatch20 = &match;
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch20 = &match;
+                    soulng::parser::Match* parentMatch21 = &match;
                     {
                         int64_t pos = lexer.GetPos();
                         soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
@@ -2139,9 +2152,9 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                         {
                             rbPos = sourcePos;
                         }
-                        *parentMatch20 = match;
+                        *parentMatch21 = match;
                     }
-                    *parentMatch19 = match;
+                    *parentMatch20 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -2149,6 +2162,7 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
         }
         if (match.hit)
         {
+            sngcpp::symbols::EndNamespace(1, ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NamedNamespaceDefinition"));
@@ -2410,12 +2424,9 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
     SourcePos inlnPos = SourcePos();
     SourcePos lbPos = SourcePos();
     SourcePos rbPos = SourcePos();
+    int nsLevel = int();
     std::unique_ptr<Node> nskw;
-    std::unique_ptr<Node> encNsSpecifier;
-    std::unique_ptr<Node> colonColon;
-    std::unique_ptr<Node> inln;
-    std::unique_ptr<Node> nsName;
-    std::unique_ptr<Node> nsName2;
+    std::unique_ptr<soulng::parser::Value<int>> level;
     std::unique_ptr<Node> nsBody;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -2465,65 +2476,12 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                                         soulng::parser::Match match(false);
                                         soulng::parser::Match* parentMatch10 = &match;
                                         {
-                                            soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch11 = &match;
-                                            {
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch12 = &match;
-                                                {
-                                                    int64_t pos = lexer.GetPos();
-                                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                                    soulng::parser::Match match(true);
-                                                    if (match.hit)
-                                                    {
-                                                        nns.reset(new NestedNameSpecifierNode(sourcePos));
-                                                    }
-                                                    *parentMatch12 = match;
-                                                }
-                                                *parentMatch11 = match;
-                                            }
+                                            int64_t pos = lexer.GetPos();
+                                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
+                                            soulng::parser::Match match(true);
                                             if (match.hit)
                                             {
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch13 = &match;
-                                                {
-                                                    soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch14 = &match;
-                                                    {
-                                                        int64_t pos = lexer.GetPos();
-                                                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                                        soulng::parser::Match match = DeclarationParser::EnclosingNamespaceSpecifier(lexer, ctx, nns.get());
-                                                        encNsSpecifier.reset(static_cast<Node*>(match.value));
-                                                        if (match.hit)
-                                                        {
-                                                            nnsPos = sourcePos;
-                                                        }
-                                                        *parentMatch14 = match;
-                                                    }
-                                                    *parentMatch13 = match;
-                                                }
-                                                *parentMatch11 = match;
-                                            }
-                                            *parentMatch10 = match;
-                                        }
-                                        if (match.hit)
-                                        {
-                                            soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch15 = &match;
-                                            {
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch16 = &match;
-                                                {
-                                                    int64_t pos = lexer.GetPos();
-                                                    soulng::parser::Match match = IdentifierParser::ColonColon(lexer);
-                                                    colonColon.reset(static_cast<Node*>(match.value));
-                                                    if (match.hit)
-                                                    {
-                                                        nns->AddNode(colonColon.release());
-                                                    }
-                                                    *parentMatch16 = match;
-                                                }
-                                                *parentMatch15 = match;
+                                                nns.reset(new NestedNameSpecifierNode(sourcePos));
                                             }
                                             *parentMatch10 = match;
                                         }
@@ -2532,96 +2490,23 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                                     if (match.hit)
                                     {
                                         soulng::parser::Match match(false);
-                                        soulng::parser::Match* parentMatch17 = &match;
+                                        soulng::parser::Match* parentMatch11 = &match;
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch18 = &match;
+                                            soulng::parser::Match* parentMatch12 = &match;
                                             {
                                                 int64_t pos = lexer.GetPos();
-                                                soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch19 = &match;
-                                                {
-                                                    soulng::parser::Match match(false);
-                                                    soulng::parser::Match* parentMatch20 = &match;
-                                                    {
-                                                        int64_t save = lexer.GetPos();
-                                                        soulng::parser::Match match(false);
-                                                        soulng::parser::Match* parentMatch21 = &match;
-                                                        {
-                                                            int64_t pos = lexer.GetPos();
-                                                            soulng::parser::Match match(false);
-                                                            soulng::parser::Match* parentMatch22 = &match;
-                                                            {
-                                                                soulng::parser::Match match(false);
-                                                                soulng::parser::Match* parentMatch23 = &match;
-                                                                {
-                                                                    soulng::parser::Match match(false);
-                                                                    soulng::parser::Match* parentMatch24 = &match;
-                                                                    {
-                                                                        int64_t pos = lexer.GetPos();
-                                                                        soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                                                        soulng::parser::Match match = DeclarationParser::Inline(lexer);
-                                                                        inln.reset(static_cast<Node*>(match.value));
-                                                                        if (match.hit)
-                                                                        {
-                                                                            inlnPos = sourcePos;
-                                                                        }
-                                                                        *parentMatch24 = match;
-                                                                    }
-                                                                    *parentMatch23 = match;
-                                                                }
-                                                                if (match.hit)
-                                                                {
-                                                                    soulng::parser::Match match(false);
-                                                                    soulng::parser::Match* parentMatch25 = &match;
-                                                                    {
-                                                                        soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
-                                                                        nsName.reset(static_cast<Node*>(match.value));
-                                                                        *parentMatch25 = match;
-                                                                    }
-                                                                    *parentMatch23 = match;
-                                                                }
-                                                                *parentMatch22 = match;
-                                                            }
-                                                            if (match.hit)
-                                                            {
-                                                                nsNameNode.reset(new PrefixNode(inlnPos, inln.release(), nsName.release()));
-                                                            }
-                                                            *parentMatch21 = match;
-                                                        }
-                                                        *parentMatch20 = match;
-                                                        if (!match.hit)
-                                                        {
-                                                            soulng::parser::Match match(false);
-                                                            soulng::parser::Match* parentMatch26 = &match;
-                                                            lexer.SetPos(save);
-                                                            {
-                                                                soulng::parser::Match match(false);
-                                                                soulng::parser::Match* parentMatch27 = &match;
-                                                                {
-                                                                    int64_t pos = lexer.GetPos();
-                                                                    soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
-                                                                    nsName2.reset(static_cast<Node*>(match.value));
-                                                                    if (match.hit)
-                                                                    {
-                                                                        nsNameNode.reset(nsName2.release());
-                                                                    }
-                                                                    *parentMatch27 = match;
-                                                                }
-                                                                *parentMatch26 = match;
-                                                            }
-                                                            *parentMatch20 = match;
-                                                        }
-                                                    }
-                                                    *parentMatch19 = match;
-                                                }
+                                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
+                                                soulng::parser::Match match = DeclarationParser::NestedNamespaceSpecifier(lexer, ctx, nns.get());
+                                                level.reset(static_cast<soulng::parser::Value<int>*>(match.value));
                                                 if (match.hit)
                                                 {
-                                                    qualifiedNsName.reset(new QualifiedIdNode(nnsPos, nns.release(), nsNameNode.release()));
+                                                    nnsPos = sourcePos;
+                                                    nsLevel = level->value;
                                                 }
-                                                *parentMatch18 = match;
+                                                *parentMatch12 = match;
                                             }
-                                            *parentMatch17 = match;
+                                            *parentMatch11 = match;
                                         }
                                         *parentMatch9 = match;
                                     }
@@ -2636,10 +2521,10 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch28 = &match;
+                        soulng::parser::Match* parentMatch13 = &match;
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch29 = &match;
+                            soulng::parser::Match* parentMatch14 = &match;
                             {
                                 int64_t pos = lexer.GetPos();
                                 soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
@@ -2652,10 +2537,11 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                                 if (match.hit)
                                 {
                                     lbPos = sourcePos;
+                                    sngcpp::symbols::BeginNamespace(nns.get(), ctx);
                                 }
-                                *parentMatch29 = match;
+                                *parentMatch14 = match;
                             }
-                            *parentMatch28 = match;
+                            *parentMatch13 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -2664,11 +2550,11 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch30 = &match;
+                    soulng::parser::Match* parentMatch15 = &match;
                     {
                         soulng::parser::Match match = DeclarationParser::NamespaceBody(lexer, ctx);
                         nsBody.reset(static_cast<Node*>(match.value));
-                        *parentMatch30 = match;
+                        *parentMatch15 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -2677,10 +2563,10 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch31 = &match;
+                soulng::parser::Match* parentMatch16 = &match;
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch32 = &match;
+                    soulng::parser::Match* parentMatch17 = &match;
                     {
                         int64_t pos = lexer.GetPos();
                         soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
@@ -2693,10 +2579,11 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                         if (match.hit)
                         {
                             rbPos = sourcePos;
+                            sngcpp::symbols::EndNamespace(nsLevel, ctx);
                         }
-                        *parentMatch32 = match;
+                        *parentMatch17 = match;
                     }
-                    *parentMatch31 = match;
+                    *parentMatch16 = match;
                 }
                 *parentMatch2 = match;
             }
@@ -2708,7 +2595,7 @@ soulng::parser::Match DeclarationParser::NestedNamespaceDefinition(CppLexer& lex
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NestedNamespaceDefinition"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new NamespaceDefinitionNode(s, nskw.release(), qualifiedNsName.release(), nsBody.release(), inln.release(), nullptr, lbPos, rbPos));
+                return soulng::parser::Match(true, new NamespaceDefinitionNode(s, nskw.release(), nns.release(), nsBody.release(), nullptr, nullptr, lbPos, rbPos));
             }
         }
         *parentMatch0 = match;
@@ -2806,7 +2693,7 @@ soulng::parser::Match DeclarationParser::NamespaceBody(CppLexer& lexer, sngcpp::
     return match;
 }
 
-soulng::parser::Match DeclarationParser::EnclosingNamespaceSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
+soulng::parser::Match DeclarationParser::NestedNamespaceSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
 {
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::Span parser_debug_match_span;
@@ -2814,10 +2701,11 @@ soulng::parser::Match DeclarationParser::EnclosingNamespaceSpecifier(CppLexer& l
     if (parser_debug_write_to_log)
     {
         parser_debug_match_span = lexer.GetSpan();
-        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnclosingNamespaceSpecifier"));
+        soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("NestedNamespaceSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 73);
+    int level = int();
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> colonColon;
     std::unique_ptr<Node> inln;
@@ -2825,43 +2713,47 @@ soulng::parser::Match DeclarationParser::EnclosingNamespaceSpecifier(CppLexer& l
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
+        int64_t pos = lexer.GetPos();
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            int64_t pos = lexer.GetPos();
-            soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
-            first.reset(static_cast<Node*>(match.value));
+            soulng::parser::Match match(false);
+            soulng::parser::Match* parentMatch2 = &match;
+            {
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch3 = &match;
+                {
+                    int64_t pos = lexer.GetPos();
+                    soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
+                    first.reset(static_cast<Node*>(match.value));
+                    if (match.hit)
+                    {
+                        container->AddNode(first.release());
+                        level = 1;
+                    }
+                    *parentMatch3 = match;
+                }
+                *parentMatch2 = match;
+            }
             if (match.hit)
             {
-                container->AddNode(first.release());
-            }
-            *parentMatch1 = match;
-        }
-        *parentMatch0 = match;
-    }
-    if (match.hit)
-    {
-        soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch2 = &match;
-        {
-            soulng::parser::Match match(true);
-            soulng::parser::Match* parentMatch3 = &match;
-            {
-                while (true)
+                soulng::parser::Match match(false);
+                soulng::parser::Match* parentMatch4 = &match;
                 {
-                    int64_t save = lexer.GetPos();
+                    soulng::parser::Match match(false);
+                    soulng::parser::Match* parentMatch5 = &match;
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch4 = &match;
+                        soulng::parser::Match* parentMatch6 = &match;
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch5 = &match;
+                            soulng::parser::Match* parentMatch7 = &match;
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch6 = &match;
+                                soulng::parser::Match* parentMatch8 = &match;
                                 {
                                     soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch7 = &match;
+                                    soulng::parser::Match* parentMatch9 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = IdentifierParser::ColonColon(lexer);
@@ -2870,24 +2762,24 @@ soulng::parser::Match DeclarationParser::EnclosingNamespaceSpecifier(CppLexer& l
                                         {
                                             container->AddNode(colonColon.release());
                                         }
-                                        *parentMatch7 = match;
+                                        *parentMatch9 = match;
                                     }
-                                    *parentMatch6 = match;
+                                    *parentMatch8 = match;
                                 }
                                 if (match.hit)
                                 {
                                     soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch8 = &match;
+                                    soulng::parser::Match* parentMatch10 = &match;
                                     {
                                         soulng::parser::Match match(true);
                                         int64_t save = lexer.GetPos();
-                                        soulng::parser::Match* parentMatch9 = &match;
+                                        soulng::parser::Match* parentMatch11 = &match;
                                         {
                                             soulng::parser::Match match(false);
-                                            soulng::parser::Match* parentMatch10 = &match;
+                                            soulng::parser::Match* parentMatch12 = &match;
                                             {
                                                 soulng::parser::Match match(false);
-                                                soulng::parser::Match* parentMatch11 = &match;
+                                                soulng::parser::Match* parentMatch13 = &match;
                                                 {
                                                     int64_t pos = lexer.GetPos();
                                                     soulng::parser::Match match = DeclarationParser::Inline(lexer);
@@ -2896,32 +2788,32 @@ soulng::parser::Match DeclarationParser::EnclosingNamespaceSpecifier(CppLexer& l
                                                     {
                                                         container->AddNode(inln.release());
                                                     }
-                                                    *parentMatch11 = match;
+                                                    *parentMatch13 = match;
                                                 }
-                                                *parentMatch10 = match;
+                                                *parentMatch12 = match;
                                             }
                                             if (match.hit)
                                             {
-                                                *parentMatch9 = match;
+                                                *parentMatch11 = match;
                                             }
                                             else
                                             {
                                                 lexer.SetPos(save);
                                             }
                                         }
-                                        *parentMatch8 = match;
+                                        *parentMatch10 = match;
                                     }
-                                    *parentMatch6 = match;
+                                    *parentMatch8 = match;
                                 }
-                                *parentMatch5 = match;
+                                *parentMatch7 = match;
                             }
                             if (match.hit)
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch12 = &match;
+                                soulng::parser::Match* parentMatch14 = &match;
                                 {
                                     soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch13 = &match;
+                                    soulng::parser::Match* parentMatch15 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
                                         soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
@@ -2929,36 +2821,148 @@ soulng::parser::Match DeclarationParser::EnclosingNamespaceSpecifier(CppLexer& l
                                         if (match.hit)
                                         {
                                             container->AddNode(next.release());
+                                            ++level;
                                         }
-                                        *parentMatch13 = match;
+                                        *parentMatch15 = match;
                                     }
-                                    *parentMatch12 = match;
+                                    *parentMatch14 = match;
                                 }
-                                *parentMatch5 = match;
+                                *parentMatch7 = match;
                             }
-                            *parentMatch4 = match;
+                            *parentMatch6 = match;
                         }
-                        if (match.hit)
+                        *parentMatch5 = match;
+                    }
+                    if (match.hit)
+                    {
+                        soulng::parser::Match match(true);
+                        soulng::parser::Match* parentMatch16 = &match;
+                        while (true)
                         {
-                            *parentMatch3 = match;
-                        }
-                        else
-                        {
-                            lexer.SetPos(save);
-                            break;
+                            int64_t save = lexer.GetPos();
+                            {
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch17 = &match;
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch18 = &match;
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch19 = &match;
+                                        {
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch20 = &match;
+                                            {
+                                                int64_t pos = lexer.GetPos();
+                                                soulng::parser::Match match = IdentifierParser::ColonColon(lexer);
+                                                colonColon.reset(static_cast<Node*>(match.value));
+                                                if (match.hit)
+                                                {
+                                                    container->AddNode(colonColon.release());
+                                                }
+                                                *parentMatch20 = match;
+                                            }
+                                            *parentMatch19 = match;
+                                        }
+                                        if (match.hit)
+                                        {
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch21 = &match;
+                                            {
+                                                soulng::parser::Match match(true);
+                                                int64_t save = lexer.GetPos();
+                                                soulng::parser::Match* parentMatch22 = &match;
+                                                {
+                                                    soulng::parser::Match match(false);
+                                                    soulng::parser::Match* parentMatch23 = &match;
+                                                    {
+                                                        soulng::parser::Match match(false);
+                                                        soulng::parser::Match* parentMatch24 = &match;
+                                                        {
+                                                            int64_t pos = lexer.GetPos();
+                                                            soulng::parser::Match match = DeclarationParser::Inline(lexer);
+                                                            inln.reset(static_cast<Node*>(match.value));
+                                                            if (match.hit)
+                                                            {
+                                                                container->AddNode(inln.release());
+                                                            }
+                                                            *parentMatch24 = match;
+                                                        }
+                                                        *parentMatch23 = match;
+                                                    }
+                                                    if (match.hit)
+                                                    {
+                                                        *parentMatch22 = match;
+                                                    }
+                                                    else
+                                                    {
+                                                        lexer.SetPos(save);
+                                                    }
+                                                }
+                                                *parentMatch21 = match;
+                                            }
+                                            *parentMatch19 = match;
+                                        }
+                                        *parentMatch18 = match;
+                                    }
+                                    if (match.hit)
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch25 = &match;
+                                        {
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch26 = &match;
+                                            {
+                                                int64_t pos = lexer.GetPos();
+                                                soulng::parser::Match match = IdentifierParser::Identifier(lexer, ctx);
+                                                next.reset(static_cast<Node*>(match.value));
+                                                if (match.hit)
+                                                {
+                                                    container->AddNode(next.release());
+                                                    ++level;
+                                                }
+                                                *parentMatch26 = match;
+                                            }
+                                            *parentMatch25 = match;
+                                        }
+                                        *parentMatch18 = match;
+                                    }
+                                    *parentMatch17 = match;
+                                }
+                                if (match.hit)
+                                {
+                                    *parentMatch16 = match;
+                                }
+                                else
+                                {
+                                    lexer.SetPos(save);
+                                    break;
+                                }
+                            }
                         }
                     }
+                    *parentMatch4 = match;
                 }
+                *parentMatch2 = match;
             }
-            *parentMatch2 = match;
+            *parentMatch1 = match;
+        }
+        if (match.hit)
+        {
+            {
+                #ifdef SOULNG_PARSER_DEBUG_SUPPORT
+                if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NestedNamespaceSpecifier"));
+                #endif // SOULNG_PARSER_DEBUG_SUPPORT
+                return soulng::parser::Match(true, new soulng::parser::Value<int>(level));
+            }
         }
         *parentMatch0 = match;
     }
     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
     if (parser_debug_write_to_log)
     {
-        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("EnclosingNamespaceSpecifier"));
-        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("EnclosingNamespaceSpecifier"));
+        if (match.hit) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NestedNamespaceSpecifier"));
+        else soulng::lexer::WriteFailureToLog(lexer, soulng::unicode::ToUtf32("NestedNamespaceSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     if (!match.hit)

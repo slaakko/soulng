@@ -47,7 +47,7 @@ void BeginClass(Node* node, Context* context)
 {
     ClassCreatorVisitor visitor(context);
     node->Accept(visitor);
-    context->PushSetFlag(ContextFlags::parseMemberFunction);
+    context->PushSetFlag(ContextFlags::parseMemberFunction | ContextFlags::skipSimpleDeclarations);
 }
 
 void EndClass(Context* context)
@@ -56,29 +56,29 @@ void EndClass(Context* context)
     context->GetSymbolTable()->EndClass();
 }
 
-class InlineMemberFunctionProcessorVisitor : public DefaultVisitor
+class InlineMemberFunctionParserVisitor : public DefaultVisitor
 {
 public:
-    InlineMemberFunctionProcessorVisitor(Context* context_);
+    InlineMemberFunctionParserVisitor(Context* context_);
     void Visit(FunctionDefinitionNode& node) override;
 private:
     Context* context;
 };
 
-InlineMemberFunctionProcessorVisitor::InlineMemberFunctionProcessorVisitor(Context* context_) : context(context_)
+InlineMemberFunctionParserVisitor::InlineMemberFunctionParserVisitor(Context* context_) : context(context_)
 {
 }
 
-void InlineMemberFunctionProcessorVisitor::Visit(FunctionDefinitionNode& node)
+void InlineMemberFunctionParserVisitor::Visit(FunctionDefinitionNode& node)
 {
     FunctionBodyNode* functionBody = static_cast<FunctionBodyNode*>(node.FunctionBody());
     CompoundStatementNode* compoundStatementNode = static_cast<CompoundStatementNode*>(functionBody->Child());
     sngcpp::par::RecordedParse(compoundStatementNode, context);
 }
 
-void ProcessInlineMemberFunctions(Node* classSpecifierNode, Context* context)
+void ParseInlineMemberFunctions(Node* classSpecifierNode, Context* context)
 {
-    InlineMemberFunctionProcessorVisitor visitor(context);
+    InlineMemberFunctionParserVisitor visitor(context);
     classSpecifierNode->Accept(visitor);
 }
 

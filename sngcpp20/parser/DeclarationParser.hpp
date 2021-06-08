@@ -26,7 +26,7 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match UnnamedNamespaceDefinition(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match NestedNamespaceDefinition(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match NamespaceBody(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match EnclosingNamespaceSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container);
+    static soulng::parser::Match NestedNamespaceSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container);
     static soulng::parser::Match NamespaceAliasDefinition(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Namespace(CppLexer& lexer);
     static soulng::parser::Match QualifiedNamespaceSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);

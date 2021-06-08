@@ -122,6 +122,37 @@ void SymbolTable::EndScope()
     PopScope();
 }
 
+void SymbolTable::BeginNamespace(Node* node, Context* context)
+{
+    Symbol* symbol = currentScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->IsNamespaceSymbol())
+        {
+            NamespaceSymbol* namespaceSymbol = static_cast<NamespaceSymbol*>(symbol);
+            MapNode(node, namespaceSymbol);
+            BeginScope(namespaceSymbol->GetScope());
+            return;
+        }
+        else
+        {
+            throw Exception("name of namespace '" + ToUtf8(node->Str()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
+        }
+    }
+    NamespaceSymbol* namespaceSymbol = new NamespaceSymbol(node->Str());
+    MapNode(node, namespaceSymbol);
+    currentScope->AddSymbol(namespaceSymbol, node->GetSourcePos(), context);
+    BeginScope(namespaceSymbol->GetScope());
+}
+
+void SymbolTable::EndNamespace(int level)
+{
+    for (int i = 0; i < level; ++i)
+    {
+        EndScope();
+    }
+}
+
 void SymbolTable::BeginClass(Node* specifierNode, Node* node, Context* context)
 {
     ClassTypeSymbol* classTypeSymbol = new ClassTypeSymbol(node->Str());
