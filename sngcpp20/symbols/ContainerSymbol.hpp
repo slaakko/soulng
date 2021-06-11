@@ -26,6 +26,7 @@ public:
     const ContainerScope& GetScope() const { return scope; }
     ContainerScope& GetScope() { return scope; }
     void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;
+    void RemoveSymbol(Symbol* symbol) override;
     ClassGroupSymbol* GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
     FunctionGroupSymbol* GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
     ConceptGroupSymbol* GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);

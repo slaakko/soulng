@@ -11,6 +11,7 @@
 namespace sngcpp::symbols {
 
 class FunctionSymbol;
+class ParameterSymbol;
 
 class SYMBOLS_API FunctionGroupSymbol : public Symbol
 {
@@ -20,6 +21,8 @@ public:
     bool IsFunctionGroupSymbol() const override { return true; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     void AddFunction(FunctionSymbol* function);
+    void RemoveFunction(FunctionSymbol* function);
+    FunctionSymbol* GetFunction(const std::vector<ParameterSymbol*>& parameters) const;
 private:
     std::vector<FunctionSymbol*> functions;
 };

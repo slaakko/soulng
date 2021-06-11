@@ -9,6 +9,7 @@
 #include <sngcpp20/parser/InitializationParser.hpp>
 #include <sngcpp20/parser/TypeParser.hpp>
 #include <sngcpp20/parser/IdentifierTokenParser.hpp>
+#include <sngcpp20/symbols/Block.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -907,6 +908,7 @@ soulng::parser::Match StatementParser::CompoundStatementUnguarded(CppLexer& lexe
                                             lbPos = sourcePos;
                                             compoundStatementNode.reset(new CompoundStatementNode(s));
                                             compoundStatementNode->SetAttributes(attributes.release());
+                                            sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                         }
                                         *parentMatch9 = match;
                                     }
@@ -936,6 +938,7 @@ soulng::parser::Match StatementParser::CompoundStatementUnguarded(CppLexer& lexe
                                         {
                                             lbPos = sourcePos;
                                             compoundStatementNode.reset(new CompoundStatementNode(sourcePos));
+                                            sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                         }
                                         *parentMatch11 = match;
                                     }
@@ -1027,6 +1030,8 @@ soulng::parser::Match StatementParser::CompoundStatementUnguarded(CppLexer& lexe
         {
             compoundStatementNode->SetLBracePos(lbPos);
             compoundStatementNode->SetRBracePos(rbPos);
+            sngcpp::symbols::MapNode(compoundStatementNode.get(), ctx);
+            sngcpp::symbols::EndBlock(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("CompoundStatementUnguarded"));
@@ -1237,6 +1242,7 @@ soulng::parser::Match StatementParser::CompoundStatementSaved(CppLexer& lexer, s
                                 if (match.hit)
                                 {
                                     compoundStatementNode->SetLBracePos(sourcePos);
+                                    sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                 }
                                 *parentMatch7 = match;
                             }
@@ -1309,6 +1315,8 @@ soulng::parser::Match StatementParser::CompoundStatementSaved(CppLexer& lexer, s
                                 {
                                     compoundStatementNode->SetRBracePos(sourcePos);
                                     lexer.EndRecordedParse();
+                                    sngcpp::symbols::MapNode(compoundStatementNode, ctx);
+                                    sngcpp::symbols::EndBlock(ctx);
                                     {
                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("CompoundStatementSaved"));
@@ -1701,6 +1709,7 @@ soulng::parser::Match StatementParser::IfStatement(CppLexer& lexer, sngcpp::symb
                                                             if (match.hit)
                                                             {
                                                                 ifPos = sourcePos;
+                                                                sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                             }
                                                             *parentMatch14 = match;
                                                         }
@@ -1730,6 +1739,7 @@ soulng::parser::Match StatementParser::IfStatement(CppLexer& lexer, sngcpp::symb
                                                             {
                                                                 s = sourcePos;
                                                                 ifPos = sourcePos;
+                                                                sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                             }
                                                             *parentMatch16 = match;
                                                         }
@@ -1960,11 +1970,14 @@ soulng::parser::Match StatementParser::IfStatement(CppLexer& lexer, sngcpp::symb
         }
         if (match.hit)
         {
+            IfStatementNode * node = new IfStatementNode(s, initStmt.release(), cond.release(), thenStmt.release(), elseStmt.release(), attributes.release(), ifPos, lpPos, rpPos, constExprPos, elsePos);
+            sngcpp::symbols::MapNode(node, ctx);
+            sngcpp::symbols::EndBlock(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("IfStatement"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new IfStatementNode(s, initStmt.release(), cond.release(), thenStmt.release(), elseStmt.release(), attributes.release(), ifPos, lpPos, rpPos, constExprPos, elsePos));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;
@@ -2069,6 +2082,7 @@ soulng::parser::Match StatementParser::SwitchStatement(CppLexer& lexer, sngcpp::
                                                     if (match.hit)
                                                     {
                                                         switchPos = sourcePos;
+                                                        sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                     }
                                                     *parentMatch12 = match;
                                                 }
@@ -2098,6 +2112,7 @@ soulng::parser::Match StatementParser::SwitchStatement(CppLexer& lexer, sngcpp::
                                                     {
                                                         s = sourcePos;
                                                         switchPos = sourcePos;
+                                                        sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                     }
                                                     *parentMatch14 = match;
                                                 }
@@ -2220,11 +2235,14 @@ soulng::parser::Match StatementParser::SwitchStatement(CppLexer& lexer, sngcpp::
         }
         if (match.hit)
         {
+            SwitchStatementNode * node = new SwitchStatementNode(s, initStmt.release(), cond.release(), stmt.release(), attributes.release(), switchPos, lpPos, rpPos);
+            sngcpp::symbols::MapNode(node, ctx);
+            sngcpp::symbols::EndBlock(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("SwitchStatement"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new SwitchStatementNode(s, initStmt.release(), cond.release(), stmt.release(), attributes.release(), switchPos, lpPos, rpPos));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;
@@ -2471,6 +2489,7 @@ soulng::parser::Match StatementParser::WhileStatement(CppLexer& lexer, sngcpp::s
                                                 if (match.hit)
                                                 {
                                                     whilePos = sourcePos;
+                                                    sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                 }
                                                 *parentMatch11 = match;
                                             }
@@ -2500,6 +2519,7 @@ soulng::parser::Match StatementParser::WhileStatement(CppLexer& lexer, sngcpp::s
                                                 {
                                                     s = sourcePos;
                                                     whilePos = sourcePos;
+                                                    sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                 }
                                                 *parentMatch13 = match;
                                             }
@@ -2596,11 +2616,14 @@ soulng::parser::Match StatementParser::WhileStatement(CppLexer& lexer, sngcpp::s
         }
         if (match.hit)
         {
+            WhileStatementNode * node = new WhileStatementNode(s, cond.release(), stmt.release(), attributes.release(), whilePos, lpPos, rpPos);
+            sngcpp::symbols::MapNode(node, ctx);
+            sngcpp::symbols::EndBlock(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("WhileStatement"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new WhileStatementNode(s, cond.release(), stmt.release(), attributes.release(), whilePos, lpPos, rpPos));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;
@@ -2992,6 +3015,7 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
                                                             if (match.hit)
                                                             {
                                                                 forPos = sourcePos;
+                                                                sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                             }
                                                             *parentMatch14 = match;
                                                         }
@@ -3021,6 +3045,7 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
                                                             {
                                                                 s = sourcePos;
                                                                 forPos = sourcePos;
+                                                                sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                             }
                                                             *parentMatch16 = match;
                                                         }
@@ -3184,11 +3209,14 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
         }
         if (match.hit)
         {
+            RangeForStatementNode * node = new RangeForStatementNode(s, initStmt.release(), declaration.release(), initializer.release(), stmt.release(), attributes.release(), forPos, lpPos, rpPos, colonPos);
+            sngcpp::symbols::MapNode(node, ctx);
+            sngcpp::symbols::EndBlock(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("RangeForStatement"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new RangeForStatementNode(s, initStmt.release(), declaration.release(), initializer.release(), stmt.release(), attributes.release(), forPos, lpPos, rpPos, colonPos));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;
@@ -3631,6 +3659,7 @@ soulng::parser::Match StatementParser::ForStatement(CppLexer& lexer, sngcpp::sym
                                                             if (match.hit)
                                                             {
                                                                 forPos = sourcePos;
+                                                                sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                             }
                                                             *parentMatch14 = match;
                                                         }
@@ -3660,6 +3689,7 @@ soulng::parser::Match StatementParser::ForStatement(CppLexer& lexer, sngcpp::sym
                                                             {
                                                                 s = sourcePos;
                                                                 forPos = sourcePos;
+                                                                sngcpp::symbols::BeginBlock(sourcePos, ctx);
                                                             }
                                                             *parentMatch16 = match;
                                                         }
@@ -3821,11 +3851,14 @@ soulng::parser::Match StatementParser::ForStatement(CppLexer& lexer, sngcpp::sym
         }
         if (match.hit)
         {
+            ForStatementNode * node = new ForStatementNode(s, initStmt.release(), cond.release(), loopExpr.release(), stmt.release(), attributes.release(), semicolon.release(), forPos, lpPos, rpPos);
+            sngcpp::symbols::MapNode(node, ctx);
+            sngcpp::symbols::EndBlock(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ForStatement"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new ForStatementNode(s, initStmt.release(), cond.release(), loopExpr.release(), stmt.release(), attributes.release(), semicolon.release(), forPos, lpPos, rpPos));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;

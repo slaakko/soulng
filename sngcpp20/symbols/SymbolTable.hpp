@@ -16,6 +16,8 @@ namespace sngcpp::symbols {
 
 using namespace sngcpp::ast;
 
+class ParameterSymbol;
+
 enum class MapKind : int
 {
     none, nodeToSymbol = 1 << 0, symbolToNode = 1 << 1, both = nodeToSymbol | symbolToNode
@@ -46,6 +48,7 @@ public:
     Node* GetNode(Symbol* symbol) const;
     Symbol* GetSymbolNothrow(Node* node) const;
     Symbol* GetSymbol(Node* node) const;
+    void MapNode(Node* node);
     void MapNode(Node* node, Symbol* symbol);
     void MapNode(Node* node, Symbol* symbol, MapKind kind);
     Symbol* Lookup(const std::u32string& name, const SourcePos& sourcePos, Context* context) const;
@@ -61,8 +64,11 @@ public:
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* node, Context* context);
     void EndEnumType();
-    void BeginFunction(Node* node, TypeSymbol* returnType, Context* context);
+    void BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType, const std::vector<ParameterSymbol*>& parameters, bool definition, Context* context);
     void EndFunction();
+    void RemoveFunction();
+    void BeginBlock(const SourcePos& sourcePos, Context* context);
+    void EndBlock();
     void AddConcept(Node* node, Context* context);
     void BeginTemplateDeclaration(Node* node, Context* context);
     void EndTemplateDeclaration();

@@ -2151,6 +2151,7 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
                         if (match.hit)
                         {
                             rbPos = sourcePos;
+                            sngcpp::symbols::EndNamespace(1, ctx);
                         }
                         *parentMatch21 = match;
                     }
@@ -2162,7 +2163,6 @@ soulng::parser::Match DeclarationParser::NamedNamespaceDefinition(CppLexer& lexe
         }
         if (match.hit)
         {
-            sngcpp::symbols::EndNamespace(1, ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("NamedNamespaceDefinition"));

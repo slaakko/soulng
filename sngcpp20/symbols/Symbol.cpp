@@ -40,7 +40,16 @@ void Symbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* cont
     throw Exception("cannot add " + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "' to " + SymbolKindStr() + " '" + ToUtf8(FullName()), sourcePos, context);
 }
 
+void Symbol::RemoveSymbol(Symbol* symbol)
+{
+    throw std::runtime_error("cannot remove symbol");
+}
+
 void Symbol::AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context)
+{
+}
+
+void Symbol::RemoveFromGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context)
 {
 }
 

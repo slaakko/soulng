@@ -4,10 +4,12 @@
 // =================================
 
 #include <sngcpp20/symbols/SymbolTable.hpp>
+#include <sngcpp20/symbols/BlockSymbol.hpp>
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
 #include <sngcpp20/symbols/EnumTypeSymbol.hpp>
 #include <sngcpp20/symbols/CompoundTypeSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
+#include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
 #include <sngcpp20/symbols/ConceptSymbol.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/TemplateDeclarationSymbol.hpp>
@@ -71,6 +73,20 @@ Symbol* SymbolTable::GetSymbol(Node* node) const
     else
     {
         throw std::runtime_error("symbol for node not found");
+    }
+}
+
+void SymbolTable::MapNode(Node* node)
+{
+    if (currentScope->IsContainerScope())
+    {
+        ContainerScope* containerScope = static_cast<ContainerScope*>(currentScope);
+        Symbol* symbol = containerScope->GetContainerSymbol();
+        MapNode(node, symbol);
+    }
+    else
+    {
+        throw std::runtime_error("container scope expected");
     }
 }
 
@@ -183,38 +199,82 @@ void SymbolTable::EndEnumType()
     EndScope();
 }
 
-void SymbolTable::BeginFunction(Node* node, TypeSymbol* returnType, Context* context)
+void SymbolTable::BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType, const std::vector<ParameterSymbol*>& parameters, bool definition, Context* context)
 {
-    Symbol* symbol = currentScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    Symbol* symbol = scope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsFunctionSymbol())
+        if (symbol->IsFunctionGroupSymbol())
         {
-            FunctionSymbol* functionSymbol = static_cast<FunctionSymbol*>(symbol);
-            if (functionSymbol->ReturnType() != returnType->ReferredType())
+            FunctionGroupSymbol* functionGroupSymbol = static_cast<FunctionGroupSymbol*>(symbol);
+            FunctionSymbol* functionSymbol = functionGroupSymbol->GetFunction(parameters);
+            if (functionSymbol)
             {
-                throw Exception("function return type '" + ToUtf8(returnType->FullName()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
+                if (functionSymbol->ReturnType() != returnType->ReferredType())
+                {
+                    throw Exception("function return type '" + ToUtf8(returnType->FullName()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
+                }
+                if (definition)
+                {
+                    if (functionSymbol->Definition())
+                    {
+                        throw Exception("function '" + ToUtf8(functionSymbol->FullName()) + " already has a body", node->GetSourcePos(), context);
+                    }
+                    else
+                    {
+                        functionSymbol->SetDefinition();
+                        MapNode(node, functionSymbol);
+                    }
+                }
+                else
+                {
+                    MapNode(node, functionSymbol, MapKind::nodeToSymbol);
+                }
+                BeginScope(functionSymbol->GetScope());
+                return;
             }
-            MapNode(node, functionSymbol, MapKind::nodeToSymbol);
-            BeginScope(functionSymbol->GetScope());
-        }
-        else
-        {
-            throw Exception("function declaration '" + ToUtf8(node->Str()) + "' conflicts with earlier declaration of " + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "'",
-                node->GetSourcePos(), context);
         }
     }
-    else
-    {
-        FunctionSymbol* functionSymbol = new FunctionSymbol(node->Str()); 
-        functionSymbol->SetReturnType(returnType);
-        currentScope->AddSymbol(functionSymbol, node->GetSourcePos(), context);
-        MapNode(node, functionSymbol);
-        BeginScope(functionSymbol->GetScope());
-    }
+    FunctionSymbol* functionSymbol = new FunctionSymbol(node->Str(), parameters, definition); 
+    functionSymbol->SetReturnType(returnType);
+    scope->AddSymbol(functionSymbol, node->GetSourcePos(), context);
+    MapNode(node, functionSymbol);
+    BeginScope(functionSymbol->GetScope());
 }
 
 void SymbolTable::EndFunction()
+{
+    EndScope();
+}
+
+void SymbolTable::RemoveFunction()
+{
+    FunctionSymbol* functionSymbol = nullptr;
+    Scope* scope = currentScope;
+    if (scope->IsContainerScope())
+    {
+        ContainerScope* containerScope = static_cast<ContainerScope*>(scope);
+        ContainerSymbol* containerSymbol = containerScope->GetContainerSymbol();
+        if (containerSymbol->IsFunctionSymbol())
+        {
+            functionSymbol = static_cast<FunctionSymbol*>(containerSymbol);
+        }
+    }
+    PopScope();
+    if (functionSymbol)
+    {
+        currentScope->RemoveSymbol(functionSymbol);
+    }
+}
+
+void SymbolTable::BeginBlock(const SourcePos& sourcePos, Context* context)
+{
+    BlockSymbol* blockSymbol = new BlockSymbol();
+    currentScope->AddSymbol(blockSymbol, sourcePos, context);
+    BeginScope(blockSymbol->GetScope());
+}
+
+void SymbolTable::EndBlock()
 {
     EndScope();
 }

@@ -2591,7 +2591,6 @@ soulng::parser::Match ClassParser::MemberDeclaration(CppLexer& lexer, sngcpp::sy
                                                         if (match.hit)
                                                         {
                                                             functionDefinition.reset(fnDef.release());
-                                                            sngcpp::symbols::ProcessFunctionDefinition(functionDefinition.get(), ctx);
                                                             {
                                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MemberDeclaration"));

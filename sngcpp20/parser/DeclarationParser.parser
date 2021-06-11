@@ -198,10 +198,9 @@ parser api(PARSER_API) DeclarationParser
             Identifier(ctx):nsn{ nsName.reset(nsn); sngcpp::symbols::BeginNamespace(nsName.get(), ctx); }
             LBRACE{ lbPos = sourcePos; }
             NamespaceBody(ctx):nsBody
-            RBRACE{ rbPos = sourcePos; }
+            RBRACE{ rbPos = sourcePos; sngcpp::symbols::EndNamespace(1, ctx); }
         )
         {
-            sngcpp::symbols::EndNamespace(1, ctx); 
             return new NamespaceDefinitionNode(s, nskw, nsName.release(), nsBody, inln, attributes, lbPos, rbPos);
         }
         ;

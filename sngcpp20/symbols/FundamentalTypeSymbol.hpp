@@ -16,7 +16,7 @@ using namespace soulng::lexer;
 enum class FundamentalTypeKind : int
 {
     none, charType, char8Type, char16Type, char32Type, wcharType, boolType, shortIntType, intType, longIntType, longLongIntType, floatType, doubleType, voidType,
-    signedCharType, unsignedCharType, unsignedShortIntType, unsignedIntType, unsignedLongIntType, unsignedLongLongIntType, longDoubleType
+    signedCharType, unsignedCharType, unsignedShortIntType, unsignedIntType, unsignedLongIntType, unsignedLongLongIntType, longDoubleType, autoType
 };
 
 class SYMBOLS_API FundamentalTypeSymbol : public TypeSymbol

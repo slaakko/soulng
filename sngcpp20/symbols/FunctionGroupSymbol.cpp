@@ -5,6 +5,7 @@
 
 #include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
+#include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/symbols/Scope.hpp>
 
 namespace sngcpp::symbols {
@@ -26,6 +27,40 @@ bool FunctionGroupSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
 void FunctionGroupSymbol::AddFunction(FunctionSymbol* functionSymbol)
 {
     functions.push_back(functionSymbol);
+}
+
+void FunctionGroupSymbol::RemoveFunction(FunctionSymbol* function)
+{
+    functions.erase(std::remove(functions.begin(), functions.end(), function), functions.end());
+    if (functions.empty())
+    {
+        Parent()->RemoveSymbol(this);
+    }
+}
+
+FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<ParameterSymbol*>& parameters) const
+{
+    int n = parameters.size();
+    for (FunctionSymbol* functionSymbol : functions)
+    {
+        if (functionSymbol->Parameters().size() == n)
+        {
+            bool matched = true;
+            for (int i = 0; i < n; ++i)
+            {
+                if (functionSymbol->Parameters()[i]->Type() != parameters[i]->Type())
+                {
+                    matched = false;
+                    break;
+                }
+            }
+            if (matched)
+            {
+                return functionSymbol;
+            }
+        }
+    }
+    return nullptr;
 }
 
 } // sngcpp::symbols

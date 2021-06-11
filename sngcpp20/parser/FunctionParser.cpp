@@ -8,6 +8,7 @@
 #include <sngcpp20/parser/InitializationParser.hpp>
 #include <sngcpp20/parser/StatementParser.hpp>
 #include <sngcpp20/parser/TypeParser.hpp>
+#include <sngcpp20/symbols/DeclarationProcessor.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -31,6 +32,8 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 180);
     SourcePos s = SourcePos();
+    std::unique_ptr<Node> declSpecifierSeqNode = std::unique_ptr<Node>();
+    std::unique_ptr<Node> declaratorNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> specifierNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> declSpecifiers;
@@ -104,6 +107,7 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
                                     declSpecifiers.reset(static_cast<Node*>(match.value));
                                     if (match.hit)
                                     {
+                                        declSpecifierSeqNode.reset(declSpecifiers.release());
                                         if (!s.IsValid()) s = sourcePos;
                                     }
                                     *parentMatch10 = match;
@@ -140,6 +144,7 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
                         if (match.hit)
                         {
                             if (!s.IsValid()) s = sourcePos;
+                            declaratorNode.reset(declarator.release());
                         }
                         *parentMatch12 = match;
                     }
@@ -157,10 +162,10 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
                 soulng::parser::Match match(false);
                 soulng::parser::Match* parentMatch14 = &match;
                 {
+                    int64_t pos = lexer.GetPos();
                     soulng::parser::Match match(false);
                     soulng::parser::Match* parentMatch15 = &match;
                     {
-                        int64_t save = lexer.GetPos();
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch16 = &match;
                         {
@@ -168,51 +173,61 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
                             soulng::parser::Match match(false);
                             soulng::parser::Match* parentMatch17 = &match;
                             {
-                                int64_t pos = lexer.GetPos();
-                                soulng::parser::Match match = ClassParser::VirtSpecifierSeq(lexer, ctx);
-                                virtSpecifiers.reset(static_cast<Node*>(match.value));
-                                if (match.hit)
+                                int64_t save = lexer.GetPos();
+                                soulng::parser::Match match(false);
+                                soulng::parser::Match* parentMatch18 = &match;
                                 {
-                                    specifierNode.reset(virtSpecifiers.release());
+                                    int64_t pos = lexer.GetPos();
+                                    soulng::parser::Match match = ClassParser::VirtSpecifierSeq(lexer, ctx);
+                                    virtSpecifiers.reset(static_cast<Node*>(match.value));
+                                    if (match.hit)
+                                    {
+                                        specifierNode.reset(virtSpecifiers.release());
+                                    }
+                                    *parentMatch18 = match;
                                 }
                                 *parentMatch17 = match;
+                                if (!match.hit)
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch19 = &match;
+                                    lexer.SetPos(save);
+                                    {
+                                        soulng::parser::Match match(false);
+                                        soulng::parser::Match* parentMatch20 = &match;
+                                        {
+                                            int64_t pos = lexer.GetPos();
+                                            soulng::parser::Match match = ConceptParser::RequiresClause(lexer, ctx);
+                                            requiresClause.reset(static_cast<Node*>(match.value));
+                                            if (match.hit)
+                                            {
+                                                specifierNode.reset(requiresClause.release());
+                                            }
+                                            *parentMatch20 = match;
+                                        }
+                                        *parentMatch19 = match;
+                                    }
+                                    *parentMatch17 = match;
+                                }
                             }
                             *parentMatch16 = match;
                             if (!match.hit)
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch18 = &match;
+                                soulng::parser::Match* parentMatch21 = &match;
                                 lexer.SetPos(save);
                                 {
-                                    soulng::parser::Match match(false);
-                                    soulng::parser::Match* parentMatch19 = &match;
-                                    {
-                                        int64_t pos = lexer.GetPos();
-                                        soulng::parser::Match match = ConceptParser::RequiresClause(lexer, ctx);
-                                        requiresClause.reset(static_cast<Node*>(match.value));
-                                        if (match.hit)
-                                        {
-                                            specifierNode.reset(requiresClause.release());
-                                        }
-                                        *parentMatch19 = match;
-                                    }
-                                    *parentMatch18 = match;
+                                    soulng::parser::Match match(true);
+                                    *parentMatch21 = match;
                                 }
                                 *parentMatch16 = match;
                             }
                         }
                         *parentMatch15 = match;
-                        if (!match.hit)
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch20 = &match;
-                            lexer.SetPos(save);
-                            {
-                                soulng::parser::Match match(true);
-                                *parentMatch20 = match;
-                            }
-                            *parentMatch15 = match;
-                        }
+                    }
+                    if (match.hit)
+                    {
+                        sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx);
                     }
                     *parentMatch14 = match;
                 }
@@ -225,26 +240,31 @@ soulng::parser::Match FunctionParser::FunctionDefinition(CppLexer& lexer, sngcpp
     if (match.hit)
     {
         soulng::parser::Match match(false);
-        soulng::parser::Match* parentMatch21 = &match;
+        soulng::parser::Match* parentMatch22 = &match;
         {
             soulng::parser::Match match(false);
-            soulng::parser::Match* parentMatch22 = &match;
+            soulng::parser::Match* parentMatch23 = &match;
             {
                 int64_t pos = lexer.GetPos();
                 soulng::parser::Match match = FunctionParser::FunctionBody(lexer, ctx);
                 functionBody.reset(static_cast<Node*>(match.value));
                 if (match.hit)
                 {
+                    sngcpp::symbols::EndFunctionDefinition(ctx);
                     {
                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("FunctionDefinition"));
                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                        return soulng::parser::Match(true, new FunctionDefinitionNode(s, attributes.release(), declSpecifiers.release(), declarator.release(), specifierNode.release(), functionBody.release()));
+                        return soulng::parser::Match(true, new FunctionDefinitionNode(s, attributes.release(), declSpecifierSeqNode.release(), declaratorNode.release(), specifierNode.release(), functionBody.release()));
                     }
                 }
-                *parentMatch22 = match;
+                else
+                {
+                    sngcpp::symbols::RemoveFunctionDefinition(ctx);
+                }
+                *parentMatch23 = match;
             }
-            *parentMatch21 = match;
+            *parentMatch22 = match;
         }
         *parentMatch0 = match;
     }

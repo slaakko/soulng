@@ -35,6 +35,22 @@ void ContainerSymbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Cont
     symbols.push_back(std::unique_ptr<Symbol>(symbol));
 }
 
+void ContainerSymbol::RemoveSymbol(Symbol* symbol)
+{
+    if (symbol->CanInstall())
+    {
+        scope.Uninstall(symbol);
+    }
+    for (std::vector<std::unique_ptr<Symbol>>::iterator i = symbols.begin(); i != symbols.end(); ++i)
+    {
+        if (i->get() == symbol)
+        {
+            symbols.erase(i);
+            break;
+        }
+    }
+}
+
 ClassGroupSymbol* ContainerSymbol::GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
     Scope& scope = GetScope();

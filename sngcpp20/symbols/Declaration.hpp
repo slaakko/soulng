@@ -45,10 +45,11 @@ enum class DeclarationFlags : int
     floatFlag = 1 << 28,
     doubleFlag = 1 << 29,
     voidFlag = 1 << 30,
+    autoFlag = 1 << 31,
 
     fundamentalTypeFlags = 
         charFlag | char8Flag | char16Flag | char32Flag | wcharFlag | boolFlag | shortFlag | intFlag | longFlag | longLongFlag | signedFlag | unsignedFlag | floatFlag | doubleFlag | 
-        voidFlag,
+        voidFlag | autoFlag,
 
     typedefFlagMask = staticFlag | threadLocalFlag | externFlag | mutableFlag | virtualFlag | explicitFlag | inlineFlag | friendFlag | constrExprFlag | constEvalFlag | constInitFlag,
 

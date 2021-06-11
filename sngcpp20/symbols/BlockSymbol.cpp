@@ -3,16 +3,16 @@
 // Distributed under the MIT license
 // =================================
 
-#include <sngcpp20/symbols/CompoundStatementSymbol.hpp>
+#include <sngcpp20/symbols/BlockSymbol.hpp>
 
 namespace sngcpp::symbols {
 
-CompoundStatementSymbol::CompoundStatementSymbol() : ContainerSymbol(std::u32string())
+BlockSymbol::BlockSymbol() : ContainerSymbol(std::u32string())
 {
     GetScope().SetKind(ScopeKind::blockScope);
 }
 
-bool CompoundStatementSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
+bool BlockSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
 {
     switch (scopeKind)
     {

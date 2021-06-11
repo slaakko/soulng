@@ -57,6 +57,11 @@ void Scope::Install(Symbol* symbol)
     symbolMap[symbol->Name()] = symbol;
 }
 
+void Scope::Uninstall(Symbol* symbol)
+{
+    symbolMap.erase(symbol->Name());
+}
+
 Symbol* Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const
 {
     std::vector<Symbol*> symbols;
@@ -108,6 +113,11 @@ void Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vecto
 void Scope::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context)
 {
     throw Exception("cannot declare symbol '" + ToUtf8(symbol->Name()) + "' in " + ScopeKindStr(kind) + " '" + FullName() + "'", sourcePos, context);
+}
+
+void Scope::RemoveSymbol(Symbol* symbol)
+{
+    throw std::runtime_error("could not remove symbol");
 }
 
 ContainerScope::ContainerScope() : Scope(), parentScope(nullptr), usingDeclarationScope(nullptr), containerSymbol(nullptr)
@@ -203,6 +213,11 @@ void ContainerScope::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Conte
         throw Exception("cannot declare symbol '" + ToUtf8(symbol->Name()) + "' in " + ScopeKindStr(Kind()) + " '" + FullName() + "'", sourcePos, context);
     }
     containerSymbol->AddSymbol(symbol, sourcePos, context); 
+}
+
+void ContainerScope::RemoveSymbol(Symbol* symbol)
+{
+
 }
 
 UsingDeclarationScope::UsingDeclarationScope(ContainerScope* parentScope_) : Scope(), parentScope(parentScope_)

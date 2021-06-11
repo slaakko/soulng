@@ -74,6 +74,7 @@ FundamentalTypeFlagMapper::FundamentalTypeFlagMapper()
     flagMap[DeclarationFlags::floatFlag] = FundamentalTypeKind::floatType;
     flagMap[DeclarationFlags::doubleFlag] = FundamentalTypeKind::doubleType;
     flagMap[DeclarationFlags::longFlag | DeclarationFlags::doubleFlag] = FundamentalTypeKind::longDoubleType;
+    flagMap[DeclarationFlags::autoFlag] = FundamentalTypeKind::autoType;
 }
 
 FundamentalTypeKind FundamentalTypeFlagMapper::GetFundamentalTypeKind(DeclarationFlags flags) const
@@ -92,7 +93,7 @@ FundamentalTypeKind FundamentalTypeFlagMapper::GetFundamentalTypeKind(Declaratio
 const char* fundamentalTypeNames[] =
 {
     "none", "char", "char8_t", "char16_t", "char32_t", "wchar_t", "bool", "short int", "int", "long int", "long long int", "float", "double", "void",
-    "signed char", "unsigned char", "unsigned short int", "unsigned int", "unsigned long int", "unsigned long long int", "long double"
+    "signed char", "unsigned char", "unsigned short int", "unsigned int", "unsigned long int", "unsigned long long int", "long double", "auto"
 };
 
 std::u32string MakeFundamentalTypeName(FundamentalTypeKind kind)

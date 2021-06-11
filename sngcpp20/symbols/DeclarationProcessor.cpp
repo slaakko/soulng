@@ -8,6 +8,7 @@
 #include <sngcpp20/symbols/AliasTypeSymbol.hpp>
 #include <sngcpp20/symbols/Class.hpp>
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
+#include <sngcpp20/symbols/EnumTypeSymbol.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
 #include <sngcpp20/symbols/ScopeResolver.hpp>
@@ -18,6 +19,7 @@
 #include <sngcpp20/ast/Enum.hpp>
 #include <sngcpp20/ast/SimpleType.hpp>
 #include <sngcpp20/ast/Qualifier.hpp>
+#include <sngcpp20/ast/Type.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <stdexcept>
 
@@ -33,7 +35,6 @@ enum class DeclarationKind : int
     typedefDeclararation = 1 << 2,
     objectDeclaration = 1 << 3, 
     functionDeclaration = 1 << 4, 
-    functionDefinition = 1 << 5
 };
 
 inline DeclarationKind operator|(DeclarationKind left, DeclarationKind right)
@@ -53,18 +54,18 @@ inline DeclarationKind operator~(DeclarationKind operand)
 
 struct Declaration
 {
-    Declaration(DeclarationKind kind_, DeclarationFlags flags_, TypeSymbol* type_, Node* idNode_, Scope* scope_, Node* typedefNode_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_);
+    Declaration(DeclarationKind kind_, DeclarationFlags flags_, TypeSymbol* type_, Node* idNode_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_);
     DeclarationKind kind;
     DeclarationFlags flags;
     TypeSymbol* type;
     Node* idNode;
     Scope* scope;
-    Node* typedefNode;
+    Node* node;
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
 };
 
-Declaration::Declaration(DeclarationKind kind_, DeclarationFlags flags_, TypeSymbol* type_, Node* idNode_, Scope* scope_, Node* typedefNode_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_) :
-    kind(kind_), flags(flags_), type(type_), idNode(idNode_), scope(scope_), typedefNode(typedefNode_), parameters(std::move(parameters_))
+Declaration::Declaration(DeclarationKind kind_, DeclarationFlags flags_, TypeSymbol* type_, Node* idNode_, Scope* scope_, Node* node_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_) :
+    kind(kind_), flags(flags_), type(type_), idNode(idNode_), scope(scope_), node(node_), parameters(std::move(parameters_))
 {
 }
 
@@ -130,8 +131,8 @@ public:
     void Visit(MemberDeclaratorListNode& node) override;
 
     void Visit(FunctionDeclaratorNode& node) override;
-    void Visit(FunctionDefinitionNode& node) override;
     void Visit(ParameterNode& node) override;
+    void Visit(PlaceholderTypeSpecifierNode& node) override;
 
     void ProcessDeclSpecifiers(Node* declSpecifiers);
     void ProcessDeclarator(Node* declarator);
@@ -146,13 +147,14 @@ private:
     TypeSymbol* type;
     Node* idNode;
     Scope* scope;
-    Node* typedefNode;
+    Node* node;
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
     std::vector<Declaration> declarations;
 };
 
 DeclarationProcessorVisitor::DeclarationProcessorVisitor(Context* context_) : 
-    kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeSymbol(nullptr), type(nullptr), idNode(nullptr), scope(nullptr), typedefNode(nullptr)
+    kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeSymbol(nullptr), type(nullptr), idNode(nullptr), 
+    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr)
 {
 }
 
@@ -162,7 +164,7 @@ Declaration DeclarationProcessorVisitor::GetDeclaration()
     {
         kind = DeclarationKind::objectDeclaration;
     }
-    return Declaration(kind, flags, type, idNode, scope, typedefNode, std::move(parameters));
+    return Declaration(kind, flags, type, idNode, scope, node, std::move(parameters));
 }
 
 std::vector<Declaration> DeclarationProcessorVisitor::GetDeclarations()
@@ -173,6 +175,7 @@ std::vector<Declaration> DeclarationProcessorVisitor::GetDeclarations()
 void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
 {
     kind = DeclarationKind::none;
+    this->node = &node;
     ProcessDeclSpecifiers(node.DeclarationSpecifiers());
     if (node.InitDeclaratorList())
     {
@@ -190,6 +193,7 @@ void DeclarationProcessorVisitor::Visit(SimpleDeclarationNode& node)
 void DeclarationProcessorVisitor::Visit(MemberDeclarationNode& node)
 {
     kind = DeclarationKind::none;
+    this->node = &node;
     ProcessDeclSpecifiers(node.DeclSpecifiers());
     ProcessMemberDeclarators(node.MemberDeclarators());
 }
@@ -216,6 +220,10 @@ void DeclarationProcessorVisitor::Visit(EnumSpecifierNode& node)
 
 void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
 {
+    if (!node)
+    {
+        node = declSpecifiers;
+    }
     stage = Stage::processDeclSpecifiers;
     declSpecifiers->Accept(*this);
     DeclarationFlags fundamentalTypeFlags = flags & DeclarationFlags::fundamentalTypeFlags;
@@ -253,6 +261,10 @@ void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
 
 void DeclarationProcessorVisitor::ProcessDeclarator(Node* declarator)
 {
+    if (!node)
+    {
+        node = declarator;
+    }
     stage = Stage::processDeclarators;
     flags = flags & ~DeclarationFlags::cvQualifierFlagMask;
     type = baseTypeSymbol;
@@ -273,26 +285,6 @@ void DeclarationProcessorVisitor::ProcessMemberDeclarators(Node* memberDeclarato
     flags = flags & ~DeclarationFlags::cvQualifierFlagMask;
     memberDeclarators->Accept(*this);
 }
-
-/*
-void DeclarationProcessorVisitor::AddSymbol()
-{
-    if ((flags & DeclarationFlags::typedefFlag) != DeclarationFlags::none)
-    {
-        AddTypedef();
-    }
-}
-
-void DeclarationProcessorVisitor::AddTypedef()
-{
-    if (!idNode)
-    {
-        throw Exception("no declarators specified for a typedef", typedefNode->GetSourcePos(), context);
-    }
-    Symbol* typedefSymbol = new AliasTypeSymbol(idNode->Str(), type); 
-    scope->AddSymbol(typedefSymbol, typedefNode->GetSourcePos(), context);
-}
-*/
 
 void DeclarationProcessorVisitor::Visit(StaticNode& node)
 {
@@ -353,7 +345,7 @@ void DeclarationProcessorVisitor::Visit(TypedefNode& node)
 {
     CheckDuplicateSpecifier(flags, DeclarationFlags::typedefFlag, "typedef", node.GetSourcePos(), context);
     flags = flags | DeclarationFlags::typedefFlag;
-    typedefNode = &node;
+    this->node = &node;
     kind = kind | DeclarationKind::typedefDeclararation;
 }
 
@@ -593,20 +585,16 @@ void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
     node.Params()->Accept(*this);
 }
 
-void DeclarationProcessorVisitor::Visit(FunctionDefinitionNode& node)
-{
-    if (kind == DeclarationKind::none)
-    {
-        kind = DeclarationKind::functionDefinition;
-    }
-    ProcessDeclSpecifiers(node.DeclSpecifiers());
-    ProcessDeclarator(node.Declarator());
-}
-
 void DeclarationProcessorVisitor::Visit(ParameterNode& node)
 {
     ParameterSymbol* parameterSymbol = ProcessParameter(&node, context);
     parameters.push_back(std::unique_ptr<ParameterSymbol>(parameterSymbol));
+}
+
+void DeclarationProcessorVisitor::Visit(PlaceholderTypeSpecifierNode& node)
+{
+    CheckDuplicateSpecifier(flags, DeclarationFlags::autoFlag, "auto", node.GetSourcePos(), context);
+    flags = flags | DeclarationFlags::autoFlag;
 }
 
 void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, const std::string& specifierStr, const SourcePos& sourcePos, Context* context)
@@ -614,6 +602,49 @@ void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, cons
     if ((flags & flag) != DeclarationFlags::none)
     {
         throw Exception("duplicate '" + specifierStr + "'", sourcePos, context);
+    }
+}
+
+void ProcessDeclaration(const Declaration& declaration, Context* context)
+{
+    if ((declaration.kind & DeclarationKind::classDeclaration) != DeclarationKind::none)
+    {
+        ClassTypeSymbol* classTypeSymbol = static_cast<ClassTypeSymbol*>(declaration.type);
+        if (classTypeSymbol->Level() == 0)
+        {
+            Node* classSpecifierNode = context->GetSymbolTable()->GetNode(classTypeSymbol);
+            ParseInlineMemberFunctions(classSpecifierNode, context);
+        }
+    }
+    if ((declaration.kind & DeclarationKind::typedefDeclararation) != DeclarationKind::none)
+    {
+        if (!declaration.idNode)
+        {
+            throw Exception("no declarators specified for a typedef", declaration.node->GetSourcePos(), context);
+        }
+        Symbol* typedefSymbol = new AliasTypeSymbol(declaration.idNode->Str(), declaration.type);
+        declaration.scope->AddSymbol(typedefSymbol, declaration.node->GetSourcePos(), context);
+    }
+    if ((declaration.kind & DeclarationKind::objectDeclaration) != DeclarationKind::none)
+    {
+        if (!declaration.idNode)
+        {
+            throw Exception("no declarators specified for a variable", declaration.node->GetSourcePos(), context);
+        }
+        VariableSymbol* variableSymbol = new VariableSymbol(declaration.idNode->Str());
+        variableSymbol->SetType(declaration.type);
+        declaration.scope->AddSymbol(variableSymbol, declaration.idNode->GetSourcePos(), context);
+    }
+    if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+    {
+        Scope* scope = declaration.scope;
+        std::vector<ParameterSymbol*> params;
+        for (const auto& param : declaration.parameters)
+        {
+            params.push_back(param.get());
+        }
+        context->GetSymbolTable()->BeginFunction(declaration.idNode, scope, declaration.type, params, false, context);
+        context->GetSymbolTable()->EndFunction();
     }
 }
 
@@ -625,15 +656,7 @@ void ProcessSimpleDeclaration(Node* declaration, Context* context)
     std::vector<Declaration> declarations = visitor.GetDeclarations();
     for (const Declaration& declaration : declarations)
     {
-        if ((declaration.kind & DeclarationKind::classDeclaration) != DeclarationKind::none)
-        {
-            ClassTypeSymbol* classTypeSymbol = static_cast<ClassTypeSymbol*>(declaration.type);
-            if (classTypeSymbol->Level() == 0)
-            {
-                Node* classSpecifierNode = context->GetSymbolTable()->GetNode(classTypeSymbol);
-                ParseInlineMemberFunctions(classSpecifierNode, context);
-            }
-        }
+        ProcessDeclaration(declaration, context);
     }
 }
 
@@ -642,15 +665,50 @@ void ProcessMemberDeclaration(Node* memberDeclaration, Context* context)
     DeclarationProcessorVisitor visitor(context);
     memberDeclaration->Accept(visitor);
     std::vector<Declaration> declarations = visitor.GetDeclarations();
-
+    for (const Declaration& declaration : declarations)
+    {
+        ProcessDeclaration(declaration, context);
+    }
 }
 
-void ProcessFunctionDefinition(Node* functionDefinition, Context* context)
+void BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* context)
 {
     DeclarationProcessorVisitor visitor(context);
-    functionDefinition->Accept(visitor);
+    SourcePos sourcePos;
+    if (declSpecifierSeq)
+    {
+        visitor.ProcessDeclSpecifiers(declSpecifierSeq);
+        sourcePos = declSpecifierSeq->GetSourcePos();
+    }
+    if (declarator)
+    {
+        visitor.ProcessDeclarator(declarator);
+        sourcePos = declarator->GetSourcePos();
+    }
     Declaration declaration = visitor.GetDeclaration();
+    if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+    {
+        std::vector<ParameterSymbol*> params;
+        for (const auto& param : declaration.parameters)
+        {
+            params.push_back(param.get());
+        }
+        context->GetSymbolTable()->BeginFunction(declaration.node, declaration.scope, declaration.type, params, true, context);
+    }
+    else
+    {
+        throw Exception("function declaration expected", sourcePos, context);
+    }
+}
 
+void EndFunctionDefinition(Context* context)
+{
+    context->GetSymbolTable()->EndFunction();
+}
+
+void RemoveFunctionDefinition(Context* context)
+{
+    context->GetSymbolTable()->RemoveFunction();
 }
 
 ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context)

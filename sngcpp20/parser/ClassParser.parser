@@ -239,7 +239,6 @@ parser api(PARSER_API) ClassParser
         |   FunctionDefinition(ctx):fnDef
             { 
                 functionDefinition.reset(fnDef); 
-                sngcpp::symbols::ProcessFunctionDefinition(functionDefinition.get(), ctx); 
                 return functionDefinition.release();
             }
         |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }

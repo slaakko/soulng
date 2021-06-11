@@ -9,7 +9,8 @@
 
 namespace sngcpp::symbols {
 
-FunctionSymbol::FunctionSymbol(const std::u32string& name_) : ContainerSymbol(name_), returnType(nullptr)
+FunctionSymbol::FunctionSymbol(const std::u32string& name_, const std::vector<ParameterSymbol*>& parameters_, bool definition_) : 
+    ContainerSymbol(name_), returnType(nullptr), parameters(parameters_), definition(definition_)
 {
     GetScope().SetKind(ScopeKind::functionScope);
 }
@@ -37,6 +38,12 @@ void FunctionSymbol::AddToGroup(ContainerSymbol* containerSymbol, const SourcePo
 {
     FunctionGroupSymbol* functionGroup = containerSymbol->GetOrInsertFunctionGroup(Name(), sourcePos, context);
     functionGroup->AddFunction(this);
+}
+
+void FunctionSymbol::RemoveFromGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context)
+{
+    FunctionGroupSymbol* functionGroup = containerSymbol->GetOrInsertFunctionGroup(Name(), sourcePos, context);
+    functionGroup->RemoveFunction(this);
 }
 
 } // sngcpp::symbols

@@ -37,7 +37,9 @@ public:
     virtual bool IsValidDeclarationScope(ScopeKind scopeKind) const { return true; }
     virtual bool CanInstall() const { return true; }
     virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context);
+    virtual void RemoveSymbol(Symbol* symbol);
     virtual void AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context);
+    virtual void RemoveFromGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context);
     const std::u32string& Name() const { return name; }
     ContainerSymbol* Parent() const { return parent; }
     void SetParent(ContainerSymbol* parent_) { parent = parent_; }

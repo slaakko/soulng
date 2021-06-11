@@ -157,10 +157,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AliasTypeSymbol.hpp" />
+    <ClInclude Include="Block.hpp" />
     <ClInclude Include="Class.hpp" />
     <ClInclude Include="ClassGroupSymbol.hpp" />
     <ClInclude Include="ClassTypeSymbol.hpp" />
-    <ClInclude Include="CompoundStatementSymbol.hpp" />
+    <ClInclude Include="BlockSymbol.hpp" />
     <ClInclude Include="CompoundTypeSymbol.hpp" />
     <ClInclude Include="Concept.hpp" />
     <ClInclude Include="ConceptGroupSymbol.hpp" />
@@ -192,10 +193,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AliasTypeSymbol.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="ClassGroupSymbol.cpp" />
     <ClCompile Include="ClassTypeSymbol.cpp" />
-    <ClCompile Include="CompoundStatementSymbol.cpp" />
+    <ClCompile Include="BlockSymbol.cpp" />
     <ClCompile Include="CompoundTypeSymbol.cpp" />
     <ClCompile Include="Concept.cpp" />
     <ClCompile Include="ConceptGroupSymbol.cpp" />

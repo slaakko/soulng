@@ -64,10 +64,13 @@ public:
     ScopeKind Kind() const { return kind; }
     void SetKind(ScopeKind kind_) { kind = kind_; }
     void Install(Symbol* symbol);
+    void Uninstall(Symbol* symbol);
     Symbol* Lookup(const std::u32string& id, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const;
     virtual std::string FullName() const = 0;
     virtual void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
     virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context);
+    virtual void RemoveSymbol(Symbol* symbol);
+    virtual bool IsContainerScope() const { return false; }
 private:
     ScopeKind kind;
     std::map<std::u32string, Symbol*> symbolMap;
@@ -89,6 +92,8 @@ public:
     std::string FullName() const override;
     void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
     void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;
+    void RemoveSymbol(Symbol* symbol) override;
+    bool IsContainerScope() const override { return true; }
 private:
     ContainerScope* parentScope;
     std::vector<ContainerScope*> baseScopes;
