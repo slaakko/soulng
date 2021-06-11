@@ -10,7 +10,7 @@ namespace sngcpp::symbols {
 
 ClassTypeSymbol::ClassTypeSymbol(const std::u32string& name_) : TypeSymbol(name_), idNode(nullptr)
 {
-    GetScope().SetKind(ScopeKind::classScope);
+    GetScope()->SetKind(ScopeKind::classScope);
 }
 
 bool ClassTypeSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const

@@ -14,6 +14,7 @@ namespace sngcpp::symbols {
 using soulng::lexer::SourcePos;
     
 class ContainerSymbol;
+class Scope;
 
 enum class ScopeKind : int;
 
@@ -32,6 +33,8 @@ public:
     virtual bool IsClassGroupSymbol() const { return false; }
     virtual bool IsFunctionGroupSymbol() const { return false; }
     virtual bool IsConceptGroupSymbol() const { return false; }
+    virtual bool IsBlockSymbol() const { return false; }
+    virtual Scope* GetScope() { return nullptr; }
     virtual std::u32string FullName() const;
     virtual std::string SymbolKindStr() const = 0;
     virtual bool IsValidDeclarationScope(ScopeKind scopeKind) const { return true; }

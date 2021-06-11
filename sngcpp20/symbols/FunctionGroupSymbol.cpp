@@ -38,7 +38,7 @@ void FunctionGroupSymbol::RemoveFunction(FunctionSymbol* function)
     }
 }
 
-FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<ParameterSymbol*>& parameters) const
+FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<std::unique_ptr<ParameterSymbol>>& parameters) const
 {
     int n = parameters.size();
     for (FunctionSymbol* functionSymbol : functions)
@@ -59,6 +59,16 @@ FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<ParameterSymb
                 return functionSymbol;
             }
         }
+    }
+    return nullptr;
+}
+
+Scope* FunctionGroupSymbol::GetScope()
+{
+    if (functions.size() == 1)
+    {
+        FunctionSymbol* functionSymbol = functions.front();
+        return functionSymbol->GetScope();
     }
     return nullptr;
 }

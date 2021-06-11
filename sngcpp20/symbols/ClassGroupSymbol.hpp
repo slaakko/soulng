@@ -19,6 +19,7 @@ public:
     bool IsClassGroupSymbol() const override { return true; }
     std::string SymbolKindStr() const override { return "class group symbol"; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
+    Scope* GetScope() override;
     void AddClass(ClassTypeSymbol* classTypeSymbol);
 private:
     std::vector<ClassTypeSymbol*> classes;

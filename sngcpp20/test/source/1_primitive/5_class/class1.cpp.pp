@@ -11,3 +11,8 @@ public:
     }
 };
 
+void C::foo(int x)
+{
+    int k = 0;
+}
+

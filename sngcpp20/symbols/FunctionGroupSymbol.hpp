@@ -6,6 +6,7 @@
 #ifndef SNGCPP_SYMBOLS_FUNCTION_GROUP_SYMBOL_INCLUDED
 #define SNGCPP_SYMBOLS_FUNCTION_GROUP_SYMBOL_INCLUDED
 #include <sngcpp20/symbols/Symbol.hpp>
+#include <memory>
 #include <vector>
 
 namespace sngcpp::symbols {
@@ -20,9 +21,10 @@ public:
     std::string SymbolKindStr() const override { return "function group symbol"; }
     bool IsFunctionGroupSymbol() const override { return true; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
+    Scope* GetScope() override;
     void AddFunction(FunctionSymbol* function);
     void RemoveFunction(FunctionSymbol* function);
-    FunctionSymbol* GetFunction(const std::vector<ParameterSymbol*>& parameters) const;
+    FunctionSymbol* GetFunction(const std::vector<std::unique_ptr<ParameterSymbol>>& parameters) const;
 private:
     std::vector<FunctionSymbol*> functions;
 };

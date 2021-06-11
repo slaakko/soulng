@@ -605,7 +605,7 @@ void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, cons
     }
 }
 
-void ProcessDeclaration(const Declaration& declaration, Context* context)
+void ProcessDeclaration(Declaration& declaration, Context* context)
 {
     if ((declaration.kind & DeclarationKind::classDeclaration) != DeclarationKind::none)
     {
@@ -638,12 +638,7 @@ void ProcessDeclaration(const Declaration& declaration, Context* context)
     if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
     {
         Scope* scope = declaration.scope;
-        std::vector<ParameterSymbol*> params;
-        for (const auto& param : declaration.parameters)
-        {
-            params.push_back(param.get());
-        }
-        context->GetSymbolTable()->BeginFunction(declaration.idNode, scope, declaration.type, params, false, context);
+        context->GetSymbolTable()->BeginFunction(declaration.idNode, scope, declaration.type, std::move(declaration.parameters), false, context);
         context->GetSymbolTable()->EndFunction();
     }
 }
@@ -654,7 +649,7 @@ void ProcessSimpleDeclaration(Node* declaration, Context* context)
     DeclarationProcessorVisitor visitor(context);
     declaration->Accept(visitor);
     std::vector<Declaration> declarations = visitor.GetDeclarations();
-    for (const Declaration& declaration : declarations)
+    for (Declaration& declaration : declarations)
     {
         ProcessDeclaration(declaration, context);
     }
@@ -665,7 +660,7 @@ void ProcessMemberDeclaration(Node* memberDeclaration, Context* context)
     DeclarationProcessorVisitor visitor(context);
     memberDeclaration->Accept(visitor);
     std::vector<Declaration> declarations = visitor.GetDeclarations();
-    for (const Declaration& declaration : declarations)
+    for (Declaration& declaration : declarations)
     {
         ProcessDeclaration(declaration, context);
     }
@@ -688,12 +683,12 @@ void BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* 
     Declaration declaration = visitor.GetDeclaration();
     if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
     {
-        std::vector<ParameterSymbol*> params;
-        for (const auto& param : declaration.parameters)
+        bool definition = true;
+        if (context->GetFlag(ContextFlags::parseMemberFunction))
         {
-            params.push_back(param.get());
+            definition = false;
         }
-        context->GetSymbolTable()->BeginFunction(declaration.node, declaration.scope, declaration.type, params, true, context);
+        context->GetSymbolTable()->BeginFunction(declaration.idNode, declaration.scope, declaration.type, std::move(declaration.parameters), definition, context);
     }
     else
     {

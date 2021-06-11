@@ -18,6 +18,11 @@ void EndBlock(Context* context)
     context->GetSymbolTable()->EndBlock();
 }
 
+void RemoveBlock(Context* context)
+{
+    context->GetSymbolTable()->RemoveBlock();
+}
+
 void MapNode(Node* node, Context* context)
 {
     context->GetSymbolTable()->MapNode(node);

@@ -2938,6 +2938,7 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
     SourcePos lpPos = SourcePos();
     SourcePos rpPos = SourcePos();
     SourcePos colonPos = SourcePos();
+    bool blockOpen = bool();
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> initStmt;
     std::unique_ptr<Node> declaration;
@@ -3016,6 +3017,7 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
                                                             {
                                                                 forPos = sourcePos;
                                                                 sngcpp::symbols::BeginBlock(sourcePos, ctx);
+                                                                blockOpen = true;
                                                             }
                                                             *parentMatch14 = match;
                                                         }
@@ -3046,6 +3048,7 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
                                                                 s = sourcePos;
                                                                 forPos = sourcePos;
                                                                 sngcpp::symbols::BeginBlock(sourcePos, ctx);
+                                                                blockOpen = true;
                                                             }
                                                             *parentMatch16 = match;
                                                         }
@@ -3217,6 +3220,13 @@ soulng::parser::Match StatementParser::RangeForStatement(CppLexer& lexer, sngcpp
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("RangeForStatement"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
                 return soulng::parser::Match(true, node);
+            }
+        }
+        else
+        {
+            if (blockOpen)
+            {
+                sngcpp::symbols::RemoveBlock(ctx);
             }
         }
         *parentMatch0 = match;

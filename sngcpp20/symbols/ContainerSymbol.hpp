@@ -23,8 +23,7 @@ public:
     ContainerSymbol(const ContainerSymbol&) = delete;
     ContainerSymbol& operator=(const ContainerSymbol&) = delete;
     bool IsContainerSymbol() const override { return true; }
-    const ContainerScope& GetScope() const { return scope; }
-    ContainerScope& GetScope() { return scope; }
+    Scope* GetScope() override { return &scope; }
     void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;
     void RemoveSymbol(Symbol* symbol) override;
     ClassGroupSymbol* GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);

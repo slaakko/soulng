@@ -28,4 +28,14 @@ void ClassGroupSymbol::AddClass(ClassTypeSymbol* classTypeSymbol)
     classes.push_back(classTypeSymbol);
 }
 
+Scope* ClassGroupSymbol::GetScope() 
+{
+    if (classes.size() == 1)
+    {
+        ClassTypeSymbol* classTypeSymbol = classes.front();
+        return classTypeSymbol->GetScope();
+    }
+    return nullptr;
+}
+
 } // sngcpp::symbols

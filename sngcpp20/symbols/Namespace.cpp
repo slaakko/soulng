@@ -29,7 +29,7 @@ void NamespaceCreatorVisitor::Visit(ColonColonNode& node)
 {
     if (first)
     {
-        currentScope = &context->GetSymbolTable()->GlobalNs().GetScope();
+        currentScope = context->GetSymbolTable()->GlobalNs().GetScope();
         first = false;
     }
 }

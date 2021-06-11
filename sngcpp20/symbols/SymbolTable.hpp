@@ -64,11 +64,12 @@ public:
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* node, Context* context);
     void EndEnumType();
-    void BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType, const std::vector<ParameterSymbol*>& parameters, bool definition, Context* context);
+    void BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context);
     void EndFunction();
     void RemoveFunction();
     void BeginBlock(const SourcePos& sourcePos, Context* context);
     void EndBlock();
+    void RemoveBlock();
     void AddConcept(Node* node, Context* context);
     void BeginTemplateDeclaration(Node* node, Context* context);
     void EndTemplateDeclaration();

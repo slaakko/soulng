@@ -9,7 +9,7 @@ namespace sngcpp::symbols {
 
 NamespaceSymbol::NamespaceSymbol(const std::u32string& name_) : ContainerSymbol(name_)
 {
-    GetScope().SetKind(ScopeKind::namespaceScope);
+    GetScope()->SetKind(ScopeKind::namespaceScope);
 }
 
 bool NamespaceSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const

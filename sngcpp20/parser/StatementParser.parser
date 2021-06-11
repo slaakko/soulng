@@ -259,11 +259,11 @@ parser api(PARSER_API) StatementParser
         }
         ;
 
-    RangeForStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos, var SourcePos colonPos) : Node*
+    RangeForStatement(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos forPos, var SourcePos lpPos, var SourcePos rpPos, var SourcePos colonPos, var bool blockOpen) : Node*
         ::=
         (
-            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } FOR{ forPos = sourcePos; sngcpp::symbols::BeginBlock(sourcePos, ctx); }
-            |   FOR{ s = sourcePos; forPos = sourcePos; sngcpp::symbols::BeginBlock(sourcePos, ctx); }
+            (   AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; } FOR{ forPos = sourcePos; sngcpp::symbols::BeginBlock(sourcePos, ctx); blockOpen = true; }
+            |   FOR{ s = sourcePos; forPos = sourcePos; sngcpp::symbols::BeginBlock(sourcePos, ctx); blockOpen = true;}
             )
             LPAREN{ lpPos = sourcePos; } InitStatement(ctx):initStmt? ForRangeDeclaration(ctx):declaration COLON{ colonPos = sourcePos; } ForRangeInitializer(ctx):initializer RPAREN{ rpPos = sourcePos; }
             Statement(ctx):stmt
@@ -273,6 +273,13 @@ parser api(PARSER_API) StatementParser
             sngcpp::symbols::MapNode(node, ctx);
             sngcpp::symbols::EndBlock(ctx); 
             return node;
+        }
+        /
+        {
+            if (blockOpen)
+            {
+                sngcpp::symbols::RemoveBlock(ctx);
+            }
         }
         ;
 

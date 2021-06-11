@@ -44,7 +44,7 @@ void ScopeResolverVisitor::Visit(ColonColonNode& node)
 {
     if (first)
     {
-        currentScope = &context->GetSymbolTable()->GlobalNs().GetScope();
+        currentScope = context->GetSymbolTable()->GlobalNs().GetScope();
         first = false;
     }
 }
@@ -55,10 +55,10 @@ void ScopeResolverVisitor::Visit(IdentifierNode& node)
     Symbol* symbol = currentScope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsContainerSymbol())
+        Scope* scope = symbol->GetScope();
+        if (scope)
         {
-            ContainerSymbol* containerSymbol = static_cast<ContainerSymbol*>(symbol);
-            currentScope = &containerSymbol->GetScope();
+            currentScope = scope;
         }
         else
         {

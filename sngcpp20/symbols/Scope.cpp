@@ -242,7 +242,7 @@ UsingDirectiveScope::UsingDirectiveScope(NamespaceSymbol* ns_) : Scope(), ns(ns_
 
 void UsingDirectiveScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
 {
-    ns->GetScope().Lookup(id, scopeLookup, symbols);
+    ns->GetScope()->Lookup(id, scopeLookup, symbols);
 }
 
 std::string UsingDirectiveScope::FullName() const

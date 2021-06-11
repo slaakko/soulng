@@ -9,7 +9,7 @@ namespace sngcpp::symbols {
 
 TemplateDeclarationSymbol::TemplateDeclarationSymbol() : ContainerSymbol(std::u32string())
 {
-    GetScope().SetKind(ScopeKind::templateDeclarationScope);
+    GetScope()->SetKind(ScopeKind::templateDeclarationScope);
 }
 
 TemplateParameterSymbol::TemplateParameterSymbol(const std::u32string& name_) : TypeSymbol(name_)

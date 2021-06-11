@@ -15,6 +15,7 @@ using namespace sngcpp::ast;
 
 SYMBOLS_API void BeginBlock(const SourcePos& sourcePos, Context* context);
 SYMBOLS_API void EndBlock(Context* context);
+SYMBOLS_API void RemoveBlock(Context* context);
 SYMBOLS_API void MapNode(Node* node, Context* context);
 
 } // sngcpp::symbols

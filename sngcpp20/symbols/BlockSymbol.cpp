@@ -9,7 +9,7 @@ namespace sngcpp::symbols {
 
 BlockSymbol::BlockSymbol() : ContainerSymbol(std::u32string())
 {
-    GetScope().SetKind(ScopeKind::blockScope);
+    GetScope()->SetKind(ScopeKind::blockScope);
 }
 
 bool BlockSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const

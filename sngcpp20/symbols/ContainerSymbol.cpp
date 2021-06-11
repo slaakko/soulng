@@ -26,7 +26,12 @@ void ContainerSymbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Cont
     if (symbol->IsContainerSymbol())
     {
         ContainerSymbol* child = static_cast<ContainerSymbol*>(symbol);
-        child->GetScope().SetParentScope(&scope);
+        Scope* childScope = child->GetScope();
+        if (childScope->IsContainerScope())
+        {
+            ContainerScope* containerScope = static_cast<ContainerScope*>(childScope);
+            containerScope->SetParentScope(&scope);
+        }
     }
     if (symbol->CanInstall())
     {
@@ -53,8 +58,8 @@ void ContainerSymbol::RemoveSymbol(Symbol* symbol)
 
 ClassGroupSymbol* ContainerSymbol::GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Scope& scope = GetScope();
-    Symbol* symbol = scope.Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Scope* scope = GetScope();
+    Symbol* symbol = scope->Lookup(name, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->IsClassGroupSymbol())
@@ -78,8 +83,8 @@ ClassGroupSymbol* ContainerSymbol::GetOrInsertClassGroup(const std::u32string& n
 
 FunctionGroupSymbol* ContainerSymbol::GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Scope& scope = GetScope();
-    Symbol* symbol = scope.Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Scope* scope = GetScope();
+    Symbol* symbol = scope->Lookup(name, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->IsFunctionGroupSymbol())
@@ -103,8 +108,8 @@ FunctionGroupSymbol* ContainerSymbol::GetOrInsertFunctionGroup(const std::u32str
 
 ConceptGroupSymbol* ContainerSymbol::GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Scope& scope = GetScope();
-    Symbol* symbol = scope.Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Scope* scope = GetScope();
+    Symbol* symbol = scope->Lookup(name, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->IsConceptGroupSymbol())
