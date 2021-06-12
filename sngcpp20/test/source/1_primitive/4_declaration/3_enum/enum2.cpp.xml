@@ -1,0 +1,51 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <enumSpecifierNode count="1" pos="(1,1)" type="list">
+     <enumHeadNode pos="(1,1)" type="compound">
+      <enumClassNode pos="(1,1)" type="compound">
+       <keyword pos="(1,1)" value="enum"/>
+       <keyword pos="(1,6)" value="class"/>
+      </enumClassNode>
+      <identifierNode pos="(1,12)" type="compound">
+       <identifier pos="(1,12)" value="E"/>
+      </identifierNode>
+      <enumBaseNode count="1" pos="(1,14)" type="unary">
+       <operator pos="(1,14)" value=":"/>
+       <typeSpecifierSequenceNode count="1" pos="(1,16)" type="sequence">
+        <shortNode pos="(1,16)" type="single">
+         <keyword pos="(1,16)" value="short"/>
+        </shortNode>
+       </typeSpecifierSequenceNode>
+      </enumBaseNode>
+     </enumHeadNode>
+     <operator pos="(1,22)" value="{"/>
+     <enumeratorDefinitionNode pos="(1,24)" type="compound">
+      <enumeratorNode pos="(1,24)" type="compound">
+       <identifierNode pos="(1,24)" type="compound">
+        <identifier pos="(1,24)" value="e"/>
+       </identifierNode>
+      </enumeratorNode>
+      <operator pos="(1,26)" value="="/>
+      <binaryExprNode count="2" pos="(1,28)" type="binary">
+       <integerLiteralNode pos="(1,28)" type="single">
+        <literal pos="(1,28)" value="1"/>
+       </integerLiteralNode>
+       <shiftLeftNode pos="(1,30)" type="single">
+        <operator pos="(1,30)" value="&lt;&lt;"/>
+       </shiftLeftNode>
+       <integerLiteralNode pos="(1,33)" type="single">
+        <literal pos="(1,33)" value="0"/>
+       </integerLiteralNode>
+      </binaryExprNode>
+     </enumeratorDefinitionNode>
+     <operator pos="(1,35)" value="}"/>
+    </enumSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(1,36)" type="single">
+    <operator pos="(1,36)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

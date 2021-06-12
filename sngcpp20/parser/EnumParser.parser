@@ -43,8 +43,10 @@ parser api(PARSER_API) EnumParser
         (
             EnumHead(ctx):enumHead{ s = sourcePos; } 
             LBRACE{ lbPos = sourcePos; enumSpecifierNode.reset(new EnumSpecifierNode(s, enumHead)); sngcpp::symbols::BeginEnumType(enumSpecifierNode.get(), ctx); } 
-            EnumeratorList(ctx, enumSpecifierNode.get()):el 
-            (Comma:comma{ enumSpecifierNode->AddNode(comma); })?
+            (
+                EnumeratorList(ctx, enumSpecifierNode.get()):el{ sngcpp::symbols::AddEnumerators(enumSpecifierNode.get(), ctx); } 
+                (Comma:comma{ enumSpecifierNode->AddNode(comma); })?
+            )?
             RBRACE{ rbPos = sourcePos; enumSpecifierNode->SetLBracePos(lbPos); enumSpecifierNode->SetRBracePos(rbPos); }
         )
         {

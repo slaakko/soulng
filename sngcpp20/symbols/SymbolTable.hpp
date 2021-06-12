@@ -65,7 +65,7 @@ public:
     void EndNamespace(int level);
     void BeginClass(Node* specifierNode, Node* node, Context* context);
     void EndClass();
-    void BeginEnumType(Node* specifierNode, Node* node, Context* context);
+    void BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* enumBaseType, Context* context);
     void EndEnumType();
     void BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context);
     void EndFunction();

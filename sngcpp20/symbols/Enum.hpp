@@ -15,6 +15,7 @@ using namespace sngcpp::ast;
 
 SYMBOLS_API void BeginEnumType(Node* node, Context* context);
 SYMBOLS_API void EndEnumType(Context* context);
+SYMBOLS_API void AddEnumerators(Node* node, Context* context);
 
 } // sngcpp::symbols
 

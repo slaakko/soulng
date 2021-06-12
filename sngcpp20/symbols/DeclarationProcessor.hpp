@@ -23,6 +23,7 @@ SYMBOLS_API void ProcessAliasDeclaration(Node* usingNode, Context* context);
 SYMBOLS_API ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context);
 SYMBOLS_API void ProcessParenthesizedDeclarator(Node* declarator, TypeSymbol* baseType, Context* context);
 SYMBOLS_API void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, const std::string& specifierStr, const SourcePos& sourcePos, Context* context);
+SYMBOLS_API TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* context);
 
 } // sngcpp::symbols
 

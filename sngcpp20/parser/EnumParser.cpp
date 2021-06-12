@@ -98,46 +98,13 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
                         soulng::parser::Match match(false);
                         soulng::parser::Match* parentMatch5 = &match;
                         {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch6 = &match;
+                            int64_t pos = lexer.GetPos();
+                            soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
+                            soulng::parser::Match match = EnumParser::EnumHead(lexer, ctx);
+                            enumHead.reset(static_cast<Node*>(match.value));
+                            if (match.hit)
                             {
-                                int64_t pos = lexer.GetPos();
-                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                soulng::parser::Match match = EnumParser::EnumHead(lexer, ctx);
-                                enumHead.reset(static_cast<Node*>(match.value));
-                                if (match.hit)
-                                {
-                                    s = sourcePos;
-                                }
-                                *parentMatch6 = match;
-                            }
-                            *parentMatch5 = match;
-                        }
-                        if (match.hit)
-                        {
-                            soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch7 = &match;
-                            {
-                                soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch8 = &match;
-                                {
-                                    int64_t pos = lexer.GetPos();
-                                    soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
-                                    soulng::parser::Match match(false);
-                                    if (*lexer == LBRACE)
-                                    {
-                                        ++lexer;
-                                        match.hit = true;
-                                    }
-                                    if (match.hit)
-                                    {
-                                        lbPos = sourcePos;
-                                        enumSpecifierNode.reset(new EnumSpecifierNode(s, enumHead.release()));
-                                        sngcpp::symbols::BeginEnumType(enumSpecifierNode.get(), ctx);
-                                    }
-                                    *parentMatch8 = match;
-                                }
-                                *parentMatch7 = match;
+                                s = sourcePos;
                             }
                             *parentMatch5 = match;
                         }
@@ -146,10 +113,28 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
                     if (match.hit)
                     {
                         soulng::parser::Match match(false);
-                        soulng::parser::Match* parentMatch9 = &match;
+                        soulng::parser::Match* parentMatch6 = &match;
                         {
-                            soulng::parser::Match match = EnumParser::EnumeratorList(lexer, ctx, enumSpecifierNode.get());
-                            *parentMatch9 = match;
+                            soulng::parser::Match match(false);
+                            soulng::parser::Match* parentMatch7 = &match;
+                            {
+                                int64_t pos = lexer.GetPos();
+                                soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
+                                soulng::parser::Match match(false);
+                                if (*lexer == LBRACE)
+                                {
+                                    ++lexer;
+                                    match.hit = true;
+                                }
+                                if (match.hit)
+                                {
+                                    lbPos = sourcePos;
+                                    enumSpecifierNode.reset(new EnumSpecifierNode(s, enumHead.release()));
+                                    sngcpp::symbols::BeginEnumType(enumSpecifierNode.get(), ctx);
+                                }
+                                *parentMatch7 = match;
+                            }
+                            *parentMatch6 = match;
                         }
                         *parentMatch4 = match;
                     }
@@ -158,39 +143,82 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
                 if (match.hit)
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch10 = &match;
+                    soulng::parser::Match* parentMatch8 = &match;
                     {
                         soulng::parser::Match match(true);
                         int64_t save = lexer.GetPos();
-                        soulng::parser::Match* parentMatch11 = &match;
+                        soulng::parser::Match* parentMatch9 = &match;
                         {
                             soulng::parser::Match match(false);
-                            soulng::parser::Match* parentMatch12 = &match;
+                            soulng::parser::Match* parentMatch10 = &match;
                             {
                                 soulng::parser::Match match(false);
-                                soulng::parser::Match* parentMatch13 = &match;
+                                soulng::parser::Match* parentMatch11 = &match;
                                 {
-                                    int64_t pos = lexer.GetPos();
-                                    soulng::parser::Match match = FunctionParser::Comma(lexer);
-                                    comma.reset(static_cast<Node*>(match.value));
-                                    if (match.hit)
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch12 = &match;
                                     {
-                                        enumSpecifierNode->AddNode(comma.release());
+                                        int64_t pos = lexer.GetPos();
+                                        soulng::parser::Match match = EnumParser::EnumeratorList(lexer, ctx, enumSpecifierNode.get());
+                                        if (match.hit)
+                                        {
+                                            sngcpp::symbols::AddEnumerators(enumSpecifierNode.get(), ctx);
+                                        }
+                                        *parentMatch12 = match;
                                     }
-                                    *parentMatch13 = match;
+                                    *parentMatch11 = match;
                                 }
-                                *parentMatch12 = match;
+                                if (match.hit)
+                                {
+                                    soulng::parser::Match match(false);
+                                    soulng::parser::Match* parentMatch13 = &match;
+                                    {
+                                        soulng::parser::Match match(true);
+                                        int64_t save = lexer.GetPos();
+                                        soulng::parser::Match* parentMatch14 = &match;
+                                        {
+                                            soulng::parser::Match match(false);
+                                            soulng::parser::Match* parentMatch15 = &match;
+                                            {
+                                                soulng::parser::Match match(false);
+                                                soulng::parser::Match* parentMatch16 = &match;
+                                                {
+                                                    int64_t pos = lexer.GetPos();
+                                                    soulng::parser::Match match = FunctionParser::Comma(lexer);
+                                                    comma.reset(static_cast<Node*>(match.value));
+                                                    if (match.hit)
+                                                    {
+                                                        enumSpecifierNode->AddNode(comma.release());
+                                                    }
+                                                    *parentMatch16 = match;
+                                                }
+                                                *parentMatch15 = match;
+                                            }
+                                            if (match.hit)
+                                            {
+                                                *parentMatch14 = match;
+                                            }
+                                            else
+                                            {
+                                                lexer.SetPos(save);
+                                            }
+                                        }
+                                        *parentMatch13 = match;
+                                    }
+                                    *parentMatch11 = match;
+                                }
+                                *parentMatch10 = match;
                             }
                             if (match.hit)
                             {
-                                *parentMatch11 = match;
+                                *parentMatch9 = match;
                             }
                             else
                             {
                                 lexer.SetPos(save);
                             }
                         }
-                        *parentMatch10 = match;
+                        *parentMatch8 = match;
                     }
                     *parentMatch3 = match;
                 }
@@ -199,10 +227,10 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
             if (match.hit)
             {
                 soulng::parser::Match match(false);
-                soulng::parser::Match* parentMatch14 = &match;
+                soulng::parser::Match* parentMatch17 = &match;
                 {
                     soulng::parser::Match match(false);
-                    soulng::parser::Match* parentMatch15 = &match;
+                    soulng::parser::Match* parentMatch18 = &match;
                     {
                         int64_t pos = lexer.GetPos();
                         soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);
@@ -218,9 +246,9 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
                             enumSpecifierNode->SetLBracePos(lbPos);
                             enumSpecifierNode->SetRBracePos(rbPos);
                         }
-                        *parentMatch15 = match;
+                        *parentMatch18 = match;
                     }
-                    *parentMatch14 = match;
+                    *parentMatch17 = match;
                 }
                 *parentMatch2 = match;
             }

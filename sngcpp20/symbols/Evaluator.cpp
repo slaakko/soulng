@@ -7,9 +7,12 @@
 #include <sngcpp20/ast/Expression.hpp>
 #include <sngcpp20/ast/Literal.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
+#include <soulng/util/Unicode.hpp>
 #include <stack>
 
 namespace sngcpp::symbols {
+
+using namespace soulng::unicode;
 
 class Evaluator : public DefaultVisitor
 {
@@ -120,15 +123,15 @@ Value* Evaluator::EvaluateIntegerBinaryExpression(Value* left, Value* right, Nod
         }
         case NodeKind::inclusiveOrNode:
         {
-            return context.GetIntegerValue(leftValue | rightValue);
+            return context.GetIntegerValue(leftValue | rightValue, l->Rep() + U" | " + r->Rep());
         }
         case NodeKind::exclusiveOrNode:
         {
-            return context.GetIntegerValue(leftValue ^ rightValue);
+            return context.GetIntegerValue(leftValue ^ rightValue, l->Rep() + U" ^ " + r->Rep());
         }
         case NodeKind::andNode:
         {
-            return context.GetIntegerValue(leftValue & rightValue);
+            return context.GetIntegerValue(leftValue & rightValue, l->Rep() + U" & " + r->Rep());
         }
         case NodeKind::equalNode:
         {
@@ -156,31 +159,31 @@ Value* Evaluator::EvaluateIntegerBinaryExpression(Value* left, Value* right, Nod
         }
         case NodeKind::shiftLeftNode:
         {
-            return context.GetIntegerValue(leftValue << rightValue);
+            return context.GetIntegerValue(leftValue << rightValue, l->Rep() + U" << " + r->Rep());
         }
         case NodeKind::shiftRightNode:
         {
-            return context.GetIntegerValue(leftValue >> rightValue);
+            return context.GetIntegerValue(leftValue >> rightValue, l->Rep() + U" >> " + r->Rep());
         }
         case NodeKind::plusNode:
         {
-            return context.GetIntegerValue(leftValue + rightValue);
+            return context.GetIntegerValue(leftValue + rightValue, l->Rep() + U" + " + r->Rep());
         }
         case NodeKind::minusNode:
         {
-            return context.GetIntegerValue(leftValue - rightValue);
+            return context.GetIntegerValue(leftValue - rightValue, l->Rep() + U" - " + r->Rep());
         }
         case NodeKind::mulNode:
         {
-            return context.GetIntegerValue(leftValue * rightValue);
+            return context.GetIntegerValue(leftValue * rightValue, l->Rep() + U" * " + r->Rep());
         }
         case NodeKind::divNode:
         {
-            return context.GetIntegerValue(leftValue / rightValue);
+            return context.GetIntegerValue(leftValue / rightValue, l->Rep() + U" / " + r->Rep());
         }
         case NodeKind::modNode:
         {
-            return context.GetIntegerValue(leftValue % rightValue);
+            return context.GetIntegerValue(leftValue % rightValue, l->Rep() + U" % " + r->Rep());
         }
     }
     return nullptr;
@@ -228,19 +231,19 @@ Value* Evaluator::EvaluateFloatingBinaryExpression(Value* left, Value* right, No
         }
         case NodeKind::plusNode:
         {
-            return context.GetIntegerValue(leftValue + rightValue);
+            return context.GetIntegerValue(leftValue + rightValue, l->Rep() + U" + " + r->Rep());
         }
         case NodeKind::minusNode:
         {
-            return context.GetIntegerValue(leftValue - rightValue);
+            return context.GetIntegerValue(leftValue - rightValue, l->Rep() + U" - " + r->Rep());
         }
         case NodeKind::mulNode:
         {
-            return context.GetIntegerValue(leftValue * rightValue);
+            return context.GetIntegerValue(leftValue * rightValue, l->Rep() + U" * " + r->Rep());
         }
         case NodeKind::divNode:
         {
-            return context.GetIntegerValue(leftValue / rightValue);
+            return context.GetIntegerValue(leftValue / rightValue, l->Rep() + U" / " + r->Rep());
         }
     }
     return nullptr;
@@ -248,12 +251,12 @@ Value* Evaluator::EvaluateFloatingBinaryExpression(Value* left, Value* right, No
 
 void Evaluator::Visit(IntegerLiteralNode& node)
 {
-    valueStack.push(context.GetIntegerValue(node.Value()));
+    valueStack.push(context.GetIntegerValue(node.Value(), node.Rep()));
 }
 
 void Evaluator::Visit(FloatingLiteralNode& node)
 {
-    valueStack.push(context.GetFloatingValue(node.Value()));
+    valueStack.push(context.GetFloatingValue(node.Value(), node.Rep()));
 }
 
 void Evaluator::Visit(BooleanLiteralNode& node)
@@ -320,15 +323,15 @@ Value* Evaluator::EvaluateIntegerUnaryExpression(Value* operand, NodeKind op)
         }
         case NodeKind::complementNode:
         {
-            return context.GetIntegerValue(~value);
+            return context.GetIntegerValue(~value, U"~" + v->Rep());
         }
         case NodeKind::plusNode:
         {
-            return context.GetIntegerValue(+value);
+            return context.GetIntegerValue(+value, U"+" + v->Rep());
         }
         case NodeKind::minusNode:
         {
-            return context.GetIntegerValue(-value);
+            return context.GetIntegerValue(-value, U"-" + v->Rep());
         }
     }
     return nullptr;
@@ -346,11 +349,11 @@ Value* Evaluator::EvaluateFloatingUnaryExpression(Value* operand, NodeKind op)
         }
         case NodeKind::plusNode:
         {
-            return context.GetFloatingValue(+value);
+            return context.GetFloatingValue(+value, U"+" + v->Rep());
         }
         case NodeKind::minusNode:
         {
-            return context.GetFloatingValue(-value);
+            return context.GetFloatingValue(-value, U"-" + v->Rep());
         }
     }
     return nullptr;

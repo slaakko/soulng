@@ -184,13 +184,13 @@ void SymbolTable::EndClass()
     EndScope();
 }
 
-void SymbolTable::BeginEnumType(Node* specifierNode, Node* node, Context* context)
+void SymbolTable::BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* enumBaseType, Context* context)
 {
-    EnumTypeSymbol* enumTypeSymbol = new EnumTypeSymbol(node->Str());
-    enumTypeSymbol->SetIdNode(node);
-    currentScope->AddSymbol(enumTypeSymbol, node->GetSourcePos(), context);
+    EnumTypeSymbol* enumTypeSymbol = new EnumTypeSymbol(idNode->Str(), enumBaseType);
+    enumTypeSymbol->SetIdNode(idNode);
+    currentScope->AddSymbol(enumTypeSymbol, idNode->GetSourcePos(), context);
     MapNode(specifierNode, enumTypeSymbol);
-    MapNode(node, enumTypeSymbol, MapKind::nodeToSymbol);
+    MapNode(idNode, enumTypeSymbol, MapKind::nodeToSymbol);
     BeginScope(*enumTypeSymbol->GetScope());
 }
 

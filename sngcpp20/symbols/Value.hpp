@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include <map>
 #include <memory>
+#include <string>
 #include <vector>
 
 namespace sngcpp::symbols {
@@ -26,20 +27,22 @@ ValueKind CommonValueKind(ValueKind left, ValueKind right);
 class SYMBOLS_API Value
 {
 public:
-    Value(ValueKind kind_);
+    Value(ValueKind kind_, const std::u32string& rep_);
     virtual ~Value();
     virtual BoolValue* ToBoolValue(EvaluationContext& context) = 0;
     virtual Value* Convert(ValueKind kind, EvaluationContext& context) = 0;
     ValueKind Kind() const { return kind; }
+    const std::u32string& Rep() const { return rep; }
 private:
     ValueKind kind;
+    std::u32string rep;
 };
 
 class SYMBOLS_API BoolValue : public Value
 {
 public:
     BoolValue();
-    BoolValue(bool value_);
+    BoolValue(bool value_, const std::u32string& rep_);
     bool GetValue() const { return value; }
     BoolValue* ToBoolValue(EvaluationContext& context) override { return this; }
     Value* Convert(ValueKind kind, EvaluationContext& context) override;
@@ -51,7 +54,7 @@ class SYMBOLS_API IntegerValue : public Value
 {
 public:
     IntegerValue();
-    IntegerValue(int64_t value_);
+    IntegerValue(int64_t value_, const std::u32string& rep_);
     int64_t GetValue() const { return value; }
     BoolValue* ToBoolValue(EvaluationContext& context) override;
     Value* Convert(ValueKind kind, EvaluationContext& context) override;
@@ -63,7 +66,7 @@ class SYMBOLS_API FloatingValue : public Value
 {
 public:
     FloatingValue();
-    FloatingValue(double value_);
+    FloatingValue(double value_, const std::u32string& rep_);
     double GetValue() const { return value; }
     BoolValue* ToBoolValue(EvaluationContext& context) override;
     Value* Convert(ValueKind kind, EvaluationContext& context) override;
@@ -78,13 +81,13 @@ public:
     EvaluationContext(const EvaluationContext&) = delete;
     EvaluationContext& operator=(const EvaluationContext&) = delete;
     BoolValue* GetBoolValue(bool value);
-    IntegerValue* GetIntegerValue(int64_t value);
-    FloatingValue* GetFloatingValue(double value);
+    IntegerValue* GetIntegerValue(int64_t value, const std::u32string& rep);
+    FloatingValue* GetFloatingValue(double value, const std::u32string& rep);
 private:
     BoolValue trueValue;
     BoolValue falseValue;
-    std::map<int64_t, IntegerValue*> integerValueMap;
-    std::map<double, FloatingValue*> floatingValueMap;
+    std::map<std::pair<int64_t, std::u32string>, IntegerValue*> integerValueMap;
+    std::map<std::pair<double, std::u32string>, FloatingValue*> floatingValueMap;
     std::vector<std::unique_ptr<Value>> values;
 };
 

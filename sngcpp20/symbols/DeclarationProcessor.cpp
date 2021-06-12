@@ -87,6 +87,8 @@ public:
 
     void Visit(MemberDeclarationNode& node) override;
 
+    void Visit(TypeSpecifierSequenceNode& node) override;
+
     void Visit(ClassSpecifierNode& node);
     void Visit(EnumSpecifierNode& node);
 
@@ -142,6 +144,8 @@ public:
 
     void ProcessDeclSpecifiers(Node* declSpecifiers);
     void ProcessDeclarator(Node* declarator);
+    void ResolveBaseType(Node* node);
+    TypeSymbol* GetBaseType() const { return baseTypeSymbol; }
     void SetBaseType(TypeSymbol* baseType_) { baseTypeSymbol = baseType_; }
 private:
     void ProcesInitDeclarators(Node* initDeclaratorList);
@@ -207,6 +211,17 @@ void DeclarationProcessorVisitor::Visit(MemberDeclarationNode& node)
     ProcessMemberDeclarators(node.MemberDeclarators());
 }
 
+void DeclarationProcessorVisitor::Visit(TypeSpecifierSequenceNode& node)
+{
+    if (!this->node)
+    {
+        this->node = &node;
+    }
+    stage = Stage::processDeclSpecifiers;
+    VisitSequenceContent(node);
+    ResolveBaseType(&node);
+}
+
 void DeclarationProcessorVisitor::Visit(ClassSpecifierNode& node)
 {
     kind = kind | DeclarationKind::classDeclaration;
@@ -235,20 +250,25 @@ void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
     }
     stage = Stage::processDeclSpecifiers;
     declSpecifiers->Accept(*this);
+    ResolveBaseType(declSpecifiers);
+}
+
+void DeclarationProcessorVisitor::ResolveBaseType(Node* node)
+{
     DeclarationFlags fundamentalTypeFlags = flags & DeclarationFlags::fundamentalTypeFlags;
     if (fundamentalTypeFlags != DeclarationFlags::none)
     {
         if (baseTypeSymbol)
         {
-            throw Exception("duplicate type symbol in declaration specifier sequence", declSpecifiers->GetSourcePos(), context);
+            throw Exception("duplicate type symbol in declaration specifier sequence", node->GetSourcePos(), context);
         }
-        baseTypeSymbol = GetFundamentalType(fundamentalTypeFlags, declSpecifiers->GetSourcePos(), context);
+        baseTypeSymbol = GetFundamentalType(fundamentalTypeFlags, node->GetSourcePos(), context);
     }
     else
     {
         if (!baseTypeSymbol)
         {
-            throw Exception("declaration specifier sequence does not contain a type symbol", declSpecifiers->GetSourcePos(), context);
+            throw Exception("declaration specifier sequence does not contain a type symbol", node->GetSourcePos(), context);
         }
     }
     if ((flags & DeclarationFlags::constFlag) != DeclarationFlags::none)
@@ -263,7 +283,7 @@ void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
     {
         if ((flags & DeclarationFlags::typedefFlagMask) != DeclarationFlags::none)
         {
-            throw Exception("invalid declaration specifier sequence: typedef cannot be combined with these specifiers", declSpecifiers->GetSourcePos(), context);
+            throw Exception("invalid declaration specifier sequence: typedef cannot be combined with these specifiers", node->GetSourcePos(), context);
         }
     }
 }
@@ -794,6 +814,18 @@ void ProcessParenthesizedDeclarator(Node* declarator, TypeSymbol* baseType, Cont
     visitor.ProcessDeclarator(declarator);
     Declaration declaration = visitor.GetDeclaration();
     ProcessDeclaration(declaration, context);
+}
+
+TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* context)
+{
+    DeclarationProcessorVisitor visitor(context);
+    typeSpecifierSequence->Accept(visitor);
+    TypeSymbol* type = visitor.GetBaseType();
+    if (!type)
+    {
+        throw Exception("type expected", typeSpecifierSequence->GetSourcePos(), context);
+    }
+    return type;
 }
 
 } // sngcpp::symbols
