@@ -563,6 +563,10 @@ void DeclarationProcessorVisitor::Visit(ConstNode& node)
     {
         flags = flags | DeclarationFlags::constFlag;
     }
+    else if (stage == Stage::processDeclarators)
+    {
+        type = context->GetSymbolTable()->MakeConstType(type);
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(VolatileNode& node)
@@ -571,6 +575,10 @@ void DeclarationProcessorVisitor::Visit(VolatileNode& node)
     if (stage == Stage::processDeclSpecifiers)
     {
         flags = flags | DeclarationFlags::volatileFlag;
+    }
+    else if (stage == Stage::processDeclarators)
+    {
+        type = context->GetSymbolTable()->MakeVolatileType(type);
     }
 }
 
@@ -645,7 +653,6 @@ void ProcessDeclaration(Declaration& declaration, Context* context)
 
 void ProcessSimpleDeclaration(Node* declaration, Context* context)
 {
-    if (context->GetFlag(ContextFlags::skipSimpleDeclarations)) return;
     DeclarationProcessorVisitor visitor(context);
     declaration->Accept(visitor);
     std::vector<Declaration> declarations = visitor.GetDeclarations();
@@ -704,6 +711,12 @@ void EndFunctionDefinition(Context* context)
 void RemoveFunctionDefinition(Context* context)
 {
     context->GetSymbolTable()->RemoveFunction();
+}
+
+void ProcessAliasDeclaration(Node* usingNode, Context* context)
+{
+    DeclarationProcessorVisitor visitor(context);
+    usingNode->Accept(visitor);
 }
 
 ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context)

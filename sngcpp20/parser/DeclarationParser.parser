@@ -387,7 +387,9 @@ parser api(PARSER_API) DeclarationParser
             Semicolon:semicolon
         )
         {
-            return new AliasDeclarationNode(s, usng, identifier, assign, definingTypeId, attributes, semicolon);
+            AliasDeclarationNode* node = new AliasDeclarationNode(s, usng, identifier, assign, definingTypeId, attributes, semicolon);
+            sngcpp::symbols::ProcessAliasDeclaration(node, ctx);
+            return node;
         }
         ;
 
@@ -676,7 +678,13 @@ parser api(PARSER_API) DeclarationParser
         ;
 
     CVQualifierSeq(var std::unique_ptr<Node> sequence) : Node*
-        ::= CVQualifier:first{ sequence.reset(new CVQualifierSequenceNode(sourcePos)); sequence->AddNode(first); } (CVQualifier:next{ sequence->AddNode(next); })*
+        ::= 
+        (
+            CVQualifier:first{ sequence.reset(new CVQualifierSequenceNode(sourcePos)); sequence->AddNode(first); } (CVQualifier:next{ sequence->AddNode(next); })*
+        )
+        {
+            return sequence.release();
+        }
         ;
 
     CVQualifier : Node*

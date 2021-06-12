@@ -93,6 +93,7 @@ private:
     std::unordered_map<TypeSymbol*, TypeSymbol*> lvalueRefTypeMap;
     std::unordered_map<TypeSymbol*, TypeSymbol*> rvalueRefTypeMap;
     std::vector<std::unique_ptr<TypeSymbol>> types;
+    int blockNumber;
 };
 
 } // sngcpp::symbols

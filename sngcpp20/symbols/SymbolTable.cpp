@@ -20,7 +20,7 @@ namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
 
-SymbolTable::SymbolTable() : globalNs(std::u32string()), currentScope(globalNs.GetScope())
+SymbolTable::SymbolTable() : globalNs(std::u32string()), currentScope(globalNs.GetScope()), blockNumber(0)
 {
 }
 
@@ -269,7 +269,7 @@ void SymbolTable::RemoveFunction()
 
 void SymbolTable::BeginBlock(const SourcePos& sourcePos, Context* context)
 {
-    BlockSymbol* blockSymbol = new BlockSymbol();
+    BlockSymbol* blockSymbol = new BlockSymbol(blockNumber++);
     currentScope->AddSymbol(blockSymbol, sourcePos, context);
     BeginScope(*blockSymbol->GetScope());
 }

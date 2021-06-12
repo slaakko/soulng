@@ -40,7 +40,7 @@ Scope::~Scope()
 
 void Scope::Install(Symbol* symbol)
 {
-    auto it = symbolMap.find(symbol->Name());
+    auto it = symbolMap.find(symbol->InstallationName());
     if (it != symbolMap.cend())
     {
         Symbol* existingSymbol = it->second;
@@ -54,12 +54,12 @@ void Scope::Install(Symbol* symbol)
             return;
         }
     }
-    symbolMap[symbol->Name()] = symbol;
+    symbolMap[symbol->InstallationName()] = symbol;
 }
 
 void Scope::Uninstall(Symbol* symbol)
 {
-    symbolMap.erase(symbol->Name());
+    symbolMap.erase(symbol->InstallationName());
 }
 
 Symbol* Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const

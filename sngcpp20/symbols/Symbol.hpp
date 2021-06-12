@@ -43,6 +43,7 @@ public:
     virtual void RemoveSymbol(Symbol* symbol);
     virtual void AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context);
     virtual void RemoveFromGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context);
+    virtual const std::u32string& InstallationName() const { return name; }
     const std::u32string& Name() const { return name; }
     ContainerSymbol* Parent() const { return parent; }
     void SetParent(ContainerSymbol* parent_) { parent = parent_; }

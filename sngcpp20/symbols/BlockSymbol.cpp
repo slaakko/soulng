@@ -4,12 +4,16 @@
 // =================================
 
 #include <sngcpp20/symbols/BlockSymbol.hpp>
+#include <soulng/util/Unicode.hpp>
 
 namespace sngcpp::symbols {
 
-BlockSymbol::BlockSymbol() : ContainerSymbol(std::u32string())
+using namespace soulng::unicode;
+
+BlockSymbol::BlockSymbol(int number_) : ContainerSymbol(std::u32string()), number(number_)
 {
     GetScope()->SetKind(ScopeKind::blockScope);
+    installationName = ToUtf32("block" + std::to_string(number));
 }
 
 bool BlockSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const

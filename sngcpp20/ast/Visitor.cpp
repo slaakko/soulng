@@ -911,6 +911,7 @@ void DefaultVisitor::Visit(PrefixNode& node)
 
 void DefaultVisitor::Visit(TrailingQualifiersNode& node)
 {
+    node.Subject()->Accept(*this);
     VisitSequence(node);
 }
 
