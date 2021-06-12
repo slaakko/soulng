@@ -482,15 +482,15 @@ class AST_API ArrayDeclaratorNode : public UnaryNode
 {
 public:
     ArrayDeclaratorNode(const SourcePos& sourcePos_);
-    ArrayDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_);
+    ArrayDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* dimension_, const SourcePos& lbPos_, const SourcePos& rbPos_);
     void Accept(Visitor& visitor) override;
     void Write(Writer& writer) override;
     void Read(Reader& reader) override;
-    Node* Index() const { return index.get(); }
+    Node* Dimension() const { return dimension.get(); }
     const SourcePos& LBracketPos() const { return lbPos; }
     const SourcePos& RBracketPos() const { return rbPos; }
 private:
-    std::unique_ptr<Node> index;
+    std::unique_ptr<Node> dimension;
     SourcePos lbPos;
     SourcePos rbPos;
 };

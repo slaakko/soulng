@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AliasTypeSymbol.hpp" />
+    <ClInclude Include="ArrayTypeSymbol.hpp" />
     <ClInclude Include="Block.hpp" />
     <ClInclude Include="Class.hpp" />
     <ClInclude Include="ClassGroupSymbol.hpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Exception.hpp" />
     <ClInclude Include="FunctionGroupSymbol.hpp" />
     <ClInclude Include="FunctionSymbol.hpp" />
+    <ClInclude Include="FunctionTypeSymbol.hpp" />
     <ClInclude Include="FundamentalTypeSymbol.hpp" />
     <ClInclude Include="InitDone.hpp" />
     <ClInclude Include="Namespace.hpp" />
@@ -193,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AliasTypeSymbol.cpp" />
+    <ClCompile Include="ArrayTypeSymbol.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="ClassGroupSymbol.cpp" />
@@ -212,6 +215,7 @@
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="FunctionGroupSymbol.cpp" />
     <ClCompile Include="FunctionSymbol.cpp" />
+    <ClCompile Include="FunctionTypeSymbol.cpp" />
     <ClCompile Include="FundamentalTypeSymbol.cpp" />
     <ClCompile Include="InitDone.cpp" />
     <ClCompile Include="Namespace.cpp" />

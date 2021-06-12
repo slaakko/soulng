@@ -1,0 +1,42 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,6)" type="list">
+    <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+     <parenthesizedDeclaratorNode pos="(1,6)" type="compound">
+      <operator pos="()" value="("/>
+      <ptrDeclaratorNode count="2" pos="(1,7)" type="sequence">
+       <ptrNode pos="(1,7)" type="single">
+        <operator pos="(1,7)" value="*"/>
+       </ptrNode>
+       <identifierNode pos="(1,8)" type="compound">
+        <identifier pos="(1,8)" value="f"/>
+       </identifierNode>
+      </ptrDeclaratorNode>
+      <operator pos="()" value=")"/>
+     </parenthesizedDeclaratorNode>
+    </functionDeclaratorNode>
+    <parameterListNode count="1" pos="(1,10)" type="list">
+     <operator pos="(1,10)" value="("/>
+     <parameterNode pos="(1,11)" type="compound">
+      <declSpecifierSequenceNode count="1" pos="(1,11)" type="sequence">
+       <intNode pos="(1,11)" type="single">
+        <keyword pos="(1,11)" value="int"/>
+       </intNode>
+      </declSpecifierSequenceNode>
+      <abstractDeclaratorNode pos="(1,14)" type="single"/>
+     </parameterNode>
+     <operator pos="(1,14)" value=")"/>
+    </parameterListNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,15)" type="single">
+    <operator pos="(1,15)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

@@ -738,8 +738,8 @@ ArrayDeclaratorNode::ArrayDeclaratorNode(const SourcePos& sourcePos_) : UnaryNod
 {
 }
 
-ArrayDeclaratorNode::ArrayDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* index_, const SourcePos& lbPos_, const SourcePos& rbPos_) :
-    UnaryNode(NodeKind::arrayDeclaratorNode, sourcePos_, child_), index(index_), lbPos(lbPos_), rbPos(rbPos_)
+ArrayDeclaratorNode::ArrayDeclaratorNode(const SourcePos& sourcePos_, Node* child_, Node* dimension_, const SourcePos& lbPos_, const SourcePos& rbPos_) :
+    UnaryNode(NodeKind::arrayDeclaratorNode, sourcePos_, child_), dimension(dimension_), lbPos(lbPos_), rbPos(rbPos_)
 {
 }
 
@@ -751,7 +751,7 @@ void ArrayDeclaratorNode::Accept(Visitor& visitor)
 void ArrayDeclaratorNode::Write(Writer& writer)
 {
     UnaryNode::Write(writer);
-    writer.Write(index.get());
+    writer.Write(dimension.get());
     writer.Write(lbPos);
     writer.Write(rbPos);
 }
@@ -759,7 +759,7 @@ void ArrayDeclaratorNode::Write(Writer& writer)
 void ArrayDeclaratorNode::Read(Reader& reader)
 {
     UnaryNode::Read(reader);
-    index.reset(reader.ReadNode());
+    dimension.reset(reader.ReadNode());
     lbPos = reader.ReadSourcePos();
     rbPos = reader.ReadSourcePos();
 }

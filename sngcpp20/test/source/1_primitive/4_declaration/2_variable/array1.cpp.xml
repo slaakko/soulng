@@ -1,0 +1,45 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <intNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,5)" type="list">
+    <arrayDeclaratorNode count="1" pos="(1,5)" type="unary">
+     <identifierNode pos="(1,5)" type="compound">
+      <identifier pos="(1,5)" value="x"/>
+     </identifierNode>
+     <operator pos="(1,6)" value="["/>
+     <operator pos="(1,7)" value="]"/>
+    </arrayDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,8)" type="single">
+    <operator pos="(1,8)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <simpleDeclarationNode pos="(2,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+    <intNode pos="(2,1)" type="single">
+     <keyword pos="(2,1)" value="int"/>
+    </intNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(2,5)" type="list">
+    <arrayDeclaratorNode count="1" pos="(2,5)" type="unary">
+     <identifierNode pos="(2,5)" type="compound">
+      <identifier pos="(2,5)" value="y"/>
+     </identifierNode>
+     <operator pos="(2,6)" value="["/>
+     <integerLiteralNode pos="(2,7)" type="single">
+      <literal pos="(2,7)" value="10"/>
+     </integerLiteralNode>
+     <operator pos="(2,9)" value="]"/>
+    </arrayDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(2,10)" type="single">
+    <operator pos="(2,10)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

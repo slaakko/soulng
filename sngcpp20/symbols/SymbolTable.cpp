@@ -199,7 +199,7 @@ void SymbolTable::EndEnumType()
     EndScope();
 }
 
-void SymbolTable::BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context)
+void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context)
 {
     Symbol* symbol = scope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
     if (symbol)
@@ -210,9 +210,9 @@ void SymbolTable::BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType
             FunctionSymbol* functionSymbol = functionGroupSymbol->GetFunction(parameters);
             if (functionSymbol)
             {
-                if (functionSymbol->ReturnType() != returnType->ReferredType())
+                if (functionSymbol->Type()->Key().returnType != functionType->Key().returnType)
                 {
-                    throw Exception("function return type '" + ToUtf8(returnType->FullName()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
+                    throw Exception("function return type '" + ToUtf8(functionType->Key().returnType->FullName()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
                 }
                 if (definition)
                 {
@@ -236,7 +236,7 @@ void SymbolTable::BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType
         }
     }
     FunctionSymbol* functionSymbol = new FunctionSymbol(node->Str(), std::move(parameters), definition); 
-    functionSymbol->SetReturnType(returnType);
+    functionSymbol->SetType(functionType);
     scope->AddSymbol(functionSymbol, node->GetSourcePos(), context);
     MapNode(node, functionSymbol);
     BeginScope(*functionSymbol->GetScope());
@@ -424,6 +424,39 @@ TypeSymbol* SymbolTable::MakeRvalueRefType(TypeSymbol* baseTypeSymbol)
         rvalueRefTypeMap[baseTypeSymbol] = rvalueRefTypeSymbol;
         types.push_back(std::unique_ptr<TypeSymbol>(rvalueRefTypeSymbol));
         return rvalueRefTypeSymbol;
+    }
+}
+
+TypeSymbol* SymbolTable::MakeFunctionType(const FunctionTypeKey& functionTypeKey)
+{
+    auto it = functionTypeMap.find(functionTypeKey);
+    if (it != functionTypeMap.cend())
+    {
+        return it->second;
+    }
+    else
+    {
+        FunctionTypeSymbol* functionType = new FunctionTypeSymbol();
+        functionType->SetKey(functionTypeKey);
+        functionTypeMap[functionTypeKey] = functionType;
+        types.push_back(std::unique_ptr<TypeSymbol>(functionType));
+        return functionType;
+    }
+}
+
+TypeSymbol* SymbolTable::MakeArrayType(const ArrayTypeKey& arrayTypeKey)
+{
+    auto it = arrayTypeMap.find(arrayTypeKey);
+    if (it != arrayTypeMap.cend())
+    {
+        return it->second;
+    }
+    else
+    {
+        ArrayTypeSymbol* arrayType = new ArrayTypeSymbol(arrayTypeKey);
+        arrayTypeMap[arrayTypeKey] = arrayType;
+        types.push_back(std::unique_ptr<TypeSymbol>(arrayType));
+        return arrayType;
     }
 }
 

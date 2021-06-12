@@ -890,9 +890,9 @@ void DefaultVisitor::Visit(ArrayDeclaratorNode& node)
     BeginVisit(node);
     node.Child()->Accept(*this);
     VisitOperator("[", node.LBracketPos());
-    if (node.Index())
+    if (node.Dimension())
     {
-        node.Index()->Accept(*this);
+        node.Dimension()->Accept(*this);
     }
     VisitOperator("]", node.RBracketPos());
     EndVisit(node);

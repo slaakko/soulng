@@ -11,6 +11,7 @@
 namespace sngcpp::symbols {
 
 class TypeSymbol;
+class FunctionTypeSymbol;
 
 class SYMBOLS_API FunctionSymbol : public ContainerSymbol
 {
@@ -22,13 +23,13 @@ public:
     bool IsFunctionSymbol() const override { return true; }
     void AddToGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context) override;
     void RemoveFromGroup(ContainerSymbol* containerSymbol, const SourcePos& sourcePos, Context* context) override;
-    void SetReturnType(TypeSymbol* returnType_) { returnType = returnType_;  }
-    TypeSymbol* ReturnType() const { return returnType; }
+    void SetType(FunctionTypeSymbol* type_) { type = type_;  }
+    FunctionTypeSymbol* Type() const { return type; }
     const std::vector<std::unique_ptr<ParameterSymbol>>& Parameters() const { return parameters; }
     bool Definition() const { return definition; }
     void SetDefinition() { definition = true; }
 private:
-    TypeSymbol* returnType;
+    FunctionTypeSymbol* type;
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
     bool definition;
 };

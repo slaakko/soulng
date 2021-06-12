@@ -5,8 +5,10 @@
 
 #ifndef SNGCPP_SYMBOLS_SYMBOL_TABLE_INCLUDED
 #define SNGCPP_SYMBOLS_SYMBOL_TABLE_INCLUDED
+#include <sngcpp20/symbols/ArrayTypeSymbol.hpp>
 #include <sngcpp20/symbols/NamespaceSymbol.hpp>
 #include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
+#include <sngcpp20/symbols/FunctionTypeSymbol.hpp>
 #include <sngcpp20/ast/Identifier.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <unordered_map>
@@ -17,6 +19,7 @@ namespace sngcpp::symbols {
 using namespace sngcpp::ast;
 
 class ParameterSymbol;
+class FunctionTypeSymbol;
 
 enum class MapKind : int
 {
@@ -64,7 +67,7 @@ public:
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* node, Context* context);
     void EndEnumType();
-    void BeginFunction(Node* node, Scope* scope, TypeSymbol* returnType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context);
+    void BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context);
     void EndFunction();
     void RemoveFunction();
     void BeginBlock(const SourcePos& sourcePos, Context* context);
@@ -80,6 +83,8 @@ public:
     TypeSymbol* MakePointerType(TypeSymbol* baseTypeSymbol);
     TypeSymbol* MakeLvalueRefType(TypeSymbol* baseTypeSymbol);
     TypeSymbol* MakeRvalueRefType(TypeSymbol* baseTypeSymbol);
+    TypeSymbol* MakeFunctionType(const FunctionTypeKey& functionTypeKey);
+    TypeSymbol* MakeArrayType(const ArrayTypeKey& arrayTypeKey);
 private:
     NamespaceSymbol globalNs;
     std::stack<Scope*> scopeStack;
@@ -92,6 +97,8 @@ private:
     std::unordered_map<TypeSymbol*, TypeSymbol*> pointerTypeMap;
     std::unordered_map<TypeSymbol*, TypeSymbol*> lvalueRefTypeMap;
     std::unordered_map<TypeSymbol*, TypeSymbol*> rvalueRefTypeMap;
+    std::unordered_map<FunctionTypeKey, TypeSymbol*, FunctionTypeKeyHash> functionTypeMap;
+    std::unordered_map<ArrayTypeKey, TypeSymbol*, ArrayTypeKeyHash> arrayTypeMap;
     std::vector<std::unique_ptr<TypeSymbol>> types;
     int blockNumber;
 };

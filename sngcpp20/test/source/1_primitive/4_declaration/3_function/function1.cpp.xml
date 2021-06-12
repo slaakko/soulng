@@ -1,0 +1,25 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <voidNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="void"/>
+    </voidNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,6)" type="list">
+    <functionDeclaratorNode count="1" pos="(1,6)" type="unary">
+     <identifierNode pos="(1,6)" type="compound">
+      <identifier pos="(1,6)" value="foo"/>
+     </identifierNode>
+    </functionDeclaratorNode>
+    <parameterListNode pos="(1,9)" type="list">
+     <operator pos="(1,9)" value="("/>
+     <operator pos="(1,10)" value=")"/>
+    </parameterListNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,11)" type="single">
+    <operator pos="(1,11)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

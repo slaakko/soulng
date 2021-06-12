@@ -6,6 +6,7 @@
 
 #include <sngcpp20/symbols/DeclarationProcessor.hpp>
 #include <sngcpp20/symbols/AliasTypeSymbol.hpp>
+#include <sngcpp20/symbols/FunctionTypeSymbol.hpp>
 #include <sngcpp20/symbols/Class.hpp>
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
 #include <sngcpp20/symbols/EnumTypeSymbol.hpp>
@@ -17,6 +18,7 @@
 #include <sngcpp20/ast/Declaration.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <sngcpp20/ast/Enum.hpp>
+#include <sngcpp20/ast/Literal.hpp>
 #include <sngcpp20/ast/SimpleType.hpp>
 #include <sngcpp20/ast/Qualifier.hpp>
 #include <sngcpp20/ast/Type.hpp>
@@ -119,6 +121,7 @@ public:
 
     void Visit(IdentifierNode& node) override;
     void Visit(QualifiedIdNode& node) override;
+    void Visit(AbstractDeclaratorNode& node) override;
 
     void Visit(PtrNode& node) override;
     void Visit(LvalueRefNode& node) override;
@@ -131,11 +134,15 @@ public:
     void Visit(MemberDeclaratorListNode& node) override;
 
     void Visit(FunctionDeclaratorNode& node) override;
+    void Visit(ArrayDeclaratorNode& node) override;
+    void Visit(IntegerLiteralNode& node) override;
+    void Visit(ParenthesizedDeclaratorNode& node) override;
     void Visit(ParameterNode& node) override;
     void Visit(PlaceholderTypeSpecifierNode& node) override;
 
     void ProcessDeclSpecifiers(Node* declSpecifiers);
     void ProcessDeclarator(Node* declarator);
+    void SetBaseType(TypeSymbol* baseType_) { baseTypeSymbol = baseType_; }
 private:
     void ProcesInitDeclarators(Node* initDeclaratorList);
     void ProcessMemberDeclarators(Node* memberDeclarators);
@@ -145,16 +152,18 @@ private:
     Context* context;
     TypeSymbol* baseTypeSymbol;
     TypeSymbol* type;
+    TypeSymbol* functionType;
     Node* idNode;
     Scope* scope;
     Node* node;
+    uint64_t dimension;
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
     std::vector<Declaration> declarations;
 };
 
 DeclarationProcessorVisitor::DeclarationProcessorVisitor(Context* context_) : 
-    kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeSymbol(nullptr), type(nullptr), idNode(nullptr), 
-    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr)
+    kind(DeclarationKind::none), stage(Stage::processDeclSpecifiers), flags(), context(context_), baseTypeSymbol(nullptr), type(nullptr), functionType(nullptr), idNode(nullptr),
+    scope(context->GetSymbolTable()->CurrentScope()), node(nullptr), dimension(0)
 {
 }
 
@@ -502,6 +511,11 @@ void DeclarationProcessorVisitor::Visit(QualifiedIdNode& node)
     node.Right()->Accept(*this);
 }
 
+void DeclarationProcessorVisitor::Visit(AbstractDeclaratorNode& node)
+{
+    idNode = &node;
+}
+
 void DeclarationProcessorVisitor::Visit(InitDeclaratorListNode& node)
 {
     for (Node* item : node.Items())
@@ -588,9 +602,36 @@ void DeclarationProcessorVisitor::Visit(FunctionDeclaratorNode& node)
     {
         kind = DeclarationKind::functionDeclaration;
     }
-    node.Child()->Accept(*this);
     parameters.clear();
     node.Params()->Accept(*this);
+    std::vector<TypeSymbol*> parameterTypes;
+    for (const auto& param : parameters)
+    {
+        parameterTypes.push_back(param->Type());
+    }
+    type = context->GetSymbolTable()->MakeFunctionType(FunctionTypeKey(type, parameterTypes));
+    node.Child()->Accept(*this);
+}
+
+void DeclarationProcessorVisitor::Visit(ArrayDeclaratorNode& node)
+{
+    dimension = 0;
+    if (node.Dimension())
+    {
+        node.Dimension()->Accept(*this);
+    }
+    type = context->GetSymbolTable()->MakeArrayType(ArrayTypeKey(type, dimension));
+    node.Child()->Accept(*this);
+}
+
+void DeclarationProcessorVisitor::Visit(IntegerLiteralNode& node)
+{
+    dimension = node.Value();
+}
+
+void DeclarationProcessorVisitor::Visit(ParenthesizedDeclaratorNode& node)
+{
+    ProcessParenthesizedDeclarator(node.Declarator(), type, context);
 }
 
 void DeclarationProcessorVisitor::Visit(ParameterNode& node)
@@ -643,11 +684,19 @@ void ProcessDeclaration(Declaration& declaration, Context* context)
         variableSymbol->SetType(declaration.type);
         declaration.scope->AddSymbol(variableSymbol, declaration.idNode->GetSourcePos(), context);
     }
-    if ((declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
+    if (declaration.idNode && (declaration.kind & DeclarationKind::functionDeclaration) != DeclarationKind::none)
     {
         Scope* scope = declaration.scope;
-        context->GetSymbolTable()->BeginFunction(declaration.idNode, scope, declaration.type, std::move(declaration.parameters), false, context);
-        context->GetSymbolTable()->EndFunction();
+        if (declaration.type->IsFunctionTypeSymbol())
+        {
+            FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.type);
+            context->GetSymbolTable()->BeginFunction(declaration.idNode, scope, functionType, std::move(declaration.parameters), false, context);
+            context->GetSymbolTable()->EndFunction();
+        }
+        else
+        {
+            throw Exception("function type symbol expected", declaration.node->GetSourcePos(), context);
+        }
     }
 }
 
@@ -695,7 +744,15 @@ void BeginFunctionDefinition(Node* declSpecifierSeq, Node* declarator, Context* 
         {
             definition = false;
         }
-        context->GetSymbolTable()->BeginFunction(declaration.idNode, declaration.scope, declaration.type, std::move(declaration.parameters), definition, context);
+        if (declaration.type->IsFunctionTypeSymbol())
+        {
+            FunctionTypeSymbol* functionType = static_cast<FunctionTypeSymbol*>(declaration.type);
+            context->GetSymbolTable()->BeginFunction(declaration.idNode, declaration.scope, functionType, std::move(declaration.parameters), definition, context);
+        }
+        else
+        {
+            throw Exception("function type symbol expected", sourcePos, context);
+        }
     }
     else
     {
@@ -728,6 +785,15 @@ ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context
     ParameterSymbol* parameterSymbol = new ParameterSymbol(declaration.idNode->Str());
     parameterSymbol->SetType(declaration.type);
     return parameterSymbol;
+}
+
+void ProcessParenthesizedDeclarator(Node* declarator, TypeSymbol* baseType, Context* context)
+{
+    DeclarationProcessorVisitor visitor(context);
+    visitor.SetBaseType(baseType);
+    visitor.ProcessDeclarator(declarator);
+    Declaration declaration = visitor.GetDeclaration();
+    ProcessDeclaration(declaration, context);
 }
 
 } // sngcpp::symbols

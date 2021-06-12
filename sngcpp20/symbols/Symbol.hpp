@@ -29,6 +29,7 @@ public:
     virtual bool IsParameterSymbol() const { return false; }
     virtual bool IsNamespaceSymbol() const { return false; }
     virtual bool IsClassTypeSymbol() const { return false; }
+    virtual bool IsFunctionTypeSymbol() const { return false; }
     virtual bool IsEnumTypeSymbol() const { return false; }
     virtual bool IsClassGroupSymbol() const { return false; }
     virtual bool IsFunctionGroupSymbol() const { return false; }
