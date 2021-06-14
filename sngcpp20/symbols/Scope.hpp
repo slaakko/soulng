@@ -70,6 +70,8 @@ public:
     virtual void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
     virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context);
     virtual void RemoveSymbol(Symbol* symbol);
+    virtual void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context);
+    virtual void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context);
     virtual bool IsContainerScope() const { return false; }
 private:
     ScopeKind kind;
@@ -87,8 +89,8 @@ public:
     void AddBaseScope(ContainerScope* baseScope);
     ContainerSymbol* GetContainerSymbol() const { return containerSymbol; }
     void SetContainerSymbol(ContainerSymbol* containerSymbol_) { containerSymbol = containerSymbol_; }
-    void AddUsingDeclaration(Symbol* usingDeclaration);
-    void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context);
+    void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context) override;
+    void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context) override;
     std::string FullName() const override;
     void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
     void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;

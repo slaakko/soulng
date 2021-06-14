@@ -4,10 +4,15 @@
 // =================================
 
 #include <sngcpp20/symbols/Namespace.hpp>
+#include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
+#include <sngcpp20/symbols/ScopeResolver.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
+#include <soulng/util/Unicode.hpp>
 
 namespace sngcpp::symbols {
+
+using namespace soulng::unicode;
 
 class NamespaceCreatorVisitor : public DefaultVisitor
 {
@@ -50,6 +55,106 @@ void BeginNamespace(Node* node, Context* context)
 void EndNamespace(int level, Context* context)
 {
     context->GetSymbolTable()->EndNamespace(level);
+}
+
+class UsingDirectiveAdder : public DefaultVisitor
+{
+public:
+    UsingDirectiveAdder(Context* context_);
+    void Visit(UsingDirectiveNode& node) override;
+    void Visit(QualifiedIdNode& node) override;
+    void Visit(IdentifierNode& node) override;
+private:
+    Context* context;
+    Scope* scope;
+};
+
+UsingDirectiveAdder::UsingDirectiveAdder(Context* context_) : context(context_), scope(context->GetSymbolTable()->CurrentScope())
+{
+}
+
+void UsingDirectiveAdder::Visit(UsingDirectiveNode& node)
+{
+    node.Id()->Accept(*this);
+}
+
+void UsingDirectiveAdder::Visit(QualifiedIdNode& node)
+{
+    scope = ResolveScope(node.Left(), context);
+    node.Right()->Accept(*this);
+}
+
+void UsingDirectiveAdder::Visit(IdentifierNode& node)
+{
+    Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
+    if (symbol->IsNamespaceSymbol())
+    {
+        NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(symbol);
+        context->GetSymbolTable()->CurrentScope()->AddUsingDirective(ns, node.GetSourcePos(), context);
+    }
+    else
+    {
+        throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not denote a namespace", node.GetSourcePos(), context);
+    }
+}
+
+void AddUsingDirective(Node* node, Context* context)
+{
+    UsingDirectiveAdder visitor(context);
+    node->Accept(visitor);
+}
+
+class UsingDeclarationAdder : public DefaultVisitor
+{
+public:
+    UsingDeclarationAdder(Context* context_);
+    void Visit(UsingDeclarationNode& node) override;
+    void Visit(QualifiedIdNode& node) override;
+    void Visit(IdentifierNode& node) override;
+private:
+    Context* context;
+    Scope* scope;
+};
+
+UsingDeclarationAdder::UsingDeclarationAdder(Context* context_) : context(context_), scope(context->GetSymbolTable()->CurrentScope())
+{
+}
+
+void UsingDeclarationAdder::Visit(UsingDeclarationNode& node)
+{
+    node.Declarators()->Accept(*this);
+}
+
+void UsingDeclarationAdder::Visit(QualifiedIdNode& node)
+{
+    scope = ResolveScope(node.Left(), context);
+    node.Right()->Accept(*this);
+}
+
+void UsingDeclarationAdder::Visit(IdentifierNode& node)
+{
+    Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->IsNamespaceSymbol())
+        {
+            throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' denotes a namespace", node.GetSourcePos(), context);
+        }
+        else
+        {
+            context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(symbol, node.GetSourcePos(), context);
+        }
+    }
+    else
+    {
+        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+    }
+}
+
+void AddUsingDeclaration(Node* node, Context* context)
+{
+    UsingDeclarationAdder visitor(context);
+    node->Accept(visitor);
 }
 
 } // sngcpp::symbols

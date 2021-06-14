@@ -3328,11 +3328,13 @@ soulng::parser::Match DeclarationParser::UsingDeclaration(CppLexer& lexer, sngcp
         }
         if (match.hit)
         {
+            Node * node = new UsingDeclarationNode(s, usng.release(), usingDeclarators.release(), semicolon.release());
+            sngcpp::symbols::AddUsingDeclaration(node, ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("UsingDeclaration"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new UsingDeclarationNode(s, usng.release(), usingDeclarators.release(), semicolon.release()));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;
@@ -4003,11 +4005,13 @@ soulng::parser::Match DeclarationParser::UsingDirective(CppLexer& lexer, sngcpp:
                                 semicolon.reset(static_cast<Node*>(match.value));
                                 if (match.hit)
                                 {
+                                    UsingDirectiveNode * node = new UsingDirectiveNode(s, usng.release(), nskw.release(), new QualifiedIdNode(nnsPos, nns.release(), nsName.release()), semicolon.release(), attributes.release());
+                                    sngcpp::symbols::AddUsingDirective(node, ctx);
                                     {
                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("UsingDirective"));
                                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                        return soulng::parser::Match(true, new UsingDirectiveNode(s, usng.release(), nskw.release(), new QualifiedIdNode(nnsPos, nns.release(), nsName.release()), semicolon.release(), attributes.release()));
+                                        return soulng::parser::Match(true, node);
                                     }
                                 }
                                 *parentMatch17 = match;
@@ -4043,11 +4047,13 @@ soulng::parser::Match DeclarationParser::UsingDirective(CppLexer& lexer, sngcpp:
                                         semicolon2.reset(static_cast<Node*>(match.value));
                                         if (match.hit)
                                         {
+                                            UsingDirectiveNode * node = new UsingDirectiveNode(s, usng.release(), nskw.release(), nsName2.release(), semicolon2.release(), attributes.release());
+                                            sngcpp::symbols::AddUsingDirective(node, ctx);
                                             {
                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("UsingDirective"));
                                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                return soulng::parser::Match(true, new UsingDirectiveNode(s, usng.release(), nskw.release(), nsName2.release(), semicolon2.release(), attributes.release()));
+                                                return soulng::parser::Match(true, node);
                                             }
                                         }
                                         *parentMatch21 = match;

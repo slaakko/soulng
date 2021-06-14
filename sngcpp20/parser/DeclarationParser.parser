@@ -293,7 +293,9 @@ parser api(PARSER_API) DeclarationParser
             Using:usng{ s = sourcePos; } UsingDeclaratorList(ctx):usingDeclarators Semicolon:semicolon
         )
         {
-            return new UsingDeclarationNode(s, usng, usingDeclarators, semicolon);
+            Node* node = new UsingDeclarationNode(s, usng, usingDeclarators, semicolon);
+            sngcpp::symbols::AddUsingDeclaration(node, ctx);
+            return node;
         }
         ;
 
@@ -340,11 +342,15 @@ parser api(PARSER_API) DeclarationParser
             Namespace:nskw
             (   NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } NamespaceName(ctx):nsName Semicolon:semicolon
                 {
-                    return new UsingDirectiveNode(s, usng, nskw, new QualifiedIdNode(nnsPos, nns, nsName), semicolon, attributes);
+                    UsingDirectiveNode* node = new UsingDirectiveNode(s, usng, nskw, new QualifiedIdNode(nnsPos, nns, nsName), semicolon, attributes);
+                    sngcpp::symbols::AddUsingDirective(node, ctx);
+                    return node;
                 }
             |   NamespaceName(ctx):nsName2 Semicolon:semicolon2
                 {
-                    return new UsingDirectiveNode(s, usng, nskw, nsName2, semicolon2, attributes);
+                    UsingDirectiveNode* node = new UsingDirectiveNode(s, usng, nskw, nsName2, semicolon2, attributes);
+                    sngcpp::symbols::AddUsingDirective(node, ctx);
+                    return node;
                 }
             )
         ;

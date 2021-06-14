@@ -15,6 +15,8 @@ using namespace sngcpp::ast;
 
 SYMBOLS_API void BeginNamespace(Node* node, Context* context);
 SYMBOLS_API void EndNamespace(int level, Context* context);
+SYMBOLS_API void AddUsingDirective(Node* node, Context* context);
+SYMBOLS_API void AddUsingDeclaration(Node* node, Context* context);
 
 } // sngcpp::symbols
 

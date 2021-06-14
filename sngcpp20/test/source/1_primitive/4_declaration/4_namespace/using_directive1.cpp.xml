@@ -1,0 +1,29 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <namespaceDefinitionNode pos="(1,1)" type="compound">
+   <namespaceNode pos="(1,1)" type="single">
+    <keyword pos="(1,1)" value="namespace"/>
+   </namespaceNode>
+   <identifierNode pos="(1,11)" type="compound">
+    <identifier pos="(1,11)" value="foo"/>
+   </identifierNode>
+   <operator pos="(2,1)" value="{"/>
+   <namespaceBodyNode pos="()" type="compound"/>
+   <operator pos="(3,1)" value="}"/>
+  </namespaceDefinitionNode>
+  <usingDirectiveNode pos="(5,1)" type="compound">
+   <usingNode pos="(5,1)" type="single">
+    <keyword pos="(5,1)" value="using"/>
+   </usingNode>
+   <namespaceNode pos="(5,7)" type="single">
+    <keyword pos="(5,7)" value="namespace"/>
+   </namespaceNode>
+   <identifierNode pos="(5,17)" type="compound">
+    <identifier pos="(5,17)" value="foo"/>
+   </identifierNode>
+   <semicolonNode pos="(5,20)" type="single">
+    <operator pos="(5,20)" value=";"/>
+   </semicolonNode>
+  </usingDirectiveNode>
+ </declarationSequenceNode>
+</translationUnitNode>

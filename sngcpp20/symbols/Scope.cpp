@@ -120,6 +120,16 @@ void Scope::RemoveSymbol(Symbol* symbol)
     throw std::runtime_error("could not remove symbol");
 }
 
+void Scope::AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context)
+{
+    throw Exception("cannot add using declaration '" + ToUtf8(usingDeclaration->FullName()) + "' to " + ScopeKindStr(kind) + " '" + FullName() + "'", sourcePos, context);
+}
+
+void Scope::AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context)
+{
+    throw Exception("cannot add using directive '" + ToUtf8(ns->FullName()) + "' to " + ScopeKindStr(kind) + " '" + FullName() + "'", sourcePos, context);
+}
+
 ContainerScope::ContainerScope() : Scope(), parentScope(nullptr), usingDeclarationScope(nullptr), containerSymbol(nullptr)
 {
 }
@@ -177,9 +187,8 @@ void ContainerScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, s
     }
 }
 
-void ContainerScope::AddUsingDeclaration(Symbol* usingDeclaration)
+void ContainerScope::AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context)
 {
-    // todo: check rules for adding a using declaration to various kind of scopes
     if (!usingDeclarationScope)
     {
         usingDeclarationScope = new UsingDeclarationScope(this);
