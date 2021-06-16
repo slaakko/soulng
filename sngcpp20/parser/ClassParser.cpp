@@ -2350,12 +2350,11 @@ soulng::parser::Match ClassParser::MemberDeclaration(CppLexer& lexer, sngcpp::sy
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 37);
     SourcePos s = SourcePos();
-    std::unique_ptr<Node> functionDefinition = std::unique_ptr<Node>();
     std::unique_ptr<Node> attributes;
     std::unique_ptr<Node> declSpecifiers;
     std::unique_ptr<Node> declarators;
     std::unique_ptr<Node> semicolon;
-    std::unique_ptr<Node> fnDef;
+    std::unique_ptr<Node> functionDefinition;
     std::unique_ptr<Node> usingDeclaration;
     std::unique_ptr<Node> usingEnumDeclaration;
     std::unique_ptr<Node> staticAssertDeclaration;
@@ -2587,10 +2586,9 @@ soulng::parser::Match ClassParser::MemberDeclaration(CppLexer& lexer, sngcpp::sy
                                                     {
                                                         int64_t pos = lexer.GetPos();
                                                         soulng::parser::Match match = FunctionParser::FunctionDefinition(lexer, ctx);
-                                                        fnDef.reset(static_cast<Node*>(match.value));
+                                                        functionDefinition.reset(static_cast<Node*>(match.value));
                                                         if (match.hit)
                                                         {
-                                                            functionDefinition.reset(fnDef.release());
                                                             {
                                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("MemberDeclaration"));

@@ -34,7 +34,7 @@ enum class DeclarationKind : int
     none, 
     classDeclaration = 1 << 0, 
     enumDeclaration = 1 << 1,
-    typedefDeclararation = 1 << 2,
+    aliasDeclararation = 1 << 2,
     objectDeclaration = 1 << 3, 
     functionDeclaration = 1 << 4, 
 };
@@ -88,9 +88,12 @@ public:
     void Visit(MemberDeclarationNode& node) override;
 
     void Visit(TypeSpecifierSequenceNode& node) override;
+    void Visit(DefiningTypeIdNode& node) override;
 
     void Visit(ClassSpecifierNode& node);
     void Visit(EnumSpecifierNode& node);
+
+    void Visit(AliasDeclarationNode& node);
 
     void Visit(StaticNode& node) override;
     void Visit(ThreadLocalNode& node) override;
@@ -222,6 +225,14 @@ void DeclarationProcessorVisitor::Visit(TypeSpecifierSequenceNode& node)
     ResolveBaseType(&node);
 }
 
+void DeclarationProcessorVisitor::Visit(DefiningTypeIdNode& node)
+{
+    node.DefiningTypeSpecifiers()->Accept(*this);
+    ResolveBaseType(&node);
+    type = baseTypeSymbol;
+    node.AbstractDeclarator()->Accept(*this);
+}
+
 void DeclarationProcessorVisitor::Visit(ClassSpecifierNode& node)
 {
     kind = kind | DeclarationKind::classDeclaration;
@@ -242,6 +253,19 @@ void DeclarationProcessorVisitor::Visit(EnumSpecifierNode& node)
     }
 }
 
+void DeclarationProcessorVisitor::Visit(AliasDeclarationNode& node)
+{
+    kind = kind | DeclarationKind::aliasDeclararation;
+    if (!this->node)
+    {
+        this->node = &node;
+    }
+    stage = Stage::processDeclarators;
+    node.Identifier()->Accept(*this);
+    stage = Stage::processDeclSpecifiers;;
+    node.DefiningTypeId()->Accept(*this);
+}
+
 void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
 {
     if (!node)
@@ -250,7 +274,6 @@ void DeclarationProcessorVisitor::ProcessDeclSpecifiers(Node* declSpecifiers)
     }
     stage = Stage::processDeclSpecifiers;
     declSpecifiers->Accept(*this);
-    ResolveBaseType(declSpecifiers);
 }
 
 void DeclarationProcessorVisitor::ResolveBaseType(Node* node)
@@ -375,7 +398,7 @@ void DeclarationProcessorVisitor::Visit(TypedefNode& node)
     CheckDuplicateSpecifier(flags, DeclarationFlags::typedefFlag, "typedef", node.GetSourcePos(), context);
     flags = flags | DeclarationFlags::typedefFlag;
     this->node = &node;
-    kind = kind | DeclarationKind::typedefDeclararation;
+    kind = kind | DeclarationKind::aliasDeclararation;
 }
 
 void DeclarationProcessorVisitor::Visit(ConstExprNode& node)
@@ -533,7 +556,10 @@ void DeclarationProcessorVisitor::Visit(QualifiedIdNode& node)
 
 void DeclarationProcessorVisitor::Visit(AbstractDeclaratorNode& node)
 {
-    idNode = &node;
+    if (!idNode)
+    {
+        idNode = &node;
+    }
 }
 
 void DeclarationProcessorVisitor::Visit(InitDeclaratorListNode& node)
@@ -543,7 +569,6 @@ void DeclarationProcessorVisitor::Visit(InitDeclaratorListNode& node)
         type = baseTypeSymbol;
         idNode = nullptr;
         scope = context->GetSymbolTable()->CurrentScope();
-        kind = DeclarationKind::none;
         item->Accept(*this);
         declarations.push_back(GetDeclaration());
     }
@@ -565,7 +590,6 @@ void DeclarationProcessorVisitor::Visit(MemberDeclaratorListNode& node)
         type = baseTypeSymbol;
         idNode = nullptr;
         scope = context->GetSymbolTable()->CurrentScope();
-        kind = DeclarationKind::none;
         item->Accept(*this);
         declarations.push_back(GetDeclaration());
     }
@@ -685,14 +709,14 @@ void ProcessDeclaration(Declaration& declaration, Context* context)
             ParseInlineMemberFunctions(classSpecifierNode, context);
         }
     }
-    if ((declaration.kind & DeclarationKind::typedefDeclararation) != DeclarationKind::none)
+    if ((declaration.kind & DeclarationKind::aliasDeclararation) != DeclarationKind::none)
     {
         if (!declaration.idNode)
         {
             throw Exception("no declarators specified for a typedef", declaration.node->GetSourcePos(), context);
         }
-        Symbol* typedefSymbol = new AliasTypeSymbol(declaration.idNode->Str(), declaration.type);
-        declaration.scope->AddSymbol(typedefSymbol, declaration.node->GetSourcePos(), context);
+        Symbol* aliasTypeSymbol = new AliasTypeSymbol(declaration.idNode->Str(), declaration.type);
+        declaration.scope->AddSymbol(aliasTypeSymbol, declaration.node->GetSourcePos(), context);
     }
     if ((declaration.kind & DeclarationKind::objectDeclaration) != DeclarationKind::none)
     {
@@ -794,6 +818,8 @@ void ProcessAliasDeclaration(Node* usingNode, Context* context)
 {
     DeclarationProcessorVisitor visitor(context);
     usingNode->Accept(visitor);
+    Declaration declaration = visitor.GetDeclaration();
+    ProcessDeclaration(declaration, context);
 }
 
 ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Context* context)

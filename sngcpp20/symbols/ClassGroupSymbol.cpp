@@ -28,6 +28,18 @@ void ClassGroupSymbol::AddClass(ClassTypeSymbol* classTypeSymbol)
     classes.push_back(classTypeSymbol);
 }
 
+ClassTypeSymbol* ClassGroupSymbol::GetClass(int templateArity) const
+{
+    for (ClassTypeSymbol* classTypeSymbol : classes)
+    {
+        if (classTypeSymbol->TemplateArity() == templateArity)
+        {
+            return classTypeSymbol;
+        }
+    }
+    return nullptr;
+}
+
 Scope* ClassGroupSymbol::GetScope() 
 {
     if (classes.size() == 1)

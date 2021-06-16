@@ -186,6 +186,20 @@ void SymbolTable::EndClass()
 
 void SymbolTable::BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* enumBaseType, Context* context)
 {
+    Symbol* symbol = currentScope->Lookup(idNode->Str(), ScopeLookup::thisScope, idNode->GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->IsEnumTypeSymbol())
+        {
+            EnumTypeSymbol* enumTypeSymbol = static_cast<EnumTypeSymbol*>(symbol);
+            BeginScope(*enumTypeSymbol->GetScope());
+            return;
+        }
+        else
+        {
+            throw Exception("name of enumerated type '" + ToUtf8(idNode->Str()) + " conflicts with earlier declaration", idNode->GetSourcePos(), context);
+        }
+    }
     EnumTypeSymbol* enumTypeSymbol = new EnumTypeSymbol(idNode->Str(), enumBaseType);
     enumTypeSymbol->SetIdNode(idNode);
     currentScope->AddSymbol(enumTypeSymbol, idNode->GetSourcePos(), context);

@@ -1439,11 +1439,14 @@ soulng::parser::Match EnumParser::OpaqueEnumDeclaration(CppLexer& lexer, sngcpp:
         }
         if (match.hit)
         {
+            Node * node = new OpaqueEnumDeclarationNode(s, enumKey.release(), enumHeadName.release(), enumBase.release(), attributes.release(), semicolon.release());
+            sngcpp::symbols::BeginEnumType(node, ctx);
+            sngcpp::symbols::EndEnumType(ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("OpaqueEnumDeclaration"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new OpaqueEnumDeclarationNode(s, enumKey.release(), enumHeadName.release(), enumBase.release(), attributes.release(), semicolon.release()));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;

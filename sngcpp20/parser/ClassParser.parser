@@ -226,7 +226,7 @@ parser api(PARSER_API) ClassParser
         )+
         ;
 
-    MemberDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> functionDefinition) : Node*
+    MemberDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             (DeclSpecifierSeq(ctx):declSpecifiers{ if (!s.IsValid()) s = sourcePos; })? 
             (MemberDeclaratorList(ctx):declarators{ if (!s.IsValid()) s = sourcePos; })? 
@@ -236,11 +236,7 @@ parser api(PARSER_API) ClassParser
                 sngcpp::symbols::ProcessMemberDeclaration(memberDeclarationNode, ctx);
                 return memberDeclarationNode;
             }
-        |   FunctionDefinition(ctx):fnDef
-            { 
-                functionDefinition.reset(fnDef); 
-                return functionDefinition.release();
-            }
+        |   FunctionDefinition(ctx):functionDefinition{ return functionDefinition; }
         |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
         |   UsingEnumDeclaration(ctx):usingEnumDeclaration{ return usingEnumDeclaration; }
         |   StaticAssertDeclaration(ctx):staticAssertDeclaration{ return staticAssertDeclaration; }

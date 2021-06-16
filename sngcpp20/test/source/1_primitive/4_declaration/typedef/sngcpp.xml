@@ -1,7 +1,0 @@
-<sngcpp>
-    <project name="typedef">
-        <files>
-            <file name="typedef.cpp"/>
-        </files>
-    </project>
-</sngcpp>

@@ -1,0 +1,15 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <opaqueEnumDeclarationNode pos="(1,1)" type="compound">
+   <enumNode pos="(1,1)" type="single">
+    <keyword pos="(1,1)" value="enum"/>
+   </enumNode>
+   <identifierNode pos="(1,6)" type="compound">
+    <identifier pos="(1,6)" value="Foo"/>
+   </identifierNode>
+   <semicolonNode pos="(1,9)" type="single">
+    <operator pos="(1,9)" value=";"/>
+   </semicolonNode>
+  </opaqueEnumDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

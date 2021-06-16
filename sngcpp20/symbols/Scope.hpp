@@ -70,6 +70,7 @@ public:
     virtual void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
     virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context);
     virtual void RemoveSymbol(Symbol* symbol);
+    virtual void AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context);
     virtual void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context);
     virtual void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context);
     virtual bool IsContainerScope() const { return false; }
@@ -86,7 +87,7 @@ public:
     ContainerScope& operator=(const ContainerScope&) = delete;
     ContainerScope* ParentScope() const { return parentScope; }
     void SetParentScope(ContainerScope* parentScope_) { parentScope = parentScope_; }
-    void AddBaseScope(ContainerScope* baseScope);
+    void AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context) override;
     ContainerSymbol* GetContainerSymbol() const { return containerSymbol; }
     void SetContainerSymbol(ContainerSymbol* containerSymbol_) { containerSymbol = containerSymbol_; }
     void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context) override;
@@ -98,7 +99,7 @@ public:
     bool IsContainerScope() const override { return true; }
 private:
     ContainerScope* parentScope;
-    std::vector<ContainerScope*> baseScopes;
+    std::vector<Scope*> baseScopes;
     Scope* usingDeclarationScope;
     ContainerSymbol* containerSymbol;
     std::vector<UsingDirectiveScope*> usingDirectiveScopes;

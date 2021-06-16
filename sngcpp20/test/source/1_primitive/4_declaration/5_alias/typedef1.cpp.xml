@@ -1,0 +1,30 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="3" pos="(1,1)" type="sequence">
+    <typedefNode pos="(1,1)" type="single">
+     <keyword pos="(1,1)" value="typedef"/>
+    </typedefNode>
+    <constNode pos="(1,9)" type="single">
+     <keyword pos="(1,9)" value="const"/>
+    </constNode>
+    <charNode pos="(1,15)" type="single">
+     <keyword pos="(1,15)" value="char"/>
+    </charNode>
+   </declSpecifierSequenceNode>
+   <initDeclaratorListNode count="1" pos="(1,19)" type="list">
+    <ptrDeclaratorNode count="2" pos="(1,19)" type="sequence">
+     <ptrNode pos="(1,19)" type="single">
+      <operator pos="(1,19)" value="*"/>
+     </ptrNode>
+     <identifierNode pos="(1,21)" type="compound">
+      <identifier pos="(1,21)" value="CharPtr"/>
+     </identifierNode>
+    </ptrDeclaratorNode>
+   </initDeclaratorListNode>
+   <semicolonNode pos="(1,28)" type="single">
+    <operator pos="(1,28)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

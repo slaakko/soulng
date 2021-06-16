@@ -17,10 +17,12 @@ class SYMBOLS_API ClassGroupSymbol : public Symbol
 public:
     ClassGroupSymbol(const std::u32string& name_);
     bool IsClassGroupSymbol() const override { return true; }
+    bool IsTypeSymbol() const override { return true; }
     std::string SymbolKindStr() const override { return "class group symbol"; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     Scope* GetScope() override;
     void AddClass(ClassTypeSymbol* classTypeSymbol);
+    ClassTypeSymbol* GetClass(int templateArity) const;
 private:
     std::vector<ClassTypeSymbol*> classes;
 };

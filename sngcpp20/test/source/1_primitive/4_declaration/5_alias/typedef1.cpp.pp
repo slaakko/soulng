@@ -1,0 +1,2 @@
+typedef const char* CharPtr;
+

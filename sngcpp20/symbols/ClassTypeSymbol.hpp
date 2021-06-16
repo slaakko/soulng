@@ -23,8 +23,13 @@ public:
     void SetIdNode(Node* idNode_) { idNode = idNode_; }
     Node* IdNode() const { return idNode; }
     int Level() const;
+    int TemplateArity() const { return templateArity; }
+    const std::vector<ClassTypeSymbol*>& BaseClasses() const { return baseClasses; }
+    void AddBaseClass(ClassTypeSymbol* baseClass, const SourcePos& sourcePos, Context* context);
 private:
     Node* idNode;
+    int templateArity;
+    std::vector<ClassTypeSymbol*> baseClasses;
 };
 
 } // sngcpp::symbols

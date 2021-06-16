@@ -157,4 +157,57 @@ void AddUsingDeclaration(Node* node, Context* context)
     node->Accept(visitor);
 }
 
+class UsingEnumDeclarationAdder : public DefaultVisitor
+{
+public:
+    UsingEnumDeclarationAdder(Context* context_);
+    void Visit(UsingEnumDeclarationNode& node) override;
+    void Visit(QualifiedIdNode& node) override;
+    void Visit(IdentifierNode& node) override;
+private:
+    Context* context;
+    Scope* scope;
+};
+
+UsingEnumDeclarationAdder::UsingEnumDeclarationAdder(Context* context_) : context(context_), scope(context->GetSymbolTable()->CurrentScope())
+{
+}
+
+void UsingEnumDeclarationAdder::Visit(QualifiedIdNode& node)
+{
+    scope = ResolveScope(node.Left(), context);
+    node.Right()->Accept(*this);
+}
+
+void UsingEnumDeclarationAdder::Visit(UsingEnumDeclarationNode& node)
+{
+    node.ElaboratedEnumSpecifier()->Accept(*this);
+}
+
+void UsingEnumDeclarationAdder::Visit(IdentifierNode& node)
+{
+    Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->IsEnumTypeSymbol())
+        {
+            context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(symbol, node.GetSourcePos(), context);
+        }
+        else
+        {
+            throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' does not denote an enumerated type", node.GetSourcePos(), context);
+        }
+    }
+    else
+    {
+        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+    }
+}
+
+void AddUsingEnumDeclaration(Node* node, Context* context)
+{
+    UsingEnumDeclarationAdder visitor(context);
+    node->Accept(visitor);
+}
+
 } // sngcpp::symbols

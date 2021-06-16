@@ -991,9 +991,9 @@ void DefaultVisitor::Visit(EnumeratorDefinitionNode& node)
 {
     BeginVisit(node);
     node.Enumerator()->Accept(*this);
-    VisitOperator("=", node.AssignPos());
     if (node.Value())
     {
+        VisitOperator("=", node.AssignPos());
         node.Value()->Accept(*this);
     }
     EndVisit(node);

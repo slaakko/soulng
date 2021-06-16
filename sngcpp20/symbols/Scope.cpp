@@ -96,7 +96,7 @@ Symbol* Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, const S
 
 void Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
 {
-    if ((scopeLookup & ScopeLookup::thisScope) != ScopeLookup::none)
+    if ((scopeLookup & ScopeLookup::thisAndBaseScopes) != ScopeLookup::none)
     {
         auto it = symbolMap.find(id);
         if (it != symbolMap.cend())
@@ -120,6 +120,11 @@ void Scope::RemoveSymbol(Symbol* symbol)
     throw std::runtime_error("could not remove symbol");
 }
 
+void Scope::AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context)
+{
+    throw Exception("cannot base class scope to " + ScopeKindStr(kind) + " '" + FullName() + "'", sourcePos, context);
+}
+
 void Scope::AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context)
 {
     throw Exception("cannot add using declaration '" + ToUtf8(usingDeclaration->FullName()) + "' to " + ScopeKindStr(kind) + " '" + FullName() + "'", sourcePos, context);
@@ -134,12 +139,15 @@ ContainerScope::ContainerScope() : Scope(), parentScope(nullptr), usingDeclarati
 {
 }
 
-void ContainerScope::AddBaseScope(ContainerScope* baseScope)
+void ContainerScope::AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context)
 {
-    if (std::find(baseScopes.begin(), baseScopes.end(), baseScope) == baseScopes.end())
+    if (baseScope->IsContainerScope())
     {
-        baseScopes.push_back(baseScope);
+        ContainerScope* containerScope = static_cast<ContainerScope*>(baseScope);
+        ContainerSymbol* baseClassSymbol = containerScope->GetContainerSymbol();
+        Install(baseClassSymbol);
     }
+    baseScopes.push_back(baseScope);
 }
 
 std::string ContainerScope::FullName() const
@@ -168,7 +176,7 @@ void ContainerScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, s
     {
         if (symbols.empty())
         {
-            for (ContainerScope* baseScope : baseScopes)
+            for (Scope* baseScope : baseScopes)
             {
                 baseScope->Lookup(id, scopeLookup, symbols);
             }

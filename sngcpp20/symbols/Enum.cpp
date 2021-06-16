@@ -27,6 +27,7 @@ public:
     };
     EnumCreatorVisitor(Stage stage_, Context* context_);
     void Visit(EnumSpecifierNode& node) override;
+    void Visit(OpaqueEnumDeclarationNode& node) override;
     void Visit(EnumHeadNode& node) override;
     void Visit(EnumBaseNode& node) override;
     void Visit(IdentifierNode& node) override;
@@ -69,6 +70,17 @@ void EnumCreatorVisitor::Visit(EnumSpecifierNode& node)
         }
         VisitListContent(node);
     }
+}
+
+void EnumCreatorVisitor::Visit(OpaqueEnumDeclarationNode& node)
+{
+    node.EnumHeadName()->Accept(*this);
+    enumBaseType = GetFundamentalType(DeclarationFlags::intFlag, node.GetSourcePos(), context);
+    if (node.EnumBase())
+    {
+        node.EnumBase()->Accept(*this);
+    }
+    context->GetSymbolTable()->BeginEnumType(nullptr, idNode, enumBaseType, context);
 }
 
 void EnumCreatorVisitor::Visit(EnumHeadNode& node)

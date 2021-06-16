@@ -97,7 +97,8 @@ parser api(PARSER_API) DeclarationParser
         ;
 
     BlockDeclaration(sngcpp::symbols::Context* ctx) : Node*
-        ::= SimpleDeclaration(ctx):simpleDeclation{ return simpleDeclation; }
+        ::= OpaqueEnumDeclaration(ctx):opaqueEnumDeclaration{ return opaqueEnumDeclaration; }
+        |   SimpleDeclaration(ctx):simpleDeclation{ return simpleDeclation; }
         |   AsmDeclaration(ctx):asmDeclaration{ return asmDeclaration; }
         |   NamespaceAliasDefinition(ctx):namespaceAliasDefinition{ return namespaceAliasDefinition; }
         |   UsingDeclaration(ctx):usingDeclaration{ return usingDeclaration; }
@@ -105,7 +106,6 @@ parser api(PARSER_API) DeclarationParser
         |   UsingDirective(ctx):usingDirective{ return usingDirective; }
         |   StaticAssertDeclaration(ctx):staticAssertDeclaration{ return staticAssertDeclaration; }
         |   AliasDeclaration(ctx):aliasDeclaration{ return aliasDeclaration; }
-        |   OpaqueEnumDeclaration(ctx):opaqueEnumDeclaration{ return opaqueEnumDeclaration; }
         ;
 
     SimpleDeclaration(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lbPos, var SourcePos rbPos) : Node*
@@ -332,7 +332,9 @@ parser api(PARSER_API) DeclarationParser
             Using:usng{ s = sourcePos; } ElaboratedEnumSpecifier(ctx):ees Semicolon:semicolon
         )
         {
-            return new UsingEnumDeclarationNode(s, usng, ees, semicolon);
+            Node* node = new UsingEnumDeclarationNode(s, usng, ees, semicolon);
+            sngcpp::symbols::AddUsingEnumDeclaration(node, ctx);
+            return node;
         }
         ;
 

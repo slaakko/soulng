@@ -1,0 +1,55 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <simpleDeclarationNode pos="(1,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(1,1)" type="sequence">
+    <enumSpecifierNode count="3" pos="(1,1)" type="list">
+     <enumHeadNode pos="(1,1)" type="compound">
+      <enumClassNode pos="(1,1)" type="compound">
+       <keyword pos="(1,1)" value="enum"/>
+       <keyword pos="(1,6)" value="class"/>
+      </enumClassNode>
+      <identifierNode pos="(1,12)" type="compound">
+       <identifier pos="(1,12)" value="Fruit"/>
+      </identifierNode>
+     </enumHeadNode>
+     <operator pos="(2,1)" value="{"/>
+     <enumeratorDefinitionNode pos="(3,5)" type="compound">
+      <enumeratorNode pos="(3,5)" type="compound">
+       <identifierNode pos="(3,5)" type="compound">
+        <identifier pos="(3,5)" value="orange"/>
+       </identifierNode>
+      </enumeratorNode>
+     </enumeratorDefinitionNode>
+     <commaNode pos="(3,11)" type="single">
+      <operator pos="(3,11)" value=","/>
+     </commaNode>
+     <enumeratorDefinitionNode pos="(3,13)" type="compound">
+      <enumeratorNode pos="(3,13)" type="compound">
+       <identifierNode pos="(3,13)" type="compound">
+        <identifier pos="(3,13)" value="apple"/>
+       </identifierNode>
+      </enumeratorNode>
+     </enumeratorDefinitionNode>
+     <operator pos="(4,1)" value="}"/>
+    </enumSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(4,2)" type="single">
+    <operator pos="(4,2)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+  <usingEnumDeclarationNode pos="(6,1)" type="compound">
+   <usingNode pos="(6,1)" type="single">
+    <keyword pos="(6,1)" value="using"/>
+   </usingNode>
+   <elaboratedEnumSpecifierNode count="1" pos="(6,7)" type="unary">
+    <keyword pos="(6,7)" value="enum"/>
+    <identifierNode pos="(6,12)" type="compound">
+     <identifier pos="(6,12)" value="Fruit"/>
+    </identifierNode>
+   </elaboratedEnumSpecifierNode>
+   <semicolonNode pos="(6,17)" type="single">
+    <operator pos="(6,17)" value=";"/>
+   </semicolonNode>
+  </usingEnumDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

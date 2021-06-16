@@ -603,6 +603,7 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
     soulng::lexer::RuleGuard ruleGuard(lexer, 63);
+    std::unique_ptr<Node> opaqueEnumDeclaration;
     std::unique_ptr<Node> simpleDeclation;
     std::unique_ptr<Node> asmDeclaration;
     std::unique_ptr<Node> namespaceAliasDefinition;
@@ -611,7 +612,6 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
     std::unique_ptr<Node> usingDirective;
     std::unique_ptr<Node> staticAssertDeclaration;
     std::unique_ptr<Node> aliasDeclaration;
-    std::unique_ptr<Node> opaqueEnumDeclaration;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -648,15 +648,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                     soulng::parser::Match* parentMatch8 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
-                                        soulng::parser::Match match = DeclarationParser::SimpleDeclaration(lexer, ctx);
-                                        simpleDeclation.reset(static_cast<Node*>(match.value));
+                                        soulng::parser::Match match = EnumParser::OpaqueEnumDeclaration(lexer, ctx);
+                                        opaqueEnumDeclaration.reset(static_cast<Node*>(match.value));
                                         if (match.hit)
                                         {
                                             {
                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                return soulng::parser::Match(true, simpleDeclation.release());
+                                                return soulng::parser::Match(true, opaqueEnumDeclaration.release());
                                             }
                                         }
                                         *parentMatch8 = match;
@@ -672,15 +672,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                             soulng::parser::Match* parentMatch10 = &match;
                                             {
                                                 int64_t pos = lexer.GetPos();
-                                                soulng::parser::Match match = DeclarationParser::AsmDeclaration(lexer, ctx);
-                                                asmDeclaration.reset(static_cast<Node*>(match.value));
+                                                soulng::parser::Match match = DeclarationParser::SimpleDeclaration(lexer, ctx);
+                                                simpleDeclation.reset(static_cast<Node*>(match.value));
                                                 if (match.hit)
                                                 {
                                                     {
                                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                        return soulng::parser::Match(true, asmDeclaration.release());
+                                                        return soulng::parser::Match(true, simpleDeclation.release());
                                                     }
                                                 }
                                                 *parentMatch10 = match;
@@ -701,15 +701,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                         soulng::parser::Match* parentMatch12 = &match;
                                         {
                                             int64_t pos = lexer.GetPos();
-                                            soulng::parser::Match match = DeclarationParser::NamespaceAliasDefinition(lexer, ctx);
-                                            namespaceAliasDefinition.reset(static_cast<Node*>(match.value));
+                                            soulng::parser::Match match = DeclarationParser::AsmDeclaration(lexer, ctx);
+                                            asmDeclaration.reset(static_cast<Node*>(match.value));
                                             if (match.hit)
                                             {
                                                 {
                                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                    return soulng::parser::Match(true, namespaceAliasDefinition.release());
+                                                    return soulng::parser::Match(true, asmDeclaration.release());
                                                 }
                                             }
                                             *parentMatch12 = match;
@@ -730,15 +730,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                     soulng::parser::Match* parentMatch14 = &match;
                                     {
                                         int64_t pos = lexer.GetPos();
-                                        soulng::parser::Match match = DeclarationParser::UsingDeclaration(lexer, ctx);
-                                        usingDeclaration.reset(static_cast<Node*>(match.value));
+                                        soulng::parser::Match match = DeclarationParser::NamespaceAliasDefinition(lexer, ctx);
+                                        namespaceAliasDefinition.reset(static_cast<Node*>(match.value));
                                         if (match.hit)
                                         {
                                             {
                                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                                return soulng::parser::Match(true, usingDeclaration.release());
+                                                return soulng::parser::Match(true, namespaceAliasDefinition.release());
                                             }
                                         }
                                         *parentMatch14 = match;
@@ -759,15 +759,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                                 soulng::parser::Match* parentMatch16 = &match;
                                 {
                                     int64_t pos = lexer.GetPos();
-                                    soulng::parser::Match match = DeclarationParser::UsingEnumDeclaration(lexer, ctx);
-                                    usingEnumDeclaration.reset(static_cast<Node*>(match.value));
+                                    soulng::parser::Match match = DeclarationParser::UsingDeclaration(lexer, ctx);
+                                    usingDeclaration.reset(static_cast<Node*>(match.value));
                                     if (match.hit)
                                     {
                                         {
                                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                            return soulng::parser::Match(true, usingEnumDeclaration.release());
+                                            return soulng::parser::Match(true, usingDeclaration.release());
                                         }
                                     }
                                     *parentMatch16 = match;
@@ -788,15 +788,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                             soulng::parser::Match* parentMatch18 = &match;
                             {
                                 int64_t pos = lexer.GetPos();
-                                soulng::parser::Match match = DeclarationParser::UsingDirective(lexer, ctx);
-                                usingDirective.reset(static_cast<Node*>(match.value));
+                                soulng::parser::Match match = DeclarationParser::UsingEnumDeclaration(lexer, ctx);
+                                usingEnumDeclaration.reset(static_cast<Node*>(match.value));
                                 if (match.hit)
                                 {
                                     {
                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                        return soulng::parser::Match(true, usingDirective.release());
+                                        return soulng::parser::Match(true, usingEnumDeclaration.release());
                                     }
                                 }
                                 *parentMatch18 = match;
@@ -817,15 +817,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                         soulng::parser::Match* parentMatch20 = &match;
                         {
                             int64_t pos = lexer.GetPos();
-                            soulng::parser::Match match = DeclarationParser::StaticAssertDeclaration(lexer, ctx);
-                            staticAssertDeclaration.reset(static_cast<Node*>(match.value));
+                            soulng::parser::Match match = DeclarationParser::UsingDirective(lexer, ctx);
+                            usingDirective.reset(static_cast<Node*>(match.value));
                             if (match.hit)
                             {
                                 {
                                     #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                     if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                    return soulng::parser::Match(true, staticAssertDeclaration.release());
+                                    return soulng::parser::Match(true, usingDirective.release());
                                 }
                             }
                             *parentMatch20 = match;
@@ -846,15 +846,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                     soulng::parser::Match* parentMatch22 = &match;
                     {
                         int64_t pos = lexer.GetPos();
-                        soulng::parser::Match match = DeclarationParser::AliasDeclaration(lexer, ctx);
-                        aliasDeclaration.reset(static_cast<Node*>(match.value));
+                        soulng::parser::Match match = DeclarationParser::StaticAssertDeclaration(lexer, ctx);
+                        staticAssertDeclaration.reset(static_cast<Node*>(match.value));
                         if (match.hit)
                         {
                             {
                                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                return soulng::parser::Match(true, aliasDeclaration.release());
+                                return soulng::parser::Match(true, staticAssertDeclaration.release());
                             }
                         }
                         *parentMatch22 = match;
@@ -875,15 +875,15 @@ soulng::parser::Match DeclarationParser::BlockDeclaration(CppLexer& lexer, sngcp
                 soulng::parser::Match* parentMatch24 = &match;
                 {
                     int64_t pos = lexer.GetPos();
-                    soulng::parser::Match match = EnumParser::OpaqueEnumDeclaration(lexer, ctx);
-                    opaqueEnumDeclaration.reset(static_cast<Node*>(match.value));
+                    soulng::parser::Match match = DeclarationParser::AliasDeclaration(lexer, ctx);
+                    aliasDeclaration.reset(static_cast<Node*>(match.value));
                     if (match.hit)
                     {
                         {
                             #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                             if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("BlockDeclaration"));
                             #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                            return soulng::parser::Match(true, opaqueEnumDeclaration.release());
+                            return soulng::parser::Match(true, aliasDeclaration.release());
                         }
                     }
                     *parentMatch24 = match;
@@ -3822,11 +3822,13 @@ soulng::parser::Match DeclarationParser::UsingEnumDeclaration(CppLexer& lexer, s
         }
         if (match.hit)
         {
+            Node * node = new UsingEnumDeclarationNode(s, usng.release(), ees.release(), semicolon.release());
+            sngcpp::symbols::AddUsingEnumDeclaration(node, ctx);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("UsingEnumDeclaration"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, new UsingEnumDeclarationNode(s, usng.release(), ees.release(), semicolon.release()));
+                return soulng::parser::Match(true, node);
             }
         }
         *parentMatch0 = match;

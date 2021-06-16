@@ -1,0 +1,31 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <aliasDeclarationNode pos="(1,1)" type="compound">
+   <usingNode pos="(1,1)" type="single">
+    <keyword pos="(1,1)" value="using"/>
+   </usingNode>
+   <identifierNode pos="(1,7)" type="compound">
+    <identifier pos="(1,7)" value="Foo"/>
+   </identifierNode>
+   <assignNode pos="(1,11)" type="single">
+    <operator pos="(1,11)" value="="/>
+   </assignNode>
+   <definingTypeIdNode pos="(1,13)" type="compound">
+    <definingTypeSpecifierSequenceNode count="1" pos="(1,13)" type="sequence">
+     <intNode pos="(1,13)" type="single">
+      <keyword pos="(1,13)" value="int"/>
+     </intNode>
+    </definingTypeSpecifierSequenceNode>
+    <ptrDeclaratorNode count="2" pos="(1,16)" type="sequence">
+     <ptrNode pos="(1,16)" type="single">
+      <operator pos="(1,16)" value="*"/>
+     </ptrNode>
+     <abstractDeclaratorNode pos="(1,17)" type="single"/>
+    </ptrDeclaratorNode>
+   </definingTypeIdNode>
+   <semicolonNode pos="(1,17)" type="single">
+    <operator pos="(1,17)" value=";"/>
+   </semicolonNode>
+  </aliasDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

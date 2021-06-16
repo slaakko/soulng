@@ -130,7 +130,11 @@ parser api(PARSER_API) EnumParser
             Semicolon:semicolon
         )
         {
-            return new OpaqueEnumDeclarationNode(s, enumKey, enumHeadName, enumBase, attributes, semicolon);
+
+            Node* node = new OpaqueEnumDeclarationNode(s, enumKey, enumHeadName, enumBase, attributes, semicolon);
+            sngcpp::symbols::BeginEnumType(node, ctx);
+            sngcpp::symbols::EndEnumType(ctx);
+            return node;
         }
         ;
 }
