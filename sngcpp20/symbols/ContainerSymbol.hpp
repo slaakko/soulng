@@ -19,16 +19,13 @@ class ConceptGroupSymbol;
 class SYMBOLS_API ContainerSymbol : public Symbol
 {
 public:
-    ContainerSymbol(const std::u32string& name_);
+    ContainerSymbol(const std::u32string& name_, SymbolKind kind_);
     ContainerSymbol(const ContainerSymbol&) = delete;
     ContainerSymbol& operator=(const ContainerSymbol&) = delete;
     bool IsContainerSymbol() const override { return true; }
     Scope* GetScope() override { return &scope; }
-    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;
+    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
     void RemoveSymbol(Symbol* symbol) override;
-    ClassGroupSymbol* GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
-    FunctionGroupSymbol* GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
-    ConceptGroupSymbol* GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
 private:
     std::vector<std::unique_ptr<Symbol>> symbols;
     ContainerScope scope;

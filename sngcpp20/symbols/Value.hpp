@@ -5,7 +5,7 @@
 
 #ifndef SNGCPP_SYMBOLS_VALUE_INCLUDED
 #define SNGCPP_SYMBOLS_VALUE_INCLUDED
-#include <sngcpp20/symbols/SymbolsApi.hpp>
+#include <sngcpp20/symbols/Symbol.hpp>
 #include <stdint.h>
 #include <map>
 #include <memory>
@@ -24,14 +24,14 @@ enum class ValueKind : int
 
 ValueKind CommonValueKind(ValueKind left, ValueKind right);
 
-class SYMBOLS_API Value
+class SYMBOLS_API Value : public Symbol
 {
 public:
     Value(ValueKind kind_, const std::u32string& rep_);
-    virtual ~Value();
+    std::string SymbolKindStr() const override { return "value"; }
     virtual BoolValue* ToBoolValue(EvaluationContext& context) = 0;
     virtual Value* Convert(ValueKind kind, EvaluationContext& context) = 0;
-    ValueKind Kind() const { return kind; }
+    ValueKind GetValueKind() const { return kind; }
     const std::u32string& Rep() const { return rep; }
 private:
     ValueKind kind;

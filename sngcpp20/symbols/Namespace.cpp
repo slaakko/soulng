@@ -7,6 +7,7 @@
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/ScopeResolver.hpp>
+#include <sngcpp20/symbols/EnumTypeSymbol.hpp>
 #include <sngcpp20/ast/Visitor.hpp>
 #include <soulng/util/Unicode.hpp>
 
@@ -87,7 +88,7 @@ void UsingDirectiveAdder::Visit(QualifiedIdNode& node)
 void UsingDirectiveAdder::Visit(IdentifierNode& node)
 {
     Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
-    if (symbol->IsNamespaceSymbol())
+    if (symbol->Kind() == SymbolKind::namespaceSymbol)
     {
         NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(symbol);
         context->GetSymbolTable()->CurrentScope()->AddUsingDirective(ns, node.GetSourcePos(), context);
@@ -136,7 +137,7 @@ void UsingDeclarationAdder::Visit(IdentifierNode& node)
     Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsNamespaceSymbol())
+        if (symbol->Kind() == SymbolKind::namespaceSymbol)
         {
             throw Exception("symbol '" + ToUtf8(symbol->FullName()) + "' denotes a namespace", node.GetSourcePos(), context);
         }
@@ -189,9 +190,13 @@ void UsingEnumDeclarationAdder::Visit(IdentifierNode& node)
     Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsEnumTypeSymbol())
+        if (symbol->Kind() == SymbolKind::enumTypeSymbol)
         {
-            context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(symbol, node.GetSourcePos(), context);
+            EnumTypeSymbol* enumTypeSymbol = static_cast<EnumTypeSymbol*>(symbol);
+            for (const auto& enumeratorSymbol : enumTypeSymbol->Enumerators())
+            {
+                context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(enumeratorSymbol.get(), node.GetSourcePos(), context);
+            }
         }
         else
         {

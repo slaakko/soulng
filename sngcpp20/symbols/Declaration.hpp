@@ -10,7 +10,7 @@
 
 namespace sngcpp::symbols {
 
-enum class DeclarationFlags : int
+enum class DeclarationFlags : int64_t
 {
     none = 0, 
     staticFlag = 1 << 0,
@@ -45,11 +45,12 @@ enum class DeclarationFlags : int
     floatFlag = 1 << 28,
     doubleFlag = 1 << 29,
     voidFlag = 1 << 30,
-    autoFlag = 1 << 31,
+    int64Flag = 1 << 31,
+    autoFlag = 1ll << 32ll,
 
     fundamentalTypeFlags = 
         charFlag | char8Flag | char16Flag | char32Flag | wcharFlag | boolFlag | shortFlag | intFlag | longFlag | longLongFlag | signedFlag | unsignedFlag | floatFlag | doubleFlag | 
-        voidFlag | autoFlag,
+        voidFlag | int64Flag | autoFlag,
 
     typedefFlagMask = staticFlag | threadLocalFlag | externFlag | mutableFlag | virtualFlag | explicitFlag | inlineFlag | friendFlag | constrExprFlag | constEvalFlag | constInitFlag,
 
@@ -58,17 +59,17 @@ enum class DeclarationFlags : int
 
 inline DeclarationFlags operator|(DeclarationFlags left, DeclarationFlags right)
 {
-    return DeclarationFlags(int(left) | int(right));
+    return DeclarationFlags(int64_t(left) | int64_t(right));
 }
 
 inline DeclarationFlags operator&(DeclarationFlags left, DeclarationFlags right)
 {
-    return DeclarationFlags(int(left) & int(right));
+    return DeclarationFlags(int64_t(left) & int64_t(right));
 }
 
 inline DeclarationFlags operator~(DeclarationFlags flags)
 {
-    return DeclarationFlags(~int(flags));
+    return DeclarationFlags(~int64_t(flags));
 }
 
 } // sngcpp::symbols

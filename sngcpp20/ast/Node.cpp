@@ -78,6 +78,7 @@ const char* nodeKindStr[] =
     "initDeclaratorListNode", "initDeclaratorNode", "trailingFunctionDeclaratorNode", "parenthesizedDeclaratorNode", "abstractDeclaratorNode", "declSpecifierSequenceNode",
     "friendNode", "typedefNode", "constExprNode", "constEvalNode", "constInitNode", "inlineNode", "staticNode", "threadLocalNode", "externNode", "mutableNode", "virtualNode", "explicitNode", 
     "conditionalExplicitNode",
+    "cdeclNode", "fastCallNode", "stdCallNode", "int64Node", "unalignedNode", "declSpecNode",
     "qualifiedPtrNode",
     "typeSpecifierSequenceNode", "typenameSpecifierNode", "typeIdNode", "trailingReturnTypeNode", "elaboratedTypeSpecifierNode", "declTypeSpecifierNode", "placeholderTypeSpecifierNode",
     "classSpecifierNode", "classHeadNode", "baseClauseNode", "baseSpecifierListNode", "baseSpecifierNode", "beginAccessGroupNode", "memberDeclarationNode", "memberDeclaratorListNode", 
@@ -384,6 +385,11 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::constExprNode, new NodeFactory<ConstExprNode>());
     Register(NodeKind::constEvalNode, new NodeFactory<ConstEvalNode>());
     Register(NodeKind::constInitNode, new NodeFactory<ConstInitNode>());
+    Register(NodeKind::cdeclNode, new NodeFactory<CDeclNode>());
+    Register(NodeKind::fastCallNode, new NodeFactory<FastCallNode>());
+    Register(NodeKind::stdCallNode, new NodeFactory<StdCallNode>());
+    Register(NodeKind::unalignedNode, new NodeFactory<UnalignedNode>());
+    Register(NodeKind::declSpecNode, new NodeFactory<DeclSpecNode>());
     Register(NodeKind::inlineNode, new NodeFactory<InlineNode>());
     Register(NodeKind::staticNode, new NodeFactory<StaticNode>());
     Register(NodeKind::threadLocalNode, new NodeFactory<ThreadLocalNode>());
@@ -529,6 +535,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::identifierListNode, new NodeFactory<IdentifierListNode>());
     Register(NodeKind::qualifiedModuleIdNode, new NodeFactory<QualifiedModuleIdNode>());
     Register(NodeKind::dotNode, new NodeFactory<DotNode>());
+    Register(NodeKind::unnamedNode, new NodeFactory<UnnamedNode>());
     // Lambda:
     Register(NodeKind::lambdaExpressionNode, new NodeFactory<LambdaExpressionNode>());
     Register(NodeKind::lambdaIntroducerNode, new NodeFactory<LambdaIntroducerNode>());
@@ -584,6 +591,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::floatNode, new NodeFactory<FloatNode>());
     Register(NodeKind::doubleNode, new NodeFactory<DoubleNode>());
     Register(NodeKind::voidNode, new NodeFactory<VoidNode>());
+    Register(NodeKind::int64Node, new NodeFactory<Int64Node>());
     // Statement:
     Register(NodeKind::labeledStatementNode, new NodeFactory<LabeledStatementNode>());
     Register(NodeKind::caseStatmentNode, new NodeFactory<CaseStatementNode>());

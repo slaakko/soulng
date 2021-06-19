@@ -115,8 +115,18 @@ parser api(PARSER_API) EnumParser
 
     ElaboratedEnumSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos nnsPos) : Node*
         ::= ENUM{ s = sourcePos; } 
-        (   NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } Identifier(ctx):identifier{ return new ElaboratedEnumSpecifierNode(s, new QualifiedIdNode(nnsPos, nns, identifier)); }
-        |   Identifier(ctx):identifier2{ return new ElaboratedEnumSpecifierNode(s, identifier2); }
+        (   NestedNameSpecifier(ctx):nns{ nnsPos = sourcePos; } Identifier(ctx):identifier
+            { 
+                Node* node = new ElaboratedEnumSpecifierNode(s, new QualifiedIdNode(nnsPos, nns, identifier)); 
+                sngcpp::symbols::BeginEnumType(node, ctx);
+                return node;
+            }
+        |   Identifier(ctx):identifier2
+            { 
+                Node* node = new ElaboratedEnumSpecifierNode(s, identifier2); 
+                sngcpp::symbols::BeginEnumType(node, ctx);
+                return node;
+            }
         )
         ;
 

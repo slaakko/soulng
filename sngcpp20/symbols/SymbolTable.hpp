@@ -9,6 +9,8 @@
 #include <sngcpp20/symbols/NamespaceSymbol.hpp>
 #include <sngcpp20/symbols/FundamentalTypeSymbol.hpp>
 #include <sngcpp20/symbols/FunctionTypeSymbol.hpp>
+#include <sngcpp20/symbols/TemplateDeclarationSymbol.hpp>
+#include <sngcpp20/symbols/VarArgTypeSymbol.hpp>
 #include <sngcpp20/ast/Identifier.hpp>
 #include <sngcpp20/ast/Class.hpp>
 #include <unordered_map>
@@ -63,7 +65,7 @@ public:
     void EndScope();
     void BeginNamespace(Node* node, Context* context);
     void EndNamespace(int level);
-    void BeginClass(Node* specifierNode, Node* node, Context* context);
+    void BeginClass(Node* specifierNode, Node* node, std::vector<Symbol*>& templateArguments, Context* context);
     void EndClass();
     void BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* enumBaseType, Context* context);
     void EndEnumType();
@@ -73,10 +75,12 @@ public:
     void BeginBlock(const SourcePos& sourcePos, Context* context);
     void EndBlock();
     void RemoveBlock();
+    void AddAliasType(Node* node, Scope* scope, TypeSymbol* type, Context* context);
     void AddConcept(Node* node, Context* context);
+    void AddVariable(Node* node, Scope* scope, TypeSymbol* type, SymbolKind kind, Context* context);
     void BeginTemplateDeclaration(Node* node, Context* context);
     void EndTemplateDeclaration();
-    void AddTemplateParameter(Node* node, Context* context);
+    void AddTemplateParameter(Node* node, const std::u32string& name, Symbol* constraint, int index, Context* context);
     TypeSymbol* GetFundamentalTypeSymbol(FundamentalTypeKind kind);
     TypeSymbol* MakeConstType(TypeSymbol* baseTypeSymbol);
     TypeSymbol* MakeVolatileType(TypeSymbol* baseTypeSymbol);
@@ -85,6 +89,8 @@ public:
     TypeSymbol* MakeRvalueRefType(TypeSymbol* baseTypeSymbol);
     TypeSymbol* MakeFunctionType(const FunctionTypeKey& functionTypeKey);
     TypeSymbol* MakeArrayType(const ArrayTypeKey& arrayTypeKey);
+    TypeSymbol* MakeVarArgTypeSymbol();
+    TypeSymbol* MakeTypeNameConstraintSymbol();
 private:
     NamespaceSymbol globalNs;
     std::stack<Scope*> scopeStack;
@@ -99,6 +105,8 @@ private:
     std::unordered_map<TypeSymbol*, TypeSymbol*> rvalueRefTypeMap;
     std::unordered_map<FunctionTypeKey, TypeSymbol*, FunctionTypeKeyHash> functionTypeMap;
     std::unordered_map<ArrayTypeKey, TypeSymbol*, ArrayTypeKeyHash> arrayTypeMap;
+    TypeSymbol* varArgTypeSymbol;
+    TypeSymbol* typenameContraintSymbol;
     std::vector<std::unique_ptr<TypeSymbol>> types;
     int blockNumber;
 };

@@ -14,7 +14,7 @@ ArrayTypeKey::ArrayTypeKey(TypeSymbol* elementType_, uint64_t dimension_) : elem
 bool operator==(const ArrayTypeKey& left, const ArrayTypeKey& right)
 {
     if (left.dimension != right.dimension) return false;
-    if (left.elementType != right.elementType) return false;
+    if (!SymbolsEqual(left.elementType, right.elementType)) return false;
     return true;
 }
 
@@ -25,7 +25,7 @@ size_t ArrayTypeKeyHash::operator()(const ArrayTypeKey& key) const
     return hashCode;
 }
 
-ArrayTypeSymbol::ArrayTypeSymbol(const ArrayTypeKey& key_) : TypeSymbol(std::u32string()), key(key_)
+ArrayTypeSymbol::ArrayTypeSymbol(const ArrayTypeKey& key_) : TypeSymbol(std::u32string(), SymbolKind::arrayTypeSymbol), key(key_)
 {
 }
 

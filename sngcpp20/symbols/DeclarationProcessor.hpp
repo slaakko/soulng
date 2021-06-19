@@ -24,6 +24,7 @@ SYMBOLS_API ParameterSymbol* ProcessParameter(ParameterNode* parameterNode, Cont
 SYMBOLS_API void ProcessParenthesizedDeclarator(Node* declarator, TypeSymbol* baseType, Context* context);
 SYMBOLS_API void CheckDuplicateSpecifier(DeclarationFlags flags, DeclarationFlags flag, const std::string& specifierStr, const SourcePos& sourcePos, Context* context);
 SYMBOLS_API TypeSymbol* ProcessTypeSpecifierSequence(Node* typeSpecifierSequence, Context* context);
+SYMBOLS_API TypeSymbol* ProcessTypeId(Node* typeIdNode, Context* context);
 
 } // sngcpp::symbols
 

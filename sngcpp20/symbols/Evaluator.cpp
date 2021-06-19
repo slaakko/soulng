@@ -64,7 +64,7 @@ Value* Evaluator::GetValue()
 Value* Evaluator::EvaluateBinaryExpression(Value* left, Value* right, NodeKind op)
 {
     if (!left || !right) return nullptr;
-    ValueKind kind = CommonValueKind(left->Kind(), right->Kind());
+    ValueKind kind = CommonValueKind(left->GetValueKind(), right->GetValueKind());
     left = left->Convert(kind, context);
     right = right->Convert(kind, context);
     switch (kind)
@@ -279,7 +279,7 @@ void Evaluator::Visit(BinaryExprNode& node)
 Value* Evaluator::EvaluateUnaryExpression(Value* operand, NodeKind op)
 {
     if (!operand) return nullptr;
-    switch (operand->Kind())
+    switch (operand->GetValueKind())
     {
         case ValueKind::boolValue:
         {

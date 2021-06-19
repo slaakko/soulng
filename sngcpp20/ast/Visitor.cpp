@@ -814,6 +814,44 @@ void DefaultVisitor::Visit(ConstInitNode& node)
     EndVisit(node);
 }
 
+void DefaultVisitor::Visit(CDeclNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__cdecl", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(FastCallNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__fastcall", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(StdCallNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__stdcall", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(UnalignedNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__unaligned", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(DeclSpecNode& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__declspec", node.GetSourcePos());
+    VisitOperator("(", node.LParenPos());
+    node.Identifier()->Accept(*this);
+    VisitOperator(")", node.RParenPos());
+    EndVisit(node);
+}
+
 void DefaultVisitor::Visit(InlineNode& node)
 {
     BeginVisit(node);
@@ -2448,6 +2486,13 @@ void DefaultVisitor::Visit(VoidNode& node)
 {
     BeginVisit(node);
     VisitKeyword("void", node.GetSourcePos());
+    EndVisit(node);
+}
+
+void DefaultVisitor::Visit(Int64Node& node)
+{
+    BeginVisit(node);
+    VisitKeyword("__int64", node.GetSourcePos());
     EndVisit(node);
 }
 

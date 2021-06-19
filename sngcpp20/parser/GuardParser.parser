@@ -29,4 +29,12 @@ parser api(PARSER_API) GuardParser
     AssumeGuard(sngcpp::symbols::Context* ctx)
         ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::assume); }
         ;
+
+    NotSimpleTypeGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = !ctx->GetFlag(sngcpp::symbols::ContextFlags::hasSimpleType); }
+        ;
+
+    MSVCModeGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::msvcMode); }
+        ;
 }

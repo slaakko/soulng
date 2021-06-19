@@ -48,15 +48,10 @@ parser api(PARSER_API) TemplateParser
     using TypeParser.TypeId;
 
     TemplateDeclaration(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> templateHeadNode, var SourcePos s) : Node*
-        ::= 
-        (   TemplateHead(ctx):templateHead{ templateHeadNode.reset(templateHead); s = sourcePos; sngcpp::symbols::BeginTemplateDeclaration(templateHeadNode.get(), ctx); }
-            (   ConceptDefinition(ctx):concepDefinition{ return new TemplateDeclarationNode(s, templateHeadNode.release(), concepDefinition); }
-            |   Declaration(ctx):declaration{ return new TemplateDeclarationNode(s, templateHeadNode.release(), declaration); }
+        ::= TemplateHead(ctx):templateHead{ templateHeadNode.reset(templateHead); s = sourcePos; sngcpp::symbols::BeginTemplateDeclaration(templateHeadNode.get(), ctx); }
+            (   ConceptDefinition(ctx):concepDefinition{ sngcpp::symbols::EndTemplateDeclaration(ctx); return new TemplateDeclarationNode(s, templateHeadNode.release(), concepDefinition); }
+            |   Declaration(ctx):declaration{ sngcpp::symbols::EndTemplateDeclaration(ctx); return new TemplateDeclarationNode(s, templateHeadNode.release(), declaration); }
             )
-        )
-        {
-            sngcpp::symbols::EndTemplateDeclaration(ctx);
-        }
         ;
 
     TemplateHead(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
@@ -169,8 +164,8 @@ parser api(PARSER_API) TemplateParser
         ;
 
     TemplateArgument(sngcpp::symbols::Context* ctx) : Node*
-        ::= ConstantExpression(ctx):constantExpr{ return constantExpr; }
-        |   TypeId(ctx):typeId{ return typeId; }
+        ::= TypeId(ctx):typeId{ return typeId; }
+        |   ConstantExpression(ctx):constantExpr{ return constantExpr; }
         |   IdExpression(ctx):idExpr{ return idExpr; }
         ;
 

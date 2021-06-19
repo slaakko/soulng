@@ -22,8 +22,8 @@
  <define name="_NOEXCEPT_TYPES_SUPPORTED" value="1"/>
  <define name="_NATIVE_NULLPTR_SUPPORTED" value="1"/>
  <define name="__STDCPP_THREADS__" value="1"/>
- <define name="_MSC_FULL_VER" value="192829914"/>
- <define name="_MSC_VER" value="1928"/>
+ <define name="_MSC_FULL_VER" value="192930037"/>
+ <define name="_MSC_VER" value="1929"/>
  <define name="_MSVC_TRADITIONAL" value="0"/>
  <define name="_INTEGRAL_MAX_BITS" value="64"/>
  <define name="_WIN32" value="1"/>

@@ -29,7 +29,6 @@ class SYMBOLS_API FunctionTypeSymbol : public TypeSymbol
 {
 public:
     FunctionTypeSymbol();
-    bool IsFunctionTypeSymbol() const override { return true; }
     const FunctionTypeKey& Key() const { return key; }
     void SetKey(const FunctionTypeKey& key_);
 private:

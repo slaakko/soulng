@@ -7,12 +7,13 @@
 
 namespace sngcpp::symbols {
 
-EnumeratorSymbol::EnumeratorSymbol(const std::u32string& name_, uint64_t value_, const std::u32string& rep_) : Symbol(name_), value(value_), rep(rep_)
+EnumeratorSymbol::EnumeratorSymbol(const std::u32string& name_, uint64_t value_, const std::u32string& rep_) : Symbol(name_, SymbolKind::enumeratorSymbol), value(value_), rep(rep_)
 {
 }
 
-EnumTypeSymbol::EnumTypeSymbol(const std::u32string& name_, TypeSymbol* enumBaseType_) : TypeSymbol(name_), idNode(nullptr), enumBaseType(enumBaseType_)
+EnumTypeSymbol::EnumTypeSymbol(const std::u32string& name_, TypeSymbol* enumBaseType_) : TypeSymbol(name_, SymbolKind::enumTypeSymbol), idNode(nullptr), enumBaseType(enumBaseType_)
 {
+    GetScope()->SetKind(ScopeKind::enumerationScope);
 }
 
 bool EnumTypeSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const

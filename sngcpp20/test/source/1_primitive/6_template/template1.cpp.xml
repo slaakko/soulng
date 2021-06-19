@@ -1,0 +1,93 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="1" pos="(1,1)" type="sequence">
+  <templateDeclarationNode count="2" pos="(1,1)" type="binary">
+   <templateHeadNode pos="(1,1)" type="compound">
+    <keyword pos="(1,1)" value="template"/>
+    <templateParameterListNode count="1" pos="(1,10)" type="list">
+     <operator pos="(1,10)" value="&lt;"/>
+     <typeParameterNode pos="(1,11)" type="compound">
+      <typenameNode pos="(1,11)" type="single">
+       <keyword pos="(1,11)" value="typename"/>
+      </typenameNode>
+      <identifierNode pos="(1,20)" type="compound">
+       <identifier pos="(1,20)" value="_Ty"/>
+      </identifierNode>
+     </typeParameterNode>
+     <operator pos="(1,23)" value=">"/>
+    </templateParameterListNode>
+   </templateHeadNode>
+   <simpleDeclarationNode pos="(2,1)" type="compound">
+    <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+     <classSpecifierNode count="1" pos="(2,1)" type="sequence">
+      <classHeadNode pos="(2,1)" type="compound">
+       <structNode pos="(2,1)" type="single">
+        <keyword pos="(2,1)" value="struct"/>
+       </structNode>
+       <templateIdNode count="1" pos="(2,8)" type="list">
+        <identifierNode pos="(2,8)" type="compound">
+         <identifier pos="(2,8)" value="__vcrt_va_list_is_reference"/>
+        </identifierNode>
+        <operator pos="(2,35)" value="&lt;"/>
+        <typeIdNode pos="(2,36)" type="compound">
+         <typeSpecifierSequenceNode count="1" pos="(2,36)" type="sequence">
+          <identifierNode pos="(2,36)" type="compound">
+           <identifier pos="(2,36)" value="_Ty"/>
+          </identifierNode>
+         </typeSpecifierSequenceNode>
+         <ptrDeclaratorNode count="2" pos="(2,39)" type="sequence">
+          <lvalueRefNode pos="(2,39)" type="single">
+           <operator pos="(2,39)" value="&amp;"/>
+          </lvalueRefNode>
+          <abstractDeclaratorNode pos="(2,40)" type="single"/>
+         </ptrDeclaratorNode>
+        </typeIdNode>
+        <operator pos="(2,40)" value=">"/>
+       </templateIdNode>
+      </classHeadNode>
+      <operator pos="(3,1)" value="{"/>
+      <memberDeclarationNode pos="(4,5)" type="compound">
+       <declSpecifierSequenceNode count="1" pos="(4,5)" type="sequence">
+        <enumSpecifierNode count="1" pos="(4,5)" type="list">
+         <enumHeadNode pos="(4,5)" type="compound">
+          <enumNode pos="(4,5)" type="single">
+           <keyword pos="(4,5)" value="enum"/>
+          </enumNode>
+          <unnamedNode pos="(4,10)" type="single"/>
+          <enumBaseNode count="1" pos="(4,10)" type="unary">
+           <operator pos="(4,10)" value=":"/>
+           <typeSpecifierSequenceNode count="1" pos="(4,12)" type="sequence">
+            <boolNode pos="(4,12)" type="single">
+             <keyword pos="(4,12)" value="bool"/>
+            </boolNode>
+           </typeSpecifierSequenceNode>
+          </enumBaseNode>
+         </enumHeadNode>
+         <operator pos="(4,17)" value="{"/>
+         <enumeratorDefinitionNode pos="(4,19)" type="compound">
+          <enumeratorNode pos="(4,19)" type="compound">
+           <identifierNode pos="(4,19)" type="compound">
+            <identifier pos="(4,19)" value="__the_value"/>
+           </identifierNode>
+          </enumeratorNode>
+          <operator pos="(4,31)" value="="/>
+          <booleanLiteralNode pos="(4,33)" type="single">
+           <literal pos="(4,33)" value="true"/>
+          </booleanLiteralNode>
+         </enumeratorDefinitionNode>
+         <operator pos="(4,38)" value="}"/>
+        </enumSpecifierNode>
+       </declSpecifierSequenceNode>
+       <semicolonNode pos="(4,39)" type="single">
+        <operator pos="(4,39)" value=";"/>
+       </semicolonNode>
+      </memberDeclarationNode>
+      <operator pos="(5,1)" value="}"/>
+     </classSpecifierNode>
+    </declSpecifierSequenceNode>
+    <semicolonNode pos="(5,2)" type="single">
+     <operator pos="(5,2)" value=";"/>
+    </semicolonNode>
+   </simpleDeclarationNode>
+  </templateDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

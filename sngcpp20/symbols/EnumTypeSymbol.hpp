@@ -29,7 +29,6 @@ public:
     EnumTypeSymbol(const std::u32string& name_, TypeSymbol* enumBaseType_);
     std::string SymbolKindStr() const override { return "enum type symbol"; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
-    bool IsEnumTypeSymbol() const override { return true; }
     void SetIdNode(Node* idNode_) { idNode = idNode_; }
     Node* IdNode() const { return idNode; }
     void AddEnumerator(EnumeratorSymbol* enumerator);

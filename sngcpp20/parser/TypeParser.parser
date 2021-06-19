@@ -13,11 +13,13 @@
 [cpp]#include <sngcpp20/parser/DeclarationParser.hpp>
 [cpp]#include <sngcpp20/parser/EnumParser.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
 [cpp]#include <sngcpp20/parser/SimpleTypeParser.hpp>
 [cpp]#include <sngcpp20/parser/TemplateParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
+[cpp]#include <sngcpp20/symbols/Class.hpp>
 
 using namespace sngcpp::ast;
 using namespace CppTokens;
@@ -36,6 +38,7 @@ parser api(PARSER_API) TypeParser
     using DeclarationParser.CVQualifier;
     using EnumParser.EnumSpecifier;
     using EnumParser.ElaboratedEnumSpecifier;
+    using GuardParser.NotSimpleTypeGuard;
     using ExpressionParser.Expression;
     using IdentifierParser.Identifier;
     using IdentifierParser.NestedNameSpecifier;
@@ -100,24 +103,39 @@ parser api(PARSER_API) TypeParser
                     Template:tmp{ tmpPos = sourcePos; }
                     SimpleTemplateId(ctx):simpleTemplateId
                     {
-                        return new ElaboratedTypeSpecifierNode(s, classKey, new QualifiedIdNode(nnsPos, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)), nullptr);
+                        Node* node = new ElaboratedTypeSpecifierNode(s, classKey, new QualifiedIdNode(nnsPos, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)), nullptr);
+                        sngcpp::symbols::BeginClass(node, ctx);
+                        sngcpp::symbols::EndClass(ctx);
+                        return node;
                     }
                 |   SimpleTemplateId(ctx):simpleTemplateId2
                     {
-                        return new ElaboratedTypeSpecifierNode(s, classKey, new QualifiedIdNode(nnsPos, nns, simpleTemplateId2), nullptr);
+                        Node* node = new ElaboratedTypeSpecifierNode(s, classKey, new QualifiedIdNode(nnsPos, nns, simpleTemplateId2), nullptr);
+                        sngcpp::symbols::BeginClass(node, ctx);
+                        sngcpp::symbols::EndClass(ctx);
+                        return node;
                     }
                 |   Identifier(ctx):identifier
                     {
-                        return new ElaboratedTypeSpecifierNode(s, classKey, new QualifiedIdNode(nnsPos, nns, identifier), attributes);
+                        Node* node = new ElaboratedTypeSpecifierNode(s, classKey, new QualifiedIdNode(nnsPos, nns, identifier), attributes);
+                        sngcpp::symbols::BeginClass(node, ctx);
+                        sngcpp::symbols::EndClass(ctx);
+                        return node;
                     }
                 )
             |   SimpleTemplateId(ctx):simpleTemplateId3
                 {
-                    return new ElaboratedTypeSpecifierNode(s, classKey, simpleTemplateId3, nullptr);
+                    Node* node = new ElaboratedTypeSpecifierNode(s, classKey, simpleTemplateId3, nullptr);
+                    sngcpp::symbols::BeginClass(node, ctx);
+                    sngcpp::symbols::EndClass(ctx);
+                    return node;
                 }
             |   Identifier(ctx):identifier2
                 {
-                    return new ElaboratedTypeSpecifierNode(s, classKey, identifier2, attributes);
+                    Node* node = new ElaboratedTypeSpecifierNode(s, classKey, identifier2, attributes);
+                    sngcpp::symbols::BeginClass(node, ctx);
+                    sngcpp::symbols::EndClass(ctx);
+                    return node;
                 }
             )
         |   ElaboratedEnumSpecifier(ctx):elaboratedEnumSpecifier{ return elaboratedEnumSpecifier; }
@@ -125,19 +143,23 @@ parser api(PARSER_API) TypeParser
 
     SimpleTypeSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos tmpPos) : Node*
         ::= 
-        (   SimpleType(ctx):simpleType{ return simpleType; }
-        |   NestedNameSpecifier(ctx):nns{ s = sourcePos; } Template:tmp{ tmpPos = sourcePos; } SimpleTemplateId(ctx):simpleTemplateId
-            { 
-                return new QualifiedIdNode(s, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)); 
-            }
-        |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } TypeName(ctx):typeName
-            { 
-                return new QualifiedIdNode(s, nns2, typeName); 
-            }
+        (   SimpleType(ctx):simpleType{ ctx->SetFlag(sngcpp::symbols::ContextFlags::hasSimpleType); return simpleType; }
+        |   NotSimpleTypeGuard(ctx):guard
+            (
+                (   NestedNameSpecifier(ctx):nns{ s = sourcePos; } Template:tmp{ tmpPos = sourcePos; } SimpleTemplateId(ctx):simpleTemplateId
+                    { 
+                        return new QualifiedIdNode(s, nns, new PrefixNode(tmpPos, tmp, simpleTemplateId)); 
+                    }
+                |   NestedNameSpecifier(ctx):nns2{ s = sourcePos; } TypeName(ctx):typeName
+                    { 
+                        return new QualifiedIdNode(s, nns2, typeName); 
+                    }
+                )
+                |   TypeName(ctx):typeName2{ return typeName2; }
+                |   DeclTypeSpecifier(ctx):declTypeSpecifier{ return declTypeSpecifier; }
+                |   PlaceholderTypeSpecifier(ctx):placeholderTypeSpecifier{ return placeholderTypeSpecifier; }
+            )
         )
-        |   TypeName(ctx):typeName2{ return typeName2; }
-        |   DeclTypeSpecifier(ctx):declTypeSpecifier{ return declTypeSpecifier; }
-        |   PlaceholderTypeSpecifier(ctx):placeholderTypeSpecifier{ return placeholderTypeSpecifier; }
         ;
 
     TypeName(sngcpp::symbols::Context* ctx) : Node*

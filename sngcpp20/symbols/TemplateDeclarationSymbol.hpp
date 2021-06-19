@@ -9,18 +9,33 @@
 
 namespace sngcpp::symbols {
 
-class SYMBOLS_API TemplateDeclarationSymbol : public ContainerSymbol
+class SYMBOLS_API TypenameConstraintSymbol : public TypeSymbol
 {
 public:
-    TemplateDeclarationSymbol();
-    bool CanInstall() const override { return false; }
-    std::string SymbolKindStr() const override { return "template declaration symbol"; }
+    TypenameConstraintSymbol();
 };
 
 class SYMBOLS_API TemplateParameterSymbol : public TypeSymbol
 {
 public:
-    TemplateParameterSymbol(const std::u32string& name_);
+    TemplateParameterSymbol(Symbol* constraint_, const std::u32string& name_, int index_);
+    Symbol* Constraint() const { return constraint; }
+    int Index() const { return index; }
+private:
+    Symbol* constraint;
+    int index;
+};
+
+class SYMBOLS_API TemplateDeclarationSymbol : public ContainerSymbol
+{
+public:
+    TemplateDeclarationSymbol();
+    bool CanInstall() const override { return false; }
+    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
+    std::string SymbolKindStr() const override { return "template declaration symbol"; }
+    const std::vector<TemplateParameterSymbol*>& TemplateParameters() const { return temlateParameters; }
+private:
+    std::vector<TemplateParameterSymbol*> temlateParameters;
 };
 
 } // sngcpp::symbols

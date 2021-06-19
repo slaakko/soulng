@@ -92,7 +92,12 @@ namespace CppKeywords
         {U"wchar_t", WCHAR_T}, 
         {U"while", WHILE}, 
         {U"__thread", __THREAD}, 
-        {U"__declspec", __DECLSPEC},
+        {U"__declspec", __DECLSPEC}, 
+        {U"__cdecl", __CDECL}, 
+        {U"__fastcall", __FASTCALL}, 
+        {U"__stdcall", __STDCALL}, 
+        {U"__int64", __INT64}, 
+        {U"__unaligned", __UNALIGNED},
         {nullptr, -1}
     };
 

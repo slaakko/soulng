@@ -28,7 +28,7 @@ soulng::parser::Match EnumParser::EnumName(CppLexer& lexer, sngcpp::symbols::Con
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 116);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 122);
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -72,7 +72,7 @@ soulng::parser::Match EnumParser::EnumSpecifier(CppLexer& lexer, sngcpp::symbols
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 117);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 123);
     std::unique_ptr<EnumSpecifierNode> enumSpecifierNode = std::unique_ptr<EnumSpecifierNode>();
     SourcePos s = SourcePos();
     SourcePos lbPos = SourcePos();
@@ -291,7 +291,7 @@ soulng::parser::Match EnumParser::EnumHead(CppLexer& lexer, sngcpp::symbols::Con
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumHead"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 118);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 124);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> name = std::unique_ptr<Node>();
     std::unique_ptr<Node> enumKey;
@@ -474,7 +474,7 @@ soulng::parser::Match EnumParser::EnumKey(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumKey"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 119);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 125);
     SourcePos s = SourcePos();
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -661,7 +661,7 @@ soulng::parser::Match EnumParser::EnumHeadName(CppLexer& lexer, sngcpp::symbols:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumHeadName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 120);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 126);
     std::unique_ptr<Node> nns;
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> identifier2;
@@ -757,7 +757,7 @@ soulng::parser::Match EnumParser::EnumBase(CppLexer& lexer, sngcpp::symbols::Con
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumBase"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 121);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 127);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> typeSpecifiers;
     soulng::parser::Match match(false);
@@ -838,7 +838,7 @@ soulng::parser::Match EnumParser::EnumeratorList(CppLexer& lexer, sngcpp::symbol
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumeratorList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 122);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 128);
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
     std::unique_ptr<Node> next;
@@ -955,7 +955,7 @@ soulng::parser::Match EnumParser::EnumeratorDefinition(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("EnumeratorDefinition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 123);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 129);
     SourcePos s = SourcePos();
     SourcePos assignPos = SourcePos();
     std::unique_ptr<Node> enumerator;
@@ -1083,7 +1083,7 @@ soulng::parser::Match EnumParser::Enumerator(CppLexer& lexer, sngcpp::symbols::C
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Enumerator"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 124);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 130);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> attributes;
@@ -1174,7 +1174,7 @@ soulng::parser::Match EnumParser::ElaboratedEnumSpecifier(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ElaboratedEnumSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 125);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 131);
     SourcePos s = SourcePos();
     SourcePos nnsPos = SourcePos();
     std::unique_ptr<Node> nns;
@@ -1245,11 +1245,13 @@ soulng::parser::Match EnumParser::ElaboratedEnumSpecifier(CppLexer& lexer, sngcp
                                 identifier.reset(static_cast<Node*>(match.value));
                                 if (match.hit)
                                 {
+                                    Node * node = new ElaboratedEnumSpecifierNode(s, new QualifiedIdNode(nnsPos, nns.release(), identifier.release()));
+                                    sngcpp::symbols::BeginEnumType(node, ctx);
                                     {
                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ElaboratedEnumSpecifier"));
                                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                        return soulng::parser::Match(true, new ElaboratedEnumSpecifierNode(s, new QualifiedIdNode(nnsPos, nns.release(), identifier.release())));
+                                        return soulng::parser::Match(true, node);
                                     }
                                 }
                                 *parentMatch8 = match;
@@ -1273,11 +1275,13 @@ soulng::parser::Match EnumParser::ElaboratedEnumSpecifier(CppLexer& lexer, sngcp
                                 identifier2.reset(static_cast<Node*>(match.value));
                                 if (match.hit)
                                 {
+                                    Node * node = new ElaboratedEnumSpecifierNode(s, identifier2.release());
+                                    sngcpp::symbols::BeginEnumType(node, ctx);
                                     {
                                         #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                                         if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("ElaboratedEnumSpecifier"));
                                         #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                                        return soulng::parser::Match(true, new ElaboratedEnumSpecifierNode(s, identifier2.release()));
+                                        return soulng::parser::Match(true, node);
                                     }
                                 }
                                 *parentMatch10 = match;
@@ -1318,7 +1322,7 @@ soulng::parser::Match EnumParser::OpaqueEnumDeclaration(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("OpaqueEnumDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 126);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 132);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> enumKey;
     std::unique_ptr<Node> attributes;

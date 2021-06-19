@@ -130,19 +130,6 @@ void PrintHelp()
     std::cout << std::endl;
 }
 
-void TestClassParse()
-{
-    std::u32string content(U"class Foo{};\n}");
-    CppLexer lexer(content, "", 0);
-    ++lexer;
-    lexer.SetLine(1);
-    SymbolTable symbolTable;
-    sngcpp::symbols::Context context;
-    context.SetSymbolTable(&symbolTable);
-    ClassParser::ClassSpecifier(lexer, &context);
-    //TranslationUnitParser::TranslationUnit(lexer, &context);
-}
-
 enum class Options : int
 {
     none = 0, 

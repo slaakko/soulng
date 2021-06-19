@@ -18,11 +18,7 @@ ValueKind CommonValueKind(ValueKind left, ValueKind right)
     return ValueKind::boolValue;
 }
 
-Value::Value(ValueKind kind_, const std::u32string& rep_) : kind(kind_), rep(rep_)
-{
-}
-
-Value::~Value()
+Value::Value(ValueKind kind_, const std::u32string& rep_) : Symbol(std::u32string(), SymbolKind::valueSymbol), kind(kind_), rep(rep_)
 {
 }
 

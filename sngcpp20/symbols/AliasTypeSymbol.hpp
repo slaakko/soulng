@@ -15,9 +15,14 @@ public:
     AliasTypeSymbol(const std::u32string& name_, TypeSymbol* referredType_);
     std::string SymbolKindStr() const override { return "alias type symbol"; }
     const TypeSymbol* ReferredType() const override { return referredType; }
+    void AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context);
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
+    bool CanInstall() const override { return false; }
+    TemplateDeclarationSymbol* GetTemplateDeclarationSymbol() const { return templateDeclarationSymbol; }
+    void SetTemplateDeclarationSymbol(TemplateDeclarationSymbol* templateDeclarationSymbol_) { templateDeclarationSymbol = templateDeclarationSymbol_; }
 private:
     TypeSymbol* referredType;
+    TemplateDeclarationSymbol* templateDeclarationSymbol;
 };
 
 } // sngcpp::symbols

@@ -19,9 +19,7 @@ class SYMBOLS_API FunctionGroupSymbol : public Symbol
 public:
     FunctionGroupSymbol(const std::u32string& name_);
     std::string SymbolKindStr() const override { return "function group symbol"; }
-    bool IsFunctionGroupSymbol() const override { return true; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
-    Scope* GetScope() override;
     void AddFunction(FunctionSymbol* function);
     void RemoveFunction(FunctionSymbol* function);
     FunctionSymbol* GetFunction(const std::vector<std::unique_ptr<ParameterSymbol>>& parameters) const;

@@ -600,6 +600,72 @@ void ConstInitNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+CDeclNode::CDeclNode(const SourcePos& sourcePos_) : Node(NodeKind::cdeclNode, sourcePos_)
+{
+}
+
+void CDeclNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+FastCallNode::FastCallNode(const SourcePos& sourcePos_) : Node(NodeKind::fastCallNode, sourcePos_)
+{
+}
+
+void FastCallNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+StdCallNode::StdCallNode(const SourcePos& sourcePos_) : Node(NodeKind::stdCallNode, sourcePos_)
+{
+}
+
+void StdCallNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+UnalignedNode::UnalignedNode(const SourcePos& sourcePos_) : Node(NodeKind::unalignedNode, sourcePos_)
+{
+}
+
+void UnalignedNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+DeclSpecNode::DeclSpecNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::declSpecNode, sourcePos_)
+{
+}
+
+DeclSpecNode::DeclSpecNode(const SourcePos& sourcePos_, Node* identifier_, const SourcePos& lpPos_, const SourcePos& rpPos_) : 
+    CompoundNode(NodeKind::declSpecNode, sourcePos_), identifier(identifier_), lpPos(lpPos_), rpPos(rpPos_)
+{
+}
+
+void DeclSpecNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void DeclSpecNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(identifier.get());
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void DeclSpecNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    identifier.reset(reader.ReadNode());
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
+}
+
 InlineNode::InlineNode(const SourcePos& sourcePos_) : Node(NodeKind::inlineNode, sourcePos_)
 {
 }

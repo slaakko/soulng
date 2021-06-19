@@ -8,7 +8,7 @@
 
 namespace sngcpp::symbols {
 
-ConceptGroupSymbol::ConceptGroupSymbol(const std::u32string& name_) : Symbol(name_)
+ConceptGroupSymbol::ConceptGroupSymbol(const std::u32string& name_) : Symbol(name_, SymbolKind::conceptGroupSymbol)
 {
 }
 
@@ -17,12 +17,11 @@ void ConceptGroupSymbol::AddConcept(ConceptSymbol* conceptSymbol)
     concepts.push_back(conceptSymbol);
 }
 
-Scope* ConceptGroupSymbol::GetScope()
+ConceptSymbol* ConceptGroupSymbol::GetConcept() const
 {
-    if (concepts.size() == 1)
+    if (!concepts.empty())
     {
-        ConceptSymbol* conceptSymbol = concepts.front();
-        return conceptSymbol->GetScope();
+        return concepts.front();
     }
     return nullptr;
 }

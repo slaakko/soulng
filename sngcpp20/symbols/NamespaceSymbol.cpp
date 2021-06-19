@@ -7,7 +7,7 @@
 
 namespace sngcpp::symbols {
 
-NamespaceSymbol::NamespaceSymbol(const std::u32string& name_) : ContainerSymbol(name_)
+NamespaceSymbol::NamespaceSymbol(const std::u32string& name_) : ContainerSymbol(name_, SymbolKind::namespaceSymbol)
 {
     GetScope()->SetKind(ScopeKind::namespaceScope);
 }

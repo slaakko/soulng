@@ -45,6 +45,12 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match DeclSpecifierSeq(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Inline(CppLexer& lexer);
     static soulng::parser::Match DeclSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match MSDeclSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match CDecl(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match FastCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match StdCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match Unaligned(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match DeclSpec(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match StorageClassSpecifier(CppLexer& lexer);
     static soulng::parser::Match FunctionSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ExplicitSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);

@@ -107,6 +107,13 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
+class AST_API Int64Node : public Node
+{
+public:
+    Int64Node(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
 } // namespace sngcpp::ast
 
 #endif // SNGCPP_AST_SIMPLE_TYPE_INCLUDED

@@ -60,7 +60,7 @@ void EnumCreatorVisitor::Visit(EnumSpecifierNode& node)
     else if (stage == Stage::createEnumerators)
     {
         Symbol* symbol = context->GetSymbolTable()->GetSymbol(&node);
-        if (symbol->IsEnumTypeSymbol())
+        if (symbol->Kind() == SymbolKind::enumTypeSymbol)
         {
             enumType = static_cast<EnumTypeSymbol*>(symbol);
         }
@@ -118,13 +118,13 @@ void EnumCreatorVisitor::Visit(EnumeratorDefinitionNode& node)
     {
         first = false;
         val = EvaluateConstantExpression(node.Value(), evaluationContext);
-        if (val->Kind() == ValueKind::integerValue)
+        if (val->GetValueKind() == ValueKind::integerValue)
         {
             IntegerValue* integerValue = static_cast<IntegerValue*>(val);
             value = integerValue->GetValue();
             rep = val->Rep();
         }
-        else if (val->Kind() == ValueKind::boolValue)
+        else if (val->GetValueKind() == ValueKind::boolValue)
         {
             BoolValue* boolValue = static_cast<BoolValue*>(val);
             value = boolValue->GetValue();

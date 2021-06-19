@@ -12,8 +12,9 @@ namespace sngcpp::symbols {
 class SYMBOLS_API CompoundTypeSymbol : public TypeSymbol
 {
 public:
-    CompoundTypeSymbol(const std::u32string& name_, TypeSymbol* baseType_);
+    CompoundTypeSymbol(const std::u32string& name_, SymbolKind kind_, TypeSymbol* baseType_);
     std::string SymbolKindStr() const override { return "compound type symbol"; }
+    bool IsCompoundTypeSymbol() const override { return true; }
     TypeSymbol* BaseType() const { return baseType; }
 private:
     TypeSymbol* baseType;

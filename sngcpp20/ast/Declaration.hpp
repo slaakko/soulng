@@ -388,6 +388,51 @@ public:
     void Accept(Visitor& visitor) override;
 };
 
+class AST_API CDeclNode : public Node
+{
+public:
+    CDeclNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API FastCallNode : public Node
+{
+public:
+    FastCallNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API StdCallNode : public Node
+{
+public:
+    StdCallNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API UnalignedNode : public Node
+{
+public:
+    UnalignedNode(const SourcePos& sourcePos_);
+    void Accept(Visitor& visitor) override;
+};
+
+class AST_API DeclSpecNode : public CompoundNode
+{
+public:
+    DeclSpecNode(const SourcePos& sourcePos_);
+    DeclSpecNode(const SourcePos& sourcePos_, Node* identifier_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
+    Node* Identifier() const { return identifier.get(); }
+    const SourcePos& LParenPos() const { return lpPos; }
+    const SourcePos& RParenPos() const { return rpPos; }
+private:
+    std::unique_ptr<Node> identifier;
+    SourcePos lpPos;
+    SourcePos rpPos;
+};
+
 class AST_API InlineNode : public Node
 {
 public:

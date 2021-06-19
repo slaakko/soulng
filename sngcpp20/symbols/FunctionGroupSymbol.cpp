@@ -5,12 +5,13 @@
 
 #include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
+#include <sngcpp20/symbols/TypeSymbol.hpp>
 #include <sngcpp20/symbols/VariableSymbol.hpp>
 #include <sngcpp20/symbols/Scope.hpp>
 
 namespace sngcpp::symbols {
 
-FunctionGroupSymbol::FunctionGroupSymbol(const std::u32string& name_) : Symbol(name_)
+FunctionGroupSymbol::FunctionGroupSymbol(const std::u32string& name_) : Symbol(name_, SymbolKind::functionGroupSymbol)
 {
 }
 
@@ -48,7 +49,7 @@ FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<std::unique_p
             bool matched = true;
             for (int i = 0; i < n; ++i)
             {
-                if (functionSymbol->Parameters()[i]->Type() != parameters[i]->Type())
+                if (!SymbolsEqual(functionSymbol->Parameters()[i]->Type(), parameters[i]->Type()))
                 {
                     matched = false;
                     break;
@@ -59,16 +60,6 @@ FunctionSymbol* FunctionGroupSymbol::GetFunction(const std::vector<std::unique_p
                 return functionSymbol;
             }
         }
-    }
-    return nullptr;
-}
-
-Scope* FunctionGroupSymbol::GetScope()
-{
-    if (functions.size() == 1)
-    {
-        FunctionSymbol* functionSymbol = functions.front();
-        return functionSymbol->GetScope();
     }
     return nullptr;
 }

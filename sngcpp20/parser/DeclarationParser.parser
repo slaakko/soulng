@@ -12,6 +12,7 @@
 [cpp]#include <sngcpp20/parser/EnumParser.hpp>
 [cpp]#include <sngcpp20/parser/ExpressionParser.hpp>
 [cpp]#include <sngcpp20/parser/FunctionParser.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierParser.hpp>
 [cpp]#include <sngcpp20/parser/InitializationParser.hpp>
 [cpp]#include <sngcpp20/parser/LiteralParser.hpp>
@@ -48,6 +49,7 @@ parser api(PARSER_API) DeclarationParser
     using FunctionParser.FunctionDefinition;
     using FunctionParser.NoDeclSpecFunctionDeclaration;
     using FunctionParser.ParameterDeclarationClause;
+    using GuardParser.MSVCModeGuard;
     using IdentifierParser.ColonColon;
     using IdentifierParser.Identifier;
     using IdentifierParser.IdentifierList;
@@ -419,12 +421,18 @@ parser api(PARSER_API) DeclarationParser
     DeclSpecifierSeq(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> node) : Node*
         ::= 
         (
+            empty{ ctx->PushFlags(); }
             DeclSpecifier(ctx):first{ node.reset(new DeclSpecifierSequenceNode(sourcePos)); node->AddNode(first); } 
             (DeclSpecifier(ctx):next{ node->AddNode(next); })*
             (AttributeSpecifierSeq(ctx):attributes{ node->AddNode(attributes); })?
         )
         {
+            ctx->PopFlags();
             return node.release();
+        }
+        /
+        {
+            ctx->PopFlags();
         }
         ;
 
@@ -442,6 +450,43 @@ parser api(PARSER_API) DeclarationParser
         |   CONSTEXPR{ return new ConstExprNode(sourcePos); }
         |   CONSTEVAL{ return new ConstEvalNode(sourcePos); }
         |   CONSTINIT{ return new ConstInitNode(sourcePos); }
+        |   MSVCModeGuard(ctx):msvcMode MSDeclSpecifier(ctx):spec{ return spec; }
+        ;
+
+    MSDeclSpecifier(sngcpp::symbols::Context* ctx) : Node*
+        ::= CDecl(ctx):cd{ return cd; }
+        |   FastCall(ctx):fastCall{ return fastCall; }
+        |   StdCall(ctx):stdCall{ return stdCall; }
+        |   Unaligned(ctx):unaligned{ return unaligned; }
+        |   DeclSpec(ctx):declSpec{ return declSpec; }
+        ;
+
+    CDecl(sngcpp::symbols::Context* ctx) : Node*
+        ::= __CDECL{ return new CDeclNode(sourcePos); }
+        ;
+
+    FastCall(sngcpp::symbols::Context* ctx) : Node*
+        ::= __FASTCALL{ return new FastCallNode(sourcePos); }
+        ;
+
+    StdCall(sngcpp::symbols::Context* ctx) : Node*
+        ::= __STDCALL{ return new StdCallNode(sourcePos); }
+        ;
+
+    Unaligned(sngcpp::symbols::Context* ctx) : Node*
+        ::= __UNALIGNED{ return new UnalignedNode(sourcePos); }
+        ;
+
+    DeclSpec(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (   __DECLSPEC{ s = sourcePos; }
+            LPAREN{ lpPos = sourcePos; }
+            Identifier(ctx):identifier 
+            RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new DeclSpecNode(s, identifier, lpPos, rpPos);
+        }
         ;
 
     StorageClassSpecifier : Node*

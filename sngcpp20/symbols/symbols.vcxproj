@@ -156,6 +156,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AliasGroupSymbol.hpp" />
     <ClInclude Include="AliasTypeSymbol.hpp" />
     <ClInclude Include="ArrayTypeSymbol.hpp" />
     <ClInclude Include="Block.hpp" />
@@ -191,9 +192,12 @@
     <ClInclude Include="TemplateDeclarationSymbol.hpp" />
     <ClInclude Include="TypeSymbol.hpp" />
     <ClInclude Include="Value.hpp" />
+    <ClInclude Include="VarArgTypeSymbol.hpp" />
+    <ClInclude Include="VariableGroupSymbol.hpp" />
     <ClInclude Include="VariableSymbol.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AliasGroupSymbol.cpp" />
     <ClCompile Include="AliasTypeSymbol.cpp" />
     <ClCompile Include="ArrayTypeSymbol.cpp" />
     <ClCompile Include="Block.cpp" />
@@ -228,6 +232,8 @@
     <ClCompile Include="TemplateDeclarationSymbol.cpp" />
     <ClCompile Include="TypeSymbol.cpp" />
     <ClCompile Include="Value.cpp" />
+    <ClCompile Include="VarArgTypeSymbol.cpp" />
+    <ClCompile Include="VariableGroupSymbol.cpp" />
     <ClCompile Include="VariableSymbol.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -10,20 +10,20 @@ namespace CppTokenLexerTokens
 
     void InitTokenIdMap()
     {
-        tokenIdMap[U"ADDASSIGN"] = 95;
+        tokenIdMap[U"ADDASSIGN"] = 93;
         tokenIdMap[U"ALIGNAS"] = 1;
         tokenIdMap[U"ALIGNOF"] = 2;
-        tokenIdMap[U"AMP"] = 108;
-        tokenIdMap[U"AMPAMP"] = 105;
-        tokenIdMap[U"ANDASSIGN"] = 99;
-        tokenIdMap[U"ARROW"] = 136;
-        tokenIdMap[U"ARROWSTAR"] = 124;
+        tokenIdMap[U"AMP"] = 106;
+        tokenIdMap[U"AMPAMP"] = 103;
+        tokenIdMap[U"ANDASSIGN"] = 97;
+        tokenIdMap[U"ARROW"] = 134;
+        tokenIdMap[U"ARROWSTAR"] = 122;
         tokenIdMap[U"ASM"] = 3;
-        tokenIdMap[U"ASSIGN"] = 91;
+        tokenIdMap[U"ASSIGN"] = 89;
         tokenIdMap[U"AUTO"] = 4;
-        tokenIdMap[U"BEGINRAWSTRINGLIT"] = 88;
-        tokenIdMap[U"BLOCKCOMMENT"] = 141;
-        tokenIdMap[U"BLOCKCOMMENTLINE"] = 142;
+        tokenIdMap[U"BEGINRAWSTRINGLIT"] = 86;
+        tokenIdMap[U"BLOCKCOMMENT"] = 139;
+        tokenIdMap[U"BLOCKCOMMENTLINE"] = 140;
         tokenIdMap[U"BOOL"] = 5;
         tokenIdMap[U"BREAK"] = 6;
         tokenIdMap[U"CASE"] = 7;
@@ -32,11 +32,11 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"CHAR16_T"] = 11;
         tokenIdMap[U"CHAR32_T"] = 12;
         tokenIdMap[U"CHAR8_T"] = 10;
-        tokenIdMap[U"CHARLIT"] = 86;
+        tokenIdMap[U"CHARLIT"] = 84;
         tokenIdMap[U"CLASS"] = 13;
-        tokenIdMap[U"COLON"] = 103;
-        tokenIdMap[U"COLONCOLON"] = 89;
-        tokenIdMap[U"COMMA"] = 90;
+        tokenIdMap[U"COLON"] = 101;
+        tokenIdMap[U"COLONCOLON"] = 87;
+        tokenIdMap[U"COMMA"] = 88;
         tokenIdMap[U"CONCEPT"] = 14;
         tokenIdMap[U"CONST"] = 15;
         tokenIdMap[U"CONSTEVAL"] = 16;
@@ -50,96 +50,96 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"DECLTYPE"] = 24;
         tokenIdMap[U"DEFAULT"] = 25;
         tokenIdMap[U"DELETE"] = 26;
-        tokenIdMap[U"DIV"] = 121;
-        tokenIdMap[U"DIVASSIGN"] = 93;
+        tokenIdMap[U"DIV"] = 119;
+        tokenIdMap[U"DIVASSIGN"] = 91;
         tokenIdMap[U"DO"] = 27;
-        tokenIdMap[U"DOT"] = 135;
-        tokenIdMap[U"DOTSTAR"] = 123;
+        tokenIdMap[U"DOT"] = 133;
+        tokenIdMap[U"DOTSTAR"] = 121;
         tokenIdMap[U"DOUBLE"] = 28;
         tokenIdMap[U"DYNAMIC_CAST"] = 29;
-        tokenIdMap[U"ELLIPSIS"] = 138;
+        tokenIdMap[U"ELLIPSIS"] = 136;
         tokenIdMap[U"ELSE"] = 30;
         tokenIdMap[U"ENUM"] = 31;
-        tokenIdMap[U"EQ"] = 109;
-        tokenIdMap[U"EXCLAMATION"] = 129;
+        tokenIdMap[U"EQ"] = 107;
+        tokenIdMap[U"EXCLAMATION"] = 127;
         tokenIdMap[U"EXPLICIT"] = 32;
         tokenIdMap[U"EXPORT"] = 33;
         tokenIdMap[U"EXTERN"] = 34;
         tokenIdMap[U"FALSE"] = 35;
         tokenIdMap[U"FLOAT"] = 36;
-        tokenIdMap[U"FLOATLIT"] = 84;
+        tokenIdMap[U"FLOATLIT"] = 82;
         tokenIdMap[U"FOR"] = 37;
         tokenIdMap[U"FRIEND"] = 38;
-        tokenIdMap[U"GEQ"] = 112;
+        tokenIdMap[U"GEQ"] = 110;
         tokenIdMap[U"GOTO"] = 39;
-        tokenIdMap[U"ID"] = 144;
+        tokenIdMap[U"ID"] = 142;
         tokenIdMap[U"IF"] = 40;
         tokenIdMap[U"INLINE"] = 41;
         tokenIdMap[U"INT"] = 42;
-        tokenIdMap[U"INTLIT"] = 85;
-        tokenIdMap[U"KEYWORD"] = 143;
-        tokenIdMap[U"LANGLE"] = 114;
-        tokenIdMap[U"LBRACE"] = 133;
-        tokenIdMap[U"LBRACKET"] = 131;
-        tokenIdMap[U"LEQ"] = 111;
-        tokenIdMap[U"LINECOMMENT"] = 140;
+        tokenIdMap[U"INTLIT"] = 83;
+        tokenIdMap[U"KEYWORD"] = 141;
+        tokenIdMap[U"LANGLE"] = 112;
+        tokenIdMap[U"LBRACE"] = 131;
+        tokenIdMap[U"LBRACKET"] = 129;
+        tokenIdMap[U"LEQ"] = 109;
+        tokenIdMap[U"LINECOMMENT"] = 138;
         tokenIdMap[U"LONG"] = 43;
-        tokenIdMap[U"LPAREN"] = 125;
-        tokenIdMap[U"MAX"] = 148;
-        tokenIdMap[U"MINUS"] = 119;
-        tokenIdMap[U"MINUSMINUS"] = 128;
-        tokenIdMap[U"MOD"] = 122;
-        tokenIdMap[U"MULASSIGN"] = 92;
+        tokenIdMap[U"LPAREN"] = 123;
+        tokenIdMap[U"MAX"] = 153;
+        tokenIdMap[U"MINUS"] = 117;
+        tokenIdMap[U"MINUSMINUS"] = 126;
+        tokenIdMap[U"MOD"] = 120;
+        tokenIdMap[U"MULASSIGN"] = 90;
         tokenIdMap[U"MUTABLE"] = 44;
         tokenIdMap[U"NAMESPACE"] = 45;
-        tokenIdMap[U"NEQ"] = 110;
+        tokenIdMap[U"NEQ"] = 108;
         tokenIdMap[U"NEW"] = 46;
         tokenIdMap[U"NOEXCEPT"] = 47;
         tokenIdMap[U"NULLPTR"] = 48;
-        tokenIdMap[U"NUMBER"] = 145;
+        tokenIdMap[U"NUMBER"] = 143;
         tokenIdMap[U"OPERATOR"] = 49;
-        tokenIdMap[U"OR"] = 106;
-        tokenIdMap[U"ORASSIGN"] = 101;
-        tokenIdMap[U"OROR"] = 104;
-        tokenIdMap[U"OTHER"] = 147;
-        tokenIdMap[U"PLUS"] = 118;
-        tokenIdMap[U"PLUSPLUS"] = 127;
-        tokenIdMap[U"PP"] = 146;
+        tokenIdMap[U"OR"] = 104;
+        tokenIdMap[U"ORASSIGN"] = 99;
+        tokenIdMap[U"OROR"] = 102;
+        tokenIdMap[U"OTHER"] = 145;
+        tokenIdMap[U"PLUS"] = 116;
+        tokenIdMap[U"PLUSPLUS"] = 125;
+        tokenIdMap[U"PP"] = 144;
         tokenIdMap[U"PRIVATE"] = 50;
         tokenIdMap[U"PROTECTED"] = 51;
         tokenIdMap[U"PUBLIC"] = 52;
-        tokenIdMap[U"QUEST"] = 102;
-        tokenIdMap[U"RANGLE"] = 115;
-        tokenIdMap[U"RBRACE"] = 134;
-        tokenIdMap[U"RBRACKET"] = 132;
+        tokenIdMap[U"QUEST"] = 100;
+        tokenIdMap[U"RANGLE"] = 113;
+        tokenIdMap[U"RBRACE"] = 132;
+        tokenIdMap[U"RBRACKET"] = 130;
         tokenIdMap[U"REGISTER"] = 53;
         tokenIdMap[U"REINTERPRET_CAST"] = 54;
-        tokenIdMap[U"REMASSIGN"] = 94;
+        tokenIdMap[U"REMASSIGN"] = 92;
         tokenIdMap[U"REQUIRES"] = 55;
         tokenIdMap[U"RETURN"] = 56;
-        tokenIdMap[U"RPAREN"] = 126;
-        tokenIdMap[U"SEMICOLON"] = 137;
-        tokenIdMap[U"SHIFTLEFT"] = 116;
-        tokenIdMap[U"SHIFTLEFTASSIGN"] = 98;
-        tokenIdMap[U"SHIFTRIGHT"] = 117;
-        tokenIdMap[U"SHIFTRIGHTASSIGN"] = 97;
+        tokenIdMap[U"RPAREN"] = 124;
+        tokenIdMap[U"SEMICOLON"] = 135;
+        tokenIdMap[U"SHIFTLEFT"] = 114;
+        tokenIdMap[U"SHIFTLEFTASSIGN"] = 96;
+        tokenIdMap[U"SHIFTRIGHT"] = 115;
+        tokenIdMap[U"SHIFTRIGHTASSIGN"] = 95;
         tokenIdMap[U"SHORT"] = 57;
         tokenIdMap[U"SIGNED"] = 58;
         tokenIdMap[U"SIZEOF"] = 59;
-        tokenIdMap[U"SPACESHIP"] = 113;
-        tokenIdMap[U"STAR"] = 120;
+        tokenIdMap[U"SPACESHIP"] = 111;
+        tokenIdMap[U"STAR"] = 118;
         tokenIdMap[U"STATIC"] = 60;
         tokenIdMap[U"STATIC_ASSERT"] = 61;
         tokenIdMap[U"STATIC_CAST"] = 62;
-        tokenIdMap[U"STRINGLIT"] = 87;
+        tokenIdMap[U"STRINGLIT"] = 85;
         tokenIdMap[U"STRUCT"] = 63;
-        tokenIdMap[U"SUBASSIGN"] = 96;
+        tokenIdMap[U"SUBASSIGN"] = 94;
         tokenIdMap[U"SWITCH"] = 64;
         tokenIdMap[U"TEMPLATE"] = 65;
         tokenIdMap[U"THIS"] = 66;
         tokenIdMap[U"THREAD_LOCAL"] = 67;
         tokenIdMap[U"THROW"] = 68;
-        tokenIdMap[U"TILDE"] = 130;
+        tokenIdMap[U"TILDE"] = 128;
         tokenIdMap[U"TRUE"] = 69;
         tokenIdMap[U"TRY"] = 70;
         tokenIdMap[U"TYPEDEF"] = 71;
@@ -153,11 +153,16 @@ namespace CppTokenLexerTokens
         tokenIdMap[U"VOLATILE"] = 79;
         tokenIdMap[U"WCHAR_T"] = 80;
         tokenIdMap[U"WHILE"] = 81;
-        tokenIdMap[U"WS"] = 139;
-        tokenIdMap[U"XOR"] = 107;
-        tokenIdMap[U"XORASSIGN"] = 100;
-        tokenIdMap[U"__DECLSPEC"] = 82;
-        tokenIdMap[U"__THREAD"] = 83;
+        tokenIdMap[U"WS"] = 137;
+        tokenIdMap[U"XOR"] = 105;
+        tokenIdMap[U"XORASSIGN"] = 98;
+        tokenIdMap[U"__CDECL"] = 148;
+        tokenIdMap[U"__DECLSPEC"] = 147;
+        tokenIdMap[U"__FASTCALL"] = 149;
+        tokenIdMap[U"__INT64"] = 151;
+        tokenIdMap[U"__STDCALL"] = 150;
+        tokenIdMap[U"__THREAD"] = 146;
+        tokenIdMap[U"__UNALIGNED"] = 152;
     }
 
     int GetTokenId(const std::u32string& tokenName)
@@ -257,8 +262,6 @@ namespace CppTokenLexerTokens
         "VOLATILE",
         "WCHAR_T",
         "WHILE",
-        "__DECLSPEC",
-        "__THREAD",
         "FLOATLIT",
         "INTLIT",
         "CHARLIT",
@@ -323,6 +326,13 @@ namespace CppTokenLexerTokens
         "NUMBER",
         "PP",
         "OTHER",
+        "__THREAD",
+        "__DECLSPEC",
+        "__CDECL",
+        "__FASTCALL",
+        "__STDCALL",
+        "__INT64",
+        "__UNALIGNED",
         "MAX"
     };
 
@@ -415,8 +425,6 @@ namespace CppTokenLexerTokens
         "'volatile'",
         "'wchar_t'",
         "'while'",
-        "'__declspec'",
-        "'__thread'",
         "floating literal",
         "integer literal",
         "character literal",
@@ -481,6 +489,13 @@ namespace CppTokenLexerTokens
         "number",
         "pp",
         "other",
+        "'__thread'",
+        "'__declspec'",
+        "'__cdecl'",
+        "'__fastcall'",
+        "'__stdcall'",
+        "'__int64'",
+        "'__unaligned'",
         "max"
     };
 

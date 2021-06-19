@@ -18,7 +18,7 @@ public:
     ConceptGroupSymbol(const std::u32string& name_);
     std::string SymbolKindStr() const override { return "concept group symbol"; }
     void AddConcept(ConceptSymbol* conceptSymbol);
-    Scope* GetScope() override;
+    ConceptSymbol* GetConcept() const;
 private:
     std::vector<ConceptSymbol*> concepts;
 };

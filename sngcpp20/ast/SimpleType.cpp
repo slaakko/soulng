@@ -134,4 +134,13 @@ void VoidNode::Accept(Visitor& visitor)
     visitor.Visit(*this);
 }
 
+Int64Node::Int64Node(const SourcePos& sourcePos_) : Node(NodeKind::int64Node, sourcePos_)
+{
+}
+
+void Int64Node::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
 } // namespace sngcpp::ast

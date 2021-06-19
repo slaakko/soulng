@@ -10,7 +10,7 @@ namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
 
-BlockSymbol::BlockSymbol(int number_) : ContainerSymbol(std::u32string()), number(number_)
+BlockSymbol::BlockSymbol(int number_) : ContainerSymbol(std::u32string(), SymbolKind::blockSymbol), number(number_)
 {
     GetScope()->SetKind(ScopeKind::blockScope);
     installationName = ToUtf32("block" + std::to_string(number));

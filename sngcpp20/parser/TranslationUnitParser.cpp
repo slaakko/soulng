@@ -63,7 +63,7 @@ soulng::parser::Match TranslationUnitParser::TranslationUnit(CppLexer& lexer, sn
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TranslationUnit"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 300);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 308);
     std::unique_ptr<Node> moduleUnit;
     std::unique_ptr<Node> declarations;
     soulng::parser::Match match(false);
@@ -206,7 +206,7 @@ soulng::parser::Match TranslationUnitParser::ModuleUnit(CppLexer& lexer, sngcpp:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ModuleUnit"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 301);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 309);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> globalModuleFragment;
     std::unique_ptr<Node> moduleDeclaration;

@@ -211,17 +211,17 @@
    </semicolonNode>
   </simpleDeclarationNode>
   <functionDefinitionNode pos="(20,1)" type="compound">
-   <declSpecifierSequenceNode count="2" pos="(20,1)" type="sequence">
+   <declSpecifierSequenceNode count="1" pos="(20,1)" type="sequence">
     <voidNode pos="(20,1)" type="single">
      <keyword pos="(20,1)" value="void"/>
     </voidNode>
-    <identifierNode pos="(20,6)" type="compound">
-     <identifier pos="(20,6)" value="C"/>
-    </identifierNode>
    </declSpecifierSequenceNode>
-   <functionDeclaratorNode count="1" pos="(20,7)" type="unary">
-    <qualifiedIdNode count="2" pos="(20,7)" type="binary">
-     <nestedNameSpecifierNode count="1" pos="(20,7)" type="sequence">
+   <functionDeclaratorNode count="1" pos="(20,6)" type="unary">
+    <qualifiedIdNode count="2" pos="(20,6)" type="binary">
+     <nestedNameSpecifierNode count="2" pos="(20,6)" type="sequence">
+      <identifierNode pos="(20,6)" type="compound">
+       <identifier pos="(20,6)" value="C"/>
+      </identifierNode>
       <colonColonNode pos="(20,7)" type="single">
        <operator pos="(20,7)" value="::"/>
       </colonColonNode>

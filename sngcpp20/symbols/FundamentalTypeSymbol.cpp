@@ -59,6 +59,7 @@ FundamentalTypeFlagMapper::FundamentalTypeFlagMapper()
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::shortFlag] = FundamentalTypeKind::shortIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::intType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longLongFlag] = FundamentalTypeKind::longLongIntType;
+    flagMap[DeclarationFlags::signedFlag | DeclarationFlags::int64Flag] = FundamentalTypeKind::longLongIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::longIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::longLongFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::longLongIntType;
     flagMap[DeclarationFlags::signedFlag | DeclarationFlags::shortFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::shortIntType;
@@ -71,9 +72,11 @@ FundamentalTypeFlagMapper::FundamentalTypeFlagMapper()
     flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::longFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::unsignedLongIntType;
     flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::longLongFlag] = FundamentalTypeKind::unsignedLongLongIntType;
     flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::longLongFlag | DeclarationFlags::intFlag] = FundamentalTypeKind::unsignedLongLongIntType;
+    flagMap[DeclarationFlags::unsignedFlag | DeclarationFlags::int64Flag] = FundamentalTypeKind::unsignedLongLongIntType;
     flagMap[DeclarationFlags::floatFlag] = FundamentalTypeKind::floatType;
     flagMap[DeclarationFlags::doubleFlag] = FundamentalTypeKind::doubleType;
     flagMap[DeclarationFlags::longFlag | DeclarationFlags::doubleFlag] = FundamentalTypeKind::longDoubleType;
+    flagMap[DeclarationFlags::int64Flag] = FundamentalTypeKind::longLongIntType;
     flagMap[DeclarationFlags::autoFlag] = FundamentalTypeKind::autoType;
 }
 
@@ -101,7 +104,7 @@ std::u32string MakeFundamentalTypeName(FundamentalTypeKind kind)
     return ToUtf32(fundamentalTypeNames[static_cast<int>(kind)]);
 }
 
-FundamentalTypeSymbol::FundamentalTypeSymbol(FundamentalTypeKind kind_) : TypeSymbol(MakeFundamentalTypeName(kind_)), kind(kind_)
+FundamentalTypeSymbol::FundamentalTypeSymbol(FundamentalTypeKind kind_) : TypeSymbol(MakeFundamentalTypeName(kind_), SymbolKind::fundamentalTypeSymbol), kind(kind_)
 {
 }
 

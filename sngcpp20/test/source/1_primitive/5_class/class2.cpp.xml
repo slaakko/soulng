@@ -1,0 +1,84 @@
+<translationUnitNode pos="(1,1)" type="compound">
+ <declarationSequenceNode count="2" pos="(1,1)" type="sequence">
+  <templateDeclarationNode count="2" pos="(1,1)" type="binary">
+   <templateHeadNode pos="(1,1)" type="compound">
+    <keyword pos="(1,1)" value="template"/>
+    <templateParameterListNode count="1" pos="(1,9)" type="list">
+     <operator pos="(1,9)" value="&lt;"/>
+     <typeParameterNode pos="(1,10)" type="compound">
+      <typenameNode pos="(1,10)" type="single">
+       <keyword pos="(1,10)" value="typename"/>
+      </typenameNode>
+      <identifierNode pos="(1,19)" type="compound">
+       <identifier pos="(1,19)" value="T"/>
+      </identifierNode>
+     </typeParameterNode>
+     <operator pos="(1,20)" value=">"/>
+    </templateParameterListNode>
+   </templateHeadNode>
+   <simpleDeclarationNode pos="(2,1)" type="compound">
+    <declSpecifierSequenceNode count="1" pos="(2,1)" type="sequence">
+     <classSpecifierNode pos="(2,1)" type="sequence">
+      <classHeadNode pos="(2,1)" type="compound">
+       <classNode pos="(2,1)" type="single">
+        <keyword pos="(2,1)" value="class"/>
+       </classNode>
+       <identifierNode pos="(2,7)" type="compound">
+        <identifier pos="(2,7)" value="Base"/>
+       </identifierNode>
+      </classHeadNode>
+      <operator pos="(3,1)" value="{"/>
+      <operator pos="(4,1)" value="}"/>
+     </classSpecifierNode>
+    </declSpecifierSequenceNode>
+    <semicolonNode pos="(4,2)" type="single">
+     <operator pos="(4,2)" value=";"/>
+    </semicolonNode>
+   </simpleDeclarationNode>
+  </templateDeclarationNode>
+  <simpleDeclarationNode pos="(6,1)" type="compound">
+   <declSpecifierSequenceNode count="1" pos="(6,1)" type="sequence">
+    <classSpecifierNode pos="(6,1)" type="sequence">
+     <classHeadNode pos="(6,1)" type="compound">
+      <classNode pos="(6,1)" type="single">
+       <keyword pos="(6,1)" value="class"/>
+      </classNode>
+      <identifierNode pos="(6,7)" type="compound">
+       <identifier pos="(6,7)" value="Foo"/>
+      </identifierNode>
+      <baseClauseNode count="1" pos="(6,11)" type="unary">
+       <operator pos="(6,11)" value=":"/>
+       <baseSpecifierListNode count="1" pos="(6,13)" type="list">
+        <baseSpecifierNode pos="(6,13)" type="compound">
+         <publicNode pos="(6,13)" type="single">
+          <keyword pos="(6,13)" value="public"/>
+         </publicNode>
+         <templateIdNode count="1" pos="(6,20)" type="list">
+          <identifierNode pos="(6,20)" type="compound">
+           <identifier pos="(6,20)" value="Base"/>
+          </identifierNode>
+          <operator pos="(6,24)" value="&lt;"/>
+          <typeIdNode pos="(6,25)" type="compound">
+           <typeSpecifierSequenceNode count="1" pos="(6,25)" type="sequence">
+            <intNode pos="(6,25)" type="single">
+             <keyword pos="(6,25)" value="int"/>
+            </intNode>
+           </typeSpecifierSequenceNode>
+           <abstractDeclaratorNode pos="(6,28)" type="single"/>
+          </typeIdNode>
+          <operator pos="(6,28)" value=">"/>
+         </templateIdNode>
+        </baseSpecifierNode>
+       </baseSpecifierListNode>
+      </baseClauseNode>
+     </classHeadNode>
+     <operator pos="(7,1)" value="{"/>
+     <operator pos="(8,1)" value="}"/>
+    </classSpecifierNode>
+   </declSpecifierSequenceNode>
+   <semicolonNode pos="(8,2)" type="single">
+    <operator pos="(8,2)" value=";"/>
+   </semicolonNode>
+  </simpleDeclarationNode>
+ </declarationSequenceNode>
+</translationUnitNode>

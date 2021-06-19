@@ -5,11 +5,17 @@
 
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/BlockSymbol.hpp>
+#include <sngcpp20/symbols/ClassGroupSymbol.hpp>
 #include <sngcpp20/symbols/ClassTypeSymbol.hpp>
+#include <sngcpp20/symbols/ConceptGroupSymbol.hpp>
 #include <sngcpp20/symbols/EnumTypeSymbol.hpp>
 #include <sngcpp20/symbols/CompoundTypeSymbol.hpp>
 #include <sngcpp20/symbols/FunctionSymbol.hpp>
 #include <sngcpp20/symbols/FunctionGroupSymbol.hpp>
+#include <sngcpp20/symbols/VariableGroupSymbol.hpp>
+#include <sngcpp20/symbols/VariableSymbol.hpp>
+#include <sngcpp20/symbols/AliasGroupSymbol.hpp>
+#include <sngcpp20/symbols/AliasTypeSymbol.hpp>
 #include <sngcpp20/symbols/ConceptSymbol.hpp>
 #include <sngcpp20/symbols/Exception.hpp>
 #include <sngcpp20/symbols/TemplateDeclarationSymbol.hpp>
@@ -20,7 +26,7 @@ namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
 
-SymbolTable::SymbolTable() : globalNs(std::u32string()), currentScope(globalNs.GetScope()), blockNumber(0)
+SymbolTable::SymbolTable() : globalNs(std::u32string()), currentScope(globalNs.GetScope()), blockNumber(0), varArgTypeSymbol(nullptr), typenameContraintSymbol(nullptr)
 {
 }
 
@@ -143,7 +149,7 @@ void SymbolTable::BeginNamespace(Node* node, Context* context)
     Symbol* symbol = currentScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsNamespaceSymbol())
+        if (symbol->Kind() == SymbolKind::namespaceSymbol)
         {
             NamespaceSymbol* namespaceSymbol = static_cast<NamespaceSymbol*>(symbol);
             MapNode(node, namespaceSymbol);
@@ -157,7 +163,7 @@ void SymbolTable::BeginNamespace(Node* node, Context* context)
     }
     NamespaceSymbol* namespaceSymbol = new NamespaceSymbol(node->Str());
     MapNode(node, namespaceSymbol);
-    currentScope->AddSymbol(namespaceSymbol, node->GetSourcePos(), context);
+    currentScope->AddSymbol(namespaceSymbol, node->GetSourcePos(), nullptr, context);
     BeginScope(*namespaceSymbol->GetScope());
 }
 
@@ -169,12 +175,47 @@ void SymbolTable::EndNamespace(int level)
     }
 }
 
-void SymbolTable::BeginClass(Node* specifierNode, Node* node, Context* context)
+void SymbolTable::BeginClass(Node* specifierNode, Node* node, std::vector<Symbol*>& templateArguments, Context* context)
 {
+    Scope* groupScope = currentScope;
+    TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
+    if (currentScope->Kind() == ScopeKind::templateDeclarationScope)
+    {
+        templateDeclarationSymbol = static_cast<TemplateDeclarationSymbol*>(currentScope->GetSymbol());
+        groupScope = currentScope->ParentScope();
+    }
+    Symbol* symbol = groupScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->Kind() == SymbolKind::classGroupSymbol)
+        {
+            ClassGroupSymbol* classGroup = static_cast<ClassGroupSymbol*>(symbol);
+            bool exact = false;
+            ClassTypeSymbol* classTypeSymbol = classGroup->GetClass(templateArguments, MatchKind::exact, exact);
+            if (classTypeSymbol)
+            {
+                BeginScope(*classTypeSymbol->GetScope());
+                return;
+            }
+        }
+        else
+        {
+            throw Exception("name of class group '" + ToUtf8(node->Str()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
+        }
+    }
     ClassTypeSymbol* classTypeSymbol = new ClassTypeSymbol(node->Str());
     classTypeSymbol->SetIdNode(node);
-    currentScope->AddSymbol(classTypeSymbol, node->GetSourcePos(), context);
-    MapNode(specifierNode, classTypeSymbol);
+    classTypeSymbol->SetTemplateArguments(templateArguments);
+    currentScope->AddSymbol(classTypeSymbol, node->GetSourcePos(), groupScope, context);
+    if (templateDeclarationSymbol)
+    {
+        classTypeSymbol->SetTemplateDeclarationSymbol(templateDeclarationSymbol);
+        classTypeSymbol->AddTemplateParameters(templateDeclarationSymbol->TemplateParameters());
+    }
+    if (specifierNode)
+    {
+        MapNode(specifierNode, classTypeSymbol);
+    }
     MapNode(node, classTypeSymbol, MapKind::nodeToSymbol);
     BeginScope(*classTypeSymbol->GetScope());
 }
@@ -189,7 +230,7 @@ void SymbolTable::BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* e
     Symbol* symbol = currentScope->Lookup(idNode->Str(), ScopeLookup::thisScope, idNode->GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsEnumTypeSymbol())
+        if (symbol->Kind() == SymbolKind::enumTypeSymbol)
         {
             EnumTypeSymbol* enumTypeSymbol = static_cast<EnumTypeSymbol*>(symbol);
             BeginScope(*enumTypeSymbol->GetScope());
@@ -202,7 +243,7 @@ void SymbolTable::BeginEnumType(Node* specifierNode, Node* idNode, TypeSymbol* e
     }
     EnumTypeSymbol* enumTypeSymbol = new EnumTypeSymbol(idNode->Str(), enumBaseType);
     enumTypeSymbol->SetIdNode(idNode);
-    currentScope->AddSymbol(enumTypeSymbol, idNode->GetSourcePos(), context);
+    currentScope->AddSymbol(enumTypeSymbol, idNode->GetSourcePos(), nullptr, context);
     MapNode(specifierNode, enumTypeSymbol);
     MapNode(idNode, enumTypeSymbol, MapKind::nodeToSymbol);
     BeginScope(*enumTypeSymbol->GetScope());
@@ -215,16 +256,23 @@ void SymbolTable::EndEnumType()
 
 void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* functionType, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters, bool definition, Context* context)
 {
-    Symbol* symbol = scope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    Scope* groupScope = scope;
+    TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
+    if (currentScope->Kind() == ScopeKind::templateDeclarationScope)
+    {
+        templateDeclarationSymbol = static_cast<TemplateDeclarationSymbol*>(currentScope->GetSymbol());
+        groupScope = scope->ParentScope();
+    }
+    Symbol* symbol = groupScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
     if (symbol)
     {
-        if (symbol->IsFunctionGroupSymbol())
+        if (symbol->Kind() == SymbolKind::functionGroupSymbol)
         {
             FunctionGroupSymbol* functionGroupSymbol = static_cast<FunctionGroupSymbol*>(symbol);
             FunctionSymbol* functionSymbol = functionGroupSymbol->GetFunction(parameters);
             if (functionSymbol)
             {
-                if (functionSymbol->Type()->Key().returnType != functionType->Key().returnType)
+                if (!SymbolsEqual(functionSymbol->Type()->Key().returnType,functionType->Key().returnType))
                 {
                     throw Exception("function return type '" + ToUtf8(functionType->Key().returnType->FullName()) + " conflicts with earlier declaration", node->GetSourcePos(), context);
                 }
@@ -251,7 +299,11 @@ void SymbolTable::BeginFunction(Node* node, Scope* scope, FunctionTypeSymbol* fu
     }
     FunctionSymbol* functionSymbol = new FunctionSymbol(node->Str(), std::move(parameters), definition); 
     functionSymbol->SetType(functionType);
-    scope->AddSymbol(functionSymbol, node->GetSourcePos(), context);
+    currentScope->AddSymbol(functionSymbol, node->GetSourcePos(), groupScope, context);
+    if (templateDeclarationSymbol)
+    {
+        functionSymbol->SetTemplateDeclarationSymbol(templateDeclarationSymbol);
+    }
     MapNode(node, functionSymbol);
     BeginScope(*functionSymbol->GetScope());
 }
@@ -269,7 +321,7 @@ void SymbolTable::RemoveFunction()
     {
         ContainerScope* containerScope = static_cast<ContainerScope*>(scope);
         ContainerSymbol* containerSymbol = containerScope->GetContainerSymbol();
-        if (containerSymbol->IsFunctionSymbol())
+        if (containerSymbol->Kind() == SymbolKind::functionSymbol)
         {
             functionSymbol = static_cast<FunctionSymbol*>(containerSymbol);
         }
@@ -284,7 +336,7 @@ void SymbolTable::RemoveFunction()
 void SymbolTable::BeginBlock(const SourcePos& sourcePos, Context* context)
 {
     BlockSymbol* blockSymbol = new BlockSymbol(blockNumber++);
-    currentScope->AddSymbol(blockSymbol, sourcePos, context);
+    currentScope->AddSymbol(blockSymbol, sourcePos, nullptr, context);
     BeginScope(*blockSymbol->GetScope());
 }
 
@@ -301,7 +353,7 @@ void SymbolTable::RemoveBlock()
     {
         ContainerScope* containerScope = static_cast<ContainerScope*>(scope);
         ContainerSymbol* containerSymbol = containerScope->GetContainerSymbol();
-        if (containerSymbol->IsBlockSymbol())
+        if (containerSymbol->Kind() == SymbolKind::blockSymbol)
         {
             blockSymbol = static_cast<BlockSymbol*>(containerSymbol);
         }
@@ -318,17 +370,87 @@ void SymbolTable::RemoveBlock()
     }
 }
 
+void SymbolTable::AddAliasType(Node* node, Scope* scope, TypeSymbol* type, Context* context)
+{
+    Scope* groupScope = scope;
+    TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
+    if (scope->Kind() == ScopeKind::templateDeclarationScope)
+    {
+        templateDeclarationSymbol = static_cast<TemplateDeclarationSymbol*>(scope->GetSymbol());
+        groupScope = scope->ParentScope();
+    }
+    Symbol* symbol = groupScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->Kind() == SymbolKind::aliasGroupSymbol)
+        {
+            return;
+        }
+    }
+    AliasTypeSymbol* aliasTypeSymbol = new AliasTypeSymbol(node->Str(), type);
+    if (templateDeclarationSymbol)
+    {
+        aliasTypeSymbol->SetTemplateDeclarationSymbol(templateDeclarationSymbol);
+    }
+    currentScope->AddSymbol(aliasTypeSymbol, node->GetSourcePos(), groupScope, context);
+    MapNode(node, aliasTypeSymbol);
+}
+
 void SymbolTable::AddConcept(Node* node, Context* context)
 {
+    Scope* groupScope = currentScope;
+    TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
+    if (currentScope->Kind() == ScopeKind::templateDeclarationScope)
+    {
+        templateDeclarationSymbol = static_cast<TemplateDeclarationSymbol*>(currentScope->GetSymbol());
+        groupScope = currentScope->ParentScope();
+    }
+    Symbol* symbol = groupScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->Kind() == SymbolKind::conceptGroupSymbol)
+        {
+            ConceptGroupSymbol* conceptGroupSymbol = static_cast<ConceptGroupSymbol*>(symbol);
+            ConceptSymbol* conceptSymbol = conceptGroupSymbol->GetConcept();
+            if (conceptSymbol)
+            {
+                BeginScope(*conceptSymbol->GetScope());
+                return;
+            }
+        }
+    }
     ConceptSymbol* conceptSymbol = new ConceptSymbol(node->Str());
-    currentScope->AddSymbol(conceptSymbol, node->GetSourcePos(), context);
+    currentScope->AddSymbol(conceptSymbol, node->GetSourcePos(), groupScope, context);
     MapNode(node, conceptSymbol);
+}
+
+void SymbolTable::AddVariable(Node* node, Scope* scope, TypeSymbol* type, SymbolKind kind, Context* context)
+{
+    Scope* groupScope = scope;
+    TemplateDeclarationSymbol* templateDeclarationSymbol = nullptr;
+    if (scope->Kind() == ScopeKind::templateDeclarationScope)
+    {
+        templateDeclarationSymbol = static_cast<TemplateDeclarationSymbol*>(scope->GetSymbol());
+        groupScope = scope->ParentScope();
+    }
+    Symbol* symbol = groupScope->Lookup(node->Str(), ScopeLookup::thisScope, node->GetSourcePos(), context);
+    if (symbol)
+    {
+        if (symbol->Kind() == SymbolKind::variableGroupSymbol)
+        {
+            return;
+        }
+    }
+    VariableSymbol* variableSymbol = new VariableSymbol(node->Str(), kind);
+    variableSymbol->SetType(type);
+    scope->AddSymbol(variableSymbol, node->GetSourcePos(), groupScope, context);
+    MapNode(node, variableSymbol);
 }
 
 void SymbolTable::BeginTemplateDeclaration(Node* node, Context* context)
 {
     TemplateDeclarationSymbol* templateDeclarationSymbol = new TemplateDeclarationSymbol();
-    currentScope->AddSymbol(templateDeclarationSymbol, node->GetSourcePos(), context);
+    currentScope->AddSymbol(templateDeclarationSymbol, node->GetSourcePos(), nullptr, context);
     MapNode(node, templateDeclarationSymbol);
     BeginScope(*templateDeclarationSymbol->GetScope());
 }
@@ -338,10 +460,10 @@ void SymbolTable::EndTemplateDeclaration()
     EndScope();
 }
 
-void SymbolTable::AddTemplateParameter(Node* node, Context* context)
+void SymbolTable::AddTemplateParameter(Node* node, const std::u32string& name, Symbol* contstraint, int index, Context* context)
 {
-    TemplateParameterSymbol* templateParameterSymbol = new TemplateParameterSymbol(node->Str());
-    currentScope->AddSymbol(templateParameterSymbol, node->GetSourcePos(), context);
+    TemplateParameterSymbol* templateParameterSymbol = new TemplateParameterSymbol(contstraint, name, index);
+    currentScope->AddSymbol(templateParameterSymbol, node->GetSourcePos(), nullptr, context);
     MapNode(node, templateParameterSymbol);
 }
 
@@ -472,6 +594,26 @@ TypeSymbol* SymbolTable::MakeArrayType(const ArrayTypeKey& arrayTypeKey)
         types.push_back(std::unique_ptr<TypeSymbol>(arrayType));
         return arrayType;
     }
+}
+
+TypeSymbol* SymbolTable::MakeVarArgTypeSymbol()
+{
+    if (!varArgTypeSymbol)
+    {
+        varArgTypeSymbol = new VarArgTypeSymbol();
+        types.push_back(std::unique_ptr<TypeSymbol>(varArgTypeSymbol));
+    }
+    return varArgTypeSymbol;
+}
+
+TypeSymbol* SymbolTable::MakeTypeNameConstraintSymbol()
+{
+    if (!typenameContraintSymbol)
+    {
+        typenameContraintSymbol = new TypenameConstraintSymbol();
+        types.push_back(std::unique_ptr<TypeSymbol>(typenameContraintSymbol));
+    }
+    return typenameContraintSymbol;
 }
 
 } // sngcpp::symbols

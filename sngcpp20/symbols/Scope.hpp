@@ -20,6 +20,12 @@ class Symbol;
 class ContainerSymbol;
 class NamespaceSymbol;
 class UsingDirectiveScope;
+class TemplateDeclarationSymbol;
+class ClassGroupSymbol;
+class FunctionGroupSymbol; 
+class ConceptGroupSymbol;
+class VariableGroupSymbol;
+class AliasGroupSymbol;
 
 enum class ScopeKind : int
 {
@@ -67,13 +73,21 @@ public:
     void Uninstall(Symbol* symbol);
     Symbol* Lookup(const std::u32string& id, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const;
     virtual std::string FullName() const = 0;
+    virtual bool IsContainerScope() const { return false; }
+    virtual Symbol* GetSymbol() { return nullptr; }
     virtual void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
-    virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context);
+    virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context);
     virtual void RemoveSymbol(Symbol* symbol);
+    virtual Scope* ParentScope() const { return nullptr; }
+    virtual void SetParentScope(Scope* parentScope_);
     virtual void AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context);
     virtual void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context);
     virtual void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context);
-    virtual bool IsContainerScope() const { return false; }
+    virtual ClassGroupSymbol* GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
+    virtual FunctionGroupSymbol* GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
+    virtual ConceptGroupSymbol* GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
+    virtual VariableGroupSymbol* GetOrInsertVariableGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
+    virtual AliasGroupSymbol* GetOrInsertAliasGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
 private:
     ScopeKind kind;
     std::map<std::u32string, Symbol*> symbolMap;
@@ -85,20 +99,26 @@ public:
     ContainerScope();
     ContainerScope(const ContainerScope&) = delete;
     ContainerScope& operator=(const ContainerScope&) = delete;
-    ContainerScope* ParentScope() const { return parentScope; }
-    void SetParentScope(ContainerScope* parentScope_) { parentScope = parentScope_; }
+    Scope* ParentScope() const override { return parentScope; }
+    void SetParentScope(Scope* parentScope_) override { parentScope = parentScope_; }
+    bool IsContainerScope() const override { return true; }
     void AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context) override;
+    Symbol* GetSymbol() override;
     ContainerSymbol* GetContainerSymbol() const { return containerSymbol; }
     void SetContainerSymbol(ContainerSymbol* containerSymbol_) { containerSymbol = containerSymbol_; }
     void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context) override;
     void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context) override;
     std::string FullName() const override;
     void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
-    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Context* context) override;
+    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
     void RemoveSymbol(Symbol* symbol) override;
-    bool IsContainerScope() const override { return true; }
+    ClassGroupSymbol* GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
+    FunctionGroupSymbol* GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
+    ConceptGroupSymbol* GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
+    VariableGroupSymbol* GetOrInsertVariableGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
+    AliasGroupSymbol* GetOrInsertAliasGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
 private:
-    ContainerScope* parentScope;
+    Scope* parentScope;
     std::vector<Scope*> baseScopes;
     Scope* usingDeclarationScope;
     ContainerSymbol* containerSymbol;

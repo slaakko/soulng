@@ -101,6 +101,11 @@ class TypedefNode;
 class ConstExprNode;
 class ConstEvalNode;
 class ConstInitNode;
+class CDeclNode;
+class FastCallNode;
+class StdCallNode;
+class UnalignedNode;
+class DeclSpecNode;
 class InlineNode;
 class StaticNode;
 class ThreadLocalNode;
@@ -305,6 +310,7 @@ class UnsignedNode;
 class FloatNode;
 class DoubleNode;
 class VoidNode;
+class Int64Node;
 // Statement:
 class LabeledStatementNode;
 class CaseStatementNode;
@@ -460,6 +466,11 @@ public:
     virtual void Visit(ConstExprNode& node) {}
     virtual void Visit(ConstEvalNode& node) {}
     virtual void Visit(ConstInitNode& node) {}
+    virtual void Visit(CDeclNode& node) {}
+    virtual void Visit(FastCallNode& node) {}
+    virtual void Visit(StdCallNode& node) {}
+    virtual void Visit(UnalignedNode& node) {}
+    virtual void Visit(DeclSpecNode& node) {}
     virtual void Visit(InlineNode& node) {}
     virtual void Visit(StaticNode& node) {}
     virtual void Visit(ThreadLocalNode& node) {}
@@ -664,6 +675,7 @@ public:
     virtual void Visit(FloatNode& node) {}
     virtual void Visit(DoubleNode& node) {}
     virtual void Visit(VoidNode& node) {}
+    virtual void Visit(Int64Node& node) {}
     // Statement:
     virtual void Visit(LabeledStatementNode& node) {}
     virtual void Visit(CaseStatementNode& node) {}
@@ -801,6 +813,11 @@ public:
     void Visit(ConstExprNode& node);
     void Visit(ConstEvalNode& node);
     void Visit(ConstInitNode& node);
+    void Visit(CDeclNode& node);
+    void Visit(FastCallNode& node);
+    void Visit(StdCallNode& node);
+    void Visit(UnalignedNode& node);
+    void Visit(DeclSpecNode& node);
     void Visit(InlineNode& node);
     void Visit(StaticNode& node);
     void Visit(ThreadLocalNode& node);
@@ -1005,6 +1022,7 @@ public:
     void Visit(FloatNode& node);
     void Visit(DoubleNode& node);
     void Visit(VoidNode& node);
+    void Visit(Int64Node& node);
     // Statement:
     void Visit(LabeledStatementNode& node);
     void Visit(CaseStatementNode& node);

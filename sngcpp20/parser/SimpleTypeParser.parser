@@ -4,6 +4,7 @@
 // =================================
 
 [hpp]#include <sngcpp20/parser/ParserApi.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [hpp]#include <sngcpp20/symbols/Context.hpp>
 [hpp]#include <sngcpp20/ast/SimpleType.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
@@ -17,6 +18,8 @@ parser api(PARSER_API) SimpleTypeParser
 {
     uselexer CppLexer;
     state;
+
+    using GuardParser.MSVCModeGuard;
 
     SimpleType(sngcpp::symbols::Context* ctx) : Node*
         ::= CHAR{ return new CharNode(sourcePos); }
@@ -33,5 +36,8 @@ parser api(PARSER_API) SimpleTypeParser
         |   FLOAT{ return new FloatNode(sourcePos); }
         |   DOUBLE{ return new DoubleNode(sourcePos); }
         |   VOID{ return new VoidNode(sourcePos); }
+        |   MSVCModeGuard(ctx):msvcMode
+            (   __INT64{ return new Int64Node(sourcePos); }
+            )
         ;
 }

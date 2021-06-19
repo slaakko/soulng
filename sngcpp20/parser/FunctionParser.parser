@@ -110,12 +110,12 @@ parser api(PARSER_API) FunctionParser
         ;
 
     ParameterDeclarationClause(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
-        ::= ParameterDeclarationList(ctx, container):paramList2 Comma:comma{ container->AddNode(comma); } Ellipsis:ellipsis{ container->AddNode(ellipsis); }
+        ::= ParameterDeclarationList(ctx, container):paramList2 Comma:comma Ellipsis:ellipsis{ container->AddNode(comma); container->AddNode(ellipsis); }
         |   empty{ container->Clear(); } ParameterDeclarationList(ctx, container):paramList1? (Ellipsis:ellipsis{ container->AddNode(ellipsis); })?
         ;
 
     ParameterDeclarationList(sngcpp::symbols::Context* ctx, sngcpp::ast::Node* container)
-        ::= ParameterDeclaration(ctx):first{ container->AddNode(first); } (Comma:comma{ container->AddNode(comma); } ParameterDeclaration(ctx):next{ container->AddNode(next); })*
+        ::= ParameterDeclaration(ctx):first{ container->AddNode(first); } (Comma:comma ParameterDeclaration(ctx):next{ container->AddNode(comma); container->AddNode(next); })*
         ;
 
     Comma : Node*

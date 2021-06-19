@@ -17,12 +17,12 @@ FunctionTypeKey::FunctionTypeKey(TypeSymbol* returnType_, std::vector<TypeSymbol
 
 bool operator==(const FunctionTypeKey& left, const FunctionTypeKey& right)
 {
-    if (left.returnType != right.returnType) return false;
+    if (!SymbolsEqual(left.returnType, right.returnType)) return false;
     if (left.parameterTypes.size() != right.parameterTypes.size()) return false;
     int n = left.parameterTypes.size();
     for (int i = 0; i < n; ++i)
     {
-        if (left.parameterTypes[i] != right.parameterTypes[i]) return false;
+        if (!SymbolsEqual(left.parameterTypes[i], right.parameterTypes[i])) return false;
     }
     return true;
 }
@@ -37,7 +37,7 @@ size_t FunctionTypeKeyHash::operator()(const FunctionTypeKey& key) const
     return hashCode;
 }
 
-FunctionTypeSymbol::FunctionTypeSymbol() : TypeSymbol(std::u32string()), key()
+FunctionTypeSymbol::FunctionTypeSymbol() : TypeSymbol(std::u32string(), SymbolKind::functionTypeSymbol), key()
 {
 }
 
