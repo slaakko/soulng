@@ -970,6 +970,14 @@ void DefaultVisitor::Visit(NoexceptSpecifierNode& node)
     EndVisit(node);
 }
 
+void DefaultVisitor::Visit(ThrowSpecifierNode& node)
+{
+    BeginVisit(node);
+    VisitOperator("(", node.LParenPos());
+    VisitOperator("}", node.RParenPos());
+    EndVisit(node);
+}
+
 // Enum:
 
 void DefaultVisitor::Visit(EnumSpecifierNode& node)

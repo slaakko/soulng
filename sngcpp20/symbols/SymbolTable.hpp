@@ -56,7 +56,7 @@ public:
     void MapNode(Node* node);
     void MapNode(Node* node, Symbol* symbol);
     void MapNode(Node* node, Symbol* symbol, MapKind kind);
-    Symbol* Lookup(const std::u32string& name, const SourcePos& sourcePos, Context* context) const;
+    Symbol* Lookup(const std::u32string& name, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Context* context) const;
     Scope* CurrentScope() const { return currentScope; }
     void SetCurrentScope(Scope* scope) { currentScope = scope; }
     void PushScope();
@@ -91,6 +91,8 @@ public:
     TypeSymbol* MakeArrayType(const ArrayTypeKey& arrayTypeKey);
     TypeSymbol* MakeVarArgTypeSymbol();
     TypeSymbol* MakeTypeNameConstraintSymbol();
+    TypeSymbol* MakeGenericTypeSymbol();
+    TypeSymbol* MakeNullPtrTypeSymbol();
 private:
     NamespaceSymbol globalNs;
     std::stack<Scope*> scopeStack;
@@ -107,6 +109,8 @@ private:
     std::unordered_map<ArrayTypeKey, TypeSymbol*, ArrayTypeKeyHash> arrayTypeMap;
     TypeSymbol* varArgTypeSymbol;
     TypeSymbol* typenameContraintSymbol;
+    TypeSymbol* genericTypeSymbol;
+    TypeSymbol* nullPtrTypeSymbol;
     std::vector<std::unique_ptr<TypeSymbol>> types;
     int blockNumber;
 };

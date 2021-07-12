@@ -24,8 +24,8 @@ public:
     ContainerSymbol& operator=(const ContainerSymbol&) = delete;
     bool IsContainerSymbol() const override { return true; }
     Scope* GetScope() override { return &scope; }
-    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
-    void RemoveSymbol(Symbol* symbol) override;
+    void AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
+    void RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind) override;
 private:
     std::vector<std::unique_ptr<Symbol>> symbols;
     ContainerScope scope;

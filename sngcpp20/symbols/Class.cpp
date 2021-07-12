@@ -41,15 +41,12 @@ public:
     void Visit(BooleanLiteralNode& node) override;
     void Visit(IntegerLiteralNode& node) override;
 private:
-    static EvaluationContext evaluationContext;
     Stage stage;
     Context* context;
     Node* specifierNode;
     ClassTypeSymbol* classTypeSymbol;
     std::vector<Symbol*> templateArguments;
 };
-
-EvaluationContext ClassCreatorVisitor::evaluationContext;
 
 ClassCreatorVisitor::ClassCreatorVisitor(Context* context_) : context(context_), specifierNode(nullptr), stage(Stage::createClass), classTypeSymbol(nullptr)
 {
@@ -92,13 +89,13 @@ void ClassCreatorVisitor::Visit(TemplateIdNode& node)
 
 void ClassCreatorVisitor::Visit(BooleanLiteralNode& node)
 {
-    Value* value = EvaluateConstantExpression(&node, evaluationContext);
+    Value* value = EvaluateConstantExpression(&node, GetEvaluationContext());
     templateArguments.push_back(value);
 }
 
 void ClassCreatorVisitor::Visit(IntegerLiteralNode& node)
 {
-    Value* value = EvaluateConstantExpression(&node, evaluationContext);
+    Value* value = EvaluateConstantExpression(&node, GetEvaluationContext());
     templateArguments.push_back(value);
 }
 
@@ -125,7 +122,7 @@ void ClassCreatorVisitor::Visit(IdentifierNode& node)
     }
     else if (stage == Stage::addBases)
     {
-        Symbol* symbol = context->GetSymbolTable()->Lookup(node.Str(), node.GetSourcePos(), context);
+        Symbol* symbol = context->GetSymbolTable()->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, node.GetSourcePos(), context);
         if (symbol && symbol->Kind() == SymbolKind::classGroupSymbol)
         {
             ClassGroupSymbol* classGroup = static_cast<ClassGroupSymbol*>(symbol);

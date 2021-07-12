@@ -923,7 +923,7 @@ soulng::parser::Match ConceptParser::TypeRequirement(CppLexer& lexer, sngcpp::sy
                         soulng::parser::Match match(true);
                         if (match.hit)
                         {
-                            ctx->PushSetFlag(sngcpp::symbols::ContextFlags::assume);
+                            ctx->PushSetFlag(sngcpp::symbols::ContextFlags::assumeType);
                         }
                         *parentMatch8 = match;
                     }

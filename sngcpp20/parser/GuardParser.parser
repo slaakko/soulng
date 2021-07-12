@@ -18,20 +18,20 @@ parser api(PARSER_API) GuardParser
     uselexer CppLexer;
     state;
 
-    MemberFunctionGuard(sngcpp::symbols::Context* ctx)
-        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseMemberFunction); }
+    MemberFunctionTemplateGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseMemberFunction | sngcpp::symbols::ContextFlags::parsingTemplateDeclaration); }
         ;
 
     SavedMemberFunctionBodyGuard(sngcpp::symbols::Context* ctx)
         ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody); }
         ;
 
-    AssumeGuard(sngcpp::symbols::Context* ctx)
-        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::assume); }
+    AssumeTypeGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = ctx->GetFlag(sngcpp::symbols::ContextFlags::assumeType); }
         ;
 
-    NotSimpleTypeGuard(sngcpp::symbols::Context* ctx)
-        ::= empty{ pass = !ctx->GetFlag(sngcpp::symbols::ContextFlags::hasSimpleType); }
+    NotDefiningTypeSpecifierGuard(sngcpp::symbols::Context* ctx)
+        ::= empty{ pass = !ctx->GetFlag(sngcpp::symbols::ContextFlags::hasDefiningTypeSpecifier); }
         ;
 
     MSVCModeGuard(sngcpp::symbols::Context* ctx)

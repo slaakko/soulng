@@ -17,10 +17,11 @@ class SYMBOLS_API AliasGroupSymbol : public Symbol
 public:
     AliasGroupSymbol(const std::u32string& name_);
     bool IsTypeSymbol() const override { return true; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::typeSymbolGroup; }
     std::string SymbolKindStr() const override { return "alias group symbol"; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     void AddAliasTypeSymbol(AliasTypeSymbol* aliasTypeSymbol);
-    AliasTypeSymbol* GetAliasTypeSymbol() const;
+    AliasTypeSymbol* GetAliasTypeSymbol(const std::vector<Symbol*>& templateArguyments) const;
 private:
     std::vector<AliasTypeSymbol*> aliasTypeSymbols;
 };

@@ -97,7 +97,9 @@ namespace CppTokenLexerKeywords
         {U"__fastcall", __FASTCALL}, 
         {U"__stdcall", __STDCALL}, 
         {U"__int64", __INT64}, 
-        {U"__unaligned", __UNALIGNED},
+        {U"__unaligned", __UNALIGNED}, 
+        {U"__inline", __INLINE}, 
+        {U"__nullptr", __NULLPTR},
         {nullptr, -1}
     };
 

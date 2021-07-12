@@ -936,4 +936,32 @@ void NoexceptSpecifierNode::Read(Reader& reader)
     rpPos = reader.ReadSourcePos();
 }
 
+ThrowSpecifierNode::ThrowSpecifierNode(const SourcePos& sourcePos_) : CompoundNode(NodeKind::throwSpecifierNode, sourcePos_)
+{
+}
+
+ThrowSpecifierNode::ThrowSpecifierNode(const SourcePos& sourcePos_, const SourcePos& lpPos_, const SourcePos& rpPos_) :
+    CompoundNode(NodeKind::throwSpecifierNode, sourcePos_), lpPos(lpPos_), rpPos(rpPos_)
+{
+}
+
+void ThrowSpecifierNode::Accept(Visitor& visitor)
+{
+    visitor.Visit(*this);
+}
+
+void ThrowSpecifierNode::Write(Writer& writer)
+{
+    CompoundNode::Write(writer);
+    writer.Write(lpPos);
+    writer.Write(rpPos);
+}
+
+void ThrowSpecifierNode::Read(Reader& reader)
+{
+    CompoundNode::Read(reader);
+    lpPos = reader.ReadSourcePos();
+    rpPos = reader.ReadSourcePos();
+}
+
 } // namespace sngcpp::ast

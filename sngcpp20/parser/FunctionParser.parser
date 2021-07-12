@@ -46,14 +46,14 @@ parser api(PARSER_API) FunctionParser
     using TypeParser.DeclTypeSpecifier;
 
     FunctionDefinition(sngcpp::symbols::Context* ctx, var SourcePos s, var std::unique_ptr<Node> declSpecifierSeqNode, var std::unique_ptr<Node> declaratorNode, 
-        var std::unique_ptr<Node> specifierNode) : Node*
+        var std::unique_ptr<Node> specifierNode, var bool functionBegan) : Node*
         ::= (AttributeSpecifierSeq(ctx):attributes{ s = sourcePos; })? 
             (DeclSpecifierSeq(ctx):declSpecifiers{ declSpecifierSeqNode.reset(declSpecifiers); if (!s.IsValid()) s = sourcePos; })? 
             Declarator(ctx):declarator{ if (!s.IsValid()) s = sourcePos; declaratorNode.reset(declarator); }
             (   VirtSpecifierSeq(ctx):virtSpecifiers{ specifierNode.reset(virtSpecifiers); }
             |   RequiresClause(ctx):requiresClause{ specifierNode.reset(requiresClause); }
             |   empty
-            ){ sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx); }
+            ){ functionBegan = sngcpp::symbols::BeginFunctionDefinition(declSpecifierSeqNode.get(), declaratorNode.get(), ctx); }
             FunctionBody(ctx):functionBody
             {
                 sngcpp::symbols::EndFunctionDefinition(ctx); 
@@ -61,7 +61,10 @@ parser api(PARSER_API) FunctionParser
             }
             /
             {
-                sngcpp::symbols::RemoveFunctionDefinition(ctx);
+                if (functionBegan)
+                {
+                    sngcpp::symbols::RemoveFunctionDefinition(ctx); 
+                }
             }
         ;
 

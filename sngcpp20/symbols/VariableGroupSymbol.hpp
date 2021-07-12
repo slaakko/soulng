@@ -17,6 +17,7 @@ class SYMBOLS_API VariableGroupSymbol : public Symbol
 public:
     VariableGroupSymbol(const std::u32string& name_);
     std::string SymbolKindStr() const override { return "variable group symbol"; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::variableSymbolGroup; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     void AddVariable(VariableSymbol* variableSymbol);
     VariableSymbol* GetVariable() const;

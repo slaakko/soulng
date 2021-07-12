@@ -109,7 +109,7 @@ parser api(PARSER_API) ConceptParser
     TypeRequirement(sngcpp::symbols::Context* ctx, var SourcePos s): Node*
         ::= TYPENAME{ s = sourcePos; } 
             NestedNameSpecifier(ctx):nns? 
-            empty{ ctx->PushSetFlag(sngcpp::symbols::ContextFlags::assume); }
+            empty{ ctx->PushSetFlag(sngcpp::symbols::ContextFlags::assumeType); }
             TypeName(ctx):typeName{ ctx->PopFlags(); } / { ctx->PopFlags(); }
             Semicolon:semicolon
         { 

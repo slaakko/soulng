@@ -8,6 +8,7 @@
 #include <sngcpp20/parser/ClassParser.hpp>
 #include <sngcpp20/symbols/SymbolTable.hpp>
 #include <sngcpp20/symbols/InitDone.hpp>
+#include <sngcpp20/symbols/Value.hpp>
 #include <sngcpp20/lexer/CppLexer.hpp>
 #include <sngcpp20/ast/InitDone.hpp>
 #include <sngcpp20/config/Config.hpp>
@@ -290,6 +291,7 @@ void WriteBinary(Node* translationUnit, const std::string& outFilePath, bool ver
 
 bool ProcessFile(const std::string& filePath, const std::string destDir, Options options, bool out, bool verbose, int level, sngxml::dom::Element* testResult, const Configuration& configuration)
 {
+    EvaluationContextGuard evaluationContextGuard;
     std::unique_ptr<sngxml::dom::Element> fileResult;
     if (testResult)
     {

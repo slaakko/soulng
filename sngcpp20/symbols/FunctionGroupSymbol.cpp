@@ -35,7 +35,7 @@ void FunctionGroupSymbol::RemoveFunction(FunctionSymbol* function)
     functions.erase(std::remove(functions.begin(), functions.end(), function), functions.end());
     if (functions.empty())
     {
-        Parent()->RemoveSymbol(this);
+        Parent()->RemoveSymbol(this, SymbolGroupKind::functionSymbolGroup);
     }
 }
 

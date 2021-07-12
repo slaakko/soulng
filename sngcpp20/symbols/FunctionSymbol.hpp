@@ -20,6 +20,7 @@ class SYMBOLS_API FunctionSymbol : public ContainerSymbol
 public:
     FunctionSymbol(const std::u32string& name_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_, bool definition_);
     std::string SymbolKindStr() const override { return "function symbol"; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::functionSymbolGroup; }
     TemplateDeclarationSymbol* GetTemplateDeclarationSymbol() const { return templateDeclarationSymbol; }
     void SetTemplateDeclarationSymbol(TemplateDeclarationSymbol* templateDeclarationSymbol_) { templateDeclarationSymbol = templateDeclarationSymbol_; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
@@ -36,6 +37,7 @@ private:
     std::vector<std::unique_ptr<ParameterSymbol>> parameters;
     bool definition;
     TemplateDeclarationSymbol* templateDeclarationSymbol;
+    Scope* groupScope;
 };
 
 } // sngcpp::symbols

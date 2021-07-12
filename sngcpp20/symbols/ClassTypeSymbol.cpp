@@ -9,7 +9,8 @@
 
 namespace sngcpp::symbols {
 
-ClassTypeSymbol::ClassTypeSymbol(const std::u32string& name_) : TypeSymbol(name_, SymbolKind::classTypeSymbol), idNode(nullptr), classTemplate(nullptr), templateDeclarationSymbol(nullptr)
+ClassTypeSymbol::ClassTypeSymbol(const std::u32string& name_) : 
+    TypeSymbol(name_, SymbolKind::classTypeSymbol), idNode(nullptr), classTemplate(nullptr), templateDeclarationSymbol(nullptr), groupScope(nullptr)
 {
     GetScope()->SetKind(ScopeKind::classScope);
 }
@@ -27,12 +28,14 @@ bool ClassTypeSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
         case ScopeKind::namespaceScope: return true;
         case ScopeKind::templateDeclarationScope: return true;
         case ScopeKind::classScope: return true;
+        case ScopeKind::blockScope: return true;
     }
     return false;
 }
 
 void ClassTypeSymbol::AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context)
 {
+    this->groupScope = groupScope;
     ClassGroupSymbol* classGroup = groupScope->GetOrInsertClassGroup(Name(), sourcePos, context);
     classGroup->AddClass(this);
 }

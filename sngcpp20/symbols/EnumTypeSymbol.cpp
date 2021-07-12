@@ -22,6 +22,7 @@ bool EnumTypeSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
     {
         case ScopeKind::namespaceScope: return true;
         case ScopeKind::classScope: return true;
+        case ScopeKind::blockScope: return true;
     }
     return false;
 }

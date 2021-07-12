@@ -48,7 +48,7 @@ const char* nodeKindStr[] =
     "angleHeaderNameNode", "quoteHeaderNameNode",
     "identifierNode", "unnamedNode", "colonColonNode", "nestedNameSpecifierNode", "qualifiedIdNode", "identifierListNode", "qualifiedModuleIdNode",
     "charNode", "char8Node", "char16Node", "char32Node", "wcharNode", "boolNode", "shortNode", "intNode", "longNode", "signedNode", "unsignedNode", "floatNode", "doubleNode", "voidNode",
-    "constNode", "volatileNode", "lvalueRefNode", "rvalueRefNode", "ptrNode", "cvQualifierSequenceNode", "ptrOperatorNode", "noexceptSpecifierNode", "packDeclaratorIdNode", "arrayDeclaratorNode", 
+    "constNode", "volatileNode", "lvalueRefNode", "rvalueRefNode", "ptrNode", "cvQualifierSequenceNode", "ptrOperatorNode", "noexceptSpecifierNode", "throwSpecifierNode", "packDeclaratorIdNode", "arrayDeclaratorNode", 
     "functionDeclaratorNode",
     "prefixNode", "trailingQualifiersNode", "trailingAttributesNode", "ptrDeclaratorNode",
     "expressionListNode", "assignmentInitializerNode",
@@ -407,6 +407,7 @@ NodeFactoryCollection::NodeFactoryCollection()
     Register(NodeKind::trailingQualifiersNode, new NodeFactory<TrailingQualifiersNode>());
     Register(NodeKind::trailingAttributesNode, new NodeFactory<TrailingAttributesNode>());
     Register(NodeKind::noexceptSpecifierNode, new NodeFactory<NoexceptSpecifierNode>());
+    Register(NodeKind::throwSpecifierNode, new NodeFactory<ThrowSpecifierNode>());
     //Enum:
     Register(NodeKind::enumSpecifierNode, new NodeFactory<EnumSpecifierNode>());
     Register(NodeKind::enumHeadNode, new NodeFactory<EnumHeadNode>());

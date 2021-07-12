@@ -10,7 +10,7 @@
 namespace sngcpp::symbols {
 
 FunctionSymbol::FunctionSymbol(const std::u32string& name_, std::vector<std::unique_ptr<ParameterSymbol>>&& parameters_, bool definition_) : 
-    ContainerSymbol(name_, SymbolKind::functionSymbol), type(nullptr), parameters(std::move(parameters_)), definition(definition_), templateDeclarationSymbol(nullptr)
+    ContainerSymbol(name_, SymbolKind::functionSymbol), type(nullptr), parameters(std::move(parameters_)), definition(definition_), templateDeclarationSymbol(nullptr), groupScope(nullptr)
 {
     GetScope()->SetKind(ScopeKind::functionScope);
 }
@@ -28,6 +28,7 @@ bool FunctionSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
 
 void FunctionSymbol::AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context)
 {
+    this->groupScope = groupScope;
     FunctionGroupSymbol* functionGroup = groupScope->GetOrInsertFunctionGroup(Name(), sourcePos, context);
     functionGroup->AddFunction(this);
 }

@@ -9,6 +9,7 @@
 #include <soulng/lexer/Span.hpp>
 #include <soulng/lexer/SourcePos.hpp>
 #include <soulng/lexer/ParsingLog.hpp>
+#include <set>
 #include <vector>
 #include <list>
 #include <map>
@@ -142,8 +143,13 @@ public:
     void PopRule();
     const std::vector<int>& RuleContext() const { return ruleContext; }
     const std::vector<int>& FarthestRuleContext() const { return farthestRuleContext; }
+    const std::vector<int>& CursorRuleContext() const { return cursorRuleContext; }
+    void SetCursorRuleContext();
     void SetRuleNameVecPtr(std::vector<const char*>* ruleNameVecPtr_) { ruleNameVecPtr = ruleNameVecPtr_;  }
     std::string GetParserStateStr() const;
+    void SetBlockCommentStates(const std::set<int>& blockCommentStates_);
+    const std::set<int>& BlockCommentStates() const;
+    void SetCommentTokenId(int commentTokenId_) { commentTokenId = commentTokenId_; }
     LexerFlags Flags() const { return flags; }
     bool GetFlag(LexerFlags flag) const { return (flags & flag) != LexerFlags::none; }
     void SetFlag(LexerFlags flag) { flags = flags | flag; }
@@ -154,6 +160,10 @@ public:
     std::vector<Token>& Tokens() { return tokens; }
     LineMapper* GetLineMapper() { return lineMapper; }
     void SetLineMapper(LineMapper* lineMapper_) { lineMapper = lineMapper_; }
+    virtual int GetCommentTokenId() const { return -1; }
+    bool Recovered() const { return recovered; }
+    void SetRecovered() { recovered = true; }
+    void ResetRecovered() { recovered = false; }
 private:
     std::u32string content;
     std::string fileName;
@@ -176,8 +186,12 @@ private:
     int64_t farthestPos;
     std::vector<int> ruleContext;
     std::vector<int> farthestRuleContext;
+    std::vector<int> cursorRuleContext;
     std::vector<const char*>* ruleNameVecPtr;
     LineMapper* lineMapper;
+    std::set<int> blockCommentStates;
+    int commentTokenId;
+    bool recovered;
     void NextToken();
     void CalculateLineStarts();
 };

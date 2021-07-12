@@ -44,8 +44,7 @@ ParseResult::ParseResult(std::unique_ptr<PPResult>&& ppResult_, const std::strin
 
 std::unique_ptr<PPResult> Preprocess(const std::string& sourceFileName, const Configuration& configuration, bool printMacros)
 {
-    EvaluationContext evaluationContext;
-    PP pp(evaluationContext);
+    PP pp(GetEvaluationContext());
     for (const auto& definePair : configuration.Defines())
     {
         const std::u32string& name = definePair.first;

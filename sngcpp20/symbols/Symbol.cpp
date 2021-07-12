@@ -15,6 +15,32 @@ namespace sngcpp::symbols {
 
 using namespace soulng::unicode;
 
+std::vector<SymbolGroupKind> SymbolGroupKindstoSymbolGroupKindVec(SymbolGroupKind symbolGroupKinds)
+{
+    std::vector<SymbolGroupKind> symbolGroupKindVec;
+    if ((symbolGroupKinds & SymbolGroupKind::functionSymbolGroup) != SymbolGroupKind::none)
+    {
+        symbolGroupKindVec.push_back(SymbolGroupKind::functionSymbolGroup);
+    }
+    if ((symbolGroupKinds & SymbolGroupKind::typeSymbolGroup) != SymbolGroupKind::none)
+    {
+        symbolGroupKindVec.push_back(SymbolGroupKind::typeSymbolGroup);
+    }
+    if ((symbolGroupKinds & SymbolGroupKind::variableSymbolGroup) != SymbolGroupKind::none)
+    {
+        symbolGroupKindVec.push_back(SymbolGroupKind::variableSymbolGroup);
+    }
+    if ((symbolGroupKinds & SymbolGroupKind::conceptSymbolGroup) != SymbolGroupKind::none)
+    {
+        symbolGroupKindVec.push_back(SymbolGroupKind::conceptSymbolGroup);
+    }
+    if ((symbolGroupKinds & SymbolGroupKind::blockSymbolGroup) != SymbolGroupKind::none)
+    {
+        symbolGroupKindVec.push_back(SymbolGroupKind::blockSymbolGroup);
+    }
+    return symbolGroupKindVec;
+}
+
 Symbol::Symbol(const std::u32string& name_, SymbolKind kind_) : kind(kind_), name(name_), parent(nullptr)
 {
 }
@@ -38,12 +64,12 @@ std::u32string Symbol::FullName() const
     return fullName;
 }
 
-void Symbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context)
+void Symbol::AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context)
 {
     throw Exception("cannot add " + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "' to " + SymbolKindStr() + " '" + ToUtf8(FullName()), sourcePos, context);
 }
 
-void Symbol::RemoveSymbol(Symbol* symbol)
+void Symbol::RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind)
 {
     throw std::runtime_error("cannot remove symbol");
 }

@@ -9,12 +9,13 @@
 
 namespace sngcpp::symbols {
 
-ConceptSymbol::ConceptSymbol(const std::u32string& name_) : Symbol(name_, SymbolKind::conceptSymbol)
+ConceptSymbol::ConceptSymbol(const std::u32string& name_) : Symbol(name_, SymbolKind::conceptSymbol), groupScope(nullptr)
 {
 }
 
 void ConceptSymbol::AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context)
 {
+    this->groupScope = groupScope;
     ConceptGroupSymbol* conceptGroup = groupScope->GetOrInsertConceptGroup(Name(), sourcePos, context);
     conceptGroup->AddConcept(this);
 }

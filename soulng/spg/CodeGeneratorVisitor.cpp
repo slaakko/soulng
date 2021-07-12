@@ -281,6 +281,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
     formatter->WriteLine("if (match.hit)");
     formatter->WriteLine("{");
     formatter->IncIndent();
+    formatter->WriteLine("lexer.ResetRecovered();");
     formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
     formatter->DecIndent();
     formatter->WriteLine("}");
@@ -299,6 +300,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
         if (parser.IsNothrow())
         {
             formatter->WriteLine("match.hit = true;");
+            formatter->WriteLine("lexer.SetRecovered();");
             formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
             formatter->WriteLine("lexer.AddError(span, U\"" + ToUtf8(ruleInfo) + "\");");
         }
@@ -313,6 +315,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
         if (parser.IsNothrow())
         {
             formatter->WriteLine("match.hit = true;");
+            formatter->WriteLine("lexer.SetRecovered();");
             formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
             formatter->WriteLine("lexer.AddError(span, ToUtf32(GetTokenInfo(" + ToUtf8(tokenName) + ")));");
         }
@@ -327,6 +330,7 @@ void CodeGeneratorVisitor::Visit(ExpectationParser& parser)
         if (parser.IsNothrow())
         {
             formatter->WriteLine("match.hit = true;");
+            formatter->WriteLine("lexer.SetRecovered();");
             formatter->WriteLine("*parentMatch" + std::to_string(setParentMatchNumber) + " = match;");
             formatter->WriteLine("lexer.AddError(span, U\"" + ToUtf8(parserName) + "\");");
         }
@@ -1190,9 +1194,38 @@ void GenerateRuleFiles(Domain& domain)
     CodeFormatter headerFormatter(ruleHeaderFile);
     headerFormatter.WriteLine("#ifndef RULES_H");
     headerFormatter.WriteLine("#define RULES_H");
+    GrammarParser* firstGrammar = nullptr;
+    if (!domain.ParserFiles().empty())
+    {
+        ParserFile* firstParserFile = domain.ParserFiles().front();
+        for (const auto& include : firstParserFile->Includes())
+        {
+            if (include->HppPrefix())
+            {
+                headerFormatter.WriteLine(ToUtf8(include->Str()));
+            }
+        }
+        if (!firstParserFile->Parsers().empty())
+        {
+            firstGrammar = firstParserFile->Parsers().front().get();
+        }
+    }
     headerFormatter.WriteLine("#include <vector>");
     headerFormatter.WriteLine();
-    headerFormatter.WriteLine("std::vector<const char*>* GetRuleNameVecPtr();");
+    std::string api;
+    if (firstGrammar)
+    {
+        if (!firstGrammar->Api().empty())
+        {
+            api = ToUtf8(firstGrammar->Api()) + " ";
+        }
+    }
+    headerFormatter.WriteLine(api + "std::vector<const char*>* GetRuleNameVecPtr();");
+    headerFormatter.WriteLine();
+    for (RuleParser* rule : domain.Rules())
+    {
+        headerFormatter.WriteLine("const int " + ToUtf8(rule->Parent()->Name()) + "_" + ToUtf8(rule->Name()) + " = " + std::to_string(rule->Id()) + ";");
+    }
     headerFormatter.WriteLine();
     headerFormatter.WriteLine("#endif // RULES_H");
 

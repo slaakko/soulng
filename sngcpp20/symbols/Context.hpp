@@ -31,8 +31,8 @@ enum class ContextFlags : int
     parseMemberFunction = 1 << 1,
     parseSavedMemberFunctionBody = 1 << 2,
     parsingTemplateDeclaration = 1 << 3,
-    assume = 1 << 4,
-    hasSimpleType = 1 << 5,
+    assumeType = 1 << 4,
+    hasDefiningTypeSpecifier = 1 << 5,
     msvcMode = 1 << 6
 };
 

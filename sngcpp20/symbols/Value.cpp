@@ -130,4 +130,75 @@ FloatingValue* EvaluationContext::GetFloatingValue(double value, const std::u32s
     }
 }
 
+class EvaluationContextHolder
+{
+public:
+    static void Init();
+    static void Done();
+    static EvaluationContextHolder& Instance() { return *instance; }
+    void AllocateEvaluationContext();
+    void FreeEvaluationContext();
+    EvaluationContext& GetEvaluationContext() { return *evaluationContext; }
+private:
+    static std::unique_ptr<EvaluationContextHolder> instance;
+    std::unique_ptr<EvaluationContext> evaluationContext;
+};
+
+std::unique_ptr<EvaluationContextHolder> EvaluationContextHolder::instance;
+
+void EvaluationContextHolder::Init()
+{
+    instance.reset(new EvaluationContextHolder());
+}
+
+void EvaluationContextHolder::Done()
+{
+    instance.reset();
+}
+
+void EvaluationContextHolder::AllocateEvaluationContext()
+{
+    evaluationContext.reset(new EvaluationContext());
+}
+
+void EvaluationContextHolder::FreeEvaluationContext()
+{
+    evaluationContext.reset();
+}
+
+void InitValue()
+{
+    EvaluationContextHolder::Init();
+}
+
+void DoneValue()
+{
+    EvaluationContextHolder::Done();
+}
+
+void AllocateEvaluationContext()
+{
+    EvaluationContextHolder::Instance().AllocateEvaluationContext();
+}
+
+void FreeEvaluationContext()
+{
+    EvaluationContextHolder::Instance().FreeEvaluationContext();
+}
+
+EvaluationContext& GetEvaluationContext()
+{
+    return EvaluationContextHolder::Instance().GetEvaluationContext();
+}
+
+EvaluationContextGuard::EvaluationContextGuard()
+{
+    AllocateEvaluationContext();
+}
+
+EvaluationContextGuard::~EvaluationContextGuard()
+{
+    FreeEvaluationContext();
+}
+
 } // sngcpp::symbols

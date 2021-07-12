@@ -9,6 +9,7 @@
 [cpp]#include <sngcpp20/ast/Identifier.hpp>
 [cpp]#include <sngcpp20/parser/LiteralTokenParser.hpp>
 [cpp]#include <sngcpp20/parser/IdentifierTokenParser.hpp>
+[cpp]#include <sngcpp20/parser/GuardParser.hpp>
 [cpp]#include <sngcpp20/lexer/CppLexer.hpp>
 [cpp]#include <sngcpp20/lexer/CppTokens.hpp>
 
@@ -21,6 +22,8 @@ parser api(PARSER_API) LiteralParser
     uselexer CppLexer;
     state;
 
+    using GuardParser.MSVCModeGuard;
+
     Literal(sngcpp::symbols::Context* ctx) : Node*
         ::= UserDefinedLiteral(ctx):udLiteral{ return udLiteral; }
         |   INTLIT{ return sngcpp::par::ParseIntegerLiteral(sourcePos, lexer.FileName(), lexer.GetMatch(pos)); }
@@ -31,6 +34,7 @@ parser api(PARSER_API) LiteralParser
         |   TRUE{ return new BooleanLiteralNode(sourcePos, true, lexer.GetMatch(pos)); }
         |   FALSE{ return new BooleanLiteralNode(sourcePos, false, lexer.GetMatch(pos)); }
         |   NULLPTR{ return new NullPtrLiteralNode(sourcePos, lexer.GetMatch(pos)); }
+        |   MSVCModeGuard(ctx):msvcMode __NULLPTR{ return new NullPtrLiteralNode(sourcePos, lexer.GetMatch(pos)); }
         ;
 
     UserDefinedLiteral(sngcpp::symbols::Context* ctx, var SourcePos s, var int64_t p, var std::unique_ptr<Node> udLiteralNode) : Node*

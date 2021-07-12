@@ -14,6 +14,7 @@ class SYMBOLS_API NamespaceSymbol : public ContainerSymbol
 public:
     NamespaceSymbol(const std::u32string& name_);
     std::string SymbolKindStr() const override { return "namespace symbol"; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::typeSymbolGroup; }
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
 };
 

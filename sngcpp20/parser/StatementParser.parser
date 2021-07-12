@@ -38,7 +38,7 @@ parser api(PARSER_API) StatementParser
     using DeclarationParser.SimpleDeclaration;
     using ExpressionParser.ConstantExpression;
     using ExpressionParser.Expression;
-    using GuardParser.MemberFunctionGuard;
+    using GuardParser.MemberFunctionTemplateGuard;
     using GuardParser.SavedMemberFunctionBodyGuard;
     using IdentifierParser.Identifier;
     using IdentifierParser.IdentifierList;
@@ -170,7 +170,7 @@ parser api(PARSER_API) StatementParser
 
     CompoundStatement(sngcpp::symbols::Context* ctx) : Node*
         ::= 
-        (   MemberFunctionGuard(ctx):memberFunctionGuard
+        (   MemberFunctionTemplateGuard(ctx):memberFunctionTemplateGuard
             CompoundStatementGuarded(ctx):guardedCompoundStatement{ return guardedCompoundStatement; }
         |   SavedMemberFunctionBodyGuard(ctx):savedMemberFunctionBodyGuard{ ctx->ResetFlag(sngcpp::symbols::ContextFlags::parseSavedMemberFunctionBody); }
             CompoundStatementSaved(ctx):savedCompoundStatement{ return savedCompoundStatement; }

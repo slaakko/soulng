@@ -111,13 +111,12 @@ void EnumCreatorVisitor::Visit(UnnamedNode& node)
 
 void EnumCreatorVisitor::Visit(EnumeratorDefinitionNode& node)
 {
-    EvaluationContext evaluationContext;
     Value* val = nullptr;
     std::u32string rep;
     if (node.Value())
     {
         first = false;
-        val = EvaluateConstantExpression(node.Value(), evaluationContext);
+        val = EvaluateConstantExpression(node.Value(), GetEvaluationContext());
         if (val->GetValueKind() == ValueKind::integerValue)
         {
             IntegerValue* integerValue = static_cast<IntegerValue*>(val);

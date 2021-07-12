@@ -25,6 +25,7 @@ public:
     void AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context);
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     bool CanInstall() const override { return false; }
+    Scope* GetGroupScope() override { return groupScope; }
     void SetIdNode(Node* idNode_) { idNode = idNode_; }
     Node* IdNode() const { return idNode; }
     int Level() const;
@@ -41,6 +42,7 @@ private:
     std::vector<Symbol*> templateArguments;
     ClassTypeSymbol* classTemplate;
     TemplateDeclarationSymbol* templateDeclarationSymbol;
+    Scope* groupScope;
 };
 
 } // sngcpp::symbols

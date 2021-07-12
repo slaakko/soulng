@@ -52,7 +52,7 @@ void ScopeResolverVisitor::Visit(ColonColonNode& node)
 void ScopeResolverVisitor::Visit(IdentifierNode& node)
 {
     first = false;
-    Symbol* symbol = currentScope->Lookup(node.Str(), ScopeLookup::thisAndBaseScopes, node.GetSourcePos(), context);
+    Symbol* symbol = currentScope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisAndBaseScopes, node.GetSourcePos(), context);
     if (symbol)
     {
         Scope* scope = symbol->GetScope();

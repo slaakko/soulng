@@ -31,6 +31,7 @@ tokens CppTokenLexerTokens
     (WS, "white space"), (LINECOMMENT, "line comment"), (BLOCKCOMMENT, "block comment"), (BLOCKCOMMENTLINE, "block comment line"),
     (KEYWORD, "keyword"), (ID, "identifier"), (NUMBER, "number"), (PP, "pp"), (OTHER, "other"),
     (__THREAD, "'__thread'"), (__DECLSPEC, "'__declspec'"), (__CDECL, "'__cdecl'"), (__FASTCALL, "'__fastcall'"), (__STDCALL, "'__stdcall'"), (__INT64, "'__int64'"), (__UNALIGNED, "'__unaligned'"),
+    (__INLINE, "'__inline'"), (__NULLPTR, "'__nullptr'"),
     (MAX, "max")
 }
 
@@ -50,7 +51,8 @@ keywords CppTokenLexerKeywords
     ("this", THIS), ("thread_local", THREAD_LOCAL), ("throw", THROW),
     ("true", TRUE), ("try", TRY), ("typedef", TYPEDEF), ("typeid", TYPEID), ("typename", TYPENAME), ("union", UNION), ("unsigned", UNSIGNED), ("using", USING),
     ("virtual", VIRTUAL), ("void", VOID), ("volatile", VOLATILE), ("wchar_t", WCHAR_T), ("while", WHILE),
-    ("__thread", __THREAD), ("__declspec", __DECLSPEC), ("__cdecl", __CDECL), ("__fastcall", __FASTCALL), ("__stdcall", __STDCALL), ("__int64", __INT64), ("__unaligned", __UNALIGNED)
+    ("__thread", __THREAD), ("__declspec", __DECLSPEC), ("__cdecl", __CDECL), ("__fastcall", __FASTCALL), ("__stdcall", __STDCALL), ("__int64", __INT64), ("__unaligned", __UNALIGNED),
+    ("__inline", __INLINE), ("__nullptr", __NULLPTR)
 }
 
 expressions

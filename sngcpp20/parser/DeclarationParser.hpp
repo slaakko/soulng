@@ -51,6 +51,7 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match StdCall(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match Unaligned(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeclSpec(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match DeclSpecDeprecated(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match StorageClassSpecifier(CppLexer& lexer);
     static soulng::parser::Match FunctionSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match ExplicitSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
@@ -68,13 +69,14 @@ struct PARSER_API DeclarationParser
     static soulng::parser::Match AbstractPackDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match NoPtrAbstractPackDeclarator(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match DeclaratorId(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match Ptr(CppLexer& lexer);
+    static soulng::parser::Match Ptr(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match LvalueRef(CppLexer& lexer);
     static soulng::parser::Match RvalueRef(CppLexer& lexer);
     static soulng::parser::Match RefQualifier(CppLexer& lexer);
     static soulng::parser::Match CVQualifierSeq(CppLexer& lexer);
     static soulng::parser::Match CVQualifier(CppLexer& lexer);
     static soulng::parser::Match NoexceptSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match ThrowSpecifier(CppLexer& lexer, sngcpp::symbols::Context* ctx);
 };
 
 #endif // DECLARATIONPARSER_HPP

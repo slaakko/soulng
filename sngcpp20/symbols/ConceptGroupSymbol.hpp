@@ -17,6 +17,7 @@ class SYMBOLS_API ConceptGroupSymbol : public Symbol
 public:
     ConceptGroupSymbol(const std::u32string& name_);
     std::string SymbolKindStr() const override { return "concept group symbol"; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::conceptSymbolGroup; }
     void AddConcept(ConceptSymbol* conceptSymbol);
     ConceptSymbol* GetConcept() const;
 private:

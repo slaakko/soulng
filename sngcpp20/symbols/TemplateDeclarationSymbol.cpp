@@ -20,9 +20,9 @@ TemplateDeclarationSymbol::TemplateDeclarationSymbol() : ContainerSymbol(std::u3
     GetScope()->SetKind(ScopeKind::templateDeclarationScope);
 }
 
-void TemplateDeclarationSymbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context)
+void TemplateDeclarationSymbol::AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context)
 {
-    ContainerSymbol::AddSymbol(symbol, sourcePos, groupScope, context);
+    ContainerSymbol::AddSymbol(symbol, symbolGroupKind, sourcePos, groupScope, context);
     if (symbol->Kind() == SymbolKind::templateParameterSymbol)
     {
         TemplateParameterSymbol* templateParameterSymbol = static_cast<TemplateParameterSymbol*>(symbol);

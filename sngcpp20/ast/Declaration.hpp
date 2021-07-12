@@ -600,6 +600,21 @@ private:
     SourcePos rpPos;
 };
 
+class AST_API ThrowSpecifierNode : public CompoundNode
+{
+public:
+    ThrowSpecifierNode(const SourcePos& sourcePos_);
+    ThrowSpecifierNode(const SourcePos& sourcePos_, const SourcePos& lpPos_, const SourcePos& rpPos_);
+    void Accept(Visitor& visitor) override;
+    void Write(Writer& writer) override;
+    void Read(Reader& reader) override;
+    const SourcePos& LParenPos() const { return lpPos; }
+    const SourcePos& RParenPos() const { return rpPos; }
+private:
+    SourcePos lpPos;
+    SourcePos rpPos;
+};
+
 } // namespace sngcpp::ast
 
 #endif // SNGCPP_AST_DECLARATION_INCLUDED

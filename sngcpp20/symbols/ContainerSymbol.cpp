@@ -19,7 +19,7 @@ ContainerSymbol::ContainerSymbol(const std::u32string& name_, SymbolKind kind_) 
     scope.SetContainerSymbol(this);
 }
 
-void ContainerSymbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context)
+void ContainerSymbol::AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context)
 {
     if (groupScope)
     {
@@ -33,16 +33,16 @@ void ContainerSymbol::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scop
     }
     if (symbol->CanInstall())
     {
-        scope.Install(symbol);
+        scope.Install(symbol, symbolGroupKind);
     }
     symbols.push_back(std::unique_ptr<Symbol>(symbol));
 }
 
-void ContainerSymbol::RemoveSymbol(Symbol* symbol)
+void ContainerSymbol::RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind)
 {
     if (symbol->CanInstall())
     {
-        scope.Uninstall(symbol);
+        scope.Uninstall(symbol, symbolGroupKind);
     }
     for (std::vector<std::unique_ptr<Symbol>>::iterator i = symbols.begin(); i != symbols.end(); ++i)
     {

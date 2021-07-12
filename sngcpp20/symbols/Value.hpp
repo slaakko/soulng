@@ -91,6 +91,18 @@ private:
     std::vector<std::unique_ptr<Value>> values;
 };
 
+SYMBOLS_API void InitValue();
+SYMBOLS_API void DoneValue();
+SYMBOLS_API void AllocateEvaluationContext();
+SYMBOLS_API void FreeEvaluationContext();
+SYMBOLS_API EvaluationContext& GetEvaluationContext();
+
+struct SYMBOLS_API EvaluationContextGuard
+{
+    EvaluationContextGuard();
+    ~EvaluationContextGuard();
+};
+
 } // namespace sngcpp::symbols
 
 #endif // SNGCPP_SYMBOLS_VALUE_INCLUDED

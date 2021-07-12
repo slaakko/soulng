@@ -27,14 +27,14 @@ LineMapper::~LineMapper()
 
 Lexer::Lexer(const std::u32string& content_, const std::string& fileName_, int fileIndex_) :
     content(content_), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(content.c_str()), end(content.c_str() + content.length()), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr), lineMapper(nullptr)
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr), lineMapper(nullptr), recovered(false)
 {
     CalculateLineStarts();
 }
 
 Lexer::Lexer(const char32_t* start_, const char32_t* end_, const std::string& fileName_, int fileIndex_) :
     content(), fileName(fileName_), fileIndex(fileIndex_), line(1), keywordMap(nullptr), start(start_), end(end_), pos(start), current(tokens.end()),
-    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr), lineMapper(nullptr)
+    log(nullptr), countLines(true), separatorChar('\0'), flags(), farthestPos(GetPos()), ruleNameVecPtr(nullptr), lineMapper(nullptr), recovered(false)
 {
     CalculateLineStarts();
 }
@@ -544,15 +544,19 @@ std::u32string Lexer::RestOfLine(int maxLineLength)
 
 TokenLine Lexer::TokenizeLine(const std::u32string& line, int lineNumber, int startState)
 {
-    const char32_t* pos = line.c_str();
-    const char32_t* end = line.c_str() + line.length();
+    pos = line.c_str();
+    end = line.c_str() + line.length();
     TokenLine tokenLine;
-    lexeme.begin = end;
+    tokenLine.startState = startState;
+    lexeme.begin = pos;
     lexeme.end = end;
     token.match = lexeme;
     token.id = INVALID_TOKEN;
     token.line = lineNumber;
     int state = startState;
+    int prevState = 0;
+    int prevPrevState = 0;
+    bool cont = false;
     while (pos != end)
     {
         char32_t c = *pos;
@@ -563,18 +567,60 @@ TokenLine Lexer::TokenizeLine(const std::u32string& line, int lineNumber, int st
             token.line = lineNumber;
         }
         lexeme.end = pos + 1;
+        prevPrevState = prevState;
+        prevState = state;
         state = NextState(state, c);
         if (state == -1)
         {
+            if (prevState == 0)
+            {
+                break;
+            }
             state = 0;
             pos = token.match.end;
             tokenLine.tokens.push_back(token);
+            if (pos + 1 < end && *pos == '\"' && *(pos + 1) == '\\' && prevPrevState == 13 && prevState == 71)
+            {
+                Token tok;
+                tok.match.begin = pos;
+                tok.match.end = pos + 2;
+                tokenLine.tokens.push_back(tok);
+                pos += 2;
+            }
+            lexeme.begin = lexeme.end;
         }
-        ++pos;
+        else
+        {
+            ++pos;
+        }
     }
-    if (token.match.begin != token.match.end)
+    if (state != 0 && state != -1)
     {
+        state = NextState(state, '\r');
+    }
+    if (state != 0 && state != -1)
+    {
+        state = NextState(state, '\n');
+    }
+    if (state != 0 && state != -1)
+    {
+        if (blockCommentStates.find(state) != blockCommentStates.cend())
+        {
+            token.id = commentTokenId;
+            token.match.end = end;
+            tokenLine.tokens.push_back(token);
+            tokenLine.endState = state;
+            return tokenLine;
+        }
+    }
+    if (lexeme.begin != lexeme.end)
+    {
+        token.match = lexeme;
         tokenLine.tokens.push_back(token);
+    }
+    if (state == -1)
+    {
+        state = 0;
     }
     tokenLine.endState = state;
     return tokenLine;
@@ -605,6 +651,16 @@ bool Lexer::Synchronize()
         }
     }
     return false;
+}
+
+void Lexer::SetBlockCommentStates(const std::set<int>& blockCommentStates_)
+{
+    blockCommentStates = blockCommentStates_;
+}
+
+const std::set<int>& Lexer::BlockCommentStates() const
+{
+    return blockCommentStates;
 }
 
 LexerState Lexer::GetState() const
@@ -678,6 +734,11 @@ void Lexer::PushRule(int ruleId)
 void Lexer::PopRule()
 {
     ruleContext.pop_back();
+}
+
+void Lexer::SetCursorRuleContext()
+{
+    cursorRuleContext = ruleContext;
 }
 
 std::string Lexer::GetParserStateStr() const

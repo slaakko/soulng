@@ -34,6 +34,8 @@ enum class ScopeKind : int
 
 SYMBOLS_API std::string ScopeKindStr(ScopeKind kind);
 
+enum class SymbolGroupKind;
+
 enum class ScopeLookup : int
 {
     none = 0,
@@ -69,15 +71,15 @@ public:
     virtual ~Scope();
     ScopeKind Kind() const { return kind; }
     void SetKind(ScopeKind kind_) { kind = kind_; }
-    void Install(Symbol* symbol);
-    void Uninstall(Symbol* symbol);
-    Symbol* Lookup(const std::u32string& id, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const;
+    void Install(Symbol* symbol, SymbolGroupKind symbolGroupKind);
+    void Uninstall(Symbol* symbol, SymbolGroupKind symbolGroupKind);
+    Symbol* Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const;
     virtual std::string FullName() const = 0;
     virtual bool IsContainerScope() const { return false; }
     virtual Symbol* GetSymbol() { return nullptr; }
-    virtual void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
-    virtual void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context);
-    virtual void RemoveSymbol(Symbol* symbol);
+    virtual void Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKinds, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const;
+    virtual void AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context);
+    virtual void RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind);
     virtual Scope* ParentScope() const { return nullptr; }
     virtual void SetParentScope(Scope* parentScope_);
     virtual void AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, Context* context);
@@ -90,7 +92,7 @@ public:
     virtual AliasGroupSymbol* GetOrInsertAliasGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context);
 private:
     ScopeKind kind;
-    std::map<std::u32string, Symbol*> symbolMap;
+    std::map<std::pair<std::u32string, SymbolGroupKind>, Symbol*> symbolMap;
 };
 
 class SYMBOLS_API ContainerScope : public Scope
@@ -109,9 +111,9 @@ public:
     void AddUsingDeclaration(Symbol* usingDeclaration, const SourcePos& sourcePos, Context* context) override;
     void AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context) override;
     std::string FullName() const override;
-    void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
-    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
-    void RemoveSymbol(Symbol* symbol) override;
+    void Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKinds, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
+    void AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
+    void RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind) override;
     ClassGroupSymbol* GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
     FunctionGroupSymbol* GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
     ConceptGroupSymbol* GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context) override;
@@ -131,7 +133,7 @@ class SYMBOLS_API UsingDeclarationScope : public Scope
 public:
     UsingDeclarationScope(ContainerScope* parentScope_);
     std::string FullName() const override;
-    void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
+    void Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
 private:
     ContainerScope* parentScope;
 };
@@ -140,7 +142,7 @@ class SYMBOLS_API UsingDirectiveScope : public Scope
 {
 public:
     UsingDirectiveScope(NamespaceSymbol* ns_);
-    void Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
+    void Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const override;
     std::string FullName() const override;
     NamespaceSymbol* Ns() const { return ns; }
 private:

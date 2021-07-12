@@ -459,6 +459,8 @@ parser api(PARSER_API) DeclarationParser
         |   StdCall(ctx):stdCall{ return stdCall; }
         |   Unaligned(ctx):unaligned{ return unaligned; }
         |   DeclSpec(ctx):declSpec{ return declSpec; }
+        |   DeclSpecDeprecated(ctx):declSpecDeprecated{ return declSpecDeprecated; }
+        |   __INLINE{ return new InlineNode(sourcePos); }
         ;
 
     CDecl(sngcpp::symbols::Context* ctx) : Node*
@@ -481,11 +483,26 @@ parser api(PARSER_API) DeclarationParser
         ::= 
         (   __DECLSPEC{ s = sourcePos; }
             LPAREN{ lpPos = sourcePos; }
-            Identifier(ctx):identifier 
+            Identifier(ctx):identifier
             RPAREN{ rpPos = sourcePos; }
         )
         {
             return new DeclSpecNode(s, identifier, lpPos, rpPos);
+        }
+        ;
+
+    DeclSpecDeprecated(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> identifier, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::=
+        (   __DECLSPEC{ s = sourcePos; }
+            LPAREN{ lpPos = sourcePos; }
+            Identifier(ctx):id{ identifier.reset(id); pass = identifier->Str() == U"deprecated"; }
+            LPAREN
+            STRINGLIT
+            RPAREN
+            RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new DeclSpecNode(s, identifier.release(), lpPos, rpPos);
         }
         ;
 
@@ -579,6 +596,7 @@ parser api(PARSER_API) DeclarationParser
             (CVQualifierSeq:cvQualifiers{ trailingQualifiersNode->AddNode(cvQualifiers); })?
             (RefQualifier:refQualifier{ trailingQualifiersNode->AddNode(refQualifier); })?
             (NoexceptSpecifier(ctx):noexceptSpecifier{ trailingQualifiersNode->AddNode(noexceptSpecifier); })?
+            (ThrowSpecifier(ctx):throwSpecifier{ trailingQualifiersNode->AddNode(throwSpecifier); })?
             (AttributeSpecifierSeq(ctx):attributes{ trailingQualifiersNode->AddNode(attributes); })?
         )
         {
@@ -605,19 +623,20 @@ parser api(PARSER_API) DeclarationParser
 
     PtrOperator(sngcpp::symbols::Context* ctx, var std::unique_ptr<TrailingQualifiersNode> trailingQualifiersNode, var SourcePos s) : Node*
         ::= 
-        (   (NestedNameSpecifier(ctx):nns{ s = sourcePos; } Ptr:ptr)
+        (   (NestedNameSpecifier(ctx):nns{ s = sourcePos; } Ptr(ctx):ptr)
             { 
                 trailingQualifiersNode.reset(new TrailingQualifiersNode(s, new QualifiedPtrNode(s, nns, ptr)));
             }
             (AttributeSpecifierSeq(ctx):attributes{ trailingQualifiersNode->AddNode(attributes); })? 
             (CVQualifierSeq:cvQualifiers{ trailingQualifiersNode->AddNode(cvQualifiers); })?
-        |   Ptr:ptr2
+        |   Ptr(ctx):ptr2
             { 
                 s = sourcePos; 
                 trailingQualifiersNode.reset(new TrailingQualifiersNode(s, ptr2));
             } 
             (AttributeSpecifierSeq(ctx):attributes2{ trailingQualifiersNode->AddNode(attributes2); })? 
             (CVQualifierSeq:cvQualifiers2{ trailingQualifiersNode->AddNode(cvQualifiers2); })?
+            (MSVCModeGuard(ctx):msvcMode CDecl(ctx):cd{ trailingQualifiersNode->AddNode(cd); })?
         |   LvalueRef:lvalueRef
             { 
                 s = sourcePos; 
@@ -713,8 +732,9 @@ parser api(PARSER_API) DeclarationParser
         )
         ;
 
-    Ptr : Node*
-        ::= STAR{ return new PtrNode(sourcePos); }
+    Ptr(sngcpp::symbols::Context* ctx, var SourcePos s) : Node*
+        ::= MSVCModeGuard(ctx):vc{ s = sourcePos; } CDecl(ctx):cd STAR{ return new PrefixNode(s, cd, new PtrNode(sourcePos)); }
+        |   STAR{ return new PtrNode(sourcePos); }
         ;
 
     LvalueRef : Node*
@@ -753,6 +773,16 @@ parser api(PARSER_API) DeclarationParser
         )
         {
             return new NoexceptSpecifierNode(s, constantExpr, lpPos, rpPos);
+        }
+        ;
+
+    ThrowSpecifier(sngcpp::symbols::Context* ctx, var SourcePos s, var SourcePos lpPos, var SourcePos rpPos) : Node*
+        ::= 
+        (
+            THROW{ s = sourcePos; } LPAREN{ lpPos = sourcePos; } RPAREN{ rpPos = sourcePos; }
+        )
+        {
+            return new ThrowSpecifierNode(s, lpPos, rpPos);
         }
         ;
 }

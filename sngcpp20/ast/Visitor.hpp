@@ -123,6 +123,7 @@ class PrefixNode;
 class TrailingQualifiersNode;
 class TrailingAttributesNode;
 class NoexceptSpecifierNode;
+class ThrowSpecifierNode;
 // Enum:
 class EnumSpecifierNode;
 class EnumHeadNode;
@@ -488,6 +489,7 @@ public:
     virtual void Visit(TrailingQualifiersNode& node) {}
     virtual void Visit(TrailingAttributesNode& node) {}
     virtual void Visit(NoexceptSpecifierNode& node) {}
+    virtual void Visit(ThrowSpecifierNode& node) {}
     // Enum:
     virtual void Visit(EnumSpecifierNode& node) {}
     virtual void Visit(EnumHeadNode& node) {}
@@ -835,6 +837,7 @@ public:
     void Visit(TrailingQualifiersNode& node);
     void Visit(TrailingAttributesNode& node);
     void Visit(NoexceptSpecifierNode& node);
+    void Visit(ThrowSpecifierNode& node);
     // Enum:
     void Visit(EnumSpecifierNode& node);
     void Visit(EnumHeadNode& node);

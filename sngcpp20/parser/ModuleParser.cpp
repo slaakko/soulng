@@ -27,7 +27,7 @@ soulng::parser::Match ModuleParser::ModuleDeclaration(CppLexer& lexer, sngcpp::s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ModuleDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 247);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 249);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> exportKw;
     std::unique_ptr<Node> moduleKw;
@@ -228,7 +228,7 @@ soulng::parser::Match ModuleParser::ExportDeclaration(CppLexer& lexer, sngcpp::s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ExportDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 248);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 250);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     SourcePos lbPos = SourcePos();
@@ -462,7 +462,7 @@ soulng::parser::Match ModuleParser::ExportKeyword(CppLexer& lexer, sngcpp::symbo
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ExportKeyword"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 249);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 251);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
@@ -530,7 +530,7 @@ soulng::parser::Match ModuleParser::ImportKeyword(CppLexer& lexer, sngcpp::symbo
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ImportKeyword"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 250);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 252);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
@@ -598,7 +598,7 @@ soulng::parser::Match ModuleParser::ModuleKeyword(CppLexer& lexer, sngcpp::symbo
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ModuleKeyword"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 251);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 253);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> identifier;
     soulng::parser::Match match(false);
@@ -666,7 +666,7 @@ soulng::parser::Match ModuleParser::ImportDeclaration(CppLexer& lexer, sngcpp::s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ImportDeclaration"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 252);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 254);
     std::unique_ptr<Node> subject = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     std::unique_ptr<Node> imprt;
@@ -865,7 +865,7 @@ soulng::parser::Match ModuleParser::ModuleName(CppLexer& lexer, sngcpp::symbols:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ModuleName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 253);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 255);
     std::unique_ptr<Node> node = std::unique_ptr<Node>();
     SourcePos s = SourcePos();
     SourcePos dotPos = SourcePos();
@@ -997,7 +997,7 @@ soulng::parser::Match ModuleParser::ModulePartition(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ModulePartition"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 254);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 256);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> colon;
     std::unique_ptr<Node> moduleName;
@@ -1075,7 +1075,7 @@ soulng::parser::Match ModuleParser::GlobalModuleFragment(CppLexer& lexer, sngcpp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("GlobalModuleFragment"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 255);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 257);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> moduleKw;
     std::unique_ptr<Node> semicolon;
@@ -1183,7 +1183,7 @@ soulng::parser::Match ModuleParser::PrivateModuleFragment(CppLexer& lexer, sngcp
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("PrivateModuleFragment"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 256);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 258);
     SourcePos s = SourcePos();
     std::unique_ptr<Node> moduleKw;
     std::unique_ptr<Node> colon;
@@ -1325,7 +1325,7 @@ soulng::parser::Match ModuleParser::HeaderName(CppLexer& lexer, sngcpp::symbols:
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("HeaderName"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 257);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 259);
     soulng::parser::Match match(false);
     int64_t pos = lexer.GetPos();
     soulng::lexer::SourcePos sourcePos = lexer.GetSourcePos(pos);

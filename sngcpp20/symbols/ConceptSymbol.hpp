@@ -14,8 +14,11 @@ class SYMBOLS_API ConceptSymbol : public Symbol
 public:
     ConceptSymbol(const std::u32string& name_);
     std::string SymbolKindStr() const override { return "concept symbol"; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::conceptSymbolGroup; }
     void AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context) override;
     bool CanInstall() const override { return false; }
+private:
+    Scope* groupScope;
 };
 
 } // sngcpp::symbols

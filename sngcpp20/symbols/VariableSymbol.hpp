@@ -17,6 +17,7 @@ public:
     VariableSymbol(const std::u32string& name_);
     VariableSymbol(const std::u32string& name_, SymbolKind kind_);
     std::string SymbolKindStr() const override { return "variable symbol"; }
+    SymbolGroupKind GetSymbolGroupKind() const override { return SymbolGroupKind::variableSymbolGroup; }
     void AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context);
     bool IsValidDeclarationScope(ScopeKind scopeKind) const override;
     bool CanInstall() const override { return false; }

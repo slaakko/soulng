@@ -87,7 +87,7 @@ void UsingDirectiveAdder::Visit(QualifiedIdNode& node)
 
 void UsingDirectiveAdder::Visit(IdentifierNode& node)
 {
-    Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
+    Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, node.GetSourcePos(), context);
     if (symbol->Kind() == SymbolKind::namespaceSymbol)
     {
         NamespaceSymbol* ns = static_cast<NamespaceSymbol*>(symbol);
@@ -134,8 +134,13 @@ void UsingDeclarationAdder::Visit(QualifiedIdNode& node)
 
 void UsingDeclarationAdder::Visit(IdentifierNode& node)
 {
-    Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
-    if (symbol)
+    std::vector<Symbol*> symbols;
+    scope->Lookup(node.Str(), SymbolGroupKind::all, ScopeLookup::thisScope, symbols);
+    if (symbols.empty())
+    {
+        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
+    }
+    for (Symbol* symbol : symbols)
     {
         if (symbol->Kind() == SymbolKind::namespaceSymbol)
         {
@@ -145,10 +150,6 @@ void UsingDeclarationAdder::Visit(IdentifierNode& node)
         {
             context->GetSymbolTable()->CurrentScope()->AddUsingDeclaration(symbol, node.GetSourcePos(), context);
         }
-    }
-    else
-    {
-        throw Exception("symbol '" + ToUtf8(node.Str()) + "' not found", node.GetSourcePos(), context);
     }
 }
 
@@ -187,7 +188,7 @@ void UsingEnumDeclarationAdder::Visit(UsingEnumDeclarationNode& node)
 
 void UsingEnumDeclarationAdder::Visit(IdentifierNode& node)
 {
-    Symbol* symbol = scope->Lookup(node.Str(), ScopeLookup::thisScope, node.GetSourcePos(), context);
+    Symbol* symbol = scope->Lookup(node.Str(), SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, node.GetSourcePos(), context);
     if (symbol)
     {
         if (symbol->Kind() == SymbolKind::enumTypeSymbol)

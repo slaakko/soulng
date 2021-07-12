@@ -10,13 +10,10 @@
 
 namespace sngcpp::symbols {
 
-struct ScoreLess
+bool ScoreLess::operator()(const std::pair<Symbol*, int>& left, const std::pair<Symbol*, int>& right) const
 {
-    bool operator()(const std::pair<ClassTypeSymbol*, int>& left, const std::pair<ClassTypeSymbol*, int>& right) const
-    {
-        return left.second < right.second;
-    }
-};
+    return left.second < right.second;
+}
 
 ClassGroupSymbol::ClassGroupSymbol(const std::u32string& name_) : Symbol(name_, SymbolKind::classGroupSymbol)
 {
@@ -28,6 +25,7 @@ bool ClassGroupSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
     {
         case ScopeKind::namespaceScope: return true;
         case ScopeKind::classScope: return true;
+        case ScopeKind::blockScope: return true;
     }
     return false;
 }
@@ -49,7 +47,7 @@ ClassTypeSymbol* ClassGroupSymbol::GetClass(const std::vector<Symbol*>& template
         }
     }
     if (matchKind == MatchKind::exact) return nullptr;
-    std::vector<std::pair<ClassTypeSymbol*, int>> symbolScores;
+    std::vector<std::pair<Symbol*, int>> symbolScores;
     for (ClassTypeSymbol* classTypeSymbol : classes)
     {
         int score = Match(templateArguments, classTypeSymbol->TemplateArguments());
@@ -63,18 +61,18 @@ ClassTypeSymbol* ClassGroupSymbol::GetClass(const std::vector<Symbol*>& template
         return nullptr;
     }
     std::sort(symbolScores.begin(), symbolScores.end(), ScoreLess());
-    std::pair<ClassTypeSymbol*, int> first = symbolScores.front();
+    std::pair<Symbol*, int> first = symbolScores.front();
     if (symbolScores.size() > 1)
     {
-        std::pair<ClassTypeSymbol*, int> second = symbolScores[2];
+        std::pair<Symbol*, int> second = symbolScores[2];
         if (first == second) return nullptr;
         if (first.second == 0) exact = true;
-        return first.first;
+        return static_cast<ClassTypeSymbol*>(first.first);
     }
     else
     {
         if (first.second == 0) exact = true;
-        return first.first;
+        return static_cast<ClassTypeSymbol*>(first.first);
     }
 }
 

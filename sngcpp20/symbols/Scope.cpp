@@ -43,9 +43,9 @@ Scope::~Scope()
 {
 }
 
-void Scope::Install(Symbol* symbol)
+void Scope::Install(Symbol* symbol, SymbolGroupKind symbolGroupKind)
 {
-    auto it = symbolMap.find(symbol->InstallationName());
+    auto it = symbolMap.find(std::make_pair(symbol->InstallationName(), symbolGroupKind));
     if (it != symbolMap.cend())
     {
         Symbol* existingSymbol = it->second;
@@ -59,18 +59,18 @@ void Scope::Install(Symbol* symbol)
             return;
         }
     }
-    symbolMap[symbol->InstallationName()] = symbol;
+    symbolMap[std::make_pair(symbol->InstallationName(), symbolGroupKind)] = symbol;
 }
 
-void Scope::Uninstall(Symbol* symbol)
+void Scope::Uninstall(Symbol* symbol, SymbolGroupKind symbolGroupKind)
 {
-    symbolMap.erase(symbol->InstallationName());
+    symbolMap.erase(std::make_pair(symbol->InstallationName(), symbolGroupKind));
 }
 
-Symbol* Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const
+Symbol* Scope::Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, const SourcePos& sourcePos, Context* context) const
 {
     std::vector<Symbol*> symbols;
-    Lookup(id, scopeLookup, symbols);
+    Lookup(id, symbolGroupKind, scopeLookup, symbols);
     if (symbols.empty())
     {
         return nullptr;
@@ -99,28 +99,32 @@ Symbol* Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, const S
     }
 }
 
-void Scope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
+void Scope::Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKinds, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
 {
-    if ((scopeLookup & ScopeLookup::thisAndBaseScopes) != ScopeLookup::none)
+    std::vector<SymbolGroupKind> symbolGroupKindVec = SymbolGroupKindstoSymbolGroupKindVec(symbolGroupKinds);
+    for (SymbolGroupKind symbolGroupKind : symbolGroupKindVec)
     {
-        auto it = symbolMap.find(id);
-        if (it != symbolMap.cend())
+        if ((scopeLookup & ScopeLookup::thisAndBaseScopes) != ScopeLookup::none)
         {
-            Symbol* symbol = it->second;
-            if (std::find(symbols.begin(), symbols.end(), symbol) == symbols.end())
+            auto it = symbolMap.find(std::make_pair(id, symbolGroupKind));
+            if (it != symbolMap.cend())
             {
-                symbols.push_back(symbol);
+                Symbol* symbol = it->second;
+                if (std::find(symbols.begin(), symbols.end(), symbol) == symbols.end())
+                {
+                    symbols.push_back(symbol);
+                }
             }
         }
     }
 }
 
-void Scope::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context)
+void Scope::AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context)
 {
     throw Exception("cannot declare symbol '" + ToUtf8(symbol->Name()) + "' in " + ScopeKindStr(kind) + " '" + FullName() + "'", sourcePos, context);
 }
 
-void Scope::RemoveSymbol(Symbol* symbol)
+void Scope::RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind)
 {
     throw std::runtime_error("could not remove symbol");
 }
@@ -180,7 +184,7 @@ void ContainerScope::AddBaseScope(Scope* baseScope, const SourcePos& sourcePos, 
     {
         ContainerScope* containerScope = static_cast<ContainerScope*>(baseScope);
         ContainerSymbol* baseClassSymbol = containerScope->GetContainerSymbol();
-        Install(baseClassSymbol);
+        Install(baseClassSymbol, SymbolGroupKind::typeSymbolGroup);
     }
     baseScopes.push_back(baseScope);
 }
@@ -199,38 +203,42 @@ std::string ContainerScope::FullName() const
     return ToUtf8(containerSymbol->FullName());
 }
 
-void ContainerScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
+void ContainerScope::Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKinds, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
 {
-    Scope::Lookup(id, scopeLookup, symbols);
-    if ((scopeLookup & ScopeLookup::parentScope) != ScopeLookup::none)
+    std::vector<SymbolGroupKind> symbolGroupKindVec = SymbolGroupKindstoSymbolGroupKindVec(symbolGroupKinds);
+    for (SymbolGroupKind symbolGroupKind : symbolGroupKindVec)
     {
-        if (symbols.empty())
+        Scope::Lookup(id, symbolGroupKind, scopeLookup, symbols);
+        if ((scopeLookup & ScopeLookup::parentScope) != ScopeLookup::none)
         {
-            if (parentScope)
+            if (symbols.empty())
             {
-                parentScope->Lookup(id, scopeLookup, symbols);
+                if (parentScope)
+                {
+                    parentScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+                }
             }
         }
-    }
-    if ((scopeLookup & ScopeLookup::baseScope) != ScopeLookup::none)
-    {
-        if (symbols.empty())
+        if ((scopeLookup & ScopeLookup::baseScope) != ScopeLookup::none)
         {
-            for (Scope* baseScope : baseScopes)
+            if (symbols.empty())
             {
-                baseScope->Lookup(id, scopeLookup, symbols);
+                for (Scope* baseScope : baseScopes)
+                {
+                    baseScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+                }
             }
         }
-    }
-    if ((scopeLookup & ScopeLookup::usingScope) != ScopeLookup::none)
-    {
-        if (usingDeclarationScope)
+        if ((scopeLookup & ScopeLookup::usingScope) != ScopeLookup::none)
         {
-            usingDeclarationScope->Lookup(id, scopeLookup, symbols);
-        }
-        for (Scope* usingDirectiveScope : usingDirectiveScopes)
-        {
-            usingDirectiveScope->Lookup(id, scopeLookup, symbols);
+            if (usingDeclarationScope)
+            {
+                usingDeclarationScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+            }
+            for (Scope* usingDirectiveScope : usingDirectiveScopes)
+            {
+                usingDirectiveScope->Lookup(id, symbolGroupKind, scopeLookup, symbols);
+            }
         }
     }
 }
@@ -242,7 +250,7 @@ void ContainerScope::AddUsingDeclaration(Symbol* usingDeclaration, const SourceP
         usingDeclarationScope = new UsingDeclarationScope(this);
         scopes.push_back(std::unique_ptr<Scope>(usingDeclarationScope));
     }
-    usingDeclarationScope->Install(usingDeclaration);
+    usingDeclarationScope->Install(usingDeclaration, usingDeclaration->GetSymbolGroupKind());
 }
 
 void ContainerScope::AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sourcePos, Context* context)
@@ -263,22 +271,22 @@ void ContainerScope::AddUsingDirective(NamespaceSymbol* ns, const SourcePos& sou
     }
 }
 
-void ContainerScope::AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context)
+void ContainerScope::AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context)
 {
     if (!symbol->IsValidDeclarationScope(Kind()))
     {
         throw Exception("cannot declare symbol '" + ToUtf8(symbol->Name()) + "' in " + ScopeKindStr(Kind()) + " '" + FullName() + "'", sourcePos, context);
     }
-    containerSymbol->AddSymbol(symbol, sourcePos, groupScope, context); 
+    containerSymbol->AddSymbol(symbol, symbolGroupKind, sourcePos, groupScope, context); 
 }
 
-void ContainerScope::RemoveSymbol(Symbol* symbol)
+void ContainerScope::RemoveSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind)
 {
 }
 
 ClassGroupSymbol* ContainerScope::GetOrInsertClassGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Symbol* symbol = Scope::Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Symbol* symbol = Scope::Lookup(name, SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->Kind() == SymbolKind::classGroupSymbol)
@@ -286,23 +294,15 @@ ClassGroupSymbol* ContainerScope::GetOrInsertClassGroup(const std::u32string& na
             ClassGroupSymbol* classGroupSymbol = static_cast<ClassGroupSymbol*>(symbol);
             return classGroupSymbol;
         }
-        else
-        {
-            std::string errorMessage = "name of class group '" + ToUtf8(name) + "' conflicts with earlier declaration of '" + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "'";
-            throw Exception(errorMessage, sourcePos, context);
-        }
     }
-    else
-    {
-        ClassGroupSymbol* classGroupSymbol = new ClassGroupSymbol(name);
-        AddSymbol(classGroupSymbol, sourcePos, this, context);
-        return classGroupSymbol;
-    }
+    ClassGroupSymbol* classGroupSymbol = new ClassGroupSymbol(name);
+    AddSymbol(classGroupSymbol, SymbolGroupKind::typeSymbolGroup, sourcePos, this, context);
+    return classGroupSymbol;
 }
 
 FunctionGroupSymbol* ContainerScope::GetOrInsertFunctionGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Symbol* symbol = Scope::Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Symbol* symbol = Scope::Lookup(name, SymbolGroupKind::functionSymbolGroup, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->Kind() == SymbolKind::functionGroupSymbol)
@@ -310,23 +310,15 @@ FunctionGroupSymbol* ContainerScope::GetOrInsertFunctionGroup(const std::u32stri
             FunctionGroupSymbol* functionGroupSymbol = static_cast<FunctionGroupSymbol*>(symbol);
             return functionGroupSymbol;
         }
-        else
-        {
-            std::string errorMessage = "name of function group '" + ToUtf8(name) + "' conflicts with earlier declaration of '" + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "'";
-            throw Exception(errorMessage, sourcePos, context);
-        }
     }
-    else
-    {
-        FunctionGroupSymbol* functionGroupSymbol = new FunctionGroupSymbol(name);
-        AddSymbol(functionGroupSymbol, sourcePos, this, context);
-        return functionGroupSymbol;
-    }
+    FunctionGroupSymbol* functionGroupSymbol = new FunctionGroupSymbol(name);
+    AddSymbol(functionGroupSymbol, SymbolGroupKind::functionSymbolGroup, sourcePos, this, context);
+    return functionGroupSymbol;
 }
 
 ConceptGroupSymbol* ContainerScope::GetOrInsertConceptGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Symbol* symbol = Scope::Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Symbol* symbol = Scope::Lookup(name, SymbolGroupKind::conceptSymbolGroup, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->Kind() == SymbolKind::conceptGroupSymbol)
@@ -334,23 +326,15 @@ ConceptGroupSymbol* ContainerScope::GetOrInsertConceptGroup(const std::u32string
             ConceptGroupSymbol* conceptGroupSymbol = static_cast<ConceptGroupSymbol*>(symbol);
             return conceptGroupSymbol;
         }
-        else
-        {
-            std::string errorMessage = "name of concept group '" + ToUtf8(name) + "' conflicts with earlier declaration of '" + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "'";
-            throw Exception(errorMessage, sourcePos, context);
-        }
     }
-    else
-    {
-        ConceptGroupSymbol* conceptGroupSymbol = new ConceptGroupSymbol(name);
-        AddSymbol(conceptGroupSymbol, sourcePos, this, context);
-        return conceptGroupSymbol;
-    }
+    ConceptGroupSymbol* conceptGroupSymbol = new ConceptGroupSymbol(name);
+    AddSymbol(conceptGroupSymbol, SymbolGroupKind::conceptSymbolGroup, sourcePos, this, context);
+    return conceptGroupSymbol;
 }
 
 VariableGroupSymbol* ContainerScope::GetOrInsertVariableGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Symbol* symbol = Scope::Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Symbol* symbol = Scope::Lookup(name, SymbolGroupKind::variableSymbolGroup, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->Kind() == SymbolKind::variableGroupSymbol)
@@ -358,23 +342,15 @@ VariableGroupSymbol* ContainerScope::GetOrInsertVariableGroup(const std::u32stri
             VariableGroupSymbol* variableGroupSymbol = static_cast<VariableGroupSymbol*>(symbol);
             return variableGroupSymbol;
         }
-        else
-        {
-            std::string errorMessage = "name of variable group '" + ToUtf8(name) + "' conflicts with earlier declaration of '" + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "'";
-            throw Exception(errorMessage, sourcePos, context);
-        }
     }
-    else
-    {
-        VariableGroupSymbol* variableGroupSymbol = new VariableGroupSymbol(name);
-        AddSymbol(variableGroupSymbol, sourcePos, this, context);
-        return variableGroupSymbol;
-    }
+    VariableGroupSymbol* variableGroupSymbol = new VariableGroupSymbol(name);
+    AddSymbol(variableGroupSymbol, SymbolGroupKind::variableSymbolGroup, sourcePos, this, context);
+    return variableGroupSymbol;
 }
 
 AliasGroupSymbol* ContainerScope::GetOrInsertAliasGroup(const std::u32string& name, const SourcePos& sourcePos, Context* context)
 {
-    Symbol* symbol = Scope::Lookup(name, ScopeLookup::thisScope, sourcePos, context);
+    Symbol* symbol = Scope::Lookup(name, SymbolGroupKind::typeSymbolGroup, ScopeLookup::thisScope, sourcePos, context);
     if (symbol)
     {
         if (symbol->Kind() == SymbolKind::aliasGroupSymbol)
@@ -382,18 +358,10 @@ AliasGroupSymbol* ContainerScope::GetOrInsertAliasGroup(const std::u32string& na
             AliasGroupSymbol* aliasGroupSymbol = static_cast<AliasGroupSymbol*>(symbol);
             return aliasGroupSymbol;
         }
-        else
-        {
-            std::string errorMessage = "name of alias group '" + ToUtf8(name) + "' conflicts with earlier declaration of '" + symbol->SymbolKindStr() + " '" + ToUtf8(symbol->FullName()) + "'";
-            throw Exception(errorMessage, sourcePos, context);
-        }
     }
-    else
-    {
-        AliasGroupSymbol* aliasGroupSymbol = new AliasGroupSymbol(name);
-        AddSymbol(aliasGroupSymbol, sourcePos, this, context);
-        return aliasGroupSymbol;
-    }
+    AliasGroupSymbol* aliasGroupSymbol = new AliasGroupSymbol(name);
+    AddSymbol(aliasGroupSymbol, SymbolGroupKind::typeSymbolGroup, sourcePos, this, context);
+    return aliasGroupSymbol;
 }
 
 UsingDeclarationScope::UsingDeclarationScope(ContainerScope* parentScope_) : Scope(), parentScope(parentScope_)
@@ -406,9 +374,9 @@ std::string UsingDeclarationScope::FullName() const
     return parentScope->FullName();
 }
 
-void UsingDeclarationScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
+void UsingDeclarationScope::Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
 {
-    return Scope::Lookup(id, ScopeLookup::thisScope, symbols);
+    return Scope::Lookup(id, symbolGroupKind, ScopeLookup::thisScope, symbols);
 }
 
 UsingDirectiveScope::UsingDirectiveScope(NamespaceSymbol* ns_) : Scope(), ns(ns_)
@@ -416,9 +384,9 @@ UsingDirectiveScope::UsingDirectiveScope(NamespaceSymbol* ns_) : Scope(), ns(ns_
     SetKind(ScopeKind::usingDirectiveScope);
 }
 
-void UsingDirectiveScope::Lookup(const std::u32string& id, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
+void UsingDirectiveScope::Lookup(const std::u32string& id, SymbolGroupKind symbolGroupKind, ScopeLookup scopeLookup, std::vector<Symbol*>& symbols) const
 {
-    ns->GetScope()->Lookup(id, scopeLookup, symbols);
+    ns->GetScope()->Lookup(id, symbolGroupKind, scopeLookup, symbols);
 }
 
 std::string UsingDirectiveScope::FullName() const

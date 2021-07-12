@@ -28,7 +28,7 @@ soulng::parser::Match IdentifierParser::Identifier(CppLexer& lexer, sngcpp::symb
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Identifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 210);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 212);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -76,7 +76,7 @@ soulng::parser::Match IdentifierParser::TypeIdentifier(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeIdentifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 211);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 213);
     std::unique_ptr<Node> typeName;
     std::unique_ptr<Node> typeIdentifier;
     soulng::parser::Match match(false);
@@ -86,7 +86,7 @@ soulng::parser::Match IdentifierParser::TypeIdentifier(CppLexer& lexer, sngcpp::
         soulng::parser::Match match(false);
         soulng::parser::Match* parentMatch1 = &match;
         {
-            soulng::parser::Match match = GuardParser::AssumeGuard(lexer, ctx);
+            soulng::parser::Match match = GuardParser::AssumeTypeGuard(lexer, ctx);
             *parentMatch1 = match;
         }
         if (match.hit)
@@ -169,7 +169,8 @@ soulng::parser::Match IdentifierParser::TypeIdentifierUnchecked(CppLexer& lexer,
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeIdentifierUnchecked"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 212);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 214);
+    std::unique_ptr<Node> identifier = std::unique_ptr<Node>();
     std::unique_ptr<Node> id;
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
@@ -179,11 +180,13 @@ soulng::parser::Match IdentifierParser::TypeIdentifierUnchecked(CppLexer& lexer,
         id.reset(static_cast<Node*>(match.value));
         if (match.hit)
         {
+            identifier.reset(id.release());
+            ctx->GetSymbolTable()->MapNode(identifier.get(), ctx->GetSymbolTable()->MakeGenericTypeSymbol(), sngcpp::symbols::MapKind::nodeToSymbol);
             {
                 #ifdef SOULNG_PARSER_DEBUG_SUPPORT
                 if (parser_debug_write_to_log) soulng::lexer::WriteSuccessToLog(lexer, parser_debug_match_span, soulng::unicode::ToUtf32("TypeIdentifierUnchecked"));
                 #endif // SOULNG_PARSER_DEBUG_SUPPORT
-                return soulng::parser::Match(true, id.release());
+                return soulng::parser::Match(true, identifier.release());
             }
         }
         *parentMatch0 = match;
@@ -213,7 +216,7 @@ soulng::parser::Match IdentifierParser::TypeIdentifierChecked(CppLexer& lexer, s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("TypeIdentifierChecked"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 213);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 215);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -229,7 +232,7 @@ soulng::parser::Match IdentifierParser::TypeIdentifierChecked(CppLexer& lexer, s
         if (match.hit)
         {
             std::unique_ptr<IdentifierNode> identifier(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
-            Symbol * symbol = ctx->GetSymbolTable()->Lookup(identifier->Str(), sourcePos, ctx);
+            Symbol * symbol = ctx->GetSymbolTable()->Lookup(identifier->Str(), sngcpp::symbols::SymbolGroupKind::typeSymbolGroup, sourcePos, ctx);
             if (symbol && symbol->IsTypeSymbol())
             {
                 ctx->GetSymbolTable()->MapNode(identifier.get(), symbol);
@@ -276,7 +279,7 @@ soulng::parser::Match IdentifierParser::UnqualifiedId(CppLexer& lexer, sngcpp::s
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("UnqualifiedId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 214);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 216);
     std::unique_ptr<Node> templateId;
     std::unique_ptr<Node> identifier;
     std::unique_ptr<Node> operatorFnId;
@@ -490,7 +493,7 @@ soulng::parser::Match IdentifierParser::QualifiedId(CppLexer& lexer, sngcpp::sym
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("QualifiedId"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 215);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 217);
     SourcePos s = SourcePos();
     SourcePos tmpPos = SourcePos();
     std::unique_ptr<Node> nns;
@@ -635,7 +638,7 @@ soulng::parser::Match IdentifierParser::Template(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Template"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 216);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 218);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -683,7 +686,7 @@ soulng::parser::Match IdentifierParser::NestedNameSpecifier(CppLexer& lexer, sng
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("NestedNameSpecifier"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 217);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 219);
     std::unique_ptr<NestedNameSpecifierNode> nnsNode = std::unique_ptr<NestedNameSpecifierNode>();
     std::unique_ptr<Node> idNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> simpleTemplateId;
@@ -1002,7 +1005,7 @@ soulng::parser::Match IdentifierParser::IdentifierList(CppLexer& lexer, sngcpp::
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("IdentifierList"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 218);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 220);
     std::unique_ptr<Node> identifierListNode = std::unique_ptr<Node>();
     std::unique_ptr<Node> first;
     std::unique_ptr<Node> comma;
@@ -1142,7 +1145,7 @@ soulng::parser::Match IdentifierParser::Unnamed(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Unnamed"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 219);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 221);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1185,7 +1188,7 @@ soulng::parser::Match IdentifierParser::Dot(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("Dot"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 220);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 222);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {
@@ -1233,7 +1236,7 @@ soulng::parser::Match IdentifierParser::ColonColon(CppLexer& lexer)
         soulng::lexer::WriteBeginRuleToLog(lexer, soulng::unicode::ToUtf32("ColonColon"));
     }
     #endif // SOULNG_PARSER_DEBUG_SUPPORT
-    soulng::lexer::RuleGuard ruleGuard(lexer, 221);
+    soulng::lexer::RuleGuard ruleGuard(lexer, 223);
     soulng::parser::Match match(false);
     soulng::parser::Match* parentMatch0 = &match;
     {

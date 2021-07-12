@@ -8,7 +8,8 @@
 
 namespace sngcpp::symbols {
 
-AliasTypeSymbol::AliasTypeSymbol(const std::u32string& name_, TypeSymbol* referredType_) : TypeSymbol(name_, SymbolKind::aliasTypeSymbol), referredType(referredType_), templateDeclarationSymbol(nullptr)
+AliasTypeSymbol::AliasTypeSymbol(const std::u32string& name_, TypeSymbol* referredType_) : 
+    TypeSymbol(name_, SymbolKind::aliasTypeSymbol), referredType(referredType_), templateDeclarationSymbol(nullptr), groupScope(nullptr)
 {
 }
 
@@ -25,8 +26,14 @@ bool AliasTypeSymbol::IsValidDeclarationScope(ScopeKind scopeKind) const
 
 void AliasTypeSymbol::AddToGroup(Scope* groupScope, const SourcePos& sourcePos, Context* context)
 {
+    this->groupScope = groupScope;
     AliasGroupSymbol* aliasGroup = groupScope->GetOrInsertAliasGroup(Name(), sourcePos, context);
     aliasGroup->AddAliasTypeSymbol(this);
+}
+
+void AliasTypeSymbol::SetTemplateArguments(const std::vector<Symbol*>& templateArguments_)
+{
+    templateArguments = templateArguments_;
 }
 
 } // sngcpp::symbols

@@ -172,6 +172,7 @@
     <ClInclude Include="Context.hpp" />
     <ClInclude Include="Declaration.hpp" />
     <ClInclude Include="DeclarationProcessor.hpp" />
+    <ClInclude Include="DeclTypeEvaluator.hpp" />
     <ClInclude Include="Enum.hpp" />
     <ClInclude Include="EnumTypeSymbol.hpp" />
     <ClInclude Include="Evaluator.hpp" />
@@ -180,9 +181,11 @@
     <ClInclude Include="FunctionSymbol.hpp" />
     <ClInclude Include="FunctionTypeSymbol.hpp" />
     <ClInclude Include="FundamentalTypeSymbol.hpp" />
+    <ClInclude Include="GenericTypeSymbol.hpp" />
     <ClInclude Include="InitDone.hpp" />
     <ClInclude Include="Namespace.hpp" />
     <ClInclude Include="NamespaceSymbol.hpp" />
+    <ClInclude Include="NullPtrTypeSymbol.hpp" />
     <ClInclude Include="Scope.hpp" />
     <ClInclude Include="ScopeResolver.hpp" />
     <ClInclude Include="Symbol.hpp" />
@@ -213,6 +216,7 @@
     <ClCompile Include="Context.cpp" />
     <ClCompile Include="Declaration.cpp" />
     <ClCompile Include="DeclarationProcessor.cpp" />
+    <ClCompile Include="DeclTypeEvaluator.cpp" />
     <ClCompile Include="Enum.cpp" />
     <ClCompile Include="EnumTypeSymbol.cpp" />
     <ClCompile Include="Evaluator.cpp" />
@@ -221,9 +225,11 @@
     <ClCompile Include="FunctionSymbol.cpp" />
     <ClCompile Include="FunctionTypeSymbol.cpp" />
     <ClCompile Include="FundamentalTypeSymbol.cpp" />
+    <ClCompile Include="GenericTypeSymbol.cpp" />
     <ClCompile Include="InitDone.cpp" />
     <ClCompile Include="Namespace.cpp" />
     <ClCompile Include="NamespaceSymbol.cpp" />
+    <ClCompile Include="NullPtrTypeSymbol.cpp" />
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="ScopeResolver.cpp" />
     <ClCompile Include="Symbol.cpp" />

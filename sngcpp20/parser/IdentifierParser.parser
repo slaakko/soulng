@@ -26,7 +26,7 @@ parser api(PARSER_API) IdentifierParser
     uselexer CppLexer;
     state;
 
-    using GuardParser.AssumeGuard;
+    using GuardParser.AssumeTypeGuard;
     using LiteralParser.LiteralOperatorId;
     using TemplateParser.TemplateId;
     using TemplateParser.SimpleTemplateId;
@@ -40,19 +40,24 @@ parser api(PARSER_API) IdentifierParser
         ;
 
     TypeIdentifier(sngcpp::symbols::Context* ctx) : Node*
-        ::= AssumeGuard(ctx):assumeGuard TypeIdentifierUnchecked(ctx):typeName{ return typeName; }
+        ::= AssumeTypeGuard(ctx):assumeTypeGuard TypeIdentifierUnchecked(ctx):typeName{ return typeName; }
         |   TypeIdentifierChecked(ctx):typeIdentifier{ return typeIdentifier; }
         ;
 
-    TypeIdentifierUnchecked(sngcpp::symbols::Context* ctx) : Node*
-        ::= Identifier(ctx):id{ return id; }
+    TypeIdentifierUnchecked(sngcpp::symbols::Context* ctx, var std::unique_ptr<Node> identifier) : Node*
+        ::= Identifier(ctx):id
+            { 
+                identifier.reset(id);
+                ctx->GetSymbolTable()->MapNode(identifier.get(), ctx->GetSymbolTable()->MakeGenericTypeSymbol(), sngcpp::symbols::MapKind::nodeToSymbol);
+                return identifier.release(); 
+            }
         ;
 
     TypeIdentifierChecked(sngcpp::symbols::Context* ctx) : Node*
         ::= ID
             { 
                 std::unique_ptr<IdentifierNode> identifier(sngcpp::par::ParseIdentifier(sourcePos, lexer.FileName(), lexer.GetMatch(pos)));
-                Symbol* symbol = ctx->GetSymbolTable()->Lookup(identifier->Str(), sourcePos, ctx);
+                Symbol* symbol = ctx->GetSymbolTable()->Lookup(identifier->Str(), sngcpp::symbols::SymbolGroupKind::typeSymbolGroup, sourcePos, ctx);
                 if (symbol && symbol->IsTypeSymbol())
                 {
                     ctx->GetSymbolTable()->MapNode(identifier.get(), symbol);

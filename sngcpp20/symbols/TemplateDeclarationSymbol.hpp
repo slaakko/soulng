@@ -31,7 +31,7 @@ class SYMBOLS_API TemplateDeclarationSymbol : public ContainerSymbol
 public:
     TemplateDeclarationSymbol();
     bool CanInstall() const override { return false; }
-    void AddSymbol(Symbol* symbol, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
+    void AddSymbol(Symbol* symbol, SymbolGroupKind symbolGroupKind, const SourcePos& sourcePos, Scope* groupScope, Context* context) override;
     std::string SymbolKindStr() const override { return "template declaration symbol"; }
     const std::vector<TemplateParameterSymbol*>& TemplateParameters() const { return temlateParameters; }
 private:

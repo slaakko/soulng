@@ -35,7 +35,7 @@ enum class NodeKind : uint16_t
     angleHeaderNameNode, quoteHeaderNameNode,
     identifierNode, unnamedNode, colonColonNode, nestedNameSpecifierNode, qualifiedIdNode, identifierListNode, qualifiedModuleIdNode,
     charNode, char8Node, char16Node, char32Node, wcharNode, boolNode, shortNode, intNode, longNode, signedNode, unsignedNode, floatNode, doubleNode, voidNode,
-    constNode, volatileNode, lvalueRefNode, rvalueRefNode, ptrNode, cvQualifierSequenceNode, ptrOperatorNode, noexceptSpecifierNode, packDeclaratorIdNode, arrayDeclaratorNode, functionDeclaratorNode,
+    constNode, volatileNode, lvalueRefNode, rvalueRefNode, ptrNode, cvQualifierSequenceNode, ptrOperatorNode, noexceptSpecifierNode, throwSpecifierNode, packDeclaratorIdNode, arrayDeclaratorNode, functionDeclaratorNode,
     prefixNode, trailingQualifiersNode, trailingAttributesNode, ptrDeclaratorNode,
     expressionListNode, assignmentInitializerNode, 
     conditionalExprNode, questNode, colonNode, commaNode, binaryExprNode, unaryExprNode, yieldExprNode, throwExprNode,

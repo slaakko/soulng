@@ -13,10 +13,10 @@ class CppLexer;
 
 struct PARSER_API GuardParser
 {
-    static soulng::parser::Match MemberFunctionGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match MemberFunctionTemplateGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match SavedMemberFunctionBodyGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match AssumeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
-    static soulng::parser::Match NotSimpleTypeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match AssumeTypeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
+    static soulng::parser::Match NotDefiningTypeSpecifierGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
     static soulng::parser::Match MSVCModeGuard(CppLexer& lexer, sngcpp::symbols::Context* ctx);
 };
 
