@@ -1,6 +1,7 @@
 #include <soulng/rex/Match.hpp>
 #include <soulng/util/BinaryReader.hpp>
 #include <soulng/util/BinaryWriter.hpp>
+#include <soulng/util/InitDone.hpp>
 #include <soulng/util/Path.hpp>
 #include <soulng/util/Unicode.hpp>
 #include <boost/filesystem.hpp>
@@ -68,8 +69,21 @@ void CopyFile(const std::string& source, const std::string& dest, bool force, bo
     }
 }
 
+struct InitDone
+{
+    InitDone()
+    {
+        soulng::util::Init();
+    }
+    ~InitDone()
+    {
+        soulng::util::Done();
+    }
+};
+
 int main(int argc, const char** argv)
 {
+    InitDone initDone;
     try
     {
         bool verbose = false;
